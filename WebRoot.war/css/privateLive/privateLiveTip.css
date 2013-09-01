@@ -1,0 +1,73 @@
+#prTipWrap{
+    margin:25px 0 30px 25px;
+    padding: 15px;
+    padding-top: 0px;
+    width: 723px;
+    border: 1px solid #E3EEF8;
+    border-radius: 5px;
+}
+.tipHeader{
+    min-width: 400px;
+    margin-top: 20px;
+    clear: both;
+}
+
+#tipContent{
+    margin-top: 15px;
+}
+#tipContent p{
+    margin-top: 10px;
+    width: 650px;
+}
+
+#tipOperate{
+    width: 600px;
+    margin-top: 25px;
+    list-style-type: none;
+}
+#tipOperate li{
+    float: left;
+    margin-right: 20px;
+}
+
+#prTipWrap table{
+    float: left;
+    border-collapse: collapse;
+    width: 640px;
+    margin-top: 10px;
+}
+#prTipWrap table img{
+    border:1px solid #cdcdcd;
+    padding: 2px;
+    border-radius: 2px;
+    width: 40px;
+    height: 40px;
+}
+#prTipWrap table td,#prTipWrap table th{
+    border: 1px solid #ccc;
+    padding: 3px;
+    line-height: 40px;
+    text-align: center;
+}
+
+#prTipWrap ul{
+    clear: both;
+}
+#prTipWrap ul li{
+    float: left;
+    margin-top: 10px;
+}
+#authorityList li{
+    width: 600px;
+}
+#prTipWrap ul li input{
+    margin-right: 15px;
+}
+#prTipWrap ul li input.authorityToEmails{
+    margin-right: 15px;
+    padding: 3px;
+    width: 380px;
+    height: 18px;
+    border: 1px solid #E0DFE3;
+    border-radius: 3px;
+}

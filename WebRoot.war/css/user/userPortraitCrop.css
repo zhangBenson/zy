@@ -1,0 +1,158 @@
+
+.image_manipulate_container {
+    float: left;
+    display: block;
+    height: 440px;
+    width: 670px;
+    margin: 0px auto;
+    background: #FFF;
+    padding: 10px;
+    /*margin: 8px;*/
+    border: 1px solid #C8F9E8;
+    border-radius: 4px;
+    font-family: "微软雅黑", "宋体", Verdana, Geneva, sans-serif;
+    z-index: 100;
+}
+
+.image_manipulate_container .image_manipulate_inner_div {
+    display: block;
+    width: 660px;
+    float: left;
+    position: relative;
+}
+
+.image_manipulate_container .image_manipulate_inner_div .tittle {
+    display: block;
+    float: left;
+    height: 32px;
+    width: 660px;
+    line-height: 32px;
+    padding-left: 15px;
+    background-color: rgb(227, 238, 248);
+    margin-bottom: 10px;
+    color: #777;
+    font-size: 16px;
+    text-align: left;
+}
+
+.image_manipulate_container .image_manipulate_inner_div .fileload {
+    display: block;
+    float: left;
+    width: 260px;
+    padding-left: 20px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.image_manipulate_container .image_manipulate_inner_div .portrait_submit {
+    float: left;
+    width: 600px;
+    margin-top: 15px;
+    padding-left: 30px;
+}
+
+.image_manipulate_container .dynamic_image {
+    height: 150px;
+    width: 150px;
+    float: left;
+    margin-top: 10px;
+    overflow: hidden;
+    border: 1px solid #bbb;
+    background: rgb(240, 240, 2400);
+}
+
+.image_manipulate_container .dynamic_image .dynamic_image_inner {
+    width: 150px;
+    height: 150px;
+    display: none;
+}
+
+.image_manipulate_container .image_manipulate_inner_div .portrait_submit .submit_btn {
+    height: 30px;
+    border: none;
+    background-color: rgb(100, 180, 240);
+    float: left;
+    margin-left: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #FFF;
+    font-size: 14px;
+    line-height: 30px;
+    cursor: pointer;
+    box-shadow: 0px 1px 3px rgba(40, 160, 200, 0.4);
+    border-radius: 3px;
+}
+
+.image_manipulate_container .image_manipulate_inner_div .portrait_submit .cancel_btn {
+    height: 30px;
+    border: none;
+    background-color: #999;
+    float: left;
+    color: #FFF;
+    font-size: 14px;
+    line-height: 30px;
+    margin-left: 100px;
+    padding-left: 15px;
+    padding-right: 15px;
+    cursor: pointer;
+    box-shadow: 0px 1px 3px rgba(40, 160, 200, 0.4);
+    border-radius: 3px;
+}
+
+.image_manipulate_container .image_manipulate_inner_div .dynamic_image_tittle {
+    float: left;
+    width: 150px;
+    color: #666;
+    font-weight: lighter;
+    margin-top: 20px;
+    height: 24px;
+    font-size: 14px;
+}
+
+.image_manipulate_container .image_split {
+    float: left;
+    display: inline;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    border-right: 1px dashed #999;
+    height: 260px;
+}
+
+.image_manipulate_container .large_image {
+    float: left;
+    display:inline;
+    height: 300px;
+    width: 400px;
+    margin-left: 20px;
+    border: solid 1px #bbb;
+    background: rgb(240, 240, 2400);
+    overflow: hidden;
+}
+
+.image_manipulate_container .large_image .large_image_tip_words {
+    width: 400px;
+    height: 300px;
+    text-align: center;
+    padding-top: 95px;
+}
+
+.image_manipulate_container .large_image .large_image_tip_words .words_1 {
+    font-size: 16px;
+}
+
+.image_manipulate_container .large_image .large_image_tip_words .words_2 {
+    font-size: 12px;
+    font-weight: lighter;
+    color: #777;
+}
+
+.image_manipulate_container .large_image  .large_image_inner {
+    width: 400px;
+    height: 300px;
+    display: none;
+}
+.upload_warn{
+    color: #f00;
+    font-size: 12px;
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+        "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+    <field name="org.responsiblePerson.email">
+           <field-validator type="requiredstring">
+               <param name="trim">true</param>
+               <message>邮箱是必须的</message>
+           </field-validator>
+    </field>
+    <field name="org.schoolName">
+        <field-validator type="requiredstring">
+            <param name="trim">true</param>
+            <message>组织名称是必须的</message>
+
+        </field-validator>
+    </field>
+    <!--<field name="org.cellPhone">-->
+        <!--<field-validator type="requiredstring">-->
+            <!--<param name="trim">true</param>-->
+            <!--<message>负责人手机号码是必须的</message>-->
+        <!--</field-validator>-->
+    <!--</field>-->
+    <!--<field name="org.contractSignDate">-->
+        <!--<field-validator type="required">-->
+            <!--<message>组织合同签署日期是必须的</message>-->
+        <!--</field-validator>-->
+    <!--</field>-->
+
+</validators>

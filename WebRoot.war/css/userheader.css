@@ -1,0 +1,288 @@
+.uho{
+    width: 970px;
+    height: 38px;
+    background: #01308D;
+}
+
+.uh .uh2 input.keyWords{
+}
+.uh{
+    width: 970px;
+    height: 38px;
+}
+.uh .uh1{
+    float: left;
+    padding-left: 10px;
+}
+.uh .uh1 ul.menu_section{
+    float: left;
+}
+.uh .uh1 ul.menu_section li.hp_item{
+    float:left;
+    list-style:none;
+    position: relative;
+}
+.uh .uh1 ul.menu_section li.hp_item .menu_base a{
+    float:left;
+    display: block;
+    height: 38px;
+    padding: 0px 15px;
+    line-height: 38px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: Arial, Helvetica,"\5FAE\8F6F\96C5\9ED1","\5b8b\4f53",sans-serif;
+    color: #fff;
+    text-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px;
+}
+li.hp_item .menu_base_current a{
+    background: #6495ed;
+}
+.uh .uh1 ul.menu_section li.hp_item .menu_base a:hover{
+    background: #6495ed;
+}
+.menu_popup{
+    display: none;
+    position: absolute;
+    left:0px;
+    top:35px;
+    z-index: 1;
+    /*background: #898989;*/
+    background: #6495ed;
+}
+
+.menu_popup ul.menu_popup_section{
+    list-style-type: none;
+}
+ul.menu_popup_section  li a{
+    display: block;
+    width: 120px;
+    padding-left: 15px;
+    text-align: left;
+    height: 24px;
+    line-height: 24px;
+    color: #fff;
+    font-weight: 500;
+    font-family: Tahoma, Geneva,"\5FAE\8F6F\96C5\9ED1","\5b8b\4f53",sans-serif;
+    border-bottom: 1px solid #fff;
+}
+ul.menu_popup_section  li a:hover{
+    background: #01308D;
+}
+
+
+.uh .uh2{
+    float: right;
+    display: inline;
+    margin-right: 20px;
+    margin-top:9px;
+    width: 142px;
+    height: 20px;
+    background: url(../images/search_input_bg.png);
+}
+* html .uh .uh2{
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,src='images/search_input_bg.png',sizingMethod="image");
+}
+.uh .uh2 input.keyWords{
+    float: left;
+    margin-left: 8px;
+    font-size: 12px;
+    line-height: 20px;
+    border: none;
+    width: 110px;
+    background: rgb(230,230,230);
+    position: relative;
+}
+.uh .uh2 .searchButton{
+    float: left;
+    display: inline;
+    margin-top: 1px;
+    margin-left: 2px;
+    width: 18px;
+    height: 18px;
+    background: url(../images/user/search_btn_bg.png) 1px 1px no-repeat;
+    border-radius: 9px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+}
+/** html .uh .uh2 input.searchButton{*/
+    /*background: none;*/
+    /*filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,src='images/user/search_btn_bg.png',sizingMethod="image");*/
+/*}*/
+
+
+.uh .uh3{
+    float:right;
+    display: inline;
+    width: 80px;
+    height:38px;
+    margin-right:20px;
+}
+.uh .uh3 .handle{
+    float:left;
+    color:#fff;
+}
+.uh .uh3 .handle strong{
+    color: #898989;
+}
+.uh .uh3 .handle a{
+    line-height: 38px;
+    color:#fff;
+    position: relative;
+}
+.uh .uh3 .handle a:hover{
+    text-decoration: underline;
+    opacity: 0.6;
+}
+.uh .uh3 ul{
+    list-style: none;
+}
+.uh .uh3 .user_info{
+    float:left;
+    z-index: 5;
+}
+.uh .uh3 .ul_out{
+    float:left;
+    width: 80px;
+    background: #9acd32;
+    position: relative;
+}
+.uh .uh3 .ul_out #account{
+    float:left;
+    line-height: 38px;
+    width: 80px;
+    text-align: center;
+}
+.uh .uh3 ul.ul_out li.account1{
+    position: absolute;
+    top:0;
+    right:0px;
+	width:70px;
+	line-height: 38px;
+	color:#fff;
+	font-size:14px;
+	font-weight:lighter;
+	cursor:pointer;
+}
+.uh .uh3 ul.ul_out li.account2{
+     position: absolute;
+    top:1px;
+    right:0px;
+	width:92px;
+    line-height: 36px;
+	background:#FFF;
+	color:#333333;
+	font-size:14px;
+	font-weight:lighter;
+	border-top:1px solid rgb(65,65,65);
+    border-left:1px solid rgb(65,65,65);
+    border-right:1px solid rgb(65,65,65);
+}
+.uh .uh3 .ul_out #accountlist{
+    display: block;
+    position: absolute;
+    top:37px;
+    right:0px;
+    width: 121px;
+    height: 141px;
+    overflow: hidden;
+    z-index: 5;
+    background:#FFF;
+}
+#accountlist iframe{
+    position: absolute;/*绝对定位保证iframe不会占用流布局空间*/
+    width: 100%;    /*100%保证可以覆盖整个div*/
+    height: 100%;
+    z-index:-1; /*-1保证iframe显示在div下方*/
+    border: none;
+}
+
+.uh .uh3 ul.ul_out li.accountlist1{
+   display:none;
+   visibility: hidden;
+   height:0px;
+}
+
+.uh .uh3 ul.ul_out li.accountlist2{
+	width:120px;
+	border-bottom:1px solid #01308D;
+    border-left:1px solid #01308D;
+    border-right:1px solid #01308D;
+}
+.uh .uh3 ul.ul_out li ul li.info{
+	position:relative;
+	height:48px;
+	width:100px;
+    margin-left:10px;
+}
+.uh .uh3 ul.ul_out li ul li.info img{
+	position:absolute;
+	left:10px;
+	top:5px;
+    width:37px;
+	height:37px;
+    border: none;
+}
+.uh .uh3 ul.ul_out li ul li.info span.name{
+	position:absolute;
+	left:55px;
+	top:5px;
+	width:40px;
+	color:#0081a8;
+    font-size: 12px;
+}
+.uh .uh3 ul.ul_out li ul li.bg{
+    float: left;
+}
+.uh .uh3 ul.ul_out li ul li.bg a{
+    float: left;
+    width: 120px;
+    height:30px;
+    line-height: 30px;
+    color: #333;
+}
+.uh .uh3 ul.ul_out li ul li.bg a span{
+    float: left;
+    width: 26px;
+    margin: 5px 15px 5px 15px;
+    height:20px;
+}
+.uh .uh3 ul.ul_out li ul li.setting,.uh .uh3 ul.ul_out li ul li.exit{
+    border-top:1px solid #01308D;
+}
+.uh .uh3 ul.ul_out li ul li.bg a:hover{
+    /*background:#eceff4;*/
+    background:#add8e6;
+
+}
+.uh .uh3 ul.ul_out li ul li.setting span{
+    background: url(../images/user/setting.png);
+}
+.uh .uh3 ul.ul_out li ul li.coupons span{
+    background: url(../images/user/coupons.png);
+}
+.uh .uh3 ul.ul_out li ul li.money span{
+    background: url(../images/user/money.png);
+}
+.uh .uh3 ul.ul_out li ul li.exit span{
+    background: url(../images/user/exit.png);
+}
+* html .uh .uh3 ul.ul_out li ul li.setting span{
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,src='images/user/setting.png',sizingMethod="image");
+}
+* html .uh .uh3 ul.ul_out li ul li.money span{
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,src='images/user/money.png',sizingMethod="image");
+}
+* html .uh .uh3 ul.ul_out li ul li.coupons span{
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,src='images/user/coupons.png',sizingMethod="image");
+}
+* html .uh .uh3 ul.ul_out li ul li.exit span{
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,src='images/user/exit.png',sizingMethod="image");
+}

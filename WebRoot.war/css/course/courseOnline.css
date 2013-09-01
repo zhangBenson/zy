@@ -1,0 +1,173 @@
+.rightcontent{
+    border:0px;
+    width:810px;
+    padding: 3px;
+    word-wrap: break-word;
+}
+.rightcontent img{
+    float:left;
+}
+.rightcontent .blogframe{
+    width: 800px;
+    background: url(../../images/blogindex/courseframecenter.gif) center repeat-y;
+    position: relative;
+    float:left;
+    margin-top: 10px;
+    font-weight: lighter;
+    position:relative;
+}
+.rightcontent .blogframe .courseLogo {
+    display: inline;
+    float:left;
+    width:166px;
+    height:126px;
+    margin: 7px 8px 8px 20px;
+}
+.rightcontent .blogframe .courseLogo img{
+      width:160px;
+      height:120px;
+      padding: 2px;
+      border: 1px solid #ccc;
+      box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+      cursor: pointer;
+}
+.rightcontent .blogframe .course_info{
+    width:600px;
+    float:left;
+    /*background: #d2691e;*/
+    text-align: left;
+    vertical-align: top;
+    position: relative;
+}
+.rightcontent .blogframe .course_info .course_tittle{
+   float:left;
+    margin-top: 4px;
+    width:570px;
+    position: relative;
+}
+.rightcontent .blogframe .course_info .course_tittle h6{
+    float:left;
+    font-size: 16px;
+    color:#006699;
+}
+.rightcontent .blogframe .course_info .course_tittle .check_teacher_student{
+    float:right;
+    margin-right: 190px;
+    color:#00008b;
+    cursor:pointer;
+    font-size: 12px;
+    font-weight: lighter;
+}
+.rightcontent .blogframe .course_info .course_tittle .teacher_student_list{
+   display:none;
+    z-index:3;
+    position: absolute;
+    top:0px;
+    right:190px;
+    padding: 5px;
+    height:0;
+}
+.rightcontent .blogframe .course_info .course_tittle .teacher_student_list table{
+    display: block;
+    width:380px;
+    padding: 5px;
+    background: #FFF;
+    border: 1px solid #bbb;
+    box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.3);
+}
+.rightcontent .blogframe .course_info .course_tittle .teacher_student_list table tr{
+    display: block;
+    width:100%;
+    border-bottom: 1px dashed #BBB;
+    text-align: left;
+}
+.rightcontent .blogframe .course_info .course_tittle .teacher_student_list table tr td{
+    display: block;
+    float:left;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px dashed #BBB;
+}
+.rightcontent .blogframe .course_info  .course_tittle .teacher_student_list table tr.table_tittle{
+    width:360px;
+    color:#006699;
+}
+.rightcontent .blogframe .course_info .course_detail{
+    float:left;
+    margin-top: 5px;
+}
+.rightcontent .blogframe .course_info .course_detail table tr td{
+    /*margin-right: 30px;*/
+    width:210px;
+}
+.rightcontent .blogframe .course_info .course_time_left{
+    float: left;
+    width:325px;
+    height:35px;
+    line-height: 35px;
+    padding-left:44px;
+    margin-top: 3px;
+    margin-bottom: 8px;
+    text-align: left;
+    background: url(../../images/other.jpg) 0px -73px;
+    font-size: 16px;
+}
+.rightcontent .blogframe .course_info .course_manipulate{
+    position: absolute;
+    top:35px;
+    right:10px;
+    width:140px;
+}
+.rightcontent .blogframe .course_info .course_manipulate .course_supervise_btn{
+    display: block;
+    float:left;
+    /*width:95px;*/
+    height:30px;
+    line-height: 30px;
+    color:#FFF;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+    margin-right: 10px;
+    margin-top: 7px;
+    background: #EFBB24;
+    box-shadow: 1px 2px 3px rgba(150,114,73,0.4);
+    border-radius: 2px;
+    cursor:pointer;
+}
+.rightcontent .blogframe .course_info .course_manipulate .see_all_classes{
+    float:left;
+    font-size:16px;
+    color:#cc6600;
+    cursor:pointer;
+    width:136px;
+    height:40px;
+    margin-top: 15px;
+}
+
+.classintro{ float:left;margin:8px 0px 8px 30px; width:750px;display:none;}
+.classintro tr{  height:28px;}
+.classintro td{ padding:3px 2px 3px 4px;border-bottom:1px dashed #999; text-align: right;}
+.classintro .td1{ color:#006699; width:60px;}
+
+.rightcontent .blogframe .orangeWords{
+      color: #cc6600;
+}
+
+.type2{float:right;background: #9acd32;}
+.type2,.type2 .rate-current,.type2 .rate-on:hover,.type2-bad .rate-current,.type2-bad .rate-on:hover{ background: url(../../images/blogindex/star.gif) repeat-x; color:#cc6600;}
+.type2{ position:relative; height:18px; width:110px;}
+.type2 .rate-on,.type2 .rate-current{ position:absolute; top:0; left:0; height:18px; outline:none;}
+.type2 .rate-current,.type2 .rate-on:hover{ background-position:0 -46px;}
+.type2-bad .rate-current,.type2-bad .rate-on:hover{ background-position:0 -23px;}
+
+a:link, a:visited {
+    color: #cc6600;
+}
+
+a:hover {
+    color: #F90;
+}

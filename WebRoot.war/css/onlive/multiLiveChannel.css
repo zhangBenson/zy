@@ -1,0 +1,204 @@
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+caption, th {
+  text-align: inherit;
+}
+fieldset, img {
+  border: 0;
+}
+:focus {
+  outline: 0 none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+abbr, acronym {
+  border: 0;
+  font-variant: normal;
+}
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: normal;
+}
+input,
+button,
+textarea,
+select {
+  *font-size: 100%;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+ol, ul {
+  list-style: none;
+}
+textarea, input[type="text"] {
+  resize: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+  cursor: text;
+}
+body {
+  font: 12px/1.5 Helvetica, Arial, "宋体", sans-serif;
+  color: #2b2b2b;
+}
+a {
+  color: #7fbcf0;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+.fl {
+  float: left;
+  display: inline;
+}
+.fr {
+  float: right;
+  display: inline;
+}
+.cf {
+  display: block;
+  zoom: 1;
+}
+* html .cf {
+  height: 1%;
+}
+.cf:after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.content{
+    float:left;
+    display: inline;
+    width:960px;
+    padding: 0px 0px 80px;
+}
+.content .item_wrap {
+  float:left;
+  width:1000px;
+  padding: 12px 0px 0;
+  font: 12px/1.5 Helvetica,Arial,"宋体",sans-serif;
+}
+.content .item_wrap .item_nav {
+  float:left;
+  width:970px;
+  display: inline;
+  color: #8b8b8b;
+  font: 16px;
+  margin: 25px 0px 12px 30px;
+}
+.content .item_wrap .item {
+  float:left;
+  display: inline;
+  margin-left: 24px;
+  width: 440px;
+  height: 149px;
+  padding: 12px 14px 0 10px;
+  overflow: hidden;
+  background: transparent url(../../images/onlive/multi_live_channel_bg.png) left top no-repeat;
+  margin-bottom: 25px;
+}
+.content .item_wrap .item .avatar {
+  float:left;
+  margin: 0 9px 8px 5px;
+}
+.content .item_wrap .item a {
+  display: block;
+}
+.content .item_wrap .item h4{
+  float:left;
+}
+.content .item_wrap .item .title {
+  color: #ff8400;
+  width: 270px;
+  height: 1.5em;
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-text-overflow: ellipsis;
+  -khtml-text-overflow: ellipsis;
+  -icab-text-overflow: ellipsis;
+  -moz-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+.content .item_wrap .item .nickname {
+  width:270px;
+  color: #9c9c9c;
+  margin-top: 3px;
+}
+.content .item_wrap .item .focus {
+  width:100px;
+  text-align: right;
+  color: #9c9c9c;
+}
+.content .item_wrap .item .top_dot {
+  background: transparent url(../../images/onlive/multi_live_channel_dot.gif) left top repeat-x;
+  padding: 9px 4px 0;
+}
+.content .item_wrap .item .course_img {
+  float:left;
+  margin-right: 12px;
+}
+.content .item_wrap .item .course_img img{
+  width:108px;
+  height:77px;
+  padding: 2px;
+  border: 1px solid #ebebeb;
+}
+.content .item_wrap .item .description {
+  color: #555555;
+  margin-top: 1px;
+  width: 300px;
+  height: 6em;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+.content .item_wrap .item .with_tags {
+  height: 4.5em;
+}
+.content .item_wrap .item .course_tags {
+  color: #aaaaaa;
+  margin-top: 5px;
+  width: 300px;
+  height: 1.5em;
+  overflow: hidden;
+}
+.content .item_wrap .item .course_tags a {
+    float:left;
+    margin-left: 4px;
+    padding: 0 10px;
+    background: #ebebeb;
+    border: 1px solid #ababab;
+    text-decoration: none;
+    border-radius: 3px;
+    clear:left;
+}
+.content .item_wrap .item .course_tags a:hover {
+    background: #9a9a9a;
+}

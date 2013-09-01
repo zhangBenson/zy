@@ -1,0 +1,9 @@
+.image_manipulate_container .dynamic_image {
+    width: 180px;
+    height: 135px;
+}
+
+.image_manipulate_container .dynamic_image .dynamic_image_inner {
+     width: 180px;
+     height: 135px;
+}

@@ -1,0 +1,9 @@
+/**
+ this program referrence the 
+ XMLHttpRequest Object Pool 
+ @author legend <legendsky@hotmail.com> 
+ @link http://www.ugia.cn/?p=85 
+ @Copyright www.ugia.cn 
+ modify by hliang@126.com 
+ **/ 
+var Keeper={_objPool:[],_getInstance:function(){for(var $=0;$<this._objPool.length;$++){if(this._objPool[$].readyState==4)this._objPool[$].readyState==0;if(this._objPool[$].readyState==0)return this._objPool[$]}this._objPool[this._objPool.length]=this._createObj();return this._objPool[this._objPool.length-1]},_createObj:function(){if(window.XMLHttpRequest)var A=new XMLHttpRequest();else{var $=['MSXML2.XMLHTTP.5.0','MSXML2.XMLHTTP.4.0','MSXML2.XMLHTTP.3.0','MSXML2.XMLHTTP','Microsoft.XMLHTTP'];for(var B=0;B<$.length;B++){try{A=new ActiveXObject($[B]);break}catch(_){}}}if(A.readyState==null){A.readyState=0;A.addEventListener('load',function(){A.readyState=4;if(typeof A.onreadystatechange=='function')A.onreadystatechange()},false)}return A},_sendReq:function(method,url,data,callback,eventName,encoding){var objXMLHttp=this._getInstance();with(objXMLHttp){try{if(url.indexOf('?')>0)url+='&randnum='+Math.random();else url+='?randnum='+Math.random();open(method,url,true);var encode='application/x-www-form-urlencoded; charset='+encoding;setRequestHeader('Content-Type',encode);send(data);onreadystatechange=function(){if(objXMLHttp.readyState==4&&(objXMLHttp.status==200||objXMLHttp.status==304)){callback(objXMLHttp);Keeper.addListener(eventName,callback)}}}catch(e){alert(e.description)}}},addListener:function(A,_,$){if($!=null)$='UTF-8';var B='./keeper?event='+A;_callback=_;this._sendReq('GET',B,'',_,A,$)},removeListener:function($){alert('unsupport method')}}

@@ -1,0 +1,159 @@
+.comp_up{
+    width: 970px;
+    height: 800px;
+    margin-top: 20px;
+    background: url(../../images/competition/competition_bg1.jpg) no-repeat;
+    position: relative;
+}
+.comp_up .up_1{
+    margin: 205px 0 0 720px;
+}
+.comp_up .up_1 a{
+    float: left;
+    width: 117px;
+    height: 34px;
+    /*background: rgba(255,255,255,0.3);*/
+}
+.comp_up .up_1 a:hover{
+    background: rgba(0,0,0,0.2);
+}
+.comp_up .up_2{
+    margin-top: 170px;
+    margin-left: 30px;
+    width: 370px;
+}
+.comp_up .up_2 p{
+    text-indent: 2em;
+    font-size: 14px;
+    line-height: 20px;
+}
+.comp_up .up_3{
+    width: 275px;
+    margin-top: 150px;
+    margin-right: 35px;
+}
+.comp_up .up_3 ul{
+    float: right;
+    list-style: none;
+}
+.comp_up .up_3 ul li{
+    float: right;
+    margin-top: 20px;
+    margin-left:15px;
+    width: 120px;
+}
+.comp_up .up_3 ul li .img_1{
+    float: left;
+    width: 120px;
+    height: 120px;
+}
+.comp_up .up_3 ul li .img_2{
+    float: left;
+    width: 120px;
+    height: 160px;
+}
+.comp_up .up_3 ul li span{
+    float: left;
+    width: 120px;
+    text-align: center;
+    line-height: 18px;
+}
+.comp_up .up_4{
+    position: absolute;
+    left:20px;
+    top: 650px;
+    width: 450px;
+    /*background: rgba(235,79,38,0.3);*/
+}
+.comp_up .up_4 a.floor{
+    float: left;
+    margin-top: 8px;
+    width: 30px;
+    height: 30px;
+    /*background:rgba(23,75,90,0.3);*/
+}
+.comp_up .up_4 a.tip_word{
+    margin-left: 30px;
+    font-size: 14px;
+    line-height: 18px;
+    color: #040000;
+}
+.comp_up .up_4 a.tip_word:hover{
+    text-decoration: underline;
+}
+.comp_up .up_4 .step_1{
+    position: absolute;
+    top: 16px;
+    left:10px;
+}
+.comp_up .up_4 .step_2{
+    position: absolute;
+    top: 16px;
+    left:210px;
+}
+.comp_up .up_4 .step_3{
+    position: absolute;
+    top: 91px;
+    left:10px;
+}
+.comp_up .up_4 .step_4{
+    position: absolute;
+    top: 91px;
+    left:210px;
+}
+
+.comp_split{
+    width: 970px;
+    height: 20px;
+    background: #fff;
+}
+
+
+.comp_down{
+    width: 950px;
+    background: #fff;
+    padding-left: 25px;
+    padding-top: 15px;
+    border-top: 1px dotted #666;
+}
+.comp_down h2{
+    font-size: 36px;
+    color: #b7282c;
+}
+.comp_down .para_wrap{
+    width: 528px;
+}
+.comp_down .para_wrap p,.comp_down .para_wrap ul li {
+    font-size: 14px;
+    color: #040000;
+    line-height: 20px;
+    margin-top: 20px;
+}
+.comp_down .para_wrap p{
+    text-indent: 2em;
+}
+.comp_down .para_wrap ul{
+    list-style: none;
+}
+.comp_down .para_wrap p.last_1{
+    float: right;
+    clear: both;
+    margin-right: 10px;
+}
+.comp_down .para_wrap p.last_2{
+    float: right;
+    margin-right: 10px;
+    margin-top: 5px;
+    clear: both;
+}
+.comp_down .img_wrap{
+    width: 420px;
+    margin-top: 30px;
+}
+
+
+
+.ipad{
+    font-size: 18px;
+    color: #b7282c;
+}

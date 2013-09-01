@@ -1,0 +1,40 @@
+
+.pagination{float:left;padding-top:15px;clear: both;width: 100%;}
+.pagination tr{
+    float:left;
+    width: 100%;
+}
+.pagination tr td{
+    float:left;
+    width:500px;
+    display: block;
+}
+.pagination tr td a{
+    float:left;
+    width: 26px;
+    height:26px;
+    margin: 10px;
+    line-height: 26px;
+    text-align: center;
+    color:rgb(40,160,200);
+    background: url(../images/page-turn-bg.gif) -63px 0px;
+    cursor: pointer;
+}
+.pagination tr td a.page_now{
+    background: none;
+}
+.pagination tr td a.page_other:hover{
+    background: url(../images/page-turn-bg.gif) -89px 0px;
+}
+.pagination tr td a.page_pre{
+    background-position:0 0;
+    width:58px;
+    text-align: right;
+    padding-right: 5px;
+}
+.pagination tr td a.page_next{
+    background-position: -115px 0px;
+    width: 58px;
+    text-align: left;
+    padding-left: 5px;
+}

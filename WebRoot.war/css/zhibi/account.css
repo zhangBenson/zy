@@ -1,0 +1,18 @@
+.account{
+    float: left;
+    padding:20px 0 0 15px;
+}
+.account table,.account table tr,.account table tr td,.account table tr th{
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+}
+.account table{
+    float: left;
+    width: 780px;
+}
+.account table tr td,.account table tr th{
+    padding: 5px;
+    color: #444;
+    font-weight: normal;
+    text-align: left;
+}

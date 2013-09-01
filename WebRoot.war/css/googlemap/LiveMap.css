@@ -1,0 +1,105 @@
+
+
+#mapArea{
+    float: left;
+    width: 650px;
+    margin-top: 20px;
+}
+
+
+
+ .input {
+    color: #666;
+    margin-left: 5px;
+    padding: 2px 4px;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #F5F5F5;
+    width: 55px;
+ }
+
+ .input:focus,.input:hover {
+    border: 1px solid #C6C6C6;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    color: #333333;
+ }
+
+
+  .searchDiv{
+    text-align: center;
+    font-size: 16px;
+    background-image: url(../../images/map/mapinforight.png);
+    line-height: 200%;
+     height: 32px;
+}
+
+ #address {
+    color: #666;
+    margin-left: 5px;
+    padding-left:  8px;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    background-color: #F5F5F5;
+	width: 325px;
+     height: 24px;
+}
+ #address:focus{
+    background-color: #fff;
+    border: 1px solid #C6C6C6;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    color: #333333;
+ }
+
+
+
+#mapLoading {
+	width: 650px;
+	line-height: 600px;
+	border: 1px solid #ccc;
+	margin: 0 0 8px 8px;
+	float: left;
+	text-align: center;
+	position: relative;
+}
+
+#mapLoading img {
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 280px;
+	margin: -15px 0 0 0;
+}
+
+#map_canvas {
+	border-bottom: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	float: left;
+}
+
+#info_right{
+    float:left;
+    width: 315px;
+    margin-top: 20px;
+    text-align: center;
+    border-left: 1px solid #C6C6C6;
+}
+
+
+ #info_right p{
+    font-size: 16px;
+    height: 32px;
+    line-height: 200%;
+    background-image: url(../../images/map/mapinforight.png);
+ }
+
+#info_search{
+    float:left;
+    width: 315px;
+}
+#info_search a{
+    font-size: 16px;
+}

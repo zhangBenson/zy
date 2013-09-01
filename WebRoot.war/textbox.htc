@@ -1,0 +1,108 @@
+    /*
+    *    textbox.htc - copyright 2004-2010, GuCong
+    *    http://gucong.co.cc/textbox/
+    *    http://www.gnu.org/licenses/gpl.html
+    */
+
+    /*
+    *    ΪIE10���°汾�ṩplaceholder��autofocus����HTML5���Ե�֧��
+    */
+    <PUBLIC:COMPONENT lightWeight="true">
+    <PUBLIC:ATTACH EVENT="oncontentready" FOR="element" ONEVENT="elmReady()" />
+    <PUBLIC:PROPERTY name="autofocus" />
+
+    <PUBLIC:PROPERTY name="placeholder" put="setPlaceholder" get="getPlaceholder" />
+    <PUBLIC:ATTACH EVENT="onpropertychange" FOR="element" ONEVENT="givePlaceholder()" />
+    <PUBLIC:ATTACH EVENT="onfocus" FOR="element" ONEVENT="elmFocus()" />
+    <PUBLIC:ATTACH EVENT="onblur" FOR="element" ONEVENT="elmBlur()" />
+
+    <SCRIPT LANGUAGE="JScript">
+
+    var tt,
+        css,
+        cssBlur,
+        cssFocus,
+        text = "",
+        elm = element,
+        doc = elm.document;
+
+    function setFocus(){
+        setTimeout(function(){
+            elm.focus();
+        }, 0);
+    }
+
+    function elmReady(){
+        if(autofocus != null){
+            setFocus();
+        }
+    }
+
+    function givePlaceholder(){
+        if( text && !elm.value ){
+            if( !tt ){
+                tt = doc.createElement(elm.tagName.toLowerCase() + "-placeholder");
+                tt.onmousedown = setFocus;
+
+                with(tt.runtimeStyle) {
+                    bottom = right = left = top = "auto";
+                    verticalAlign = "middle";
+                    width = height = "auto";
+                    position = "absolute";
+                    padding = margin = 0;
+                    background = "none";
+                    color = "lightgray";
+                    border = 0;
+                }
+            }
+            var eleStyle = elm.currentStyle;
+            tt.style.left = eleStyle.marginLeft;
+            tt.style.top = eleStyle.marginTop;
+            with(tt.runtimeStyle) {
+                marginLeft = elm.clientLeft + tt.style.pixelLeft;
+                marginTop =  elm.clientTop + tt.style.pixelTop;
+                paddingLeft = eleStyle.paddingLeft;
+                fontFamily = eleStyle.fontFamily;
+                fontSize = eleStyle.fontSize;
+                cursor = eleStyle.cursor;
+
+                if ( /^input$/i.test(elm.tagName )){
+                    lineHeight = elm.offsetHeight + "px";
+                } else {
+                    lineHeight = eleStyle.lineHeight;
+                    paddingTop = eleStyle.paddingTop;
+                    width = elm.clientWidth;
+                }
+            }
+            tt.style.display = "inline-block";
+            tt.innerHTML = text;
+            elm.parentNode.insertBefore(tt, elm);
+        } else if( tt ) {
+            tt.innerHTML = "";
+        }
+    }
+
+    function getPlaceholder(){
+        return text;
+    }
+
+    function setPlaceholder( val ){
+        text = val;
+        givePlaceholder();
+    }
+
+    function elmBlur(){
+        givePlaceholder();
+        if(tt){
+            tt.runtimeStyle.display = "";
+        }
+    }
+
+    function elmFocus(){
+        if(tt){
+            tt.runtimeStyle.display = "none";
+        }
+    }
+
+    </SCRIPT>
+    </PUBLIC:COMPONENT>

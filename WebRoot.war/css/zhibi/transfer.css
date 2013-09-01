@@ -1,0 +1,26 @@
+.container{
+    float: left;
+    padding: 0 15px 0;
+    width: 780px;
+}
+.container .block{
+    float: left;
+    width: 780px;
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px dotted #ccc;
+}
+.block h3{
+    line-height: 20px;
+    margin-bottom: 5px;
+}
+.block tr{
+    margin: 5px 0;
+    line-height: 18px;
+}
+.container .confirm{
+    float: left;
+    display: inline;
+    margin: 20px 0 0 20px;
+}

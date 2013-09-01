@@ -1,0 +1,66 @@
+#orgmatter_container{
+	float: left;width:820px;
+    overflow: hidden;
+}
+#orgmatter_container .orgmatter_innerContainer {
+    float:left;
+	width: 780px;
+	padding-left: 10px;
+    padding-right:30px;
+    /*background: #b0c4de;*/
+}
+
+#orgmatter_container .orgmatter_innerContainer .orgm_headerWords p {
+    display: block;
+	margin-top: 40px;
+	font-size: 14px;
+	color: #666;
+	margin-bottom: 20px;
+}
+
+#orgmatter_container .orgmatter_innerContainer .orgm_options ul {
+	list-style-type: none;
+	float: left;
+	display: block;
+}
+#orgmatter_container .orgmatter_innerContainer .orgm_options ul li a {
+	width:750px;
+    font-size: 18px;
+    font-family: verdana,sans-serif,"黑体";
+	float: left;
+    height:36px;
+    line-height: 36px;
+    font-weight: normal;
+	padding-right: 5px;
+	padding-left: 15px;
+}
+#orgmatter_container .orgmatter_innerContainer .orgm_options ul li a:hover {
+    background: rgb(224,236,249);
+	text-decoration: underline;
+    cursor: pointer;
+}
+#orgmatter_container .orgmatter_innerContainer .orgm_options ul li h3 img {
+    border: none;
+    vertical-align: middle;
+    height:32px;
+    width:32px;
+    margin-right:20px;
+}
+#orgmatter_container .orgmatter_innerContainer .orgm_options ul li h3 span {
+    display: inline;
+	clear: right;
+	line-height: 36px;
+}
+#orgmatter_container .orgmatter_innerContainer .orgm_options ul li p {
+    width:730px;
+    float:left;
+	font-size: 14px;
+	margin-left: 47px;
+	margin-bottom: 25px;
+	color: #666;
+}
+.welcome_org_name{
+    color:#f90;
+    font-size: 16px;
+    font-family: "黑体";
+}

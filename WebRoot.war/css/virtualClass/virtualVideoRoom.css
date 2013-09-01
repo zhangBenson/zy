@@ -1,0 +1,266 @@
+.flash_wrap{
+    float: left;
+    width: 970px;
+    height: 630px;
+    background: #d1ecfc;
+    border: 1px solid #ddd;
+    box-shadow: 1px 1px 3px rgba(0, 0, 255, 0.15);
+    position: relative;
+    z-index: 1;
+}
+.flash_one2three{
+    height: 730px;
+}
+.flash_obj{
+    left:-34px;
+    top: 0;
+    position:absolute;
+    z-index:3;
+}
+.flash_obj2{
+    left:0px;
+    top: 0;
+    position:absolute;
+    z-index:3;
+}
+.flash_obj_large{
+    left:0px;
+    top: 0;
+    position:absolute;
+    z-index:3;
+}
+
+.course_msg{
+    float:left;
+    width: 100%;
+    margin: 12px 0;
+}
+.video_room_title{float:left;display: inline;margin: 20px 0 12px 5px;font-size:18px;font-family:"黑体"!important;color:#444;}
+.course_msg .course_title{
+    float:left;
+    font-size: 16px;
+    font-family: "黑体";
+    line-height: 20px;
+}
+.course_msg .course_title a{
+    color: #087DBF;
+}
+.course_msg .course_title span{
+    color: #555;
+}
+
+.course_msg .course_title a:hover{
+   color:#f90;
+}
+.course_msg .teacher_name{
+    float: left;
+    display: inline;
+    margin-left: 22px;
+    font-size: 13px;
+    line-height: 20px;
+    color:#555;
+}
+.course_msg .teacher_name a{
+    color:rgb(40,160,200);
+    font-size: 15px;
+}
+.course_msg .teacher_name a:hover{
+    text-decoration: underline;
+}
+.course_msg .operate{
+    float: right;
+    text-align: right;
+}
+.course_msg .operate a{
+    margin-left: 12px;
+    line-height: 20px;
+}
+.invite_btn_container{float:left;display:inline;width:200px;margin-bottom: 20px;margin-left: 520px;}
+.invite_btn_container #invite_students{
+    float:left;
+    display: block;
+    width:200px;
+    height:34px;
+    margin-top: 10px;
+
+    background: rgb(24, 129, 189);
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 2px 0px;
+    text-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px;
+    border-radius: 15px;
+    -moz-text-blink: none;
+    -moz-text-decoration-color: rgb(255, 255, 255);
+    -moz-text-decoration-line: none;
+    -moz-text-decoration-style: solid;
+    -moz-transition-delay: 0s;
+    -moz-transition-duration: 0.5s;
+    -moz-transition-property: background-color;
+    -moz-transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+
+    line-height: 34px;
+    text-align: center;
+    font-size: 22px;
+    color:#fff;
+    font-weight: bold;
+    font-family: "微软雅黑";
+    text-decoration: none;
+}
+.invite_btn_container #invite_students:hover{
+    background: rgb(246,192,10);
+}
+
+.invite_student_container {
+    display: none;
+    float: left;
+    border: 1px solid #CFEBEE;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+}
+.invite_student_inner {
+    float: left;
+    width:100%;
+    overflow: hidden;
+}
+.invite_student_inner h4 {
+    float: left;
+    font-size: 18px;
+    color:#EFBB24;
+    font-weight: normal;
+}
+.invite_student_inner p {
+    float: left;
+    width: 280px;
+    text-align: center;
+    line-height: 30px;
+}
+.invite_student_inner p.tip_words{
+    line-height: 16px;
+}
+.invite_student_inner p.or_pragraph{
+    text-align: center;
+    font-size: 20px;
+    color:#EFBB24;
+}
+.invite_student_inner p.link_para{
+    text-align: center;
+    margin-bottom:5px;
+}
+.invite_student_inner p #inviteFriendHref{
+    line-height: 16px;
+    text-decoration: underline;
+    margin-bottom: 5px;
+}
+.invite_student_inner p.leave_msg{
+    text-align: left;
+    margin-left: 20px;
+}
+.invite_student_inner p.leave_msg label {
+    float: left;
+    width:300px;
+    line-height: 14px;
+    margin-bottom: 5px;
+}
+.invite_student_inner p.leave_msg textarea {
+    width: 230px;
+    height: 40px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    padding: 2px;
+}
+.invite_student_inner p .clip_link_btn{
+    margin-left:auto;margin-right:auto;height:26px;line-height:26px;padding:2px 15px;background:#EFBB24;box-shadow:0px 2px 2px rgba(108,106,45,0.4);color:#FFF;font-size:16px;cursor:pointer;
+}
+.invite_student_inner p.email_list{
+    margin-left: 20px;
+    text-align: left;
+    margin-bottom: 5px;
+}
+.invite_student_inner p.email_list #invite_add_email,
+.invite_student_inner p.email_list .invite_del_email {
+    color: #999;
+    cursor: pointer;
+    margin-left: 5px;
+    text-decoration: underline;
+}
+.invite_student_inner p.email_list #invite_add_email:hover,
+.invite_student_inner p.email_list .invite_del_email:hover {
+    color:#EFBB24;
+}
+#invite_email_msg{
+    color:red;
+    font-size: 12px;
+    font-weight: lighter;
+}
+.invite_student_inner p.email_list input {
+    width: 230px;
+    height: 22px;
+    border: 1px solid #ccc;
+    padding-left: 2px;
+    line-height: 22px;
+}
+.invite_student_inner p.begin_invite label {
+    margin-left:auto;margin-right:auto;height:26px;line-height:26px;padding:2px 15px;background:#EFBB24;box-shadow:0px 2px 2px rgba(108,106,45,0.4);color:#FFF;font-size:16px;cursor:pointer;
+}
+
+.report_btn_container{float:right;width:200px;margin-bottom: 20px;margin-right: 10px;}
+.report_btn_container #report_class{
+    float:left;
+    display: block;
+    width:200px;
+    height:34px;
+    margin-top: 10px;
+
+    background: rgb(24, 129, 189);
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 2px 0px;
+    text-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px;
+    border-radius: 15px;
+    -moz-text-blink: none;
+    -moz-text-decoration-color: rgb(255, 255, 255);
+    -moz-text-decoration-line: none;
+    -moz-text-decoration-style: solid;
+    -moz-transition-delay: 0s;
+    -moz-transition-duration: 0.5s;
+    -moz-transition-property: background-color;
+    -moz-transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+
+    line-height: 34px;
+    text-align: center;
+    font-size: 22px;
+    color:#fff;
+    font-weight: bold;
+    font-family: "微软雅黑";
+    text-decoration: none;
+    cursor: pointer;
+}
+.report_btn_container #report_class:hover{
+    background: rgb(246,192,10);
+}
+.report_class_container{
+    display: none;
+    float: left;
+    border: 1px solid #CFEBEE;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+}
+.report_class_container p{
+    float: left;
+    width: 280px;
+    text-align: center;
+    line-height: 30px;
+}
+.report_class_container p.report_leave_msg{
+    text-align: left;
+    margin-left: 35px;
+}
+.report_class_container p textarea{
+    width: 230px;
+    height: 40px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    padding: 2px;
+    margin-bottom: 10px;
+}
+.report_class_container p #report_class_btn{
+    margin-left:auto;margin-right:auto;height:26px;line-height:26px;padding:2px 15px;background:#EFBB24;box-shadow:0px 2px 2px rgba(108,106,45,0.4);color:#FFF;font-size:16px;cursor:pointer;
+}

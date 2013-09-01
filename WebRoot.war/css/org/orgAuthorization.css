@@ -1,0 +1,340 @@
+@charset "utf-8";
+/* CSS Document */
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+.org_authorization_container {
+	float: left;
+	width: 820px;
+    text-align: left;
+}
+.org_authorization_container .auth_upper {
+	float: left;
+	width: 95%;
+	margin-top: 30px;
+    padding-bottom: 10px;
+	/*line-height: 80px;*/
+	font-size: 14px;
+	text-align: left;
+	padding-left: 20px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #999;
+}
+.org_authorization_container .auth_left {
+	float: left;
+	width: 100%;
+    /*padding-left: 20px;*/
+}
+.org_authorization_container .auth_left .auth_left_1 {
+	float: left;
+	margin-top: 20px;
+	width: 100%;
+}
+.org_authorization_container .auth_left .auth_left_1 .tittle {
+	float: left;
+    width:100%;
+	margin-bottom: 10px;
+}
+.org_authorization_container .auth_left .auth_left_1 .auth_list{
+    float:left;
+    width:800px;
+}
+.org_authorization_container .auth_left .auth_left_1 .auth_list .cancel_cd{
+    cursor: pointer;
+    text-decoration: underline;
+    color:#666;
+}
+.org_authorization_container .auth_left .auth_left_1 .auth_list table{
+    float:left;
+}
+.org_authorization_container .auth_left .auth_left_1 .auth_list table tr {
+    display: block;
+    float:left;
+    width:800px;
+    text-align: center;
+    border-bottom: 1px solid rgb(219,241,249);
+}
+.org_authorization_container .auth_left .auth_left_1 .auth_list table tr .td_portrait{
+    float:left;
+    width:60px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.org_authorization_container .auth_left .auth_left_1 .auth_list table tr.tearcher_content .td_portrait img{
+    width:50px;
+    height:50px;
+}
+.org_authorization_container .auth_left .auth_left_1 .auth_list table tr.tearcher_content .td_email{
+    float:left;
+    width:140px;
+    line-height: 32px;
+}
+.org_authorization_container .auth_left .auth_left_1 .auth_list table tr.tearcher_content .td_fire{
+    float:left;
+    width:100px;
+    line-height: 32px;
+}
+.org_authorization_container .auth_left .auth_left_1 .auth_list table tr.tearcher_content .td_nickname{
+    float:left;
+    width:140px;
+    line-height: 32px;
+}
+.org_authorization_container .auth_left .auth_left_1 .auth_list table tr.tearcher_content .td_haveAuthor{
+    float:left;
+    width:300px;
+    line-height: 32px;
+}
+.org_authorization_container .auth_left .auth_left_1 .auth_list table tr.tearcher_content .author_td{
+    float:left;
+    width:100px;
+    clear: right;
+    position: relative;
+}
+.org_authorization_container .auth_left .auth_left_1 .auth_list table tr.teacher_tittle .td_portrait{
+    float:left;
+    width:60px;
+}
+.org_authorization_container .auth_left .auth_left_1 .auth_list table tr.teacher_tittle .td_email{
+    float:left;
+    width:140px;
+}
+.org_authorization_container .auth_left .auth_left_1 .auth_list table tr.teacher_tittle .td_fire{
+    float:left;
+    width:100px;
+}
+.org_authorization_container .auth_left .auth_left_1 .auth_list table tr.teacher_tittle .td_nickname{
+    float:left;
+    width:140px;
+}
+.org_authorization_container .auth_left .auth_left_1 .auth_list table tr.teacher_tittle .td_haveAuthor{
+    float:left;
+    width:300px;
+}
+.org_authorization_container .auth_left .auth_left_1 .auth_list table tr.teacher_tittle .author_td{
+    float:left;
+    width:100px;
+    clear: right;
+}
+.org_authorization_container .auth_left .auth_left_1 .auth_list table .show_author{
+    display: block;
+    float:left;
+    width:86px;
+    height:24px;
+    text-align: right;
+    vertical-align: middle;
+    padding-left: 3px;
+    margin-top: 3px;
+    border: 1px solid #add8e6;
+    cursor:pointer;
+    line-height: 24px;
+    font-size: 15px;
+}
+.org_authorization_container .auth_left .auth_left_1 .auth_list table .show_author span{
+     float:left;
+    line-height: 24px;
+    margin-left: 10px;
+}
+.org_authorization_container .auth_left .auth_left_1 .auth_list table .show_author img{
+    background: #add8e6;
+    margin-left: 10px;
+    margin-top: 1px;
+    margin-right: 1px;
+    float:right;
+    width:22px;
+    height:22px;
+}
+.org_authorization_container .auth_left .auth_left_1 .auth_list table .hide_author_list{
+    display: none;
+    z-index: 10;
+    position: absolute;
+    left:0;
+    top:28px;
+    width:100px;
+    padding: 10px;
+    padding-right: 20px;
+    border: 1px solid #add8e6;
+    text-align: left;
+    background:#FFF;
+}
+.org_authorization_container .auth_left .auth_left_1 .auth_list table .hide_author_list ul{
+    list-style: none;
+}
+.org_authorization_container .auth_left .auth_left_1 .auth_list table .hide_author_list ul li{
+   margin-bottom: 5px;
+}
+
+
+/* 添加老师  */
+.org_authorization_container .auth_left .auth_left_2 .addlist {
+	float: left;
+	width: 800px;
+    margin-left: 30px;
+}
+.org_authorization_container .auth_left .auth_left_2 .addlist table tr td{
+    display: block;
+    float:left;
+    width:250px;
+    margin-bottom: 5px;
+    text-align: left;
+}
+.org_authorization_container .auth_left .auth_left_2 .addlist .tittle{
+    float: left;
+	width: 100%;
+	/*margin-bottom: 10px;*/
+    font-size: 14px;
+    margin-top:10px;
+}
+.org_authorization_container .auth_left .auth_left_2 .addlist  .delete_btn{
+    font-size: 14px;
+	color: #666;
+	text-decoration: underline;
+	margin-left: 8px;
+    margin-top:5px;
+	cursor: pointer;
+}
+.org_authorization_container .auth_left .auth_left_2 .addlist .addlist_input input {
+	height: 30px;
+	width: 220px;
+	border: 1px solid #CCC;
+	line-height: 30px;
+	padding-left: 3px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+}
+.org_authorization_container .auth_left .auth_left_2 .addlist ._add_btn {
+	font-size: 14px;
+	color: #666;
+	text-decoration: underline;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+.org_authorization_container .auth_left .auth_left_2 {
+	float: left;
+	margin-top: 20px;
+	width:100%;
+}
+.org_authorization_container .auth_left .auth_left_4 {
+	margin-top: 20px;
+	margin-left: 30px;
+    padding-left: 30px;
+    margin-bottom: 20px;
+	width: 90%;
+	float: left;
+}
+.org_authorization_container .auth_left .auth_left_4 input{
+    height:30px;
+    font-size: 14px;
+    color:#FFF;
+    background: rgb(169,204,247);
+    box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.3);
+    border-radius: 2px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: none;
+    cursor:pointer;
+}
+.org_authorization_container .auth_left .auth_left_2 .addlist table .show_author{
+    display: block;
+    float:left;
+    width:86px;
+    height:24px;
+    text-align: right;
+    vertical-align: middle;
+    padding-left: 3px;
+    margin-top: 5px;
+    border: 1px solid #add8e6;
+    cursor:pointer;
+    line-height: 24px;
+    font-size: 15px;
+}
+.org_authorization_container .auth_left .auth_left_2 .addlist table .show_author span{
+     float:left;
+    line-height: 24px;
+    margin-left: 10px;
+}
+.org_authorization_container .auth_left .auth_left_2 .addlist table .show_author img{
+    background: #add8e6;
+    margin-left: 10px;
+    margin-top: 1px;
+    margin-right: 1px;
+    float:right;
+    width:22px;
+    height:22px;
+}
+.org_authorization_container .auth_left .auth_left_2 .addlist  table .author_td{
+    position: relative;
+}
+.org_authorization_container .auth_left .auth_left_2 .addlist  table .hide_author_list{
+    display: none;
+    z-index: 10;
+    position: absolute;
+    left:0;
+    top:30px;
+    width:100px;
+    padding: 10px;
+    padding-right: 20px;
+    border: 1px solid #add8e6;
+    text-align: left;
+    background:#FFF;
+}
+.org_authorization_container .auth_left .auth_left_2 .addlist table .hide_author_list ul{
+    list-style: none;
+}
+.org_authorization_container .auth_left .auth_left_2 .addlist table .hide_author_list ul li{
+   margin-bottom: 5px;
+}
+
+
+
+
+
+.tip_error {
+    float: left;
+    margin-right: 3px;
+    background-image: url(../../images/input_msg_tip.png);
+    background-position: 0px 0px;
+    width: 16px;
+    height: 16px;
+}
+
+.tip_warn {
+    float: left;
+    margin-right: 3px;
+    background-image: url(../../images/input_msg_tip.png);
+    background-position: 0px -150px;
+    width: 16px;
+    height: 16px;
+}
+
+.tip_right {
+    float: left;
+    margin-right: 3px;
+    background-image: url(../../images/input_msg_tip.png);
+    background-position: 0px -250px;
+    width: 16px;
+    height: 16px;
+}
+
+.option_tittle{
+        display: inline-block;
+        float:left;
+        margin-right: 6px;
+        margin-bottom:5px;
+        font-size: 14px;
+        text-align: left;
+}
+.input_msg{
+    display: block;
+    float:left;
+    clear:right;
+    font-size:12px;
+    color:red;
+    font-weight: lighter;
+}
+.orangeWords{
+     color: #f7931e;
+}

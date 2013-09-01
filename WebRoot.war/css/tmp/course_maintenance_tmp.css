@@ -1,0 +1,70 @@
+ul li a.add_highlight{
+  float:left;
+  color: #3e8fda;
+  margin-left: 12px;
+  margin-right: 15px;
+}
+ul li a.add_highlight:hover{
+    text-decoration: underline;
+}
+
+
+ul li .highlight{
+    float:left;
+    display: none;
+    width: 600px;
+    color:rgb(43,43,43);
+    padding-top: 20px;
+    padding-left:30px;
+}
+ul li .highlight .area{
+    float:left;
+    width:600px;
+}
+ul li .highlight .area p{
+    width:600px;
+}
+ul li .highlight .area input{
+    width:180px;
+	height:26px;
+	line-height:26px;
+	padding-left:2px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+	border:1px solid #dadada;
+}
+
+ul li .highlight .area textarea{
+    width:500px;
+    height: 70px;
+    margin-top: 10px;
+    padding: 2px;
+    border:1px solid #dadada;
+    border-radius: 3px;
+}
+ul li .highlight .handle{
+    float:left;
+    width:600px;
+    padding-top: 10px;
+}
+ul li .highlight a{
+    float:left;
+    display: inline;
+    width:60px;
+    height:24px;
+    border: none;
+    color:rgb(85,85,85);
+    margin-right: 20px;
+    text-align: center;
+    line-height: 24px;
+    text-decoration: none;
+    border-radius: 3px;
+}
+ul li .highlight a.submit{
+    background: #f90;
+    border: 1px solid #ebebeb;
+}
+ul li .highlight a.cancel{
+    background: #dadada;
+    border: 1px solid #ebebeb;
+}

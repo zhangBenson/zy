@@ -1,0 +1,645 @@
+@charset "utf-8";
+
+#orgCenterDiv ul li{
+    list-style-type: none;
+}
+
+#orgCenterDiv   .thirdLeft ul li .inputField {
+	height: 22px;
+	border: 1px solid #999;
+    width:190px;
+}
+
+#orgCenterDiv   .thirdLeft ul li .orgDesc {
+	display: block;
+	float: left;
+}
+
+
+#orgCenterDiv   .thirdLeft ul li .descArea {
+    width:190px;
+	height: 50px;
+    font-size: 14px;
+}
+
+/*#orgCenterDiv   .thirdLeft ul .orgScale {*/
+	/*height: 55px;*/
+/*}*/
+
+#orgCenterDiv   ul .nameBF{
+    float:left;
+    display: block;
+    width:400px;
+    clear:both;
+}
+
+li.fileUploadDiv{
+    float:left;
+    width:400px;
+    height:35px;
+}
+
+#orgCenterDiv   .thirdLeft ul .photoTitle{
+    clear:left;
+    float:left;
+}
+
+#fileupload1,#fileupload2{
+    float: left;
+}
+
+* {
+	padding:0;
+	margin:0;
+}
+
+#orgLeagueDiv #orgCenterDiv .thirdLeft {
+	width: 400px;
+	float: left;
+    margin-left: 30px;
+    display: inline;
+	/*background-color: rgb(243,253,255);*/
+	font-size:14px;
+    height: 400px;
+}
+
+#orgLeagueDiv #orgCenterDiv .ifReady .ifReadyYes {
+	background-image: url(../../images/orgLeague/buttonImg.gif);
+	height: 45px;
+	width: 101px;
+	float: left;
+	text-align: center;
+	cursor:pointer;
+}
+
+#orgLeagueDiv #orgCenterDiv .ifReady .ifReadyNo {
+	background-image: url(../../images/orgLeague/buttonImg.gif);
+	height: 45px;
+	width: 101px;
+	float: left;
+	margin-left:5px;
+	text-align: center;
+	cursor:pointer;
+}
+
+#orgLeagueDiv #orgCenterDiv .ifReady .ifReadyYes .yesword {
+	font-size: 20px;
+	color: #FFF;
+	margin-top: 10px;
+	display: block;
+	float: left;
+	margin-left: 35px;
+	font-weight: bolder;
+}
+
+#orgLeagueDiv #orgCenterDiv .ifReady .ifReadyNo .noword {
+	display: block;
+	color: #FFF;
+	font-weight: bolder;
+	font-size: 20px;
+	float: left;
+	margin-top: 10px;
+	margin-left: 35px;
+}
+
+#orgLeagueDiv #orgCenterDiv .ifReady .beforeWord {
+	display: block;
+	float: left;
+	margin-top: 8px;
+}
+
+/*second step css configuration*/
+#orgCenterDiv   .principalMsg li .inputName {
+    display: block;
+    clear:both;
+	height: 24px;
+	width: 150px;
+	border: 1px solid #999;
+}
+#orgCenterDiv   .principalMsg li .card_input{
+    display: block;
+    float:left;
+    clear:both;
+}
+
+#orgCenterDiv   .principalMsg li .inputBirth {
+	border: 1px solid #999;
+	width:140px;
+	height:35px;
+	cursor:pointer;
+}
+
+#orgCenterDiv   .principalMsg li .inputID {
+	height: 35px;
+	width: 160px;
+	border: 1px solid #999;
+}
+
+
+#orgCenterDiv   .principalMsg li  .inputTel {
+	width: 150px;
+	border: 1px solid #999;
+	height: 24px;
+}
+
+#orgLeagueDiv #orgCenterDiv   .principalMsg {
+	list-style-type: none;
+	font-family: "微软雅黑", "宋体", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 15px;
+	color: #333;
+    float:left;
+    display: block;
+}
+
+#orgLeagueDiv #orgCenterDiv   .principalMsg li {
+    display: block;
+    float:left;
+	height: 60px;
+}
+
+#orgLeagueDiv #orgCenterDiv   .principalMsg li.short_li{
+    width:370px;
+}
+#orgLeagueDiv #orgCenterDiv   .principalMsg li.long_li{
+    width:700px;
+}
+#orgLeagueDiv #orgCenterDiv   .principalMsg li.quick_long_li{
+    width:700px;
+    padding-left: 200px;
+}
+
+
+/* CSS Document */
+
+#orgLeagueDiv {
+	float: left;
+	width: 1000px;
+	position: relative;
+	font-family: "微软雅黑", "宋体", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#orgLeagueDiv #orgCenterDiv {
+	background-image: url(../../images/orgLeague/contentbg.gif);
+	background-repeat: no-repeat;
+	float: left;
+	margin-top: 20px;
+	margin-right: 40px;
+	margin-bottom: 20px;
+	margin-left: 40px;
+	height: 451px;
+	width: 744px;
+	padding-top: 45px;
+	padding-right: 115px;
+	padding-left: 90px;
+	position: relative;
+    text-align: left;
+}
+
+
+
+#orgLeagueDiv #orgCenterDiv .orgStep li {
+	float: left;
+	margin-left: 74px;
+}
+
+#orgLeagueDiv #orgCenterDiv   .principalMsg li .next {
+	background-image:url(../../images/orgLeague/next.gif);
+	height: 37px;
+	width: 34px;
+	float: right;
+	display: block;
+	margin-left: 730px;
+}
+
+#orgLeagueDiv #orgCenterDiv .attentionList li {
+	line-height: 26px;
+}
+
+#orgLeagueDiv #tipImgDiv {
+	position:absolute;
+	width:150px;
+	height:55px;
+	z-index:1;
+	left: -1px;
+	top: 40px;
+	background-image: url(../../images/orgLeague/tipImg.gif);
+	background-repeat: no-repeat;
+}
+
+#orgLeagueDiv #orgCenterDiv .attentionList {
+	list-style-type: none;
+	margin-top: 20px;
+	border: 1px dashed #CCC;
+	font-family: "微软雅黑", "宋体", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 16px;
+	float: left;
+	text-align: left;
+	width:704px;
+	padding: 15px 25px;
+	clear: both;
+}
+
+#orgLeagueDiv #orgCenterDiv .secondTipHead {
+	font-family: "微软雅黑", "宋体", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	color: #666;
+	float: left;
+	text-align: left;
+	padding-bottom: 20px;
+	display: inline;
+	clear: both;
+}
+
+#orgLeagueDiv #orgCenterDiv   .principalMsg li .left1 {
+	float: left;
+	display: block;
+}
+
+#orgLeagueDiv #orgCenterDiv   .principalMsg li .rightForwardImg.rightImg {
+	position: absolute;
+	left: 340px;
+}
+
+#orgLeagueDiv #orgCenterDiv .tiphead span {
+	display: block;
+	margin-left: 20px;
+	float: left;
+}
+
+#orgLeagueDiv #orgCenterDiv .tiphead {
+	font-family: "微软雅黑", "宋体", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 16px;
+	float: left;
+	display: block;
+	clear: both;
+	width: 100%;
+}
+
+#orgLeagueDiv #orgCenterDiv .orgStep {
+	list-style-type: none;
+	font-family: "微软雅黑", "宋体", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 18px;
+	
+	position: absolute;
+	right: 100px;
+	top: 400px;
+	
+	height: 30px;
+	/*width: 600px;*/
+	}
+
+#orgLeagueDiv #orgCenterDiv .ifReady {
+	margin-top: 20px;
+	margin-left: 35px;
+	float: left;
+}
+
+#orgLeagueDiv #orgCenterDiv .ifReady .wenhao {
+	font-size: 24px;
+	font-weight: bolder;
+	color: rgb(249,149,29);
+	display: block;
+	float: left;
+}
+
+#orgLeagueDiv #orgCenterDiv .ifReady {
+	font-family: "微软雅黑", "宋体", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 18px;
+	width: 100%;
+	text-align: left;
+}
+
+#orgLeagueDiv #tipImgDiv span {
+	position: absolute;
+	left: 60px;
+	top: 15px;
+	font-family: "微软雅黑", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	color: #FFF;
+	font-size: 18px;
+}
+
+#orgLeagueDiv #orgCenterDiv .thirdRight {
+	width: 280px;
+	float: left;
+	clear:right;
+	margin-left: 50px;
+	/*background-color: rgb(243,253,255);*/
+	font-size:14px;
+}
+
+
+#orgLeagueDiv #orgCenterDiv   .thirdRight ul {
+	list-style-type: none;
+}
+
+#orgLeagueDiv #orgCenterDiv   .thirdRight  .thirdRightInput{
+   height: 24px;
+	width: 190px;
+	border: 1px solid #999;
+}
+
+#orgCenterDiv   ul .leftAndRightHead {
+	font-size: 14px;
+    line-height: 20px;
+	/*color: rgb(40,160,200);*/
+}
+
+#orgCenterDiv   .thirdRight ul li .firstTel {
+	height: 22px;
+	width: 35px;
+	border: 1px solid #999;
+}
+
+#orgCenterDiv   .thirdRight ul li .secondTel {
+	height: 22px;
+	width: 80px;
+	border: 1px solid #999;
+}
+
+#orgCenterDiv   .thirdRight ul li .contactName {
+	height: 22px;
+	width: 100px;
+	border: 1px solid #999;
+}
+
+#orgLeagueDiv #orgCenterDiv .thirdHead {
+	margin-bottom: 10px;
+    margin-left: 30px;
+    float:left;
+    clear:both;
+    width:100%;
+    margin-top: 20px
+}
+
+#orgCenterDiv   .thirdLeft ul li {
+	list-style-type:none;
+	text-align: left;
+    display: block;
+    clear:both;
+	/*height: 30px;*/
+}
+
+#orgCenterDiv   .thirdRight ul li {
+	/*height: 30px;*/
+    display: block;
+	text-align: left;
+    clear:both;
+}
+
+#orgLeagueDiv #orgCenterDiv   .thirdLeft ul li .orgName {
+	height: 22px;
+	width: 190px;
+	border: 1px solid #999;
+}
+
+#orgLeagueDiv #orgCenterDiv .fourthLeft {
+	float: left;
+	width: 305px;
+}
+
+#orgLeagueDiv #orgCenterDiv .fourthMid {
+	width:310px;
+	float: left;
+	border-right-width: 2px;
+	border-right-style: dashed;
+	border-right-color: #CCC;
+    border-left-width: 2px;
+	border-left-style: dashed;
+	border-left-color: #CCC;
+}
+
+#orgLeagueDiv #orgCenterDiv .fourthLeft ul {
+	float: left;
+	margin-left: 25px;
+	margin-top: 10px;
+	text-align: left;
+	list-style-type: none;
+}
+
+#orgLeagueDiv #orgCenterDiv .fourthMid ul {
+	float: left;
+	margin-top: 10px;
+	margin-left: 25px;
+	text-align: left;
+	list-style-type: none;
+}
+
+#orgLeagueDiv #orgCenterDiv .fourthRight ul {
+	float: left;
+	margin-top: 10px;
+	margin-left: 25px;
+	text-align: left;
+	list-style-type: none;
+}
+
+#orgLeagueDiv #orgCenterDiv .backAndNext {
+	float: left;
+	clear: both;
+	margin-right: 35px;
+	margin-top: 55px;
+}
+
+#orgLeagueDiv #orgCenterDiv .fourthRight {
+	float: left;
+	clear:right;
+	width: 220px;
+	overflow: hidden;
+}
+
+#orgLeagueDiv #orgCenterDiv ul .leftAndRightHead .imgWords {
+	float: left;
+}
+
+#orgLeagueDiv #orgCenterDiv .fourthRight ul .leftAndRightHead img {
+	clear: both;
+	float: left;
+}
+
+#orgLeagueDiv #orgCenterDiv .backAndNext .back {
+	background-image: url(../../images/orgLeague/back.gif);
+	height: 37px;
+	width: 34px;
+	float: left;
+	margin-right: 10px;
+	margin-left: 10px;
+	cursor:pointer;
+	display:block;
+}
+
+#orgLeagueDiv #orgCenterDiv .backAndNext .next {
+	background-image: url(../../images/orgLeague/next.gif);
+	float: left;
+	height: 37px;
+	width: 34px;
+	cursor:pointer;
+	margin-right: 10px;
+	margin-left: 10px;
+	display:block;
+}
+
+#orgLeagueDiv #orgCenterDiv .backAndNext   .beforeBN {
+	/*display: block;*/
+	/*float: left;*/
+    position: absolute;
+    left:200px;
+    top:350px;
+	clear:both;
+	margin-top: 6px;
+	width: 744px;
+}
+
+#orgLeagueDiv #orgCenterDiv .courseCreation {
+	float: left;
+	height: 200px;
+	width: 250px;
+	margin-left:25px;
+	margin-top: 30px;
+	border: 1px dashed #999;
+}
+
+#orgLeagueDiv #orgCenterDiv .orgLeague {
+	float: left;
+	height: 200px;
+	width: 250px;
+	margin-top: 30px;
+	margin-left: 35px;
+	border: 1px dashed #999;
+}
+
+#orgLeagueDiv #orgCenterDiv .simulateOrgCourseCreation {
+	height: 200px;
+	width: 250px;
+	float: left;
+	margin-top: 30px;
+	margin-left: 35px;
+	border: 1px dashed #999;
+}
+
+#orgLeagueDiv #orgCenterDiv .courseCreation .bgImg {
+	height: 104px;
+	width: 187px;
+	background: url(../../images/orgLeague/bigButton.gif) -3px -2px;
+	float: left;
+	margin-top: 7px;
+	margin-left: 32px;
+	margin-bottom: 10px;
+	cursor:pointer;
+}
+
+#orgLeagueDiv #orgCenterDiv .orgLeague .bgImg {
+	background: url(../../images/orgLeague/bigButton.gif) -278px -2px;
+	height: 104px;
+	width: 187px;
+	margin-top: 7px;
+	margin-left: 32px;
+	float: left;
+	margin-bottom: 10px;
+	cursor:pointer;
+}
+
+#orgLeagueDiv #orgCenterDiv .simulateOrgCourseCreation .bgImg {
+	background: url(../../images/orgLeague/bigButton.gif) -552px -2px;
+	height: 104px;
+	width: 187px;
+	margin-top: 7px;
+	margin-left: 32px;
+	margin-bottom: 10px;
+	cursor:pointer;
+}
+
+#orgLeagueDiv #orgCenterDiv .buttonTip {
+	display: block;
+	float: left;
+	margin-left: 22px;
+	font-size: 15px;
+	width: 207px;
+}
+
+#orgLeagueDiv #orgCenterDiv .orgStep .first {
+	color: rgb(250,150,36);
+}
+#orgLeagueDiv #orgCenterDiv .orgStep .second {
+	color: rgb(250,150,36);
+}
+#orgLeagueDiv #orgCenterDiv .orgStep .third {
+	color: rgb(250,150,36);
+}
+#orgLeagueDiv #orgCenterDiv .orgStep .fourth {
+	color: rgb(250,150,36);
+}
+
+#orgLeagueDiv #orgCenterDiv .nextAndBack .back {
+	background: url(../../images/orgLeague/back.png);
+	height: 48px;
+	width: 48px;
+	position: absolute;
+	left: 710px;
+	top: 330px;
+    cursor:pointer;
+}
+#orgLeagueDiv #orgCenterDiv .nextAndBack .next {
+	background: url(../../images/orgLeague/next.png);
+	height: 48px;
+	width: 48px;
+	position: absolute;
+	left: 773px;
+	top: 330px;
+    cursor: pointer;
+}
+
+#orgLeagueDiv #orgCenterDiv ul .headTittle {
+	color: rgb(40,160,200);
+}
+
+.tip_error {
+    float: left;
+    margin-right: 3px;
+    background-image: url(../../images/input_msg_tip.png);
+    background-position: 0px 0px;
+    width: 16px;
+    height: 16px;
+}
+
+.tip_warn {
+    float: left;
+    margin-right: 3px;
+    background-image: url(../../images/input_msg_tip.png);
+    background-position: 0px -150px;
+    width: 16px;
+    height: 16px;
+}
+
+.tip_right {
+    float: left;
+    margin-right: 3px;
+    background-image: url(../../images/input_msg_tip.png);
+    background-position: 0px -250px;
+    width: 16px;
+    height: 16px;
+}
+.option_tittle{
+        display: inline-block;
+        float:left;
+        margin-right: 6px;
+        margin-bottom:5px;
+        font-size: 14px;
+        text-align: left;
+}
+.input_msg{
+    display: block;
+    float:left;
+    clear:right;
+    font-size:12px;
+    color:red;
+    font-weight: lighter;
+}
+.input_content{
+    display: block;
+    float:left;
+    clear:both;
+}
+ .file_upload{
+    display: block;
+    float:left;
+    clear:right;
+    margin-right:8px;
+}

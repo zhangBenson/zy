@@ -1,0 +1,30 @@
+.mf_1{
+    float: left;
+}
+.mf_1 ul{
+    float:left;
+    display: inline;
+    width:780px;
+    margin-top: 30px;
+    margin-left:15px;
+    border-bottom: 1px solid rgb(250, 190, 132);
+    list-style-type: none;
+}
+.mf_1 ul li{
+    float:left;
+    display: inline;
+    height:24px;
+    line-height: 24px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 20px;
+}
+.mf_1 ul li a{
+    color:rgb(253, 132, 14);
+}
+.mf_1 ul li.stand_out{
+    border-top: 1px solid rgb(250, 190, 132);
+    border-left: 1px solid rgb(250, 190, 132);
+    border-right: 1px solid rgb(250, 190, 132);
+    background: rgb(255, 248, 239);
+}

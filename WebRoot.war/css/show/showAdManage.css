@@ -1,0 +1,126 @@
+#cnt_cntai{
+    width:100%;
+    float:left;
+}
+#cnt_cntai ul{
+    list-style-type: none;
+}
+#cnt_cntai ul.cntai_first_ul{
+    float:left;
+    width:780px;
+    margin-top: 10px;
+    padding-left: 20px;
+    list-style-type: none;
+}
+#cnt_cntai ul.cntai_first_ul li ul.sub_ul{
+    float:left;
+    width:780px;
+    padding-top: 30px;
+    position: relative;
+    border-bottom: 1px solid #ccc;
+}
+#cnt_cntai ul.cntai_first_ul li ul.sub_ul li{
+    font-size:13px;
+    color:#444;
+}
+#cnt_cntai ul.cntai_first_ul li ul.sub_ul li.li_0{
+    float:left;
+    width:140px;
+}
+#cnt_cntai ul.cntai_first_ul li ul.sub_ul li.li_0 img{
+    width:120px;
+    height:90px;
+    padding: 2px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #CCC;
+    box-shadow: 2px 3px 4px rgba(0,0,0,0.2);
+}
+#cnt_cntai ul.cntai_first_ul li ul.sub_ul li.li_1{
+    position: absolute;
+    left:5px;
+    top:0px;
+    line-height: 30px;
+}
+#cnt_cntai ul.cntai_first_ul li ul.sub_ul li.li_1 h3{
+    font-size: 16px;
+    color:#069;
+}
+#cnt_cntai ul.cntai_first_ul li ul.sub_ul li.li_2{
+    position: absolute;
+    left:380px;
+    top:10px;
+    width: 110px;
+    height:18px;
+}
+#cnt_cntai ul.cntai_first_ul li ul.sub_ul li.li_3{
+    float:left;
+    width:240px;
+    line-height:30px;
+}
+#cnt_cntai ul.cntai_first_ul li ul.sub_ul li.li_4{
+    position: absolute;
+    right:40px;
+    bottom:30px;
+}
+#cnt_cntai ul.cntai_first_ul li ul.sub_ul li.li_4 input{
+    border: none;
+    display: block;
+    padding-left: 10px;
+    padding-right: 10px;
+    height:30px;
+    margin-right: 0px;
+    background: #EFBB24;
+    color:#FFF;
+    font-size:16px;
+    line-height: 30px;
+    font-weight: bold;
+    box-shadow: 1px 2px 3px rgba(150,114,73,0.4);
+    border-radius: 2px;
+    clear:both;
+    cursor:pointer;
+}
+#cnt_cntai ul.cntai_first_ul li ul.sub_ul li.li_4 input:hover{
+    background: #F9BF45;
+}
+#cnt_cntai ul.cntai_first_ul li ul.sub_u2{
+    float:left;
+    /*display: none;*/
+    width:740px;
+    padding-top: 7px;
+    margin-left: 10px;
+    position: relative;
+    border-bottom: 1px dashed #ccc;
+}
+#cnt_cntai ul.cntai_first_ul li ul.sub_u2 li{
+    font-size:13px;
+    color:#444;
+}
+#cnt_cntai ul.cntai_first_ul li ul.sub_u2 li.li_0{
+    float:left;
+    width:140px;
+}
+#cnt_cntai ul.cntai_first_ul li ul.sub_u2 li.li_0 img{
+    width:88px;
+    height:66px;
+    padding: 2px;
+    margin-left: 9px;
+    margin-bottom: 10px;
+    border: 1px solid #CCC;
+    box-shadow: 2px 3px 4px rgba(0,0,0,0.2);
+}
+#cnt_cntai ul.cntai_first_ul li ul.sub_u2 li.li_1{
+    float:left;
+    width:200px;
+    line-height:35px;
+}
+.orangeWords{
+    color:#f90;
+}
+
+/*--评分有关的CSS---*/
+.type2{ width:110px; height:18px; background:url(../../images/blogindex/star.gif) repeat-x;position:absolute;}
+.type2,.type2 .rate-current,.type2 .rate-on:hover,.type2-bad .rate-current,.type2-bad .rate-on:hover{ background: url(../../images/blogindex/star.gif) repeat-x;}
+.type2 .rate-on,.type2 .rate-current{ position:absolute; top:0; left:0; height:18px; outline:none;}
+.type2 .rate-current,.type2 .rate-on:hover{ background-position:0 -46px;}
+.type2-bad .rate-current,.type2-bad .rate-on:hover{ background-position:0 -23px;}

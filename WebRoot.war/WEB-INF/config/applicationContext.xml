@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+  http://www.springframework.org/schema/tx
+  http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+  http://www.springframework.org/schema/context
+  http://www.springframework.org/schema/context/spring-context-3.0.xsd
+  http://www.springframework.org/schema/aop
+  http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+     http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd"
+       default-autowire="byName">
+    <!--  -->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <context:component-scan base-package="com.gogowise"/>
+
+
+
+    <!--<jee:jndi-lookup id="dataSource" jndi-name="gogowiseDs"/>-->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="myDataSource"/>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.characterEncoding">UTF-8</prop>
+                <prop key="hibernate.useUnicode">true</prop>
+                <prop key=" hibernate.jdbc.fetch_size">100</prop>
+                <prop key="hibernate.connection.release_mode">auto</prop>
+                <prop key="hibernate.autoReconnect">true</prop>
+                <prop key="connection.autoReconnectForPools">true</prop>
+
+                <prop key="hibernate.ejb.event.post-insert">org.hibernate.ejb.event.EJB3PostInsertEventListener,org.hibernate.envers.event.AuditEventListener</prop>
+                <prop key="hibernate.ejb.event.post-update">org.hibernate.ejb.event.EJB3PostUpdateEventListener,org.hibernate.envers.event.AuditEventListener</prop>
+                <prop key="hibernate.ejb.event.post-delete">org.hibernate.ejb.event.EJB3PostDeleteEventListener,org.hibernate.envers.event.AuditEventListener</prop>
+                <prop key="hibernate.ejb.event.pre-collection-update">org.hibernate.envers.event.AuditEventListener</prop>
+                <prop key="hibernate.ejb.event.pre-collection-remove">org.hibernate.envers.event.AuditEventListener</prop>
+                <prop key="hibernate.ejb.event.post-collection-recreate">org.hibernate.envers.event.AuditEventListener</prop>
+            </props>
+        </property>
+        <property name="annotatedClasses">
+            <list>
+                <value>com.gogowise.domain.BaseUser</value>
+                <value>com.gogowise.domain.SingUpInfo</value>
+                <value>com.gogowise.domain.Comments</value>
+                <value>com.gogowise.domain.Competition</value>
+                <value>com.gogowise.domain.CompetitionComments</value>
+                <value>com.gogowise.domain.CompetitionPhase</value>
+                <value>com.gogowise.domain.CompetitionSession</value>
+                <value>com.gogowise.domain.Allocation</value>
+                <value>com.gogowise.domain.JudgeAllocation</value>
+                <value>com.gogowise.domain.HostAllocation</value>
+                <value>com.gogowise.domain.SingerAllocation</value>
+                <value>com.gogowise.domain.SingUpRole</value>
+                <value>com.gogowise.domain.Subject</value>
+                <value>com.gogowise.domain.InviteRelationship</value>
+                <value>com.gogowise.domain.UserRelationship</value>
+                <value>com.gogowise.domain.CompetitionAudience</value>
+                <value>com.gogowise.domain.Course</value>
+                <value>com.gogowise.domain.CourseClass</value>
+                <value>com.gogowise.domain.Organization</value>
+                <value>com.gogowise.domain.OrganizationHistory</value>
+                <value>com.gogowise.domain.ClassRoom</value>
+                <value>com.gogowise.domain.SeniorClassRoom</value>
+                <value>com.gogowise.domain.ChangeResponserHistory</value>
+                <value>com.gogowise.domain.UserAccountInfo</value>
+                <value>com.gogowise.domain.ConsumptionRecord</value>
+                <value>com.gogowise.domain.ConsumptionOrder</value>
+                <value>com.gogowise.domain.CourseEvaluation</value>
+                <value>com.gogowise.domain.CourseComment</value>
+                <value>com.gogowise.domain.CourseResource</value>
+                <value>com.gogowise.domain.CourseQuestion</value>
+                <value>com.gogowise.domain.BrowsedCourse</value>
+                <value>com.gogowise.domain.OrganizationComment</value>
+                <value>com.gogowise.domain.OrganizationTeacher</value>
+                <value>com.gogowise.domain.CourseInviteStudent</value>
+                <value>com.gogowise.domain.Interview</value>
+                <value>com.gogowise.domain.CourseReservation</value>
+                <value>com.gogowise.domain.InterviewAppointer</value>
+                <value>com.gogowise.domain.CourseRecommend</value>
+                <value>com.gogowise.domain.OrgMeeting</value>
+                <value>com.gogowise.domain.OrgMeetingMember</value>
+                <value>com.gogowise.domain.BaseUserRoleType</value>
+                <value>com.gogowise.domain.RoleType</value>
+                <value>com.gogowise.domain.OrgMaterial</value>
+                <value>com.gogowise.domain.MyShow</value>
+                <value>com.gogowise.domain.ShowTerms</value>
+                <value>com.gogowise.domain.ShowFans</value>
+                <value>com.gogowise.domain.Matter</value>
+                <value>com.gogowise.domain.Advertisement</value>
+                <value>com.gogowise.domain.SeasonIncreasedShowFans</value>
+                <value>com.gogowise.domain.ShowComment</value>
+                <value>com.gogowise.domain.LiveChannel</value>
+                <value>com.gogowise.domain.MemberOfLiveChannel</value>
+                <value>com.gogowise.domain.ChannelTerms</value>
+                <value>com.gogowise.domain.OnliveFollower</value>
+                <value>com.gogowise.domain.LiveTermComment</value>
+                <value>com.gogowise.domain.SeasonIncreasedOnliveFans</value>
+                <value>com.gogowise.domain.AdvertisementForLive</value>
+                <value>com.gogowise.domain.PersonalOnlive</value>
+                <value>com.gogowise.domain.UserFans</value>
+                <value>com.gogowise.domain.UserMatters</value>
+                <value>com.gogowise.domain.CourseNewEvent</value>
+                <value>com.gogowise.domain.LiveChannelNewEvent</value>
+                <value>com.gogowise.domain.ShowNewEvent</value>
+                <value>com.gogowise.domain.GoGoWiseAnnounce</value>
+                <value>com.gogowise.domain.LiveChannelComment</value>
+                <value>com.gogowise.domain.FeedBackInfo</value>
+                <value>com.gogowise.domain.LiveTrailer</value>
+                <value>com.gogowise.domain.AndroidFeedback</value>
+                <value>com.gogowise.domain.OrgFans</value>
+                <value>com.gogowise.domain.DownloadTime</value>
+                <value>com.gogowise.domain.UserPrivateChannel</value>
+                <value>com.gogowise.domain.SubPrivateChannel</value>
+                <value>com.gogowise.domain.ValidUser</value>
+                <value>com.gogowise.domain.CourseMaterial</value>
+                <value>com.gogowise.domain.IEMI</value>
+                <value>com.gogowise.domain.SerialNO</value>
+                <value>com.gogowise.domain.MonitorAuthorize</value>
+                <value>com.gogowise.domain.ClassType</value>
+                <value>com.gogowise.domain.Vid</value>
+
+                <value>com.gogowise.domain.ClassInfo</value>
+                <value>com.gogowise.domain.XiaoQu</value>
+                <value>com.gogowise.domain.ClassXiaoQu</value>
+                <value>com.gogowise.domain.School</value>
+                <value>com.gogowise.domain.Hotel</value>
+
+
+                <value>com.gogowise.urlfetch.sk.domain.SkClass</value>
+                <value>com.gogowise.urlfetch.sk.domain.SkRegion</value>
+                <value>com.gogowise.urlfetch.sk.domain.SkClassType</value>
+                <value>com.gogowise.urlfetch.sk.domain.SkSchool</value>
+                <value>com.gogowise.urlfetch.sk.domain.SkXiaoQu</value>
+                <value>com.gogowise.urlfetch.sk.domain.SkClassTimeType</value>
+                <value>com.gogowise.urlfetch.sk.domain.SkTypeRule</value>
+
+            </list>
+        </property>
+    </bean>
+
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath*:myConfig.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <!--<property name="driverClassName" value="com.p6spy.engine.spy.P6SpyDriver"/>-->
+        <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/gogowise?useUnicode=true&amp;characterEncoding=utf8"/>
+        <property name="user" value="${db.user}"/>
+        <property name="password" value="${db.password}"/>
+        <property name="maxPoolSize" value="15"></property>
+        <property name="minPoolSize" value="5"></property>
+        <property name="initialPoolSize" value="5"></property>
+        <property name="maxIdleTime" value="120"></property>
+    </bean>
+
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+
+    <!--============================Action================================-->
+    <bean id="basicAction" class="com.gogowise.action.BasicAction">
+    </bean>
+
+    <!--============================filter================================-->
+    <bean id="orgSecFilter" class="com.gogowise.utils.OrgSecFilter">
+        <!--<property name="name">-->
+        <!--<value>SpringFilter</value>-->
+        <!--</property>-->
+    </bean>
+
+    <!--============================Schedule================================-->
+    <task:executor id="executor" pool-size="1" />
+    <task:scheduler id="scheduler" pool-size="5"  />
+    <task:annotation-driven executor="executor" scheduler="scheduler"  />
+
+
+    <!--============================webservice================================-->
+    <bean id="webTest" class="com.gogowise.ws.WebServiceSampleImpl">
+        <property name="baseUserDao" ref="baseUserDao"/>
+    </bean>
+    <!--<jaxws:endpoint id="webServiceSample"-->
+    <!--address="/WebServiceSample" implementorClass="com.gogowise.ws.WebServiceSampleImpl">-->
+    <!--<jaxws:implementor ref="webTest">-->
+    <!--</jaxws:implementor>-->
+    <!--</jaxws:endpoint>-->
+</beans>

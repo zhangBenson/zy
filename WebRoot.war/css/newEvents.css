@@ -1,0 +1,43 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.fl{float:left;display:inline;}
+.dfz-nav .bnav {
+    margin: 30px 0 0 30px;
+    float: left;
+    display: inline;
+}
+.dfz-nav .bnav a{
+    color: #004276;
+}
+.dfz-nav .bnav a:hover{
+    text-decoration: underline;
+}
+.dfz-nav i{
+    margin: 0 12px;
+    font-size: 14px;
+}
+ .info_class {
+	float: left;
+     margin-left: 30px;
+	margin-top: 15px;
+	width: 100%;
+}
+
+ .info_class table tr td {
+	line-height: 26px;
+	/*float: left;*/
+	height: 26px;
+	width: 156px;
+	text-align: center;
+    padding: 3px;
+    border: 1px solid #999;
+ }
+
+ .info_class table,
+ .info_class table tr,
+ .info_class table tr td{
+    border-collapse: collapse;
+ }
+

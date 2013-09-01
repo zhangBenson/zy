@@ -1,0 +1,51 @@
+.auleft{
+    float: left;
+    width:160px;
+    padding: 0px 25px;
+}
+.h3_title{
+    float: left;
+    height: 16px;
+    line-height: 16px;
+    padding: 0 20px;
+    background: url(../../images/course/lead_img.png) 4px 2px no-repeat;
+    font-size: 14px;
+    color:#033333;
+    letter-spacing: 1px;
+}
+ul.handle{
+    float: left;
+    margin-top: 20px;
+    list-style: none;
+}
+ul.handle li{
+    width: 160px;
+    height: 30px;
+    color: rgb(153,153,153);
+}
+ul.handle li a{
+    margin-left: 5px;
+    color: #057267;
+}
+ul.handle li a:hover{
+    text-decoration: underline;
+}
+.split_bor{
+    float: left;
+    width: 160px;
+    margin-top: 15px;
+    border-top: 1px solid #c1c1c1;
+}
+ul.nothing{
+    float: left;
+    width: 160px;
+    margin-top: 20px;
+    padding-bottom: 50px;
+    list-style: none;
+}
+ul.nothing li{
+    width: 160px;
+    height: 30px;
+    font-size: 12px;
+    color: rgb(153,153,153);
+}

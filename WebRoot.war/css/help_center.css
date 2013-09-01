@@ -1,0 +1,78 @@
+
+.content_container {
+    float: left;
+    width: 960px;
+}
+.content_body {
+    float: left;
+    margin-top:10px;
+    margin-left:100px;
+    margin-bottom:20px;
+}
+.content_container .content_body ul {
+    float: left;
+    width: 100%;
+    list-style-type: none;
+}
+.content_container .content_body ul li {
+    clear: both;
+    float: left;
+    width: 700px;
+    font-size: 12px;
+    line-height: 150%;
+}
+.content_container .content_body ul .help_question {
+    background: url(../images/right_bg.gif) 0px 0px no-repeat;
+    cursor: pointer;
+    height: 33px;
+    width: 716px;
+    margin-top: 10px;
+    line-height:33px;
+}
+.content_container .content_body ul .help_question .num {
+    float: left;
+    height: 33px;
+    width: 34px;
+    margin-right: 10px;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+}
+.content_container .content_body ul .help_answer {
+    float:left;
+    display: none;
+    clear: both;
+    width: 716px;
+    font-size: 16px;
+}
+.content_container .content_body ul .help_answer .pic_1 {
+    float:left;
+    background:url("../images/right_bg.gif")  0 -72px no-repeat;
+    overflow: hidden;
+    width:716px;
+    height:10px;
+}
+.content_container .content_body ul .help_answer .pic_2 {
+    float:left;
+    width: 700px;
+    padding: 10px 4px 10px 10px;
+    border-right:solid 1px rgb(200,225,232);
+    border-left:solid 1px rgb(200,225,232);
+}
+.content_container .content_body ul .help_answer .pic_2 p{
+    float:left;
+}
+.content_container .content_body ul .help_answer .pic_2 ul{
+    display: block;
+}
+.content_container .content_body ul .help_answer .pic_3 {
+    float:left;
+    height: 4px;
+    width: 716px;
+    background:url("../images/right_bg.gif") no-repeat left -85px transparent;
+}
+
+.content_container .content_body ul .help_question:hover{
+    color:orange;
+}
+

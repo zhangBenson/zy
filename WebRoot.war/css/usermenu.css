@@ -1,0 +1,85 @@
+.menu{
+  float:left;
+  padding-top: 20px;
+  width: 169px;
+  border-right: 1px solid #eee;
+}
+.portrait{
+    float:left;
+    width: 100%;
+}
+.portrait .por{
+    float: left;
+    margin-right: 10px;
+}
+.portrait .nick{
+   float: left;
+   max-width: 100px;
+   height: 20px;
+   line-height: 20px;
+   overflow: hidden;
+   color:#369;
+   font-size: 14px;
+   font-weight: bold;
+
+}
+.portrait .num{
+    float: left;
+    width: 100px;
+    /*margin-top: 8px;*/
+    line-height: 18px;
+    font-size: 12px;
+    color:#666;
+}
+.portrait .nick:hover{
+    text-decoration: underline;
+}
+.portrait img{
+    width: 50px;
+    height: 50px;
+    padding: 2px;
+    border: 1px solid #ebebeb;
+}
+
+.sidebar .start_monitor{
+    float: left;
+    margin-top: 15px;
+    margin-left: 18px;
+}
+
+.sidebar .list{
+    float: left;
+    width: 169px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #bebebe;
+}
+/*.sidebar .list h3{*/
+    /*float: left;*/
+    /*width: 139px;*/
+    /*padding-left:30px;*/
+    /*margin-top: 5px;*/
+    /*line-height: 30px;*/
+    /*font-size:14px;*/
+    /*color: #444;*/
+    /*background: url(../images/usermenu/course.png) 5px 8px no-repeat;*/
+/*}*/
+.sidebar .list ul{
+    float: left;
+    list-style: none;
+    padding-top: 3px;
+}
+.sidebar .list ul li{
+    float: left;
+}
+.sidebar .list ul li a{
+    float: left;
+    padding-left: 20px;
+    width: 149px;
+    height: 24px;
+    line-height: 24px;
+    color: #333;
+}
+.sidebar .list ul li a:hover{
+    background:#E3EEF8;
+}

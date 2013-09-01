@@ -1,0 +1,83 @@
+<project name="gogowise" default="all" basedir=".">
+
+    <!-- ===================== Property Definitions =========================== -->
+
+    <!-- ===================== Need you config youself ===================== -->
+    <!--<property name="tomcat.home" value="D:\dev\apache-tomcat-7.0.21"/>-->
+    <property name="tomcat.home" value="D:\dev\apache-tomcat-7.0.21"/>
+
+
+
+    <property name="web.home" value="./WebRoot.war"/>
+    <property name="verbose.value" value="true"/>
+
+
+    <property name="src.home" value="./src"/>
+    <property name="lib.home" value="${web.home}/WEB-INF/lib"/>
+    <property name="classes.home" value="${web.home}/WEB-INF/classes"/>
+    <property name="deploy.home" value="${tomcat.home}/webapps/gogowise.war"/>
+
+    <!-- ==================== Copy Files =========================== -->
+
+    <target name="all" depends="native">
+    </target>
+
+    <target name="native" depends="copyConfigeuration">
+        <native2ascii encoding="UTF-8" src="${web.home}/WEB-INF/properties" dest="${classes.home}"
+                      includes="**/*.properties"/>
+    </target>
+
+
+    <target name="copyAllFiles" depends="native">
+        <copy verbose="${verbose.value}" todir="${deploy.home}">
+            <fileset dir="${web.home}">
+                <include name="**/*"/>
+            </fileset>
+        </copy>
+    </target>
+
+
+    <target name="copyConfigeuration">
+        <copy verbose="${verbose.value}" todir="${classes.home}">
+            <fileset dir="${web.home}/WEB-INF/config">
+                <include name="**/*"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="copyAllFilesAndDeploy" depends="copyAllFiles,native">
+        <touch file="${deploy.home}/WEB-INF/web.xml"/>
+       <rename  src="${deploy.home}/../beta.war.deployed" dest="${deploy.home}/../beta.war.dodeploy"/>
+    </target>
+
+    <target name="copyJsp">
+        <copy verbose="${verbose.value}" todir="${deploy.home}">
+            <fileset dir="${web.home}">
+                <include name="*.jsp"/>
+                <include name="**/*.jsp"/>
+                <include name="*.js"/>
+                <include name="**/*.js"/>
+                <include name="*.html"/>
+                <include name="**/*.html"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="beforeBuild" depends="all">
+    </target>
+    <target name="svnUpdate">
+
+        <echo>start download</echo>
+        <exec executable="svn">
+            <arg line="update ${basedir}"/>
+        </exec>
+
+        <echo>echo to svn</echo>
+        <delete file="svn.txt"/>
+        <exec executable="cmd">
+            <arg line="/c"/>
+            <arg line="svnversion ${basedir} >>svn.txt"/>
+        </exec>
+
+    </target>
+</project>

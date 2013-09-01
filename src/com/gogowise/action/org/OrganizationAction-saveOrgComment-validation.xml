@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+        "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+    <!--<field name="singUpInfo.user.userId">-->
+    <!--<field-validator type="requiredstring">-->
+    <!--<message>用户名是必填的</message>-->
+    <!--</field-validator>-->
+    <!--</field>-->
+
+    <field name="comment.description">
+        <field-validator type="required">
+            <message>请填写留言信息</message>
+        </field-validator>
+    </field>
+
+
+</validators>

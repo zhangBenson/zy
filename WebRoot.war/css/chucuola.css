@@ -1,0 +1,271 @@
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+iframe,
+button {
+  margin: 0;
+  padding: 0;
+}
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+fieldset,
+legend,
+p,
+blockquote,
+th,
+td {
+  cursor: default;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+caption, th {
+  text-align: inherit;
+}
+fieldset, img {
+  border: 0;
+}
+:focus {
+  outline: 0 none;
+}
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+  font-style: normal;
+  font-weight: normal;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: bold;
+}
+abbr, acronym {
+  border: 0;
+  font-variant: normal;
+}
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: normal;
+}
+input,
+button,
+textarea,
+select {
+  *font-size: 100%;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+ol, ul {
+  list-style: none;
+}
+textarea {
+  resize: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+html {
+  /*background: #f5f5f5 url("http://img.duobei.com/background-body-115-115-20120828.png");*/
+  background: url(../images/gogowise-squre-bg2.png);
+  overflow-y: scroll;
+}
+body {
+  font: 12px/1.5 Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: #2b2b2b;
+  overflow: visible;
+}
+a {
+  color: #7fbcf0;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+.fl {
+  float: left;
+  display: inline;
+}
+.fr {
+  float: right;
+  display: inline;
+}
+.cf {
+  display: block;
+  zoom: 1;
+}
+* html .cf {
+  height: 1%;
+}
+.cf:after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.placeholder {
+  color: #888888;
+}
+input::-webkit-input-placeholder {
+  color: #888888;
+}
+input::-moz-placeholder {
+  color: #888888;
+}
+textarea::-webkit-input-placeholder {
+  color: #888888;
+}
+textarea::-moz-placeholder {
+  color: #888888;
+}
+.text-autocut {
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-text-overflow: ellipsis;
+  -khtml-text-overflow: ellipsis;
+  -icab-text-overflow: ellipsis;
+  -moz-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+.text-hide {
+  display: block;
+  font-size: 0;
+  text-indent: -99999em;
+  color: transparent;
+}
+html, body {
+  background: #ffffff;
+}
+#header {
+  height: 56px;
+  width: 100%;
+  background: url("http://img.duobei.com/header-bg-1-56-20111219.png") top left repeat-x;
+}
+#header_wrap {
+  width: 960px;
+  height: 56px;
+  margin: 0 auto;
+  background: url("http://img.duobei.com/header-bg-1-56-20111219.png") top left repeat-x;
+
+}
+#header h1 {
+  float: left;
+  display: inline;
+  margin-left: 70px;
+  margin-top: 6px;
+}
+#header h1 a{
+   display: block;
+   width: 90px;
+   height: 40px;
+   background: url(../images/gogowise_logo_big_darkblue_error.png);
+   cursor: pointer;
+}
+* html #header h1 a{
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,src='images/gogowise_logo_big_darkblue_error.png',sizingMethod="image");
+}
+#content {
+  width: 650px;
+  height: 315px;
+  margin: 0 auto;
+  margin-top: 100px;
+  padding: 0px 160px 0 0px;
+  text-align: right;
+}
+#content .error_img{
+    float: left;
+    width: 211px;
+    height: 200px;
+    background: url("../images/gogowise_error.png") top left no-repeat;
+}
+* html #content .error_img{
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,src='images/gogowise_error.png',sizingMethod="image");
+}
+
+h4 {
+  float: right;
+  font-size: 30px;
+  font-family: SimHei;
+  /*color: #888888;*/
+  color: #f60;
+  margin-top: 45px;
+  margin-bottom: 30px;
+}
+p a {
+  float: right;
+  clear: right;
+  margin-top: 6px;
+  padding: 0 0 0 10px;
+  line-height: 24px;
+  font: bold 14px SimHei;
+  color: #55a1f0;
+}
+p a:hover {
+  text-decoration: underline;
+}
+

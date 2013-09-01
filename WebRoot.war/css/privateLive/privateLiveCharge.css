@@ -1,0 +1,41 @@
+#prChargeWrap{
+    margin:25px 0 30px 25px;
+    padding: 15px;
+    width: 723px;
+    border: 1px solid #E3EEF8;
+    border-radius: 5px;
+}
+
+#chargePackage{
+    margin-top: 20px;
+}
+#chargePackage table{
+    float: left;
+    margin-top: 10px;
+    width: 723px;
+    border-collapse: collapse;
+}
+#chargePackage table tr.title{
+    background:#50baee;
+}
+#chargePackage table td,#chargePackage table th{
+    border: 1px solid #adadad;
+    padding: 4px;
+    text-align: center;
+}
+#chargePackage table th{
+    border-color: #50baee;
+    line-height: 24px;
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+#chargeSelect{
+    margin-top: 15px;
+}
+#chargeSelect h4{
+    line-height: 30px;
+}
+#chargeSelect .submit_btn_large{
+    margin-top: 8px;
+}

@@ -1,0 +1,560 @@
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+#userinfo_container {
+	width: 820px;
+}
+#userinfo_container #tabtag2 ul{
+    float:left;
+    width:720px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    padding-left: 40px;
+    border-bottom: 1px solid rgb(161,212,249);
+}
+#userinfo_container #tabtag2 ul li {
+	display: block;
+	float: left;
+	line-height: 30px;
+	background-color: rgb(229,240,246);
+	height: 30px;
+	border-left: 1px solid rgb(161,212,249);
+    border-top: 1px solid rgb(161,212,249);
+    border-right: 1px solid rgb(161,212,249);
+	padding-right: 10px;
+	padding-left: 10px;
+	cursor: pointer;
+}
+#userinfo_container #tabtag2 ul li.cur{
+    background-color:#FFF;
+}
+#userinfo_container .userinfo_content {
+    float:left;
+    width:760px;
+	margin-left: 20px;
+    margin-bottom: 10px;
+    background: rgb(248,248,248);
+    /*border: 1px solid #bbb;*/
+    border-radius: 4px;
+}
+#userinfo_container .userinfo_content .userinfo_detail .userinfo_basic .basic_right {
+	float: left;
+	margin-top: 20px;
+	/*margin-bottom: 10px;*/
+	padding-right: 50px;
+	position: relative;
+}
+#userinfo_container .userinfo_content .userinfo_detail .userinfo_basic .basic_right .change_portrait{
+    width: 105px;
+    height: 30px;
+    border:none;
+    background-color: rgb(100, 180, 240);
+    color: #FFF;
+    font-size: 14px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0px 2px 3px rgba(40, 160, 200, 0.4);
+    border-radius: 3px;
+    position: absolute;
+	left: 30px;
+	top: 120px;
+}
+/*#userinfo_container .userinfo_content .userinfo_detail .userinfo_basic .basic_right .portraitFile  {*/
+	/*width: 140px;*/
+	/*border: 1px solid rgb(219,241,249);*/
+	/*position: absolute;*/
+	/*left: 20px;*/
+	/*top: 145px;*/
+	/*height: 30px;*/
+/*}*/
+#userinfo_container .userinfo_content .userinfo_detail .userinfo_basic .basic_right ._file_Msg{
+    position:absolute;
+    left:20px;
+    top:180px;
+    width:225px;
+}
+#userinfo_container .userinfo_content .userinfo_detail .userinfo_basic .basic_right .portraitBorder {
+	height: 90px;
+	position: absolute;
+	left: 30px;
+	top: 10px;
+	width: 90px;
+	padding:3px;
+	border:1px solid #ccc;
+}
+#userinfo_container .userinfo_content .userinfo_detail .userinfo_basic .basic_right img {
+	width:90px;
+	height:90px;
+}
+#userinfo_container .userinfo_content .userinfo_tittle {
+    float:left;
+	width: 735px;
+	height: 28px;
+	background-color: rgb(227,238,248);
+	line-height: 28px;
+	padding-left: 20px;
+}
+#userinfo_container .userinfo_content .userinfo_tittle ._change_userinfo{
+    cursor:pointer;
+    color:#999;
+    font-size:14px;
+}
+#userinfo_container .userinfo_content .userinfo_tittle ._change_userinfo:hover{
+    color:#066;
+}
+#userinfo_container .userinfo_content .userinfo_detail {
+	float: left;
+}
+#userinfo_container .userinfo_content .userinfo_detail .userinfo_commit .commitBtn {
+    float: left;
+	background-color: #06C;
+    padding:0 15px;
+	line-height:30px;
+	height:30px;
+    border: none;
+	cursor:pointer;
+	float: left;
+	box-shadow:1px 1px 3px rgba(0,0,0,0.25);
+	border-radius:4px;
+	color: #FFF;
+	font-weight: bold;
+}
+#userinfo_container .userinfo_content .userinfo_detail .userinfo_commit .commitBtn:hover{
+	background:#066;}
+#userinfo_container .userinfo_content .userinfo_detail .userinfo_basic .basic_left ul li {
+	height: 35px;
+	width: 500px;
+	padding-top: 10px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: rgb(219,241,249);
+}
+#userinfo_container .userinfo_content .userinfo_detail .userinfo_lessimport ul li .accountTip {
+	font-size: 14px;
+	color: #666;
+}
+#userinfo_container .userinfo_content .userinfo_detail .userinfo_basic .basic_left ul {
+	list-style-type: none;
+	float: left;
+	margin-top: 20px;
+	/*margin-bottom: 20px;*/
+	margin-left: 20px;
+}
+#userinfo_container .userinfo_content .userinfo_detail .userinfo_lessimport ul {
+	float: left;
+	list-style-type: none;
+	margin-left: 20px;
+}
+#userinfo_container .userinfo_content .userinfo_detail .userinfo_basic {
+	float: left;
+	width: 100%;
+}
+#userinfo_container .userinfo_content .userinfo_detail .userinfo_lessimport {
+	float: left;
+	width: 100%;
+}
+#userinfo_container .userinfo_content .userinfo_detail .userinfo_commit {
+	float: left;
+	width: 700px;
+	text-align: left;
+	padding-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#userinfo_container .userinfo_content .userinfo_detail .userinfo_lessimport ._self_description{
+    float:left;
+    clear:left;
+    font-size: 14px;
+}
+#userinfo_container .userinfo_content .userinfo_detail .userinfo_lessimport ul li {
+    float:left;
+    border-bottom: 1px solid rgb(219,241,249);
+	padding-bottom: 10px;
+	padding-top: 10px;
+	width: 700px;
+}
+#userinfo_container .userinfo_content .userinfo_detail .userinfo_lessimport ul li table.account_table{
+    float:left;
+    font-size: 16px;
+}
+#userinfo_container .userinfo_content .userinfo_detail .userinfo_lessimport ul li table tr{
+    float:left;
+    clear:both;
+}
+#userinfo_container .userinfo_content .userinfo_detail .userinfo_lessimport ul li table tr td{
+    text-align: left;
+    float:left;
+    line-height:26px;
+    font-size: 16px;
+}
+#userinfo_container .userinfo_content .userinfo_detail .userinfo_lessimport ul li table tr td.td_tittle{
+    float:left;
+    width:135px;
+    text-align: right;
+    font-size: 14px;
+}
+
+.input_field{
+    float:left;
+    width:200px;
+    height:22px;
+    line-height: 22px;
+    padding-left: 1px;
+    border:1px solid #ccc;
+}
+.input_area{
+    float:left;
+    clear:left;
+    width:500px;
+    font-size: 14px;
+    height:80px;
+    padding: 1px;
+    border:1px solid #ccc;
+}
+
+
+/* 头像图片预览、剪裁、上传Div的CSS */
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+.image_manipulate_frame{
+    width:100%;
+    height: auto;
+
+    background:none repeat scroll 0% 0% rgb(239, 239, 239);
+    display: none;
+    position: fixed;
+    top:0px;
+    left:0px;
+    /*top:20px;*/
+    /*left:330px;*/
+    z-index: 100;
+}
+.image_manipulate_container {
+    display: none;
+    float:left;
+    height: 440px;
+    width: 670px;
+    margin: 0px auto;
+    background: #FFF;
+    padding: 10px;
+    /*margin: 8px;*/
+    border: 1px solid #C8F9E8;
+    border-radius: 4px;
+    font-family: "微软雅黑", "宋体", Verdana, Geneva, sans-serif;
+    z-index: 100;
+}
+
+.image_manipulate_container .image_manipulate_inner_div {
+    display: block;
+    width: 660px;
+    float: left;
+    position: relative;
+}
+
+.image_manipulate_container .image_manipulate_inner_div .tittle {
+    display: block;
+    float: left;
+    height: 32px;
+    width: 660px;
+    line-height: 32px;
+    padding-left: 15px;
+    background-color: rgb(227, 238, 248);
+    margin-bottom: 10px;
+    color: #777;
+    font-size: 16px;
+}
+
+.image_manipulate_container .image_manipulate_inner_div .fileload {
+    display: block;
+    float: left;
+    width: 260px;
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.image_manipulate_container .image_manipulate_inner_div .fileload_split {
+    display: block;
+    float: right;
+    width: 300px;
+    height: 30px;
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.image_manipulate_container .image_manipulate_inner_div .edit_div {
+    position: absolute;
+    right: 300px;
+    top: 42px;
+    display: block;
+    float: right;
+    float: left;
+    margin-bottom: 15px;
+}
+
+.image_manipulate_container .image_manipulate_inner_div .portrait_submit {
+    float: left;
+    width: 600px;
+    margin-top: 15px;
+    padding-left: 30px;
+}
+
+.image_manipulate_container .dynamic_image {
+    height: 150px;
+    width: 150px;
+    float: left;
+    margin-top: 10px;
+    overflow: hidden;
+    border: 1px solid #bbb;
+    background: rgb(240,240,2400);
+}
+.image_manipulate_container .dynamic_image .dynamic_image_inner{
+    width:150px;
+    height:150px;
+    display: none;
+}
+
+.image_manipulate_container .image_manipulate_inner_div .portrait_submit .submit_btn {
+    height: 30px;
+    border: none;
+    background-color: rgb(100, 180, 240);
+    float: left;
+    margin-left: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #FFF;
+    font-size: 14px;
+    line-height: 30px;
+    cursor: pointer;
+    box-shadow: 0px 1px 3px rgba(40, 160, 200, 0.4);
+    border-radius: 3px;
+}
+
+.image_manipulate_container .image_manipulate_inner_div .portrait_submit .cancel_btn {
+    height: 30px;
+    border: none;
+    background-color: #999;
+    float: left;
+    color: #FFF;
+    font-size: 14px;
+    line-height: 30px;
+    margin-left: 100px;
+    padding-left: 15px;
+    padding-right: 15px;
+    cursor: pointer;
+    box-shadow: 0px 1px 3px rgba(40, 160, 200, 0.4);
+    border-radius: 3px;
+}
+
+.image_manipulate_container .image_manipulate_inner_div .dynamic_image_tittle {
+    float: left;
+    width: 150px;
+    color: #666;
+    font-weight: lighter;
+    margin-top: 20px;
+    height: 24px;
+    font-size: 14px;
+}
+
+.image_manipulate_container .image_split {
+    float: left;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    border-right: 1px dashed #999;
+    height: 260px;
+}
+
+.image_manipulate_container .large_image {
+    float: left;
+    height: 300px;
+    width: 400px;
+    margin-left: 20px;
+    border: solid 1px #bbb;
+    background: rgb(240,240,2400);
+    overflow: hidden;
+}
+.image_manipulate_container .large_image .large_image_tip_words{
+    width:400px;
+    height:300px;
+    text-align: center;
+    padding-top: 95px;
+}
+.image_manipulate_container .large_image .large_image_tip_words .words_1{
+    font-size: 16px;
+}
+.image_manipulate_container .large_image .large_image_tip_words .words_2{
+    font-size: 12px;
+    font-weight: lighter;
+    color:#777;
+}
+.image_manipulate_container .large_image  .large_image_inner{
+    width:400px;
+    height:300px;
+    display: none;
+}
+
+
+/* 密码设置Div的CSS */
+.password_change_content{
+    display:none;
+    float:left;
+    width:700px;
+}
+.password_change_content .content_compa{
+    float:left;
+    width:720px;
+    background: rgb(248,248,248);
+    padding: 20px;
+    margin-left: 20px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.password_change_content .password_change_inner{
+    float:left;
+    display: inline;
+    margin-left: 100px;
+    text-align: center;
+    vertical-align: middle;
+}
+.password_change_content .password_change_inner table tr{
+    height:50px;
+}
+.password_change_content .password_change_inner table tr td.td_left{
+    float:left;
+    width:140px;
+    text-align: right;
+    font-size: 14px;
+    margin-right: 10px;
+    line-height: 50px;
+    font-weight: lighter;
+}
+.password_change_content .password_change_inner table tr td.td_right{
+    float:left;
+    margin-left: 10px;
+}
+.password_change_content table tr td input{
+    float:left;
+    width:200px;
+    height:30px;
+    line-height: 30px;
+    padding-left: 3px;
+    margin-top: 10px;
+    font-size: 16px;
+    border: 1px solid #bbb;
+}
+.password_change_content .password_change_submit{
+    float:left;
+    display: inline;
+    width:500px;
+    padding-left: 40px;
+    margin-top: 25px;
+    text-align: left;
+    position: relative;
+}
+.password_change_content .password_change_submit input{
+    float:left;
+    border: none;
+    background: rgb(118,186,243);
+    width:100px;
+    height:28px;
+    box-shadow: 0px 0px 2px rgba(0,0,0,0.2);
+    border-radius: 3px;
+    line-height: 28px;
+    margin-left: 300px;
+    cursor: pointer;
+    color:#FFF;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.password_change_content .password_change_submit  #save_pop{
+    position: absolute;
+    left:100px;
+    top:0px;
+    background: #fff;
+    display: none;
+}
+.password_change_content .password_change_submit  #save_pop .save{
+    float:left;
+    display: none;
+    height:38px;
+    line-height: 38px;
+    padding-right: 5px;
+    padding-left: 25px;
+    border: 1px solid rgb(160,160,160);
+    box-shadow: 0 0 10px rgb(193,193,193);
+    border-radius: 3px;
+    font-size: 12px;
+}
+.password_change_content .password_change_submit  #save_pop .save_done{
+    background: url(../../images/input_msg_tip.png) 0px -250px no-repeat scroll;
+    vertical-align: middle;
+}
+.password_change_content .password_change_submit  #save_pop .save_fail{
+    background: url(../../images/input_msg_tip.png) 0 0 no-repeat scroll;
+}
+
+
+
+
+
+
+
+.input_msg{
+    float:left;
+    height: 30px;
+    color:#ff0000;
+    font-size: 12px;
+    font-weight: lighter;
+    margin-left: 5px;
+    line-height: 30px;
+}
+.tip_error {
+    float: left;
+    margin-right: 3px;
+    background: url(../../images/input_msg_tip.png) 0 0;
+    width: 16px;
+    height: 16px;
+}
+
+.tip_warn {
+    float: left;
+    margin-right: 3px;
+    background: url(../../images/input_msg_tip.png) 0px -150px;
+    width: 16px;
+    height: 16px;
+}
+
+.tip_right {
+    float: left;
+    margin-right: 3px;
+    background: url(../../images/input_msg_tip.png) 0px -250px;
+    width: 16px;
+    height: 16px;
+}
+.option_tittle{
+        display: block;
+        float:left;
+        margin-right: 6px;
+        margin-bottom:5px;
+        margin-top: 2px;
+        font-size: 14px;
+        text-align: left;
+}
+.input_msg{
+    display: block;
+    float:left;
+    clear:right;
+    padding: 3px;
+    font-size:12px;
+    color:#ff0000;
+    font-weight: lighter;
+}

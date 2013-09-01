@@ -1,0 +1,211 @@
+ #contentUpWrap{
+
+ }
+
+#contentUp {
+    background: #96a698;
+    margin-top: 20px;
+    padding: 10px 30px 20px;
+    float: left;
+
+}
+.TextSet{
+
+    text-indent: 2em;
+    margin-top: 10px;
+    color: #fefefe;
+    font-size:14px ;
+    line-height: 180%;
+}
+
+#contentLeft{
+             width: 224px  ;
+             background: #426288  ;
+             margin-top: 30px;
+             padding-top: 112px;
+              padding-bottom: 112px;
+             float: left;
+             height:587px;
+             line-height: 200%;
+             /*text-align: center;*/
+}
+ #contentLeft a{
+     color: #FEFEFE;
+ }
+ #contentLeft p{
+    margin-left: 15px;
+    margin-top: 30px;
+    width: 90%;
+    line-height: 200%;
+    font-size: 19px;
+
+
+ }
+
+ #contentLeft ul{
+    margin: 5px 15px 0px 10%;
+ }
+ #contentLeft ul li{
+   margin-left: 4% ;
+   border-bottom: 1px solid #AF9AB2;
+   font-size: 14px;
+   line-height: 300%;
+   text-indent: 1em;
+ }
+
+
+ #contentRight{
+    float: left;
+    margin-left: 32px;
+    margin-top: 30px;
+    width: 709px;
+
+}
+
+.ApplyHeader{
+        background: #bac570;
+        height:37px;
+        width: 714px;
+        float: left;
+
+}
+
+
+.ApplyHeaderLeft{
+     float: left;
+     background: #426288  ;
+     padding: 6px 8px 0px 10px;
+
+     text-align: center;
+     height:31px;
+     font-size: 22px;
+     color: #fefefe;
+
+}
+
+
+.ApplyHeaderCenter{
+             float: left;
+             background: #fefefe;
+             width: 5px;
+             height:37px;
+}
+.StartUseIt{
+    /*float: left;*/
+    /*height:37px;*/
+    /*background: #fefefe;*/
+     margin-top:10px;
+     margin-left: 40px;
+    width: 145px;
+    text-align: center;
+}
+.begin_live1{
+
+      left: 440px;
+      top: 50px;
+      display: block;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 5px 5px 5px 5px;
+      padding: 5px 20px;
+      background: none repeat scroll 0% 0% rgb(245, 205, 112);
+}
+ .act_btn1 {
+    color: rgb(255, 255, 255);
+    font-family: "微软雅黑";
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
+    border: medium none;
+    cursor: pointer;
+}
+
+ .insideTitle{
+     float: left;
+     width: 714px;
+     background: #bac570;
+      margin-top: 63px;
+ }
+
+.headerUseUpLeft{
+     float:left;
+
+     font-size: 17px;
+     padding-right: 8px;
+     color: #12356e ;
+     background: #fefefe;
+     clear: right;
+
+}
+
+
+.png1{
+    margin-top: 14px;
+    margin-bottom: 14px;
+    float:left;
+    width: 709px;
+    text-align: center;
+
+}
+
+
+
+ .TextSet3{
+    text-indent: 2em;
+    color: #030000;
+    float: left;
+    font-size:14px ;
+    line-height: 180%;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: justify;
+}
+
+
+ .TextSet4{
+      float: left;
+      margin-top: 30px;
+      color: #12356E;
+     font-size:13px ;
+     line-height: 180%;
+     padding-left: 15px;
+     padding-right: 15px;
+     text-align: justify;
+
+}
+#WarningInfo{
+    width:680px;
+}
+#publicApplyHeader{
+    margin-top: 74px;
+}
+
+
+#OperationalPolicy{
+    float: left;
+    margin-top: 74px;
+}
+.TextSet5{
+    font-size: 15px;
+    color: #12356E;
+}
+
+#table{
+    width: 480px;
+    margin-top: 10px;
+    margin-left: 50px;
+    float: left;
+    background: #12356E;
+    font-size: 14px;
+    color: #FEFEFE;
+    border: none;
+}
+ #table tr{
+     display: block;
+     border-bottom: 1px solid #fff;
+ }
+  #table tr th{
+      padding: 8px 30px;
+  }
+  #table tr td{
+      padding: 8px 40px 8px 10px;
+  }

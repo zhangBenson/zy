@@ -1,0 +1,143 @@
+.mf_1{
+    float: left;
+}
+.mf_1 p{
+    float:left;
+    display: inline;
+    width:780px;
+    padding: 30px 0px 20px 30px;
+    color:rgb(43, 43, 43);
+}
+.mf_1 p a{
+    color:rgb(29, 160, 236);
+    cursor: pointer;
+}
+.mf_1 p a:hover{
+    text-decoration: underline;
+}
+
+.mf_2{
+    float:left;
+    display: inline;
+    width:800px;
+    margin-left: 20px;
+    padding-bottom: 50px;
+}
+.mf_2 .long_text_field{
+    width:580px;
+    height:26px;
+    line-height: 26px;
+    padding: 2px;
+    margin-top: 10px;
+    color:rgb(43,43,43);
+    border: 1px solid rgb(212,212,212);
+    border-radius: 3px;
+    clear:both;
+}
+.mf_2 .long_text_area{
+    width:580px;
+    height:80px;
+    line-height: 26px;
+    padding: 2px;
+    margin-top: 10px;
+    color:rgb(43,43,43);
+    border: 1px solid rgb(212,212,212);
+    border-radius: 3px;
+    clear:both;
+}
+.mf_2 .tip_para{
+    float:left;
+    display: inline;
+    width:100%;
+    margin: 15px 0 20px;
+    color:#888;
+    text-indent: 2em;
+}
+.mf_2 .asterisk{
+    color:red;
+    font: 14px;
+}
+.mf_2 ul{
+    float:left;
+    width:600px;
+    display: inline;
+    padding-left: 20px;
+    list-style-type: none;
+}
+.mf_2 ul li{
+    padding-bottom: 20px;
+    text-align: left;
+    clear:both;
+}
+.mf_2 ul li .title{
+    float:left;
+    padding-left: 5px;
+    font: 12px/1.5 Helvetica,Arial,"宋体",sans-serif;
+}
+.mf_2 ul li .tip_message{
+    float: right;
+    height: 24px;
+    background: rgb(255, 248, 239);
+    border-radius: 3px;
+    margin-right: 40px;
+    color:red;
+    font: 12px lighter;
+    line-height: 24px;
+    text-align: right;
+}
+.mf_2 ul li a.add_btn{
+    float:left;
+    margin:2px 0px 0px 20px;
+    font: 12px;
+    color:#888;
+}
+.mf_2 ul li a.add_btn:hover{
+    text-decoration: underline;
+}
+.mf_2 ul li.li_2{
+    width:290px;
+    float:left;
+    overflow: hidden;
+    clear: none;
+}
+.mf_2 ul li.li_2 .short_text_field{
+    width:200px;
+    height: 24px;
+    line-height: 24px;
+    border: 1px solid #ebebeb;
+    border-radius: 2px;
+}
+.mf_2 ul li.li_2 img{
+    float:left;
+    width:120px;
+    height: 90px;
+    padding: 2px;
+    border: 1px solid #ebebeb;
+    clear:both;
+}
+.mf_2 ul li.li_2 .tip_message{
+    float: left;
+    height: 24px;
+    background: rgb(255, 248, 239);
+    border-radius: 3px;
+    margin-left: 10px;
+}
+.mf_2 .btn_para{
+    float: left;
+    width:700px;
+    display: inline;
+    padding-left: 40px;
+}
+.mf_2 .btn_para .submit_btn{
+    width:80px;
+    height:28px;
+    line-height: 28px;
+    padding: 0 10px;
+    background: #ebebeb;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.mf_2 .btn_para .submit_btn:hover{
+    background: #bebebe;
+}

@@ -1,0 +1,31 @@
+#header h1{
+    float: left;
+    margin-top: 6px;
+}
+#header h1 a{
+   display: block;
+   width: 90px;
+   height: 40px;
+   background: url(../images/gogowise_logo_big_darkblue_error.png);
+   cursor: pointer;
+}
+#header .words{
+    float: left;
+    margin-top:26px;
+    margin-left: 5px;
+}
+#header .handle{
+    float: right;
+    margin-top:26px;
+    margin-right: 5px;
+    color: #598EDE;
+}
+#header .handle a{
+    color: #598EDE;
+}
+#header .handle a.nick{
+    color: #f90;
+}
+#header .handle a:hover{
+    text-decoration: underline;
+}

@@ -1,0 +1,326 @@
+.a_more{
+    float: right;
+    display: inline;
+    line-height: 16px;
+    color: #848484;
+    margin-right: 10px;
+}
+.a_more:hover{
+    text-decoration: underline;
+}
+.scroll{
+    float: left;
+    margin-top: 15px;
+    width: 970px;
+    height: 320px;
+    position: relative;
+    z-index: 0;
+}
+.scroll ul.cont{
+    position: absolute;
+    left:0px;
+    top:0px;
+    width: 970px;
+    height: 320px;
+    overflow: hidden;
+    list-style: none;
+    z-index: 0;
+}
+.scroll ul.cont li{
+    float: left;
+    display: none;
+    position: relative;
+    width: 970px;
+    height: 320px;
+}
+.scroll ul.cont li img{
+    border: none;
+}
+a.create_course{
+    position: absolute;
+    left: 482px;
+    top: 218px;
+    width: 114px;
+    height: 40px;
+}
+a.create_course:hover{
+    background: rgba(0,0,0,0.2);
+}
+.scroll ul.cont li p.desc{
+    position: absolute;
+    font-size: 22px;
+    line-height: 135%;
+    font-weight: bold;
+    color:#002291;
+}
+.scroll ul.cont li p.desc_live{
+    right: 60px;
+    top: 20px;
+    width: 245px;
+}
+.scroll ul.cont li p.desc_control_room{
+    left: 490px;
+    top: 15px;
+    width: 220px;
+}
+.scroll ul.cont li p.desc_square{
+    left: 75px;
+    top: 90px;
+}
+.scroll ul.cont li p.desc_course{
+    left: 75px;
+    top: 90px;
+}
+
+
+.scroll ul.cont li p.desc .big{
+    font-size: 32px;
+    font-weight: bold;
+    color: #033333;
+    opacity: 0.7;
+}
+.scroll ul.cont li p.handle{
+    position: absolute;
+}
+.scroll ul.cont li p.handle_live{
+    right: 0px;
+    bottom:25px;
+}
+
+.scroll ul.cont li p.handle_square{
+    left:75px;
+    bottom:65px;
+}
+.scroll ul.cont li p.handle_course{
+    left:75px;
+    bottom:45px;
+}
+
+
+.scroll ul.cont li p.handle a{
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    font-size:16px;
+    padding:0px 18px;
+    text-align: center;
+    margin-right:15px;
+    box-shadow: 3px 3px 1px rgba(0,0,0,0.3);
+    border-radius: 2px;
+    color:#fff;
+}
+.scroll ul.cont li p.handle a:hover{
+    opacity: 0.9;
+    text-decoration: none;
+}
+.scroll ul.cont li p.handle a.handle_1{
+    background:rgb(235,122,1);
+}
+.scroll ul.cont li p.handle a.handle_3{
+    background:rgb(235,122,1);
+}
+.scroll ul.cont li p.handle a.handle_2{
+    background:rgb(0,34,145);
+}
+
+.scroll .btn{
+    position: absolute;
+    left:38px;
+    top: 28px;
+    width: 250px;
+    height: 20px;
+}
+.scroll .btn a{
+    float: left;
+    /*width:14px;*/
+    /*height:14px;*/
+    width:20px;
+    height:20px;
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 20px;
+    margin-right: 8px;
+    text-align: center;
+    line-height: 20px;
+    background: #cdcdcd;
+    /*background: #f5fffa;*/
+}
+.scroll .btn a.stand_out{
+    background: #666;
+    /*background: #0338A0;*/
+    color: #fff;
+}
+
+.kind-list{
+    float: left;
+    width: 970px;
+    margin-top:45px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #adadad;
+    overflow: hidden;
+}
+.term-list{
+    float: left;
+    width: 220px;
+    margin-right: 37px;
+    overflow: hidden;
+}
+.term-list ul{
+    float: left;
+    width: 220px;
+    margin-top: 20px;
+    list-style-type: none;
+}
+.term-list ul li{
+    float: left;
+    width: 220px;
+    margin-bottom: 10px;
+    /*border-bottom: 1px solid #b3b3b3;*/
+}
+.term-list ul li img{
+    width: 80px;
+    height: 60px;
+    border: none;
+}
+.term-list ul li .a_img{
+    float: left;
+    padding: 4px;
+    border: 1px solid #E9E9e9;
+    background: white;
+    margin-right:10px;
+}
+.term-list ul li .a_img:hover{
+    border-color: #bccabd
+}
+
+.term-list ul li .a_title{
+    float: left;
+    width: 120px;
+    height: 20px;
+    margin-top: 10px;
+    color: #000;
+    line-height: 20px;
+    overflow: hidden;
+}
+.term-list ul li .a_title:hover{
+    text-decoration: underline;
+}
+.term-list ul li span{
+    display: block;
+    color:#4d4d4d;
+    line-height: 20px;
+    font-size: 10px;
+    width: 120px;
+    height: 20px;
+    margin-top: 5px;
+    overflow: hidden;
+}
+
+.live_list{
+    width: 200px;
+    overflow: hidden;
+}
+.live_list ul{
+    float: left;
+    width: 200px;
+    margin-top: 20px;
+    list-style-type: none;
+}
+.live_list ul li{
+    float: left;
+    width: 200px;
+    margin-bottom: 10px;
+    /*border-bottom: 1px solid #b3b3b3;*/
+}
+.live_list ul li img{
+    width: 60px;
+    height: 60px;
+    border: none;
+}
+.live_list ul li .a_img{
+    float: left;
+    margin-right:10px;
+}
+.live_list ul li .a_title{
+    float: left;
+    width: 120px;
+    height: 20px;
+    margin-top: 6px;
+    color: #000;
+    line-height: 20px;
+    overflow: hidden;
+}
+.live_list ul li .a_focus{
+    float: left;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+.roles{
+    float:left;
+    margin-top:30px;
+    width: 970px;
+    overflow: hidden;
+}
+.roles ul{
+    float: left;
+    width: 1100px;
+    overflow: hidden;
+    list-style: none;
+}
+.roles ul li{
+    float: left;
+    width: 160px;
+    margin-right: 42px;
+}
+.roles ul li a{
+    float: left;
+    width: 160px;
+    margin-top: 20px;
+    line-height: 14px;
+    text-align: center;
+    /*color: #057267;*/
+    color: orange;
+    font-weight: lighter;
+    font-family: Tahoma, Geneva,"\5FAE\8F6F\96C5\9ED1","\5b8b\4f53",sans-serif;
+    letter-spacing: 1px;
+}
+.roles ul li a:hover{
+    text-decoration: underline;
+}
+.roles ul li p{
+    float: left;
+    width: 160px;
+    margin-top: 8px;
+    line-height: 18px;
+    text-align: justify;
+    color: rgb(77,77,77);
+}
+
+/*.act_btn{*/
+    /*color:#fff;*/
+    /*font-family: "微软雅黑";*/
+    /*box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 2px 0px;*/
+    /*text-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px;*/
+    /*border: none;*/
+    /*cursor: pointer;*/
+/*}*/
+/*.begin_live{*/
+    /*float: left;*/
+    /*display: block;*/
+    /*position: absolute;*/
+    /*left: 85px;*/
+    /*bottom: 80px;*/
+    /*font-size: 16px;*/
+    /*font-weight: bold;*/
+    /*margin:30px 0px 0 330px;*/
+    /*border-radius: 15px;*/
+    /*padding:5px 20px;*/
+    /*background: rgb(246,192,10);*/
+    /*background: #77d8cc;*/
+ /*}*/
+/*.act_btn:hover{*/
+    /*opacity: 0.7;*/
+    /*text-decoration: none;*/
+/*}*/

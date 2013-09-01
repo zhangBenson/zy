@@ -1,0 +1,96 @@
+ .rightItem1{
+    float: left;
+    margin-top: 30px;
+}
+.onePerson{
+    width:300px;
+    padding:15px 0 10px;
+    border-bottom: 1px dotted #cdcdcd;
+}
+.personLeft img{
+    margin-top: 3px;
+    width:40px;
+    height: 40px;
+    border: none;
+}
+.personMid{
+    width:150px;
+    margin:0 10px;
+    color: #888;
+    line-height: 20px;
+    overflow: hidden;
+}
+.personMid a.title{
+    display: block;
+    width: 150px;
+    height: 20px;
+    overflow: hidden;
+    font-size: 14px;
+    color: #598EDE;
+}
+.personMid span{
+    word-wrap: break-word;
+}
+.personMid span.sheet{
+    display: block;
+    width: 150px;
+    height: 20px;
+    overflow: hidden;
+}
+.personMid a.title:hover{
+    text-decoration: underline;
+}
+.personRight a{
+    float: left;
+    width: 70px;
+    margin-top: 4px;
+    color: #f90;
+    line-height: 24px;
+    background: #EBEBEB;
+    border: 1px solid #ABABAB;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 3px;
+}
+.personRight a:hover{
+    background: #dadada;
+}
+
+
+.rightTerm2 {
+    float: left;
+    margin-top: 20px;
+}
+.rightTerm2 ul{
+    float: left;
+    width: 350px;
+    list-style: none;
+}
+.rightTerm2 ul li{
+    float: left;
+    margin-top: 15px;
+    margin-right: 25px;
+    width: 130px;
+    height: 120px;
+    overflow: hidden;
+}
+.rightTerm2 ul li img{
+    width: 120px;
+    height:90px;
+    padding:4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.rightTerm2 ul li a.img{
+    float: left;
+}
+.rightTerm2 ul li a.title{
+    float: left;
+    color: #333;
+    line-height: 20px;
+    width: 130px;
+    text-align: center;
+}
+.rightTerm2 ul li a.title:hover{
+    text-decoration: underline;
+}

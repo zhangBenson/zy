@@ -1,0 +1,126 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.container{
+    float:left;
+    width:340px;
+    height:260px;
+    border: 1px solid #ebebeb;
+    border-radius: 4px;
+    overflow: hidden;
+    background: rgb(246, 245, 238);
+}
+
+.log_head{
+    float:left;
+    width: 280px;
+    height: 25px;
+    overflow: hidden;
+    padding: 20px 10px 5px 20px;
+    font-size: 20px;
+    color:rgb(51,51,51);
+    font-family: "trebuchet ms",tahoma,"weiruan yahei";
+}
+.log_head span{
+    float:left;
+    display: block;
+    clear: none;
+}
+.log_head a{
+    float: left;
+    display: block;
+    width: 153px;
+    height: 25px;
+    background: url(../images/gogowise_logo_login.png);
+}
+* html .log_head a{
+    display: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,src='images/gogowise_logo_login.png',sizingMethod="image");
+}
+.log_center{
+    float:left;
+    display: inline;
+    width:300px;
+    margin-left: 20px;
+}
+.log_center span#login_tip{
+    margin-left: 15px;
+    color:red;
+    font-weight: lighter;
+    font-size: 12px;
+    line-height: 16px;
+    background: rgb(255, 248, 239);
+    border-radius: 3px;
+}
+.log_center span#pws_tip{
+    margin-left: 15px;
+    color:red;
+    font-weight: lighter;
+    font-size: 12px;
+    line-height: 16px;
+    background: rgb(255, 248, 239);
+    border-radius: 3px;
+}
+
+.log_center label{
+    padding: 6px 0;
+    color:rgb(0, 121, 172);
+    font-size: 14px;
+    font-family: tahoma,"宋体";
+    line-height: 1.5em;
+}
+.log_center a{
+    float: right;
+    padding-top: 20px;
+    font-size: 12px;
+    text-align: right;
+    color:rgb(0, 121, 172);
+}
+.log_center a:hover{
+    text-decoration: underline;
+}
+.log_center input.text_field{
+    width:300px;
+    height:20px;
+    line-height: 20px;
+    font-size: 16px;
+    padding: 2px;
+    margin-top: 3px;
+    margin-bottom: 7px;
+    font-family: "trebuchet ms","宋体";
+    color:rgb(51, 51, 51);
+    border: 1px solid rgb(212,212,212);
+    border-radius: 2px;
+}
+.log_center input.log_btn{
+    float:left;
+    width: 84px;
+    margin-top: 5px;
+    margin-bottom: 7px;
+    padding:2px 5px;
+    color:rgb(0, 121, 172);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.log_tip{
+    float:left;
+    display: inline;
+    width: 300px;
+    margin-left: 20px;
+    margin-top: 5px;
+    padding-top: 5px;
+    border-top: 1px solid rgb(204,204,204);
+    font-size: 12px;
+    color:rgb(102,102,102);
+    font-family: "trebuchet ms","宋体";
+}
+.log_tip a{
+    color:rgb(0, 121, 172);
+}
+.log_tip a:hover{
+    color:rgb(0, 121, 172);
+    text-decoration: underline;
+}

@@ -1,0 +1,825 @@
+@charset "utf-8";
+/* CSS Document */
+
+div.cstyle ul.lstyle{
+	  padding: 0;
+	  margin: 0 auto;
+	  text-align:center;
+}
+div.cstyle
+{
+	 padding: 5px;
+	 margin: 0 auto;
+	 width: 110%;
+	 text-align:center;
+}
+.checked {
+background-image:url(/images/bluetag.gif);
+
+}
+
+div.contentdiv ul.contentul li.midli ul.midcontentul li span.hct{
+	margin-left:5px;
+	float:left;
+	height:24px;
+	color:#39C;
+	font-weight:bold;
+	font-size:14px;
+	margin-top:10px;
+	text-align:left;
+	padding-left:10px;
+	position:relative;
+	clear:right;
+}
+div.contentdiv ul.contentul li.midli ul.midcontentul li ul.latestcoursecontentul li{
+	position:relative;
+	padding:10px;
+	color:#333;
+	text-align:left;
+	font-weight:bold;
+	display:inline;
+	float:left;
+}
+
+
+div.next
+{
+	 padding: 5px;
+	 margin: 0 auto;
+	 width: 110%;
+	 text-align:center;
+     cursor:pointer;
+     border: none;
+}
+
+div.cstyle ul.lstyle{
+    float:left;
+    text-align: center;
+    width:100%;
+}
+
+div.cstyle ul.lstyle li.next{
+	clear:both;
+	position:relative;
+	text-align:right;
+	background-image:none;
+	list-style:none;
+	border:none;
+	display:inline;
+	text-decoration: none;
+    /*cursor: pointer;*/
+    /*border: none;*/
+}
+#classesMsg{
+    float:left;width:700px;margin-left:300px;color:red;font-weight: lighter;text-align: left;
+}
+._go_back{
+    display: block;
+    background-image: url(../images/back.png);
+    background-repeat: no-repeat;
+    border: none;
+    width:48px;
+    height:48px;
+    cursor:pointer;
+}
+
+._submit_next{
+    display: block;
+    float:right;
+    background-image: url(../images/next.png);
+    background-repeat: no-repeat;
+    border: none;
+    width:48px;
+    height:48px;
+    cursor:pointer;
+}
+
+.ajaxSubmintButton{
+    display: inline;
+}
+
+div.cstyle ul.lstyle li.cur{
+	clear:both;
+	width:400px;
+	height:30px;
+	margin-top:10px;
+	margin-bottom:10px;
+	padding-bottom:10px;
+	padding-top:10px;
+	background-image:url(../images/bluetag.gif);
+	background-repeat:no-repeat;
+	background-position:230px 0px;
+
+	padding-left:200px;
+	color:#FFF;
+	display:inline;
+	text-align:left;
+	position:relative;
+
+
+}
+div.cstyle ul.lstyle li{
+	clear:both;
+	width:400px;
+	height:30px;
+	margin-top:10px;
+	margin-bottom:10px;
+	padding-bottom:10px;
+	padding-top:10px;
+	background-image:url(../images/graytag.gif);
+	background-repeat:no-repeat;
+	background-position:230px 0px;
+
+	padding-left:200px;
+	color:#333;
+	display:inline;
+	text-align:left;
+	position:relative;
+ }
+
+div.cstyle ul.lstyle li.cur,
+div.cstyle ul.lstyle li.style{
+    cursor: pointer;
+}
+
+div.cstyle ul.lstyle li.cur:hover,
+div.cstyle ul.lstyle li.style:hover{
+    background-image:url(../images/bluetag.gif);
+}
+
+div.cstyle ul.lstyle li.clause{
+    background: none;
+}
+
+li.clause .CCClause .boxy{
+    text-decoration: underline;
+}
+
+#checkboxMsg{
+    color:red;
+    font-weight: lighter;
+    text-decoration: none;
+}
+
+div .words{
+    float:left;
+    width:245;
+}
+
+div .words ul li
+{
+	clear:both;
+	padding-bottom:10px;
+	padding-top:5px;
+	float:left;
+	vertical-align:middle;
+}
+
+.inviteleft{
+    float:left;
+}
+
+.inviteright{
+    float:left;
+    color: #cc6600;
+}
+div .cchoose
+{
+	 width:700px;
+     height:50px;
+	 float:left;
+}
+div .cchoose ul li
+{
+	  width:135px;
+	  height:35px;
+      margin-top: 10px;
+	  color:#666;
+	  font-size:14px;
+	  padding-left:15px;
+}
+div .upload
+{
+	  width:700px;
+	  clear:both;
+	  padding-left:80px;
+	  text-align:left;
+	  color:#333;
+	  vertical-align:middle;
+
+}
+div .upload input
+{
+	  width:130px;
+	  height:30px;
+	  border:none;
+	  background-color:#CCC;
+	  font-weight:bold;
+
+
+}
+div .upload img
+{
+	  padding-top:10px;
+}
+div.back4
+{
+	  clear:both;
+      float:right;
+      padding-left:600px;
+	  width:650px;
+	  height:30px;
+	  margin-top:10px;
+	  vertical-align:top;
+	  text-align:right;
+}
+div.back4 img{
+    cursor:pointer;
+    padding-bottom: 20px;
+}
+div.back4 img:hover{
+    padding-left: 3px;
+    padding-top:3px;
+}
+div .headline
+{
+	  margin-top:0px;
+	  color:#666;
+
+}
+	div.headline span
+	{
+		color:#999;
+		font-weight:bold;
+		font-size:18px;
+
+
+	}
+	div .back
+	{
+        clear:both;
+        text-align:right;
+        padding-right:5px;
+        float:right;
+        width:140px;
+        cursor:pointer;
+	}
+	div .back ul li
+	{
+	  padding-left:20px;
+	}
+	div.btnfabu
+	{
+		clear:both;
+		text-align:center;
+		width:300px;
+		margin-left:160px;
+		margin-top:30px;
+	}
+	div .btn2
+	{
+		clear:both;
+		text-align:center;
+		width:600px;
+		margin-left:160px;
+		margin-top:10px;
+
+	}
+	div .btn
+	{
+		clear:both;
+		text-align:center;
+		width:600px;
+		margin-left:160px;
+		margin-top:50px;
+
+	}
+
+    .btnfabu input,
+    div .btn .reset_btn,
+    div .btn .submit_btn,
+    div .btn2 .reset_btn,
+    div .btn2 .submit_btn{
+        color:#FFF;
+        font-weight: bold;
+        font-size: 16px;
+        height:30px;
+        padding-left: 10px;
+        padding-right: 10px;
+        background: rgb(70,170,200);
+        background-image: -moz-linear-gradient(center bottom , rgb(70,170,200) 50%, rgb(70,170,200) 50%, White 100%);
+        box-shadow: 0px 1px 2px rgba(0,0,0,0.2);
+        border-radius: 3px;
+        cursor: pointer;
+        border: none;
+    }
+
+	div .btn2 ul li,
+	div .btn ul li
+	{
+		padding-left:30px;
+		padding-top:30px;
+		padding-bottom:50px;
+
+	}
+	div .btime
+	{
+        display: block;
+        width:700px;
+		color:#666;
+		margin-top:0px;
+		margin-bottom:0px;
+        text-align: left;
+	}
+	div .btime ul
+	{   display: block;
+        float:left;
+        clear:left;
+        width:580px;
+	}
+
+
+    div .btime .add_start_time{
+        display: block;
+        float:left;
+        clear:right;
+        width:50px;
+        height:26px;
+        line-height: 26px;
+        background:rgb(40,160,200);
+        box-shadow: 0px 2px 2px #777;
+        color:#FFF;
+        font-size: 14px;
+        font-weight: bold;
+        padding-left: 8px;
+        padding-right: 8px;
+        text-align: center;
+        margin-top: 10px;
+        margin-left:5px;
+        cursor: pointer;
+    }
+	div .btime ul li
+	{
+		clear:left;
+		padding-left:30px;
+		vertical-align:middle;
+		height:50px;
+		line-height:35px;
+
+	}
+	div .btime ul li input
+	{
+		height:30px;
+		width:200px;
+
+	}
+	div .btime ul li span
+	{
+		padding-left:80px;
+		padding-right:30px;
+	}
+	div .schoose
+	{
+        float:left;
+		color:#666;
+		width:500px;
+		padding-left:50px;
+
+	}
+	div .schoose ul li
+	{
+		float:left;
+		padding-left:50px;
+		padding-right:5px;
+		height:30px;
+	}
+	div .cintent
+	{
+		color:#666;
+		float:left;
+        width:550px;
+		padding-left:100px;
+        text-align: left;
+	}
+	div .cintent span
+	{
+		padding-left:5px;
+		padding-right:5px;
+	}
+	div .words
+	{
+		color:#666;
+		padding-left:30px;
+		float:left;
+		width:650px;
+
+	}
+  div.cname
+ {
+	clear:both;
+	background-image:url(../images/rightbj.gif);
+	background-repeat:no-repeat;
+	background-position:30px 30px;
+	width:200px;
+	height:35px;
+	text-align:left;
+	margin-top:0px;
+	padding-top:40px;
+	padding-right:20px;
+	padding-left:40px;
+	}
+
+	div .cintro
+	{
+    display: block;
+    float:left;
+    clear:both;
+    background-color: rgb(40,160,200);
+	background-image:url(../images/rightbg_arrow.gif);
+	background-repeat:no-repeat;
+    background-position: right;
+	height:33px;
+    line-height: 33px;
+	text-align:left;
+    vertical-align: middle;
+	margin-top:10px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+	padding-right:30px;
+	padding-left:10px;
+   }
+
+   div .course_desc{
+       clear:left;
+   }
+   div .course_desc_wordsLeft{
+       display: block;
+       float:left;
+       margin-left: 100px;
+       margin-top: 30px;
+       clear:right;
+       color:#666;
+       font-weight: lighter;
+   }
+   div .course_desc_wordsLeft .words_number{
+       color:#066;
+       font-size: 18px;
+   }
+  .zidong div{
+      display:block;
+      float:left;
+      clear:both;
+  }
+
+.zidong div .start_time_cintro{
+    clear:left;
+}
+.zidong #startTimeMsg{
+    display: block;
+    float:left;
+    margin-left: 15px;
+    margin-top: 25px;
+    clear:right;
+    font-size: 14px;
+    font-weight: lighter;
+    color:red;
+}
+
+  #addStudents{
+       width:500px;
+  }
+  div .text1
+  {
+	  width:700px;
+	  clear:both;
+	  padding-left:30px;
+	  text-align:left;
+	  color:#333;
+	  font-weight:lighter;
+
+
+   }
+  div .text1 img
+  {
+  padding-top:5px;
+
+ }
+ div .text1 input
+ {
+	 width:500px;
+	 height:25px;
+	 padding-top:5px;
+	 padding-left:5px;
+	 vertical-align:middle;
+	 font-size:14px
+
+ }
+ div .text1 textarea
+  {
+	   width:600px;
+	   height:100px;
+	   padding-top:5px;
+	   padding-left:5px;
+	   vertical-align:middle;
+	   font-size:14px;
+
+   }
+ div .text1 ul li input
+ {
+	 width:230px;
+	 height:25px;
+	 padding-top:5px;
+	 padding-left:5px;
+	 vertical-align:middle;
+	 font-size:14px
+}
+ div .text1 ul li
+ {
+	display:inline;
+	float:left;
+	position:relative;
+	padding-top:20px;
+	padding-right:30px;
+	padding-bottom:10px;
+ }
+ div .date ul
+ {
+	 width:600px;
+	 height:35px;
+	 float:left;
+}
+ div .date ul li
+ {
+	background-image:url(../images/rightbg_arrow.gif);
+	background-repeat:no-repeat;
+	background-position:right;
+    background-color: rgb(40,160,200);
+	height:33px;
+    line-height: 33px;
+	text-align:left;
+	margin-top:10px;
+    margin-left: 30px;
+    margin-right: 144px;
+	padding-left:10px;
+	padding-right:30px;
+	display:block;
+	float:left;
+	position:relative;
+ }
+ div.hot1 span.choose{
+	float:left;
+	margin-left:20px;
+	text-align:center;
+	width:110%;
+	color:#333;
+	height:24px;
+	margin-top:20px;
+	font-size:12px;
+}
+div.hot1 span.hotcoursetitle{
+    float:left;
+	margin-left:20px;
+	text-align:left;
+	width:110%;
+	color:#999;
+	height:24px;
+
+	font-size:12px;
+	padding-top:10px;
+}
+div.contentdiv ul.contentul li.midli ul.midcontentul li ul.latestcoursecontentul li.cur{
+	color:#F93;
+	/*background-image:url(../images/headbj.gif);*/
+	/*background-repeat:no-repeat;*/
+	/*background-position:-3px 5px;*/
+    border-top: dashed 2px #999;
+    border-left: dashed 2px #999;
+    border-right: dashed 2px #999;
+    border-bottom: none;
+}
+div.contentdiv ul.contentul li.midli ul.midcontentul li.latest1{
+	position:relative;
+	width:720px;
+    	margin-bottom: 15px;
+	background-color:#EDEDED;
+
+	padding-top:5px;
+	padding-bottom:18px;
+	padding-right:15px;
+	border-bottom-right-radius:4px;
+	border-bottom-left-radius:4px;
+	border-top-right-radius:4px;
+	border-top-left-radius:4px;
+}
+div.contentdiv ul.contentul li.midli ul.midcontentul li ul.latestcoursecontentul li.course1{
+	position:relative;
+    border-bottom: dashed 2px #999;
+}
+div.contentdiv ul.contentul li.midli ul.midcontentul #pointLecturer{
+    display: block;
+    float:left;
+    width:720px;
+}
+div.hot1 span.ht{
+	margin-left:5px;
+	float:left;
+	width:100%;
+	height:24px;
+	color:#999;
+	}
+
+
+div.lunxian
+{
+	clear:both;
+	height:50px;
+    /*border-bottom: dashed 2px #999;*/
+	/*background-image:url(../images/headline.gif);*/
+	/*background-repeat:no-repeat;*/
+	/*background-position:0px 36px;*/
+
+}
+div .create1
+{
+    float:left;
+    clear: both;
+	width:700px;
+	text-align:center;
+	padding-left:30px;
+	margin-top:0px;
+}
+
+div.create
+{
+	clear:both;
+/*	background-color:#FFF;*/
+	width:100%;
+/*	height:100px;*/
+	text-align:center;
+	padding-left:50px;
+	margin:	10px 0;
+
+	}
+
+  div .create1 table
+  {
+	  background-color:#FFF;
+	  width:600px;
+	  text-align:center;
+	  color:#666;
+	  font-weight:lighter;
+	  /*//border:1px;*/
+	  border:3 inset;
+	  margin:0 0 10px 30px;
+
+  }
+  div .create table
+  {
+	  background-color:#FFF;
+	  width:600px;
+	  height:100px;
+	  text-align:center;
+	  color:#666;
+	  font-weight:lighter;
+	  //border:1px;
+	  border:3 inset;
+}
+div .create1 table tr td.htitle,
+div .create table tr td.htitle
+{
+	  color:#666;
+	  width:100px;
+	  font-weight:bold;
+
+
+ }
+div .create1 table tr td,
+div .create table tr td
+{
+   border:1 solid;
+   height:30px;
+}
+div .create table tr td a
+{
+	 color:#666;
+	   text-decoration:none;
+
+ }
+div .create table tr td img
+{
+	  padding-right:5px;
+	  padding-top:5px;
+}
+
+div .create table input{
+    width: 80px;
+}
+div.system
+{
+
+	  font-size:18px;
+	  font-weight:bold;
+	  margin-top:15px;
+	  margin-left:20px;
+}
+div .system ul li
+{
+    color:#666;
+    font-size: 14px;
+    display: block;
+    float: left;
+    height: 37px;
+    line-height: 37px;
+    padding-left:5px;
+    padding-right:5px;
+    margin:7px;
+    margin-top: 3px;
+    text-align: center;
+    border: 1px solid #bbb;
+    background-color: #FFF;
+    box-shadow:0px -1px 4px 2px rgba(0,0,0,0.3);
+    cursor: pointer;
+ }
+div .system ul li.cur{
+    color: #900;
+    background-color: rgb(235,235,235);
+    border-bottom: none;
+    z-index: 22
+}
+div.contentdiv ul.contentul li.leftli ul.leftcontentul li.leftmenuli1 ul li.cur{
+	text-align:center;
+	font-size:15px;
+	color:#0181a8;
+	width:100%;
+	height:38px;
+	background:url(../images/beijing.gif);
+	background-repeat:no-repeat;
+	background-position: 30px 0px;
+	padding-top:10px;
+	border-bottom-left-radius:4px;
+	border-top-left-radius:4px;
+
+}
+
+
+.stuEmail{
+    display:inline;
+    float:left;
+    clear: left;
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+.delStuBtn{
+    display:inline;
+    float:left;
+    margin-left:5px;
+}
+
+#tbody{
+    color:rgb(60,60,60);
+    font-size: 16px;
+    margin-left:30px;
+    float:left;
+}
+#inviteStudents{
+    display: block;
+    clear:left;
+}
+#addButton{
+    display: block;
+    float:left;
+    font-size: 14px;
+    margin-left: 15px;
+    padding-top: 25px;
+    color:#666;
+    cursor:pointer;
+    text-decoration: underline;
+}
+#addtoomuch{
+    display: block;
+    float:left;
+    clear: right;
+    color:red;
+    font-weight: lighter;
+    font-size:14px;
+    text-align: left;
+    margin-top: 25px;
+    margin-left:15px;
+}
+.invitedStudentList{
+    display: block;
+    float:left;
+    clear:both;
+    width:720px;
+    float:left;
+    text-align: left;
+}
+.invitedStudentList table{
+    float:left;
+}
+
+
+#editImg{
+    cursor: pointer;
+}

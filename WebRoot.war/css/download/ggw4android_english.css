@@ -1,0 +1,90 @@
+.banner{
+    float: left;
+    margin-top: 20px;
+    padding-top: 184px;
+    padding-left: 30px;
+    width: 940px;
+    height: 330px;
+    background: url(../../images/download/banner2_english.jpg) no-repeat;
+    position: relative;
+}
+.banner p{
+    font-size: 13px;
+    color: #4A7BA9;
+    line-height: 13px;
+    margin-left: 20px;
+    line-height: 26px;
+}
+.banner a.download1{
+    float: left;
+    margin-left:7px;
+    margin-top: 20px;
+    width: 200px;
+    height: 66px;
+    cursor: pointer;
+}
+.banner a.download1:hover{
+    background: url(../../images/download/download1_hover_english.png) no-repeat;
+}
+* html .banner a.download1:hover{
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,src='images/download/download1_hover_english.png',sizingMethod="image");
+}
+.banner a.download2{
+    float: left;
+    margin-left:6px;
+    margin-top: 20px;
+    width: 200px;
+    height: 66px;
+    cursor: pointer;
+    cursor: pointer;
+    clear: both;
+}
+.banner a.download2:hover{
+    background: url(../../images/download/download2_hover_english.png) no-repeat;
+}
+* html .banner a.download2:hover{
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,src='images/download/download2_hover_english.png',sizingMethod="image");
+}
+
+.banner .android{
+    display: block;
+    width: 270px;
+    height: 284px;
+    position: absolute;
+    left: 280px;
+    top: 220px;
+    background: url(../../images/download/android_robot3.png) no-repeat;
+}
+* html .banner .android{
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,src='images/download/android_robot3.png',sizingMethod="image");
+}
+
+
+
+.content_m {
+    float: left;
+    padding: 60px 0px 0px 30px;
+}
+
+.content_mm {
+    float: left;
+    width: 265px;
+    display: inline;
+}
+
+.content_mm h2 {
+    border-left: #9ACCE8 solid 10px; color: #068BB7; font-size: 24px; font-weight: normal; padding-left: 8px; margin: 0px;
+}
+
+.content_mm p {
+    color: #7F858A;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.content_mm img {
+    margin-left: 5px;
+}

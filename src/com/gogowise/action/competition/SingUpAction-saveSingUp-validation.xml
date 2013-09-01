@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+        "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+    <!--<field name="singUpInfo.user.userId">-->
+    <!--<field-validator type="requiredstring">-->
+    <!--<message>用户名是必填的</message>-->
+    <!--</field-validator>-->
+    <!--</field>-->
+
+    <field name="singUpInfo.user.email">
+        <field-validator type="required">
+            <message>EMAIL是必填的</message>
+        </field-validator>
+        <field-validator type="email">
+            <message>EMAIL格式不对</message>
+        </field-validator>
+    </field>
+
+
+    <field name="singUpInfo.user.userName">
+        <field-validator type="requiredstring">
+            <message>名子是必填的</message>
+        </field-validator>
+    </field>
+
+
+    <field name="singUpInfo.user.sexy">
+        <field-validator type="required">
+            <message>性别是必填的</message>
+        </field-validator>
+    </field>
+
+    <field name="singUpInfo.cellPhone">
+        <field-validator type="required">
+            <message>手机号码是必填的</message>
+        </field-validator>
+        <field-validator type="long">
+            <param name="min">13000000000</param>
+            <param name="max">20000000000</param>
+            <message>请输入正确的手机号码</message>
+        </field-validator>
+    </field>
+
+    <field name="singUpInfo.enounce">
+        <field-validator type="requiredstring">
+            <message>参赛宣言必填的</message>
+        </field-validator>
+    </field>
+
+    <field name="singUpInfo.description">
+        <field-validator type="requiredstring">
+            <message>自我介绍必填的</message>
+        </field-validator>
+    </field>
+
+    <!--<field name="sessionId">-->
+    <!--<field-validator type="required">-->
+    <!--<message>参赛场次必填的</message>-->
+    <!--</field-validator>-->
+    <!--</field>-->
+</validators>

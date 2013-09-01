@@ -1,0 +1,55 @@
+.listUp{
+    width: 620px;
+    overflow: hidden;
+    margin-top:25px;
+}
+.listUp .memeberWrap{
+    width: 620px;
+    padding-bottom: 10px;
+}
+.memeberInfo{
+    width: 620px;
+    margin-top: 20px;
+    padding-bottom:15px;
+    border-bottom: 1px dotted #cdcdcd;
+}
+.memeberInfo .Info1 img.memberLogo{
+    width: 72px;
+    height: 72px;
+    margin-right: 10px;
+    border: none;
+}
+.memeberInfo .Info1 img.orgLogo{
+    width: 72px;
+    height: 54px;
+    margin-right: 10px;
+    border: none;
+}
+.memeberInfo .Info2{
+    width: 450px;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+.memeberInfo .Info2 .a_title{
+    float: left;
+    /*max-width:110px;*/
+    height: 20px;
+    color: #8AA5B1;
+    line-height: 20px;
+    overflow: hidden;
+}
+.memeberInfo .Info2 .a_title:hover{
+    text-decoration: underline;
+}
+.memeberInfo .Info2 span{
+    float: left;
+    color: #585756;
+    margin-top: 5px;
+    line-height: 18px;
+    clear: both;
+}
+.memeberInfo .Info3 .a_focus{
+    float: right;
+    margin-top: 15px;
+    clear: both;
+}

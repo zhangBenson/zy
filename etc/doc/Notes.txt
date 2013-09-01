@@ -1,0 +1,10 @@
+mvn install:install-file -Dfile=C:\Benson\backup\lib\IKAnalyzer.jar -DgroupId=org.mira.lucene.analysis -DartifactId=IKAnalyzer -Dversion=2.2.0 -Dpackaging=jar -DgeneratePom=true -DcreateChecksum=true
+
+
+
+1. 使用maven命令：mvn dependency:sources 下载依赖包的源代码。
+
+2. 使用参数： -DdownloadSources=true 下载源代码jar。 -DdownloadJavadocs=true 下载javadoc包。
+
+
+-Xmx512m -XX:MaxPermSize=512M

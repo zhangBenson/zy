@@ -1,0 +1,431 @@
+.mfp{
+    width: 800px;
+}
+
+
+.mfp_left{
+    padding: 20px 15px;
+    width:560px;
+}
+
+.usItem_wrap {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px dotted #bebebe;
+}
+.usItem_wrap h3{
+    width: 220px;
+}
+.usItem_wrap .usItem_cont{
+    width: 538px;
+    border: 1px solid #e6e6e6;
+    padding: 15px 10px;
+    background: #fff;
+    margin-top: 15px;
+}
+.usItem_cont .logo_wrap img{
+    width:80px;
+    height: 60px;
+    margin:0 10px 5px 0;
+    border: none;
+}
+.usItem_cont .detail a.h_title{
+    float: left;
+    color:#1A1A1A;
+    max-width: 315px;
+    font-size: 14px;
+    height:16px;
+    line-height: 16px;
+    overflow: hidden;
+}
+.usItem_cont .detail p{
+    float: left;
+    color: #4D4D4D;
+    clear: both;
+    margin-top: 8px;
+    width: 315px;
+}
+.usItem_cont .detail strong{
+    float: left;
+    /*color: #0F5452;*/
+    color: orange;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 16px;
+    margin-top:6px;
+    width: 315px;
+    clear: both;
+}
+.usItem_cont .detail a{
+    color: #4D4D4D;
+}
+.usItem_cont .detail a:hover{
+    text-decoration: underline;
+}
+.usItem_cont .desc{
+    width: 538px;
+    max-height: 32px;
+    _height:16px;
+    overflow: hidden;
+}
+.usItem_cont .desc p{
+    line-height: 16px;
+}
+.usItem_cont .handle{
+    margin-right: 5px;
+    width: 125px;
+    height: 60px;
+    position: relative;
+}
+.usItem_cont .handle a.a_1{
+    float: right;
+    color: #003333;
+    line-height: 14px;
+}
+.usItem_cont .handle a.a_2{
+    float: right;
+    clear: both;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    /*background: #f5d173;*/
+    background: cornflowerBlue;
+    margin-top: 10px;
+    /*color: #333;*/
+}
+.usItem_cont .handle a.a_2:hover{
+    background: #f6da99;
+}
+.handle .candidate{
+    display:none;
+    position: absolute;
+    right:100px;
+    top:0px;
+    z-index: 2;
+    background: #add8e6;
+}
+.handle .candidate .interviewees_list{
+    display: block;
+    width:380px;
+    padding: 5px;
+    background: #FFF;
+    border: 1px solid #ededed;
+    box-shadow: 0px 0px 10px 10px rgba(0,0,0,0.5);
+    border-radius: 4px;
+}
+.orangeWords{
+    color: #f7931e;
+}
+.handle .candidate .interviewees_list tr{
+    display: block;
+    width:100%;
+    text-align: left;
+}
+.handle .candidate .interviewees_list tr td{
+    display: block;
+    float:left;
+    padding: 2px;
+    height:16px;
+    line-height: 16px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px dashed #BBB;
+}
+
+.usItem2_wrap{
+    margin-top: 20px;
+    width: 560px;
+    overflow: hidden;
+}
+
+.usItem2_wrap ul{
+    float: left;
+    width: 580px;
+    list-style: none;
+}
+.usItem2_wrap ul li{
+    float: left;
+    width: 120px;
+    height: 110px;
+    padding: 3px;
+    border: 1px solid #ebebeb;
+    background: #eee;
+    margin-top: 15px;
+    margin-right: 16px;
+}
+.usItem2_wrap ul li a.img{
+    float: left;
+}
+.usItem2_wrap ul li a.img img{
+    border: none;
+    width: 120px;
+    height: 90px;
+}
+.usItem2_wrap ul li a.title{
+    float: left;
+    margin-top: 2px;
+    width: 120px;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+    overflow: hidden;
+    color: #666;
+}
+.usItem2_wrap ul li a.title:hover{
+    text-decoration: underline;
+}
+
+.mfp_right{
+    width: 200px;
+    padding-top: 40px;
+    padding-left: 10px;
+    /*overflow: hidden;*/
+}
+
+.rtItem1{
+    padding-bottom: 15px;
+    border-bottom: 1px dotted #bebebe;
+    position: relative;
+}
+.rtItem1 div.message_tip{
+    position: absolute;
+    top:-5px;
+    left:108px;
+    width:26px;
+    height:26px;
+    background: url(../../images/myfirstpage/message_tip_bg.png) 0px 0px;
+    cursor:pointer;
+    line-height: 26px;
+    text-align: center;
+    color:#FFF;
+    font-size: 14px;
+    font-family:verdana,serif;
+    font-weight: bold;
+}
+.rtItem1 div.message_tip:hover{
+    background-position:0px -26px;
+}
+.rtItem1 div.message_box{
+    display: none;
+    position: absolute;
+    top:26px;
+    right:80px;
+    width:420px;
+    background: #e6e6fa;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 4px 2px rgba(0,0,0,0.2) inset;
+    border-radius: 3px;
+    padding: 5px;
+    z-index:4;
+}
+.rtItem1 div.message_box table{
+    float:left;
+    width:400px;
+}
+.rtItem1 div.message_box table tr td{
+    font-size: 12px;
+    font-weight: lighter;
+    line-height: 24px;
+    text-align: left;
+}
+.rtItem1 table tr td.td_0{
+    float:left;
+    margin-top: 5px;
+    color:#069;
+}
+.rtItem1 div.message_box table tr td a{
+    color:#069;
+}
+.rtItem1 div.message_box table tr td.td_1{
+    width:280px;
+}
+.rtItem1 div.message_box table tr td.td_2{
+    width:50px;
+    text-align: right;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.rtItem1 div.message_box table tr td.td_3{
+    width:100px;
+    text-align: right;
+    color:#069;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.rtItem1 div.message_box table tr td.td_3 a:hover,
+.rtItem1 div.message_box table tr td.td_2 a:hover{
+    color:#ea0;
+    text-decoration:underline;
+    cursor: pointer;
+}
+
+.rtItem1 ul{
+    float: left;
+    padding-top: 10px;
+    list-style: none;
+}
+.rtItem1 ul li{
+    float: left;
+}
+.rtItem1 ul li p.no_course{
+    float: left;
+    width: 120px;
+    margin:6px 20px 8px;
+    color: #555;
+}
+.rtItem1 ul li .daynew{
+    margin-left: 5px;
+    width: 185px;
+    height: 20px;
+    color: #444;
+    line-height: 20px;
+    padding-left: 10px;
+    background: #ebebeb;
+    cursor: pointer;
+}
+.rtItem1 ul li p.rt_detail{
+    margin:5px 0 0 10px;
+}
+.rt_detail a.img{
+    float: left;
+}
+.rt_detail a.img img{
+    border: none;
+    width: 60px;
+    height: 45px;
+    margin:0 10px 5px 0;
+}
+.rt_detail a.title{
+    float: left;
+    max-width: 100px;
+    height: 16px;
+    line-height: 16px;
+    overflow: hidden;
+    color: #444;
+}
+.rt_detail a.title:hover{
+    text-decoration: underline;
+}
+.rt_detail span{
+    float: left;
+    margin-top: 6px;
+    color: #666;
+}
+
+.rtItem2{
+    width: 200px;
+    margin-top: 20px;
+    overflow: hidden;
+    padding-bottom: 15px;
+    border-bottom: 1px dotted #bebebe;
+}
+.rtItem2 ul{
+    float: left;
+    list-style: none;
+    width: 220px;
+    margin-left: 6px;
+}
+.rtItem2 ul li{
+    float: left;
+    width: 80px;
+    height: 76px;
+    padding: 3px;
+    border: 1px solid #ebebeb;
+    background: #eee;
+    margin-top: 10px;
+    margin-right: 17px;
+}
+.rtItem2 ul li a.img{
+    float: left;
+}
+.rtItem2 ul li a.img img{
+    float: left;
+}
+.rtItem2 ul li a.img img{
+    border: none;
+    width: 80px;
+    height: 60px;
+}
+.rtItem2 ul li a.title{
+    float: left;
+    width: 80px;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    overflow: hidden;
+    color: #666;
+}
+.rtItem2 ul li a.title:hover{
+    text-decoration: underline;
+}
+
+.rtItem3{
+   margin-top: 20px;
+   width: 200px;
+    overflow: hidden;
+    padding-bottom: 15px;
+    border-bottom: 1px dotted #bebebe;
+}
+.rtItem3 span.more a{
+    float: right;
+    margin-right:15px;
+    font-size: 12px;
+    line-height: 20px;
+    color: #39c;
+}
+.rtItem3 span.more a:hover{
+    text-decoration: underline;
+}
+.rtItem3 ul{
+    float: left;
+    width: 220px;
+    display: inline;
+    margin-left: 5px;
+    list-style: none;
+}
+.rtItem3 ul li{
+    float: left;
+    margin-top: 10px;
+    width: 56px;
+    height: 72px;
+    margin-right:13px;
+    position: relative;
+}
+.rtItem3 ul li a.host_img{
+    float: left;
+}
+.rtItem3 ul li a.host_img img{
+    border: none;
+    width:50px;
+    height: 50px;
+    padding: 2px;
+    border: 1px solid #ebebeb;
+}
+.rtItem3 ul li a.host_name{
+    float: left;
+    width: 56px;
+    height: 16px;
+    text-align: center;
+    color: #333;
+    line-height: 16px;
+    overflow: hidden;
+}
+.rtItem3 ul li a.host_name:hover{
+    text-decoration: underline;
+}
+.rtItem3 ul li a.live_tip{
+    position: absolute;
+    left:0px;
+    bottom:17px;
+    width: 56px;
+    height: 16px;
+    line-height: 16px;
+    color:#fff;
+    background: rgb(185, 125, 200);
+    text-align: center;
+}
+.rtItem3 ul li a.live_tip:hover{
+    background:rgb(246,192,10);
+}

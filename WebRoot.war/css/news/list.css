@@ -1,0 +1,238 @@
+.fl{float:left;display:inline;}
+.fr{float:right;display:inline;}
+.tl{text-align:left;}
+.tc{text-align:center;}
+.tr{text-align:right;}
+.clear{clear:both;overflow:hidden;zoom:1}
+ul{list-style-type: none;}
+a {color: #424242;text-decoration: none;}
+.side a:hover {background-color: #00457D;color: white !important;}
+a:hover img {filter: alpha(opacity=85);-moz-opacity: 0.85;background: white;opacity: 0.85;}
+img {border: none;vertical-align: top;display: block;}
+
+.dfz-nav{
+    width: 690px;
+    padding: 0 265px 0 0;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    height: 36px;
+    overflow: hidden;
+    font-size: 14px;
+}
+.logo-1192 {
+    background-position: 0 -140px;
+}
+.sinalogo-nav {
+    background: url(http://www.sinaimg.cn/cj/dfz/cms_v1.0/img/sinalogo-nav.png) no-repeat;
+    margin: 0;
+    width: 139px;
+    height: 36px;
+}
+.sinalogo, .sinalogo-olympic, .sinalogo-nav {
+    float: left;
+    display: inline;
+    line-height: 500px;
+    overflow: hidden;
+    margin: 6px 0 0 8px;
+}
+.sinalogo-nav a {
+    display: block;
+    width: 139px;
+    height: 36px;
+    font-size: 14px;
+}
+.dfz-nav i {
+    margin: 0 6px;
+    font-size: 14px;
+}
+.dfz-nav a, .dfz-nav a {
+    color: #004276;
+    font-size: 14px;
+}
+.dfz-nav .bnav {
+    margin: 11px 0 0 17px;
+    float: left;
+    display: inline;
+}
+
+.wrap{
+   width: 970px;
+}
+
+.wrap .con{
+    width: 658px;
+    overflow: hidden;
+    border: 1px solid #E0E0E0;
+    border-top: 2px solid #004274;
+    padding: 36px 20px 20px;
+}
+.article-title {
+    text-align: center;
+}
+.article-title h2{
+    font-size: 18px;
+    color:#222;
+    font-weight: normal;
+}
+.article-title p{
+    font-size: 15px;
+    color:#222;
+    font-weight:normal;
+}
+.artInfo {
+    text-align: center;
+    color: #999;
+    padding-bottom: 10px;
+    line-height: 22px;
+    border-bottom: 1px dotted #ccc;
+}
+.artInfo a.pub_name{
+    color: #999;
+}
+.artInfo a:hover{
+    text-decoration: underline;
+}
+.artInfo a.watch{
+    /*color: rgb(1,48,141);*/
+    color: #f60;
+}
+
+.main-body{
+    line-height: 26px;
+    padding: 19px 0 0;
+    color: #222;
+    font-size: 14px;
+    overflow-y: hidden;
+    clear: both;
+    _zoom: 1;
+    word-wrap: break-word;
+    word-break: normal;
+}
+.main-body a {
+    color: #004276;
+}
+.list_share{
+    width: 100%;
+    margin-top: 20px;
+}
+
+
+
+.wrap .side{
+    width: 250px;
+}
+.sdiv {
+    float: left;
+    display: inline;
+    border: 1px solid #E0E0E0;
+    background: #FDFDFD;
+    margin-bottom: 15px;
+}
+.sdivt3 {
+    border-top: 3px solid #00457D;
+}
+.stit {
+    float:left;
+    display: inline;
+    background: #FAFAFA;
+    width:221px;
+    height: 31px;
+    line-height: 31px;
+    padding: 0 15px 0 12px;
+    overflow: hidden;
+    border-bottom: 1px solid #EFEFEF;
+}
+.stit span {
+    float: right;
+    font-size: 12px;
+    font-weight: normal;
+}
+.stit strong {
+    float: left;
+    color: #222;
+}
+.stit strong a:hover {
+    color: #666 !important;
+    background: none;
+}
+.everyday-list {
+    float: left;
+    display: inline;
+    margin: 1px 15px 0px 11px;
+    padding: 8px 0 10px 0;
+    list-style:url(../../images/list_dot.jpg) square inside;
+    *list-style:square inside;
+    _list-style:square inside;
+}
+.everyday-list li{
+    float:left;
+    width: 221px;
+    line-height: 20px;
+}
+
+.recom-list {
+    padding: 0 0 8px;
+    width: 248px;
+}
+.vedio-recom li {
+    position: relative;
+    text-align: left;
+    line-height: 21px;
+    height: 144px;
+    overflow: hidden;
+}
+.recom-list li {
+    float: left;
+    display: inline;
+    padding: 15px 3px 0 15px;
+    width: 100px;
+    text-align: center;
+}
+.recom-list img {
+    width: 100px;
+    height: 75px;
+    margin-bottom: 6px;
+}
+.vedio-recom .recom-list li i {
+    top: 74px;
+    left: 15px;
+}
+.vedio-recom .recom-list li p{
+    width: 100px;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+}
+.vedio-recom li i {
+    position: absolute;
+    background: black;
+    color: white;
+    line-height: 16px;
+    padding: 0 4px;
+    left: 0;
+    top: 59px;
+    filter: alpha(opacity=60);
+    -moz-opacity: 0.60;
+    opacity: 0.60;
+}
+element.style {
+    height: 21px;
+    overflow: hidden;
+}
+.cnum {
+    color: #666;
+}
+.iplay {
+    padding-left: 17px;
+    color: #666;
+    background: url(http://www.sinaimg.cn/cj/dfz/cms_v1.0/img/bg.png) no-repeat  -286px -146px;
+    font-size: 13px;
+}
+.page .next:hover, .page .prev:hover, .btn-tran, .icon:hover {
+    background-color: transparent !important;
+    color: #424242 !important;
+}
+.vedio-recom li {
+    text-align: left;
+    line-height: 21px;
+}

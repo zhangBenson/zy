@@ -1,0 +1,139 @@
+.mf_1{
+    float: left;
+}
+.mf_1 ul{
+    float:left;
+    display: inline;
+    width:700px;
+    margin-top: 30px;
+    margin-left:15px;
+    border-bottom: 1px solid rgb(250, 190, 132);
+    list-style-type: none;
+}
+.mf_1 ul li{
+    float:left;
+    display: inline;
+    height:24px;
+    line-height: 24px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 20px;
+}
+.mf_1 ul li a{
+    color:rgb(253, 132, 14);
+}
+.mf_1 ul li.stand_out{
+    border-top: 1px solid rgb(250, 190, 132);
+    border-left: 1px solid rgb(250, 190, 132);
+    border-right: 1px solid rgb(250, 190, 132);
+    background: rgb(255, 248, 239);
+}
+
+.mf_2{
+    float:left;
+    display: inline;
+    width:800px;
+    padding-left: 15px;
+    padding-bottom: 40px;
+}
+.mf_2 .overview {
+  float:left;
+  display: inline;
+  width:780px;
+  padding: 22px 0;
+  margin: 0 10px;
+}
+.mf_2 .overview .sub_info {
+  float:left;
+  text-align: center;
+  width: 190px;
+  height: 62px;
+  overflow: hidden;
+}
+.mf_2 .overview .sub_info .number {
+  color: #333333;
+  font: 36px/40px SimHei;
+}
+.mf_2 .overview .sub_info .number span {
+  font-size: 23px;
+  margin-left: 5px;
+}
+.mf_2 .overview .sub_info .describe {
+  color: #888;
+}
+.mf_2 .overview .sub_info_center {
+  width: 210px;
+  border: 1px solid #f2f2f2;
+  border-width: 0 1px;
+}
+
+.mf_2 .course_item {
+  padding: 20px 0 20px 10px;
+  border-top: 1px solid #f2f2f2;
+  clear:both;
+}
+.mf_2 .course_item .course_logo{
+    float:left;
+    display: inline;
+    margin-right: 15px;
+}
+.mf_2 .course_item .course_logo img{
+    width:96px;
+    height: 72px;
+    padding: 2px;
+    border: 1px solid #ebebeb;
+}
+.mf_2 .course_item h4{
+    float:left;
+    max-width: 235px;
+    height: 18px;
+    line-height: 18px;
+    overflow: hidden;
+}
+.mf_2 .course_item h4 a {
+  color: #f76900;
+}
+.mf_2 .course_item h4 a:hover{
+    text-decoration: underline;
+}
+.mf_2 .course_item .maintenance{
+    float: left;
+    display: inline;
+    margin-left: 15px;
+    color: #69C;
+}
+.mf_2 .course_item .maintenance a{
+    color: #3e8fda;
+}
+.mf_2 .course_item .maintenance a:hover{
+    text-decoration: underline;
+}
+.mf_2 .course_item .date{
+    /*float:left;*/
+    display: inline;
+    color:#888;
+    margin-left: 50px;
+}
+.mf_2 .course_item .details, .mf_2 .course_item .time {
+  color: #888;
+  margin-top: 8px;
+}
+.mf_2 .course_item .details{
+    width:635px;
+    height:32px;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+.mf_2 .course_item .details a:hover{
+    text-decoration: underline;
+}
+.mf_2 .course_item .details span, .mf_2 .course_item .time span {
+  margin-right: 15px;
+}
+.mf_2 .course_item .time a:hover{
+ text-decoration: underline;
+}
+.mf_2 .course_item .manage_course {
+  color: #3e8fda;
+  margin-right: 15px;
+}

@@ -1,0 +1,85 @@
+.live_title{
+    width: 640px;
+    margin-top: 30px;
+}
+.live_title p{
+    float: left;
+    width: 640px;
+    margin-top: 8px;
+}
+.live_title p a{
+    color: #888;
+    margin-left: 20px;
+}
+.live_title p a:hover{
+    text-decoration: underline;
+}
+.listView{
+    padding:20px 0 15px 0;
+    border-bottom: 1px dotted #ccc;
+}
+.viewLeft{
+    width: 470px;
+    margin-left: 15px;
+}
+.viewLeft p{
+    width: 470px;
+    margin-top: 4px;
+    line-height: 18px;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+.viewLeft p.title{
+    float: left;
+    clear: both;
+    padding-bottom: 4px;
+}
+.viewLeft p.title a.title{
+    float: left;
+    font-size: 16px;
+    color: #598EDE;
+}
+.viewLeft p.title a.title:hover{
+    text-decoration: underline;
+}
+.viewLeft p.title a.watch{
+    float: left;
+    margin-left: 20px;
+    padding: 1px 12px;
+    background: #EBEBEB;
+    color: #f90;
+    border: 1px solid #ABABAB;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 3px;
+}
+.viewLeft p.title a.watch:hover{
+    background: #dadada;
+}
+.viewLeft p.info{
+    color: #888;
+}
+.viewRight {
+    position: relative;
+}
+.viewRight a.img img{
+    width: 120px;
+    height: 90px;
+    padding: 6px;
+    margin-left: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+}
+.viewRight a.person{
+    position: absolute;
+    right:3px;
+    bottom:3px;
+}
+.viewRight a.person img{
+    width: 30px;
+    height:30px;
+    padding: 2px;
+    background: #fff;
+    border:1px dotted #cbcecf;
+}

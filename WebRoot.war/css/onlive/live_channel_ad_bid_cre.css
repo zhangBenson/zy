@@ -1,0 +1,228 @@
+.mf_1{
+    float: left;
+}
+.mf_1 p{
+    float:left;
+    display: inline;
+    width:760px;
+    padding: 30px 0px 0px 40px;
+    color:rgb(43, 43, 43);
+}
+.mf_1 p a{
+    color:rgb(29, 160, 236);
+    cursor: pointer;
+}
+.mf_1 p a:hover{
+    text-decoration: underline;
+}
+.course_create_container {
+	float: left;
+	width: 740px;
+	font-family: Verdana, Geneva, sans-serif, "微软雅黑";
+	float: left;
+	display: block;
+	width:740px;
+    overflow: hidden;
+    margin-left: 20px;
+	padding-bottom:63px;
+    border-radius: 4px;
+	position:relative;
+}
+.course_create_container .create_content_title{
+    background-color: rgb(227,238,248);
+	line-height: 30px;
+    font-size: 16px;
+    font-family: verdana,sans-serif,"黑体";
+    font-weight: bold;
+	padding-left: 10px;
+	float: left;
+	width: 750px;
+	clear: both;
+	margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.course_create_container .create_back_forth {
+	position: absolute;
+	height: 48px;
+	width: 740px;
+	right: 0px;
+	bottom: 0px;
+}
+
+.course_create_container .create_content .content_courseInfo {
+	list-style-type: none;
+	margin-left: 25px;
+	float: left;
+	margin-top: 10px;
+}
+.course_create_container .create_content .content_courseInfo .add_student_btn{
+    float: left;
+    margin-top: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.course_create_container .create_content .content_courseInfo .add_student_btn_for_course_repeat{
+    float: left;
+    margin-top: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.course_create_container .create_content .content_courseInfo #invitedStudents input{
+    float:left;
+    margin-bottom: 3px;
+}
+.course_create_container .create_content .content_courseInfo .del_student_btn{
+    float:left;
+    width:50px;
+    margin-top: 5px;
+    margin-left: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.course_create_container .create_content .content_courseInfo li {
+	float: left;
+    width:670px;
+    text-align: left;
+	margin-bottom: 20px;
+}
+.course_create_container .create_content .content_courseInfo .long_select_li {
+	width: 340px;
+}
+
+.input_msg{
+    color:#ff0000;
+    font-size:13px;
+    font-weight: lighter;
+    display: block;
+    float:left;
+    margin-top: 0px;
+}
+.long_text_field{
+    float:left;
+	width:600px;
+	height:26px;
+	line-height:26px;
+	padding-left:2px;
+	border:1px solid #ccc;
+}
+.long_text_field_for_student{
+    float:left;
+	width:600px;
+	height:26px;
+	line-height:26px;
+	padding-left:2px;
+	border:1px solid #ccc;
+}
+
+.short_text_field{
+	width:180px;
+	height:26px;
+	line-height:26px;
+	padding-left:2px;
+	border:1px solid #ccc;
+}
+.long_text_area{
+	width:600px;
+	height:80px;
+	padding:2px;
+	border:1px solid #ccc;
+}
+.long_select{
+	width:200px;
+	height:28px;
+    border:1px solid #ccc;
+}
+
+.submit_btn{
+        float:left;
+        margin-left: 30px;
+        color:#FFF;
+        font-weight: bold;
+        font-size: 16px;
+        height:30px;
+        padding-left: 10px;
+        padding-right: 10px;
+        background: rgb(70,170,200);
+        background-image: -moz-linear-gradient(center bottom , rgb(70,170,200) 50%, rgb(70,170,200) 50%, White 100%);
+        box-shadow: 0px 1px 2px rgba(0,0,0,0.2);
+        border-radius: 3px;
+        cursor: pointer;
+        border: none;
+}
+.submit_btn:hover{
+    background: rgb(40,160,200);
+}
+
+.tip_error {
+    float: left;
+    margin-right: 3px;
+    background-image: url(../../images/input_msg_tip.png);
+    background-position: 0px 0px;
+    width: 16px;
+    height: 16px;
+}
+
+.tip_warn {
+    float: left;
+    margin-right: 3px;
+    background-image: url(../../images/input_msg_tip.png);
+    background-position: 0px -150px;
+    width: 16px;
+    height: 16px;
+}
+
+.tip_right {
+    float: left;
+    margin-right: 3px;
+    background-image: url(../../images/input_msg_tip.png);
+    background-position: 0px -250px;
+    width: 16px;
+    height: 16px;
+}
+.option_tittle{
+        display: block;
+        float:left;
+        margin-right: 6px;
+        margin-bottom:5px;
+        font-size: 14px;
+        text-align: left;
+}
+.option_content{
+    display: block;
+    float:left;
+    clear:left;
+    text-align: left;
+}
+.option_content img{
+    width:240px;
+    height:180px;
+    border: 1px solid #ccc;
+    padding: 2px;
+    margin-bottom: 5px;
+}
+.input_msg{
+    display: block;
+    float:left;
+    clear:right;
+    padding: 3px;
+    font-size:12px;
+    color:#ff0000;
+    font-weight: lighter;
+}
+.input_tip{
+    color:#000;
+     border:1px solid rgb(64,179,255);
+     background:rgb(229,245,255)
+}
+.input_content{
+    display: block;
+    float:left;
+    clear:both;
+}
+.orangeWords{
+    color:#cc6600;
+}

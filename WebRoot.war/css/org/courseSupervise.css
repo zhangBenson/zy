@@ -1,0 +1,162 @@
+.rightcontent{
+    border:0px;
+    width:810px;
+    padding: 3px;
+    word-wrap: break-word;
+}
+.rightcontent img{
+    float:left;
+}
+.rightcontent .blogframe{
+    width: 800px;
+    background: url(../../images/blogindex/courseframecenter.gif) center repeat-y;
+    position: relative;
+    float:left;
+    margin-top: 10px;
+    font-weight: lighter;
+    position:relative;
+}
+.rightcontent .blogframe .courseLogo {
+    float:left;
+    width:152px;
+    height:112px;
+    margin-left: 20px;
+    margin-bottom: 8px;
+    margin-top: 7px;
+    margin-right: 8px;
+}
+.rightcontent .blogframe .courseLogo img{
+      width:146px;
+      height:106px;
+      padding: 2px;
+      background-color: #eee;
+      border: 1px solid #aaa;
+      box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+.rightcontent .blogframe .course_info{
+    width:600px;
+    float:left;
+    /*background: #d2691e;*/
+    text-align: left;
+    vertical-align: top;
+    position: relative;
+}
+.rightcontent .blogframe .course_info .course_tittle{
+   float:left;
+    /*background: red;*/
+    margin-top: 7px;
+    width:600px;
+    position: relative;
+}
+.rightcontent .blogframe .course_info .course_tittle h6{
+    float:left;
+    font-size: 16px;
+    color:#006699;
+}
+.rightcontent .blogframe .course_info .course_tittle .check_teacher_student{
+    float:right;
+    margin-right: 190px;
+    color:#00008b;
+    cursor:pointer;
+    font-size: 12px;
+    font-weight: lighter;
+}
+.rightcontent .blogframe .course_info .course_tittle .teacher_student_list{
+   display:none;
+    z-index:3;
+    position: absolute;
+    top:0px;
+    right:190px;
+    padding: 5px;
+    height:0;
+}
+.rightcontent .blogframe .course_info .course_tittle .teacher_student_list table{
+    display: block;
+    width:380px;
+    padding: 5px;
+    background: #FFF;
+    border: 1px solid #bbb;
+    box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.3);
+}
+.rightcontent .blogframe .course_info .course_tittle .teacher_student_list table tr{
+    display: block;
+    width:100%;
+    border-bottom: 1px dashed #BBB;
+    text-align: left;
+}
+.rightcontent .blogframe .course_info .course_tittle .teacher_student_list table tr td{
+    display: block;
+    float:left;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px dashed #BBB;
+}
+.rightcontent .blogframe .course_info  .course_tittle .teacher_student_list table tr.table_tittle{
+    width:360px;
+    color:#006699;
+}
+.rightcontent .blogframe .course_info .course_detail{
+    float:left;
+    margin-top: 5px;
+    /*background: yellow;*/
+}
+.rightcontent .blogframe .course_info .course_detail table tr td{
+    /*margin-right: 30px;*/
+    width:200px;
+}
+.rightcontent .blogframe .course_info .course_time_left{
+    float: left;
+    width:325px;
+    height:35px;
+    line-height: 35px;
+    padding-left:44px;
+    margin-top: 3px;
+    margin-bottom: 8px;
+    text-align: left;
+    background: url(../../images/other.jpg) 0px -73px;
+    font-size: 16px;
+}
+.rightcontent .blogframe .course_info .course_manipulate{
+    position: absolute;
+    top:10px;
+    right:10px;
+    width:140px;
+    /*background: blue;*/
+}
+.rightcontent .blogframe .course_info .course_manipulate .course_supervise_btn{
+    display: block;
+    float:left;
+    height:30px;
+    line-height: 30px;
+    color:#FFF;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    text-align: center;
+    margin-right: 10px;
+    margin-top: 7px;
+    padding-left:13px;
+    padding-right: 13px;
+    background: #f7931e;
+    box-shadow: 0px 2px 3px rgba(235,23,107,0.4);
+    border-radius: 4px;
+    cursor:pointer;
+}
+.rightcontent .blogframe .course_info .course_manipulate .see_all_classes{
+    float:left;
+    font-size:16px;
+    color:#cc6600;
+    cursor:pointer;
+    width:136px;
+    height:40px;
+    margin-top: 7px;
+}
+
+.classintro{ float:left;margin:8px 0px 8px 30px; width:750px;display:none;}
+.classintro tr{  height:28px;}
+.classintro td{ padding:3px 2px 3px 4px;border-bottom:1px dashed #999; text-align: right;}
+.classintro .td1{ color:#006699; width:60px;}
+
+.rightcontent .blogframe .orangeWords{
+      color: #f7931e;
+}

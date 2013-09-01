@@ -1,0 +1,40 @@
+
+.founder_box{
+    width:615px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px dotted #e5e5e5;
+}
+.img_wrapper{
+    width: 130px;
+    margin-right: 40px;
+    text-align: left;
+}
+.img_wrapper img{
+    width: 130px;
+}
+.desc_wrapper h2{
+    height: 22px;
+    line-height: 22px;
+    font-size: 14px;
+    font-weight: normal;
+    /*font-family: "\5FAE\8F6F\96C5\9ED1","\5b8b\4f53",sans-serif;*/
+    color: #666;
+}
+.desc_wrapper{
+    width: 445px;
+}
+.desc_wrapper h3{
+    color: #ed5d0f;
+    font-size: 12px;
+    font-weight: normal;
+    height: 20px;
+    line-height: 20px;
+    margin-bottom: 8px;
+}
+.desc_wrapper p{
+    font-size: 12px;
+    text-indent: 0;
+    line-height: 20px;
+}

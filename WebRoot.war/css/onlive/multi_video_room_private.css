@@ -1,0 +1,167 @@
+@charset "utf-8";
+/* CSS Document */
+
+#flash_cont {
+	width: 970px;
+	float: left;
+	padding-bottom: 20px;
+}
+.flashWrap {
+	float: left;
+	height: 350px;
+	width: 410px;
+	margin-left: 23px;
+	display: inline;
+	background-image: url(../../images/room/room_flash_bg.png);
+    padding: 10px 20px 39px 21px;
+}
+.room_tip1 {
+    float: right;
+    width: 870px;
+    text-align: right;
+    margin: 8px 45px 10px 0px;
+}
+.room_tip1 .p1{
+    float: left;
+}
+.room_tip1 .p1 .whose{
+    margin-left: 35px;
+    font-size: 16px;
+    color: #0e6eab;
+}
+.room_tip1 .p2{
+    float: right;
+}
+.room_tip2 {
+    float: left;
+    width: 900px;
+    margin-left: 35px;
+    line-height:160%;
+    font-size: 14px;
+}
+
+.msgWrap  {
+	float: left;
+	height: 350px;
+	width: 465px;
+	margin-left: 25px;
+	background-color: #FFF;
+	padding: 10px;
+}
+.warm_tip {
+	color: #C1272D;
+	font-size: 16px;
+}
+#flash_cont .room_other {
+	float: left;
+	margin-left: 23px;
+	margin-top: 15px;
+	margin: 15px 23px 0 23px;
+}
+
+#flash_cont .roo_tip {
+	padding-top: 20px;
+	padding-right: 40px;
+	padding-bottom: 15px;
+	padding-left: 40px;
+}
+#flash_cont .roo_tip p {
+	margin-top: 15px;
+}
+#leftDays {
+	color: #C1272D;
+	font-size: 16px;
+}
+
+.term-list{
+    float: left;
+    margin-left: 10px;
+    width: 220px;
+    overflow: hidden;
+}
+.term-list ul{
+    float: left;
+    width: 220px;
+    margin-top: 20px;
+    list-style-type: none;
+}
+.term-list ul li{
+    float: left;
+    width: 220px;
+    margin-bottom: 10px;
+    /*border-bottom: 1px solid #b3b3b3;*/
+}
+.term-list ul li img{
+    width: 60px;
+    height: 60px;
+    border: none;
+}
+.term-list ul li .a_img{
+    float: left;
+    padding: 4px;
+    border: 1px solid #E9E9e9;
+    background: white;
+    margin-right:10px;
+}
+.term-list ul li .a_img:hover{
+    border-color: #bccabd
+}
+
+.term-list ul li .a_title{
+    float: left;
+    width: 120px;
+    height: 20px;
+    color: #000;
+    line-height: 20px;
+    overflow: hidden;
+}
+.term-list ul li .a_title:hover{
+    text-decoration: underline;
+}
+.term-list ul li span{
+    display: block;
+    color:#4d4d4d;
+    line-height: 20px;
+    font-size: 10px;
+    width: 120px;
+    height: 20px;
+    margin-top: 5px;
+    overflow: hidden;
+}
+.highlight {
+	float: left;
+	width: 214px;
+}
+.highlight ul{
+    float:left;
+    display: inline;
+    width: 214px;
+    margin-top: 10px;
+    list-style-type: none;
+}
+.highlight ul li{
+    float:left;
+    display: inline;
+    width: 204px;
+    height: 22px;
+    overflow: hidden;
+    margin-left: 10px;
+    line-height: 22px;
+}
+.highlight ul li .dot{
+    float:left;
+    display: inline;
+    width: 3px;
+    height: 3px;
+    margin-top: 10px;
+    padding: 0px;
+    margin-right: 5px;
+    background:url(../../images/list_dot.jpg) no-repeat;
+}
+.highlight ul li a{
+    color: rgb(53,78,146);
+    word-wrap: break-word;
+}
+.highlight ul li a:hover{
+    text-decoration:underline;
+}

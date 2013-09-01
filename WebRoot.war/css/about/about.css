@@ -1,0 +1,54 @@
+.auright{
+    float: left;
+    width:660px;
+    padding: 0px 40px;
+    border-left: 1px solid #cfcfcf;
+}
+.rtHead{
+    float: left;
+    width: 660px;
+    height: 40px;
+    border-bottom: 1px solid #b3b3b3;
+}
+.rtHead h3{
+    float: left;
+    color:#057267;
+}
+.rtHead .cascade{
+    float: right;
+    color: #808080;
+    font-size: 12px;
+}
+.rtHead .cascade a{
+    color:#808080;
+}
+.rtHead .cascade a:hover{
+    text-decoration: underline;
+}
+.rtCont{
+    float: left;
+    width: 615px;
+    padding-top: 20px;
+}
+.rtCont img{
+    float: right;
+}
+.rtCont p{
+    text-indent: 2em;
+    line-height: 24px;
+    color: #333;
+    margin-top: 15px;
+}
+/*.rtCont p.shell{*/
+    /*float: right;*/
+    /*clear: both;*/
+/*}*/
+.signature{
+    float: right;
+    width:260px;
+    margin-top: 20px;
+    text-align: center;
+}
+.signature p{
+    margin-top: 2px;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Multi-page template</title>
+    <link rel="stylesheet"  href="/css/themes/default/jquery.mobile-1.3.1.min.css">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <script src="/js/jquery-1.7.2.min.js"></script>
+    <script src="/js/jquery.mobile-1.3.1.min.js"></script>
+    <script type="text/javascript">
+
+        function jumpToPlayer(typeid) {
+            if (typeid) {
+                window.location.href = "listVid.html?typeString="+typeid;
+            } else {
+                window.location.href = "listVid.html";
+            }
+
+        }
+    </script>
+</head>
+
+
+
+<body>
+
+    <div data-role="page" id="one">
+        <!--<div data-role="header">-->
+            <!--<h1>视频新闻</h1>-->
+        <!--</div>&lt;!&ndash; /header &ndash;&gt;-->
+
+        <div data-role="content" class="ui-grid-a">
+            <div class="ui-block-a">
+                <input type="button" data-icon="star" value="社会" data-theme="b" data-mini="true"
+                       onclick="javascript:jumpToPlayer(2143);" /></div>
+            <div class="ui-block-b">
+                <input   type="button" data-icon="star" value="科技" data-theme="d" data-mini="true"
+                         onclick="javascript:jumpToPlayer(2147);" /></div>
+        </div>
+
+
+
+
+        <div data-role="content" class="ui-grid-a">
+            <div class="ui-block-a">
+                <input type="button" data-icon="star" value="生活" data-theme="b" data-mini="true"
+                       onclick="javascript:jumpToPlayer(2148);" /></div>
+            <div class="ui-block-b">
+                <input   type="button" data-icon="star" value="时政" data-theme="d" data-mini="true"
+                         onclick="javascript:jumpToPlayer(2144);" /></div>
+        </div>
+
+        <div data-role="content" class="ui-grid-a">
+            <div class="ui-block-a">
+                <input type="button" data-icon="star" value="军事" data-theme="b" data-mini="true"
+                       onclick="javascript:jumpToPlayer(258);" /></div>
+            <div class="ui-block-b">
+                <input   type="button" data-icon="star" value="财经" data-theme="d" data-mini="true"
+                         onclick="javascript:jumpToPlayer(308);" /></div>
+        </div>
+
+        <div data-role="content" class="ui-grid-a">
+            <div class="ui-block-a">
+                <input type="button" data-icon="star" value="法制" data-theme="b" data-mini="true"
+                       onclick="javascript:jumpToPlayer(2351);" /></div>
+            <div class="ui-block-b">
+                <input   type="button" data-icon="star" value="全部" data-theme="d" data-mini="true"
+                         onclick="javascript:jumpToPlayer();" /></div>
+        </div>
+
+
+
+    </div>
+
+
+</body>
+</html>

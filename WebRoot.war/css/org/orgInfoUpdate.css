@@ -1,0 +1,316 @@
+@charset "utf-8";
+/* CSS Document */
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+.orgInfo_container {
+	float: left;
+	width: 820px;
+}
+.orgInfo_container #testtab2 #tabtag2 {
+	float: left;
+	width: 100%;
+    margin-top: 10px;
+}
+.orgInfo_container #testtab2 #tabtag2 ul{
+    float:left;
+    width:780px;
+    overflow: hidden;
+}
+.orgInfo_container #testtab2 #tabtag2 ul li {
+	display: block;
+	float: left;
+	line-height: 30px;
+	background-color: rgb(229,240,246);
+	height: 30px;
+	border-bottom: 1px solid rgb(161,212,249);
+    border-top: 1px solid rgb(161,212,249);
+    border-right: 1px solid rgb(161,212,249);
+	padding-right: 10px;
+	padding-left: 10px;
+	cursor: pointer;
+}
+.orgInfo_container #testtab2 #tabtag2 ul .left_bottom {
+	float:left;
+	height:31px;
+	border-bottom: 1px solid rgb(161,212,249);
+    border-right: 1px solid rgb(161,212,249);
+	width: 80px;
+}
+.orgInfo_container #testtab2 #tabtag2 ul .right_bottom {
+	float:left;
+	height:31px;
+	border-bottom: 1px solid rgb(161,212,249);
+	width: 200px;
+}
+.orgInfo_container #testtab2 #tabtag2 ul li.cur{
+    background-color:#FFF;
+    border-bottom: none;
+}
+.orgInfo_container #testtab2 {
+	float: left;
+	display: block;
+	width:740px;
+    overflow: hidden;
+	margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    border: 1px solid  rgb(229,240,246);
+    border-radius: 4px;
+}
+.orgInfo_container #testtab2 #tabcon2 {
+	float: left;
+	width: 800px;
+    /*height:1000px;*/
+}
+.orgInfo_container #testtab2 #tabcon2 .tip_tittle{
+    float:left;
+    width:700px;
+    margin-left:80px;
+	margin-top:20px;
+    font-size: 14px;
+    color:#555;
+    font-weight: lighter;
+}
+.orgInfo_container #testtab2 #tabcon2 ul{
+	float:left;
+	margin-left:80px;
+	margin-top:12px;
+}
+.orgInfo_container #testtab2 #tabcon2 h3{
+    float:left;
+    margin-left: 80px;
+    margin-top: 10px;
+}
+.orgInfo_container #testtab2 #tabcon2 #tabtag_4con .tip_words{
+    float:left;
+    margin-right: 5px;
+}
+.orgInfo_container #testtab2 #tabcon2 #tabtag_4con .submit_material_btn{
+    float:left;
+    border: none;
+    height:28px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background:orange;
+    color:#FFF;
+    margin-left: 60px;
+    cursor: pointer;
+}
+.orgInfo_container #testtab2 #tabcon2 #tabtag_4con textarea{
+    float:left;
+    width:400px;
+    height:80px;
+    border: 1px solid #bbb;
+    font-size: 14px;
+    padding: 2px;
+}
+.orgInfo_container #testtab2 #tabcon2 table{
+    float:left;
+    margin-left: 90px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width:600px;
+}
+.orgInfo_container #testtab2 #tabcon2 table tr td{
+    border: 1px dashed #bbb;
+    padding: 3px;
+}
+.orgInfo_container #testtab2 #tabcon2 table tr td,
+.orgInfo_container #testtab2 #tabcon2 table tr,
+.orgInfo_container #testtab2 #tabcon2 table{
+    border-collapse: collapse;
+}
+.orgInfo_container #testtab2 #tabcon2 ul li {
+	float:left;
+	clear:both;
+    width:700px;
+    font-size: 14px;
+	list-style-type: none;
+	margin-bottom:30px;
+}
+.orgInfo_container #testtab2 #tabcon2 #tabtag_4con ul li{
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+.orgInfo_container #testtab2 #tabcon2 ul li.short_li{
+    width:300px;
+}
+.orgInfo_container #testtab2 .commit_modfication{
+    float:left;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.orgInfo_container #testtab2 .commit_modfication1{
+    float:left;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.orgInfo_container #testtab2 .commit_modfication2{
+    float:left;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.orgInfo_container #testtab2 .commit_modfication3{
+    float:left;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+._submit_msg{
+    color:#ff4500;
+    font-size: 16px;
+    float:right;
+    margin-top: 13px;
+    margin-right: 450px;
+}
+.orgInfo_container #testtab2 .commit_modfication1 .submit_btn{
+    display: block;
+    float:left;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-top: 10px;
+    height:32px;
+    line-height: 32px;
+    font-size: 16px;
+    color:#FFF;
+    font-family: "微软雅黑","Verdana";
+    font-weight: bold;
+    background: #f7931e;
+    box-shadow: 0px 2px 3px rgba(235,23,107,0.4);
+    /*border:1px solid #bbb;*/
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.orgInfo_container #testtab2 .commit_modfication2 .submit_btn{
+    display: block;
+    float:left;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-top: 10px;
+    height:32px;
+    line-height: 32px;
+    font-size: 16px;
+    color:#FFF;
+    font-family: "微软雅黑","Verdana";
+    font-weight: bold;
+    background: #f7931e;
+    box-shadow: 0px 2px 3px rgba(235,23,107,0.4);
+    /*border:1px solid #bbb;*/
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.orgInfo_container #testtab2 .commit_modfication3 .submit_btn{
+    display: block;
+    float:left;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-top: 10px;
+    height:32px;
+    line-height: 32px;
+    font-size: 16px;
+    color:#FFF;
+    font-family: "微软雅黑","Verdana";
+    font-weight: bold;
+    background: #f7931e;
+    box-shadow: 0px 2px 3px rgba(235,23,107,0.4);
+    /*border:1px solid #bbb;*/
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.orgInfo_container #testtab2 #tabcon2 ul li  .input_text_field{
+	width:460px;
+	height:30px;
+	border:1px solid #ccc;
+	line-height:30px;
+	padding-left:3px;
+}
+.orgInfo_container #testtab2 #tabcon2 ul li  .descArea{
+	width:460px;
+	height:90px;
+	border:1px solid #bbb;
+}
+.orgInfo_container #testtab2 #tabcon2 ul li .img_div{
+    float:left;
+    margin-bottom: 5px;
+}
+.orgInfo_container #testtab2 #tabcon2 ul li.fileUploadDiv{
+    width:300px;
+    clear:none;
+}
+.orgInfo_container #testtab2 #tabcon2 ul li .uploadifyQueue{
+    float:left;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+.orgInfo_container #testtab2 #tabcon2 #tabtag_2con,
+.orgInfo_container #testtab2 #tabcon2 #tabtag_3con,
+.orgInfo_container #testtab2 #tabcon2 #tagtab_4con{
+    display: none;
+}
+.tip_error {
+    float: left;
+    margin-right: 3px;
+    background-image: url(../../images/input_msg_tip.png);
+    background-position: 0px 0px;
+    width: 16px;
+    height: 16px;
+}
+
+.tip_warn {
+    float: left;
+    margin-right: 3px;
+    background-image: url(../../images/input_msg_tip.png);
+    background-position: 0px -150px;
+    width: 16px;
+    height: 16px;
+}
+
+.tip_right {
+    float: left;
+    margin-right: 3px;
+    background-image: url(../../images/input_msg_tip.png);
+    background-position: 0px -250px;
+    width: 16px;
+    height: 16px;
+}
+.option_tittle{
+        display: block;
+        float:left;
+        margin-right: 6px;
+        margin-bottom:5px;
+        margin-top: 2px;
+        font-size: 14px;
+        text-align: left;
+}
+.input_msg{
+    display: block;
+    float:left;
+    clear:right;
+    padding: 3px;
+    font-size:12px;
+    color:#ff0000;
+    font-weight: lighter;
+}
+.input_tip{
+    color:#000;
+     border:1px solid rgb(64,179,255);
+     background:rgb(229,245,255)
+}
+.input_content{
+    display: block;
+    float:left;
+    clear:both;
+}
+ .file_upload{
+    display: block;
+    float:left;
+    clear:both;
+    margin-right:8px;
+}
+

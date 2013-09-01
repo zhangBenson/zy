@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Hotels xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:///D:/dev/WorkSpace/gogowise/src/com/gogowise/urlfetch/hotel/xml/hotel.xsd">
+	<Hotel>
+
+
+		<createDate>20130101</createDate>
+	</Hotel>
+
+</Hotels>

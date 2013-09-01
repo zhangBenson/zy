@@ -1,0 +1,105 @@
+#header {
+    float:left;
+	width: 970px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    position: relative;
+}
+.words{
+    position: absolute;
+    left:145px;
+    top:55px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #777;
+}
+.lan_select{
+    position: absolute;
+    left:620px;
+    top:52px;
+}
+.lan_select a{
+    color:#444;
+}
+.lan_select a:hover{
+    text-decoration: underline;
+}
+.help{
+    position: absolute;
+    right:5px;
+    top:40px;
+    font-size: 12px;
+    color: #666;
+}
+.help a{
+    color:#666;
+}
+.help a:hover{
+    text-decoration: underline;
+}
+.tel{
+    position: absolute;
+    right:5px;
+    top:58px;
+    font-size: 14px;
+    color: #333;
+}
+.tel span{
+    color:#6495ed;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.logoImg {
+	background: url(../images/gogowise_logo_big_darkblue.png) no-repeat;
+	float: left;
+	height: 62px;
+	width: 134px;
+    padding-left:5px;
+    cursor: pointer;
+}
+* html .logoImg{
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,src='images/gogowise_logo_big_darkblue.png',sizingMethod="image");
+}
+
+.act_btn{
+    color:#fff;
+    font-family: "微软雅黑";
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 2px 0px;
+    text-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px;
+    border: none;
+    cursor: pointer;
+}
+.begin_live{
+    position: absolute;
+    left: 440px;
+    top:50px;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    padding:5px 20px;
+    background: #f5cd70;
+ }
+.announce_btn{
+    position: absolute;
+    display: block;
+    left: 405px;
+    top:47px;
+    width: 32px;
+    height: 32px;
+    background: url(../images/announce.png);
+    cursor: pointer;
+ }
+* html .announce_btn{
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,src='images/announce.png',sizingMethod="image");
+ }
+.act_btn:hover{
+    opacity: 0.7;
+    text-decoration: none;
+}
+* html .act_btn:hover{
+    background: #f6da99;
+}

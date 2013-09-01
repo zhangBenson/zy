@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+        "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+    <!--<field name="singUpInfo.user.userId">-->
+    <!--<field-validator type="requiredstring">-->
+    <!--<message>用户名是必填的</message>-->
+    <!--</field-validator>-->
+    <!--</field>-->
+
+    <field name="org.schoolName">
+        <field-validator type="required">
+            <message>组织名称是必须的</message>
+        </field-validator>
+    </field>
+    <!--<field name="org.description">-->
+        <!--<field-validator type="required">-->
+            <!--<message>组织说明是必须的</message>-->
+        <!--</field-validator>-->
+    <!--</field>-->
+
+    <!--<field name="org.depositName">-->
+        <!--<field-validator type="required">-->
+            <!--<message>银行账户名称是必须的</message>-->
+        <!--</field-validator>-->
+    <!--</field>-->
+    <!--<field name="org.depositBankAccount">-->
+        <!--<field-validator type="required">-->
+            <!--<message>银行账号是必须的</message>-->
+        <!--</field-validator>-->
+    <!--</field>-->
+    <!--<field name="org.contactName">-->
+        <!--<field-validator type="required">-->
+            <!--<message>联系人姓名是必须的</message>-->
+        <!--</field-validator>-->
+    <!--</field>-->
+
+
+</validators>

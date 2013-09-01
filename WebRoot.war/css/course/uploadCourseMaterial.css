@@ -1,0 +1,62 @@
+#tabtag_4con{
+    margin: 10px 0 0 50px;
+}
+#tabtag_4con .tip_words{
+    float:left;
+    color: #444;
+    margin-right: 5px;
+}
+#tabtag_4con .submit_material_btn{
+    float:left;
+    border: none;
+    height:28px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background:orange;
+    color:#FFF;
+    cursor: pointer;
+}
+#tabtag_4con textarea{
+    float:left;
+    width:400px;
+    height:80px;
+    border: 1px solid #bbb;
+    font-size: 14px;
+    padding: 2px;
+}
+#tabtag_4con h3{
+    float: left;
+    width:740px;
+    color: rgb(8,125,191);
+    padding-bottom: 8px;
+    margin: 15px 0 8px 0;
+    border-bottom: 1px solid #ccc;
+}
+#tabtag_4con table{
+    float:left;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    line-height: 16px;
+    width: 740px;
+}
+#tabtag_4con table .errorMessage{
+    margin-left: 12px;
+    color: #d12f19;
+}
+#tabtag_4con table tr td{
+    border: 1px dashed #bbb;
+    padding: 4px;
+}
+#tabtag_4con table tr td,
+#tabtag_4con table tr,
+#tabtag_4con table{
+    border-collapse: collapse;
+}
+#tabtag_4con ul li {
+	float:left;
+	clear:both;
+    width:700px;
+    font-size: 14px;
+	list-style-type: none;
+	margin-bottom: 10px;
+}

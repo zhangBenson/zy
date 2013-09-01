@@ -1,0 +1,32 @@
+.titleWrapper{
+    margin-top: 6px;
+}
+
+.titleWrapper h2{
+    display: inline;
+    font-size: 18px;
+    line-height: 22px;
+    color:#087DBF;
+}
+.titleWrapper h3{
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 20px;
+    line-height: 22px;
+    color:#087DBF;
+}
+.titleWrapper a{
+    color: #f90;
+}
+.titleWrapper a:hover{
+    text-decoration: underline;
+}
+
+.flashWrapper{
+    background: #d1ecfc;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 1px 1px 3px rgba(0, 0, 255, 0.15);
+    position: relative;
+    z-index: 1;
+}

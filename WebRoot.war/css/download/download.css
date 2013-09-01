@@ -1,0 +1,91 @@
+.banner{
+    float: left;
+    margin-top: 20px;
+    /*padding-top: 184px;*/
+    padding-left: 50px;
+    width: 920px;
+    height: 514px;
+    background: url(../../images/download/bg_download.jpg) no-repeat;
+    position: relative;
+}
+.banner .app_title h3{
+    float: left;
+    margin-top: 80px;
+    font-size: 34px;
+    color: rgb(250,153,2);
+    font-style: italic;
+    font-weight: bold;
+}
+.banner .app_title img{
+    margin-top: 35px;
+    margin-left: 80px;
+}
+.banner .desc{
+    float: left;
+    clear: left;
+    margin-top: 20px;
+}
+.banner .desc p{
+    font-size: 13px;
+    color: #4A7BA9;
+    line-height: 13px;
+    line-height: 26px;
+}
+.banner .download{
+    float: left;
+    margin-top: 20px;
+    clear: both;
+}
+.banner .download a{
+    display: inline-block;
+    width:118px;
+    height: 138px;
+    border: 2px solid rgb(0,102,204);
+    text-align: center;
+}
+.banner .download img{
+    width: 118px;
+    height: 118px;
+    border: none;
+}
+.banner .download span{
+    line-height: 20px;
+    color: #444;
+}
+.banner .android{
+    display: block;
+    width: 270px;
+    height: 284px;
+    position: absolute;
+    left: 310px;
+    top: 220px;
+    background: url(../../images/download/android_robot3.png) no-repeat;
+}
+* html .banner .android{
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,src='images/download/android_robot3.png',sizingMethod="image");
+}
+.content_m {
+    float: left;
+    padding: 60px 0px 0px 30px;
+}
+
+.content_mm {
+    float: left;
+    width: 265px;
+    display: inline;
+}
+
+.content_mm h2 {
+    border-left: #9ACCE8 solid 10px; color: #068BB7; font-size: 24px; font-weight: normal; padding-left: 8px; margin: 0px;
+}
+
+.content_mm p {
+    color: #7F858A;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.content_mm img {
+    margin-left: 5px;
+}

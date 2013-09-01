@@ -1,0 +1,263 @@
+.mf_1{
+    float: left;
+}
+.mf_1 p{
+    float:left;
+    display: inline;
+    width:760px;
+    padding: 30px 0px 0px 40px;
+    color:rgb(43, 43, 43);
+}
+.mf_1 p a{
+    color:rgb(29, 160, 236);
+    cursor: pointer;
+}
+.mf_1 p a:hover{
+    text-decoration: underline;
+}
+.ltm{
+    float: left;
+    width:100%;
+    padding-left: 40px;
+}
+.ltm .bg_top{
+    float:left;
+    width:642px;
+    height: 5px;
+    margin-top: 30px;
+    background: url(../../images/onlive/term_manage_bg_top.png);
+}
+
+.ltm .bg_bottom{
+    float:left;
+    width:642px;
+    height: 5px;
+    background: url(../../images/onlive/term_manage_bg_bottom.png);
+}
+
+.ltm .ltm_all{
+    float:left;
+    width:617px;
+    padding:10px 10px 10px 15px;
+    background: url(../../images/onlive/term_manage_bg_body.png) repeat-y;
+}
+.ltm .ltm_all .course_logo{
+    float:left;
+    display: inline;
+    margin-right: 15px;
+}
+.ltm .ltm_all .course_logo img{
+    width:96px;
+    height: 72px;
+    padding: 2px;
+    border: 1px solid #ebebeb;
+}
+.ltm .ltm_all h4{
+    float:left;
+}
+.ltm .ltm_all h4 a {
+  color: #f76900;
+}
+.ltm .ltm_all h4 a:hover{
+    text-decoration: underline;
+}
+.ltm .ltm_all .maintenance{
+    float: left;
+    display: inline;
+    margin-left: 15px;
+}
+.ltm .ltm_all .maintenance a{
+    color: #3e8fda;
+}
+.ltm .ltm_all .maintenance a:hover{
+    text-decoration: underline;
+}
+.ltm .ltm_all .date{
+    /*float:left;*/
+    display: inline;
+    color:#888;
+    margin-left: 50px;
+}
+.ltm .ltm_all .details{
+  color: #888;
+  margin-top: 8px;
+}
+ .ltm .ltm_all .time {
+     margin-top: 2px;
+ }
+.ltm .ltm_all .details {
+    height:36px;
+    line-height: 18px;
+    overflow: hidden;
+}
+.ltm .ltm_all .details a:hover{
+    text-decoration: underline;
+}
+.ltm .ltm_all .details span, .ltm .ltm_all .time span {
+  margin-right: 15px;
+}
+.ltm .ltm_all .time a:hover{
+ text-decoration: underline;
+}
+.ltm .ltm_all .manage_course {
+  color: #3e8fda;
+  margin-right: 15px;
+}
+.ltm .ltm_all .highlight{
+    float:left;
+    display: none;
+    width: 600px;
+    color:rgb(43,43,43);
+    padding-top: 20px;
+    padding-left:30px;
+}
+.ltm .ltm_all .highlight .area{
+    float:left;
+    width:600px;
+}
+.ltm .ltm_all .highlight .area p{
+    width:600px;
+}
+.ltm .ltm_all .highlight .area input{
+    width:180px;
+	height:26px;
+	line-height:26px;
+	padding-left:2px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+	border:1px solid #dadada;
+}
+.ltm .ltm_all .highlight .area textarea{
+    width:500px;
+    height: 70px;
+    margin-top: 10px;
+    font-size: 12px;
+    padding: 2px;
+    border:1px solid #dadada;
+    border-radius: 3px;
+}
+.ltm .ltm_all .highlight .handle{
+    float:left;
+    width:600px;
+    padding-top: 10px;
+}
+.ltm .ltm_all .highlight a{
+    float:left;
+    display: inline;
+    width:60px;
+    height:24px;
+    border: none;
+    color:rgb(85,85,85);
+    margin-right: 20px;
+    text-align: center;
+    line-height: 24px;
+    text-decoration: none;
+    border-radius: 3px;
+}
+.ltm .ltm_all .highlight a.submit{
+    background: #f90;
+    border: 1px solid #ebebeb;
+}
+.ltm .ltm_all .highlight a.cancel{
+    background: #dadada;
+    border: 1px solid #ebebeb;
+}
+
+.ltm .ltm_all .live_term_info{
+    float:left;
+    display: none;
+    width: 600px;
+    color:rgb(43,43,43);
+    padding-left:30px;
+}
+.ltm .ltm_all .live_term_info .lti_0{
+    float:left;
+    width:650px;
+}
+.ltm .ltm_all .live_term_info .lti_0 p{
+    float:left;
+    display: inline;
+    width: 650px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    clear:both;
+}
+.ltm .ltm_all .live_term_info .lti_0 img{
+    float:left;
+    width:108px;
+    height:81px;
+    padding: 2px;
+    margin-right: 30px;
+    border: 1px solid #dadada;
+}
+.ltm .ltm_all .live_term_info .lti_0 #onlive_logoUploader{
+    float:left;
+    display: inline;
+    margin-top: 5px;
+}
+.ltm .ltm_all .live_term_info .lti_0 input{
+    float:left;
+    width:500px;
+    height: 28px;;
+    padding: 2px;
+    margin-bottom: 5px;
+    border:1px solid #dadada;
+    border-radius: 3px;
+}
+.ltm .ltm_all .live_term_info .lti_0 p a.add_btn{
+    display: inline;
+    margin-left: 15px;
+    color:#888;
+}
+.ltm .ltm_all .live_term_info .lti_0 p a.add_btn:hover{
+    color:#f90;
+    text-decoration: underline;
+}
+.ltm .ltm_all .live_term_info .lti_0 a.del_btn{
+    float:left;
+    margin-left:8px;
+    margin-top: 10px;
+    font: 12px lighter;
+    color:#888;
+}
+.ltm .ltm_all .live_term_info .lti_0 a.del_btn:hover{
+    text-decoration: underline;
+}
+.ltm .ltm_all .live_term_info .lti_0 textarea{
+    width:500px;
+    height: 70px;
+    padding: 2px;
+    font-size: 13px;
+    border:1px solid #dadada;
+    border-radius: 3px;
+}
+.ltm .ltm_all .live_term_info .lti_0 a.handle_btn{
+    float:left;
+    display: inline;
+    width:60px;
+    height:24px;
+    border: none;
+    color:rgb(85,85,85);
+    margin-right: 20px;
+    margin-top: 10px;
+    text-align: center;
+    line-height: 24px;
+    text-decoration: none;
+    border-radius: 3px;
+}
+.ltm .ltm_all .live_term_info .lti_0 a.submit{
+    background: #f90;
+    border: 1px solid #ebebeb;
+}
+.ltm .ltm_all .live_term_info .lti_0 a.cancel{
+    background: #dadada;
+    border: 1px solid #ebebeb;
+}
+
+.ltm .ltm_all .live_term_tip{
+    height: 24px;
+    background: rgb(255, 248, 239);
+    border-radius: 3px;
+    margin-left: 10px;
+    color:red;
+}

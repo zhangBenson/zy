@@ -1,0 +1,17 @@
+.stepCont .pic_2{
+    display: none;
+}
+.stepCont .after_store{
+    display: block;
+}
+.stepTip a{
+    color: #3E8FDA;
+    font-size: 14px;
+    line-height: 180%;
+}
+.stepTip a:hover{
+    text-decoration: underline;
+}
+.stepTip i{
+    margin: 0 5px;
+}

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+  http://www.springframework.org/schema/tx
+  http://www.springframework.org/schema/tx/spring-tx-3.0.xsd"
+       default-autowire="byName">
+
+    <!--<aop:aspectj-autoproxy proxy-target-class="true"/>-->
+
+
+    <!--<jee:jndi-lookup id="dataSource" jndi-name="gogowiseDs"/>-->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="myDataSource"/>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.characterEncoding">UTF-8</prop>
+                <prop key="hibernate.useUnicode">true</prop>
+                <prop key=" hibernate.jdbc.fetch_size">100</prop>
+            </props>
+        </property>
+        <property name="annotatedClasses">
+            <list>
+                <value>com.gogowise.domain.BaseUser</value>
+                <value>com.gogowise.domain.SingUpInfo</value>
+                <value>com.gogowise.domain.Comments</value>
+                <value>com.gogowise.domain.Competition</value>
+                <value>com.gogowise.domain.CompetitionComments</value>
+                <value>com.gogowise.domain.CompetitionPhase</value>
+                <value>com.gogowise.domain.CompetitionSession</value>
+                <value>com.gogowise.domain.JudgeAllocation</value>
+                <value>com.gogowise.domain.HostAllocation</value>
+                <value>com.gogowise.domain.SingerAllocation</value>
+                <value>com.gogowise.domain.SingUpRole</value>
+                <value>com.gogowise.domain.Subject</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+        <!--<property name="url" value="jdbc:mysql://localhost:3306/gogowise?useUnicode=true&amp;characterEncoding=utf8"/>-->
+        <property name="url" value="jdbc:sqlserver://localhost:1433;databaseName=tlchat;integratedSecurity=true"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123"/>
+    </bean>
+
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <tx:annotation-driven/>
+
+    <bean id="modelDao" class="com.gogowise.dao.impl.ModelDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="singUpDao" class="com.gogowise.dao.impl.SingUpDaoImpl" parent="modelDao">
+        <property name="competitionSessionDao" ref="competitionSessionDao"/>
+        <property name="competitionDao" ref="competitionDao"/>
+        <property name="baseUserDao" ref="baseUserDao"/>
+        <property name="singerAllocationDao" ref="singerAllocationDao"/>
+        <property name="commentsDao" ref="commentsDao"/>
+    </bean>
+    <bean id="competitionDao" class="com.gogowise.dao.impl.CompetitionDaoImpl" parent="modelDao"></bean>
+    <bean id="baseUserDao" class="com.gogowise.dao.impl.BaseUserDaoImpl" parent="modelDao"></bean>
+    <bean id="groupDao" class="com.gogowise.dao.impl.GroupDaoImpl" parent="modelDao"></bean>
+    <bean id="competitionPhaseDao" class="com.gogowise.dao.impl.CompetitionPhaseDaoImpl" parent="modelDao"></bean>
+    <bean id="hostAllocationDao" class="com.gogowise.dao.impl.HostAllocationDaoImpl" parent="modelDao"></bean>
+    <bean id="judgeAllocationDao" class="com.gogowise.dao.impl.JudgeAllocationDaoImpl" parent="modelDao"></bean>
+    <bean id="singerAllocationDao" class="com.gogowise.dao.impl.SingerAllocationDaoImpl" parent="modelDao"></bean>
+    <bean id="subjectDao" class="com.gogowise.dao.impl.SubjectDaoImpl" parent="modelDao"></bean>
+    <bean id="commentsDao" class="com.gogowise.dao.impl.CommentsDaoImpl" parent="modelDao"></bean>
+    <bean id="favoriteDao" class="com.gogowise.dao.impl.FavoriteDaoImpl" parent="modelDao"></bean>
+
+    <bean id="competitionSessionDao" class="com.gogowise.dao.impl.CompetitionSessionDaoImpl" parent="modelDao">
+        <property name="competitionPhaseDao" ref="competitionPhaseDao"/>
+        <property name="hostAllocationDao" ref="hostAllocationDao"/>
+        <property name="judgeAllocationDao" ref="judgeAllocationDao"/>
+        <property name="singerAllocationDao" ref="singerAllocationDao"/>
+        <property name="singUpDao" ref="singUpDao"></property>
+    </bean>
+
+
+    <!--============================Action================================-->
+    <bean id="basicAction" class="com.gogowise.action.BasicAction"></bean>
+
+
+</beans>

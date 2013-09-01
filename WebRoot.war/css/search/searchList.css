@@ -1,0 +1,148 @@
+.live_title{
+    width: 640px;
+    margin-top: 30px;
+    background: #fff0f5;
+}
+.live_title p{
+    float: left;
+    width: 640px;
+    margin-top: 8px;
+}
+.live_title p a{
+    color: #888;
+    margin-left: 20px;
+}
+.live_title p a:hover{
+    text-decoration: underline;
+}
+.h3_title a{
+    color: #033;
+}
+.h3_title a:hover{
+    text-decoration: underline;
+}
+.listUp{
+    width: 620px;
+    overflow: hidden;
+    margin-top:25px;
+}
+.listUp .memeberWrap{
+    width: 750px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+.memeberInfo{
+    width: 192px;
+    margin-right: 22px;
+}
+.memeberInfo .Info1 img{
+    width: 72px;
+    height: 72px;
+    margin-right: 10px;
+    border: none;
+}
+.memeberInfo .Info2 .a_title{
+    float: left;
+    max-width:110px;
+    height: 20px;
+    color: #8AA5B1;
+    line-height: 20px;
+    overflow: hidden;
+}
+.memeberInfo .Info2 .a_title:hover{
+    text-decoration: underline;
+}
+.memeberInfo .Info2 .a_focus{
+    float: left;
+    margin-top: 25px;
+    clear: both;
+}
+.memeberInfo .Info2 span{
+    float: left;
+    color: #585756;
+    margin-top: 5px;
+    clear: both;
+}
+.orgInfo{
+    border-top: 1px dotted #cdcdcd;
+}
+.orgInfo .Info1 img{
+    height: 54px;
+}
+.orgInfo .Info2 .a_focus{
+    margin-top: 5px;
+}
+.listDown{
+    width: 640px;
+    margin-top: 20px;
+}
+
+.listView{
+    width: 640px;
+    padding:15px 0 10px 0;
+    border-bottom: 1px dotted #ccc;
+}
+.viewLeft{
+    width: 470px;
+    margin-left: 15px;
+    overflow: hidden;
+}
+.viewLeft p{
+    width: 470px;
+    margin-top: 4px;
+    line-height: 18px;
+}
+.viewLeft p.title{
+    float: left;
+    clear: both;
+    padding-bottom: 4px;
+}
+.viewLeft p.title a.title{
+    float: left;
+    font-size: 16px;
+    color: #598EDE;
+}
+.viewLeft p.title a.title:hover{
+    text-decoration: underline;
+}
+.viewLeft p.title a.watch{
+    float: left;
+    margin-left: 20px;
+    padding: 1px 12px;
+    background: #EBEBEB;
+    color: #f90;
+    border: 1px solid #ABABAB;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 3px;
+}
+.viewLeft p.title a.watch:hover{
+    background: #dadada;
+}
+.viewLeft p.info{
+    color: #888;
+}
+.viewRight {
+    position: relative;
+}
+.viewRight a.img img{
+    width: 120px;
+    height: 90px;
+    padding: 6px;
+    margin-left: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+}
+.viewRight a.person{
+    position: absolute;
+    right:3px;
+    bottom:3px;
+}
+.viewRight a.person img{
+    width: 30px;
+    height:30px;
+    padding: 2px;
+    background: #fff;
+    border:1px dotted #cbcecf;
+}

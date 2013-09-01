@@ -1,0 +1,46 @@
+﻿#rvmDiv #logoDiv {
+	background-image: url(http://www.gogowise.com/images/logo.jpg);
+	background-repeat: no-repeat;
+	height: 65px;
+	margin-left: 45px;
+}
+#rvmDiv #rvmcontentDiv ul .welcomeTittle {
+	margin-left: 30px;
+}
+#rvmDiv {
+	float: left;
+	width: 100%;
+	font-family: "微软雅黑", "宋体", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+#logoDiv {
+	float: left;
+	width: 100%;
+}
+#rvmcontentDiv {
+	float: left;
+	width: 100%;
+}
+#rvmDiv #rvmcontentDiv ul li {
+	list-style-type: none;
+}
+#rvmDiv #rvmcontentDiv .orangeWords {
+	color: rgb(255,155,55);
+}
+#rvmDiv #rvmcontentDiv ul .lastWords {
+	margin-top: 50px;
+}
+table,tr,td{
+	border-collapse:collapse;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-color: #09F;
+	border-right-color: #09F;
+	border-bottom-color: #09F;
+	border-left-color: #09F;
+}
+
+tr.odd{
+	background-color:#CEFFFF;
+}

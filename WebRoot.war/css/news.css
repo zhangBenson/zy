@@ -1,0 +1,37 @@
+.news_block {
+	float: left;
+	width: 300px;
+}
+.news_block ul{
+    float:left;
+    display: inline;
+    width: 300px;
+    margin-top: 10px;
+    list-style-type: none;
+}
+.news_block ul li{
+    float:left;
+    display: inline;
+    width: 290px;
+    height: 22px;
+    overflow: hidden;
+    margin-left: 10px;
+    line-height: 22px;
+}
+.news_block ul li .dot{
+    float:left;
+    display: inline;
+    width: 3px;
+    height: 3px;
+    margin-top: 10px;
+    padding: 0px;
+    margin-right: 5px;
+    background:url(../images/list_dot.jpg) no-repeat;
+}
+.news_block ul li a{
+    color: rgb(53,78,146);
+    word-wrap: break-word;
+}
+.news_block ul li a:hover{
+    text-decoration:underline;
+}

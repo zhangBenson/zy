@@ -1,0 +1,23 @@
+﻿@charset "utf-8";
+
+/* CSS Reset */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, form, fieldset, input, textarea, p{padding: 0; margin: 0}
+fieldset, img {border: 0}
+ol, ul {list-style: none}
+h1, h2, h3, h4{font-weight: bold; font-size: 100%}
+
+/* CSS Public */
+body,td, input, select {font:12px Arial,"微软雅黑";color:#5a5a5a
+
+}
+
+a:link, a:visited {color:#333; text-decoration:none}
+a:hover {color:#f30; text-decoration:underline}
+ul, ol, p {line-height:20px}
+h1 {font:24px "微软雅黑", "黑体"}
+h2 {font-size:24px}
+h3 {font-size:14px}
+h4 {font-size:12px}
+.smallIcon {padding:3px; border:1px solid #d7eaf7}
+a.focus {color:#f00}
+.focus a:link, .focus a:visited{color:#f00}i

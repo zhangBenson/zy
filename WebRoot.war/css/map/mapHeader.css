@@ -1,0 +1,62 @@
+body{
+    background: #fff;
+}
+#header{
+    z-index: 4000;
+}
+#header h1{
+    float: left;
+    margin-top: 6px;
+}
+#header h1 a{
+   display: block;
+   width: 90px;
+   height: 40px;
+   background: url(../../images/gogowise_logo_big_darkblue_error.png);
+   cursor: pointer;
+}
+#header .words{
+    float: left;
+    margin-top:26px;
+    margin-left: 5px;
+}
+#header .searchWrap{
+    float: left;
+    margin-top: 10px;
+    margin-left: 50px;
+}
+#header .searchWrap form input[type='text']{
+    float: left;
+    width: 390px;
+    height: 24px;
+    padding: 3px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.15);
+}
+#header .searchWrap form input[type='submit']{
+    float: left;
+    width: 92px;
+    height: 32px;
+    background: #dfdfdf;
+    margin-left: 6px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    border-radius: 2px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.15);
+    font-size: 14px;
+}
+#header .handle{
+    float: right;
+    margin-top:6px;
+    margin-right: 15px;
+}
+#header .handle a{
+    color: #00c;
+}
+#header .handle a.nick{
+    color: #f90;
+}
+#header .handle a:hover{
+    text-decoration: underline;
+}

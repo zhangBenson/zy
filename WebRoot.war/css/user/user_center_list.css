@@ -1,0 +1,206 @@
+.mf_1{
+    float: left;
+}
+.mf_1 ul{
+    float:left;
+    display: inline;
+    width:745px;
+    margin-top: 30px;
+    margin-left:15px;
+    border-bottom: 1px solid #ccc;
+    list-style-type: none;
+}
+.mf_1 ul li{
+    float:left;
+    display: inline;
+    height:24px;
+    line-height: 24px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 20px;
+}
+.mf_1 ul li a{
+
+    color:#333;
+}
+.mf_1 ul li.stand_out{
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    background: rgb(255, 248, 239);
+}
+
+.mf_2{
+    float:left;
+    display: inline;
+    width:800px;
+    padding-left: 15px;
+    padding-bottom: 40px;
+}
+.mf_2 .overview {
+  float:left;
+  display: inline;
+  width:780px;
+  padding: 22px 0;
+  margin: 0 10px;
+}
+.mf_2 .overview .sub_info {
+  float:left;
+  text-align: center;
+  width: 190px;
+  height: 62px;
+  overflow: hidden;
+}
+.mf_2 .overview .sub_info .number {
+  color: #333333;
+  font: 36px/40px SimHei;
+}
+.mf_2 .overview .sub_info .number span {
+  font-size: 23px;
+  margin-left: 5px;
+}
+.mf_2 .overview .sub_info .describe {
+  color: #888;
+}
+.mf_2 .overview .sub_info_center {
+  width: 210px;
+  border: 1px solid #f2f2f2;
+  border-width: 0 1px;
+}
+
+.mf_2 .course_item {
+  float: left;
+  width: 755px;
+  padding: 20px 0 15px 5px;
+  border-bottom: 1px dotted #adadad;
+  clear:both;
+}
+.mf_2 .course_item .course_logo{
+    float:left;
+    display: inline;
+    margin-right: 15px;
+}
+.mf_2 .course_item .course_logo img{
+    width:96px;
+    height: 72px;
+    padding: 2px;
+    border: 1px solid #ebebeb;
+}
+.mf_2 .course_item h4{
+    float:left;
+}
+.mf_2 .course_item h4 a {
+    color: orange;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: normal;
+}
+.mf_2 .course_item h4 a:hover{
+    text-decoration: underline;
+}
+.mf_2 .course_item .teacher{
+    float: left;
+    display: inline;
+    margin-left: 15px;
+    line-height: 18px;
+    color: #888;
+}
+.mf_2 .course_item .teacher a{
+    color: #f90;
+}
+.mf_2 .course_item .teacher a:hover{
+    text-decoration: underline;
+}
+.mf_2 .course_item .maintenance{
+    float: left;
+    margin-top: 3px;
+    width: 645px;
+    color: #69C;
+    line-height: 16px;
+}
+.mf_2 .course_item .maintenance a{
+    color: #3e8fda;
+}
+.mf_2 .course_item .maintenance a:hover{
+    text-decoration: underline;
+}
+.mf_2 .course_item .date{
+    display: inline;
+    color:#888;
+    line-height: 16px;
+    margin-left: 15px;
+}
+
+.mf_2 .course_item .details{
+    width:635px;
+    max-height:36px;
+    _height:36px;
+    margin-top: 5px;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+.mf_2 .course_item .details a:hover{
+    text-decoration: underline;
+}
+ .mf_2 .course_item .time {
+  padding: 5px 0;
+}
+.mf_2 .course_item .details span, .mf_2 .course_item .time span {
+  margin-right: 15px;
+    line-height: 18px;
+}
+.mf_2 .course_item .time a:hover{
+ text-decoration: underline;
+}
+.mf_2 .course_item .manage_course {
+  color: #3e8fda;
+  margin-right: 15px;
+}
+.mf_2 .course_item .infoWrap{
+    float: left;
+    width: 630px;
+    overflow: hidden;
+}
+
+.classintro {
+    float: left;
+    margin: 8px 0px 8px 40px;
+    width: 85%;
+    display: none;
+    position: relative;
+    color:#666;
+}
+
+.classintro tr {
+    height: 28px;
+}
+
+.classintro td {
+    padding: 3px 2px 3px 4px;
+    border-bottom: 1px dashed #999;
+    text-align: right;
+}
+
+.classintro .td1 {
+    color: #006699;
+    width: 60px;
+}
+.tip_right {
+    float: left;
+    margin-right: 3px;
+    background: url(../../images/input_msg_tip.png) 0px -250px;
+    width: 16px;
+    height: 16px;
+}
+
+
+.recommdatepanel_inner{float:left;margin-left:20px;padding-bottom:40px;clear:both;}
+.recommdatepanel_inner table tr td{font-size:15px;}
+.recommdatepanel_inner .recommdate_email{width:480px;height:22px;border:1px solid rgb(193,217,243);}
+.recommdatepanel_inner .recommdate_message{width:480px;height:80px;border:1px solid rgb(193,217,243);}
+.recommdatepanel_inner .recommdate_close{text-decoration: underline;cursor:pointer;}
+.recommdatepanel_inner .add_friend_email{text-decoration: underline;font-size: 16px;cursor:pointer;}
+.recommdatepanel_inner .add_friend_email:hover,
+.recommdatepanel_inner .recommdate_delete:hover{color:#066;text-decoration: none;}
+.recommdatepanel_inner .recommdate_delete{text-decoration: underline;cursor: pointer;font-size: 16px;}
+.recommdatepanel_inner .recommdate_submit{height: 26px;font-size:15px;padding-left:10px;padding-right:10px;background:rgb(38,138,214);border: none;border-radius: 4px;cursor:pointer;color:#FFF;}

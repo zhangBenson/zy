@@ -1,0 +1,155 @@
+*{
+padding: 0px;
+margin: 0px;
+}
+body{
+    background: url(../images/gogowise-squre-bg2.png)  repeat scroll left top transparent;
+    height: 100%;
+}
+div.tabwidth {
+    width: 100%;
+}
+
+html {
+    /*font: 12px/1 Arial, Helvetica, "\5FAE\8F6F\96C5\9ED1","\5b8b\4f53", sans-serif;*/
+    font: 12px/1 Helvetica, Tahoma, Arial, sans-serif;
+    height: 100%;
+}
+h1,h2,h3,h4,h5,h6.h_title{
+    font-family: Tahoma, Geneva,"\5FAE\8F6F\96C5\9ED1","\5b8b\4f53",sans-serif;
+    font-weight: normal;
+}
+.h3_title{
+    float: left;
+    height: 16px;
+    line-height: 16px;
+    padding: 0 20px;
+    background: url(../images/course/lead_img.png) 2px 3px no-repeat;
+    font-size: 14px;
+    /*color:#033333;*/
+    color: #333;
+    font-family: Tahoma, Geneva,"\5FAE\8F6F\96C5\9ED1","\5b8b\4f53",sans-serif;
+    letter-spacing: 1px;
+}
+ .other_more{
+    color: #598EDE;
+    line-height: 150%;
+}
+.other_more:hover{
+    text-decoration: underline;
+}
+a,input{
+    font-family: Arial, Helvetica, "\5FAE\8F6F\96C5\9ED1","\5b8b\4f53", sans-serif;
+}
+a{
+    cursor: pointer;
+}
+ul{
+    list-style-type: none;
+}
+a:link,a:hover,a:active,a:visited {
+    /*color: #000000;*/
+    text-decoration: none;
+}
+.a_focus{
+    display: block;
+    padding: 3px 10px; background: #EBEBEB;
+    color: #f60;
+    border: 1px solid #ABABAB;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 3px;
+}
+.a_focus:hover{
+    background: #dadada;
+}
+
+em {
+    font: 14pt normal CourierNew;
+}
+
+p{font-size: 12px;line-height:150%;word-wrap: break-word;}
+
+/*a, td, p {*/
+    /*font-size: 9pt*/
+/*}*/
+
+/*  对Struts2 错误域设置的CSS  */
+.wwgrp{
+    display: inline;
+}
+.wwgrp br {
+    display: none;
+}
+.wwerr{
+    display: inline;
+}
+.wwerr .errorMessage {
+    display: inline;
+    color: red;
+    font-size: 12px
+}
+.wwctrl{
+    display: inline;
+}
+.wwlbl {
+    display: inline;
+}
+/*  对Struts2 错误域设置的CSS----end  */
+
+
+.fl{
+    float: left;
+    display: inline;
+}
+.fr{
+    float: right;
+    display: inline;
+}
+img{ behavior: url("js/iepngfix/iepngfix.htc"); }
+.tip_words{
+    color:#ff4500;
+    font-size: 12px;
+    font-weight: lighter;
+}
+.orange_words{
+    color: #f90;
+}
+
+.submit_btn,.store_btn,.confirm_btn{
+    display: inline-block;
+    padding: 2px 11px;
+    background: #EBEBEB;
+    color: #f90;
+    border: 1px solid #ABABAB;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.submit_btn:hover,.store_btn:hover,.confirm_btn:hover{
+    background: #dadada;
+}
+.submit_btn_large{
+    display: inline-block;
+    background-color: #06C;
+    padding: 0 15px;
+    line-height: 30px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    letter-spacing: 1px;
+    color: white;
+    font-weight: bold;
+}
+.submit_btn_large:hover{
+   background: #066;
+}
+.delete_btn,.add_btn{
+    color:#598EDE;
+}
+.delete_btn:hover,.add_btn:hover{
+    text-decoration: underline;
+}

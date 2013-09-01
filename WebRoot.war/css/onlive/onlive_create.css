@@ -1,0 +1,181 @@
+.mf_1{
+    float: left;
+}
+.mf_1 ul{
+    float:left;
+    display: inline;
+    width:700px;
+    margin-top: 30px;
+    margin-left:15px;
+    border-bottom: 1px solid rgb(250, 190, 132);
+    list-style-type: none;
+}
+.mf_1 ul li{
+    float:left;
+    display: inline;
+    height:24px;
+    line-height: 24px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 20px;
+}
+.mf_1 ul li a{
+    color:rgb(253, 132, 14);
+}
+.mf_1 ul li.stand_out{
+    border-top: 1px solid rgb(250, 190, 132);
+    border-left: 1px solid rgb(250, 190, 132);
+    border-right: 1px solid rgb(250, 190, 132);
+    background: rgb(255, 248, 239);
+}
+
+.mf_2{
+    float:left;
+    display: inline;
+    width:800px;
+    margin-left: 20px;
+    padding-bottom: 50px;
+}
+.mf_2 .long_text_field{
+    width:580px;
+    height:26px;
+    line-height: 26px;
+    padding: 2px;
+    margin-top: 10px;
+    color:rgb(43,43,43);
+    border: 1px solid rgb(212,212,212);
+    border-radius: 3px;
+    clear:both;
+}
+.mf_2 .long_text_area{
+    width:580px;
+    height:80px;
+    line-height: 26px;
+    padding: 2px;
+    margin-top: 10px;
+    color:rgb(43,43,43);
+    border: 1px solid rgb(212,212,212);
+    border-radius: 3px;
+    clear:both;
+}
+.mf_2 .tip_para{
+    float:left;
+    display: inline;
+    width:100%;
+    margin: 15px 0 20px;
+    color:#888;
+    text-indent: 2em;
+}
+.mf_2 .asterisk{
+    color:red;
+}
+.mf_2 ul{
+    float:left;
+    width:650px;
+    display: inline;
+    padding-left: 20px;
+    list-style-type: none;
+}
+.mf_2 ul li{
+    padding-bottom: 20px;
+    text-align: left;
+    clear:both;
+}
+.mf_2 ul li .title{
+    float:left;
+    padding-left: 5px;
+    font: 12px/1.5 Helvetica,Arial,"宋体",sans-serif;
+}
+.mf_2 ul li .cont{
+    float:left;
+    display: inline;
+    width:590px;
+    padding-left: 5px;
+    margin: 10px 0 20px;
+    font: 12px/1.5 Helvetica,Arial,"宋体",sans-serif;
+    word-wrap: break-word;
+}
+.mf_2 ul li .tip_message{
+    float: right;
+    height: 24px;
+    background: rgb(255, 248, 239);
+    border-radius: 3px;
+    margin-right: 40px;
+    color:red;
+    font: 12px lighter;
+    line-height: 24px;
+    text-align: right;
+}
+.mf_2 ul li a.add_btn{
+    float:left;
+    margin:2px 0px 0px 20px;
+    font: 12px lighter;
+    color:#888;
+}
+.mf_2 ul li a.add_btn:hover{
+    color:#f90;
+    text-decoration: underline;
+}
+.mf_2 ul li a.del_btn{
+    margin:2px 0px 0px 10px;
+    font: 12px lighter;
+    color:#888;
+}
+.mf_2 ul li a.del_btn:hover{
+    text-decoration: underline;
+}
+.mf_2 ul li.li_2{
+    width:290px;
+    float:left;
+    overflow: hidden;
+    clear: none;
+}
+.mf_2 ul li.li_2 #onlive_logoUploader{
+    float:left;
+    display: inline;
+    margin-top: 5px;
+    clear:both;
+}
+.mf_2 ul li.li_2 .short_text_field{
+    width:200px;
+    height: 24px;
+    line-height: 24px;
+    border: 1px solid #ebebeb;
+    border-radius: 2px;
+    clear: both;
+}
+.mf_2 ul li.li_2 img{
+    float:left;
+    width:120px;
+    height: 90px;
+    padding: 2px;
+    border: 1px solid #ebebeb;
+    clear:both;
+}
+.mf_2 ul li.li_2 .tip_message{
+    float: left;
+    height: 24px;
+    background: rgb(255, 248, 239);
+    border-radius: 3px;
+    margin-left: 10px;
+}
+.mf_2 .btn_para{
+    float: left;
+    width:700px;
+}
+.mf_2 .btn_para .submit_btn{
+    float: left;
+    display: block;
+    /*width:80px;*/
+    height:28px;
+    line-height: 28px;
+    padding: 0 10px;
+    margin-left: 40px;
+    background: #ebebeb;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.mf_2 .btn_para .submit_btn:hover{
+    background: #bebebe;
+}
