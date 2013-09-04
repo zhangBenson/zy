@@ -4,6 +4,7 @@ import com.gogowise.action.BasicAction;
 import com.gogowise.dao.competition.CompetitionDaoImpl;
 import com.gogowise.dao.user.BaseUserDao;
 import com.gogowise.dao.competition.CompetitionSessionDao;
+import com.gogowise.dao.user.InviteRelationshipDao;
 import com.gogowise.domain.BaseUser;
 import com.gogowise.domain.InviteRelationship;
 import com.gogowise.utils.Constants;
@@ -31,7 +32,7 @@ public class InviteAction extends BasicAction {
      */
     private static final long serialVersionUID = 8298811288458899213L;
     private static final String REGEX = "^([a-z0-9A-Z]+[-_|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
-    private BaseUserDao.InviteRelationshipDao inviteRelationshipDao;
+    private InviteRelationshipDao inviteRelationshipDao;
     private List<String> friendEmails = new ArrayList<String>();
     private CompetitionDaoImpl.SingUpDao singUpDao;
     private BaseUserDao baseUserDao;
@@ -196,11 +197,11 @@ public class InviteAction extends BasicAction {
         this.invitedUsers = invitedUsers;
     }
 
-    public BaseUserDao.InviteRelationshipDao getInviteRelationshipDao() {
+    public InviteRelationshipDao getInviteRelationshipDao() {
         return inviteRelationshipDao;
     }
 
-    public void setInviteRelationshipDao(BaseUserDao.InviteRelationshipDao inviteRelationshipDao) {
+    public void setInviteRelationshipDao(InviteRelationshipDao inviteRelationshipDao) {
         this.inviteRelationshipDao = inviteRelationshipDao;
     }
 

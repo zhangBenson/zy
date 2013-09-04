@@ -4,9 +4,7 @@ import com.gogowise.action.BasicAction;
 import com.gogowise.dao.competition.CompetitionSessionDao;
 import com.gogowise.dao.course.*;
 import com.gogowise.dao.org.ChangeResponserHistoryDao;
-import com.gogowise.dao.user.BaseUserDao;
-import com.gogowise.dao.user.BaseUserRoleTypeDao;
-import com.gogowise.dao.user.FavoritDao;
+import com.gogowise.dao.user.*;
 import com.gogowise.domain.*;
 import com.gogowise.utils.Constants;
 import com.gogowise.utils.EmailUtil;
@@ -43,7 +41,7 @@ public class UserAction extends BasicAction {
     private BaseUserDao baseUserDao;
     private FavoritDao.UserRelationshipDao userRelationshipDao;
     private ChangeResponserHistoryDao.InterviewAppointerDao interviewAppointerDao;
-    private BaseUserDao.InviteRelationshipDao inviteRelationshipDao;
+    private InviteRelationshipDao inviteRelationshipDao;
     private List<BaseUser> myFriends = new ArrayList<BaseUser>();
     private Map<Integer, String> competitionSessions = new HashMap<Integer, String>();
     private CompetitionSessionDao competitionSessionDao;
@@ -1023,11 +1021,11 @@ public class UserAction extends BasicAction {
         this.invitedUsers = invitedUsers;
     }
 
-    public BaseUserDao.InviteRelationshipDao getInviteRelationshipDao() {
+    public InviteRelationshipDao getInviteRelationshipDao() {
         return inviteRelationshipDao;
     }
 
-    public void setInviteRelationshipDao(BaseUserDao.InviteRelationshipDao inviteRelationshipDao) {
+    public void setInviteRelationshipDao(InviteRelationshipDao inviteRelationshipDao) {
         this.inviteRelationshipDao = inviteRelationshipDao;
     }
 

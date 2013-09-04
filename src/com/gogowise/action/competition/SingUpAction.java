@@ -2,7 +2,7 @@ package com.gogowise.action.competition;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.dao.competition.CompetitionDaoImpl;
-import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.user.InviteRelationshipDao;
 import com.gogowise.domain.*;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.interceptor.validation.SkipValidation;
@@ -25,7 +25,7 @@ public class SingUpAction extends BasicAction {
     private static final long serialVersionUID = 1174060748546146233L;
 
     private CompetitionDaoImpl.SingUpDao singUpDao;
-    private BaseUserDao.InviteRelationshipDao inviteRelationshipDao;
+    private InviteRelationshipDao inviteRelationshipDao;
 
     private SingUpInfo singUpInfo;
     private List<File> uploads = new ArrayList<File>();
@@ -258,11 +258,11 @@ public class SingUpAction extends BasicAction {
     }
 
 
-    public BaseUserDao.InviteRelationshipDao getInviteRelationshipDao() {
+    public InviteRelationshipDao getInviteRelationshipDao() {
         return inviteRelationshipDao;
     }
 
-    public void setInviteRelationshipDao(BaseUserDao.InviteRelationshipDao inviteRelationshipDao) {
+    public void setInviteRelationshipDao(InviteRelationshipDao inviteRelationshipDao) {
         this.inviteRelationshipDao = inviteRelationshipDao;
     }
 

@@ -4,7 +4,7 @@ import com.gogowise.action.BasicAction;
 import com.gogowise.action.valueobject.Session;
 import com.gogowise.dao.competition.CompetitionAudienceDao;
 import com.gogowise.dao.competition.CompetitionSessionDao;
-import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.user.InviteRelationshipDao;
 import com.gogowise.domain.*;
 import com.gogowise.utils.Constants;
 import com.thoughtworks.xstream.XStream;
@@ -32,7 +32,7 @@ public class CompetitionSessionAction extends BasicAction {
      */
     private static final long serialVersionUID = 2637053226710240716L;
     private CompetitionSessionDao competitionSessionDao;
-    private BaseUserDao.InviteRelationshipDao inviteRelationshipDao;
+    private InviteRelationshipDao inviteRelationshipDao;
     private CompetitionAudienceDao competitionAudienceDao;
 
 
@@ -216,11 +216,11 @@ public class CompetitionSessionAction extends BasicAction {
         this.fromHost = fromHost;
     }
 
-    public BaseUserDao.InviteRelationshipDao getInviteRelationshipDao() {
+    public InviteRelationshipDao getInviteRelationshipDao() {
         return inviteRelationshipDao;
     }
 
-    public void setInviteRelationshipDao(BaseUserDao.InviteRelationshipDao inviteRelationshipDao) {
+    public void setInviteRelationshipDao(InviteRelationshipDao inviteRelationshipDao) {
         this.inviteRelationshipDao = inviteRelationshipDao;
     }
 

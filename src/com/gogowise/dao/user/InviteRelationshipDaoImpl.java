@@ -1,8 +1,6 @@
 package com.gogowise.dao.user;
 
 import com.gogowise.dao.ModelDao;
-import com.gogowise.dao.user.BaseUserDao;
-import com.gogowise.dao.user.FavoritDao;
 import com.gogowise.domain.*;
 import com.gogowise.utils.MD5;
 import org.springframework.stereotype.Repository;
@@ -17,7 +15,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @Repository("inviteRelationshipDao")
-public class InviteRelationshipDaoImpl extends ModelDao.ModelDaoImpl<InviteRelationship> implements BaseUserDao.InviteRelationshipDao {
+public class InviteRelationshipDaoImpl extends ModelDao.ModelDaoImpl<InviteRelationship> implements InviteRelationshipDao {
 
     private FavoritDao.UserRelationshipDao userRelationshipDao;
     private BaseUserDao baseUserDao;
@@ -92,4 +90,5 @@ public class InviteRelationshipDaoImpl extends ModelDao.ModelDaoImpl<InviteRelat
     public void setBaseUserDao(BaseUserDao baseUserDao) {
         this.baseUserDao = baseUserDao;
     }
+
 }
