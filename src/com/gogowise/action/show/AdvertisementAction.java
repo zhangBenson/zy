@@ -1,9 +1,9 @@
 package com.gogowise.action.show;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.AdvertisementDao;
-import com.gogowise.dao.BaseUserDao;
-import com.gogowise.dao.MyShowDao;
+import com.gogowise.dao.advertisement.AdvertisementDao;
+import com.gogowise.dao.live.LiveChannelNewEventDao;
+import com.gogowise.dao.user.BaseUserDao;
 import com.gogowise.domain.Advertisement;
 import com.gogowise.domain.BaseUser;
 import com.gogowise.domain.MyShow;
@@ -17,8 +17,6 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import javax.persistence.Access;
-import javax.rmi.CORBA.Util;
 import java.util.Calendar;
 
 /**
@@ -34,7 +32,7 @@ import java.util.Calendar;
 public class AdvertisementAction extends BasicAction {
     private AdvertisementDao advertisementDao;
     private Advertisement advertisement;
-    private MyShowDao myShowDao;
+    private LiveChannelNewEventDao.MyShowDao myShowDao;
     private MyShow myShow;
     private BaseUserDao baseUserDao;
 
@@ -97,11 +95,11 @@ public class AdvertisementAction extends BasicAction {
         this.advertisement = advertisement;
     }
 
-    public MyShowDao getMyShowDao() {
+    public LiveChannelNewEventDao.MyShowDao getMyShowDao() {
         return myShowDao;
     }
 
-    public void setMyShowDao(MyShowDao myShowDao) {
+    public void setMyShowDao(LiveChannelNewEventDao.MyShowDao myShowDao) {
         this.myShowDao = myShowDao;
     }
 

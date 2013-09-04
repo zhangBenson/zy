@@ -1,7 +1,10 @@
 package com.gogowise.action.org;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.*;
+import com.gogowise.dao.course.CourseDao;
+import com.gogowise.dao.course.CourseEvaluationDao;
+import com.gogowise.dao.org.ChangeResponserHistoryDao;
+import com.gogowise.dao.user.BaseUserDao;
 import com.gogowise.domain.*;
 import com.gogowise.utils.Constants;
 import com.gogowise.utils.EmailUtil;
@@ -18,7 +21,6 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import javax.servlet.Servlet;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -39,13 +41,13 @@ public class OrganizationAction extends BasicAction {
 
     private CourseDao courseDao;
 
-    private OrganizationDao organizationDao;
+    private ChangeResponserHistoryDao.OrganizationDao organizationDao;
     private CourseEvaluationDao courseEvaluationDao;
-    private OrganizationCommentDao organizationCommentDao;
+    private ChangeResponserHistoryDao.OrganizationCommentDao organizationCommentDao;
     private BaseUserDao baseUserDao;
     private List<OrgMaterial> orgMaterials = new ArrayList<OrgMaterial>();
     private OrgMaterial orgMaterial;
-    private OrgMaterialDao orgMaterialDao;
+    private ChangeResponserHistoryDao.OrgMaterialDao orgMaterialDao;
 
     private BaseUser responser;
     private File upload;
@@ -493,11 +495,11 @@ public class OrganizationAction extends BasicAction {
         this.courseDao = courseDao;
     }
 
-    public OrganizationDao getOrganizationDao() {
+    public ChangeResponserHistoryDao.OrganizationDao getOrganizationDao() {
         return organizationDao;
     }
 
-    public void setOrganizationDao(OrganizationDao organizationDao) {
+    public void setOrganizationDao(ChangeResponserHistoryDao.OrganizationDao organizationDao) {
         this.organizationDao = organizationDao;
     }
 
@@ -509,11 +511,11 @@ public class OrganizationAction extends BasicAction {
         this.courseEvaluationDao = courseEvaluationDao;
     }
 
-    public OrganizationCommentDao getOrganizationCommentDao() {
+    public ChangeResponserHistoryDao.OrganizationCommentDao getOrganizationCommentDao() {
         return organizationCommentDao;
     }
 
-    public void setOrganizationCommentDao(OrganizationCommentDao organizationCommentDao) {
+    public void setOrganizationCommentDao(ChangeResponserHistoryDao.OrganizationCommentDao organizationCommentDao) {
         this.organizationCommentDao = organizationCommentDao;
     }
 
@@ -709,11 +711,11 @@ public class OrganizationAction extends BasicAction {
         this.orgMaterial = orgMaterial;
     }
 
-    public OrgMaterialDao getOrgMaterialDao() {
+    public ChangeResponserHistoryDao.OrgMaterialDao getOrgMaterialDao() {
         return orgMaterialDao;
     }
 
-    public void setOrgMaterialDao(OrgMaterialDao orgMaterialDao) {
+    public void setOrgMaterialDao(ChangeResponserHistoryDao.OrgMaterialDao orgMaterialDao) {
         this.orgMaterialDao = orgMaterialDao;
     }
 

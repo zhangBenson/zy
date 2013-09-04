@@ -3,10 +3,9 @@ package com.gogowise.action.show;
 import com.gogowise.action.BasicAction;
 import com.gogowise.action.valueobject.One2ManyStudentSession;
 import com.gogowise.action.valueobject.One2ManyTeacherSession;
-import com.gogowise.dao.BaseUserDao;
-import com.gogowise.dao.MyShowDao;
-import com.gogowise.dao.SeasonIncreasedShowFansDao;
-import com.gogowise.dao.ShowTermsDao;
+import com.gogowise.dao.live.LiveChannelDao;
+import com.gogowise.dao.live.LiveChannelNewEventDao;
+import com.gogowise.dao.user.BaseUserDao;
 import com.gogowise.domain.BaseUser;
 import com.gogowise.domain.MyShow;
 import com.gogowise.domain.SeasonIncreasedShowFans;
@@ -32,10 +31,10 @@ import java.util.Calendar;
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 public class ShowVideoSessionAction extends BasicAction{
     private MyShow myShow;
-    private MyShowDao myShowDao;
+    private LiveChannelNewEventDao.MyShowDao myShowDao;
     private ShowTerms showTerms;
-    private ShowTermsDao showTermsDao;
-    private SeasonIncreasedShowFansDao seasonIncreasedShowFansDao;
+    private LiveChannelDao.ShowTermsDao showTermsDao;
+    private LiveChannelNewEventDao.SeasonIncreasedShowFansDao seasonIncreasedShowFansDao;
     private BaseUser baseUser;
     private BaseUserDao baseUserDao;
     private String initSeesionString;
@@ -95,11 +94,11 @@ public class ShowVideoSessionAction extends BasicAction{
         this.myShow = myShow;
     }
 
-    public MyShowDao getMyShowDao() {
+    public LiveChannelNewEventDao.MyShowDao getMyShowDao() {
         return myShowDao;
     }
 
-    public void setMyShowDao(MyShowDao myShowDao) {
+    public void setMyShowDao(LiveChannelNewEventDao.MyShowDao myShowDao) {
         this.myShowDao = myShowDao;
     }
 
@@ -143,11 +142,11 @@ public class ShowVideoSessionAction extends BasicAction{
         this.showTerms = showTerms;
     }
 
-    public ShowTermsDao getShowTermsDao() {
+    public LiveChannelDao.ShowTermsDao getShowTermsDao() {
         return showTermsDao;
     }
 
-    public void setShowTermsDao(ShowTermsDao showTermsDao) {
+    public void setShowTermsDao(LiveChannelDao.ShowTermsDao showTermsDao) {
         this.showTermsDao = showTermsDao;
     }
 
@@ -159,11 +158,11 @@ public class ShowVideoSessionAction extends BasicAction{
         this.roleType = roleType;
     }
 
-    public SeasonIncreasedShowFansDao getSeasonIncreasedShowFansDao() {
+    public LiveChannelNewEventDao.SeasonIncreasedShowFansDao getSeasonIncreasedShowFansDao() {
         return seasonIncreasedShowFansDao;
     }
 
-    public void setSeasonIncreasedShowFansDao(SeasonIncreasedShowFansDao seasonIncreasedShowFansDao) {
+    public void setSeasonIncreasedShowFansDao(LiveChannelNewEventDao.SeasonIncreasedShowFansDao seasonIncreasedShowFansDao) {
         this.seasonIncreasedShowFansDao = seasonIncreasedShowFansDao;
     }
 }

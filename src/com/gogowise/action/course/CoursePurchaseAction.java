@@ -1,7 +1,12 @@
 package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.*;
+import com.gogowise.dao.course.CourseDao;
+import com.gogowise.dao.course.MatterDao;
+import com.gogowise.dao.course.SeniorClassRoomDao;
+import com.gogowise.dao.trade.ConsumptionOrderDao;
+import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.user.BaseUserRoleTypeDao;
 import com.gogowise.domain.BaseUser;
 import com.gogowise.domain.Course;
 import com.gogowise.domain.Matter;
@@ -45,7 +50,7 @@ public class CoursePurchaseAction extends BasicAction {
     private CourseDao courseDao;
     private ConsumptionOrderDao consumptionOrderDao;
     private SeniorClassRoomDao seniorClassRoomDao;
-    private UserAccountInfoDao userAccountInfoDao;
+    private BaseUserRoleTypeDao.UserAccountInfoDao userAccountInfoDao;
     private String purchaseMsg;
     private String purchaseConfirmMsg;
     private MatterDao matterDao;
@@ -303,11 +308,11 @@ public class CoursePurchaseAction extends BasicAction {
     }
 
     @JSON(serialize = false)
-    public UserAccountInfoDao getUserAccountInfoDao() {
+    public BaseUserRoleTypeDao.UserAccountInfoDao getUserAccountInfoDao() {
         return userAccountInfoDao;
     }
 
-    public void setUserAccountInfoDao(UserAccountInfoDao userAccountInfoDao) {
+    public void setUserAccountInfoDao(BaseUserRoleTypeDao.UserAccountInfoDao userAccountInfoDao) {
         this.userAccountInfoDao = userAccountInfoDao;
     }
     @JSON(serialize = false)

@@ -1,9 +1,8 @@
 package com.gogowise.action.org;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.BaseUserDao;
-import com.gogowise.dao.OrganizationDao;
-import com.gogowise.dao.OrganizationTeacherDao;
+import com.gogowise.dao.org.ChangeResponserHistoryDao;
+import com.gogowise.dao.user.BaseUserDao;
 import com.gogowise.domain.BaseUser;
 import com.gogowise.domain.Organization;
 import com.gogowise.domain.OrganizationTeacher;
@@ -26,9 +25,9 @@ public class OrgAuthAction  extends BasicAction {
     private OrganizationTeacher orgTeacher;
     private Integer orgId;
 
-    private OrganizationTeacherDao organizationTeacherDao;
+    private ChangeResponserHistoryDao.OrganizationTeacherDao organizationTeacherDao;
     private BaseUserDao baseUserDao;
-    private OrganizationDao organizationDao;
+    private ChangeResponserHistoryDao.OrganizationDao organizationDao;
 
     @Action(value="initOrgAuthorization",results = {@Result(name=SUCCESS,type = Constants.RESULT_NAME_TILES, location = ".orgAuthorization"),
             @Result(name=INPUT,type = Constants.RESULT_NAME_TILES, location = ".orgAuthorization")})
@@ -85,11 +84,11 @@ public class OrgAuthAction  extends BasicAction {
         this.orgTeacher = orgTeacher;
     }
 
-    public OrganizationTeacherDao getOrganizationTeacherDao() {
+    public ChangeResponserHistoryDao.OrganizationTeacherDao getOrganizationTeacherDao() {
         return organizationTeacherDao;
     }
 
-    public void setOrganizationTeacherDao(OrganizationTeacherDao organizationTeacherDao) {
+    public void setOrganizationTeacherDao(ChangeResponserHistoryDao.OrganizationTeacherDao organizationTeacherDao) {
         this.organizationTeacherDao = organizationTeacherDao;
     }
 
@@ -109,11 +108,11 @@ public class OrgAuthAction  extends BasicAction {
         this.orgId = orgId;
     }
 
-    public OrganizationDao getOrganizationDao() {
+    public ChangeResponserHistoryDao.OrganizationDao getOrganizationDao() {
         return organizationDao;
     }
 
-    public void setOrganizationDao(OrganizationDao organizationDao) {
+    public void setOrganizationDao(ChangeResponserHistoryDao.OrganizationDao organizationDao) {
         this.organizationDao = organizationDao;
     }
 }

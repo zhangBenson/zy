@@ -1,6 +1,6 @@
 package com.gogowise.action;
 
-import com.gogowise.dao.UserPrivateChannelDao;
+import com.gogowise.dao.live.LiveChannelNewEventDao;
 import com.gogowise.domain.BaseUser;
 import com.gogowise.domain.Pagination;
 import com.gogowise.domain.UserPrivateChannel;
@@ -20,7 +20,7 @@ public class BasicAction extends ActionSupport {
     public static final String BASE_NAME_SPACE = "/";
     public static final String RESULT_JSON = "json";
     private Pagination pagination = new Pagination();
-    private UserPrivateChannelDao userPrivateChannelDao;
+    private LiveChannelNewEventDao.UserPrivateChannelDao userPrivateChannelDao;
 
 
     protected static Logger logger = LogManager.getLogger(BasicAction.class.getName());
@@ -132,11 +132,11 @@ public class BasicAction extends ActionSupport {
            return  s == null ? 0: s;
     }
 
-    public UserPrivateChannelDao getUserPrivateChannelDao() {
+    public LiveChannelNewEventDao.UserPrivateChannelDao getUserPrivateChannelDao() {
         return userPrivateChannelDao;
     }
 
-    public void setUserPrivateChannelDao(UserPrivateChannelDao userPrivateChannelDao) {
+    public void setUserPrivateChannelDao(LiveChannelNewEventDao.UserPrivateChannelDao userPrivateChannelDao) {
         this.userPrivateChannelDao = userPrivateChannelDao;
     }
 }

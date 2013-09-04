@@ -3,7 +3,9 @@ package com.gogowise.action.meeting;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.action.valueobject.*;
-import com.gogowise.dao.*;
+import com.gogowise.dao.course.MatterDao;
+import com.gogowise.dao.org.ChangeResponserHistoryDao;
+import com.gogowise.dao.user.BaseUserDao;
 import com.gogowise.domain.*;
 import com.gogowise.utils.Constants;
 import com.gogowise.utils.EmailUtil;
@@ -24,20 +26,19 @@ import java.io.OutputStreamWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.concurrent.ExecutionException;
 
 @Controller
 @Namespace(BasicAction.BASE_NAME_SPACE)
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 public class OrgMeetingAction extends BasicAction{
     private BaseUserDao baseUserDao;
-    private OrgMeetingDao orgMeetingDao;
+    private ChangeResponserHistoryDao.OrgMeetingDao orgMeetingDao;
     private OrgMeeting orgMeeting;
     private List<OrgMeeting> orgMeetings = new ArrayList<OrgMeeting>();
-    private OrgMeetingMemberDao orgMeetingMemberDao;
+    private ChangeResponserHistoryDao.OrgMeetingMemberDao orgMeetingMemberDao;
     private List<String> memberEmails = new ArrayList<String>();
     private Map<Integer, String> orgs = new HashMap<Integer, String>();
-    private OrganizationDao organizationDao;
+    private ChangeResponserHistoryDao.OrganizationDao organizationDao;
     private Organization organization;
     private String email;
     private String initSeesionString;
@@ -223,11 +224,11 @@ public class OrgMeetingAction extends BasicAction{
         this.baseUserDao = baseUserDao;
     }
 
-    public OrgMeetingDao getOrgMeetingDao() {
+    public ChangeResponserHistoryDao.OrgMeetingDao getOrgMeetingDao() {
         return orgMeetingDao;
     }
 
-    public void setOrgMeetingDao(OrgMeetingDao orgMeetingDao) {
+    public void setOrgMeetingDao(ChangeResponserHistoryDao.OrgMeetingDao orgMeetingDao) {
         this.orgMeetingDao = orgMeetingDao;
     }
 
@@ -247,11 +248,11 @@ public class OrgMeetingAction extends BasicAction{
         this.orgMeetings = orgMeetings;
     }
 
-    public OrgMeetingMemberDao getOrgMeetingMemberDao() {
+    public ChangeResponserHistoryDao.OrgMeetingMemberDao getOrgMeetingMemberDao() {
         return orgMeetingMemberDao;
     }
 
-    public void setOrgMeetingMemberDao(OrgMeetingMemberDao orgMeetingMemberDao) {
+    public void setOrgMeetingMemberDao(ChangeResponserHistoryDao.OrgMeetingMemberDao orgMeetingMemberDao) {
         this.orgMeetingMemberDao = orgMeetingMemberDao;
     }
 
@@ -277,11 +278,11 @@ public class OrgMeetingAction extends BasicAction{
         this.orgs = orgs;
     }
 
-    public OrganizationDao getOrganizationDao() {
+    public ChangeResponserHistoryDao.OrganizationDao getOrganizationDao() {
         return organizationDao;
     }
 
-    public void setOrganizationDao(OrganizationDao organizationDao) {
+    public void setOrganizationDao(ChangeResponserHistoryDao.OrganizationDao organizationDao) {
         this.organizationDao = organizationDao;
     }
 

@@ -1,8 +1,8 @@
 package com.gogowise.action.competition;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.InviteRelationshipDao;
-import com.gogowise.dao.SingUpDao;
+import com.gogowise.dao.competition.CompetitionDaoImpl;
+import com.gogowise.dao.user.BaseUserDao;
 import com.gogowise.domain.*;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.interceptor.validation.SkipValidation;
@@ -24,8 +24,8 @@ public class SingUpAction extends BasicAction {
      */
     private static final long serialVersionUID = 1174060748546146233L;
 
-    private SingUpDao singUpDao;
-    private InviteRelationshipDao inviteRelationshipDao;
+    private CompetitionDaoImpl.SingUpDao singUpDao;
+    private BaseUserDao.InviteRelationshipDao inviteRelationshipDao;
 
     private SingUpInfo singUpInfo;
     private List<File> uploads = new ArrayList<File>();
@@ -258,11 +258,11 @@ public class SingUpAction extends BasicAction {
     }
 
 
-    public InviteRelationshipDao getInviteRelationshipDao() {
+    public BaseUserDao.InviteRelationshipDao getInviteRelationshipDao() {
         return inviteRelationshipDao;
     }
 
-    public void setInviteRelationshipDao(InviteRelationshipDao inviteRelationshipDao) {
+    public void setInviteRelationshipDao(BaseUserDao.InviteRelationshipDao inviteRelationshipDao) {
         this.inviteRelationshipDao = inviteRelationshipDao;
     }
 
@@ -290,11 +290,11 @@ public class SingUpAction extends BasicAction {
         this.singUpInfos = singUpInfos;
     }
 
-    public SingUpDao getSingUpDao() {
+    public CompetitionDaoImpl.SingUpDao getSingUpDao() {
         return singUpDao;
     }
 
-    public void setSingUpDao(SingUpDao singUpDao) {
+    public void setSingUpDao(CompetitionDaoImpl.SingUpDao singUpDao) {
         this.singUpDao = singUpDao;
     }
 

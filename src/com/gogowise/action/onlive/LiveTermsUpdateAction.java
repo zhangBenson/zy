@@ -1,20 +1,18 @@
 package com.gogowise.action.onlive;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.BaseUserDao;
-import com.gogowise.dao.ChannelTermsDao;
-import com.gogowise.dao.MemberOfLiveChannelDao;
+import com.gogowise.dao.live.LiveChannelDao;
+import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.live.ChannelTermsDao;
 import com.gogowise.domain.BaseUser;
 import com.gogowise.domain.ChannelTerms;
 import com.gogowise.domain.MemberOfLiveChannel;
 import com.gogowise.utils.Constants;
 import com.gogowise.utils.EmailUtil;
 import com.gogowise.utils.Utils;
-import freemarker.template.utility.StringUtil;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
-import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -29,7 +27,7 @@ import java.util.List;
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 public class LiveTermsUpdateAction extends BasicAction{
     private ChannelTermsDao channelTermsDao;
-    private MemberOfLiveChannelDao memberOfLiveChannelDao;
+    private LiveChannelDao.MemberOfLiveChannelDao memberOfLiveChannelDao;
     private BaseUserDao baseUserDao;
     private Integer id;
     private String subTitle;
@@ -110,11 +108,11 @@ public class LiveTermsUpdateAction extends BasicAction{
         this.channelTermsDao = channelTermsDao;
     }
 
-    public MemberOfLiveChannelDao getMemberOfLiveChannelDao() {
+    public LiveChannelDao.MemberOfLiveChannelDao getMemberOfLiveChannelDao() {
         return memberOfLiveChannelDao;
     }
 
-    public void setMemberOfLiveChannelDao(MemberOfLiveChannelDao memberOfLiveChannelDao) {
+    public void setMemberOfLiveChannelDao(LiveChannelDao.MemberOfLiveChannelDao memberOfLiveChannelDao) {
         this.memberOfLiveChannelDao = memberOfLiveChannelDao;
     }
 

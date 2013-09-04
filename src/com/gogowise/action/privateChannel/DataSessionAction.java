@@ -3,7 +3,11 @@ package com.gogowise.action.privateChannel;
 import com.gogowise.action.BasicAction;
 import com.gogowise.action.valueobject.MChannelGuestSession;
 import com.gogowise.action.valueobject.MChannelHostSession;
-import com.gogowise.dao.*;
+import com.gogowise.dao.android.AndroidFeedbackDaoImpl;
+import com.gogowise.dao.live.LiveChannelNewEventDao;
+import com.gogowise.dao.live.SubPrivateChannelDao;
+import com.gogowise.dao.system.GoGoWiseAnnounceDao;
+import com.gogowise.dao.user.BaseUserDao;
 import com.gogowise.domain.*;
 import com.gogowise.utils.Constants;
 import com.thoughtworks.xstream.XStream;
@@ -19,20 +23,18 @@ import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
  @Controller
 @Namespace(BasicAction.BASE_NAME_SPACE)
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 public class DataSessionAction extends BasicAction {
-    private UserPrivateChannelDao userPrivateChannelDao;
+    private LiveChannelNewEventDao.UserPrivateChannelDao userPrivateChannelDao;
     private SubPrivateChannelDao subPrivateChannelDao;
     private UserPrivateChannel userPrivateChannel;
     private SubPrivateChannel subPrivateChannel;
     private BaseUserDao baseUserDao;
-    private PersonalOnliveDao personalOnliveDao;
+    private LiveChannelNewEventDao.PersonalOnliveDao personalOnliveDao;
     private GoGoWiseAnnounceDao goGoWiseAnnounceDao;
 
     private String initSeesionString;
@@ -47,7 +49,7 @@ public class DataSessionAction extends BasicAction {
     private long validDays;
     private BaseUser otherUser;         //7429
 
-    private MonitorAuthorizeDao monitorAuthorizeDao;
+    private AndroidFeedbackDaoImpl.MonitorAuthorizeDao monitorAuthorizeDao;
 
     @Action(value = "openPrivateChannel",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".multiVideoRoomPrivate"),
                                                         @Result(name = "failed",type = Constants.RESULT_NAME_TILES,location = ".channelUsedUp"),
@@ -200,11 +202,11 @@ public class DataSessionAction extends BasicAction {
         else return -1;
     }
 
-    public UserPrivateChannelDao getUserPrivateChannelDao() {
+    public LiveChannelNewEventDao.UserPrivateChannelDao getUserPrivateChannelDao() {
         return userPrivateChannelDao;
     }
 
-    public void setUserPrivateChannelDao(UserPrivateChannelDao userPrivateChannelDao) {
+    public void setUserPrivateChannelDao(LiveChannelNewEventDao.UserPrivateChannelDao userPrivateChannelDao) {
         this.userPrivateChannelDao = userPrivateChannelDao;
     }
 
@@ -312,11 +314,11 @@ public class DataSessionAction extends BasicAction {
          this.goGoWiseAnnounces = goGoWiseAnnounces;
      }
 
-     public PersonalOnliveDao getPersonalOnliveDao() {
+     public LiveChannelNewEventDao.PersonalOnliveDao getPersonalOnliveDao() {
          return personalOnliveDao;
      }
 
-     public void setPersonalOnliveDao(PersonalOnliveDao personalOnliveDao) {
+     public void setPersonalOnliveDao(LiveChannelNewEventDao.PersonalOnliveDao personalOnliveDao) {
          this.personalOnliveDao = personalOnliveDao;
      }
 
@@ -344,11 +346,11 @@ public class DataSessionAction extends BasicAction {
          this.otherUser = otherUser;
      }
 
-     public MonitorAuthorizeDao getMonitorAuthorizeDao() {
+     public AndroidFeedbackDaoImpl.MonitorAuthorizeDao getMonitorAuthorizeDao() {
          return monitorAuthorizeDao;
      }
 
-     public void setMonitorAuthorizeDao(MonitorAuthorizeDao monitorAuthorizeDao) {
+     public void setMonitorAuthorizeDao(AndroidFeedbackDaoImpl.MonitorAuthorizeDao monitorAuthorizeDao) {
          this.monitorAuthorizeDao = monitorAuthorizeDao;
      }
  }

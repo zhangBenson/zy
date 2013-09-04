@@ -1,14 +1,13 @@
 package com.gogowise.action.org;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.OrgMaterialDao;
+import com.gogowise.dao.org.ChangeResponserHistoryDao;
 import com.gogowise.domain.OrgMaterial;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -19,7 +18,7 @@ import java.io.InputStream;
 public class OrgResourseAction extends BasicAction{
     private String fname;
     private InputStream fstream;
-    private OrgMaterialDao orgMaterialDao;
+    private ChangeResponserHistoryDao.OrgMaterialDao orgMaterialDao;
     private OrgMaterial orgMaterial;
 
     public String orgMaterialDownload(){
@@ -51,11 +50,11 @@ public class OrgResourseAction extends BasicAction{
         this.fstream = fstream;
     }
 
-    public OrgMaterialDao getOrgMaterialDao() {
+    public ChangeResponserHistoryDao.OrgMaterialDao getOrgMaterialDao() {
         return orgMaterialDao;
     }
 
-    public void setOrgMaterialDao(OrgMaterialDao orgMaterialDao) {
+    public void setOrgMaterialDao(ChangeResponserHistoryDao.OrgMaterialDao orgMaterialDao) {
         this.orgMaterialDao = orgMaterialDao;
     }
 

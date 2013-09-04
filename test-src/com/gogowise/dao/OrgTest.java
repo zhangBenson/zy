@@ -1,5 +1,7 @@
 package com.gogowise.dao;
 
+import com.gogowise.dao.org.ChangeResponserHistoryDao;
+import com.gogowise.dao.user.BaseUserDao;
 import com.gogowise.domain.BaseUser;
 import com.gogowise.domain.Organization;
 import com.gogowise.utils.Constants;
@@ -15,7 +17,7 @@ import java.util.Calendar;
 
 public class OrgTest {
 
-    private OrganizationDao organizationDao;
+    private ChangeResponserHistoryDao.OrganizationDao organizationDao;
     private BaseUserDao baseUserDao;
 
 
@@ -25,7 +27,7 @@ public class OrgTest {
                 "applicationContext.xml"};
 
         ApplicationContext ctx = new ClassPathXmlApplicationContext(config);
-        organizationDao = (OrganizationDao) ctx.getBean("organizationDao");
+        organizationDao = (ChangeResponserHistoryDao.OrganizationDao) ctx.getBean("organizationDao");
         baseUserDao = (BaseUserDao) ctx.getBean("baseUserDao");
     }
 
@@ -68,11 +70,11 @@ public class OrgTest {
         this.baseUserDao = baseUserDao;
     }
 
-    public OrganizationDao getOrganizationDao() {
+    public ChangeResponserHistoryDao.OrganizationDao getOrganizationDao() {
         return organizationDao;
     }
 
-    public void setOrganizationDao(OrganizationDao organizationDao) {
+    public void setOrganizationDao(ChangeResponserHistoryDao.OrganizationDao organizationDao) {
         this.organizationDao = organizationDao;
     }
 }

@@ -1,18 +1,21 @@
 package com.gogowise.action.onlive;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.action.utils.NotifyUsers;
 import com.gogowise.action.valueobject.PersonalOnliveGuestSession;
 import com.gogowise.action.valueobject.PersonalOnliveHostSession;
-import com.gogowise.dao.*;
+import com.gogowise.dao.course.CourseDao;
+import com.gogowise.dao.live.LiveChannelDao;
+import com.gogowise.dao.live.LiveChannelNewEventDao;
+import com.gogowise.dao.live.LiveTermCommentDao;
+import com.gogowise.dao.live.LiveTrailerDao;
+import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.user.UserFansDao;
 import com.gogowise.domain.*;
 import com.gogowise.utils.Constants;
 import com.gogowise.utils.EmailUtil;
 import com.gogowise.utils.Utils;
-import com.opensymphony.xwork2.ActionContext;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.CompactWriter;
-import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -34,13 +37,13 @@ public class PersonalOnliveAction extends BasicAction{
     private BaseUserDao baseUserDao;
     private LiveChannelDao liveChannelDao;
     private PersonalOnlive personalOnlive;
-    private PersonalOnliveDao personalOnliveDao;
+    private LiveChannelNewEventDao.PersonalOnliveDao personalOnliveDao;
     private String initSeesionString;
     private String flashPatch;
     private Boolean enteredRoom = false;
     private UserMatters userMatters;
     private UserFansDao userFansDao;
-    private UserMattersDao userMattersDao;
+    private LiveChannelDao.UserMattersDao userMattersDao;
     private List<UserFans> userFanses = new ArrayList<UserFans>();
     private CourseDao courseDao;
     private List<Course> courses = new ArrayList<Course>();
@@ -57,7 +60,7 @@ public class PersonalOnliveAction extends BasicAction{
     private Boolean enteredVirtualRoom = false;
     private String chatMessage;
     private List<BaseUser> regAudiences = new ArrayList<BaseUser>();
-    private ValidUserDao validUserDao;
+    private LiveTermCommentDao.ValidUserDao validUserDao;
 
     private String address;
     private double latitude;
@@ -329,11 +332,11 @@ public class PersonalOnliveAction extends BasicAction{
         this.personalOnlive = personalOnlive;
     }
 
-    public PersonalOnliveDao getPersonalOnliveDao() {
+    public LiveChannelNewEventDao.PersonalOnliveDao getPersonalOnliveDao() {
         return personalOnliveDao;
     }
 
-    public void setPersonalOnliveDao(PersonalOnliveDao personalOnliveDao) {
+    public void setPersonalOnliveDao(LiveChannelNewEventDao.PersonalOnliveDao personalOnliveDao) {
         this.personalOnliveDao = personalOnliveDao;
     }
 
@@ -369,11 +372,11 @@ public class PersonalOnliveAction extends BasicAction{
         this.userFansDao = userFansDao;
     }
 
-    public UserMattersDao getUserMattersDao() {
+    public LiveChannelDao.UserMattersDao getUserMattersDao() {
         return userMattersDao;
     }
 
-    public void setUserMattersDao(UserMattersDao userMattersDao) {
+    public void setUserMattersDao(LiveChannelDao.UserMattersDao userMattersDao) {
         this.userMattersDao = userMattersDao;
     }
 
@@ -544,11 +547,11 @@ public class PersonalOnliveAction extends BasicAction{
         this.regAudiences = regAudiences;
     }
 
-    public ValidUserDao getValidUserDao() {
+    public LiveTermCommentDao.ValidUserDao getValidUserDao() {
         return validUserDao;
     }
 
-    public void setValidUserDao(ValidUserDao validUserDao) {
+    public void setValidUserDao(LiveTermCommentDao.ValidUserDao validUserDao) {
         this.validUserDao = validUserDao;
     }
 

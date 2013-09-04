@@ -1,12 +1,14 @@
 package com.gogowise.action.search;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.*;
+import com.gogowise.dao.course.CourseDao;
+import com.gogowise.dao.live.LiveChannelDao;
+import com.gogowise.dao.live.LiveChannelNewEventDao;
+import com.gogowise.dao.org.ChangeResponserHistoryDao;
+import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.user.UserFansDao;
 import com.gogowise.domain.*;
 import com.gogowise.utils.Constants;
-import com.opensymphony.xwork2.ActionContext;
-import org.apache.commons.lang.StringUtils;
-import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -30,12 +32,12 @@ import java.util.List;
 @Namespace(BasicAction.BASE_NAME_SPACE)
 public class SearchAction extends BasicAction{
     private CourseDao courseDao;
-    private OrganizationDao organizationDao;
+    private ChangeResponserHistoryDao.OrganizationDao organizationDao;
     private BaseUserDao baseUserDao;
-    private MyShowDao myShowDao;
+    private LiveChannelNewEventDao.MyShowDao myShowDao;
     private LiveChannelDao liveChannelDao;
     private UserFansDao userFansDao;
-    private OrgFansDao orgFansDao;
+    private ChangeResponserHistoryDao.OrgFansDao orgFansDao;
 
     private List<Course> courses;
     private List<BaseUser> baseUsers;
@@ -136,11 +138,11 @@ public class SearchAction extends BasicAction{
         this.courseDao = courseDao;
     }
 
-    public OrganizationDao getOrganizationDao() {
+    public ChangeResponserHistoryDao.OrganizationDao getOrganizationDao() {
         return organizationDao;
     }
 
-    public void setOrganizationDao(OrganizationDao organizationDao) {
+    public void setOrganizationDao(ChangeResponserHistoryDao.OrganizationDao organizationDao) {
         this.organizationDao = organizationDao;
     }
 
@@ -152,11 +154,11 @@ public class SearchAction extends BasicAction{
         this.baseUserDao = baseUserDao;
     }
 
-    public MyShowDao getMyShowDao() {
+    public LiveChannelNewEventDao.MyShowDao getMyShowDao() {
         return myShowDao;
     }
 
-    public void setMyShowDao(MyShowDao myShowDao) {
+    public void setMyShowDao(LiveChannelNewEventDao.MyShowDao myShowDao) {
         this.myShowDao = myShowDao;
     }
 
@@ -168,11 +170,11 @@ public class SearchAction extends BasicAction{
         this.liveChannelDao = liveChannelDao;
     }
 
-    public OrgFansDao getOrgFansDao() {
+    public ChangeResponserHistoryDao.OrgFansDao getOrgFansDao() {
         return orgFansDao;
     }
 
-    public void setOrgFansDao(OrgFansDao orgFansDao) {
+    public void setOrgFansDao(ChangeResponserHistoryDao.OrgFansDao orgFansDao) {
         this.orgFansDao = orgFansDao;
     }
 

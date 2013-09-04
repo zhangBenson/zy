@@ -1,8 +1,8 @@
 package com.gogowise.utils;
 
-import com.gogowise.dao.BaseUserDao;
-import com.gogowise.dao.BaseUserRoleTypeDao;
-import com.gogowise.dao.OrganizationDao;
+import com.gogowise.dao.org.ChangeResponserHistoryDao;
+import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.user.BaseUserRoleTypeDao;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.*;
@@ -29,7 +29,7 @@ public class OrgSecFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
     }
 
-    private OrganizationDao organizationDao;
+    private ChangeResponserHistoryDao.OrganizationDao organizationDao;
     private BaseUserRoleTypeDao baseUserRoleTypeDao;
 
     public void doFilter(ServletRequest arg0, ServletResponse arg1,
@@ -53,11 +53,11 @@ public class OrgSecFilter implements Filter {
 
 
 
-    public OrganizationDao getOrganizationDao() {
+    public ChangeResponserHistoryDao.OrganizationDao getOrganizationDao() {
         return organizationDao;
     }
 
-    public void setOrganizationDao(OrganizationDao organizationDao) {
+    public void setOrganizationDao(ChangeResponserHistoryDao.OrganizationDao organizationDao) {
         this.organizationDao = organizationDao;
     }
 

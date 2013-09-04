@@ -1,7 +1,11 @@
 package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.*;
+import com.gogowise.dao.course.*;
+import com.gogowise.dao.org.ChangeResponserHistoryDao;
+import com.gogowise.dao.system.GoGoWiseAnnounceDao;
+import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.user.UserFansDao;
 import com.gogowise.domain.*;
 import com.gogowise.utils.*;
 import com.opensymphony.xwork2.ActionContext;
@@ -40,7 +44,7 @@ public class CourseAction extends BasicAction {
     private ClassRoomDao classRoomDao;
     private BaseUserDao baseUserDao;
     private CourseDao courseDao;
-    private OrganizationDao organizationDao;
+    private ChangeResponserHistoryDao.OrganizationDao organizationDao;
     private CourseEvaluationDao courseEvaluationDao;
     private CourseCommentDao courseCommentDao;
     private CourseResourceDao courseResourceDao;
@@ -1244,11 +1248,11 @@ public class CourseAction extends BasicAction {
     }
 
 
-    public OrganizationDao getOrganizationDao() {
+    public ChangeResponserHistoryDao.OrganizationDao getOrganizationDao() {
         return organizationDao;
     }
 
-    public void setOrganizationDao(OrganizationDao organizationDao) {
+    public void setOrganizationDao(ChangeResponserHistoryDao.OrganizationDao organizationDao) {
         this.organizationDao = organizationDao;
     }
 

@@ -1,7 +1,7 @@
 package com.gogowise.action.competition;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.SubjectDao;
+import com.gogowise.dao.competition.CompetitionDaoImpl;
 import com.gogowise.domain.Subject;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -19,7 +19,7 @@ public class SubjectAction extends BasicAction {
      *
      */
     private static final long serialVersionUID = 202155741102217063L;
-    private SubjectDao subjectDao;
+    private CompetitionDaoImpl.SubjectDao subjectDao;
     private Subject subject;
 
     public String init() {
@@ -41,11 +41,11 @@ public class SubjectAction extends BasicAction {
         }
     }
 
-    public SubjectDao getSubjectDao() {
+    public CompetitionDaoImpl.SubjectDao getSubjectDao() {
         return subjectDao;
     }
 
-    public void setSubjectDao(SubjectDao subjectDao) {
+    public void setSubjectDao(CompetitionDaoImpl.SubjectDao subjectDao) {
         this.subjectDao = subjectDao;
     }
 

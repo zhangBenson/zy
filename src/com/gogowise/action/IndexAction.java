@@ -1,7 +1,10 @@
 package com.gogowise.action;
 
-import com.gogowise.dao.*;
-import com.gogowise.dao.impl.CourseDaoImpl;
+import com.gogowise.dao.course.CourseDao;
+import com.gogowise.dao.live.LiveChannelDao;
+import com.gogowise.dao.live.LiveChannelNewEventDao;
+import com.gogowise.dao.org.ChangeResponserHistoryDao;
+import com.gogowise.dao.user.BaseUserDao;
 import com.gogowise.domain.*;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.ServletActionContext;
@@ -16,8 +19,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -33,11 +34,11 @@ public class IndexAction extends BasicAction {
 
 
     private BaseUserDao baseUserDao;
-    private OrganizationDao organizationDao;
-    private PersonalOnliveDao personalOnliveDao;
+    private ChangeResponserHistoryDao.OrganizationDao organizationDao;
+    private LiveChannelNewEventDao.PersonalOnliveDao personalOnliveDao;
     private LiveChannelDao liveChannelDao;
     private CourseDao courseDao;
-    private MyShowDao myShowDao;
+    private LiveChannelNewEventDao.MyShowDao myShowDao;
     private BaseUser baseUser;
     private List<Course> courses;
     private List<MyShow> myShows;
@@ -154,11 +155,11 @@ public class IndexAction extends BasicAction {
         return this.getLiveChannels().size();
     }
 
-    public OrganizationDao getOrganizationDao() {
+    public ChangeResponserHistoryDao.OrganizationDao getOrganizationDao() {
         return organizationDao;
     }
 
-    public void setOrganizationDao(OrganizationDao organizationDao) {
+    public void setOrganizationDao(ChangeResponserHistoryDao.OrganizationDao organizationDao) {
         this.organizationDao = organizationDao;
     }
 
@@ -201,11 +202,11 @@ public class IndexAction extends BasicAction {
         this.courses = courses;
     }
 
-    public MyShowDao getMyShowDao() {
+    public LiveChannelNewEventDao.MyShowDao getMyShowDao() {
         return myShowDao;
     }
 
-    public void setMyShowDao(MyShowDao myShowDao) {
+    public void setMyShowDao(LiveChannelNewEventDao.MyShowDao myShowDao) {
         this.myShowDao = myShowDao;
     }
 
@@ -233,11 +234,11 @@ public class IndexAction extends BasicAction {
         this.liveChannels = liveChannels;
     }
 
-    public PersonalOnliveDao getPersonalOnliveDao() {
+    public LiveChannelNewEventDao.PersonalOnliveDao getPersonalOnliveDao() {
         return personalOnliveDao;
     }
 
-    public void setPersonalOnliveDao(PersonalOnliveDao personalOnliveDao) {
+    public void setPersonalOnliveDao(LiveChannelNewEventDao.PersonalOnliveDao personalOnliveDao) {
         this.personalOnliveDao = personalOnliveDao;
     }
 

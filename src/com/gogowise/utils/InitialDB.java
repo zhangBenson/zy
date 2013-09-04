@@ -3,7 +3,7 @@ package com.gogowise.utils;
 //import org.springframework.transaction.annotation.Transactional;
 
 //import com.gogowise.dao.GroupDao;
-//import com.gogowise.dao.impl.GroupDaoImpl;
+//import com.gogowise.dao.zimpl.GroupDaoImpl;
 
 //import javax.persistence.EntityManagerFactory;
 //import javax.persistence.PersistenceUnit;

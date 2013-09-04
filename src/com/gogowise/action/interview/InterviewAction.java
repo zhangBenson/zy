@@ -1,7 +1,9 @@
 package com.gogowise.action.interview;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.*;
+import com.gogowise.dao.course.MatterDao;
+import com.gogowise.dao.org.ChangeResponserHistoryDao;
+import com.gogowise.dao.user.BaseUserDao;
 import com.gogowise.domain.*;
 import com.gogowise.utils.Constants;
 import com.gogowise.utils.EmailUtil;
@@ -31,14 +33,14 @@ import java.util.List;
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 
 public class InterviewAction extends BasicAction{
-    private InterviewDao interviewDao;
+    private ChangeResponserHistoryDao.InterviewDao interviewDao;
     private Interview interview;
     private BaseUserDao baseUserDao;
     private BaseUser user;
-    private OrganizationDao organizationDao;
+    private ChangeResponserHistoryDao.OrganizationDao organizationDao;
     private String interviewerEmail;
     private List<String> intervieweeEmails = new ArrayList<String>();
-    private InterviewAppointerDao interviewAppointerDao;
+    private ChangeResponserHistoryDao.InterviewAppointerDao interviewAppointerDao;
     private Integer identityType;    // 0 represent interviewer and 1 represent interviewee
     private MatterDao matterDao;
 
@@ -151,11 +153,11 @@ public class InterviewAction extends BasicAction{
     }
 
 
-    public InterviewDao getInterviewDao() {
+    public ChangeResponserHistoryDao.InterviewDao getInterviewDao() {
         return interviewDao;
     }
 
-    public void setInterviewDao(InterviewDao interviewDao) {
+    public void setInterviewDao(ChangeResponserHistoryDao.InterviewDao interviewDao) {
         this.interviewDao = interviewDao;
     }
 
@@ -167,11 +169,11 @@ public class InterviewAction extends BasicAction{
         this.interview = interview;
     }
 
-    public OrganizationDao getOrganizationDao() {
+    public ChangeResponserHistoryDao.OrganizationDao getOrganizationDao() {
         return organizationDao;
     }
 
-    public void setOrganizationDao(OrganizationDao organizationDao) {
+    public void setOrganizationDao(ChangeResponserHistoryDao.OrganizationDao organizationDao) {
         this.organizationDao = organizationDao;
     }
 
@@ -197,11 +199,11 @@ public class InterviewAction extends BasicAction{
         this.intervieweeEmails = intervieweeEmails;
     }
 
-    public InterviewAppointerDao getInterviewAppointerDao() {
+    public ChangeResponserHistoryDao.InterviewAppointerDao getInterviewAppointerDao() {
         return interviewAppointerDao;
     }
 
-    public void setInterviewAppointerDao(InterviewAppointerDao interviewAppointerDao) {
+    public void setInterviewAppointerDao(ChangeResponserHistoryDao.InterviewAppointerDao interviewAppointerDao) {
         this.interviewAppointerDao = interviewAppointerDao;
     }
 

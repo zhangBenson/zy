@@ -1,13 +1,12 @@
 package com.gogowise.action.zhibi;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.BaseUserDao;
-import com.gogowise.dao.ConsumptionOrderDao;
-import com.gogowise.dao.ConsumptionRecordDao;
-import com.gogowise.dao.UserAccountInfoDao;
+import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.trade.ConsumptionOrderDao;
+import com.gogowise.dao.trade.ConsumptionRecordDao;
+import com.gogowise.dao.user.BaseUserRoleTypeDao;
 import com.gogowise.domain.BaseUser;
 import com.gogowise.domain.ConsumptionOrder;
-import com.gogowise.domain.ConsumptionRecord;
 import com.gogowise.domain.UserAccountInfo;
 import com.gogowise.utils.Constants;
 import org.apache.struts2.convention.annotation.Action;
@@ -31,7 +30,7 @@ public class ConsumptionOrderAction extends BasicAction{
     private ConsumptionOrder consumptionOrder;
     private ConsumptionOrderDao consumptionOrderDao;
     private ConsumptionRecordDao consumptionRecordDao;
-    private UserAccountInfoDao userAccountInfoDao;
+    private BaseUserRoleTypeDao.UserAccountInfoDao userAccountInfoDao;
     private BaseUserDao baseUserDao;
 
     private UserAccountInfo userAccountInfo;
@@ -154,11 +153,11 @@ public class ConsumptionOrderAction extends BasicAction{
         this.confirmCode = confirmCode;
     }
 
-    public UserAccountInfoDao getUserAccountInfoDao() {
+    public BaseUserRoleTypeDao.UserAccountInfoDao getUserAccountInfoDao() {
         return userAccountInfoDao;
     }
 
-    public void setUserAccountInfoDao(UserAccountInfoDao userAccountInfoDao) {
+    public void setUserAccountInfoDao(BaseUserRoleTypeDao.UserAccountInfoDao userAccountInfoDao) {
         this.userAccountInfoDao = userAccountInfoDao;
     }
 

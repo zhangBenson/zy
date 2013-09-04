@@ -1,7 +1,7 @@
 package com.gogowise.action.onlive;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.AdvertisementForLiveDao;
+import com.gogowise.dao.advertisement.AdvertisementForLiveDao;
 import com.gogowise.domain.AdvertisementForLive;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;

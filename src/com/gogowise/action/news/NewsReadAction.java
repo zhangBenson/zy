@@ -1,7 +1,12 @@
 package com.gogowise.action.news;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.*;
+import com.gogowise.dao.course.CourseDao;
+import com.gogowise.dao.course.CourseNewEventDao;
+import com.gogowise.dao.live.LiveChannelDao;
+import com.gogowise.dao.live.LiveChannelNewEventDao;
+import com.gogowise.dao.live.LiveTrailerDao;
+import com.gogowise.dao.system.GoGoWiseAnnounceDao;
 import com.gogowise.domain.*;
 import com.gogowise.utils.Constants;
 import org.apache.struts2.convention.annotation.Action;
@@ -20,12 +25,12 @@ import java.util.List;
 public class NewsReadAction extends BasicAction{
     private GoGoWiseAnnounceDao goGoWiseAnnounceDao;
     private CourseNewEventDao courseNewEventDao;
-    private ShowNewEventDao showNewEventDao;
+    private LiveChannelDao.ShowNewEventDao showNewEventDao;
     private LiveChannelNewEventDao liveChannelNewEventDao;
     private CourseDao courseDao;
     private LiveChannelDao liveChannelDao;
     private LiveTrailerDao liveTrailerDao;
-    private PersonalOnliveDao personalOnliveDao;
+    private LiveChannelNewEventDao.PersonalOnliveDao personalOnliveDao;
 
     private List<GoGoWiseAnnounce> goGoWiseAnnounces;
     private List<CourseNewEvent> courseNewEvents;
@@ -131,11 +136,11 @@ public class NewsReadAction extends BasicAction{
         this.courseNewEventDao = courseNewEventDao;
     }
 
-    public ShowNewEventDao getShowNewEventDao() {
+    public LiveChannelDao.ShowNewEventDao getShowNewEventDao() {
         return showNewEventDao;
     }
 
-    public void setShowNewEventDao(ShowNewEventDao showNewEventDao) {
+    public void setShowNewEventDao(LiveChannelDao.ShowNewEventDao showNewEventDao) {
         this.showNewEventDao = showNewEventDao;
     }
 
@@ -283,11 +288,11 @@ public class NewsReadAction extends BasicAction{
         this.personalOnlive = personalOnlive;
     }
 
-    public PersonalOnliveDao getPersonalOnliveDao() {
+    public LiveChannelNewEventDao.PersonalOnliveDao getPersonalOnliveDao() {
         return personalOnliveDao;
     }
 
-    public void setPersonalOnliveDao(PersonalOnliveDao personalOnliveDao) {
+    public void setPersonalOnliveDao(LiveChannelNewEventDao.PersonalOnliveDao personalOnliveDao) {
         this.personalOnliveDao = personalOnliveDao;
     }
 }

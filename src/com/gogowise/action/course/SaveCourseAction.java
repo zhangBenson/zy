@@ -1,7 +1,11 @@
 package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.*;
+import com.gogowise.dao.course.ClassDao;
+import com.gogowise.dao.course.CourseDao;
+import com.gogowise.dao.course.CourseInviteStudentDao;
+import com.gogowise.dao.org.ChangeResponserHistoryDao;
+import com.gogowise.dao.user.BaseUserDao;
 import com.gogowise.domain.BaseUser;
 import com.gogowise.domain.Course;
 import com.gogowise.domain.CourseClass;
@@ -30,7 +34,7 @@ public class SaveCourseAction extends BasicAction{
     private Course course;
     private CourseClass courseClass;
     private BaseUserDao baseUserDao;
-    private OrganizationDao organizationDao;
+    private ChangeResponserHistoryDao.OrganizationDao organizationDao;
     private ClassDao classDao;
     private CourseDao courseDao;
     private CourseInviteStudentDao courseInviteStudentDao;
@@ -182,11 +186,11 @@ public class SaveCourseAction extends BasicAction{
         this.baseUserDao = baseUserDao;
     }
     @JSON(serialize = false)
-    public OrganizationDao getOrganizationDao() {
+    public ChangeResponserHistoryDao.OrganizationDao getOrganizationDao() {
         return organizationDao;
     }
 
-    public void setOrganizationDao(OrganizationDao organizationDao) {
+    public void setOrganizationDao(ChangeResponserHistoryDao.OrganizationDao organizationDao) {
         this.organizationDao = organizationDao;
     }
     @JSON(serialize = false)
