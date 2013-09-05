@@ -199,7 +199,7 @@ import java.util.List;
     }
 
     public List<Course> findCourseRelateCourses(String courseName,Pagination pagination) {
-        return this.find("From Course c where c.masterConfirmed=true and c.teacherConfirmed=true and c.cameraManConfirmed=true and c.name like ? order by c.id asc limit 2",courseName);
+        return this.find("From Course c where c.masterConfirmed=true and c.teacherConfirmed=true and c.cameraManConfirmed=true and c.name like ? order by c.id asc",new Pagination(2), courseName);
     }
 
     public List<Course> findOrgForcastClass(Pagination pagination) {
