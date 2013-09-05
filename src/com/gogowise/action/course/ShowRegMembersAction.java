@@ -2,8 +2,8 @@ package com.gogowise.action.course;
 
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.course.CourseDao;
-import com.gogowise.dao.live.LiveChannelNewEventDao;
+import com.gogowise.dao.CourseDao;
+import com.gogowise.dao.MyShowDao;
 import com.gogowise.domain.*;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -23,7 +23,7 @@ public class ShowRegMembersAction extends BasicAction {
     private  CourseDao courseDao;
     private Course course;
     private MyShow myShow;
-    private LiveChannelNewEventDao.MyShowDao myShowDao;
+    private MyShowDao myShowDao;
     private  List<BaseUser> regs = new ArrayList<BaseUser>();
 
     private Pagination pagination = new Pagination(20);
@@ -84,11 +84,11 @@ public class ShowRegMembersAction extends BasicAction {
         this.myShow = myShow;
     }
 
-    public LiveChannelNewEventDao.MyShowDao getMyShowDao() {
+    public MyShowDao getMyShowDao() {
         return myShowDao;
     }
 
-    public void setMyShowDao(LiveChannelNewEventDao.MyShowDao myShowDao) {
+    public void setMyShowDao(MyShowDao myShowDao) {
         this.myShowDao = myShowDao;
     }
 }

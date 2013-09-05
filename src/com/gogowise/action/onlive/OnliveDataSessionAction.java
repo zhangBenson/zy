@@ -2,11 +2,12 @@ package com.gogowise.action.onlive;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.action.valueobject.OnLiveHostSession;
+import com.gogowise.action.valueobject.One2OneAnonySession;
 import com.gogowise.action.valueobject.OnliveGuestSession;
-import com.gogowise.dao.live.LiveChannelNewEventDao;
-import com.gogowise.dao.user.BaseUserDao;
-import com.gogowise.dao.live.ChannelTermsDao;
-import com.gogowise.dao.live.LiveChannelDao;
+import com.gogowise.dao.BaseUserDao;
+import com.gogowise.dao.ChannelTermsDao;
+import com.gogowise.dao.LiveChannelDao;
+import com.gogowise.dao.SeasonIncreasedOnliveFansDao;
 import com.gogowise.domain.BaseUser;
 import com.gogowise.domain.ChannelTerms;
 import com.gogowise.domain.LiveChannel;
@@ -40,7 +41,7 @@ public class OnliveDataSessionAction  extends BasicAction{
     private String initSeesionString;
     private String flashPatch;
      private Integer roleType;
-    private LiveChannelNewEventDao.SeasonIncreasedOnliveFansDao seasonIncreasedOnliveFansDao;
+    private SeasonIncreasedOnliveFansDao seasonIncreasedOnliveFansDao;
     @Action(value = "startOnLive",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".startOnLive")})
     public String startOnLive(){
         channelTerms = channelTermsDao.findById(this.getChannelTerms().getId());
@@ -161,11 +162,11 @@ public class OnliveDataSessionAction  extends BasicAction{
         this.channelTerms = channelTerms;
     }
 
-    public LiveChannelNewEventDao.SeasonIncreasedOnliveFansDao getSeasonIncreasedOnliveFansDao() {
+    public SeasonIncreasedOnliveFansDao getSeasonIncreasedOnliveFansDao() {
         return seasonIncreasedOnliveFansDao;
     }
 
-    public void setSeasonIncreasedOnliveFansDao(LiveChannelNewEventDao.SeasonIncreasedOnliveFansDao seasonIncreasedOnliveFansDao) {
+    public void setSeasonIncreasedOnliveFansDao(SeasonIncreasedOnliveFansDao seasonIncreasedOnliveFansDao) {
         this.seasonIncreasedOnliveFansDao = seasonIncreasedOnliveFansDao;
     }
 }

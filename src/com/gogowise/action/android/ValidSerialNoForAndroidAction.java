@@ -1,7 +1,7 @@
 package com.gogowise.action.android;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.android.AndroidFeedbackDaoImpl;
+import com.gogowise.dao.SerialNoDao;
 import com.gogowise.domain.SerialNO;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -27,7 +27,7 @@ import org.springframework.stereotype.Controller;
 })
 public class ValidSerialNoForAndroidAction {
     private SerialNO serialNO;
-    private AndroidFeedbackDaoImpl.SerialNoDao serialNoDao;
+    private SerialNoDao serialNoDao;
     private String serialNum;
     private String password;
     private String result;
@@ -68,11 +68,11 @@ public class ValidSerialNoForAndroidAction {
         this.serialNO = serialNO;
     }
     @JSON(serialize = false)
-    public AndroidFeedbackDaoImpl.SerialNoDao getSerialNoDao() {
+    public SerialNoDao getSerialNoDao() {
         return serialNoDao;
     }
 
-    public void setSerialNoDao(AndroidFeedbackDaoImpl.SerialNoDao serialNoDao) {
+    public void setSerialNoDao(SerialNoDao serialNoDao) {
         this.serialNoDao = serialNoDao;
     }
     @JSON(serialize = false)

@@ -1,14 +1,7 @@
 package com.gogowise.action.show;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.advertisement.AdvertisementDao;
-import com.gogowise.dao.course.CourseDao;
-import com.gogowise.dao.course.MatterDao;
-import com.gogowise.dao.live.LiveChannelDao;
-import com.gogowise.dao.live.LiveChannelNewEventDao;
-import com.gogowise.dao.system.GoGoWiseAnnounceDao;
-import com.gogowise.dao.user.BaseUserDao;
-import com.gogowise.dao.user.UserFansDao;
+import com.gogowise.dao.*;
 import com.gogowise.domain.*;
 import com.gogowise.utils.Constants;
 import com.gogowise.utils.EmailUtil;
@@ -18,6 +11,8 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.convention.annotation.Results;
+import org.apache.struts2.json.annotations.JSON;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -36,10 +31,10 @@ public class ShowAction extends BasicAction {
     private List<Course> courses = new ArrayList<Course>();
     private CourseDao courseDao;
     private MyShow myShow;
-    private LiveChannelNewEventDao.MyShowDao myShowDao;
-    private LiveChannelDao.ShowTermsDao showTermsDao;
-    private LiveChannelNewEventDao.SeasonIncreasedShowFansDao seasonIncreasedShowFansDao;
-    private LiveChannelDao.ShowCommentDao showCommentDao;
+    private MyShowDao myShowDao;
+    private ShowTermsDao showTermsDao;
+    private SeasonIncreasedShowFansDao seasonIncreasedShowFansDao;
+    private ShowCommentDao showCommentDao;
     private ShowComment showComment;
     private List<ShowComment> showComments = new ArrayList<ShowComment>();
     private List<Advertisement> advertisements = new ArrayList<Advertisement>();
@@ -60,11 +55,11 @@ public class ShowAction extends BasicAction {
     private List<Course> coursesForAds = new ArrayList<Course>();
     private Integer commentsNum;
     private Boolean commentsNumOverflow = false;
-    private LiveChannelDao.ShowFansDao showFansDao;
+    private ShowFansDao showFansDao;
     private GoGoWiseAnnounceDao goGoWiseAnnounceDao;
     private List<GoGoWiseAnnounce> goGoWiseAnnounces = new ArrayList<GoGoWiseAnnounce>();
     private ShowNewEvent showNewEvent;
-    private LiveChannelDao.ShowNewEventDao showNewEventDao;
+    private ShowNewEventDao showNewEventDao;
     private List<ShowNewEvent> showNewEvents = new ArrayList<ShowNewEvent>();
     private List<BaseUser> hottestUsers = new ArrayList<BaseUser>();
     private Pagination pagination = new Pagination();
@@ -514,19 +509,19 @@ public class ShowAction extends BasicAction {
         this.myShow = myShow;
     }
 
-    public LiveChannelNewEventDao.MyShowDao getMyShowDao() {
+    public MyShowDao getMyShowDao() {
         return myShowDao;
     }
 
-    public void setMyShowDao(LiveChannelNewEventDao.MyShowDao myShowDao) {
+    public void setMyShowDao(MyShowDao myShowDao) {
         this.myShowDao = myShowDao;
     }
 
-    public LiveChannelDao.ShowTermsDao getShowTermsDao() {
+    public ShowTermsDao getShowTermsDao() {
         return showTermsDao;
     }
 
-    public void setShowTermsDao(LiveChannelDao.ShowTermsDao showTermsDao) {
+    public void setShowTermsDao(ShowTermsDao showTermsDao) {
         this.showTermsDao = showTermsDao;
     }
 
@@ -626,11 +621,11 @@ public class ShowAction extends BasicAction {
         this.courseDao = courseDao;
     }
 
-    public LiveChannelNewEventDao.SeasonIncreasedShowFansDao getSeasonIncreasedShowFansDao() {
+    public SeasonIncreasedShowFansDao getSeasonIncreasedShowFansDao() {
         return seasonIncreasedShowFansDao;
     }
 
-    public void setSeasonIncreasedShowFansDao(LiveChannelNewEventDao.SeasonIncreasedShowFansDao seasonIncreasedShowFansDao) {
+    public void setSeasonIncreasedShowFansDao(SeasonIncreasedShowFansDao seasonIncreasedShowFansDao) {
         this.seasonIncreasedShowFansDao = seasonIncreasedShowFansDao;
     }
 
@@ -657,11 +652,11 @@ public class ShowAction extends BasicAction {
         return true;
     }
 
-    public LiveChannelDao.ShowCommentDao getShowCommentDao() {
+    public ShowCommentDao getShowCommentDao() {
         return showCommentDao;
     }
 
-    public void setShowCommentDao(LiveChannelDao.ShowCommentDao showCommentDao) {
+    public void setShowCommentDao(ShowCommentDao showCommentDao) {
         this.showCommentDao = showCommentDao;
     }
 
@@ -745,11 +740,11 @@ public class ShowAction extends BasicAction {
         this.coursesForAds = coursesForAds;
     }
 
-    public LiveChannelDao.ShowFansDao getShowFansDao() {
+    public ShowFansDao getShowFansDao() {
         return showFansDao;
     }
 
-    public void setShowFansDao(LiveChannelDao.ShowFansDao showFansDao) {
+    public void setShowFansDao(ShowFansDao showFansDao) {
         this.showFansDao = showFansDao;
     }
 
@@ -778,11 +773,11 @@ public class ShowAction extends BasicAction {
         this.showNewEvent = showNewEvent;
     }
 
-    public LiveChannelDao.ShowNewEventDao getShowNewEventDao() {
+    public ShowNewEventDao getShowNewEventDao() {
         return showNewEventDao;
     }
 
-    public void setShowNewEventDao(LiveChannelDao.ShowNewEventDao showNewEventDao) {
+    public void setShowNewEventDao(ShowNewEventDao showNewEventDao) {
         this.showNewEventDao = showNewEventDao;
     }
 

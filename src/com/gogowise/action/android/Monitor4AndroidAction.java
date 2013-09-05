@@ -1,7 +1,7 @@
 package com.gogowise.action.android;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.BaseUserDao;
 import com.gogowise.domain.BaseUser;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;

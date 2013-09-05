@@ -1,7 +1,7 @@
 package com.gogowise.action.android;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.live.LiveChannelNewEventDao;
+import com.gogowise.dao.PersonalOnliveDao;
 import com.gogowise.domain.*;
 import com.gogowise.utils.Utils;
 import org.apache.struts2.convention.annotation.Action;
@@ -33,7 +33,7 @@ import java.util.List;
 })
 public class PersonalOvliveForAndroidAction extends BasicAction {
     private List<PersonalOnlive> personalOnlives;
-    private LiveChannelNewEventDao.PersonalOnliveDao personalOnliveDao;
+    private PersonalOnliveDao personalOnliveDao;
     private Integer personalOnliveId;
     private Integer numOfRegAudience;
     private Integer numOfAudience;
@@ -105,11 +105,11 @@ public class PersonalOvliveForAndroidAction extends BasicAction {
     }
 
     @JSON(serialize = false)
-    public LiveChannelNewEventDao.PersonalOnliveDao getPersonalOnliveDao() {
+    public PersonalOnliveDao getPersonalOnliveDao() {
         return personalOnliveDao;
     }
 
-    public void setPersonalOnliveDao(LiveChannelNewEventDao.PersonalOnliveDao personalOnliveDao) {
+    public void setPersonalOnliveDao(PersonalOnliveDao personalOnliveDao) {
         this.personalOnliveDao = personalOnliveDao;
     }
 

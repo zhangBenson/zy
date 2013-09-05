@@ -1,8 +1,5 @@
 package com.gogowise.dao;
 
-import com.gogowise.dao.competition.*;
-import com.gogowise.dao.course.CourseDao;
-import com.gogowise.dao.user.BaseUserDao;
 import com.gogowise.domain.*;
 import com.gogowise.utils.MD5;
 import com.gogowise.utils.Utils;
@@ -21,9 +18,9 @@ public class CompetitionTest {
     private CompetitionPhaseDao competitionPhaseDao;
     private CompetitionDao competitionDao;
     private CompetitionSessionDao competitionSessionDao;
-    private CompetitionDaoImpl.SubjectDao subjectDao;
+    private SubjectDao subjectDao;
     private BaseUserDao baseUserDao;
-    private CompetitionDaoImpl.SingUpDao singUpDao;
+    private SingUpDao singUpDao;
     private SingUpInfo singUpInfo;
     private AllocationDao allocationDao;
     private CourseDao courseDao;
@@ -37,9 +34,9 @@ public class CompetitionTest {
         competitionPhaseDao = (CompetitionPhaseDao) ctx.getBean("competitionPhaseDao");
         competitionDao = (CompetitionDao) ctx.getBean("competitionDao");
         competitionSessionDao = (CompetitionSessionDao) ctx.getBean("competitionSessionDao");
-        subjectDao = (CompetitionDaoImpl.SubjectDao) ctx.getBean("subjectDao");
+        subjectDao = (SubjectDao) ctx.getBean("subjectDao");
         baseUserDao = (BaseUserDao) ctx.getBean("baseUserDao");
-        singUpDao = (CompetitionDaoImpl.SingUpDao) ctx.getBean("singUpDao");
+        singUpDao = (SingUpDao) ctx.getBean("singUpDao");
         allocationDao = (AllocationDao) ctx.getBean("allocationDao");
         courseDao = (CourseDao) ctx.getBean("courseDao");
 

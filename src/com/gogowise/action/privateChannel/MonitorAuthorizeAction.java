@@ -1,14 +1,17 @@
 package com.gogowise.action.privateChannel;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.android.AndroidFeedbackDaoImpl;
-import com.gogowise.dao.live.LiveChannelNewEventDao;
-import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.BaseUserDao;
+import com.gogowise.dao.MonitorAuthorizeDao;
+import com.gogowise.dao.UserPrivateChannelDao;
 import com.gogowise.domain.BaseUser;
 import com.gogowise.domain.MonitorAuthorize;
 import com.gogowise.domain.UserPrivateChannel;
 import com.gogowise.utils.Constants;
 import com.gogowise.utils.EmailUtil;
+import com.gogowise.utils.Utils;
+import com.opensymphony.xwork2.ActionContext;
+import com.sun.xml.bind.v2.runtime.reflect.opt.Const;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -32,11 +35,11 @@ import java.util.List;
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 public class MonitorAuthorizeAction extends BasicAction{
     private MonitorAuthorize monitorAuthorize;
-    private AndroidFeedbackDaoImpl.MonitorAuthorizeDao monitorAuthorizeDao;
+    private MonitorAuthorizeDao monitorAuthorizeDao;
     private BaseUser baseUser;
     private BaseUserDao baseUserDao;
     private UserPrivateChannel userPrivateChannel;
-    private LiveChannelNewEventDao.UserPrivateChannelDao userPrivateChannelDao;
+    private UserPrivateChannelDao userPrivateChannelDao;
     private List<String> authorityToEmails;
 
     private BaseUser authorizeTo;
@@ -153,11 +156,11 @@ public class MonitorAuthorizeAction extends BasicAction{
         this.monitorAuthorize = monitorAuthorize;
     }
 
-    public AndroidFeedbackDaoImpl.MonitorAuthorizeDao getMonitorAuthorizeDao() {
+    public MonitorAuthorizeDao getMonitorAuthorizeDao() {
         return monitorAuthorizeDao;
     }
 
-    public void setMonitorAuthorizeDao(AndroidFeedbackDaoImpl.MonitorAuthorizeDao monitorAuthorizeDao) {
+    public void setMonitorAuthorizeDao(MonitorAuthorizeDao monitorAuthorizeDao) {
         this.monitorAuthorizeDao = monitorAuthorizeDao;
     }
 
@@ -177,11 +180,11 @@ public class MonitorAuthorizeAction extends BasicAction{
         this.userPrivateChannel = userPrivateChannel;
     }
 
-    public LiveChannelNewEventDao.UserPrivateChannelDao getUserPrivateChannelDao() {
+    public UserPrivateChannelDao getUserPrivateChannelDao() {
         return userPrivateChannelDao;
     }
 
-    public void setUserPrivateChannelDao(LiveChannelNewEventDao.UserPrivateChannelDao userPrivateChannelDao) {
+    public void setUserPrivateChannelDao(UserPrivateChannelDao userPrivateChannelDao) {
         this.userPrivateChannelDao = userPrivateChannelDao;
     }
 

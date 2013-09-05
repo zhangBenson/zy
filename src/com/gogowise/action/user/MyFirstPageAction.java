@@ -2,16 +2,10 @@ package com.gogowise.action.user;
 
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.course.BrowsedCourseDao;
-import com.gogowise.dao.course.CourseDao;
-import com.gogowise.dao.course.MatterDao;
-import com.gogowise.dao.live.LiveChannelDao;
-import com.gogowise.dao.live.LiveChannelNewEventDao;
-import com.gogowise.dao.org.ChangeResponserHistoryDao;
-import com.gogowise.dao.user.BaseUserDao;
-import com.gogowise.dao.user.UserFansDao;
+import com.gogowise.dao.*;
 import com.gogowise.domain.*;
 import com.gogowise.utils.Constants;
+import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -21,6 +15,7 @@ import org.springframework.stereotype.Controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 @Controller
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
@@ -31,14 +26,14 @@ public class MyFirstPageAction  extends BasicAction {
 
     private CourseDao courseDao;
     private BaseUserDao baseUserDao;
-    private ChangeResponserHistoryDao.InterviewDao interviewDao;
+    private InterviewDao interviewDao;
     private BrowsedCourseDao browsedCourseDao;
-    private ChangeResponserHistoryDao.OrgMeetingDao orgMeetingDao;
+    private OrgMeetingDao orgMeetingDao;
     private LiveChannelDao liveChannelDao;
     private List<OrgMeeting> orgMeetings = new ArrayList<OrgMeeting>();
     private List<Interview> interviews = new ArrayList<Interview>();
     private List<InterviewAppointer> interviewAppointers = new ArrayList<InterviewAppointer>();
-    private ChangeResponserHistoryDao.InterviewAppointerDao interviewAppointerDao;
+    private InterviewAppointerDao interviewAppointerDao;
     private Course todayCourse;
     private Course tomorrowCourse;
     private Course yesterdayCourse;
@@ -49,14 +44,14 @@ public class MyFirstPageAction  extends BasicAction {
     private BaseUser baseUser;
      private Integer operaType;
     private Integer moreRequire = 0;
-    private LiveChannelNewEventDao.MyShowDao myShowDao;
+    private MyShowDao myShowDao;
     private List<MyShow> myShows = new ArrayList<MyShow>();
     private Integer matterCount=0;
 
     private MatterDao matterDao;
     private UserFansDao userFansDao;
     private List<UserFans> userFanses = new ArrayList<UserFans>();
-    private LiveChannelNewEventDao.PersonalOnliveDao personalOnliveDao;
+    private PersonalOnliveDao personalOnliveDao;
     private List<BaseUser> hottestBlogers = new ArrayList<BaseUser>();
     private Integer currentPageSize;
     private Boolean numOverFlow = false;
@@ -274,11 +269,11 @@ public class MyFirstPageAction  extends BasicAction {
         this.interviews = interviews;
     }
 
-    public ChangeResponserHistoryDao.InterviewDao getInterviewDao() {
+    public InterviewDao getInterviewDao() {
         return interviewDao;
     }
 
-    public void setInterviewDao(ChangeResponserHistoryDao.InterviewDao interviewDao) {
+    public void setInterviewDao(InterviewDao interviewDao) {
         this.interviewDao = interviewDao;
     }
 
@@ -290,11 +285,11 @@ public class MyFirstPageAction  extends BasicAction {
         this.interviewAppointers = interviewAppointers;
     }
 
-    public ChangeResponserHistoryDao.InterviewAppointerDao getInterviewAppointerDao() {
+    public InterviewAppointerDao getInterviewAppointerDao() {
         return interviewAppointerDao;
     }
 
-    public void setInterviewAppointerDao(ChangeResponserHistoryDao.InterviewAppointerDao interviewAppointerDao) {
+    public void setInterviewAppointerDao(InterviewAppointerDao interviewAppointerDao) {
         this.interviewAppointerDao = interviewAppointerDao;
     }
 
@@ -360,11 +355,11 @@ public class MyFirstPageAction  extends BasicAction {
         this.browsedCourses = browsedCourses;
     }
 
-    public ChangeResponserHistoryDao.OrgMeetingDao getOrgMeetingDao() {
+    public OrgMeetingDao getOrgMeetingDao() {
         return orgMeetingDao;
     }
 
-    public void setOrgMeetingDao(ChangeResponserHistoryDao.OrgMeetingDao orgMeetingDao) {
+    public void setOrgMeetingDao(OrgMeetingDao orgMeetingDao) {
         this.orgMeetingDao = orgMeetingDao;
     }
 
@@ -384,11 +379,11 @@ public class MyFirstPageAction  extends BasicAction {
         this.moreRequire = moreRequire;
     }
 
-    public LiveChannelNewEventDao.MyShowDao getMyShowDao() {
+    public MyShowDao getMyShowDao() {
         return myShowDao;
     }
 
-    public void setMyShowDao(LiveChannelNewEventDao.MyShowDao myShowDao) {
+    public void setMyShowDao(MyShowDao myShowDao) {
         this.myShowDao = myShowDao;
     }
 
@@ -465,11 +460,11 @@ public class MyFirstPageAction  extends BasicAction {
         this.userFanses = userFanses;
     }
 
-    public LiveChannelNewEventDao.PersonalOnliveDao getPersonalOnliveDao() {
+    public PersonalOnliveDao getPersonalOnliveDao() {
         return personalOnliveDao;
     }
 
-    public void setPersonalOnliveDao(LiveChannelNewEventDao.PersonalOnliveDao personalOnliveDao) {
+    public void setPersonalOnliveDao(PersonalOnliveDao personalOnliveDao) {
         this.personalOnliveDao = personalOnliveDao;
     }
 

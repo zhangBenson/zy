@@ -1,9 +1,9 @@
 package com.gogowise.action.higsec;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.org.ChangeResponserHistoryDao;
-import com.gogowise.dao.user.BaseUserDao;
-import com.gogowise.dao.user.BaseUserRoleTypeDao;
+import com.gogowise.dao.BaseUserDao;
+import com.gogowise.dao.BaseUserRoleTypeDao;
+import com.gogowise.dao.OrganizationDao;
 import com.gogowise.domain.BaseUser;
 import com.gogowise.domain.Organization;
 import com.gogowise.utils.Constants;
@@ -31,7 +31,7 @@ import java.util.List;
 public class OrgForBackendAction extends BasicAction {
 
 
-    private ChangeResponserHistoryDao.OrganizationDao organizationDao;
+    private OrganizationDao organizationDao;
     private BaseUserDao baseUserDao;
     private BaseUserRoleTypeDao baseUserRoleTypeDao;
 
@@ -241,11 +241,11 @@ public class OrgForBackendAction extends BasicAction {
         return SUCCESS;
     }
 
-    public ChangeResponserHistoryDao.OrganizationDao getOrganizationDao() {
+    public OrganizationDao getOrganizationDao() {
         return organizationDao;
     }
 
-    public void setOrganizationDao(ChangeResponserHistoryDao.OrganizationDao organizationDao) {
+    public void setOrganizationDao(OrganizationDao organizationDao) {
         this.organizationDao = organizationDao;
     }
 

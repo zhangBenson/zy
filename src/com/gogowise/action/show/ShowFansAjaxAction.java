@@ -1,7 +1,7 @@
 package com.gogowise.action.show;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.live.LiveChannelNewEventDao;
+import com.gogowise.dao.MyShowDao;
 import com.gogowise.domain.MyShow;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -20,7 +20,7 @@ import org.springframework.stereotype.Controller;
 })
 public class ShowFansAjaxAction extends BasicAction {
     private MyShow myShow;
-    private LiveChannelNewEventDao.MyShowDao myShowDao;
+    private MyShowDao myShowDao;
     private String message;
 
     @Action(value = "becomeFans")
@@ -39,11 +39,11 @@ public class ShowFansAjaxAction extends BasicAction {
         this.myShow = myShow;
     }
      @JSON(serialize = false)
-    public LiveChannelNewEventDao.MyShowDao getMyShowDao() {
+    public MyShowDao getMyShowDao() {
         return myShowDao;
     }
 
-    public void setMyShowDao(LiveChannelNewEventDao.MyShowDao myShowDao) {
+    public void setMyShowDao(MyShowDao myShowDao) {
         this.myShowDao = myShowDao;
     }
 

@@ -1,9 +1,10 @@
 package com.gogowise.action.android;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.live.LiveChannelNewEventDao;
-import com.gogowise.dao.user.BaseUserDao;
-import com.gogowise.dao.user.UserFansDao;
+import com.gogowise.action.utils.NotifyUsers;
+import com.gogowise.dao.BaseUserDao;
+import com.gogowise.dao.PersonalOnliveDao;
+import com.gogowise.dao.UserFansDao;
 import com.gogowise.domain.BaseUser;
 import com.gogowise.domain.PersonalOnlive;
 import com.gogowise.domain.UserFans;
@@ -36,7 +37,7 @@ public class StartPersonalOnliveForAndroidAction extends BasicAction {
       private PersonalOnlive personalOnlive;
       private String email;
       private BaseUserDao baseUserDao;
-      private LiveChannelNewEventDao.PersonalOnliveDao personalOnliveDao;
+      private PersonalOnliveDao personalOnliveDao;
       private UserFansDao userFansDao;
 
        @Action(value="personalOnlive4Android")
@@ -74,11 +75,11 @@ public class StartPersonalOnliveForAndroidAction extends BasicAction {
        }
 
     @JSON(serialize = false)
-    public LiveChannelNewEventDao.PersonalOnliveDao getPersonalOnliveDao() {
+    public PersonalOnliveDao getPersonalOnliveDao() {
         return personalOnliveDao;
     }
 
-    public void setPersonalOnliveDao(LiveChannelNewEventDao.PersonalOnliveDao personalOnliveDao) {
+    public void setPersonalOnliveDao(PersonalOnliveDao personalOnliveDao) {
         this.personalOnliveDao = personalOnliveDao;
     }
 

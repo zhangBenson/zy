@@ -1,8 +1,8 @@
 package com.gogowise.action.user;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.org.ChangeResponserHistoryDao;
-import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.BaseUserDao;
+import com.gogowise.dao.OrganizationDao;
 import com.gogowise.domain.BaseUser;
 import com.gogowise.domain.Organization;
 import com.gogowise.utils.Constants;
@@ -13,6 +13,7 @@ import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.apache.struts2.json.annotations.JSON;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,7 @@ import java.util.Calendar;
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 @Results({@Result(name = "json", type = "json")})
 public class UserAjaxLoginAction extends BasicAction{
-    private ChangeResponserHistoryDao.OrganizationDao organizationDao;
+    private OrganizationDao organizationDao;
     private BaseUserDao baseUserDao;
     private BaseUser user;
     private String loginMessage;
@@ -63,11 +64,11 @@ public class UserAjaxLoginAction extends BasicAction{
     }
 
      @JSON(serialize = false)
-    public ChangeResponserHistoryDao.OrganizationDao getOrganizationDao() {
+    public OrganizationDao getOrganizationDao() {
         return organizationDao;
     }
 
-    public void setOrganizationDao(ChangeResponserHistoryDao.OrganizationDao organizationDao) {
+    public void setOrganizationDao(OrganizationDao organizationDao) {
         this.organizationDao = organizationDao;
     }
 

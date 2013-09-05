@@ -1,14 +1,15 @@
 package com.gogowise.action.higsec;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.user.BaseUserDao;
-import com.gogowise.dao.course.CourseNewEventDao;
-import com.gogowise.dao.system.GoGoWiseAnnounceDao;
+import com.gogowise.dao.BaseUserDao;
+import com.gogowise.dao.CourseNewEventDao;
+import com.gogowise.dao.GoGoWiseAnnounceDao;
 import com.gogowise.domain.CourseNewEvent;
 import com.gogowise.domain.GoGoWiseAnnounce;
 import com.gogowise.domain.Pagination;
 import com.gogowise.utils.Constants;
 import com.gogowise.utils.Utils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;

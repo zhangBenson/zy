@@ -1,8 +1,8 @@
 package com.gogowise.action.onlive;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.user.BaseUserDao;
-import com.gogowise.dao.live.LiveTrailerDao;
+import com.gogowise.dao.BaseUserDao;
+import com.gogowise.dao.LiveTrailerDao;
 import com.gogowise.domain.LiveTrailer;
 import com.gogowise.utils.Constants;
 import org.apache.struts2.convention.annotation.Action;

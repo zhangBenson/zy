@@ -1,10 +1,17 @@
 package com.gogowise.action.map;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.live.LiveChannelNewEventDao;
+import com.gogowise.action.valueobject.InterviewCandidatureSession;
+import com.gogowise.action.valueobject.InterviewMasterSession;
+import com.gogowise.dao.BaseUserDao;
+import com.gogowise.dao.InterviewDao;
+import com.gogowise.dao.PersonalOnliveDao;
+import com.gogowise.domain.Interview;
 import com.gogowise.domain.Pagination;
 import com.gogowise.domain.PersonalOnlive;
 import com.gogowise.utils.Constants;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.CompactWriter;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -12,7 +19,11 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -31,7 +42,7 @@ public class BMapAction extends BasicAction{
     private List<PersonalOnlive> personalOnlives = new ArrayList<PersonalOnlive>();
     private List<PersonalOnlive> otherPersonalOnlives = new ArrayList<PersonalOnlive>();
     private PersonalOnlive personalOnlive;
-    private LiveChannelNewEventDao.PersonalOnliveDao personalOnliveDao;
+    private PersonalOnliveDao personalOnliveDao;
 
     private String searchStr;
     private Pagination pagination = new Pagination(4);
@@ -73,11 +84,11 @@ public class BMapAction extends BasicAction{
         this.personalOnlives = personalOnlives;
     }
 
-    public LiveChannelNewEventDao.PersonalOnliveDao getPersonalOnliveDao() {
+    public PersonalOnliveDao getPersonalOnliveDao() {
         return personalOnliveDao;
     }
 
-    public void setPersonalOnliveDao(LiveChannelNewEventDao.PersonalOnliveDao personalOnliveDao) {
+    public void setPersonalOnliveDao(PersonalOnliveDao personalOnliveDao) {
         this.personalOnliveDao = personalOnliveDao;
     }
 

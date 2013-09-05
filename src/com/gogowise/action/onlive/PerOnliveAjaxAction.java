@@ -1,8 +1,8 @@
 package com.gogowise.action.onlive;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.live.LiveChannelDao;
-import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.BaseUserDao;
+import com.gogowise.dao.UserMattersDao;
 import com.gogowise.domain.BaseUser;
 import com.gogowise.domain.UserMatters;
 import org.apache.struts2.convention.annotation.Action;
@@ -23,7 +23,7 @@ import org.springframework.stereotype.Controller;
 public class PerOnliveAjaxAction extends BasicAction{
     private BaseUser user;
     private BaseUserDao baseUserDao;
-    private LiveChannelDao.UserMattersDao userMattersDao;
+    private UserMattersDao userMattersDao;
 
     private String userName;
     private String userLogoUrl;
@@ -65,11 +65,11 @@ public class PerOnliveAjaxAction extends BasicAction{
         this.baseUserDao = baseUserDao;
     }
      @JSON(serialize = false)
-    public LiveChannelDao.UserMattersDao getUserMattersDao() {
+    public UserMattersDao getUserMattersDao() {
         return userMattersDao;
     }
 
-    public void setUserMattersDao(LiveChannelDao.UserMattersDao userMattersDao) {
+    public void setUserMattersDao(UserMattersDao userMattersDao) {
         this.userMattersDao = userMattersDao;
     }
 

@@ -1,13 +1,7 @@
 package com.gogowise.action.onlive;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.advertisement.AdvertisementForLiveDao;
-import com.gogowise.dao.course.CourseDao;
-import com.gogowise.dao.live.*;
-import com.gogowise.dao.org.ChangeResponserHistoryDao;
-import com.gogowise.dao.system.GoGoWiseAnnounceDao;
-import com.gogowise.dao.user.BaseUserDao;
-import com.gogowise.dao.user.UserFansDao;
+import com.gogowise.dao.*;
 import com.gogowise.domain.*;
 import com.gogowise.utils.Constants;
 import com.gogowise.utils.EmailUtil;
@@ -35,16 +29,16 @@ public class LiveChannelAction extends BasicAction{
     private List<LiveChannel> liveChannels;
     private BaseUser user;
     private BaseUserDao baseUserDao;
-    private LiveChannelDao.MemberOfLiveChannelDao memberOfLiveChannelDao;
+    private MemberOfLiveChannelDao memberOfLiveChannelDao;
     private Integer operaType;
-    private ChangeResponserHistoryDao.OrganizationDao organizationDao;
+    private OrganizationDao organizationDao;
     private List<String> contestants;
     private List<String> guests;
     private Boolean host;
     private ChannelTermsDao channelTermsDao;
     private ChannelTerms channelTerms;
     private Boolean createChannelTerm;
-    private LiveChannelNewEventDao.OnliveFollowerDao onliveFollowerDao;
+    private OnliveFollowerDao onliveFollowerDao;
     private OnliveFollower onliveFollower;
     private LiveTermComment liveTermComment;
     private LiveTermCommentDao liveTermCommentDao;
@@ -53,7 +47,7 @@ public class LiveChannelAction extends BasicAction{
     private Boolean commentsNumOverflow = false;
     private List<LiveChannel> liveChannelsToHost = new ArrayList<LiveChannel>();
     private MemberOfLiveChannel memberOfLiveChannel;
-    private LiveChannelNewEventDao.SeasonIncreasedOnliveFansDao seasonIncreasedOnliveFansDao;
+    private SeasonIncreasedOnliveFansDao seasonIncreasedOnliveFansDao;
     private AdvertisementForLiveDao advertisementForLiveDao;
     private Map<Integer,String> ads = new HashMap<Integer, String>();
     private Boolean focused = false;
@@ -68,7 +62,7 @@ public class LiveChannelAction extends BasicAction{
     private Pagination pagination =new Pagination(8);
     private List<GoGoWiseAnnounce> goGoWiseAnnounces = new ArrayList<GoGoWiseAnnounce>();
     private GoGoWiseAnnounceDao goGoWiseAnnounceDao;
-    private LiveChannelNewEventDao.PersonalOnliveDao personalOnliveDao;
+    private PersonalOnliveDao personalOnliveDao;
     private UserFansDao userFansDao;
     private LiveChannelNewEventDao liveChannelNewEventDao;
     private List<LiveChannelNewEvent> liveChannelNewEvents = new ArrayList<LiveChannelNewEvent>();
@@ -740,11 +734,11 @@ public class LiveChannelAction extends BasicAction{
         this.baseUserDao = baseUserDao;
     }
 
-    public LiveChannelDao.MemberOfLiveChannelDao getMemberOfLiveChannelDao() {
+    public MemberOfLiveChannelDao getMemberOfLiveChannelDao() {
         return memberOfLiveChannelDao;
     }
 
-    public void setMemberOfLiveChannelDao(LiveChannelDao.MemberOfLiveChannelDao memberOfLiveChannelDao) {
+    public void setMemberOfLiveChannelDao(MemberOfLiveChannelDao memberOfLiveChannelDao) {
         this.memberOfLiveChannelDao = memberOfLiveChannelDao;
     }
      public Integer getOperaType() {
@@ -771,11 +765,11 @@ public class LiveChannelAction extends BasicAction{
         this.guests = guests;
     }
 
-    public ChangeResponserHistoryDao.OrganizationDao getOrganizationDao() {
+    public OrganizationDao getOrganizationDao() {
         return organizationDao;
     }
 
-    public void setOrganizationDao(ChangeResponserHistoryDao.OrganizationDao organizationDao) {
+    public void setOrganizationDao(OrganizationDao organizationDao) {
         this.organizationDao = organizationDao;
     }
 
@@ -851,11 +845,11 @@ public class LiveChannelAction extends BasicAction{
         return total;
     }
 
-    public LiveChannelNewEventDao.OnliveFollowerDao getOnliveFollowerDao() {
+    public OnliveFollowerDao getOnliveFollowerDao() {
         return onliveFollowerDao;
     }
 
-    public void setOnliveFollowerDao(LiveChannelNewEventDao.OnliveFollowerDao onliveFollowerDao) {
+    public void setOnliveFollowerDao(OnliveFollowerDao onliveFollowerDao) {
         this.onliveFollowerDao = onliveFollowerDao;
     }
 
@@ -934,11 +928,11 @@ public class LiveChannelAction extends BasicAction{
         this.memberOfLiveChannel = memberOfLiveChannel;
     }
 
-    public LiveChannelNewEventDao.SeasonIncreasedOnliveFansDao getSeasonIncreasedOnliveFansDao() {
+    public SeasonIncreasedOnliveFansDao getSeasonIncreasedOnliveFansDao() {
         return seasonIncreasedOnliveFansDao;
     }
 
-    public void setSeasonIncreasedOnliveFansDao(LiveChannelNewEventDao.SeasonIncreasedOnliveFansDao seasonIncreasedOnliveFansDao) {
+    public void setSeasonIncreasedOnliveFansDao(SeasonIncreasedOnliveFansDao seasonIncreasedOnliveFansDao) {
         this.seasonIncreasedOnliveFansDao = seasonIncreasedOnliveFansDao;
     }
 
@@ -1045,11 +1039,11 @@ public class LiveChannelAction extends BasicAction{
         this.goGoWiseAnnounceDao = goGoWiseAnnounceDao;
     }
 
-    public LiveChannelNewEventDao.PersonalOnliveDao getPersonalOnliveDao() {
+    public PersonalOnliveDao getPersonalOnliveDao() {
         return personalOnliveDao;
     }
 
-    public void setPersonalOnliveDao(LiveChannelNewEventDao.PersonalOnliveDao personalOnliveDao) {
+    public void setPersonalOnliveDao(PersonalOnliveDao personalOnliveDao) {
         this.personalOnliveDao = personalOnliveDao;
     }
 

@@ -2,8 +2,10 @@ package com.gogowise.action.onlive;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.action.valueobject.PerOnliveVideoSession;
-import com.gogowise.dao.live.LiveChannelNewEventDao;
-import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.action.valueobject.PersonalOnliveHostSession;
+import com.gogowise.dao.BaseUserDao;
+import com.gogowise.dao.PersonalOnliveDao;
+import com.gogowise.domain.BaseUser;
 import com.gogowise.domain.PersonalOnlive;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.CompactWriter;
@@ -28,7 +30,7 @@ import java.io.OutputStreamWriter;
 })
 public class PerOnliveRecordAjaxAction extends BasicAction{
     private PersonalOnlive personalOnlive;
-    private LiveChannelNewEventDao.PersonalOnliveDao personalOnliveDao;
+    private PersonalOnliveDao personalOnliveDao;
     private BaseUserDao baseUserDao;
     private String initSeesionString;
 
@@ -58,11 +60,11 @@ public class PerOnliveRecordAjaxAction extends BasicAction{
     }
 
     @JSON(serialize = false)
-    public LiveChannelNewEventDao.PersonalOnliveDao getPersonalOnliveDao() {
+    public PersonalOnliveDao getPersonalOnliveDao() {
         return personalOnliveDao;
     }
 
-    public void setPersonalOnliveDao(LiveChannelNewEventDao.PersonalOnliveDao personalOnliveDao) {
+    public void setPersonalOnliveDao(PersonalOnliveDao personalOnliveDao) {
         this.personalOnliveDao = personalOnliveDao;
     }
 

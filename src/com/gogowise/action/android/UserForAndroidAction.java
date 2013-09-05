@@ -1,8 +1,8 @@
 package com.gogowise.action.android;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.android.AndroidFeedbackDao;
-import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.AndroidFeedbackDao;
+import com.gogowise.dao.BaseUserDao;
 import com.gogowise.domain.AndroidFeedback;
 import com.gogowise.domain.BaseUser;
 import com.gogowise.utils.EmailUtil;

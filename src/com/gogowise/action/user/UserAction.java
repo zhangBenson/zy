@@ -1,10 +1,7 @@
 package com.gogowise.action.user;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.competition.CompetitionSessionDao;
-import com.gogowise.dao.course.*;
-import com.gogowise.dao.org.ChangeResponserHistoryDao;
-import com.gogowise.dao.user.*;
+import com.gogowise.dao.*;
 import com.gogowise.domain.*;
 import com.gogowise.utils.Constants;
 import com.gogowise.utils.EmailUtil;
@@ -39,8 +36,8 @@ import java.util.*;
 public class UserAction extends BasicAction {
 
     private BaseUserDao baseUserDao;
-    private FavoritDao.UserRelationshipDao userRelationshipDao;
-    private ChangeResponserHistoryDao.InterviewAppointerDao interviewAppointerDao;
+    private UserRelationshipDao userRelationshipDao;
+    private InterviewAppointerDao interviewAppointerDao;
     private InviteRelationshipDao inviteRelationshipDao;
     private List<BaseUser> myFriends = new ArrayList<BaseUser>();
     private Map<Integer, String> competitionSessions = new HashMap<Integer, String>();
@@ -68,7 +65,7 @@ public class UserAction extends BasicAction {
     private String identityConfirmMsg;
     private String tname;
     private String tpwd;
-    private ChangeResponserHistoryDao.OrganizationDao organizationDao;
+    private OrganizationDao organizationDao;
     private Organization org;
      private CourseRecommendDao courseRecommendDao;
     private CourseRecommend courseRecommend;
@@ -80,8 +77,8 @@ public class UserAction extends BasicAction {
     private CourseInviteStudentDao courseInviteStudentDao;
     private SeniorClassRoomDao seniorClassRoomDao;
     private Interview interview;
-    private ChangeResponserHistoryDao.InterviewDao interviewDao;
-    private BaseUserRoleTypeDao.UserAccountInfoDao userAccountInfoDao;
+    private InterviewDao interviewDao;
+    private UserAccountInfoDao userAccountInfoDao;
     private CourseReservationDao courseReservationDao;
     private CourseReservation courseReservation;
     private Integer identityType = 0;
@@ -1097,11 +1094,11 @@ public class UserAction extends BasicAction {
         return SUCCESS;
     }
 
-    public FavoritDao.UserRelationshipDao getUserRelationshipDao() {
+    public UserRelationshipDao getUserRelationshipDao() {
         return userRelationshipDao;
     }
 
-    public void setUserRelationshipDao(FavoritDao.UserRelationshipDao userRelationshipDao) {
+    public void setUserRelationshipDao(UserRelationshipDao userRelationshipDao) {
         this.userRelationshipDao = userRelationshipDao;
     }
 
@@ -1211,11 +1208,11 @@ public class UserAction extends BasicAction {
         this.identityConfirmMsg = identityConfirmMsg;
     }
 
-    public ChangeResponserHistoryDao.OrganizationDao getOrganizationDao() {
+    public OrganizationDao getOrganizationDao() {
         return organizationDao;
     }
 
-    public void setOrganizationDao(ChangeResponserHistoryDao.OrganizationDao organizationDao) {
+    public void setOrganizationDao(OrganizationDao organizationDao) {
         this.organizationDao = organizationDao;
     }
 
@@ -1283,19 +1280,19 @@ public class UserAction extends BasicAction {
         this.identityType = identityType;
     }
 
-    public ChangeResponserHistoryDao.InterviewDao getInterviewDao() {
+    public InterviewDao getInterviewDao() {
         return interviewDao;
     }
 
-    public void setInterviewDao(ChangeResponserHistoryDao.InterviewDao interviewDao) {
+    public void setInterviewDao(InterviewDao interviewDao) {
         this.interviewDao = interviewDao;
     }
 
-    public BaseUserRoleTypeDao.UserAccountInfoDao getUserAccountInfoDao() {
+    public UserAccountInfoDao getUserAccountInfoDao() {
         return userAccountInfoDao;
     }
 
-    public void setUserAccountInfoDao(BaseUserRoleTypeDao.UserAccountInfoDao userAccountInfoDao) {
+    public void setUserAccountInfoDao(UserAccountInfoDao userAccountInfoDao) {
         this.userAccountInfoDao = userAccountInfoDao;
     }
 
@@ -1307,11 +1304,11 @@ public class UserAction extends BasicAction {
         this.userAccountInfo = userAccountInfo;
     }
 
-    public ChangeResponserHistoryDao.InterviewAppointerDao getInterviewAppointerDao() {
+    public InterviewAppointerDao getInterviewAppointerDao() {
         return interviewAppointerDao;
     }
 
-    public void setInterviewAppointerDao(ChangeResponserHistoryDao.InterviewAppointerDao interviewAppointerDao) {
+    public void setInterviewAppointerDao(InterviewAppointerDao interviewAppointerDao) {
         this.interviewAppointerDao = interviewAppointerDao;
     }
 

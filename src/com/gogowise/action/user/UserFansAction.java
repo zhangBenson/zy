@@ -1,8 +1,8 @@
 package com.gogowise.action.user;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.user.BaseUserDao;
-import com.gogowise.dao.user.UserFansDao;
+import com.gogowise.dao.BaseUserDao;
+import com.gogowise.dao.UserFansDao;
 import com.gogowise.domain.BaseUser;
 import com.gogowise.domain.UserFans;
 import com.gogowise.utils.Utils;

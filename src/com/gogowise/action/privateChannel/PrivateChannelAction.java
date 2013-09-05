@@ -1,13 +1,7 @@
 package com.gogowise.action.privateChannel;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.android.AndroidFeedbackDaoImpl;
-import com.gogowise.dao.live.LiveChannelNewEventDao;
-import com.gogowise.dao.live.SubPrivateChannelDao;
-import com.gogowise.dao.system.GoGoWiseAnnounceDao;
-import com.gogowise.dao.trade.ConsumptionOrderDao;
-import com.gogowise.dao.user.BaseUserDao;
-import com.gogowise.dao.user.BaseUserRoleTypeDao;
+import com.gogowise.dao.*;
 import com.gogowise.domain.*;
 import com.gogowise.utils.Constants;
 import com.opensymphony.xwork2.ActionContext;
@@ -26,13 +20,13 @@ import java.util.List;
 @Namespace(BasicAction.BASE_NAME_SPACE)
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 public class PrivateChannelAction extends BasicAction{
-    private LiveChannelNewEventDao.UserPrivateChannelDao userPrivateChannelDao;
+    private UserPrivateChannelDao userPrivateChannelDao;
     private SubPrivateChannelDao privateChannelDao;
     private BaseUserDao baseUserDao;
     private SubPrivateChannelDao subPrivateChannelDao;
     private ConsumptionOrderDao consumptionOrderDao;
-    private BaseUserRoleTypeDao.UserAccountInfoDao userAccountInfoDao;
-    private LiveChannelNewEventDao.PersonalOnliveDao personalOnliveDao;
+    private UserAccountInfoDao userAccountInfoDao;
+    private PersonalOnliveDao personalOnliveDao;
     private GoGoWiseAnnounceDao goGoWiseAnnounceDao;
 
     private BaseUser user;
@@ -50,7 +44,7 @@ public class PrivateChannelAction extends BasicAction{
     private List<GoGoWiseAnnounce> goGoWiseAnnounces = new ArrayList<GoGoWiseAnnounce>();
     private List<MonitorAuthorize> monitorAuthorizeToMe;
     private List<MonitorAuthorize> meMonitorAuthorizeTo;
-    private AndroidFeedbackDaoImpl.MonitorAuthorizeDao monitorAuthorizeDao;
+    private MonitorAuthorizeDao monitorAuthorizeDao;
 
     private List<BaseUser> authorizedUsers = new ArrayList<BaseUser>();
 
@@ -257,11 +251,11 @@ public class PrivateChannelAction extends BasicAction{
 
 
 
-    public LiveChannelNewEventDao.UserPrivateChannelDao getUserPrivateChannelDao() {
+    public UserPrivateChannelDao getUserPrivateChannelDao() {
         return userPrivateChannelDao;
     }
 
-    public void setUserPrivateChannelDao(LiveChannelNewEventDao.UserPrivateChannelDao userPrivateChannelDao) {
+    public void setUserPrivateChannelDao(UserPrivateChannelDao userPrivateChannelDao) {
         this.userPrivateChannelDao = userPrivateChannelDao;
     }
 
@@ -353,11 +347,11 @@ public class PrivateChannelAction extends BasicAction{
         this.consumptionOrderDao = consumptionOrderDao;
     }
 
-    public BaseUserRoleTypeDao.UserAccountInfoDao getUserAccountInfoDao() {
+    public UserAccountInfoDao getUserAccountInfoDao() {
         return userAccountInfoDao;
     }
 
-    public void setUserAccountInfoDao(BaseUserRoleTypeDao.UserAccountInfoDao userAccountInfoDao) {
+    public void setUserAccountInfoDao(UserAccountInfoDao userAccountInfoDao) {
         this.userAccountInfoDao = userAccountInfoDao;
     }
 
@@ -393,11 +387,11 @@ public class PrivateChannelAction extends BasicAction{
         this.goGoWiseAnnounces = goGoWiseAnnounces;
     }
 
-    public LiveChannelNewEventDao.PersonalOnliveDao getPersonalOnliveDao() {
+    public PersonalOnliveDao getPersonalOnliveDao() {
         return personalOnliveDao;
     }
 
-    public void setPersonalOnliveDao(LiveChannelNewEventDao.PersonalOnliveDao personalOnliveDao) {
+    public void setPersonalOnliveDao(PersonalOnliveDao personalOnliveDao) {
         this.personalOnliveDao = personalOnliveDao;
     }
 
@@ -433,11 +427,11 @@ public class PrivateChannelAction extends BasicAction{
         this.meMonitorAuthorizeTo = meMonitorAuthorizeTo;
     }
 
-    public AndroidFeedbackDaoImpl.MonitorAuthorizeDao getMonitorAuthorizeDao() {
+    public MonitorAuthorizeDao getMonitorAuthorizeDao() {
         return monitorAuthorizeDao;
     }
 
-    public void setMonitorAuthorizeDao(AndroidFeedbackDaoImpl.MonitorAuthorizeDao monitorAuthorizeDao) {
+    public void setMonitorAuthorizeDao(MonitorAuthorizeDao monitorAuthorizeDao) {
         this.monitorAuthorizeDao = monitorAuthorizeDao;
     }
 

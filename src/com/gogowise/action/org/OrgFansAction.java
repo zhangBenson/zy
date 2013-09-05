@@ -1,8 +1,9 @@
 package com.gogowise.action.org;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.org.ChangeResponserHistoryDao;
-import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.BaseUserDao;
+import com.gogowise.dao.OrgFansDao;
+import com.gogowise.dao.OrganizationDao;
 import com.gogowise.domain.OrgFans;
 import com.gogowise.domain.Organization;
 import org.apache.struts2.convention.annotation.Action;
@@ -29,8 +30,8 @@ import java.util.Calendar;
 @Results({@Result(name = "json", type = "json")})
 public class OrgFansAction extends BasicAction{
     private BaseUserDao baseUserDao;
-    private ChangeResponserHistoryDao.OrganizationDao organizationDao;
-    private ChangeResponserHistoryDao.OrgFansDao orgFansDao;
+    private OrganizationDao organizationDao;
+    private OrgFansDao orgFansDao;
     private Organization organization;
     private String message;
 
@@ -64,19 +65,19 @@ public class OrgFansAction extends BasicAction{
         this.baseUserDao = baseUserDao;
     }
     @JSON(serialize = false)
-    public ChangeResponserHistoryDao.OrganizationDao getOrganizationDao() {
+    public OrganizationDao getOrganizationDao() {
         return organizationDao;
     }
 
-    public void setOrganizationDao(ChangeResponserHistoryDao.OrganizationDao organizationDao) {
+    public void setOrganizationDao(OrganizationDao organizationDao) {
         this.organizationDao = organizationDao;
     }
     @JSON(serialize = false)
-    public ChangeResponserHistoryDao.OrgFansDao getOrgFansDao() {
+    public OrgFansDao getOrgFansDao() {
         return orgFansDao;
     }
 
-    public void setOrgFansDao(ChangeResponserHistoryDao.OrgFansDao orgFansDao) {
+    public void setOrgFansDao(OrgFansDao orgFansDao) {
         this.orgFansDao = orgFansDao;
     }
    @JSON(serialize = false)

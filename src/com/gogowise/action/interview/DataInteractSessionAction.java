@@ -3,8 +3,8 @@ package com.gogowise.action.interview;
 import com.gogowise.action.BasicAction;
 import com.gogowise.action.valueobject.InterviewCandidatureSession;
 import com.gogowise.action.valueobject.InterviewMasterSession;
-import com.gogowise.dao.org.ChangeResponserHistoryDao;
-import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.BaseUserDao;
+import com.gogowise.dao.InterviewDao;
 import com.gogowise.domain.Interview;
 import com.gogowise.domain.Pagination;
 import com.gogowise.utils.Constants;
@@ -34,7 +34,7 @@ import java.io.OutputStreamWriter;
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 public class DataInteractSessionAction extends BasicAction{
     private BaseUserDao baseUserDao;
-    private ChangeResponserHistoryDao.InterviewDao interviewDao;
+    private InterviewDao interviewDao;
     private Interview interview;
     private Pagination page;
     private String initSeesionString;
@@ -82,11 +82,11 @@ public class DataInteractSessionAction extends BasicAction{
         this.baseUserDao = baseUserDao;
     }
 
-    public ChangeResponserHistoryDao.InterviewDao getInterviewDao() {
+    public InterviewDao getInterviewDao() {
         return interviewDao;
     }
 
-    public void setInterviewDao(ChangeResponserHistoryDao.InterviewDao interviewDao) {
+    public void setInterviewDao(InterviewDao interviewDao) {
         this.interviewDao = interviewDao;
     }
 
