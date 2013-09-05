@@ -112,7 +112,8 @@ public class BasicAction extends ActionSupport {
 
         if(user.getOpenPrivateChannel() != null && user.getOpenPrivateChannel()){
              UserPrivateChannel userPrivateChannel = userPrivateChannelDao.findByUser(user.getId());
-             ActionContext.getContext().getSession().put(Constants.SESSION_USER_PRIVATE_CHANNEL_ID,userPrivateChannel.getId());
+            if(userPrivateChannel != null)
+                ActionContext.getContext().getSession().put(Constants.SESSION_USER_PRIVATE_CHANNEL_ID,userPrivateChannel.getId());
         }
     }
 
