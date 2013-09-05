@@ -1,10 +1,9 @@
 package com.gogowise.action.android;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.action.utils.NotifyUsers;
-import com.gogowise.dao.BaseUserDao;
-import com.gogowise.dao.PersonalOnliveDao;
-import com.gogowise.dao.UserFansDao;
+import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.live.PersonalOnliveDao;
+import com.gogowise.dao.user.UserFansDao;
 import com.gogowise.domain.BaseUser;
 import com.gogowise.domain.PersonalOnlive;
 import com.gogowise.domain.UserFans;

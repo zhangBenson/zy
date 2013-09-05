@@ -1,7 +1,12 @@
 package com.gogowise.action.org;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.*;
+import com.gogowise.dao.course.CourseDao;
+import com.gogowise.dao.course.CourseEvaluationDao;
+import com.gogowise.dao.org.OrgMaterialDao;
+import com.gogowise.dao.org.OrganizationCommentDao;
+import com.gogowise.dao.org.OrganizationDao;
+import com.gogowise.dao.user.BaseUserDao;
 import com.gogowise.domain.*;
 import com.gogowise.utils.Constants;
 import com.gogowise.utils.EmailUtil;
@@ -18,7 +23,6 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import javax.servlet.Servlet;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;

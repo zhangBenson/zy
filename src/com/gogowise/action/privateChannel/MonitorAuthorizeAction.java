@@ -1,17 +1,14 @@
 package com.gogowise.action.privateChannel;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.BaseUserDao;
-import com.gogowise.dao.MonitorAuthorizeDao;
-import com.gogowise.dao.UserPrivateChannelDao;
+import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.live.MonitorAuthorizeDao;
+import com.gogowise.dao.live.UserPrivateChannelDao;
 import com.gogowise.domain.BaseUser;
 import com.gogowise.domain.MonitorAuthorize;
 import com.gogowise.domain.UserPrivateChannel;
 import com.gogowise.utils.Constants;
 import com.gogowise.utils.EmailUtil;
-import com.gogowise.utils.Utils;
-import com.opensymphony.xwork2.ActionContext;
-import com.sun.xml.bind.v2.runtime.reflect.opt.Const;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;

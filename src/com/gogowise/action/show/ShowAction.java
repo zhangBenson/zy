@@ -1,7 +1,12 @@
 package com.gogowise.action.show;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.*;
+import com.gogowise.dao.course.CourseDao;
+import com.gogowise.dao.live.*;
+import com.gogowise.dao.system.GoGoWiseAnnounceDao;
+import com.gogowise.dao.system.MatterDao;
+import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.user.UserFansDao;
 import com.gogowise.domain.*;
 import com.gogowise.utils.Constants;
 import com.gogowise.utils.EmailUtil;
@@ -11,8 +16,6 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
-import org.apache.struts2.convention.annotation.Results;
-import org.apache.struts2.json.annotations.JSON;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;

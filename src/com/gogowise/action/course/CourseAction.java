@@ -1,7 +1,12 @@
 package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.*;
+import com.gogowise.dao.course.*;
+import com.gogowise.dao.org.OrganizationDao;
+import com.gogowise.dao.system.GoGoWiseAnnounceDao;
+import com.gogowise.dao.system.MatterDao;
+import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.user.UserFansDao;
 import com.gogowise.domain.*;
 import com.gogowise.utils.*;
 import com.opensymphony.xwork2.ActionContext;

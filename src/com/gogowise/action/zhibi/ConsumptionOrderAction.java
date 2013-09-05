@@ -1,13 +1,12 @@
 package com.gogowise.action.zhibi;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.BaseUserDao;
-import com.gogowise.dao.ConsumptionOrderDao;
-import com.gogowise.dao.ConsumptionRecordDao;
-import com.gogowise.dao.UserAccountInfoDao;
+import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.finance.ConsumptionOrderDao;
+import com.gogowise.dao.finance.ConsumptionRecordDao;
+import com.gogowise.dao.user.UserAccountInfoDao;
 import com.gogowise.domain.BaseUser;
 import com.gogowise.domain.ConsumptionOrder;
-import com.gogowise.domain.ConsumptionRecord;
 import com.gogowise.domain.UserAccountInfo;
 import com.gogowise.utils.Constants;
 import org.apache.struts2.convention.annotation.Action;

@@ -1,15 +1,13 @@
 package com.gogowise.action.user;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.BaseUserDao;
-import com.gogowise.dao.MatterDao;
+import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.system.MatterDao;
 import com.gogowise.domain.*;
 import com.gogowise.utils.Constants;
-import com.gogowise.utils.MD5;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
-import org.aspectj.apache.bcel.classfile.Constant;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;

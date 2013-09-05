@@ -1,9 +1,9 @@
 package com.gogowise.action.show;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.AdvertisementDao;
-import com.gogowise.dao.BaseUserDao;
-import com.gogowise.dao.MyShowDao;
+import com.gogowise.dao.live.AdvertisementDao;
+import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.live.MyShowDao;
 import com.gogowise.domain.Advertisement;
 import com.gogowise.domain.BaseUser;
 import com.gogowise.domain.MyShow;
@@ -17,8 +17,6 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import javax.persistence.Access;
-import javax.rmi.CORBA.Util;
 import java.util.Calendar;
 
 /**

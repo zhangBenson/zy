@@ -1,8 +1,8 @@
 package com.gogowise.action.user;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.BaseUserDao;
-import com.gogowise.dao.OrganizationDao;
+import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.org.OrganizationDao;
 import com.gogowise.domain.BaseUser;
 import com.gogowise.domain.Organization;
 import com.gogowise.utils.Constants;
@@ -13,7 +13,6 @@ import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.apache.struts2.json.annotations.JSON;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;

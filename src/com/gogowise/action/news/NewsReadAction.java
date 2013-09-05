@@ -1,7 +1,10 @@
 package com.gogowise.action.news;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.*;
+import com.gogowise.dao.course.CourseDao;
+import com.gogowise.dao.course.CourseNewEventDao;
+import com.gogowise.dao.live.*;
+import com.gogowise.dao.system.GoGoWiseAnnounceDao;
 import com.gogowise.domain.*;
 import com.gogowise.utils.Constants;
 import org.apache.struts2.convention.annotation.Action;

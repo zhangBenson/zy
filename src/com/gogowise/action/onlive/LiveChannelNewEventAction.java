@@ -1,16 +1,10 @@
 package com.gogowise.action.onlive;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.ChannelTermsDao;
-import com.gogowise.dao.LiveChannelDao;
-import com.gogowise.dao.LiveChannelNewEventDao;
-import com.gogowise.domain.ChannelTerms;
+import com.gogowise.dao.live.LiveChannelDao;
+import com.gogowise.dao.live.LiveChannelNewEventDao;
 import com.gogowise.domain.LiveChannel;
 import com.gogowise.domain.LiveChannelNewEvent;
-import com.gogowise.utils.Constants;
-import com.gogowise.utils.Utils;
-import org.apache.commons.lang.StringUtils;
-import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;

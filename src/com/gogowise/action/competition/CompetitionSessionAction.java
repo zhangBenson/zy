@@ -2,9 +2,9 @@ package com.gogowise.action.competition;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.action.valueobject.Session;
-import com.gogowise.dao.CompetitionAudienceDao;
-import com.gogowise.dao.CompetitionSessionDao;
-import com.gogowise.dao.InviteRelationshipDao;
+import com.gogowise.dao.competition.CompetitionAudienceDao;
+import com.gogowise.dao.competition.CompetitionSessionDao;
+import com.gogowise.dao.user.InviteRelationshipDao;
 import com.gogowise.domain.*;
 import com.gogowise.utils.Constants;
 import com.thoughtworks.xstream.XStream;

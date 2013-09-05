@@ -1,9 +1,9 @@
 package com.gogowise.action.higsec;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.BaseUserDao;
-import com.gogowise.dao.BaseUserRoleTypeDao;
-import com.gogowise.dao.OrganizationDao;
+import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.user.BaseUserRoleTypeDao;
+import com.gogowise.dao.org.OrganizationDao;
 import com.gogowise.domain.BaseUser;
 import com.gogowise.domain.Organization;
 import com.gogowise.utils.Constants;

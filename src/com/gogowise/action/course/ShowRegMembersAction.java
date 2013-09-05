@@ -2,8 +2,8 @@ package com.gogowise.action.course;
 
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.CourseDao;
-import com.gogowise.dao.MyShowDao;
+import com.gogowise.dao.course.CourseDao;
+import com.gogowise.dao.live.MyShowDao;
 import com.gogowise.domain.*;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;

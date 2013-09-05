@@ -1,10 +1,10 @@
 package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.BaseUserDao;
-import com.gogowise.dao.ClassRoomDao;
-import com.gogowise.dao.CourseDao;
-import com.gogowise.dao.SeniorClassRoomDao;
+import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.course.ClassRoomDao;
+import com.gogowise.dao.course.CourseDao;
+import com.gogowise.dao.course.SeniorClassRoomDao;
 import com.gogowise.domain.ClassRoom;
 import com.gogowise.domain.Course;
 import com.gogowise.domain.SeniorClassRoom;

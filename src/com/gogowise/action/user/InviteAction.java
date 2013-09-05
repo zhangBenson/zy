@@ -1,10 +1,10 @@
 package com.gogowise.action.user;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.BaseUserDao;
-import com.gogowise.dao.CompetitionSessionDao;
-import com.gogowise.dao.InviteRelationshipDao;
-import com.gogowise.dao.SingUpDao;
+import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.competition.CompetitionSessionDao;
+import com.gogowise.dao.user.InviteRelationshipDao;
+import com.gogowise.dao.competition.SingUpDao;
 import com.gogowise.domain.BaseUser;
 import com.gogowise.domain.InviteRelationship;
 import com.gogowise.utils.Constants;

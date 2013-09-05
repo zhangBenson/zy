@@ -1,6 +1,6 @@
 package com.gogowise.schedule;
 
-import com.gogowise.dao.ClassDao;
+import com.gogowise.dao.course.ClassDao;
 import com.gogowise.domain.CourseClass;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;

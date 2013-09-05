@@ -2,10 +2,19 @@ package com.gogowise.action.user;
 
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.*;
+import com.gogowise.dao.course.BrowsedCourseDao;
+import com.gogowise.dao.course.CourseDao;
+import com.gogowise.dao.live.LiveChannelDao;
+import com.gogowise.dao.live.MyShowDao;
+import com.gogowise.dao.live.PersonalOnliveDao;
+import com.gogowise.dao.org.InterviewAppointerDao;
+import com.gogowise.dao.org.InterviewDao;
+import com.gogowise.dao.org.OrgMeetingDao;
+import com.gogowise.dao.system.MatterDao;
+import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.user.UserFansDao;
 import com.gogowise.domain.*;
 import com.gogowise.utils.Constants;
-import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -15,7 +24,6 @@ import org.springframework.stereotype.Controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 @Controller
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)

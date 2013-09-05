@@ -2,10 +2,8 @@ package com.gogowise.action.onlive;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.action.valueobject.PerOnliveVideoSession;
-import com.gogowise.action.valueobject.PersonalOnliveHostSession;
-import com.gogowise.dao.BaseUserDao;
-import com.gogowise.dao.PersonalOnliveDao;
-import com.gogowise.domain.BaseUser;
+import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.live.PersonalOnliveDao;
 import com.gogowise.domain.PersonalOnlive;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.CompactWriter;

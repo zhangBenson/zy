@@ -1,7 +1,7 @@
 package com.gogowise.action.competition;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.SubjectDao;
+import com.gogowise.dao.competition.SubjectDao;
 import com.gogowise.domain.Subject;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.springframework.beans.factory.config.BeanDefinition;

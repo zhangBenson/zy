@@ -1,12 +1,15 @@
 package com.gogowise.action.search;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.*;
+import com.gogowise.dao.course.CourseDao;
+import com.gogowise.dao.live.LiveChannelDao;
+import com.gogowise.dao.live.MyShowDao;
+import com.gogowise.dao.org.OrgFansDao;
+import com.gogowise.dao.org.OrganizationDao;
+import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.user.UserFansDao;
 import com.gogowise.domain.*;
 import com.gogowise.utils.Constants;
-import com.opensymphony.xwork2.ActionContext;
-import org.apache.commons.lang.StringUtils;
-import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;

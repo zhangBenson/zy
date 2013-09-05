@@ -58,29 +58,29 @@
 
     <tx:annotation-driven/>
 
-    <bean id="modelDao" class="com.gogowise.dao.impl.ModelDaoImpl">
+    <bean id="modelDao" class="com.gogowise.dao.ModelDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean id="singUpDao" class="com.gogowise.dao.impl.SingUpDaoImpl" parent="modelDao">
+    <bean id="singUpDao" class="com.gogowise.dao.competition.SingUpDaoImpl" parent="modelDao">
         <property name="competitionSessionDao" ref="competitionSessionDao"/>
         <property name="competitionDao" ref="competitionDao"/>
         <property name="baseUserDao" ref="baseUserDao"/>
         <property name="singerAllocationDao" ref="singerAllocationDao"/>
         <property name="commentsDao" ref="commentsDao"/>
     </bean>
-    <bean id="competitionDao" class="com.gogowise.dao.impl.CompetitionDaoImpl" parent="modelDao"></bean>
-    <bean id="baseUserDao" class="com.gogowise.dao.impl.BaseUserDaoImpl" parent="modelDao"></bean>
+    <bean id="competitionDao" class="com.gogowise.dao.competition.CompetitionDaoImpl" parent="modelDao"></bean>
+    <bean id="baseUserDao" class="com.gogowise.dao.user.BaseUserDaoImpl" parent="modelDao"></bean>
     <bean id="groupDao" class="com.gogowise.dao.impl.GroupDaoImpl" parent="modelDao"></bean>
-    <bean id="competitionPhaseDao" class="com.gogowise.dao.impl.CompetitionPhaseDaoImpl" parent="modelDao"></bean>
-    <bean id="hostAllocationDao" class="com.gogowise.dao.impl.HostAllocationDaoImpl" parent="modelDao"></bean>
-    <bean id="judgeAllocationDao" class="com.gogowise.dao.impl.JudgeAllocationDaoImpl" parent="modelDao"></bean>
-    <bean id="singerAllocationDao" class="com.gogowise.dao.impl.SingerAllocationDaoImpl" parent="modelDao"></bean>
-    <bean id="subjectDao" class="com.gogowise.dao.impl.SubjectDaoImpl" parent="modelDao"></bean>
-    <bean id="commentsDao" class="com.gogowise.dao.impl.CommentsDaoImpl" parent="modelDao"></bean>
-    <bean id="favoriteDao" class="com.gogowise.dao.impl.FavoriteDaoImpl" parent="modelDao"></bean>
+    <bean id="competitionPhaseDao" class="com.gogowise.dao.competition.CompetitionPhaseDaoImpl" parent="modelDao"></bean>
+    <bean id="hostAllocationDao" class="com.gogowise.dao.competition.HostAllocationDaoImpl" parent="modelDao"></bean>
+    <bean id="judgeAllocationDao" class="com.gogowise.dao.competition.JudgeAllocationDaoImpl" parent="modelDao"></bean>
+    <bean id="singerAllocationDao" class="com.gogowise.dao.competition.SingerAllocationDaoImpl" parent="modelDao"></bean>
+    <bean id="subjectDao" class="com.gogowise.dao.competition.SubjectDaoImpl" parent="modelDao"></bean>
+    <bean id="commentsDao" class="com.gogowise.dao.course.CommentsDaoImpl" parent="modelDao"></bean>
+    <bean id="favoriteDao" class="com.gogowise.dao.system.FavoriteDaoImpl" parent="modelDao"></bean>
 
-    <bean id="competitionSessionDao" class="com.gogowise.dao.impl.CompetitionSessionDaoImpl" parent="modelDao">
+    <bean id="competitionSessionDao" class="com.gogowise.dao.competition.CompetitionSessionDaoImpl" parent="modelDao">
         <property name="competitionPhaseDao" ref="competitionPhaseDao"/>
         <property name="hostAllocationDao" ref="hostAllocationDao"/>
         <property name="judgeAllocationDao" ref="judgeAllocationDao"/>

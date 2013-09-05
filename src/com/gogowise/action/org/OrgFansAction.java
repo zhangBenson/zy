@@ -1,9 +1,9 @@
 package com.gogowise.action.org;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.BaseUserDao;
-import com.gogowise.dao.OrgFansDao;
-import com.gogowise.dao.OrganizationDao;
+import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.org.OrgFansDao;
+import com.gogowise.dao.org.OrganizationDao;
 import com.gogowise.domain.OrgFans;
 import com.gogowise.domain.Organization;
 import org.apache.struts2.convention.annotation.Action;

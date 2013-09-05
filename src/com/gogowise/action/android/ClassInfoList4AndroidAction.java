@@ -1,7 +1,7 @@
 package com.gogowise.action.android;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.ClassInfoDao;
+import com.gogowise.dao.course.ClassInfoDao;
 import com.gogowise.domain.ClassInfo;
 import com.gogowise.domain.Pagination;
 import com.gogowise.domain.android_domain.ClassInfo4Android;

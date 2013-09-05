@@ -1,7 +1,11 @@
 package com.gogowise.action;
 
-import com.gogowise.dao.*;
-import com.gogowise.dao.impl.CourseDaoImpl;
+import com.gogowise.dao.course.CourseDao;
+import com.gogowise.dao.live.LiveChannelDao;
+import com.gogowise.dao.live.MyShowDao;
+import com.gogowise.dao.live.PersonalOnliveDao;
+import com.gogowise.dao.org.OrganizationDao;
+import com.gogowise.dao.user.BaseUserDao;
 import com.gogowise.domain.*;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.ServletActionContext;
@@ -16,8 +20,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 

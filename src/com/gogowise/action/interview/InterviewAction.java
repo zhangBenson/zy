@@ -1,7 +1,11 @@
 package com.gogowise.action.interview;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.*;
+import com.gogowise.dao.org.InterviewAppointerDao;
+import com.gogowise.dao.org.InterviewDao;
+import com.gogowise.dao.org.OrganizationDao;
+import com.gogowise.dao.system.MatterDao;
+import com.gogowise.dao.user.BaseUserDao;
 import com.gogowise.domain.*;
 import com.gogowise.utils.Constants;
 import com.gogowise.utils.EmailUtil;

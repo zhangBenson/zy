@@ -1,5 +1,8 @@
 package com.gogowise.dao;
 
+import com.gogowise.dao.competition.*;
+import com.gogowise.dao.course.CourseDao;
+import com.gogowise.dao.user.BaseUserDao;
 import com.gogowise.domain.*;
 import com.gogowise.utils.MD5;
 import com.gogowise.utils.Utils;

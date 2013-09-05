@@ -1,7 +1,7 @@
 package com.gogowise.action.android;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.PersonalOnliveDao;
+import com.gogowise.dao.live.PersonalOnliveDao;
 import com.gogowise.domain.*;
 import com.gogowise.utils.Utils;
 import org.apache.struts2.convention.annotation.Action;

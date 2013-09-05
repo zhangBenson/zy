@@ -1,8 +1,8 @@
 package com.gogowise.action.competition;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.InviteRelationshipDao;
-import com.gogowise.dao.SingUpDao;
+import com.gogowise.dao.user.InviteRelationshipDao;
+import com.gogowise.dao.competition.SingUpDao;
 import com.gogowise.domain.*;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.interceptor.validation.SkipValidation;

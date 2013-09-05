@@ -1,18 +1,22 @@
 package com.gogowise.action.onlive;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.action.utils.NotifyUsers;
 import com.gogowise.action.valueobject.PersonalOnliveGuestSession;
 import com.gogowise.action.valueobject.PersonalOnliveHostSession;
-import com.gogowise.dao.*;
+import com.gogowise.dao.android.ValidUserDao;
+import com.gogowise.dao.course.CourseDao;
+import com.gogowise.dao.live.LiveChannelDao;
+import com.gogowise.dao.live.LiveTrailerDao;
+import com.gogowise.dao.live.PersonalOnliveDao;
+import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.dao.user.UserFansDao;
+import com.gogowise.dao.user.UserMattersDao;
 import com.gogowise.domain.*;
 import com.gogowise.utils.Constants;
 import com.gogowise.utils.EmailUtil;
 import com.gogowise.utils.Utils;
-import com.opensymphony.xwork2.ActionContext;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.CompactWriter;
-import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
