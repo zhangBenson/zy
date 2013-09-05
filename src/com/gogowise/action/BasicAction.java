@@ -6,7 +6,6 @@ import com.gogowise.domain.Pagination;
 import com.gogowise.domain.UserPrivateChannel;
 import com.gogowise.utils.Constants;
 import com.gogowise.utils.MD5;
-import com.gogowise.utils.RunTimeConstants;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.log4j.LogManager;
@@ -19,6 +18,7 @@ public class BasicAction extends ActionSupport {
     public static final String BASIC_PACKAGE = "basic-package";
     public static final String BASE_NAME_SPACE = "/";
     public static final String RESULT_JSON = "json";
+    public static  String HOST_URL_APP;
     private Pagination pagination = new Pagination();
     private UserPrivateChannelDao userPrivateChannelDao;
 
@@ -79,8 +79,8 @@ public class BasicAction extends ActionSupport {
     }
 
     public static String getBasePath() {
-        if (RunTimeConstants.HOST_URL_APP != null) {
-            return RunTimeConstants.HOST_URL_APP;
+        if (HOST_URL_APP != null) {
+            return HOST_URL_APP;
         }
         if (ActionContext.getContext() == null) {
             return "http://www.gogowise.com";
@@ -92,13 +92,13 @@ public class BasicAction extends ActionSupport {
         String basePath = request.getScheme() + "://" + request.getServerName()
                 + ":" + request.getServerPort() + path;
         if (basePath.contains("beta")) {
-            RunTimeConstants.HOST_URL_APP = "http://beta.gogowise.com";
+            HOST_URL_APP = "http://beta.gogowise.com";
             return "http://beta.gogowise.com";
         } else if (basePath.contains("localhost")) {
-            RunTimeConstants.HOST_URL_APP = "http://localhost:8080/WebRoot";
+            HOST_URL_APP = "http://localhost:8080/WebRoot";
             return "http://localhost:8080/WebRoot";
         } else {
-            RunTimeConstants.HOST_URL_APP = "http://www.gogowise.com";
+            HOST_URL_APP = "http://www.gogowise.com";
             return "http://www.gogowise.com";
         }
     }
