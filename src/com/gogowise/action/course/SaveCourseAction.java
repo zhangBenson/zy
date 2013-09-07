@@ -6,7 +6,7 @@ import com.gogowise.rep.course.CourseDao;
 import com.gogowise.rep.course.CourseInviteStudentDao;
 import com.gogowise.rep.org.OrganizationDao;
 import com.gogowise.rep.user.BaseUserDao;
-import com.gogowise.rep.user.user.BaseUser;
+import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.course.enity.CourseClass;
 import com.gogowise.rep.course.enity.CourseInviteStudent;

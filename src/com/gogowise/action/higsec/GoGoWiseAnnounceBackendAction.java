@@ -5,7 +5,7 @@ import com.gogowise.rep.user.BaseUserDao;
 import com.gogowise.rep.course.CourseNewEventDao;
 import com.gogowise.rep.system.GoGoWiseAnnounceDao;
 import com.gogowise.rep.course.enity.CourseNewEvent;
-import com.gogowise.rep.system.system.GoGoWiseAnnounce;
+import com.gogowise.rep.system.enity.GoGoWiseAnnounce;
 import com.gogowise.rep.Pagination;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.Utils;

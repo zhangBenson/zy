@@ -1,7 +1,7 @@
 package com.gogowise.rep.org;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.rep.org.org.OrgMeeting;
+import com.gogowise.rep.org.enity.OrgMeeting;
 import com.gogowise.rep.Pagination;
 
 import java.util.List;

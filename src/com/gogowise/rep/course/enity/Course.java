@@ -1,8 +1,8 @@
 package com.gogowise.rep.course.enity;
 
 import com.gogowise.rep.AbstractPersistence;
-import com.gogowise.rep.org.org.Organization;
-import com.gogowise.rep.user.user.BaseUser;
+import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.Utils;
 

@@ -1,7 +1,7 @@
 package com.gogowise.rep.org;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.rep.org.org.OrganizationComment;
+import com.gogowise.rep.org.enity.OrganizationComment;
 import com.gogowise.rep.Pagination;
 import org.springframework.stereotype.Repository;
 

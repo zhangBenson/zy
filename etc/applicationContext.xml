@@ -27,9 +27,9 @@
         </property>
         <property name="annotatedClasses">
             <list>
-                <value>com.gogowise.rep.user.user.BaseUser</value>
+                <value>com.gogowise.rep.user.enity.BaseUser</value>
                 <value>com.gogowise.rep.competition.enity.SingUpInfo</value>
-                <value>com.gogowise.rep.user.user.Comments</value>
+                <value>com.gogowise.rep.user.enity.Comments</value>
                 <value>com.gogowise.rep.competition.enity.Competition</value>
                 <value>com.gogowise.rep.competition.enity.CompetitionComments</value>
                 <value>com.gogowise.rep.competition.enity.CompetitionPhase</value>
@@ -78,7 +78,7 @@
     <bean id="singerAllocationDao" class="com.gogowise.rep.competition.SingerAllocationDaoImpl" parent="modelDao"></bean>
     <bean id="subjectDao" class="com.gogowise.rep.competition.SubjectDaoImpl" parent="modelDao"></bean>
     <bean id="commentsDao" class="com.gogowise.rep.course.CommentsDaoImpl" parent="modelDao"></bean>
-    <bean id="favoriteDao" class="com.gogowise.rep.system.FavoriteDaoImpl" parent="modelDao"></bean>
+    <bean id="favoriteDao" class="com.gogowise.rep.competition.FavoriteDaoImpl" parent="modelDao"></bean>
 
     <bean id="competitionSessionDao" class="com.gogowise.rep.competition.CompetitionSessionDaoImpl" parent="modelDao">
         <property name="competitionPhaseDao" ref="competitionPhaseDao"/>

@@ -1,7 +1,7 @@
 package com.gogowise.rep.live;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.rep.live.live.OnliveFollower;
+import com.gogowise.rep.live.enity.OnliveFollower;
 import com.gogowise.rep.Pagination;
 import org.springframework.stereotype.Repository;
 

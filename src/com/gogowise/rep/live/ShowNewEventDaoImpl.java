@@ -2,7 +2,7 @@ package com.gogowise.rep.live;
 
 import com.gogowise.rep.ModelDaoImpl;
 import com.gogowise.rep.Pagination;
-import com.gogowise.rep.live.live.ShowNewEvent;
+import com.gogowise.rep.live.enity.ShowNewEvent;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

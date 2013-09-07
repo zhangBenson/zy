@@ -1,6 +1,6 @@
 package com.gogowise.rep.android.enity;
 
-import com.gogowise.rep.user.user.BaseUser;
+import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.common.utils.Constants;
 
 import java.util.Calendar;

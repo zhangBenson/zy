@@ -1,8 +1,8 @@
 package com.gogowise.rep.live;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.rep.user.user.BaseUser;
-import com.gogowise.rep.live.live.MonitorAuthorize;
+import com.gogowise.rep.user.enity.BaseUser;
+import com.gogowise.rep.live.enity.MonitorAuthorize;
 
 import java.util.List;
 

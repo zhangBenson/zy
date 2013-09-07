@@ -4,8 +4,8 @@ import com.gogowise.rep.ModelDaoImpl;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.competition.enity.CompetitionSession;
 import com.gogowise.rep.competition.enity.InviteRelationship;
-import com.gogowise.rep.user.user.BaseUser;
-import com.gogowise.rep.user.user.UserRelationship;
+import com.gogowise.rep.user.enity.BaseUser;
+import com.gogowise.rep.user.enity.UserRelationship;
 import com.gogowise.common.utils.MD5;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
 package com.gogowise.action.valueobject;
 
-import com.gogowise.rep.org.org.Interview;
+import com.gogowise.rep.org.enity.Interview;
 import com.gogowise.common.utils.Constants;
 
 /**

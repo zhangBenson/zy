@@ -1,7 +1,7 @@
 package com.gogowise.rep.org;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.rep.org.org.InterviewAppointer;
+import com.gogowise.rep.org.enity.InterviewAppointer;
 
 import java.util.List;
 

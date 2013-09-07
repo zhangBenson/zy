@@ -1,7 +1,7 @@
 package com.gogowise.rep.user;
 
 import com.gogowise.rep.Pagination;
-import com.gogowise.rep.user.user.UserRelationship;
+import com.gogowise.rep.user.enity.UserRelationship;
 
 import java.util.List;
 

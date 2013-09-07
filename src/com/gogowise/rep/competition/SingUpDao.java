@@ -6,8 +6,8 @@ import com.gogowise.rep.competition.enity.Competition;
 import com.gogowise.rep.competition.enity.CompetitionSession;
 import com.gogowise.rep.competition.enity.SingUpInfo;
 import com.gogowise.rep.competition.enity.SingerAllocation;
-import com.gogowise.rep.user.user.BaseUser;
-import com.gogowise.rep.user.user.Comments;
+import com.gogowise.rep.user.enity.BaseUser;
+import com.gogowise.rep.user.enity.Comments;
 
 import java.util.List;
 import java.util.Map;

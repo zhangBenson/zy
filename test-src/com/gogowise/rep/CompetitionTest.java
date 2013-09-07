@@ -4,7 +4,7 @@ import com.gogowise.rep.competition.*;
 import com.gogowise.rep.competition.enity.*;
 import com.gogowise.rep.course.CourseDao;
 import com.gogowise.rep.user.BaseUserDao;
-import com.gogowise.rep.user.user.BaseUser;
+import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.common.utils.MD5;
 import com.gogowise.common.utils.Utils;
 import org.junit.After;

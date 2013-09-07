@@ -4,14 +4,14 @@ import com.gogowise.action.BasicAction;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.CourseDao;
 import com.gogowise.rep.live.*;
+import com.gogowise.rep.live.enity.*;
 import com.gogowise.rep.system.GoGoWiseAnnounceDao;
-import com.gogowise.rep.system.MatterDao;
+import com.gogowise.rep.live.MatterDao;
 import com.gogowise.rep.user.BaseUserDao;
-import com.gogowise.rep.user.UserFansDao;
+import com.gogowise.rep.live.UserFansDao;
 import com.gogowise.rep.course.enity.Course;
-import com.gogowise.rep.live.live.*;
-import com.gogowise.rep.system.system.GoGoWiseAnnounce;
-import com.gogowise.rep.user.user.BaseUser;
+import com.gogowise.rep.system.enity.GoGoWiseAnnounce;
+import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.EmailUtil;
 import com.gogowise.common.utils.Utils;
@@ -191,7 +191,7 @@ public class ShowAction extends BasicAction {
         }
         if(showComment.getFriend() == null && this.getSessionUserId() != myShow.getOwner().getId()){
             //第一次留言给博主信息
-            Matter   matter =new Matter(Calendar.getInstance(),this.getSessionNickName()+(new SimpleDateFormat("yyyyddMMHHmmssms").format(Calendar.getInstance().getTime())),Matter.MATTER_MYSHOW_MESSAGE,baseUserDao.findByEmail(this.getSessionUserEmail()),null,myShow.getOwner().getEmail(),null,null,myShow,null,false);
+            Matter matter =new Matter(Calendar.getInstance(),this.getSessionNickName()+(new SimpleDateFormat("yyyyddMMHHmmssms").format(Calendar.getInstance().getTime())),Matter.MATTER_MYSHOW_MESSAGE,baseUserDao.findByEmail(this.getSessionUserEmail()),null,myShow.getOwner().getEmail(),null,null,myShow,null,false);
             matterDao.persistAbstract(matter);
             String href = "showBlog.html?myShow.id="+myShow.getId();
             String title = this.getText("show.blog.comment.title",new String[]{commenter.getNickName(),myShow.getName()});

@@ -2,7 +2,7 @@ package com.gogowise.rep.live;
 
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.rep.live.live.SeasonIncreasedShowFans;
+import com.gogowise.rep.live.enity.SeasonIncreasedShowFans;
 import org.springframework.stereotype.Repository;
 
 

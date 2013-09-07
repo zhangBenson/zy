@@ -5,7 +5,7 @@ import com.gogowise.action.valueobject.InterviewCandidatureSession;
 import com.gogowise.action.valueobject.InterviewMasterSession;
 import com.gogowise.rep.user.BaseUserDao;
 import com.gogowise.rep.org.InterviewDao;
-import com.gogowise.rep.org.org.Interview;
+import com.gogowise.rep.org.enity.Interview;
 import com.gogowise.rep.Pagination;
 import com.gogowise.common.utils.Constants;
 import com.thoughtworks.xstream.XStream;

@@ -1,7 +1,7 @@
 package com.gogowise.rep.live;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.rep.live.live.MemberOfLiveChannel;
+import com.gogowise.rep.live.enity.MemberOfLiveChannel;
 import org.springframework.stereotype.Repository;
 
 /**

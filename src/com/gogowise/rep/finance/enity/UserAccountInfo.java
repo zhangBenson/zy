@@ -1,7 +1,7 @@
 package com.gogowise.rep.finance.enity;
 
 import com.gogowise.rep.AbstractPersistence;
-import com.gogowise.rep.user.user.BaseUser;
+import com.gogowise.rep.user.enity.BaseUser;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.Entity;

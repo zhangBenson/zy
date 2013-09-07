@@ -1,7 +1,7 @@
 package com.gogowise.rep.competition.enity;
 
 import com.gogowise.rep.AbstractPersistence;
-import com.gogowise.rep.user.user.BaseUser;
+import com.gogowise.rep.user.enity.BaseUser;
 
 import javax.persistence.*;
 

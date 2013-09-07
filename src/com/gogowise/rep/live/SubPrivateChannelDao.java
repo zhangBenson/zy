@@ -1,8 +1,8 @@
 package com.gogowise.rep.live;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.rep.live.live.SubPrivateChannel;
-import com.gogowise.rep.live.live.UserPrivateChannel;
+import com.gogowise.rep.live.enity.SubPrivateChannel;
+import com.gogowise.rep.live.enity.UserPrivateChannel;
 
 
 public interface SubPrivateChannelDao extends ModelDao<SubPrivateChannel> {

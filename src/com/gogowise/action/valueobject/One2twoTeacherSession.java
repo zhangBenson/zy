@@ -1,8 +1,8 @@
 package com.gogowise.action.valueobject;
 
-import com.gogowise.rep.user.user.BaseUser;
+import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.course.enity.CourseClass;
-import com.gogowise.rep.org.org.OrgMeeting;
+import com.gogowise.rep.org.enity.OrgMeeting;
 import com.gogowise.common.utils.Constants;
 
 /**

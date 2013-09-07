@@ -2,7 +2,7 @@ package com.gogowise.rep.org;
 
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.rep.org.org.OrgMaterial;
+import com.gogowise.rep.org.enity.OrgMaterial;
 import com.gogowise.rep.Pagination;
 import org.springframework.stereotype.Repository;
 

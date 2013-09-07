@@ -1,9 +1,9 @@
 package com.gogowise.action.valueobject;
 
 
-import com.gogowise.rep.user.user.BaseUser;
-import com.gogowise.rep.live.live.ChannelTerms;
-import com.gogowise.rep.live.live.MemberOfLiveChannel;
+import com.gogowise.rep.user.enity.BaseUser;
+import com.gogowise.rep.live.enity.ChannelTerms;
+import com.gogowise.rep.live.enity.MemberOfLiveChannel;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.Utils;
 

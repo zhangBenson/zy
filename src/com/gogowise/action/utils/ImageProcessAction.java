@@ -2,9 +2,9 @@ package com.gogowise.action.utils;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.rep.user.BaseUserDao;
-import com.gogowise.rep.user.user.BaseUser;
+import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.course.enity.Course;
-import com.gogowise.rep.org.org.Organization;
+import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.common.utils.Constants;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;

@@ -7,7 +7,7 @@ import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.*;
 import com.gogowise.rep.user.BaseUserDao;
 import com.gogowise.rep.course.enity.*;
-import com.gogowise.rep.user.user.BaseUser;
+import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.common.utils.Constants;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.CompactWriter;

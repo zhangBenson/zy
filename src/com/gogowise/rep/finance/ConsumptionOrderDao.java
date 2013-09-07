@@ -1,10 +1,10 @@
 package com.gogowise.rep.finance;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.rep.user.user.BaseUser;
+import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.finance.enity.ConsumptionOrder;
 import com.gogowise.rep.course.enity.Course;
-import com.gogowise.rep.live.live.UserPrivateChannel;
+import com.gogowise.rep.live.enity.UserPrivateChannel;
 
 import java.util.Calendar;
 import java.util.List;

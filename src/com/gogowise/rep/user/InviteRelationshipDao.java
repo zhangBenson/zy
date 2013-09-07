@@ -4,8 +4,8 @@ import com.gogowise.rep.ModelDao;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.competition.enity.CompetitionSession;
 import com.gogowise.rep.competition.enity.InviteRelationship;
-import com.gogowise.rep.user.user.BaseUser;
-import com.gogowise.rep.user.user.UserRelationship;
+import com.gogowise.rep.user.enity.BaseUser;
+import com.gogowise.rep.user.enity.UserRelationship;
 
 import java.util.List;
 /**

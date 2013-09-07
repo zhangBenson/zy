@@ -1,7 +1,7 @@
 package com.gogowise.rep.system;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.rep.system.system.DownloadTime;
+import com.gogowise.rep.system.enity.DownloadTime;
 
 /**
  * Created by IntelliJ IDEA.

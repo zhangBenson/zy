@@ -1,7 +1,7 @@
 package com.gogowise.rep.live;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.rep.live.live.LiveTrailer;
+import com.gogowise.rep.live.enity.LiveTrailer;
 import com.gogowise.rep.Pagination;
 
 import java.util.List;

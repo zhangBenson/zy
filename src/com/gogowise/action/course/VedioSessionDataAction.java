@@ -9,7 +9,7 @@ import com.gogowise.rep.course.SeniorClassRoomDao;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.course.enity.CourseClass;
 import com.gogowise.rep.course.enity.SeniorClassRoom;
-import com.gogowise.rep.user.user.BaseUser;
+import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.Utils;
 import com.thoughtworks.xstream.XStream;

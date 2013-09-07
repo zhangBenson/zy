@@ -2,9 +2,9 @@ package com.gogowise.action.user;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.rep.user.BaseUserDao;
-import com.gogowise.rep.user.UserFansDao;
-import com.gogowise.rep.user.user.BaseUser;
-import com.gogowise.rep.live.live.UserFans;
+import com.gogowise.rep.live.UserFansDao;
+import com.gogowise.rep.user.enity.BaseUser;
+import com.gogowise.rep.live.enity.UserFans;
 import com.gogowise.common.utils.Utils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;

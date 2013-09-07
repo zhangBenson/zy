@@ -1,9 +1,9 @@
 package com.gogowise.rep.org;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.rep.user.user.BaseUser;
-import com.gogowise.rep.org.org.Organization;
-import com.gogowise.rep.org.org.OrganizationHistory;
+import com.gogowise.rep.user.enity.BaseUser;
+import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.org.enity.OrganizationHistory;
 
 /**
  * Created by IntelliJ IDEA.

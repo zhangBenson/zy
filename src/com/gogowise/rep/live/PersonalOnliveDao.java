@@ -2,7 +2,7 @@ package com.gogowise.rep.live;
 
 import com.gogowise.rep.ModelDao;
 import com.gogowise.rep.Pagination;
-import com.gogowise.rep.live.live.PersonalOnlive;
+import com.gogowise.rep.live.enity.PersonalOnlive;
 
 import java.util.List;
 

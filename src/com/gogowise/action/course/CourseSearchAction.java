@@ -4,7 +4,7 @@ import com.gogowise.action.BasicAction;
 import com.gogowise.action.valueobject.SearchCondition;
 import com.gogowise.rep.user.BaseUserDao;
 import com.gogowise.rep.course.CourseDao;
-import com.gogowise.rep.user.user.BaseUser;
+import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.Pagination;
 import com.gogowise.common.utils.Constants;

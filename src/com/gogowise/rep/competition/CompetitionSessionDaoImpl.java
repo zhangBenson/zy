@@ -7,7 +7,7 @@ import com.gogowise.rep.competition.enity.CompetitionSession;
 import com.gogowise.rep.competition.enity.JudgeAllocation;
 import com.gogowise.rep.competition.enity.SingUpInfo;
 import com.gogowise.rep.competition.enity.SingerAllocation;
-import com.gogowise.rep.user.user.BaseUser;
+import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.common.utils.Utils;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.*;

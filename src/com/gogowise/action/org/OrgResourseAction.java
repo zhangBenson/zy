@@ -2,7 +2,7 @@ package com.gogowise.action.org;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.rep.org.OrgMaterialDao;
-import com.gogowise.rep.org.org.OrgMaterial;
+import com.gogowise.rep.org.enity.OrgMaterial;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;

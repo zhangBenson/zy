@@ -1,9 +1,9 @@
 package com.gogowise.rep.org;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.rep.org.org.ChangeResponserHistory;
-import com.gogowise.rep.org.org.Organization;
-import com.gogowise.rep.org.org.OrganizationHistory;
+import com.gogowise.rep.org.enity.ChangeResponserHistory;
+import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.org.enity.OrganizationHistory;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

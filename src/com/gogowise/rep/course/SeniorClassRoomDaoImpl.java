@@ -6,7 +6,7 @@ import com.gogowise.rep.user.BaseUserDao;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.course.enity.CourseInviteStudent;
 import com.gogowise.rep.course.enity.SeniorClassRoom;
-import com.gogowise.rep.user.user.BaseUser;
+import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.common.utils.Utils;
 import org.springframework.stereotype.Repository;
 

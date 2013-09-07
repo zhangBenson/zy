@@ -2,7 +2,7 @@ package com.gogowise.action.show;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.rep.live.MyShowDao;
-import com.gogowise.rep.live.live.MyShow;
+import com.gogowise.rep.live.enity.MyShow;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;

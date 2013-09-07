@@ -4,7 +4,7 @@ import com.gogowise.action.BasicAction;
 import com.gogowise.rep.android.AndroidFeedbackDao;
 import com.gogowise.rep.user.BaseUserDao;
 import com.gogowise.rep.android.enity.AndroidFeedback;
-import com.gogowise.rep.user.user.BaseUser;
+import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.common.utils.EmailUtil;
 import com.gogowise.common.utils.MD5;
 import org.apache.struts2.convention.annotation.Action;

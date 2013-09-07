@@ -1,8 +1,8 @@
 package com.gogowise.rep.live;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.rep.live.live.SubPrivateChannel;
-import com.gogowise.rep.live.live.UserPrivateChannel;
+import com.gogowise.rep.live.enity.SubPrivateChannel;
+import com.gogowise.rep.live.enity.UserPrivateChannel;
 import org.springframework.stereotype.Repository;
 
 

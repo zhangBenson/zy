@@ -3,8 +3,8 @@ package com.gogowise.rep.org;
 //import com.gogowise.domain.ApplyOrganization;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.rep.user.user.BaseUser;
-import com.gogowise.rep.org.org.Organization;
+import com.gogowise.rep.user.enity.BaseUser;
+import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.Pagination;
 
 import java.util.List;

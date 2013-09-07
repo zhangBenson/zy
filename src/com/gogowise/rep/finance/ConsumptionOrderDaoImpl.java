@@ -2,10 +2,10 @@ package com.gogowise.rep.finance;
 
 import com.gogowise.rep.ModelDaoImpl;
 import com.gogowise.rep.user.BaseUserDao;
-import com.gogowise.rep.user.user.BaseUser;
+import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.finance.enity.ConsumptionOrder;
 import com.gogowise.rep.course.enity.Course;
-import com.gogowise.rep.live.live.UserPrivateChannel;
+import com.gogowise.rep.live.enity.UserPrivateChannel;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.Utils;
 import org.springframework.stereotype.Repository;

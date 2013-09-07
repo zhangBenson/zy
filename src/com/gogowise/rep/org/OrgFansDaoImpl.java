@@ -1,7 +1,7 @@
 package com.gogowise.rep.org;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.rep.org.org.OrgFans;
+import com.gogowise.rep.org.enity.OrgFans;
 import org.springframework.stereotype.Repository;
 
 /**

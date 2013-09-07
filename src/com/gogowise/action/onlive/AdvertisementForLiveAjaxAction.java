@@ -2,7 +2,7 @@ package com.gogowise.action.onlive;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.rep.live.AdvertisementForLiveDao;
-import com.gogowise.rep.live.live.AdvertisementForLive;
+import com.gogowise.rep.live.enity.AdvertisementForLive;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;

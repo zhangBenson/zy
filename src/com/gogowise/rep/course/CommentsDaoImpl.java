@@ -1,7 +1,7 @@
 package com.gogowise.rep.course;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.rep.user.user.Comments;
+import com.gogowise.rep.user.enity.Comments;
 import com.gogowise.rep.Pagination;
 import org.springframework.stereotype.Repository;
 

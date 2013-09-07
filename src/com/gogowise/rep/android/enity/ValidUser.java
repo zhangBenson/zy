@@ -1,7 +1,7 @@
 package com.gogowise.rep.android.enity;
 
 import com.gogowise.rep.AbstractPersistence;
-import com.gogowise.rep.live.live.PersonalOnlive;
+import com.gogowise.rep.live.enity.PersonalOnlive;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
