@@ -2,17 +2,17 @@ package com.gogowise.action.user;
 
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.course.BrowsedCourseDao;
-import com.gogowise.dao.course.CourseDao;
-import com.gogowise.dao.live.LiveChannelDao;
-import com.gogowise.dao.live.MyShowDao;
-import com.gogowise.dao.live.PersonalOnliveDao;
-import com.gogowise.dao.org.InterviewAppointerDao;
-import com.gogowise.dao.org.InterviewDao;
-import com.gogowise.dao.org.OrgMeetingDao;
-import com.gogowise.dao.system.MatterDao;
-import com.gogowise.dao.user.BaseUserDao;
-import com.gogowise.dao.user.UserFansDao;
+import com.gogowise.repository.course.BrowsedCourseDao;
+import com.gogowise.repository.course.CourseDao;
+import com.gogowise.repository.live.LiveChannelDao;
+import com.gogowise.repository.live.MyShowDao;
+import com.gogowise.repository.live.PersonalOnliveDao;
+import com.gogowise.repository.org.InterviewAppointerDao;
+import com.gogowise.repository.org.InterviewDao;
+import com.gogowise.repository.org.OrgMeetingDao;
+import com.gogowise.repository.system.MatterDao;
+import com.gogowise.repository.user.BaseUserDao;
+import com.gogowise.repository.user.UserFansDao;
 import com.gogowise.domain.*;
 import com.gogowise.domain.course.BrowsedCourse;
 import com.gogowise.domain.course.Course;

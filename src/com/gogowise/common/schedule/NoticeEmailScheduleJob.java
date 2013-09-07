@@ -1,6 +1,6 @@
 package com.gogowise.common.schedule;
 
-import com.gogowise.dao.course.ClassDao;
+import com.gogowise.repository.course.ClassDao;
 import com.gogowise.domain.course.CourseClass;
 import org.springframework.stereotype.Component;
 

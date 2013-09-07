@@ -2,9 +2,9 @@ package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.action.valueobject.VideoSession;
-import com.gogowise.dao.course.*;
-import com.gogowise.dao.system.MatterDao;
-import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.repository.course.*;
+import com.gogowise.repository.system.MatterDao;
+import com.gogowise.repository.user.BaseUserDao;
 import com.gogowise.domain.*;
 import com.gogowise.domain.course.*;
 import com.gogowise.domain.live.Matter;

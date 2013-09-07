@@ -2,8 +2,8 @@ package com.gogowise.action.course;
 
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.course.CourseDao;
-import com.gogowise.dao.live.MyShowDao;
+import com.gogowise.repository.course.CourseDao;
+import com.gogowise.repository.live.MyShowDao;
 import com.gogowise.domain.*;
 import com.gogowise.domain.course.Course;
 import com.gogowise.domain.live.MyShow;

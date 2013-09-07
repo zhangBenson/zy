@@ -1,11 +1,11 @@
 package com.gogowise.action;
 
-import com.gogowise.dao.course.CourseDao;
-import com.gogowise.dao.live.LiveChannelDao;
-import com.gogowise.dao.live.MyShowDao;
-import com.gogowise.dao.live.PersonalOnliveDao;
-import com.gogowise.dao.org.OrganizationDao;
-import com.gogowise.dao.user.BaseUserDao;
+import com.gogowise.repository.course.CourseDao;
+import com.gogowise.repository.live.LiveChannelDao;
+import com.gogowise.repository.live.MyShowDao;
+import com.gogowise.repository.live.PersonalOnliveDao;
+import com.gogowise.repository.org.OrganizationDao;
+import com.gogowise.repository.user.BaseUserDao;
 import com.gogowise.domain.*;
 import com.gogowise.domain.course.Course;
 import com.gogowise.domain.live.LiveChannel;

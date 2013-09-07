@@ -1,7 +1,7 @@
 package com.gogowise.common.schedule;
 
-import com.gogowise.dao.finance.ConsumptionOrderDao;
-import com.gogowise.dao.finance.ConsumptionRecordDao;
+import com.gogowise.repository.finance.ConsumptionOrderDao;
+import com.gogowise.repository.finance.ConsumptionRecordDao;
 import com.gogowise.domain.finance.ConsumptionOrder;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;

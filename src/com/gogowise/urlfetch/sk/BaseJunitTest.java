@@ -1,7 +1,7 @@
 package com.gogowise.urlfetch.sk;
 
-import com.gogowise.dao.user.BaseUserDao;
-import com.gogowise.dao.ModelDao;
+import com.gogowise.repository.user.BaseUserDao;
+import com.gogowise.repository.ModelDao;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;

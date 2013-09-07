@@ -1,9 +1,9 @@
 package com.gogowise.action.android;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.user.BaseUserDao;
-import com.gogowise.dao.live.PersonalOnliveDao;
-import com.gogowise.dao.user.UserFansDao;
+import com.gogowise.repository.user.BaseUserDao;
+import com.gogowise.repository.live.PersonalOnliveDao;
+import com.gogowise.repository.user.UserFansDao;
 import com.gogowise.domain.user.BaseUser;
 import com.gogowise.domain.live.PersonalOnlive;
 import com.gogowise.domain.live.UserFans;

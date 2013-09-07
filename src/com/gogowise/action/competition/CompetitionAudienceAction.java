@@ -1,9 +1,9 @@
 package com.gogowise.action.competition;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.user.BaseUserDao;
-import com.gogowise.dao.competition.CompetitionAudienceDao;
-import com.gogowise.dao.competition.CompetitionSessionDao;
+import com.gogowise.repository.user.BaseUserDao;
+import com.gogowise.repository.competition.CompetitionAudienceDao;
+import com.gogowise.repository.competition.CompetitionSessionDao;
 import com.gogowise.domain.competition.CompetitionAudience;
 import com.gogowise.common.utils.Constants;
 import org.apache.struts2.ServletActionContext;

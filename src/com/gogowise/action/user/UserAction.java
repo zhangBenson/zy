@@ -1,15 +1,15 @@
 package com.gogowise.action.user;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.competition.CompetitionSessionDao;
-import com.gogowise.dao.course.*;
-import com.gogowise.dao.org.InterviewAppointerDao;
-import com.gogowise.dao.org.InterviewDao;
-import com.gogowise.dao.org.OrganizationDao;
-import com.gogowise.dao.user.BaseUserDao;
-import com.gogowise.dao.user.InviteRelationshipDao;
-import com.gogowise.dao.user.UserAccountInfoDao;
-import com.gogowise.dao.user.UserRelationshipDao;
+import com.gogowise.repository.competition.CompetitionSessionDao;
+import com.gogowise.repository.course.*;
+import com.gogowise.repository.org.InterviewAppointerDao;
+import com.gogowise.repository.org.InterviewDao;
+import com.gogowise.repository.org.OrganizationDao;
+import com.gogowise.repository.user.BaseUserDao;
+import com.gogowise.repository.user.InviteRelationshipDao;
+import com.gogowise.repository.user.UserAccountInfoDao;
+import com.gogowise.repository.user.UserRelationshipDao;
 import com.gogowise.domain.*;
 import com.gogowise.domain.competition.Competition;
 import com.gogowise.domain.competition.CompetitionPhase;

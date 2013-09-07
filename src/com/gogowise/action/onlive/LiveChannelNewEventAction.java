@@ -1,8 +1,8 @@
 package com.gogowise.action.onlive;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.live.LiveChannelDao;
-import com.gogowise.dao.live.LiveChannelNewEventDao;
+import com.gogowise.repository.live.LiveChannelDao;
+import com.gogowise.repository.live.LiveChannelNewEventDao;
 import com.gogowise.domain.live.LiveChannel;
 import com.gogowise.domain.live.LiveChannelNewEvent;
 import org.apache.struts2.convention.annotation.Namespace;

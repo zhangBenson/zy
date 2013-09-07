@@ -1,7 +1,7 @@
 package com.gogowise.action.download;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.system.DownloadTimeDao;
+import com.gogowise.repository.system.DownloadTimeDao;
 import com.gogowise.domain.system.DownloadTime;
 import com.gogowise.common.utils.Constants;
 import org.apache.struts2.convention.annotation.Action;

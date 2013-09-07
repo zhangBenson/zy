@@ -1,12 +1,12 @@
 package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.course.CourseDao;
-import com.gogowise.dao.course.SeniorClassRoomDao;
-import com.gogowise.dao.finance.ConsumptionOrderDao;
-import com.gogowise.dao.system.MatterDao;
-import com.gogowise.dao.user.BaseUserDao;
-import com.gogowise.dao.user.UserAccountInfoDao;
+import com.gogowise.repository.course.CourseDao;
+import com.gogowise.repository.course.SeniorClassRoomDao;
+import com.gogowise.repository.finance.ConsumptionOrderDao;
+import com.gogowise.repository.system.MatterDao;
+import com.gogowise.repository.user.BaseUserDao;
+import com.gogowise.repository.user.UserAccountInfoDao;
 import com.gogowise.domain.user.BaseUser;
 import com.gogowise.domain.course.Course;
 import com.gogowise.domain.live.Matter;

@@ -1,7 +1,7 @@
 package com.gogowise.action.android;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.android.IEMIDao;
+import com.gogowise.repository.android.IEMIDao;
 import com.gogowise.domain.android_domain.IEMI;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;

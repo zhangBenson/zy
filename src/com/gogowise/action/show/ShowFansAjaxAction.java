@@ -1,7 +1,7 @@
 package com.gogowise.action.show;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.live.MyShowDao;
+import com.gogowise.repository.live.MyShowDao;
 import com.gogowise.domain.live.MyShow;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
