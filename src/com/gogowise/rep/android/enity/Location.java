@@ -1,9 +1,6 @@
-package com.gogowise.domain.android_domain;
+package com.gogowise.rep.android.enity;
 
 import com.gogowise.domain.AbstractPersistence;
-
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
 
 /**
  * Created by IntelliJ IDEA.

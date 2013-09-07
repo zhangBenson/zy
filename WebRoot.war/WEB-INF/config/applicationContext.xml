@@ -113,15 +113,15 @@
                 <value>com.gogowise.domain.live.LiveChannelComment</value>
                 <value>com.gogowise.domain.system.FeedBackInfo</value>
                 <value>com.gogowise.domain.live.LiveTrailer</value>
-                <value>com.gogowise.domain.android_domain.AndroidFeedback</value>
+                <value>com.gogowise.rep.android.enity.AndroidFeedback</value>
                 <value>com.gogowise.domain.org.OrgFans</value>
                 <value>com.gogowise.domain.system.DownloadTime</value>
                 <value>com.gogowise.domain.live.UserPrivateChannel</value>
                 <value>com.gogowise.domain.live.SubPrivateChannel</value>
-                <value>com.gogowise.domain.android_domain.ValidUser</value>
+                <value>com.gogowise.rep.android.enity.ValidUser</value>
                 <value>com.gogowise.domain.course.CourseMaterial</value>
-                <value>com.gogowise.domain.android_domain.IEMI</value>
-                <value>com.gogowise.domain.android_domain.SerialNO</value>
+                <value>com.gogowise.rep.android.enity.IEMI</value>
+                <value>com.gogowise.rep.android.enity.SerialNO</value>
                 <value>com.gogowise.domain.live.MonitorAuthorize</value>
                 <value>com.gogowise.urlfetch.sk.ClassType</value>
 

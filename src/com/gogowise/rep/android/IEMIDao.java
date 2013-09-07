@@ -1,7 +1,7 @@
 package com.gogowise.rep.android;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.domain.android_domain.IEMI;
+import com.gogowise.rep.android.enity.IEMI;
 
 /**
  * Created by IntelliJ IDEA.

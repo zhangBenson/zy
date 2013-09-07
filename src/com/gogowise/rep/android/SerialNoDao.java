@@ -1,7 +1,7 @@
 package com.gogowise.rep.android;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.domain.android_domain.SerialNO;
+import com.gogowise.rep.android.enity.SerialNO;
 
 /**
  * Created by IntelliJ IDEA.

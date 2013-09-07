@@ -3,7 +3,7 @@ package com.gogowise.action.android;
 import com.gogowise.action.BasicAction;
 import com.gogowise.rep.android.AndroidFeedbackDao;
 import com.gogowise.rep.user.BaseUserDao;
-import com.gogowise.domain.android_domain.AndroidFeedback;
+import com.gogowise.rep.android.enity.AndroidFeedback;
 import com.gogowise.domain.user.BaseUser;
 import com.gogowise.common.utils.EmailUtil;
 import com.gogowise.common.utils.MD5;

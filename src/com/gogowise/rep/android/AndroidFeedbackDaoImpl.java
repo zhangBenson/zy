@@ -9,7 +9,7 @@ package com.gogowise.rep.android;
  */
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.domain.android_domain.AndroidFeedback;
+import com.gogowise.rep.android.enity.AndroidFeedback;
 import org.springframework.stereotype.Repository;
 
 

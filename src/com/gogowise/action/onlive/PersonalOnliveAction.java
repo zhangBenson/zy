@@ -12,7 +12,7 @@ import com.gogowise.rep.user.BaseUserDao;
 import com.gogowise.rep.user.UserFansDao;
 import com.gogowise.rep.user.UserMattersDao;
 import com.gogowise.domain.*;
-import com.gogowise.domain.android_domain.ValidUser;
+import com.gogowise.rep.android.enity.ValidUser;
 import com.gogowise.domain.course.Course;
 import com.gogowise.domain.live.LiveChannel;
 import com.gogowise.domain.live.LiveTrailer;

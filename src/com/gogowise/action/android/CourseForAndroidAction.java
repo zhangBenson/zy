@@ -2,7 +2,7 @@ package com.gogowise.action.android;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.rep.course.CourseDao;
-import com.gogowise.domain.android_domain.AndroidCourse;
+import com.gogowise.rep.android.enity.AndroidCourse;
 import com.gogowise.domain.course.Course;
 import com.gogowise.domain.Pagination;
 import org.apache.struts2.convention.annotation.Action;

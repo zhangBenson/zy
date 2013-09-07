@@ -4,7 +4,7 @@ import com.gogowise.action.BasicAction;
 import com.gogowise.rep.course.ClassInfoDao;
 import com.gogowise.urlfetch.sk.ClassInfo;
 import com.gogowise.domain.Pagination;
-import com.gogowise.domain.android_domain.ClassInfo4Android;
+import com.gogowise.rep.android.enity.ClassInfo4Android;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;

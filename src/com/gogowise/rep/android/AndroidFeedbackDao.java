@@ -1,7 +1,7 @@
 package com.gogowise.rep.android;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.domain.android_domain.AndroidFeedback;
+import com.gogowise.rep.android.enity.AndroidFeedback;
 
 /**
  * Created by IntelliJ IDEA.

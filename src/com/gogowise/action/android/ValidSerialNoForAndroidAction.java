@@ -2,7 +2,7 @@ package com.gogowise.action.android;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.rep.android.SerialNoDao;
-import com.gogowise.domain.android_domain.SerialNO;
+import com.gogowise.rep.android.enity.SerialNO;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;

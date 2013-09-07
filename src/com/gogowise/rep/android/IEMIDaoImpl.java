@@ -1,7 +1,7 @@
 package com.gogowise.rep.android;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.domain.android_domain.IEMI;
+import com.gogowise.rep.android.enity.IEMI;
 import org.springframework.stereotype.Repository;
 
 /**

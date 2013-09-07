@@ -1,7 +1,7 @@
 package com.gogowise.rep.android;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.domain.android_domain.ValidUser;
+import com.gogowise.rep.android.enity.ValidUser;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

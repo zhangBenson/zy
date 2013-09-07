@@ -1,4 +1,4 @@
-package com.gogowise.domain.android_domain;
+package com.gogowise.rep.android.enity;
 
 /**
  * Created by IntelliJ IDEA.
