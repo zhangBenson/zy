@@ -3,10 +3,10 @@ package com.gogowise.dao.finance;
 import com.gogowise.dao.ModelDaoImpl;
 import com.gogowise.dao.user.BaseUserDao;
 import com.gogowise.dao.user.UserAccountInfoDao;
-import com.gogowise.domain.ConsumptionOrder;
-import com.gogowise.domain.ConsumptionRecord;
+import com.gogowise.domain.finance.ConsumptionOrder;
+import com.gogowise.domain.finance.ConsumptionRecord;
 import com.gogowise.domain.Pagination;
-import com.gogowise.domain.UserAccountInfo;
+import com.gogowise.domain.finance.UserAccountInfo;
 import org.springframework.stereotype.Repository;
 
 import java.util.Calendar;

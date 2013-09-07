@@ -1,6 +1,6 @@
 package com.gogowise.urlfetch.sk.covert;
 
-import com.gogowise.domain.XiaoQu;
+import com.gogowise.urlfetch.sk.XiaoQu;
 import com.gogowise.urlfetch.sk.BaseJunitTest;
 import org.jsoup.nodes.Document;
 import org.junit.Test;

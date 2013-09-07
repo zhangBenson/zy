@@ -58,7 +58,7 @@
     <!--<servlet>-->
     <!--<servlet-name>InitialDB</servlet-name>-->
     <!--<servlet-class>-->
-    <!--com.gogowise.servlet.InitialDBServlet-->
+    <!--com.gogowise.common.servlet.InitialDBServlet-->
     <!--</servlet-class>-->
     <!--<load-on-startup>3</load-on-startup>-->
     <!--</servlet>-->
@@ -229,7 +229,7 @@
 
     <filter>
         <filter-name>mainFilter</filter-name>
-        <filter-class>com.gogowise.utils.MainFilter</filter-class>
+        <filter-class>com.gogowise.common.utils.MainFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>mainFilter</filter-name>

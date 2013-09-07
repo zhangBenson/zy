@@ -46,91 +46,90 @@
         </property>
         <property name="annotatedClasses">
             <list>
-                <value>com.gogowise.domain.BaseUser</value>
-                <value>com.gogowise.domain.SingUpInfo</value>
-                <value>com.gogowise.domain.Comments</value>
-                <value>com.gogowise.domain.Competition</value>
-                <value>com.gogowise.domain.CompetitionComments</value>
-                <value>com.gogowise.domain.CompetitionPhase</value>
-                <value>com.gogowise.domain.CompetitionSession</value>
-                <value>com.gogowise.domain.Allocation</value>
-                <value>com.gogowise.domain.JudgeAllocation</value>
-                <value>com.gogowise.domain.HostAllocation</value>
-                <value>com.gogowise.domain.SingerAllocation</value>
-                <value>com.gogowise.domain.SingUpRole</value>
-                <value>com.gogowise.domain.Subject</value>
-                <value>com.gogowise.domain.InviteRelationship</value>
-                <value>com.gogowise.domain.UserRelationship</value>
-                <value>com.gogowise.domain.CompetitionAudience</value>
-                <value>com.gogowise.domain.Course</value>
-                <value>com.gogowise.domain.CourseClass</value>
-                <value>com.gogowise.domain.Organization</value>
-                <value>com.gogowise.domain.OrganizationHistory</value>
-                <value>com.gogowise.domain.ClassRoom</value>
-                <value>com.gogowise.domain.SeniorClassRoom</value>
-                <value>com.gogowise.domain.ChangeResponserHistory</value>
-                <value>com.gogowise.domain.UserAccountInfo</value>
-                <value>com.gogowise.domain.ConsumptionRecord</value>
-                <value>com.gogowise.domain.ConsumptionOrder</value>
-                <value>com.gogowise.domain.CourseEvaluation</value>
-                <value>com.gogowise.domain.CourseComment</value>
-                <value>com.gogowise.domain.CourseResource</value>
-                <value>com.gogowise.domain.CourseQuestion</value>
-                <value>com.gogowise.domain.BrowsedCourse</value>
-                <value>com.gogowise.domain.OrganizationComment</value>
-                <value>com.gogowise.domain.OrganizationTeacher</value>
-                <value>com.gogowise.domain.CourseInviteStudent</value>
-                <value>com.gogowise.domain.Interview</value>
-                <value>com.gogowise.domain.CourseReservation</value>
-                <value>com.gogowise.domain.InterviewAppointer</value>
-                <value>com.gogowise.domain.CourseRecommend</value>
-                <value>com.gogowise.domain.OrgMeeting</value>
-                <value>com.gogowise.domain.OrgMeetingMember</value>
-                <value>com.gogowise.domain.BaseUserRoleType</value>
-                <value>com.gogowise.domain.RoleType</value>
-                <value>com.gogowise.domain.OrgMaterial</value>
-                <value>com.gogowise.domain.MyShow</value>
-                <value>com.gogowise.domain.ShowTerms</value>
-                <value>com.gogowise.domain.ShowFans</value>
-                <value>com.gogowise.domain.Matter</value>
-                <value>com.gogowise.domain.Advertisement</value>
-                <value>com.gogowise.domain.SeasonIncreasedShowFans</value>
-                <value>com.gogowise.domain.ShowComment</value>
-                <value>com.gogowise.domain.LiveChannel</value>
-                <value>com.gogowise.domain.MemberOfLiveChannel</value>
-                <value>com.gogowise.domain.ChannelTerms</value>
-                <value>com.gogowise.domain.OnliveFollower</value>
-                <value>com.gogowise.domain.LiveTermComment</value>
-                <value>com.gogowise.domain.SeasonIncreasedOnliveFans</value>
-                <value>com.gogowise.domain.AdvertisementForLive</value>
-                <value>com.gogowise.domain.PersonalOnlive</value>
-                <value>com.gogowise.domain.UserFans</value>
-                <value>com.gogowise.domain.UserMatters</value>
-                <value>com.gogowise.domain.CourseNewEvent</value>
-                <value>com.gogowise.domain.LiveChannelNewEvent</value>
-                <value>com.gogowise.domain.ShowNewEvent</value>
-                <value>com.gogowise.domain.GoGoWiseAnnounce</value>
-                <value>com.gogowise.domain.LiveChannelComment</value>
-                <value>com.gogowise.domain.FeedBackInfo</value>
-                <value>com.gogowise.domain.LiveTrailer</value>
-                <value>com.gogowise.domain.AndroidFeedback</value>
-                <value>com.gogowise.domain.OrgFans</value>
-                <value>com.gogowise.domain.DownloadTime</value>
-                <value>com.gogowise.domain.UserPrivateChannel</value>
-                <value>com.gogowise.domain.SubPrivateChannel</value>
-                <value>com.gogowise.domain.ValidUser</value>
-                <value>com.gogowise.domain.CourseMaterial</value>
-                <value>com.gogowise.domain.IEMI</value>
-                <value>com.gogowise.domain.SerialNO</value>
-                <value>com.gogowise.domain.MonitorAuthorize</value>
-                <value>com.gogowise.domain.ClassType</value>
-                <value>com.gogowise.domain.Vid</value>
+                <value>com.gogowise.domain.user.BaseUser</value>
+                <value>com.gogowise.domain.competition.SingUpInfo</value>
+                <value>com.gogowise.domain.user.Comments</value>
+                <value>com.gogowise.domain.competition.Competition</value>
+                <value>com.gogowise.domain.competition.CompetitionComments</value>
+                <value>com.gogowise.domain.competition.CompetitionPhase</value>
+                <value>com.gogowise.domain.competition.CompetitionSession</value>
+                <value>com.gogowise.domain.competition.Allocation</value>
+                <value>com.gogowise.domain.competition.JudgeAllocation</value>
+                <value>com.gogowise.domain.competition.HostAllocation</value>
+                <value>com.gogowise.domain.competition.SingerAllocation</value>
+                <value>com.gogowise.domain.competition.SingUpRole</value>
+                <value>com.gogowise.domain.competition.Subject</value>
+                <value>com.gogowise.domain.competition.InviteRelationship</value>
+                <value>com.gogowise.domain.user.UserRelationship</value>
+                <value>com.gogowise.domain.competition.CompetitionAudience</value>
+                <value>com.gogowise.domain.course.Course</value>
+                <value>com.gogowise.domain.course.CourseClass</value>
+                <value>com.gogowise.domain.org.Organization</value>
+                <value>com.gogowise.domain.org.OrganizationHistory</value>
+                <value>com.gogowise.domain.course.ClassRoom</value>
+                <value>com.gogowise.domain.course.SeniorClassRoom</value>
+                <value>com.gogowise.domain.org.ChangeResponserHistory</value>
+                <value>com.gogowise.domain.finance.UserAccountInfo</value>
+                <value>com.gogowise.domain.finance.ConsumptionRecord</value>
+                <value>com.gogowise.domain.finance.ConsumptionOrder</value>
+                <value>com.gogowise.domain.course.CourseEvaluation</value>
+                <value>com.gogowise.domain.course.CourseComment</value>
+                <value>com.gogowise.domain.course.CourseResource</value>
+                <value>com.gogowise.domain.course.CourseQuestion</value>
+                <value>com.gogowise.domain.course.BrowsedCourse</value>
+                <value>com.gogowise.domain.org.OrganizationComment</value>
+                <value>com.gogowise.domain.org.OrganizationTeacher</value>
+                <value>com.gogowise.domain.course.CourseInviteStudent</value>
+                <value>com.gogowise.domain.org.Interview</value>
+                <value>com.gogowise.domain.course.CourseReservation</value>
+                <value>com.gogowise.domain.org.InterviewAppointer</value>
+                <value>com.gogowise.domain.course.CourseRecommend</value>
+                <value>com.gogowise.domain.org.OrgMeeting</value>
+                <value>com.gogowise.domain.org.OrgMeetingMember</value>
+                <value>com.gogowise.domain.user.BaseUserRoleType</value>
+                <value>com.gogowise.domain.user.RoleType</value>
+                <value>com.gogowise.domain.org.OrgMaterial</value>
+                <value>com.gogowise.domain.live.MyShow</value>
+                <value>com.gogowise.domain.live.ShowTerms</value>
+                <value>com.gogowise.domain.live.ShowFans</value>
+                <value>com.gogowise.domain.live.Matter</value>
+                <value>com.gogowise.domain.live.Advertisement</value>
+                <value>com.gogowise.domain.live.SeasonIncreasedShowFans</value>
+                <value>com.gogowise.domain.live.ShowComment</value>
+                <value>com.gogowise.domain.live.LiveChannel</value>
+                <value>com.gogowise.domain.live.MemberOfLiveChannel</value>
+                <value>com.gogowise.domain.live.ChannelTerms</value>
+                <value>com.gogowise.domain.live.OnliveFollower</value>
+                <value>com.gogowise.domain.live.LiveTermComment</value>
+                <value>com.gogowise.domain.live.SeasonIncreasedOnliveFans</value>
+                <value>com.gogowise.domain.live.AdvertisementForLive</value>
+                <value>com.gogowise.domain.live.PersonalOnlive</value>
+                <value>com.gogowise.domain.live.UserFans</value>
+                <value>com.gogowise.domain.user.UserMatters</value>
+                <value>com.gogowise.domain.course.CourseNewEvent</value>
+                <value>com.gogowise.domain.live.LiveChannelNewEvent</value>
+                <value>com.gogowise.domain.live.ShowNewEvent</value>
+                <value>com.gogowise.domain.system.GoGoWiseAnnounce</value>
+                <value>com.gogowise.domain.live.LiveChannelComment</value>
+                <value>com.gogowise.domain.system.FeedBackInfo</value>
+                <value>com.gogowise.domain.live.LiveTrailer</value>
+                <value>com.gogowise.domain.android_domain.AndroidFeedback</value>
+                <value>com.gogowise.domain.org.OrgFans</value>
+                <value>com.gogowise.domain.system.DownloadTime</value>
+                <value>com.gogowise.domain.live.UserPrivateChannel</value>
+                <value>com.gogowise.domain.live.SubPrivateChannel</value>
+                <value>com.gogowise.domain.android_domain.ValidUser</value>
+                <value>com.gogowise.domain.course.CourseMaterial</value>
+                <value>com.gogowise.domain.android_domain.IEMI</value>
+                <value>com.gogowise.domain.android_domain.SerialNO</value>
+                <value>com.gogowise.domain.live.MonitorAuthorize</value>
+                <value>com.gogowise.urlfetch.sk.ClassType</value>
 
-                <value>com.gogowise.domain.ClassInfo</value>
-                <value>com.gogowise.domain.XiaoQu</value>
-                <value>com.gogowise.domain.ClassXiaoQu</value>
-                <value>com.gogowise.domain.School</value>
-                <value>com.gogowise.domain.Hotel</value>
+                <value>com.gogowise.urlfetch.sk.ClassInfo</value>
+                <value>com.gogowise.urlfetch.sk.XiaoQu</value>
+                <value>com.gogowise.urlfetch.sk.ClassXiaoQu</value>
+                <value>com.gogowise.urlfetch.sk.School</value>
+                <value>com.gogowise.urlfetch.hotel.Hotel</value>
 
 
                 <value>com.gogowise.urlfetch.sk.domain.SkClass</value>
@@ -178,7 +177,7 @@
     </bean>
 
     <!--============================filter================================-->
-    <bean id="orgSecFilter" class="com.gogowise.utils.OrgSecFilter">
+    <bean id="orgSecFilter" class="com.gogowise.common.utils.OrgSecFilter">
         <!--<property name="name">-->
         <!--<value>SpringFilter</value>-->
         <!--</property>-->
@@ -191,11 +190,11 @@
 
 
     <!--============================webservice================================-->
-    <bean id="webTest" class="com.gogowise.ws.WebServiceSampleImpl">
+    <bean id="webTest" class="com.gogowise.common.ws.WebServiceSampleImpl">
         <property name="baseUserDao" ref="baseUserDao"/>
     </bean>
     <!--<jaxws:endpoint id="webServiceSample"-->
-    <!--address="/WebServiceSample" implementorClass="com.gogowise.ws.WebServiceSampleImpl">-->
+    <!--address="/WebServiceSample" implementorClass="com.gogowise.common.ws.WebServiceSampleImpl">-->
     <!--<jaxws:implementor ref="webTest">-->
     <!--</jaxws:implementor>-->
     <!--</jaxws:endpoint>-->

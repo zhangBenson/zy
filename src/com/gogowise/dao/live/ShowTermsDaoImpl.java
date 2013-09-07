@@ -1,7 +1,7 @@
 package com.gogowise.dao.live;
 
 import com.gogowise.dao.ModelDaoImpl;
-import com.gogowise.domain.ShowTerms;
+import com.gogowise.domain.live.ShowTerms;
 import org.springframework.stereotype.Repository;
 
 /**

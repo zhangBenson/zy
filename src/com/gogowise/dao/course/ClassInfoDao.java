@@ -1,7 +1,7 @@
 package com.gogowise.dao.course;
 
 import com.gogowise.dao.ModelDao;
-import com.gogowise.domain.ClassInfo;
+import com.gogowise.urlfetch.sk.ClassInfo;
 import com.gogowise.domain.Pagination;
 
 import java.util.List;

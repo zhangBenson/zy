@@ -1,7 +1,7 @@
 package com.gogowise.dao.live;
 
 import com.gogowise.dao.ModelDaoImpl;
-import com.gogowise.domain.Advertisement;
+import com.gogowise.domain.live.Advertisement;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

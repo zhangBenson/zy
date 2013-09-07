@@ -2,7 +2,7 @@ package com.gogowise.dao.live;
 
 import com.gogowise.dao.ModelDao;
 import com.gogowise.domain.Pagination;
-import com.gogowise.domain.ShowNewEvent;
+import com.gogowise.domain.live.ShowNewEvent;
 
 import java.util.List;
 

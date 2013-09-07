@@ -1,8 +1,7 @@
 package com.gogowise.dao.android;
 
 import com.gogowise.dao.ModelDao;
-import com.gogowise.domain.UserTask;
-import com.gogowise.domain.ValidUser;
+import com.gogowise.domain.android_domain.ValidUser;
 
 import java.util.List;
 

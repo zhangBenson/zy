@@ -2,8 +2,8 @@ package com.gogowise.action.competition;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.dao.competition.CompetitionDao;
-import com.gogowise.domain.Competition;
-import com.gogowise.utils.Constants;
+import com.gogowise.domain.competition.Competition;
+import com.gogowise.common.utils.Constants;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.springframework.beans.factory.config.BeanDefinition;

@@ -2,7 +2,7 @@ package com.gogowise.dao.user;
 
 
 import com.gogowise.dao.ModelDao;
-import com.gogowise.domain.BaseUserRoleType;
+import com.gogowise.domain.user.BaseUserRoleType;
 
 import java.util.List;
 

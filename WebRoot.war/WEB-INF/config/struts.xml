@@ -88,7 +88,7 @@
     
 
     <bean type="org.apache.struts2.convention.ActionConfigBuilder" name="myActionConfigBuilder"
-          class="com.gogowise.utils.MyActionConfigBuilder"/>
+          class="com.gogowise.common.utils.MyActionConfigBuilder"/>
     <constant name="struts.convention.actionConfigBuilder" value="myActionConfigBuilder"/>
 
 
@@ -98,7 +98,7 @@
 
         <interceptors>
             <interceptor name="validator" class="com.opensymphony.xwork2.validator.ValidationInterceptor"/>
-            <interceptor name="rollBackForAction" class="com.gogowise.utils.RollBackForAction"></interceptor>
+            <interceptor name="rollBackForAction" class="com.gogowise.common.utils.RollBackForAction"></interceptor>
             <interceptor-stack name="myStack">
                 <interceptor-ref name="defaultStack"></interceptor-ref>
                 <interceptor-ref name="rollBackForAction"></interceptor-ref>

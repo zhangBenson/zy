@@ -1,8 +1,7 @@
 package com.gogowise.dao.live;
 
 import com.gogowise.dao.ModelDao;
-import com.gogowise.domain.ChannelTerms;
-import com.gogowise.domain.LiveTermComment;
+import com.gogowise.domain.live.LiveTermComment;
 import com.gogowise.domain.Pagination;
 
 import java.util.List;

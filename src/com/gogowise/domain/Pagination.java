@@ -1,6 +1,6 @@
 package com.gogowise.domain;
 
-import com.gogowise.utils.Constants;
+import com.gogowise.common.utils.Constants;
 import com.opensymphony.xwork2.ActionContext;
 
 /**

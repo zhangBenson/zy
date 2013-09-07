@@ -1,10 +1,6 @@
 package com.gogowise.domain.android_domain;
 
 import com.gogowise.domain.AbstractPersistence;
-import com.gogowise.domain.ClassType;
-import com.gogowise.domain.School;
-
-import javax.persistence.ManyToOne;
 
 /**
  * Created with IntelliJ IDEA.

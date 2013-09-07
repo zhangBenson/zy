@@ -1,8 +1,8 @@
 package com.gogowise.dao.course;
 
 import com.gogowise.dao.ModelDaoImpl;
-import com.gogowise.domain.ClassRoom;
-import com.gogowise.domain.Course;
+import com.gogowise.domain.course.ClassRoom;
+import com.gogowise.domain.course.Course;
 import com.gogowise.domain.Pagination;
 import org.springframework.stereotype.Repository;
 

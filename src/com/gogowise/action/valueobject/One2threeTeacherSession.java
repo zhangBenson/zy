@@ -1,9 +1,9 @@
 package com.gogowise.action.valueobject;
 
-import com.gogowise.domain.BaseUser;
-import com.gogowise.domain.CourseClass;
-import com.gogowise.domain.OrgMeeting;
-import com.gogowise.utils.Constants;
+import com.gogowise.domain.user.BaseUser;
+import com.gogowise.domain.course.CourseClass;
+import com.gogowise.domain.org.OrgMeeting;
+import com.gogowise.common.utils.Constants;
 
 /**
  * Created by IntelliJ IDEA.

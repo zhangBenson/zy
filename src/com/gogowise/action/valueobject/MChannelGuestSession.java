@@ -1,9 +1,9 @@
 package com.gogowise.action.valueobject;
 
-import com.gogowise.domain.BaseUser;
-import com.gogowise.domain.SubPrivateChannel;
-import com.gogowise.domain.UserPrivateChannel;
-import com.gogowise.utils.Constants;
+import com.gogowise.domain.user.BaseUser;
+import com.gogowise.domain.live.SubPrivateChannel;
+import com.gogowise.domain.live.UserPrivateChannel;
+import com.gogowise.common.utils.Constants;
 
 /**
  * Created by IntelliJ IDEA.

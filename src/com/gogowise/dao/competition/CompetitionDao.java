@@ -1,7 +1,7 @@
 package com.gogowise.dao.competition;
 
 import com.gogowise.dao.ModelDao;
-import com.gogowise.domain.Competition;
+import com.gogowise.domain.competition.Competition;
 
 /**
  * Created by IntelliJ IDEA.

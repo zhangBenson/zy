@@ -1,7 +1,7 @@
 package com.gogowise.dao.competition;
 
 import com.gogowise.dao.ModelDaoImpl;
-import com.gogowise.domain.Allocation;
+import com.gogowise.domain.competition.Allocation;
 import org.springframework.stereotype.Repository;
 
 /**

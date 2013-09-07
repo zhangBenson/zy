@@ -1,7 +1,7 @@
 package com.gogowise.dao.user;
 
 import com.gogowise.dao.ModelDao;
-import com.gogowise.domain.UserAccountInfo;
+import com.gogowise.domain.finance.UserAccountInfo;
 
 /**
  * Created by IntelliJ IDEA.

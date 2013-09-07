@@ -1,9 +1,9 @@
 package com.gogowise.action.valueobject;
 
-import com.gogowise.domain.BaseUser;
-import com.gogowise.domain.PersonalOnlive;
-import com.gogowise.utils.Constants;
-import com.gogowise.utils.Utils;
+import com.gogowise.domain.user.BaseUser;
+import com.gogowise.domain.live.PersonalOnlive;
+import com.gogowise.common.utils.Constants;
+import com.gogowise.common.utils.Utils;
 
 public class PersonalOnliveHostSession {
     private String UserName = Constants.DEFAULT_BLANK_VALUE;

@@ -1,8 +1,6 @@
 package com.gogowise.urlfetch.hotel;
 
 
-import com.gogowise.domain.Hotel;
-
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Collection;

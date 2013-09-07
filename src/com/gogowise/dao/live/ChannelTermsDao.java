@@ -1,9 +1,7 @@
 package com.gogowise.dao.live;
 
 import com.gogowise.dao.ModelDao;
-import com.gogowise.domain.ChannelTerms;
-
-import java.util.List;
+import com.gogowise.domain.live.ChannelTerms;
 
 /**
  * Created by IntelliJ IDEA.

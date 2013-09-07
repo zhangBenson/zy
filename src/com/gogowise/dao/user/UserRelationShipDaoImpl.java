@@ -2,7 +2,7 @@ package com.gogowise.dao.user;
 
 import com.gogowise.dao.ModelDaoImpl;
 import com.gogowise.domain.Pagination;
-import com.gogowise.domain.UserRelationship;
+import com.gogowise.domain.user.UserRelationship;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;

@@ -1,7 +1,7 @@
 package com.gogowise.dao.live;
 
 import com.gogowise.dao.ModelDao;
-import com.gogowise.domain.ShowTerms;
+import com.gogowise.domain.live.ShowTerms;
 
 /**
  * Created by IntelliJ IDEA.

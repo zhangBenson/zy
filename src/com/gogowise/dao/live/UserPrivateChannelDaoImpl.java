@@ -1,7 +1,7 @@
 package com.gogowise.dao.live;
 
 import com.gogowise.dao.ModelDaoImpl;
-import com.gogowise.domain.UserPrivateChannel;
+import com.gogowise.domain.live.UserPrivateChannel;
 import org.springframework.stereotype.Repository;
 
 

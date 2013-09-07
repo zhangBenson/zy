@@ -1,7 +1,7 @@
 package com.gogowise.dao.org;
 
 import com.gogowise.dao.ModelDao;
-import com.gogowise.domain.InterviewAppointer;
+import com.gogowise.domain.org.InterviewAppointer;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.gogowise.dao.competition;
 
 import com.gogowise.dao.ModelDaoImpl;
-import com.gogowise.domain.SingerAllocation;
+import com.gogowise.domain.competition.SingerAllocation;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

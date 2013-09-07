@@ -1,11 +1,7 @@
 package com.gogowise.urlfetch.sk.covert;
 
-import com.gogowise.domain.*;
-import com.gogowise.urlfetch.sk.BaseJunitTest;
-import com.gogowise.urlfetch.sk.domain.SkClass;
-import com.gogowise.urlfetch.sk.domain.SkSchool;
-import com.gogowise.urlfetch.sk.domain.SkTypeRule;
-import com.gogowise.urlfetch.sk.domain.SkXiaoQu;
+import com.gogowise.urlfetch.sk.*;
+import com.gogowise.urlfetch.sk.domain.*;
 import org.jsoup.nodes.Document;
 import org.junit.Test;
 

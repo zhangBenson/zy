@@ -1,7 +1,7 @@
 package com.gogowise.dao.user;
 
 import com.gogowise.dao.ModelDaoImpl;
-import com.gogowise.domain.BaseUser;
+import com.gogowise.domain.user.BaseUser;
 import com.gogowise.domain.Pagination;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;

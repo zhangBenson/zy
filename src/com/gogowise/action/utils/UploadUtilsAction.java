@@ -1,7 +1,7 @@
 package com.gogowise.action.utils;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.utils.Constants;
+import com.gogowise.common.utils.Constants;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;

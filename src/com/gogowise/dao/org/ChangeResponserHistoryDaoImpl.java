@@ -1,9 +1,9 @@
 package com.gogowise.dao.org;
 
 import com.gogowise.dao.ModelDaoImpl;
-import com.gogowise.domain.ChangeResponserHistory;
-import com.gogowise.domain.Organization;
-import com.gogowise.domain.OrganizationHistory;
+import com.gogowise.domain.org.ChangeResponserHistory;
+import com.gogowise.domain.org.Organization;
+import com.gogowise.domain.org.OrganizationHistory;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

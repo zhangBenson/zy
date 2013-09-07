@@ -2,7 +2,7 @@ package com.gogowise.dao.live;
 
 import com.gogowise.dao.ModelDaoImpl;
 import com.gogowise.domain.Pagination;
-import com.gogowise.domain.ShowComment;
+import com.gogowise.domain.live.ShowComment;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.gogowise.action.valueobject;
 
-import com.gogowise.domain.CompetitionSession;
-import com.gogowise.utils.Constants;
+import com.gogowise.domain.competition.CompetitionSession;
+import com.gogowise.common.utils.Constants;
 
 
 /**

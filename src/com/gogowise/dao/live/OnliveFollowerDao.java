@@ -1,7 +1,7 @@
 package com.gogowise.dao.live;
 
 import com.gogowise.dao.ModelDao;
-import com.gogowise.domain.OnliveFollower;
+import com.gogowise.domain.live.OnliveFollower;
 import com.gogowise.domain.Pagination;
 
 import java.util.List;

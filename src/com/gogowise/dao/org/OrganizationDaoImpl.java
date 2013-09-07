@@ -1,10 +1,10 @@
 package com.gogowise.dao.org;
 
 import com.gogowise.dao.ModelDaoImpl;
-import com.gogowise.domain.BaseUser;
-import com.gogowise.domain.Organization;
+import com.gogowise.domain.user.BaseUser;
+import com.gogowise.domain.org.Organization;
 import com.gogowise.domain.Pagination;
-import com.gogowise.utils.Utils;
+import com.gogowise.common.utils.Utils;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

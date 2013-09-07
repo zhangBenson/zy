@@ -1,7 +1,7 @@
 package com.gogowise.dao.competition;
 
 import com.gogowise.dao.ModelDao;
-import com.gogowise.domain.CompetitionSession;
+import com.gogowise.domain.competition.CompetitionSession;
 import com.gogowise.domain.Pagination;
 
 import java.util.List;

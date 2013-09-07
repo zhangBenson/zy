@@ -3,7 +3,7 @@ package com.gogowise.dao.live;
 import com.gogowise.dao.ModelDaoImpl;
 import com.gogowise.dao.user.UserFansDao;
 import com.gogowise.domain.Pagination;
-import com.gogowise.domain.UserFans;
+import com.gogowise.domain.live.UserFans;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

@@ -1,12 +1,11 @@
 package com.gogowise.action.valueobject;
 
 
-import com.gogowise.domain.BaseUser;
-import com.gogowise.domain.ChannelTerms;
-import com.gogowise.domain.LiveChannel;
-import com.gogowise.domain.MemberOfLiveChannel;
-import com.gogowise.utils.Constants;
-import com.gogowise.utils.Utils;
+import com.gogowise.domain.user.BaseUser;
+import com.gogowise.domain.live.ChannelTerms;
+import com.gogowise.domain.live.MemberOfLiveChannel;
+import com.gogowise.common.utils.Constants;
+import com.gogowise.common.utils.Utils;
 
 public class OnliveGuestSession {
     private String UserName = Constants.DEFAULT_BLANK_VALUE;

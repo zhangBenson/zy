@@ -1,8 +1,8 @@
 package com.gogowise.dao.course;
 
 import com.gogowise.dao.ModelDao;
-import com.gogowise.domain.Course;
-import com.gogowise.domain.CourseClass;
+import com.gogowise.domain.course.Course;
+import com.gogowise.domain.course.CourseClass;
 
 import java.util.Calendar;
 import java.util.List;

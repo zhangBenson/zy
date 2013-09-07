@@ -1,7 +1,7 @@
 package com.gogowise.dao.android;
 
 import com.gogowise.dao.ModelDao;
-import com.gogowise.domain.AndroidFeedback;
+import com.gogowise.domain.android_domain.AndroidFeedback;
 
 /**
  * Created by IntelliJ IDEA.

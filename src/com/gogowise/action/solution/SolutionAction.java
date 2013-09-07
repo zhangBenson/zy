@@ -1,20 +1,13 @@
 package com.gogowise.action.solution;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.dao.*;
-import com.gogowise.domain.*;
-import com.gogowise.utils.Constants;
-import com.opensymphony.xwork2.ActionContext;
-import org.apache.commons.lang.StringUtils;
-import org.apache.struts2.ServletActionContext;
+import com.gogowise.common.utils.Constants;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-
-import java.util.List;
 
 
 /**

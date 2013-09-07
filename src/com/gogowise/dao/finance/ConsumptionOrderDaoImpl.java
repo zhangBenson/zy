@@ -2,12 +2,12 @@ package com.gogowise.dao.finance;
 
 import com.gogowise.dao.ModelDaoImpl;
 import com.gogowise.dao.user.BaseUserDao;
-import com.gogowise.domain.BaseUser;
-import com.gogowise.domain.ConsumptionOrder;
-import com.gogowise.domain.Course;
-import com.gogowise.domain.UserPrivateChannel;
-import com.gogowise.utils.Constants;
-import com.gogowise.utils.Utils;
+import com.gogowise.domain.user.BaseUser;
+import com.gogowise.domain.finance.ConsumptionOrder;
+import com.gogowise.domain.course.Course;
+import com.gogowise.domain.live.UserPrivateChannel;
+import com.gogowise.common.utils.Constants;
+import com.gogowise.common.utils.Utils;
 import org.springframework.stereotype.Repository;
 
 import java.util.Calendar;

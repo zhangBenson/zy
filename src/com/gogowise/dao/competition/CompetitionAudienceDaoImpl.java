@@ -1,7 +1,7 @@
 package com.gogowise.dao.competition;
 
 import com.gogowise.dao.ModelDaoImpl;
-import com.gogowise.domain.CompetitionAudience;
+import com.gogowise.domain.competition.CompetitionAudience;
 import com.gogowise.domain.Pagination;
 import org.springframework.stereotype.Repository;
 

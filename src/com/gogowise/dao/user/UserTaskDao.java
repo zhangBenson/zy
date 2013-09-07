@@ -2,7 +2,7 @@ package com.gogowise.dao.user;
 
 
 import com.gogowise.dao.ModelDao;
-import com.gogowise.domain.UserTask;
+import com.gogowise.domain.user.UserTask;
 
 public interface UserTaskDao extends ModelDao<UserTask> {
     public void closeTask(Integer taskId);

@@ -2,9 +2,8 @@ package com.gogowise.dao.user;
 
 import com.gogowise.dao.ModelDao;
 import com.gogowise.domain.Pagination;
-import com.gogowise.domain.UserFans;
+import com.gogowise.domain.live.UserFans;
 
-import javax.persistence.Entity;
 import java.util.List;
 
 public interface UserFansDao extends ModelDao<UserFans> {

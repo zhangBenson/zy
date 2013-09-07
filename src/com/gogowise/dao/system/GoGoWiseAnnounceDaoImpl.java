@@ -1,7 +1,7 @@
 package com.gogowise.dao.system;
 
 import com.gogowise.dao.ModelDaoImpl;
-import com.gogowise.domain.GoGoWiseAnnounce;
+import com.gogowise.domain.system.GoGoWiseAnnounce;
 import com.gogowise.domain.Pagination;
 import org.springframework.stereotype.Repository;
 

@@ -1,9 +1,9 @@
 package com.gogowise.dao.live;
 
 import com.gogowise.dao.ModelDaoImpl;
-import com.gogowise.domain.LiveChannel;
+import com.gogowise.domain.live.LiveChannel;
 import com.gogowise.domain.Pagination;
-import com.gogowise.utils.Utils;
+import com.gogowise.common.utils.Utils;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

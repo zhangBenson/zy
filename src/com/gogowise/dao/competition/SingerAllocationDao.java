@@ -3,7 +3,7 @@ package com.gogowise.dao.competition;
 import java.util.List;
 
 import com.gogowise.dao.ModelDao;
-import com.gogowise.domain.SingerAllocation;
+import com.gogowise.domain.competition.SingerAllocation;
 
 /**
  * Created by IntelliJ IDEA.

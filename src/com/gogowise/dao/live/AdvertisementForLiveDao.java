@@ -1,8 +1,7 @@
 package com.gogowise.dao.live;
 
 import com.gogowise.dao.ModelDao;
-import com.gogowise.domain.Advertisement;
-import com.gogowise.domain.AdvertisementForLive;
+import com.gogowise.domain.live.AdvertisementForLive;
 
 import java.util.List;
 

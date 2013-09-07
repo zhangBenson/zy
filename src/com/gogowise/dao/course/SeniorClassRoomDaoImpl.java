@@ -3,7 +3,11 @@ package com.gogowise.dao.course;
 import com.gogowise.dao.ModelDaoImpl;
 import com.gogowise.dao.user.BaseUserDao;
 import com.gogowise.domain.*;
-import com.gogowise.utils.Utils;
+import com.gogowise.domain.course.Course;
+import com.gogowise.domain.course.CourseInviteStudent;
+import com.gogowise.domain.course.SeniorClassRoom;
+import com.gogowise.domain.user.BaseUser;
+import com.gogowise.common.utils.Utils;
 import org.springframework.stereotype.Repository;
 
 import java.io.IOException;

@@ -1,7 +1,7 @@
 package com.gogowise.dao.org;
 
 import com.gogowise.dao.ModelDao;
-import com.gogowise.domain.OrgFans;
+import com.gogowise.domain.org.OrgFans;
 
 /**
  * Created by IntelliJ IDEA.

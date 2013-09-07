@@ -3,10 +3,9 @@ package com.gogowise.dao.org;
 //import com.gogowise.domain.ApplyOrganization;
 
 import com.gogowise.dao.ModelDao;
-import com.gogowise.domain.BaseUser;
-import com.gogowise.domain.Organization;
+import com.gogowise.domain.user.BaseUser;
+import com.gogowise.domain.org.Organization;
 import com.gogowise.domain.Pagination;
-import org.aspectj.weaver.ast.Or;
 
 import java.util.List;
 

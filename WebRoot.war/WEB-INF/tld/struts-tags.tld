@@ -1779,7 +1779,7 @@
   <tag>
     <description><![CDATA[Render a formatted date.]]></description>
     <name>date</name>
-    <tag-class>com.gogowise.utils.CalenderTag</tag-class>
+    <tag-class>com.gogowise.common.utils.CalenderTag</tag-class>
     <body-content>empty</body-content>
     <attribute>
       <description><![CDATA[Date or DateTime format pattern]]></description>

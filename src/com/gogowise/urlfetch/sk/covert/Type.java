@@ -1,6 +1,6 @@
 package com.gogowise.urlfetch.sk.covert;
 
-import com.gogowise.domain.ClassType;
+import com.gogowise.urlfetch.sk.ClassType;
 import com.gogowise.urlfetch.sk.BaseJunitTest;
 import com.gogowise.urlfetch.sk.domain.SkTypeRule;
 import org.apache.commons.lang.StringUtils;

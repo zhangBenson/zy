@@ -2,7 +2,7 @@ package com.gogowise.dao.course;
 
 
 import com.gogowise.dao.ModelDaoImpl;
-import com.gogowise.domain.CourseMaterial;
+import com.gogowise.domain.course.CourseMaterial;
 import com.gogowise.domain.Pagination;
 import org.springframework.stereotype.Repository;
 

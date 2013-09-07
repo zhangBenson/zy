@@ -6,8 +6,11 @@ import com.gogowise.dao.course.*;
 import com.gogowise.dao.system.MatterDao;
 import com.gogowise.dao.user.BaseUserDao;
 import com.gogowise.domain.*;
-import com.gogowise.utils.Constants;
-import com.gogowise.utils.EmailUtil;
+import com.gogowise.domain.course.*;
+import com.gogowise.domain.live.Matter;
+import com.gogowise.domain.user.BaseUser;
+import com.gogowise.common.utils.Constants;
+import com.gogowise.common.utils.EmailUtil;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.CompactWriter;
 import org.apache.struts2.ServletActionContext;
@@ -119,7 +122,7 @@ public class CourseResourceAction extends BasicAction {
                          href,href
                  });
                  EmailUtil.sendMail(regs.get(i).getEmail(),title,content);
-                 Matter  matter =new Matter(Calendar.getInstance(),null,Matter.MATTER_COURSE_RESOURCE,baseUserDao.findByEmail(this.getSessionUserEmail()),null,regs.get(i).getEmail(),course,null,null,null,false);
+                 Matter matter =new Matter(Calendar.getInstance(),null,Matter.MATTER_COURSE_RESOURCE,baseUserDao.findByEmail(this.getSessionUserEmail()),null,regs.get(i).getEmail(),course,null,null,null,false);
                  matterDao.persistAbstract(matter);
                  }
             }

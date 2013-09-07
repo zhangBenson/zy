@@ -2,9 +2,9 @@ package com.gogowise.dao;
 
 import com.gogowise.dao.org.OrganizationDao;
 import com.gogowise.dao.user.BaseUserDao;
-import com.gogowise.domain.BaseUser;
-import com.gogowise.domain.Organization;
-import com.gogowise.utils.Constants;
+import com.gogowise.domain.user.BaseUser;
+import com.gogowise.domain.org.Organization;
+import com.gogowise.common.utils.Constants;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

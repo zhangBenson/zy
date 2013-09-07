@@ -8,7 +8,7 @@ package com.gogowise.dao.org;
  * To change this template use File | Settings | File Templates.
  */
 import com.gogowise.dao.ModelDao;
-import com.gogowise.domain.OrgMeetingMember;
+import com.gogowise.domain.org.OrgMeetingMember;
 
 import java.util.List;
 

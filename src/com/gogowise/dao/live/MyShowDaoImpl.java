@@ -3,7 +3,12 @@ package com.gogowise.dao.live;
 import com.gogowise.dao.ModelDaoImpl;
 import com.gogowise.dao.user.BaseUserDao;
 import com.gogowise.domain.*;
-import com.gogowise.utils.Utils;
+import com.gogowise.domain.live.MyShow;
+import com.gogowise.domain.live.SeasonIncreasedShowFans;
+import com.gogowise.domain.live.ShowFans;
+import com.gogowise.domain.live.ShowTerms;
+import com.gogowise.domain.user.BaseUser;
+import com.gogowise.common.utils.Utils;
 import org.springframework.stereotype.Repository;
 
 

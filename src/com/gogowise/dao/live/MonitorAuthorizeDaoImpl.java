@@ -1,8 +1,8 @@
 package com.gogowise.dao.live;
 
 import com.gogowise.dao.ModelDaoImpl;
-import com.gogowise.domain.BaseUser;
-import com.gogowise.domain.MonitorAuthorize;
+import com.gogowise.domain.user.BaseUser;
+import com.gogowise.domain.live.MonitorAuthorize;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

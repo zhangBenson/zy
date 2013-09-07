@@ -1,7 +1,7 @@
 package com.gogowise.dao.course;
 
 import com.gogowise.dao.ModelDao;
-import com.gogowise.domain.CourseInviteStudent;
+import com.gogowise.domain.course.CourseInviteStudent;
 
 import java.util.List;
 

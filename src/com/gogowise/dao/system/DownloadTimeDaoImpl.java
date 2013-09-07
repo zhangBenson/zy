@@ -1,7 +1,7 @@
 package com.gogowise.dao.system;
 
 import com.gogowise.dao.ModelDaoImpl;
-import com.gogowise.domain.DownloadTime;
+import com.gogowise.domain.system.DownloadTime;
 import org.springframework.stereotype.Repository;
 
 @Repository("downloadTimeDao")

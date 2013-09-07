@@ -2,7 +2,11 @@ package com.gogowise.dao.user;
 
 import com.gogowise.dao.ModelDaoImpl;
 import com.gogowise.domain.*;
-import com.gogowise.utils.MD5;
+import com.gogowise.domain.competition.CompetitionSession;
+import com.gogowise.domain.competition.InviteRelationship;
+import com.gogowise.domain.user.BaseUser;
+import com.gogowise.domain.user.UserRelationship;
+import com.gogowise.common.utils.MD5;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

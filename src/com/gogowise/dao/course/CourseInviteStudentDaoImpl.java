@@ -1,7 +1,7 @@
 package com.gogowise.dao.course;
 
 import com.gogowise.dao.ModelDaoImpl;
-import com.gogowise.domain.CourseInviteStudent;
+import com.gogowise.domain.course.CourseInviteStudent;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

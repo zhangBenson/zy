@@ -1,6 +1,5 @@
 package com.gogowise.urlfetch.hotel;
 
-import com.gogowise.domain.Hotel;
 import com.gogowise.urlfetch.sk.BaseJunitTest;
 import org.junit.Test;
 

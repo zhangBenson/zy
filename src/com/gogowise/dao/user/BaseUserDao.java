@@ -1,7 +1,7 @@
 package com.gogowise.dao.user;
 
 import com.gogowise.dao.ModelDao;
-import com.gogowise.domain.BaseUser;
+import com.gogowise.domain.user.BaseUser;
 import com.gogowise.domain.Pagination;
 
 import java.util.List;

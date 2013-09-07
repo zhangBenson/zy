@@ -1,7 +1,7 @@
 package com.gogowise.dao.competition;
 
 import com.gogowise.dao.ModelDaoImpl;
-import com.gogowise.domain.HostAllocation;
+import com.gogowise.domain.competition.HostAllocation;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;

@@ -1,7 +1,7 @@
 package com.gogowise.dao.user;
 
 import com.gogowise.domain.Pagination;
-import com.gogowise.domain.UserRelationship;
+import com.gogowise.domain.user.UserRelationship;
 
 import java.util.List;
 

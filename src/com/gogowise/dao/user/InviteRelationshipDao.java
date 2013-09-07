@@ -2,6 +2,10 @@ package com.gogowise.dao.user;
 
 import com.gogowise.dao.ModelDao;
 import com.gogowise.domain.*;
+import com.gogowise.domain.competition.CompetitionSession;
+import com.gogowise.domain.competition.InviteRelationship;
+import com.gogowise.domain.user.BaseUser;
+import com.gogowise.domain.user.UserRelationship;
 
 import java.util.List;
 /**

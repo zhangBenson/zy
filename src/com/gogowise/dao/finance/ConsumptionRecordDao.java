@@ -1,8 +1,8 @@
 package com.gogowise.dao.finance;
 
 import com.gogowise.dao.ModelDao;
-import com.gogowise.domain.ConsumptionOrder;
-import com.gogowise.domain.ConsumptionRecord;
+import com.gogowise.domain.finance.ConsumptionOrder;
+import com.gogowise.domain.finance.ConsumptionRecord;
 import com.gogowise.domain.Pagination;
 
 import java.util.Calendar;

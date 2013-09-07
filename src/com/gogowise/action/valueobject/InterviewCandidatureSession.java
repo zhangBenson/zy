@@ -1,7 +1,7 @@
 package com.gogowise.action.valueobject;
 
-import com.gogowise.domain.Interview;
-import com.gogowise.utils.Constants;
+import com.gogowise.domain.org.Interview;
+import com.gogowise.common.utils.Constants;
 
 /**
  * Created by IntelliJ IDEA.

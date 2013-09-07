@@ -1,11 +1,11 @@
 package com.gogowise.action;
 
 import com.gogowise.dao.live.UserPrivateChannelDao;
-import com.gogowise.domain.BaseUser;
+import com.gogowise.domain.user.BaseUser;
 import com.gogowise.domain.Pagination;
-import com.gogowise.domain.UserPrivateChannel;
-import com.gogowise.utils.Constants;
-import com.gogowise.utils.MD5;
+import com.gogowise.domain.live.UserPrivateChannel;
+import com.gogowise.common.utils.Constants;
+import com.gogowise.common.utils.MD5;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.log4j.LogManager;

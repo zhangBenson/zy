@@ -1,7 +1,7 @@
 package com.gogowise.dao.system;
 
 import com.gogowise.dao.ModelDao;
-import com.gogowise.domain.DownloadTime;
+import com.gogowise.domain.system.DownloadTime;
 
 /**
  * Created by IntelliJ IDEA.

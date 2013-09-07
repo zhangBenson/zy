@@ -2,6 +2,12 @@ package com.gogowise.dao.competition;
 
 import com.gogowise.dao.ModelDao;
 import com.gogowise.domain.*;
+import com.gogowise.domain.competition.Competition;
+import com.gogowise.domain.competition.CompetitionSession;
+import com.gogowise.domain.competition.SingUpInfo;
+import com.gogowise.domain.competition.SingerAllocation;
+import com.gogowise.domain.user.BaseUser;
+import com.gogowise.domain.user.Comments;
 
 import java.util.List;
 import java.util.Map;

@@ -3,7 +3,7 @@ package com.gogowise.dao;
 import com.gogowise.domain.AbstractPersistence;
 import com.gogowise.domain.Pagination;
 import com.gogowise.domain.Persistable;
-import com.gogowise.utils.Utils;
+import com.gogowise.common.utils.Utils;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;

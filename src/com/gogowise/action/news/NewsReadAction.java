@@ -6,7 +6,11 @@ import com.gogowise.dao.course.CourseNewEventDao;
 import com.gogowise.dao.live.*;
 import com.gogowise.dao.system.GoGoWiseAnnounceDao;
 import com.gogowise.domain.*;
-import com.gogowise.utils.Constants;
+import com.gogowise.domain.course.Course;
+import com.gogowise.domain.course.CourseNewEvent;
+import com.gogowise.domain.live.*;
+import com.gogowise.domain.system.GoGoWiseAnnounce;
+import com.gogowise.common.utils.Constants;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -45,7 +49,7 @@ public class NewsReadAction extends BasicAction{
     private LiveTrailer liveTrailer;
     private Pagination pagination = new Pagination(10);
 
-    private PersonalOnlive  personalOnlive;
+    private PersonalOnlive personalOnlive;
 
     @Action(value = "announceRead",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".announceRead")})
     public String announceRead(){

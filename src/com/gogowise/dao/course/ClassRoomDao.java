@@ -2,7 +2,7 @@ package com.gogowise.dao.course;
 
 
 import com.gogowise.dao.ModelDao;
-import com.gogowise.domain.ClassRoom;
+import com.gogowise.domain.course.ClassRoom;
 import com.gogowise.domain.Pagination;
 
 import java.util.List;
