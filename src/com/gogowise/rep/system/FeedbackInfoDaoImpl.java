@@ -1,7 +1,7 @@
 package com.gogowise.rep.system;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.domain.system.FeedBackInfo;
+import com.gogowise.rep.system.system.FeedBackInfo;
 import org.springframework.stereotype.Repository;
 
 @Repository("feedbackInfoDao")

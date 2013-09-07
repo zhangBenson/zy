@@ -1,7 +1,7 @@
 package com.gogowise.action.valueobject;
 
-import com.gogowise.domain.org.Interview;
-import com.gogowise.domain.org.InterviewAppointer;
+import com.gogowise.rep.org.org.Interview;
+import com.gogowise.rep.org.org.InterviewAppointer;
 import com.gogowise.common.utils.Constants;
 
 /**

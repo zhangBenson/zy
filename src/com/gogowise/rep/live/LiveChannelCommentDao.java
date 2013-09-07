@@ -1,8 +1,8 @@
 package com.gogowise.rep.live;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.domain.live.LiveChannelComment;
-import com.gogowise.domain.Pagination;
+import com.gogowise.rep.live.live.LiveChannelComment;
+import com.gogowise.rep.Pagination;
 
 import java.util.List;
 

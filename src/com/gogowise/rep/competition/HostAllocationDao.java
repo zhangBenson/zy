@@ -1,7 +1,7 @@
 package com.gogowise.rep.competition;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.domain.competition.HostAllocation;
+import com.gogowise.rep.competition.enity.HostAllocation;
 
 /**
  * Created by IntelliJ IDEA.

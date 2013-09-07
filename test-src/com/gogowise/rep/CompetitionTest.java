@@ -1,10 +1,10 @@
 package com.gogowise.rep;
 
 import com.gogowise.rep.competition.*;
+import com.gogowise.rep.competition.enity.*;
 import com.gogowise.rep.course.CourseDao;
 import com.gogowise.rep.user.BaseUserDao;
-import com.gogowise.domain.competition.*;
-import com.gogowise.domain.user.BaseUser;
+import com.gogowise.rep.user.user.BaseUser;
 import com.gogowise.common.utils.MD5;
 import com.gogowise.common.utils.Utils;
 import org.junit.After;

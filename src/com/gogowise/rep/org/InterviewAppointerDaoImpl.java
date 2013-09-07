@@ -1,7 +1,7 @@
 package com.gogowise.rep.org;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.domain.org.InterviewAppointer;
+import com.gogowise.rep.org.org.InterviewAppointer;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.gogowise.rep.competition;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.domain.competition.JudgeAllocation;
+import com.gogowise.rep.competition.enity.JudgeAllocation;
 import org.springframework.stereotype.Repository;
 
 /**

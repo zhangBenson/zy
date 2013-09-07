@@ -1,11 +1,11 @@
 package com.gogowise.rep.user;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.domain.*;
-import com.gogowise.domain.competition.CompetitionSession;
-import com.gogowise.domain.competition.InviteRelationship;
-import com.gogowise.domain.user.BaseUser;
-import com.gogowise.domain.user.UserRelationship;
+import com.gogowise.rep.Pagination;
+import com.gogowise.rep.competition.enity.CompetitionSession;
+import com.gogowise.rep.competition.enity.InviteRelationship;
+import com.gogowise.rep.user.user.BaseUser;
+import com.gogowise.rep.user.user.UserRelationship;
 
 import java.util.List;
 /**

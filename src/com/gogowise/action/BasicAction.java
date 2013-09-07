@@ -1,9 +1,9 @@
 package com.gogowise.action;
 
 import com.gogowise.rep.live.UserPrivateChannelDao;
-import com.gogowise.domain.user.BaseUser;
-import com.gogowise.domain.Pagination;
-import com.gogowise.domain.live.UserPrivateChannel;
+import com.gogowise.rep.user.user.BaseUser;
+import com.gogowise.rep.Pagination;
+import com.gogowise.rep.live.live.UserPrivateChannel;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.MD5;
 import com.opensymphony.xwork2.ActionContext;

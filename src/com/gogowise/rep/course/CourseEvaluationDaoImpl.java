@@ -1,8 +1,8 @@
 package com.gogowise.rep.course;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.domain.course.CourseEvaluation;
-import com.gogowise.domain.Pagination;
+import com.gogowise.rep.course.enity.CourseEvaluation;
+import com.gogowise.rep.Pagination;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

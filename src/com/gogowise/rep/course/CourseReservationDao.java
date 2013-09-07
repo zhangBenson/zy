@@ -1,7 +1,7 @@
 package com.gogowise.rep.course;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.domain.course.CourseReservation;
+import com.gogowise.rep.course.enity.CourseReservation;
 
 /**
  * Created by IntelliJ IDEA.

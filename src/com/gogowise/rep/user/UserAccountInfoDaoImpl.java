@@ -1,7 +1,7 @@
 package com.gogowise.rep.user;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.domain.finance.UserAccountInfo;
+import com.gogowise.rep.finance.enity.UserAccountInfo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

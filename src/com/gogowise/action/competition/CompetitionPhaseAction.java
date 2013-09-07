@@ -2,7 +2,7 @@ package com.gogowise.action.competition;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.rep.competition.CompetitionPhaseDao;
-import com.gogowise.domain.competition.CompetitionPhase;
+import com.gogowise.rep.competition.enity.CompetitionPhase;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;

@@ -1,10 +1,10 @@
 package com.gogowise.action.android;
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.rep.Pagination;
 import com.gogowise.rep.live.PersonalOnliveDao;
-import com.gogowise.domain.*;
-import com.gogowise.domain.live.PersonalOnlive;
-import com.gogowise.domain.user.BaseUser;
+import com.gogowise.rep.live.live.PersonalOnlive;
+import com.gogowise.rep.user.user.BaseUser;
 import com.gogowise.common.utils.Utils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;

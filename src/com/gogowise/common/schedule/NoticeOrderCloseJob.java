@@ -3,7 +3,7 @@ package com.gogowise.common.schedule;
 
 import com.gogowise.rep.finance.ConsumptionOrderDao;
 import com.gogowise.rep.finance.ConsumptionRecordDao;
-import com.gogowise.domain.finance.ConsumptionOrder;
+import com.gogowise.rep.finance.enity.ConsumptionOrder;
 import org.springframework.stereotype.Component;
 
 import java.util.Calendar;

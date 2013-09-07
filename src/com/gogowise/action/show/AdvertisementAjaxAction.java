@@ -2,7 +2,7 @@ package com.gogowise.action.show;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.rep.live.AdvertisementDao;
-import com.gogowise.domain.live.Advertisement;
+import com.gogowise.rep.live.live.Advertisement;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;

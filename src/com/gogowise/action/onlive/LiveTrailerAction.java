@@ -3,7 +3,7 @@ package com.gogowise.action.onlive;
 import com.gogowise.action.BasicAction;
 import com.gogowise.rep.user.BaseUserDao;
 import com.gogowise.rep.live.LiveTrailerDao;
-import com.gogowise.domain.live.LiveTrailer;
+import com.gogowise.rep.live.live.LiveTrailer;
 import com.gogowise.common.utils.Constants;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;

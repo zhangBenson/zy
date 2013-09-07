@@ -1,7 +1,7 @@
 package com.gogowise.rep.org;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.domain.org.OrgMeetingMember;
+import com.gogowise.rep.org.org.OrgMeetingMember;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

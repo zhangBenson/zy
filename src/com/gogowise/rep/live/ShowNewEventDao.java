@@ -1,8 +1,8 @@
 package com.gogowise.rep.live;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.domain.Pagination;
-import com.gogowise.domain.live.ShowNewEvent;
+import com.gogowise.rep.Pagination;
+import com.gogowise.rep.live.live.ShowNewEvent;
 
 import java.util.List;
 

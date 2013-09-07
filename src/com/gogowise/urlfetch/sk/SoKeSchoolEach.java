@@ -1,6 +1,6 @@
 package com.gogowise.urlfetch.sk;
 
-import com.gogowise.domain.Persistable;
+import com.gogowise.rep.Persistable;
 import com.gogowise.urlfetch.sk.domain.SkClassType;
 import com.gogowise.urlfetch.sk.domain.SkSchool;
 import com.gogowise.urlfetch.sk.domain.SkXiaoQu;

@@ -4,7 +4,7 @@ import com.gogowise.action.BasicAction;
 import com.gogowise.rep.user.BaseUserDao;
 import com.gogowise.rep.competition.CompetitionAudienceDao;
 import com.gogowise.rep.competition.CompetitionSessionDao;
-import com.gogowise.domain.competition.CompetitionAudience;
+import com.gogowise.rep.competition.enity.CompetitionAudience;
 import com.gogowise.common.utils.Constants;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;

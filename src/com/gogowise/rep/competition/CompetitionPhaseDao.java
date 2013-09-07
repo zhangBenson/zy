@@ -3,7 +3,7 @@ package com.gogowise.rep.competition;
 import java.util.List;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.domain.competition.CompetitionPhase;
+import com.gogowise.rep.competition.enity.CompetitionPhase;
 
 /**
  * Created by IntelliJ IDEA.

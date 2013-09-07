@@ -1,8 +1,8 @@
 package com.gogowise.action.valueobject;
 
-import com.gogowise.domain.user.BaseUser;
-import com.gogowise.domain.live.SubPrivateChannel;
-import com.gogowise.domain.live.UserPrivateChannel;
+import com.gogowise.rep.user.user.BaseUser;
+import com.gogowise.rep.live.live.SubPrivateChannel;
+import com.gogowise.rep.live.live.UserPrivateChannel;
 import com.gogowise.common.utils.Constants;
 
 /**

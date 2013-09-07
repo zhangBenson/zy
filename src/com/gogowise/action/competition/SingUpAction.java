@@ -1,14 +1,14 @@
 package com.gogowise.action.competition;
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.rep.Pagination;
 import com.gogowise.rep.user.InviteRelationshipDao;
 import com.gogowise.rep.competition.SingUpDao;
-import com.gogowise.domain.*;
-import com.gogowise.domain.competition.Competition;
-import com.gogowise.domain.competition.CompetitionSession;
-import com.gogowise.domain.competition.SingUpInfo;
-import com.gogowise.domain.user.BaseUser;
-import com.gogowise.domain.user.Comments;
+import com.gogowise.rep.competition.enity.Competition;
+import com.gogowise.rep.competition.enity.CompetitionSession;
+import com.gogowise.rep.competition.enity.SingUpInfo;
+import com.gogowise.rep.user.user.BaseUser;
+import com.gogowise.rep.user.user.Comments;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 import org.springframework.beans.factory.config.BeanDefinition;

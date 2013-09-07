@@ -4,7 +4,7 @@ import com.gogowise.action.BasicAction;
 import com.gogowise.action.valueobject.PerOnliveVideoSession;
 import com.gogowise.rep.user.BaseUserDao;
 import com.gogowise.rep.live.PersonalOnliveDao;
-import com.gogowise.domain.live.PersonalOnlive;
+import com.gogowise.rep.live.live.PersonalOnlive;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.CompactWriter;
 import org.apache.struts2.convention.annotation.Action;

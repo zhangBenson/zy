@@ -1,8 +1,8 @@
 package com.gogowise.rep.org;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.domain.org.OrganizationComment;
-import com.gogowise.domain.Pagination;
+import com.gogowise.rep.org.org.OrganizationComment;
+import com.gogowise.rep.Pagination;
 
 import java.util.List;
 

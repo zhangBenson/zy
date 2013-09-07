@@ -1,7 +1,7 @@
 package com.gogowise.rep.org;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.domain.org.ChangeResponserHistory;
+import com.gogowise.rep.org.org.ChangeResponserHistory;
 
 /**
  * Created by IntelliJ IDEA.

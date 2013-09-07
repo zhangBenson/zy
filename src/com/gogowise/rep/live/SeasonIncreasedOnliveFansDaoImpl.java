@@ -1,7 +1,7 @@
 package com.gogowise.rep.live;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.domain.live.SeasonIncreasedOnliveFans;
+import com.gogowise.rep.live.live.SeasonIncreasedOnliveFans;
 import org.springframework.stereotype.Repository;
 
 @Repository("seasonIncreasedOnliveFansDao")

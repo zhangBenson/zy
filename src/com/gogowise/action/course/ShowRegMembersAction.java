@@ -2,13 +2,13 @@ package com.gogowise.action.course;
 
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.CourseDao;
 import com.gogowise.rep.live.MyShowDao;
-import com.gogowise.domain.*;
-import com.gogowise.domain.course.Course;
-import com.gogowise.domain.live.MyShow;
-import com.gogowise.domain.live.ShowFans;
-import com.gogowise.domain.user.BaseUser;
+import com.gogowise.rep.course.enity.Course;
+import com.gogowise.rep.live.live.MyShow;
+import com.gogowise.rep.live.live.ShowFans;
+import com.gogowise.rep.user.user.BaseUser;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;

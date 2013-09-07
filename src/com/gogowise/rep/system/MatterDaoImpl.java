@@ -1,7 +1,7 @@
 package com.gogowise.rep.system;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.domain.live.Matter;
+import com.gogowise.rep.live.live.Matter;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

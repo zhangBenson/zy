@@ -1,7 +1,7 @@
 package com.gogowise.rep.live;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.domain.live.SeasonIncreasedShowFans;
+import com.gogowise.rep.live.live.SeasonIncreasedShowFans;
 
 
 public interface SeasonIncreasedShowFansDao extends ModelDao<SeasonIncreasedShowFans> {

@@ -1,8 +1,8 @@
 package com.gogowise.rep.live;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.domain.Pagination;
-import com.gogowise.domain.live.ShowFans;
+import com.gogowise.rep.Pagination;
+import com.gogowise.rep.live.live.ShowFans;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

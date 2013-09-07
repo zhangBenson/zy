@@ -1,19 +1,19 @@
 package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.*;
 import com.gogowise.rep.org.OrganizationDao;
 import com.gogowise.rep.system.GoGoWiseAnnounceDao;
 import com.gogowise.rep.system.MatterDao;
 import com.gogowise.rep.user.BaseUserDao;
 import com.gogowise.rep.user.UserFansDao;
-import com.gogowise.domain.*;
-import com.gogowise.domain.course.*;
-import com.gogowise.domain.live.Matter;
-import com.gogowise.domain.live.UserFans;
-import com.gogowise.domain.org.Organization;
-import com.gogowise.domain.system.GoGoWiseAnnounce;
-import com.gogowise.domain.user.BaseUser;
+import com.gogowise.rep.course.enity.*;
+import com.gogowise.rep.live.live.Matter;
+import com.gogowise.rep.live.live.UserFans;
+import com.gogowise.rep.org.org.Organization;
+import com.gogowise.rep.system.system.GoGoWiseAnnounce;
+import com.gogowise.rep.user.user.BaseUser;
 import com.gogowise.common.utils.*;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.lang.StringUtils;

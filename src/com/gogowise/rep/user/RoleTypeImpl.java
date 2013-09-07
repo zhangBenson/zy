@@ -1,7 +1,7 @@
 package com.gogowise.rep.user;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.domain.user.RoleType;
+import com.gogowise.rep.user.user.RoleType;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

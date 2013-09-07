@@ -1,7 +1,7 @@
 package com.gogowise.urlfetch;
 
 
-import com.gogowise.domain.AbstractPersistence;
+import com.gogowise.rep.AbstractPersistence;
 
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;

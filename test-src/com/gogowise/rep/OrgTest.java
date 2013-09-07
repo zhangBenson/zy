@@ -2,8 +2,8 @@ package com.gogowise.rep;
 
 import com.gogowise.rep.org.OrganizationDao;
 import com.gogowise.rep.user.BaseUserDao;
-import com.gogowise.domain.user.BaseUser;
-import com.gogowise.domain.org.Organization;
+import com.gogowise.rep.user.user.BaseUser;
+import com.gogowise.rep.org.org.Organization;
 import com.gogowise.common.utils.Constants;
 import org.junit.After;
 import org.junit.Before;

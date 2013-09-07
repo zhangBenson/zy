@@ -1,15 +1,15 @@
 package com.gogowise.action.news;
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.CourseDao;
 import com.gogowise.rep.course.CourseNewEventDao;
 import com.gogowise.rep.live.*;
 import com.gogowise.rep.system.GoGoWiseAnnounceDao;
-import com.gogowise.domain.*;
-import com.gogowise.domain.course.Course;
-import com.gogowise.domain.course.CourseNewEvent;
-import com.gogowise.domain.live.*;
-import com.gogowise.domain.system.GoGoWiseAnnounce;
+import com.gogowise.rep.course.enity.Course;
+import com.gogowise.rep.course.enity.CourseNewEvent;
+import com.gogowise.rep.live.live.*;
+import com.gogowise.rep.system.system.GoGoWiseAnnounce;
 import com.gogowise.common.utils.Constants;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;

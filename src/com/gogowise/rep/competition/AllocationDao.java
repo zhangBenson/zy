@@ -1,7 +1,7 @@
 package com.gogowise.rep.competition;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.domain.competition.Allocation;
+import com.gogowise.rep.competition.enity.Allocation;
 
 /**
  * Created by IntelliJ IDEA.

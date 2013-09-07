@@ -1,17 +1,17 @@
 package com.gogowise.action.show;
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.CourseDao;
 import com.gogowise.rep.live.*;
 import com.gogowise.rep.system.GoGoWiseAnnounceDao;
 import com.gogowise.rep.system.MatterDao;
 import com.gogowise.rep.user.BaseUserDao;
 import com.gogowise.rep.user.UserFansDao;
-import com.gogowise.domain.*;
-import com.gogowise.domain.course.Course;
-import com.gogowise.domain.live.*;
-import com.gogowise.domain.system.GoGoWiseAnnounce;
-import com.gogowise.domain.user.BaseUser;
+import com.gogowise.rep.course.enity.Course;
+import com.gogowise.rep.live.live.*;
+import com.gogowise.rep.system.system.GoGoWiseAnnounce;
+import com.gogowise.rep.user.user.BaseUser;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.EmailUtil;
 import com.gogowise.common.utils.Utils;

@@ -1,8 +1,8 @@
 package com.gogowise.rep.live;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.domain.Pagination;
-import com.gogowise.domain.live.PersonalOnlive;
+import com.gogowise.rep.Pagination;
+import com.gogowise.rep.live.live.PersonalOnlive;
 import com.gogowise.common.utils.Utils;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;

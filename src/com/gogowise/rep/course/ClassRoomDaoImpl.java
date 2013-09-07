@@ -1,9 +1,9 @@
 package com.gogowise.rep.course;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.domain.course.ClassRoom;
-import com.gogowise.domain.course.Course;
-import com.gogowise.domain.Pagination;
+import com.gogowise.rep.course.enity.ClassRoom;
+import com.gogowise.rep.course.enity.Course;
+import com.gogowise.rep.Pagination;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

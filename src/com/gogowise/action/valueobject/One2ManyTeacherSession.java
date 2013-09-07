@@ -1,8 +1,8 @@
 package com.gogowise.action.valueobject;
 
-import com.gogowise.domain.user.BaseUser;
-import com.gogowise.domain.course.CourseClass;
-import com.gogowise.domain.live.ShowTerms;
+import com.gogowise.rep.user.user.BaseUser;
+import com.gogowise.rep.course.enity.CourseClass;
+import com.gogowise.rep.live.live.ShowTerms;
 import com.gogowise.common.utils.Constants;
 
 /**

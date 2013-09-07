@@ -1,8 +1,8 @@
 package com.gogowise.rep.course;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.domain.course.CourseComment;
-import com.gogowise.domain.Pagination;
+import com.gogowise.rep.course.enity.CourseComment;
+import com.gogowise.rep.Pagination;
 
 import java.util.List;
 

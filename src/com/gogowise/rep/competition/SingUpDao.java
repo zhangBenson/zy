@@ -1,13 +1,13 @@
 package com.gogowise.rep.competition;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.domain.*;
-import com.gogowise.domain.competition.Competition;
-import com.gogowise.domain.competition.CompetitionSession;
-import com.gogowise.domain.competition.SingUpInfo;
-import com.gogowise.domain.competition.SingerAllocation;
-import com.gogowise.domain.user.BaseUser;
-import com.gogowise.domain.user.Comments;
+import com.gogowise.rep.Pagination;
+import com.gogowise.rep.competition.enity.Competition;
+import com.gogowise.rep.competition.enity.CompetitionSession;
+import com.gogowise.rep.competition.enity.SingUpInfo;
+import com.gogowise.rep.competition.enity.SingerAllocation;
+import com.gogowise.rep.user.user.BaseUser;
+import com.gogowise.rep.user.user.Comments;
 
 import java.util.List;
 import java.util.Map;

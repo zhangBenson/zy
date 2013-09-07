@@ -1,8 +1,8 @@
 package com.gogowise.rep.course;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.domain.course.CourseNewEvent;
-import com.gogowise.domain.Pagination;
+import com.gogowise.rep.course.enity.CourseNewEvent;
+import com.gogowise.rep.Pagination;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

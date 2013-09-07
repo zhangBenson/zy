@@ -6,7 +6,7 @@ import com.gogowise.rep.ModelDaoImpl;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 
-import com.gogowise.domain.competition.CompetitionPhase;
+import com.gogowise.rep.competition.enity.CompetitionPhase;
 import org.springframework.stereotype.Repository;
 
 /**

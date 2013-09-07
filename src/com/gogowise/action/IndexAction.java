@@ -1,17 +1,17 @@
 package com.gogowise.action;
 
+import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.CourseDao;
 import com.gogowise.rep.live.LiveChannelDao;
 import com.gogowise.rep.live.MyShowDao;
 import com.gogowise.rep.live.PersonalOnliveDao;
 import com.gogowise.rep.org.OrganizationDao;
 import com.gogowise.rep.user.BaseUserDao;
-import com.gogowise.domain.*;
-import com.gogowise.domain.course.Course;
-import com.gogowise.domain.live.LiveChannel;
-import com.gogowise.domain.live.MyShow;
-import com.gogowise.domain.live.PersonalOnlive;
-import com.gogowise.domain.user.BaseUser;
+import com.gogowise.rep.course.enity.Course;
+import com.gogowise.rep.live.live.LiveChannel;
+import com.gogowise.rep.live.live.MyShow;
+import com.gogowise.rep.live.live.PersonalOnlive;
+import com.gogowise.rep.user.user.BaseUser;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;

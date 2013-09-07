@@ -1,6 +1,6 @@
 package com.gogowise.urlfetch.sk;
 
-import com.gogowise.domain.AbstractPersistence;
+import com.gogowise.rep.AbstractPersistence;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;

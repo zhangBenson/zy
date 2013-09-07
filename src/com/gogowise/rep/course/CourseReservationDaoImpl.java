@@ -1,7 +1,7 @@
 package com.gogowise.rep.course;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.domain.course.CourseReservation;
+import com.gogowise.rep.course.enity.CourseReservation;
 import org.springframework.stereotype.Repository;
 
 /**

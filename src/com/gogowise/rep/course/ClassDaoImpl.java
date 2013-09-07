@@ -2,11 +2,11 @@ package com.gogowise.rep.course;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.domain.course.Course;
-import com.gogowise.domain.course.CourseClass;
-import com.gogowise.domain.course.CourseInviteStudent;
-import com.gogowise.domain.course.SeniorClassRoom;
-import com.gogowise.domain.user.BaseUser;
+import com.gogowise.rep.course.enity.Course;
+import com.gogowise.rep.course.enity.CourseClass;
+import com.gogowise.rep.course.enity.CourseInviteStudent;
+import com.gogowise.rep.course.enity.SeniorClassRoom;
+import com.gogowise.rep.user.user.BaseUser;
 import com.gogowise.common.utils.EmailUtil;
 import com.gogowise.common.utils.Utils;
 import com.opensymphony.xwork2.util.LocalizedTextUtil;

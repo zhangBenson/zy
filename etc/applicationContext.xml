@@ -27,18 +27,18 @@
         </property>
         <property name="annotatedClasses">
             <list>
-                <value>com.gogowise.domain.user.BaseUser</value>
-                <value>com.gogowise.domain.competition.SingUpInfo</value>
-                <value>com.gogowise.domain.user.Comments</value>
-                <value>com.gogowise.domain.competition.Competition</value>
-                <value>com.gogowise.domain.competition.CompetitionComments</value>
-                <value>com.gogowise.domain.competition.CompetitionPhase</value>
-                <value>com.gogowise.domain.competition.CompetitionSession</value>
-                <value>com.gogowise.domain.competition.JudgeAllocation</value>
-                <value>com.gogowise.domain.competition.HostAllocation</value>
-                <value>com.gogowise.domain.competition.SingerAllocation</value>
-                <value>com.gogowise.domain.competition.SingUpRole</value>
-                <value>com.gogowise.domain.competition.Subject</value>
+                <value>com.gogowise.rep.user.user.BaseUser</value>
+                <value>com.gogowise.rep.competition.enity.SingUpInfo</value>
+                <value>com.gogowise.rep.user.user.Comments</value>
+                <value>com.gogowise.rep.competition.enity.Competition</value>
+                <value>com.gogowise.rep.competition.enity.CompetitionComments</value>
+                <value>com.gogowise.rep.competition.enity.CompetitionPhase</value>
+                <value>com.gogowise.rep.competition.enity.CompetitionSession</value>
+                <value>com.gogowise.rep.competition.enity.JudgeAllocation</value>
+                <value>com.gogowise.rep.competition.enity.HostAllocation</value>
+                <value>com.gogowise.rep.competition.enity.SingerAllocation</value>
+                <value>com.gogowise.rep.competition.enity.SingUpRole</value>
+                <value>com.gogowise.rep.competition.enity.Subject</value>
             </list>
         </property>
     </bean>

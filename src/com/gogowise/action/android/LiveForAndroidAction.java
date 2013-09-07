@@ -1,12 +1,12 @@
 package com.gogowise.action.android;
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.rep.Pagination;
 import com.gogowise.rep.live.LiveChannelDao;
-import com.gogowise.domain.*;
 import com.gogowise.rep.android.enity.AndroidLiveChannel;
 import com.gogowise.rep.android.enity.AndroidLiveChannelTerms;
-import com.gogowise.domain.live.ChannelTerms;
-import com.gogowise.domain.live.LiveChannel;
+import com.gogowise.rep.live.live.ChannelTerms;
+import com.gogowise.rep.live.live.LiveChannel;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;

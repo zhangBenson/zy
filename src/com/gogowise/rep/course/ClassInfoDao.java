@@ -2,7 +2,7 @@ package com.gogowise.rep.course;
 
 import com.gogowise.rep.ModelDao;
 import com.gogowise.urlfetch.sk.ClassInfo;
-import com.gogowise.domain.Pagination;
+import com.gogowise.rep.Pagination;
 
 import java.util.List;
 

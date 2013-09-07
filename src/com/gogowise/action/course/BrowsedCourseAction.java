@@ -5,7 +5,7 @@ import com.gogowise.action.BasicAction;
 import com.gogowise.rep.user.BaseUserDao;
 import com.gogowise.rep.course.BrowsedCourseDao;
 import com.gogowise.rep.course.CourseDao;
-import com.gogowise.domain.course.BrowsedCourse;
+import com.gogowise.rep.course.enity.BrowsedCourse;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.springframework.beans.factory.config.BeanDefinition;

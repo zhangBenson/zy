@@ -1,9 +1,9 @@
 package com.gogowise.rep.org;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.domain.user.BaseUser;
-import com.gogowise.domain.org.Organization;
-import com.gogowise.domain.Pagination;
+import com.gogowise.rep.user.user.BaseUser;
+import com.gogowise.rep.org.org.Organization;
+import com.gogowise.rep.Pagination;
 import com.gogowise.common.utils.Utils;
 import org.springframework.stereotype.Repository;
 

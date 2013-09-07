@@ -1,7 +1,7 @@
 package com.gogowise.rep.user;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.domain.user.UserMatters;
+import com.gogowise.rep.user.user.UserMatters;
 import org.springframework.stereotype.Repository;
 
 @Repository("userMattersDao")

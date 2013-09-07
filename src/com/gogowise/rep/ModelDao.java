@@ -1,8 +1,5 @@
 package com.gogowise.rep;
 
-import com.gogowise.domain.AbstractPersistence;
-import com.gogowise.domain.Pagination;
-import com.gogowise.domain.Persistable;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.DetachedCriteria;
 

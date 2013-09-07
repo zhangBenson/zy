@@ -1,7 +1,7 @@
 package com.gogowise.rep.live;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.domain.live.MemberOfLiveChannel;
+import com.gogowise.rep.live.live.MemberOfLiveChannel;
 
 /**
  * Created by IntelliJ IDEA.

@@ -1,8 +1,8 @@
 package com.gogowise.rep.competition;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.domain.competition.CompetitionAudience;
-import com.gogowise.domain.Pagination;
+import com.gogowise.rep.competition.enity.CompetitionAudience;
+import com.gogowise.rep.Pagination;
 
 import java.util.List;
 

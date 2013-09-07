@@ -1,6 +1,6 @@
 package com.gogowise.action.valueobject;
 
-import com.gogowise.domain.course.CourseClass;
+import com.gogowise.rep.course.enity.CourseClass;
 import com.gogowise.common.utils.Constants;
 
 /**

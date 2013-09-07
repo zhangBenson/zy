@@ -2,8 +2,7 @@ package com.gogowise.rep;
 
 
 import com.gogowise.rep.user.UserRelationshipDao;
-import com.gogowise.domain.Pagination;
-import com.gogowise.domain.user.UserRelationship;
+import com.gogowise.rep.user.user.UserRelationship;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

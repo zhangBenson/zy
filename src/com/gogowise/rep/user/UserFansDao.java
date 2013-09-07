@@ -1,8 +1,8 @@
 package com.gogowise.rep.user;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.domain.Pagination;
-import com.gogowise.domain.live.UserFans;
+import com.gogowise.rep.Pagination;
+import com.gogowise.rep.live.live.UserFans;
 
 import java.util.List;
 

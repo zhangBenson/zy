@@ -1,16 +1,16 @@
 package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.rep.Pagination;
 import com.gogowise.rep.user.BaseUserDao;
 import com.gogowise.rep.course.CourseCommentDao;
 import com.gogowise.rep.course.CourseDao;
 import com.gogowise.rep.system.MatterDao;
-import com.gogowise.domain.*;
-import com.gogowise.domain.course.Course;
-import com.gogowise.domain.course.CourseComment;
-import com.gogowise.domain.course.SeniorClassRoom;
-import com.gogowise.domain.live.Matter;
-import com.gogowise.domain.user.BaseUser;
+import com.gogowise.rep.course.enity.Course;
+import com.gogowise.rep.course.enity.CourseComment;
+import com.gogowise.rep.course.enity.SeniorClassRoom;
+import com.gogowise.rep.live.live.Matter;
+import com.gogowise.rep.user.user.BaseUser;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.EmailUtil;
 import com.opensymphony.xwork2.ActionContext;

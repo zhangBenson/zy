@@ -2,13 +2,13 @@ package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.action.valueobject.VideoSession;
+import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.*;
 import com.gogowise.rep.system.MatterDao;
 import com.gogowise.rep.user.BaseUserDao;
-import com.gogowise.domain.*;
-import com.gogowise.domain.course.*;
-import com.gogowise.domain.live.Matter;
-import com.gogowise.domain.user.BaseUser;
+import com.gogowise.rep.course.enity.*;
+import com.gogowise.rep.live.live.Matter;
+import com.gogowise.rep.user.user.BaseUser;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.EmailUtil;
 import com.thoughtworks.xstream.XStream;
