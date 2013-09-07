@@ -2,9 +2,9 @@ package com.gogowise.action.course;
 
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.repository.user.BaseUserDao;
-import com.gogowise.repository.course.CourseDao;
-import com.gogowise.repository.course.CourseQuestionDao;
+import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.course.CourseDao;
+import com.gogowise.rep.course.CourseQuestionDao;
 import com.gogowise.domain.course.Course;
 import com.gogowise.domain.course.CourseQuestion;
 import com.opensymphony.xwork2.ActionContext;

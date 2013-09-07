@@ -1,8 +1,8 @@
 package com.gogowise.action.user;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.repository.user.BaseUserDao;
-import com.gogowise.repository.org.OrganizationDao;
+import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.org.OrganizationDao;
 import com.gogowise.domain.user.BaseUser;
 import com.gogowise.domain.org.Organization;
 import com.gogowise.common.utils.Constants;

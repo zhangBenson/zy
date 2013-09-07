@@ -1,9 +1,9 @@
 package com.gogowise.action.privateChannel;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.repository.user.BaseUserDao;
-import com.gogowise.repository.live.MonitorAuthorizeDao;
-import com.gogowise.repository.live.UserPrivateChannelDao;
+import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.live.MonitorAuthorizeDao;
+import com.gogowise.rep.live.UserPrivateChannelDao;
 import com.gogowise.domain.user.BaseUser;
 import com.gogowise.domain.live.MonitorAuthorize;
 import com.gogowise.domain.live.UserPrivateChannel;

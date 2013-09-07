@@ -1,7 +1,7 @@
 package com.gogowise.action.map;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.repository.live.PersonalOnliveDao;
+import com.gogowise.rep.live.PersonalOnliveDao;
 import com.gogowise.domain.Pagination;
 import com.gogowise.domain.live.PersonalOnlive;
 import com.gogowise.common.utils.Constants;

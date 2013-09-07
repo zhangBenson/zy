@@ -1,8 +1,8 @@
 package com.gogowise.action.competition;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.repository.user.InviteRelationshipDao;
-import com.gogowise.repository.competition.SingUpDao;
+import com.gogowise.rep.user.InviteRelationshipDao;
+import com.gogowise.rep.competition.SingUpDao;
 import com.gogowise.domain.*;
 import com.gogowise.domain.competition.Competition;
 import com.gogowise.domain.competition.CompetitionSession;

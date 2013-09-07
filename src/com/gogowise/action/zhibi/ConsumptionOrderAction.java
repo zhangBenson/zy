@@ -1,10 +1,10 @@
 package com.gogowise.action.zhibi;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.repository.user.BaseUserDao;
-import com.gogowise.repository.finance.ConsumptionOrderDao;
-import com.gogowise.repository.finance.ConsumptionRecordDao;
-import com.gogowise.repository.user.UserAccountInfoDao;
+import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.finance.ConsumptionOrderDao;
+import com.gogowise.rep.finance.ConsumptionRecordDao;
+import com.gogowise.rep.user.UserAccountInfoDao;
 import com.gogowise.domain.user.BaseUser;
 import com.gogowise.domain.finance.ConsumptionOrder;
 import com.gogowise.domain.finance.UserAccountInfo;

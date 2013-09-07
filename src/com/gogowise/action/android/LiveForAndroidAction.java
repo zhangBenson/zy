@@ -1,7 +1,7 @@
 package com.gogowise.action.android;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.repository.live.LiveChannelDao;
+import com.gogowise.rep.live.LiveChannelDao;
 import com.gogowise.domain.*;
 import com.gogowise.domain.android_domain.AndroidLiveChannel;
 import com.gogowise.domain.android_domain.AndroidLiveChannelTerms;

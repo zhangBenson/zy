@@ -1,10 +1,10 @@
 package com.gogowise.action.news;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.repository.course.CourseDao;
-import com.gogowise.repository.course.CourseNewEventDao;
-import com.gogowise.repository.live.*;
-import com.gogowise.repository.system.GoGoWiseAnnounceDao;
+import com.gogowise.rep.course.CourseDao;
+import com.gogowise.rep.course.CourseNewEventDao;
+import com.gogowise.rep.live.*;
+import com.gogowise.rep.system.GoGoWiseAnnounceDao;
 import com.gogowise.domain.*;
 import com.gogowise.domain.course.Course;
 import com.gogowise.domain.course.CourseNewEvent;

@@ -2,9 +2,9 @@ package com.gogowise.action.course;
 
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.repository.user.BaseUserDao;
-import com.gogowise.repository.course.BrowsedCourseDao;
-import com.gogowise.repository.course.CourseDao;
+import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.course.BrowsedCourseDao;
+import com.gogowise.rep.course.CourseDao;
 import com.gogowise.domain.course.BrowsedCourse;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;

@@ -1,7 +1,7 @@
 package com.gogowise.action.android;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.repository.live.PersonalOnliveDao;
+import com.gogowise.rep.live.PersonalOnliveDao;
 import com.gogowise.domain.*;
 import com.gogowise.domain.live.PersonalOnlive;
 import com.gogowise.domain.user.BaseUser;

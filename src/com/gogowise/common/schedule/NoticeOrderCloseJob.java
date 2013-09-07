@@ -1,8 +1,8 @@
 package com.gogowise.common.schedule;
 
 
-import com.gogowise.repository.finance.ConsumptionOrderDao;
-import com.gogowise.repository.finance.ConsumptionRecordDao;
+import com.gogowise.rep.finance.ConsumptionOrderDao;
+import com.gogowise.rep.finance.ConsumptionRecordDao;
 import com.gogowise.domain.finance.ConsumptionOrder;
 import org.springframework.stereotype.Component;
 

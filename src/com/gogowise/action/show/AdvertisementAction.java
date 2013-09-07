@@ -1,9 +1,9 @@
 package com.gogowise.action.show;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.repository.live.AdvertisementDao;
-import com.gogowise.repository.user.BaseUserDao;
-import com.gogowise.repository.live.MyShowDao;
+import com.gogowise.rep.live.AdvertisementDao;
+import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.live.MyShowDao;
 import com.gogowise.domain.live.Advertisement;
 import com.gogowise.domain.user.BaseUser;
 import com.gogowise.domain.live.MyShow;

@@ -1,14 +1,14 @@
 package com.gogowise.action.privateChannel;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.repository.finance.ConsumptionOrderDao;
-import com.gogowise.repository.live.MonitorAuthorizeDao;
-import com.gogowise.repository.live.PersonalOnliveDao;
-import com.gogowise.repository.live.SubPrivateChannelDao;
-import com.gogowise.repository.live.UserPrivateChannelDao;
-import com.gogowise.repository.system.GoGoWiseAnnounceDao;
-import com.gogowise.repository.user.BaseUserDao;
-import com.gogowise.repository.user.UserAccountInfoDao;
+import com.gogowise.rep.finance.ConsumptionOrderDao;
+import com.gogowise.rep.live.MonitorAuthorizeDao;
+import com.gogowise.rep.live.PersonalOnliveDao;
+import com.gogowise.rep.live.SubPrivateChannelDao;
+import com.gogowise.rep.live.UserPrivateChannelDao;
+import com.gogowise.rep.system.GoGoWiseAnnounceDao;
+import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.user.UserAccountInfoDao;
 import com.gogowise.domain.*;
 import com.gogowise.domain.finance.UserAccountInfo;
 import com.gogowise.domain.live.MonitorAuthorize;

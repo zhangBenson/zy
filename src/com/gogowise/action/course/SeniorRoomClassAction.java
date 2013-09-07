@@ -1,9 +1,9 @@
 package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.repository.user.BaseUserDao;
-import com.gogowise.repository.course.CourseDao;
-import com.gogowise.repository.course.SeniorClassRoomDao;
+import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.course.CourseDao;
+import com.gogowise.rep.course.SeniorClassRoomDao;
 import com.gogowise.domain.course.SeniorClassRoom;
 import com.gogowise.common.utils.Constants;
 import com.opensymphony.xwork2.ActionContext;

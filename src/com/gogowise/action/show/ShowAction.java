@@ -1,12 +1,12 @@
 package com.gogowise.action.show;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.repository.course.CourseDao;
-import com.gogowise.repository.live.*;
-import com.gogowise.repository.system.GoGoWiseAnnounceDao;
-import com.gogowise.repository.system.MatterDao;
-import com.gogowise.repository.user.BaseUserDao;
-import com.gogowise.repository.user.UserFansDao;
+import com.gogowise.rep.course.CourseDao;
+import com.gogowise.rep.live.*;
+import com.gogowise.rep.system.GoGoWiseAnnounceDao;
+import com.gogowise.rep.system.MatterDao;
+import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.user.UserFansDao;
 import com.gogowise.domain.*;
 import com.gogowise.domain.course.Course;
 import com.gogowise.domain.live.*;

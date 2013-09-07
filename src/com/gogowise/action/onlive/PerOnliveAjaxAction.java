@@ -1,8 +1,8 @@
 package com.gogowise.action.onlive;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.repository.user.BaseUserDao;
-import com.gogowise.repository.user.UserMattersDao;
+import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.user.UserMattersDao;
 import com.gogowise.domain.user.BaseUser;
 import com.gogowise.domain.user.UserMatters;
 import org.apache.struts2.convention.annotation.Action;

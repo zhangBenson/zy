@@ -1,6 +1,6 @@
 package com.gogowise.action;
 
-import com.gogowise.repository.live.UserPrivateChannelDao;
+import com.gogowise.rep.live.UserPrivateChannelDao;
 import com.gogowise.domain.user.BaseUser;
 import com.gogowise.domain.Pagination;
 import com.gogowise.domain.live.UserPrivateChannel;

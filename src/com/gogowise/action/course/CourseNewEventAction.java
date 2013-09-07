@@ -1,8 +1,8 @@
 package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.repository.course.CourseDao;
-import com.gogowise.repository.course.CourseNewEventDao;
+import com.gogowise.rep.course.CourseDao;
+import com.gogowise.rep.course.CourseNewEventDao;
 import com.gogowise.domain.course.Course;
 import com.gogowise.domain.course.CourseNewEvent;
 import com.gogowise.common.utils.Utils;

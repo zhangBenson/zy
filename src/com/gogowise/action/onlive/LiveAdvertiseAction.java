@@ -1,9 +1,9 @@
 package com.gogowise.action.onlive;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.repository.live.AdvertisementForLiveDao;
-import com.gogowise.repository.user.BaseUserDao;
-import com.gogowise.repository.live.LiveChannelDao;
+import com.gogowise.rep.live.AdvertisementForLiveDao;
+import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.live.LiveChannelDao;
 import com.gogowise.domain.live.AdvertisementForLive;
 import com.gogowise.domain.user.BaseUser;
 import com.gogowise.domain.live.LiveChannel;
