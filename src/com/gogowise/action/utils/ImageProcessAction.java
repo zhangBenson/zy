@@ -79,7 +79,7 @@ public class ImageProcessAction extends BasicAction{
     @Action(value = "cropCourseLogo")
     public void cropCourseLogo() throws IOException {
         if (StringUtils.isNotBlank(this.getCourseLogoName())) {
-            String srcPath = ServletActionContext.getServletContext().getRealPath("/"+Constants.UPLOAD_FILE_PATH_TMP + "/" + this.getCourseLogoName());
+            String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + this.getCourseLogoName());
 //            String toPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId()+"/"+this.getCourseLogoName());
 //            String toPath = srcPath;
 
