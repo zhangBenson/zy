@@ -12,3 +12,12 @@ DROP TABLE `gogowise`.`competitionphase`;
 DROP TABLE `gogowise`.`competition`;
 DROP TABLE `gogowise`.`subject`;
 DROP TABLE `gogowise`.`membership`;
+
+
+
+
+GRANT ALL PRIVILEGES ON *.* TO root@localhost IDENTIFIED BY "pppp";
+
+
+GRANT ALL PRIVILEGES ON *.* TO 'myuser'@'ttttt'   IDENTIFIED BY 'ppppppp.'  WITH GRANT OPTION;
+flush privileges;
