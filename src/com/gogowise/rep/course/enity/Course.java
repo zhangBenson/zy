@@ -40,6 +40,7 @@ public class Course extends AbstractPersistence {
     @ManyToOne
     private BaseUser personalTeacher;
     private String logoUrl;
+    @Column(columnDefinition = "text",length = 6000)
     private String description;
     private Calendar startDate;
     private Integer totalHours = Constants.DEFAULT_INT_VALUE;
