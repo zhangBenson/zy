@@ -14,6 +14,8 @@ DROP TABLE `gogowise`.`subject`;
 DROP TABLE `gogowise`.`membership`;
 
 
+ALTER TABLE gogowise.Course
+  DROP COLUMN description;
 
 
 GRANT ALL PRIVILEGES ON *.* TO root@localhost IDENTIFIED BY "pppp";
