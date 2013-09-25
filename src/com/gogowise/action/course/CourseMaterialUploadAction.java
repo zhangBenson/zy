@@ -66,7 +66,7 @@ public class CourseMaterialUploadAction extends BasicAction {
         SimpleDateFormat sDateFormat;
         Random r = new Random();
 
-        String savePath = ServletActionContext.getServletContext().getRealPath("") + Constants.UPLOAD_FILE_PATH_TMP+"/";
+        String savePath = ServletActionContext.getServletContext().getRealPath("") + "/" + Constants.UPLOAD_FILE_PATH_TMP+"/";
 
 
         //生成随机文件名：当前年月日时分秒+五位随机数（为了在实际项目中防止文件同名而进行的处理）
