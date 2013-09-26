@@ -120,13 +120,18 @@ public class SaveCourseAction extends BasicAction{
         return SUCCESS;
     }
 
-    @Action(value = "autoSaveClasses",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".classesList")})
-    public String autoSaveClasses(){
+    @Action(value = "autoSaveClasses", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".classesList")})
+    public String autoSaveClasses() {
         course = courseDao.findById(this.getCourse().getId());
         classDao.autoClassSystemSave(startTimes, durations, classDate, repeatTimes, course);
         courseClasses = classDao.findByCourseId(course.getId());
+        for (int i = 0; i < courseClasses.size(); i++) {
+            int j = i + 1;
+            courseClasses.get(i).setName(this.getText("lable.class.no1") + j + this.getText("lable.class.no2"));
+            classDao.persistAbstract(courseClasses.get(i));
+        }
 
-        course.setTotalHours(course.getTotalHours()+startTimes.size()*classDate.size()*repeatTimes);
+        course.setTotalHours(course.getTotalHours() + startTimes.size() * classDate.size() * repeatTimes);
         courseDao.persistAbstract(course);
         return SUCCESS;
     }
