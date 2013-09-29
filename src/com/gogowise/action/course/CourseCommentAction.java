@@ -1,18 +1,18 @@
 package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.common.utils.Constants;
+import com.gogowise.common.utils.EmailUtil;
 import com.gogowise.rep.Pagination;
-import com.gogowise.rep.user.BaseUserDao;
 import com.gogowise.rep.course.CourseCommentDao;
 import com.gogowise.rep.course.CourseDao;
-import com.gogowise.rep.live.MatterDao;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.course.enity.CourseComment;
 import com.gogowise.rep.course.enity.SeniorClassRoom;
+import com.gogowise.rep.live.MatterDao;
 import com.gogowise.rep.live.enity.Matter;
+import com.gogowise.rep.user.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.common.utils.Constants;
-import com.gogowise.common.utils.EmailUtil;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -21,7 +21,6 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -239,8 +238,4 @@ public class CourseCommentAction extends BasicAction {
         this.matterDao = matterDao;
     }
 
-
-     public static void main(String arg[]){
-      copy(new File("D:\\2012changsha\\黄希勇摄\\DSC_0306.JPG"),new File("\\\\WIN-H7MDJIK9LWP\\musics\\DSC_0306.JPG"));
-    }
 }

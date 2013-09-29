@@ -481,7 +481,7 @@ public class OrganizationAction extends BasicAction {
         if (!resourceFile.getParentFile().exists()) {
             resourceFile.getParentFile().mkdirs();
         }
-        copy(this.getUpload(),resourceFile);
+        Utils.copy(this.getUpload(), resourceFile);
 
         orgMaterial.setSourceTitle(this.getUploadFileName());
         orgMaterial.setProvideTime(Calendar.getInstance());

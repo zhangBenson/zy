@@ -3,14 +3,19 @@ package com.gogowise.common.utils;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.channels.FileChannel;
 import java.util.Calendar;
 import java.util.Date;
 
 public class Utils {
+    protected static Logger logger = LogManager.getLogger(Utils.class.getName());
+
     public static String getUTF8String(String srcStr) {
         byte[] strByte = new byte[0];
         try {
@@ -131,6 +136,35 @@ public class Utils {
         String toPath =  ServletActionContext.getServletContext().getRealPath("");
         notReplaceFileAndCopy(srcPath,toPath);
     }
+
+    public static void copyByChannel(File f1, File f2) {
+        try {
+            int length = Constants.BUFFER_SIZE;
+            FileInputStream in = new FileInputStream(f1);
+            FileOutputStream out = new FileOutputStream(f2);
+            FileChannel inC = in.getChannel();
+            FileChannel outC = out.getChannel();
+            int i = 0;
+            while (true) {
+                if (inC.position() == inC.size()) {
+                    inC.close();
+                    outC.close();
+                    return;
+                }
+                if ((inC.size() - inC.position()) < Constants.BUFFER_SIZE)
+                    length = (int) (inC.size() - inC.position());
+                else
+                    length = Constants.BUFFER_SIZE;
+                inC.transferTo(inC.position(), length, outC);
+                inC.position(inC.position() + length);
+                i++;
+            }
+
+        } catch (IOException e) {
+            logger.error("copy file failed ", e);
+        }
+    }
+
     public static void replaceFile(String srcPath, String dstPath) {
         File src = new File(srcPath);
         File dst = new File(dstPath);
@@ -144,57 +178,19 @@ public class Utils {
             }
         }
 
-        try {
-            InputStream in = null;
-            OutputStream out = null;
-            try {
-                in = new BufferedInputStream(new FileInputStream(src), Constants.BUFFER_SIZE);
-                out = new BufferedOutputStream(new FileOutputStream(dst), Constants.BUFFER_SIZE);
-                byte[] buffer = new byte[Constants.BUFFER_SIZE];
-                while (in.read(buffer) > 0) {
-                    out.write(buffer);
-                }
-            } finally {
-                if (null != in) {
-                    in.close();
-                }
-                if (null != out) {
-                    out.close();
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        copyByChannel(src, dst);
     }
 
-     public static void notReplaceFileAndCopy(String srcPath, String dstPath) {
+
+
+    public static void notReplaceFileAndCopy(String srcPath, String dstPath) {
         File src = new File(srcPath);
         File dst = new File(dstPath);
 
         if (!dst.getParentFile().exists()) {
             dst.getParentFile().mkdirs();
         }
-        try {
-            InputStream in = null;
-            OutputStream out = null;
-            try {
-                in = new BufferedInputStream(new FileInputStream(src), Constants.BUFFER_SIZE);
-                out = new BufferedOutputStream(new FileOutputStream(dst), Constants.BUFFER_SIZE);
-                byte[] buffer = new byte[Constants.BUFFER_SIZE];
-                while (in.read(buffer) > 0) {
-                    out.write(buffer);
-                }
-            } finally {
-                if (null != in) {
-                    in.close();
-                }
-                if (null != out) {
-                    out.close();
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        copyByChannel(src, dst);
     }
 
     public static Calendar getCalendarByDayOfWeekAndCalendar(Calendar calendar,int dayOfWeek,int offset){
@@ -369,7 +365,18 @@ public class Utils {
 
 
     public synchronized static void pptConvert(String srcPpt, String desDir) throws IOException {
+        File dst = new File(desDir);
+        if (!dst.exists()) {
+            dst.mkdirs();
+        }
         String cmd = "cmd /c start " + ServletActionContext.getServletContext().getRealPath("") + "\\PptFormatConverter.exe  " + srcPpt + " " + desDir + " jpg ";
         Process ps = Runtime.getRuntime().exec(cmd);
+    }
+
+    public static void copy(File src, File dst) {
+        if (!dst.getParentFile().exists()) {
+            dst.getParentFile().mkdirs();
+        }
+        copyByChannel(src, dst);
     }
 }

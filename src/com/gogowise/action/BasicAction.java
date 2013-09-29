@@ -1,11 +1,11 @@
 package com.gogowise.action;
 
-import com.gogowise.rep.live.UserPrivateChannelDao;
-import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.rep.Pagination;
-import com.gogowise.rep.live.enity.UserPrivateChannel;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.MD5;
+import com.gogowise.rep.Pagination;
+import com.gogowise.rep.live.UserPrivateChannelDao;
+import com.gogowise.rep.live.enity.UserPrivateChannel;
+import com.gogowise.rep.user.enity.BaseUser;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.log4j.LogManager;
@@ -13,7 +13,6 @@ import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.*;
 public class BasicAction extends ActionSupport {
     public static final String BASIC_PACKAGE = "basic-package";
     public static final String BASE_NAME_SPACE = "/";
@@ -24,35 +23,6 @@ public class BasicAction extends ActionSupport {
 
 
     protected static Logger logger = LogManager.getLogger(BasicAction.class.getName());
-
-    protected static void copy(File src, File dst) {
-
-        if (!dst.getParentFile().exists()) {
-            dst.getParentFile().mkdirs();
-        }
-
-        try {
-            InputStream in = null;
-            OutputStream out = null;
-            try {
-                in = new BufferedInputStream(new FileInputStream(src), Constants.BUFFER_SIZE);
-                out = new BufferedOutputStream(new FileOutputStream(dst), Constants.BUFFER_SIZE);
-                byte[] buffer = new byte[Constants.BUFFER_SIZE];
-                while (in.read(buffer) > 0) {
-                    out.write(buffer);
-                }
-            } finally {
-                if (null != in) {
-                    in.close();
-                }
-                if (null != out) {
-                    out.close();
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     protected String getExtention(String fileName) {
         int pos = fileName.lastIndexOf(".");

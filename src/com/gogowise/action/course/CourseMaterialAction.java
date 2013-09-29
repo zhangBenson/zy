@@ -73,9 +73,9 @@ public class CourseMaterialAction extends BasicAction {
         String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + courseMaterial.getFullPath());
         String dstPath = ServletActionContext.getServletContext().getRealPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.getCourse().getId() + "/" + newName);
 
-        copy(new File(srcPath),new File(dstPath));
+        Utils.copy(new File(srcPath), new File(dstPath));
 
-        //将ppt转换成jpg文件
+        //Conver ppt to jpg
         if(".ppt".endsWith(extName) || ".pptx".endsWith(extName)){
             String dstDir = ServletActionContext.getServletContext().getRealPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.getCourse().getId() + "/ppt" + nowTimeStr);
             try {

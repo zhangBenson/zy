@@ -378,7 +378,7 @@ public class CourseAction extends BasicAction {
             if (!imageFile.getParentFile().exists()) {
                 imageFile.getParentFile().mkdirs();
             }
-            copy(this.getUpload(), imageFile);
+            Utils.copy(this.getUpload(), imageFile);
             realCourse.setLogoUrl(Constants.UPLOAD_IMAGE_PATH_FOR_COURSE + path);
         }
 

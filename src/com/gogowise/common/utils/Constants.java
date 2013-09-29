@@ -34,7 +34,7 @@ public class Constants {
     public static final int COURSE_MATERIAL_TYPE_OHTER = 3;
 
 
-    public static final int BUFFER_SIZE = 6 * 1024;
+    public static final int BUFFER_SIZE = 4 * 1024 * 1024;
     public static final int MAX_SINGER_SIZE = 9;
     public static final int MAX_Judge_SIZE = 2;
 

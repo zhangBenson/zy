@@ -1,6 +1,7 @@
 package com.gogowise.action.competition;
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.competition.CompetitionDao;
 import com.gogowise.rep.competition.enity.Competition;
 import com.gogowise.common.utils.Constants;
@@ -59,7 +60,7 @@ public class CompetitionAction extends BasicAction {
                     files[j].delete();
                 }
             }
-            copy(this.upload, imageFile);
+            Utils.copy(this.upload, imageFile);
             this.getCompetition().setLogoUrl(Constants.UPLOAD_COMPETITION_IMAGE_PATH + path);
         }
 

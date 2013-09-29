@@ -2,6 +2,7 @@ package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.action.valueobject.VideoSession;
+import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.*;
 import com.gogowise.rep.live.MatterDao;
@@ -98,7 +99,7 @@ public class CourseResourceAction extends BasicAction {
         if (!resourceFile.getParentFile().exists()) {
             resourceFile.getParentFile().mkdirs();
         }
-        copy(this.getDownload(), resourceFile);
+        Utils.copy(this.getDownload(), resourceFile);
         courseResource.setCourse(courseDao.findById(this.getCourse().getId()));
         courseResource.setProvider(baseUserDao.findById(this.getSessionUserId()));
         courseResource.setSourceTitle(this.getDownloadFileName());
