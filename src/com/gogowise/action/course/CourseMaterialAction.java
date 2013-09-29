@@ -80,7 +80,9 @@ public class CourseMaterialAction extends BasicAction {
             String dstDir = ServletActionContext.getServletContext().getRealPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.getCourse().getId() + "/ppt" + nowTimeStr);
             try {
                 Utils.pptConvert(dstPath,dstDir);
-            } catch (IOException e) {}
+            } catch (IOException e) {
+                logger.error("Cannot covert to PPT", e);
+            }
         }
 
         //文件相关属性设置
