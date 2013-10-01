@@ -24,6 +24,8 @@ public class CourseMaterial extends AbstractPersistence {
     private String fullPath;
     private String sourceTitle;
     private Double fullSize = 0.0;
+    private Integer totalPages;
+    private String path;
 
     public int getType() {
         return type;
@@ -82,5 +84,21 @@ public class CourseMaterial extends AbstractPersistence {
 
     public void setUploadTime(Calendar uploadTime) {
         this.uploadTime = uploadTime;
+    }
+
+    public Integer getTotalPages() {
+        return totalPages;
+    }
+
+    public void setTotalPages(Integer totalPages) {
+        this.totalPages = totalPages;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }

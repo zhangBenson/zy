@@ -35,6 +35,17 @@ public class MaterialUploadToBetaAction extends BasicAction {
     private String fileuploadFileName;
     private String genFileName;
 
+    private Integer totalPages;
+    private String  path;
+
+    public Integer getTotalPages() {
+        return totalPages;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
     @JSON(serialize = false)
     public File getFileupload() {
         return fileupload;
@@ -61,10 +72,15 @@ public class MaterialUploadToBetaAction extends BasicAction {
     public void setGenFileName(String genFileName) {
         this.genFileName = genFileName;
     }
+    @Action(value = "uploadPptInit",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".uploadPptMaterial")})
+    public String uploadCourseMaterial(){
+        return SUCCESS;
+    }
+
 
     @Action(value = "uploadCourseMaterialToBeta")
     public String uploadCourseMaterialToBeta()  {
-        String savePath = ServletActionContext.getServletContext().getRealPath("") + "/" + Constants.UPLOAD_FILE_PATH_TMP+"/";
+        String savePath = ServletActionContext.getServletContext().getRealPath("") + "/" + Constants.UPLOAD_FILE_PATH_PPT+"/";
         Random r = new Random();
         int rannum = (int) (r.nextDouble() * (99999 - 10000 + 1)) + 10000;
         SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -74,14 +90,20 @@ public class MaterialUploadToBetaAction extends BasicAction {
         if (fileuploadFileName.lastIndexOf(".") >= 0) {
             extName = fileuploadFileName.substring(fileuploadFileName.lastIndexOf("."));
         }
-        String newFileName = nowTimeStr + rannum + extName;
+        String newFileName = rannum + nowTimeStr + extName;
 
         fileupload.renameTo(new File(savePath + newFileName));
+        String pptPatch= savePath+"PPT";
         try {
-            Utils.pptConvert(savePath + newFileName, savePath+"PPT");
+            Utils.pptConvert(savePath + newFileName, pptPatch);
         } catch (IOException e) {
             logger.error("Cannot covert to PPT", e);
         }
+
+        File pptPath = new File( pptPatch );
+        this.totalPages = pptPath.listFiles().length;
+        this.path =   rannum + nowTimeStr;
+
 
         HttpServletResponse response = ServletActionContext.getResponse();
         response.setCharacterEncoding("utf-8");
