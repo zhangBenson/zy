@@ -93,7 +93,7 @@ public class MaterialUploadToBetaAction extends BasicAction {
         String newFileName = rannum + nowTimeStr + extName;
 
         fileupload.renameTo(new File(savePath + newFileName));
-        String pptPatch= savePath+"PPT";
+        String pptPatch= savePath+ rannum + nowTimeStr;
         try {
             Utils.pptConvert(savePath + newFileName, pptPatch);
         } catch (IOException e) {

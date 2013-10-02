@@ -369,7 +369,7 @@ public class Utils {
         if (!dst.exists()) {
             dst.mkdirs();
         }
-        String cmd = "cmd /c start " + ServletActionContext.getServletContext().getRealPath("") + "\\PptFormatConverter.exe  " + srcPpt + " " + desDir + " jpg ";
+        String cmd = "cmd.exe /c  " + ServletActionContext.getServletContext().getRealPath("") + "\\PptFormatConverter.exe  " + srcPpt + " " + desDir + " jpg ";      // Change to synce
         Process ps = Runtime.getRuntime().exec(cmd);
     }
 
