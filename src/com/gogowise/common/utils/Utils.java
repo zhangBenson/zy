@@ -461,19 +461,6 @@ public class Utils {
         doCompress(path, 640, 480, 1, "_small", false);
     }
 
-    public static void main(String[] args) throws Exception {
 
-
-        BufferedReader in = new BufferedReader(new InputStreamReader((Runtime
-                .getRuntime().exec("netstat -aon").getInputStream())));
-        String s = "";
-        while (true) {
-            s = in.readLine();
-            if (s == null) {
-                break;
-            }
-            System.out.println(s.toString());
-        }
-    }
 
 }
