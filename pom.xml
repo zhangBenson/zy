@@ -9,6 +9,12 @@
     <name>zy</name>
     <url></url>
 
+    <scm>
+        <connection>scm:git:git://github.com/zhangBenson/zy.git</connection>
+        <developerConnection>scm:git:https://zlhades@github.com/zhangBenson/zy.git</developerConnection>
+        <url>https://github.com/zhangBenson/zy</url>
+    </scm>
+
     <properties>
         <spring.version>3.1.1.RELEASE</spring.version>
         <struts2.version>2.3.1.2</struts2.version>
@@ -40,8 +46,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
                 <configuration>
-                    <source>1.5</source>
-                    <target>1.5</target>
+                    <source>1.6</source>
+                    <target>1.6</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
@@ -126,18 +132,18 @@
                 <version>1.6</version>
                 <executions>
 
-                    <!--<execution>-->
-                        <!--<id>ant-build</id>-->
-                        <!--<phase>initialize</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>run</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<tasks>-->
-                                <!--<ant antfile="build.xml" target="beforeBuild"/>-->
-                            <!--</tasks>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
+                    <execution>
+                        <id>ant-build</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <ant antfile="build.xml" target="beforeBuild"/>
+                            </tasks>
+                        </configuration>
+                    </execution>
 
                     <!--<execution>-->
                         <!--<id>ant-build-All</id>-->
