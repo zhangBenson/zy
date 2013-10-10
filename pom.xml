@@ -126,18 +126,18 @@
                 <version>1.6</version>
                 <executions>
 
-                    <!--<execution>-->
-                        <!--<id>ant-build</id>-->
-                        <!--<phase>initialize</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>run</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<tasks>-->
-                                <!--<ant antfile="build.xml" target="beforeBuild"/>-->
-                            <!--</tasks>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
+                    <execution>
+                        <id>ant-build</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <ant antfile="build.xml" target="beforeBuild"/>
+                            </tasks>
+                        </configuration>
+                    </execution>
 
                     <!--<execution>-->
                         <!--<id>ant-build-All</id>-->
