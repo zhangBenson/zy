@@ -3,7 +3,7 @@ package com.gogowise.rep.course.enity;
 import com.gogowise.rep.AbstractPersistence;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import java.util.Calendar;
 
 /**
@@ -16,8 +16,10 @@ import java.util.Calendar;
 @Entity
 //@Table( name = "CourseMaterial" )
 public class CourseMaterial extends AbstractPersistence {
-    @OneToOne
+    @ManyToOne
     private Course course;
+    @ManyToOne
+    private CourseClass courseClass;
     private int type;
     private String description;
     private Calendar uploadTime;
@@ -100,5 +102,14 @@ public class CourseMaterial extends AbstractPersistence {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public CourseClass getCourseClass() {
+        return courseClass;
+    }
+
+    public void setCourseClass(CourseClass courseClass) {
+        this.courseClass = courseClass;
+        this.course = courseClass.getCourse();
     }
 }

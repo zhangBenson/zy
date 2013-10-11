@@ -19,7 +19,11 @@ import java.util.List;
 public class CourseMaterialDaoImpl extends ModelDaoImpl<CourseMaterial> implements CourseMaterialDao{
 
     public List<CourseMaterial> findByCourseId(Pagination pagination, Integer courseId) {
-        return this.find("From CourseMaterial cm where cm.course.id=? order by cm.uploadTime desc",pagination,courseId);
+        return this.find("From CourseMaterial cm where cm.course.id=? order by cm.uploadTime desc", pagination, courseId);
+    }
+
+    public List<CourseMaterial> findByCourseClassId(Pagination pagination, Integer courseClassId) {
+        return this.find("From CourseMaterial cm where cm.courseClass.id=? order by cm.uploadTime desc", pagination, courseClassId);
     }
 }
 

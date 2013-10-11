@@ -16,4 +16,6 @@ import java.util.List;
 
 public interface CourseMaterialDao extends ModelDao<CourseMaterial> {
      public List<CourseMaterial> findByCourseId(Pagination pagination, Integer courseId);
+
+     public List<CourseMaterial> findByCourseClassId(Pagination pagination, Integer courseId);
 }
