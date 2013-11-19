@@ -95,7 +95,7 @@
                 var jsonRep = $.parseJSON(response);
                 $("#cm_path").val(jsonRep.genFileName);
                 $("#cm_path").val(jsonRep.path);
-                alert(jsonRep.totalPages);
+                alert(jsonRep.totalPages +":" +jsonRep.path);
                 $("#cm_path").val(jsonRep.totalPages);
                 $("#cm_size").val(fileObj.size);
                 $("#cm_upload").html("<s:text name="course.resource.upload.success"/>");

@@ -1,12 +1,13 @@
 package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.common.utils.Constants;
+import com.gogowise.common.utils.Utils;
+import com.gogowise.rep.course.ClassDao;
 import com.gogowise.rep.course.CourseDao;
 import com.gogowise.rep.course.CourseMaterialDao;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.course.enity.CourseMaterial;
-import com.gogowise.common.utils.Constants;
-import com.gogowise.common.utils.Utils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -41,11 +42,13 @@ public class CourseMaterialAction extends BasicAction {
     private static final long serialVersionUID = 2466562905933168403L;
 
     private Course course;
+    private Integer classId;
 
 
     private CourseMaterial courseMaterial;
     private CourseMaterialDao courseMaterialDao;
     private CourseDao courseDao;
+    private ClassDao classDao;
     private List<CourseMaterial> courseMaterials = new ArrayList<CourseMaterial>();
 
     @Action(value = "uploadCourseMaterial",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".uploadCourseMaterial")})
@@ -87,7 +90,13 @@ public class CourseMaterialAction extends BasicAction {
 
         //文件相关属性设置
         courseMaterial.setUploadTime(Calendar.getInstance());
-        courseMaterial.setCourse(courseDao.findById(this.getCourse().getId()));
+
+        if (classId != null) {
+            courseMaterial.setCourseClass(classDao.findById(classId));
+        } else {
+            courseMaterial.setCourse(courseDao.findById(this.getCourse().getId()));
+        }
+
         courseMaterial.setFullPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.getCourse().getId() + "/" + newName);
 
         courseMaterialDao.persistAbstract(courseMaterial);
@@ -146,5 +155,21 @@ public class CourseMaterialAction extends BasicAction {
 
     public void setCourseMaterials(List<CourseMaterial> courseMaterials) {
         this.courseMaterials = courseMaterials;
+    }
+
+    public Integer getClassId() {
+        return classId;
+    }
+
+    public void setClassId(Integer classId) {
+        this.classId = classId;
+    }
+
+    public ClassDao getClassDao() {
+        return classDao;
+    }
+
+    public void setClassDao(ClassDao classDao) {
+        this.classDao = classDao;
     }
 }
