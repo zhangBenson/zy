@@ -1,0 +1,277 @@
+body{
+
+	font-size: 12px;
+	font-family: Verdana, Geneva, sans-serif;
+	color: #000;
+}
+
+
+.footersbg
+{
+	height: 160px;
+	background-color: #555e69;
+	text-align: left;
+	color: #fff;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+}
+
+.footersLogo
+{
+	background-image:url(/images/course/logo2.png);
+	height: 90px;
+	width: 225px;
+	margin-top: 40px; 
+	border-right-width: 1px;
+	border-style:  none  solid none none;
+	background-repeat: no-repeat;
+}
+
+.footersLink
+{
+	margin-left: 80px;
+	margin-top:30px;
+	word-spacing:5pt;
+}
+
+.footersSiteInfo
+{
+	margin-top:50px;
+	margin-left: 80px;
+	word-spacing:5pt;
+
+
+}
+
+.container
+{
+	padding-top: 10px;
+}
+
+.topLogo
+{
+	background-image:url(/images/course/logo.png);
+	height: 50px;
+	width: 215px; 
+}
+.navlink
+{
+	font-family: 'Segoe UI Light',Verdana, Geneva, sans-serif;;
+	font-size: 30px;
+	color: #6ab600;
+}
+
+.thickline
+{
+	height: 5px;width: 100%; background-color: #6ab600;margin-bottom: 10px;
+}
+
+.thicklineExtra
+{
+	height: 5px;width: 80%; background-color: #6ab600;margin-bottom: 10px;
+}
+
+.thinline
+{
+	height: 1px;width: 100%; background-color: #6ab600;margin-top: 5px;
+}
+
+.courseSubject
+{
+	font-size: 36px;
+	color: #6ab600;
+}
+
+.courseSynopsis
+{
+	font-size: 14px;
+	color: #969696;
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+.courseSubhead
+{
+	font-size: 24px;
+	color: #969696;
+}
+
+.courseBody
+{
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 14px;
+	color:#575757;
+	word-spacing:3pt;
+	line-height:20pt;
+}
+
+.lessonOrange
+{
+	width: 210px;
+	height: 74px;
+	background-image: url(/images/course/lessonOrange.png);
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	background-repeat: no-repeat;
+}
+
+.lessonGreen 
+{
+	width: 210px;
+	height: 74px;
+	background-image: url(/images/course/lessonGreen.png);
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	background-repeat: no-repeat;
+}
+
+.lessonOrange #lessonText
+{
+	padding-top: 10px;
+	padding-right: 135px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 30px;
+	color: #fff;
+}
+
+.lessonOrange #lessonName
+{
+	padding-left: 60px;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	color: #999;
+}
+
+.lessonGreen #lessonText
+{
+	padding-top: 10px;
+	padding-right: 135px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 30px;
+	color: #fff;
+}
+
+.lessonGreen #lessonName
+{
+	padding-left: 60px;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	color: #999;
+}
+
+
+.portrait
+{
+	font-size: 12px;
+	font-family: Verdana, Geneva, sans-serif;
+	color: #000;
+	
+}
+
+.portrait span
+{
+	padding-left: 10px;
+}
+
+.portrait img
+{
+	border-radius: 6px;	
+	text-align: left;
+}
+
+.forumContent
+{
+	font-size: 14px;
+	font-family: 'Trebuchet MS', Helvetica, sans-serif;
+	color: #037fac;
+}
+
+.forumContentDate
+{
+	text-align: right;
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.recommended
+{
+	text-align: center;
+	color: #000;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;	
+
+}
+
+.recommended img
+{
+	border-radius: 6px;
+    height:110px;
+    width:200px;
+}
+
+.gogopanelHead
+{
+	border-width: 0px;
+	border-style: solid; 
+	width: 100%;
+	height: 40px;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	background-color: #6ab600;
+	text-align: left;
+
+}
+
+.gogopanelTitle
+{
+	color:#fff;
+	padding-top:5px;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 18px;
+	letter-spacing: 2px;
+	padding-left:20px;
+}
+
+.gogopanelBody
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+
+}
+
+.gogopanelBodyText
+{
+	padding-top: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 10px;
+
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 14px;
+}
+
+.teacherPortrait
+{
+	float:left;
+	margin-right:15px;
+	border-radius: 6px;
+}
+
+.teacherTitle
+{
+	font-family: Verdana, Geneva, sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.basePanel
+{
+	width: 100%;
+	background-color: #f4f4f4;
+	padding-top: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 10px;
+	border-radius: 6px;
+}
