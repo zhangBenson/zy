@@ -48,6 +48,16 @@
         <put-attribute name="mapHeader" value="/jsp/layout/mapHeader.jsp"/>
     </definition>
 
+    <!--************************************************************************************-->
+    <!-- spkang added for show course blog begin  -->
+    <definition name=".courseBodyCenter" template="/jsp/layout/layoutOfCourse.jsp">
+        <put-attribute name="courseTop" value="/jsp/gogowise/course/courseTop.jsp"/>
+        <put-attribute name="courseFooter" value="/jsp/gogowise/course/courseFooter.jsp"/>
+    </definition>
+    <!-- spkang added for show course blog end  -->
+    <!--************************************************************************************-->
+
+
 
    <definition name=".multiVideoSolution" extends=".bodyCenter">
         <put-attribute name="title" value="title.multi.video.solution"/>
@@ -482,6 +492,13 @@
         <put-attribute name="title" value="title.gogowise.course.center"/>
         <put-attribute name="contentBody" value="/jsp/gogowise/course/courseSquare.jsp"/>
     </definition>
+
+    <!-- <
+    <definition name=".courseSquaret" extends=".bodyCenter">
+        <put-attribute name="title" value="title.gogowise.course.center"/>
+        <put-attribute name="contentBody" value="/jsp/gogowise/course/courseSquare.jsp"/>
+    </definition>
+    >-->
     <definition name=".courseHotList" extends=".listCenter">
         <put-attribute name="title" value="title.gogowise.hottest.course"/>
         <put-attribute name="contentLeft" value="/jsp/gogowise/course/list/courseHotList.jsp"/>
@@ -635,11 +652,12 @@
     </definition>
 
 
-
-    <definition name=".voaCourseBlog" extends=".bodyCenter">
+    <!-- changed by spkang begin -->
+    <definition name=".voaCourseBlog" extends=".courseBodyCenter">    <!-- ".bodyCenter" is changed to ".courseBodyCenter" by spkang-->
         <put-attribute name="title" value="title.course.blog"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/course/courseBlog.jsp"/>
+        <put-attribute name="contentBody" value="/jsp/gogowise/course/course.jsp"/>    <!-- "courseBlog.jsp" is changed to "course.jsp"-->
     </definition>
+    <!-- changed by spkang begin -->
 
     <definition name=".orgBlog" extends=".bodyCenter">
         <put-attribute name="title" value="title.course.blog"/>
@@ -1155,5 +1173,9 @@
 
 
     <!-- download related tiles end -->
+
+
+
+
 
 </tiles-definitions>
