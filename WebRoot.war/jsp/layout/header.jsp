@@ -38,10 +38,6 @@
         </p>
         <p class="tel"><s:property value="%{getText('system.contact.tel')}"/><span>4000-211-123</span></p>
 
-        <a href="addLiveGoingAnnouncement.html" class="announce_btn" title="<s:property value="%{getText('live.trailer.announce')}"/>"></a>
-        <s:if test="enteredRoom == null || !enteredRoom"><a class="begin_live act_btn" href="startPersonalOnlive.html"><s:property value="%{getText('frame.index.start.onlive')}"/></a></s:if>
-
-
 </div>
 
 <script type="text/javascript">

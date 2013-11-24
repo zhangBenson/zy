@@ -16,35 +16,6 @@
                         <s:a action="courseSquare"><s:property value="%{getText('frame.course.center')}"/></s:a>
                     </div>
                 </li>
-                <li class="hp_item">
-                    <div class="menu_base menu_base_show">
-                        <s:a action="showSquare"><s:property value="%{getText('frame.show.center')}"/></s:a>
-                    </div>
-                </li>
-                <%--<li class="hp_item">--%>
-                    <%--<div class="menu_base menu_base_live">--%>
-                        <%--<s:a action="liveSquare"><s:property value="%{getText('frame.onlive.center')}"/></s:a>--%>
-                    <%--</div>--%>
-                <%--</li>--%>
-
-
-                  <li class="hp_item">
-                    <div class="menu_base menu_base_download">
-                        <a href="downloadRemoteEye.html"><s:property value="%{getText('download.center')}"/></a>
-                    </div>
-                    <div class="menu_popup popup1">
-                        <ul class="menu_popup_section">
-                            <li><a href="downloadRemoteEye.html"><s:property value="%{getText('control.room.ggw.remote.eye')}"/></a></li>
-                            <li><a href="ggw4android.html"><s:property value="%{getText('download.ggw.interaction')}"/></a></li>
-                        </ul>
-                    </div>
-                </li>
-
-                <%--<li class="hp_item">--%>
-                    <%--<div class="menu_base menu_base_solutions">--%>
-                       <%--<a href="multiVideoSolution.html"><s:property value="%{getText('title.solutions')}"/></a>--%>
-                    <%--</div>--%>
-                <%--</li>--%>
 
                 <li class="hp_item">
                    <div class="menu_base menu_base_userCenter">
@@ -52,11 +23,11 @@
                    </div>
                </li>
 
-                <li class="hp_item">
-                   <div class="menu_base menu_base_map">
-                       <a href="liveBMap2.html"><s:property value="%{getText('live.map')}"/></a>
-                   </div>
-               </li>
+                <%--<li class="hp_item">--%>
+                   <%--<div class="menu_base menu_base_map">--%>
+                       <%--<a href="liveBMap2.html"><s:property value="%{getText('live.map')}"/></a>--%>
+                   <%--</div>--%>
+               <%--</li>--%>
 
 
                 <li class="hp_item">
