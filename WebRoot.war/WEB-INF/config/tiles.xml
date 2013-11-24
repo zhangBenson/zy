@@ -48,14 +48,11 @@
         <put-attribute name="mapHeader" value="/jsp/layout/mapHeader.jsp"/>
     </definition>
 
-    <!--************************************************************************************-->
-    <!-- spkang added for show course blog begin  -->
-    <definition name=".courseBodyCenter" template="/jsp/layout/layoutOfCourse.jsp">
-        <put-attribute name="courseTop" value="/jsp/gogowise/course/courseTop.jsp"/>
-        <put-attribute name="courseFooter" value="/jsp/gogowise/course/courseFooter.jsp"/>
+
+    <definition name=".wwwBodyCenter" template="/jsp/www/layout/layout.jsp">
+        <put-attribute name="top" value="/jsp/www/layout/top.jsp"/>
+        <put-attribute name="footer" value="/jsp/www/layout/footer.jsp"/>
     </definition>
-    <!-- spkang added for show course blog end  -->
-    <!--************************************************************************************-->
 
 
 
@@ -652,21 +649,21 @@
     </definition>
 
 
-    <!-- changed by spkang begin -->
-    <definition name=".voaCourseBlog" extends=".courseBodyCenter">    <!-- ".bodyCenter" is changed to ".courseBodyCenter" by spkang-->
-        <put-attribute name="title" value="title.course.blog"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/course/course.jsp"/>    <!-- "courseBlog.jsp" is changed to "course.jsp"-->
-    </definition>
-    <!-- changed by spkang begin -->
 
-    <definition name=".orgBlog" extends=".bodyCenter">
+    <definition name=".voaCourseBlog" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.course.blog"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/org/orgBlog.jsp"/>
+        <put-attribute name="contentBody" value="/jsp/www/course/courseBlog.jsp"/>
     </definition>
 
-    <definition name=".userBlog" extends=".bodyCenter">
+
+    <definition name=".orgBlog" extends=".wwwBodyCenter">
+        <put-attribute name="title" value="title.course.blog"/>
+        <put-attribute name="contentBody" value="/jsp/www/org/orgBlog.jsp"/>
+    </definition>
+
+    <definition name=".userBlog" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.person.blog"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/user/userBlog.jsp"/>
+        <put-attribute name="contentBody" value="/jsp/www/user/userBlog.jsp"/>
     </definition>
     <definition name=".courseInviteIdentityConfirm" extends=".basic">
         <put-attribute name="title" value="title.invitation.confirm"/>
