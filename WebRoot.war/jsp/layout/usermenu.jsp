@@ -42,6 +42,7 @@
 
 
 
+
         <div class="list">
             <h3 class="h3_title"><s:property value="%{getText('usermenu.item.user.info.setting')}"/></h3>
             <ul>
