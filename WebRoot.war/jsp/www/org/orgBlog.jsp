@@ -12,7 +12,7 @@
 				<h1 class = "courseSubject"><s:property value="org.schoolName"/></h1>
 				<h4 class="courseBody">
 					<s:property value="org.description"/>
-				</h4>
+				</h4>	
 			</div>
 			<br/>
 			<div class="thickline"></div>
@@ -20,7 +20,7 @@
 			<!--school curriculum-->
 			<div id="schoolcurriculum">
 				<div class="row">
-					 <s:iterator value="hotCourses">
+					 <s:iterator value="hotCourses"> <%--hotCourses--%>
 					 	<div class="col-sm-4">
 			               <div class="recommended">
 			                    <s:a action="voaCourseBlog"><s:param name="course.id" value="id"/>
@@ -94,8 +94,8 @@
 					<s:form theme="css_xhtml" name="commentsForm" method="post" action="saveUserBlogComments" validate="true">
 	                <s:hidden name="user.id"/>
 	                <textarea class="form-control" rows="3"></textarea>
-	                <br/>
-	                <input type="button" id="message_submit_btn" class="btn btn-primary btn-lg btn-block" value="提交留言" />
+	                <br/>	
+	                <input type="button" id="message_submit_btn" class="btn btn-primary btn-lg btn-block" value="提交留言" 	 />
 	            	</s:form>
 				</div>
 			</div>
@@ -139,12 +139,13 @@
 				
 				<div class="gogopanelWhole">
 					<div class="gogopanelBodyText">
-						<s:iterator value="hotTeachers">
-			                <a href="userBlog.html?user.id=<s:property value="course.teacher.id"/>" title="<s:property value="course.teacher.nickName"/>"><img class="teacherPortrait" src="<s:property value="course.teacher.pic"/>"/></a>
+						<s:iterator value="hotTeachers" status="idx">
+							<p class="teacherTitle"><s:property value="nickName"/></p>
+			                <a href="userBlog.html?user.id=<s:property value="id"/>" title="<s:property value="nickName"/>"><img class="teacherPortrait" src="<s:property value="pic"/>"/></a>
 			                <div>
-			                <p class="teacherTitle"><s:property value="nickName"/></p>
-			                <br/>
-			                <p><s:property value="course.teacher.selfDescription"/></p>
+				                <p class="teacherTitle"><s:property value="nickName"/></p>
+				                <br/>
+				                <p><s:property value="selfDescription"/></p>
 			                </div>
 			                <s:if test="!#idx.last">
 			                	<div class="thicklineExtra"></div>
@@ -162,11 +163,11 @@
 				<div class="gogopanelBody">
 					<div class="gogopanelBodyText">
 						<s:iterator value="latestTeachers" status="idx">
-			                <a href="userBlog.html?user.id=<s:property value="course.teacher.id"/>" title="<s:property value="course.teacher.nickName"/>"><img class="teacherPortrait" src="<s:property value="course.teacher.pic"/>"/></a>
+			                <a href="userBlog.html?user.id=<s:property value="id"/>" title="<s:property value="nickName"/>"><img class="teacherPortrait" src="<s:property value="pic"/>"/></a>
 			                <div>
-			                <p class="teacherTitle"><s:property value="nickName"/></p>
-			                <br/>
-			                <p><s:property value="course.teacher.selfDescription"/></p>
+				                <p class="teacherTitle"><s:property value="nickName"/></p>
+				                <br/>
+				                <p><s:property value="selfDescription"/></p>
 			                </div>
 			                <s:if test="!#idx.last">
 			                	<div class="thicklineExtra"></div>
@@ -211,9 +212,9 @@
 				<div class="gogopanelBody">
 					<div class="gogopanelBodyText">
 						<div class="row">
-							<div class="col-md-4"><img class="teacherPortrait" src="/images/org/portrait2.jpg"  /></div>
-							<div class="col-md-4"><img class="teacherPortrait" src="/images/org/portrait4.jpg"  /></div>
-							<div class="col-md-4"><img class="teacherPortrait" src="/images/org/portrait5.jpg"  /></div>
+							<div class="col-md-4"><img class="teacherPortrait" src="/images/defaultImgs/portrait.png"  /></div>
+							<div class="col-md-4"><img class="teacherPortrait" src="/images/defaultImgs/portrait.png"  /></div>
+							<div class="col-md-4"><img class="teacherPortrait" src="/images/defaultImgs/portrait.png"  /></div>
 						</div>
 						
 						<br/>

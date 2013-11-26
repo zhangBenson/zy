@@ -98,7 +98,7 @@
                 <div class="courseSubhead"><s:property value="%{getText('recommend.course')}"/></div>
                 <br/>
                 <div class="row">
-                    <s:iterator value="courses2teacher">
+                    <s:iterator value="hotCourses"><%--courses2teacher--%>
                         <div class="col-sm-4">
                             <div class="recommended">
                                 <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>">
@@ -135,13 +135,13 @@
                             <p></p>
                             <br/>
                         </div>
-                        <div class="thicklineExtra"></div>
+                        <%-- <div class="thicklineExtra"></div>
                         <img class="teacherPortrait" src="/images/course/portrait1.jpg"  />
                         <div>
                             <p class="teacherTitle">Name</p>
                             <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
 
-                        </div>
+                        </div>--%>
                     </div>
                 </div>
 
@@ -180,9 +180,9 @@
                 <div class="gogopanelBody">
                     <div class="gogopanelBodyText">
                         <div class="row">
-                            <div class="col-md-4"><img class="teacherPortrait" src="/images/course/portrait2.jpg"  /></div>
-                            <div class="col-md-4"><img class="teacherPortrait" src="/images/course/portrait4.jpg"  /></div>
-                            <div class="col-md-4"><img class="teacherPortrait" src="/images/course/portrait5.jpg"  /></div>
+                            <div class="col-md-4"><img class="teacherPortrait" src="images/defaultImgs/portrait.png"  /></div>
+                            <div class="col-md-4"><img class="teacherPortrait" src="images/defaultImgs/portrait.png"  /></div>
+                            <div class="col-md-4"><img class="teacherPortrait" src="images/defaultImgs/portrait.png"  /></div>
                         </div>
 
                         <br/>
