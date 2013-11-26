@@ -21,10 +21,12 @@
                 <h1 class = "lecturerTitle">Computer Science</h1>
                 <h1 class = "lecturerTitle">Rice University</h1>
                 <br>
-                <h4 class="courseBody">
-                    <s:property value="user.selfDescription"/>
-                    <%--Joe Warren is a Professor in the Department of Computer Science at Rice University. His main area of research interest is computer graphics and geometric modeling, where he has published extensively. He is the author of the book Subdivision Methods for Geometric Design. He also has a love for computer gaming, both playing games and teaching students how to build them. He has taught the Department’s introduction to game creation course as well as its senior-level game design course in collaboration with Houston game professionals for over a decade. Joe was an undergraduate at Rice from 1979-1983 and received his Ph.D. from Cornell in 1986. He has been a professor at Rice ever since and currently serves as the Chair of the Department.--%>
-                </h4>
+                <div style="clear: left">
+                     <h4 class="courseBody">
+                        <s:property value="user.selfDescription"/>
+                        <%--Joe Warren is a Professor in the Department of Computer Science at Rice University. His main area of research interest is computer graphics and geometric modeling, where he has published extensively. He is the author of the book Subdivision Methods for Geometric Design. He also has a love for computer gaming, both playing games and teaching students how to build them. He has taught the Department’s introduction to game creation course as well as its senior-level game design course in collaboration with Houston game professionals for over a decade. Joe was an undergraduate at Rice from 1979-1983 and received his Ph.D. from Cornell in 1986. He has been a professor at Rice ever since and currently serves as the Chair of the Department.--%>
+                    </h4>
+                </div>
 
             </div>
             <br/>
