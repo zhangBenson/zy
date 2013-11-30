@@ -23,6 +23,7 @@ public class Constants {
     public static final String UPLOAD_IMAGE_PATH_FOR_COURSE = "/upload/images/course";
 
     public static final String ORG_LOGO_PATH = "/orgLogo/";
+    public static final String ORG_ADV_PATH = "/orgAdv/";
     public static final String USER_PORTRAIT_PATH = "/userPortrait";
 
     public static final String UPLOAD_COMPETITION_IMAGE_PATH = "/upload/images/competition";

@@ -180,7 +180,7 @@ li.fileUploadDiv{
 }
 
 #orgLeagueDiv #orgCenterDiv {
-    background: url(../../images/orgLeague/contentbg.gif)  no-repeat;
+    /*background: url(../../images/orgLeague/contentbg.gif)  no-repeat;*/
     float: left;
 	margin-top: 20px;
 	margin-right: 40px;

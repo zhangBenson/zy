@@ -36,7 +36,7 @@
             <%--<a href="javascript:;">站点地图</a> /--%>
             <a href="aboutUs.html"><s:property value="%{getText('link.contact.us')}"/></a>
         </p>
-        <p class="tel"><s:property value="%{getText('system.contact.tel')}"/><span>4000-211-123</span></p>
+        <p class="tel"><s:property value="%{getText('system.contact.tel')}"/><span>4000-211-123</span> <s:property value="#session.HIG_SEC_USER_EMAIL"/></p>
 
 </div>
 

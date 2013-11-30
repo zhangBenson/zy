@@ -35,6 +35,7 @@ public class Organization extends AbstractPersistence {
 
     private String description;
     private String logoUrl;
+    private String advUrl;
     private String businessLicenseUrl;
 
 
@@ -252,5 +253,13 @@ public class Organization extends AbstractPersistence {
 
     public void setFansNum(Integer fansNum) {
         this.fansNum = fansNum;
+    }
+
+    public String getAdvUrl() {
+        return advUrl;
+    }
+
+    public void setAdvUrl(String advUrl) {
+        this.advUrl = advUrl;
     }
 }

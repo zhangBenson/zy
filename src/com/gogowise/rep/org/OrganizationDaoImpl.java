@@ -38,7 +38,7 @@ public class OrganizationDaoImpl extends ModelDaoImpl<Organization> implements O
     }
 
     public List<Organization> findOngoingForAdmin(){
-        String hql = "select o from Organization o where o.confirmed = false  and o.creator is not null and o.reviewer is null order by o.id desc ";
+        String hql = "select o from Organization o order by o.id desc ";
         return this.find(hql);
     }
 
