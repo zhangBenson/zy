@@ -13,8 +13,10 @@
     <div class="split_bor"></div>
     <ul class="nothing">
         <li><s:property value="%{getText('system.contact.tel')}"/>4000-211-123</li>
-        <li><s:property value="%{getText('label.our.number')}"/>：0773-28335500</li>
-        <li>gogowise@hotmail.com</li>
+        <%--<li><s:property value="%{getText('label.our.number')}"/>：0773-28335500</li>--%>
+        <li>email:service@gogowise.com</li>
+        <li>address: E4-06-12, Engineering drive 2, Singapore 117576</li>
+
     </ul>
 </div>
 
