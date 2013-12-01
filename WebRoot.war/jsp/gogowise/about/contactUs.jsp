@@ -16,24 +16,18 @@
     </div>
     <div class="rtCont">
         <p>
-            <s:property value="%{getText('contact.us.1')}"/><br/>
-            <s:property value="%{getText('contact.us.2')}"/><br/>
-            <s:property value="%{getText('contact.us.3')}"/><br/>
+            The Gogowise team is constantly striving for greater heights. If you would like to explore business opportunities with us, pass us your contact details at team@gogowise.com and our business team will get back to you right away!
         </p>
 
 
         <p>
-            <s:property value="%{getText('contact.us.4')}"/><br/>
-            <s:property value="%{getText('contact.us.5')}"/> <br/>
-            <s:property value="%{getText('contact.us.6')}"/> <br/>
-            <s:property value="%{getText('contact.us.7')}"/> <br/>
-            <s:property value="%{getText('contact.us.8')}"/>
+            We thank you for your patience as we are steadily building the system.  We appreciate any feedback or suggestions that you might have. Feel free to drop us a mail at service@gogowise.com, we would love to hear from you!
         </p>
 
         <p>
-            <s:property value="%{getText('contact.us.9')}"/> <br/>
-            <s:property value="%{getText('contact.us.10')}"/><br/>
-            <s:property value="%{getText('contact.us.11')}"/><br/>
+            Have some questions or facing some problems?  <br/>
+            Contact us at support@gogowise.com and our support team will get back to you as soon as possible.
+
         </p>
     </div>
 </div>

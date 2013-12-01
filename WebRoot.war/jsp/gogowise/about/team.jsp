@@ -19,7 +19,7 @@
     <div class="rtCont">
         <div class="founder_box fl">
             <div class="fl img_wrapper">
-                <img src="images/about/Zeng_Zeng.jpg" alt="曾锃">
+                <%--<img src="images/about/Zeng_Zeng.jpg" alt="曾锃">--%>
             </div>
             <div class="fl desc_wrapper">
                 <h2 class=""><strong>Zeng Zeng</strong></h2>
