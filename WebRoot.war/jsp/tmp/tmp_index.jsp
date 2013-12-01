@@ -575,6 +575,7 @@ textarea, input {
     </div>
     <div class="beginExp">
       <div class="expImg"></div>
+        *****
       <span class="expWords"><s:property value="%{getText('label.have.a.try')}" /></span>
     </div>
     <div class="courseEntry">
