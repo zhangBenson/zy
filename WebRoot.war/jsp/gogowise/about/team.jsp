@@ -19,26 +19,26 @@
     <div class="rtCont">
         <div class="founder_box fl">
             <div class="fl img_wrapper">
-                <img src="images/about/Zeng_Zeng.jpg" alt="曾锃">
+                <%--<img src="images/about/Zeng_Zeng.jpg" alt="曾锃">--%>
             </div>
             <div class="fl desc_wrapper">
-                <h2 class=""><strong>曾锃</strong></h2>
-                <h3 class="orange">创始人、董事长兼CEO</h3>
+                <h2 class=""><strong>Zeng Zeng</strong></h2>
+                <h3 class="orange">Founder and CEO</h3>
                 <p class="founder_box_desc">
-                    主要从事分布式计算，并行计算方面的科研工作，现为新加坡国立大学高级研究员，从事的科研项目为云中云的研究。同时创办了长沙知金电子科技有限公司，建立了知元网，联合长沙超级计算中心，为广大的师生用户提供免费的虚拟教育网络平台，实现教育资源的垮区域共享。已发表国际高水平期刊，会议论文30余篇，最近一篇为UCC2012,为云计算领域的顶级会议。已有专利6个，软件著作2个，获新加坡A*STAR优秀项目奖两次，获长沙市313海外高端人才奖。长沙高新区优秀创业人才奖。
+                    Zeng Zeng received the Ph.D. in electrical and computer engineering from The National University of Singapore, in 2005. He received his BS and MS degrees in automatic control from Huazhong University of Science and Technology, Wuhan, P.R. China, in 1997 and 2000, respectively. His research interests include cloud education and training, cloud computing/storage, distributed/grid computing systems, multimedia storage systems, and controller area networks.
+                    <br/>Having worked as an associate professor at Hunan University and now a senior research fellow at The National University of Singapore, Zeng is spearheading the setup of Gogowise’s headquarters in Singapore. Under his leadership, the company was recently awarded the iJAM funding from the Media Development Authority of Singapore.
                 </p>
         </div>
         </div>
         <div class="founder_box fl">
             <div class="fl img_wrapper">
-                <img src="images/about/Zhan_Lin.jpg" alt="张林">
+                <%--<img src="images/about/Zhan_Lin.jpg" alt="张林">--%>
             </div>
             <div class="fl desc_wrapper">
-                <h2 class=""><strong>张林</strong></h2>
-                <h3 class="orange">技术总监</h3>
+                <h2 class=""><strong>Jeremy Heng</strong></h2>
+                <h3 class="orange">Co-founder and Director</h3>
                 <p class="founder_box_desc">
-                    张林， 8年工作经验，一直从事J2EE和云平台的企业解决方案。<br/>
-                    前DELL项目经理， 有多年项目管理的经验。参于知元项目开发与管理，并和公司团队一起成长。
+                    Jeremy graduated from National University of Singapore with a B. Eng and did his MBA at Nanyang Technological University. He is currently the deputy director at Advanced Digital Sciences Center and is responsible for the day-to-day operations and commercialization of its technologies. Over the years, he has been involved in a number of start-ups and has worked with them to provide guidance in terms of strategy and fundraising. With Jeremy’s exposure in the regional start-up scene, his role in the Gogowise founding team is irreplaceable. Leading the business team, he seamlessly complements Dr Zeng’s technical expertise.
                 </p>
             </div>
         </div>
@@ -59,44 +59,37 @@
         <%--</div>--%>
         <div class="founder_box fl">
             <div class="fl img_wrapper">
-                <img src="images/about/Wang_Chengan.jpg" alt="王成安">
+                <%--<img src="images/about/Wang_Chengan.jpg" alt="王成安">--%>
             </div>
             <div class="fl desc_wrapper">
-                <h2 class=""><strong>王成安</strong></h2>
-                <h3 class="orange">J2EE软件工程师，Android软件开发工程师</h3>
+                <h2 class=""><strong>Dr. Zeng Lingfang</strong></h2>
+                <h3 class="orange">Co-founder and System Architect</h3>
                 <p class="founder_box_desc">
-                    本科毕业于湖南大学，获电子工程学士学位。在湖南大学获得计算机科学硕士学位，研究方向主要为垂直搜索和云计算。<br/>
-                    2009年至2011年担任达内科技有限公司高级Java开发工程师，先后参加多个商用项目，如中国电信公司的计费系统等，后在亚信联创公司任职数月。<br/>
-                    2012年正式加入知金电子科技有限公司（长沙），负责系统和Android客户端的研发工作。 <br/>
+                    Zeng Lingfang received his B.S. in applied computer from Huazhong University of Science and Technology (HUST), Wuhan, China in 2000, M.S. in applied computer from China University of Geoscience, China in 2003 and PhD in computer architecture, from HUST in 2006. His research interests include data center technology, cloud computing, in-memory computing and ubiquitous location-aware computing. He is currently with Wuhan National Lab for Optoelectronics, and School of Computer, HUST, as an associate professor.
                 </p>
             </div>
         </div>
         <div class="founder_box fl">
             <div class="fl img_wrapper">
-                <img src="images/about/Wang_Yanmin.jpg" alt="王艳敏">
+                <%--<img src="images/about/Wang_Yanmin.jpg" alt="王艳敏">--%>
             </div>
             <div class="fl desc_wrapper">
-                <h2 class=""><strong>王艳敏</strong></h2>
-                <h3 class="orange">视觉设计师</h3>
+                <h2 class=""><strong>Dr. Zhang Wei</strong></h2>
+                <h3 class="orange">Co-founder and IE Scientist</h3>
                 <p class="founder_box_desc">
-                    毕业于中南大学建筑与艺术学院视觉传达系,主要从事网页设计，海报设计，书籍装帧设计，包装设计，品牌形象设计。<br/>
-                    2010年加入中南大学毕业生就业指导中心，负责就业网页面设计与培训。<br/>
-                    2011年担任集智品牌创意设计公司设计师，负责网页设计，画册设计，包装设计。<br/>
-                    2012年加入知金电子科技有限公司，全权负责网站网页设计。<br/>
+                    Zhang Wei obtained the Ph.D in computer science from National University of Singapore in 2013. He received BE from Harbin Institute of Technology in 2008. His research interests include Information Extraction and Web Search. He had published 8 papers in the top international conference. He also was involved in the industry projects funded by Microsoft, Baidu or NUS. His IE system achieves second best performance in the international IE competition organised by NIST, US.
                 </p>
             </div>
         </div>
         <div class="founder_box fl">
             <div class="fl img_wrapper">
-                <img src="images/about/Yuan_Yongzhi.jpg" alt="苑永志">
+                <%--<img src="images/about/Yuan_Yongzhi.jpg" alt="苑永志">--%>
             </div>
             <div class="fl desc_wrapper">
-                <h2 class=""><strong>苑永志</strong></h2>
-                <h3 class="orange">WEB前端开发工程师</h3>
+                <h2 class=""><strong>Tan Hui (Robyn)</strong></h2>
+                <h3 class="orange">Business Development Assistant</h3>
                 <p class="founder_box_desc">
-                    毕业于湖南师范大学，获软件工程学士学位。<br/>
-                    2009年至2011年担任长沙蓝杰信息科技有限公司高级Java开发工程师，先后参与了Chat Here即时聊天系统和ERMS电子文档管理系统的研发工作。<br/>
-                    2012年正式加入知金电子科技有限公司（长沙），参与知元网的研发工作，负责Web前端的研发工作。<br/>
+                    Robyn graduated from Singapore Management University with a BS degree in Economics in 2012. Her interest in developing ideas has drawn her to the startup scene in 2011. The roles she adopted in the various startup teams previously mainly focused on design, marketing and business development. Keen to further hone her skills, she joined the Gogowise team under the mentorship of Dr Zeng Zeng and Jeremy to manage the business side of matters in the company.
                 </p>
           </div>
         </div>

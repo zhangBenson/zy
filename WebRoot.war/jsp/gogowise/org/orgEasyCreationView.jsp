@@ -61,10 +61,27 @@
                     <div id="fileQueue"></div>
                 </li>
                 <li class="long_li">
+                    <div class="option_tittle">广告照片</div>
+                    <div  class="option_tittle">
+                        <img class="courseimg" style="height: 60px;width: 120px" src="<s:property value="org.advUrl" />" onerror="javascript:this.src='images/nopic.jpg'"/>
+                    </div>
+                    <p id="secondStepFileWarn" class="input_msg"></P>
+                    <s:hidden name="advUrl" id="advUrl"/>
+                    <div id="fileQueue"></div>
+                </li>
+                <li class="long_li">
+                    <div class="option_tittle">描述</div>
+                    <div class="input_content"><s:property value="org.description"/></div>
+                </li>
+                    <%--<li class="long_li" style="height: 100px">--%>
+                    <%--</li>--%>
+                <li class="long_li">
                     <s:a cssClass="edit_btn" action="higSecOrgCreateInit"><s:param name="org.id" value="org.id"/> 编辑</s:a>
                     <s:a cssClass="edit_btn" action="higSecOrgCreateInit">增加新的组织</s:a>
                     <s:a cssClass="edit_btn" action="higSecOrgListView"> 返回组织列表</s:a>
                 </li>
+
+
 
                 <%--<li class="short_li">--%>
                     <%--<div class="option_tittle">组织合同签署日期</div>--%>

@@ -854,7 +854,9 @@ public class UserAction extends BasicAction {
         }
         if (user == null) {
             addFieldError("user.email", this.getText("message.logon.account.not.exist"));
-        } else if (!user.getPassword().equals(MD5.endCode(this.user.getPassword()))) {
+        } else if (user.getPassword() == null) {
+            addFieldError("user.password", this.getText("message.logon.password.missing"));
+        }else if (!user.getPassword().equals(MD5.endCode(this.user.getPassword()))) {
             addFieldError("user.password", this.getText("message.logon.password.error"));
         } else if ((Integer) ActionContext.getContext().getSession().get("logonTimes") > 0 && yzmCode != null &&
                 !yzmCode.equalsIgnoreCase((String) ActionContext.getContext().getSession().get("validationCode"))) {

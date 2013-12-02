@@ -158,10 +158,12 @@
         <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/gogowise?useUnicode=true&amp;characterEncoding=utf8"/>
         <property name="user" value="${db.user}"/>
         <property name="password" value="${db.password}"/>
-        <property name="maxPoolSize" value="15"></property>
-        <property name="minPoolSize" value="5"></property>
-        <property name="initialPoolSize" value="5"></property>
-        <property name="maxIdleTime" value="120"></property>
+        <property name="maxPoolSize" value="30" />
+        <property name="minPoolSize" value="10" />
+        <property name="maxIdleTime" value="1800" />
+        <property name="maxStatements" value="0" />
+        <property name="initialPoolSize" value="10" />
+        <property name="idleConnectionTestPeriod" value="1800" />
     </bean>
 
     <bean id="transactionManager"
