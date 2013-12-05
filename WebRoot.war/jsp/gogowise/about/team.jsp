@@ -57,42 +57,42 @@
                 <%--</p>--%>
             <%--</div>--%>
         <%--</div>--%>
-        <div class="founder_box fl">
-            <div class="fl img_wrapper">
-                <%--<img src="images/about/Wang_Chengan.jpg" alt="王成安">--%>
-            </div>
-            <div class="fl desc_wrapper">
-                <h2 class=""><strong>Dr. Zeng Lingfang</strong></h2>
-                <h3 class="orange">Co-founder and System Architect</h3>
-                <p class="founder_box_desc">
-                    Zeng Lingfang received his B.S. in applied computer from Huazhong University of Science and Technology (HUST), Wuhan, China in 2000, M.S. in applied computer from China University of Geoscience, China in 2003 and PhD in computer architecture, from HUST in 2006. His research interests include data center technology, cloud computing, in-memory computing and ubiquitous location-aware computing. He is currently with Wuhan National Lab for Optoelectronics, and School of Computer, HUST, as an associate professor.
-                </p>
-            </div>
-        </div>
-        <div class="founder_box fl">
-            <div class="fl img_wrapper">
-                <%--<img src="images/about/Wang_Yanmin.jpg" alt="王艳敏">--%>
-            </div>
-            <div class="fl desc_wrapper">
-                <h2 class=""><strong>Dr. Zhang Wei</strong></h2>
-                <h3 class="orange">Co-founder and IE Scientist</h3>
-                <p class="founder_box_desc">
-                    Zhang Wei obtained the Ph.D in computer science from National University of Singapore in 2013. He received BE from Harbin Institute of Technology in 2008. His research interests include Information Extraction and Web Search. He had published 8 papers in the top international conference. He also was involved in the industry projects funded by Microsoft, Baidu or NUS. His IE system achieves second best performance in the international IE competition organised by NIST, US.
-                </p>
-            </div>
-        </div>
-        <div class="founder_box fl">
-            <div class="fl img_wrapper">
-                <%--<img src="images/about/Yuan_Yongzhi.jpg" alt="苑永志">--%>
-            </div>
-            <div class="fl desc_wrapper">
-                <h2 class=""><strong>Tan Hui (Robyn)</strong></h2>
-                <h3 class="orange">Business Development Assistant</h3>
-                <p class="founder_box_desc">
-                    Robyn graduated from Singapore Management University with a BS degree in Economics in 2012. Her interest in developing ideas has drawn her to the startup scene in 2011. The roles she adopted in the various startup teams previously mainly focused on design, marketing and business development. Keen to further hone her skills, she joined the Gogowise team under the mentorship of Dr Zeng Zeng and Jeremy to manage the business side of matters in the company.
-                </p>
-          </div>
-        </div>
+        <%--<div class="founder_box fl">--%>
+            <%--<div class="fl img_wrapper">--%>
+                <%--&lt;%&ndash;<img src="images/about/Wang_Chengan.jpg" alt="王成安">&ndash;%&gt;--%>
+            <%--</div>--%>
+            <%--<div class="fl desc_wrapper">--%>
+                <%--<h2 class=""><strong>Dr. Zeng Lingfang</strong></h2>--%>
+                <%--<h3 class="orange">Co-founder and System Architect</h3>--%>
+                <%--<p class="founder_box_desc">--%>
+                    <%--Zeng Lingfang received his B.S. in applied computer from Huazhong University of Science and Technology (HUST), Wuhan, China in 2000, M.S. in applied computer from China University of Geoscience, China in 2003 and PhD in computer architecture, from HUST in 2006. His research interests include data center technology, cloud computing, in-memory computing and ubiquitous location-aware computing. He is currently with Wuhan National Lab for Optoelectronics, and School of Computer, HUST, as an associate professor.--%>
+                <%--</p>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <%--<div class="founder_box fl">--%>
+            <%--<div class="fl img_wrapper">--%>
+                <%--&lt;%&ndash;<img src="images/about/Wang_Yanmin.jpg" alt="王艳敏">&ndash;%&gt;--%>
+            <%--</div>--%>
+            <%--<div class="fl desc_wrapper">--%>
+                <%--<h2 class=""><strong>Dr. Zhang Wei</strong></h2>--%>
+                <%--<h3 class="orange">Co-founder and IE Scientist</h3>--%>
+                <%--<p class="founder_box_desc">--%>
+                    <%--Zhang Wei obtained the Ph.D in computer science from National University of Singapore in 2013. He received BE from Harbin Institute of Technology in 2008. His research interests include Information Extraction and Web Search. He had published 8 papers in the top international conference. He also was involved in the industry projects funded by Microsoft, Baidu or NUS. His IE system achieves second best performance in the international IE competition organised by NIST, US.--%>
+                <%--</p>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <%--<div class="founder_box fl">--%>
+            <%--<div class="fl img_wrapper">--%>
+                <%--&lt;%&ndash;<img src="images/about/Yuan_Yongzhi.jpg" alt="苑永志">&ndash;%&gt;--%>
+            <%--</div>--%>
+            <%--<div class="fl desc_wrapper">--%>
+                <%--<h2 class=""><strong>Tan Hui (Robyn)</strong></h2>--%>
+                <%--<h3 class="orange">Business Development Assistant</h3>--%>
+                <%--<p class="founder_box_desc">--%>
+                    <%--Robyn graduated from Singapore Management University with a BS degree in Economics in 2012. Her interest in developing ideas has drawn her to the startup scene in 2011. The roles she adopted in the various startup teams previously mainly focused on design, marketing and business development. Keen to further hone her skills, she joined the Gogowise team under the mentorship of Dr Zeng Zeng and Jeremy to manage the business side of matters in the company.--%>
+                <%--</p>--%>
+          <%--</div>--%>
+        <%--</div>--%>
          <%--<div class="founder_box fl">--%>
             <%--<div class="fl img_wrapper">--%>
                 <%--<img src="images/about/Zhou_LingMin.jpg" alt="周伶敏">--%>

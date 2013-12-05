@@ -6,7 +6,7 @@
     <h3 class="h3_title h_title"><s:property value="%{getText('link.about.us')}"/></h3>
     <ul class="handle">
         <li>•<a href="aboutUs.html"><s:property value="%{getText('nav.firm.info')}"/></a></li>
-        <li>•<a href="team.html"><s:property value="%{getText('nav.team.info')}"/></a></li>
+        <li>•<a href="team.html">Management Profile</a></li>
         <li>•<a href="history.html"><s:property value="%{getText('nav.development.history')}"/></a></li>
         <li>•<a href="contactUs.html"><s:property value="%{getText('nav.contact.us')}"/></a></li>
     </ul>
