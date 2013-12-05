@@ -68,7 +68,7 @@ body{
 
 .thicklineExtra
 {
-	height: 5px;width: 80%; background-color: #6ab600;margin-bottom: 10px;
+	height: 5px;width: 100%; background-color: #6ab600;margin-bottom: 10px;
 }
 
 .thinline
@@ -135,7 +135,9 @@ body{
 
 .lessonOrange #lessonName
 {
-	padding-left: 60px;
+	/*padding-left: 60px;*/
+    padding-left: 75px;
+    text-align: left;
 	font-family: Verdana, Geneva, sans-serif;
 	font-size: 12px;
 	color: #999;
@@ -152,7 +154,9 @@ body{
 
 .lessonGreen #lessonName
 {
-	padding-left: 60px;
+	/*padding-left: 60px;*/
+    padding-left: 75px;
+    text-align: left;
 	font-family: Verdana, Geneva, sans-serif;
 	font-size: 12px;
 	color: #999;
@@ -176,6 +180,8 @@ body{
 {
 	border-radius: 6px;	
 	text-align: left;
+    height: 56px;
+    width: 56px;
 }
 
 .forumContent
@@ -212,7 +218,9 @@ body{
 
 .recommended img
 {
-	border-radius: 6px;	
+	border-radius: 6px;
+    height: 110px;
+    width:220px;
 }
 
 .gogopanelHead
@@ -272,6 +280,8 @@ body{
 	float:left;
 	margin-right:15px;
 	border-radius: 6px;
+    height: 56px;
+    width: 56px
 }
 
 .teacherPortraitRight
@@ -309,6 +319,11 @@ body{
 	text-align: center;
 }
 
+.bannerImg
+{
+	border-radius: 10px;
+}
+
 
 .schoolPortrait
 {
@@ -339,6 +354,8 @@ body{
 	-moz-box-shadow: 3px 3px 4px #000;
     -webkit-box-shadow: 3px 3px 4px #000;
     box-shadow: 3px 3px 4px #000;
+    width: 300px;
+    height: 300px;
 }
 
 .lecturerName
@@ -357,3 +374,62 @@ body{
 	font-family: Verdana, Geneva, sans-serif;
 }
 
+.coursePanel
+{
+	width: 100%;
+	height: 125px;
+	border-radius: 6px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #999;
+	text-align: center;
+	margin-top: 25px;
+
+}
+
+.coursePanelPortrait
+{
+	margin-right: 20px;
+	margin-left:15px;
+	border-radius: 6px;
+	margin-top: 20px;
+	width: 150px;
+	height: 83px;
+}
+
+.coursePanelName
+{
+	float:left;
+	margin-left:15px;
+	border-radius: 6px;
+}
+
+.coursePanelInfoRight
+{
+	margin-top: 20px;
+	margin-left:15px;
+	border-radius: 6px;
+	text-align: left;
+}
+
+.coursePanelInfoLeft
+{
+	float:left;
+}
+
+
+a:hover .coursePanel 
+{
+	background-color: #6ab600;
+	border-width: 1px;
+	border-color: #6ab600;
+	color: #fff;
+	text-decoration:underline;
+}
+
+
+.downloadIcon
+{
+	width: 45px;
+	height: 45px;
+}

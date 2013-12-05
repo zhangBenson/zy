@@ -92,10 +92,15 @@
         <put-attribute name="bottom" value="/jsp/layout/footer.jsp"/>
     </definition>
 
-     <definition name=".index" extends=".bodyCenter">
+     <!--<definition name=".index" extends=".bodyCenter">-->
+        <!--<put-attribute name="title" value="title.index"/>-->
+         <!--<put-attribute name="contentBody" value="/jsp/gogowise/index.jsp"/>-->
+     <!--</definition>-->
+
+    <definition name=".index" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.index"/>
-         <put-attribute name="contentBody" value="/jsp/gogowise/index.jsp"/>
-     </definition>
+        <put-attribute name="contentBody" value="/jsp/gogowise/index.jsp"/>
+    </definition>
 
     <!-- course competition -->
     <definition name=".courseCompetition" extends=".bodyCenter">
