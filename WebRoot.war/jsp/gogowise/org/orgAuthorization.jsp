@@ -124,10 +124,12 @@
                   return false;
              }else{
                  var officer = $(".authorization_input").val().replace(/(^\s*)|(\s*$)/g, "");
-                 if(emailContent == officer){
-                    $(".authorization_input_msg").html("<div class='error'></div>"+officerAuthorizationSameError);
-                    return false;
-                 }
+//                 if(emailContent == officer){
+//                     alert($(".authorization_input")[0].outerHTML);
+//                     alert(officer);
+//                    $(".authorization_input_msg").html("<div class='error'></div>"+officerAuthorizationSameError);
+//                    return false;
+//                 }
                  var mySession = "<s:property value="#session.email"/>";
                  if(emailContent == mySession){
                      $(".authorization_input_msg").html(warnDiv + "<s:text name='course.email.input.myself'/>");

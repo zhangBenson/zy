@@ -249,6 +249,7 @@ public class CourseAction extends BasicAction {
         if (Constants.COURSE_TYPE_ORG.equals(this.getCourseType())) {
             Organization orgTmp = organizationDao.findMyOrg(super.getSessionUserId());
             if(orgTmp != null) orgs.put(orgTmp.getId(), orgTmp.getSchoolName());
+            //TODO　load all teacher for org.
         }
         return SUCCESS;
     }

@@ -127,7 +127,11 @@ public class Course extends AbstractPersistence {
     }
 
     public void setTeacher(BaseUser teacher) {
-        teachers.set(0,teacher);
+        if (teachers.size() == 0 ) {
+            this.addTeacher(teacher);
+        } else {
+            teachers.set(0,teacher);
+        }
     }
 
     public BaseUser getCameraMan() {

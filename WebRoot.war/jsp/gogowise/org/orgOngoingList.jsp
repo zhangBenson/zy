@@ -45,7 +45,11 @@
                 <td height="72"><img src="<s:property value="logoUrl"/>" width="196" height="62" /></td>
                 <td><s:property value="responsiblePerson.email" /> </td>
                 <td><s:property value="responsiblePerson.nickName" /> </td>
-                <td><s:property value="schoolName" /></td>
+                <td>
+                    <s:a action="initOrgAuthorization">
+                        <s:property value="schoolName" />
+                    </s:a>
+                </td>
                 <td><s:property value="cellPhone" /></td>
                 <%--<td><s:property value="creator.email" /></td>--%>
                 <td><s:property value="confirmed" /></td>
