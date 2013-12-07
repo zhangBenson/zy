@@ -58,19 +58,19 @@ public class BasicAction extends ActionSupport {
         ActionContext ctx = ActionContext.getContext();
         HttpServletRequest request = (HttpServletRequest) ctx
                 .get(ServletActionContext.HTTP_REQUEST);
-        String path = request.getContextPath();
+//        String path = request.getContextPath();
         String basePath = request.getScheme() + "://" + request.getServerName()
-                + ":" + request.getServerPort() + path;
+                + ":" + request.getServerPort();
         if (basePath.contains("beta")) {
             HOST_URL_APP = "http://beta.gogowise.com";
-            return "http://beta.gogowise.com";
         } else if (basePath.contains("localhost")) {
-            HOST_URL_APP = "http://localhost:8080/WebRoot";
-            return "http://localhost:8080/WebRoot";
-        } else {
+            HOST_URL_APP = "http://localhost:8080";
+        } else if (basePath.contains("test")) {
+            HOST_URL_APP = "http://test.gogowise.com";
+        }else {
             HOST_URL_APP = "http://www.gogowise.com";
-            return "http://www.gogowise.com";
         }
+        return HOST_URL_APP;
     }
 
     protected void setUserToSession(BaseUser user) {
