@@ -15,20 +15,9 @@
         </div>
     </div>
     <div class="rtCont">
-        <p>2011年1月30日公司正式注册成立。</p>
-        <p>公司法人代表为曾锃先生，之后由曾锃以及相关技术顾问进行实时互动直播视频的开发。</p>
-        <p>2011年9月初，平台的网站建设由张林以及陈海林，王成安，朱大才，龚昌雄，王理等人开始进行开发和建设。</p>
-        <p>2011年九月中旬，核心平台开发技术人员确立，系统开发框架，开发环境以及系统所使用的网站服务器和视频服务器准备完成。</p>
-        <p>2011年10月18日，公司核心开发人员以及市场运营部召开了一次重要会议，最终根据潜在的市场需求以及市政府的支持，决定公司的研发主要应用为个人公开课程为主的，从组织机构发展到个人的远程网络实时互动教学平台。系统的开发技术已经趋近于成熟，网站的实时互动效果也已开始初步实现。</p>
-        <p>2011年10月23日，前期的系统用户信息管理库基本开发完成，课程这一实体模块正式进入开发工作，课程的开发工作主要有陈海林负责完成，龚长雄负责前台页面设计，张总负责整体架构，王成安负责课程模块的国际化，王理负责系统测试工作。</p>
-        <p>2011年10月24日，系统所倡导的有组织机构到个人的开发理念由张总领导并执行开发，组织机构的实体被纳入到系统当中。</p>
-        <p>2012年3月1日，公司引进了新的开发人才，苑永志和王艳敏，主要负责公司的前台设计和UI交互。</p>
-        <p>2012年3月，系统应用初步完成，核心包括了：用户信息管理，组织机构信息管理，包括组织机构注册登录，后续又相继完成了其后台信息录入；组织与个人课程创建，课程发布，课程分类，课程搜索，课程信息浏览，课程注册，用户数据与虚拟教室的数据交互等等。</p>
-        <p>2012年4月，公司开始着手开发组织机构的更多应用，核心开发内容为多人视频网络会议，远程面试。开发周期维持了一个多月，并在四月下旬由公司CEO曾总正式开始使用平台组织机构面试系统，相继在四月下旬和五月份面试了30多位学员。此后本公司的一切远程会议均使用本系统的网络会议系统。</p>
-        <p>2012年5月30日，系统第一个远程课程正式建立，由在系统注册的NUS GoGoWise English Online组织机构的邀请的新加坡国立大学学生Lim ShuHui为陈海林，和王成安进行1对2的远程英语实时互动视频教学，总课时10课时，分五周完成。此后，由新加坡国立大学的Sahil 为北京女孩黄瑶开设的1对1英语vip课程等，以及由中国十大股神之一的黄志伟先生开设的《中国A股投资策略与方法系列课程》公开课等在系统相继与用户见面，系统也开始正式试运行。</p>
-        <p>2012年5月11日，株洲众志电脑有限公司成为第一个与本公司签订合作意向的公司，并成功注册本平台的组织机构账号。此后相继有：湖南湖大艾盛汽车技术开发有限公司、武汉禾合设计培训有限公司、湖南圣湘生物科技有限公司等约10多余家企业机构与公司签订合作意向书。</p>
-        <p>2012年6月中旬，根据市场需求的分析，公司开始了个人秀平台的设计，借此充分发挥网络的强大传播效用，来寻找最璀璨的草根明星，同时也为每一个用户提供了一个完美的展现自我的平台。我们的愿景是，只要你有独特的才华，你就可以是明星。在这里，每一个用户可以都可以创建属于自己的个人秀舞台，每一期个人秀都有固定的播出时间，越精彩的个人想相应的就会有越多的关注粉丝，所以真正的明星，即使是草根，也必定会脱颖而出。就娱乐这一方向，公司为了打破由个人秀带来的时间局限性，我们紧接着又为用户量身定做了即使直播系统，用户可以选择随时秀出自我，施展自己的才华，也可以随时和好朋友一起互动娱乐。</p>
-        <p>2012年到现在……</p>
-        <p>我们依然在为了更好的应用品质和良好的用户体验而全心全意的进行工作中，我们时刻都在期待更大的进步与突破，当然更重要的是社会各界的支持与信任。</p>
+        <p>Gogowise was  first set up on 30th January 2011 by Dr. Zeng Zeng. Together with his development team, the Gogowise website and core system structures were setup by mid of September 2011. In the later part of the year, the founding team of Gogowise decided to focus the company on online education, catering to the needs of education institutions and zooming in to their students. At the same time, the development of the system was almost complete, the very first version of the website was launched, and the construction of the platform features were delegated to the development team leaders.</p>
+        <p>In the first quarter of 2012, Gogowise’s first UI/UX designers joined the team. The company made great progress in developing its core features (e.g. Lesson Management System, Organization Management System, etc).</p>
+        <p>Gogowise is extremely grateful to the National University of Singapore (NUS) for participating in our pilot system testing in May 2012. The first course conducted on Gogowise was NUS Gogowise English Online, a 10-lesson course over 5 weeks in a 1-to-2 setting. After which, an NUS tutor Sahil conducted a VIP customized 1-to-1 English course for Huang Yao from Beijing. </p>
+        <p>The year of 2013 saw the company’s official incorporation in Singapore- Gogowise Cloud Education Pte Ltd. We were also awarded MDA’s iJAM grant and a 26-organization-strong consortium for our application for IDA’s Call-For-Collaboration (CFC) Programme. On the development front, the beta version of Gogowise is well on its way, together with the launch of pilot courses for our valued clients.</p>
     </div>
 </div>
