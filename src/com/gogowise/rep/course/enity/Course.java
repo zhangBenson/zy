@@ -32,8 +32,8 @@ public class Course extends AbstractPersistence {
     private String name;
     @ManyToOne
     private Organization organization;
-    @ManyToOne
-    private BaseUser teacher;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<BaseUser> teachers = new ArrayList<>();
     private String teacherEmail;
     @ManyToOne
     private BaseUser cameraMan;
@@ -122,11 +122,12 @@ public class Course extends AbstractPersistence {
     }
 
     public BaseUser getTeacher() {
-        return teacher;
+        if(teachers.size() == 0) return null;
+        return teachers.get(0);
     }
 
     public void setTeacher(BaseUser teacher) {
-        this.teacher = teacher;
+        teachers.set(0,teacher);
     }
 
     public BaseUser getCameraMan() {
@@ -530,5 +531,17 @@ public class Course extends AbstractPersistence {
 
     public void setCourseNewEvents(List<CourseNewEvent> courseNewEvents) {
         this.courseNewEvents = courseNewEvents;
+    }
+
+    public List<BaseUser> getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(List<BaseUser> teachers) {
+        this.teachers = teachers;
+    }
+
+    public void addTeacher(BaseUser teacher) {
+        this.teachers.add(teacher);
     }
 }

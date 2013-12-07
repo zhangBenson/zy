@@ -22,8 +22,8 @@ import java.util.List;
 @Repository("courseDao")
     public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
 
-    private static String QUERY_RELATED_COURSE = "select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc  left join c.organization org  where c.masterConfirmed=true and c.teacherConfirmed=true and c.cameraManConfirmed=true and cc.course.id = c.id and  (c.teacher.id=? or c.cameraMan.id=? or org.responsiblePerson.id=? or sc.student.id=?) ";
-    private static String QUERY_MY_FORCAST_CLASS = "select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc  left join c.organization org  where c.masterConfirmed=true and c.teacherConfirmed=true and c.cameraManConfirmed=true and cc.course.id = c.id and  (c.teacher.id=? or sc.student.id=?) ";
+    private static String QUERY_RELATED_COURSE = "select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc  left join c.organization org left join c.teachers teacher where c.masterConfirmed=true and c.teacherConfirmed=true and c.cameraManConfirmed=true and cc.course.id = c.id and  (teacher.id=? or c.cameraMan.id=? or org.responsiblePerson.id=? or sc.student.id=?) ";
+    private static String QUERY_MY_FORCAST_CLASS = "select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc  left join c.organization org  left join c.teachers teacher where c.masterConfirmed=true and c.teacherConfirmed=true and c.cameraManConfirmed=true and cc.course.id = c.id and  (teacher.id=? or sc.student.id=?) ";
     private static String COURSE_CONFIRMED = " c.masterConfirmed=true and c.teacherConfirmed=true and c.cameraManConfirmed=true ";
     private BaseUserDao baseUserDao;
     private OrganizationDao organizationDao;
@@ -109,7 +109,7 @@ import java.util.List;
     }
 
     public List<Course> findMaintenanceCourses(Integer tid, Pagination pagination) {
-        String hql = "select distinct c from Course c,CourseClass cc  left join c.organization org   where c.masterConfirmed=true and c.teacherConfirmed=true and c.cameraManConfirmed=true and cc.course.id = c.id and (c.teacher.id=? or org.responsiblePerson.id = ?) and "+this.getFinisDateBiggerThanNow()+" order by c.publicationTime desc";
+        String hql = "select distinct c from Course c,CourseClass cc  left join c.organization org left join c.teachers teacher  where c.masterConfirmed=true and c.teacherConfirmed=true and c.cameraManConfirmed=true and cc.course.id = c.id and (teacher.id=? or org.responsiblePerson.id = ?) and "+this.getFinisDateBiggerThanNow()+" order by c.publicationTime desc";
         List<Course> courses =  this.find(hql,pagination,tid,tid,Utils.getCurrentCalender());
         return courses;
     }
@@ -129,7 +129,7 @@ import java.util.List;
     }
 
     public List<Course> findUserCreatedCourses(Integer userID, Pagination pagination) {
-        String hql =   "select distinct c from Course c left join c.organization org  where"+ getCourseConfirmedStr() +" and  (c.teacher.id=? or org.responsiblePerson.id=?) order by c.publicationTime desc ";
+        String hql =   "select distinct c from Course c left join c.organization org left join c.teachers teacher where"+ getCourseConfirmedStr() +" and  (teacher.id=? or org.responsiblePerson.id=?) order by c.publicationTime desc ";
 
         return this.find(hql,pagination,userID,userID);
     }
@@ -141,7 +141,7 @@ import java.util.List;
     }
 
     public List<Course> findMyCourseOFAgePart(Pagination pagination, Integer sid) {
-        String hql = "select distinct c from Course c  left join c.organization org  where c.masterConfirmed=true and c.teacherConfirmed=true and c.cameraManConfirmed=true and (c.teacher.id=? or org.responsiblePerson.id=?) and c.id= (select max(nc.id) from Course nc where nc.fromCourse.id = c.fromCourse.id and nc.masterConfirmed=true and nc.teacherConfirmed=true and nc.cameraManConfirmed=true ) order by c.publicationTime desc";
+        String hql = "select distinct c from Course c  left join c.organization org left join c.teachers teacher where c.masterConfirmed=true and c.teacherConfirmed=true and c.cameraManConfirmed=true and (teacher.id=? or org.responsiblePerson.id=?) and c.id= (select max(nc.id) from Course nc where nc.fromCourse.id = c.fromCourse.id and nc.masterConfirmed=true and nc.teacherConfirmed=true and nc.cameraManConfirmed=true ) order by c.publicationTime desc";
          List<Course> courses = this.find(hql,pagination,sid,sid);
         return courses;
     }
@@ -192,7 +192,7 @@ import java.util.List;
 
 
     public List<Course> findCourses2Teacher(Integer tid, Pagination pagination) {
-        return this.find("From Course c where c.masterConfirmed=true and c.teacherConfirmed=true and c.cameraManConfirmed=true and  c.teacher.id=? and c.fromCourse.id = c.id order by c.startDate desc",pagination,tid);
+        return this.find("From distinct Course c left join c.teachers teacher where c.masterConfirmed=true and c.teacherConfirmed=true and c.cameraManConfirmed=true and  teacher.id=? and c.fromCourse.id = c.id order by c.startDate desc",pagination,tid);
     }
 
     public List<Course> findCourses2Student(Integer tid, Pagination pagination) {

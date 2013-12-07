@@ -257,15 +257,16 @@ public class CourseAction extends BasicAction {
             @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".initStep2")})
 
     public String saveCourse() {
-        BaseUser personalTeacher = baseUserDao.findById(this.getSessionUserId());
+//        BaseUser personalTeacher = baseUserDao.findById(this.getSessionUserId());
         if (this.getCourse().getId() == null) {     //if the course.id == null than deal with the org and course's teacher
              if (Constants.COURSE_TYPE_ORG.equals(this.getCourseType())) {
                   this.getCourse().setOrganization(organizationDao.findByResId(this.getSessionUserId()));
+
              } else if (Constants.COURSE_TYPE_VORG.equals(this.getCourseType())) {
                   this.getCourse().setOrganization(organizationDao.findOrganizationByOrganizationName(Constants.ZHI_YUAN_SCHOOL_NAME));
              } else {
-                  course.setPersonalTeacher(personalTeacher);
-                  course.setTeacher(personalTeacher);
+//                  course.setPersonalTeacher(personalTeacher);
+//                  course.setTeacher(personalTeacher);
              }
             this.getCourse().setConsumptionType(true);
             this.getCourse().setTeachingNum(this.getIdentity());
