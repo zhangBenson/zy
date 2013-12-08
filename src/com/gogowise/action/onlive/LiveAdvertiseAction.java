@@ -2,7 +2,7 @@ package com.gogowise.action.onlive;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.rep.live.AdvertisementForLiveDao;
-import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.live.LiveChannelDao;
 import com.gogowise.rep.live.enity.AdvertisementForLive;
 import com.gogowise.rep.user.enity.BaseUser;

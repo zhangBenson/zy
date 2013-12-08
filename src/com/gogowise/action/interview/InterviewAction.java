@@ -1,11 +1,11 @@
 package com.gogowise.action.interview;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.rep.org.InterviewAppointerDao;
-import com.gogowise.rep.org.InterviewDao;
-import com.gogowise.rep.org.OrganizationDao;
+import com.gogowise.rep.org.dao.InterviewAppointerDao;
+import com.gogowise.rep.org.dao.InterviewDao;
+import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.live.MatterDao;
-import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.live.enity.Matter;
 import com.gogowise.rep.org.enity.Interview;
 import com.gogowise.rep.org.enity.InterviewAppointer;

@@ -2,11 +2,12 @@ package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.rep.Pagination;
-import com.gogowise.rep.course.*;
-import com.gogowise.rep.org.OrganizationDao;
-import com.gogowise.rep.system.GoGoWiseAnnounceDao;
+import com.gogowise.rep.course.CourseService;
+import com.gogowise.rep.course.dao.*;
+import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.system.dao.GoGoWiseAnnounceDao;
 import com.gogowise.rep.live.MatterDao;
-import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.live.UserFansDao;
 import com.gogowise.rep.course.enity.*;
 import com.gogowise.rep.live.enity.Matter;
@@ -32,13 +33,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-/**
- * Created by IntelliJ IDEA.
- * User: Administrator
- * Date: 11-10-23
- * Time: 下午1:30
- * To change this template use File | Settings | File Templates.
- */
+
 
 @Controller
 @Namespace(BasicAction.BASE_NAME_SPACE)
@@ -109,9 +104,12 @@ public class CourseAction extends BasicAction {
     private CourseNewEventDao courseNewEventDao;
     private List<CourseNewEvent> courseNewEvents;
     private CourseNewEvent courseNewEvent;
-    private List<Organization> organizations = new ArrayList<Organization>();
+    private List<Organization> organizations = new ArrayList<>();
     private GoGoWiseAnnounceDao goGoWiseAnnounceDao;
-    private List<GoGoWiseAnnounce> goGoWiseAnnounces =new ArrayList<GoGoWiseAnnounce>();
+    private List<GoGoWiseAnnounce> goGoWiseAnnounces =new ArrayList<>();
+    private List<BaseUser> teachers = new ArrayList<>();
+    private CourseService courseService;
+    private List<Integer> teacherIds;
 
 //    @Action(value = "search",
 //            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".listClass")}
@@ -249,7 +247,7 @@ public class CourseAction extends BasicAction {
         if (Constants.COURSE_TYPE_ORG.equals(this.getCourseType())) {
             Organization orgTmp = organizationDao.findMyOrg(super.getSessionUserId());
             if(orgTmp != null) orgs.put(orgTmp.getId(), orgTmp.getSchoolName());
-            //TODO　load all teacher for org.
+            teachers = courseService.findAllTeachersForOrg(orgTmp.getId());
         }
         return SUCCESS;
     }
@@ -258,25 +256,38 @@ public class CourseAction extends BasicAction {
             @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".initStep2")})
 
     public String saveCourse() {
-//        BaseUser personalTeacher = baseUserDao.findById(this.getSessionUserId());
+        BaseUser personalTeacher = baseUserDao.findById(this.getSessionUserId());
         if (this.getCourse().getId() == null) {     //if the course.id == null than deal with the org and course's teacher
-             if (Constants.COURSE_TYPE_ORG.equals(this.getCourseType())) {
-                  this.getCourse().setOrganization(organizationDao.findByResId(this.getSessionUserId()));
+            if (Constants.COURSE_TYPE_ORG.equals(this.getCourseType())) {
+                this.getCourse().setOrganization(organizationDao.findByResId(this.getSessionUserId()));
+                for (Integer teacherId : teacherIds) {
+                    BaseUser teacherInfo = baseUserDao.findById(teacherId);
+                    course.addTeacher(teacherInfo);
+                }
 
-             } else if (Constants.COURSE_TYPE_VORG.equals(this.getCourseType())) {
-                  this.getCourse().setOrganization(organizationDao.findOrganizationByOrganizationName(Constants.ZHI_YUAN_SCHOOL_NAME));
-             } else {
-//                  course.setPersonalTeacher(personalTeacher);
-//                  course.setTeacher(personalTeacher);
-             }
+            } else if (Constants.COURSE_TYPE_VORG.equals(this.getCourseType())) {
+                this.getCourse().setOrganization(organizationDao.findOrganizationByOrganizationName(Constants.ZHI_YUAN_SCHOOL_NAME));
+            } else {
+                course.setPersonalTeacher(personalTeacher);
+                course.setTeacher(personalTeacher);
+            }
             this.getCourse().setConsumptionType(true);
             this.getCourse().setTeachingNum(this.getIdentity());
             courseDao.persistAbstract(course);
         } else {
             Course curr = courseDao.findById(this.getCourse().getId());
-            if(curr.getOrganization()!=null) course.setOrganization(curr.getOrganization());
-            if(curr.getPersonalTeacher() != null) course.setPersonalTeacher(curr.getPersonalTeacher());
-            if(curr.getTeacher() != null) course.setTeacher(curr.getTeacher());
+            if(course.getOrganization()!=null) course.setOrganization(curr.getOrganization());
+            if(course.getPersonalTeacher() != null) course.setPersonalTeacher(curr.getPersonalTeacher());
+            if (Constants.COURSE_TYPE_ORG.equals(this.getCourseType())) {
+                this.getCourse().setOrganization(organizationDao.findByResId(this.getSessionUserId()));
+                for (Integer teacherId : teacherIds) {
+                    BaseUser teacherInfo = baseUserDao.findById(teacherId);
+                    course.addTeacher(teacherInfo);
+                }
+            } else  {
+                if(course.getTeacher() != null) course.setTeacher(curr.getTeacher());
+            }
+
             course.setClasses(curr.getClasses());
             if(this.getIdentity()!=null){
                  course.setTeachingNum(this.getIdentity());
@@ -339,6 +350,11 @@ public class CourseAction extends BasicAction {
     }
 
     public void validateSaveCourse() {
+        if (Constants.COURSE_TYPE_ORG.equals(this.getCourseType())) {
+            Organization orgTmp = organizationDao.findMyOrg(super.getSessionUserId());
+            if(orgTmp != null) orgs.put(orgTmp.getId(), orgTmp.getSchoolName());
+            teachers = courseService.findAllTeachersForOrg(orgTmp.getId());
+        }
 
     }
 
@@ -1842,4 +1858,23 @@ public class CourseAction extends BasicAction {
         return courses;
     }
 
+    public void setCourseService(CourseService courseService) {
+        this.courseService = courseService;
+    }
+
+    public List<BaseUser> getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(List<BaseUser> teachers) {
+        this.teachers = teachers;
+    }
+
+    public List<Integer> getTeacherIds() {
+        return teacherIds;
+    }
+
+    public void setTeacherIds(List<Integer> teacherIds) {
+        this.teacherIds = teacherIds;
+    }
 }

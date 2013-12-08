@@ -2,8 +2,8 @@ package com.gogowise.rep;
 
 import com.gogowise.rep.competition.*;
 import com.gogowise.rep.competition.enity.*;
-import com.gogowise.rep.course.CourseDao;
-import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.course.dao.CourseDao;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.common.utils.MD5;
 import com.gogowise.common.utils.Utils;

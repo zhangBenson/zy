@@ -2,7 +2,7 @@ package com.gogowise.rep.finance;
 
 import com.gogowise.rep.ModelDaoImpl;
 import com.gogowise.rep.finance.enity.UserAccountInfo;
-import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

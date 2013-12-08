@@ -1,9 +1,9 @@
 package com.gogowise.action.higsec;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.rep.user.BaseUserDao;
-import com.gogowise.rep.course.CourseNewEventDao;
-import com.gogowise.rep.system.GoGoWiseAnnounceDao;
+import com.gogowise.rep.user.dao.BaseUserDao;
+import com.gogowise.rep.course.dao.CourseNewEventDao;
+import com.gogowise.rep.system.dao.GoGoWiseAnnounceDao;
 import com.gogowise.rep.course.enity.CourseNewEvent;
 import com.gogowise.rep.system.enity.GoGoWiseAnnounce;
 import com.gogowise.rep.Pagination;

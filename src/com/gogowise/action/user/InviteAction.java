@@ -1,9 +1,9 @@
 package com.gogowise.action.user;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.competition.CompetitionSessionDao;
-import com.gogowise.rep.user.InviteRelationshipDao;
+import com.gogowise.rep.user.dao.InviteRelationshipDao;
 import com.gogowise.rep.competition.SingUpDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.competition.enity.InviteRelationship;

@@ -17,10 +17,10 @@
           <s:a action="initOrgCourseCreation"><h3><img src="images/org/arrow.png" /><span><s:property value="%{getText('org.create.course')}"/></span></h3></s:a>
           <p><s:property value="%{getText('create.organization.courses')}"/></p>
         </li>
-        <%--<li>--%>
-          <%--<s:a action="initOrgAuthorization"><h3><img src="images/org/arrow.png" /><span><s:property value="%{getText('human.resourse.management')}"/></span></h3></s:a>--%>
-          <%--<p><s:property value="%{getText('manage.all.the.teachers')}"/></p>--%>
-        <%--</li>--%>
+        <li>
+          <s:a action="initOrgAuthorization"><h3><img src="images/org/arrow.png" /><span><s:property value="%{getText('human.resourse.management')}"/></span></h3></s:a>
+          <p><s:property value="%{getText('manage.all.the.teachers')}"/></p>
+        </li>
         <li>
            <s:a action="maintenanceSearchResult"><h3><img src="images/org/arrow.png"  /><span><s:property value="%{getText('usermenu.item.coursemaintenance')}"/></span></h3></s:a>
           <p><s:property value="%{getText('adjust.your.organization.courses')}"/></p>

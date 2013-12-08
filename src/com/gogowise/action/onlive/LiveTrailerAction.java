@@ -1,7 +1,7 @@
 package com.gogowise.action.onlive;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.live.LiveTrailerDao;
 import com.gogowise.rep.live.enity.LiveTrailer;
 import com.gogowise.common.utils.Constants;

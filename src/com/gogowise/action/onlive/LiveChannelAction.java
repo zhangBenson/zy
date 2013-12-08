@@ -2,12 +2,12 @@ package com.gogowise.action.onlive;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.rep.Pagination;
-import com.gogowise.rep.course.CourseDao;
+import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.live.*;
 import com.gogowise.rep.live.enity.*;
-import com.gogowise.rep.org.OrganizationDao;
-import com.gogowise.rep.system.GoGoWiseAnnounceDao;
-import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.system.dao.GoGoWiseAnnounceDao;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.live.UserFansDao;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.org.enity.Organization;

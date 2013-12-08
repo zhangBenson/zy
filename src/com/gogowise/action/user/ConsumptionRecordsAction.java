@@ -1,7 +1,7 @@
 package com.gogowise.action.user;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.finance.ConsumptionRecordDao;
 import com.gogowise.rep.finance.enity.ConsumptionRecord;
 import com.gogowise.rep.Pagination;

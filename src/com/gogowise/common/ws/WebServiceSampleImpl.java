@@ -1,6 +1,6 @@
 package com.gogowise.common.ws;
 
-import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserDao;
 
 import javax.jws.WebService;
 import java.util.ArrayList;

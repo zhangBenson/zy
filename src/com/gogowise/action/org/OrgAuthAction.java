@@ -1,9 +1,9 @@
 package com.gogowise.action.org;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.rep.user.BaseUserDao;
-import com.gogowise.rep.org.OrganizationDao;
-import com.gogowise.rep.org.OrganizationTeacherDao;
+import com.gogowise.rep.user.dao.BaseUserDao;
+import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.org.dao.OrganizationTeacherDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.org.enity.OrganizationTeacher;

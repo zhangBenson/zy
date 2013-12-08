@@ -1,9 +1,9 @@
 package com.gogowise.rep.competition;
 
 import com.gogowise.rep.Pagination;
-import com.gogowise.rep.course.CommentsDao;
+import com.gogowise.rep.course.dao.CommentsDao;
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.competition.enity.Competition;
 import com.gogowise.rep.competition.enity.CompetitionSession;
 import com.gogowise.rep.competition.enity.SingUpInfo;

@@ -3,7 +3,7 @@ package com.gogowise.action.show;
 import com.gogowise.action.BasicAction;
 import com.gogowise.action.valueobject.One2ManyStudentSession;
 import com.gogowise.action.valueobject.One2ManyTeacherSession;
-import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.live.MyShowDao;
 import com.gogowise.rep.live.SeasonIncreasedShowFansDao;
 import com.gogowise.rep.live.ShowTermsDao;

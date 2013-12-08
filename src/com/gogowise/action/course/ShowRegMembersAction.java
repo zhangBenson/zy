@@ -3,7 +3,7 @@ package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.rep.Pagination;
-import com.gogowise.rep.course.CourseDao;
+import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.live.MyShowDao;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.live.enity.MyShow;

@@ -1,9 +1,9 @@
 package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.rep.user.BaseUserDao;
-import com.gogowise.rep.course.CourseDao;
-import com.gogowise.rep.course.CourseEvaluationDao;
+import com.gogowise.rep.user.dao.BaseUserDao;
+import com.gogowise.rep.course.dao.CourseDao;
+import com.gogowise.rep.course.dao.CourseEvaluationDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.course.enity.CourseEvaluation;

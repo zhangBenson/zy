@@ -5,7 +5,7 @@ import com.gogowise.action.valueobject.Session;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.competition.CompetitionAudienceDao;
 import com.gogowise.rep.competition.CompetitionSessionDao;
-import com.gogowise.rep.user.InviteRelationshipDao;
+import com.gogowise.rep.user.dao.InviteRelationshipDao;
 import com.gogowise.rep.competition.enity.CompetitionAudience;
 import com.gogowise.rep.competition.enity.CompetitionSession;
 import com.gogowise.rep.competition.enity.InviteRelationship;

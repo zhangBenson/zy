@@ -1,7 +1,7 @@
 package com.gogowise.action.android;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.rep.course.CourseDao;
+import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.android.enity.AndroidCourse;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.Pagination;

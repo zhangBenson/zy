@@ -2,7 +2,7 @@ package com.gogowise.action.competition;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.rep.Pagination;
-import com.gogowise.rep.user.InviteRelationshipDao;
+import com.gogowise.rep.user.dao.InviteRelationshipDao;
 import com.gogowise.rep.competition.SingUpDao;
 import com.gogowise.rep.competition.enity.Competition;
 import com.gogowise.rep.competition.enity.CompetitionSession;

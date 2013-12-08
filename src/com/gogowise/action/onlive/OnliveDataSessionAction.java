@@ -3,7 +3,7 @@ package com.gogowise.action.onlive;
 import com.gogowise.action.BasicAction;
 import com.gogowise.action.valueobject.OnLiveHostSession;
 import com.gogowise.action.valueobject.OnliveGuestSession;
-import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.live.ChannelTermsDao;
 import com.gogowise.rep.live.LiveChannelDao;
 import com.gogowise.rep.live.SeasonIncreasedOnliveFansDao;

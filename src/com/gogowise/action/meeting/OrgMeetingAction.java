@@ -3,11 +3,11 @@ package com.gogowise.action.meeting;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.action.valueobject.*;
-import com.gogowise.rep.org.OrgMeetingDao;
-import com.gogowise.rep.org.OrgMeetingMemberDao;
-import com.gogowise.rep.org.OrganizationDao;
+import com.gogowise.rep.org.dao.OrgMeetingDao;
+import com.gogowise.rep.org.dao.OrgMeetingMemberDao;
+import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.live.MatterDao;
-import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.live.enity.Matter;
 import com.gogowise.rep.org.enity.OrgMeeting;
 import com.gogowise.rep.org.enity.OrgMeetingMember;

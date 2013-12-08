@@ -2,7 +2,7 @@ package com.gogowise.action.show;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.rep.live.AdvertisementDao;
-import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.live.MyShowDao;
 import com.gogowise.rep.live.enity.Advertisement;
 import com.gogowise.rep.user.enity.BaseUser;

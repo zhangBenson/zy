@@ -1,7 +1,7 @@
 package com.gogowise.action.competition;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.competition.CompetitionAudienceDao;
 import com.gogowise.rep.competition.CompetitionSessionDao;
 import com.gogowise.rep.competition.enity.CompetitionAudience;

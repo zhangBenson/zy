@@ -1,7 +1,7 @@
 package com.gogowise.action.android;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.live.PersonalOnliveDao;
 import com.gogowise.rep.live.UserFansDao;
 import com.gogowise.rep.user.enity.BaseUser;

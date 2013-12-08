@@ -1,8 +1,8 @@
 package com.gogowise.common.utils;
 
-import com.gogowise.rep.user.BaseUserDao;
-import com.gogowise.rep.user.BaseUserRoleTypeDao;
-import com.gogowise.rep.org.OrganizationDao;
+import com.gogowise.rep.user.dao.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
+import com.gogowise.rep.org.dao.OrganizationDao;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.*;

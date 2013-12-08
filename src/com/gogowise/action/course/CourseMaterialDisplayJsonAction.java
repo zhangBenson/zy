@@ -1,31 +1,20 @@
 package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.action.valueobject.ClassSession;
 import com.gogowise.action.valueobject.CourseMatrixVO;
-import com.gogowise.common.utils.Constants;
-import com.gogowise.common.utils.Utils;
-import com.gogowise.rep.course.CourseDao;
-import com.gogowise.rep.course.CourseMaterialDao;
-import com.gogowise.rep.course.enity.Course;
+import com.gogowise.rep.course.dao.CourseMaterialDao;
 import com.gogowise.rep.course.enity.CourseMaterial;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.CompactWriter;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
-import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.json.annotations.JSON;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 /**

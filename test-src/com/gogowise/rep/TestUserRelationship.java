@@ -1,7 +1,7 @@
 package com.gogowise.rep;
 
 
-import com.gogowise.rep.user.UserRelationshipDao;
+import com.gogowise.rep.user.dao.UserRelationshipDao;
 import com.gogowise.rep.user.enity.UserRelationship;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

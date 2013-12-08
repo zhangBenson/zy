@@ -2,7 +2,7 @@ package com.gogowise.action.onlive;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.action.valueobject.PerOnliveVideoSession;
-import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.live.PersonalOnliveDao;
 import com.gogowise.rep.live.enity.PersonalOnlive;
 import com.thoughtworks.xstream.XStream;

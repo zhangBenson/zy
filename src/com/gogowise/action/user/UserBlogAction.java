@@ -2,13 +2,13 @@ package com.gogowise.action.user;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.rep.Pagination;
-import com.gogowise.rep.course.BrowsedCourseDao;
-import com.gogowise.rep.course.CommentsDao;
-import com.gogowise.rep.course.CourseDao;
-import com.gogowise.rep.course.CourseEvaluationDao;
+import com.gogowise.rep.course.dao.BrowsedCourseDao;
+import com.gogowise.rep.course.dao.CommentsDao;
+import com.gogowise.rep.course.dao.CourseDao;
+import com.gogowise.rep.course.dao.CourseEvaluationDao;
 import com.gogowise.rep.live.MyShowDao;
 import com.gogowise.rep.live.PersonalOnliveDao;
-import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.live.UserFansDao;
 import com.gogowise.rep.course.enity.BrowsedCourse;
 import com.gogowise.rep.course.enity.Course;

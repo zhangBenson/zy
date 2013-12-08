@@ -1,7 +1,7 @@
 package com.gogowise.rep.finance;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.finance.enity.ConsumptionOrder;
 import com.gogowise.rep.course.enity.Course;

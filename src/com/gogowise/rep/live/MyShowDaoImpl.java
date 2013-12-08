@@ -2,7 +2,7 @@ package com.gogowise.rep.live;
 
 import com.gogowise.rep.ModelDaoImpl;
 import com.gogowise.rep.Pagination;
-import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.live.enity.MyShow;
 import com.gogowise.rep.live.enity.SeasonIncreasedShowFans;
 import com.gogowise.rep.live.enity.ShowFans;

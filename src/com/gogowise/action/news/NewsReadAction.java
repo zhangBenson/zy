@@ -2,11 +2,11 @@ package com.gogowise.action.news;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.rep.Pagination;
-import com.gogowise.rep.course.CourseDao;
-import com.gogowise.rep.course.CourseNewEventDao;
+import com.gogowise.rep.course.dao.CourseDao;
+import com.gogowise.rep.course.dao.CourseNewEventDao;
 import com.gogowise.rep.live.*;
 import com.gogowise.rep.live.enity.*;
-import com.gogowise.rep.system.GoGoWiseAnnounceDao;
+import com.gogowise.rep.system.dao.GoGoWiseAnnounceDao;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.course.enity.CourseNewEvent;
 import com.gogowise.rep.system.enity.GoGoWiseAnnounce;

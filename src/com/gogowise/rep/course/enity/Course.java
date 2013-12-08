@@ -450,7 +450,11 @@ public class Course extends AbstractPersistence {
         return false;
     }
     public String getTeacherEmail() {
-        return teacherEmail;
+        if (this.teacherEmail == null) {
+            return this.getTeacher().getEmail();
+        } else  {
+            return teacherEmail;
+        }
     }
 
     public void setTeacherEmail(String teacherEmail) {

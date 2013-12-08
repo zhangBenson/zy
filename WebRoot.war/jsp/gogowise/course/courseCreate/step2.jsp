@@ -90,7 +90,9 @@
             <s:if test="courseType == 1 || courseType == 2">
                <li>
                 <div class="option_tittle"><s:property value="%{getText('label.forcast.lecturer')}"/></div><div class="invite_teacher_input_msg input_msg"></div>
-                <div class="option_content"><s:textfield cssClass="long_text_field" id="course_teacherEmail" placeholder="%{getText('org.course.lecturer.email')}" onblur="checkTeacherMail(this);" name="course.teacherEmail" type="text" /></div>
+                   <div class="option_content">
+                       <s:checkboxlist list="teachers" listKey="id" listValue="email" name="teacherIds"/>
+                   </div>
                </li>
             </s:if>
             <li>

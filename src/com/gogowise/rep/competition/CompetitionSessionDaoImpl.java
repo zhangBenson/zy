@@ -2,7 +2,7 @@ package com.gogowise.rep.competition;
 
 import com.gogowise.rep.ModelDaoImpl;
 import com.gogowise.rep.Pagination;
-import com.gogowise.rep.user.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.competition.enity.CompetitionSession;
 import com.gogowise.rep.competition.enity.JudgeAllocation;
 import com.gogowise.rep.competition.enity.SingUpInfo;
