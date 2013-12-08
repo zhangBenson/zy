@@ -66,6 +66,7 @@ public class MaintenCourseAction extends BasicAction {
             @Result(name = "failed", type = Constants.RESULT_NAME_TILES, location = ".identityConfirmation")})
     public String maintenanceCourse() {
         course = courseDao.findById(this.getCourse().getId());
+        teachers = courseService.findAllTeachersByOrgCreator(this.getSessionUserId());
         return SUCCESS;
     }
 
