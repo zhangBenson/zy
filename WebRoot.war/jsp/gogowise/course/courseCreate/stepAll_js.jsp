@@ -184,11 +184,6 @@
               $(".course_charges_msg").html(warn_charges_amount_wrong);
           } else b8 = true;
 
-
-          <s:if test="courseType == 1 || courseType == 2">
-              if(!checkTeacherMail($("#course_teacherEmail"))) b6 = false;
-              else b7 = true;
-          </s:if>
           if(!checkStudentEmails()) b7 = false;
           else b7 = true;
 

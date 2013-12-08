@@ -4,6 +4,7 @@ import com.gogowise.action.BasicAction;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.CourseService;
 import com.gogowise.rep.course.dao.*;
+import com.gogowise.rep.course.vo.CourseSpecification;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.system.dao.GoGoWiseAnnounceDao;
 import com.gogowise.rep.live.MatterDao;
@@ -205,17 +206,8 @@ public class CourseAction extends BasicAction {
         this.setOperaType(Constants.OPERA_TYPE_FOR_COURSE_CREATION);
         return SUCCESS;
     }
-    @Action(value = "createCourseAllInOne", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".createCourseAllInOne"),
-            @Result(name = "failed", type = Constants.RESULT_NAME_TILES, location = ".identityConfirmation")})
-    public String createCourseAllInOne() {
-        return SUCCESS;
-    }
-    @Action(value = "maintenanceCourse", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".maintenanceCourse"),
-            @Result(name = "failed", type = Constants.RESULT_NAME_TILES, location = ".identityConfirmation")})
-    public String maintenanceCourse() {
-        course = courseDao.findById(this.getCourse().getId());
-        return SUCCESS;
-    }
+
+
     @Action(value = "createCourseClause", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".createCourseClause")})
     public String createCourseClause() {
         return SUCCESS;
@@ -245,9 +237,9 @@ public class CourseAction extends BasicAction {
             courseInviteStudents = courseInviteStudentDao.findByCourseId(this.getCourse().getId());
         }
         if (Constants.COURSE_TYPE_ORG.equals(this.getCourseType())) {
-            Organization orgTmp = organizationDao.findMyOrg(super.getSessionUserId());
+            Organization orgTmp = organizationDao.findMyOrg(this.getSessionUserId());
             if(orgTmp != null) orgs.put(orgTmp.getId(), orgTmp.getSchoolName());
-            teachers = courseService.findAllTeachersForOrg(orgTmp.getId());
+            teachers = courseService.findAllTeachersByOrgCreator(this.getSessionUserId());
         }
         return SUCCESS;
     }
@@ -256,76 +248,29 @@ public class CourseAction extends BasicAction {
             @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".initStep2")})
 
     public String saveCourse() {
-        BaseUser personalTeacher = baseUserDao.findById(this.getSessionUserId());
-        if (this.getCourse().getId() == null) {     //if the course.id == null than deal with the org and course's teacher
-            if (Constants.COURSE_TYPE_ORG.equals(this.getCourseType())) {
-                this.getCourse().setOrganization(organizationDao.findByResId(this.getSessionUserId()));
-                for (Integer teacherId : teacherIds) {
-                    BaseUser teacherInfo = baseUserDao.findById(teacherId);
-                    course.addTeacher(teacherInfo);
-                }
-
-            } else if (Constants.COURSE_TYPE_VORG.equals(this.getCourseType())) {
-                this.getCourse().setOrganization(organizationDao.findOrganizationByOrganizationName(Constants.ZHI_YUAN_SCHOOL_NAME));
-            } else {
-                course.setPersonalTeacher(personalTeacher);
-                course.setTeacher(personalTeacher);
-            }
-            this.getCourse().setConsumptionType(true);
-            this.getCourse().setTeachingNum(this.getIdentity());
-            courseDao.persistAbstract(course);
-        } else {
-            Course curr = courseDao.findById(this.getCourse().getId());
-            if(course.getOrganization()!=null) course.setOrganization(curr.getOrganization());
-            if(course.getPersonalTeacher() != null) course.setPersonalTeacher(curr.getPersonalTeacher());
-            if (Constants.COURSE_TYPE_ORG.equals(this.getCourseType())) {
-                this.getCourse().setOrganization(organizationDao.findByResId(this.getSessionUserId()));
-                for (Integer teacherId : teacherIds) {
-                    BaseUser teacherInfo = baseUserDao.findById(teacherId);
-                    course.addTeacher(teacherInfo);
-                }
-            } else  {
-                if(course.getTeacher() != null) course.setTeacher(curr.getTeacher());
-            }
-
-            course.setClasses(curr.getClasses());
-            if(this.getIdentity()!=null){
-                 course.setTeachingNum(this.getIdentity());
-            }else {
-                course.setTeachingNum(curr.getTeachingNum());
-            }
+        if (this.getIdentity() != null) {
+            course.setTeachingNum(this.getIdentity());
         }
 
-//        if(this.getUploadFileName() != null){
-//           String path = "/" + this.getCourse().getId() + "/" + this.getUploadFileName();
-//           File imageFile = new File(ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_IMAGE_PATH_FOR_COURSE) + path);
-//           if (!imageFile.getParentFile().exists()) {
-//               imageFile.getParentFile().mkdirs();
-//           }
-//           copy(this.getUpload(), imageFile);
-//           this.getCourse().setLogoUrl(Constants.UPLOAD_IMAGE_PATH_FOR_COURSE + path);
-//           this.getCourse().setInviteStudentNum(this.getEmails().size());
-//        }else {
-//            if(this.getCourse().getLogoUrl() == null || this.getCourse().getLogoUrl() == ""){
-//                 this.getCourse().setLogoUrl(Constants.DEFAULT_COURSE_IMAGE);
-//            }
-//        }
-
+        // copy jpg
         if(StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(),"upload/")){
-             Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
-             course.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId()+"/"+course.getLogoUrl());
+            Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
         }
-        if(StringUtils.isBlank(course.getLogoUrl())) course.setLogoUrl(Constants.DEFAULT_COURSE_IMAGE);
+
+        // Save course
+        CourseSpecification specification = CourseSpecification.create(course, this.getSessionUserId(), this.getCourseType(), this.getTeacherIds());
+        courseService.saveCourse(specification);
+
+        course = courseService.findById(course.getId());
 
 
-        if (course.getFromCourse() == null)course.setFromCourse(course);   // mark the course where from. Default is current.
-        courseDao.persistAbstract(course);
         if (course.getClasses() == null) {
             this.setClassCount(1);
         } else {
             this.setClassCount(course.getClasses().size() + 1);
         }
 
+        // Courser invitation;
         courseInviteStudents = courseInviteStudentDao.findByCourseId(this.getCourse().getId());
         if (courseInviteStudents.size() != 0) {
             for (int i = 0; i < courseInviteStudents.size(); i++) {
@@ -345,15 +290,18 @@ public class CourseAction extends BasicAction {
             }
         }
 
+        if (course.getClasses() == null) {
+            this.setClassCount(1);
+        } else {
+            this.setClassCount(course.getClasses().size() + 1);
+        }
 
         return SUCCESS;
     }
 
     public void validateSaveCourse() {
         if (Constants.COURSE_TYPE_ORG.equals(this.getCourseType())) {
-            Organization orgTmp = organizationDao.findMyOrg(super.getSessionUserId());
-            if(orgTmp != null) orgs.put(orgTmp.getId(), orgTmp.getSchoolName());
-            teachers = courseService.findAllTeachersForOrg(orgTmp.getId());
+            teachers = courseService.findAllTeachersByOrgCreator(this.getSessionUserId());
         }
 
     }
@@ -902,12 +850,6 @@ public class CourseAction extends BasicAction {
     }
 
 
-    @Action(value = "maintenanceSearchResult", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".maintenanceSearchResult")})
-    public String maintenanceSearchResult() {
-        courses = courseDao.findMaintenanceCourses(this.getSessionUserId(), pagination);
-        this.setOperaType(Constants.OPERA_TYPE_FOR_COURSE_MODIFY);
-        return SUCCESS;
-    }
 
 
 

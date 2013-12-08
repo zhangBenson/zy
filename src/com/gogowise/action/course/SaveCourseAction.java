@@ -1,12 +1,13 @@
 package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.rep.course.CourseService;
 import com.gogowise.rep.course.dao.ClassDao;
 import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.dao.CourseInviteStudentDao;
+import com.gogowise.rep.course.vo.CourseSpecification;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.user.dao.BaseUserDao;
-import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.course.enity.CourseClass;
 import com.gogowise.rep.course.enity.CourseInviteStudent;
@@ -49,44 +50,23 @@ public class SaveCourseAction extends BasicAction{
     private List<Calendar> startTimes = new ArrayList<Calendar>();
     private List<Integer> classDate = new ArrayList<Integer>();     //周几
     private Integer repeatTimes;                                   //重复次数
+    private CourseService courseService;
+    private List<Integer> teacherIds;
 
 
     @Action(value = "ajaxSaveCourse")
     public String ajaxSaveCourse(){
-        BaseUser personalTeacher = baseUserDao.findById(this.getSessionUserId());
-        if (this.getCourse().getId() == null) {     //if the course.id == null than deal with the org and course's teacher
-             if (Constants.COURSE_TYPE_ORG.equals(this.getCourseType())) {
-                  this.getCourse().setOrganization(organizationDao.findByResId(this.getSessionUserId()));
-             } else if (Constants.COURSE_TYPE_VORG.equals(this.getCourseType())) {
-                  this.getCourse().setOrganization(organizationDao.findOrganizationByOrganizationName(Constants.ZHI_YUAN_SCHOOL_NAME));
-             } else {
-                  course.setPersonalTeacher(personalTeacher);
-                  course.setTeacher(personalTeacher);
-             }
-            this.getCourse().setConsumptionType(true);
-           // this.getCourse().setTeachingNum(this.getIdentity());
-            courseDao.persistAbstract(course);
-        }else {
-            Course curr = courseDao.findById(this.getCourse().getId());
-            if(curr.getOrganization()!=null) course.setOrganization(curr.getOrganization());
-            if(curr.getPersonalTeacher() != null) course.setPersonalTeacher(curr.getPersonalTeacher());
-            if(curr.getTeacher() != null) course.setTeacher(curr.getTeacher());
-            course.setClasses(curr.getClasses());
-//            if(this.getIdentity()!=null){
-//                 course.setTeachingNum(this.getIdentity());
-//            }else {
-//                course.setTeachingNum(curr.getTeachingNum());
-//            }
-        }
 
+        // copy jpg
         if(StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(),"upload/")){
-             Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
-             course.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId()+"/"+course.getLogoUrl());
+            Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
         }
-        if(StringUtils.isBlank(course.getLogoUrl())) course.setLogoUrl(Constants.DEFAULT_COURSE_IMAGE);
 
-        if (course.getFromCourse() == null)course.setFromCourse(course);   // mark the course where from. Default is current.
-        courseDao.persistAbstract(course);
+        // Save course
+        CourseSpecification specification = CourseSpecification.create(course, this.getSessionUserId(), this.getCourseType(), this.getTeacherIds());
+        courseService.saveCourse(specification);
+
+        course = courseService.findById(course.getId());
 
         courseInviteStudents = courseInviteStudentDao.findByCourseId(this.getCourse().getId());   //this step is used to delete the students if it was saved before
         if (courseInviteStudents.size() != 0) {
@@ -299,5 +279,17 @@ public class SaveCourseAction extends BasicAction{
 
     public void setCourse_id(Integer course_id) {
         this.course_id = course_id;
+    }
+
+    public List<Integer> getTeacherIds() {
+        return teacherIds;
+    }
+
+    public void setTeacherIds(List<Integer> teacherIds) {
+        this.teacherIds = teacherIds;
+    }
+
+    public void setCourseService(CourseService courseService) {
+        this.courseService = courseService;
     }
 }

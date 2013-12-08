@@ -117,7 +117,7 @@
                         <s:if test="courseType == 1 || courseType == 2">
                            <li>
                             <span class="item"><s:property value="%{getText('label.forcast.lecturer')}"/></span>
-                            <s:textfield cssClass="long_text_field" id="course_teacherEmail" placeholder="%{getText('org.course.lecturer.email')}" name="course.teacherEmail"/>&nbsp;
+                               <s:checkboxlist list="teachers" listKey="id" listValue="email" name="teacherIds"/>
                             <span class="invite_teacher_input_msg tip_words">*</span>
                            </li>
                         </s:if>
