@@ -4,9 +4,9 @@ import org.springframework.stereotype.Service;
 
 @Service("modelService")
 public class ModelServiceImpl implements ModelService {
-    private ModelService modelService;
+    private ModelDao modelDao;
 
-    public void setModelService(ModelService modelService) {
-        this.modelService = modelService;
+    public void setModelDao(ModelDao modelDao) {
+        this.modelDao = modelDao;
     }
 }
