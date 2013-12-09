@@ -12,6 +12,8 @@ public class RoleType extends AbstractPersistence {
     public final static String ORG_CREATOR = "orgCreator";
     public final static String ORG_REVIEWER = "orgReviewer";
     public final static String GRANT = "grant";
+    public final static String TEACHER = "teacher";
+    public final static String STUDENT = "student";
 
     public String getRoleName() {
         return roleName;
