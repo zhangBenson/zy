@@ -6,13 +6,6 @@
     <%--<meta charset="UTF-8">--%>
     <%--<meta name="viewport" content="width=device-width, initial-scale=1.0">--%>
 
-    <script src="../../js/index/jquery.bxslider.min.js"></script>
-    <link rel="stylesheet" href="../../css/index/jquery.bxslider.css">
-    <link rel="stylesheet" href="../../css/course/bootstrap.css">
-    <link rel="stylesheet" href="../../css/course/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/course/bootstrap-theme.css">
-    <link rel="stylesheet" href="../../css/course/bootstrap-theme.min.css">
-
 <%--<title>index</title>--%>
 <%--</head>--%>
 <script type="text/javascript">
@@ -36,6 +29,7 @@
         });
     });
 </script>
+
 
 
 <div class="container">

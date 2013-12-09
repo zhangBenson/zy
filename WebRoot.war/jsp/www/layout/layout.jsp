@@ -11,13 +11,31 @@
             <tiles:importAttribute name="title"/>
             <s:text name="%{#attr['title']}"/>
         </title>
+        <%--<%@ include file="../../layout/includeForLayOut.jsp" %>--%>
 
-     </head>
-	
-    <link type="text/css" href="/css/course/gogowise.css" rel="stylesheet">
-	<link type="text/css" href="/css/course/bootstrap.min.css" rel="stylesheet">
-	<script src="/js/jquery-1.7.2.min.js"></script>
-	<script src="/js/course/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="../../../css/course/bootstrap-theme.min.css">
+
+    </head>
+
+
+    <link rel="stylesheet" type="text/css" href="../../../js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+
+    <link type="text/css" href="../../../css/course/gogowise.css" rel="stylesheet">
+    <link type="text/css" href="../../../css/course/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../../css/index/jquery.bxslider.css">
+    <link rel="stylesheet" href="../../../css/course/bootstrap.css">
+    <link rel="stylesheet" href="../../../css/course/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/course/bootstrap-theme.css">
+
+
+    <script src="../../../js/jquery-1.7.2.min.js"></script>
+    <script src="../../../js/course/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="../../../js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+    <script type="text/javascript" src="../../../js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+
+    <script src="../../../js/index/jquery.bxslider.min.js"></script>
 
 
     <body>
