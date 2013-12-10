@@ -125,10 +125,10 @@
     <div class="container">
 
         <div class="well">
-            <img src="/images/course/schoolslogo.png" alt="">
-            <h4>School:Rice</h4>
+            <a href="orgBlog.html?org.id=<s:property value="course.organization.id"/>" title="<s:property value="course.organization.nickName"/>"><img src="<s:property value="course.organization.logoUrl"/>"/></a>
+            <h4>School:<s:property value="course.organization.schoolName"/></h4>
             <h4>Course Code: <s:property value="course.id"/></h4>
-            <h4>Course Language:English</h4>
+            <h4>Course Language:<s:property value="course.languageType"/></h4>
             <button type="button" class="btn btn-primary btn-block">Register for SW12X</button>
         </div>
         <!-- Panel 1 -->
