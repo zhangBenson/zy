@@ -179,7 +179,20 @@
                     </s:iterator>
                 </s:if>
                 <s:else>
-                    <div>近期没有要开始的课程。</div>
+                    <s:iterator value="course.classes" begin="course.ClassesNum-1" end="course.ClassesNum -1" status="idx">
+                        <div>topic: <s:property value="nickName"/></div>
+                        <p></p>
+                        <div>numbers:
+                            <s:property value="%{getText('lable.class.no1')}" />
+                            <s:property value="course.ClassesNum"/>
+                            <s:property value="%{getText('lable.class.no2')}" />
+                        </div>
+                        <p></p>
+                        <div>times:<s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
+                        <p></p>
+                        <div>teacher: <s:property value="course.teacher.nickName"/></div>
+                        <br/>
+                    </s:iterator>
                 </s:else>
                 <button type="button" class="btn btn-primary btn-block">Enter</button>
             </div>

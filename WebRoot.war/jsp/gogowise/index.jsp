@@ -151,15 +151,27 @@
 
 <div class="container">
     <ul class="bxsliderLogolist">
-        <li>
-            <img src="../../images/index/orgLogolist1.jpg" alt="">
-        </li>
-        <li>
-            <img src="../../images/index/orgLogolist2.jpg" alt="">
-        </li>
-        <li>
-            <img src="../../images/index/orgLogolist3.jpg" alt="">
-        </li>
+
+        <%--<li>--%>
+            <%--<img src="../../images/index/orgLogolist1.jpg" alt="">--%>
+        <%--</li>--%>
+        <%--<li>--%>
+            <%--<img src="../../images/index/orgLogolist2.jpg" alt="">--%>
+        <%--</li>--%>
+        <%--<li>--%>
+            <%--<img src="../../images/index/orgLogolist3.jpg" alt="">--%>
+        <%--</li>--%>
+
+        <s:iterator value="OrganizationDao.findOngoingForAdmin()" status="status">
+            <li>
+                <a href="orgBlog.html?org.id=<s:property value="id"/>" >
+                    <img style="height:150px;width: 1170px;"
+                         src="<s:property value="logoUrl" />"
+                         alt="<s:property value="schoolName"/>"
+                    />
+                </a>
+            </li>
+        </s:iterator>
     </ul>
 
 </div>
