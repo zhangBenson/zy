@@ -3,10 +3,7 @@ package com.gogowise.rep.org.enity;
 import com.gogowise.rep.AbstractPersistence;
 import com.gogowise.rep.user.enity.BaseUser;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Calendar;
 import java.util.List;
 
@@ -33,6 +30,7 @@ public class Organization extends AbstractPersistence {
 
     private Calendar createDate = Calendar.getInstance();
 
+    @Column(columnDefinition = "text")
     private String description;
     private String logoUrl;
     private String advUrl;
