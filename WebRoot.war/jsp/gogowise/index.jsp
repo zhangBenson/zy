@@ -6,13 +6,6 @@
     <%--<meta charset="UTF-8">--%>
     <%--<meta name="viewport" content="width=device-width, initial-scale=1.0">--%>
 
-    <script src="../../js/index/jquery.bxslider.min.js"></script>
-    <link rel="stylesheet" href="../../css/index/jquery.bxslider.css">
-    <link rel="stylesheet" href="../../css/course/bootstrap.css">
-    <link rel="stylesheet" href="../../css/course/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/course/bootstrap-theme.css">
-    <link rel="stylesheet" href="../../css/course/bootstrap-theme.min.css">
-
 <%--<title>index</title>--%>
 <%--</head>--%>
 <script type="text/javascript">
@@ -36,6 +29,7 @@
         });
     });
 </script>
+
 
 
 <div class="container">
@@ -157,15 +151,27 @@
 
 <div class="container">
     <ul class="bxsliderLogolist">
-        <li>
-            <img src="../../images/index/orgLogolist1.jpg" alt="">
-        </li>
-        <li>
-            <img src="../../images/index/orgLogolist2.jpg" alt="">
-        </li>
-        <li>
-            <img src="../../images/index/orgLogolist3.jpg" alt="">
-        </li>
+
+        <%--<li>--%>
+            <%--<img src="../../images/index/orgLogolist1.jpg" alt="">--%>
+        <%--</li>--%>
+        <%--<li>--%>
+            <%--<img src="../../images/index/orgLogolist2.jpg" alt="">--%>
+        <%--</li>--%>
+        <%--<li>--%>
+            <%--<img src="../../images/index/orgLogolist3.jpg" alt="">--%>
+        <%--</li>--%>
+
+        <s:iterator value="OrganizationDao.findOngoingForAdmin()" status="status">
+            <li>
+                <a href="orgBlog.html?org.id=<s:property value="id"/>" >
+                    <img style="height:150px;width: 1170px;"
+                         src="<s:property value="logoUrl" />"
+                         alt="<s:property value="schoolName"/>"
+                    />
+                </a>
+            </li>
+        </s:iterator>
     </ul>
 
 </div>

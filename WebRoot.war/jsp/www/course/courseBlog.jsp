@@ -125,10 +125,10 @@
     <div class="container">
 
         <div class="well">
-            <img src="/images/course/schoolslogo.png" alt="">
-            <h4>School:Rice</h4>
+            <a href="orgBlog.html?org.id=<s:property value="course.organization.id"/>" title="<s:property value="course.organization.nickName"/>"><img src="<s:property value="course.organization.logoUrl"/>"/></a>
+            <h4>School:<s:property value="course.organization.schoolName"/></h4>
             <h4>Course Code: <s:property value="course.id"/></h4>
-            <h4>Course Language:English</h4>
+            <h4>Course Language:<s:property value="course.languageType"/></h4>
             <button type="button" class="btn btn-primary btn-block">Register for SW12X</button>
         </div>
         <!-- Panel 1 -->
@@ -179,7 +179,20 @@
                     </s:iterator>
                 </s:if>
                 <s:else>
-                    <div>近期没有要开始的课程。</div>
+                    <s:iterator value="course.classes" begin="course.ClassesNum-1" end="course.ClassesNum -1" status="idx">
+                        <div>topic: <s:property value="nickName"/></div>
+                        <p></p>
+                        <div>numbers:
+                            <s:property value="%{getText('lable.class.no1')}" />
+                            <s:property value="course.ClassesNum"/>
+                            <s:property value="%{getText('lable.class.no2')}" />
+                        </div>
+                        <p></p>
+                        <div>times:<s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
+                        <p></p>
+                        <div>teacher: <s:property value="course.teacher.nickName"/></div>
+                        <br/>
+                    </s:iterator>
                 </s:else>
                 <button type="button" class="btn btn-primary btn-block">Enter</button>
             </div>
