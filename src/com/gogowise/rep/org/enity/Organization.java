@@ -30,7 +30,7 @@ public class Organization extends AbstractPersistence {
 
     private Calendar createDate = Calendar.getInstance();
 
-    @Column(columnDefinition = "text")
+    @Column(columnDefinition = "longtext")
     private String description;
     private String logoUrl;
     private String advUrl;
