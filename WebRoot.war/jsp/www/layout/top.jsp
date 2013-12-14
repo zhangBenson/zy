@@ -6,7 +6,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            <div class="topLogo"></div>
+            <s:a action="index">
+                <div class="topLogo"></div>
+            </s:a>
         </div>
         <!--<div class="col-md-5">-->
         <div class="col-md-6">
@@ -38,7 +40,11 @@
 
                     <ul class="dropdown-menu" role="menu">
 
-                        <li><a href="userBlog.html?user.id=<s:property value="#session.userID"/>">Personal Center</a></li>
+                        <li><a href="userBlog.html?user.id=<s:property value="#session.userID"/>">
+                            <s:a action="studentCenter">
+                            Personal Center
+                            </s:a>
+                        </li>
 
                             <%--<a href="#">Profile Settings</a>--%>
                         <li><a href="initUpdate.html"><span></span><s:property value="%{getText('account.item.accountsettings')}" /></a></li>

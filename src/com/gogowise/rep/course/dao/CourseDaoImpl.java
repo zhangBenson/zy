@@ -339,7 +339,7 @@ import java.util.List;
 
     public List<Course> searchCourses(String searchStr, Pagination pagination) {
         if(searchStr == null || searchStr.equals("")) return this.findHotCourses(pagination);
-        String hql ="From Course c where " + COURSE_CONFIRMED + "and (c.name like ? or c.teacher.nickName like ?) order by c.id desc";
+        String hql ="select distinct c  From Course c left join  c.teachers teacher  where " + COURSE_CONFIRMED + "and (c.name like ? or teacher.nickName like ?) order by c.id desc";
         return this.find(hql,pagination,"%"+searchStr+"%","%"+searchStr+"%");
     }
 
