@@ -48,7 +48,6 @@ public class CourseAction extends BasicAction {
     private BaseUserDao baseUserDao;
     private CourseDao courseDao;
     private OrganizationDao organizationDao;
-    private CourseEvaluationDao courseEvaluationDao;
     private CourseCommentDao courseCommentDao;
     private CourseResourceDao courseResourceDao;
     private CourseQuestionDao courseQuestionDao;
@@ -1160,14 +1159,6 @@ public class CourseAction extends BasicAction {
         this.classRoomDao = classRoomDao;
     }
 
-
-    public CourseEvaluationDao getCourseEvaluationDao() {
-        return courseEvaluationDao;
-    }
-
-    public void setCourseEvaluationDao(CourseEvaluationDao courseEvaluationDao) {
-        this.courseEvaluationDao = courseEvaluationDao;
-    }
 
 
     public Course getCourse() {

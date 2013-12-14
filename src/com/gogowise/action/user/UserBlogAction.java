@@ -42,7 +42,6 @@ public class UserBlogAction extends BasicAction {
 
     private BaseUserDao baseUserDao;
     private CourseDao courseDao;
-    private CourseEvaluationDao courseEvaluationDao;
     private CommentsDao commentsDao;
     private BrowsedCourseDao browsedCourseDao;
     private MyShowDao myShowDao;
@@ -85,7 +84,6 @@ public class UserBlogAction extends BasicAction {
         personalOnlive = personalOnliveDao.findLatestOneForUser(userId, new Pagination(1));
         coursesAsTeacher = courseDao.findCourses2Teacher(userId, new Pagination(3));
         coursesAsStudent = courseDao.findCourses2Student(userId, new Pagination(4));
-        courseEvaluations = courseEvaluationDao.findByTeacherId(new Pagination(4), userId);
 
 
         personalOnlives = personalOnliveDao.findOnliveHistoryForUser(userId,pagination);
@@ -208,14 +206,6 @@ public class UserBlogAction extends BasicAction {
 
     public void setCourseDao(CourseDao courseDao) {
         this.courseDao = courseDao;
-    }
-
-    public CourseEvaluationDao getCourseEvaluationDao() {
-        return courseEvaluationDao;
-    }
-
-    public void setCourseEvaluationDao(CourseEvaluationDao courseEvaluationDao) {
-        this.courseEvaluationDao = courseEvaluationDao;
     }
 
     public List<CourseEvaluation> getCourseEvaluations() {

@@ -20,7 +20,8 @@ public class OrganizationDaoImpl extends ModelDaoImpl<Organization> implements O
 
     public List<BaseUser> findHotTeacherByOrgId(Integer orgId, Pagination pagination) {
 
-        String hql = "select distinct ot.teacher from OrganizationTeacher ot, CourseEvaluation ce  where ot.teacher.id = ce.course.teacher.id and  ot.org.id= ?  group by ot.teacher  order by count(ce.id) desc ";
+//        String hql = "select distinct ot.teacher from OrganizationTeacher ot, CourseEvaluation ce  where ot.teacher.id = ce.course.teacher.id and  ot.org.id= ?  group by ot.teacher  order by count(ce.id) desc ";
+        String hql = "select distinct ot.teacher from OrganizationTeacher ot where  ot.org.id= ?    order by ot.id desc ";
         return this.find(hql, pagination, orgId);
 
     }

@@ -37,7 +37,7 @@ public class CourseEvaluationDaoImpl extends ModelDaoImpl<CourseEvaluation> impl
     }
 
     public List<CourseEvaluation> findByTeacherId(Pagination pagination, Integer cid) {
-        return this.find("From CourseEvaluation ce where ce.course.teacher.id=?",cid);
+        return this.find("From CourseEvaluation ce  where ce.course.teacher.id=?",cid);
 
     }
 
