@@ -107,7 +107,7 @@ public class CourseAction extends BasicAction {
     private List<Organization> organizations = new ArrayList<>();
     private GoGoWiseAnnounceDao goGoWiseAnnounceDao;
     private List<GoGoWiseAnnounce> goGoWiseAnnounces =new ArrayList<>();
-    private List<BaseUser> teachers = new ArrayList<>();
+    private Set<BaseUser> teachers = new HashSet<>();
     private CourseService courseService;
     private List<Integer> teacherIds;
 
@@ -1795,11 +1795,11 @@ public class CourseAction extends BasicAction {
         this.courseService = courseService;
     }
 
-    public List<BaseUser> getTeachers() {
+    public Set<BaseUser> getTeachers() {
         return teachers;
     }
 
-    public void setTeachers(List<BaseUser> teachers) {
+    public void setTeachers(Set<BaseUser> teachers) {
         this.teachers = teachers;
     }
 

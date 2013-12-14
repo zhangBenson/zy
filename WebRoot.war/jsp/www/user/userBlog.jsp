@@ -17,9 +17,8 @@
                 <%--<img src="gogowisestyle/image/largeportrait.jpg" class="lecturerPortrait">--%>
                 <img src="<s:property value="user.pic" />" class="lecturerPortrait" />
                 <h1 class = "lecturerName"><s:property value="user.nickName"/></h1>
-                <h1 class = "lecturerTitle">Professor</h1>
-                <h1 class = "lecturerTitle">Computer Science</h1>
-                <h1 class = "lecturerTitle">Rice University</h1>
+
+
                 <br>
                 <div style="clear: left">
                     <h4 class="courseBody">

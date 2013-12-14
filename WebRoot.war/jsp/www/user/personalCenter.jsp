@@ -300,27 +300,23 @@
 				<div class="thickline"></div>
 
 				<div class="row">
-					<div class="col-sm-4">
-						<div class="recommendedSchool">
-							<img src="gogowisestyle/image/logo_school1.jpg" alt="">
-							<span>Introduction to Public Speaking</span>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="recommendedSchool">
-							<img src="gogowisestyle/image/logo_school2.jpg" alt="">
-							<span>Introduction to Public Speaking</span>
-						</div>
-					</div>
 
-					<div class="col-sm-4">
-						<a href="#">
-						<div class="recommendedSchool">
-							<img src="gogowisestyle/image/logo_school3.jpg" alt="">
-							<span>Introduction to Public Speaking</span>
-						</div>
-						</a>
-					</div>
+                    <s:iterator value="userLikeCourse" status="idx">
+                        <s:if test="#idx.getIndex() < 6">
+                            <div class="col-sm-4">
+                                <div class="recommended">
+                                    <div class="mycourseImg ">
+                                        <a class="img " href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"><img src="<s:property value="logoUrl"/>"/></a>
+                                    </div>
+                                    <a class="title" href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"><s:property value="name"/></a>
+                                </div>
+                            </div>
+                            <s:if test="#idx.getCount() % 3 == 0">
+                                <br/>
+                            </s:if>
+                        </s:if>
+                    </s:iterator>
+
 				</div>
 				<a href="#">
 					<p class="text-right">more</p>
