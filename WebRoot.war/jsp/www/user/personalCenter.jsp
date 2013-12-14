@@ -106,7 +106,7 @@
 			</div>
 			<br/>
 			<div class="basePanelshadow">
-				<div class="basePanelBlueGrey">Discussion Room</div>
+                <div class="basePanelGrey">Discussion Room(School name)</div>
 
 				<br/>
 				<div class="list-group">
@@ -133,7 +133,33 @@
 					</a>
 
 				</div>
-				<button type="button" class="btn btn-success btn-lg btn-block">Booking</button>
+                <div id="page">
+                    <ul class="pagination">
+                        <li>
+                            <a href="#">&laquo;</a>
+                        </li>
+                        <li>
+                            <a href="#">1</a>
+                        </li>
+                        <li>
+                            <a href="#">2</a>
+                        </li>
+                        <li class="active">
+                            <a href="#">3</a>
+                        </li>
+                        <li>
+                            <a href="#">4</a>
+                        </li>
+                        <li>
+                            <a href="#">5</a>
+                        </li>
+                        <li>
+                            <a href="#">&raquo;</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <button type="button" class="btn btn-success btn-lg btn-block">Booking</button>
 
 			</div>
 		</div>
@@ -153,9 +179,7 @@
 										<li></li>
 										<li><s:property value="%{getText('courses.info.lecturer')}" />:<s:a action="userBlog"><s:param name="user.id"  value="teacher.id"/><s:property value="teacher.nickName"/></s:a></li>
 										<li></li>
-
 										<li>
-											
 											<%-- <div id="remainSeconds" style="display:none">100000</div>
 											<div id="remainTime" style="width: 134px;">Start:</div> --%>
 											<div style="width: 175px;">Start:<b id="timeLeft<s:property value="#idx.index"/>"></b></div>
