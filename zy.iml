@@ -13,22 +13,9 @@
           <root url="file://$MODULE_DIR$/src" />
         </sourceRoots>
       </configuration>
-      <facet type="Struts2" name="Struts 2">
-        <configuration>
-          <propertiesKeys disabled="false" />
-        </configuration>
-      </facet>
-    </facet>
-    <facet type="Spring" name="Spring">
-      <configuration>
-        <fileset id="fileset" name="Spring Application Context" removed="false">
-          <file>file://$MODULE_DIR$/WebRoot.war/WEB-INF/config/applicationContext.xml</file>
-          <file>file://$MODULE_DIR$/etc/applicationContext.xml</file>
-        </fileset>
-      </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_5" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/WebRoot.war/WEB-INF/classes" />
     <output-test url="file://$MODULE_DIR$/WebRoot.war/WEB-INF/classes" />
     <content url="file://$MODULE_DIR$">
@@ -39,7 +26,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.1" level="project" />
     <orderEntry type="library" name="Maven: junit:junit:4.5" level="project" />
     <orderEntry type="library" name="Maven: org.apache.struts:struts2-tiles-plugin:2.3.1.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.tiles:tiles-core:2.0.6" level="project" />
