@@ -10,7 +10,7 @@
         <a id="searchType2" href="javascript:startSearch(2);"><s:property value="%{getText('search.header.member')}"/></a>
         <a id="searchType3" href="javascript:startSearch(3);"><s:property value="%{getText('search.header.organization')}"/></a>
         <a id="searchType4" href="javascript:startSearch(4);"><s:property value="%{getText('search.header.course')}"/></a>
-        <a id="searchType5" href="javascript:startSearch(5);"><s:property value="%{getText('search.header.show')}"/></a>
+        <%--<a id="searchType5" href="javascript:startSearch(5);"><s:property value="%{getText('search.header.show')}"/></a>--%>
         <%--<a id="searchType6" href="javascript:startSearch(6);"><s:property value="%{getText('search.header.live')}"/></a>--%>
     </div>
 
