@@ -125,7 +125,8 @@
     <div class="container">
 
         <div class="well">
-            <a href="orgBlog.html?org.id=<s:property value="course.organization.id"/>" title="<s:property value="course.organization.nickName"/>"><img src="<s:property value="course.organization.logoUrl"/>"/></a>
+            <a href="orgBlog.html?org.id=<s:property value="course.organization.id"/>" title="<s:property value="course.organization.nickName"/>">
+                <img style="width:280px;height:117px;" src="<s:property value="course.organization.logoUrl"/>"/></a>
             <h4>School:<s:property value="course.organization.schoolName"/></h4>
             <h4>Course Code: <s:property value="course.id"/></h4>
             <h4>Course Language:<s:property value="course.languageType"/></h4>
@@ -205,9 +206,18 @@
         <div class="gogopanelBody">
             <div class="gogopanelBodyText">
                 <div class="row">
-                    <div class="col-md-4"><img class="teacherPortrait" src="images/defaultImgs/portrait.png"  /></div>
-                    <div class="col-md-4"><img class="teacherPortrait" src="images/defaultImgs/portrait.png"  /></div>
-                    <div class="col-md-4"><img class="teacherPortrait" src="images/defaultImgs/portrait.png"  /></div>
+                    <%--<div class="col-md-4"><img class="teacherPortrait" src="images/defaultImgs/portrait.png"  /></div>--%>
+                    <%--<div class="col-md-4"><img class="teacherPortrait" src="images/defaultImgs/portrait.png"  /></div>--%>
+                    <%--<div class="col-md-4"><img class="teacherPortrait" src="images/defaultImgs/portrait.png"  /></div>--%>
+                        <div><s:property value="" /></div>
+                    <s:iterator value="course.teachers">
+                        <div class="col-md-4">
+                            <a href="userBlog.html?user.id=<s:property value="id"/>" title="<s:property value="nickName"/>" >
+                                <img class="teacherPortrait" src="<s:property value="pic" />"  />
+                            </a>
+
+                        </div>
+                    </s:iterator>
                 </div>
 
                 <br/>
