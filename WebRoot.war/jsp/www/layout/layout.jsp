@@ -31,6 +31,8 @@
 
     <script src="../../../js/jquery-1.7.2.min.js"></script>
     <script src="../../../js/course/bootstrap.min.js"></script>
+    <script src="../../../js/iscroll.js"></script>
+    <script src="../../../js/swfobject.js"></script>
 
     <script type="text/javascript" src="../../../js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
     <script type="text/javascript" src="../../../js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>

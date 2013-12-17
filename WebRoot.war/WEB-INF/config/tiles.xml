@@ -1020,10 +1020,17 @@
     <definition name=".courseLogoProcess" template="/jsp/gogowise/course/courseLogoProcess.jsp">
         <put-attribute name="title" value="title.logo.upload"/>
     </definition>
-    <definition name=".startPersonalOnlive" extends=".roomCenter" >
+    <!--<definition name=".startPersonalOnlive" extends=".roomCenter" >
         <put-attribute name="title" value="title.personal.onlive.room"/>
        <put-attribute name="roomBody" value="/jsp/gogowise/onlive/personalVirtualRoom.jsp"/>
+    </definition>-->
+
+    <definition name=".startPersonalOnlive" extends=".wwwBodyCenter">
+        <put-attribute name="title" value="title.personal.onlive.room"/>
+        <put-attribute name="contentBody" value="/jsp/www/course/virtualclassroom.jsp"/>
     </definition>
+
+
     <definition name=".roomAudienceList" template="/jsp/gogowise/onlive/roomAudienceList.jsp" >
     </definition>
     <definition name=".openPrivateChannel" extends=".bodyCenter" >
