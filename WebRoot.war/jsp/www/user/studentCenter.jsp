@@ -106,7 +106,7 @@
 			</div>
 			<br/>
 			<div class="basePanelshadow">
-				<div class="basePanelBlueGrey">Discussion Room</div>
+				<div class="basePanelBlueGrey">Discussion Room(School name)</div>
 
 				<br/>
 				<div class="list-group">
@@ -134,15 +134,37 @@
 
 				</div>
 				<button type="button" class="btn btn-success btn-lg btn-block">Booking</button>
-
+                <div id="page">
+                    <ul class="pagination">
+                        <li>
+                            <a href="#">&laquo;</a>
+                        </li>
+                        <li>
+                            <a href="#">1</a>
+                        </li>
+                        <li>
+                            <a href="#">2</a>
+                        </li>
+                        <li class="active">
+                            <a href="#">3</a>
+                        </li>
+                        <li>
+                            <a href="#">4</a>
+                        </li>
+                        <li>
+                            <a href="#">5</a>
+                        </li>
+                        <li>
+                            <a href="#">&raquo;</a>
+                        </li>
+                    </ul>
+                </div>
 			</div>
 		</div>
 
 		<div class="col-sm-8">
-
 			<div class="row">
 				<div class="col-sm-8">
-					
 					<div class="basePanelTextLeftAbsolute">
 						<h3 class="courseSubhead">My courses</h3>
 						<s:if test="existLatestCourse">
@@ -276,27 +298,19 @@
 				<div class="thickline"></div>
 
 				<div class="row">
-					<div class="col-sm-4">
-						<div class="recommendedSchool">
-							<img src="gogowisestyle/image/logo_school1.jpg" alt="">
-							<span>Introduction to Public Speaking</span>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="recommendedSchool">
-							<img src="gogowisestyle/image/logo_school2.jpg" alt="">
-							<span>Introduction to Public Speaking</span>
-						</div>
-					</div>
-
-					<div class="col-sm-4">
-						<a href="#">
-						<div class="recommendedSchool">
-							<img src="gogowisestyle/image/logo_school3.jpg" alt="">
-							<span>Introduction to Public Speaking</span>
-						</div>
-						</a>
-					</div>
+                    <s:iterator value="latestOrgs" status = "idx">
+                        <s:if test="#idx.getIndex() < 3">
+                            <div class="col-sm-4">
+                                <div class="recommendedSchool">
+                                    <div class="recommendedSchool img">
+                                    <a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="schoolName"/>"><img class = "recommendedSchool img" src="<s:property value="logoUrl"/>"/></a>
+                                    </div>
+                                    <br/>
+                                    <span><s:property value="schoolName"/></span>
+                                </div>
+                            </div>
+                        </s:if>
+                    </s:iterator>
 				</div>
 				<a href="#">
 					<p class="text-right">more</p>
@@ -312,9 +326,9 @@
 		                	<div class="col-sm-4">
 		                		<div class="recommended">
 		                			<div class="mycourseImg ">
-				                    	<a class="img " href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"><img src="<s:property value="logoUrl"/>"/></a>
+				                    	<a  href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"><img src="<s:property value="logoUrl"/>"/></a>
 				                    </div>
-				                    <a class="title" href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"><s:property value="name"/></a>
+				                    <a  href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"><s:property value="name"/></a>
 			                    </div>
 		              		</div>
 		              		<s:if test="#idx.getCount() % 3 == 0">
