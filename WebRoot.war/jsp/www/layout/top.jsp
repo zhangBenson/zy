@@ -38,7 +38,8 @@
 
                     <ul class="dropdown-menu" role="menu">
 
-                        <li><a href="userBlog.html?user.id=<s:property value="#session.userID"/>">Personal Center</a></li>
+                        <%-- <li><a href="userBlog.html?user.id=<s:property value="#session.userID"/>">Personal Center</a></li>        --%>
+                        <li><a href="personalCenter.html">Personal Center</a></li>
 
                             <%--<a href="#">Profile Settings</a>--%>
                         <li><a href="initUpdate.html"><span></span><s:property value="%{getText('account.item.accountsettings')}" /></a></li>
