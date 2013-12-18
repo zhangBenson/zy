@@ -254,9 +254,9 @@
     <definition name=".forcastComptitionSession" extends=".userCenter">
         <put-attribute name="contentRight" value="/jsp/gogowise/forcast.jsp"/>
     </definition>
-    <definition name=".myGoGoWise" extends=".wwwBodyCenter">
+    <definition name=".myGoGoWise" extends=".userCenter">
         <put-attribute name="title" value="title.myfirstpage"/>
-        <put-attribute name="contentBody" value="/jsp/www/user/personalCenter.jsp"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/user/myGoGoWise.jsp"/>
     </definition>
     <definition name=".followedUserList" extends=".listCenter">
         <put-attribute name="title" value="title.gogowise.my.followed.users"/>
@@ -268,6 +268,11 @@
     </definition>
      <definition name=".personalInfoPhase" extends=".userCenter">
         <put-attribute name="contentRight" value="/jsp/gogowise/personalinfo.jsp"/>
+    </definition>
+
+    <definition name=".studentCenter" extends=".wwwBodyCenter">
+        <put-attribute name="title" value="title.myfirstpage"/>
+        <put-attribute name="contentBody" value="/jsp/www/user/studentCenter.jsp"/>
     </definition>
 
     <!--<definition name=".userCenterImp" extends=".basic">-->
