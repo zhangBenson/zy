@@ -49,20 +49,31 @@
         </li>
     </ul>
 
+    <%--<s:form method="post" action="searchResult" theme="simple" validate="true">--%>
 
-    <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-6">
-            <input class="form-control input-lg" type="text" placeholder="<s:property value="%{getText('menu.item.search')}"/>"></div>
-        <div class="col-sm-4">
-            <button type="button" class="btn btn-default btn-lg">
-                <%--<span class="glyphicon glyphicon-search"></span>--%>
-                <img src="../../images/index/search_btn_bg.png" />
-                <s:property value="%{getText('menu.item.search')}"/>
-            </button>
+        <%--<s:hidden name="searchType" value="1"/>--%>
+        <%--&lt;%&ndash;<input name="courseName" class="keyWords"/>&ndash;%&gt;--%>
+        <%--<s:textfield cssClass="keyWords" name="searchStr" />--%>
+        <%--<input type="hidden" name="searchTyp" value="1"/>--%>
+        <%--<input class="searchButton" type="submit" value="" />--%>
+        <%--&lt;%&ndash;<a class="searchButton" href="search.html"></a>&ndash;%&gt;--%>
+    <%--</s:form>--%>
+    <s:form method="post" action="searchResult" theme="simple" validate="true">
+        <s:hidden name="searchType" value="1"/>
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-6">
+                <s:textfield cssClass="form-control input-lg" name="searchStr" placeholder="search"  ></s:textfield>
+            </div>
+            <div class="col-sm-4">
+                <button type="submit" class="btn btn-default btn-lg">
+                    <%--<span class="glyphicon glyphicon-search"></span>--%>
+                    <img src="../../images/index/search_btn_bg.png" />
+                    <s:property value="%{getText('menu.item.search')}"/>
+                </button>
+            </div>
         </div>
-    </div>
-
+    </s:form>
 </div>
 
 <br/>

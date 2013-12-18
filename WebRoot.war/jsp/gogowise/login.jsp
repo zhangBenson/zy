@@ -53,17 +53,7 @@
                       $.post("ajaxLogin.html",userData,function(data){
                           if(data.loginMessage=="success"){
                               var currHref = parent.window.location.href;
-                              if(currHref.indexOf("index.html") != -1){
-                                  <%--<s:if test="baseuser.teacher==0" >--%>
-                                    <%--//parent.window.location.href = "PersonCenter.html";--%>
-                                    <%--parent.window.location.href = "myfirstPage.html";--%>
-                                  <%--</s:if>--%>
-                                  <%--<s:else>--%>
-                                    parent.window.location.href = "myfirstPage.html";
-                                  <%--</s:else>--%>
-                              }else{
                                 parent.window.location.reload();
-                              }
                           }else{
                              $("#login_tip").text(data.loginMessage);
                           }

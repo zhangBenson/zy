@@ -138,10 +138,7 @@ public class IndexAction extends BasicAction {
             ActionContext.getContext().getSession().put("request_only_locale",new Locale("en","US"));
             ActionContext.getContext().setLocale(new Locale("en","US"));
         }
-        personalOnlives = personalOnliveDao.findAllLivingOnline(pagination);
-        hottestOnlives = personalOnliveDao.findHottestOnlive(pagination);
-        courses = courseDao.findHotCourses(pagination);
-        myShows = myShowDao.findHotestShow(pagination);
+        courses = courseDao.findlatestCourses(pagination);
         return SUCCESS;
     }
 

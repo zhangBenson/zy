@@ -14,7 +14,9 @@ import com.gogowise.rep.user.enity.BaseUser;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service("courseService")
 public class CourseServiceImpl extends ModelServiceImpl implements CourseService{
@@ -24,9 +26,15 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
     private CourseDao courseDao;
     private OrganizationDao organizationDao;
 
-    public List<BaseUser> findAllTeachersByOrgCreator(Integer userId) {
+    public Set<BaseUser> findAllTeachersByOrgCreator(Integer userId) {
         Organization org =  organizationDao.findByResId(userId);
-        return  orgService.findAllTeachersForOrg(org.getId());
+        Set<BaseUser> teachers = new HashSet<>();
+        if(org != null) {
+            teachers.addAll(orgService.findAllTeachersForOrg(org.getId()));
+        }
+        teachers.add(baseUserDao.findById(userId));
+
+        return teachers;
     }
 
     public void saveCourse(CourseSpecification specification) {

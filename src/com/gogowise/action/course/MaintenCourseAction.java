@@ -23,9 +23,7 @@ import org.springframework.stereotype.Controller;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -39,13 +37,14 @@ import java.util.List;
 @Namespace(BasicAction.BASE_NAME_SPACE)
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 public class MaintenCourseAction extends BasicAction {
-    private List<BaseUser> teachers = new ArrayList<>();
+    private Set<BaseUser> teachers = new HashSet<>();
     private CourseService courseService;
     private Integer courseType = 1;
     private List<Course> courses = new ArrayList();
     private Course course;
     private Integer operaType;
     private CourseDao courseDao;
+
 
     @Action(value = "createCourseAllInOne", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".createCourseAllInOne"),
             @Result(name = "failed", type = Constants.RESULT_NAME_TILES, location = ".identityConfirmation")})
@@ -70,11 +69,11 @@ public class MaintenCourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    public List<BaseUser> getTeachers() {
+    public Set<BaseUser> getTeachers() {
         return teachers;
     }
 
-    public void setTeachers(List<BaseUser> teachers) {
+    public void setTeachers(Set<BaseUser> teachers) {
         this.teachers = teachers;
     }
 

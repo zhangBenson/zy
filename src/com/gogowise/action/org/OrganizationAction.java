@@ -52,7 +52,6 @@ public class OrganizationAction extends BasicAction {
     private CourseDao courseDao;
 
     private OrganizationDao organizationDao;
-    private CourseEvaluationDao courseEvaluationDao;
     private OrganizationCommentDao organizationCommentDao;
     private BaseUserDao baseUserDao;
     private List<OrgMaterial> orgMaterials = new ArrayList<OrgMaterial>();
@@ -97,7 +96,6 @@ public class OrganizationAction extends BasicAction {
 
         hotCourses = courseDao.findHotCoursesByOrg(orgId, new Pagination(4));
 
-        courseEvaluations = courseEvaluationDao.findByOrganizationId(new Pagination(3), orgId);
         Pagination page  = new Pagination(10);
         comments = organizationCommentDao.findOrgCommentByOrgId(orgId, page);
         this.setCommentsNum(comments.size());
@@ -513,13 +511,6 @@ public class OrganizationAction extends BasicAction {
         this.organizationDao = organizationDao;
     }
 
-    public CourseEvaluationDao getCourseEvaluationDao() {
-        return courseEvaluationDao;
-    }
-
-    public void setCourseEvaluationDao(CourseEvaluationDao courseEvaluationDao) {
-        this.courseEvaluationDao = courseEvaluationDao;
-    }
 
     public OrganizationCommentDao getOrganizationCommentDao() {
         return organizationCommentDao;

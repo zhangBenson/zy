@@ -7,10 +7,11 @@ import com.gogowise.rep.course.vo.CourseSpecification;
 import com.gogowise.rep.user.enity.BaseUser;
 
 import java.util.List;
+import java.util.Set;
 
 public interface CourseService extends ModelService {
 
-    public List<BaseUser> findAllTeachersByOrgCreator(Integer userId);
+    public Set<BaseUser> findAllTeachersByOrgCreator(Integer userId);
     public void saveCourse(CourseSpecification specification);
     public Course findById(Integer id);
     public List<Course>  findMaintenanceCourses(Integer userId , Pagination pagination);
