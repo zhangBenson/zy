@@ -3,13 +3,14 @@
 
 
 <div class="container">
+    <s:hidden value="%{#session.userID}" id="hidSessionId"/>
 	<div class="thinline"></div>
 	<div class="row">
 		<div class="col-sm-8">
 			<div id="schoolInfo">
 				<img src="<s:property value="org.logoUrl"/>" class="schoolPortrait"/>
 				
-				<h1 class = "courseSubject"><s:property value="org.schoolName"/></h1>
+				<h1 class ="courseSubject"><s:property value="org.schoolName"/></h1>
 				<h4 class="courseBody">
 					<s:property value="org.description"/>
 				</h4>	
@@ -30,6 +31,14 @@
 			                    <span title="<s:property value="name"/>"><s:a action="voaCourseBlog"><s:param name="course.id" value="id"/><s:property value="name"/></s:a></span>
 			                </div>
 		                </div>
+		                <!-- <div class="col-sm-4">
+							<a href="#">
+								<div class="recommended">
+									<img src="gogowisestyle/image/recommended1.jpg" alt="">
+									<span>Introduction to Public Speaking</span>
+								</div>
+							</a>
+						</div> -->
 		            </s:iterator>
 				</div>
 				<br/>
@@ -62,8 +71,23 @@
 			<!--Forums-->
 			<br/>
 			<div id="Forums">
+
 				<div class="thickline"></div>
 				<h3 class="courseSubhead">Forums</h3>
+				<!-- <div class="forumsinfo">
+					<div class="forumsUserContainer">
+						<img src="gogowisestyle/image/portrait2.jpg" alt="" class="forumportrait">
+						<p class="textOverSinglerow">Name</p>
+					</div>
+					<div class="forumsContentContainer">
+						<div class="forumText">
+							For students, that means you really have to pay attention in all your computer scienceclasses.For students, that means you really have to pay attention in all your computer scienceclasses.
+						</div>
+						<p class="text-right">2013-11-12</p>
+					</div>
+					<div class="clearfix"></div>
+				</div> -->
+            <div id="message_list_ul">
 				<s:iterator value="comments" status="idx">
 					<s:if test="#idx.getCount() < 3">
 						<div class="row">
@@ -88,12 +112,12 @@
 			            </div>
 			        </s:if>
 				</s:iterator>
+            </div>
 				
 				<br/>
 				<div>
-					<s:form theme="css_xhtml" name="commentsForm" method="post" action="saveUserBlogComments" validate="true">
-	                <s:hidden name="user.id"/>
-	                <textarea class="form-control" rows="3"></textarea>
+					<s:form theme="css_xhtml" name="commentsForm" method="post" validate="true">
+	                <textarea class="form-control" rows="3" id="message_textarea"></textarea>
 	                <br/>	
 	                <input type="button" id="message_submit_btn" class="btn btn-primary btn-lg btn-block" value="提交留言" 	 />
 	            	</s:form>
@@ -185,17 +209,17 @@
 					<div class="gogopanelBodyText">
 						<s:if test="course.FinshedClassNum < course.ClassesNum">
 		                    <s:iterator value="course.ForcastClasses" begin="0" end="0" status="idx">
-		                        <div>topic: <s:property value="nickName"/></div>
+		                        <div>Topic: <s:property value="nickName"/></div>
 		                        <p></p>
-		                        <div>numbers:
+		                        <div>Numbers:
 		                            <s:property value="%{getText('lable.class.no1')}" />
 		                            <s:property value="course.FinshedClassNum+1"/>
 		                            <s:property value="%{getText('lable.class.no2')}" />
 		                        </div>
 		                        <p></p>
-		                        <div>times:<s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
+		                        <div>Times:<s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
 		                        <p></p>
-		                        <div>teacher: <s:property value="course.teacher.nickName"/></div>
+		                        <div>Teacher: <s:property value="course.teacher.nickName"/></div>
 		                        <br/>
 		                    </s:iterator>
                		 	</s:if>
@@ -211,14 +235,35 @@
 				</div>
 				<div class="gogopanelBody">
 					<div class="gogopanelBodyText">
-						<div class="row">
-							<div class="col-md-4"><img class="teacherPortrait" src="/images/defaultImgs/portrait.png"  /></div>
-							<div class="col-md-4"><img class="teacherPortrait" src="/images/defaultImgs/portrait.png"  /></div>
-							<div class="col-md-4"><img class="teacherPortrait" src="/images/defaultImgs/portrait.png"  /></div>
+						<div id="DisUserArea" style="text-align: center;">
+							<div class="row">
+								<div class="col-md-4">
+									<img src="../../images/course/portrait2.jpg" class="normalPortrait"/>
+									<p class="textOverSinglerow">Name</p>
+								</div>
+								<div class="col-md-4">
+									<img src="../../images/course/portrait4.jpg" class="normalPortrait"/>
+									<p class="textOverSinglerow">Name</p>
+								</div>
+								<div class="col-md-4">
+									<img src="../../images/course/portrait5.jpg" class="normalPortrait"/>
+									<p class="textOverSinglerow">Name</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+									<img src="../../images/course/portrait2.jpg" class="normalPortrait"/>
+									<p class="textOverSinglerow">Name</p>
+								</div>
+								<div class="col-md-4">
+									<img src="../../images/course/noportrait.jpg" class="normalPortrait"/>
+									<p class="textOverSinglerow">Available</p>
+								</div>
+							</div>
 						</div>
 						
 						<br/>
-						<button type="button" class="btn btn-primary btn-block">Enter</button>
+						<button type="button" class="btn btn-primary btn-block">Booking</button>
 					</div>
 				</div>
 				<br/>
@@ -226,3 +271,144 @@
 		</div>
 </div>
 </div>
+
+<script type="text/javascript">
+    var SellerScroll = function(options) {
+        this.SetOptions(options);
+        this.lButton = this.options.lButton;
+        this.rButton = this.options.rButton;
+        this.oList = this.options.oList;
+        this.showSum = this.options.showSum;
+
+        this.iList = $("#" + this.options.oList + " > li");
+        this.iListSum = this.iList.length;
+        this.iListWidth = this.iList.outerWidth(true);
+        this.moveWidth = this.iListWidth * this.showSum;
+
+        this.dividers = Math.ceil(this.iListSum / this.showSum);	//共分为多少块
+        this.moveMaxOffset = (this.dividers - 1) * this.moveWidth;
+        this.LeftScroll();
+        this.RightScroll();
+    };
+    SellerScroll.prototype = {
+        SetOptions: function(options) {
+            this.options = {
+                lButton: "left_scroll",
+                rButton: "right_scroll",
+                oList: "scroll_ul",
+                showSum: 4    //一次滚动多少个items
+            };
+            $.extend(this.options, options || {});
+        },
+        ReturnLeft: function() {
+            return isNaN(parseInt($("#" + this.oList).css("left"))) ? 0 : parseInt($("#" + this.oList).css("left"));
+        },
+        LeftScroll: function() {
+            if (this.dividers == 1) return;
+            var _this = this, currentOffset;
+            $("#" + this.lButton).click(function() {
+                currentOffset = _this.ReturnLeft();
+                if (currentOffset == 0) {
+                    for (var i = 1; i <= _this.showSum; i++) {
+                        $(_this.iList[_this.iListSum - i]).prependTo($("#" + _this.oList));
+                    }
+                    $("#" + _this.oList).css({ left: -_this.moveWidth });
+                    $("#" + _this.oList + ":not(:animated)").animate({ left: "+=" + _this.moveWidth }, { duration: "slow", complete: function() {
+                        for (var j = _this.showSum + 1; j <= _this.iListSum; j++) {
+                            $(_this.iList[_this.iListSum - j]).prependTo($("#" + _this.oList));
+                        }
+                        $("#" + _this.oList).css({ left: -_this.moveWidth * (_this.dividers - 1) });
+                    } });
+                } else {
+                    $("#" + _this.oList + ":not(:animated)").animate({ left: "+=" + _this.moveWidth }, "slow");
+                }
+            });
+        },
+        RightScroll: function() {
+            if (this.dividers == 1) return;
+            var _this = this, currentOffset;
+            $("#" + this.rButton).click(function() {
+                currentOffset = _this.ReturnLeft();
+                if (Math.abs(currentOffset) >= _this.moveMaxOffset) {
+                    for (var i = 0; i < _this.showSum; i++) {
+                        $(_this.iList[i]).appendTo($("#" + _this.oList));
+                    }
+                    $("#" + _this.oList).css({ left: -_this.moveWidth * (_this.dividers - 2) });
+
+                    $("#" + _this.oList + ":not(:animated)").animate({ left: "-=" + _this.moveWidth }, { duration: "slow", complete: function() {
+                        for (var j = _this.showSum; j < _this.iListSum; j++) {
+                            $(_this.iList[j]).appendTo($("#" + _this.oList));
+                        }
+                        $("#" + _this.oList).css({ left: 0 });
+                    } });
+                } else {
+                    $("#" + _this.oList + ":not(:animated)").animate({ left: "-=" + _this.moveWidth }, "slow");
+                }
+            });
+        }
+    };
+    $(document).ready(function() {
+        var ff = new SellerScroll();
+
+        $("#message_submit_btn").bind('click', function () {
+            if(validateLogo()){
+                var messageText = $("#message_textarea").val();
+                if(messageText == ""){
+                    $("#message_area_tip").html("留言不能为空");
+                    return;
+                }
+//                if (validateForm_saveUserBlogComments()){
+                    $.post("saveOrgComment.html", {'org.id':'<s:property value="org.id"/>', 'comment.description':messageText ,'commentsNum':<s:property value="commentsNum"/>} ,function (data) {
+                        $("#message_list_ul").html(data);
+                    });
+//                }
+                $("#message_textarea").attr('value',"");
+                $("#message_area_tip").html("");
+            }
+
+        })
+
+        $("#message_textarea").keyup(function(){
+            changeWordNumber($(this),$("#message_area_tip"),250);
+        });
+    });
+
+    function getSubString(parentStr,shortLength){
+        if(/.*[\u4e00-\u9fa5]+.*$/.test(parentStr)){
+            if(parentStr.length>shortLength){
+                return parentStr.substring(0,shortLength)+"...";
+            }
+        }else{
+            if(parentStr.length>2*shortLength){
+                return parentStr.substring(0,2*shortLength)+"...";
+            }
+        }
+    }
+
+    function replyToComment(nickName,userID){
+        var prefixStr = "回复";
+        $("#message_textarea").val(prefixStr+nickName+": ");
+        $("#message_textarea").focus();
+        $.post("putUserIDtoSession.html",{'user.id':userID},function(data){});
+    }
+    function deleteThisComment(obj,commentId){
+        $(obj).parents("li.li_out").remove();
+        $.post("deleteOrgComment.html",{'comment.id':commentId},function(data){});
+
+    }
+
+    function validateLogo(){
+        if(document.getElementById('hidSessionId').value > 0) {
+            return true;
+        } else {
+            $.fancybox({
+                "type":"iframe",
+                "href":"login.html",
+                "width":350,
+                "height":270
+            });
+            return false;
+        }
+    }
+
+</script>
