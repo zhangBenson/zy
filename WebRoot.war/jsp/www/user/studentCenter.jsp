@@ -221,6 +221,13 @@
 								</s:if>						
 							</s:iterator>
 						</s:if>
+                        <s:else>
+                            <ul class="list-inline" style="background-color: #6ab600;color: #fff;border-radius: 4px; padding-top: 3px;padding-bottom: 3px;">
+                                <div>
+                                    You have no course registered. Please choose your courses in <a href="courseSquare.html">Course Centre</a>.
+                                </div>
+                            </ul>
+                        </s:else>
 					</div>
 				</div>
 				<div class="col-sm-4">
