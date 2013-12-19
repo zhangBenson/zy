@@ -1,13 +1,22 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="s" uri="struts-tags.tld" %>
 
+
+<link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+
 <div class="container">
 <div class="thinline"></div>
 <div class="row">
 <div class="col-md-8">
 <div class="container">
+    <s:hidden value="%{#session.userID}" id="hidSessionId" />
     <%-- Course Info--%>
-    <img src="<s:property value="course.logoUrl" />" alt="..." class="img-rounded">
+    <s:if test="" >
+        <img src="<s:property value="course.bannerUrl" />" alt="course.name" class="courseBanner">
+    </s:if>
+
+
+
     <%-- <h1 class = "courseSubject">Introduction to Computer Science</h1>  --%>
     <h1 class = "courseSubject"><s:property value="course.name"/></h1>
     <%-- <h5 class ="courseSynopsis">
@@ -22,11 +31,12 @@
         </div>
         <div class="col-md-4" style="text-align: right;">
             <h3>
-                <button type="button" class="btn btn-primary btn-sm">PDF Download(12.7M)</button>
+                <img src="../../images/course/download.png" alt="" class="downloadIcon"></a>
             </h3>
         </div>
     </div>
 
+    <img src="<s:property value="course.logoUrl" />" class="courseInfoImg" />
 
     <h4 class="courseBody" ><s:property value="course.description"/></h4>
     <div class="thickline"></div>
@@ -34,27 +44,39 @@
 
     <%-- Course Videos--%>
     <s:set var="isMore" value="false"></s:set>
-    <s:iterator value="course.classes" id="class" status="status">
-    <s:if test="#status.index<6">
-    <s:if test="#status.index % 3 == 0">
-    <div class="row">
-        </s:if>
 
-        <div class="col-sm-4">
-            <s:if test="#status.index < course.FinshedClassNum"><div class="lessonOrange"></s:if>
-            <s:else><div class="lessonGreen"></s:else>
-                <div id="lessonText"><s:property value="#status.index+1" /></div>
-                <div id="lessonName"><s:property value="nickName"/></div>
+    <s:iterator value="course.classes" id="class" status="status">
+        <s:if test="#status.index<6">
+            <s:if test="#status.index % 3 == 0">
+                <div class="row">
+            </s:if>
+
+            <%--<div class="col-sm-4">--%>
+                <%--<s:if test="#status.index < course.FinshedClassNum"><div class="lessonOrange"></s:if>--%>
+                <%--<s:else><div class="lessonGreen"></s:else>--%>
+                    <%--<div id="lessonText"><s:property value="#status.index+1" /></div>--%>
+                    <%--<div id="lessonName"><s:property value="nickName"/></div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+
+            <div class="col-sm-4">
+                <div class="pull-left">
+                    <s:if test="#status.index < course.FinshedClassNum"><div class="lessonOrange"></s:if>
+                        <span><s:property value="#status.index+1" /></span>
+                        <div>Lesson</div>
+                    </div>
+                </div>
+                <div class="pull-left">
+                    <div class="lessonName"><s:property value="nickName"/></div>
+                    <div class="lessonTime"><s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
+                </div>
             </div>
 
-        </div>
-
-            <s:if test="#status.index % 3 == 2||#status.last">
-        </div><br/>
-        </s:if>
+            <s:if test="#status.index % 3 == 2||#status.last"></div><br/></s:if>
         </s:if>
         <s:else><s:set var="isMore" value="true"></s:set></s:else>
-        </s:iterator>
+
+    </s:iterator>
 
         <s:if test="isMore">
             <p class="text-right">more</p>
@@ -66,40 +88,64 @@
         <div class="courseSubhead">Forum</div>
         <br/>
 
-        <%--spkang added forum content begin --%>
-        <s:set var="flag" value="true" />
-        <s:iterator value="courseComments" status="idx">
-            <%--<p>--%>
-            <s:if test="flag">
-                <div class="row">
-                    <div class="col-md-2">
-                        <div class="portrait">
-                            <s:a action="userBlog" ><s:param name="user.id" value="commenter.id"/><img src="<s:property value="commenter.pic"/>"/></s:a>
-                            <br/>
-            					     <span>
-                                		<s:a action="userBlog" ><s:param name="user.id" value="commenter.id"/><s:property value="commenter.nickName"/></s:a>
-                                	</span>
-                        </div>
-                    </div>
 
-                        <%--<span class="span_out">--%>
-                    <div class="col-md-10">
-                        <div class="forumContent">
-                            <s:property value="content"/>
-                        </div>
-                        <div class="forumContentDate">
-                            <s:date name="commentTime" format="%{getText('global.display.datetime')}"/>
-                        </div>
-                    </div>
-                        <%--</span> --%>
+        <%--<div class="forumsinfo">--%>
+            <%--<div class="forumsUserContainer">--%>
+                <%--<img src="gogowisestyle/image/portrait1.jpg" alt="" class="forumportrait">--%>
+                <%--<p class="textOverSinglerow">Name</p>--%>
+            <%--</div>--%>
+            <%--<div class="forumsContentContainer">--%>
+                <%--<div class="forumText">--%>
+                    <%--For students, that means you really have to pay attention in all your computer scienceclasses.For students, that means you really have to pay attention in all your computer scienceclasses.--%>
+                <%--</div>--%>
+                <%--<p class="text-right">2013-11-12</p>--%>
+            <%--</div>--%>
+            <%--<div class="clearfix"></div>--%>
+        <%--</div>--%>
 
-                </div>
-                <s:if test="#idx.getIndex() > 1">
-                    <s:set var="flag" value="false" />
+        <div id="message_list_ul">
+            <s:set var="flag" value="true" />
+            <s:iterator value="courseComments" status="idx">
+                <%--<p>--%>
+
+                <s:if test="flag">
+                    <div class="row">
+
+                        <div class="forumsinfo">
+                            <div class="forumsUserContainer">
+                                <img src="<s:property value="commenter.pic"/>" alt="" class="forumportrait" />
+                                <p class="textOverSinglerow"><s:property value="commenter.nickName"/></p>
+                            </div>
+
+                            <div class="forumsContentContainer">
+                                <div class="forumText"><s:property value="content"/></div>
+                                <p class="text-right"><s:date name="commentTime" format="%{getText('global.display.datetime')}"/></p>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+
+                    </div>
+                    <s:if test="#idx.getIndex() > 1">
+                        <s:set var="flag" value="false" />
+                    </s:if>
                 </s:if>
-            </s:if>
-            <%--</p>--%>
-        </s:iterator>
+                <%--</p>--%>
+            </s:iterator>
+        </div>
+        <br/>
+        <br/>
+
+        <div>
+            <s:form theme="css_xhtml" name="commentsForm" method="post" id="commentForm">
+                <textarea id="message_textarea" class="form-control" rows="3"></textarea>
+                <br/>
+                <%--<a href="javascript:;" class="btn btn-primary btn-lg btn-block" id="message_submit_btn" ><s:property value="%{getText('blog.comments.submit')}" /></a>--%>
+                <a href="javascript:;" class="btn btn-primary btn-lg btn-block" id="message_submit_btn" ><s:property value="%{getText('blog.comments.submit')}" /></a>
+            </s:form>
+
+        </div>
+
         <br/>
         <div class="thickline"></div>
 
@@ -109,14 +155,18 @@
         <div class="row">
             <s:iterator value="courses2teacher"><%--courses2teacher--%>
                 <div class="col-sm-4">
-                    <div class="recommended">
-                        <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>">
-                            <img src="<s:property value="logoUrl"/>" alt=""></a>
-                        <br/>
-                        <span><s:property value="name"/></span>
-                    </div>
+                    <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>">
+                        <div class="recommended">
+                                <img src="<s:property value="logoUrl"/>" alt="">
+                            <br/>
+                            <span><s:property value="name"/></span>
+                        </div>
+                    </a>
                 </div>
             </s:iterator>
+            <p class="text-right">
+                <a href="#">more</a>
+            </p>
         </div>
     </div>
 </div>
@@ -126,10 +176,10 @@
 
         <div class="well">
             <a href="orgBlog.html?org.id=<s:property value="course.organization.id"/>" title="<s:property value="course.organization.nickName"/>">
-                <img style="width:280px;height:117px;" src="<s:property value="course.organization.logoUrl"/>"/></a>
-            <h4>School:<s:property value="course.organization.schoolName"/></h4>
-            <h4>Course Code: <s:property value="course.id"/></h4>
-            <h4>Course Language:<s:property value="course.languageType"/></h4>
+                <img class="schoolPortrait" src="<s:property value="course.organization.logoUrl"/>"/></a>
+            <h4 class="textOverSinglerow">School:<s:property value="course.organization.schoolName"/></h4>
+            <h4 class="textOverSinglerow">Course Code: <s:property value="course.id"/></h4>
+            <h4 class="textOverSinglerow">Course Language:<s:property value="course.languageType"/></h4>
             <button type="button" class="btn btn-primary btn-block">Register for SW12X</button>
         </div>
         <!-- Panel 1 -->
@@ -165,33 +215,33 @@
             <div class="gogopanelBodyText">
                 <s:if test="course.FinshedClassNum < course.ClassesNum">
                     <s:iterator value="course.ForcastClasses" begin="0" end="0" status="idx">
-                        <div>topic: <s:property value="nickName"/></div>
+                        <div>Topic: <s:property value="nickName"/></div>
                         <p></p>
-                        <div>numbers:
+                        <div>Numbers:
                             <s:property value="%{getText('lable.class.no1')}" />
                             <s:property value="course.FinshedClassNum+1"/>
                             <s:property value="%{getText('lable.class.no2')}" />
                         </div>
                         <p></p>
-                        <div>times:<s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
+                        <div>Time:<s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
                         <p></p>
-                        <div>teacher: <s:property value="course.teacher.nickName"/></div>
+                        <div>Lecturer: <s:property value="course.teacher.nickName"/></div>
                         <br/>
                     </s:iterator>
                 </s:if>
                 <s:else>
                     <s:iterator value="course.classes" begin="course.ClassesNum-1" end="course.ClassesNum -1" status="idx">
-                        <div>topic: <s:property value="nickName"/></div>
+                        <div>Topic: <s:property value="nickName"/></div>
                         <p></p>
-                        <div>numbers:
+                        <div>Numbers:
                             <s:property value="%{getText('lable.class.no1')}" />
                             <s:property value="course.ClassesNum"/>
                             <s:property value="%{getText('lable.class.no2')}" />
                         </div>
                         <p></p>
-                        <div>times:<s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
+                        <div>Time:<s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
                         <p></p>
-                        <div>teacher: <s:property value="course.teacher.nickName"/></div>
+                        <div>Lecturer: <s:property value="course.teacher.nickName"/></div>
                         <br/>
                     </s:iterator>
                 </s:else>
@@ -217,6 +267,11 @@
                             </a>
 
                         </div>
+
+                        <!-- <div class="col-md-4">
+                            <img src="gogowisestyle/image/portrait2.jpg" class="normalPortrait"/>
+                            <p class="textOverSinglerow">Name</p>
+                        </div> -->
                     </s:iterator>
                 </div>
 
@@ -232,3 +287,37 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+
+    $("#message_submit_btn").bind('click', function () {
+        if(validateLogo()){
+
+            var messageText = $("#message_textarea").val();
+            if(messageText == ""){
+                $("#message_area_tip").html("<s:text name='blog.left.message.empty'/>");
+                return;
+            }
+            $.post("saveComment.html",{'course.id':<s:property value="course.id"/>,'courseComment.content':$("#message_textarea").val(),'commentsNum':<s:property value="commentsNum"/>}, function (data) {
+                $("#message_list_ul").html(data);
+            });
+            $("#message_textarea").attr('value',"");
+            $("#message_area_tip").html("");
+        }
+    })
+
+    function validateLogo(){
+        if(document.getElementById('hidSessionId').value > 0) {
+            return true;
+        } else {
+            $.fancybox({
+                "type":"iframe",
+                "href":"login.html",
+                "width":350,
+                "height":270
+            });
+            return false;
+        }
+    }
+
+</script>

@@ -72,9 +72,9 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
         }
         course.setConsumptionType(true);
 
-        //URL
+        //URL This time the course's logo url is upload/course/null
         if (StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(), "upload/")) {
-            course.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + specification.getOperatorId() + "/" + course.getLogoUrl());
+            //course.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + specification.getOperatorId() + "/" + course.getLogoUrl());
         }
         if (StringUtils.isBlank(course.getLogoUrl()) ) course.setLogoUrl(Constants.DEFAULT_COURSE_IMAGE);
 

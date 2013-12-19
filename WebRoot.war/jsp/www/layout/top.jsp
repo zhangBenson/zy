@@ -32,6 +32,7 @@
 
                 <div class="btn-group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-user"></span>
                         <a href="userBlog.html?user.id=<s:property value="#session.userID"/>" title="<s:property value="#session.nickName"/>">
                             <s:property value="#session.nickName"/>
                         </a>
@@ -87,21 +88,7 @@
         </div>
 
 
-        <!-- <div class="col-md-4">
-            <div class="pull-right">
-                <ul class="list-inline">
-                    <li>
-                        <a href="#">Help</a>
-                    </li>
-                    <li>
-                        <a href="#">Sign up</a>
-                    </li>
-                    <li>
-                        <a href="#">Log in</a>
-                    </li>
-                </ul>
-            </div>
-        </div> -->
+        
 
     </div>
 </div>

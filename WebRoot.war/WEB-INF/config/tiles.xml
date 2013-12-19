@@ -662,6 +662,7 @@
     <definition name=".voaCourseBlog" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.course.blog"/>
         <put-attribute name="contentBody" value="/jsp/www/course/courseBlog.jsp"/>
+        <!--<put-attribute name="contentBody" value="/jsp/gogowise/course/courseBlog.jsp"/>-->
     </definition>
 
 
@@ -679,8 +680,11 @@
         <put-attribute name="right" value="/jsp/gogowise/course/courseCreate/courseInviteIdentityConfirm.jsp"/>
     </definition>
 
-    <definition name=".courseComment" template="/jsp/gogowise/course/courseComment.jsp">
+    <!--<definition name=".courseComment" template="/jsp/gogowise/course/courseComment.jsp">-->
+    <!--</definition>-->
+    <definition name=".courseComment" template="/jsp/www/course/courseComment.jsp">
     </definition>
+
     <definition name=".courseResource" extends=".simple">
          <put-attribute name="right" value="/jsp/gogowise/course/courseResource.jsp"/>
     </definition>
@@ -692,7 +696,9 @@
     <definition name=".errorActive" extends=".basic">
         <put-attribute name="right" value="/jsp/gogowise/activeError.jsp"/>
     </definition>
-    <definition name=".orgComments"  template="/jsp/gogowise/org/orgComments.jsp" >
+    <!--<definition name=".orgComments"  template="/jsp/gogowise/org/orgComments.jsp" >-->
+    <!--</definition>-->
+    <definition name=".orgComments"  template="/jsp/www/org/orgComments.jsp" >
     </definition>
     <definition name=".userComment"  template="/jsp/gogowise/user/userComment.jsp" >
     </definition>

@@ -57,16 +57,19 @@ public class SaveCourseAction extends BasicAction{
     @Action(value = "ajaxSaveCourse")
     public String ajaxSaveCourse(){
 
-        // copy jpg
-        if(StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(),"upload/")){
-            Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
-        }
-
         // Save course
         CourseSpecification specification = CourseSpecification.create(course, this.getSessionUserId(), this.getCourseType(), this.getTeacherIds());
         courseService.saveCourse(specification);
 
         course = courseService.findById(course.getId());
+
+        // copy jpg
+        if(StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(),"upload/")){
+            //Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
+            Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + course.getId(), course.getLogoUrl());
+            course.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + course.getId() + "/" + course.getLogoUrl());
+        }
+
 
         courseInviteStudents = courseInviteStudentDao.findByCourseId(this.getCourse().getId());   //this step is used to delete the students if it was saved before
         if (courseInviteStudents.size() != 0) {

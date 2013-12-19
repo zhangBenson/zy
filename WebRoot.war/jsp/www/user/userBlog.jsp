@@ -41,14 +41,17 @@
                     </s:if>
 
                     <div class="col-sm-4">
+                        <s:a action="voaCourseBlog"><s:param name="course.id" value="id"/>
                         <div class="recommended">
-                            <s:a action="voaCourseBlog"><s:param name="course.id" value="id"/><img src="<s:property value="logoUrl"/>" /></s:a>
+                            <img src="<s:property value="logoUrl"/>" />
                                 <%--<a href="#">--%>
                                 <%--<img src="gogowisestyle/image/recommended4.jpg" alt="">--%>
                                 <%--</a>--%>
                             <br/>
                             <span><s:param name="course.id" value="id"/><s:property value="name"/></span>
+                            
                         </div>
+                        </s:a>
                     </div>
 
                     <s:if test="#status.index % 3 == 2||#status.last">
@@ -103,7 +106,7 @@
         <div class="col-sm-4">
             <div class="container">
                 <div  class="basePanel">
-                    <img src="/images/course/schoolslogo.png">
+                    <img src="/images/course/schoolslogo.png" class="schoolPortrait">
                     <h4>Rice University</h4>
                     <h4 class="courseBody">
                         Located on a 300-acre forested campus in Houston, Rice University is consistently ranked among the top 20 universities in the U.S. and the top 100 in the world. Rice has highly respected schools of Architecture, Business, Continuing Studies, Engineering, Humanities, Music, Natural Sciences and Social Sciences and is home to the Baker Institute for Public Policy.

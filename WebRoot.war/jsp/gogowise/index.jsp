@@ -82,20 +82,22 @@
     <div class="row">
         <div class="col-sm-6">
 
-            <div class="courseSubhead"><s:property value="%{getText('usermenu.item.newestcourses')}"/></div>
+            <div class="pull-left"><img src="../../images/index/icon_new.png"  /></div>
+            <div class="pull-left"><div class="courseSubhead"><s:property value="%{getText('usermenu.item.newestcourses')}"/></div></div>
+            <div class="clearfix"></div>
 
             <s:iterator value="Courses" status="status">
                 <s:if test="#status.index<4">
                     <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>">
-                        <div class=coursePanel>
+                        <div class="coursePanel">
                             <div class="coursePanelInfoLeft">
                                 <img class="coursePanelPortrait" src="<s:property value="logoUrl"/>"/>
                             </div>
 
                             <div class="coursePanelInfoRight">
-                                <p><s:property value="name"/></p>
-                                <p>School:MITx</p>
-                                <p>Clases start: <s:date name="publicationTime" format="%{getText('dateformat.forclass')}"/></p>
+                                <p class="textOverSinglerow"><s:property value="name"/></p>
+                                <p class="textOverSinglerow">School:MITx</p>
+                                <p class="textOverSinglerow">Clases start: <s:date name="publicationTime" format="%{getText('dateformat.forclass')}"/></p>
                             </div>
                         </div>
                     </a>
@@ -121,8 +123,9 @@
             <a href="#"><p class="text-right">more</p></a>
         </div>
         <div class="col-sm-6">
-
-            <div class="courseSubhead">MOOC</div>
+            <div class="pull-left"><img src="../../images/index/icon_MOOC.png"  /></div>
+            <div class="pull-left"><div class="courseSubhead">MOOC</div></div>
+            <div class="clearfix"></div>
             <s:iterator value="Courses" status="status">
                 <s:if test="#status.index<4">
                     <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>">
@@ -163,26 +166,36 @@
 <div class="container">
     <ul class="bxsliderLogolist">
 
-        <%--<li>--%>
-            <%--<img src="../../images/index/orgLogolist1.jpg" alt="">--%>
-        <%--</li>--%>
-        <%--<li>--%>
-            <%--<img src="../../images/index/orgLogolist2.jpg" alt="">--%>
-        <%--</li>--%>
-        <%--<li>--%>
-            <%--<img src="../../images/index/orgLogolist3.jpg" alt="">--%>
-        <%--</li>--%>
+        <!-- <ul class="bxsliderLogolist">
+          <li>
+            <ul class="list-inline">
+            <li><a href="#"><img src="gogowisestyle/image/orgLogo1.jpg" alt="" class="popOrgLogo"></a></li>
+            <li><a href="#"><img src="gogowisestyle/image/orgLogo2.jpg" alt="" class="popOrgLogo"></a></li>
+            <li><a href="#"><img src="gogowisestyle/image/orgLogo3.jpg" alt="" class="popOrgLogo"></a></li>
+            <li><a href="#"><img src="gogowisestyle/image/orgLogo4.jpg" alt="" class="popOrgLogo"></a></li>
+          </ul>
 
-        <s:iterator value="OrganizationDao.findOngoingForAdmin()" status="status">
-            <li>
-                <a href="orgBlog.html?org.id=<s:property value="id"/>" >
-                    <img style="height:150px;width: 1170px;"
-                         src="<s:property value="logoUrl" />"
-                         alt="<s:property value="schoolName"/>"
-                    />
-                </a>
-            </li>
-        </s:iterator>
+          </li>
+          <li>
+            <ul class="list-inline">  
+            <li><a href="#"><img src="gogowisestyle/image/orgLogo5.jpg" alt="" class="popOrgLogo"></a></li>
+            <li><a href="#"><img src="gogowisestyle/image/orgLogo6.jpg" alt="" class="popOrgLogo"></a></li>
+            <li><a href="#"><img src="gogowisestyle/image/orgLogo7.jpg" alt="" class="popOrgLogo"></a></li>
+            <li><a href="#"><img src="gogowisestyle/image/orgLogo8.jpg" alt="" class="popOrgLogo"></a></li>
+          </ul>
+          </li>
+        </ul> -->
+            <s:iterator value="OrganizationDao.findOngoingForAdmin()" status="status">
+                <s:if test="#status.index%4==0"><li><ul class="list-inline"></s:if>
+
+                <li><a href="orgBlog.html?org.id=<s:property value="id"/>" >
+                    <img src="<s:property value="logoUrl" />"  alt="<s:property value="schoolName"/>" class="popOrgLogo" /></a>
+                </li>
+
+                <s:if test="#status.index%4==3"></ul></li></s:if>
+                <s:elseif test="#status.last"></ul></li></s:elseif>
+
+            </s:iterator>
     </ul>
 
 </div>

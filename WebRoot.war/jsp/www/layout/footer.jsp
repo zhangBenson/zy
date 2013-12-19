@@ -17,7 +17,7 @@
 					</div>
 
 					<%--<div class="footersLink">|  Home |  COURSES  |  SCHOOLS  |</div> --%>
-					<div class="footersLink">|  <a href="index.html"><s:property value="%{getText('menu.item.index')}"/></a>   |   <a href="courseSquare.html"><s:property value="%{getText('frame.course.center')}"/></a>   |   <a href="aboutUs.html"><s:property value="%{getText('link.about.us')}"/></a>   |
+					<div class="footersLink">|  <a href="index.html" style="color: #fff;"><s:property value="%{getText('menu.item.index')}"/></a>   |   <a href="courseSquare.html" style="color: #fff;"><s:property value="%{getText('frame.course.center')}"/></a>   |   <a href="aboutUs.html" style="color: #fff;"><s:property value="%{getText('link.about.us')}"/></a>   |
 					</div>
 				</div>
 			</div>
