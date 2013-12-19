@@ -21,16 +21,20 @@
 			<!--school curriculum-->
 			<div id="schoolcurriculum">
 				<div class="row">
-					 <s:iterator value="hotCourses"> <%--hotCourses--%>
-					 	<div class="col-sm-4">
-			               <div class="recommended">
-			                    <s:a action="voaCourseBlog"><s:param name="course.id" value="id"/>
-			                        <img src="<s:property value="logoUrl"/> " title="<s:property value="description"/>"  />
-			                    </s:a>
-			                    <br/>
-			                    <span title="<s:property value="name"/>"><s:a action="voaCourseBlog"><s:param name="course.id" value="id"/><s:property value="name"/></s:a></span>
-			                </div>
-		                </div>
+					 <s:iterator value="hotCourses" status="idx"> <%--hotCourses--%>
+                        <s:if test="#idx.index < 6">
+                            <div class="col-sm-4">
+                               <a href="#">
+                                   <div class="recommended">
+                                        <s:a action="voaCourseBlog"><s:param name="course.id" value="id"/>
+                                            <img src="<s:property value="logoUrl"/> " title="<s:property value="description"/>"  />
+                                        </s:a>
+                                        <br/>
+                                        <span title="<s:property value="name"/>"><s:a action="voaCourseBlog"><s:param name="course.id" value="id"/><s:property value="name"/></s:a></span>
+                                    </div>
+                               </a>
+                            </div>
+                        </s:if>
 		                <!-- <div class="col-sm-4">
 							<a href="#">
 								<div class="recommended">
@@ -51,16 +55,20 @@
 				<h3 class="courseSubhead"><s:property value="%{getText('live.term.live.room')}"/></h3> <%--Mooc--%>
 				<div id="Mooccurriculum">
 				<div class="row">
-					 <s:iterator value="hotCourses">
-						<div class="col-sm-4">
-                        	<div class="recommended">
-                        		<s:a action="voaCourseBlog"><s:param name="course.id" value="id"/>
-			                        <img src="<s:property value="logoUrl"/> " title="<s:property value="description"/>" />
-			                    </s:a>
-			                    <br/>
-			                    <span title="<s:property value="name"/>"><s:a action="voaCourseBlog"><s:param name="course.id" value="id"/><s:property value="name"/></s:a></span>
-                       	 	</div>
-                       	</div>
+					 <s:iterator value="hotCourses" status="idx">
+                        <s:if test="#idx.index < 6">
+                            <div class="col-sm-4">
+                                <a href="#">
+                                    <div class="recommended">
+                                        <s:a action="voaCourseBlog"><s:param name="course.id" value="id"/>
+                                            <img src="<s:property value="logoUrl"/> " title="<s:property value="description"/>" />
+                                        </s:a>
+                                        <br/>
+                                        <span title="<s:property value="name"/>"><s:a action="voaCourseBlog"><s:param name="course.id" value="id"/><s:property value="name"/></s:a></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </s:if>
                     </s:iterator>
 				</div>
 				<br/>
