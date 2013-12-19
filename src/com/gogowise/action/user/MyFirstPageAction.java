@@ -28,6 +28,8 @@ import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.org.dao.OrganizationDao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +40,8 @@ import java.util.List;
 public class MyFirstPageAction  extends BasicAction {
 
     private List<Course> latestCourse = new ArrayList<Course>();
-
+    private List<Organization> latestOrgs = new ArrayList<>();
+    private OrganizationDao organizationDao;
     private CourseDao courseDao;
     private BaseUserDao baseUserDao;
     private InterviewDao interviewDao;
@@ -73,7 +76,61 @@ public class MyFirstPageAction  extends BasicAction {
     private Pagination pagination = new Pagination();
 
 
-
+//    @Action(value = "myfirstPage",
+//            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".myfirstPage")}
+//    )
+//    public String myFirstPage() {
+////        ActionContext.getContext().getSession().put("WW_TRANS_I18N_LOCALE", Locale.US);
+//        latestCourse = courseDao.findMyCourseOfForcastClassForUserCenter(new Pagination(3),this.getSessionUserId());
+//
+//        todayCourse = courseDao.findTodayCourse(this.getSessionUserId());
+//        tomorrowCourse = courseDao.findTomorrowCourse(this.getSessionUserId());
+//        yesterdayCourse = courseDao.findYesterdayCourse(this.getSessionUserId());
+//        if(moreRequire.equals(Constants.MY_FIRST_PAGE_INTERVIEW_MORE)){
+//               interviews =interviewDao.findByUser(this.getSessionUserId(),null);
+//        }else  {
+//               interviews =interviewDao.findByUser(this.getSessionUserId(),new Pagination(3));
+//        }
+//        if(moreRequire.equals(Constants.MY_FIRST_PAGE_MEETING_MORE)){
+//                orgMeetings = orgMeetingDao.findForUserCenter(null,this.getSessionUserId());
+//        }else {
+//               orgMeetings = orgMeetingDao.findForUserCenter(new Pagination(3),this.getSessionUserId());
+//        }
+//        myShows = myShowDao.findByUser(this.getSessionUserId(),new Pagination(3));
+//        liveChannels = liveChannelDao.findByUserID(this.getSessionUserId(),new Pagination(5));
+//        for(LiveChannel lc : liveChannels){
+//             lc.setUserType(1);
+//             for(OnliveFollower onf :lc.getOnliveFollowers()){
+//                 if(onf.getFollower().getId().equals(this.getSessionUserId())){
+//                     lc.setUserType(Constants.MEMBER_TYPE_OF_FANS);
+//                     break;
+//                 }
+//             }
+//        }
+//        hotCourse = courseDao.findHotCourses(new Pagination(6));
+//        userLikeCourse = courseDao.findlatestCourses(new Pagination(3));
+//
+//        this.baseUser = baseUserDao.findById(this.getSessionUserId());
+//        this.browsedCourses = browsedCourseDao.findByUserId(this.getSessionUserId());
+//
+//        Pagination userFansPage = new Pagination(6);
+//        userFanses = userFansDao.findUsersAsFans(this.getSessionUserId(),userFansPage);
+//        this.setCurrentPageSize(userFanses.size());
+//        if(userFansPage.getTotalSize() == userFanses.size()){
+//            this.setNumOverFlow(true);
+//        }
+//
+//        matterCount=matterDao.getMatterCount(this.getSessionUserEmail());
+//        return SUCCESS;
+//    }
+    @Action(value = "personalCenter",
+            results = {@Result(name =  SUCCESS, type =  Constants.RESULT_NAME_TILES, location = ".studentCenter")}
+    )
+    public String studentCenter() {
+        latestOrgs = organizationDao.findLatestOrgs(new Pagination(3));
+        showUserCenter();
+        return SUCCESS;
+    }
     @Action(value = "myfirstPage",
             results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".myGoGoWise")}
     )
@@ -121,16 +178,6 @@ public class MyFirstPageAction  extends BasicAction {
         matterCount=matterDao.getMatterCount(this.getSessionUserEmail());
         return SUCCESS;
     }
-
-
-
-    @Action(value = "studentCenter",
-            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".studentCenter")}
-    )
-    public String studentCenter() {
-        return this.showUserCenter();
-    }
-
 
     @Action(value = "getMoreConcernUserFans",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".moreUserFans")})
     public String getMoreConcernUserFans(){
@@ -482,5 +529,17 @@ public class MyFirstPageAction  extends BasicAction {
 
     public void setHottestBlogers(List<BaseUser> hottestBlogers) {
         this.hottestBlogers = hottestBlogers;
+    }
+    public List<Organization> getLatestOrgs () {
+        return latestOrgs;
+    }
+    public void setLatestOrgs (List<Organization> latestOrgs) {
+        this.latestOrgs = latestOrgs;
+    }
+    public OrganizationDao getOrganizationDao () {
+        return  organizationDao;
+    }
+    public void setOrganizationDao (OrganizationDao organizationDao) {
+        this.organizationDao = organizationDao;
     }
 }

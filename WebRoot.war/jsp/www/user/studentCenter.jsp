@@ -106,7 +106,7 @@
 			</div>
 			<br/>
 			<div class="basePanelshadow">
-                <div class="basePanelGrey">Discussion Room(School name)</div>
+				<div class="basePanelBlueGrey">Discussion Room(School name)</div>
 
 				<br/>
 				<div class="list-group">
@@ -133,6 +133,7 @@
 					</a>
 
 				</div>
+				<button type="button" class="btn btn-success btn-lg btn-block">Booking</button>
                 <div id="page">
                     <ul class="pagination">
                         <li>
@@ -158,17 +159,12 @@
                         </li>
                     </ul>
                 </div>
-
-                <button type="button" class="btn btn-success btn-lg btn-block">Booking</button>
-
 			</div>
 		</div>
 
 		<div class="col-sm-8">
-
 			<div class="row">
 				<div class="col-sm-8">
-					
 					<div class="basePanelTextLeftAbsolute">
 						<h3 class="courseSubhead">My courses</h3>
 						<s:if test="existLatestCourse">
@@ -179,7 +175,9 @@
 										<li></li>
 										<li><s:property value="%{getText('courses.info.lecturer')}" />:<s:a action="userBlog"><s:param name="user.id"  value="teacher.id"/><s:property value="teacher.nickName"/></s:a></li>
 										<li></li>
+
 										<li>
+											
 											<%-- <div id="remainSeconds" style="display:none">100000</div>
 											<div id="remainTime" style="width: 134px;">Start:</div> --%>
 											<div style="width: 175px;">Start:<b id="timeLeft<s:property value="#idx.index"/>"></b></div>
@@ -300,23 +298,19 @@
 				<div class="thickline"></div>
 
 				<div class="row">
-
-                    <s:iterator value="userLikeCourse" status="idx">
-                        <s:if test="#idx.getIndex() < 6">
+                    <s:iterator value="latestOrgs" status = "idx">
+                        <s:if test="#idx.getIndex() < 3">
                             <div class="col-sm-4">
-                                <div class="recommended">
-                                    <div class="mycourseImg ">
-                                        <a class="img " href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"><img src="<s:property value="logoUrl"/>"/></a>
+                                <div class="recommendedSchool">
+                                    <div class="recommendedSchool img">
+                                    <a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="schoolName"/>"><img class = "recommendedSchool img" src="<s:property value="logoUrl"/>"/></a>
                                     </div>
-                                    <a class="title" href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"><s:property value="name"/></a>
+                                    <br/>
+                                    <span><s:property value="schoolName"/></span>
                                 </div>
                             </div>
-                            <s:if test="#idx.getCount() % 3 == 0">
-                                <br/>
-                            </s:if>
                         </s:if>
                     </s:iterator>
-
 				</div>
 				<a href="#">
 					<p class="text-right">more</p>
@@ -332,9 +326,9 @@
 		                	<div class="col-sm-4">
 		                		<div class="recommended">
 		                			<div class="mycourseImg ">
-				                    	<a class="img " href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"><img src="<s:property value="logoUrl"/>"/></a>
+				                    	<a  href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"><img src="<s:property value="logoUrl"/>"/></a>
 				                    </div>
-				                    <a class="title" href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"><s:property value="name"/></a>
+				                    <a  href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"><s:property value="name"/></a>
 			                    </div>
 		              		</div>
 		              		<s:if test="#idx.getCount() % 3 == 0">
