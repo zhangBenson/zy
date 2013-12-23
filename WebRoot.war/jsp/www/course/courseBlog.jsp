@@ -32,6 +32,8 @@
 
                 <img src="<s:property value="course.logoUrl" />" class="courseInfoImg"/>
                 <h4 class="courseBody"><s:property value="course.description"/></h4>
+                <div style="clear: left">
+                </div>
 
                 <div class="thickline"></div>
 

@@ -25,7 +25,7 @@
             </div>
             <div style="clear: left">
             </div>
-            <br/>
+
             <div class="thickline"></div>
             <h3 class="courseSubhead">Responsible Course</h3>
             <%--<h3 class="courseSubhead"><s:property value="%{getText('user.created.courses',{user.nickName})}"/></h3>--%>
