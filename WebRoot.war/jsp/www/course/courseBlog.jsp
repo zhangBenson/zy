@@ -55,7 +55,7 @@
                         <div class="col-sm-4">
                             <div class="pull-left">
                                 <s:if test="#status.index < course.FinshedClassNum"><div class="lessonOrange"></s:if>
-                                <s:else><div class="lessonGrean"></s:else>
+                                <s:else><div class="lessonGreen"></s:else>
                                     <span><s:property value="#status.index+1"/></span><div>Lesson</div>
                                 </div>
                             </div>
