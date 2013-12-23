@@ -4,6 +4,7 @@ import com.gogowise.action.BasicAction;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.dao.CourseEvaluationDao;
+import com.gogowise.rep.org.OrgService;
 import com.gogowise.rep.org.dao.OrgMaterialDao;
 import com.gogowise.rep.org.dao.OrganizationCommentDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
@@ -37,6 +38,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.text.SimpleDateFormat;
 
 
 @Controller
@@ -57,6 +59,7 @@ public class OrganizationAction extends BasicAction {
     private List<OrgMaterial> orgMaterials = new ArrayList<OrgMaterial>();
     private OrgMaterial orgMaterial;
     private OrgMaterialDao orgMaterialDao;
+    private OrgService orgService;
 
     private BaseUser responser;
     private File upload;
@@ -74,6 +77,7 @@ public class OrganizationAction extends BasicAction {
 
     private List<BaseUser> hotTeachers;
     private List<BaseUser> latestTeachers;
+    private List<BaseUser> allTeachersForOrg;
     private String idCardUrl;
     private String hidFile1;
     private String hidFile2;
@@ -98,13 +102,14 @@ public class OrganizationAction extends BasicAction {
 
         Pagination page  = new Pagination(10);
         comments = organizationCommentDao.findOrgCommentByOrgId(orgId, page);
+        System.out.println ("comments size : " + comments.size ());
         this.setCommentsNum(comments.size());
         if(page.getTotalSize() <= commentsNum){
             this.setCommentsNumOverflow(true);
         }
         hotTeachers = organizationDao.findHotTeacherByOrgId(orgId, new Pagination(4));
         latestTeachers = organizationDao.findLatestTeacherByOrgId(orgId, new Pagination(6));
-
+        allTeachersForOrg = orgService.findAllTeachersForOrg(orgId);
         return SUCCESS;
     }
 
@@ -720,6 +725,14 @@ public class OrganizationAction extends BasicAction {
         this.orgMaterialDao = orgMaterialDao;
     }
 
+    public OrgService getOrgService () {
+        return this.orgService;
+    }
+
+    public  void setOrgService (OrgService orgService) {
+        this.orgService = orgService;
+    }
+
     public Integer getOrgCourseNum(){
         return courseDao.findByOrg(this.getOrg().getId(),null).size();
     }
@@ -746,6 +759,21 @@ public class OrganizationAction extends BasicAction {
         return students;
     }
 
+    public List<BaseUser> getAllTeachersForOrg () {
+        return this.allTeachersForOrg;
+    }
+
+    public void setAllTeachersForOrg (List<BaseUser> allTeachersForOrg) {
+        this.allTeachersForOrg = allTeachersForOrg;
+    }
+
+    public Integer getAllTeachersNum () {
+        if (allTeachersForOrg == null)
+            return 0;
+        return allTeachersForOrg.size();
+    }
+
+
     public Integer getCommentsNum() {
         return commentsNum;
     }
@@ -760,5 +788,9 @@ public class OrganizationAction extends BasicAction {
 
     public void setCommentsNumOverflow(Boolean commentsNumOverflow) {
         this.commentsNumOverflow = commentsNumOverflow;
+    }
+    public String getOrgCreateDate () {
+        SimpleDateFormat df=new SimpleDateFormat("yyyy/MM/dd");
+        return df.format(this.org.getCreateDate().getTime());
     }
 }

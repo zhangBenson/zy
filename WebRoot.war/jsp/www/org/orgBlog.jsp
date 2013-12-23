@@ -11,6 +11,7 @@
 				<img src="<s:property value="org.logoUrl"/>" class="schoolPortrait"/>
 				
 				<h1 class ="courseSubject"><s:property value="org.schoolName"/></h1>
+
 				<h4 class="courseBody">
 					<s:property value="org.description"/>
 				</h4>	
@@ -35,14 +36,6 @@
                                </a>
                             </div>
                         </s:if>
-		                <!-- <div class="col-sm-4">
-							<a href="#">
-								<div class="recommended">
-									<img src="gogowisestyle/image/recommended1.jpg" alt="">
-									<span>Introduction to Public Speaking</span>
-								</div>
-							</a>
-						</div> -->
 		            </s:iterator>
 				</div>
 				<br/>
@@ -95,39 +88,68 @@
 					</div>
 					<div class="clearfix"></div>
 				</div> -->
-            <div id="message_list_ul">
-				<s:iterator value="comments" status="idx">
-					<s:if test="#idx.getCount() < 3">
-						<div class="row">
-			                <div class="col-md-2">
-			                    <div class="portrait">
-			                        <s:a action="userBlog" ><s:param name="user.id" value="commenter.id"/><img src="<s:property value="commenter.pic"/>"/></s:a>
-			                        <br/>
-								     <span>
-			                    		<s:a action="userBlog" ><s:param name="user.id" value="commenter.id"/><s:property value="commenter.nickName"/></s:a>
-			                    	</span>
-			                    </div>
-			                </div>
-			                <div class="col-md-10">
-			                    <div class="forumContent">
-			                        <s:property value="content"/>
-			                    </div>
-			     
-			                    <div class="forumContentDate">
-			                        <s:date name="commentTime" format="%{getText('global.display.datetime')}"/>
-			                    </div>
-			                </div>
-			            </div>
-			        </s:if>
-				</s:iterator>
-            </div>
+                <%--<div id="message_list_ul">
+                   <s:set var="flag" value="true"/>
+                   <s:iterator value="comments" status="idx">
+
+                        <s:if test="flag">
+                            <div class="row">
+                                <div class="forumsinfo">
+                                    <div class="forumsUserContainer">
+                                        <s:a action="userBlog" cssClass="nick_name"><s:param name="user.id" value="commenter.id"/><img src="<s:property value="commenter.pic"/>" alt="" class="forumportrait"/></s:a>
+                                        <s:a action="userBlog" cssClass="nick_name"><s:param name="user.id" value="commenter.id"/><p class="textOverSinglerow"><s:property value="commenter.nickName"/></p></s:a>
+                                    </div>
+
+                                    <div class="forumsContentContainer">
+                                        <div class="forumText"><s:property value="content"/></div>
+                                        <p class="text-right"><s:date name="commentTime" format="%{getText('global.display.datetime')}"/></p>
+                                    </div>
+
+                                    <div class="clearfix"></div>
+                                </div>
+
+                            </div>
+                            <s:if test="#idx.index > 3"><s:set var="flag" value="false"/></s:if>
+                        </s:if>
+
+                    </s:iterator>
+                </div>
+                   --%>
+
+                <div id="message_list_ul">
+                    <s:iterator value="comments" status="idx">
+                        <s:if test="#idx.index < 3">
+                            <div class="row">
+                                <div class="forumsinfo">
+                                    <div class="forumsUserContainer">
+                                        <s:a action="userBlog" ><s:param name="user.id" value="commenter.id"/><img src="<s:property value="commenter.pic"/>"  alt="" class="forumportrait"/></s:a>
+                                        <br/>
+                                         <span>
+                                            <s:a action="userBlog" ><s:param name="user.id" value="commenter.id"/><s:property value="commenter.nickName"/></s:a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="forumsContentContainer">
+                                    <div class="forumContent">
+                                        <s:property value="description"/>
+                                    </div>
+
+                                    <div class="forumContentDate">
+                                        <p class="text-right"><s:date name="createDate" format="%{getText('global.display.datetime')}"/></p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </s:if>
+                    </s:iterator>
+                </div>
 				
 				<br/>
 				<div>
 					<s:form theme="css_xhtml" name="commentsForm" method="post" validate="true">
-	                <textarea class="form-control" rows="3" id="message_textarea"></textarea>
-	                <br/>	
-	                <input type="button" id="message_submit_btn" class="btn btn-primary btn-lg btn-block" value="提交留言" 	 />
+                        <textarea id="message_textarea" class="form-control" rows="3"></textarea>
+                        <br/>
+                        <a href="javascript:;" class="btn btn-primary btn-lg btn-block" id="message_submit_btn" ><s:property value="%{getText('blog.comments.submit')}"/></a>
 	            	</s:form>
 				</div>
 			</div>
@@ -139,13 +161,11 @@
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="statisticsItem">
-							<span><img src="/images/org/icon_founded.png" alt=""></span>
-							<span>2013/11/24</span>
+							<img src="/images/org/icon_founded.png" alt="">
+							<span><s:property value="orgCreateDate"/></span>
 						</div>
-						
 						<div class="statisticsItem">
-							<span>
-								<img src="/images/org/icon_course.png" alt=""></span>
+							<span><img src="/images/org/icon_course.png" alt=""></span>
 							<span><s:property value="orgCourseNum"/></span>
 						</div>
 					</div>
@@ -153,7 +173,7 @@
 						<div class="statisticsItem">
 							<span>
 								<img src="/images/org/icon_teacher.png" alt=""></span>
-							<span>123</span>
+							<span><s:property value="allTeachersNum"/></span>
 						</div>
 
 						<div class="statisticsItem">
