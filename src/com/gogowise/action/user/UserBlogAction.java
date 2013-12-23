@@ -8,6 +8,8 @@ import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.dao.CourseEvaluationDao;
 import com.gogowise.rep.live.MyShowDao;
 import com.gogowise.rep.live.PersonalOnliveDao;
+import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.live.UserFansDao;
 import com.gogowise.rep.course.enity.BrowsedCourse;
@@ -65,6 +67,9 @@ public class UserBlogAction extends BasicAction {
     private Integer perOnlivTermsMaxSquence;
     private Integer biggestSquence;
     private Pagination pagination = new Pagination(5);
+    private OrganizationDao organizationDao;
+    private Organization userOrganization;
+
 
 
 
@@ -94,6 +99,7 @@ public class UserBlogAction extends BasicAction {
             this.setBiggestSquence(personalOnlives.get(0).getSequence());
         }
 
+        userOrganization = organizationDao.findMyOrg(userId);
 
         comments = commentsDao.findByCommentTo(user.getId(), new Pagination(10));
         myShows = myShowDao.findByUser(user.getId(),new Pagination(4));
@@ -445,5 +451,18 @@ public class UserBlogAction extends BasicAction {
 
     public void setPagination(Pagination pagination) {
         this.pagination = pagination;
+    }
+    public OrganizationDao getOrganizationDao () {
+        return this.organizationDao;
+    }
+    public void setOrganizationDao (OrganizationDao organizationDao) {
+        this.organizationDao = organizationDao;
+    }
+
+    public Organization getUserOrganization () {
+        return this.userOrganization;
+    }
+    public void setUserOrganization (Organization userOrganization) {
+        this.userOrganization = userOrganization;
     }
 }

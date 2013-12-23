@@ -18,17 +18,14 @@
                 <img src="<s:property value="user.pic" />" class="lecturerPortrait" />
                 <h1 class = "lecturerName"><s:property value="user.nickName"/></h1>
 
-
-                <br>
-                <div style="clear: left">
-                    <h4 class="courseBody">
-                        <s:property value="user.selfDescription"/>
-                        <%--Joe Warren is a Professor in the Department of Computer Science at Rice University. His main area of research interest is computer graphics and geometric modeling, where he has published extensively. He is the author of the book Subdivision Methods for Geometric Design. He also has a love for computer gaming, both playing games and teaching students how to build them. He has taught the Department’s introduction to game creation course as well as its senior-level game design course in collaboration with Houston game professionals for over a decade. Joe was an undergraduate at Rice from 1979-1983 and received his Ph.D. from Cornell in 1986. He has been a professor at Rice ever since and currently serves as the Chair of the Department.--%>
-                    </h4>
-                </div>
+                <h4 class="courseBody">
+                    <s:property value="user.selfDescription"/>
+                </h4>
 
             </div>
-            <br/>
+            <div style="clear: left">
+            </div>
+
             <div class="thickline"></div>
             <h3 class="courseSubhead">Responsible Course</h3>
             <%--<h3 class="courseSubhead"><s:property value="%{getText('user.created.courses',{user.nickName})}"/></h3>--%>
@@ -106,10 +103,11 @@
         <div class="col-sm-4">
             <div class="container">
                 <div  class="basePanel">
-                    <img src="/images/course/schoolslogo.png" class="schoolPortrait">
-                    <h4>Rice University</h4>
+                     <a href="orgBlog.html?org.id=<s:property value="userOrganization.id"/>" title="<s:property value="userOrganization.schoolName"/>">
+                        <img class="schoolPortrait" src="<s:property value="userOrganization.logoUrl"/>"/></a>
+                    <h4><s:property value="userOrganization.schoolName"/></h4>
                     <h4 class="courseBody">
-                        Located on a 300-acre forested campus in Houston, Rice University is consistently ranked among the top 20 universities in the U.S. and the top 100 in the world. Rice has highly respected schools of Architecture, Business, Continuing Studies, Engineering, Humanities, Music, Natural Sciences and Social Sciences and is home to the Baker Institute for Public Policy.
+                        <s:property value="userOrganization.description"/>
                     </h4>
                 </div>
             </div>
