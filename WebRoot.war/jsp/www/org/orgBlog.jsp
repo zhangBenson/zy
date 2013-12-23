@@ -75,71 +75,28 @@
 
 				<div class="thickline"></div>
 				<h3 class="courseSubhead">Forums</h3>
-				<!-- <div class="forumsinfo">
-					<div class="forumsUserContainer">
-						<img src="gogowisestyle/image/portrait2.jpg" alt="" class="forumportrait">
-						<p class="textOverSinglerow">Name</p>
-					</div>
-					<div class="forumsContentContainer">
-						<div class="forumText">
-							For students, that means you really have to pay attention in all your computer scienceclasses.For students, that means you really have to pay attention in all your computer scienceclasses.
-						</div>
-						<p class="text-right">2013-11-12</p>
-					</div>
-					<div class="clearfix"></div>
-				</div> -->
-                <%--<div id="message_list_ul">
-                   <s:set var="flag" value="true"/>
-                   <s:iterator value="comments" status="idx">
 
-                        <s:if test="flag">
-                            <div class="row">
-                                <div class="forumsinfo">
-                                    <div class="forumsUserContainer">
-                                        <s:a action="userBlog" cssClass="nick_name"><s:param name="user.id" value="commenter.id"/><img src="<s:property value="commenter.pic"/>" alt="" class="forumportrait"/></s:a>
-                                        <s:a action="userBlog" cssClass="nick_name"><s:param name="user.id" value="commenter.id"/><p class="textOverSinglerow"><s:property value="commenter.nickName"/></p></s:a>
-                                    </div>
-
-                                    <div class="forumsContentContainer">
-                                        <div class="forumText"><s:property value="content"/></div>
-                                        <p class="text-right"><s:date name="commentTime" format="%{getText('global.display.datetime')}"/></p>
-                                    </div>
-
-                                    <div class="clearfix"></div>
-                                </div>
-
-                            </div>
-                            <s:if test="#idx.index > 3"><s:set var="flag" value="false"/></s:if>
-                        </s:if>
-
-                    </s:iterator>
-                </div>
-                   --%>
 
                 <div id="message_list_ul">
                     <s:iterator value="comments" status="idx">
                         <s:if test="#idx.index < 3">
                             <div class="row">
-                                <div class="forumsinfo">
-                                    <div class="forumsUserContainer">
-                                        <s:a action="userBlog" ><s:param name="user.id" value="commenter.id"/><img src="<s:property value="commenter.pic"/>"  alt="" class="forumportrait"/></s:a>
-                                        <br/>
-                                         <span>
-                                            <s:a action="userBlog" ><s:param name="user.id" value="commenter.id"/><s:property value="commenter.nickName"/></s:a>
-                                        </span>
+                                <div class="col-md-2">
+                                    <div class="portrait">
+                                        <span><s:a action="userBlog" ><s:param name="user.id" value="commenter.id"/><img src="<s:property value="commenter.pic"/>"  alt="" class="forumportrait"/></s:a></span>
+                                        <span><s:a action="userBlog" ><s:param name="user.id" value="commenter.id"/><s:property value="commenter.nickName"/></s:a></span>
                                     </div>
                                 </div>
-                                <div class="forumsContentContainer">
+                                <div class="col-md-10">
                                     <div class="forumContent">
                                         <s:property value="description"/>
                                     </div>
-
                                     <div class="forumContentDate">
                                         <p class="text-right"><s:date name="createDate" format="%{getText('global.display.datetime')}"/></p>
-
                                     </div>
                                 </div>
                             </div>
+                            <br/>
                         </s:if>
                     </s:iterator>
                 </div>
@@ -264,30 +221,31 @@
 				<div class="gogopanelBody">
 					<div class="gogopanelBodyText">
 						<div id="DisUserArea" style="text-align: center;">
-							<div class="row">
-								<div class="col-md-4">
-									<img src="../../images/course/portrait2.jpg" class="normalPortrait"/>
-									<p class="textOverSinglerow">Name</p>
-								</div>
-								<div class="col-md-4">
-									<img src="../../images/course/portrait4.jpg" class="normalPortrait"/>
-									<p class="textOverSinglerow">Name</p>
-								</div>
-								<div class="col-md-4">
-									<img src="../../images/course/portrait5.jpg" class="normalPortrait"/>
-									<p class="textOverSinglerow">Name</p>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-4">
-									<img src="../../images/course/portrait2.jpg" class="normalPortrait"/>
-									<p class="textOverSinglerow">Name</p>
-								</div>
-								<div class="col-md-4">
-									<img src="../../images/course/noportrait.jpg" class="normalPortrait"/>
-									<p class="textOverSinglerow">Available</p>
-								</div>
-							</div>
+                            <s:if test="allTeachersNum>0">
+                                <div class="row">
+                                    <s:iterator value="allTeachersForOrg" status="idx">
+                                        <div class="col-md-4">
+                                            <span><s:a action="userBlog"><s:param name="user.id" value="id"/>
+                                                <img class="teacherPortrait" src="<s:property value="pic"/> " title="<s:property value="nickName"/>"  />
+                                            </s:a></span>
+                                            <%-- <a href="userBlog.html?user.id=<s:property value="id"/>" title="<s:property value="nickName"/>">
+                                                <img class="teacherPortrait" src="<s:property value="pic" />"/>
+                                            </a> --%>
+                                            <div style="clear: left">
+                                            </div>
+                                            <p class="textOverSinglerow"><s:property value="nickName"/></p>
+                                        </div>
+                                    </s:iterator>
+                                </div>
+                            </s:if>
+                            <s:else>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <img src="/images/course/noportrait.jpg" class="normalPortrait"/>
+                                        <p class="textOverSinglerow">Available</p>
+                                    </div>
+                                </div>
+                            </s:else>
 						</div>
 						
 						<br/>
@@ -301,83 +259,8 @@
 </div>
 
 <script type="text/javascript">
-    var SellerScroll = function(options) {
-        this.SetOptions(options);
-        this.lButton = this.options.lButton;
-        this.rButton = this.options.rButton;
-        this.oList = this.options.oList;
-        this.showSum = this.options.showSum;
 
-        this.iList = $("#" + this.options.oList + " > li");
-        this.iListSum = this.iList.length;
-        this.iListWidth = this.iList.outerWidth(true);
-        this.moveWidth = this.iListWidth * this.showSum;
-
-        this.dividers = Math.ceil(this.iListSum / this.showSum);	//共分为多少块
-        this.moveMaxOffset = (this.dividers - 1) * this.moveWidth;
-        this.LeftScroll();
-        this.RightScroll();
-    };
-    SellerScroll.prototype = {
-        SetOptions: function(options) {
-            this.options = {
-                lButton: "left_scroll",
-                rButton: "right_scroll",
-                oList: "scroll_ul",
-                showSum: 4    //一次滚动多少个items
-            };
-            $.extend(this.options, options || {});
-        },
-        ReturnLeft: function() {
-            return isNaN(parseInt($("#" + this.oList).css("left"))) ? 0 : parseInt($("#" + this.oList).css("left"));
-        },
-        LeftScroll: function() {
-            if (this.dividers == 1) return;
-            var _this = this, currentOffset;
-            $("#" + this.lButton).click(function() {
-                currentOffset = _this.ReturnLeft();
-                if (currentOffset == 0) {
-                    for (var i = 1; i <= _this.showSum; i++) {
-                        $(_this.iList[_this.iListSum - i]).prependTo($("#" + _this.oList));
-                    }
-                    $("#" + _this.oList).css({ left: -_this.moveWidth });
-                    $("#" + _this.oList + ":not(:animated)").animate({ left: "+=" + _this.moveWidth }, { duration: "slow", complete: function() {
-                        for (var j = _this.showSum + 1; j <= _this.iListSum; j++) {
-                            $(_this.iList[_this.iListSum - j]).prependTo($("#" + _this.oList));
-                        }
-                        $("#" + _this.oList).css({ left: -_this.moveWidth * (_this.dividers - 1) });
-                    } });
-                } else {
-                    $("#" + _this.oList + ":not(:animated)").animate({ left: "+=" + _this.moveWidth }, "slow");
-                }
-            });
-        },
-        RightScroll: function() {
-            if (this.dividers == 1) return;
-            var _this = this, currentOffset;
-            $("#" + this.rButton).click(function() {
-                currentOffset = _this.ReturnLeft();
-                if (Math.abs(currentOffset) >= _this.moveMaxOffset) {
-                    for (var i = 0; i < _this.showSum; i++) {
-                        $(_this.iList[i]).appendTo($("#" + _this.oList));
-                    }
-                    $("#" + _this.oList).css({ left: -_this.moveWidth * (_this.dividers - 2) });
-
-                    $("#" + _this.oList + ":not(:animated)").animate({ left: "-=" + _this.moveWidth }, { duration: "slow", complete: function() {
-                        for (var j = _this.showSum; j < _this.iListSum; j++) {
-                            $(_this.iList[j]).appendTo($("#" + _this.oList));
-                        }
-                        $("#" + _this.oList).css({ left: 0 });
-                    } });
-                } else {
-                    $("#" + _this.oList + ":not(:animated)").animate({ left: "-=" + _this.moveWidth }, "slow");
-                }
-            });
-        }
-    };
     $(document).ready(function() {
-        var ff = new SellerScroll();
-
         $("#message_submit_btn").bind('click', function () {
             if(validateLogo()){
                 var messageText = $("#message_textarea").val();
@@ -400,31 +283,6 @@
             changeWordNumber($(this),$("#message_area_tip"),250);
         });
     });
-
-    function getSubString(parentStr,shortLength){
-        if(/.*[\u4e00-\u9fa5]+.*$/.test(parentStr)){
-            if(parentStr.length>shortLength){
-                return parentStr.substring(0,shortLength)+"...";
-            }
-        }else{
-            if(parentStr.length>2*shortLength){
-                return parentStr.substring(0,2*shortLength)+"...";
-            }
-        }
-    }
-
-    function replyToComment(nickName,userID){
-        var prefixStr = "回复";
-        $("#message_textarea").val(prefixStr+nickName+": ");
-        $("#message_textarea").focus();
-        $.post("putUserIDtoSession.html",{'user.id':userID},function(data){});
-    }
-    function deleteThisComment(obj,commentId){
-        $(obj).parents("li.li_out").remove();
-        $.post("deleteOrgComment.html",{'comment.id':commentId},function(data){});
-
-    }
-
     function validateLogo(){
         if(document.getElementById('hidSessionId').value > 0) {
             return true;
