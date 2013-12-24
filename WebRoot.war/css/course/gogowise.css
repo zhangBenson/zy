@@ -57,7 +57,7 @@ body{
 
 .popOrgLogo
 {
-	width: 270px;
+	/*width: 270px;*/
 	height: 150px;
 }
 
@@ -454,7 +454,7 @@ a:hover .recommended  img
 	margin-right:25px;
 	border-radius: 6px;
 	width: 280px;
-	height: 120px;
+	min-height: 120px;
 }
 
 .schoolTitle
