@@ -116,7 +116,7 @@
 		<div class="col-sm-4">
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-6">
+					<div class="col-sm-6" style="width:53%;">
 						<div class="statisticsItem">
 							<img src="/images/org/icon_founded.png" alt="">
 							<span><s:property value="orgCreateDate"/></span>
@@ -126,7 +126,7 @@
 							<span><s:property value="orgCourseNum"/></span>
 						</div>
 					</div>
-					<div class="col-sm-6">
+					<div class="col-sm-6 " style="width:47%;">
 						<div class="statisticsItem">
 							<span>
 								<img src="/images/org/icon_teacher.png" alt=""></span>
