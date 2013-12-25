@@ -127,14 +127,14 @@ public class Utils {
     }
 
     public static void replaceFileFromTmp(String toDir, String fileName) {
-        String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + fileName);
-        String toPath = ServletActionContext.getServletContext().getRealPath(toDir + "/" + fileName);
+        String srcPath = ServletActionContext.getServletContext().getRealPath("/" + Constants.UPLOAD_FILE_PATH_TMP + "/"  + fileName);
+        String toPath = ServletActionContext.getServletContext().getRealPath(toDir) + File.separatorChar  + fileName;
         replaceFile(srcPath, toPath);
     }
 
     public static void notReplaceFileFromTmp(String toDir, String fileName) {
-        String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + fileName);
-        String toPath = ServletActionContext.getServletContext().getRealPath(toDir + "/" + fileName);
+        String srcPath = ServletActionContext.getServletContext().getRealPath("/"  + Constants.UPLOAD_FILE_PATH_TMP + "/" + fileName);
+        String toPath = ServletActionContext.getServletContext().getRealPath(toDir) + File.separatorChar  + fileName;
         notReplaceFileAndCopy(srcPath, toPath);
     }
 
