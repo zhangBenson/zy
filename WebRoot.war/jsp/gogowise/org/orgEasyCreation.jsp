@@ -1,5 +1,15 @@
 ﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ page import="com.ckeditor.CKEditorConfig" %>
+
+<%@ taglib uri="http://ckeditor.com" prefix="ckeditor" %>
+<%
+    CKEditorConfig settings = new CKEditorConfig();
+    settings.addConfigValue("width","770");
+    settings.addConfigValue("height","100");
+    settings.addConfigValue("toolbar","[[ 'Source', '-', 'Bold', 'Italic','-','Image','-','NumberedList','BulletedList','-','Outdent','Indent','-','JustifyLeft',"+
+            "'JustifyCenter','JustifyRight','JustifyBlock','-','Link','Unlink','Anchor' ]]");
+%>
 
 <link href="js/uploadify/uploadify.css" type="text/css" rel="stylesheet"/>
 <script type="text/javascript" src="js/uploadify/jquery.uploadify.v2.1.4.js"></script>
@@ -108,6 +118,9 @@ $(document).ready(function () {
         <s:form action="higSecOrgCreate" theme="css_xhtml" id="responserForm" enctype="multipart/form-data" validate="true"
                 method="post">
             <s:hidden name="org.id"/>
+
+
+
             <ul class="principalMsg">
                 <li class="long_li">
                     <div class="option_tittle">负责人email</div>
@@ -139,10 +152,15 @@ $(document).ready(function () {
                     <div id="fileQueue"></div>
                 </li>
 
-                <li class="long_li">
+                <li class="long_li" style="height: 200px;">
                     <div class="option_tittle">描述</div>
-                    <div class="input_content"><s:textarea cssClass="long_text_area" id="step2_course_intro" name="org.description"/></div>
+                    <br/>
+                    <br/>
+                    <%-- <div class="input_content"><s:textarea cssClass="long_text_area" id="step2_course_intro" name="org.description"/></div> --%>
+                    <s:textarea cols="80"  id="editor1" name="org.description"  rows="5"></s:textarea>
+                    <ckeditor:replace  replace="editor1" basePath="js/ckeditor/"  config="<%=settings %>"/>
                 </li>
+
                 <%--<li class="short_li">--%>
                     <%--<div class="option_tittle">组织合同签署日期</div>--%>
                     <%--<p id="secondStepBirthdayWarn" class="input_msg"></p>--%>
@@ -160,15 +178,34 @@ $(document).ready(function () {
                     <%--<s:hidden name="idCardUrl" id="idCardUrl"/>--%>
                     <%--<div id="fileQueue"></div>--%>
                 <%--</li>--%>
-                <li class="long_li" style="height: 100px">
-                </li>
-                <li class="long_li">
-                      <s:submit cssClass="submit_btn" value="提交" ></s:submit>
-                </li>
 
+
+
+                <li class="long_li">
+
+                      <s:submit cssClass="submit_btn" value="提交" onclick="return checkEvent();" ></s:submit>
+                </li>
             </ul>
+
         </s:form>
 
     </div>
 </div>
+<script type="text/javascript">
+    function checkEvent(){
 
+        var ckeditor = CKEDITOR.instances.editor1;
+        var eventContent = ckeditor.getData();
+
+        var flag;
+        if(eventContent == "") {
+            alert("请填写内容！");
+            flag = false;
+        }
+        else {
+            flag = true;
+        }
+        return flag;
+    }
+
+</script>

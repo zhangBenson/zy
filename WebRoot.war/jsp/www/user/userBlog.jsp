@@ -109,7 +109,7 @@
                         <img class="schoolPortrait" src="<s:property value="userOrganization.logoUrl"/>"/></a>
                     <h4><s:property value="userOrganization.schoolName"/></h4>
                     <h4 class="courseBody">
-                        <s:property value="userOrganization.description"/>
+                        <s:property escapeHtml="false" value="userOrganization.description"/>
                     </h4>
                 </div>
             </div>

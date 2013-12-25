@@ -13,7 +13,7 @@
 				<h1 class ="courseSubject"><s:property value="org.schoolName"/></h1>
 
 				<h4 class="courseBody">
-					<s:property value="org.description"/>
+					<s:property escapeHtml="false" value="org.description"/>
 				</h4>	
 			</div>
 			<br/>
