@@ -701,7 +701,9 @@
     <!--</definition>-->
     <definition name=".orgComments"  template="/jsp/www/org/orgComments.jsp" >
     </definition>
-    <definition name=".userComment"  template="/jsp/gogowise/user/userComment.jsp" >
+    <!-- <definition name=".userComment"  template="/jsp/gogowise/user/userComment.jsp" >
+    </definition>-->
+    <definition name=".userComment"  template="/jsp/www/user/userComment.jsp" >
     </definition>
     <definition name=".perOnliveTerms" template="/jsp/gogowise/onlive/perOnliveTermsRecord.jsp">
     </definition>
