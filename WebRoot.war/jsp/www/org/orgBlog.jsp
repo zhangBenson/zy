@@ -9,9 +9,9 @@
 		<div class="col-sm-8">
 			<div id="schoolInfo">
 				<img src="<s:property value="org.logoUrl"/>" class="schoolPortrait"/>
-				
-				<h1 class ="courseSubject"><s:property value="org.schoolName"/></h1>
-
+				<div class="courseSubject" >
+				    <h1 style="white-space: pre-wrap;word-wrap: break-word"><s:property value="org.schoolName"/></h1>
+                </div>
 				<h4 class="courseBody">
 					<s:property escapeHtml="false" value="org.description"/>
 				</h4>	
