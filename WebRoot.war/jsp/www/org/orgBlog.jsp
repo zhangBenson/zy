@@ -145,8 +145,8 @@
 				<br/>
 				<br/>
 				<!-- excellent Lecturers -->
-				
-				<div class="gogopanelWhole">
+
+				<%-- <div class="gogopanelWhole">
 					<div class="gogopanelBodyText">
 						<s:iterator value="hotTeachers" status="idx">
 							<p class="teacherTitle"><s:property value="nickName"/></p>
@@ -162,7 +162,7 @@
 			            </s:iterator>
 					</div>
 				</div>
-
+                --%>
 				<br/>
 				<br/>
 				<!-- Lecturers -->
