@@ -166,7 +166,7 @@
 			<div class="row">
 				<div class="col-sm-8">
 					<div class="basePanelTextLeftAbsolute">
-						<h3 class="courseSubhead">My courses</h3>
+						<h3 class="courseSubhead"><s:property value="%{getText('usermenu.item.mycourses')}"/></h3>
 						<s:if test="existLatestCourse">
 							<s:iterator value="latestCourse" status="idx">
 								<s:if test="#idx.getIndex() == 0">
@@ -180,7 +180,7 @@
 											
 											<%-- <div id="remainSeconds" style="display:none">100000</div>
 											<div id="remainTime" style="width: 134px;">Start:</div> --%>
-											<div style="width: 175px;">Start:<b id="timeLeft<s:property value="#idx.index"/>"></b></div>
+											<div style="width: 175px;"><s:property value="%{getText('courses.time.left')}" />&nbsp;<b id="timeLeft<s:property value="#idx.index"/>"></b></div>
 											<script type="text/javascript">
 						                        $("#timeLeft<s:property value="#idx.index"/>").countdown({
 						                                    date:'<s:date name="classOnTheCorner.date" format="%{getText('date.formate.firstpage.course.startdate')}" />',
@@ -378,7 +378,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel">Courses</h4>
+				<h4 class="modal-title" id="myModalLabel"><s:property value="%{getText('usermenu.item.mycourses')}"/></h4>
 			</div>
 			<div class="modal-body">
 				<div class="courseItem">
@@ -390,7 +390,7 @@
 									<li><s:property value="%{getText('courses.info.lecturer')}" />:<s:a action="userBlog"><s:param name="user.id"  value="teacher.id"/><s:property value="teacher.nickName"/></s:a></li>
 
 									<li>
-										<div style="width: 175px;">Start:<b id="timeLeft<s:property value="#idx.index"/>"></b></div>
+										<div style="width: 175px;"><s:property value="%{getText('courses.time.left')}" />&nbsp;<b id="timeLeft<s:property value="#idx.index"/>"></b></div>
 										<script type="text/javascript">
 					                        $("#timeLeft<s:property value="#idx.index"/>").countdown({
 					                                    date:'<s:date name="classOnTheCorner.date" format="%{getText('date.formate.firstpage.course.startdate')}" />',
