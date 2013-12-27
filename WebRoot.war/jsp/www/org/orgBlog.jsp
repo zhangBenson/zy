@@ -194,17 +194,17 @@
 					<div class="gogopanelBodyText">
 						<s:if test="course.FinshedClassNum < course.ClassesNum">
 		                    <s:iterator value="course.ForcastClasses" begin="0" end="0" status="idx">
-		                        <div>Topic: <s:property value="nickName"/></div>
+		                        <div><s:property value="%{getText('lable.course.nickname')}"/>: <s:property value="nickName"/></div>
 		                        <p></p>
-		                        <div>Numbers:
+		                        <div><s:property value="%{getText('lable.course.no')}"/>:
 		                            <s:property value="%{getText('lable.class.no1')}" />
 		                            <s:property value="course.FinshedClassNum+1"/>
 		                            <s:property value="%{getText('lable.class.no2')}" />
 		                        </div>
 		                        <p></p>
-		                        <div>Times:<s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
+		                        <div><s:property value="%{getText('lable.course.starttime')}"/>:<s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
 		                        <p></p>
-		                        <div>Teacher: <s:property value="course.teacher.nickName"/></div>
+		                        <div><s:property value="%{getText('courses.info.lecturer')}"/>: <s:property value="course.teacher.nickName"/></div>
 		                        <br/>
 		                    </s:iterator>
                		 	</s:if>
@@ -249,7 +249,7 @@
 						</div>
 						
 						<br/>
-						<button type="button" class="btn btn-primary btn-block">Booking</button>
+						<button type="button" class="btn btn-primary btn-block"><s:property value="%{getText('button.enter')}"/></button>
 					</div>
 				</div>
 				<br/>
