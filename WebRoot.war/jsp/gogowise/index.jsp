@@ -124,7 +124,7 @@
         </div>
         <div class="col-sm-6">
             <div class="pull-left"><img src="../../images/index/icon_MOOC.png"  /></div>
-            <div class="pull-left"><div class="courseSubhead">MOOC</div></div>
+            <div class="pull-left"><div class="courseSubhead"><s:property value="%{getText('usermenu.item.mooc')}"/></div></div>
             <div class="clearfix"></div>
             <s:iterator value="Courses" status="status">
                 <s:if test="#status.index<4">

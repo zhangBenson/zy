@@ -45,7 +45,7 @@
 
 			<div id="Mooc">
 				<div class="thickline"></div>
-				<h3 class="courseSubhead"><s:property value="%{getText('live.term.live.room')}"/></h3> <%--Mooc--%>
+				<h3 class="courseSubhead"><s:property value="%{getText('usermenu.item.mooc')}"/></h3> <%--Mooc--%>
 				<div id="Mooccurriculum">
 				<div class="row">
 					 <s:iterator value="hotCourses" status="idx">
