@@ -12,13 +12,13 @@
         <div class="col-md-6">
             <ul class="nav nav-pills">
                 <li>
-                    <a href="index.html" class="navlink">HOME<%--<s:property value="%{getText('menu.item.index')}"/>--%></a>
+                    <a href="index.html" class="navlink"><s:property value="%{getText('menu.item.index')}"/></a>
                 </li>
                 <li>
-                    <s:a action="courseSquare" cssClass="navlink">COURSES<%--<s:property value="%{getText('frame.course.center')}"/>--%></s:a>
+                    <s:a action="courseSquare" cssClass="navlink"><s:property value="%{getText('frame.course.center')}"/></s:a>
                 </li>
                 <li>
-                    <a href="#" class="navlink">SCHOOLS</a>
+                    <a href="#" class="navlink"><s:property value="%{getText('frame.schools.center')}"/></a>
                 </li>
             </ul>
         </div>
