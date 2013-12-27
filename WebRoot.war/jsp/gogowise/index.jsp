@@ -166,7 +166,7 @@
 <div class="container">
     <ul class="bxsliderLogolist">
 
-        <!-- <ul class="bxsliderLogolist">
+<%--         <ul class="bxsliderLogolist">
           <li>
             <ul class="list-inline">
             <li><a href="#"><img src="gogowisestyle/image/orgLogo1.jpg" alt="" class="popOrgLogo"></a></li>
@@ -184,7 +184,8 @@
             <li><a href="#"><img src="gogowisestyle/image/orgLogo8.jpg" alt="" class="popOrgLogo"></a></li>
           </ul>
           </li>
-        </ul> -->
+        </ul>--%>
+
             <s:iterator value="OrganizationDao.findOngoingForAdmin()" status="status">
                 <s:if test="#status.index%4==0"><li><ul class="list-inline"></s:if>
 
