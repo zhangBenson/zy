@@ -78,7 +78,7 @@
                 <br/>
                 <%-- Forum --%>
                 <div class="thickline"></div>
-                <div class="courseSubhead">Forum</div>
+                <div class="courseSubhead"><s:property value="%{getText('blog.message.board')}"/><%--Forum--%></div>
                 <br/>
 
 
@@ -170,7 +170,7 @@
                 </div>
 
                 <!-- Panel 1 -->
-                <div class="gogopanelHead"><div class="gogopanelTitle">Lecturers</div></div>
+                <div class="gogopanelHead"><div class="gogopanelTitle"><s:property value="%{getText('course.lecturer')}"/><%--Lecturers--%></div></div>
 
                 <div class="gogopanelBody">
                     <div class="gogopanelBodyText">
@@ -195,7 +195,7 @@
 
                 <br/>
                 <!-- Panel 2 -->
-                <div class="gogopanelHead"><div class="gogopanelTitle">Classroom</div></div>
+                <div class="gogopanelHead"><div class="gogopanelTitle"><s:property value="%{getText('label.course.class.room')}"/><%--Classroom--%></div></div>
 
                 <div class="gogopanelBody">
 
@@ -233,14 +233,14 @@
                                 <br/>
                             </s:iterator>
                         </s:else>
-                        <button type="button" class="btn btn-primary btn-block">Enter</button>
+                        <button type="button" class="btn btn-primary btn-block"><s:property value="%{getText('button.enter')}"/><%--Enter--%></button>
                     </div>
                 </div>
 
                 <br/>
 
                 <!--Panel 3-->
-                <div class="gogopanelHead"><div class="gogopanelTitle">Discussion Room</div></div>
+                <div class="gogopanelHead"><div class="gogopanelTitle"><s:property value="%{getText('label.course.discussion.room')}"/><%--Discussion Room--%></div></div>
 
                 <div class="gogopanelBody">
                     <div class="gogopanelBodyText">
@@ -257,7 +257,7 @@
                         </div>
 
                         <br/>
-                        <button type="button" class="btn btn-primary btn-block">Enter</button>
+                        <button type="button" class="btn btn-primary btn-block"><s:property value="%{getText('button.enter')}"/></button>
                     </div>
                 </div>
 

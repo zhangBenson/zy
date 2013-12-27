@@ -74,7 +74,7 @@
 			<div id="Forums">
 
 				<div class="thickline"></div>
-				<h3 class="courseSubhead">Forums</h3>
+				<h3 class="courseSubhead"><s:property value="%{getText('blog.message.board')}"/></h3>
 
 
                 <div id="message_list_ul">
@@ -167,7 +167,7 @@
 				<br/>
 				<!-- Lecturers -->
 				<div class="gogopanelHead">
-					<div class="gogopanelTitle">Lecturers</div>
+					<div class="gogopanelTitle"><s:property value="%{getText('course.lecturer')}"/></div>
 				</div>
 				<div class="gogopanelBody">
 					<div class="gogopanelBodyText">
@@ -188,7 +188,7 @@
 				<br/>
 
 				<div class="gogopanelHead">
-					<div class="gogopanelTitle">Classroom</div>
+					<div class="gogopanelTitle"><s:property value="%{getText('label.course.class.room')}"/></div>
 				</div>
 				<div class="gogopanelBody">
 					<div class="gogopanelBodyText">
@@ -209,14 +209,14 @@
 		                    </s:iterator>
                		 	</s:if>
 						<br/>
-						<button type="button" class="btn btn-primary btn-block">Enter</button>
+						<button type="button" class="btn btn-primary btn-block"><s:property value="%{getText('button.enter')}"/></button>
 					</div>
 				</div>
 
 				<br/>
 				<!--Panel 3-->
 				<div class="gogopanelHead">
-					<div class="gogopanelTitle">Discussion Room</div>
+					<div class="gogopanelTitle"><s:property value="%{getText('label.course.discussion.room')}"/></div>
 				</div>
 				<div class="gogopanelBody">
 					<div class="gogopanelBodyText">
