@@ -673,7 +673,7 @@
 
 
     <definition name=".orgBlog" extends=".wwwBodyCenter">
-        <put-attribute name="title" value="title.course.blog"/>
+        <put-attribute name="title" value="title.org.blog"/>
         <put-attribute name="contentBody" value="/jsp/www/org/orgBlog.jsp"/>
     </definition>
 
