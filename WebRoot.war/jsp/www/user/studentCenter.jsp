@@ -301,7 +301,7 @@
 
 			<br/>
 			<div class="basePanelTextLeft">
-				<h3 class="courseSubhead">Recommend School</h3>
+				<h3 class="courseSubhead"><s:property value="%{getText('recommend.school')}"/></h3>
 				<div class="thickline"></div>
 
 				<div class="row">
