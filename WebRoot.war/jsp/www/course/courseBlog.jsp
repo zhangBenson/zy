@@ -163,10 +163,10 @@
                 <div class="well">
                     <a href="orgBlog.html?org.id=<s:property value="course.organization.id"/>" title="<s:property value="course.organization.nickName"/>">
                         <img class="schoolPortrait" src="<s:property value="course.organization.logoUrl"/>"/></a>
-                    <h4 class="textOverSinglerow">School:<s:property value="course.organization.schoolName"/></h4>
-                    <h4 class="textOverSinglerow">Course Code: <s:property value="course.id"/></h4>
-                    <h4 class="textOverSinglerow">Course Language:<s:property value="course.languageType"/></h4>
-                    <button type="button" class="btn btn-primary btn-block">Register for <s:property value="course.name" /></button>
+                    <h4 class="textOverSinglerow"><s:property value="%{getText('course.school')}"/>:<s:property value="course.organization.schoolName"/></h4>
+                    <h4 class="textOverSinglerow"><s:property value="%{getText('course.code')}"/>: <s:property value="course.id"/></h4>
+                    <h4 class="textOverSinglerow"><s:property value="%{getText('course.teaching.language')}"/>:<s:property value="course.languageType"/></h4>
+                    <button type="button" class="btn btn-primary btn-block"><s:property value="%{getText('user.info.identity.finish.reg')}"/> <%--Register for --%><s:property value="course.name" /></button>
                 </div>
 
                 <!-- Panel 1 -->
