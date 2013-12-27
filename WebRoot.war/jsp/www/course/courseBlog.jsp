@@ -37,7 +37,7 @@
 
                 <div class="thickline"></div>
 
-                <h3 class="courseSubhead">Course Videos</h3>
+                <h3 class="courseSubhead"><s:property value="%{getText('online.class.avigation.course.video')}"/></h3>
 
                 <%-- Course Videos--%>
                 <s:set var="isMore" value="false"></s:set>
