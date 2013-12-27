@@ -332,7 +332,7 @@
 						<s:if test="#idx.getIndex() < 6">
 		                	<div class="col-sm-4">
 		                		<div class="recommended">
-		                			<div class="mycourseImg ">
+		                			<div>
 				                    	<a  href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"><img src="<s:property value="logoUrl"/>"/></a>
 				                    </div>
 				                    <a  href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"><s:property value="name"/></a>
