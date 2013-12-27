@@ -9,11 +9,11 @@
 		<div class="col-sm-8">
 			<div id="schoolInfo">
 				<img src="<s:property value="org.logoUrl"/>" class="schoolPortrait"/>
-				
-				<h1 class ="courseSubject"><s:property value="org.schoolName"/></h1>
-
+				<div class="courseSubject" >
+				    <h1 style="white-space: pre-wrap;word-wrap: break-word"><s:property value="org.schoolName"/></h1>
+                </div>
 				<h4 class="courseBody">
-					<s:property value="org.description"/>
+					<s:property escapeHtml="false" value="org.description"/>
 				</h4>	
 			</div>
 			<br/>
@@ -145,8 +145,8 @@
 				<br/>
 				<br/>
 				<!-- excellent Lecturers -->
-				
-				<div class="gogopanelWhole">
+
+				<%-- <div class="gogopanelWhole">
 					<div class="gogopanelBodyText">
 						<s:iterator value="hotTeachers" status="idx">
 							<p class="teacherTitle"><s:property value="nickName"/></p>
@@ -162,7 +162,7 @@
 			            </s:iterator>
 					</div>
 				</div>
-
+                --%>
 				<br/>
 				<br/>
 				<!-- Lecturers -->
