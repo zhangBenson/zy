@@ -196,7 +196,7 @@
 						                    </script>
 										</li>
 										<li style="margin-left: 40px;">
-											<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal">more</button>
+											<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal"><s:property value="%{getText('others.more')}"/></button>
 										</li>
 									</ul>
 
@@ -320,7 +320,7 @@
                     </s:iterator>
 				</div>
 				<a href="#">
-					<p class="text-right">more</p>
+					<p class="text-right"><s:property value="%{getText('others.more')}"/></p>
 				</a>
 			</div>
 			<br/>
@@ -346,7 +346,7 @@
 	                </s:iterator>
 	            </div>
 				<a href="#">
-					<p class="text-right">more</p>
+					<p class="text-right"><s:property value="%{getText('others.more')}"/></p>
 				</a>
 			</div>
 		</div>

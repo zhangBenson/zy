@@ -73,7 +73,7 @@
                     <s:else><s:set var="isMore" value="true"></s:set></s:else>
                 </s:iterator>
 
-                <s:if test="isMore"><p class="text-right">more</p></s:if>
+                <s:if test="isMore"><p class="text-right"><s:property value="%{getText('others.more')}"/></p></s:if>
 
                 <br/>
                 <%-- Forum --%>
@@ -151,7 +151,7 @@
                             </a>
                         </div>
                     </s:iterator>
-                    <p class="text-right"><a href="#">more</a></p>
+                    <p class="text-right"><a href="#"><s:property value="%{getText('others.more')}"/></a></p>
                 </div>
             </div>
         </div>

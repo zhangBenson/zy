@@ -120,7 +120,7 @@
             <%--</a>--%>
 
 
-            <a href="#"><p class="text-right">more</p></a>
+            <a href="#"><p class="text-right"><s:property value="%{getText('others.more')}"/></p></a>
         </div>
         <div class="col-sm-6">
             <div class="pull-left"><img src="../../images/index/icon_MOOC.png"  /></div>
@@ -157,7 +157,7 @@
                     <%--</div>--%>
                 <%--</div>--%>
             <%--</a>--%>
-            <a href="#"><p class="text-right">more</p></a>
+            <a href="#"><p class="text-right"><s:property value="%{getText('others.more')}"/></p></a>
 
         </div>
     </div>

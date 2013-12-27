@@ -39,7 +39,7 @@
 		            </s:iterator>
 				</div>
 				<br/>
-				<p class="text-right">more</p>
+				<p class="text-right"><s:property value="%{getText('others.more')}"/></p>
 			</div>
 			<br/>
 
@@ -65,7 +65,7 @@
                     </s:iterator>
 				</div>
 				<br/>
-				<p class="text-right">more</p>
+				<p class="text-right"><s:property value="%{getText('others.more')}"/></p>
 			</div>
 			</div>
 
