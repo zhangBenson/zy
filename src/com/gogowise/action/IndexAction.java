@@ -6,6 +6,7 @@ import com.gogowise.rep.live.LiveChannelDao;
 import com.gogowise.rep.live.MyShowDao;
 import com.gogowise.rep.live.PersonalOnliveDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.live.enity.LiveChannel;
@@ -25,6 +26,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -54,7 +56,7 @@ public class IndexAction extends BasicAction {
     private Pagination pagination = new Pagination(3);
 
 
-
+    private List<Organization> organizations = new ArrayList<>();
 
 
 
@@ -139,6 +141,7 @@ public class IndexAction extends BasicAction {
             ActionContext.getContext().setLocale(new Locale("en","US"));
         }
         courses = courseDao.findlatestCourses(pagination);
+        organizations = organizationDao.findLatestOrgs(new Pagination(8));
         return SUCCESS;
     }
 
@@ -267,5 +270,13 @@ public class IndexAction extends BasicAction {
 
     public void setHottestOnlives(List<PersonalOnlive> hottestOnlives) {
         this.hottestOnlives = hottestOnlives;
+    }
+
+    public List<Organization> getOrganizations() {
+        return organizations;
+    }
+
+    public void setOrganizations(List<Organization> organizations) {
+        this.organizations = organizations;
     }
 }

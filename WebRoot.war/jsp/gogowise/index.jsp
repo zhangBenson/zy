@@ -96,7 +96,7 @@
 
                             <div class="coursePanelInfoRight">
                                 <p class="textOverSinglerow"><s:property value="name"/></p>
-                                <p class="textOverSinglerow">School:MITx</p>
+                                <p class="textOverSinglerow">School:<s:property value="organization.schoolName" /></p>
                                 <p class="textOverSinglerow">Clases start: <s:date name="publicationTime" format="%{getText('dateformat.forclass')}"/></p>
                             </div>
                         </div>
@@ -134,9 +134,9 @@
                                 <img class="coursePanelPortrait" src="<s:property value="logoUrl"/>" />
                             </div>
                             <div class="coursePanelInfoRight">
-                                <p><s:property value="name"/></p>
-                                <p>School:MITx</p>
-                                <p>Clases start: <s:date name="publicationTime" format="%{getText('dateformat.forclass')}"/></p>
+                                <p class="textOverSinglerow"><s:property value="name"/></p>
+                                <p class="textOverSinglerow">School:<s:property value="organization.schoolName" /></p>
+                                <p class="textOverSinglerow">Clases start: <s:date name="publicationTime" format="%{getText('dateformat.forclass')}"/></p>
                             </div>
                         </div>
                     </a>
@@ -186,7 +186,7 @@
           </li>
         </ul>--%>
 
-            <s:iterator value="OrganizationDao.findOngoingForAdmin()" status="status">
+            <s:iterator value="organizations" status="status">
                 <s:if test="#status.index%4==0"><li><ul class="list-inline"></s:if>
 
                 <li><a href="orgBlog.html?org.id=<s:property value="id"/>" >
