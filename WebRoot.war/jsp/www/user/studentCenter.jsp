@@ -46,14 +46,14 @@
 				<div class="list-group">
 
 					<a href="#" class="list-group-item active">
-						<img src="gogowisestyle/image/icon_video_action.png" class="centerIcon">
+						<img src="../../../images/studentcenter/icon_video_action.png" class="centerIcon">
 						<h4 class="list-group-item-heading">The choice of computer is dictated by our special needs.</h4>
 						<p class="list-group-item-text">20:00-22:00</p>
 						<p class="list-group-item-text">Lecturer:Name</p>
 					</a>
 
 					<a href="#" class="list-group-item">
-						<img src="gogowisestyle/image/icon_video.png" class="centerIcon">
+						<img src="../../../images/studentcenter/icon_video.png" class="centerIcon">
 						<h4 class="list-group-item-heading">
 							Students are flocking to such fields as genetics and molecular biology.
 						</h4>
@@ -313,7 +313,7 @@
                                     <a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="schoolName"/>"><img src="<s:property value="logoUrl"/>"/></a>
                                     </div>
                                     <br/>
-                                    <span><s:property value="schoolName"/></span>
+                                    <span><a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="schoolName"/>"><s:property value="schoolName"/></a></span>
                                 </div>
                             </div>
                         </s:if>
@@ -335,6 +335,7 @@
 		                			<div>
 				                    	<a  href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"><img src="<s:property value="logoUrl"/>"/></a>
 				                    </div>
+                                    <br/>
 				                    <a  href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"><s:property value="name"/></a>
 			                    </div>
 		              		</div>
