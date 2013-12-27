@@ -264,7 +264,7 @@
                 <br/>
 
                 <!--view all file -->
-                <div class="basePanel"><button type="button" class="btn btn-primary btn-block">View All File</button></div>
+                <div class="basePanel"><button type="button" class="btn btn-primary btn-block"><s:property value="%{getText('course.resource.view')}"/><%--View All File--%></button></div>
             </div>
         </div>
     </div>
