@@ -309,8 +309,8 @@
                         <s:if test="#idx.getIndex() < 3">
                             <div class="col-sm-4">
                                 <div class="recommendedSchool">
-                                    <div class="recommendedSchool img">
-                                    <a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="schoolName"/>"><img class = "recommendedSchool img" src="<s:property value="logoUrl"/>"/></a>
+                                    <div>
+                                    <a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="schoolName"/>"><img src="<s:property value="logoUrl"/>"/></a>
                                     </div>
                                     <br/>
                                     <span><s:property value="schoolName"/></span>
