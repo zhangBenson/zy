@@ -35,18 +35,10 @@
 <div class="container">
 
     <ul class="bxslider">
-        <li>
-            <img src="../../images/index/pic1.jpg" class="bannerImg" />
-        </li>
-        <li>
-            <img src="../../images/index/pic2.jpg" class="bannerImg" />
-        </li>
-        <li>
-            <img src="../../images/index/pic3.jpg" class="bannerImg" />
-        </li>
-        <li>
-            <img src="../../images/index/pic4.jpg" class="bannerImg" />
-        </li>
+        <li><img src="../../images/index/pic1.jpg" class="bannerImg" /></li>
+        <li><img src="../../images/index/pic2.jpg" class="bannerImg" /></li>
+        <li><img src="../../images/index/pic3.jpg" class="bannerImg" /></li>
+        <li><img src="../../images/index/pic4.jpg" class="bannerImg" /></li>
     </ul>
 
     <%--<s:form method="post" action="searchResult" theme="simple" validate="true">--%>
@@ -67,8 +59,7 @@
             </div>
             <div class="col-sm-4">
                 <button type="submit" class="btn btn-default btn-lg">
-                    <%--<span class="glyphicon glyphicon-search"></span>--%>
-                    <img src="../../images/index/search_btn_bg.png" />
+                    <span class="glyphicon glyphicon-search"></span>
                     <s:property value="%{getText('menu.item.search')}"/>
                 </button>
             </div>
@@ -122,10 +113,12 @@
 
             <a href="#"><p class="text-right"><s:property value="%{getText('others.more')}"/></p></a>
         </div>
+
         <div class="col-sm-6">
             <div class="pull-left"><img src="../../images/index/icon_MOOC.png"  /></div>
             <div class="pull-left"><div class="courseSubhead"><s:property value="%{getText('usermenu.item.mooc')}"/></div></div>
             <div class="clearfix"></div>
+
             <s:iterator value="Courses" status="status">
                 <s:if test="#status.index<4">
                     <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>">
@@ -143,20 +136,6 @@
                 </s:if>
             </s:iterator>
 
-            <!--Panel4 -->
-            <%--<a href="">--%>
-                <%--<div class="coursePanel">--%>
-                    <%--<div class="coursePanelInfoLeft">--%>
-                        <%--<img class="coursePanelPortrait" src="gogowisestyle/image/recommended3.jpg"  />--%>
-
-                    <%--</div>--%>
-                    <%--<div class="coursePanelInfoRight">--%>
-                        <%--<p>Pellentesque habitant morbi tristique senectus.</p>--%>
-                        <%--<p>School:MITx</p>--%>
-                        <%--<p>Clases start:16 Oct 2013</p>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</a>--%>
             <a href="#"><p class="text-right"><s:property value="%{getText('others.more')}"/></p></a>
 
         </div>
