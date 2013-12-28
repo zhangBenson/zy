@@ -203,33 +203,33 @@
                         <s:if test="course.FinshedClassNum < course.ClassesNum">
                             <s:iterator value="course.ForcastClasses" begin="0" end="0" status="idx">
 
-                                <div>Topic: <s:property value="nickName"/></div>
+                                <div><s:property value="%{getText('lable.course.nickname')}"/><%--Topic--%>: <s:property value="nickName"/></div>
                                 <p></p>
 
-                                <div>Numbers:
+                                <div><s:property value="%{getText('lable.course.no')}"/><%--Numbers--%>:
                                     <s:property value="%{getText('lable.class.no1')}"/><s:property value="course.FinshedClassNum+1"/><s:property value="%{getText('lable.class.no2')}"/>
                                 </div>
                                 <p></p>
 
-                                <div>Time:<s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
+                                <div><s:property value="%{getText('lable.course.starttime')}"/><%--Time--%>:<s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
                                 <p></p>
 
-                                <div>Lecturer: <s:property value="course.teacher.nickName"/></div>
+                                <div><s:property value="%{getText('courses.info.lecturer')}"/><%--Lecturer--%>: <s:property value="course.teacher.nickName"/></div>
                                 <br/>
                             </s:iterator>
                         </s:if>
                         <s:else>
                             <s:iterator value="course.classes" begin="course.ClassesNum-1" end="course.ClassesNum -1" status="idx">
-                                <div>Topic: <s:property value="nickName"/></div>
+                                <div><s:property value="%{getText('lable.course.nickname')}"/>: <s:property value="nickName"/></div>
                                 <p></p>
 
-                                <div>Numbers:
+                                <div><s:property value="%{getText('lable.course.no')}"/>:
                                     <s:property value="%{getText('lable.class.no1')}"/><s:property value="course.ClassesNum"/><s:property value="%{getText('lable.class.no2')}"/>
                                 </div>
                                 <p></p>
-                                <div>Time:<s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
+                                <div><s:property value="%{getText('lable.course.starttime')}"/>:<s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
                                 <p></p>
-                                <div>Lecturer: <s:property value="course.teacher.nickName"/></div>
+                                <div><s:property value="%{getText('courses.info.lecturer')}"/>: <s:property value="course.teacher.nickName"/></div>
                                 <br/>
                             </s:iterator>
                         </s:else>
@@ -264,7 +264,7 @@
                 <br/>
 
                 <!--view all file -->
-                <div class="basePanel"><button type="button" class="btn btn-primary btn-block">View All File</button></div>
+                <div class="basePanel"><button type="button" class="btn btn-primary btn-block"><s:property value="%{getText('course.resource.view')}"/><%--View All File--%></button></div>
             </div>
         </div>
     </div>
