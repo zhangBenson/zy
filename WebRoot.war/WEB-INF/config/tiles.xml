@@ -360,6 +360,12 @@
         <put-attribute name="title" value="title.org.creation"/>
         <put-attribute name="right" value="/jsp/gogowise/recomendResponser.jsp"/>
     </definition>
+
+    <definition name=".orgLogoProcess" template="/jsp/www/org/orgLogoProcess.jsp">
+        <put-attribute name="title" value="title.logo.upload"/>
+    </definition>
+
+
     <!-- =====================User related action end=========================== -->
 
 

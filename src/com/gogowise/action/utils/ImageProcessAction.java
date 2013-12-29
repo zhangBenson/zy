@@ -46,6 +46,9 @@ public class ImageProcessAction extends BasicAction{
     private String courseLogoName;
     private String courseLogoUrl;
 
+    private String orgLogoName;
+    private String orgLogoUrl;
+
     @Action(value = "cropUserPortrait")
     public void cropUserPortrait() throws IOException {
         if (StringUtils.isNotBlank(this.getUserPortraitName())) {
@@ -101,12 +104,42 @@ public class ImageProcessAction extends BasicAction{
         }
     }
 
+    @Action(value = "cropOrgLogo")
+    public void cropOrgLogo() throws IOException{
+        if (StringUtils.isNotBlank(this.getOrgLogoName())) {
+            String srcPath = ServletActionContext.getServletContext().getRealPath("/"+Constants.UPLOAD_FILE_PATH_TMP + "/" + this.getOrgLogoName());
+//            String toPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId()+"/"+this.getCourseLogoName());
+//            String toPath = srcPath;
+
+            //获取拓展名
+            String extName="";
+            if (orgLogoName.lastIndexOf(".") >= 0) {
+                extName = orgLogoName.substring(orgLogoName.lastIndexOf(".")+1);
+            }
+
+            BufferedImage tag = getBufferImage(srcPath);
+
+            createFiles(srcPath);
+
+            ImageIO.write(tag,extName,new FileOutputStream(srcPath));
+
+//            PrintWriter out = ServletActionContext.getResponse().getWriter();
+//            out.print(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId());
+//            out.close();
+        }
+    }
+
+
     @Action(value = "userPortraitCrop", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".userPortraitCrop") })
     public String userPortraitCrop() {
         return SUCCESS;
     }
     @Action(value = "courseLogoProcess", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseLogoProcess") })
     public String courseLogoProcess() {
+        return SUCCESS;
+    }
+    @Action(value = "orgLogoProcess", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgLogoProcess") })
+    public String orgLogoProcess() {
         return SUCCESS;
     }
 
@@ -223,5 +256,22 @@ public class ImageProcessAction extends BasicAction{
 
     public void setCourseLogoName(String courseLogoName) {
         this.courseLogoName = courseLogoName;
+    }
+
+
+    public String getOrgLogoName() {
+        return orgLogoName;
+    }
+
+    public void setOrgLogoName(String orgLogoName) {
+        this.orgLogoName = orgLogoName;
+    }
+
+    public String getOrgLogoUrl() {
+        return orgLogoUrl;
+    }
+
+    public void setOrgLogoUrl(String orgLogoUrl) {
+        this.orgLogoUrl = orgLogoUrl;
     }
 }

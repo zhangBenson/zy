@@ -139,7 +139,11 @@ $(document).ready(function () {
                 </li>
                 <li class="long_li">
                     <div class="option_tittle">组织LOGO</div>
-                    <div class="file_upload"><input type="file" name="fileupload" id="fileupload1" /></div>
+                    <%--<div class="file_upload"><input type="file" name="fileupload" id="fileupload1" /></div>--%>
+                    <img id="show_log_preview"/>
+                   <div class="file_upload">
+                       <input type="button" class="submit_btn" id="change_portrait" value="<s:property value="%{getText('onlive.message.update')}"/>" href="orgLogoProcess.html" />
+                   </div>
                     <p id="secondStepFileWarn" class="input_msg"></P>
                     <s:hidden name="logoUrl" id="logoUrl"/>
                     <div id="fileQueue"></div>
@@ -207,5 +211,11 @@ $(document).ready(function () {
         }
         return flag;
     }
+
+    $("#change_portrait").fancybox({
+        type:'iframe',
+        width:720,
+        height:490
+    });
 
 </script>
