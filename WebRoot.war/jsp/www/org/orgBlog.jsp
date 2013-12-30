@@ -165,8 +165,18 @@
                                 <a href="userBlog.html?user.id=<s:property value="id"/>" title="<s:property value="nickName"/>"><img class="teacherPortrait" src="<s:property value="pic"/>"/></a>
                                 <div>
                                     <p class="teacherTitle"><s:property value="nickName"/></p>
-                                    <br/>
-                                    <p><s:property value="selfDescription"/></p>
+                                    <s:if test="selfDescription==null || selfDescription.length()==0">
+                                        <br/>
+                                    </s:if>
+                                    <p>
+                                        <s:if test="selfDescription.length() > 50">
+                                            <s:property value="selfDescription.substring(0,50)+'...'" />
+                                        </s:if>
+                                        <s:else>
+                                            <s:property value="selfDescription"/>
+                                        </s:else>
+                                    </p>
+
                                 </div>
                                 <s:if test="!#idx.last">
                                     <div class="thicklineExtra"></div>
@@ -214,10 +224,12 @@
                                 <div><s:property value="%{getText('lable.course.starttime')}"/>:<s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
                                 <p></p>
                                 <div><s:property value="%{getText('courses.info.lecturer')}"/>: <s:property value="course.teacher.nickName"/></div>
+                                <p></p>
+                                <div>Audience:</div>
                                 <br/>
                             </s:iterator>
                         </s:else>
-						<br/>
+
 						<button type="button" class="btn btn-primary btn-block"><s:property value="%{getText('button.enter')}"/></button>
 					</div>
 				</div>
@@ -323,5 +335,4 @@
             return false;
         }
     }
-
 </script>

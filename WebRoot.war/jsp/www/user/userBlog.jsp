@@ -107,6 +107,7 @@
                 <div  class="basePanel">
                      <a href="orgBlog.html?org.id=<s:property value="userOrganization.id"/>" title="<s:property value="userOrganization.schoolName"/>">
                         <img class="schoolPortrait" src="<s:property value="userOrganization.logoUrl"/>"/></a>
+                    <div class="clearfix"></div>
                     <h4 style="white-space: pre-wrap;word-wrap: break-word"><s:property value="userOrganization.schoolName"/></h4>
                     <h4 class="courseBody">
                         <s:property escapeHtml="false" value="userOrganization.description"/>
