@@ -41,7 +41,7 @@
 
 		<div class="col-sm-4">
 			<div class="basePanelshadow" style="text-align: center;">
-				<div class="basePanelGrey">Hall(School name)</div>
+				<div class="basePanelGrey"  style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><s:property value="%{getText('personalcenter.hall')}"/>(<s:property value="userOrganization.schoolName"/>)</div>
 				<br/>				
 				<div class="list-group">
 
@@ -49,7 +49,7 @@
 						<img src="../../../images/studentcenter/icon_video_action.png" class="centerIcon">
 						<h4 class="list-group-item-heading">The choice of computer is dictated by our special needs.</h4>
 						<p class="list-group-item-text">20:00-22:00</p>
-						<p class="list-group-item-text">Lecturer:Name</p>
+						<p class="list-group-item-text"><s:property value="%{getText('courses.info.lecturer')}" />:Name</p>
 					</a>
 
 					<a href="#" class="list-group-item">
@@ -58,7 +58,7 @@
 							Students are flocking to such fields as genetics and molecular biology.
 						</h4>
 						<p class="list-group-item-text">15:00-17:00</p>
-						<p class="list-group-item-text">Lecturer:Name</p>
+						<p class="list-group-item-text"><s:property value="%{getText('courses.info.lecturer')}" />:Name</p>
 					</a>
 
 					<a href="#" class="list-group-item">
@@ -66,16 +66,16 @@
 							As these trends continue, what will happen to the desktop and where will it live?
 						</h4>
 						<p class="list-group-item-text">9:00-11:30</p>
-						<p class="list-group-item-text">Lecturer:Name</p>
+						<p class="list-group-item-text"><s:property value="%{getText('courses.info.lecturer')}" />:Name</p>
 					</a>
 					
 					<a href="#" class="list-group-item">
 
 						<h4 class="list-group-item-heading">This is a seminar for mathematics majors......</h4>
 						<p class="list-group-item-text">14:00-14:30</p>
-						<p class="list-group-item-text">Lecturer:Name</p>
+						<p class="list-group-item-text"><s:property value="%{getText('courses.info.lecturer')}" />:Name</p>
 					</a>
-					<button type="button" class="btn btn-primary btn-xs btn-block">View School Video</button>
+					<button type="button" class="btn btn-primary btn-xs btn-block"><s:property value="%{getText('personalcenter.hall.view.school.video')}"/><%--View School Video--%></button>
 					<div id="page">
 						<ul class="pagination">
 							<li>
@@ -106,14 +106,14 @@
 			</div>
 			<br/>
 			<div class="basePanelshadow">
-				<div class="basePanelBlueGrey">Discussion Room(School name)</div>
+				<div class="basePanelBlueGrey" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><s:property value="%{getText('label.course.discussion.room')}"/>(<s:property value="userOrganization.schoolName"/>)</div>
 
 				<br/>
 				<div class="list-group">
 					<a href="#" class="list-group-item active">
 						<h4 class="list-group-item-heading">The choice of computer is dictated by our special needs.</h4>
 						<p class="list-group-item-text">20:00-22:00</p>
-						<p class="list-group-item-text">Lecturer:Name</p>
+						<p class="list-group-item-text"><s:property value="%{getText('courses.info.lecturer')}" />:Name</p>
 					</a>
 
 					<a href="#" class="list-group-item">
@@ -121,7 +121,7 @@
 							Students are flocking to such fields as genetics and molecular biology.
 						</h4>
 						<p class="list-group-item-text">15:00-17:00</p>
-						<p class="list-group-item-text">Lecturer:Name</p>
+						<p class="list-group-item-text"><s:property value="%{getText('courses.info.lecturer')}" />:Name</p>
 					</a>
 
 					<a href="#" class="list-group-item">
@@ -129,11 +129,11 @@
 							As these trends continue, what will happen to the desktop and where will it live?
 						</h4>
 						<p class="list-group-item-text">9:00-11:30</p>
-						<p class="list-group-item-text">Lecturer:Name</p>
+						<p class="list-group-item-text"><s:property value="%{getText('courses.info.lecturer')}" />:Name</p>
 					</a>
 
 				</div>
-				<button type="button" class="btn btn-success btn-lg btn-block">Booking</button>
+				<button type="button" class="btn btn-success btn-lg btn-block"><s:property value="%{getText('button.enter')}"/><%--Booking--%></button>
                 <div id="page">
                     <ul class="pagination">
                         <li>

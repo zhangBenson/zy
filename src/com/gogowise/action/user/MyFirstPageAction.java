@@ -42,6 +42,7 @@ public class MyFirstPageAction  extends BasicAction {
     private List<Course> latestCourse = new ArrayList<Course>();
     private List<Organization> latestOrgs = new ArrayList<>();
     private OrganizationDao organizationDao;
+    private Organization userOrganization;
     private CourseDao courseDao;
     private BaseUserDao baseUserDao;
     private InterviewDao interviewDao;
@@ -128,6 +129,7 @@ public class MyFirstPageAction  extends BasicAction {
     )
     public String studentCenter() {
         latestOrgs = organizationDao.findLatestOrgs(new Pagination(3));
+        userOrganization = organizationDao.findMyOrg(this.getSessionUserId());
         showUserCenter();
         return SUCCESS;
     }
@@ -541,5 +543,12 @@ public class MyFirstPageAction  extends BasicAction {
     }
     public void setOrganizationDao (OrganizationDao organizationDao) {
         this.organizationDao = organizationDao;
+    }
+
+    public Organization getUserOrganization () {
+        return this.userOrganization;
+    }
+    public void setUserOrganization (Organization userOrganization) {
+        this.userOrganization = userOrganization;
     }
 }
