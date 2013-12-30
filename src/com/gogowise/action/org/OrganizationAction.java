@@ -70,6 +70,7 @@ public class OrganizationAction extends BasicAction {
 
     private String organizationName;
     private List<Course> latestCourse;
+    private Course course;
     private List<Course> hotCourses;
     private List<CourseEvaluation> courseEvaluations;
     private List<OrganizationComment> comments;
@@ -97,12 +98,13 @@ public class OrganizationAction extends BasicAction {
         this.org = organizationDao.findById(orgId);
 
         latestCourse = courseDao.findLatestCourseByOrg(orgId, new Pagination(3));
-
+        if (latestCourse != null && latestCourse.size() > 0)
+            course = latestCourse.get(0);
         hotCourses = courseDao.findHotCoursesByOrg(orgId, new Pagination(4));
 
         Pagination page  = new Pagination(10);
         comments = organizationCommentDao.findOrgCommentByOrgId(orgId, page);
-        System.out.println ("comments size : " + comments.size ());
+
         this.setCommentsNum(comments.size());
         if(page.getTotalSize() <= commentsNum){
             this.setCommentsNumOverflow(true);
@@ -793,4 +795,11 @@ public class OrganizationAction extends BasicAction {
         SimpleDateFormat df=new SimpleDateFormat("yyyy/MM/dd");
         return df.format(this.org.getCreateDate().getTime());
     }
+    public  Course getCourse() {
+        return this.course;
+    }
+    public void setCourse (Course course) {
+        this.course = course;
+    }
+
 }

@@ -161,15 +161,17 @@
 				<div class="gogopanelBody">
 					<div class="gogopanelBodyText">
 						<s:iterator value="latestTeachers" status="idx">
-			                <a href="userBlog.html?user.id=<s:property value="id"/>" title="<s:property value="nickName"/>"><img class="teacherPortrait" src="<s:property value="pic"/>"/></a>
-			                <div>
-				                <p class="teacherTitle"><s:property value="nickName"/></p>
-				                <br/>
-				                <p><s:property value="selfDescription"/></p>
-			                </div>
-			                <s:if test="!#idx.last">
-			                	<div class="thicklineExtra"></div>
-			                </s:if>
+                            <s:if test="#idx.index<3">
+                                <a href="userBlog.html?user.id=<s:property value="id"/>" title="<s:property value="nickName"/>"><img class="teacherPortrait" src="<s:property value="pic"/>"/></a>
+                                <div>
+                                    <p class="teacherTitle"><s:property value="nickName"/></p>
+                                    <br/>
+                                    <p><s:property value="selfDescription"/></p>
+                                </div>
+                                <s:if test="!#idx.last">
+                                    <div class="thicklineExtra"></div>
+                                </s:if>
+                            </s:if>
 			            </s:iterator>
 					</div>
 				</div>
@@ -197,6 +199,21 @@
 		                        <br/>
 		                    </s:iterator>
                		 	</s:if>
+                        <s:else>
+                            <s:iterator value="course.classes" begin="course.ClassesNum-1" end="course.ClassesNum -1" status="idx">
+                                <div><s:property value="%{getText('lable.course.nickname')}"/>: <s:property value="nickName"/></div>
+                                <p></p>
+
+                                <div><s:property value="%{getText('lable.course.no')}"/>:
+                                    <s:property value="%{getText('lable.class.no1')}"/><s:property value="course.ClassesNum"/><s:property value="%{getText('lable.class.no2')}"/>
+                                </div>
+                                <p></p>
+                                <div><s:property value="%{getText('lable.course.starttime')}"/>:<s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
+                                <p></p>
+                                <div><s:property value="%{getText('courses.info.lecturer')}"/>: <s:property value="course.teacher.nickName"/></div>
+                                <br/>
+                            </s:iterator>
+                        </s:else>
 						<br/>
 						<button type="button" class="btn btn-primary btn-block"><s:property value="%{getText('button.enter')}"/></button>
 					</div>
