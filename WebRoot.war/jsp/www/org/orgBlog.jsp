@@ -208,34 +208,52 @@
 				</div>
 				<div class="gogopanelBody">
 					<div class="gogopanelBodyText">
-						<div id="DisUserArea" style="text-align: center;">
-                            <s:if test="allTeachersNum>0">
-                                <div class="row">
-                                    <s:iterator value="allTeachersForOrg" status="idx">
-                                        <div class="col-md-4">
-                                            <span><s:a action="userBlog"><s:param name="user.id" value="id"/>
-                                                <img class="teacherPortrait" src="<s:property value="pic"/> " title="<s:property value="nickName"/>"  />
-                                            </s:a></span>
-                                            <%-- <a href="userBlog.html?user.id=<s:property value="id"/>" title="<s:property value="nickName"/>">
-                                                <img class="teacherPortrait" src="<s:property value="pic" />"/>
-                                            </a> --%>
-                                            <div style="clear: left">
+                        <div>Start time:</div>
+                        <p></p>
+                        <div>Time of duration:</div>
+                        <p></p>
+                        <div id="DisUserArea" style="text-align: center;">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="images/course/portrait2.jpg" class="normalPortrait"/>
+                                    <p class="textOverSinglerow">Name</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="images/course/portrait4.jpg" class="normalPortrait"/>
+                                    <p class="textOverSinglerow">Name</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="images/course/portrait5.jpg" class="normalPortrait"/>
+                                    <p class="textOverSinglerow">Name</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="images/course/portrait2.jpg" class="normalPortrait"/>
+                                    <p class="textOverSinglerow">Name</p>
+                                </div>
+                                <s:if test="allTeachersNum>0">
+                                    <div class="row">
+                                        <s:iterator value="allTeachersForOrg" status="idx">
+                                            <div class="col-md-4">
+                                                <a href="userBlog.html?user.id=<s:property value="id"/>" title="<s:property value="nickName"/>">
+                                                    <img  class="normalPortrait" src="<s:property value="pic" />"/>
+                                                </a>
+                                                <p class="textOverSinglerow"><s:property value="nickName"/></p>
                                             </div>
-                                            <p class="textOverSinglerow"><s:property value="nickName"/></p>
-                                        </div>
-                                    </s:iterator>
-                                </div>
-                            </s:if>
-                            <s:else>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <img src="/images/course/noportrait.jpg" class="normalPortrait"/>
-                                        <p class="textOverSinglerow">Available</p>
+                                        </s:iterator>
                                     </div>
-                                </div>
-                            </s:else>
-						</div>
-						
+                                </s:if>
+                                <s:else>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <img src="/images/course/noportrait.jpg" class="normalPortrait"/>
+                                            <p class="textOverSinglerow">Available</p>
+                                        </div>
+                                    </div>
+                                </s:else>
+                            </div>
+                        </div>
 						<br/>
 						<button type="button" class="btn btn-primary btn-block"><s:property value="%{getText('button.enter')}"/></button>
 					</div>
