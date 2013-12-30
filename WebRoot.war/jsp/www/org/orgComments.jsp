@@ -29,6 +29,7 @@
         <div class="col-md-2">
             <div class="portrait">
                 <span></span><s:a action="userBlog" ><s:param name="user.id" value="commenter.id"/><img src="<s:property value="commenter.pic"/>"  alt="" class="forumportrait"/></s:a>
+                <br/>
                 <span><s:a action="userBlog" ><s:param name="user.id" value="commenter.id"/><s:property value="commenter.nickName"/></s:a></span>
             </div>
         </div>
