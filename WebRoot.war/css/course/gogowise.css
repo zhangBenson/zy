@@ -19,7 +19,7 @@ body{
 
 .footersLogo
 {
-    background-image:url(/images/course/logo2.png);
+	background-image:url(../image/logo2.png);
 	height: 70px;
 	width: 225px;
 	margin-top: 40px; 
@@ -49,7 +49,7 @@ body{
 
 .topLogo
 {
-    background-image:url(/images/course/logo.png);
+	background-image:url(../image/logo.png);
 	height: 50px;
 	width: 215px; 
 }
@@ -64,9 +64,9 @@ body{
 
 .navlink
 {
-    font-family: 'Segoe UI Light',Verdana, Geneva, sans-serif;;
-    font-size: 30px;
-    color: #6ab600;
+	font-family: 'Segoe UI Light',Verdana, Geneva, sans-serif;;
+	font-size: 30px;
+	color: #6ab600;
 }
 
 .thickline
@@ -97,6 +97,13 @@ body{
 {
 	text-overflow : clip;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;
 	font-size: 36px;
+	color: #6ab600;
+}
+
+.Subject24
+{
+	text-overflow : clip;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;
+	font-size: 24px;
 	color: #6ab600;
 }
 
@@ -236,26 +243,27 @@ body{
 	text-align: center;
 	color: #000;
 	font-family: Verdana, Geneva, sans-serif;
-    height: 150px;
-    width: 200px;
-	font-size: 12px;
+	font-size: 12px;	
+	height: 150px;
+	width: 250px;
+
 }
 
-.recommended div
+a:hover .recommended  img
 {
-    margin:auto;
-    height: 110px;
-    width: 200px;
-    overflow:hidden;
-    border-radius: 6px;
-    -moz-box-shadow: 1px 1px 2px #000;
-    -webkit-box-shadow: 1px 1px 2px #000;
-    box-shadow: 1px 1px 2px #000;
-}
-
-.recommended div img
-{
+	color: #6ab600;
+	border-radius: 8px;
+	border-style: solid;
+	border-width: 2px;
 	width: 200px;
+	height: 110px;
+}
+
+.recommended img
+{
+	border-radius: 6px;
+	width: 200px;
+	height: 110px;
 }
 
 .gogopanelHead
@@ -453,7 +461,7 @@ body{
 	margin-right:25px;
 	border-radius: 6px;
 	width: 280px;
-	min-height: 120px;
+	height: 120px;
 }
 
 .schoolTitle
@@ -489,7 +497,6 @@ body{
 	font-family: Verdana, Geneva, sans-serif;
 	font-weight:  bold;
 	text-overflow : clip;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;
-
 }
 
 .lecturerTitle
@@ -669,7 +676,6 @@ a:hover .coursePanel
 
 
 
-
 .courseItem
 {
 	width: 100%;
@@ -700,22 +706,16 @@ a:hover .courseItem
 	padding: 5px;
 }
 
-.recommendedSchool div
+
+.recommendedSchool img
 {
-    margin: 3px;
-    width: 200px;
-    height: 86px;
-    overflow:hidden;
-    border-radius: 6px;
-    -moz-box-shadow: 1px 1px 2px #000;
+	border-radius: 6px;	
+	-moz-box-shadow: 1px 1px 2px #000;
     -webkit-box-shadow: 1px 1px 2px #000;
     box-shadow: 1px 1px 2px #000;
-}
-
-.recommendedSchool div img
-{
-    margin-top:-25%;
-    width: 200px;
+    margin: 3px;
+	width: 200px;
+	height: 86px;
 }
 
 .classBasePanel
@@ -725,7 +725,7 @@ a:hover .courseItem
 	padding: 5px;
 	background-color: #f4f4f4;
 	margin:5px;
-	height: 612px;
+	height: 574px;
 
 }
 
@@ -774,6 +774,49 @@ a:hover .courseItem
 	text-align: center;
 }
 
+.classSchoolinfo
+{
+	border-radius: 4px;
+	margin: 5px;
+	margin-right: 10px;
+	background-color: #f4f4f4;
+	text-align: left;
+	word-wrap:break-word;
+
+}
+
+.fileItem img
+{
+	width: 100px;
+	height: 100px;
+}
+
+.fileItem p
+{
+	margin-top: 5px;
+	font-family: Verdana, Geneva, sans-serif;
+	word-wrap:break-word;
+	color: #999;
+}
+
+a:hover .fileItem img
+{
+	position:relative; left:4px; top:4px;
+}
+
+a:hover .fileItem p
+{
+	position:relative; left:4px; top:4px;
+}
+
+.classstatusbar
+{
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 14px;
+	color: #6ab600;
+	padding: 5px;
+}
+
 .studioPortraitPanel
 {
 	margin-top: 3px;
@@ -794,7 +837,7 @@ a:hover .courseItem
 a:hover .studioPortraitPanel img
 {
 	border-radius: 12px;
-	border-width: 4px;
+	border-width: 2px;
 	border-color: #6ab600;
 	border-style: solid;
 	padding: 2px;
@@ -839,7 +882,7 @@ a:hover .studioPortraitPanel img
 {
 	border-radius: 12px;
 	border-width: 6px;
-	border-color: #cc0099;
+	border-color: #66cccc;
 	border-style: solid;
 	padding: 2px;
 	width: 74px;
@@ -850,7 +893,7 @@ a:hover .studioPortraitPanel img
 {
 	border-radius: 12px;
 	border-width: 6px;
-	border-color: #66cccc;
+	border-color: #cc0099;
 	border-style: solid;
 	padding: 2px;
 	width: 74px;
@@ -917,4 +960,188 @@ a:hover .studioPortraitPanel p
 	height: 1px;width: 100%; background-color: #999;
 	margin-top: 4px;
 	margin-bottom: 4px;
+}
+
+.searchContent
+{
+	text-align: center;
+	width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top:20px;
+}
+.searchItem
+{
+	text-align: left;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 14px;
+	padding-bottom: 20px;
+
+}
+
+.searchItemState
+{
+	padding: 1px;
+	background-color: #6ab600;
+	color: #fff;
+	border-radius: 2px;
+	font-size: 12px;
+}
+
+.searchItemState a {
+    color: #fff;
+    font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+}
+
+
+.searchrecommended
+{
+	margin-top: 10px;
+}
+
+.searchrecommendedItem
+{
+	text-align: left;
+	color: #ccc;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+
+}
+
+a:hover .searchrecommendedItem  img
+{
+	color: #6ab600;
+	border-radius: 8px;
+	border-style: solid;
+	border-width: 1px;
+	width: 100px;
+	height: 55px;
+}
+
+.searchrecommendedItem img
+{
+	border-radius: 6px;
+	width: 100px;
+	height: 55px;
+}
+
+.searchCourseItem
+{
+	text-align: left;
+}
+
+.searchCourseImg
+{
+	width: 150px;
+	height: 83px;
+	float:left;
+	margin-right:12px;
+	margin-bottom:5px;
+	border-radius: 6px;
+}
+
+.searchCourseName
+{
+	text-align: left;
+	font-size: 24px;
+	color: #6ab600;
+	font-family: Verdana, Geneva, sans-serif;
+	font-weight:  bold;
+	text-overflow : clip;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;
+
+	text-overflow:ellipsis;
+	overflow:hidden;
+	white-space:nowrap;
+}
+
+.searchCourseBody
+{
+	text-align: left;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 14px;
+	color:#575757;
+	word-spacing:3pt;
+	line-height:20pt;
+}
+
+.questionsItem
+{
+	margin-top: 3px;
+}
+
+.questionsItemText
+{
+	color: #6ab600;
+	font-size: 14px;
+	font-weight:lighter;
+	margin-left:8px;
+	word-wrap:break-word;
+}
+
+.selectAnswer
+{
+	margin-top: 8px;
+}
+
+.answerItem p
+{
+	font-family: Verdana, Geneva, sans-serif;
+	font-weight:  bold;
+	font-size: 14px;
+	color: #999;
+	margin-right: 8px;
+	margin-left: 8px;
+	float: left;
+
+}
+
+.answerItem input
+{
+	padding-bottom: 5px;
+	margin-right: 5px;
+	float: left;
+	
+}
+
+.ColorlumpRight
+{
+	background-color: #F38630;
+	width: 16px;
+	height: 16px;
+	float: left;
+	border-style: solid;
+	border-width: 1px;
+	border-color:#000;
+}
+
+.ColorlumpWrong
+{
+	background-color: #E0E4CC;
+	width: 16px;
+	height: 16px;
+	float: left;
+	border-style: solid;
+	border-width: 1px;
+	border-color:#000;
+}
+
+.ColorlumpNoresponse
+{
+	background-color: #69D2E7;
+	width: 16px;
+	height: 16px;
+	float: left;
+	border-style: solid;
+	border-width: 1px;
+	border-color:#000;
+}
+
+.ColorlumpText
+{
+	font-size: 12px;
+	font-family: Verdana, Geneva, sans-serif;
+	margin-left: 15px;
+	color: #999;
+	
 }

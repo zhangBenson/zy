@@ -251,16 +251,31 @@ public class CourseAction extends BasicAction {
             course.setTeachingNum(this.getIdentity());
         }
 
-        // copy jpg
-        if(StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(),"upload/")){
-            Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
-        }
 
         // Save course
         CourseSpecification specification = CourseSpecification.create(course, this.getSessionUserId(), this.getCourseType(), this.getTeacherIds());
         courseService.saveCourse(specification);
 
         course = courseService.findById(course.getId());
+
+
+//        // copy jpg
+//        if(StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(),"upload/")){
+//            Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
+//        }
+
+        // copy jpg
+        if(StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(),"upload/"))
+        {
+            //Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
+            String courseDir = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_COURSE_PATH);
+            courseDir = courseDir + File.separator + course.getId();
+
+            File temp = new File(courseDir); if( !temp.exists() ) temp.mkdirs();
+
+            Utils.notReplaceFileFromTmpModified(temp.getAbsolutePath(), course.getLogoUrl());
+            course.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + course.getId() + "/" + course.getLogoUrl());
+        }
 
 
         if (course.getClasses() == null) {
@@ -600,9 +615,18 @@ public class CourseAction extends BasicAction {
        Course existCourse = courseDao.findById(this.getCourse().getId());
        if(StringUtils.isNotBlank(course.getName())) existCourse.setName(course.getName());
        if(StringUtils.isNotBlank(course.getDescription())) existCourse.setDescription(course.getDescription());
-       if(StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(),"upload/") && !StringUtils.equals(course.getLogoUrl(),Constants.DEFAULT_COURSE_IMAGE)){
-             Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
-             existCourse.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId()+"/"+course.getLogoUrl());
+       if(StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(),"upload/") && !StringUtils.equals(course.getLogoUrl(),Constants.DEFAULT_COURSE_IMAGE))
+       {
+           String courseDir = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_COURSE_PATH);
+           courseDir = courseDir + File.separator + course.getId();
+
+           File temp = new File(courseDir); if( !temp.exists() ) temp.mkdirs();
+
+           Utils.notReplaceFileFromTmpModified(temp.getAbsolutePath(), course.getLogoUrl());
+
+           //Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
+           //existCourse.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId()+"/"+course.getLogoUrl());
+           existCourse.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + course.getId()+"/"+course.getLogoUrl());
        }
        if(existCourse.getOrganization()!=null && this.getTeacherEmail() != null && !existCourse.getTeacherEmail().endsWith(this.getTeacherEmail())){
            this.setTeacherChange(true);

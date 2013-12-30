@@ -89,10 +89,10 @@
                                 originalHeight = OriginalImage.height;
                                 var ratio = originalWidth/originalHeight;
                                 if(ratio>=200/110) {
-                                     $("#target").attr("width","600px");
+                                     $("#target").attr("width","400px");
                                      imageLong = true;
                                 }else {
-                                     $("#target").attr("height","330px");
+                                     $("#target").attr("height","220px");
                                      imageLong = false;
                                 }
 
