@@ -209,7 +209,9 @@
 		                        <div><s:property value="%{getText('lable.course.starttime')}"/>:<s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
 		                        <p></p>
 		                        <div><s:property value="%{getText('courses.info.lecturer')}"/>: <s:property value="course.teacher.nickName"/></div>
-		                        <br/>
+                                <p></p>
+                                <div><s:property value="%{getText('word.audience')}"/>:</div>
+                                <br/>
 		                    </s:iterator>
                		 	</s:if>
                         <s:else>
@@ -225,7 +227,7 @@
                                 <p></p>
                                 <div><s:property value="%{getText('courses.info.lecturer')}"/>: <s:property value="course.teacher.nickName"/></div>
                                 <p></p>
-                                <div>Audience:</div>
+                                <div><s:property value="%{getText('word.audience')}"/>:</div>
                                 <br/>
                             </s:iterator>
                         </s:else>
@@ -241,9 +243,9 @@
 				</div>
 				<div class="gogopanelBody">
 					<div class="gogopanelBodyText">
-                        <div>Start time:</div>
+                        <div><s:property value="%{getText('label.discussion.room.start.time')}"/>:</div>
                         <p></p>
-                        <div>Time of duration:</div>
+                        <div><s:property value="%{getText('label.discussion.room.duration')}"/>:</div>
                         <p></p>
                         <div id="DisUserArea" style="text-align: center;">
                             <div class="row">
