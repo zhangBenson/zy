@@ -132,9 +132,20 @@ public class Utils {
         replaceFile(srcPath, toPath);
     }
 
+    public static void replaceFileFromTempModified(String toDir, String fileName){
+        String srcPath = ServletActionContext.getServletContext().getRealPath("/" + Constants.UPLOAD_FILE_PATH_TMP + "/"  + fileName);
+        replaceFile(srcPath, toDir + File.separator + fileName);
+    }
+
     public static void notReplaceFileFromTmp(String toDir, String fileName) {
         String srcPath = ServletActionContext.getServletContext().getRealPath("/"  + Constants.UPLOAD_FILE_PATH_TMP + "/" + fileName);
         String toPath = ServletActionContext.getServletContext().getRealPath(toDir) + File.separatorChar  + fileName;
+        notReplaceFileAndCopy(srcPath, toPath);
+    }
+
+    public static void notReplaceFileFromTmpModified(String toDir, String fileName) {
+        String srcPath = ServletActionContext.getServletContext().getRealPath("/"  + Constants.UPLOAD_FILE_PATH_TMP + "/" + fileName);
+        String toPath = toDir + File.separatorChar  + fileName;
         notReplaceFileAndCopy(srcPath, toPath);
     }
 
@@ -181,7 +192,7 @@ public class Utils {
         } else {
             File files[] = dst.getParentFile().listFiles();
             for (File file : files) {
-                file.delete();
+                //file.delete();
             }
         }
 
