@@ -173,6 +173,9 @@
                                 </s:if>
                             </s:if>
 			            </s:iterator>
+                        <a href="#">
+                            <div class="text-right">See all</div>
+                        </a>
 					</div>
 				</div>
 
