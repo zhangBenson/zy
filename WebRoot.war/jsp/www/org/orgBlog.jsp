@@ -255,7 +255,7 @@
                                 </div>
                                 <s:if test="allTeachersNum>0">
                                     <div class="row">
-                                        <s:iterator value="allTeachersForOrg" status="idx">
+                                        <s:iterator value="allTeachersForOrg" status="idx" begin="0" end="0">
                                             <div class="col-md-4">
                                                 <a href="userBlog.html?user.id=<s:property value="id"/>" title="<s:property value="nickName"/>">
                                                     <img  class="normalPortrait" src="<s:property value="pic" />"/>
