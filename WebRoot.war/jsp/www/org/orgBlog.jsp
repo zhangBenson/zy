@@ -184,7 +184,7 @@
                             </s:if>
 			            </s:iterator>
                         <a href="#">
-                            <div class="text-right">See all</div>
+                            <div class="text-right"><s:property value="%{getText('label.org.lecturer.see.all')}"/></div>
                         </a>
 					</div>
 				</div>
