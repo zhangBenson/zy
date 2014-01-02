@@ -75,7 +75,7 @@
     <!--Course-->
     <s:iterator value="courses" status="idx">
         <div class="searchCourseItem">
-            <img src="<s:property value="course.logoUrl" />" class="searchCourseImg"/>
+            <img src="<s:property value="logoUrl" />" class="searchCourseImg"/>
             <h1 class = "searchCourseName"><s:property value="name"/></h1>
             <h4 class="searchCourseBody">
                 <a href="#">
