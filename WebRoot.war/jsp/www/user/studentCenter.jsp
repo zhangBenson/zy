@@ -134,7 +134,7 @@
 
 				</div>
 				<button type="button" class="btn btn-success btn-lg btn-block"><s:property value="%{getText('button.enter')}"/><%--Booking--%></button>
-                <div id="page">
+                <div id="page1">
                     <ul class="pagination">
                         <li>
                             <a href="#">&laquo;</a>
@@ -171,16 +171,16 @@
 							<s:iterator value="latestCourse" status="idx">
 								<s:if test="#idx.getIndex() == 0">
 									<ul class="list-inline" style="background-color: #6ab600;color: #fff;border-radius: 4px; padding-top: 3px;padding-bottom: 3px;">		
-										<li><a class="a_1" href="javascript:;"><s:property value="%{getText('class.count',{classOneTheCornerSequence})}"/></a></li>
-										<li></li>
+										<li><a  href="javascript:;"><s:property value="%{getText('class.count',{classOneTheCornerSequence})}"/></a></li>
+
 										<li><s:property value="%{getText('courses.info.lecturer')}" />:<s:a action="userBlog"><s:param name="user.id"  value="teacher.id"/><s:property value="teacher.nickName"/></s:a></li>
-										<li></li>
+
 
 										<li>
 											
 											<%-- <div id="remainSeconds" style="display:none">100000</div>
 											<div id="remainTime" style="width: 134px;">Start:</div> --%>
-											<div style="width: 175px;"><s:property value="%{getText('courses.time.left')}" />&nbsp;<b id="timeLeft<s:property value="#idx.index"/>"></b></div>
+											<div style="width: 134px;"><s:property value="%{getText('courses.time.left')}" />&nbsp;<b id="timeLeft<s:property value="#idx.index"/>"></b></div>
 											<script type="text/javascript">
 						                        $("#timeLeft<s:property value="#idx.index"/>").countdown({
 						                                    date:'<s:date name="classOnTheCorner.date" format="%{getText('date.formate.firstpage.course.startdate')}" />',
@@ -208,7 +208,13 @@
 										</a>
 										<div class="media-body">
 											<h4 class="media-heading" style="color: #6ab600;"><s:property value="name"/></h4>
-											<p><s:property value="description"/></p>
+                                            <s:if test="description.length() > 50">
+                                                <p></p><s:property value="description.substring(0,50)+'...'" /></p>
+                                            </s:if>
+                                            <s:else>
+                                                <p><s:property value="description"/></p>
+                                            </s:else>
+
 										</div>
 									</div>
 									<p class="text-right"><s:date name="classOnTheCorner.date" format="%{getText('dateformat.forclass')}"/></p>
@@ -354,12 +360,12 @@
 	</div>
 </div>
 
-<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel"><s:property value="%{getText('title.newest.matters')}"/></h4>
+				<h4 class="modal-title" id="myModalLabel1"><s:property value="%{getText('title.newest.matters')}"/></h4>
 			</div>
 			<div class="modal-body">
 				<div class="courseItem">
@@ -367,7 +373,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal"><s:property value="%{getText('button.ok')}"/></button>
 			</div>
 		</div>
 	</div>
@@ -387,7 +393,7 @@
 						<s:iterator value="latestCourse" status="idx">
 							<s:if test="#idx.getIndex() > 0">
 								<ul class="list-inline" style="background-color: #6ab600;color: #fff;border-radius: 4px; padding-top: 3px;padding-bottom: 3px;">
-									<li><a class="a_1" href="javascript:;"><s:property value="%{getText('class.count',{classOneTheCornerSequence})}"/></a></li>
+									<li><a href="javascript:;"><s:property value="%{getText('class.count',{classOneTheCornerSequence})}"/></a></li>
 									<li><s:property value="%{getText('courses.info.lecturer')}" />:<s:a action="userBlog"><s:param name="user.id"  value="teacher.id"/><s:property value="teacher.nickName"/></s:a></li>
 
 									<li>
@@ -416,7 +422,12 @@
 									</a>
 									<div class="media-body">
 										<h4 class="media-heading" style="color: #6ab600;"><s:property value="name"/></h4>
-										<p><s:property value="description"/></p>
+                                        <s:if test="description.length() > 50">
+                                            <p></p><s:property value="description.substring(0,50)+'...'" /></p>
+                                        </s:if>
+                                        <s:else>
+                                            <p><s:property value="description"/></p>
+                                        </s:else>
 									</div>
 								</div>
 								<br/>
@@ -437,7 +448,7 @@
 		        </s:if>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal"><s:property value="%{getText('button.ok')}"/></button>
 			</div>
 		</div>
 	</div>

@@ -1139,11 +1139,18 @@
 
     <!-- search related tiles begin -->
 
-    <definition name=".search" extends=".searchCenter">
+
+    <definition name=".searchAnswer" extends=".wwwBodyCenter">
+        <put-attribute name="title" value="title.gogowise.search.result"/>
+        <put-attribute name="contentBody" value="/jsp/www/search/search.jsp"/>
+    </definition>
+
+  <definition name=".search" extends=".searchCenter">
          <put-attribute name="title" value="title.gogowise.search.result"/>
          <put-attribute name="contentLeft" value="/jsp/gogowise/search/searchList.jsp"/>
          <put-attribute name="contentRight" value="/jsp/gogowise/search/searchRight.jsp"/>
     </definition>
+
     <definition name=".searchMemberList" extends=".searchCenter">
          <put-attribute name="title" value="title.gogowise.search.result"/>
          <put-attribute name="contentLeft" value="/jsp/gogowise/search/searchMemberList.jsp"/>
@@ -1183,6 +1190,10 @@
         <put-attribute name="title" value="vid"/>
         <put-attribute name="right" value="/jsp/gogowise/solution/vid.jsp"/>
     </definition>
+
+
+
+
     <!-- search related tiles end -->
 
 

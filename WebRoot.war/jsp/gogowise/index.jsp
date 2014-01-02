@@ -50,8 +50,8 @@
         <%--<input class="searchButton" type="submit" value="" />--%>
         <%--&lt;%&ndash;<a class="searchButton" href="search.html"></a>&ndash;%&gt;--%>
     <%--</s:form>--%>
-    <s:form method="post" action="searchResult" theme="simple" validate="true">
-        <s:hidden name="searchType" value="1"/>
+    <s:form method="post" action="searchAnswer" theme="simple" validate="true">
+        <%-- <s:hidden name="searchType" value="4"/> --%>
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-6">

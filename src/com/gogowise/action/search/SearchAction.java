@@ -63,6 +63,13 @@ public class SearchAction extends BasicAction{
     public String initSearch() {
         return SUCCESS;
     }
+
+    @Action(value = "searchAnswer",results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".searchAnswer")})
+    public String searchAnswer() throws Exception{
+        pagination.setPageSize(9);
+        courses = courseDao.searchCourses(searchStr ,pagination);
+        return SUCCESS;
+    }
     @Action(value = "searchResult",results = { @Result(name = "all", type = Constants.RESULT_NAME_TILES, location = ".search"),
                                                  @Result(name = "member", type = Constants.RESULT_NAME_TILES, location = ".searchMemberList"),
                                                  @Result(name = "org", type = Constants.RESULT_NAME_TILES, location = ".searchOrgList"),
