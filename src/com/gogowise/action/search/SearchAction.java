@@ -64,6 +64,8 @@ public class SearchAction extends BasicAction{
         return SUCCESS;
     }
 
+
+
     @Action(value = "searchAnswer",results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".searchAnswer")})
     public String searchAnswer() throws Exception{
         pagination.setPageSize(5);

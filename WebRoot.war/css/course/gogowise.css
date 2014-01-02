@@ -129,6 +129,14 @@ body{
 	line-height:20pt;
 }
 
+.TagText
+{
+	font-size: 48px;
+	color: #6ab600;
+	font-family: Verdana, Geneva, sans-serif;
+
+}
+
 .courseBanner
 {
 	width: 760px;
@@ -707,15 +715,28 @@ a:hover .courseItem
 }
 
 
-.recommendedSchool img
+.recommendedSchoolmin
+{
+	text-align: center;
+	color: #000;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	padding: 5px;
+}
+
+
+.recommendedSchoolmin img
 {
 	border-radius: 6px;	
 	-moz-box-shadow: 1px 1px 2px #000;
     -webkit-box-shadow: 1px 1px 2px #000;
     box-shadow: 1px 1px 2px #000;
     margin: 3px;
-	width: 200px;
-	height: 86px;
+	width: 150px;
+	height: 65px;
+	border-width: 1px;
+	border-color: #ccc;
+	border-style: solid;
 }
 
 .classBasePanel

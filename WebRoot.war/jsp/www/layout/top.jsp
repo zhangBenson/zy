@@ -18,7 +18,7 @@
                     <s:a action="courseSquare" cssClass="navlink"><s:property value="%{getText('frame.course.center')}"/></s:a>
                 </li>
                 <li>
-                    <a href="#" class="navlink"><s:property value="%{getText('frame.schools.center')}"/></a>
+                    <a href="schoolCenter.html" class="navlink"><s:property value="%{getText('frame.schools.center')}"/></a>
                 </li>
             </ul>
         </div>

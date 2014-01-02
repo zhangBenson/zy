@@ -67,6 +67,7 @@ public class OrganizationAction extends BasicAction {
     private File upload11;
     private String upload1FileName;
     private Organization org;
+    private List<Organization> organizations;
 
     private String organizationName;
     private List<Course> latestCourse;
@@ -89,6 +90,16 @@ public class OrganizationAction extends BasicAction {
 
      private Integer commentsNum;
     private Boolean commentsNumOverflow = false;
+
+
+    @Action(value = "schoolCenter", results = {@Result(name=SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".schoolCenter")})
+    public String schoolCenter() {
+        Pagination pagination = new Pagination();
+        pagination.setPageSize(3);
+        organizations = organizationDao.findLatestOrgs(pagination);
+        return SUCCESS;
+    }
+
 
     @Action(value = "orgBlog",
             results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgBlog")}
@@ -801,5 +812,10 @@ public class OrganizationAction extends BasicAction {
     public void setCourse (Course course) {
         this.course = course;
     }
-
+    public List<Organization> getOrganizations () {
+        return this.organizations;
+    }
+    public void setOrganizations (List<Organization> organizations) {
+        this.organizations = organizations;
+    }
 }

@@ -365,7 +365,6 @@
         <put-attribute name="title" value="title.logo.upload"/>
     </definition>
 
-
     <!-- =====================User related action end=========================== -->
 
 
@@ -779,6 +778,13 @@
         <put-attribute name="title" value="title.interview.identification"/>
         <put-attribute name="contentBody" value="/jsp/gogowise/org/orgInterviewIdentityConfirmation.jsp"/>
     </definition>
+
+
+    <definition name=".schoolCenter" extends=".wwwBodyCenter">
+        <put-attribute name="title" value="title.school.center"/>
+        <put-attribute name="contentBody"  value="/jsp/www/org/schoolCenter.jsp"/>
+    </definition>
+
 
 <!--  ===================== org  course creation ==============================================  -->
      <definition name=".orgSecondStep" extends=".userCenter">
