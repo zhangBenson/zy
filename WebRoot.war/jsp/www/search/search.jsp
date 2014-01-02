@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
+
 
 
 <div class="container">
@@ -91,7 +93,6 @@
                     <s:else>
                         <s:property value="description"/>
                     </s:else>
-
                 </a>
             </h4>
             <br/>
@@ -106,15 +107,7 @@
         </div>
     </s:iterator>
 </div>
+<tiles:insertTemplate template="../common/pagination.jsp">
+    <tiles:putAttribute name="pagination" value="${pagination}"/>
+</tiles:insertTemplate>
 
-<div style="text-align: center;">
-    <ul class="pagination pagination-lg">
-      <li><a href="#">&laquo;</a></li>
-      <li><a href="#">1</a></li>
-      <li><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li><a href="#">4</a></li>
-      <li><a href="#">5</a></li>
-      <li><a href="#">&raquo;</a></li>
-    </ul>
-</div>

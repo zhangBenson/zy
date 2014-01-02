@@ -66,7 +66,7 @@ public class SearchAction extends BasicAction{
 
     @Action(value = "searchAnswer",results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".searchAnswer")})
     public String searchAnswer() throws Exception{
-        pagination.setPageSize(9);
+        pagination.setPageSize(5);
         courses = courseDao.searchCourses(searchStr ,pagination);
         return SUCCESS;
     }
