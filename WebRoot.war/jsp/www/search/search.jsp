@@ -75,10 +75,16 @@
     <!--Course-->
     <s:iterator value="courses" status="idx">
         <div class="searchCourseItem">
-            <img src="<s:property value="logoUrl" />" class="searchCourseImg"/>
-            <h1 class = "searchCourseName"><s:property value="name"/></h1>
+            <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>">
+                <img src="<s:property value="logoUrl" />" class="searchCourseImg"/>
+            </a>
+
+            <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>">
+                <h1 class = "searchCourseName"><s:property value="name"/></h1>
+            </a>
+
             <h4 class="searchCourseBody">
-                <a href="#">
+                <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>">
                     <s:if test="description.length() > 200">
                         <s:property value="description.substring(0,200)+'...'" />
                     </s:if>
@@ -88,7 +94,7 @@
 
                 </a>
             </h4>
-            <div class="clearfix"></div>
+            <br/>
             <p class="text-left">
                 <ul class="list-inline">
                   <li class="searchItemState"><s:property value="%{getText('label.student')}"/>:<s:property value="studentNum"/></li>
