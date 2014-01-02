@@ -9,7 +9,7 @@
             <div class="input-group">
                 <div class="input-group-btn">
                 <s:form method="post" action="searchAnswer" theme="simple" validate="true">
-                    <s:textfield cssClass="form-control" name="searchStr" placeholder="search"></s:textfield>
+                    <s:textfield cssClass="form-control input-lg" name="searchStr" placeholder="search"></s:textfield>
                     <button type="submit" class="btn btn-default btn-lg">
                         <span class="glyphicon glyphicon-search"></span>
                         <s:property value="%{getText('menu.item.search')}"/>
