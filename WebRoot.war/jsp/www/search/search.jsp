@@ -79,12 +79,19 @@
             <h1 class = "searchCourseName"><s:property value="name"/></h1>
             <h4 class="searchCourseBody">
                 <a href="#">
-                    <s:property value="description"/>
+                    <s:if test="description.length() > 200">
+                        <s:property value="description.substring(0,200)+'...'" />
+                    </s:if>
+                    <s:else>
+                        <s:property value="description"/>
+                    </s:else>
+
                 </a>
             </h4>
+            <div class="clearfix"></div>
             <p class="text-left">
                 <ul class="list-inline">
-                  <li class="searchItemState">Studio:109</li>
+                  <li class="searchItemState"><s:property value="%{getText('label.student')}"/>:<s:property value="studentNum"/></li>
                   <li class="searchItemState"><s:property value="%{getText('course.school')}"/>:<a href="orgBlog.html?org.id=<s:property value="organization.id"/>" title="<s:property value="organization.nickName"/>"><s:property value="organization.schoolName"/></a></li>
                   <li class="searchItemState"><s:property value="%{getText('courses.info.lecturer')}"/>:<a href="userBlog.html?user.id=<s:property value="teacher.id"/>" title="<s:property value="teacher.nickName"/>"><s:property value="teacher.nickName"/></a></li>
                 </ul>
