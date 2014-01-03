@@ -94,9 +94,12 @@ public class OrganizationAction extends BasicAction {
 
     @Action(value = "schoolCenter", results = {@Result(name=SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".schoolCenter")})
     public String schoolCenter() {
+        //Integer orgId = org.getId() == null ? 1 : org.getId();
+        //this.org = organizationDao.findById(orgId);
+
         Pagination pagination = new Pagination();
         pagination.setPageSize(3);
-        organizations = organizationDao.findLatestOrgs(pagination);
+        this.organizations = organizationDao.findLatestOrgs(pagination);
         return SUCCESS;
     }
 
@@ -751,6 +754,23 @@ public class OrganizationAction extends BasicAction {
     }
     public Integer getStudentsNum(){
         return getStudents().size();
+    }
+    public Integer getStudentsNumByOrgId (Integer orgId) {
+        if (orgId == null || orgId < 0)
+            return 0;
+        List<BaseUser> students = new ArrayList<BaseUser>();
+        for(Course c : courseDao.findByOrg(orgId, null)){
+            for(SeniorClassRoom sc : c.getSeniorClassRooms()){
+                Boolean exist = false;
+                for (BaseUser user : students){
+                    if(user.getId().equals(sc.getStudent().getId())) exist = true;
+                }
+                if(!exist){
+                    students.add(sc.getStudent());
+                }
+            }
+        }
+        return students.size();
     }
 
     public Integer getBestCoursesNum(){

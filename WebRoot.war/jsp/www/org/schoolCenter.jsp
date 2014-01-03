@@ -4,6 +4,7 @@
 
 
 <div class="container">
+    <s:hidden value="%{#session.userID}" id="hidSessionId"/>
     <div class="thinline"></div>
     <br/>
     <div class="container">
@@ -35,7 +36,7 @@
                 <div class="row">
                     <div class="col-sm-3">
                         <a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="nickName"/>">
-                            <img src="<s:property value="logoUrl"/>"  alt=""  class="schoolPortrait"/>
+                            <img src="<s:property value="logoUrl"/>"  alt="" class="Schoolminlogo"/>
                         </a>
                     </div>
                     <div class="col-sm-9">
@@ -48,9 +49,11 @@
                         <div class="pull-right">
                             <p class="text-left">
                                 <ul class="list-inline">
-                                    <li class="searchItemState"><s:property value="%{getText('label.student')}"/>:<s:property value="studentNum"/></li>
-                                    <li class="searchItemState"><s:property value="%{getText('search.header.course')}"/>:<s:property value="orgCourseNum"/></li>
-                                    <li class="searchItemState"><s:property value="%{getText('course.lecturer')}"/>:<s:property value="allTeachersNum"/></li>
+                                    <s:property value="studentsNumByOrgId(id)"/>
+
+                                    <li class="searchItemState"><s:property value="%{getText('label.student')}"/>:<s:property value="getStudentsNumByOrgId(id)"/></li>
+                                    <li class="searchItemState"><s:property value="%{getText('search.header.course')}"/>:<s:property value="courseDao.findByOrg(id,null).size()"/></li>
+                                    <li class="searchItemState"><s:property value="%{getText('course.lecturer')}"/>:<s:property value="organizationTeachers.size()"/></li>
                                 </ul>
                             </p>
                         </div>
@@ -91,6 +94,7 @@
       <li><a href="#">M-P</a></li>
       <li><a href="#">Q-T</a></li>
       <li><a href="#">U-Z</a></li>
+      <li><a href="#">Other</a></li>
       <li><a href="#">Show All</a></li>
     </ul>
 </div>
