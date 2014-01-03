@@ -98,6 +98,9 @@
                     </script>
                 </div>
             </div>
+            <s:if test="!#idx.last">
+                <div class="imaginaryline"></div>
+            </s:if>
         </s:iterator>
     </s:if>
     <s:else>
