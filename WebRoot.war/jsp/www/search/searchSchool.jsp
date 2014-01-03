@@ -70,8 +70,6 @@
                     </div>
                 </div>
             </div>
-            <div class="clearfix"></div>
-            <br/>
         </s:iterator>
     </s:if>
     <s:else>
