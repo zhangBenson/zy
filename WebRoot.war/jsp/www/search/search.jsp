@@ -52,7 +52,7 @@
                         </s:else>
                     </a>
                 </h4>
-                <br/>
+                </h4>
                 <p class="text-left">
                     <ul class="list-inline">
                       <li class="searchItemState"><s:property value="%{getText('course.school')}"/>:<a href="orgBlog.html?org.id=<s:property value="organization.id"/>" title="<s:property value="organization.nickName"/>"><s:property value="organization.schoolName"/></a></li>
