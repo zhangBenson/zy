@@ -3,6 +3,7 @@ package com.gogowise.action.search;
 import com.gogowise.action.BasicAction;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.dao.CourseDao;
+import com.gogowise.rep.course.enity.SeniorClassRoom;
 import com.gogowise.rep.live.LiveChannelDao;
 import com.gogowise.rep.live.MyShowDao;
 import com.gogowise.rep.org.dao.OrgFansDao;
@@ -22,6 +23,7 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -64,7 +66,12 @@ public class SearchAction extends BasicAction{
         return SUCCESS;
     }
 
-
+    @Action(value = "searchSchool",results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".searchSchool")})
+    public String searchSchool() throws Exception{
+        pagination.setPageSize(2);
+        organizations = organizationDao.searchOrgs(searchStr, pagination);
+        return SUCCESS;
+    }
 
     @Action(value = "searchAnswer",results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".searchAnswer")})
     public String searchAnswer() throws Exception{
@@ -300,4 +307,23 @@ public class SearchAction extends BasicAction{
     public void setHotType(Integer hotType) {
         this.hotType = hotType;
     }
+
+    public Integer getStudentsNumByOrgId (Integer orgId) {
+        if (orgId == null || orgId < 0)
+            return 0;
+        List<BaseUser> students = new ArrayList<BaseUser>();
+        for(Course c : courseDao.findByOrg(orgId, null)){
+            for(SeniorClassRoom sc : c.getSeniorClassRooms()){
+                Boolean exist = false;
+                for (BaseUser user : students){
+                    if(user.getId().equals(sc.getStudent().getId())) exist = true;
+                }
+                if(!exist){
+                    students.add(sc.getStudent());
+                }
+            }
+        }
+        return students.size();
+    }
+
 }

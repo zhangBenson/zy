@@ -4,7 +4,6 @@
 
 
 <div class="container">
-
     <div class="thinline"></div>
     <br/>
     <div class="container">
@@ -76,26 +75,31 @@
         </s:iterator>
     </s:if>
     <s:else>
-        <div class="schoolRow">
+        <div class="schoolRow" style="text-align: center;">
             <div class="row">
-               <strong>No Schools!!</strong>
+                <strong><s:property value = "%{getText('search.organization.no.result.message')}"/></strong>
             </div>
         </div>
     </s:else>
+    
 
     <br/>
-    <div style="text-align: center;">
-    <ul class="pagination pagination-lg">
+
+    <tiles:insertTemplate template="../common/pagination.jsp">
+         <tiles:putAttribute name="pagination" value="${pagination}"/>
+    </tiles:insertTemplate>
+    <%-- <div style="text-align: center;">
+        <ul class="pagination pagination-lg">
 
 
-      <li><a href="#">A-D</a></li>
-      <li><a href="#">E-H</a></li>
-      <li><a href="#">I-L</a></li>
-      <li><a href="#">M-P</a></li>
-      <li><a href="#">Q-T</a></li>
-      <li><a href="#">U-Z</a></li>
-      <li><a href="#">Other</a></li>
-      <li><a href="#">Show All</a></li>
-    </ul>
-</div>
+          <li><a href="#">A-D</a></li>
+          <li><a href="#">E-H</a></li>
+          <li><a href="#">I-L</a></li>
+          <li><a href="#">M-P</a></li>
+          <li><a href="#">Q-T</a></li>
+          <li><a href="#">U-Z</a></li>
+          <li><a href="#">Other</a></li>
+          <li><a href="#">Show All</a></li>
+        </ul>
+    </div> --%>
 </div>
