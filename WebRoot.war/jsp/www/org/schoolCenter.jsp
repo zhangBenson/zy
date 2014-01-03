@@ -103,47 +103,6 @@
                     </script>
                 </div>
             </div>
-
-            <%-- <div class="schoolRow">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="nickName"/>">
-                            <img src="<s:property value="logoUrl"/>"  alt="" class="Schoolminlogo"/>
-                        </a>
-                    </div>
-                    <div class="col-sm-9">
-                        <div class="pull-left" style="width:500px;">
-                            <a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="nickName"/>">
-                                <div class="courseSubject"><s:property value="schoolName"/></div>
-                            </a>
-                        </div>
-
-                        <div class="pull-right">
-                            <p class="text-left">
-                                <ul class="list-inline">
-
-
-                                    <li class="searchItemState"><s:property value="%{getText('label.student')}"/>:<s:property value="getStudentsNumByOrgId(id)"/></li>
-                                    <li class="searchItemState"><s:property value="%{getText('search.header.course')}"/>:<s:property value="courseDao.findByOrg(id,null).size()"/></li>
-                                    <li class="searchItemState"><s:property value="%{getText('course.lecturer')}"/>:<s:property value="organizationTeachers.size()"/></li>
-                                </ul>
-                            </p>
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="searchCourseBody">
-                            <a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="nickName"/>">
-                                <s:if test="description.length() > 100">
-                                    <s:property escapeHtml="false" value="description.substring(0,100)+'...'" />
-                                </s:if>
-                                <s:else>
-                                    <s:property escapeHtml="false" value="description"/>
-                                </s:else>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div> --%>
-
         </s:iterator>
     </s:if>
     <s:else>

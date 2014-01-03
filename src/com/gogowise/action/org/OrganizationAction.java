@@ -179,7 +179,7 @@ public class OrganizationAction extends BasicAction {
                 this.organizations = new ArrayList<>();
             else
                 this.organizations.clear();
-            String range = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            String range = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#";
             for (char c: range.toCharArray()) {
                 if (mapOrgs.containsKey(c)) {
                     this.organizations.addAll(mapOrgs.get(c));

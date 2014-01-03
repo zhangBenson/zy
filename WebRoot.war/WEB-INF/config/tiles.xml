@@ -780,6 +780,12 @@
     </definition>
 
 
+    <definition name=".courseCenter" extends=".wwwBodyCenter">
+        <put-attribute name="title" value="title.course.center"/>
+        <put-attribute name="contentBody"  value="/jsp/www/course/courseCenter.jsp"/>
+    </definition>
+
+
     <definition name=".schoolCenter" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.school.center"/>
         <put-attribute name="contentBody"  value="/jsp/www/org/schoolCenter.jsp"/>

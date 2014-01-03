@@ -107,25 +107,8 @@
             </div>
         </div>
     </s:else>
-    
-
     <br/>
-
     <tiles:insertTemplate template="../common/pagination.jsp">
          <tiles:putAttribute name="pagination" value="${pagination}"/>
     </tiles:insertTemplate>
-    <%-- <div style="text-align: center;">
-        <ul class="pagination pagination-lg">
-
-
-          <li><a href="#">A-D</a></li>
-          <li><a href="#">E-H</a></li>
-          <li><a href="#">I-L</a></li>
-          <li><a href="#">M-P</a></li>
-          <li><a href="#">Q-T</a></li>
-          <li><a href="#">U-Z</a></li>
-          <li><a href="#">Other</a></li>
-          <li><a href="#">Show All</a></li>
-        </ul>
-    </div> --%>
 </div>

@@ -15,7 +15,7 @@
                     <a href="index.html" class="navlink"><s:property value="%{getText('menu.item.index')}"/></a>
                 </li>
                 <li>
-                    <s:a action="courseSquare" cssClass="navlink"><s:property value="%{getText('frame.course.center')}"/></s:a>
+                    <s:a action="courseCenter" cssClass="navlink"><s:property value="%{getText('frame.course.center')}"/></s:a>
                 </li>
                 <li>
                     <a href="schoolCenter.html" class="navlink"><s:property value="%{getText('frame.schools.center')}"/></a>

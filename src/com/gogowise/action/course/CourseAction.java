@@ -111,6 +111,9 @@ public class CourseAction extends BasicAction {
     private CourseService courseService;
     private List<Integer> teacherIds;
 
+    private Integer coursePageShowType; // 0: A-D, 1: E-H, 2: I-L, 3: M-P, 4:Q-T, 5: U-Z, 6: Other 7: Show all
+    private List<Course> centerCourses;
+
 //    @Action(value = "search",
 //            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".listClass")}
 //    )
@@ -126,6 +129,99 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
+    @Action(value = "courseCenter",results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseCenter")})
+    public String courseCenter() {
+        List<Course> allCourses = courseDao.findlatestCourses(null);
+        System.out.println("allCourses size : " + allCourses.size());
+        Map<Character,List<Course>> mapCourses = new HashMap<Character, List<Course>>();
+        for (Course cs : allCourses) {
+            if (cs.getName() == null || cs.getName().equals(""))
+                continue;
+            char c = Character.toUpperCase(cs.getName().trim().charAt(0));
+            if ( c >= 'A' && c <= 'Z' ) {
+                if (mapCourses.containsKey(c)) {
+                    List<Course>  tmp = mapCourses.get(c);
+                    tmp.add(cs);
+                    mapCourses.put(c, tmp);
+                }
+                else {
+                    List<Course> tmpList = new ArrayList<Course>();
+                    tmpList.add(cs);
+                    mapCourses.put(c, tmpList);
+                }
+            }
+            else {
+                c = '#';  // others
+                if (mapCourses.containsKey(c)) {
+                    List<Course> tmpList = mapCourses.get(c);
+                    tmpList.add(cs);
+                    mapCourses.put(c, tmpList);
+                }
+                else {
+                    List<Course> tmpList = new ArrayList<Course>();
+                    tmpList.add(cs);
+                    mapCourses.put(c, tmpList);
+                }
+            }
+        }
+
+        if (this.getCoursePageShowType() != null ) {
+            String range = "";
+            switch (this.getCoursePageShowType()) {
+                case 0: // A-D
+                    range = "ABCD";
+                    break;
+                case 1: // E-H
+                    range = "EFGH";
+                    break;
+                case 2: // I-L
+                    range =  "IJKL";
+                    break;
+                case 3: // M-P
+                    range = "MNOP";
+                    break;
+                case 4: // Q-T
+                    range =  "QRST";
+                    break;
+                case 5: //U-Z
+                    range = "UVWXYZ";
+                    break;
+                case 6: // Other
+                    range = "#";
+                    break;
+                default: // show all
+                    range = "";
+                    break;
+            }
+            if ( !range.equals("")) {
+                if (this.centerCourses == null)
+                    this.centerCourses = new ArrayList<>();
+                else
+                    this.centerCourses.clear();
+                for (char c: range.toCharArray()) {
+                    if (mapCourses.containsKey(c)) {
+                        this.centerCourses.addAll(mapCourses.get(c));
+                    }
+                }
+            }
+            else {
+                this.centerCourses =  allCourses;
+            }
+        }
+        else { // first time in schoolcenter page
+            if (this.centerCourses == null)
+                this.centerCourses = new ArrayList<>();
+            else
+                this.centerCourses.clear();
+            String range = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#";
+            for (char c: range.toCharArray()) {
+                if (mapCourses.containsKey(c)) {
+                    this.centerCourses.addAll(mapCourses.get(c));
+                }
+            }
+        }
+        return SUCCESS;
+    }
 
     @Action(value = "courseSquare",results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseSquare")})
     public String courseSquare() {
@@ -1834,4 +1930,21 @@ public class CourseAction extends BasicAction {
     public void setTeacherIds(List<Integer> teacherIds) {
         this.teacherIds = teacherIds;
     }
+
+    public Integer getCoursePageShowType () {
+        return this.coursePageShowType;
+    }
+
+    public void setCoursePageShowType (Integer coursePageShowType) {
+        this.coursePageShowType = coursePageShowType;
+    }
+
+    public List<Course> getCenterCourses () {
+        return  this.centerCourses;
+    }
+
+    public void setCenterCourses (List<Course> centerCourses) {
+        this.centerCourses = centerCourses;
+    }
+
 }

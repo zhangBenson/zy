@@ -7,6 +7,7 @@ import com.gogowise.rep.course.enity.SeniorClassRoom;
 import com.gogowise.rep.live.LiveChannelDao;
 import com.gogowise.rep.live.MyShowDao;
 import com.gogowise.rep.org.dao.OrgFansDao;
+import com.gogowise.rep.org.dao.OrganizationCommentDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.live.UserFansDao;
@@ -46,6 +47,7 @@ public class SearchAction extends BasicAction{
     private LiveChannelDao liveChannelDao;
     private UserFansDao userFansDao;
     private OrgFansDao orgFansDao;
+    private OrganizationCommentDao organizationCommentDao;
 
     private List<Course> courses;
     private List<BaseUser> baseUsers;
@@ -68,7 +70,7 @@ public class SearchAction extends BasicAction{
 
     @Action(value = "searchSchool",results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".searchSchool")})
     public String searchSchool() throws Exception{
-        pagination.setPageSize(2);
+        pagination.setPageSize(5);
         organizations = organizationDao.searchOrgs(searchStr, pagination);
         return SUCCESS;
     }
@@ -325,5 +327,11 @@ public class SearchAction extends BasicAction{
         }
         return students.size();
     }
+    public OrganizationCommentDao getOrganizationCommentDao () {
+        return this.organizationCommentDao;
+    }
 
+    public void setOrganizationCommentDao (OrganizationCommentDao organizationCommentDao) {
+        this.organizationCommentDao = organizationCommentDao;
+    }
 }

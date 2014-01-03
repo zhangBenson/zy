@@ -1037,6 +1037,17 @@ a:hover .studioPortraitPanel p
 	font-size: 12px;
 }
 
+.searchItemStateBlue
+{
+	padding: 2px;
+	padding-left: 5px;
+	padding-right: 5px;
+	background-color: #69D2E7;
+	color: #fff;
+	border-radius: 2px;
+	font-size: 12px;
+}
+
 .searchItemState a {
     color: #fff;
     font-family: Verdana, Geneva, sans-serif;
