@@ -470,6 +470,7 @@ a:hover .recommended  img
 	border-radius: 6px;
 	width: 280px;
 	height: 120px;
+	margin-top: 10px;
 }
 
 .schoolTitle
@@ -1197,4 +1198,13 @@ a:hover .searchrecommendedItem  img
 .schoolRow
 {
 	margin-bottom: 30px;
+}
+
+.imaginaryline
+{
+	border-top-width: 1px;
+	border-top-style:  dashed;
+	border-top-color: #6ab600;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }

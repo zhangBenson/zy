@@ -34,30 +34,34 @@
             <div class="schoolRow">
                 <div class="row">
                     <div class="col-sm-3">
+                        <div class="pull-left" style="width:500px;">
+                            <a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="nickName"/>">
+                                <div id = "share_title" class="courseSubject"><s:property value="schoolName"/></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="pull-right">
+                            <p class="text-left">
+                            <ul class="list-inline">
+                                <li class="searchItemState"><s:property value="%{getText('label.student')}"/>:<s:property value="getStudentsNumByOrgId(id)"/></li>
+                                <li class="searchItemState"><s:property value="%{getText('search.header.course')}"/>:<s:property value="courseDao.findByOrg(id,null).size()"/></li>
+                                <li class="searchItemState"><s:property value="%{getText('course.lecturer')}"/>:<s:property value="organizationTeachers.size()"/></li>
+                            </ul>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
                         <a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="nickName"/>">
-                            <img src="<s:property value="logoUrl"/>"  alt="" class="Schoolminlogo"/>
+                            <img id="share_pic" src="<s:property value="logoUrl"/>"  alt="" class="Schoolminlogo"/>
                         </a>
                     </div>
                     <div class="col-sm-9">
-                        <div class="pull-left" style="width:500px;">
-                            <a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="nickName"/>">
-                                <div class="courseSubject"><s:property value="schoolName"/></div>
-                            </a>
-                        </div>
-
-                        <div class="pull-right">
-                            <p class="text-left">
-                                <ul class="list-inline">
-                                    <s:property value="studentsNumByOrgId(id)"/>
-
-                                    <li class="searchItemState"><s:property value="%{getText('label.student')}"/>:<s:property value="getStudentsNumByOrgId(id)"/></li>
-                                    <li class="searchItemState"><s:property value="%{getText('search.header.course')}"/>:<s:property value="courseDao.findByOrg(id,null).size()"/></li>
-                                    <li class="searchItemState"><s:property value="%{getText('course.lecturer')}"/>:<s:property value="organizationTeachers.size()"/></li>
-                                </ul>
-                            </p>
-                        </div>
                         <div class="clearfix"></div>
-                        <div class="searchCourseBody">
+                        <div id="share_desc" class="searchCourseBody">
                             <a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="nickName"/>">
                                 <s:if test="description.length() > 100">
                                     <s:property escapeHtml="false" value="description.substring(0,100)+'...'" />
@@ -68,6 +72,30 @@
                             </a>
                         </div>
                     </div>
+                    <p class="text-right"><a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="nickName"/>"><s:property value="%{getText('label.school.comments')}"/>(<s:property value="organizationCommentDao.findOrgCommentByOrgId(id, null).size()"/>)</a> | <a href="#"><s:property value="%{getText('label.shared.with')}"/></a></p>
+                    <script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
+                    <script type="text/javascript" id="bdshell_js"></script>
+                    <script type="text/javascript">
+                        var share_title = document.getElementById("share_title").innerText+"@GoGoWise"+"  <s:text name="message.course.wonderful"/>";
+                        var share_pic =  document.getElementById("share_pic").src;
+                        var share_comment = "<s:text name="message.course.wonderful"/>";
+                        var share_desc = document.getElementById("share_desc").innerText;
+
+                        var _data = "{'text':'"+share_title + "',"+
+                                "'comment':'"+share_comment + "',"+
+                                "'url':'"+window.location.href+"'}";
+
+                        document.getElementById("bdshare").setAttribute("data",_data);
+
+
+                        var bds_config = {'bdText':share_title,
+                            'bdDesc':share_desc, //qq，开心
+                            'bdComment':share_comment,
+                            'bdPopTitle':'GoGoWise Share',
+                            'bdPic':share_pic
+                        };
+                        document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+                    </script>
                 </div>
             </div>
         </s:iterator>
