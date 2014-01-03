@@ -84,32 +84,30 @@
                         <div style="float:left" id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
                             <a class="bds_more"><s:property value="%{getText('label.shared.with')}"/></a>
                         </div>
+                        <script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
+                        <script type="text/javascript" id="bdshell_js"></script>
+                        <script type="text/javascript">
+                            var share_title = document.getElementById("share_title").innerText+"@GoGoWise"+"  <s:text name="message.course.wonderful"/>";
+                            var share_pic =  document.getElementById("share_pic").src;
+                            var share_comment = "<s:text name="message.course.wonderful"/>";
+                            var share_desc = document.getElementById("share_desc").innerText;
+
+                            var _data = "{'text':'"+share_title + "',"+
+                                    "'comment':'"+share_comment + "',"+
+                                    "'url':'"+window.location.href+"'}";
+
+                            document.getElementById("bdshare").setAttribute("data",_data);
+
+
+                            var bds_config = {'bdText':share_title,
+                                'bdDesc':share_desc, //qq，开心
+                                'bdComment':share_comment,
+                                'bdPopTitle':'GoGoWise Share',
+                                'bdPic':share_pic
+                            };
+                            document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+                        </script>
                     </div>
-
-
-                    <script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
-                    <script type="text/javascript" id="bdshell_js"></script>
-                    <script type="text/javascript">
-                        var share_title = document.getElementById("share_title").innerText+"@GoGoWise"+"  <s:text name="message.course.wonderful"/>";
-                        var share_pic =  document.getElementById("share_pic").src;
-                        var share_comment = "<s:text name="message.course.wonderful"/>";
-                        var share_desc = document.getElementById("share_desc").innerText;
-
-                        var _data = "{'text':'"+share_title + "',"+
-                                "'comment':'"+share_comment + "',"+
-                                "'url':'"+window.location.href+"'}";
-
-                        document.getElementById("bdshare").setAttribute("data",_data);
-
-
-                        var bds_config = {'bdText':share_title,
-                            'bdDesc':share_desc, //qq，开心
-                            'bdComment':share_comment,
-                            'bdPopTitle':'GoGoWise Share',
-                            'bdPic':share_pic
-                        };
-                        document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
-                    </script>
                 </div>
             </div>
         </s:iterator>
@@ -125,7 +123,6 @@
     <br/>
     <div style="text-align: center;">
         <ul class="pagination pagination-lg">
-
             <li><a id="searchType0" href="javascript:startSearch(0);">A-D</a></li>
             <li><a id="searchType1" href="javascript:startSearch(1);">E-H</a></li>
             <li><a id="searchType2" href="javascript:startSearch(2);">I-L</a></li>
@@ -134,7 +131,6 @@
             <li><a id="searchType5" href="javascript:startSearch(5);">U-Z</a></li>
             <li><a id="searchType6" href="javascript:startSearch(6);"><s:property value="%{getText('label.school.center.button.show.other')}"/></a></li>
             <li><a id="searchType7" href="javascript:startSearch(7);"><s:property value="%{getText('label.school.center.button.show.all')}"/></a></li>
-
             <form action="schoolCenter.html" method="POST" id="page_show_form">
                 <s:hidden name="schoolPageShowType" id="showType_msg"/>
             </form>
