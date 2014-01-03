@@ -132,7 +132,7 @@ public class CourseAction extends BasicAction {
     @Action(value = "courseCenter",results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseCenter")})
     public String courseCenter() {
         List<Course> allCourses = courseDao.findlatestCourses(null);
-        System.out.println("allCourses size : " + allCourses.size());
+
         Map<Character,List<Course>> mapCourses = new HashMap<Character, List<Course>>();
         for (Course cs : allCourses) {
             if (cs.getName() == null || cs.getName().equals(""))
@@ -208,7 +208,7 @@ public class CourseAction extends BasicAction {
                 this.centerCourses =  allCourses;
             }
         }
-        else { // first time in schoolcenter page
+        else { // first time in courseCenter page
             if (this.centerCourses == null)
                 this.centerCourses = new ArrayList<>();
             else

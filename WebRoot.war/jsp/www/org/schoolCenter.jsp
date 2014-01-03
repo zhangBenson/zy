@@ -117,7 +117,7 @@
     <div style="text-align: center;">
         <ul class="pagination pagination-lg">
 
-            <li class="active"><a id="searchType0" href="javascript:startSearch(0);">A-D</a></li>
+            <li><a id="searchType0" href="javascript:startSearch(0);">A-D</a></li>
             <li><a id="searchType1" href="javascript:startSearch(1);">E-H</a></li>
             <li><a id="searchType2" href="javascript:startSearch(2);">I-L</a></li>
             <li><a id="searchType3" href="javascript:startSearch(3);">M-P</a></li>
@@ -143,20 +143,20 @@
 </div>
 
 <script type="text/javascript">
-   /* $(function(){
+  /*$(function(){
         var schoolPageShowType = <s:property value="schoolPageShowType"/>;
         switch(schoolPageShowType){
-            case 0: $("#searchType0").addClass("search_stand_out");break;
-            case 1: $("#searchType1").addClass("search_stand_out");break;
-            case 2: $("#searchType2").addClass("search_stand_out");break;
+            case 0: $("#searchType0").addClass("search_stand_out"); break;
+            case 1: $("#searchType1").addClass("search_stand_out"); break;
+            case 2: $("#searchType2").addClass("search_stand_out"); break;
             case 3: $("#searchType3").addClass("search_stand_out"); break;
             case 4: $("#searchType4").addClass("search_stand_out"); break;
             case 5: $("#searchType5").addClass("search_stand_out"); break;
             case 6: $("#searchType6").addClass("search_stand_out"); break;
-            case 6: $("#searchType7").addClass("search_stand_out"); break;
+            case 7: $("#searchType7").addClass("search_stand_out"); break;
         }
     });
-     */
+    */
     function startSearch(schoolPageShowType){
         // window.location.href = "searchResult.html?searchType="+searchType+"&searchStr="+encodeURI($("#searchStr_id").val());
         //alert (schoolPageShowType);
