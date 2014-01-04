@@ -33,7 +33,7 @@
 		            </s:iterator>
 				</div>
 				<br/>
-				<p class="text-right"><s:property value="%{getText('others.more')}"/></p>
+				<p class="text-right"><a href="#"><s:property value="%{getText('others.more')}"/></a></p>
 			</div>
 			<br/>
 
@@ -53,7 +53,7 @@
                     </s:iterator>
 				</div>
 				<br/>
-				<p class="text-right"><s:property value="%{getText('others.more')}"/></p>
+				<p class="text-right"><a href="#"><s:property value="%{getText('others.more')}"/></a></p>
 			</div>
 			</div>
 
