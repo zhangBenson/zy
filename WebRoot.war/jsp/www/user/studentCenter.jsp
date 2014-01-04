@@ -238,15 +238,50 @@
 					</div>
 				</div>
 				<div class="col-sm-4">
+
+                    <div class="basePanelTextLeftAbsolute">
+                        <div  style="float: right;padding-top: 25px;">
+                            <%-- <button type="button" class="btn btn-success btn-xs">more</button>--%>
+                            <s:if test="matterCount != 0">
+                                <div id="matters_more" title="<s:property value="matterCount"/><s:property value="%{getText('my.firstpage.new.matter.num')}"/>">
+                                    <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal1"><s:property value="%{getText('others.more')}"/></button>
+                                </div>
+                            </s:if>
+                        </div>
+                        <h3 class="courseSubhead"><s:property value="%{getText('title.newest.matters')}"/></h3>
+                        <div class="thickline"></div>
+                        <div>
+                            <img src="images/user/icon_mail.png" class="centerIcon">
+                            <div class="messageGreen1"><s:property value="%{getText('label.course.message')}"/></div>
+                        </div>
+                        <div>
+                            <img src="images/user/icon_mail.png" class="centerIcon">
+                            <div class="messageGreen2"><s:property value="%{getText('label.comment.message')}"/></div>
+                        </div>
+                        <div>
+                            <img src="images/user/icon_mail.png" class="centerIcon">
+                            <div class="messageGreen3"><s:property value="%{getText('label.invitation.message')}"/></div>
+                        </div>
+                        <div>
+                            <img src="images/user/icon_mail.png" class="centerIcon">
+                            <div class="messageGreen4">Message 4</div>
+                        </div>
+                        <div>
+                            <img src="images/user/icon_mail.png" class="centerIcon">
+                            <div class="messageGreen5">Message 5</div>
+                        </div>
+                    </div>
+
+                    <%--
 					<div class="basePanelTextLeftAbsolute">
 						<div  style="float: right;padding-top: 25px;">
-							<%-- <button type="button" class="btn btn-success btn-xs">more</button> --%>
+
 							<s:if test="matterCount != 0">
 				                <div id="matters_more" title="<s:property value="matterCount"/><s:property value="%{getText('my.firstpage.new.matter.num')}"/>">
 				                	<button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal1"><s:property value="matterCount"/></button>
 				                </div>
 				            </s:if>
-				            <%-- <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal1">more</button> --%>
+
 				            
 						</div>
 						<h3 class="courseSubhead"><s:property value="%{getText('title.newest.matters')}"/></h3>
@@ -302,6 +337,7 @@
 			                </div>
 						</div>
 					</div>
+					--%>
 
 				</div>
 			</div>
@@ -368,6 +404,26 @@
 				<h4 class="modal-title" id="myModalLabel1"><s:property value="%{getText('title.newest.matters')}"/></h4>
 			</div>
 			<div class="modal-body">
+                <div>
+                    <img src="images/user/icon_mail.png" class="centerIcon">
+                    <div class="messageGreen1"><s:property value="%{getText('label.course.message')}"/></div>
+                </div>
+                <div>
+                    <img src="images/user/icon_mail.png" class="centerIcon">
+                    <div class="messageGreen2"><s:property value="%{getText('label.comment.message')}"/></div>
+                </div>
+                <div>
+                    <img src="images/user/icon_mail.png" class="centerIcon">
+                    <div class="messageGreen3"><s:property value="%{getText('label.invitation.message')}"/></div>
+                </div>
+                <div>
+                    <img src="images/user/icon_mail.png" class="centerIcon">
+                    <div class="messageGreen4">Message 4</div>
+                </div>
+                <div>
+                    <img src="images/user/icon_mail.png" class="centerIcon">
+                    <div class="messageGreen5">Message 5</div>
+                </div>
 				<div class="courseItem">
 					<div id="matters_content"></div>
 				</div>
