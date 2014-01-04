@@ -230,7 +230,7 @@
                         <s:else>
                             <ul class="list-inline" style="background-color: #6ab600;color: #fff;border-radius: 4px; padding-top: 3px;padding-bottom: 3px;">
                                 <div>
-                                    <s:property value="%{getText('personalcenter.no.course.message.head')}"/><a href="courseSquare.html"><strong> <s:property value="%{getText('frame.course.center')}"/> </strong></a><s:property value="%{getText('personalcenter.no.course.message.tail')}"/>
+                                    <s:property value="%{getText('personalcenter.no.course.message.head')}"/><a href="courseCenter.html"><strong> <s:property value="%{getText('frame.course.center')}"/> </strong></a><s:property value="%{getText('personalcenter.no.course.message.tail')}"/>
                                     <%--You have no course registered. Please choose your courses in <a href="courseSquare.html">Course Centre</a>.--%>
                                 </div>
                             </ul>
