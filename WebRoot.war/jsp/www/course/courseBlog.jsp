@@ -230,6 +230,8 @@
                                 <div><s:property value="%{getText('lable.course.starttime')}"/>:<s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
                                 <p></p>
                                 <div><s:property value="%{getText('courses.info.lecturer')}"/>: <s:property value="course.teacher.nickName"/></div>
+                                <p></p>
+                                <div><s:property value="%{getText('word.audience')}"/>:</div>
                                 <br/>
                             </s:iterator>
                         </s:else>
@@ -244,7 +246,54 @@
 
                 <div class="gogopanelBody">
                     <div class="gogopanelBodyText">
-                        <div class="row">
+                        <div><s:property value="%{getText('label.discussion.room.start.time')}"/>:</div>
+                        <p></p>
+                        <div><s:property value="%{getText('label.discussion.room.duration')}"/>:</div>
+                        <p></p>
+                        <div id="DisUserArea" style="text-align: center;">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="images/course/portrait2.jpg" class="normalPortrait"/>
+                                    <p class="textOverSinglerow">Name</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="images/course/portrait4.jpg" class="normalPortrait"/>
+                                    <p class="textOverSinglerow">Name</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="images/course/portrait5.jpg" class="normalPortrait"/>
+                                    <p class="textOverSinglerow">Name</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="images/course/portrait2.jpg" class="normalPortrait"/>
+                                    <p class="textOverSinglerow">Name</p>
+                                </div>
+                                <s:if test="course.teachers.size()>0">
+                                    <div class="row">
+                                        <s:iterator value="course.teachers" status="idx" begin="0" end="0">
+                                            <div class="col-md-4">
+                                                <a href="userBlog.html?user.id=<s:property value="id"/>" title="<s:property value="nickName"/>">
+                                                    <img  class="normalPortrait" src="<s:property value="pic" />"/>
+                                                </a>
+                                                <p class="textOverSinglerow"><s:property value="nickName"/></p>
+                                            </div>
+                                        </s:iterator>
+                                    </div>
+                                </s:if>
+                                <s:else>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <img src="/images/course/noportrait.jpg" class="normalPortrait"/>
+                                            <p class="textOverSinglerow">Available</p>
+                                        </div>
+                                    </div>
+                                </s:else>
+                            </div>
+                        </div>
+
+                        <%-- <div class="row">
 
                             <div><s:property value=""/></div>
                             <s:iterator value="course.teachers">
@@ -254,7 +303,7 @@
                                     </a>
                                 </div>
                             </s:iterator>
-                        </div>
+                        </div>--%>
 
                         <br/>
                         <button type="button" class="btn btn-primary btn-block"><s:property value="%{getText('button.enter')}"/></button>
