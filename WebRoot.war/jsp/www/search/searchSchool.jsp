@@ -72,30 +72,35 @@
                             </a>
                         </div>
                     </div>
-                    <p class="text-right"><a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="nickName"/>"><s:property value="%{getText('label.school.comments')}"/>(<s:property value="organizationCommentDao.findOrgCommentByOrgId(id, null).size()"/>)</a> | <a href="#"><s:property value="%{getText('label.shared.with')}"/></a></p>
-                    <script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
-                    <script type="text/javascript" id="bdshell_js"></script>
-                    <script type="text/javascript">
-                        var share_title = document.getElementById("share_title").innerText+"@GoGoWise"+"  <s:text name="message.course.wonderful"/>";
-                        var share_pic =  document.getElementById("share_pic").src;
-                        var share_comment = "<s:text name="message.course.wonderful"/>";
-                        var share_desc = document.getElementById("share_desc").innerText;
+                    <div style="float: right">
+                        <div style="float:left"><a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="nickName"/>"><s:property value="%{getText('label.school.comments')}"/>(<s:property value="organizationCommentDao.findOrgCommentByOrgId(id, null).size()"/>)</a> | </div>
+                        <div style="float:left" id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+                            <a class="bds_more"><s:property value="%{getText('label.shared.with')}"/></a>
+                        </div>
+                        <script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
+                        <script type="text/javascript" id="bdshell_js"></script>
+                        <script type="text/javascript">
+                            var share_title = document.getElementById("share_title").innerText+"@GoGoWise"+"  <s:text name="message.course.wonderful"/>";
+                            var share_pic =  document.getElementById("share_pic").src;
+                            var share_comment = "<s:text name="message.course.wonderful"/>";
+                            var share_desc = document.getElementById("share_desc").innerText;
 
-                        var _data = "{'text':'"+share_title + "',"+
-                                "'comment':'"+share_comment + "',"+
-                                "'url':'"+window.location.href+"'}";
+                            var _data = "{'text':'"+share_title + "',"+
+                                    "'comment':'"+share_comment + "',"+
+                                    "'url':'"+window.location.href+"'}";
 
-                        document.getElementById("bdshare").setAttribute("data",_data);
+                            document.getElementById("bdshare").setAttribute("data",_data);
 
 
-                        var bds_config = {'bdText':share_title,
-                            'bdDesc':share_desc, //qq，开心
-                            'bdComment':share_comment,
-                            'bdPopTitle':'GoGoWise Share',
-                            'bdPic':share_pic
-                        };
-                        document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
-                    </script>
+                            var bds_config = {'bdText':share_title,
+                                'bdDesc':share_desc, //qq，开心
+                                'bdComment':share_comment,
+                                'bdPopTitle':'GoGoWise Share',
+                                'bdPic':share_pic
+                            };
+                            document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+                        </script>
+                    </div>
                 </div>
             </div>
             <s:if test="!#idx.last">
