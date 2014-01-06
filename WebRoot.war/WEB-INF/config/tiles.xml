@@ -870,9 +870,13 @@
         <put-attribute name="title" value="button.help.center"/>
         <put-attribute name="contentBody" value="/jsp/gogowise/helpCenter.jsp"/>
     </definition>
-    <definition name=".aboutUs" extends=".about">
+    <!-- <definition name=".aboutUs" extends=".about">
         <put-attribute name="title" value="title.about.company"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/about/company.jsp"/>
+    </definition> -->
+    <definition name=".aboutUs" extends=".wwwBodyCenter">
+        <put-attribute name="title" value="title.about.company"/>
+        <put-attribute name="contentBody" value="/jsp/www/about/aboutus.jsp"/>
     </definition>
     <definition name=".contactUs" extends=".about">
         <put-attribute name="title" value="title.about.contact"/>
