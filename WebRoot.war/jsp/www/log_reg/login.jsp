@@ -39,7 +39,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label"> <s:property value="%{getText('password')}"/><span class="errorinfo" id="yzpwd">*<s:property value="identityConfirmMsg"/></label>
                         <div class="col-sm-10">
-                            <s:password name="user.password" id="pwd" cssClass="form-control"/>
+                            <s:password name="user.password" id="pwd" cssClass="form-control" placeholder="Password"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -71,7 +71,7 @@
                         <label><s:property value="%{getText('email')}" /></label>
                         <span id="log_email_tip" class="tip_words">*</span>
 
-                        <s:textfield cssClass="form-control" name="user.email" placeholder="Enter email"/>
+                        <s:textfield cssClass="form-control" name="user.email" placeholder="Enter Email"/>
                     </div>
                     <div class="form-group">
                         <label ><s:property value="%{getText('password')}"/></label>
@@ -108,7 +108,7 @@
                                     <span id="yxcheckbox" class="tip_words"></span> <br/>
                                     <%--<input name="checkbox" type="checkbox" value="checked" id="checkbox"/>
                                     <a href="<%=request.getContextPath()%>/jsp/gogowise/Clause.htm" class="boxy" id="reg_clause"><s:property value="%{getText('read')}"/></a>--%>
-                                    <input name="checkbox" type="checkbox" value="checked" id="checkbox" >I have already read the clauses of gogowise
+                                    <input name="checkbox" type="checkbox" value="checked" id="checkbox" ><s:property value="%{getText('read')}"/>
                                 </label>
                                     <a href="#" id="btnclauses">Show Clauses</a>
                             </div>

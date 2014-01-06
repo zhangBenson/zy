@@ -53,14 +53,14 @@
                     </a>
                 </h4>
                 </h4>
-                <p class="text-left">
+                <div class="text-right">
                     <ul class="list-inline">
                       <li class="searchItemState"><s:property value="%{getText('course.school')}"/>:<a href="orgBlog.html?org.id=<s:property value="organization.id"/>" title="<s:property value="organization.nickName"/>"><s:property value="organization.schoolName"/></a></li>
                       <li class="searchItemState"><s:property value="%{getText('courses.info.lecturer')}"/>:<a href="userBlog.html?user.id=<s:property value="teacher.id"/>" title="<s:property value="teacher.nickName"/>"><s:property value="teacher.nickName"/></a></li>
                       <li class="searchItemState"><s:property value="%{getText('label.student')}"/>:<s:property value="studentNum"/></li>
                       <li class="searchItemStateBlue"><s:property value="%{getText('usermenu.item.mooc')}"/></li>
                     </ul>
-                </p>
+                </div>
                 <div class="clearfix"></div>
             </div>
             <s:if test="!#idx.last">
