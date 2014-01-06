@@ -25,8 +25,8 @@
     <div class="row">
         <div class="col-sm-5">
             <div class="basePanelTextLeft">
-                <h1 class = "courseSubject">Log in</h1>
-                <h1 class = "courseSynopsis">Please log in to continue.</h1>
+                <h1 class = "courseSubject"><s:property value="%{getText('button.log.in')}"/></h1>
+                <h1 class = "courseSynopsis"><s:property value="%{getText('label.log.in.info')}"/></h1>
 
                  <s:form validate="true" theme="css_xhtml" cssClass="form-horizontal"  method="POST" action="logon">
 
@@ -46,7 +46,7 @@
                         <div class="col-sm-offset-2 col-sm-10">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox">Remember me</label>
+                                    <%-- <input type="checkbox"><s:property value="%{getText('label.log.in.remember.me.info')}"/></label> --%>
                                     <a href="initRepassword.html" style="float: right;"><span><s:property value="%{getText('link.forget.pwd')}" />？</span></a>
                             </div>
 
@@ -62,8 +62,8 @@
         </div>
         <div class="col-sm-6">
             <div class="basePanelTextLeft">
-                <h1 class = "courseSubject">New to gogowise?</h1>
-                <h1 class = "courseSynopsis">A gogowise account is required to continue.</h1>
+                <h1 class = "courseSubject"><s:property value="%{getText('user.info.identity.confirm.no.account')}"/></h1>
+                <h1 class = "courseSynopsis"><s:property value="%{getText('label.login.no.account.info')}"/></h1>
                 <s:form validate="true" theme="css_xhtml" method="POST" action="reg">
                     <s:hidden name="reDirectUrl" id="reDirectUrl"/>
 
@@ -108,9 +108,9 @@
                                     <span id="yxcheckbox" class="tip_words"></span> <br/>
                                     <%--<input name="checkbox" type="checkbox" value="checked" id="checkbox"/>
                                     <a href="<%=request.getContextPath()%>/jsp/gogowise/Clause.htm" class="boxy" id="reg_clause"><s:property value="%{getText('read')}"/></a>--%>
-                                    <input name="checkbox" type="checkbox" value="checked" id="checkbox" ><s:property value="%{getText('read')}"/>
+                                    <input name="checkbox" type="checkbox" value="checked" id="checkbox" ><a href="#" id="btnclauses"><s:property value="%{getText('read')}"/></a>
                                 </label>
-                                    <a href="#" id="btnclauses">Show Clauses</a>
+                                    <%--<a href="#" id="btnclauses"><s:property value="%{getText('label.login.clause.msg')}"/></a> --%>
                             </div>
                         </div>
                     </div>
