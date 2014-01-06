@@ -64,8 +64,8 @@
                         <div id="share_desc" class="searchCourseBody">
                             <a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="nickName"/>">
 
-                                <s:if test="parseSchoolDescription(id).length() > 100">
-                                    <s:property  value="parseSchoolDescription(id).substring(0,100)+'...'" />
+                                <s:if test="parseSchoolDescription(id).length() > 350">
+                                    <s:property  value="parseSchoolDescription(id).substring(0,350)+'...'" />
                                 </s:if>
                                 <s:else>
                                     <s:property  value="parseSchoolDescription(id)"/>
