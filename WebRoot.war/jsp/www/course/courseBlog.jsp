@@ -166,7 +166,14 @@
                     <h4 class="textOverSinglerow"><s:property value="%{getText('course.school')}"/>:<s:property value="course.organization.schoolName"/></h4>
                     <h4 class="textOverSinglerow"><s:property value="%{getText('course.code')}"/>: <s:property value="course.id"/></h4>
                     <h4 class="textOverSinglerow"><s:property value="%{getText('course.teaching.language')}"/>:<s:property value="course.languageType"/></h4>
-                    <button type="button" class="btn btn-primary btn-block"><s:property value="%{getText('user.info.identity.finish.reg')}"/> <%--Register for --%><s:property value="course.name" /></button>
+                    <s:if test="!course.courseFinished">
+                        <%-- <a href="javascript:;" id="register_btn" class="act_btn register_btn"><s:property value="%{getText('label.course.register')}"/></a> --%>
+                        <button type="button" class="btn btn-primary btn-block" id = "register_btn"><s:property value="%{getText('user.info.identity.finish.reg')}"/> <s:property value="course.name" /></button>
+                    </s:if>
+                    <s:else>
+                        <button type="button" value="disable" disabled="disabled" class="btn btn-primary btn-block" id = "register_btn"><s:property value="%{getText('user.info.identity.finish.reg')}"/> <s:property value="course.name" /></button>
+                    </s:else>
+
                 </div>
 
                 <!-- Panel 1 -->
@@ -316,7 +323,29 @@
             $("#message_textarea").attr('value', "");
             $("#message_area_tip").html("");
         }
-    })
+    });
+    $('#register_btn').click(function(){
+        if(validateLogo()){
+
+            window.location.href = "initCourseconfirm.html?course.id=<s:property value="course.id"/>";
+            return true;
+
+
+            <s:if test="course.charges == 0 && !course.limitOver && !course.courseFinished">
+            $.post("courseconfirm.html",{'course.id':"<s:property value="course.id"/>"},function(data){
+                window.location.href = "myRegistration.html";
+                return true;
+            });
+            </s:if>
+            <s:if test="course.charges > 0 && !course.limitOver && !course.courseFinished">
+                window.location.href = "initCourseconfirm.html?course.id=<s:property value="course.id"/>";
+                return true;
+            </s:if>
+            <s:else>
+            window.location.href =  "myRegistration.html";
+            </s:else>
+        }
+    });
 
     function validateLogo() {
         if (document.getElementById('hidSessionId').value > 0) {

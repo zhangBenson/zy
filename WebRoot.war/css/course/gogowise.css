@@ -100,6 +100,15 @@ body{
 	color: #6ab600;
 }
 
+.courseSubjectRow
+{
+	font-size: 36px;
+	color: #6ab600;
+	word-wrap: break-word; 
+	word-break: normal; 
+}
+
+
 .Subject24
 {
 	text-overflow : clip;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;
@@ -1026,6 +1035,13 @@ a:hover .studioPortraitPanel p
 
 }
 
+.fontRedBold td
+{
+	font-size: 12px;
+	color: #e31111;
+	font-weight: bold;
+}
+
 .searchItemState
 {
 	padding: 2px;
@@ -1035,6 +1051,7 @@ a:hover .studioPortraitPanel p
 	color: #fff;
 	border-radius: 2px;
 	font-size: 12px;
+	margin-top: 1px;
 }
 
 .searchItemStateBlue
@@ -1043,6 +1060,17 @@ a:hover .studioPortraitPanel p
 	padding-left: 5px;
 	padding-right: 5px;
 	background-color: #69D2E7;
+	color: #fff;
+	border-radius: 2px;
+	font-size: 12px;
+}
+
+.searchItemStateRed
+{
+	padding: 2px;
+	padding-left: 5px;
+	padding-right: 5px;
+	background-color: #e31111;
 	color: #fff;
 	border-radius: 2px;
 	font-size: 12px;
@@ -1218,4 +1246,9 @@ a:hover .searchrecommendedItem  img
 	border-top-color: #6ab600;
 	margin-top: 10px;
 	margin-bottom: 10px;
+}
+
+.iconmic
+{
+	width: 10px;height: 17px;position: absolute;font-weight: lighter;font-size: 8px;font-family: Verdana, Geneva, sans-serif;left:65px;top:60px;background-image: url(../image/icon_mic.png);border-radius: 4px;
 }

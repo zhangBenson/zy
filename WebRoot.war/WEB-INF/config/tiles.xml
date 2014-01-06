@@ -891,9 +891,9 @@
     <definition name=".refund" extends=".basic">
         <put-attribute name="right" value="/jsp/gogowise/refund.jsp"/>
     </definition>
-    <definition name=".courseconfirm" extends=".bodyCenter">
+    <definition name=".courseconfirm" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.course.confirm1"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/courseconfirm.jsp"/>
+        <put-attribute name="contentBody" value="/jsp/www/course/regcourse.jsp"/>
     </definition>
     
     <!-- personal show  -->
