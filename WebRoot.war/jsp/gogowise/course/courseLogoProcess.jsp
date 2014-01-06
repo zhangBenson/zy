@@ -88,11 +88,11 @@
                                 originalWidth = OriginalImage.width;
                                 originalHeight = OriginalImage.height;
                                 var ratio = originalWidth/originalHeight;
-                                if(ratio>=4/3) {
+                                if(ratio>=200/110) {
                                      $("#target").attr("width","400px");
                                      imageLong = true;
                                 }else {
-                                     $("#target").attr("height","300px");
+                                     $("#target").attr("height","220px");
                                      imageLong = false;
                                 }
 
@@ -120,15 +120,15 @@
                         $('#target').Jcrop({
                             onChange: updatePreview,
                             onSelect: updatePreview,
-                            setSelect:[0,0,40,30],
-                            aspectRatio: 4 / 3
+                            setSelect:[0,0,200,110],
+                            aspectRatio: 200/110
                         }, function() {
                             // Use the API to get the real image size
                             var bounds = this.getBounds();
                             boundx = bounds[0];
                             boundy = bounds[1];
-                            if(imageLong) this.setSelect([0,0,boundy*4/3,boundy]);
-                            else this.setSelect([0,0,boundx,boundy*3/4]);
+                            if(imageLong) this.setSelect([0,0,boundy*200/110,boundy]);
+                            else this.setSelect([0,0,boundx,boundy*110/200]);
                             // Store the API in the jcrop_api variable
                             jcrop_api = this;
                         });

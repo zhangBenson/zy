@@ -14,6 +14,7 @@ import com.gogowise.rep.course.enity.CourseInviteStudent;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.Utils;
 import org.apache.commons.lang.StringUtils;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -23,6 +24,7 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -57,16 +59,25 @@ public class SaveCourseAction extends BasicAction{
     @Action(value = "ajaxSaveCourse")
     public String ajaxSaveCourse(){
 
-        // copy jpg
-        if(StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(),"upload/")){
-            Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
-        }
-
         // Save course
         CourseSpecification specification = CourseSpecification.create(course, this.getSessionUserId(), this.getCourseType(), this.getTeacherIds());
         courseService.saveCourse(specification);
 
         course = courseService.findById(course.getId());
+
+        // copy jpg
+        if(StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(),"upload/"))
+        {
+            //Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
+            String courseDir = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_COURSE_PATH);
+            courseDir = courseDir + File.separator + course.getId();
+
+            File temp = new File(courseDir); if( !temp.exists() ) temp.mkdirs();
+
+            Utils.notReplaceFileFromTmpModified(temp.getAbsolutePath(), course.getLogoUrl());
+            course.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + course.getId() + "/" + course.getLogoUrl());
+        }
+
 
         courseInviteStudents = courseInviteStudentDao.findByCourseId(this.getCourse().getId());   //this step is used to delete the students if it was saved before
         if (courseInviteStudents.size() != 0) {
@@ -133,9 +144,18 @@ public class SaveCourseAction extends BasicAction{
         _course.setCourseType(course.getCourseType());
         _course.setCharges(course.getCharges());
 
-        if(StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(),"upload/")){
-             Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
-             _course.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId()+"/"+course.getLogoUrl());
+        if(StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(),"upload/"))
+        {
+            String courseDir = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_COURSE_PATH);
+            courseDir = courseDir + File.separator + course.getId();
+
+            File temp = new File(courseDir); if( !temp.exists() ) temp.mkdirs();
+
+            Utils.notReplaceFileFromTmpModified(temp.getAbsolutePath(), course.getLogoUrl());
+            _course.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + course.getId()+"/"+course.getLogoUrl());
+
+            //Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
+            //_course.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId()+"/"+course.getLogoUrl());
         }
         if(StringUtils.isBlank(course.getLogoUrl())) _course.setLogoUrl(Constants.DEFAULT_COURSE_IMAGE);
 

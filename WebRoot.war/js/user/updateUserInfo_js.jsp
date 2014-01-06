@@ -45,7 +45,8 @@
             $("._disposeName").html("<input type='text' class='_disposeName_input input_field'  onblur='checkDisposeName();' name='userAccountInfo.disposeName' value='" + $("._disposeName").text() + "'/><span class='_disposeName_Msg input_msg'></span>");
             $("._bankAccount").html("<input type='text' class='_bankAccount_input input_field'  onblur='checkBankAccount();' name='userAccountInfo.bankAccount' value='" + $("._bankAccount").text() + "'/><span class='_bankAccount_Msg input_msg'></span>");
             var selfDescription = $("._self_description").text();
-            $("._self_description").html("<textarea  class='_selfDescription_input input_area' onkeyup='changeWordNumberAnyway();' name='user.selfDescription' onblur='checkSelfDescription();'/>");
+            /*$("._self_description").html("<textarea  class='_selfDescription_input input_area' onkeyup='changeWordNumberAnyway();' name='user.selfDescription' onblur='checkSelfDescription();'/>");*/
+            $("._self_description").html("<textarea  class='_selfDescription_input input_area' name='user.selfDescription' onblur='checkSelfDescription();'/>");
             $("._selfDescription_input").val(selfDescription);
             $(this).attr("disabled","true");
             modifiedMsg = true;
@@ -95,7 +96,7 @@
          } );
     });
     function changeWordNumberAnyway(){
-        changeWordNumber($("._selfDescription_input"),$("._self_description_Msg"),100)
+        changeWordNumber($("._selfDescription_input"),$("._self_description_Msg"),50000)/*把账号设置中的自我介绍文本长度最大值设成最后一个参数*/
     }
     function checkForm(){
         var nicknameBool = checkNickName();

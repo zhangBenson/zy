@@ -15,10 +15,10 @@
                     <a href="index.html" class="navlink"><s:property value="%{getText('menu.item.index')}"/></a>
                 </li>
                 <li>
-                    <s:a action="courseSquare" cssClass="navlink"><s:property value="%{getText('frame.course.center')}"/></s:a>
+                    <s:a action="courseCenter" cssClass="navlink"><s:property value="%{getText('frame.course.center')}"/></s:a>
                 </li>
                 <li>
-                    <a href="#" class="navlink">Schools</a>
+                    <a href="schoolCenter.html" class="navlink"><s:property value="%{getText('frame.schools.center')}"/></a>
                 </li>
             </ul>
         </div>
@@ -30,6 +30,7 @@
 
                 <div class="btn-group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-user"></span>
                         <a href="userBlog.html?user.id=<s:property value="#session.userID"/>" title="<s:property value="#session.nickName"/>">
                             <s:property value="#session.nickName"/>
                         </a>
@@ -38,7 +39,8 @@
 
                     <ul class="dropdown-menu" role="menu">
 
-                        <li><a href="userBlog.html?user.id=<s:property value="#session.userID"/>">Personal Center</a></li>
+                        <%-- <li><a href="userBlog.html?user.id=<s:property value="#session.userID"/>">Personal Center</a></li>        --%>
+                        <li><a href="personalCenter.html"><s:property value="%{getText('label.personalcenter')}"/></a></li>
 
                             <%--<a href="#">Profile Settings</a>--%>
                         <li><a href="initUpdate.html"><span></span><s:property value="%{getText('account.item.accountsettings')}" /></a></li>
@@ -81,21 +83,7 @@
         </div>
 
 
-        <!-- <div class="col-md-4">
-            <div class="pull-right">
-                <ul class="list-inline">
-                    <li>
-                        <a href="#">Help</a>
-                    </li>
-                    <li>
-                        <a href="#">Sign up</a>
-                    </li>
-                    <li>
-                        <a href="#">Log in</a>
-                    </li>
-                </ul>
-            </div>
-        </div> -->
+
 
     </div>
 </div>

@@ -17,13 +17,13 @@
                 </div>
                 <div class="Info2 fl">
                     <a class="a_title" href="userBlog.html?user.id=<s:property value="id"/>" title="<s:property value="nickName"/>"><s:property value="nickName"/></a>
-                    <span><s:property value="fansNum"/><s:property value="%{getText('user.add.focus')}"/></span>
-                    <s:if test="!userFocused">
-                        <a class="a_focus" href="javascript:;" onclick="becomeFans(this,<s:property value="id"/>);"><s:property value="%{getText('user.add.focus')}"/></a>
-                    </s:if>
-                    <s:else>
-                        <a class="a_focus" href="javascript:;" onclick="becomeFans(this,<s:property value="id"/>);"><s:property value="%{getText('user.add.focused')}"/></a>
-                    </s:else>
+                    <%--<span><s:property value="fansNum"/><s:property value="%{getText('user.add.focus')}"/></span>--%>
+                    <%--<s:if test="!userFocused">--%>
+                        <%--<a class="a_focus" href="javascript:;" onclick="becomeFans(this,<s:property value="id"/>);"><s:property value="%{getText('user.add.focus')}"/></a>--%>
+                    <%--</s:if>--%>
+                    <%--<s:else>--%>
+                        <%--<a class="a_focus" href="javascript:;" onclick="becomeFans(this,<s:property value="id"/>);"><s:property value="%{getText('user.add.focused')}"/></a>--%>
+                    <%--</s:else>--%>
                 </div>
                </div>
         </s:iterator>
@@ -39,13 +39,13 @@
                 </div>
                 <div class="Info2 fl">
                     <a class="a_title" href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="schoolName"/>"><s:property value="schoolName"/></a>
-                    <span><s:property value="fansNum"/><s:property value="%{getText('user.add.focus')}"/></span>
-                    <s:if test="!userFocused">
-                        <a class="a_focus" href="javascript:;" onclick="becomeOrgFans(this,<s:property value="id"/>);"><s:property value="%{getText('user.add.focus')}"/></a>
-                    </s:if>
-                    <s:else>
-                         <a class="a_focus" href="javascript:;" onclick="becomeOrgFans(this,<s:property value="id"/>);"><s:property value="%{getText('user.add.focused')}"/></a>
-                    </s:else>
+                    <%--<span><s:property value="fansNum"/><s:property value="%{getText('user.add.focus')}"/></span>--%>
+                    <%--<s:if test="!userFocused">--%>
+                        <%--<a class="a_focus" href="javascript:;" onclick="becomeOrgFans(this,<s:property value="id"/>);"><s:property value="%{getText('user.add.focus')}"/></a>--%>
+                    <%--</s:if>--%>
+                    <%--<s:else>--%>
+                         <%--<a class="a_focus" href="javascript:;" onclick="becomeOrgFans(this,<s:property value="id"/>);"><s:property value="%{getText('user.add.focused')}"/></a>--%>
+                    <%--</s:else>--%>
                 </div>
             </div>
         </s:iterator>
@@ -53,7 +53,7 @@
 </div>
 
 <div class="listDown fl">
-    <h3 class="h3_title"><a href="javascript:;" onclick="startSearch(4);"><s:property value="%{getText('search.header.course')}"/></a>&nbsp;|&nbsp;<a href="javascript:;" onclick="startSearch(5);"><s:property value="%{getText('search.header.show')}"/></a><%--&nbsp;|&nbsp;<a href="javascript:;" onclick="startSearch(6);"><s:property value="%{getText('search.header.live')}"/></a>--%></h3>
+    <h3 class="h3_title"><a href="javascript:;" onclick="startSearch(4);"><s:property value="%{getText('search.header.course')}"/></a>
 
     <%-- 这是课程循环的Div  --%>
     <s:iterator value="courses">
@@ -89,56 +89,7 @@
         </div>
     </s:iterator>
 
-    <s:iterator value="myShows">
-        <div class="listView fl">
-            <div class="viewRight fl">
-                <a class="img" href="showBlog.html?myShow.id=<s:property value="id"/>" title="<s:property value="name"/>">
-                    <img src="<s:property value="logoUrl"/>"/>
-                </a>
-                <a class="person" href="userBlog.html?user.id=<s:property value="owner.id"/>" title="<s:property value="owner.nickName"/>"><img width="30" height="30" src="<s:property value="owner.pic"/>"/></a>
-            </div>
 
-            <div class="viewLeft fl">
-                <p class="title">
-                    <a class="title" href="showBlog.html?myShow.id=<s:property value="id"/>" title="<s:property value="name"/>"><s:property value="name"/></a>
-                    <a class="watch orange_words" href="showBlog.html?myShow.id=<s:property value="id"/>"><s:property value="%{getText('gogowise.things.details')}"/></a>
-                </p>
-                <p class="info">
-                    <span><span class="orange_words"><s:date name="showDate" format="%{getText('dateformat')}"/></span></span>&nbsp;&nbsp;|&nbsp;&nbsp;
-                    <span><span class="orange_words"> <s:property value="fansNum"/>&nbsp;</span><s:property value="%{getText('course.blog.purchase.num')}"/></span>&nbsp;&nbsp;|&nbsp;&nbsp;
-                    <%--<span><span class="orange_words"> 247&nbsp;</span>推荐</span> &nbsp;&nbsp;|&nbsp;&nbsp;--%>
-                    <span><s:property value="%{getText('course.blog.total.terms')}"/><span class="orange_words"> <s:property value="showTermsNum"/>&nbsp;</span><s:property value="%{getText('course.blog.total.terms.tail')}"/></span>
-                </p>
-                <p><s:property value="description"/></p>
-            </div>
-        </div>
-    </s:iterator>
-
-    <%--<s:iterator value="liveChannels">--%>
-        <%--<div class="listView fl">--%>
-        <%--<div class="viewRight fl">--%>
-            <%--<a class="img" href="liveChannelBlog.html?liveChannel.id=<s:property value="id"/>" title="<s:property value="name"/>">--%>
-                <%--<img src="<s:property value="logoUrl"/>"/>--%>
-            <%--</a>--%>
-            <%--<a class="person" href="userBlog.html?user.id=<s:property value="creator.id"/>" title="<s:property value="creator.nickName"/>"><img width="30" height="30" src="<s:property value="creator.pic"/>"/></a>--%>
-        <%--</div>--%>
-
-        <%--<div class="viewLeft fl">--%>
-            <%--<p class="title">--%>
-                <%--<a class="title" href="liveChannelBlog.html?liveChannel.id=<s:property value="id"/>" title="<s:property value="name"/>"><s:property value="name"/></a>--%>
-                <%--<a class="watch orange_words" href="liveChannelBlog.html?liveChannel.id=<s:property value="id"/>"><s:property value="%{getText('gogowise.things.details')}"/></a>--%>
-            <%--</p>--%>
-            <%--<p class="info">--%>
-                <%--<span><span class="orange_words"><s:date name="createTime" format="%{getText('dateformat')}"/></span></span>&nbsp;&nbsp;|&nbsp;&nbsp;--%>
-                <%--<span><span class="orange_words"> <s:property value="fansNum"/>&nbsp;</span><s:property value="%{getText('course.blog.purchase.num')}"/></span>&nbsp;&nbsp;|&nbsp;&nbsp;--%>
-                <%--&lt;%&ndash;<span><span class="orange_words"> 247&nbsp;</span>推荐</span> &nbsp;&nbsp;|&nbsp;&nbsp;&ndash;%&gt;--%>
-                <%--<span><s:property value="%{getText('course.blog.total.terms')}"/><span class="orange_words"> <s:property value="totalTermsNum"/>&nbsp;</span><s:property value="%{getText('course.blog.total.terms.tail')}"/></span>--%>
-            <%--</p>--%>
-            <%--<p><s:property value="description"/></p>--%>
-        <%--</div>--%>
-
-    <%--</div>--%>
-    <%--</s:iterator>--%>
 </div>
 
 <script type="text/javascript">

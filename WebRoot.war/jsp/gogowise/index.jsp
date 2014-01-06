@@ -35,34 +35,36 @@
 <div class="container">
 
     <ul class="bxslider">
-        <li>
-            <img src="../../images/index/pic1.jpg" class="bannerImg" />
-        </li>
-        <li>
-            <img src="../../images/index/pic2.jpg" class="bannerImg" />
-        </li>
-        <li>
-            <img src="../../images/index/pic3.jpg" class="bannerImg" />
-        </li>
-        <li>
-            <img src="../../images/index/pic4.jpg" class="bannerImg" />
-        </li>
+        <li><img src="../../images/index/pic1.jpg" class="bannerImg" /></li>
+        <li><img src="../../images/index/pic2.jpg" class="bannerImg" /></li>
+        <li><img src="../../images/index/pic3.jpg" class="bannerImg" /></li>
+        <li><img src="../../images/index/pic4.jpg" class="bannerImg" /></li>
     </ul>
 
+    <%--<s:form method="post" action="searchResult" theme="simple" validate="true">--%>
 
-    <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-6">
-            <input class="form-control input-lg" type="text" placeholder="<s:property value="%{getText('menu.item.search')}"/>"></div>
-        <div class="col-sm-4">
-            <button type="button" class="btn btn-default btn-lg">
-                <%--<span class="glyphicon glyphicon-search"></span>--%>
-                <img src="../../images/index/search_btn_bg.png" />
-                <s:property value="%{getText('menu.item.search')}"/>
-            </button>
+        <%--<s:hidden name="searchType" value="1"/>--%>
+        <%--&lt;%&ndash;<input name="courseName" class="keyWords"/>&ndash;%&gt;--%>
+        <%--<s:textfield cssClass="keyWords" name="searchStr" />--%>
+        <%--<input type="hidden" name="searchTyp" value="1"/>--%>
+        <%--<input class="searchButton" type="submit" value="" />--%>
+        <%--&lt;%&ndash;<a class="searchButton" href="search.html"></a>&ndash;%&gt;--%>
+    <%--</s:form>--%>
+    <s:form method="post" action="searchAnswer" theme="simple" validate="true">
+        <%-- <s:hidden name="searchType" value="4"/> --%>
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-6">
+                <s:textfield cssClass="form-control input-lg" name="searchStr" placeholder="search"  ></s:textfield>
+            </div>
+            <div class="col-sm-4">
+                <button type="submit" class="btn btn-default btn-lg">
+                    <span class="glyphicon glyphicon-search"></span>
+                    <s:property value="%{getText('menu.item.search')}"/>
+                </button>
+            </div>
         </div>
-    </div>
-
+    </s:form>
 </div>
 
 <br/>
@@ -71,20 +73,22 @@
     <div class="row">
         <div class="col-sm-6">
 
-            <div class="courseSubhead"><s:property value="%{getText('usermenu.item.newestcourses')}"/></div>
+            <div class="pull-left"><img src="../../images/index/icon_new.png"  /></div>
+            <div class="pull-left"><div class="courseSubhead"><s:property value="%{getText('usermenu.item.newestcourses')}"/></div></div>
+            <div class="clearfix"></div>
 
             <s:iterator value="Courses" status="status">
                 <s:if test="#status.index<4">
                     <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>">
-                        <div class=coursePanel>
+                        <div class="coursePanel">
                             <div class="coursePanelInfoLeft">
                                 <img class="coursePanelPortrait" src="<s:property value="logoUrl"/>"/>
                             </div>
 
                             <div class="coursePanelInfoRight">
-                                <p><s:property value="name"/></p>
-                                <p>School:MITx</p>
-                                <p>Clases start: <s:date name="publicationTime" format="%{getText('dateformat.forclass')}"/></p>
+                                <p class="textOverSinglerow"><s:property value="name"/></p>
+                                <p class="textOverSinglerow"><s:property value="%{getText('course.school')}"/>:<s:property value="organization.schoolName" /></p>
+                                <p class="textOverSinglerow"><s:property value="%{getText('label.index.classes.start')}"/><%-- Clases start--%>: <s:date name="publicationTime" format="%{getText('dateformat.forclass')}"/></p>
                             </div>
                         </div>
                     </a>
@@ -107,11 +111,14 @@
             <%--</a>--%>
 
 
-            <a href="#"><p class="text-right">more</p></a>
+            <a href="#"><p class="text-right"><s:property value="%{getText('others.more')}"/></p></a>
         </div>
-        <div class="col-sm-6">
 
-            <div class="courseSubhead">MOOC</div>
+        <div class="col-sm-6">
+            <div class="pull-left"><img src="../../images/index/icon_MOOC.png"  /></div>
+            <div class="pull-left"><div class="courseSubhead"><s:property value="%{getText('usermenu.item.mooc')}"/></div></div>
+            <div class="clearfix"></div>
+
             <s:iterator value="Courses" status="status">
                 <s:if test="#status.index<4">
                     <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>">
@@ -120,30 +127,16 @@
                                 <img class="coursePanelPortrait" src="<s:property value="logoUrl"/>" />
                             </div>
                             <div class="coursePanelInfoRight">
-                                <p><s:property value="name"/></p>
-                                <p>School:MITx</p>
-                                <p>Clases start: <s:date name="publicationTime" format="%{getText('dateformat.forclass')}"/></p>
+                                <p class="textOverSinglerow"><s:property value="name"/></p>
+                                <p class="textOverSinglerow"><s:property value="%{getText('course.school')}"/>:<s:property value="organization.schoolName" /></p>
+                                <p class="textOverSinglerow"><s:property value="%{getText('label.index.classes.start')}"/>: <s:date name="publicationTime" format="%{getText('dateformat.forclass')}"/></p>
                             </div>
                         </div>
                     </a>
                 </s:if>
             </s:iterator>
 
-            <!--Panel4 -->
-            <%--<a href="">--%>
-                <%--<div class="coursePanel">--%>
-                    <%--<div class="coursePanelInfoLeft">--%>
-                        <%--<img class="coursePanelPortrait" src="gogowisestyle/image/recommended3.jpg"  />--%>
-
-                    <%--</div>--%>
-                    <%--<div class="coursePanelInfoRight">--%>
-                        <%--<p>Pellentesque habitant morbi tristique senectus.</p>--%>
-                        <%--<p>School:MITx</p>--%>
-                        <%--<p>Clases start:16 Oct 2013</p>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</a>--%>
-            <a href="#"><p class="text-right">more</p></a>
+            <a href="#"><p class="text-right"><s:property value="%{getText('others.more')}"/></p></a>
 
         </div>
     </div>
@@ -152,26 +145,37 @@
 <div class="container">
     <ul class="bxsliderLogolist">
 
-        <%--<li>--%>
-            <%--<img src="../../images/index/orgLogolist1.jpg" alt="">--%>
-        <%--</li>--%>
-        <%--<li>--%>
-            <%--<img src="../../images/index/orgLogolist2.jpg" alt="">--%>
-        <%--</li>--%>
-        <%--<li>--%>
-            <%--<img src="../../images/index/orgLogolist3.jpg" alt="">--%>
-        <%--</li>--%>
+<%--         <ul class="bxsliderLogolist">
+          <li>
+            <ul class="list-inline">
+            <li><a href="#"><img src="gogowisestyle/image/orgLogo1.jpg" alt="" class="popOrgLogo"></a></li>
+            <li><a href="#"><img src="gogowisestyle/image/orgLogo2.jpg" alt="" class="popOrgLogo"></a></li>
+            <li><a href="#"><img src="gogowisestyle/image/orgLogo3.jpg" alt="" class="popOrgLogo"></a></li>
+            <li><a href="#"><img src="gogowisestyle/image/orgLogo4.jpg" alt="" class="popOrgLogo"></a></li>
+          </ul>
 
-        <s:iterator value="OrganizationDao.findOngoingForAdmin()" status="status">
-            <li>
-                <a href="orgBlog.html?org.id=<s:property value="id"/>" >
-                    <img style="height:150px;width: 1170px;"
-                         src="<s:property value="logoUrl" />"
-                         alt="<s:property value="schoolName"/>"
-                    />
-                </a>
-            </li>
-        </s:iterator>
+          </li>
+          <li>
+            <ul class="list-inline">  
+            <li><a href="#"><img src="gogowisestyle/image/orgLogo5.jpg" alt="" class="popOrgLogo"></a></li>
+            <li><a href="#"><img src="gogowisestyle/image/orgLogo6.jpg" alt="" class="popOrgLogo"></a></li>
+            <li><a href="#"><img src="gogowisestyle/image/orgLogo7.jpg" alt="" class="popOrgLogo"></a></li>
+            <li><a href="#"><img src="gogowisestyle/image/orgLogo8.jpg" alt="" class="popOrgLogo"></a></li>
+          </ul>
+          </li>
+        </ul>--%>
+
+            <s:iterator value="organizations" status="status">
+                <s:if test="#status.index%4==0"><li><ul class="list-inline"></s:if>
+
+                <li><a href="orgBlog.html?org.id=<s:property value="id"/>" >
+                    <img src="<s:property value="logoUrl" />"  alt="<s:property value="schoolName"/>" class="popOrgLogo" /></a>
+                </li>
+
+                <s:if test="#status.index%4==3"></ul></li></s:if>
+                <s:elseif test="#status.last"></ul></li></s:elseif>
+
+            </s:iterator>
     </ul>
 
 </div>

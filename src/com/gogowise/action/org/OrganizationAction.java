@@ -4,6 +4,7 @@ import com.gogowise.action.BasicAction;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.dao.CourseEvaluationDao;
+import com.gogowise.rep.org.OrgService;
 import com.gogowise.rep.org.dao.OrgMaterialDao;
 import com.gogowise.rep.org.dao.OrganizationCommentDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
@@ -27,6 +28,7 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
+import org.jsoup.Jsoup;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -37,6 +39,9 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Map;
+import java.util.HashMap;
 
 
 @Controller
@@ -52,12 +57,12 @@ public class OrganizationAction extends BasicAction {
     private CourseDao courseDao;
 
     private OrganizationDao organizationDao;
-    private CourseEvaluationDao courseEvaluationDao;
     private OrganizationCommentDao organizationCommentDao;
     private BaseUserDao baseUserDao;
     private List<OrgMaterial> orgMaterials = new ArrayList<OrgMaterial>();
     private OrgMaterial orgMaterial;
     private OrgMaterialDao orgMaterialDao;
+    private OrgService orgService;
 
     private BaseUser responser;
     private File upload;
@@ -65,9 +70,11 @@ public class OrganizationAction extends BasicAction {
     private File upload11;
     private String upload1FileName;
     private Organization org;
+    private List<Organization> organizations;
 
     private String organizationName;
     private List<Course> latestCourse;
+    private Course course;
     private List<Course> hotCourses;
     private List<CourseEvaluation> courseEvaluations;
     private List<OrganizationComment> comments;
@@ -75,6 +82,7 @@ public class OrganizationAction extends BasicAction {
 
     private List<BaseUser> hotTeachers;
     private List<BaseUser> latestTeachers;
+    private List<BaseUser> allTeachersForOrg;
     private String idCardUrl;
     private String hidFile1;
     private String hidFile2;
@@ -86,6 +94,104 @@ public class OrganizationAction extends BasicAction {
      private Integer commentsNum;
     private Boolean commentsNumOverflow = false;
 
+    private Integer schoolPageShowType; // 0: A-D, 1: E-H, 2: I-L, 3: M-P, 4:Q-T, 5: U-Z, 6: Other 7: Show all
+
+
+    @Action(value = "schoolCenter", results = {@Result(name=SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".schoolCenter")})
+    public String schoolCenter() {
+        List<Organization> allOrgs = organizationDao.findLatestOrgs(null);
+        Map<Character, List<Organization>> mapOrgs = new HashMap<Character, List<Organization> >();
+        for (Organization org : allOrgs) {
+            if (org.getSchoolName() == null || org.getSchoolName().equals(""))
+                continue;
+            char c = Character.toUpperCase(org.getSchoolName().trim().charAt(0));
+            if ( c >= 'A' && c <= 'Z' ) {
+                if (mapOrgs.containsKey(c)) {
+                    List<Organization> tmp = mapOrgs.get(c);
+                    tmp.add(org);
+                    mapOrgs.put(c, tmp);
+                }
+                else {
+                    List<Organization> tmpList = new ArrayList<Organization>();
+                    tmpList.add(org);
+                    mapOrgs.put(c, tmpList);
+                }
+            }
+            else {
+                c = '#';  // others
+                if (mapOrgs.containsKey(c)) {
+                    List<Organization> tmpList = mapOrgs.get(c);
+                    tmpList.add(org);
+                    mapOrgs.put(c, tmpList);
+                }
+                else {
+                    List<Organization> tmpList = new ArrayList<Organization>();
+                    tmpList.add(org);
+                    mapOrgs.put(c, tmpList);
+                }
+            }
+        }
+
+        if (this.getSchoolPageShowType() != null ) {
+            String range = "";
+            switch (this.getSchoolPageShowType()) {
+                case 0: // A-D
+                    range = "ABCD";
+                    break;
+                case 1: // E-H
+                    range = "EFGH";
+                    break;
+                case 2: // I-L
+                    range =  "IJKL";
+                    break;
+                case 3: // M-P
+                    range = "MNOP";
+                    break;
+                case 4: // Q-T
+                    range =  "QRST";
+                    break;
+                case 5: //U-Z
+                    range = "UVWXYZ";
+                    break;
+                case 6: // Other
+                    range = "#";
+                    break;
+                default: // show all
+                    range = "";
+                    break;
+            }
+            if ( !range.equals("")) {
+                if (this.organizations == null)
+                    this.organizations = new ArrayList<>();
+                else
+                    this.organizations.clear();
+                for (char c: range.toCharArray()) {
+                    if (mapOrgs.containsKey(c)) {
+                        this.organizations.addAll(mapOrgs.get(c));
+                    }
+                }
+            }
+            else {
+                this.organizations =  allOrgs;
+            }
+        }
+        else { // first time in schoolcenter page
+            if (this.organizations == null)
+                this.organizations = new ArrayList<>();
+            else
+                this.organizations.clear();
+            String range = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#";
+            for (char c: range.toCharArray()) {
+                if (mapOrgs.containsKey(c)) {
+                    this.organizations.addAll(mapOrgs.get(c));
+                }
+            }
+        }
+
+        return SUCCESS;
+    }
+
+
     @Action(value = "orgBlog",
             results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgBlog")}
     )
@@ -94,19 +200,20 @@ public class OrganizationAction extends BasicAction {
         this.org = organizationDao.findById(orgId);
 
         latestCourse = courseDao.findLatestCourseByOrg(orgId, new Pagination(3));
-
+        if (latestCourse != null && latestCourse.size() > 0)
+            course = latestCourse.get(0);
         hotCourses = courseDao.findHotCoursesByOrg(orgId, new Pagination(4));
 
-        courseEvaluations = courseEvaluationDao.findByOrganizationId(new Pagination(3), orgId);
         Pagination page  = new Pagination(10);
         comments = organizationCommentDao.findOrgCommentByOrgId(orgId, page);
+
         this.setCommentsNum(comments.size());
         if(page.getTotalSize() <= commentsNum){
             this.setCommentsNumOverflow(true);
         }
         hotTeachers = organizationDao.findHotTeacherByOrgId(orgId, new Pagination(4));
         latestTeachers = organizationDao.findLatestTeacherByOrgId(orgId, new Pagination(6));
-
+        allTeachersForOrg = orgService.findAllTeachersForOrg(orgId);
         return SUCCESS;
     }
 
@@ -513,13 +620,6 @@ public class OrganizationAction extends BasicAction {
         this.organizationDao = organizationDao;
     }
 
-    public CourseEvaluationDao getCourseEvaluationDao() {
-        return courseEvaluationDao;
-    }
-
-    public void setCourseEvaluationDao(CourseEvaluationDao courseEvaluationDao) {
-        this.courseEvaluationDao = courseEvaluationDao;
-    }
 
     public OrganizationCommentDao getOrganizationCommentDao() {
         return organizationCommentDao;
@@ -729,11 +829,36 @@ public class OrganizationAction extends BasicAction {
         this.orgMaterialDao = orgMaterialDao;
     }
 
+    public OrgService getOrgService () {
+        return this.orgService;
+    }
+
+    public  void setOrgService (OrgService orgService) {
+        this.orgService = orgService;
+    }
+
     public Integer getOrgCourseNum(){
         return courseDao.findByOrg(this.getOrg().getId(),null).size();
     }
     public Integer getStudentsNum(){
         return getStudents().size();
+    }
+    public Integer getStudentsNumByOrgId (Integer orgId) {
+        if (orgId == null || orgId < 0)
+            return 0;
+        List<BaseUser> students = new ArrayList<BaseUser>();
+        for(Course c : courseDao.findByOrg(orgId, null)){
+            for(SeniorClassRoom sc : c.getSeniorClassRooms()){
+                Boolean exist = false;
+                for (BaseUser user : students){
+                    if(user.getId().equals(sc.getStudent().getId())) exist = true;
+                }
+                if(!exist){
+                    students.add(sc.getStudent());
+                }
+            }
+        }
+        return students.size();
     }
 
     public Integer getBestCoursesNum(){
@@ -755,6 +880,21 @@ public class OrganizationAction extends BasicAction {
         return students;
     }
 
+    public List<BaseUser> getAllTeachersForOrg () {
+        return this.allTeachersForOrg;
+    }
+
+    public void setAllTeachersForOrg (List<BaseUser> allTeachersForOrg) {
+        this.allTeachersForOrg = allTeachersForOrg;
+    }
+
+    public Integer getAllTeachersNum () {
+        if (allTeachersForOrg == null)
+            return 0;
+        return allTeachersForOrg.size();
+    }
+
+
     public Integer getCommentsNum() {
         return commentsNum;
     }
@@ -769,5 +909,37 @@ public class OrganizationAction extends BasicAction {
 
     public void setCommentsNumOverflow(Boolean commentsNumOverflow) {
         this.commentsNumOverflow = commentsNumOverflow;
+    }
+    public String getOrgCreateDate () {
+        SimpleDateFormat df=new SimpleDateFormat("yyyy/MM/dd");
+        return df.format(this.org.getCreateDate().getTime());
+    }
+    public  Course getCourse() {
+        return this.course;
+    }
+    public void setCourse (Course course) {
+        this.course = course;
+    }
+    public List<Organization> getOrganizations () {
+        return this.organizations;
+    }
+    public void setOrganizations (List<Organization> organizations) {
+        this.organizations = organizations;
+    }
+
+    public Integer getSchoolPageShowType () {
+        return this.schoolPageShowType;
+    }
+
+    public void setSchoolPageShowType (Integer schoolPageShowType) {
+        this.schoolPageShowType = schoolPageShowType;
+    }
+    public  String parseSchoolDescription (Integer orgId) {
+        Organization org = organizationDao.findById(orgId);
+        String orgDescription = org.getDescription();
+        if (orgDescription == null || orgDescription.equals(""))
+            return "";
+        String text = Jsoup.parse(orgDescription).text();
+        return text;
     }
 }

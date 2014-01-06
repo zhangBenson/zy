@@ -7,10 +7,8 @@ import com.gogowise.rep.course.dao.*;
 import com.gogowise.rep.org.dao.InterviewAppointerDao;
 import com.gogowise.rep.org.dao.InterviewDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
-import com.gogowise.rep.user.dao.BaseUserDao;
-import com.gogowise.rep.user.dao.InviteRelationshipDao;
+import com.gogowise.rep.user.dao.*;
 import com.gogowise.rep.finance.UserAccountInfoDao;
-import com.gogowise.rep.user.dao.UserRelationshipDao;
 import com.gogowise.rep.competition.enity.Competition;
 import com.gogowise.rep.competition.enity.CompetitionPhase;
 import com.gogowise.rep.competition.enity.CompetitionSession;
@@ -20,6 +18,8 @@ import com.gogowise.rep.finance.enity.UserAccountInfo;
 import com.gogowise.rep.org.enity.Interview;
 import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.user.enity.BaseUser;
+import com.gogowise.rep.user.enity.BaseUserRoleType;
+import com.gogowise.rep.user.enity.RoleType;
 import com.gogowise.rep.user.enity.UserRelationship;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.EmailUtil;
@@ -126,8 +126,12 @@ public class UserAction extends BasicAction {
     private String userPortraitName;
     private String newPassword;
     private boolean passwordChanged;
+    private BaseUserRoleTypeDao baseUserRoleTypeDao;
 
     private List<Course> courses = new ArrayList<Course>();
+
+    private String userRoleType;
+    private BaseUserRoleType baseUserRoleType;
 
     @Action(value = "initInviteFriend", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initInviteFriend") })
     public String initFriendsList() {
@@ -671,15 +675,24 @@ public class UserAction extends BasicAction {
         return SUCCESS;
     }
 
+    @Action(value = "initTeacherReg",
+            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".teacherReg")}
+    )
+    public String initTeacherReg() {
+        return SUCCESS;
+    }
+
+
     @Action(value = "postIl8nString")
     public void setTimezone() {
         ActionContext.getContext().getSession().put("timeZone", il8nStr);
     }
 
     @Action(value = "logon",
-            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}),
+            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "studentCenter"}),
                     @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".easyLogin"),
-                    @Result(name = "redirect", type = "redirect", location = "${reDirectUrl}")
+                    @Result(name = "redirect", type = "redirect", location = "${reDirectUrl}"),
+                    @Result(name = "teacherCenter", type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"} )
             }
     )
     public String logon() {
@@ -718,9 +731,11 @@ public class UserAction extends BasicAction {
         } else if (organizationDao.findByResId(user.getId()) != null) {
             this.setReDirectUrl("organizationMatter.html");
             return "redirect";
+        } else if (baseUserRoleTypeDao.havePermission(user.getId(), RoleType.TEACHER) ) {
+            return "teacherCenter";
         }
+
         return SUCCESS;
-//        }
     }
 
     @Action(value = "regSecLogonInit",
@@ -776,6 +791,46 @@ public class UserAction extends BasicAction {
         if(StringUtils.isNotBlank(this.getReDirectUrl())) {
             return "redirect";
         }
+        return SUCCESS;
+    }
+
+
+    @Action(value = "teacherReg",
+            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}),
+                    @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".easyReg"),
+                    @Result(name = "redirect", type = "redirect", location = "${reDirectUrl}")}
+    )
+    public String teacherReg() {
+
+        BaseUser localUser = baseUserDao.findByEmail(this.getUser().getEmail());
+        if(localUser != null) {
+            addFieldError("user.email", this.getText("reEmail"));
+            return INPUT;
+        }
+
+        user.setEmail(StringUtils.trim(user.getEmail()));
+        user.setNickName(StringUtils.trim(user.getNickName()));
+        user.setLockedOut(true);
+        user.setPassword(MD5.endCode(user.getPassword()));
+        user.setRegDate(Calendar.getInstance());
+        String md5 = MD5.endCode(String.valueOf(System.currentTimeMillis()));
+        user.setActiveCode(md5);
+        user.setLanguage( ActionContext.getContext().getLocale().getLanguage());
+        baseUserDao.persistAbstract(user);
+        if(ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL) == null){
+            sendEmail(user);
+        }
+        this.emailBoxUrl = EmailUtil.getEmailBoxUrl(user.getEmail());
+        setUserToSession(user);
+        setUserOrg(user);
+        if(StringUtils.isNotBlank(this.getReDirectUrl())) {
+            return "redirect";
+        }
+
+        baseUserRoleType.setBaseUser(user);
+        baseUserRoleType.getRoleType().setId(5);
+        baseUserRoleTypeDao.persist(baseUserRoleType);
+
         return SUCCESS;
     }
 
@@ -1482,5 +1537,27 @@ public class UserAction extends BasicAction {
 
     public void setCourses(List<Course> courses) {
         this.courses = courses;
+    }
+
+    public BaseUserRoleTypeDao getBaseUserRoleTypeDao(){
+        return baseUserRoleTypeDao;
+    }
+    public void setBaseUserRoleTypeDao(BaseUserRoleTypeDao baseUserRoleTypeDao) {
+        this.baseUserRoleTypeDao = baseUserRoleTypeDao;
+    }
+
+    public void setUserRoleType(String userRoleType ){
+        this.userRoleType = userRoleType;
+    }
+    public String getUserRoleType(){
+        return userRoleType;
+    }
+
+    public BaseUserRoleType getBaseUserRoleType(){
+        return baseUserRoleType;
+    }
+
+    public void setBaseUserRoleType(BaseUserRoleType baseUserRoleType){
+        this.baseUserRoleType = baseUserRoleType;
     }
 }

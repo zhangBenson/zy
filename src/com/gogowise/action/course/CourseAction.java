@@ -48,7 +48,6 @@ public class CourseAction extends BasicAction {
     private BaseUserDao baseUserDao;
     private CourseDao courseDao;
     private OrganizationDao organizationDao;
-    private CourseEvaluationDao courseEvaluationDao;
     private CourseCommentDao courseCommentDao;
     private CourseResourceDao courseResourceDao;
     private CourseQuestionDao courseQuestionDao;
@@ -108,9 +107,12 @@ public class CourseAction extends BasicAction {
     private List<Organization> organizations = new ArrayList<>();
     private GoGoWiseAnnounceDao goGoWiseAnnounceDao;
     private List<GoGoWiseAnnounce> goGoWiseAnnounces =new ArrayList<>();
-    private List<BaseUser> teachers = new ArrayList<>();
+    private Set<BaseUser> teachers = new HashSet<>();
     private CourseService courseService;
     private List<Integer> teacherIds;
+
+    private Integer coursePageShowType; // 0: A-D, 1: E-H, 2: I-L, 3: M-P, 4:Q-T, 5: U-Z, 6: Other 7: Show all
+    private List<Course> centerCourses;
 
 //    @Action(value = "search",
 //            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".listClass")}
@@ -127,6 +129,99 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
+    @Action(value = "courseCenter",results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseCenter")})
+    public String courseCenter() {
+        List<Course> allCourses = courseDao.findlatestCourses(null);
+
+        Map<Character,List<Course>> mapCourses = new HashMap<Character, List<Course>>();
+        for (Course cs : allCourses) {
+            if (cs.getName() == null || cs.getName().equals(""))
+                continue;
+            char c = Character.toUpperCase(cs.getName().trim().charAt(0));
+            if ( c >= 'A' && c <= 'Z' ) {
+                if (mapCourses.containsKey(c)) {
+                    List<Course>  tmp = mapCourses.get(c);
+                    tmp.add(cs);
+                    mapCourses.put(c, tmp);
+                }
+                else {
+                    List<Course> tmpList = new ArrayList<Course>();
+                    tmpList.add(cs);
+                    mapCourses.put(c, tmpList);
+                }
+            }
+            else {
+                c = '#';  // others
+                if (mapCourses.containsKey(c)) {
+                    List<Course> tmpList = mapCourses.get(c);
+                    tmpList.add(cs);
+                    mapCourses.put(c, tmpList);
+                }
+                else {
+                    List<Course> tmpList = new ArrayList<Course>();
+                    tmpList.add(cs);
+                    mapCourses.put(c, tmpList);
+                }
+            }
+        }
+
+        if (this.getCoursePageShowType() != null ) {
+            String range = "";
+            switch (this.getCoursePageShowType()) {
+                case 0: // A-D
+                    range = "ABCD";
+                    break;
+                case 1: // E-H
+                    range = "EFGH";
+                    break;
+                case 2: // I-L
+                    range =  "IJKL";
+                    break;
+                case 3: // M-P
+                    range = "MNOP";
+                    break;
+                case 4: // Q-T
+                    range =  "QRST";
+                    break;
+                case 5: //U-Z
+                    range = "UVWXYZ";
+                    break;
+                case 6: // Other
+                    range = "#";
+                    break;
+                default: // show all
+                    range = "";
+                    break;
+            }
+            if ( !range.equals("")) {
+                if (this.centerCourses == null)
+                    this.centerCourses = new ArrayList<>();
+                else
+                    this.centerCourses.clear();
+                for (char c: range.toCharArray()) {
+                    if (mapCourses.containsKey(c)) {
+                        this.centerCourses.addAll(mapCourses.get(c));
+                    }
+                }
+            }
+            else {
+                this.centerCourses =  allCourses;
+            }
+        }
+        else { // first time in courseCenter page
+            if (this.centerCourses == null)
+                this.centerCourses = new ArrayList<>();
+            else
+                this.centerCourses.clear();
+            String range = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#";
+            for (char c: range.toCharArray()) {
+                if (mapCourses.containsKey(c)) {
+                    this.centerCourses.addAll(mapCourses.get(c));
+                }
+            }
+        }
+        return SUCCESS;
+    }
 
     @Action(value = "courseSquare",results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseSquare")})
     public String courseSquare() {
@@ -252,16 +347,31 @@ public class CourseAction extends BasicAction {
             course.setTeachingNum(this.getIdentity());
         }
 
-        // copy jpg
-        if(StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(),"upload/")){
-            Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
-        }
 
         // Save course
         CourseSpecification specification = CourseSpecification.create(course, this.getSessionUserId(), this.getCourseType(), this.getTeacherIds());
         courseService.saveCourse(specification);
 
         course = courseService.findById(course.getId());
+
+
+//        // copy jpg
+//        if(StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(),"upload/")){
+//            Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
+//        }
+
+        // copy jpg
+        if(StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(),"upload/"))
+        {
+            //Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
+            String courseDir = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_COURSE_PATH);
+            courseDir = courseDir + File.separator + course.getId();
+
+            File temp = new File(courseDir); if( !temp.exists() ) temp.mkdirs();
+
+            Utils.notReplaceFileFromTmpModified(temp.getAbsolutePath(), course.getLogoUrl());
+            course.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + course.getId() + "/" + course.getLogoUrl());
+        }
 
 
         if (course.getClasses() == null) {
@@ -601,9 +711,18 @@ public class CourseAction extends BasicAction {
        Course existCourse = courseDao.findById(this.getCourse().getId());
        if(StringUtils.isNotBlank(course.getName())) existCourse.setName(course.getName());
        if(StringUtils.isNotBlank(course.getDescription())) existCourse.setDescription(course.getDescription());
-       if(StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(),"upload/") && !StringUtils.equals(course.getLogoUrl(),Constants.DEFAULT_COURSE_IMAGE)){
-             Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
-             existCourse.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId()+"/"+course.getLogoUrl());
+       if(StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(),"upload/") && !StringUtils.equals(course.getLogoUrl(),Constants.DEFAULT_COURSE_IMAGE))
+       {
+           String courseDir = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_COURSE_PATH);
+           courseDir = courseDir + File.separator + course.getId();
+
+           File temp = new File(courseDir); if( !temp.exists() ) temp.mkdirs();
+
+           Utils.notReplaceFileFromTmpModified(temp.getAbsolutePath(), course.getLogoUrl());
+
+           //Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
+           //existCourse.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId()+"/"+course.getLogoUrl());
+           existCourse.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + course.getId()+"/"+course.getLogoUrl());
        }
        if(existCourse.getOrganization()!=null && this.getTeacherEmail() != null && !existCourse.getTeacherEmail().endsWith(this.getTeacherEmail())){
            this.setTeacherChange(true);
@@ -1160,14 +1279,6 @@ public class CourseAction extends BasicAction {
         this.classRoomDao = classRoomDao;
     }
 
-
-    public CourseEvaluationDao getCourseEvaluationDao() {
-        return courseEvaluationDao;
-    }
-
-    public void setCourseEvaluationDao(CourseEvaluationDao courseEvaluationDao) {
-        this.courseEvaluationDao = courseEvaluationDao;
-    }
 
 
     public Course getCourse() {
@@ -1804,11 +1915,11 @@ public class CourseAction extends BasicAction {
         this.courseService = courseService;
     }
 
-    public List<BaseUser> getTeachers() {
+    public Set<BaseUser> getTeachers() {
         return teachers;
     }
 
-    public void setTeachers(List<BaseUser> teachers) {
+    public void setTeachers(Set<BaseUser> teachers) {
         this.teachers = teachers;
     }
 
@@ -1819,4 +1930,21 @@ public class CourseAction extends BasicAction {
     public void setTeacherIds(List<Integer> teacherIds) {
         this.teacherIds = teacherIds;
     }
+
+    public Integer getCoursePageShowType () {
+        return this.coursePageShowType;
+    }
+
+    public void setCoursePageShowType (Integer coursePageShowType) {
+        this.coursePageShowType = coursePageShowType;
+    }
+
+    public List<Course> getCenterCourses () {
+        return  this.centerCourses;
+    }
+
+    public void setCenterCourses (List<Course> centerCourses) {
+        this.centerCourses = centerCourses;
+    }
+
 }

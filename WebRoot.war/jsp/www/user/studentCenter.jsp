@@ -41,24 +41,24 @@
 
 		<div class="col-sm-4">
 			<div class="basePanelshadow" style="text-align: center;">
-				<div class="basePanelGrey">Hall(School name)</div>
+				<div class="basePanelGrey"  style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><s:property value="%{getText('personalcenter.hall')}"/>(<s:property value="userOrganization.schoolName"/>)</div>
 				<br/>				
 				<div class="list-group">
 
 					<a href="#" class="list-group-item active">
-						<img src="gogowisestyle/image/icon_video_action.png" class="centerIcon">
+						<img src="../../../images/studentcenter/icon_video_action.png" class="centerIcon">
 						<h4 class="list-group-item-heading">The choice of computer is dictated by our special needs.</h4>
 						<p class="list-group-item-text">20:00-22:00</p>
-						<p class="list-group-item-text">Lecturer:Name</p>
+						<p class="list-group-item-text"><s:property value="%{getText('courses.info.lecturer')}" />:Name</p>
 					</a>
 
 					<a href="#" class="list-group-item">
-						<img src="gogowisestyle/image/icon_video.png" class="centerIcon">
+						<img src="../../../images/studentcenter/icon_video.png" class="centerIcon">
 						<h4 class="list-group-item-heading">
 							Students are flocking to such fields as genetics and molecular biology.
 						</h4>
 						<p class="list-group-item-text">15:00-17:00</p>
-						<p class="list-group-item-text">Lecturer:Name</p>
+						<p class="list-group-item-text"><s:property value="%{getText('courses.info.lecturer')}" />:Name</p>
 					</a>
 
 					<a href="#" class="list-group-item">
@@ -66,16 +66,16 @@
 							As these trends continue, what will happen to the desktop and where will it live?
 						</h4>
 						<p class="list-group-item-text">9:00-11:30</p>
-						<p class="list-group-item-text">Lecturer:Name</p>
+						<p class="list-group-item-text"><s:property value="%{getText('courses.info.lecturer')}" />:Name</p>
 					</a>
 					
 					<a href="#" class="list-group-item">
 
 						<h4 class="list-group-item-heading">This is a seminar for mathematics majors......</h4>
 						<p class="list-group-item-text">14:00-14:30</p>
-						<p class="list-group-item-text">Lecturer:Name</p>
+						<p class="list-group-item-text"><s:property value="%{getText('courses.info.lecturer')}" />:Name</p>
 					</a>
-					<button type="button" class="btn btn-primary btn-xs btn-block">View School Video</button>
+					<button type="button" class="btn btn-primary btn-xs btn-block"><s:property value="%{getText('personalcenter.hall.view.school.video')}"/><%--View School Video--%></button>
 					<div id="page">
 						<ul class="pagination">
 							<li>
@@ -106,14 +106,14 @@
 			</div>
 			<br/>
 			<div class="basePanelshadow">
-				<div class="basePanelBlueGrey">Discussion Room</div>
+				<div class="basePanelBlueGrey" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><s:property value="%{getText('label.course.discussion.room')}"/>(<s:property value="userOrganization.schoolName"/>)</div>
 
 				<br/>
 				<div class="list-group">
 					<a href="#" class="list-group-item active">
 						<h4 class="list-group-item-heading">The choice of computer is dictated by our special needs.</h4>
 						<p class="list-group-item-text">20:00-22:00</p>
-						<p class="list-group-item-text">Lecturer:Name</p>
+						<p class="list-group-item-text"><s:property value="%{getText('courses.info.lecturer')}" />:Name</p>
 					</a>
 
 					<a href="#" class="list-group-item">
@@ -121,7 +121,7 @@
 							Students are flocking to such fields as genetics and molecular biology.
 						</h4>
 						<p class="list-group-item-text">15:00-17:00</p>
-						<p class="list-group-item-text">Lecturer:Name</p>
+						<p class="list-group-item-text"><s:property value="%{getText('courses.info.lecturer')}" />:Name</p>
 					</a>
 
 					<a href="#" class="list-group-item">
@@ -129,36 +129,58 @@
 							As these trends continue, what will happen to the desktop and where will it live?
 						</h4>
 						<p class="list-group-item-text">9:00-11:30</p>
-						<p class="list-group-item-text">Lecturer:Name</p>
+						<p class="list-group-item-text"><s:property value="%{getText('courses.info.lecturer')}" />:Name</p>
 					</a>
 
 				</div>
-				<button type="button" class="btn btn-success btn-lg btn-block">Booking</button>
-
+				<button type="button" class="btn btn-success btn-lg btn-block"><s:property value="%{getText('button.enter')}"/><%--Booking--%></button>
+                <div id="page1">
+                    <ul class="pagination">
+                        <li>
+                            <a href="#">&laquo;</a>
+                        </li>
+                        <li>
+                            <a href="#">1</a>
+                        </li>
+                        <li>
+                            <a href="#">2</a>
+                        </li>
+                        <li class="active">
+                            <a href="#">3</a>
+                        </li>
+                        <li>
+                            <a href="#">4</a>
+                        </li>
+                        <li>
+                            <a href="#">5</a>
+                        </li>
+                        <li>
+                            <a href="#">&raquo;</a>
+                        </li>
+                    </ul>
+                </div>
 			</div>
 		</div>
 
 		<div class="col-sm-8">
-
 			<div class="row">
 				<div class="col-sm-8">
-					
 					<div class="basePanelTextLeftAbsolute">
-						<h3 class="courseSubhead">My courses</h3>
+						<h3 class="courseSubhead"><s:property value="%{getText('usermenu.item.mycourses')}"/></h3>
 						<s:if test="existLatestCourse">
 							<s:iterator value="latestCourse" status="idx">
 								<s:if test="#idx.getIndex() == 0">
 									<ul class="list-inline" style="background-color: #6ab600;color: #fff;border-radius: 4px; padding-top: 3px;padding-bottom: 3px;">		
-										<li><a class="a_1" href="javascript:;"><s:property value="%{getText('class.count',{classOneTheCornerSequence})}"/></a></li>
-										<li></li>
+										<li><a  href="javascript:;"><s:property value="%{getText('class.count',{classOneTheCornerSequence})}"/></a></li>
+
 										<li><s:property value="%{getText('courses.info.lecturer')}" />:<s:a action="userBlog"><s:param name="user.id"  value="teacher.id"/><s:property value="teacher.nickName"/></s:a></li>
-										<li></li>
+
 
 										<li>
 											
 											<%-- <div id="remainSeconds" style="display:none">100000</div>
 											<div id="remainTime" style="width: 134px;">Start:</div> --%>
-											<div style="width: 175px;">Start:<b id="timeLeft<s:property value="#idx.index"/>"></b></div>
+											<div style="width: 134px;"><s:property value="%{getText('courses.time.left')}" />&nbsp;<b id="timeLeft<s:property value="#idx.index"/>"></b></div>
 											<script type="text/javascript">
 						                        $("#timeLeft<s:property value="#idx.index"/>").countdown({
 						                                    date:'<s:date name="classOnTheCorner.date" format="%{getText('date.formate.firstpage.course.startdate')}" />',
@@ -174,7 +196,7 @@
 						                    </script>
 										</li>
 										<li style="margin-left: 40px;">
-											<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal">more</button>
+											<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal"><s:property value="%{getText('others.more')}"/></button>
 										</li>
 									</ul>
 
@@ -186,7 +208,13 @@
 										</a>
 										<div class="media-body">
 											<h4 class="media-heading" style="color: #6ab600;"><s:property value="name"/></h4>
-											<p><s:property value="description"/></p>
+                                            <s:if test="description.length() > 50">
+                                                <p></p><s:property value="description.substring(0,50)+'...'" /></p>
+                                            </s:if>
+                                            <s:else>
+                                                <p><s:property value="description"/></p>
+                                            </s:else>
+
 										</div>
 									</div>
 									<p class="text-right"><s:date name="classOnTheCorner.date" format="%{getText('dateformat.forclass')}"/></p>
@@ -199,18 +227,61 @@
 								</s:if>						
 							</s:iterator>
 						</s:if>
+                        <s:else>
+                            <ul class="list-inline" style="background-color: #6ab600;color: #fff;border-radius: 4px; padding-top: 3px;padding-bottom: 3px;">
+                                <div>
+                                    <s:property value="%{getText('personalcenter.no.course.message.head')}"/><a href="courseCenter.html"><strong> <s:property value="%{getText('frame.course.center')}"/> </strong></a><s:property value="%{getText('personalcenter.no.course.message.tail')}"/>
+                                    <%--You have no course registered. Please choose your courses in <a href="courseSquare.html">Course Centre</a>.--%>
+                                </div>
+                            </ul>
+                        </s:else>
 					</div>
 				</div>
 				<div class="col-sm-4">
+
+                    <div class="basePanelTextLeftAbsolute">
+                        <div  style="float: right;padding-top: 25px;">
+                            <%-- <button type="button" class="btn btn-success btn-xs">more</button>--%>
+                            <s:if test="matterCount != 0">
+                                <div id="matters_more" title="<s:property value="matterCount"/><s:property value="%{getText('my.firstpage.new.matter.num')}"/>">
+                                    <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal1"><s:property value="%{getText('others.more')}"/></button>
+                                </div>
+                            </s:if>
+                        </div>
+                        <h3 class="courseSubhead"><s:property value="%{getText('title.newest.matters')}"/></h3>
+                        <div class="thickline"></div>
+                        <div>
+                            <img src="images/user/icon_mail.png" class="centerIcon">
+                            <div class="messageGreen1"><s:property value="%{getText('label.course.message')}"/></div>
+                        </div>
+                        <div>
+                            <img src="images/user/icon_mail.png" class="centerIcon">
+                            <div class="messageGreen2"><s:property value="%{getText('label.comment.message')}"/></div>
+                        </div>
+                        <div>
+                            <img src="images/user/icon_mail.png" class="centerIcon">
+                            <div class="messageGreen3"><s:property value="%{getText('label.invitation.message')}"/></div>
+                        </div>
+                        <div>
+                            <img src="images/user/icon_mail.png" class="centerIcon">
+                            <div class="messageGreen4">Message 4</div>
+                        </div>
+                        <div>
+                            <img src="images/user/icon_mail.png" class="centerIcon">
+                            <div class="messageGreen5">Message 5</div>
+                        </div>
+                    </div>
+
+                    <%--
 					<div class="basePanelTextLeftAbsolute">
 						<div  style="float: right;padding-top: 25px;">
-							<%-- <button type="button" class="btn btn-success btn-xs">more</button> --%>
+
 							<s:if test="matterCount != 0">
 				                <div id="matters_more" title="<s:property value="matterCount"/><s:property value="%{getText('my.firstpage.new.matter.num')}"/>">
 				                	<button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal1"><s:property value="matterCount"/></button>
 				                </div>
 				            </s:if>
-				            <%-- <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal1">more</button> --%>
+
 				            
 						</div>
 						<h3 class="courseSubhead"><s:property value="%{getText('title.newest.matters')}"/></h3>
@@ -266,40 +337,33 @@
 			                </div>
 						</div>
 					</div>
+					--%>
 
 				</div>
 			</div>
 
 			<br/>
 			<div class="basePanelTextLeft">
-				<h3 class="courseSubhead">Recommend School</h3>
+				<h3 class="courseSubhead"><s:property value="%{getText('recommend.school')}"/></h3>
 				<div class="thickline"></div>
 
 				<div class="row">
-					<div class="col-sm-4">
-						<div class="recommendedSchool">
-							<img src="gogowisestyle/image/logo_school1.jpg" alt="">
-							<span>Introduction to Public Speaking</span>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="recommendedSchool">
-							<img src="gogowisestyle/image/logo_school2.jpg" alt="">
-							<span>Introduction to Public Speaking</span>
-						</div>
-					</div>
-
-					<div class="col-sm-4">
-						<a href="#">
-						<div class="recommendedSchool">
-							<img src="gogowisestyle/image/logo_school3.jpg" alt="">
-							<span>Introduction to Public Speaking</span>
-						</div>
-						</a>
-					</div>
+                    <s:iterator value="latestOrgs" status = "idx">
+                        <s:if test="#idx.getIndex() < 3">
+                            <div class="col-sm-4">
+                                <div class="recommendedSchool">
+                                    <div>
+                                    <a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="schoolName"/>"><img src="<s:property value="logoUrl"/>"/></a>
+                                    </div>
+                                    <br/>
+                                    <span><a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="schoolName"/>"><s:property value="schoolName"/></a></span>
+                                </div>
+                            </div>
+                        </s:if>
+                    </s:iterator>
 				</div>
 				<a href="#">
-					<p class="text-right">more</p>
+					<p class="text-right"><s:property value="%{getText('others.more')}"/></p>
 				</a>
 			</div>
 			<br/>
@@ -311,10 +375,11 @@
 						<s:if test="#idx.getIndex() < 6">
 		                	<div class="col-sm-4">
 		                		<div class="recommended">
-		                			<div class="mycourseImg ">
-				                    	<a class="img " href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"><img src="<s:property value="logoUrl"/>"/></a>
+		                			<div>
+				                    	<a  href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"><img src="<s:property value="logoUrl"/>"/></a>
 				                    </div>
-				                    <a class="title" href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"><s:property value="name"/></a>
+                                    <br/>
+				                    <a  href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"><s:property value="name"/></a>
 			                    </div>
 		              		</div>
 		              		<s:if test="#idx.getCount() % 3 == 0">
@@ -324,27 +389,47 @@
 	                </s:iterator>
 	            </div>
 				<a href="#">
-					<p class="text-right">more</p>
+					<p class="text-right"><s:property value="%{getText('others.more')}"/></p>
 				</a>
 			</div>
 		</div>
 	</div>
 </div>
 
-<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel"><s:property value="%{getText('title.newest.matters')}"/></h4>
+				<h4 class="modal-title" id="myModalLabel1"><s:property value="%{getText('title.newest.matters')}"/></h4>
 			</div>
 			<div class="modal-body">
+                <div>
+                    <img src="images/user/icon_mail.png" class="centerIcon">
+                    <div class="messageGreen1"><s:property value="%{getText('label.course.message')}"/></div>
+                </div>
+                <div>
+                    <img src="images/user/icon_mail.png" class="centerIcon">
+                    <div class="messageGreen2"><s:property value="%{getText('label.comment.message')}"/></div>
+                </div>
+                <div>
+                    <img src="images/user/icon_mail.png" class="centerIcon">
+                    <div class="messageGreen3"><s:property value="%{getText('label.invitation.message')}"/></div>
+                </div>
+                <div>
+                    <img src="images/user/icon_mail.png" class="centerIcon">
+                    <div class="messageGreen4">Message 4</div>
+                </div>
+                <div>
+                    <img src="images/user/icon_mail.png" class="centerIcon">
+                    <div class="messageGreen5">Message 5</div>
+                </div>
 				<div class="courseItem">
 					<div id="matters_content"></div>
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal"><s:property value="%{getText('button.ok')}"/></button>
 			</div>
 		</div>
 	</div>
@@ -356,7 +441,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel">Courses</h4>
+				<h4 class="modal-title" id="myModalLabel"><s:property value="%{getText('usermenu.item.mycourses')}"/></h4>
 			</div>
 			<div class="modal-body">
 				<div class="courseItem">
@@ -364,11 +449,11 @@
 						<s:iterator value="latestCourse" status="idx">
 							<s:if test="#idx.getIndex() > 0">
 								<ul class="list-inline" style="background-color: #6ab600;color: #fff;border-radius: 4px; padding-top: 3px;padding-bottom: 3px;">
-									<li><a class="a_1" href="javascript:;"><s:property value="%{getText('class.count',{classOneTheCornerSequence})}"/></a></li>
+									<li><a href="javascript:;"><s:property value="%{getText('class.count',{classOneTheCornerSequence})}"/></a></li>
 									<li><s:property value="%{getText('courses.info.lecturer')}" />:<s:a action="userBlog"><s:param name="user.id"  value="teacher.id"/><s:property value="teacher.nickName"/></s:a></li>
 
 									<li>
-										<div style="width: 175px;">Start:<b id="timeLeft<s:property value="#idx.index"/>"></b></div>
+										<div style="width: 175px;"><s:property value="%{getText('courses.time.left')}" />&nbsp;<b id="timeLeft<s:property value="#idx.index"/>"></b></div>
 										<script type="text/javascript">
 					                        $("#timeLeft<s:property value="#idx.index"/>").countdown({
 					                                    date:'<s:date name="classOnTheCorner.date" format="%{getText('date.formate.firstpage.course.startdate')}" />',
@@ -393,7 +478,12 @@
 									</a>
 									<div class="media-body">
 										<h4 class="media-heading" style="color: #6ab600;"><s:property value="name"/></h4>
-										<p><s:property value="description"/></p>
+                                        <s:if test="description.length() > 50">
+                                            <p></p><s:property value="description.substring(0,50)+'...'" /></p>
+                                        </s:if>
+                                        <s:else>
+                                            <p><s:property value="description"/></p>
+                                        </s:else>
 									</div>
 								</div>
 								<br/>
@@ -414,7 +504,7 @@
 		        </s:if>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal"><s:property value="%{getText('button.ok')}"/></button>
 			</div>
 		</div>
 	</div>

@@ -12,6 +12,7 @@ import com.gogowise.common.utils.MD5;
 import com.gogowise.common.utils.Utils;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.lang.StringUtils;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -20,6 +21,7 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import java.io.File;
 import java.util.List;
 
 @Controller
@@ -199,15 +201,33 @@ public class OrgForBackendAction extends BasicAction {
             orgSaved = this.org;
         }
 
-        if (StringUtils.isNotBlank(this.getLogoUrl())) {
-            Utils.replaceFileFromTmp(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + Constants.ORG_LOGO_PATH, this.getLogoUrl());
+        String userDir = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_USER_PATH);
+
+        if (StringUtils.isNotBlank(this.getLogoUrl()))
+        {
+            String logoDir = userDir + File.separatorChar  + getSessionUserId() + Constants.ORG_LOGO_PATH;
+
+            File temp = new File(logoDir);
+            if( !temp.exists() ) temp.mkdirs();
+
+            Utils.replaceFileFromTempModified(temp.getAbsolutePath(), this.getLogoUrl());
+
+            //Utils.replaceFileFromTmp(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + Constants.ORG_LOGO_PATH, this.getLogoUrl());
             orgSaved.setLogoUrl(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + Constants.ORG_LOGO_PATH + this.getLogoUrl());
         }else {
             orgSaved.setLogoUrl(Constants.DEFAULT_ORGANIZATION_IMAGE);
         }
 
-        if (StringUtils.isNotBlank(this.getLogoUrl())) {
-            Utils.replaceFileFromTmp(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + Constants.ORG_ADV_PATH, this.getLogoUrl());
+        if (StringUtils.isNotBlank(this.getLogoUrl()))
+        {
+            String advDir = userDir + File.separatorChar + getSessionUserId() +  Constants.ORG_ADV_PATH;
+
+            File advFile = new File(advDir);
+            if(!advFile.exists()) advFile.mkdirs();
+
+            Utils.replaceFileFromTempModified(advFile.getAbsolutePath(), this.getLogoUrl());
+
+            //Utils.replaceFileFromTmp(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + Constants.ORG_ADV_PATH, this.getLogoUrl());
             orgSaved.setAdvUrl(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + Constants.ORG_ADV_PATH + this.getLogoUrl());
         }
 

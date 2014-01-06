@@ -8,6 +8,8 @@ import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.dao.CourseEvaluationDao;
 import com.gogowise.rep.live.MyShowDao;
 import com.gogowise.rep.live.PersonalOnliveDao;
+import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.live.UserFansDao;
 import com.gogowise.rep.course.enity.BrowsedCourse;
@@ -42,7 +44,6 @@ public class UserBlogAction extends BasicAction {
 
     private BaseUserDao baseUserDao;
     private CourseDao courseDao;
-    private CourseEvaluationDao courseEvaluationDao;
     private CommentsDao commentsDao;
     private BrowsedCourseDao browsedCourseDao;
     private MyShowDao myShowDao;
@@ -66,6 +67,9 @@ public class UserBlogAction extends BasicAction {
     private Integer perOnlivTermsMaxSquence;
     private Integer biggestSquence;
     private Pagination pagination = new Pagination(5);
+    private OrganizationDao organizationDao;
+    private Organization userOrganization;
+
 
 
 
@@ -85,7 +89,6 @@ public class UserBlogAction extends BasicAction {
         personalOnlive = personalOnliveDao.findLatestOneForUser(userId, new Pagination(1));
         coursesAsTeacher = courseDao.findCourses2Teacher(userId, new Pagination(3));
         coursesAsStudent = courseDao.findCourses2Student(userId, new Pagination(4));
-        courseEvaluations = courseEvaluationDao.findByTeacherId(new Pagination(4), userId);
 
 
         personalOnlives = personalOnliveDao.findOnliveHistoryForUser(userId,pagination);
@@ -96,6 +99,7 @@ public class UserBlogAction extends BasicAction {
             this.setBiggestSquence(personalOnlives.get(0).getSequence());
         }
 
+        userOrganization = organizationDao.findMyOrg(userId);
 
         comments = commentsDao.findByCommentTo(user.getId(), new Pagination(10));
         myShows = myShowDao.findByUser(user.getId(),new Pagination(4));
@@ -208,14 +212,6 @@ public class UserBlogAction extends BasicAction {
 
     public void setCourseDao(CourseDao courseDao) {
         this.courseDao = courseDao;
-    }
-
-    public CourseEvaluationDao getCourseEvaluationDao() {
-        return courseEvaluationDao;
-    }
-
-    public void setCourseEvaluationDao(CourseEvaluationDao courseEvaluationDao) {
-        this.courseEvaluationDao = courseEvaluationDao;
     }
 
     public List<CourseEvaluation> getCourseEvaluations() {
@@ -455,5 +451,18 @@ public class UserBlogAction extends BasicAction {
 
     public void setPagination(Pagination pagination) {
         this.pagination = pagination;
+    }
+    public OrganizationDao getOrganizationDao () {
+        return this.organizationDao;
+    }
+    public void setOrganizationDao (OrganizationDao organizationDao) {
+        this.organizationDao = organizationDao;
+    }
+
+    public Organization getUserOrganization () {
+        return this.userOrganization;
+    }
+    public void setUserOrganization (Organization userOrganization) {
+        this.userOrganization = userOrganization;
     }
 }
