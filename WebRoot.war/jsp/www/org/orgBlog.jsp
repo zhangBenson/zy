@@ -247,7 +247,43 @@
                         <p></p>
                         <div><s:property value="%{getText('label.discussion.room.duration')}"/>:</div>
                         <p></p>
+
                         <div id="DisUserArea" style="text-align: center;">
+                            <s:if test="allTeachersNum != null">
+                                <div class="row">
+                                    <s:iterator value="allTeachersForOrg" status="idx">
+                                        <s:if test="#idx.index < 5">
+                                            <div class="col-md-4">
+                                                <a href="userBlog.html?user.id=<s:property value="id"/>" title="<s:property value="nickName"/>">
+                                                    <img  class="normalPortrait" src="<s:property value="pic" />"/>
+                                                </a>
+                                                <p class="textOverSinglerow"><s:property value="nickName"/></p>
+                                            </div>
+                                        </s:if>
+                                    </s:iterator>
+                                    <s:if test="allTeachersForOrg.size() < 5">
+                                        <s:iterator var="counter" begin="allTeachersForOrg.size() + 1" end = "5">
+                                            <div class="col-md-4">
+                                                <img src="/images/course/noportrait.jpg" class="normalPortrait"/>
+                                                <p class="textOverSinglerow">Available</p>
+                                            </div>
+                                        </s:iterator>
+                                    </s:if>
+                                </div>
+                            </s:if>
+                            <s:else>
+                                <div class="row">
+                                    <s:iterator var="counter" begin="1" end = "5">
+                                        <div class="col-md-4">
+                                            <img src="/images/course/noportrait.jpg" class="normalPortrait"/>
+                                            <p class="textOverSinglerow">Available</p>
+                                        </div>
+                                    </s:iterator>
+                                </div>
+                            </s:else>
+                        </div>
+
+                        <%-- <div id="DisUserArea" style="text-align: center;">
                             <div class="row">
                                 <div class="col-md-4">
                                     <img src="images/course/portrait2.jpg" class="normalPortrait"/>
@@ -288,7 +324,7 @@
                                     </div>
                                 </s:else>
                             </div>
-                        </div>
+                        </div>--%>
 						<br/>
 						<button type="button" class="btn btn-primary btn-block"><s:property value="%{getText('button.enter')}"/></button>
 					</div>
