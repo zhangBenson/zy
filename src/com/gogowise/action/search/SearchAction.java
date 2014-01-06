@@ -23,9 +23,11 @@ import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.jsoup.Jsoup;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 
 /**
@@ -62,6 +64,7 @@ public class SearchAction extends BasicAction{
     private  Integer hotType;
     private String searchStr;
     private Pagination pagination = new Pagination(4);
+
 
     @Action(value = "search", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".search")})
     public String initSearch() {
@@ -333,5 +336,14 @@ public class SearchAction extends BasicAction{
 
     public void setOrganizationCommentDao (OrganizationCommentDao organizationCommentDao) {
         this.organizationCommentDao = organizationCommentDao;
+    }
+
+    public  String parseSchoolDescription (Integer orgId) {
+        Organization org = organizationDao.findById(orgId);
+        String orgDescription = org.getDescription();
+        if (orgDescription == null || orgDescription.equals(""))
+            return "";
+        String text = Jsoup.parse(orgDescription).text();
+        return text;
     }
 }

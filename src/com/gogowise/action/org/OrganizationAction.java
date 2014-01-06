@@ -28,6 +28,7 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
+import org.jsoup.Jsoup;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -932,5 +933,13 @@ public class OrganizationAction extends BasicAction {
 
     public void setSchoolPageShowType (Integer schoolPageShowType) {
         this.schoolPageShowType = schoolPageShowType;
+    }
+    public  String parseSchoolDescription (Integer orgId) {
+        Organization org = organizationDao.findById(orgId);
+        String orgDescription = org.getDescription();
+        if (orgDescription == null || orgDescription.equals(""))
+            return "";
+        String text = Jsoup.parse(orgDescription).text();
+        return text;
     }
 }
