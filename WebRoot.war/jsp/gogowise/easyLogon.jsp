@@ -129,7 +129,7 @@
     <div id="register">
         <div id="regleft">
             <div id="regtitle"><s:property value="%{getText('member.login.label')}" /></div>
-            <div id="regtitle2"><s:property value="%{getText(member.login.center')}" /></div>
+            <div id="regtitle2"><s:property value="%{getText('member.login.center')}" /></div>
 
             <div id="links">
                 <br/>
