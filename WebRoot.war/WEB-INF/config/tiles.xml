@@ -17,6 +17,13 @@
         <put-attribute name="contentHeader" value="/jsp/layout/userheader.jsp"/>
         <put-attribute name="contentLeft" value="/jsp/layout/usermenu.jsp"/>
     </definition>
+
+    <definition name=".initUserCenter" template="/jsp/www/layout/user/layoutUserCenter.jsp">
+        <put-attribute name="top" value="/jsp/www/layout/top.jsp"/>
+        <put-attribute name="footer" value="/jsp/www/layout/footer.jsp"/>
+        <put-attribute name="contentLeft" value="/jsp/layout/usermenu.jsp"/>
+    </definition>
+
     <definition name=".listCenter" template="/jsp/layout/layoutOfList.jsp">
         <put-attribute name="header" value="/jsp/layout/header.jsp"/>
         <put-attribute name="bottom" value="/jsp/layout/footer.jsp"/>
@@ -342,10 +349,17 @@
         <put-attribute name="title" value="title.invite.friend"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/recomondFriend.jsp"/>
     </definition>
-    <definition name=".initUpdate" extends=".userCenter">
+    <!-- <definition name=".initUpdate" extends=".userCenter">
+        <put-attribute name="title" value="title.account.setting"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/updateUserInfo.jsp"/>
+    </definition>   -->
+
+    <definition name=".initUpdate" extends=".initUserCenter">
         <put-attribute name="title" value="title.account.setting"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/updateUserInfo.jsp"/>
     </definition>
+
+
     <definition name=".test" extends=".basic">
         <put-attribute name="right" value="/jsp/gogowise/test.jsp"/>
     </definition>
