@@ -82,7 +82,11 @@
                     <div style="float: right">
                         <div style="float:left"><a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="nickName"/>"><s:property value="%{getText('label.school.comments')}"/>(<s:property value="organizationCommentDao.findOrgCommentByOrgId(id, null).size()"/>)</a> | </div>
                         <div style="float:left" id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
-                            <a class="bds_more"><s:property value="%{getText('label.shared.with')}"/></a>
+                            <a class="bds_fbook facebook" title="Facebook"></a>
+                            <a class="bds_twi twitter" title="Twitter"></a>
+                            <a class="bds_linkedin LinkedIn" title="LinkedIn"></a>
+                            <a class="bds_deli delicious" title="Delicious"></a>
+                            <%-- <a class="bds_more"><s:property value="%{getText('label.shared.with')}"/></a> --%>
                         </div>
                         <script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
                         <script type="text/javascript" id="bdshell_js"></script>
