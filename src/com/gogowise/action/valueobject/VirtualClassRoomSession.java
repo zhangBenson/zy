@@ -10,23 +10,14 @@ public class VirtualClassRoomSession {
     public static final String DEFAULT_STATUS = "0";
     private Integer UserID = Constants.DEFAULT_INT_VALUE;
     private String UserName = Constants.DEFAULT_BLANK_VALUE;
-    private Integer Type = Constants.DEFAULT_INT_VALUE;//说明: 公开课是 1，才艺大比拼是2，我的个人秀是3, 个人家教是4
-    private String Title = Constants.DEFAULT_BLANK_VALUE; //course name
-    private String Abstract = Constants.DEFAULT_BLANK_VALUE; //课程摘要
-    private String Content = Constants.DEFAULT_BLANK_VALUE;  //course description
-    private Integer ClassID = Constants.DEFAULT_INT_VALUE;  //课堂的ClassId
+      private Integer ClassID = Constants.DEFAULT_INT_VALUE;  //课堂的ClassId
     private Integer CourseID = Constants.DEFAULT_INT_VALUE;//课堂所属课程的 Id
     private String Server = Constants.DEFAULT_BLANK_VALUE; //video 服务器地
-    private String UserLocation = Constants.DEFAULT_BLANK_VALUE;
     private String UserLogo =   Constants.DEFAULT_PERSON_IMAGE;
     private String ClassVer = DEFAULT_CLASS_VER;
     private String Status  = DEFAULT_STATUS;
 
     public void initWithSession(CourseClass courseClass){
-//        if(courseClass.getCourse().getPersonalTeacher()!=null) this.setType(4);
-        this.setTitle(getEmptyString(courseClass.getCourse().getName()));
-//        this.setAbstract(getEmptyString(""));
-//        this.setContent(getEmptyString(courseClass.getCourse().getDescription()));
         this.setClassID(getEmptyInteger(courseClass.getId()));
         this.setCourseID(getEmptyInteger(courseClass.getCourse().getId()));
     }
@@ -45,38 +36,6 @@ public class VirtualClassRoomSession {
 
     public void setUserName(String userName) {
         UserName = userName;
-    }
-
-    public Integer getType() {
-        return Type;
-    }
-
-    public void setType(Integer type) {
-        Type = type;
-    }
-
-    public String getTitle() {
-        return Title;
-    }
-
-    public void setTitle(String title) {
-        Title = title;
-    }
-
-    public String getAbstract() {
-        return Abstract;
-    }
-
-    public void setAbstract(String anAbstract) {
-        Abstract = anAbstract;
-    }
-
-    public String getContent() {
-        return Content;
-    }
-
-    public void setContent(String content) {
-        Content = content;
     }
 
     public Integer getClassID() {
@@ -101,14 +60,6 @@ public class VirtualClassRoomSession {
 
     public void setServer(String server) {
         Server = server;
-    }
-
-    public String getUserLocation() {
-        return UserLocation;
-    }
-
-    public void setUserLocation(String userLocation) {
-        UserLocation = userLocation;
     }
 
     public String getClassVer() {
