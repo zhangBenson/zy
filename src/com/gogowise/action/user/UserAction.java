@@ -689,7 +689,7 @@ public class UserAction extends BasicAction {
     }
 
     @Action(value = "logon",
-            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "studentCenter"}),
+            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "personalCenter"}),
                     @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".easyLogin"),
                     @Result(name = "redirect", type = "redirect", location = "${reDirectUrl}"),
                     @Result(name = "teacherCenter", type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"} )
