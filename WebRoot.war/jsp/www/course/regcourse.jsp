@@ -93,7 +93,7 @@
 
                  <div class="col-sm-6">
                         <%--<input type="button" class="btn btn-primary btn-lg btn-block" value="" id="reservationconfirmed"/> --%>
-                        <button type="button" class="btn btn-primary btn-lg btn-block" value="" id="reservationconfirmed">Confirm Registration</button>
+                        <button type="button" class="btn btn-primary btn-lg btn-block" value="" id="reservationconfirmed"><s:property value="%{getText('button.course.confirm.registration')}"/></button>
                  </div>
                 <div class="col-sm-6">
                     <%-- <button type="button" class="btn btn-danger btn-lg btn-block">Cancel</button> --%>
