@@ -57,10 +57,9 @@ body{
 
 .popOrgLogo
 {
-	width: 270px;
-	height: 116px;
+	width: 240px;
+	height: 103px;
 }
-
 
 .navlink
 {
@@ -72,6 +71,12 @@ body{
 .thickline
 {
 	height: 5px;width: 100%; background-color: #6ab600;margin-bottom: 10px;
+}
+
+.thick70
+{
+	height: 5px;width: 70%; background-color: #6ab600;margin-bottom: 25px;margin-top: 25px;
+
 }
 
 .thicklineExtra
@@ -1251,4 +1256,28 @@ a:hover .searchrecommendedItem  img
 .iconmic
 {
 	width: 10px;height: 17px;position: absolute;font-weight: lighter;font-size: 8px;font-family: Verdana, Geneva, sans-serif;left:65px;top:60px;background-image: url(../image/icon_mic.png);border-radius: 4px;
+}
+
+.roundPortraitLeft
+{
+	margin: 10px;
+	width: 120px;
+	height: 120px;
+	border-radius: 60px;
+	float: left;
+}
+
+
+.roundPortraitRight
+{
+	margin: 10px;
+	width: 120px;
+	height: 120px;
+	border-radius: 60px;
+	float: right;
+}
+
+.popItme
+{
+	width: 250px;
 }
