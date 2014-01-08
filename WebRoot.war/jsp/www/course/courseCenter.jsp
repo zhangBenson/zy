@@ -76,14 +76,14 @@
 <br/>
 <div style="text-align: center;">
     <ul class="pagination pagination-lg">
-        <li class="active"><a id="searchType0" href="javascript:startSearch(0);">A-D</a></li>
-        <li><a id="searchType1" href="javascript:startSearch(1);">E-H</a></li>
-        <li><a id="searchType2" href="javascript:startSearch(2);">I-L</a></li>
-        <li><a id="searchType3" href="javascript:startSearch(3);">M-P</a></li>
-        <li><a id="searchType4" href="javascript:startSearch(4);">Q-T</a></li>
-        <li><a id="searchType5" href="javascript:startSearch(5);">U-Z</a></li>
-        <li><a id="searchType6" href="javascript:startSearch(6);"><s:property value="%{getText('label.school.center.button.show.other')}"/></a></li>
-        <li><a id="searchType7" href="javascript:startSearch(7);"><s:property value="%{getText('label.school.center.button.show.all')}"/></a></li>
+        <li id="searchType0"><a href="javascript:startSearch(0);">A-D</a></li>
+        <li id="searchType1"><a href="javascript:startSearch(1);">E-H</a></li>
+        <li id="searchType2"><a href="javascript:startSearch(2);">I-L</a></li>
+        <li id="searchType3"><a href="javascript:startSearch(3);">M-P</a></li>
+        <li id="searchType4"><a href="javascript:startSearch(4);">Q-T</a></li>
+        <li id="searchType5"><a href="javascript:startSearch(5);">U-Z</a></li>
+        <li id="searchType6"><a href="javascript:startSearch(6);"><s:property value="%{getText('label.school.center.button.show.other')}"/></a></li>
+        <li id="searchType7"><a href="javascript:startSearch(7);"><s:property value="%{getText('label.school.center.button.show.all')}"/></a></li>
 
         <form action="courseCenter.html" method="POST" id="page_show_form">
             <s:hidden name="coursePageShowType" id="showType_msg"/>
@@ -92,23 +92,30 @@
 </div>
 
 <script type="text/javascript">
-    /* $(function(){
-     var coursePageShowType = <s:property value="coursePageShowType"/>;
-     switch(coursePageShowType){
-     case 0: $("#searchType0").addClass("search_stand_out");break;
-     case 1: $("#searchType1").addClass("search_stand_out");break;
-     case 2: $("#searchType2").addClass("search_stand_out");break;
-     case 3: $("#searchType3").addClass("search_stand_out"); break;
-     case 4: $("#searchType4").addClass("search_stand_out"); break;
-     case 5: $("#searchType5").addClass("search_stand_out"); break;
-     case 6: $("#searchType6").addClass("search_stand_out"); break;
-     case 6: $("#searchType7").addClass("search_stand_out"); break;
-     }
-     });
-     */
+
+    $(document).ready(function() {
+        var coursePageShowType = "<s:property value="coursePageShowType"/>";
+        if (coursePageShowType == null || coursePageShowType == ""){
+            $("#searchType7").addClass("active");
+            return ;
+        }
+        switch(parseInt(coursePageShowType)){
+            case 0: $("#searchType0").addClass("active");break;
+            case 1: $("#searchType1").addClass("active");break;
+            case 2: $("#searchType2").addClass("active");break;
+            case 3: $("#searchType3").addClass("active"); break;
+            case 4: $("#searchType4").addClass("active"); break;
+            case 5: $("#searchType5").addClass("active"); break;
+            case 6: $("#searchType6").addClass("active"); break;
+            case 7: $("#searchType7").addClass("active"); break;
+            default :
+                break;
+        }
+    });
     function startSearch(coursePageShowType){
         // window.location.href = "searchResult.html?searchType="+searchType+"&searchStr="+encodeURI($("#searchStr_id").val());
         //alert (coursePageShowType);
+
         $("#showType_msg").attr('value',coursePageShowType);
         $("#page_show_form").submit();
     }
