@@ -1,4 +1,4 @@
-package com.gogowise.action.course;
+package com.gogowise.action.course.vclass;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.action.valueobject.VirtualClassRoomSession;

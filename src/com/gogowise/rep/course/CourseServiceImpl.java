@@ -5,6 +5,7 @@ import com.gogowise.rep.ModelServiceImpl;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.enity.Course;
+import com.gogowise.rep.course.enity.Question;
 import com.gogowise.rep.course.vo.CourseSpecification;
 import com.gogowise.rep.org.OrgService;
 import com.gogowise.rep.org.dao.OrganizationDao;
@@ -25,6 +26,12 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
     private BaseUserDao baseUserDao;
     private CourseDao courseDao;
     private OrganizationDao organizationDao;
+
+
+    public void  saveQuestion(int courseId, List<Question> questions) {
+
+
+    }
 
     public Set<BaseUser> findAllTeachersByOrgCreator(Integer userId) {
         Organization org =  organizationDao.findByResId(userId);

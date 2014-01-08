@@ -1,4 +1,4 @@
-package com.gogowise.action.course;
+package com.gogowise.action.course.vclass;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.common.utils.Constants;
@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
@@ -27,7 +28,7 @@ import java.util.Random;
 @Results({
         @Result(name = BasicAction.RESULT_JSON, type = BasicAction.RESULT_JSON)
 })
-public class MaterialUploadToBetaAction extends BasicAction {
+public class UploadQuestionAction extends BasicAction {
 
 
     private File fileupload;
@@ -73,19 +74,18 @@ public class MaterialUploadToBetaAction extends BasicAction {
         this.genFileName = genFileName;
     }
 
-    @Action(value = "uploadPptInit", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".uploadPptMaterial")})
-    public String uploadCourseMaterial() {
-        return SUCCESS;
-    }
+//    @Action(value = "uploadQuestionInit", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".uploadPptMaterial")})
+//    public String uploadCourseMaterial() {
+//        return SUCCESS;
+//    }
 
 
-    @Action(value = "uploadCourseMaterialToBeta")
+    @Action(value = "uploadQuestion")
     public String uploadCourseMaterialToBeta() {
         String savePath = ServletActionContext.getServletContext().getRealPath("") + "/" + Constants.UPLOAD_FILE_PATH_PPT + "/";
         Random r = new Random();
         int rannum = (int) (r.nextDouble() * (99999 - 10000 + 1)) + 10000;
-        SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-        String nowTimeStr = sDateFormat.format(new Date());
+        String nowTimeStr = Calendar.getInstance().getTimeInMillis()+"";
 
         String extName = "";
         if (fileuploadFileName.lastIndexOf(".") >= 0) {
@@ -96,7 +96,6 @@ public class MaterialUploadToBetaAction extends BasicAction {
         fileupload.renameTo(new File(savePath + newFileName));
         String pptPatch = savePath + rannum + nowTimeStr;
         try {
-
             Utils.pptConvert(savePath + newFileName, pptPatch);
         } catch (IOException e) {
             logger.error("Cannot covert to PPT", e);

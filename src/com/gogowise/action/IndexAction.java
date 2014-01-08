@@ -134,12 +134,12 @@ public class IndexAction extends BasicAction {
             results = {@Result(name = SUCCESS, type = "tiles", location = ".index")}
     )
     public String index() {
-        if("en_US".equals(language)){
+//        if("en_US".equals(language)){
             ActionContext.getContext().getSession().put("WW_TRANS_I18N_LOCALE",new Locale("en","US"));
             ActionContext.getContext().getSession().put("request_locale",new Locale("en","US"));
             ActionContext.getContext().getSession().put("request_only_locale",new Locale("en","US"));
             ActionContext.getContext().setLocale(new Locale("en","US"));
-        }
+//        }
         courses = courseDao.findlatestCourses(pagination);
         organizations = organizationDao.findLatestOrgs(new Pagination(8));
         return SUCCESS;

@@ -3,6 +3,8 @@ package com.gogowise.action.course;
 import com.gogowise.action.BasicAction;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.Utils;
+import com.gogowise.rep.course.ConvertQuestionService;
+import com.gogowise.rep.course.CourseService;
 import com.gogowise.rep.course.dao.ClassDao;
 import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.dao.CourseMaterialDao;
@@ -19,10 +21,7 @@ import org.springframework.stereotype.Controller;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -40,7 +39,21 @@ public class CourseMaterialAction extends BasicAction {
      *
      */
     private static final long serialVersionUID = 2466562905933168403L;
+    private static final Map<Integer, String> TYPE_MAP = new HashMap<>();
 
+    public static final int VIDEO = 1;
+    public static final int DOC = 2;
+    public static final int QUESTION = 3;
+    public static final int OTHER = 0;
+
+    private ConvertQuestionService convertQuestionService;
+    private CourseService courseService;
+    static {
+        TYPE_MAP.put(VIDEO, "VIDEO");
+        TYPE_MAP.put(DOC, "DOC");
+        TYPE_MAP.put(QUESTION, "QUESTION");
+        TYPE_MAP.put(OTHER, "OTHER");
+    }
     private Course course;
     private Integer classId;
 
@@ -50,6 +63,7 @@ public class CourseMaterialAction extends BasicAction {
     private CourseDao courseDao;
     private ClassDao classDao;
     private List<CourseMaterial> courseMaterials = new ArrayList<CourseMaterial>();
+
 
     @Action(value = "uploadCourseMaterial",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".uploadCourseMaterial")})
     public String uploadCourseMaterial(){
@@ -61,17 +75,10 @@ public class CourseMaterialAction extends BasicAction {
     public String saveCourseMaterial(){
 
         //重命名
-        String typeStr = "";
-        switch (courseMaterial.getType()){
-            case 1: {typeStr = "VIDEO";break;}
-            case 2: {typeStr = "DOC";break;}
-            default: {typeStr = "OTHER";break;}
-        }
-
-        SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyyMMddHHmmss"); //时间格式化的格式
-        String nowTimeStr = sDateFormat.format(new Date()); //当前时间
+        String typeStr = TYPE_MAP.get(courseMaterial.getType());
+        String nowTimeStr = Calendar.getInstance().getTimeInMillis()+"";
         String extName = getExtention(courseMaterial.getFullPath());
-        String newName = typeStr + "_" + nowTimeStr + extName; //文件重命名后的名字
+        String newName = typeStr + "_" + nowTimeStr + extName;
 
         String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + courseMaterial.getFullPath());
         String dstPath = ServletActionContext.getServletContext().getRealPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.getCourse().getId() + "/" + newName);
@@ -86,6 +93,8 @@ public class CourseMaterialAction extends BasicAction {
             } catch (IOException e) {
                 logger.error("Cannot covert to PPT", e);
             }
+        } else if (QUESTION == courseMaterial.getType()) {
+//            Course
         }
 
         //文件相关属性设置
@@ -171,5 +180,13 @@ public class CourseMaterialAction extends BasicAction {
 
     public void setClassDao(ClassDao classDao) {
         this.classDao = classDao;
+    }
+
+    public ConvertQuestionService getConvertQuestionService() {
+        return convertQuestionService;
+    }
+
+    public CourseService getCourseService() {
+        return courseService;
     }
 }

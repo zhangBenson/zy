@@ -1118,6 +1118,11 @@
         <put-attribute name="title" value="title.gogowise.course.material"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/course/uploadPpt.jsp"/>
     </definition>
+    <!--<definition name=".uploadQuestionMaterial" extends=".userCenter">-->
+        <!--<put-attribute name="title" value="title.gogowise.course.material"/>-->
+        <!--<put-attribute name="contentRight" value="/jsp/gogowise/course/uploadPpt.jsp"/>-->
+    <!--</definition>-->
+
 
     <definition name=".addCourseEvent" extends=".userCenter">
          <put-attribute name="title" value="title.gogowise.add.show.events"/>
