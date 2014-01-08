@@ -11,17 +11,17 @@
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
+                <s:form method="post" action="searchAnswer" theme="simple" validate="true">
                 <div class="input-group">
+                    <s:textfield cssClass="form-control input-lg" name="searchStr" placeholder="search"></s:textfield>
                     <div class="input-group-btn">
-                        <s:form method="post" action="searchAnswer" theme="simple" validate="true">
-                            <s:textfield cssClass="form-control input-lg" name="searchStr" placeholder="search"></s:textfield>
-                            <button type="submit" class="btn btn-default btn-lg">
-                                <span class="glyphicon glyphicon-search"></span>
-                                <s:property value="%{getText('menu.item.search')}"/>
-                            </button>
-                        </s:form>
+                        <button type="submit" class="btn btn-default btn-lg">
+                            <span class="glyphicon glyphicon-search"></span>
+                            <s:property value="%{getText('menu.item.search')}"/>
+                        </button>
                     </div>
                 </div>
+                </s:form>
                 <div class="col-sm-2"></div>
             </div>
         </div>
