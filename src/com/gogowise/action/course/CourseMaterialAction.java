@@ -115,9 +115,6 @@ public class CourseMaterialAction extends BasicAction {
             logger.error("Cannot covert ", e);
         }
 
-
-
-        courseMaterials = courseMaterialDao.findByCourseId(null,this.getCourse().getId());
         return SUCCESS;
     }
 
