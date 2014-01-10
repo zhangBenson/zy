@@ -1,6 +1,7 @@
 package com.gogowise.rep.course.vo.question;
 
 import javax.xml.bind.annotation.XmlElement;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,6 +19,9 @@ public class Opt {
 
 
     public void setItems(List<String> items) {
-        this.items = items;
+        this.items = new ArrayList<>();
+        for (String item : items) {
+            this.items.add(item.trim()) ;
+        }
     }
 }

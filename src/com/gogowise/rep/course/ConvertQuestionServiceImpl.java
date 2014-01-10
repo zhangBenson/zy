@@ -34,8 +34,9 @@ public class ConvertQuestionServiceImpl implements ConvertQuestionService {
                 for (String item : query.getOpt().getItems()) {
                     QuestionItem questionItem = new QuestionItem();
                     questionItem.setDescription(item);
-                    questionItem.setIndex(i + "");
+                    questionItem.setIndexValue(i + "");
                     questionItem.setIsAnswer( (i+"").equalsIgnoreCase(query.getAnswer()));
+                    items.add(questionItem) ;
                     i++;
                 }
                 question.setQuestionItems(items);

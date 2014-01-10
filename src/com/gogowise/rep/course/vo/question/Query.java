@@ -13,14 +13,14 @@ public class Query {
 
     private Opt opt;
     private String answer;
-    private List<String> items;
+
 
     public String getQuestion() {
         return question;
     }
 
     public void setQuestion(String question) {
-        this.question = question;
+        this.question = question.trim();
     }
 
     public String getAnswer() {
@@ -28,7 +28,7 @@ public class Query {
     }
 
     public void setAnswer(String answer) {
-        this.answer = answer;
+        this.answer = answer.trim();
     }
 
     @XmlElement(name="opt")
@@ -40,13 +40,5 @@ public class Query {
         this.opt = opt;
     }
 
-//    @XmlElementWrapper(name="opt")
-//    @XmlElement(name="item")
-    public List<String> getItems() {
-        return items;
-    }
 
-    public void setItems(List<String> items) {
-        this.items = items;
-    }
 }

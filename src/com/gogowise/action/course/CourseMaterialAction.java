@@ -10,6 +10,7 @@ import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.dao.CourseMaterialDao;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.course.enity.CourseMaterial;
+import com.gogowise.rep.course.enity.Question;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -71,7 +72,7 @@ public class CourseMaterialAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "saveCourseMaterial",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".uploadCourseMaterial")})
+    @Action(value = "saveCourseMaterial",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName", "uploadCourseMaterial", "course.id","${course.id}"})})
     public String saveCourseMaterial(){
 
         //重命名
@@ -85,18 +86,6 @@ public class CourseMaterialAction extends BasicAction {
 
         Utils.copy(new File(srcPath), new File(dstPath));
 
-        //Conver ppt to jpg
-        if(".ppt".endsWith(extName) || ".pptx".endsWith(extName)){
-            String dstDir = ServletActionContext.getServletContext().getRealPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.getCourse().getId() + "/ppt" + nowTimeStr);
-            try {
-                Utils.pptConvert(dstPath,dstDir);
-            } catch (IOException e) {
-                logger.error("Cannot covert to PPT", e);
-            }
-        } else if (QUESTION == courseMaterial.getType()) {
-//            Course
-        }
-
         //文件相关属性设置
         courseMaterial.setUploadTime(Calendar.getInstance());
 
@@ -109,6 +98,25 @@ public class CourseMaterialAction extends BasicAction {
         courseMaterial.setFullPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.getCourse().getId() + "/" + newName);
 
         courseMaterialDao.persistAbstract(courseMaterial);
+
+        try {
+            //Conver ppt to jpg
+            if (".ppt".endsWith(extName) || ".pptx".endsWith(extName)) {
+                String dstDir = ServletActionContext.getServletContext().getRealPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.getCourse().getId() + "/ppt" + nowTimeStr);
+
+                Utils.pptConvert(dstPath, dstDir);
+
+            } else if (QUESTION == courseMaterial.getType()) {
+                String xmlPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/test.xml" );
+                List<Question> questions = convertQuestionService.convert(xmlPath);
+                courseService.saveQuestion(courseMaterial, questions);
+            }
+        } catch (Exception e) {
+            logger.error("Cannot covert ", e);
+        }
+
+
+
         courseMaterials = courseMaterialDao.findByCourseId(null,this.getCourse().getId());
         return SUCCESS;
     }
@@ -182,11 +190,11 @@ public class CourseMaterialAction extends BasicAction {
         this.classDao = classDao;
     }
 
-    public ConvertQuestionService getConvertQuestionService() {
-        return convertQuestionService;
+    public void setConvertQuestionService(ConvertQuestionService convertQuestionService) {
+        this.convertQuestionService = convertQuestionService;
     }
 
-    public CourseService getCourseService() {
-        return courseService;
+    public void setCourseService(CourseService courseService) {
+        this.courseService = courseService;
     }
 }

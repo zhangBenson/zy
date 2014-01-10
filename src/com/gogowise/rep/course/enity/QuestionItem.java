@@ -4,12 +4,15 @@ package com.gogowise.rep.course.enity;
 import com.gogowise.rep.AbstractPersistence;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 
 @Entity
 public class QuestionItem extends AbstractPersistence {
+    @ManyToOne
+    private Question question;
     private String description;
-    private String index;
+    private String indexValue;
 
     private Boolean isAnswer;
 
@@ -29,11 +32,19 @@ public class QuestionItem extends AbstractPersistence {
         this.isAnswer = isAnswer;
     }
 
-    public String getIndex() {
-        return index;
+    public String getIndexValue() {
+        return indexValue;
     }
 
-    public void setIndex(String index) {
-        this.index = index;
+    public void setIndexValue(String indexValue) {
+        this.indexValue = indexValue;
+    }
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
     }
 }

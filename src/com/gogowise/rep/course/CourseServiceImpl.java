@@ -4,7 +4,9 @@ import com.gogowise.common.utils.Constants;
 import com.gogowise.rep.ModelServiceImpl;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.dao.CourseDao;
+import com.gogowise.rep.course.dao.QuestionDao;
 import com.gogowise.rep.course.enity.Course;
+import com.gogowise.rep.course.enity.CourseMaterial;
 import com.gogowise.rep.course.enity.Question;
 import com.gogowise.rep.course.vo.CourseSpecification;
 import com.gogowise.rep.org.OrgService;
@@ -26,10 +28,13 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
     private BaseUserDao baseUserDao;
     private CourseDao courseDao;
     private OrganizationDao organizationDao;
+    private QuestionDao questionDao;
 
-
-    public void  saveQuestion(int courseId, List<Question> questions) {
-
+    public void  saveQuestion(CourseMaterial courseMaterial, List<Question> questions) {
+          for (Question question : questions)  {
+              question.setCourseMaterial(courseMaterial);
+              questionDao.persist(question);
+          }
 
     }
 
@@ -113,7 +118,12 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
         this.courseDao = courseDao;
     }
 
+    public void setQuestionDao(QuestionDao questionDao) {
+        this.questionDao = questionDao;
+    }
+
     public void setOrganizationDao(OrganizationDao organizationDao) {
         this.organizationDao = organizationDao;
     }
+
 }

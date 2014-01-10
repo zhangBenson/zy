@@ -28,6 +28,7 @@ public class CourseMaterial extends AbstractPersistence {
     private Double fullSize = 0.0;
     private Integer totalPages;
     private String path;
+    private String convertPath;
 
     public int getType() {
         return type;
@@ -94,6 +95,14 @@ public class CourseMaterial extends AbstractPersistence {
 
     public void setTotalPages(Integer totalPages) {
         this.totalPages = totalPages;
+    }
+
+    public String getConvertPath() {
+        return convertPath;
+    }
+
+    public void setConvertPath(String convertPath) {
+        this.convertPath = convertPath;
     }
 
     public String getPath() {

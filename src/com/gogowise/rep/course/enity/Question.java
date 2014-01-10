@@ -4,6 +4,7 @@ package com.gogowise.rep.course.enity;
 import com.gogowise.rep.AbstractPersistence;
 import com.gogowise.rep.user.enity.BaseUser;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -14,8 +15,11 @@ import java.util.List;
 public class Question extends AbstractPersistence {
     private String description;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "question")
     private List<QuestionItem> questionItems;
+
+    @ManyToOne
+    private CourseMaterial courseMaterial;
 
     public String getDescription() {
         return description;
@@ -33,11 +37,18 @@ public class Question extends AbstractPersistence {
         this.questionItems = questionItems;
     }
 
+    public CourseMaterial getCourseMaterial() {
+        return courseMaterial;
+    }
+
+    public void setCourseMaterial(CourseMaterial courseMaterial) {
+        this.courseMaterial = courseMaterial;
+    }
 
     public String getAnswer() {
         for (QuestionItem item :this.getQuestionItems()) {
             if (item.getIsAnswer())
-                return item.getIndex();
+                return item.getIndexValue();
         }
         return null;
 
