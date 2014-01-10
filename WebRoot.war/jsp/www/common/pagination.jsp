@@ -17,19 +17,24 @@
                 <s:param name="first" value="1"/>
                 <s:param name="last" value="pagination.totalPage"/>
             </s:bean>
+        </li>
 
-            <s:iterator value="counter"  status="status">
-                <s:url id="getNextPage" action="%{pagination.actionName}">
-                    <s:param name="pagination.pageNow"><s:property/></s:param>
-                </s:url>
-                <s:if test="pagination.pageNow==#status.index+1">
-                    <s:a href="javascript:;" cssClass="page_now"><s:property/></s:a>
-                </s:if>
-                <s:else>
-                    <s:a href="%{getNextPage}" cssClass="page_other"><s:property/></s:a>
-                </s:else>
-            </s:iterator>
-
+        <s:iterator value="counter"  status="status">
+            <s:url id="getNextPage" action="%{pagination.actionName}">
+                <s:param name="pagination.pageNow"><s:property/></s:param>
+            </s:url>
+            <s:if test="pagination.pageNow==#status.index+1">
+                <li class="active">
+                    <s:a href="javascript:;"><s:property/></s:a>
+                </li>
+            </s:if>
+            <s:else>
+                <li>
+                <s:a href="%{getNextPage}"><s:property/></s:a>
+                </li>
+            </s:else>
+        </s:iterator>
+        <li>
             <s:if test="pagination.hasNext">
                 <s:url id="url_next" action="%{pagination.actionName}">
                     <s:param name="pagination.pageNow" value="pagination.pageNow+1"></s:param>

@@ -143,27 +143,42 @@
 </div>
 
 <div class="container">
+
+    <div class="pull-left">
+        <img src="images/org/icon_organizations.png"  />
+    </div>
+    <div class="pull-left">
+        <div class="courseSubhead"><s:property value="%{getText('label.index.schools')}"/></div>
+    </div>
+    <div class="clearfix"></div>
+
+    <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <s:iterator value="organizations" status="status">
+                <s:if test="#status.index==0"><div class="item active" style="text-align: center;"><ul class="list-inline"></s:if>
+                <s:if test="#status.index%4==0 && #status.index > 0"><div class="item" style="text-align: center;"><ul class="list-inline"></s:if>
+                    <li class="popItme">
+                        <a href="orgBlog.html?org.id=<s:property value="id"/>" >
+                            <img src="<s:property value="logoUrl" />"  alt="<s:property value="schoolName"/>" class="popOrgLogo" /></a>
+                    </li>
+                <s:if test="#status.index%4==3"></ul></div></s:if>
+                <s:elseif test="#status.last"> </ul></div></s:elseif>
+
+            </s:iterator>
+        </div>
+        <a class="left carousel-control" href="#carousel-example-captions" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" style="position: relative;left:-70px;top: 50px;"></span>
+        </a>
+
+        <a class="right carousel-control" href="#carousel-example-captions" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" style="position: relative;left:70px;top: 50px;"></span>
+        </a>
+    </div>
+</div>
+
+<%--
+<div class="container">
     <ul class="bxsliderLogolist">
-
-<%--         <ul class="bxsliderLogolist">
-          <li>
-            <ul class="list-inline">
-            <li><a href="#"><img src="gogowisestyle/image/orgLogo1.jpg" alt="" class="popOrgLogo"></a></li>
-            <li><a href="#"><img src="gogowisestyle/image/orgLogo2.jpg" alt="" class="popOrgLogo"></a></li>
-            <li><a href="#"><img src="gogowisestyle/image/orgLogo3.jpg" alt="" class="popOrgLogo"></a></li>
-            <li><a href="#"><img src="gogowisestyle/image/orgLogo4.jpg" alt="" class="popOrgLogo"></a></li>
-          </ul>
-
-          </li>
-          <li>
-            <ul class="list-inline">  
-            <li><a href="#"><img src="gogowisestyle/image/orgLogo5.jpg" alt="" class="popOrgLogo"></a></li>
-            <li><a href="#"><img src="gogowisestyle/image/orgLogo6.jpg" alt="" class="popOrgLogo"></a></li>
-            <li><a href="#"><img src="gogowisestyle/image/orgLogo7.jpg" alt="" class="popOrgLogo"></a></li>
-            <li><a href="#"><img src="gogowisestyle/image/orgLogo8.jpg" alt="" class="popOrgLogo"></a></li>
-          </ul>
-          </li>
-        </ul>--%>
 
             <s:iterator value="organizations" status="status">
                 <s:if test="#status.index%4==0"><li><ul class="list-inline"></s:if>
@@ -179,3 +194,4 @@
     </ul>
 
 </div>
+--%>
