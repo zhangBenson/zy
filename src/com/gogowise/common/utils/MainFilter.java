@@ -76,6 +76,7 @@ public class MainFilter implements Filter {
         NEED_LOGIN.add("/createPrivateChannel.html");
         NEED_LOGIN.add("/openUserChannelResult.html");
         NEED_LOGIN.add("/personalCenter.html");
+        NEED_LOGIN.add("/openVirtualClassRoom.html");
     }
 
     public void destroy() {
