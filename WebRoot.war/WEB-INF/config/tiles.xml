@@ -605,6 +605,7 @@
         <put-attribute name="title" value="title.classroom.one2many"/>
         <put-attribute name="roomBody" value="/jsp/gogowise/one2manySession.jsp"/>
     </definition>
+
      <definition name=".interviewVideo" extends=".bodyCenter">
          <put-attribute name="title" value="title.interview.video.session"/>
          <put-attribute name="contentBody" value="/jsp/gogowise/InterviewVideoSession.jsp"/>

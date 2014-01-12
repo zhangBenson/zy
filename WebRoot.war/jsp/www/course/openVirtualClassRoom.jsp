@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <link rel="stylesheet" href="/css/course/bootstrap.min.css">
 <link rel="stylesheet" href="/css/course/gogowise.css">
 <link rel="stylesheet" href="/css/virtualClassRoom/messenger.css">
@@ -624,21 +625,21 @@ function ShowMessage(name,imgpath,content,bit)
     <button type="button" class="btn btn-success" id="btnEvent3">事件测试3</button>
 </div>
 
-<span id="currentUserId" style="display: none">8F92FEFB-C5D5-B9AA-24BB-908DB20C2B7C</span>
-<span id="currentName" style="display: none">Scan</span>
-<span id="currentimgPath" style="display: none">gogowisestyle/image/portrait5.jpg</span>
+<span id="currentUserId" style="display: none"><s:property value="#session.userID" /></span>
+<span id="currentName" style="display: none"><s:property value="#session.nickName" /></span>
+<span id="currentimgPath" style="display: none"><s:property value="#session.userLogoUrl" /></span>
 
-<div id="top"></div>
+
 <div class="container">
-<div>
-<div class="thinline"></div>
-<div class="classSchoolinfo" style="text-align: center;">
-    <ul class="list-inline">
-        <li  class="classstatusbar">School Name:XXXX</li>
-        <li  class="classstatusbar">Lecturers Name:XXXX</li>
-        <li  class="classstatusbar">Course Name:XXXX</li>
-    </ul>
-</div>
+    <div>
+        <div class="thinline"></div>
+        <div class="classSchoolinfo" style="text-align: center;">
+            <ul class="list-inline">
+                <li  class="classstatusbar">School Name:<s:property value="courseClass.course.organization.schoolName" /></li>
+                <li  class="classstatusbar">Lecturers Name:<s:property value="courseClass.course.teacher.nickName" /></li>
+                <li  class="classstatusbar">Course Name:<s:property value="courseClass.course.name" /></li>
+            </ul>
+        </div>
 
 <div class="pull-left">
     <div class="classVedioPanel" >
@@ -664,7 +665,7 @@ function ShowMessage(name,imgpath,content,bit)
             <param name="quality" value="high" />
             <param name="wmode" value="transparent" />
             <param name="allowFullScreen" value="true" />
-            <embed src="Teacher_1.swf" allowFullScreen="true" width="720" height="560" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" wmode="transparent" name="Girl" id="GirlEmbed"></embed>
+            <embed src="<s:property value="flashPatch" />" allowFullScreen="true" width="720" height="560" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" wmode="transparent" name="Girl" id="GirlEmbed"></embed>
         </object>
     </div>
 </div>
