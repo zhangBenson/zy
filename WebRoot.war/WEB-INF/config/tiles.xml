@@ -503,7 +503,7 @@
     <definition name=".changeResponserSuccess" extends=".basic">
          <put-attribute name="right" value="/jsp/gogowise/showChangedSuccessMsg.jsp"/>
     </definition>
-    
+
     <definition name=".ageClass" extends=".userCenter">
         <put-attribute name="title" value="title.age.course"/>
        <put-attribute name="contentRight" value="/jsp/gogowise/course/ageClass.jsp"/>
@@ -605,6 +605,7 @@
         <put-attribute name="title" value="title.classroom.one2many"/>
         <put-attribute name="roomBody" value="/jsp/gogowise/one2manySession.jsp"/>
     </definition>
+
      <definition name=".interviewVideo" extends=".bodyCenter">
          <put-attribute name="title" value="title.interview.video.session"/>
          <put-attribute name="contentBody" value="/jsp/gogowise/InterviewVideoSession.jsp"/>
@@ -899,7 +900,7 @@
         <put-attribute name="title" value="title.course.confirm1"/>
         <put-attribute name="contentBody" value="/jsp/www/course/regcourse.jsp"/>
     </definition>
-    
+
     <!-- personal show  -->
     <definition name=".showMatters" extends=".userCenter">
         <put-attribute name="title" value="title.of.show.management"/>
@@ -1074,6 +1075,10 @@
     <definition name=".startPersonalOnlive" extends=".roomCenter" >
         <put-attribute name="title" value="title.personal.onlive.room"/>
        <put-attribute name="roomBody" value="/jsp/gogowise/onlive/personalVirtualRoom.jsp"/>
+    </definition>
+    <definition name=".openVirtualClassRoom" extends=".wwwBodyCenter" >
+        <put-attribute name="title" value="title.personal.onlive.room"/>
+        <put-attribute name="contentBody" value="/jsp/www/course/openVirtualClassRoom.jsp"/>
     </definition>
     <definition name=".roomAudienceList" template="/jsp/gogowise/onlive/roomAudienceList.jsp" >
     </definition>
@@ -1251,7 +1256,11 @@
 
     <!-- download related tiles end -->
 
-
+    <!--<definition name=".openVirtualClassRoom" extends=".wwwBodyCenter">-->
+        <!--<put-attribute name="title" value="download.virtual.room"/>-->
+        <!--<put-attribute name="contentBody" value="/jsp/www/course/openVirtualClassRoom.jsp"/>-->
+        <!--&lt;!&ndash;<put-attribute name="contentBody" value="/jsp/gogowise/course/courseBlog.jsp"/>&ndash;&gt;-->
+    <!--</definition>-->
 
 
 

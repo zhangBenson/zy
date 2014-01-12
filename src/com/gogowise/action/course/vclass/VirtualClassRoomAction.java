@@ -41,7 +41,7 @@ public class VirtualClassRoomAction extends BasicAction {
     private String inviteFriendHref;
 
 
-    @Action(value = "openVirtualClassRoom", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".one2manySession"),
+    @Action(value = "openVirtualClassRoom", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".openVirtualClassRoom"),
             @Result(name = ERROR, type = Constants.RESULT_NAME_TILES, location = ".notExist")})
     public String openVirtualClassRoom() {
         if (this.getCourseClass().getId() != null) {
