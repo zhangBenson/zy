@@ -111,7 +111,13 @@ public class UploadUtilsAction extends BasicAction {
 
 
         newFileName = nowTimeStr + rannum + extName; //文件重命名后的名字
-        fileupload.renameTo(new File(savePath + newFileName)); //保存文件
+
+        File newFileToCreate = new File(savePath + newFileName);
+        File newPatchToCreate = new File(savePath );
+        if (!newPatchToCreate.exists()) {
+            newPatchToCreate.mkdirs();
+        }
+        fileupload.renameTo(newFileToCreate); //保存文件
 
         HttpServletResponse response = ServletActionContext.getResponse();
         response.setCharacterEncoding("utf-8");
