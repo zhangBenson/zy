@@ -1,5 +1,7 @@
 package com.gogowise.common.utils;
 
+import org.apache.struts2.ServletActionContext;
+
 /**
  * Created by IntelliJ IDEA.
  * User: zhangb
@@ -72,6 +74,7 @@ public class Constants {
     public static final Integer STUDENT_TYPE = 1;
     public static final Integer ANONYMOUS_TYPE = 2;
     public static final String COURSE_CONFIRM_EMAIL = "zlhades@hotmail.com";
+
 
 
     /*---------------------------zhibi------------------------------------------*/
@@ -189,6 +192,12 @@ public class Constants {
     /* -------------------------- Hot List Type ----------------------------------------- */
     public  static  int HOT_TYPE_TEACHER = 1;
     public  static  int HOT_TYPE_BLOGGER = 2;
+
+
+    /* -------------------------- Question patch ----------------------------------------- */
+    public static String QUESTION_EXT_PATH ="/exe/question/batch.sh";
+    public static String QUESTION_FILE_NAME = "/question.xml";
+
 
 
 }
