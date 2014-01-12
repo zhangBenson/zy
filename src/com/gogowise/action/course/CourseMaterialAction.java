@@ -20,17 +20,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.*;
-
-/**
- * Created by IntelliJ IDEA.
- * User: Administrator
- * Date: 11-10-23
- * Time: 下午3:05
- * To change this template use File | Settings | File Templates.
- */
 
 @Controller
 @Namespace(BasicAction.BASE_NAME_SPACE)
@@ -40,6 +30,9 @@ public class CourseMaterialAction extends BasicAction {
      *
      */
     private static final long serialVersionUID = 2466562905933168403L;
+
+
+
     private static final Map<Integer, String> TYPE_MAP = new HashMap<>();
 
     public static final int VIDEO = 1;
@@ -102,12 +95,13 @@ public class CourseMaterialAction extends BasicAction {
         try {
             //Conver ppt to jpg
             if (".ppt".endsWith(extName) || ".pptx".endsWith(extName)) {
-                String dstDir = ServletActionContext.getServletContext().getRealPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.getCourse().getId() + "/ppt" + nowTimeStr);
-
+                String dstDir = ServletActionContext.getServletContext().getRealPath(".")+ Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.getCourse().getId() + "/ppt/" + nowTimeStr;
                 Utils.pptConvert(dstPath, dstDir);
-
             } else if (QUESTION == courseMaterial.getType()) {
-                String xmlPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/test.xml" );
+//                String xmlPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/test.xml" );
+                String dstDir =ServletActionContext.getServletContext().getRealPath(".") + Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.getCourse().getId() + "/question/" + nowTimeStr;
+                Utils.questionConvert(dstPath, dstDir);
+                String xmlPath = dstDir + Constants.QUESTION_FILE_NAME ;
                 List<Question> questions = convertQuestionService.convert(xmlPath);
                 courseService.saveQuestion(courseMaterial, questions);
             }
@@ -115,9 +109,6 @@ public class CourseMaterialAction extends BasicAction {
             logger.error("Cannot covert ", e);
         }
 
-
-
-        courseMaterials = courseMaterialDao.findByCourseId(null,this.getCourse().getId());
         return SUCCESS;
     }
 

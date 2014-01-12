@@ -20,6 +20,7 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -27,7 +28,7 @@ import java.io.OutputStreamWriter;
 @Controller
 @Namespace(BasicAction.BASE_NAME_SPACE)
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
-public class VirtualClassRoom extends BasicAction {
+public class VirtualClassRoomAction extends BasicAction {
     private BaseUserDao baseUserDao;
     private SeniorClassRoomDao seniorClassRoomDao;
     private ClassDao classDao;

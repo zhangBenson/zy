@@ -409,6 +409,27 @@ public class Utils {
 
     }
 
+    public synchronized static void questionConvert(String srcPpt, String desDir) throws IOException {
+        File dst = new File(desDir);
+        if (!dst.exists()) {
+            dst.mkdirs();
+        }
+        String cmd = ServletActionContext.getServletContext().getRealPath(".") +Constants.QUESTION_EXT_PATH +" " +desDir+Constants.QUESTION_FILE_NAME + " " + desDir+"/img";      // Change to synce
+        logger.info(cmd + "=============cmd========================");
+        BufferedReader in = new BufferedReader(new InputStreamReader((Runtime
+                .getRuntime().exec(cmd).getInputStream())));
+        String s = "";
+        while (true) {
+            s = in.readLine();
+            if (s == null) {
+                break;
+            }
+            logger.info(s);
+        }
+    }
+
+
+
     public static void copy(File src, File dst) {
         if (!dst.getParentFile().exists()) {
             dst.getParentFile().mkdirs();
