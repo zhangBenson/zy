@@ -717,7 +717,7 @@ function ShowMessage(name,imgpath,content,bit)
                                 <li class="ui-state-default">
                                     <a href="#">
                                         <div class="studioPortraitPanel">
-                                            <img src="gogowisestyle/image/bportrait7.jpg" alt="">
+                                            <img src="/images/virtualClassRoom/bportrait7.jpg" alt="">
                                             <p class="t">name</p>
                                         </div>
                                     </a>
@@ -726,7 +726,7 @@ function ShowMessage(name,imgpath,content,bit)
                                 <li class="ui-state-default">
                                     <a href="#">
                                         <div class="studioPortraitPanel">
-                                            <img src="gogowisestyle/image/bportrait6.jpg" alt="">
+                                            <img src="/images/virtualClassRoom/bportrait6.jpg" alt="">
                                             <p>name</p>
                                         </div>
                                     </a>
@@ -735,7 +735,7 @@ function ShowMessage(name,imgpath,content,bit)
                                 <li class="ui-state-default">
                                     <a href="#">
                                         <div class="studioPortraitPanel">
-                                            <img src="gogowisestyle/image/bportrait1.jpg" alt="">
+                                            <img src="/images/virtualClassRoom/bportrait1.jpg" alt="">
                                             <p>Name</p>
                                         </div>
                                     </a>
@@ -744,7 +744,7 @@ function ShowMessage(name,imgpath,content,bit)
                                 <li class="ui-state-default">
                                     <a href="#">
                                         <div class="studioPortraitPanel">
-                                            <img src="gogowisestyle/image/bportrait5.jpg" alt="">
+                                            <img src="/images/virtualClassRoom/bportrait5.jpg" alt="">
                                             <p>Name</p>
                                         </div>
                                     </a>
@@ -753,7 +753,7 @@ function ShowMessage(name,imgpath,content,bit)
                                 <li class="ui-state-default">
                                     <a href="#">
                                         <div class="studioPortraitPanel">
-                                            <img src="gogowisestyle/image/portrait1.jpg" alt="">
+                                            <img src="/images/virtualClassRoom/portrait1.jpg" alt="">
                                             <p>Name</p>
                                         </div>
                                     </a>
@@ -762,7 +762,7 @@ function ShowMessage(name,imgpath,content,bit)
                                 <li class="ui-state-default">
                                     <a href="#">
                                         <div class="studioPortraitPanel">
-                                            <img src="gogowisestyle/image/portrait2.jpg" alt="">
+                                            <img src="/images/virtualClassRoom/portrait2.jpg" alt="">
                                             <p>Name</p>
                                         </div>
                                     </a>
@@ -771,7 +771,7 @@ function ShowMessage(name,imgpath,content,bit)
                                 <li class="ui-state-default">
                                     <a href="#">
                                         <div class="studioPortraitPanel">
-                                            <img src="gogowisestyle/image/portrait3.jpg" alt="">
+                                            <img src="/images/virtualClassRoom/portrait3.jpg" alt="">
                                             <p>Name</p>
                                         </div>
                                     </a>
@@ -780,7 +780,7 @@ function ShowMessage(name,imgpath,content,bit)
                                 <li class="ui-state-default">
                                     <a href="#">
                                         <div class="studioPortraitPanel">
-                                            <img src="gogowisestyle/image/portrait4.jpg" alt="">
+                                            <img src="/images/virtualClassRoom/portrait4.jpg" alt="">
                                             <p>Name</p>
                                         </div>
                                     </a>
@@ -789,7 +789,7 @@ function ShowMessage(name,imgpath,content,bit)
                                 <li class="ui-state-default">
                                     <a href="#">
                                         <div class="studioPortraitPanel">
-                                            <img src="gogowisestyle/image/portrait4.jpg" alt="">
+                                            <img src="/images/virtualClassRoom/portrait4.jpg" alt="">
                                             <p>Name</p>
                                         </div>
                                     </a>
@@ -820,7 +820,7 @@ function ShowMessage(name,imgpath,content,bit)
                                 <!--left message-->
                                 <div  class="chatMessage">
                                     <div class="pull-left" style="width:70px;">
-                                        <img class="chatPortraitImg" src="gogowisestyle/image/portrait2.jpg"  />
+                                        <img class="chatPortraitImg" src="/images/virtualClassRoom/portrait2.jpg"  />
                                         <div class="chatPortraitTitle">Name</div>
                                     </div>
                                     <div style="width: 290px;" class="pull-left">
@@ -836,7 +836,7 @@ function ShowMessage(name,imgpath,content,bit)
                                 <!--right message-->
                                 <div  class="chatMessage">
                                     <div class="pull-right" style="width:70px;">
-                                        <img class="chatPortraitImg" src="gogowisestyle/image/portrait2.jpg"  />
+                                        <img class="chatPortraitImg" src="/images/virtualClassRoom/portrait2.jpg"  />
                                         <div class="chatPortraitTitle">Name</div>
                                     </div>
                                     <div style="width: 290px;" class="pull-right">
@@ -913,7 +913,7 @@ function ShowMessage(name,imgpath,content,bit)
                             <li>
                                 <a href="#">
                                     <div class="fileItem">
-                                        <img class="fileicon" src="gogowisestyle/image/icon_pdf.png"  />
+                                        <img class="fileicon" src="/images/virtualClassRoom/icon_pdf.png"  />
                                         <p class="filetext">file name 1</p>
                                         <span class="fileid">http://google.com</span>
                                     </div>
@@ -922,7 +922,7 @@ function ShowMessage(name,imgpath,content,bit)
                             <li>
                                 <a href="#">
                                     <div class="fileItem">
-                                        <img class="fileicon" src="gogowisestyle/image/icon_docx.png"  />
+                                        <img class="fileicon" src="/images/virtualClassRoom/icon_docx.png"  />
                                         <p class="filetext">file name 1</p>
                                         <span class="fileid"></span>
                                     </div>
@@ -931,7 +931,7 @@ function ShowMessage(name,imgpath,content,bit)
                             <li>
                                 <a href="#">
                                     <div class="fileItem">
-                                        <img class="fileicon" src="gogowisestyle/image/icon_pptx.png"  />
+                                        <img class="fileicon" src="/images/virtualClassRoom/icon_pptx.png"  />
                                         <p class="filetext">file name 1</p>
                                         <span class="fileid"></span>
                                     </div>
@@ -940,7 +940,7 @@ function ShowMessage(name,imgpath,content,bit)
                             <li>
                                 <a href="#">
                                     <div class="fileItem">
-                                        <img class="fileicon" src="gogowisestyle/image/icon_pdf.png"  />
+                                        <img class="fileicon" src="/images/virtualClassRoom/icon_pdf.png"  />
                                         <p class="filetext">file name 1</p>
                                         <span class="fileid"></span>
                                     </div>
@@ -949,7 +949,7 @@ function ShowMessage(name,imgpath,content,bit)
                             <li>
                                 <a href="#">
                                     <div class="fileItem">
-                                        <img class="fileicon" src="gogowisestyle/image/icon_docx.png"  />
+                                        <img class="fileicon" src="/images/virtualClassRoom/icon_docx.png"  />
                                         <p class="filetext">file name 1</p>
                                         <span class="fileid"></span>
                                     </div>
@@ -958,7 +958,7 @@ function ShowMessage(name,imgpath,content,bit)
                             <li>
                                 <a href="#">
                                     <div class="fileItem">
-                                        <img class="fileicon" src="gogowisestyle/image/icon_xlsx.png"  />
+                                        <img class="fileicon" src="/images/virtualClassRoom/icon_xlsx.png"  />
                                         <p class="filetext">file name 1</p>
                                         <span class="fileid"></span>
                                     </div>
@@ -967,7 +967,7 @@ function ShowMessage(name,imgpath,content,bit)
                             <li>
                                 <a href="#">
                                     <div class="fileItem">
-                                        <img class="fileicon" src="gogowisestyle/image/icon_docx.png"  />
+                                        <img class="fileicon" src="/images/virtualClassRoom/icon_docx.png"  />
                                         <p class="filetext">file name 1</p>
                                         <span class="fileid"></span>
                                     </div>
@@ -976,7 +976,7 @@ function ShowMessage(name,imgpath,content,bit)
                             <li>
                                 <a href="#">
                                     <div class="fileItem">
-                                        <img class="fileicon" src="gogowisestyle/image/icon_pdf.png"  />
+                                        <img class="fileicon" src="/images/virtualClassRoom/icon_pdf.png"  />
                                         <p class="filetext">file name 1</p>
                                         <span class="fileid"></span>
                                     </div>
@@ -985,7 +985,7 @@ function ShowMessage(name,imgpath,content,bit)
                             <li>
                                 <a href="#">
                                     <div class="fileItem">
-                                        <img class="fileicon" src="gogowisestyle/image/icon_pptx.png"  />
+                                        <img class="fileicon" src="/images/virtualClassRoom/icon_pptx.png"  />
                                         <p class="filetext">file name 1</p>
                                         <span class="fileid"></span>
                                     </div>
@@ -1001,7 +1001,7 @@ function ShowMessage(name,imgpath,content,bit)
                             <li>
                                 <a href="#">
                                     <div class="fileItem">
-                                        <img class="fileicon" src="gogowisestyle/image/icon_mpeg.png"  />
+                                        <img class="fileicon" src="/images/virtualClassRoom/icon_mpeg.png"  />
                                         <p class="filetext">file name 1</p>
                                         <span class="fileid"></span>
                                     </div>
@@ -1010,7 +1010,7 @@ function ShowMessage(name,imgpath,content,bit)
                             <li>
                                 <a href="#">
                                     <div class="fileItem">
-                                        <img class="fileicon" src="gogowisestyle/image/icon_mov.png"  />
+                                        <img class="fileicon" src="/images/virtualClassRoom/icon_mov.png"  />
                                         <p class="filetext">file name 1</p>
                                         <span class="fileid"></span>
                                     </div>
@@ -1025,7 +1025,7 @@ function ShowMessage(name,imgpath,content,bit)
                             <li>
                                 <a href="#">
                                     <div class="fileItem">
-                                        <img class="fileicon" src="gogowisestyle/image/icon_text.png"  />
+                                        <img class="fileicon" src="/images/virtualClassRoom/icon_text.png"  />
                                         <p class="filetext">file name 1</p>
                                         <span class="fileid"></span>
                                     </div>
@@ -1034,7 +1034,7 @@ function ShowMessage(name,imgpath,content,bit)
                             <li>
                                 <a href="#">
                                     <div class="fileItem">
-                                        <img class="fileicon" src="gogowisestyle/image/icon_text.png"  />
+                                        <img class="fileicon" src="/images/virtualClassRoom/icon_text.png"  />
                                         <p class="filetext">file name 1</p>
                                         <span class="fileid"></span>
                                     </div>
