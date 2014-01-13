@@ -414,7 +414,8 @@ public class Utils {
         if (!dst.exists()) {
             dst.mkdirs();
         }
-        String cmd = ServletActionContext.getServletContext().getRealPath(".") +Constants.QUESTION_EXT_PATH +" " +desDir+Constants.QUESTION_FILE_NAME + " " + desDir+"/img";      // Change to synce
+        String BASE_PATCH = ServletActionContext.getServletContext().getRealPath(".");
+        String cmd = BASE_PATCH +Constants.QUESTION_EXT_PATH +" " + srcPpt + " " +desDir+Constants.QUESTION_FILE_NAME + " " + desDir+"/img";      // Change to synce
         logger.info(cmd + "=============cmd========================");
         BufferedReader in = new BufferedReader(new InputStreamReader((Runtime
                 .getRuntime().exec(cmd).getInputStream())));
@@ -424,7 +425,7 @@ public class Utils {
             if (s == null) {
                 break;
             }
-            logger.info(s);
+            logger.info("==convert information for question bank=="+s);
         }
     }
 
