@@ -425,7 +425,7 @@ public class Utils {
             if (s == null) {
                 break;
             }
-            logger.info(s);
+            logger.info("==convert information for question bank=="+s);
         }
     }
 
