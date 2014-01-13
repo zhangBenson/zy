@@ -10,12 +10,14 @@ public class VirtualClassRoomSession {
     public static final String DEFAULT_STATUS = "0";
     private Integer UserID = Constants.DEFAULT_INT_VALUE;
     private String UserName = Constants.DEFAULT_BLANK_VALUE;
-      private Integer ClassID = Constants.DEFAULT_INT_VALUE;  //课堂的ClassId
+    private Integer ClassID = Constants.DEFAULT_INT_VALUE;  //课堂的ClassId
     private Integer CourseID = Constants.DEFAULT_INT_VALUE;//课堂所属课程的 Id
     private String Server = Constants.DEFAULT_BLANK_VALUE; //video 服务器地
     private String UserLogo =   Constants.DEFAULT_PERSON_IMAGE;
     private String ClassVer = DEFAULT_CLASS_VER;
     private String Status  = DEFAULT_STATUS;
+    private String MasterName = Constants.DEFAULT_BLANK_VALUE;
+    private Integer MasterID  = Constants.DEFAULT_INT_VALUE;
 
     public void initWithSession(CourseClass courseClass){
         this.setClassID(getEmptyInteger(courseClass.getId()));
@@ -91,5 +93,21 @@ public class VirtualClassRoomSession {
     }
     private Integer getEmptyInteger(Integer s) {
            return  s == null ? 0: s;
+    }
+
+    public String getMasterName() {
+        return MasterName;
+    }
+
+    public void setMasterName(String masterName) {
+        MasterName = masterName;
+    }
+
+    public Integer getMasterID() {
+        return MasterID;
+    }
+
+    public void setMasterID(Integer masterID) {
+        MasterID = masterID;
     }
 }

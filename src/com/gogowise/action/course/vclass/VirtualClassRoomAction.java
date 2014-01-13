@@ -46,7 +46,10 @@ public class VirtualClassRoomAction extends BasicAction {
     public String openVirtualClassRoom() {
         if (this.getCourseClass().getId() != null) {
             courseClass = classDao.findById(this.getCourseClass().getId());
+            if(courseClass == null ) return ERROR;
             Course course = courseClass.getCourse();
+            if( course.getTeacher() == null ) return ERROR;
+
             if (course.getTeacher() != null && this.getSessionUserId() == course.getTeacher().getId()) {
                 VirtualClassRoomSession virtualClassRoomSession = new VirtualClassRoomSession();
                 initTeacherSession(virtualClassRoomSession);
@@ -92,6 +95,10 @@ public class VirtualClassRoomAction extends BasicAction {
         virtualClassRoomSession.setUserID(user.getId());
         virtualClassRoomSession.setUserName(user.getNickName());
         virtualClassRoomSession.setUserLogo(Utils.getEmptyString(user.getPic()));
+
+        Course course = classDao.findById(virtualClassRoomSession.getClassID()).getCourse();
+        virtualClassRoomSession.setMasterID( course.getTeacher().getId() );
+        virtualClassRoomSession.setMasterName( course.getTeacher().getNickName() );
     }
 
 

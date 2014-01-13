@@ -675,7 +675,7 @@ function ShowMessage(name,imgpath,content,bit)
     <div class="classBasePanel">
         <div id="studiowindow">
             <div class="classPanleHead">
-                <div class="classPanleTitle">Studio List</div>
+                <div class="classPanleTitle">Student List</div>
             </div>
             <div class="classPanleBody">
 
