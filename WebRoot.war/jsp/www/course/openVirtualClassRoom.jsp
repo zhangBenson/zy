@@ -714,87 +714,87 @@ function ShowMessage(name,imgpath,content,bit)
                     <ul>
                         <li>
                             <ul id="studionList">
-                                <li class="ui-state-default">
-                                    <a href="#">
-                                        <div class="studioPortraitPanel">
-                                            <img src="/images/virtualClassRoom/bportrait7.jpg" alt="">
-                                            <p class="t">name</p>
-                                        </div>
-                                    </a>
-                                    <span class="userId">u1</span>
-                                </li>
-                                <li class="ui-state-default">
-                                    <a href="#">
-                                        <div class="studioPortraitPanel">
-                                            <img src="/images/virtualClassRoom/bportrait6.jpg" alt="">
-                                            <p>name</p>
-                                        </div>
-                                    </a>
-                                    <span class="userId">u2</span>
-                                </li>
-                                <li class="ui-state-default">
-                                    <a href="#">
-                                        <div class="studioPortraitPanel">
-                                            <img src="/images/virtualClassRoom/bportrait1.jpg" alt="">
-                                            <p>Name</p>
-                                        </div>
-                                    </a>
-                                    <span class="userId">u3</span>
-                                </li>
-                                <li class="ui-state-default">
-                                    <a href="#">
-                                        <div class="studioPortraitPanel">
-                                            <img src="/images/virtualClassRoom/bportrait5.jpg" alt="">
-                                            <p>Name</p>
-                                        </div>
-                                    </a>
-                                    <span class="userId">u4</span>
-                                </li>
-                                <li class="ui-state-default">
-                                    <a href="#">
-                                        <div class="studioPortraitPanel">
-                                            <img src="/images/virtualClassRoom/portrait1.jpg" alt="">
-                                            <p>Name</p>
-                                        </div>
-                                    </a>
-                                    <span class="userId">u5</span>
-                                </li>
-                                <li class="ui-state-default">
-                                    <a href="#">
-                                        <div class="studioPortraitPanel">
-                                            <img src="/images/virtualClassRoom/portrait2.jpg" alt="">
-                                            <p>Name</p>
-                                        </div>
-                                    </a>
-                                    <span class="userId">u6</span>
-                                </li>
-                                <li class="ui-state-default">
-                                    <a href="#">
-                                        <div class="studioPortraitPanel">
-                                            <img src="/images/virtualClassRoom/portrait3.jpg" alt="">
-                                            <p>Name</p>
-                                        </div>
-                                    </a>
-                                    <span class="userId">u7</span>
-                                </li>
-                                <li class="ui-state-default">
-                                    <a href="#">
-                                        <div class="studioPortraitPanel">
-                                            <img src="/images/virtualClassRoom/portrait4.jpg" alt="">
-                                            <p>Name</p>
-                                        </div>
-                                    </a>
-                                    <span class="userId">u8</span>
-                                </li>
-                                <li class="ui-state-default">
-                                    <a href="#">
-                                        <div class="studioPortraitPanel">
-                                            <img src="/images/virtualClassRoom/portrait4.jpg" alt="">
-                                            <p>Name</p>
-                                        </div>
-                                    </a>
-                                    <span class="userId">u9</span>
-                                </li>
+                                <%--<li class="ui-state-default">--%>
+                                    <%--<a href="#">--%>
+                                        <%--<div class="studioPortraitPanel">--%>
+                                            <%--<img src="/images/virtualClassRoom/bportrait7.jpg" alt="">--%>
+                                            <%--<p class="t">name</p>--%>
+                                        <%--</div>--%>
+                                    <%--</a>--%>
+                                    <%--<span class="userId">u1</span>--%>
+                                <%--</li>--%>
+                                <%--<li class="ui-state-default">--%>
+                                    <%--<a href="#">--%>
+                                        <%--<div class="studioPortraitPanel">--%>
+                                            <%--<img src="/images/virtualClassRoom/bportrait6.jpg" alt="">--%>
+                                            <%--<p>name</p>--%>
+                                        <%--</div>--%>
+                                    <%--</a>--%>
+                                    <%--<span class="userId">u2</span>--%>
+                                <%--</li>--%>
+                                <%--<li class="ui-state-default">--%>
+                                    <%--<a href="#">--%>
+                                        <%--<div class="studioPortraitPanel">--%>
+                                            <%--<img src="/images/virtualClassRoom/bportrait1.jpg" alt="">--%>
+                                            <%--<p>Name</p>--%>
+                                        <%--</div>--%>
+                                    <%--</a>--%>
+                                    <%--<span class="userId">u3</span>--%>
+                                <%--</li>--%>
+                                <%--<li class="ui-state-default">--%>
+                                    <%--<a href="#">--%>
+                                        <%--<div class="studioPortraitPanel">--%>
+                                            <%--<img src="/images/virtualClassRoom/bportrait5.jpg" alt="">--%>
+                                            <%--<p>Name</p>--%>
+                                        <%--</div>--%>
+                                    <%--</a>--%>
+                                    <%--<span class="userId">u4</span>--%>
+                                <%--</li>--%>
+                                <%--<li class="ui-state-default">--%>
+                                    <%--<a href="#">--%>
+                                        <%--<div class="studioPortraitPanel">--%>
+                                            <%--<img src="/images/virtualClassRoom/portrait1.jpg" alt="">--%>
+                                            <%--<p>Name</p>--%>
+                                        <%--</div>--%>
+                                    <%--</a>--%>
+                                    <%--<span class="userId">u5</span>--%>
+                                <%--</li>--%>
+                                <%--<li class="ui-state-default">--%>
+                                    <%--<a href="#">--%>
+                                        <%--<div class="studioPortraitPanel">--%>
+                                            <%--<img src="/images/virtualClassRoom/portrait2.jpg" alt="">--%>
+                                            <%--<p>Name</p>--%>
+                                        <%--</div>--%>
+                                    <%--</a>--%>
+                                    <%--<span class="userId">u6</span>--%>
+                                <%--</li>--%>
+                                <%--<li class="ui-state-default">--%>
+                                    <%--<a href="#">--%>
+                                        <%--<div class="studioPortraitPanel">--%>
+                                            <%--<img src="/images/virtualClassRoom/portrait3.jpg" alt="">--%>
+                                            <%--<p>Name</p>--%>
+                                        <%--</div>--%>
+                                    <%--</a>--%>
+                                    <%--<span class="userId">u7</span>--%>
+                                <%--</li>--%>
+                                <%--<li class="ui-state-default">--%>
+                                    <%--<a href="#">--%>
+                                        <%--<div class="studioPortraitPanel">--%>
+                                            <%--<img src="/images/virtualClassRoom/portrait4.jpg" alt="">--%>
+                                            <%--<p>Name</p>--%>
+                                        <%--</div>--%>
+                                    <%--</a>--%>
+                                    <%--<span class="userId">u8</span>--%>
+                                <%--</li>--%>
+                                <%--<li class="ui-state-default">--%>
+                                    <%--<a href="#">--%>
+                                        <%--<div class="studioPortraitPanel">--%>
+                                            <%--<img src="/images/virtualClassRoom/portrait4.jpg" alt="">--%>
+                                            <%--<p>Name</p>--%>
+                                        <%--</div>--%>
+                                    <%--</a>--%>
+                                    <%--<span class="userId">u9</span>--%>
+                                <%--</li>--%>
 
                             </ul>
                             <div class="clearfix"></div>
