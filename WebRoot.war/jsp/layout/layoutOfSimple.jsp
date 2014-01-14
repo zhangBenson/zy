@@ -1,6 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
-<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="s" uri="struts-tags.tld" %>
 <%
     request.setCharacterEncoding("UTF-8");
 %>
