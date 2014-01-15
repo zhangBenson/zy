@@ -863,7 +863,8 @@ function ShowMessage(name,imgpath,content,bit)
         <!--<![endif]-->
         <!-- </object> -->
         <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="720" height="560" name="Girl" id="Girl" wmode="transparent">
-            <param name="movie" value="Teacher_1.swf" />
+            <s:if test="roleType == 1"><param name="movie" value="Teacher_1.swf" /></s:if>
+            <s:else><param name="movie" value="Student_1.swf" /></s:else>
             <param name="quality" value="high" />
             <param name="wmode" value="transparent" />
             <param name="allowFullScreen" value="true" />
