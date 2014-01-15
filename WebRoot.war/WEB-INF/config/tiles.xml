@@ -742,8 +742,10 @@
 
 
     <definition name=".notExist" extends=".simple">
+        <put-attribute name="title" value="title.of.course.template"/>
         <put-attribute name="right" value="/jsp/gogowise/requestNotExist.jsp"/>
     </definition>
+
     <definition name=".courseInviteLogin" extends=".basic">
         <put-attribute name="right" value="/jsp/gogowise/course/courseCreate/courseInviteLogin.jsp"/>
     </definition>
