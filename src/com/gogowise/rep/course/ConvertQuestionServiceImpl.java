@@ -3,9 +3,7 @@ package com.gogowise.rep.course;
 import com.gogowise.rep.ModelServiceImpl;
 import com.gogowise.rep.course.enity.Question;
 import com.gogowise.rep.course.enity.QuestionItem;
-import com.gogowise.rep.course.vo.question.Answer;
 import com.gogowise.rep.course.vo.question.Doc;
-import com.gogowise.rep.course.vo.question.Item;
 import com.gogowise.rep.course.vo.question.Query;
 import org.springframework.stereotype.Service;
 
@@ -25,14 +23,13 @@ public class ConvertQuestionServiceImpl extends ModelServiceImpl implements Conv
             JAXBContext jc = JAXBContext.newInstance(Doc.class);
             Unmarshaller unmarshaller = jc.createUnmarshaller();
             Doc collection = (Doc) unmarshaller.unmarshal(new File(patch));
-            super.logger.info(collection.getQueries().size() +"=================ConvertQuestionServiceImpl=========");
             for(Query query : collection.getQueries()){
                 Question question = new Question();
                 question.setDescription(query.getQuestion());
 
                 List<QuestionItem> items = new ArrayList<>();
                 int i = 1;
-                for (String item : query.getOpt().getItems()) {
+                for (String item : query.getItems()) {
                     QuestionItem questionItem = new QuestionItem();
                     questionItem.setDescription(item);
                     questionItem.setIndexValue(i + "");
@@ -54,7 +51,7 @@ public class ConvertQuestionServiceImpl extends ModelServiceImpl implements Conv
 
     public static void main(String args[]) throws JAXBException {
              ConvertQuestionServiceImpl convertQuestionService = new ConvertQuestionServiceImpl();
-            convertQuestionService.convert("test.xml")  ;
+            convertQuestionService.convert("question.xml")  ;
 
     }
 }

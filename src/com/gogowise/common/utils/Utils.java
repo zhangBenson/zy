@@ -397,7 +397,7 @@ public class Utils {
             if (s == null) {
                 break;
             }
-            System.out.println(s.toString());
+            logger.info(s.toString());
         }
 
 
@@ -414,19 +414,20 @@ public class Utils {
         if (!dst.exists()) {
             dst.mkdirs();
         }
+        dst.setReadable(true);
+        dst.setWritable(true);
         String BASE_PATCH = ServletActionContext.getServletContext().getRealPath(".");
         String cmd = BASE_PATCH +Constants.QUESTION_EXT_PATH +" " + srcPpt + " " +desDir+Constants.QUESTION_FILE_NAME + " " + desDir+"/img";      // Change to synce
+        String[] cmdA = { "/bin/sh", "-c", cmd };
+        Process process = Runtime.getRuntime().exec(cmdA);
         logger.info(cmd + "=============cmd========================");
-        BufferedReader in = new BufferedReader(new InputStreamReader((Runtime
-                .getRuntime().exec(cmd).getInputStream())));
-        String s = "";
-        while (true) {
-            s = in.readLine();
-            if (s == null) {
-                break;
-            }
-            logger.info("==convert information for question bank=="+s);
+        LineNumberReader br = new LineNumberReader(new InputStreamReader(process.getInputStream()));
+        String line;
+        logger.info( "=============start========================");
+        while ((line = br.readLine()) != null) {
+            logger.info(line);
         }
+
     }
 
 
@@ -494,6 +495,12 @@ public class Utils {
         doCompress(path, 640, 480, 1, "_small", false);
     }
 
+
+    public static void main(String args[]) throws IOException {
+        String s = "/home/apache-tomcat-7.0.42/webapps/ROOT/./exe/question/batch.sh /home/apache-tomcat-7.0.42/webapps/ROOT/download/courseResource/1/QUESTION_1389712874522.doc /home/apache-tomcat-7.0.42/webapps/ROOT/./download/courseResource/1/question/13897128745221/question.xml /home/apache-tomcat-7.0.42/webapps/ROOT/./download/courseResource/1/question/13897128745221/img";
+        Runtime.getRuntime().exec(s);
+
+    }
 
 
 }
