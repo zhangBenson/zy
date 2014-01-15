@@ -1,4 +1,5 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
+
 <link rel="stylesheet" href="/css/course/bootstrap.min.css">
 <link rel="stylesheet" href="/css/course/gogowise.css">
 <link rel="stylesheet" href="/css/virtualClassRoom/messenger.css">
@@ -13,12 +14,20 @@
 <script src="/js/virtualClassRoom/Chart.min.js"></script>
 
 
-
 <script type="text/javascript">
 var stundioWrapper;
 var chatWrapper;
 var currentMIC = null;
 var currentPencil = null;
+
+function CreateRoom() {
+    setframe();
+    var url = window.location.href;
+    var urlarr = url.split("/");
+    urlarr[urlarr.length - 1] = "";
+    url = urlarr.join("/");
+    getGirlOjbect().CreateRoomComplete("<s:property value='initSeesionString' escape='false' />", "");
+}
 
 $(document).ready(function() {
     stundioWrapper = new iScroll('stundioWrapper');
@@ -30,33 +39,35 @@ $(document).ready(function() {
         increaseArea: '20%' // optional
     });
 
+    $("body").keydown(function() {
+        if (event.keyCode == "13") {
+            $('#btnSendMsg').click();
+        }
+    });
+
     //绑定单击
     $("#studionList li a").bind("click",function(event){
         var id = $(this).parent().find("span").text();
         showControlBar(id,event.pageX,event.pageY);
     });
 
-    $(".fileList li a").bind("click",function(event){
-        $("#currentfile").find("img").remove();
-        $("#currentfile").find("span").remove();
-        $("#currentfile").find(".selectfileid").remove();
-        $("#currentfile").append("<img src="+$(this).find('img').attr('src')+"></img>");
-        $("#currentfile").append("<span>"+$(this).find('.filetext').text()+"</span>");
-        $("#currentfile").append("<span style='display:none;' id='selectfileid'>"+$(this).find('.fileid').text()+"</span>");
-    });
+    // $(".fileList li a").bind("click",function(event){
+    //        		$("#currentfile").find("img").remove();
+    //        		$("#currentfile").find("span").remove();
+    //        		$("#currentfile").find(".selectfileid").remove();
+    //        		$("#currentfile").append("<img src="+$(this).find('img').attr('src')+"></img>");
+    //        		$("#currentfile").append("<span>"+$(this).find('.filetext').text()+"</span>");
+    //        		$("#currentfile").append("<span style='display:none;' id='selectfileid'>"+$(this).find('.fileid').text()+"</span>");
+    //        	});
 
-    $(function () {
-        $('#myTabFile a:last').tab('show')
-    });
+
     $._messengerDefaults = {
         extraClasses: 'messenger-fixed messenger-theme-block messenger-on-top'
     }
 
-    //$("#top").load("top.html");
-    //$("#detailfooters").load("footers.html");
 
     $("#btnaddUser").click(function() {
-        addOneStudent("Scan","/images/virtualClassRoom/portrait5.jpg","c1");
+        addOneStudent("Scan","/images/virtualClassRoom/portrait5.jpg","c1",0,1);
     });
 
     $("#btndeleteOneStudent").click(function() {
@@ -94,9 +105,11 @@ $(document).ready(function() {
 
     //发送
     $("#btnSendMsg").click(function(){
-        ShowMessage($("#currentName").text(),$("#currentimgPath").text(),$("#txtContent").val(),0);
+        //ShowMessage($("#currentName").text(),$("#currentimgPath").text(),$("#txtContent").val(),0);
+        var str = $("#txtContent").val();
         $("#txtContent").val("");
-        sendMessageTeacher($("#txtContent").val(),$("#currentUserId").text());
+        sendMessageTeacher(str);
+
     });
 
     $("#btnreceivemessage").click(function(){
@@ -122,7 +135,6 @@ $(document).ready(function() {
     });
 
     $("#btnEvent").click(function(event){
-
         if(currentMIC == "")
             alert(currentMIC);
         else if(currentMIC ==null)
@@ -132,7 +144,6 @@ $(document).ready(function() {
     });
 
     $("#btnEvent2").click(function(event){
-
         $("#studionList li a").bind("click",function(event){
             var id = $(this).parent().find("span").text();
             showControlBar(id,event.pageX,event.pageY);
@@ -140,13 +151,12 @@ $(document).ready(function() {
     });
 
     $("#btnEvent3").click(function(event){
-        seletedQuestion();
+
     });
 
     $("#btnOpenFile").click(function(){
-        showFile();
+        showFile(2);
     });
-
 
     $("#btnOpenQuestions").click(function(){
         showQuestions();
@@ -169,15 +179,41 @@ $(document).ready(function() {
     });
 
     $("#btnSelectFile").click(function(){
+        switch($("#currentfile").find(".selectCategory").text())
+        {
+            case "speech":
+                seletedFile($("#currentfile").find(".selectfileid").text(),$("#currentfile").find(".selectfileNum").text());
+                break;
+            case "video":
+                playVideo($("#currentfile").find(".selectVideoLink").text());
+                break;
+            case "question":
 
-        selectFile(($("#selectfileid").text()));
+                break;
+
+        }
+
         $('#fileModal').modal('hide');
     });
 
+    ////////////// 获取文件列表
+    $('#myTabFile a[href="#filesysDocument"]').click(function(){
+        getSpeechList();
+    });
+
+    $('#myTabFile a[href="#filesysVideo"]').click(function(){
+        getVideoList();
+    });
+
+    $('#myTabFile a[href="#filesysQuestionbank"]').click(function(){
+        getQuestionList();
+    });
+    //////////////
+
 });
 
-document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
+//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+//document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
 
 function getGirlOjbect() {
     if (/msie/.test(navigator.userAgent.toLowerCase())) {
@@ -186,6 +222,120 @@ function getGirlOjbect() {
         return  document.getElementById("GirlEmbed");
     }
 }
+
+function getSpeechList()
+{
+    $("#speechDraftPanle li").remove();
+    //Speech
+    $.getJSON("fileList.html",function(data){
+        $.each(data,function(key,info)
+        {
+            var icon_path = "";
+
+            switch(info["fileType"])
+            {
+                case "doc":
+                    icon_path = "/images/virtualClassRoom/icon_docx.png"
+                    break;
+                case "docx":
+                    icon_path = "/images/virtualClassRoom/icon_docx.png"
+                    break;
+                case "pdf":
+                    icon_path = "/images/virtualClassRoom/icon_pdf.png"
+                    break;
+                case "xls":
+                    icon_path = "/images/virtualClassRoom/icon_xlsx.png"
+                    break;
+                case "xlsx":
+                    icon_path = "/images/virtualClassRoom/icon_xlsx.png"
+                    break;
+                case "ppt":
+                    icon_path = "/images/virtualClassRoom/icon_pptx.png"
+                    break;
+                case "ppt":
+                    icon_path = "/images/virtualClassRoom/icon_pptx.png"
+                    break;
+            }
+
+            $("#speechDraftPanle").append("<li><a href='#'>"+
+                    "<div class='fileItem'>"+
+                    "<img class='fileicon' src='"+icon_path+"' />"+
+                    "<p class='fileName'>"+info["fileName"]+"</p>"+
+                    "<span class='fileDirectory'>"+info["fileDirectory"]+"</span>"+
+                    "<span class='category'>"+info["category"]+"</span>"+
+                    "<span class='pageNum'>"+info["pageNum"]+"</span>"+
+                    "</div></a></li>");
+        });
+
+        bindFileClick();
+    });
+}
+
+function getVideoList()
+{
+    $("#videoPanle li").remove();
+
+    $.getJSON("videoList.html",function(data){
+        $.each(data,function(key,info)
+        {
+            var icon_path = "/images/virtualClassRoom/icon_mov.png";
+
+            $("#videoPanle").append("<li><a href='#'>"+
+                    "<div class='fileItem'>"+
+                    "<img class='fileicon' src='"+icon_path+"' />"+
+                    "<p class='fileName'>"+info["fileName"]+"</p>"+
+                    "<span class='videolink'>"+info["videoLink"]+"</span>"+
+                    "<span class='category'>"+info["category"]+"</span>"+
+                    "</div></a></li>");
+        });
+
+        bindFileClick();
+    });
+}
+
+function getQuestionList()
+{
+    $("#questionbankPanle li").remove();
+
+    $.getJSON("videoList.html",function(data){
+        $.each(data,function(key,info)
+        {
+            var icon_path = "/images/virtualClassRoom/icon_text.png";
+
+            $("#questionbankPanle").append("<li><a href='#'>"+
+                    "<div class='fileItem'>"+
+                    "<img class='fileicon' src='"+icon_path+"' />"+
+                    "<p class='fileName'>"+info["fileName"]+"</p>"+
+                    "<span class='videolink'>"+info["question"]+"</span>"+
+                    "<span class='category'>"+info["category"]+"</span>"+
+                    "</div></a></li>");
+        });
+
+        bindFileClick();
+    });
+}
+
+
+function bindFileClick()
+{
+    $(".fileList li a").bind("click",function(event){
+        $("#currentfile").find("img").remove();
+        $("#currentfile").find("span").remove();
+        $("#currentfile").find(".selectfileid").remove();
+        $("#currentfile").find(".selectfileNum").remove();
+        $("#currentfile").find(".selectVideoLink").remove();
+        $("#currentfile").find(".selectQuestion").remove();
+        $("#currentfile").find(".selectCategory").remove();
+        $("#currentfile").append("<img src="+$(this).find('img').attr('src')+"></img>");
+        $("#currentfile").append("<span>"+$(this).find('.fileName').text()+"</span>");
+        $("#currentfile").append("<span style='display:none;' class='selectfileid'>"+$(this).find('.fileDirectory').text()+"</span>");
+        $("#currentfile").append("<span style='display:none;' class='selectfileNum'>"+$(this).find('.pageNum').text()+"</span>");
+        $("#currentfile").append("<span style='display:none;' class='selectVideoLink'>"+$(this).find('.videolink').text()+"</span>");
+        $("#currentfile").append("<span style='display:none;' class='selectQuestion'>"+$(this).find('.question').text()+"</span>");
+        $("#currentfile").append("<span style='display:none;' class='selectCategory'>"+$(this).find('.category').text()+"</span>");
+    });
+}
+
 
 /**
  * 生成图形结果
@@ -306,10 +456,7 @@ function takePencil()
     }
 }
 
-function selectFile(id)
-{
-    getGirlOjbect().selectFile(id);
-}
+
 
 function kickUser()
 {
@@ -401,7 +548,7 @@ function alert(content,type)
 }
 
 //添加一个学生到学生列表
-function addOneStudent(name,imgpath,id,ismsg)
+function addOneStudent(name,imgpath,id,ismsg,isMic)
 {
     $("#studionList").prepend("<li class='ui-state-default' style='display:none;'>"+
             "<a href='#'><div class='studioPortraitPanel'>"+
@@ -415,7 +562,6 @@ function addOneStudent(name,imgpath,id,ismsg)
     });
 
     $("#studionList li:contains('"+id+"')").bind("click",function(event){
-        //var id = $(this).parent().find("span").text();
         showControlBar(id,event.pageX,event.pageY);
     });
 
@@ -440,25 +586,45 @@ function removestate(id)
 
 function showQuestions()
 {
-
-    //$("input[name='selectQuestion']:checked").attr('checked',false);
-
     $("#questionsModal").modal('show');
     $("#questionsList").show();
     $("#resultView").hide();
 }
 
-function showFile()
+function showFile(index)
 {
     $("#currentfile").find("img").remove();
     $("#currentfile").find("span").remove();
     $("#currentfile").find(".selectfileid").remove();
-    $('#fileModal').modal('show')
+    $('#fileModal').modal('show');
+
+    switch(index)
+    {
+        case 1:
+            $('#myTabFile a[href="#filesysDocument"]').tab('show');
+            getSpeechList();
+            break;
+        case 2:
+            $('#myTabFile a[href="#filesysVideo"]').tab('show');
+            getVideoList();
+            break;
+        case 3:
+            $('#myTabFile a[href="#filesysQuestionbank"]').tab('show');
+            getQuestionList();
+            break;
+    }
+
+
 }
 
 function showQuestionsStudio()
 {
     $("#questionsStudioModal").modal('show');
+}
+
+function playVideo(link)
+{
+    getGirlOjbect().playVideo(link);
 }
 
 //根据ID，State状态值（1，2，3）设置状态，bit是否需要排序到最上.
@@ -490,15 +656,25 @@ function tabstate(id,state,bit)
     $("#studionList li:contains('"+id+"') img").addClass(_state).animate({borderWidth:"0"}).animate({borderWidth:"6"}).animate({borderWidth:"0"}).animate({borderWidth:"6"}).animate({borderWidth:"0"}).animate({borderWidth:"6"}).animate({borderWidth:"0"}).animate({borderWidth:"6"}).animate({borderWidth:"0"}).animate({borderWidth:"6"}).animate({borderWidth:"0"}).animate({borderWidth:"6"});
 }
 
+function seletedQuestions(exerciseID,questionID)
+{
+    getGirlOjbect().seletedQuestions(exerciseID,questionID);
+}
+
+function seletedFile(fileID, pageNum)
+{
+    getGirlOjbect().seletedFile(fileID, pageNum);
+}
+
 //根据ID排序到最上面
 function studioSortUp(id)
 {
     $("#studionList").prepend($("#studionList li:contains('"+id+"')"));
 }
 
-function sendMessageTeacher(content,id)
+function sendMessageTeacher(content)
 {
-    getGirlOjbect().sendMessageTeacher(content,id);
+    getGirlOjbect().sendMessage(content);
 }
 
 //提交选择的题
@@ -556,6 +732,28 @@ function ShowMessage(name,imgpath,content,bit)
         display:none;
     }
 
+    .videolink
+    {
+        display:none;
+    }
+
+    .pageNum
+    {
+        display:none;
+    }
+
+    .fileDirectory
+    {
+        display:none;
+    }
+
+    .category
+    {
+        display:none;
+    }
+
+
+
     .questionid
     {
         display:none;
@@ -609,7 +807,11 @@ function ShowMessage(name,imgpath,content,bit)
 
 </style>
 
+<title>VirtualClassroom</title>
+
+</head>
 <body>
+<div id="images"></div>
 <div class="btn-group" style="margin:5px;">
     <button type="button" class="btn btn-success" id="btnaddUser">进入用户</button>
     <button type="button" class="btn btn-success" id="btndeleteOneStudent">退出用户</button>
@@ -627,19 +829,19 @@ function ShowMessage(name,imgpath,content,bit)
 
 <span id="currentUserId" style="display: none"><s:property value="#session.userID" /></span>
 <span id="currentName" style="display: none"><s:property value="#session.nickName" /></span>
+<span id="currentUserName" style="display: none">Scan</span>
 <span id="currentimgPath" style="display: none"><s:property value="#session.userLogoUrl" /></span>
 
-
 <div class="container">
-    <div>
-        <div class="thinline"></div>
-        <div class="classSchoolinfo" style="text-align: center;">
-            <ul class="list-inline">
-                <li  class="classstatusbar">School Name:<s:property value="courseClass.course.organization.schoolName" /></li>
-                <li  class="classstatusbar">Lecturers Name:<s:property value="courseClass.course.teacher.nickName" /></li>
-                <li  class="classstatusbar">Course Name:<s:property value="courseClass.course.name" /></li>
-            </ul>
-        </div>
+<div>
+<div class="thinline"></div>
+<div class="classSchoolinfo" style="text-align: center;">
+    <ul class="list-inline">
+        <li  class="classstatusbar">Course Name:<s:property value="courseClass.course.name" /></li>
+        <li  class="classstatusbar">School Name:<s:property value="courseClass.course.organization.schoolName" /></li>
+        <li  class="classstatusbar">Lecturers Name:<s:property value="courseClass.course.teacher.nickName" /></li>
+    </ul>
+</div>
 
 <div class="pull-left">
     <div class="classVedioPanel" >
@@ -714,87 +916,88 @@ function ShowMessage(name,imgpath,content,bit)
                     <ul>
                         <li>
                             <ul id="studionList">
-                                <%--<li class="ui-state-default">--%>
-                                    <%--<a href="#">--%>
-                                        <%--<div class="studioPortraitPanel">--%>
-                                            <%--<img src="/images/virtualClassRoom/bportrait7.jpg" alt="">--%>
-                                            <%--<p class="t">name</p>--%>
-                                        <%--</div>--%>
-                                    <%--</a>--%>
-                                    <%--<span class="userId">u1</span>--%>
-                                <%--</li>--%>
-                                <%--<li class="ui-state-default">--%>
-                                    <%--<a href="#">--%>
-                                        <%--<div class="studioPortraitPanel">--%>
-                                            <%--<img src="/images/virtualClassRoom/bportrait6.jpg" alt="">--%>
-                                            <%--<p>name</p>--%>
-                                        <%--</div>--%>
-                                    <%--</a>--%>
-                                    <%--<span class="userId">u2</span>--%>
-                                <%--</li>--%>
-                                <%--<li class="ui-state-default">--%>
-                                    <%--<a href="#">--%>
-                                        <%--<div class="studioPortraitPanel">--%>
-                                            <%--<img src="/images/virtualClassRoom/bportrait1.jpg" alt="">--%>
-                                            <%--<p>Name</p>--%>
-                                        <%--</div>--%>
-                                    <%--</a>--%>
-                                    <%--<span class="userId">u3</span>--%>
-                                <%--</li>--%>
-                                <%--<li class="ui-state-default">--%>
-                                    <%--<a href="#">--%>
-                                        <%--<div class="studioPortraitPanel">--%>
-                                            <%--<img src="/images/virtualClassRoom/bportrait5.jpg" alt="">--%>
-                                            <%--<p>Name</p>--%>
-                                        <%--</div>--%>
-                                    <%--</a>--%>
-                                    <%--<span class="userId">u4</span>--%>
-                                <%--</li>--%>
-                                <%--<li class="ui-state-default">--%>
-                                    <%--<a href="#">--%>
-                                        <%--<div class="studioPortraitPanel">--%>
-                                            <%--<img src="/images/virtualClassRoom/portrait1.jpg" alt="">--%>
-                                            <%--<p>Name</p>--%>
-                                        <%--</div>--%>
-                                    <%--</a>--%>
-                                    <%--<span class="userId">u5</span>--%>
-                                <%--</li>--%>
-                                <%--<li class="ui-state-default">--%>
-                                    <%--<a href="#">--%>
-                                        <%--<div class="studioPortraitPanel">--%>
-                                            <%--<img src="/images/virtualClassRoom/portrait2.jpg" alt="">--%>
-                                            <%--<p>Name</p>--%>
-                                        <%--</div>--%>
-                                    <%--</a>--%>
-                                    <%--<span class="userId">u6</span>--%>
-                                <%--</li>--%>
-                                <%--<li class="ui-state-default">--%>
-                                    <%--<a href="#">--%>
-                                        <%--<div class="studioPortraitPanel">--%>
-                                            <%--<img src="/images/virtualClassRoom/portrait3.jpg" alt="">--%>
-                                            <%--<p>Name</p>--%>
-                                        <%--</div>--%>
-                                    <%--</a>--%>
-                                    <%--<span class="userId">u7</span>--%>
-                                <%--</li>--%>
-                                <%--<li class="ui-state-default">--%>
-                                    <%--<a href="#">--%>
-                                        <%--<div class="studioPortraitPanel">--%>
-                                            <%--<img src="/images/virtualClassRoom/portrait4.jpg" alt="">--%>
-                                            <%--<p>Name</p>--%>
-                                        <%--</div>--%>
-                                    <%--</a>--%>
-                                    <%--<span class="userId">u8</span>--%>
-                                <%--</li>--%>
-                                <%--<li class="ui-state-default">--%>
-                                    <%--<a href="#">--%>
-                                        <%--<div class="studioPortraitPanel">--%>
-                                            <%--<img src="/images/virtualClassRoom/portrait4.jpg" alt="">--%>
-                                            <%--<p>Name</p>--%>
-                                        <%--</div>--%>
-                                    <%--</a>--%>
-                                    <%--<span class="userId">u9</span>--%>
-                                <%--</li>--%>
+                                <li class="ui-state-default">
+                                    <a href="#">
+                                        <div class="studioPortraitPanel">
+                                            <img src="/images/virtualClassRoom/bportrait7.jpg" alt="">
+                                            <p>name</p>
+                                        </div>
+                                    </a>
+
+                                    <span class="userId">u1</span>
+                                </li>
+                                <li class="ui-state-default">
+                                    <a href="#">
+                                        <div class="studioPortraitPanel">
+                                            <img src="/images/virtualClassRoom/bportrait6.jpg" alt="">
+                                            <p>name</p>
+                                        </div>
+                                    </a>
+                                    <span class="userId">u2</span>
+                                </li>
+                                <li class="ui-state-default">
+                                    <a href="#">
+                                        <div class="studioPortraitPanel">
+                                            <img src="/images/virtualClassRoom/bportrait1.jpg" alt="">
+                                            <p>Name</p>
+                                        </div>
+                                    </a>
+                                    <span class="userId">u3</span>
+                                </li>
+                                <li class="ui-state-default">
+                                    <a href="#">
+                                        <div class="studioPortraitPanel">
+                                            <img src="/images/virtualClassRoom/bportrait5.jpg" alt="">
+                                            <p>Name</p>
+                                        </div>
+                                    </a>
+                                    <span class="userId">u4</span>
+                                </li>
+                                <li class="ui-state-default">
+                                    <a href="#">
+                                        <div class="studioPortraitPanel">
+                                            <img src="/images/virtualClassRoom/portrait1.jpg" alt="">
+                                            <p>Name</p>
+                                        </div>
+                                    </a>
+                                    <span class="userId">u5</span>
+                                </li>
+                                <li class="ui-state-default">
+                                    <a href="#">
+                                        <div class="studioPortraitPanel">
+                                            <img src="/images/virtualClassRoom/portrait2.jpg" alt="">
+                                            <p>Name</p>
+                                        </div>
+                                    </a>
+                                    <span class="userId">u6</span>
+                                </li>
+                                <li class="ui-state-default">
+                                    <a href="#">
+                                        <div class="studioPortraitPanel">
+                                            <img src="/images/virtualClassRoom/portrait3.jpg" alt="">
+                                            <p>Name</p>
+                                        </div>
+                                    </a>
+                                    <span class="userId">u7</span>
+                                </li>
+                                <li class="ui-state-default">
+                                    <a href="#">
+                                        <div class="studioPortraitPanel">
+                                            <img src="/images/virtualClassRoom/portrait4.jpg" alt="">
+                                            <p>Name</p>
+                                        </div>
+                                    </a>
+                                    <span class="userId">u8</span>
+                                </li>
+                                <li class="ui-state-default">
+                                    <a href="#">
+                                        <div class="studioPortraitPanel">
+                                            <img src="/images/virtualClassRoom/portrait4.jpg" alt="">
+                                            <p>Name</p>
+                                        </div>
+                                    </a>
+                                    <span class="userId">u9</span>
+                                </li>
 
                             </ul>
                             <div class="clearfix"></div>
@@ -869,7 +1072,8 @@ function ShowMessage(name,imgpath,content,bit)
 </div>
 </div>
 </div>
-<%----%>
+
+
 <div class="modal fade" id="fileModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -879,6 +1083,7 @@ function ShowMessage(name,imgpath,content,bit)
 
             </div>
             <div class="modal-body">
+
                 <ul class="nav nav-tabs" id="myTabFile">
                     <li class="active">
                         <a href="#filesysDocument" data-toggle="tab">
@@ -906,91 +1111,21 @@ function ShowMessage(name,imgpath,content,bit)
                     </li>
                 </ul>
             </div>
-            <div class="tab-content" style="text-align: center;">
+            <div class="tab-content" style="text-align: center;" id="allfileList">
                 <div class="tab-pane active" id="filesysDocument">
                     <div class="container">
                         <div id="speechDraftPanle" class="fileList">
-                            <li>
+                            <!-- <li>
                                 <a href="#">
                                     <div class="fileItem">
                                         <img class="fileicon" src="/images/virtualClassRoom/icon_pdf.png"  />
-                                        <p class="filetext">file name 1</p>
-                                        <span class="fileid">http://google.com</span>
+                                        <p class="fileName">file name 1</p>
+                                        <span class="fileDirectory">http://google.com</span>
+                                        <span class="category">http://google.com</span>
+                                        <span class="pageNum">http://google.com</span>
                                     </div>
                                 </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="fileItem">
-                                        <img class="fileicon" src="/images/virtualClassRoom/icon_docx.png"  />
-                                        <p class="filetext">file name 1</p>
-                                        <span class="fileid"></span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="fileItem">
-                                        <img class="fileicon" src="/images/virtualClassRoom/icon_pptx.png"  />
-                                        <p class="filetext">file name 1</p>
-                                        <span class="fileid"></span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="fileItem">
-                                        <img class="fileicon" src="/images/virtualClassRoom/icon_pdf.png"  />
-                                        <p class="filetext">file name 1</p>
-                                        <span class="fileid"></span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="fileItem">
-                                        <img class="fileicon" src="/images/virtualClassRoom/icon_docx.png"  />
-                                        <p class="filetext">file name 1</p>
-                                        <span class="fileid"></span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="fileItem">
-                                        <img class="fileicon" src="/images/virtualClassRoom/icon_xlsx.png"  />
-                                        <p class="filetext">file name 1</p>
-                                        <span class="fileid"></span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="fileItem">
-                                        <img class="fileicon" src="/images/virtualClassRoom/icon_docx.png"  />
-                                        <p class="filetext">file name 1</p>
-                                        <span class="fileid"></span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="fileItem">
-                                        <img class="fileicon" src="/images/virtualClassRoom/icon_pdf.png"  />
-                                        <p class="filetext">file name 1</p>
-                                        <span class="fileid"></span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="fileItem">
-                                        <img class="fileicon" src="/images/virtualClassRoom/icon_pptx.png"  />
-                                        <p class="filetext">file name 1</p>
-                                        <span class="fileid"></span>
-                                    </div>
-                                </a>
-                            </li>
+                            </li> -->
                         </div>
                     </div>
                 </div>
@@ -1002,16 +1137,7 @@ function ShowMessage(name,imgpath,content,bit)
                                 <a href="#">
                                     <div class="fileItem">
                                         <img class="fileicon" src="/images/virtualClassRoom/icon_mpeg.png"  />
-                                        <p class="filetext">file name 1</p>
-                                        <span class="fileid"></span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="fileItem">
-                                        <img class="fileicon" src="/images/virtualClassRoom/icon_mov.png"  />
-                                        <p class="filetext">file name 1</p>
+                                        <p>file name 1</p>
                                         <span class="fileid"></span>
                                     </div>
                                 </a>
@@ -1022,7 +1148,7 @@ function ShowMessage(name,imgpath,content,bit)
                 <div class="tab-pane" id="filesysQuestionbank">
                     <div class="container">
                         <div id="questionbankPanle" class="fileList">
-                            <li>
+                            <!-- <li>
                                 <a href="#">
                                     <div class="fileItem">
                                         <img class="fileicon" src="/images/virtualClassRoom/icon_text.png"  />
@@ -1030,20 +1156,16 @@ function ShowMessage(name,imgpath,content,bit)
                                         <span class="fileid"></span>
                                     </div>
                                 </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="fileItem">
-                                        <img class="fileicon" src="/images/virtualClassRoom/icon_text.png"  />
-                                        <p class="filetext">file name 1</p>
-                                        <span class="fileid"></span>
-                                    </div>
-                                </a>
-                            </li>
+                            </li> -->
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane" id="filesysUploading">...</div>
+                <div class="tab-pane" id="filesysUploading">
+                    <div class="container">
+
+                    </div>
+                </div>
+
             </div>
             <div class="modal-footer">
                 <div class="pull-left" id="currentfile">

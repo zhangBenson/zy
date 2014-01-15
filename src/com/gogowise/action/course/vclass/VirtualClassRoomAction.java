@@ -50,7 +50,8 @@ public class VirtualClassRoomAction extends BasicAction {
             Course course = courseClass.getCourse();
             if( course.getTeacher() == null ) return ERROR;
 
-            if (course.getTeacher() != null && this.getSessionUserId() == course.getTeacher().getId()) {
+            if (course.getTeacher() != null && this.getSessionUserId().intValue() == course.getTeacher().getId().intValue() )
+            {
                 VirtualClassRoomSession virtualClassRoomSession = new VirtualClassRoomSession();
                 initTeacherSession(virtualClassRoomSession);
                 XStream xstream = new XStream();
