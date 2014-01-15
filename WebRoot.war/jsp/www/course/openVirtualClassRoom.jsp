@@ -829,7 +829,7 @@ function ShowMessage(name,imgpath,content,bit)
 
 <span id="currentUserId" style="display: none"><s:property value="#session.userID" /></span>
 <span id="currentName" style="display: none"><s:property value="#session.nickName" /></span>
-<span id="currentUserName" style="display: none">Scan</span>
+<span id="currentUserName" style="display: none">Scan2</span>
 <span id="currentimgPath" style="display: none"><s:property value="#session.userLogoUrl" /></span>
 
 <div class="container">
