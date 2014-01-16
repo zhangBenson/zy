@@ -8,23 +8,22 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- *Created by IntelliJ IDEA.
- * User: Yongzhi
- * Date: 12-5-13
- * Time: 下午10:12.
- */
 
 @Repository("courseMaterialDao")
-public class CourseMaterialDaoImpl extends ModelDaoImpl<CourseMaterial> implements CourseMaterialDao{
+public class CourseMaterialDaoImpl extends ModelDaoImpl<CourseMaterial> implements CourseMaterialDao {
 
     public List<CourseMaterial> findByCourseId(Pagination pagination, Integer courseId) {
-        return this.find("From CourseMaterial cm where cm.course.id=? order by cm.uploadTime desc", pagination, courseId);
+        return this.find("From CourseMaterial cm where cm.course.id=? order by cm.id desc", pagination, courseId);
     }
 
     public List<CourseMaterial> findByCourseClassId(Pagination pagination, Integer courseClassId) {
-        return this.find("From CourseMaterial cm where cm.courseClass.id=? order by cm.uploadTime desc", pagination, courseClassId);
+        return this.find("From CourseMaterial cm where cm.courseClass.id=? order by cm.id desc", pagination, courseClassId);
     }
+
+    public List<CourseMaterial> find(Integer courseId, Integer typeId) {
+        return this.find("From CourseMaterial cm where cm.course.id=? and cm.type = ?  order by cm.id desc", courseId, typeId);
+    }
+
 }
 
 

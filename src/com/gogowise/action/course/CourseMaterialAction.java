@@ -33,21 +33,13 @@ public class CourseMaterialAction extends BasicAction {
 
 
 
-    private static final Map<Integer, String> TYPE_MAP = new HashMap<>();
 
-    public static final int VIDEO = 1;
-    public static final int DOC = 2;
-    public static final int QUESTION = 3;
-    public static final int OTHER = 0;
+
+
 
     private ConvertQuestionService convertQuestionService;
     private CourseService courseService;
-    static {
-        TYPE_MAP.put(VIDEO, "VIDEO");
-        TYPE_MAP.put(DOC, "DOC");
-        TYPE_MAP.put(QUESTION, "QUESTION");
-        TYPE_MAP.put(OTHER, "OTHER");
-    }
+
     private Course course;
     private Integer classId;
 
@@ -69,10 +61,9 @@ public class CourseMaterialAction extends BasicAction {
     public String saveCourseMaterial(){
 
         //重命名
-        String typeStr = TYPE_MAP.get(courseMaterial.getType());
         String nowTimeStr = Calendar.getInstance().getTimeInMillis()+"";
         String extName = getExtention(courseMaterial.getFullPath());
-        String newName = typeStr + "_" + nowTimeStr + extName;
+        String newName = courseMaterial.getTypeString() + "_" + nowTimeStr + extName;
 
         String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + courseMaterial.getFullPath());
         String dstPath = ServletActionContext.getServletContext().getRealPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.getCourse().getId() + "/" + newName);
@@ -97,8 +88,7 @@ public class CourseMaterialAction extends BasicAction {
             if (".ppt".endsWith(extName) || ".pptx".endsWith(extName)) {
                 String dstDir = ServletActionContext.getServletContext().getRealPath(".")+ Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.getCourse().getId() + "/ppt/" + nowTimeStr;
                 Utils.pptConvert(dstPath, dstDir);
-            } else if (QUESTION == courseMaterial.getType()) {
-//                String xmlPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/test.xml" );
+            } else if (CourseMaterial.QUESTION == courseMaterial.getType()) {
                 String dstDir =ServletActionContext.getServletContext().getRealPath(".") + Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.getCourse().getId() + "/question/" + nowTimeStr;
                 Utils.questionConvert(dstPath, dstDir);
                 String xmlPath = dstDir + Constants.QUESTION_FILE_NAME ;
