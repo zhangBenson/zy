@@ -22,31 +22,55 @@ import java.util.List;
 @Results({
         @Result(name = BasicAction.RESULT_JSON, type = BasicAction.RESULT_JSON)
 })
-public class MaterialDisplayAction extends BasicAction {
+public class MaterialListAction extends BasicAction {
 
 
 //    @JSON(serialize = false)
 
 
     private CourseMaterialDao courseMaterialDao;
+    private Integer courseId;
+    private Integer typeId;
 
-    private Integer materialId;
 
-    private MaterialVo voInfo = new MaterialVo();
+    private List<MaterialVo> vos = new ArrayList<>();
+    private MaterialVo voInfo ;
 
-    @Action(value = "material")
-    public String material() {
-        CourseMaterial courseMaterial = courseMaterialDao.findById(materialId);
-        Utils.doCopy(voInfo, courseMaterial);
+    @Action(value = "listMaterial")
+    public String listMaterial() {
+        List<CourseMaterial> courseMaterials = courseMaterialDao.find(courseId, typeId);
+        vos = translate(courseMaterials);
         return RESULT_JSON;
+    }
+
+    private List<MaterialVo> translate(List<CourseMaterial> courseMaterials) {
+        List<MaterialVo> ret = new ArrayList<>();
+        for (CourseMaterial courseMaterial : courseMaterials) {
+            MaterialVo vo = new MaterialVo();
+            Utils.doCopy(vo, courseMaterial);
+            ret.add(vo);
+        }
+        return ret;
+    }
+
+    public void setCourseId(Integer courseId) {
+        this.courseId = courseId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
+
+    public List<MaterialVo> getVos() {
+        return vos;
     }
 
     public MaterialVo getVoInfo() {
         return voInfo;
     }
 
-    public void setMaterialId(Integer materialId) {
-        this.materialId = materialId;
+    public void setVoInfo(MaterialVo voInfo) {
+        this.voInfo = voInfo;
     }
 
     public void setCourseMaterialDao(CourseMaterialDao courseMaterialDao) {
