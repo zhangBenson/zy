@@ -20,7 +20,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 @Controller
 @Namespace(BasicAction.BASE_NAME_SPACE)
@@ -80,7 +82,7 @@ public class CourseMaterialAction extends BasicAction {
         }
 
         courseMaterial.setFullPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.getCourse().getId() + "/" + newName);
-
+        courseMaterial.setIsDisplay(true);
         courseMaterialDao.persistAbstract(courseMaterial);
 
         try {
@@ -105,11 +107,8 @@ public class CourseMaterialAction extends BasicAction {
     @Action(value="deleteCourseMaterial")
     public void deleteCourseMaterial(){
         CourseMaterial courseMaterial = courseMaterialDao.findById(this.getCourseMaterial().getId());
-
-        String filePath =  ServletActionContext.getServletContext().getRealPath(courseMaterial.getFullPath());
-        new File(filePath).delete();
-
-        courseMaterialDao.delete(courseMaterial);
+        courseMaterial.setIsDisplay(false);
+        courseMaterialDao.persist(courseMaterial);
     }
 
 

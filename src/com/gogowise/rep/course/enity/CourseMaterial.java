@@ -38,6 +38,7 @@ public class CourseMaterial extends AbstractPersistence {
     private Integer totalPages;
     private String path;
     private String convertPath;
+    private Boolean isDisplay;
 
     public int getType() {
         return type;
@@ -133,5 +134,13 @@ public class CourseMaterial extends AbstractPersistence {
 
     public String getTypeString () {
         return TYPE_MAP.get(this.getType());
+    }
+
+    public Boolean getIsDisplay() {
+        return isDisplay;
+    }
+
+    public void setIsDisplay(Boolean isDisplay) {
+        this.isDisplay = isDisplay;
     }
 }
