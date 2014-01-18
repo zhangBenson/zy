@@ -133,42 +133,69 @@ public class VedioSessionDataAction extends BasicAction {
     }
 
 
-    @Action(value = "one2manySession",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".one2manySession"),
+    @Action(value = "studentClass",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".roomStudent"),
                                                      @Result(name = ERROR,type = Constants.RESULT_NAME_TILES,location = ".notExist")})
-    public String One2manySession(){
-           if (this.getCourseClass().getId() != null) {
-               courseClass = classDao.findById(this.getCourseClass().getId());
-               inviteFriendHref = getBasePath()+"/courseOnlineAudit.html?courseClass.id="+courseClass.getId()+"&courseOnline=true";
-               Course course = courseClass.getCourse();
-               if(course.getTeacher()!=null&&this.getSessionUserId()==course.getTeacher().getId()){
-                   One2ManyTeacherSession one2ManyTeacherSession = new One2ManyTeacherSession();
-                   initOne2manyTeacherSession(one2ManyTeacherSession);
-                   XStream xstream = new XStream();
-                   xstream.alias("Session", One2ManyTeacherSession.class);
-                   OutputStream output = new ByteArrayOutputStream();
-                   xstream.marshal(one2ManyTeacherSession, new CompactWriter(new OutputStreamWriter(output)));
-                   this.setInitSeesionString(output.toString());
-                   this.setFlashPatch("flash/Teacher_1_to_M.swf");
-                   this.setRoleType(1);
-                   courseClass.setTeacherEntered(true);
-                   classDao.persistAbstract(courseClass);
-                   return SUCCESS;
-               }else {
-                   One2ManyStudentSession one2ManyStudentSession = new One2ManyStudentSession();
-                   initOne2manyStudentSession(one2ManyStudentSession);
-                   XStream xstream = new XStream();
-                   xstream.alias("Session", One2ManyStudentSession.class);
-                   OutputStream output = new ByteArrayOutputStream();
-                    xstream.marshal(one2ManyStudentSession, new CompactWriter(new OutputStreamWriter(output)));
-                   this.setInitSeesionString(output.toString());
-                   this.setFlashPatch("flash/Student_1_to_M.swf");
-                   this.setRoleType(2);
-                   return SUCCESS;
-
-               }
-           }
-           return ERROR;
+    public String toRoomStudent(){
+       if (this.getCourseClass().getId() != null) {
+           courseClass = classDao.findById(this.getCourseClass().getId());
+           inviteFriendHref = getBasePath()+"/courseOnlineAudit.html?courseClass.id="+courseClass.getId()+"&courseOnline=true";
+           Course course = courseClass.getCourse();
+//           if(course.getTeacher()!=null&&this.getSessionUserId()==course.getTeacher().getId()){
+//               One2ManyTeacherSession one2ManyTeacherSession = new One2ManyTeacherSession();
+//               initOne2manyTeacherSession(one2ManyTeacherSession);
+//               XStream xstream = new XStream();
+//               xstream.alias("Session", One2ManyTeacherSession.class);
+//               OutputStream output = new ByteArrayOutputStream();
+//               xstream.marshal(one2ManyTeacherSession, new CompactWriter(new OutputStreamWriter(output)));
+//               this.setInitSeesionString(output.toString());
+//               this.setFlashPatch("flash/Teacher_1_to_M.swf");
+//               this.setRoleType(1);
+//               courseClass.setTeacherEntered(true);
+//               classDao.persistAbstract(courseClass);
+//               return SUCCESS;
+//           }else {
+               One2ManyStudentSession one2ManyStudentSession = new One2ManyStudentSession();
+               initOne2manyStudentSession(one2ManyStudentSession);
+               XStream xstream = new XStream();
+               xstream.alias("Session", One2ManyStudentSession.class);
+               OutputStream output = new ByteArrayOutputStream();
+                xstream.marshal(one2ManyStudentSession, new CompactWriter(new OutputStreamWriter(output)));
+               this.setInitSeesionString(output.toString());
+//               this.setFlashPatch("flash/Student_1_to_M.swf");
+               this.setRoleType(2);
+               return SUCCESS;
+//
+//           }
        }
+       return ERROR;
+   }
+
+
+    @Action(value = "lecturerClass",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".roomLecturer"),
+                                                     @Result(name = ERROR,type = Constants.RESULT_NAME_TILES,location = ".notExist")})
+    public String toRoomLecturer(){
+       if (this.getCourseClass().getId() != null) {
+           courseClass = classDao.findById(this.getCourseClass().getId());
+           inviteFriendHref = getBasePath()+"/courseOnlineAudit.html?courseClass.id="+courseClass.getId()+"&courseOnline=true";
+
+           Course course = courseClass.getCourse();
+           One2ManyTeacherSession one2ManyTeacherSession = new One2ManyTeacherSession();
+           initOne2manyTeacherSession(one2ManyTeacherSession);
+           XStream xstream = new XStream();
+           xstream.alias("Session", One2ManyTeacherSession.class);
+           OutputStream output = new ByteArrayOutputStream();
+           xstream.marshal(one2ManyTeacherSession, new CompactWriter(new OutputStreamWriter(output)));
+           this.setInitSeesionString(output.toString());
+//           this.setFlashPatch("flash/Teacher_1_to_M.swf");
+           this.setRoleType(1);
+           courseClass.setTeacherEntered(true);
+           classDao.persistAbstract(courseClass);
+           return SUCCESS;
+       }
+       return ERROR;
+   }
+
+
 
     @Action(value = "startSupervision",results = {@Result(name = "one2one",type = Constants.RESULT_NAME_TILES,location = ".openClassSession"),
                                                      @Result(name = "one2two",type = Constants.RESULT_NAME_TILES,location = ".one2twoSession"),

@@ -51,6 +51,9 @@
     <definition name=".roomCenter" template="/jsp/layout/layoutOfRoom.jsp">
         <put-attribute name="roomHeader" value="/jsp/layout/roomHeader.jsp"/>
     </definition>
+    <definition name=".roomCenter2" template="/jsp/layout/layoutOfRoom2.jsp">
+        <!--<put-attribute name="roomHeader" value="/jsp/layout/roomHeader.jsp"/>-->
+    </definition>
     <definition name=".mapCenter" template="/jsp/layout/layoutOfMap.jsp">
         <put-attribute name="mapHeader" value="/jsp/layout/mapHeader.jsp"/>
     </definition>
@@ -601,9 +604,17 @@
         <put-attribute name="title" value="title.classroom.one2three"/>
         <put-attribute name="roomBody" value="/jsp/gogowise/one2threeSession.jsp"/>
     </definition>
-    <definition name=".one2manySession" extends=".roomCenter">
+    <definition name=".one2manySession" extends=".roomCenter2">
         <put-attribute name="title" value="title.classroom.one2many"/>
         <put-attribute name="roomBody" value="/jsp/gogowise/one2manySession.jsp"/>
+    </definition>
+    <definition name=".roomStudent" extends=".roomCenter2">
+        <put-attribute name="title" value="title.classroom.one2many"/>
+        <put-attribute name="roomBody" value="/jsp/gogowise/room/roomStudent.jsp"/>
+    </definition>
+    <definition name=".roomLecturer" extends=".roomCenter2">
+        <put-attribute name="title" value="title.classroom.one2many"/>
+        <put-attribute name="roomBody" value="/jsp/gogowise/room/roomLecturer.jsp"/>
     </definition>
 
      <definition name=".interviewVideo" extends=".bodyCenter">
