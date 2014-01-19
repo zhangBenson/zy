@@ -127,25 +127,25 @@ public class Utils {
     }
 
     public static void replaceFileFromTmp(String toDir, String fileName) {
-        String srcPath = ServletActionContext.getServletContext().getRealPath("/" + Constants.UPLOAD_FILE_PATH_TMP + "/"  + fileName);
-        String toPath = ServletActionContext.getServletContext().getRealPath(toDir) + File.separatorChar  + fileName;
+        String srcPath = ServletActionContext.getServletContext().getRealPath("/" + Constants.UPLOAD_FILE_PATH_TMP + "/" + fileName);
+        String toPath = ServletActionContext.getServletContext().getRealPath(toDir) + File.separatorChar + fileName;
         replaceFile(srcPath, toPath);
     }
 
-    public static void replaceFileFromTempModified(String toDir, String fileName){
-        String srcPath = ServletActionContext.getServletContext().getRealPath("/" + Constants.UPLOAD_FILE_PATH_TMP + "/"  + fileName);
+    public static void replaceFileFromTempModified(String toDir, String fileName) {
+        String srcPath = ServletActionContext.getServletContext().getRealPath("/" + Constants.UPLOAD_FILE_PATH_TMP + "/" + fileName);
         replaceFile(srcPath, toDir + File.separator + fileName);
     }
 
     public static void notReplaceFileFromTmp(String toDir, String fileName) {
-        String srcPath = ServletActionContext.getServletContext().getRealPath("/"  + Constants.UPLOAD_FILE_PATH_TMP + "/" + fileName);
-        String toPath = ServletActionContext.getServletContext().getRealPath(toDir) + File.separatorChar  + fileName;
+        String srcPath = ServletActionContext.getServletContext().getRealPath("/" + Constants.UPLOAD_FILE_PATH_TMP + "/" + fileName);
+        String toPath = ServletActionContext.getServletContext().getRealPath(toDir) + File.separatorChar + fileName;
         notReplaceFileAndCopy(srcPath, toPath);
     }
 
     public static void notReplaceFileFromTmpModified(String toDir, String fileName) {
-        String srcPath = ServletActionContext.getServletContext().getRealPath("/"  + Constants.UPLOAD_FILE_PATH_TMP + "/" + fileName);
-        String toPath = toDir + File.separatorChar  + fileName;
+        String srcPath = ServletActionContext.getServletContext().getRealPath("/" + Constants.UPLOAD_FILE_PATH_TMP + "/" + fileName);
+        String toPath = toDir + File.separatorChar + fileName;
         notReplaceFileAndCopy(srcPath, toPath);
     }
 
@@ -383,30 +383,20 @@ public class Utils {
     }
 
 
-    public synchronized static void pptConvert(String srcPpt, String desDir) throws IOException {
+    public synchronized static void pptConvert(String srcPpt, String pdfPath, String pdfName, String desDir) throws IOException {
         File dst = new File(desDir);
         if (!dst.exists()) {
             dst.mkdirs();
         }
-        String cmd = "cmd.exe /c  " + ServletActionContext.getServletContext().getRealPath("") + "\\PptFormatConverter.exe  " + srcPpt + " " + desDir + " jpg ";      // Change to synce
-        BufferedReader in = new BufferedReader(new InputStreamReader((Runtime
-                .getRuntime().exec(cmd).getInputStream())));
-        String s = "";
-        while (true) {
-            s = in.readLine();
-            if (s == null) {
-                break;
-            }
-            System.out.println(s.toString());
-        }
+        dst.setReadable(true);
+        dst.setWritable(true);
 
+        String BASE_PATCH = ServletActionContext.getServletContext().getRealPath(".");
+        String cmdPdf = BASE_PATCH + Constants.PPT_PDF_EXT_PATH + " " + srcPpt + " " + pdfPath;
+        String cmdPpt = BASE_PATCH + Constants.PPT_EXT_PATH + " " + pdfPath + pdfName + " " + desDir + "/brif";
 
-//        Process ps = Runtime.getRuntime().exec(cmd);
-        for (File f : dst.listFiles()) {
-            compressToSmall(f.getPath());
-        }
-
-
+        exe(cmdPdf);
+        exe(cmdPpt);
     }
 
     public synchronized static void questionConvert(String srcPpt, String desDir) throws IOException {
@@ -414,21 +404,23 @@ public class Utils {
         if (!dst.exists()) {
             dst.mkdirs();
         }
+        dst.setReadable(true);
+        dst.setWritable(true);
         String BASE_PATCH = ServletActionContext.getServletContext().getRealPath(".");
-        String cmd = BASE_PATCH +Constants.QUESTION_EXT_PATH +" " + srcPpt + " " +desDir+Constants.QUESTION_FILE_NAME + " " + desDir+"/img";      // Change to synce
-        logger.info(cmd + "=============cmd========================");
-        BufferedReader in = new BufferedReader(new InputStreamReader((Runtime
-                .getRuntime().exec(cmd).getInputStream())));
-        String s = "";
-        while (true) {
-            s = in.readLine();
-            if (s == null) {
-                break;
-            }
-            logger.info("==convert information for question bank=="+s);
-        }
+        String cmd = BASE_PATCH + Constants.QUESTION_EXT_PATH + " " + srcPpt + " " + desDir + Constants.QUESTION_FILE_NAME + " " + desDir + "/img";      // Change to synce
+        exe(cmd);
     }
 
+    private static void exe(String cmd) throws IOException {
+        String[] cmdA = {"/bin/sh", "-c", cmd};
+        Process process = Runtime.getRuntime().exec(cmdA);
+        logger.info(cmd + "=============cmd========================");
+        LineNumberReader br = new LineNumberReader(new InputStreamReader(process.getInputStream()));
+        String line;
+        while ((line = br.readLine()) != null) {
+            logger.info(line);
+        }
+    }
 
 
     public static void copy(File src, File dst) {
@@ -494,6 +486,12 @@ public class Utils {
         doCompress(path, 640, 480, 1, "_small", false);
     }
 
+
+    public static void main(String args[]) throws IOException {
+        String s = "/home/apache-tomcat-7.0.42/webapps/ROOT/./exe/question/batch.sh /home/apache-tomcat-7.0.42/webapps/ROOT/download/courseResource/1/QUESTION_1389712874522.doc /home/apache-tomcat-7.0.42/webapps/ROOT/./download/courseResource/1/question/13897128745221/question.xml /home/apache-tomcat-7.0.42/webapps/ROOT/./download/courseResource/1/question/13897128745221/img";
+        Runtime.getRuntime().exec(s);
+
+    }
 
 
 }
