@@ -1,7 +1,5 @@
 package com.gogowise.common.utils;
 
-import org.apache.struts2.ServletActionContext;
-
 /**
  * Created by IntelliJ IDEA.
  * User: zhangb
@@ -198,6 +196,8 @@ public class Constants {
     public static String QUESTION_EXT_PATH ="/exe/question/batch.sh";
     public static String QUESTION_FILE_NAME = "/question.xml";
 
+    public static String PPT_PDF_EXT_PATH = "/exe/ppt/PPT2PDF.sh";
+    public static String PPT_EXT_PATH = "/exe/ppt/PDF2PNG.sh";
 
 
 }

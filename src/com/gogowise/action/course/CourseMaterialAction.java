@@ -34,11 +34,6 @@ public class CourseMaterialAction extends BasicAction {
     private static final long serialVersionUID = 2466562905933168403L;
 
 
-
-
-
-
-
     private ConvertQuestionService convertQuestionService;
     private CourseService courseService;
 
@@ -53,17 +48,18 @@ public class CourseMaterialAction extends BasicAction {
     private List<CourseMaterial> courseMaterials = new ArrayList<CourseMaterial>();
 
 
-    @Action(value = "uploadCourseMaterial",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".uploadCourseMaterial")})
-    public String uploadCourseMaterial(){
+    @Action(value = "uploadCourseMaterial", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".uploadCourseMaterial")})
+    public String uploadCourseMaterial() {
         courseMaterials = courseMaterialDao.findByCourseId(null, this.getCourse().getId());
         return SUCCESS;
     }
 
-    @Action(value = "saveCourseMaterial",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName", "uploadCourseMaterial", "course.id","${course.id}"})})
-    public String saveCourseMaterial(){
+    @Action(value = "saveCourseMaterial", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "uploadCourseMaterial", "course.id", "${course.id}"})})
+    public String saveCourseMaterial() {
 
-        //重命名
-        String nowTimeStr = Calendar.getInstance().getTimeInMillis()+"";
+        String basePath = ServletActionContext.getServletContext().getRealPath(".");
+
+        String nowTimeStr = Calendar.getInstance().getTimeInMillis() + "";
         String extName = getExtention(courseMaterial.getFullPath());
         String newName = courseMaterial.getTypeString() + "_" + nowTimeStr + extName;
 
@@ -87,13 +83,18 @@ public class CourseMaterialAction extends BasicAction {
 
         try {
             //Conver ppt to jpg
-            if (".ppt".endsWith(extName) || ".pptx".endsWith(extName)) {
-                String dstDir = ServletActionContext.getServletContext().getRealPath(".")+ Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.getCourse().getId() + "/ppt/" + nowTimeStr;
-                Utils.pptConvert(dstPath, dstDir);
+
+            if (CourseMaterial.PPT == courseMaterial.getType()) {
+                String dstPdfDir = ServletActionContext.getServletContext().getRealPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.getCourse().getId() + "/");
+                String dstDir = basePath + Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.getCourse().getId() + "/ppt/" + nowTimeStr;
+                String pdfName = courseMaterial.getTypeString() + "_" + nowTimeStr + "pdf";
+                Utils.pptConvert(dstPath, dstPdfDir, pdfName, dstDir);
+                File desDirInfo = new File(dstDir);
+                System.out.println("================================" + desDirInfo.listFiles().length);
             } else if (CourseMaterial.QUESTION == courseMaterial.getType()) {
-                String dstDir =ServletActionContext.getServletContext().getRealPath(".") + Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.getCourse().getId() + "/question/" + nowTimeStr;
+                String dstDir = basePath + Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.getCourse().getId() + "/question/" + nowTimeStr;
                 Utils.questionConvert(dstPath, dstDir);
-                String xmlPath = dstDir + Constants.QUESTION_FILE_NAME ;
+                String xmlPath = dstDir + Constants.QUESTION_FILE_NAME;
                 List<Question> questions = convertQuestionService.convert(xmlPath);
                 courseService.saveQuestion(courseMaterial, questions);
             }
@@ -104,8 +105,8 @@ public class CourseMaterialAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value="deleteCourseMaterial")
-    public void deleteCourseMaterial(){
+    @Action(value = "deleteCourseMaterial")
+    public void deleteCourseMaterial() {
         CourseMaterial courseMaterial = courseMaterialDao.findById(this.getCourseMaterial().getId());
         courseMaterial.setIsDisplay(false);
         courseMaterialDao.persist(courseMaterial);

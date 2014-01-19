@@ -14,6 +14,7 @@ public class CourseMaterial extends AbstractPersistence {
     public static final int VIDEO = 1;
     public static final int DOC = 2;
     public static final int QUESTION = 3;
+    public static final int PPT = 4;
     public static final int OTHER = 0;
 
     private static final Map<Integer, String> TYPE_MAP = new HashMap<>();
@@ -23,6 +24,7 @@ public class CourseMaterial extends AbstractPersistence {
         TYPE_MAP.put(DOC, "DOC");
         TYPE_MAP.put(QUESTION, "QUESTION");
         TYPE_MAP.put(OTHER, "OTHER");
+        TYPE_MAP.put(PPT, "PPT");
     }
 
     @ManyToOne

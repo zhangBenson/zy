@@ -74,7 +74,10 @@
             <tr>
                 <td><s:property value="%{getText('course.resource.type')}"/></td>
                 <td>
-                    <s:select list="#{'1':getText('course.material.type.1'),'2':getText('course.material.type.2'),'3':getText('course.material.type.3'),'0':getText('course.material.type.0')}" headerKey="-1" headerValue="%{getText('course.resource.select.type')}" name="courseMaterial.type"/>
+                    <s:select
+                            list="#{'1':getText('course.material.type.1'),'2':getText('course.material.type.2'),'3':getText('course.material.type.3'),'4':getText('course.material.type.4'),'0':getText('course.material.type.0')}"
+                            headerKey="-1" headerValue="%{getText('course.resource.select.type')}"
+                            name="courseMaterial.type"/>
                     <span class="errorMessage" id="cm_type"></span>
                 </td>
             </tr>
