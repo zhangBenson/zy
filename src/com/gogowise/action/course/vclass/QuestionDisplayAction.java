@@ -40,6 +40,7 @@ public class QuestionDisplayAction extends BasicAction {
         for (QuestionItem questionItem : question.getQuestionItems()) {
             vo.getItems().add(questionItem.getDescription());
         }
+        vo.setId(question.getId());
         return RESULT_JSON;
     }
 

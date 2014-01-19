@@ -51,7 +51,7 @@ public class QuestionListAction extends BasicAction {
             for (QuestionItem questionItem : question.getQuestionItems()) {
                 questionVo.getItems().add(questionItem.getDescription());
             }
-
+            questionVo.setId(question.getId());
             ret.add(questionVo);
         }
         return ret;
