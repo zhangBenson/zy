@@ -50,6 +50,7 @@ public class Constants {
     public static final String TYPE_HOST_STRING = "3";
 
     public static final String DEFAULT_BLANK_VALUE = "";
+    public static final String DEFAULT_USER_LOGO = "images/defaultImgs/portrait.png";
     public static final Integer DEFAULT_INT_VALUE = 0;
     public static final Double DEFAULT_DOUBLE_VALUE = 3.0;
     public static final String SUCCESS_OBSERVATED = "您已经成功预定";

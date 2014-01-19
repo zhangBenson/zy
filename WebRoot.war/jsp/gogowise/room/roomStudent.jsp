@@ -603,6 +603,9 @@ function ShowMessage(name,imgpath,content,bit)
     function InRoom(){
         getGirlOjbect().InRoomComplete("<s:property value='initSeesionString' escape='false' />", "");
     }
+    function saveChatRecord(courseID, userID, msg){
+        $.post("saveChatRecord.html",{'course.id':courseID,'user.id':userID,'courseComment.content':msg},function(data){});
+    }
 </script>
 
 

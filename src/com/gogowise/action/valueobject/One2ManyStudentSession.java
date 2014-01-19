@@ -15,6 +15,7 @@ import com.gogowise.common.utils.Constants;
 public class One2ManyStudentSession {
     private Integer UserID = Constants.DEFAULT_INT_VALUE;
     private String UserName = Constants.DEFAULT_BLANK_VALUE;
+    private String UserLogo = Constants.DEFAULT_USER_LOGO;//Logo url of user
     private Integer Type = Constants.DEFAULT_INT_VALUE;//说明: 公开课是 1，才艺大比拼是2，我的个人秀是3, 个人家教是4
     private String Title = Constants.DEFAULT_BLANK_VALUE; //course name
     private String Abstract = Constants.DEFAULT_BLANK_VALUE; //课程摘要
@@ -61,6 +62,14 @@ public class One2ManyStudentSession {
         UserID = userID;
     }
 
+    public String getUserLogo() {
+        return UserLogo;
+    }
+
+    public void setUserLogo(String userLogo) {
+        UserLogo = userLogo;
+    }
+
     public String getUserName() {
         return UserName;
     }
@@ -68,6 +77,8 @@ public class One2ManyStudentSession {
     public void setUserName(String userName) {
         UserName = userName;
     }
+
+
 
     public Integer getType() {
         return Type;

@@ -19,8 +19,8 @@ var chatWrapper;
 var currentMIC = null;
 var currentPencil = null;
 
-
 $(document).ready(function() {
+
     stundioWrapper = new iScroll('stundioWrapper');
     chatWrapper = new iScroll('chatWrapper');
 
@@ -37,22 +37,21 @@ $(document).ready(function() {
     });
 
     //绑定单击
-    // $("#studionList li a").bind("click",function(event){
-    //        			var id = $(this).parent().find("span").text();
-    //        			showControlBar(id,event.pageX,event.pageY);
-    //        		});
-
-    $(".fileList li a").bind("click",function(event){
-        $("#currentfile").find("img").remove();
-        $("#currentfile").find("span").remove();
-        $("#currentfile").append("<img src="+$(this).find('img').attr('src')+"></img>");
-        $("#currentfile").append("<span>"+$(this).find('.filetext').text()+"</span>");
-
+    $("#studionList li a").bind("click",function(event){
+        var id = $(this).parent().find("span").text();
+        showControlBar(id,event.pageX,event.pageY);
     });
 
-    $(function () {
-        $('#myTabFile a:last').tab('show')
-    });
+    // $(".fileList li a").bind("click",function(event){
+    //        		$("#currentfile").find("img").remove();
+    //        		$("#currentfile").find("span").remove();
+    //        		$("#currentfile").find(".selectfileid").remove();
+    //        		$("#currentfile").append("<img src="+$(this).find('img').attr('src')+"></img>");
+    //        		$("#currentfile").append("<span>"+$(this).find('.filetext').text()+"</span>");
+    //        		$("#currentfile").append("<span style='display:none;' id='selectfileid'>"+$(this).find('.fileid').text()+"</span>");
+    //        	});
+
+
     $._messengerDefaults = {
         extraClasses: 'messenger-fixed messenger-theme-block messenger-on-top'
     }
@@ -61,7 +60,7 @@ $(document).ready(function() {
     $("#detailfooters").load("footers.html");
 
     $("#btnaddUser").click(function() {
-        addOneStudent("Scan","gogowisestyle/image/portrait5.jpg","c1",1,1);
+        addOneStudent("Scan","gogowisestyle/image/portrait5.jpg","c1",0,1);
     });
 
     $("#btndeleteOneStudent").click(function() {
@@ -73,8 +72,7 @@ $(document).ready(function() {
      * @return {[type]}
      */
     $("#btnGetPencil").click(function() {
-        if(currentPencil == $("#btnControlBar").find('.userId').text())
-            takePencil();
+        takePencil();
     });
 
     //设置画笔
@@ -84,8 +82,7 @@ $(document).ready(function() {
 
     //获取麦克风
     $("#btnGetMic").click(function() {
-        if(currentMIC == $("#btnControlBar").find('.userId').text())
-            takeMIC();
+        takeMIC();
     });
 
     //设置麦克风
@@ -99,8 +96,14 @@ $(document).ready(function() {
         kickUser();
     });
 
+    //发送
+    $("#btnSendMsg").click(function(){
+        //ShowMessage($("#currentName").text(),$("#currentimgPath").text(),$("#txtContent").val(),0);
+        var str = $("#txtContent").val();
+        $("#txtContent").val("");
+        sendMessageTeacher(str);
 
-
+    });
 
     $("#btnreceivemessage").click(function(){
         ShowMessage("Scan","gogowisestyle/image/portrait5.jpg","^_^ test message.........^_^ test message.........^_^ test message.........",1);
@@ -125,17 +128,10 @@ $(document).ready(function() {
     });
 
     $("#btnEvent").click(function(event){
-
-        if(currentMIC == "")
-            alert(currentMIC);
-        else if(currentMIC ==null)
-            alert(currentMIC);
-        else
-            alert(currentMIC);
+        //getGirlOjbect().playVideo("xxxx");
     });
 
     $("#btnEvent2").click(function(event){
-
         $("#studionList li a").bind("click",function(event){
             var id = $(this).parent().find("span").text();
             showControlBar(id,event.pageX,event.pageY);
@@ -143,20 +139,12 @@ $(document).ready(function() {
     });
 
     $("#btnEvent3").click(function(event){
-        getGirlOjbect().askSpeak("1");
-    });
-
-
-    $("#btnSendMsg").click(function(){
-        var str = $("#txtContent").val();
-        $("#txtContent").val("");
-        sendMessageStudent(str);
+        getGirlOjbect().seletedQuestions(2);
     });
 
     $("#btnOpenFile").click(function(){
-        $('#fileModal').modal('show')
+        showFile(2);
     });
-
 
     $("#btnOpenQuestions").click(function(){
         showQuestions();
@@ -171,12 +159,6 @@ $(document).ready(function() {
 
     });
 
-
-    $("#btnQuestion").click(function(){
-        if($('input[name="questionid"]:checked').val() != undefined)
-            getGirlOjbect().questionOver("");
-    });
-
     //提交选择题目;
     $("#btnQuestionResult").click(function(){
         $("#resultView").show();
@@ -184,10 +166,67 @@ $(document).ready(function() {
         getQuestionResult(24,16,2);
     });
 
+    $("#btnSelectFile").click(function(){
+
+        switch($("#currentfile").find(".selectCategory").text())
+        {
+            case "speech":
+                $('#fileModal').modal('hide');
+                seletedFile($("#currentfile").find(".selectfileid").text(),$("#currentfile").find(".selectfileNum").text());
+                break;
+            case "video":
+                $('#fileModal').modal('hide');
+                playVideo($("#currentfile").find(".selectVideoLink").text());
+                $('#fileModal').modal('hide');
+                break;
+            case "question":
+                getQuestionInfo();
+                showQuestions();
+                break;
+        }
+    });
+
+    ////////////// 获取文件列表
+    $('#myTabFile a[href="#filesysDocument"]').click(function(){
+        getSpeechList();
+    });
+
+    $('#myTabFile a[href="#filesysVideo"]').click(function(){
+        getVideoList();
+    });
+
+    $('#myTabFile a[href="#filesysQuestionbank"]').click(function(){
+        getQuestionList();
+    });
+    //////////////
+
+    $("#btnUploadquestion").click(function(){
+        if($('input[name=fileQuestion]').val() != "")
+        {
+
+        }
+        else
+            alert("no,select file");
+    });
+
+
+    $("#btnUploadspeech").click(function(){
+        if($('input[name=fileSpeech]').val() != "")
+        {
+
+        }
+        else
+            alert("no,select file");
+    });
+
+    $("#btnSubmitQuestions").click(function(){
+        //alert($('input[name="selectQuestion"]:checked').val());
+        seletedQuestions();
+    });
 });
 
-document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
+//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+//document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
 
 function getGirlOjbect() {
     if (/msie/.test(navigator.userAgent.toLowerCase())) {
@@ -197,11 +236,153 @@ function getGirlOjbect() {
     }
 }
 
-
-function sendMessageStudent(content)
+function getSpeechList()
 {
-    getGirlOjbect().sendMessage(content);
+    $("#speechDraftPanle li").remove();
+    //Speech
+    $.getJSON("fileList.html",function(data){
+        $.each(data,function(key,info)
+        {
+            var icon_path = "";
+
+            switch(info["fileType"])
+            {
+                case "doc":
+                    icon_path = "gogowisestyle/image/icon_docx.png"
+                    break;
+                case "docx":
+                    icon_path = "gogowisestyle/image/icon_docx.png"
+                    break;
+                case "pdf":
+                    icon_path = "gogowisestyle/image/icon_pdf.png"
+                    break;
+                case "xls":
+                    icon_path = "gogowisestyle/image/icon_xlsx.png"
+                    break;
+                case "xlsx":
+                    icon_path = "gogowisestyle/image/icon_xlsx.png"
+                    break;
+                case "ppt":
+                    icon_path = "gogowisestyle/image/icon_pptx.png"
+                    break;
+                case "ppt":
+                    icon_path = "gogowisestyle/image/icon_pptx.png"
+                    break;
+            }
+
+            $("#speechDraftPanle").append("<li><a href='#'>"+
+                    "<div class='fileItem'>"+
+                    "<img class='fileicon' src='"+icon_path+"' />"+
+                    "<p class='fileName'>"+info["fileName"]+"</p>"+
+                    "<span class='fileDirectory'>"+info["fileDirectory"]+"</span>"+
+                    "<span class='category'>"+info["category"]+"</span>"+
+                    "<span class='pageNum'>"+info["pageNum"]+"</span>"+
+                    "</div></a></li>");
+        });
+
+        bindFileClick();
+    });
 }
+
+function getVideoList()
+{
+    $("#videoPanle li").remove();
+
+    $.getJSON("videoList.html",function(data){
+        $.each(data,function(key,info)
+        {
+            var icon_path = "gogowisestyle/image/icon_mov.png";
+
+            $("#videoPanle").append("<li><a href='#'>"+
+                    "<div class='fileItem'>"+
+                    "<img class='fileicon' src='"+icon_path+"' />"+
+                    "<p class='fileName'>"+info["fileName"]+"</p>"+
+                    "<span class='videolink'>"+info["videoLink"]+"</span>"+
+                    "<span class='category'>"+info["category"]+"</span>"+
+                    "</div></a></li>");
+        });
+
+        bindFileClick();
+    });
+}
+
+function getQuestionList()
+{
+    $("#questionbankPanle li").remove();
+    $.getJSON("questionList.html",function(data){
+
+        $.each(data,function(key,info)
+        {
+            var icon_path = "gogowisestyle/image/icon_text.png";
+
+            $("#questionbankPanle").append("<li><a href='#'>"+
+                    "<div class='fileItem'>"+
+                    "<img class='fileicon' src='"+icon_path+"' />"+
+                    "<p class='fileName'>"+info["fileName"]+"</p>"+
+                    "<span class='question'>"+info["questionID"]+"</span>"+
+                    "<span class='category'>"+info["category"]+"</span>"+
+                    "</div></a></li>");
+        });
+
+        bindFileClick();
+    });
+}
+
+
+function getQuestionInfo()
+{
+    $("#questionsList div").remove();
+
+    $.ajax({
+        type:"GET",
+        url:"questionInfo.html",
+        dataType:"json",
+        success:function(data){
+
+            $.each(data,function(key,info)
+            {
+                $("#questionsList").append("<div class='questionsItem'>"+
+                        "<label>"+
+                        "<input type='radio' name='selectQuestion' value='"+info["questionID"]+"'>"+
+                        "<span class='questionsItemText'>"+info["content"]+"</span>"+
+                        "<span class='questionid'>"+info["questionID"]+"</span>"+
+                        "</label>"+
+                        "</div>");
+
+            });
+
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+            });
+        },
+        error:function(){
+            alert("no data....");
+        }
+    });
+}
+
+function bindFileClick()
+{
+    $(".fileList li a").bind("click",function(event){
+        $("#currentfile").find("img").remove();
+        $("#currentfile").find("span").remove();
+        $("#currentfile").find(".selectfileid").remove();
+        $("#currentfile").find(".selectfileNum").remove();
+        $("#currentfile").find(".selectVideoLink").remove();
+        $("#currentfile").find(".selectQuestion").remove();
+        $("#currentfile").find(".selectCategory").remove();
+        $("#currentfile").append("<img src="+$(this).find('img').attr('src')+"></img>");
+        $("#currentfile").append("<span>"+$(this).find('.fileName').text()+"</span>");
+        $("#currentfile").append("<span style='display:none;' class='selectfileid'>"+$(this).find('.fileDirectory').text()+"</span>");
+        $("#currentfile").append("<span style='display:none;' class='selectfileNum'>"+$(this).find('.pageNum').text()+"</span>");
+        $("#currentfile").append("<span style='display:none;' class='selectVideoLink'>"+$(this).find('.videolink').text()+"</span>");
+        $("#currentfile").append("<span style='display:none;' class='selectQuestion'>"+$(this).find('.question').text()+"</span>");
+        $("#currentfile").append("<span style='display:none;' class='selectCategory'>"+$(this).find('.category').text()+"</span>");
+    });
+}
+
 
 /**
  * 生成图形结果
@@ -248,23 +429,32 @@ function giveMIC()
     else
         tabstate(id,2,false);
 
+    getGirlOjbect().giveMIC(id);
+
     $("#btnControlBar").hide('200', function(){
         $("#btnControlBar").find('.userId').text("");
     });
+
+
 }
 
 function takeMIC()
 {
-    var id = $("#btnControlBar").find('.userId').text();
-    currentMIC = null;
-    removestate(id);
+    if(currentMIC == $("#btnControlBar").find('.userId').text())
+    {
+        var id = $("#btnControlBar").find('.userId').text();
+        currentMIC = null;
+        removestate(id);
 
-    if(id == currentPencil)
-        tabstate(id,3,false);
+        if(id == currentPencil)
+            tabstate(id,3,false);
 
-    $("#btnControlBar").hide('200', function(){
-        $("#btnControlBar").find('.userId').text("");
-    });
+        getGirlOjbect().takeMIC(id);
+
+        $("#btnControlBar").hide('200', function(){
+            $("#btnControlBar").find('.userId').text("");
+        });
+    }
 }
 
 function givePencil()
@@ -287,7 +477,7 @@ function givePencil()
     else
         tabstate(id,3,false);
 
-
+    getGirlOjbect().givePencil(id);
 
     $("#btnControlBar").hide('200', function(){
         $("#btnControlBar").find('.userId').text("");
@@ -296,18 +486,24 @@ function givePencil()
 
 function takePencil()
 {
-    var id = $("#btnControlBar").find('.userId').text();
+    if(currentPencil == $("#btnControlBar").find('.userId').text())
+    {
+        var id = $("#btnControlBar").find('.userId').text();
 
-    currentPencil = null;
-    removestate(id);
+        currentPencil = null;
+        removestate(id);
 
-    if(id == currentMIC)
-        tabstate(id,2,false);
+        if(id == currentMIC)
+            tabstate(id,2,false);
 
-    $("#btnControlBar").hide('200', function(){
-        $("#btnControlBar").find('.userId').text("");
-    });
+        getGirlOjbect().takePencil(id);
+        $("#btnControlBar").hide('200', function(){
+            $("#btnControlBar").find('.userId').text("");
+        });
+    }
 }
+
+
 
 function kickUser()
 {
@@ -325,10 +521,13 @@ function kickUser()
         currentPencil = null;
     }
 
+    getGirlOjbect().kickAway(id);
+
     deleteOneStudent(id);
     $("#btnControlBar").hide('400', function(){
         $("#btnControlBar").find('.userId').text("");
     });
+
 }
 
 //学生发言
@@ -349,7 +548,6 @@ function showControlBar(id,x,y)
 {
     if($("#btnControlBar").css("display") != "none")
         $("#btnControlBar").css("display","none");
-
 
     $("#btnControlBar").css("position","absolute");
     $("#btnControlBar").css("left",x-500+"px");
@@ -396,55 +594,6 @@ function alert(content,type)
     });
 }
 
-function getQuestionInfo(id)
-{
-    $("#studentQuestionItem div").remove();
-
-    $.ajax({
-        type:"GET",
-        url:"questionItem.html",
-        dataType:"json",
-        success:function(data){
-
-            $("#studentQuestionItem").append("<div>"+
-                    "<div class='questionsItemText'>"+data["subjectname"]+"</div>"+
-                    "<span class='questionid'>"+data["questionID"]+"</span>"+
-                    "<div class='listanswer'></div>");
-
-            $.each(data.options,function(key,info){
-                $("#studentQuestionItem").find(".listanswer").append("<div style='margin-top:10px;'>"+
-                        "<label class='answerItem'>"+
-                        "<p>"+info["itemname"]+"</p>"+
-                        "<input type='radio' name='"+info["value"]+"'>"+
-                        "<span>"+info["itemtext"]+"</span>"+
-                        "</label>"+
-                        "</div>");
-            });
-
-            //alert(data["subjectname"]);
-            // $.each(data,function(key,info)
-            // {
-            // 	$("#questionsList").append("<div class='questionsItem'>"+
-            // 	"<label>"+
-            // 	"<input type='radio' name='selectQuestion' value='"+info["questionID"]+"'>"+
-            // 	"<span class='questionsItemText'>"+info["content"]+"</span>"+
-            // 	"<span class='questionid'>"+info["questionID"]+"</span>"+
-            // 	"</label>"+
-            // 	"</div>");
-            // });
-
-            $('input').iCheck({
-                checkboxClass: 'icheckbox_square-green',
-                radioClass: 'iradio_square-blue',
-                increaseArea: '20%' // optional
-            });
-        },
-        error:function(){
-            alert("no data....");
-        }
-    });
-}
-
 //添加一个学生到学生列表
 function addOneStudent(name,imgpath,id,ismsg,isMic)
 {
@@ -459,9 +608,9 @@ function addOneStudent(name,imgpath,id,ismsg,isMic)
         stundioWrapper.refresh();
     });
 
-    // $("#studionList li:contains('"+id+"')").bind("click",function(event){
-    //        			showControlBar(id,event.pageX,event.pageY);
-    //        		});
+    $("#studionList li:contains('"+id+"')").bind("click",function(event){
+        showControlBar(id,event.pageX,event.pageY);
+    });
 
     if(ismsg)
         alert("进入学生:"+name,"success");
@@ -489,15 +638,40 @@ function showQuestions()
     $("#resultView").hide();
 }
 
-function showFile()
+function showFile(index)
 {
+    $("#currentfile").find("img").remove();
+    $("#currentfile").find("span").remove();
+    $("#currentfile").find(".selectfileid").remove();
     $('#fileModal').modal('show');
+
+    switch(index)
+    {
+        case 1:
+            $('#myTabFile a[href="#filesysDocument"]').tab('show');
+            getSpeechList();
+            break;
+        case 2:
+            $('#myTabFile a[href="#filesysQuestionbank"]').tab('show');
+            getQuestionList();
+            break;
+        case 3:
+
+            $('#myTabFile a[href="#filesysVideo"]').tab('show');
+            getVideoList();
+            break;
+    }
+
+
 }
 
-function showQuestionsStudio(id)
+function showQuestionsStudio()
 {
-    getQuestionInfo(id);
-    $("#questionsStudentModal").modal('show');
+    $("#questionsStudioModal").modal('show');
+}
+
+function playVideo(link) {
+    getGirlOjbect().playYoutubeVideo(link);
 }
 
 //根据ID，State状态值（1，2，3）设置状态，bit是否需要排序到最上.
@@ -529,18 +703,41 @@ function tabstate(id,state,bit)
     $("#studionList li:contains('"+id+"') img").addClass(_state).animate({borderWidth:"0"}).animate({borderWidth:"6"}).animate({borderWidth:"0"}).animate({borderWidth:"6"}).animate({borderWidth:"0"}).animate({borderWidth:"6"}).animate({borderWidth:"0"}).animate({borderWidth:"6"}).animate({borderWidth:"0"}).animate({borderWidth:"6"}).animate({borderWidth:"0"}).animate({borderWidth:"6"});
 }
 
+//提交选择的题
+function seletedQuestions()
+{
+    if($('input[name="selectQuestion"]:checked').val() != undefined)
+        getGirlOjbect().seletedQuestions($('input[name="selectQuestion"]:checked').val());
+}
+
+function seletedFile(fileID, pageNum)
+{
+    getGirlOjbect().seletedFile(fileID, pageNum);
+}
+
 //根据ID排序到最上面
 function studioSortUp(id)
 {
     $("#studionList").prepend($("#studionList li:contains('"+id+"')"));
 }
 
+function sendMessageTeacher(content)
+{
+    getGirlOjbect().sendMessage(content);
+}
+
+
+// function seletedQuestion()
+// {
+// 	if($('input[name="selectQuestion"]:checked').val() != undefined)
+// 		getGirlOjbect().seletedQuestions($('input[name="selectQuestion"]:checked').val());
+// }
+
 //显示学生信息 name 学生名字,imgpath头像路径,content内容,bit 1左边 0右边
 function ShowMessage(name,imgpath,content,bit)
 {
     if(content == "")
         return;
-
 
     var inithight = $("#charList").height();
     var isleft;
@@ -598,7 +795,7 @@ function ShowMessage(name,imgpath,content,bit)
         getGirlOjbect().closeBrowser();
         /*window.location.href="closeBrowser.html?roleType=<s:property value='roleType'/>";*/
         //TODO: temperarily redirect to personal center
-        window.location.href="personalCenter.html";
+        window.location.href="myfirstPage.html";
     }
     function InRoom(){
         getGirlOjbect().InRoomComplete("<s:property value='initSeesionString' escape='false' />", "");
@@ -606,7 +803,7 @@ function ShowMessage(name,imgpath,content,bit)
 </script>
 
 
-<%--<div class="btn-group" style="margin:5px;">
+<div class="btn-group" style="margin:5px;">
     <button type="button" class="btn btn-success" id="btnaddUser">进入用户</button>
     <button type="button" class="btn btn-success" id="btndeleteOneStudent">退出用户</button>
     <button type="button" class="btn btn-success" id="btnreceivemessage">接收消息</button>
@@ -617,7 +814,7 @@ function ShowMessage(name,imgpath,content,bit)
     <button type="button" class="btn btn-success" id="btnEvent">事件测试1</button>
     <button type="button" class="btn btn-success" id="btnEvent2">事件测试2</button>
     <button type="button" class="btn btn-success" id="btnEvent3">事件测试3</button>
-</div>--%>
+</div>
 
 <span id="currentUserId" style="display: none">8F92FEFB-C5D5-B9AA-24BB-908DB20C2B7C</span>
 <span id="currentName" style="display: none">shucan</span>
@@ -658,7 +855,7 @@ function ShowMessage(name,imgpath,content,bit)
         <!-- </object>
         -->
         <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="720" height="560" name="Girl" id="Girl" wmode="transparent">
-            <param name="movie" value="flash/Student_1.swf" />
+            <param name="movie" value="flash/Teacher_1.swf" />
             <param name="quality" value="high" />
             <param name="wmode" value="transparent" />
             <param name="allowFullScreen" value="true" />

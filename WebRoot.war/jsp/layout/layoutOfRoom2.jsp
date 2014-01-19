@@ -11,41 +11,11 @@
             <tiles:importAttribute name="title"/>
             <s:text name="%{#attr['title']}"/>
         </title>
-        <style type="text/css">
-            #together{
-                width:100%;
-                min-height: 100%;
-                height: 100%;
-                height: auto !important;
-                margin: 0 auto;
-            }
-            .ggw_tile{float:left;width: 100%;position: relative;}
-            .ggw_inner_cont{width: 1170px;margin: 0 auto;}
-            /*#ggw_header{
-                background:url(images/room/room_header_bg.png);
-                height: 56px;
-            }*/
-            /*#ggw_content{
-                padding-bottom: 30px;
-            }*/
-        </style>
-
-        <META content="MSHTML 6.00.2800.1106" name=GENERATOR>
-        <%@ include file="includeForLayOut.jsp" %>
     </head>
 
     <body>
-        <div id="together">
-            <%--<div id="ggw_header" class="ggw_tile">
-                <div class="ggw_inner_cont">
-                    <tiles:insertAttribute name="roomHeader"/>
-                </div>
-            </div>--%>
-            <div id="ggw_content" class="ggw_tile"<%-- style="z-index: 0;"--%>>
-                <div class="ggw_inner_cont">
-                    <tiles:insertAttribute name="roomBody"/>
-                </div>
-            </div>
-        </div>
+        <div id="top"><tiles:insertAttribute name="top"/></div>
+        <div id="detailInfo"><tiles:insertAttribute name="contentBody"/></div>
+        <div id="detailfooters"><tiles:insertAttribute name="footer"/></div>
     </body>
 </html>
