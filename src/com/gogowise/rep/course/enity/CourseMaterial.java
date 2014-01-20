@@ -31,7 +31,7 @@ public class CourseMaterial extends AbstractPersistence {
     private Course course;
     @ManyToOne
     private CourseClass courseClass;
-    private int type;
+    private int type = 0;
     private String description;
     private Calendar uploadTime;
     private String fullPath;
@@ -134,7 +134,7 @@ public class CourseMaterial extends AbstractPersistence {
         this.course = courseClass.getCourse();
     }
 
-    public String getTypeString () {
+    public String getTypeString() {
         return TYPE_MAP.get(this.getType());
     }
 
