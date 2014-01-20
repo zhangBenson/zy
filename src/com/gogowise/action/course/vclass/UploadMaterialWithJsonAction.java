@@ -14,8 +14,6 @@ import com.gogowise.rep.course.enity.Question;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
-import org.apache.struts2.convention.annotation.Result;
-import org.apache.struts2.convention.annotation.Results;
 import org.apache.struts2.json.annotations.JSON;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
@@ -31,9 +29,6 @@ import java.util.Random;
 @Controller
 @Namespace(BasicAction.BASE_NAME_SPACE)
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
-@Results({
-        @Result(name = BasicAction.RESULT_JSON, type = BasicAction.RESULT_JSON)
-})
 public class UploadMaterialWithJsonAction extends BasicAction {
 
 
@@ -172,13 +167,13 @@ public class UploadMaterialWithJsonAction extends BasicAction {
 
             if (CourseMaterial.PPT == courseMaterial.getType()) {
                 String dstPdfDir = ServletActionContext.getServletContext().getRealPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/");
-                String dstDir = basePath + Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/ppt/" + nowTimeStr;
+                String dstDir = this.getRealPathForBaseDir() + Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/ppt/" + nowTimeStr;
                 String pdfName = courseMaterial.getTypeString() + "_" + nowTimeStr + "pdf";
                 Utils.pptConvert(dstPath, dstPdfDir, pdfName, dstDir);
                 File desDirInfo = new File(dstDir);
                 System.out.println("================================" + desDirInfo.listFiles().length);
             } else if (CourseMaterial.QUESTION == courseMaterial.getType()) {
-                String dstDir = basePath + Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/question/" + nowTimeStr;
+                String dstDir = this.getRealPathForBaseDir() + Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/question/" + nowTimeStr;
                 Utils.questionConvert(dstPath, dstDir);
                 String xmlPath = dstDir + Constants.QUESTION_FILE_NAME;
                 List<Question> questions = convertQuestionService.convert(xmlPath);

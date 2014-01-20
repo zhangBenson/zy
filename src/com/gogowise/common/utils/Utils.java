@@ -382,8 +382,13 @@ public class Utils {
         }
     }
 
+    public static String getExtention(String fileName) {
+        int pos = fileName.lastIndexOf(".");
+        return fileName.substring(pos);
+    }
 
-    public synchronized static void pptConvert(String srcPpt, String pdfPath, String pdfName, String desDir) throws IOException {
+
+    public static void pptConvert(String srcPpt, String pdfPath, String pdfName, String desDir) throws IOException {
         File dst = new File(desDir);
         if (!dst.exists()) {
             dst.mkdirs();
@@ -492,6 +497,5 @@ public class Utils {
         Runtime.getRuntime().exec(s);
 
     }
-
 
 }

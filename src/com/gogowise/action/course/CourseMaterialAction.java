@@ -60,7 +60,7 @@ public class CourseMaterialAction extends BasicAction {
         String basePath = ServletActionContext.getServletContext().getRealPath(".");
 
         String nowTimeStr = Calendar.getInstance().getTimeInMillis() + "";
-        String extName = getExtention(courseMaterial.getFullPath());
+        String extName = Utils.getExtention(courseMaterial.getFullPath());
         String newName = courseMaterial.getTypeString() + "_" + nowTimeStr + extName;
 
         String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + courseMaterial.getFullPath());

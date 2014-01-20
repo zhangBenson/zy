@@ -1,10 +1,10 @@
 package com.gogowise.action.competition;
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.competition.CompetitionDao;
 import com.gogowise.rep.competition.enity.Competition;
-import com.gogowise.common.utils.Constants;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -50,7 +50,7 @@ public class CompetitionAction extends BasicAction {
 
     public String save() throws Exception {
         if (this.upload != null) {
-            String path = "/" + this.getCompetition().getId() + this.getExtention(this.uploadFileName);
+            String path = "/" + this.getCompetition().getId() + Utils.getExtention(this.uploadFileName);
             File imageFile = new File(ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_COMPETITION_IMAGE_PATH) + path);
             if (!imageFile.getParentFile().exists())
                 imageFile.getParentFile().mkdirs();
