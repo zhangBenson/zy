@@ -87,7 +87,7 @@ public class CourseMaterialAction extends BasicAction {
             if (CourseMaterial.PPT == courseMaterial.getType()) {
                 String dstPdfDir = ServletActionContext.getServletContext().getRealPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.getCourse().getId() + "/");
                 String dstDir = basePath + Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.getCourse().getId() + "/ppt/" + nowTimeStr;
-                String pdfName = courseMaterial.getTypeString() + "_" + nowTimeStr + "pdf";
+                String pdfName = courseMaterial.getTypeString() + "_" + nowTimeStr + ".pdf";
                 Utils.pptConvert(dstPath, dstPdfDir, pdfName, dstDir);
                 File desDirInfo = new File(dstDir);
                 System.out.println("================================" + desDirInfo.listFiles().length);
