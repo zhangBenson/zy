@@ -84,7 +84,7 @@ public class SaveMaterialAction extends BasicAction {
         courseMaterialDao.persistAbstract(courseMaterial);
 
         doConvert(nowTimeStr, dstPath);
-
+        courseMaterialDao.persistAbstract(courseMaterial);
         return SUCCESS;
     }
 
@@ -143,7 +143,6 @@ public class SaveMaterialAction extends BasicAction {
 
         fileupload.renameTo(new File(savePath + newFileName));
 
-        String basePath = ServletActionContext.getServletContext().getRealPath(".");
         String newName = courseMaterial.getTypeString() + "_" + nowTimeStr + extName;
 
         String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + newFileName);
@@ -165,6 +164,7 @@ public class SaveMaterialAction extends BasicAction {
         courseMaterialDao.persistAbstract(courseMaterial);
 
         doConvert(nowTimeStr, dstPath);
+        courseMaterialDao.persistAbstract(courseMaterial);
 
         HttpServletResponse response = ServletActionContext.getResponse();
         response.setCharacterEncoding("utf-8");
@@ -180,6 +180,10 @@ public class SaveMaterialAction extends BasicAction {
         this.course = course;
     }
 
+    @JSON(serialize = false)
+    public Course getCourse() {
+        return course;
+    }
 
     public void setCourseMaterial(CourseMaterial courseMaterial) {
         this.courseMaterial = courseMaterial;
