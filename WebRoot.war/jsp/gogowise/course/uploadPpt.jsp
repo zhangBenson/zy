@@ -79,8 +79,9 @@
         $("#cm_upload_input").uploadify({
             /*注意前面需要书写path的代码*/
             'uploader':'js/uploadify/uploadify.swf',
-//            'script':'uploadCourseMaterialToBeta.html',
-            'script':'http://beta.gogowise.com/uploadCourseMaterialToBeta.html',
+            //'script':'uploadCourseMaterialToBeta.html',
+            //'script':'http:/beta.gogowise.com/uploadCourseMaterialToBeta.html',
+            'script':'/uploadCourseMaterialToBeta.html',
             'cancelImg':'js/uploadify/cancel.png',
             'queueID':'cm_upload', //和存放队列的DIV的id一致
             'fileDataName':'fileupload', //和以下input的name属性一致
@@ -94,9 +95,9 @@
             onComplete:function (event, queueID, fileObj, response, data) {
                 var jsonRep = $.parseJSON(response);
                 $("#cm_path").val(jsonRep.genFileName);
-                $("#cm_path").val(jsonRep.path);
+                $("#cm_pathInfo").val(jsonRep.path);
                 alert(jsonRep.totalPages +":" +jsonRep.path);
-                $("#cm_path").val(jsonRep.totalPages);
+                $("#cm_totalPages").val(jsonRep.totalPages);
                 $("#cm_size").val(fileObj.size);
                 $("#cm_upload").html("<s:text name="course.resource.upload.success"/>");
             },
