@@ -488,7 +488,8 @@ public class Utils {
     }
 
     public static void compressToSmall(String path) {
-        doCompress(path, 640, 480, 1, "_small", false);
+        //doCompress(path, 640, 480, 1, "_small", false);
+        doCompress(path, 720, 540, 1, "_small", false);
     }
 
 

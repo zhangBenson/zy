@@ -27,6 +27,7 @@ function CreateRoom() {
     urlarr[urlarr.length - 1] = "";
     url = urlarr.join("/");
     getGirlOjbect().CreateRoomComplete("<s:property value='initSeesionString' escape='false' />", "");
+    alert("Finished CreateRoom");
 }
 
 $(document).ready(function() {
@@ -209,6 +210,9 @@ $(document).ready(function() {
         getQuestionList();
     });
     //////////////
+    //alert("Before CreateRoom ");
+    //CreateRoom();
+    //alert("After CreateRoom ");
 
 });
 
