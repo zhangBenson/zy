@@ -5,22 +5,33 @@ import com.gogowise.rep.AbstractPersistence;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
-/**
- * Created by IntelliJ IDEA.
- * User: Yongzhi
- * Date: 12-5-13
- * Time: 下午10:12
- * To change this template use File | Settings | File Templates.
- */
+
 @Entity
-//@Table( name = "CourseMaterial" )
 public class CourseMaterial extends AbstractPersistence {
+    public static final int VIDEO = 1;
+    public static final int DOC = 2;
+    public static final int QUESTION = 3;
+    public static final int PPT = 4;
+    public static final int OTHER = 0;
+
+    private static final Map<Integer, String> TYPE_MAP = new HashMap<>();
+
+    static {
+        TYPE_MAP.put(VIDEO, "VIDEO");
+        TYPE_MAP.put(DOC, "DOC");
+        TYPE_MAP.put(QUESTION, "QUESTION");
+        TYPE_MAP.put(OTHER, "OTHER");
+        TYPE_MAP.put(PPT, "PPT");
+    }
+
     @ManyToOne
     private Course course;
     @ManyToOne
     private CourseClass courseClass;
-    private int type;
+    private int type = 0;
     private String description;
     private Calendar uploadTime;
     private String fullPath;
@@ -29,6 +40,7 @@ public class CourseMaterial extends AbstractPersistence {
     private Integer totalPages;
     private String path;
     private String convertPath;
+    private Boolean isDisplay;
 
     public int getType() {
         return type;
@@ -120,5 +132,17 @@ public class CourseMaterial extends AbstractPersistence {
     public void setCourseClass(CourseClass courseClass) {
         this.courseClass = courseClass;
         this.course = courseClass.getCourse();
+    }
+
+    public String getTypeString() {
+        return TYPE_MAP.get(this.getType());
+    }
+
+    public Boolean getIsDisplay() {
+        return isDisplay;
+    }
+
+    public void setIsDisplay(Boolean isDisplay) {
+        this.isDisplay = isDisplay;
     }
 }

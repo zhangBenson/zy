@@ -1,18 +1,18 @@
 package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.common.utils.Constants;
+import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.course.CourseService;
 import com.gogowise.rep.course.dao.ClassDao;
 import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.dao.CourseInviteStudentDao;
-import com.gogowise.rep.course.vo.CourseSpecification;
-import com.gogowise.rep.org.dao.OrganizationDao;
-import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.course.enity.CourseClass;
 import com.gogowise.rep.course.enity.CourseInviteStudent;
-import com.gogowise.common.utils.Constants;
-import com.gogowise.common.utils.Utils;
+import com.gogowise.rep.course.vo.CourseSpecification;
+import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
@@ -32,8 +32,8 @@ import java.util.List;
 @Controller
 @Namespace(BasicAction.BASE_NAME_SPACE)
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
-@Results({ @Result(name = "json", type = "json")})
-public class SaveCourseAction extends BasicAction{
+@Results({@Result(name = "json", type = "json")})
+public class SaveCourseAction extends BasicAction {
     private Course course;
     private CourseClass courseClass;
     private BaseUserDao baseUserDao;
@@ -57,7 +57,7 @@ public class SaveCourseAction extends BasicAction{
 
 
     @Action(value = "ajaxSaveCourse")
-    public String ajaxSaveCourse(){
+    public String ajaxSaveCourse() {
 
         // Save course
         CourseSpecification specification = CourseSpecification.create(course, this.getSessionUserId(), this.getCourseType(), this.getTeacherIds());
@@ -66,13 +66,13 @@ public class SaveCourseAction extends BasicAction{
         course = courseService.findById(course.getId());
 
         // copy jpg
-        if(StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(),"upload/"))
-        {
+        if (StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(), "upload/")) {
             //Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
             String courseDir = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_COURSE_PATH);
             courseDir = courseDir + File.separator + course.getId();
 
-            File temp = new File(courseDir); if( !temp.exists() ) temp.mkdirs();
+            File temp = new File(courseDir);
+            if (!temp.exists()) temp.mkdirs();
 
             Utils.notReplaceFileFromTmpModified(temp.getAbsolutePath(), course.getLogoUrl());
             course.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + course.getId() + "/" + course.getLogoUrl());
@@ -103,8 +103,8 @@ public class SaveCourseAction extends BasicAction{
     }
 
 
-    @Action(value = "selfSaveClass",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".classesList")})
-    public String selfSaveClass(){
+    @Action(value = "selfSaveClass", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".classesList")})
+    public String selfSaveClass() {
         course = courseDao.findById(this.getCourse().getId());
         classDao.saveClass(courseClass, course, durations.get(0));
         courseClasses = classDao.findByCourseId(course.getId());
@@ -128,41 +128,40 @@ public class SaveCourseAction extends BasicAction{
     }
 
     @Action(value = "updateCourseTeachingNum")
-    public void updateCourseTeachingNum(){
+    public void updateCourseTeachingNum() {
         Course _course = courseDao.findById(this.getCourse().getId());
         _course.setTeachingNum(this.getCourse().getTeachingNum());
         courseDao.persistAbstract(_course);
     }
 
     @Action(value = "ajaxUpdateCourse")
-    public void ajaxUpdateCourse(){
+    public void ajaxUpdateCourse() {
         Course _course = courseDao.findById(this.getCourse().getId());
-        _course.setName(getEmptyString(course.getName()));
-        _course.setDescription(getEmptyString(course.getDescription()));
-        _course.setStudentType(getEmptyString(course.getStudentType()));
-        _course.setCourseTeachingBook(getEmptyString(course.getCourseTeachingBook()));
+        _course.setName(Utils.getEmptyString(course.getName()));
+        _course.setDescription(Utils.getEmptyString(course.getDescription()));
+        _course.setStudentType(Utils.getEmptyString(course.getStudentType()));
+        _course.setCourseTeachingBook(Utils.getEmptyString(course.getCourseTeachingBook()));
         _course.setCourseType(course.getCourseType());
         _course.setCharges(course.getCharges());
 
-        if(StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(),"upload/"))
-        {
+        if (StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(), "upload/")) {
             String courseDir = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_COURSE_PATH);
             courseDir = courseDir + File.separator + course.getId();
 
-            File temp = new File(courseDir); if( !temp.exists() ) temp.mkdirs();
+            File temp = new File(courseDir);
+            if (!temp.exists()) temp.mkdirs();
 
             Utils.notReplaceFileFromTmpModified(temp.getAbsolutePath(), course.getLogoUrl());
-            _course.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + course.getId()+"/"+course.getLogoUrl());
+            _course.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + course.getId() + "/" + course.getLogoUrl());
 
             //Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
             //_course.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId()+"/"+course.getLogoUrl());
         }
-        if(StringUtils.isBlank(course.getLogoUrl())) _course.setLogoUrl(Constants.DEFAULT_COURSE_IMAGE);
+        if (StringUtils.isBlank(course.getLogoUrl())) _course.setLogoUrl(Constants.DEFAULT_COURSE_IMAGE);
 
         courseDao.persistAbstract(_course);
 
     }
-
 
 
     @JSON(serialize = false)
@@ -173,6 +172,7 @@ public class SaveCourseAction extends BasicAction{
     public void setCourse(Course course) {
         this.course = course;
     }
+
     @JSON(serialize = false)
     public CourseClass getCourseClass() {
         return courseClass;
@@ -190,6 +190,7 @@ public class SaveCourseAction extends BasicAction{
     public void setBaseUserDao(BaseUserDao baseUserDao) {
         this.baseUserDao = baseUserDao;
     }
+
     @JSON(serialize = false)
     public OrganizationDao getOrganizationDao() {
         return organizationDao;
@@ -198,6 +199,7 @@ public class SaveCourseAction extends BasicAction{
     public void setOrganizationDao(OrganizationDao organizationDao) {
         this.organizationDao = organizationDao;
     }
+
     @JSON(serialize = false)
     public ClassDao getClassDao() {
         return classDao;
@@ -215,6 +217,7 @@ public class SaveCourseAction extends BasicAction{
     public void setCourseDao(CourseDao courseDao) {
         this.courseDao = courseDao;
     }
+
     @JSON(serialize = false)
     public List<CourseClass> getCourseClasses() {
         return courseClasses;
@@ -232,6 +235,7 @@ public class SaveCourseAction extends BasicAction{
     public void setCourseType(Integer courseType) {
         this.courseType = courseType;
     }
+
     @JSON(serialize = false)
     public List<Integer> getDurations() {
         return durations;
@@ -240,6 +244,7 @@ public class SaveCourseAction extends BasicAction{
     public void setDurations(List<Integer> durations) {
         this.durations = durations;
     }
+
     @JSON(serialize = false)
     public List<Calendar> getStartTimes() {
         return startTimes;
@@ -248,6 +253,7 @@ public class SaveCourseAction extends BasicAction{
     public void setStartTimes(List<Calendar> startTimes) {
         this.startTimes = startTimes;
     }
+
     @JSON(serialize = false)
     public List<Integer> getClassDate() {
         return classDate;
@@ -256,6 +262,7 @@ public class SaveCourseAction extends BasicAction{
     public void setClassDate(List<Integer> classDate) {
         this.classDate = classDate;
     }
+
     @JSON(serialize = false)
     public Integer getRepeatTimes() {
         return repeatTimes;
@@ -264,6 +271,7 @@ public class SaveCourseAction extends BasicAction{
     public void setRepeatTimes(Integer repeatTimes) {
         this.repeatTimes = repeatTimes;
     }
+
     @JSON(serialize = false)
     public CourseInviteStudentDao getCourseInviteStudentDao() {
         return courseInviteStudentDao;
@@ -272,6 +280,7 @@ public class SaveCourseAction extends BasicAction{
     public void setCourseInviteStudentDao(CourseInviteStudentDao courseInviteStudentDao) {
         this.courseInviteStudentDao = courseInviteStudentDao;
     }
+
     @JSON(serialize = false)
     public List<CourseInviteStudent> getCourseInviteStudents() {
         return courseInviteStudents;
@@ -280,11 +289,12 @@ public class SaveCourseAction extends BasicAction{
     public void setCourseInviteStudents(List<CourseInviteStudent> courseInviteStudents) {
         this.courseInviteStudents = courseInviteStudents;
     }
+
     @JSON(serialize = false)
     public List<String> getEmails() {
         List<String> realEmails = new ArrayList<String>();
-        for(String email : emails){
-            if(email != "") realEmails.add(email);
+        for (String email : emails) {
+            if (email != "") realEmails.add(email);
         }
         return realEmails;
     }

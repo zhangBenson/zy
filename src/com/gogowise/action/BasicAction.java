@@ -1,10 +1,8 @@
 package com.gogowise.action;
 
 import com.gogowise.common.utils.Constants;
-import com.gogowise.common.utils.MD5;
+import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.Pagination;
-import com.gogowise.rep.live.UserPrivateChannelDao;
-import com.gogowise.rep.live.enity.UserPrivateChannel;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -13,28 +11,41 @@ import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
 public class BasicAction extends ActionSupport {
-    public static final String BASIC_PACKAGE = "basic-package";
+    //    public static final String BASIC_PACKAGE = "basic-package";
     public static final String BASE_NAME_SPACE = "/";
     public static final String RESULT_JSON = "json";
-    public static  String HOST_URL_APP;
+    public static String HOST_URL_APP;
+    public static String REAL_PATH_FOR_BASE_DIR;
+
     private Pagination pagination = new Pagination();
-    private UserPrivateChannelDao userPrivateChannelDao;
 
 
-    protected static Logger logger = LogManager.getLogger(BasicAction.class.getName());
+    protected Logger logger = LogManager.getLogger(this.getClass().getName());
 
-    protected String getExtention(String fileName) {
-        int pos = fileName.lastIndexOf(".");
-        return fileName.substring(pos);
+
+    public String getRealPathForBaseDir() {
+        if (REAL_PATH_FOR_BASE_DIR == null) {
+            return REAL_PATH_FOR_BASE_DIR = ServletActionContext.getServletContext().getRealPath(".");
+        } else {
+            return REAL_PATH_FOR_BASE_DIR;
+        }
     }
 
-    protected void setPassToMD5(BaseUser user) {
-        user.setPassword(MD5.endCode(user.getPassword()));
+    public void redirectToLogin() {
+        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
+        HttpServletResponse response = (HttpServletResponse) ActionContext.getContext().get(ServletActionContext.HTTP_RESPONSE);
+        try {
+            response.sendRedirect("easyLogon.html?reDirectUrl=" + request.getServletPath() + "?" + java.net.URLEncoder.encode(Utils.getEmptyString(request.getQueryString()), "utf-8"));
+        } catch (IOException e) {
+            logger.error("error in redirectToLogin : ", e);
+        }
     }
 
     protected Integer getSessionUserId() {
-
         if (ActionContext.getContext().getSession().get(Constants.SESSION_USER_ID) != null)
             return (Integer) ActionContext.getContext().getSession().get(Constants.SESSION_USER_ID);
         return null;
@@ -67,7 +78,7 @@ public class BasicAction extends ActionSupport {
             HOST_URL_APP = "http://localhost:8080";
         } else if (basePath.contains("test")) {
             HOST_URL_APP = "http://test.gogowise.com";
-        }else {
+        } else {
             HOST_URL_APP = "http://www.gogowise.com";
         }
         return HOST_URL_APP;
@@ -78,13 +89,7 @@ public class BasicAction extends ActionSupport {
         ActionContext.getContext().getSession().put(Constants.SESSION_USER_NICKNANE, user.getNickName());
         ActionContext.getContext().getSession().put(Constants.SESSION_USER_EMAIL, user.getEmail());
         ActionContext.getContext().getSession().put(Constants.SESSION_USER_LOGO_URL, user.getPic());
-        ActionContext.getContext().getSession().put(Constants.SESSION_USER_FANSNUM,user.getFansNum() != null?user.getFansNum():0);
-
-        if(user.getOpenPrivateChannel() != null && user.getOpenPrivateChannel()){
-             UserPrivateChannel userPrivateChannel = userPrivateChannelDao.findByUser(user.getId());
-            if(userPrivateChannel != null)
-                ActionContext.getContext().getSession().put(Constants.SESSION_USER_PRIVATE_CHANNEL_ID,userPrivateChannel.getId());
-        }
+        ActionContext.getContext().getSession().put(Constants.SESSION_USER_FANSNUM, user.getFansNum() != null ? user.getFansNum() : 0);
     }
 
 
@@ -96,18 +101,5 @@ public class BasicAction extends ActionSupport {
         this.pagination = pagination;
     }
 
-    public static String getEmptyString(String s) {
-           return  s== null ? "": s;
-    }
-    public static Integer getEmptyInteger(Integer s) {
-           return  s == null ? 0: s;
-    }
 
-    public UserPrivateChannelDao getUserPrivateChannelDao() {
-        return userPrivateChannelDao;
-    }
-
-    public void setUserPrivateChannelDao(UserPrivateChannelDao userPrivateChannelDao) {
-        this.userPrivateChannelDao = userPrivateChannelDao;
-    }
 }

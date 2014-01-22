@@ -15,7 +15,7 @@
             <td width="100px;"><s:property value="%{getText('course.resource.title')}"/></td>
             <td width="70px;"><s:property value="%{getText('course.resource.type')}"/></td>
             <td width="150px;"><s:property value="%{getText('course.resource.date')}"/></td>
-            <td width="70px;"><s:property value="%{getText('course.resource.size')}"/></td>
+            <%--<td width="70px;"><s:property value="%{getText('course.resource.size')}"/></td>--%>
             <td width="240px;"><s:property value="%{getText('course.resource.desc')}"/></td>
             <td width="100px;"></td>
         </tr>
@@ -29,22 +29,28 @@
                 <s:elseif test="type == 2">
                     <s:property value="%{getText('course.material.type.2')}" />
                 </s:elseif>
+                <s:elseif test="type == 3">
+                    <s:property value="%{getText('course.material.type.3')}"/>
+                </s:elseif>
+                <s:elseif test="type == 4">
+                    <s:property value="%{getText('course.material.type.4')}"/>
+                </s:elseif>
                 <s:else>
-                    <s:property value="%{getText('course.material.type.3')}" />
+                    <s:property value="%{getText('course.material.type.0')}"/>
                 </s:else>
             </td>
             <td><s:date name="uploadTime" format="%{getText('dateformat.forclass')}"/></td>
-            <td>
-                <s:if test="fullSize < 1000">
-                    <s:property value="fullSize"/>B
-                </s:if>
-                <s:elseif test="fullSize > 1000 && fullSize < 1000000">
-                    <s:property value="fullSize/1000"/>KB
-                </s:elseif>
-                <s:elseif test="fullSize > 1000000">
-                    <s:property value="fullSize/1000000"/>MB
-                </s:elseif>
-            </td>
+                <%--<td>--%>
+                <%--<s:if test="fullSize < 1000">--%>
+                <%--<s:property value="fullSize"/>B--%>
+                <%--</s:if>--%>
+                <%--<s:elseif test="fullSize > 1000 && fullSize < 1000000">--%>
+                <%--<s:property value="fullSize/1000"/>KB--%>
+                <%--</s:elseif>--%>
+                <%--<s:elseif test="fullSize > 1000000">--%>
+                <%--<s:property value="fullSize/1000000"/>MB--%>
+                <%--</s:elseif>--%>
+                <%--</td>--%>
             <td><s:property value="description"/></td>
             <td>
                 <a href="<s:property value="fullPath"/>" target="_blank"><s:property value="%{getText('course.resource.download')}"/></a> &nbsp;&nbsp;&nbsp;
@@ -74,7 +80,10 @@
             <tr>
                 <td><s:property value="%{getText('course.resource.type')}"/></td>
                 <td>
-                    <s:select list="#{'1':getText('course.material.type.1'),'2':getText('course.material.type.2'),'3':getText('course.material.type.3'),'0':getText('course.material.type.0')}" headerKey="-1" headerValue="%{getText('course.resource.select.type')}" name="courseMaterial.type"/>
+                    <s:select
+                            list="#{'1':getText('course.material.type.1'),'2':getText('course.material.type.2'),'3':getText('course.material.type.3'),'4':getText('course.material.type.4'),'0':getText('course.material.type.0')}"
+                            headerKey="-1" headerValue="%{getText('course.resource.select.type')}"
+                            name="courseMaterial.type"/>
                     <span class="errorMessage" id="cm_type"></span>
                 </td>
             </tr>

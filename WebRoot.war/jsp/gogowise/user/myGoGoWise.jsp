@@ -423,7 +423,8 @@
             window.location.href = "one2threeSession.html?courseClass.id="+cid;
          }
          if(type == 4){
-           window.location.href = "one2manySession.html?courseClass.id="+cid;
+//           window.location.href = "one2manySession.html?courseClass.id="+cid;
+           window.location.href = "lecturerClass.html?courseClass.id="+cid;
         }
     }
 </script>

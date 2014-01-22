@@ -1,7 +1,5 @@
 package com.gogowise.common.utils;
 
-import org.apache.struts2.ServletActionContext;
-
 /**
  * Created by IntelliJ IDEA.
  * User: zhangb
@@ -50,6 +48,7 @@ public class Constants {
     public static final String TYPE_HOST_STRING = "3";
 
     public static final String DEFAULT_BLANK_VALUE = "";
+    public static final String DEFAULT_USER_LOGO = "images/defaultImgs/portrait.png";
     public static final Integer DEFAULT_INT_VALUE = 0;
     public static final Double DEFAULT_DOUBLE_VALUE = 3.0;
     public static final String SUCCESS_OBSERVATED = "您已经成功预定";
@@ -198,6 +197,8 @@ public class Constants {
     public static String QUESTION_EXT_PATH ="/exe/question/batch.sh";
     public static String QUESTION_FILE_NAME = "/question.xml";
 
+    public static String PPT_PDF_EXT_PATH = "/exe/ppt/PPT2PDF.sh";
+    public static String PPT_EXT_PATH = "/exe/ppt/PDF2PNG.sh";
 
 
 }

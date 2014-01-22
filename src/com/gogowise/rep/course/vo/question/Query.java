@@ -2,6 +2,7 @@ package com.gogowise.rep.course.vo.question;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,9 +12,10 @@ public class Query {
 
     private String question;
 
-    private Opt opt;
+
     private String answer;
 
+    private String img;
 
     public String getQuestion() {
         return question;
@@ -31,14 +33,27 @@ public class Query {
         this.answer = answer.trim();
     }
 
-    @XmlElement(name="opt")
-    public Opt getOpt() {
-        return opt;
+    private List<String> items;
+
+
+    @XmlElement(name="item")
+    public List<String> getItems() {
+        return items;
     }
 
-    public void setOpt(Opt opt) {
-        this.opt = opt;
+
+    public void setItems(List<String> items) {
+        this.items = new ArrayList<>();
+        for (String item : items) {
+            this.items.add(item.trim()) ;
+        }
     }
 
+    public String getImg() {
+        return img;
+    }
 
+    public void setImg(String img) {
+        this.img = img;
+    }
 }
