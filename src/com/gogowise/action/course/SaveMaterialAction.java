@@ -117,7 +117,7 @@ public class SaveMaterialAction extends BasicAction {
         Utils.pptConvert(dstPath, dstPdfDir, pdfName, dstDir);
         File desDirInfo = new File(dstDir);
         courseMaterial.setConvertPath(dstPath);
-        courseMaterial.setTotalPages(desDirInfo.listFiles().length);
+        courseMaterial.setTotalPages(desDirInfo.listFiles().length - 1);
         logger.info("==================PPT files==============" + desDirInfo.listFiles().length);
     }
 
