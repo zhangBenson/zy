@@ -1,7 +1,6 @@
-package com.gogowise.action.course;
+package com.gogowise.action.course.vclass;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.action.valueobject.CourseMatrixVO;
 import com.gogowise.rep.course.dao.CourseMaterialDao;
 import com.gogowise.rep.course.enity.CourseMaterial;
 import com.thoughtworks.xstream.XStream;

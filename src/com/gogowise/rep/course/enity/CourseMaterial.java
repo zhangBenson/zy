@@ -38,7 +38,6 @@ public class CourseMaterial extends AbstractPersistence {
     private String sourceTitle;
     private Double fullSize = 0.0;
     private Integer totalPages;
-    private String path;
     private String convertPath;
     private Boolean isDisplay;
 
@@ -115,14 +114,6 @@ public class CourseMaterial extends AbstractPersistence {
 
     public void setConvertPath(String convertPath) {
         this.convertPath = convertPath;
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
     }
 
     public CourseClass getCourseClass() {
