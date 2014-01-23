@@ -66,9 +66,9 @@ public class SaveMaterialAction extends BasicAction {
         String newName = courseMaterial.getTypeString() + "_" + nowTimeStr + extName;
 
         String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + courseMaterial.getFullPath());
-        String dstPath = ServletActionContext.getServletContext().getRealPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/" + newName);
+        String dstPath = Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/" + newName;
 
-        Utils.copy(new File(srcPath), new File(dstPath));
+        Utils.copy(new File(srcPath), new File(this.getRealPathForBaseDir() + dstPath));
 
         //文件相关属性设置
         courseMaterial.setUploadTime(Calendar.getInstance());
@@ -104,7 +104,7 @@ public class SaveMaterialAction extends BasicAction {
 
     private void convertQuestion(String nowTimeStr, String dstPath) throws IOException, JAXBException {
         String dstDir = this.getRealPathForBaseDir() + Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/question/" + nowTimeStr;
-        Utils.questionConvert(dstPath, dstDir);
+        Utils.questionConvert(this.getRealPathForBaseDir() + dstPath, dstDir);
         String xmlPath = dstDir + Constants.QUESTION_FILE_NAME;
         List<Question> questions = convertQuestionService.convert(xmlPath);
         courseService.saveQuestion(courseMaterial, questions);
@@ -114,7 +114,7 @@ public class SaveMaterialAction extends BasicAction {
         String dstPdfDir = ServletActionContext.getServletContext().getRealPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/");
         String dstDir = this.getRealPathForBaseDir() + Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/ppt/" + nowTimeStr;
         String pdfName = courseMaterial.getTypeString() + "_" + nowTimeStr + ".pdf";
-        Utils.pptConvert(dstPath, dstPdfDir, pdfName, dstDir);
+        Utils.pptConvert(this.getRealPathForBaseDir() + dstPath, dstPdfDir, pdfName, dstDir);
         File desDirInfo = new File(dstDir);
         courseMaterial.setConvertPath(dstPath);
         courseMaterial.setTotalPages(desDirInfo.listFiles().length - 1);
