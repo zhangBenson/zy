@@ -55,6 +55,8 @@ public class Course extends AbstractPersistence {
     private String courseTeachingBook;  //推荐教材
     private Integer courseType;
 
+    private Boolean isDeleted = false;
+
 
     @OneToMany(mappedBy = "course")
     @OrderBy("date asc")
@@ -551,5 +553,13 @@ public class Course extends AbstractPersistence {
 
     public void addTeacher(BaseUser teacher) {
         this.teachers.add(teacher);
+    }
+
+    public Boolean getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(Boolean deleted) {
+        isDeleted = deleted;
     }
 }

@@ -908,6 +908,31 @@ public class CourseAction extends BasicAction {
 //        return SUCCESS;
 //    }
 
+    @Action(value = "courseAdminManage",
+            results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".courseAdminManage")})
+    public String courseAdminManage()
+    {
+        courses = this.courseDao.findlatestCourses(null);
+        return SUCCESS;
+    }
+
+    @Action(value = "removeCourseConfirm",
+            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "courseAdminManage"}) })
+    public String removeCourseConfirm()
+    {
+        if (this.getCourse().getId() != null)
+        {
+            Course course = courseDao.findById(this.getCourse().getId());
+
+            if(course != null)
+            {
+                course.setIsDeleted(true);
+                courseDao.persistAbstract(course);
+            }
+        }
+
+        return SUCCESS;
+    }
 
     public String age() {
         courses = courseDao.findCourseOfAgeClass(pagination);
