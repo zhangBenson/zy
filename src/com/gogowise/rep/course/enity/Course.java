@@ -1,10 +1,10 @@
 package com.gogowise.rep.course.enity;
 
+import com.gogowise.common.utils.Constants;
+import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.AbstractPersistence;
 import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.common.utils.Constants;
-import com.gogowise.common.utils.Utils;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -124,15 +124,15 @@ public class Course extends AbstractPersistence {
     }
 
     public BaseUser getTeacher() {
-        if(teachers.size() == 0) return null;
+        if (teachers.size() == 0) return null;
         return teachers.get(0);
     }
 
     public void setTeacher(BaseUser teacher) {
-        if (teachers.size() == 0 ) {
+        if (teachers.size() == 0) {
             this.addTeacher(teacher);
         } else {
-            teachers.set(0,teacher);
+            teachers.set(0, teacher);
         }
     }
 
@@ -337,6 +337,7 @@ public class Course extends AbstractPersistence {
     }
 
     public CourseClass getClassOnTheCorner() {
+        if (this.getForcastClasses().size() == 0) return null;
         return this.getForcastClasses().get(0);
     }
 
@@ -349,9 +350,11 @@ public class Course extends AbstractPersistence {
         }
         return i;
     }
-    public Integer getFinshedClassNum(){
+
+    public Integer getFinshedClassNum() {
         return getClassOneTheCornerSequence() - 1;
     }
+
     public List<CourseClass> getForcastClasses() {
         List<CourseClass> curr = new ArrayList<CourseClass>();
         for (CourseClass cc : this.getClasses()) {
@@ -364,12 +367,12 @@ public class Course extends AbstractPersistence {
         return curr;
     }
 
-    public Integer getStudentNum(){
-        return  this.getSeniorClassRooms().size();
+    public Integer getStudentNum() {
+        return this.getSeniorClassRooms().size();
     }
 
-    public Integer getClassesNum(){
-        return  this.getClasses().size();
+    public Integer getClassesNum() {
+        return this.getClasses().size();
     }
 
 
@@ -421,11 +424,12 @@ public class Course extends AbstractPersistence {
         this.fromCourse = fromCourse;
     }
 
-    public Calendar getFinishDate(){
-       return  this.getClasses().get(this.getClasses().size()-1).getFinishDate();
+    public Calendar getFinishDate() {
+        return this.getClasses().get(this.getClasses().size() - 1).getFinishDate();
     }
-    public Boolean getTeacherAccept(){
-        if(this.getTeacher()!=null) return true;
+
+    public Boolean getTeacherAccept() {
+        if (this.getTeacher() != null) return true;
         return false;
     }
 
@@ -437,24 +441,25 @@ public class Course extends AbstractPersistence {
         this.courseInviteStudents = courseInviteStudents;
     }
 
-    public Integer getCourseInviteStudentsSize(){
+    public Integer getCourseInviteStudentsSize() {
         return courseInviteStudents.size();
     }
 
-    public Boolean getLimitOver(){
-       if (this.getTeachingNum() <= 3) {
-            if (this.getObservationNum() +this.getCourseInviteStudents().size()>= this.getTeachingNum()) {
-                       return true;
+    public Boolean getLimitOver() {
+        if (this.getTeachingNum() <= 3) {
+            if (this.getObservationNum() + this.getCourseInviteStudents().size() >= this.getTeachingNum()) {
+                return true;
             } else {
-                      return false;
+                return false;
             }
-       }
+        }
         return false;
     }
+
     public String getTeacherEmail() {
         if (this.teacherEmail == null) {
             return this.getTeacher().getEmail();
-        } else  {
+        } else {
             return teacherEmail;
         }
     }
@@ -463,15 +468,15 @@ public class Course extends AbstractPersistence {
         this.teacherEmail = teacherEmail;
     }
 
-    public Integer getNeedWeeks(){
+    public Integer getNeedWeeks() {
         int total = 0;
         int weeks = 0;
-        for(CourseClass cc : this.getClasses()){
-           int k = cc.getDate().get(Calendar.WEEK_OF_YEAR);
-           if(k>weeks) {
-               total++;
-               weeks = k;
-           }
+        for (CourseClass cc : this.getClasses()) {
+            int k = cc.getDate().get(Calendar.WEEK_OF_YEAR);
+            if (k > weeks) {
+                total++;
+                weeks = k;
+            }
         }
 
         return total;
@@ -479,35 +484,37 @@ public class Course extends AbstractPersistence {
 
     public String getStartCourseUrl() {
         if (ONE_TO_ONE.equals(teachingNum)) {
-            return  "openClassSession";
-        }else if (ONE_TO_TWO.equals(teachingNum)) {
-            return  "one2twoSession";
+            return "openClassSession";
+        } else if (ONE_TO_TWO.equals(teachingNum)) {
+            return "one2twoSession";
         } else if (ONE_TO_THR.equals(teachingNum)) {
-            return  "one2threeSession";
-        }else if (ONE_TO_MANY.equals(teachingNum)) {
-            return  "one2manySession";
+            return "one2threeSession";
+        } else if (ONE_TO_MANY.equals(teachingNum)) {
+            return "one2manySession";
         }
         return null;
     }
+
     public BaseUser getPayee() {
-        if (this.getOrganization() != null ) {
-            return  this.getOrganization().getResponsiblePerson();
+        if (this.getOrganization() != null) {
+            return this.getOrganization().getResponsiblePerson();
         } else {
             return this.getTeacher();
         }
     }
-    public Boolean getCourseFinished(){
-       if(this.getClasses().get(classes.size()-1).getFinishDate().before(Utils.getCurrentCalender())){
-           return true;
-       }
-       return false;
+
+    public Boolean getCourseFinished() {
+        if (this.getClasses().get(classes.size() - 1).getFinishDate().before(Utils.getCurrentCalender())) {
+            return true;
+        }
+        return false;
     }
 
-    public Integer getCourseRecommendNum(){
+    public Integer getCourseRecommendNum() {
         return this.getCourseRecommends().size();
     }
 
-    public Integer getCourseStudentsNum(){
+    public Integer getCourseStudentsNum() {
         return this.getSeniorClassRooms().size();
     }
 

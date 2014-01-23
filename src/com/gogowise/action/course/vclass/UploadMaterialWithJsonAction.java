@@ -12,7 +12,6 @@ import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.course.enity.CourseMaterial;
 import com.gogowise.rep.course.enity.Question;
 import org.apache.struts2.ServletActionContext;
-import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.json.annotations.JSON;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -120,7 +119,7 @@ public class UploadMaterialWithJsonAction extends BasicAction {
         this.courseService = courseService;
     }
 
-    @Action(value = "uploadMaterialWithJson")
+    //    @Action(value = "uploadMaterialWithJson")
     public String uploadMaterialWithJson() {
         String savePath = ServletActionContext.getServletContext().getRealPath("") + "/" + Constants.UPLOAD_FILE_PATH_TMP + "/";
         Random r = new Random();
