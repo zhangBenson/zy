@@ -16,6 +16,7 @@ import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.system.dao.GoGoWiseAnnounceDao;
 import com.gogowise.rep.system.enity.GoGoWiseAnnounce;
 import com.gogowise.rep.user.dao.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.lang.StringUtils;
@@ -112,6 +113,8 @@ public class CourseAction extends BasicAction {
 
     private Integer coursePageShowType; // 0: A-D, 1: E-H, 2: I-L, 3: M-P, 4:Q-T, 5: U-Z, 6: Other 7: Show all
     private List<Course> centerCourses;
+
+    private BaseUserRoleTypeDao baseUserRoleTypeDao;
 
 //    @Action(value = "search",
 //            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".listClass")}
@@ -912,6 +915,8 @@ public class CourseAction extends BasicAction {
             results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".courseAdminManage")})
     public String courseAdminManage()
     {
+        BaseUser admin = baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL))  ;
+        //boolean  havePermission = baseUserRoleTypeDao.havePermission(admin.getId(), "admin");
         courses = this.courseDao.findlatestCourses(null);
         return SUCCESS;
     }

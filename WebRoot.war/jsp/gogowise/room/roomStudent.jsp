@@ -608,7 +608,7 @@ function ShowMessage(name,imgpath,content,bit)
     }
 </script>
 
-
+<%--
 <div class="btn-group" style="margin:5px;">
     <button type="button" class="btn btn-success" id="btnaddUser">进入用户</button>
     <button type="button" class="btn btn-success" id="btndeleteOneStudent">退出用户</button>
@@ -621,11 +621,12 @@ function ShowMessage(name,imgpath,content,bit)
     <button type="button" class="btn btn-success" id="btnEvent2">事件测试2</button>
     <button type="button" class="btn btn-success" id="btnEvent3">事件测试3</button>
 </div>
+--%>
 
-<span id="currentUserId" style="display: none">8F92FEFB-C5D5-B9AA-24BB-908DB20C2B7C</span>
-<span id="currentName" style="display: none">shucan</span>
-<span id="currentUserName" style="display: none">Scan</span>
-<span id="currentimgPath" style="display: none">gogowisestyle/image/portrait5.jpg</span>
+<span id="currentUserId" style="display: none"><s:property value="#session.userID" /></span>
+<span id="currentName" style="display: none"><s:property value="#session.email" /></span>
+<span id="currentUserName" style="display: none"><s:property value="#session.nickName" /></span>
+<span id="currentimgPath" style="display: none"><s:property value="#session.userLogoUrl" /></span>
 
 <%--<div id="top"></div>--%>
 
