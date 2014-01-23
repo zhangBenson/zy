@@ -83,40 +83,58 @@ import java.util.List;
          String s ="select distinct c from Course c, CourseClass cc where   cc.course.id = c.id and  " + this.getFinisDateLessThanNow();
 
         List<Course> courses2 =  this.find(s, page, Utils.getCurrentCalender());
+        //return courses2;
 
-        return courses2;
+        List<Course> noDeletedCourses = this.removeDeletedCourse(courses2);
+        return noDeletedCourses;
     }
 
      public List<Course> findCourseOfForcastClass(Pagination page) {
 
         String hql = "select distinct c from Course c,CourseClass cc where  cc.course.id = c.id and "+this.getFinisDateBiggerThanNow()+" order by c.publicationTime desc";
         List<Course> courses =  this.find(hql, page, Utils.getCurrentCalender());
-        return courses;
+         //return courses;
+
+         List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
+         return noDeletedCourses;
     }
 
     public List<Course> findMaintenanceCourses(Integer tid, Pagination pagination) {
         String hql = "select distinct c from Course c,CourseClass cc  left join c.organization org left join c.teachers teacher  where cc.course.id = c.id and (teacher.id=? or org.responsiblePerson.id = ?)  order by c.id desc";
         List<Course> courses =  this.find(hql,pagination,tid,tid,Utils.getCurrentCalender());
-        return courses;
+        //return courses;
+
+        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
+        return noDeletedCourses;
     }
 
 
     public List<Course> findUserCreatedCourses(Integer userID, Pagination pagination) {
         String hql =   "select distinct c from Course c left join c.organization org left join c.teachers teacher where"+ getCourseConfirmedStr() +" and  (teacher.id=? or org.responsiblePerson.id=?) order by c.publicationTime desc ";
 
-        return this.find(hql,pagination,userID,userID);
+        //return this.find(hql,pagination,userID,userID);
+
+        List<Course> courses = this.find(hql,pagination,userID,userID);
+        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
+        return noDeletedCourses;
     }
 
     public List<Course> findUserRegCourses(Integer userID, Pagination pagination) {
         String hql =   "select distinct c from Course c left join c.seniorClassRooms sc where "+ getCourseConfirmedStr() +" and sc.course.id = c.id and  (sc.student.id=?) order by c.publicationTime desc ";
+        //return this.find(hql,pagination,userID);
 
-        return this.find(hql,pagination,userID);
+        List<Course> courses = this.find(hql,pagination,userID);
+        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
+        return noDeletedCourses;
     }
 
     public List<Course> findMyCourseOFAgePart(Pagination pagination, Integer sid) {
         String hql = "select distinct c from Course c  left join c.organization org left join c.teachers teacher where  (teacher.id=? or org.responsiblePerson.id=?) and c.id= (select max(nc.id) from Course nc where nc.fromCourse.id = c.fromCourse.id and nc.masterConfirmed=true and nc.teacherConfirmed=true and nc.cameraManConfirmed=true ) order by c.publicationTime desc";
          List<Course> courses = this.find(hql,pagination,sid,sid);
-        return courses;
+        //return courses;
+
+        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
+        return noDeletedCourses;
     }
 
     public List<Course> findMyCourseOfForcastClassForUserCenter(Pagination page,Integer sid) {
@@ -124,7 +142,10 @@ import java.util.List;
         Calendar now = Calendar.getInstance();
         now.add(Calendar.MINUTE,-15);
         List<Course> courses = this.find(hql,page,sid,sid,now);
-        return courses;
+        //return courses;
+
+        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
+        return noDeletedCourses;
     }
     private String getFinisDateBiggerThanNow(){
         return  " cc.duration > timestampdiff(minute,cc.date ,? ) ";
@@ -151,33 +172,53 @@ import java.util.List;
               }
               if(k<=2)    courses.add(seniorClassRoom.getCourse());
         }
-        return courses;
+        //return courses;
+
+        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
+        return noDeletedCourses;
     }
 
     public List<Course> findHotCourses(Pagination pagination) {
-        return this.find("select distinct  c from Course c   left join c.seniorClassRooms sc   where  c.cameraManConfirmed=true group by c order by count(sc.id) desc",pagination);
+        //return this.find("select distinct  c from Course c   left join c.seniorClassRooms sc   where  c.cameraManConfirmed=true group by c order by count(sc.id) desc",pagination);
+        List<Course> courses = this.find("select distinct  c from Course c   left join c.seniorClassRooms sc   where  c.cameraManConfirmed=true group by c order by count(sc.id) desc",pagination);
+        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
+        return noDeletedCourses;
     }
 
     public List<Course> findlatestCourses(Pagination pagination) {
-        return this.find("From Course c where   c.cameraManConfirmed=true order by c.id desc",pagination);
+        //return this.find("From Course c where   c.cameraManConfirmed=true order by c.id desc",pagination);
+        List<Course> courses = this.find("From Course c where   c.cameraManConfirmed=true order by c.id desc",pagination);
+        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
+        return noDeletedCourses;
     }
-
 
 
     public List<Course> findCourses2Teacher(Integer tid, Pagination pagination) {
-        return this.find("select distinct c From    Course c left join c.teachers teacher where   teacher.id=? and c.fromCourse.id = c.id order by c.startDate desc",pagination,tid);
+        //return this.find("select distinct c From    Course c left join c.teachers teacher where   teacher.id=? and c.fromCourse.id = c.id order by c.startDate desc",pagination,tid);
+        List<Course> courses = this.find("select distinct c From    Course c left join c.teachers teacher where   teacher.id=? and c.fromCourse.id = c.id order by c.startDate desc",pagination,tid);
+        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
+        return noDeletedCourses;
     }
 
     public List<Course> findCourses2Student(Integer tid, Pagination pagination) {
-        return this.find("select c From Course c join  c.seniorClassRooms sc where  sc.student.id=? order by c.startDate desc",pagination,tid);
+        //return this.find("select c From Course c join  c.seniorClassRooms sc where  sc.student.id=? order by c.startDate desc",pagination,tid);
+        List<Course> courses = this.find("select c From Course c join  c.seniorClassRooms sc where  sc.student.id=? order by c.startDate desc",pagination,tid);
+        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
+        return noDeletedCourses;
     }
 
     public List<Course> findCourseWithStudentIdAndCourseId(Integer tid, Integer cid) {
-        return this.find("select c From Course c join  c.seniorClassRooms sc where c.id =? and   sc.student.id=? order by c.startDate desc",cid,tid);
+        //return this.find("select c From Course c join  c.seniorClassRooms sc where c.id =? and   sc.student.id=? order by c.startDate desc",cid,tid);
+        List<Course> courses = this.find("select c From Course c join  c.seniorClassRooms sc where c.id =? and   sc.student.id=? order by c.startDate desc",cid,tid);
+        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
+        return noDeletedCourses;
     }
 
     public List<Course> findCourseRelateCourses(String courseName,Pagination pagination) {
-        return this.find("From Course c where  c.name like ? order by c.id asc",new Pagination(2), courseName);
+        //return this.find("From Course c where  c.name like ? order by c.id asc",new Pagination(2), courseName);
+        List<Course> courses = this.find("From Course c where  c.name like ? order by c.id asc",new Pagination(2), courseName);
+        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
+        return noDeletedCourses;
     }
 
     public Course findTodayCourse(Integer userId) {
@@ -185,7 +226,10 @@ import java.util.List;
         Calendar tomorrow = Utils.getClientTodayCalendar();
         tomorrow.add(Calendar.DAY_OF_YEAR, 1);
         List<Course> todayList = this.find(s, userId, userId, userId, userId, Utils.getCurrentCalender(), tomorrow);
-        return todayList != null && todayList.size() > 0 ? todayList.get(0) : null;
+        //return todayList != null && todayList.size() > 0 ? todayList.get(0) : null;
+
+        List<Course> noDeletedCourses = this.removeDeletedCourse(todayList);
+        return noDeletedCourses != null && noDeletedCourses.size() > 0 ? noDeletedCourses.get(0) : null;
     }
 
 
@@ -199,7 +243,10 @@ import java.util.List;
         Calendar afterTomorrow = Utils.getClientTodayCalendar();
         afterTomorrow.add(Calendar.DAY_OF_YEAR, 2);
         List<Course> todayList = this.find(s, userId, userId, userId, userId, tomorrow, afterTomorrow);
-        return todayList != null && todayList.size() > 0 ? todayList.get(0) : null;
+        //return todayList != null && todayList.size() > 0 ? todayList.get(0) : null;
+
+        List<Course> noDeletedCourses = this.removeDeletedCourse(todayList);
+        return noDeletedCourses != null && noDeletedCourses.size() > 0 ? noDeletedCourses.get(0) : null;
     }
 
     public Course findYesterdayCourse(Integer userId) {
@@ -210,15 +257,26 @@ import java.util.List;
         Calendar yesterday = Utils.getClientTodayCalendar();
         yesterday.add(Calendar.DAY_OF_YEAR, -1);
         List<Course> todayList = this.find(s, userId, userId, userId, userId,yesterday, Utils.getClientTodayCalendar());
-        return todayList != null && todayList.size() > 0 ? todayList.get(0) : null;
+        //return todayList != null && todayList.size() > 0 ? todayList.get(0) : null;
+
+        List<Course> noDeletedCourses = this.removeDeletedCourse(todayList);
+        return noDeletedCourses != null && noDeletedCourses.size() > 0 ? noDeletedCourses.get(0) : null;
     }
 
     public  List<Course> findLatestCourseByOrg(Integer orgId, Pagination page) {
         String hql = "select c from Course c  join c.classes cc  where c.organization.id = ? and cc.date > ?  order by c.id desc";
-        return  this.find(hql, page, orgId, Utils.getCurrentCalender());
+        //return  this.find(hql, page, orgId, Utils.getCurrentCalender());
+
+        List<Course> courses = this.find(hql, page, orgId, Utils.getCurrentCalender());
+        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
+        return noDeletedCourses;
+
     }
     public List<Course> findHotCoursesByOrg(Integer orgId, Pagination pagination) {
-        return this.find("select distinct  c from Course c   left join c.seniorClassRooms sc   where  c.organization.id = ?  group by c order by count(sc.id) desc",pagination,orgId);
+        //return this.find("select distinct  c from Course c   left join c.seniorClassRooms sc   where  c.organization.id = ?  group by c order by count(sc.id) desc",pagination,orgId);
+        List<Course> courses = this.find("select distinct  c from Course c   left join c.seniorClassRooms sc   where  c.organization.id = ?  group by c order by count(sc.id) desc",pagination,orgId);
+        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
+        return noDeletedCourses;
     }
 
     private List<CourseClass> getLivingClasses(List<CourseClass> courseClasses ){
@@ -301,7 +359,11 @@ import java.util.List;
         String hql = QUERY_ORG_SUPERVISION_COURSE +" and cc.duration > timestampdiff(minute,cc.date ,? ) group by c  order by MIN(cc.date) asc ";
         Calendar now = Calendar.getInstance();
         now.add(Calendar.MINUTE,-20);
-        return this.find(hql,pagination,Rid,now);
+        //return this.find(hql,pagination,Rid,now);
+
+        List<Course> courses = this.find(hql,pagination,Rid,now);
+        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
+        return noDeletedCourses;
     }
 
     public List<Course> findCourseOnline(Pagination pagination) {
@@ -309,7 +371,11 @@ import java.util.List;
         String hql = Query_online +" and "+getFinisDateBiggerThanNow()+"   group by c  order by MIN(cc.date) asc ";
         Calendar now = Calendar.getInstance();
         now.add(Calendar.MINUTE,-20);
-        return this.find(hql,pagination,now);
+        //return this.find(hql,pagination,now);
+
+        List<Course> courses = this.find(hql,pagination,now);
+        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
+        return noDeletedCourses;
     }
 
     public List<BaseUser> findRegUser(Integer courseId, Pagination pagination){
@@ -319,30 +385,68 @@ import java.util.List;
 
     public List<Course> findByOrg(Integer orgID, Pagination pagination) {
         String hql = "From Course c where  c.organization.id=? and c.fromCourse.id = c.id";
-        return this.find(hql,pagination,orgID);
+        //return this.find(hql,pagination,orgID);
+
+        List<Course> courses = this.find(hql,pagination,orgID);
+        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
+        return noDeletedCourses;
     }
 
     public List<Course> findByFromCourse(Integer fromCourseID, Pagination pagination) {
         String hql = "From Course c where  c.fromCourse.id=?";
-        return this.find(hql,pagination,fromCourseID);
+        //return this.find(hql,pagination,fromCourseID);
+
+        List<Course> courses = this.find(hql,pagination,fromCourseID);
+        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
+        return noDeletedCourses;
     }
 
     public List<Course> findLatest4Course(Pagination pagination) {
         String hql = "From Course c where  c.cameraManConfirmed=true order by c.publicationTime desc";
-        return this.find(hql,pagination);
+        //return this.find(hql,pagination);
+        List<Course> courses = this.find(hql,pagination);
+        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
+        return noDeletedCourses;
     }
 
     public List<Course> findCoursesInTypes(Integer type, Pagination pagination) {
         String hql = "From Course c where  c.courseType=? order by c.publicationTime desc";
-        return this.find(hql,pagination,type);
+        //return this.find(hql,pagination,type);
+        List<Course> courses = this.find(hql,pagination,type);
+        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
+        return noDeletedCourses;
     }
 
     public List<Course> searchCourses(String searchStr, Pagination pagination) {
         if(searchStr == null || searchStr.equals("")) return this.findHotCourses(pagination);
         String hql ="select distinct c  From Course c left join  c.teachers teacher  where " + COURSE_CONFIRMED + "and (c.name like ? or teacher.nickName like ?) order by c.id desc";
-        return this.find(hql,pagination,"%"+searchStr+"%","%"+searchStr+"%");
+        //return this.find(hql,pagination,"%"+searchStr+"%","%"+searchStr+"%");
+        List<Course> courses = this.find(hql,pagination,"%"+searchStr+"%","%"+searchStr+"%");
+        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
+        return noDeletedCourses;
     }
 
+    public List<Course> removeDeletedCourse(List<Course> courses)
+    {
+        if(courses == null) return null;
+
+        List<Course> result = new ArrayList<Course>();
+
+        for(Course course:courses)
+        {
+           if( course.getIsDeleted()!= null)
+           {
+               if(course.getIsDeleted().booleanValue() == true)
+               {
+                   continue;
+               }
+           }
+
+           result.add(course);
+        }
+
+        return result;
+    }
     //================getter and setter==========
 
 

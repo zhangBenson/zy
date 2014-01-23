@@ -382,8 +382,13 @@ public class Utils {
         }
     }
 
+    public static String getExtention(String fileName) {
+        int pos = fileName.lastIndexOf(".");
+        return fileName.substring(pos);
+    }
 
-    public synchronized static void pptConvert(String srcPpt, String pdfPath, String pdfName, String desDir) throws IOException {
+
+    public static void pptConvert(String srcPpt, String pdfPath, String pdfName, String desDir) throws IOException {
         File dst = new File(desDir);
         if (!dst.exists()) {
             dst.mkdirs();
@@ -393,13 +398,13 @@ public class Utils {
 
         String BASE_PATCH = ServletActionContext.getServletContext().getRealPath(".");
         String cmdPdf = BASE_PATCH + Constants.PPT_PDF_EXT_PATH + " " + srcPpt + " " + pdfPath;
-        String cmdPpt = BASE_PATCH + Constants.PPT_EXT_PATH + " " + pdfPath + pdfName + " " + desDir + "/brif";
+        String cmdPpt = BASE_PATCH + Constants.PPT_EXT_PATH + " " + pdfPath + "/" + pdfName + " " + desDir + "/brif";
 
         exe(cmdPdf);
         exe(cmdPpt);
     }
 
-    public synchronized static void questionConvert(String srcPpt, String desDir) throws IOException {
+    public static void questionConvert(String srcPpt, String desDir) throws IOException {
         File dst = new File(desDir);
         if (!dst.exists()) {
             dst.mkdirs();
@@ -483,7 +488,8 @@ public class Utils {
     }
 
     public static void compressToSmall(String path) {
-        doCompress(path, 640, 480, 1, "_small", false);
+        //doCompress(path, 640, 480, 1, "_small", false);
+        doCompress(path, 720, 540, 1, "_small", false);
     }
 
 
@@ -492,6 +498,5 @@ public class Utils {
         Runtime.getRuntime().exec(s);
 
     }
-
 
 }

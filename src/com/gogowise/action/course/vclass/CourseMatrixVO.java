@@ -1,13 +1,8 @@
-package com.gogowise.action.valueobject;
+package com.gogowise.action.course.vclass;
 
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.Utils;
-import com.gogowise.rep.course.enity.CourseClass;
 import com.gogowise.rep.course.enity.CourseMaterial;
-import com.gogowise.rep.org.enity.OrgMeeting;
-import com.gogowise.rep.user.enity.BaseUser;
-
-import java.util.Calendar;
 
 /**
  * Created by IntelliJ IDEA.
@@ -22,7 +17,7 @@ public class CourseMatrixVO {
     private String uploadTime = Constants.DEFAULT_BLANK_VALUE;
     private String sourceTitle = Constants.DEFAULT_BLANK_VALUE;
     private String totalPages = Constants.DEFAULT_BLANK_VALUE;
-    private String path;
+    private String convertPath;
 
     //===========getter and setter===========
 
@@ -32,7 +27,7 @@ public class CourseMatrixVO {
         this.uploadTime = Utils.getEmptyString(courseMaterial.getUploadTime().getTime() + "");
         this.sourceTitle = Utils.getEmptyString(courseMaterial.getSourceTitle());
         this.totalPages = Utils.getEmptyString(courseMaterial.getTotalPages() + "");
-        this.path = Utils.getEmptyString(courseMaterial.getPath());
+        this.convertPath = Utils.getEmptyString(courseMaterial.getConvertPath());
     }
 
     public String getDescription() {
@@ -67,11 +62,11 @@ public class CourseMatrixVO {
         this.totalPages = totalPages;
     }
 
-    public String getPath() {
-        return path;
+    public String getConvertPath() {
+        return convertPath;
     }
 
-    public void setPath(String path) {
-        this.path = path;
+    public void setConvertPath(String convertPath) {
+        this.convertPath = convertPath;
     }
 }

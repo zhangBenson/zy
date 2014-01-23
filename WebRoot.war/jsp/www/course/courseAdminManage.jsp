@@ -26,8 +26,8 @@
                 <td><s:property value="teacher.email" /> </td>
 
                 <td>
-                    <s:if test="description.length() < 80"><s:property value="description"/></s:if>
-                    <s:else><s:property value="description.substring(0,80)+'...'" /></s:else>
+                <s:if test="description.length() < 80"><s:property value="description"/></s:if>
+                <s:else><s:property value="description.substring(0,80)+'...'" /></s:else>
                 </td>
 
                 <td>

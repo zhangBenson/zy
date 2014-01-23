@@ -31,14 +31,13 @@ public class CourseMaterial extends AbstractPersistence {
     private Course course;
     @ManyToOne
     private CourseClass courseClass;
-    private int type;
+    private int type = 0;
     private String description;
     private Calendar uploadTime;
     private String fullPath;
     private String sourceTitle;
     private Double fullSize = 0.0;
     private Integer totalPages;
-    private String path;
     private String convertPath;
     private Boolean isDisplay;
 
@@ -117,14 +116,6 @@ public class CourseMaterial extends AbstractPersistence {
         this.convertPath = convertPath;
     }
 
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
-
     public CourseClass getCourseClass() {
         return courseClass;
     }
@@ -134,7 +125,7 @@ public class CourseMaterial extends AbstractPersistence {
         this.course = courseClass.getCourse();
     }
 
-    public String getTypeString () {
+    public String getTypeString() {
         return TYPE_MAP.get(this.getType());
     }
 

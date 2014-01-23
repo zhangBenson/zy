@@ -15,7 +15,7 @@
             <td width="100px;"><s:property value="%{getText('course.resource.title')}"/></td>
             <td width="70px;"><s:property value="%{getText('course.resource.type')}"/></td>
             <td width="150px;"><s:property value="%{getText('course.resource.date')}"/></td>
-            <td width="70px;"><s:property value="%{getText('course.resource.size')}"/></td>
+            <%--<td width="70px;"><s:property value="%{getText('course.resource.size')}"/></td>--%>
             <td width="240px;"><s:property value="%{getText('course.resource.desc')}"/></td>
             <td width="100px;"></td>
         </tr>
@@ -29,22 +29,28 @@
                 <s:elseif test="type == 2">
                     <s:property value="%{getText('course.material.type.2')}" />
                 </s:elseif>
+                <s:elseif test="type == 3">
+                    <s:property value="%{getText('course.material.type.3')}"/>
+                </s:elseif>
+                <s:elseif test="type == 4">
+                    <s:property value="%{getText('course.material.type.4')}"/>
+                </s:elseif>
                 <s:else>
-                    <s:property value="%{getText('course.material.type.3')}" />
+                    <s:property value="%{getText('course.material.type.0')}"/>
                 </s:else>
             </td>
             <td><s:date name="uploadTime" format="%{getText('dateformat.forclass')}"/></td>
-            <td>
-                <s:if test="fullSize < 1000">
-                    <s:property value="fullSize"/>B
-                </s:if>
-                <s:elseif test="fullSize > 1000 && fullSize < 1000000">
-                    <s:property value="fullSize/1000"/>KB
-                </s:elseif>
-                <s:elseif test="fullSize > 1000000">
-                    <s:property value="fullSize/1000000"/>MB
-                </s:elseif>
-            </td>
+                <%--<td>--%>
+                <%--<s:if test="fullSize < 1000">--%>
+                <%--<s:property value="fullSize"/>B--%>
+                <%--</s:if>--%>
+                <%--<s:elseif test="fullSize > 1000 && fullSize < 1000000">--%>
+                <%--<s:property value="fullSize/1000"/>KB--%>
+                <%--</s:elseif>--%>
+                <%--<s:elseif test="fullSize > 1000000">--%>
+                <%--<s:property value="fullSize/1000000"/>MB--%>
+                <%--</s:elseif>--%>
+                <%--</td>--%>
             <td><s:property value="description"/></td>
             <td>
                 <a href="<s:property value="fullPath"/>" target="_blank"><s:property value="%{getText('course.resource.download')}"/></a> &nbsp;&nbsp;&nbsp;
@@ -108,6 +114,22 @@
         if(!upload){$("#cm_upload").html("<s:text name="course.resource.select.file"/>");b1=false;}
         if(!sourceTitle){$("#cm_title").html("<s:text name="course.resource.fill.title"/>");b2=false;}
         if(sourceType == -1){$("#cm_type").html("<s:text name="course.resource.select.type"/>");b3=false;}
+        var fileExt = /\.[^\.]+$/.exec(upload);
+        var questionExt = new RegExp(fileExt, "gi");
+
+        if (sourceType == 3) {
+
+            if (!questionExt.test(".doc.docx.pdf")) {
+                $("#cm_upload").html("Please select doc/docx/pdf.");
+                b1 = false;
+            }
+        } else if (sourceType == 4) {
+            if (!questionExt.test(".ppt.pptx")) {
+                $("#cm_upload").html("Please select ppt/pptx.");
+                b1 = false;
+            }
+
+        }
 
         return b1&&b2&&b3;
     }
@@ -124,6 +146,8 @@
         $("#cm_upload_input").uploadify({
             /*注意前面需要书写path的代码*/
             'uploader':'js/uploadify/uploadify.swf',
+//            'fileDesc':'select files ',
+//            'fileExt':'*.doc;*.docx;*.pdf;*.ppt;*.pptx',
             'script':'course/uploadCourseMaterialToTemp.html',
             'cancelImg':'js/uploadify/cancel.png',
             'queueID':'cm_upload', //和存放队列的DIV的id一致
@@ -132,7 +156,7 @@
             'multi':false, //是否支持多文件上传
             'buttonText':'Select File ', //按钮上的文字
             'simUploadLimit':1, //一次同步上传的文件数目
-            'sizeLimit':1000000000, //设置单个文件大小限制
+            'sizeLimit': 30000000, //设置单个文件大小限制
             'queueSizeLimit':1, //队列中同时存在的文件个数限制
             'folder':'upload/file/tmp',
             onComplete:function (event, queueID, fileObj, response, data) {
