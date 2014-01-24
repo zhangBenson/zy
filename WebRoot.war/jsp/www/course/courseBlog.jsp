@@ -292,14 +292,20 @@
                             </s:else>
                         </div>
                         <br/>
-                        <button type="button" class="btn btn-primary btn-block"><s:property value="%{getText('button.enter')}"/></button>
+                        <button type="button" class="btn btn-primary btn-block" id="btn_room_player">
+                            <s:property value="%{getText('button.enter')}"/>
+                        </button>
                     </div>
                 </div>
 
                 <br/>
 
                 <!--view all file -->
-                <div class="basePanel"><button type="button" class="btn btn-primary btn-block"><s:property value="%{getText('course.resource.view')}"/><%--View All File--%></button></div>
+                <div class="basePanel">
+                    <button type="button" class="btn btn-primary btn-block">
+                    <s:property value="%{getText('course.resource.view')}"/><%--View All File--%>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -308,6 +314,15 @@
 </div>
 
 <script type="text/javascript">
+
+    $(function(){
+        $("#btn_room_player").unbind("click");;
+        $("#btn_room_player").bind("click",function(){
+            if(validateLogo()){
+                window.location.href = "playerClass.html?courseClass.id=<s:property value="course.id"/>";
+            }
+        });;
+    });
 
     $("#message_submit_btn").bind('click', function () {
         if (validateLogo()) {

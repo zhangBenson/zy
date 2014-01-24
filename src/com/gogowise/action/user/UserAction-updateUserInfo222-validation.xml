@@ -5,7 +5,7 @@
 
     <field name="user.nickName">
         <field-validator type="required">
-            <message>呢称是必须的</message>
+            <message>昵称是必须的</message>
         </field-validator>
     </field>
 </validators>
