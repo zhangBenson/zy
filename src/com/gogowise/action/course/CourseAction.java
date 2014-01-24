@@ -917,12 +917,12 @@ public class CourseAction extends BasicAction {
                        @Result(name = ERROR, type = Constants.RESULT_NAME_TILES, location = ".notExist")})
     public String courseAdminManage()
     {
-        BaseUserRoleTypeDao baseUserRoleTypeDao = new BaseUserRoleTypeImpl();
+        //BaseUserRoleTypeDao baseUserRoleTypeDao = new BaseUserRoleTypeImpl();
         //BaseUser admin = baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.SESSION_USER_EMAIL))  ;
-        Integer userID = (Integer) ActionContext.getContext().getSession().get(Constants.SESSION_USER_ID);
-        boolean  havePermission = baseUserRoleTypeDao.havePermission(userID, "admin");
+        //Integer userID = (Integer) ActionContext.getContext().getSession().get(Constants.SESSION_USER_ID);
+        //boolean  havePermission = baseUserRoleTypeDao.havePermission(userID, "admin");
 
-        if( !havePermission ) return ERROR;
+        //if( !havePermission ) return ERROR;
 
         courses = this.courseDao.findlatestCourses(null);
         return SUCCESS;
