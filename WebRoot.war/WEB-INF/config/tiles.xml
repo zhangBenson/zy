@@ -1281,4 +1281,8 @@
         <put-attribute name="contentBody"  value="/jsp/www/course/courseAdminManage.jsp"/>
     </definition>
 
+    <definition name=".noPermission" extends=".wwwBodyCenter">
+        <put-attribute name="title" value="No Permission" />
+        <put-attribute name="contentBody" value="/jsp/www/common/noPermission.jsp" />
+    </definition>
 </tiles-definitions>
