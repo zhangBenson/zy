@@ -617,6 +617,10 @@
         <put-attribute name="title" value="title.classroom.one2many"/>
         <put-attribute name="contentBody" value="/jsp/www/room/roomLecturer.jsp"/>
     </definition>
+    <definition name=".roomPlayer" extends=".roomCenter2">
+        <put-attribute name="title" value="title.classroom.one2many"/>
+        <put-attribute name="contentBody" value="/jsp/www/room/roomPlayer.jsp"/>
+    </definition>
 
      <definition name=".interviewVideo" extends=".bodyCenter">
          <put-attribute name="title" value="title.interview.video.session"/>

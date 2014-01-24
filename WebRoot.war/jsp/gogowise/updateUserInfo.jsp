@@ -30,7 +30,10 @@
                             <li><span class="option_tittle"><s:property value="%{getText('label.realname')}"/>：</span>
                                     <span class="_username"><s:property value="user.userName"/></span>
                             </li>
-                            <li><span class="option_tittle"><s:property value="%{getText('email')}"/>：</span><span class="_email"><s:property value="user.email"/></span>
+                            <li>
+                                <span class="option_tittle"><s:property value="%{getText('email')}"/>：</span>
+                                <span class="_email"><s:property value="user.email"/></span>
+                                <s:hidden name="user.email"/>
                             </li>
                             <li><span class="option_tittle"><s:property value="%{getText('sex')}"/>：</span>
                                 <s:set name="male" value="%{getText('male')}"/>
@@ -55,10 +58,10 @@
 
                 <div class="userinfo_lessimport">
                     <ul>
-                        <li style="height:30px">
+                        <%--<li style="height:30px">
                              <span class="option_tittle"><s:property value="%{getText('orgleague.info.id')}"/>：</span>
-                             <span class="_cardID"><s:property value="user.cardId"/></span><%--<s:textfield name="user.nickName" type="text" id="nickName" size="20"/>--%>
-                        </li>
+                             <span class="_cardID"><s:property value="user.cardId"/></span>&lt;%&ndash;<s:textfield name="user.nickName" type="text" id="nickName" size="20"/>&ndash;%&gt;
+                        </li>--%>
                         <li>
                             <span class="option_tittle"><s:property value="%{getText('label.user.self.introduction')}"/></span><span class='_self_description_Msg input_msg'></span><br />
                             <span class="_self_description "><s:property value="user.selfDescription"/></span>
