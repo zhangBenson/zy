@@ -16,6 +16,8 @@ import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.system.dao.GoGoWiseAnnounceDao;
 import com.gogowise.rep.system.enity.GoGoWiseAnnounce;
 import com.gogowise.rep.user.dao.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
+import com.gogowise.rep.user.dao.BaseUserRoleTypeImpl;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.lang.StringUtils;
@@ -112,6 +114,8 @@ public class CourseAction extends BasicAction {
 
     private Integer coursePageShowType; // 0: A-D, 1: E-H, 2: I-L, 3: M-P, 4:Q-T, 5: U-Z, 6: Other 7: Show all
     private List<Course> centerCourses;
+
+    private BaseUserRoleTypeDao baseUserRoleTypeDao;
 
 //    @Action(value = "search",
 //            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".listClass")}
@@ -908,6 +912,39 @@ public class CourseAction extends BasicAction {
 //        return SUCCESS;
 //    }
 
+    @Action(value = "courseAdminManage",
+            results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".courseAdminManage"),
+                       @Result(name = ERROR, type = Constants.RESULT_NAME_TILES, location = ".notExist")})
+    public String courseAdminManage()
+    {
+        //BaseUserRoleTypeDao baseUserRoleTypeDao = new BaseUserRoleTypeImpl();
+        //BaseUser admin = baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.SESSION_USER_EMAIL))  ;
+        //Integer userID = (Integer) ActionContext.getContext().getSession().get(Constants.SESSION_USER_ID);
+        //boolean  havePermission = baseUserRoleTypeDao.havePermission(userID, "admin");
+
+        //if( !havePermission ) return ERROR;
+
+        courses = this.courseDao.findlatestCourses(null);
+        return SUCCESS;
+    }
+
+    @Action(value = "removeCourseConfirm",
+            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "courseAdminManage"}) })
+    public String removeCourseConfirm()
+    {
+        if (this.getCourse().getId() != null)
+        {
+            Course course = courseDao.findById(this.getCourse().getId());
+
+            if(course != null)
+            {
+                course.setIsDeleted(true);
+                courseDao.persistAbstract(course);
+            }
+        }
+
+        return SUCCESS;
+    }
 
     public String age() {
         courses = courseDao.findCourseOfAgeClass(pagination);

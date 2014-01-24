@@ -233,6 +233,32 @@ public class VedioSessionDataAction extends BasicAction {
    }
 
 
+    @Action(value = "playerClass",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".roomPlayer"),
+                                                     @Result(name = ERROR,type = Constants.RESULT_NAME_TILES,location = ".notExist")})
+    public String toRoomPlayer(){
+       if (this.getCourseClass().getId() != null) {
+           courseClass = classDao.findById(this.getCourseClass().getId());
+           inviteFriendHref = getBasePath()+"/courseOnlineAudit.html?courseClass.id="+courseClass.getId()+"&courseOnline=true";
+
+           Course course = courseClass.getCourse();
+           One2ManyTeacherSession one2ManyTeacherSession = new One2ManyTeacherSession();
+           initOne2manyTeacherSession(one2ManyTeacherSession);
+           XStream xstream = new XStream();
+           xstream.alias("Session", One2ManyTeacherSession.class);
+           OutputStream output = new ByteArrayOutputStream();
+           xstream.marshal(one2ManyTeacherSession, new CompactWriter(new OutputStreamWriter(output)));
+           this.setInitSeesionString(output.toString());
+//           this.setFlashPatch("flash/Teacher_1_to_M.swf");
+           this.setRoleType(1);
+           courseClass.setTeacherEntered(true);
+           classDao.persistAbstract(courseClass);
+           return SUCCESS;
+       }
+       return ERROR;
+   }
+
+
+
 
     @Action(value = "startSupervision",results = {@Result(name = "one2one",type = Constants.RESULT_NAME_TILES,location = ".openClassSession"),
                                                      @Result(name = "one2two",type = Constants.RESULT_NAME_TILES,location = ".one2twoSession"),

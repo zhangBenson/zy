@@ -611,11 +611,15 @@
     </definition>
     <definition name=".roomStudent" extends=".roomCenter2">
         <put-attribute name="title" value="title.classroom.one2many"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/room/roomStudent.jsp"/>
+        <put-attribute name="contentBody" value="/jsp/www/room/roomStudent.jsp"/>
     </definition>
     <definition name=".roomLecturer" extends=".roomCenter2">
         <put-attribute name="title" value="title.classroom.one2many"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/room/roomLecturer.jsp"/>
+        <put-attribute name="contentBody" value="/jsp/www/room/roomLecturer.jsp"/>
+    </definition>
+    <definition name=".roomPlayer" extends=".roomCenter2">
+        <put-attribute name="title" value="title.classroom.one2many"/>
+        <put-attribute name="contentBody" value="/jsp/www/room/roomPlayer.jsp"/>
     </definition>
 
      <definition name=".interviewVideo" extends=".bodyCenter">
@@ -1281,4 +1285,8 @@
         <put-attribute name="contentBody"  value="/jsp/www/course/courseAdminManage.jsp"/>
     </definition>
 
+    <definition name=".noPermission" extends=".wwwBodyCenter">
+        <put-attribute name="title" value="No Permission" />
+        <put-attribute name="contentBody" value="/jsp/www/common/noPermission.jsp" />
+    </definition>
 </tiles-definitions>

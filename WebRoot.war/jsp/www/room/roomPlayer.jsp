@@ -1,4 +1,5 @@
-﻿<%@ taglib prefix="s" uri="struts-tags.tld" %>
+﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="s" uri="struts-tags.tld" %>
 <%--<%@ include file="/js/virtualClass/virtualClass_js.jsp" %>--%>
 <link rel="stylesheet" href="css/room/bootstrap.min.css">
 <link rel="stylesheet" href="css/room/gogowise.css">
@@ -57,8 +58,8 @@ $(document).ready(function() {
         extraClasses: 'messenger-fixed messenger-theme-block messenger-on-top'
     }
 
-    $("#top").load("top.html");
-    $("#detailfooters").load("footers.html");
+    //$("#top").load("top.html");
+    //$("#detailfooters").load("footers.html");
 
     $("#btnaddUser").click(function() {
         addOneStudent("Scan","gogowisestyle/image/portrait5.jpg","c1",1,1);
@@ -608,7 +609,7 @@ function ShowMessage(name,imgpath,content,bit)
     }
 </script>
 
-
+<%--
 <div class="btn-group" style="margin:5px;">
     <button type="button" class="btn btn-success" id="btnaddUser">进入用户</button>
     <button type="button" class="btn btn-success" id="btndeleteOneStudent">退出用户</button>
@@ -621,11 +622,12 @@ function ShowMessage(name,imgpath,content,bit)
     <button type="button" class="btn btn-success" id="btnEvent2">事件测试2</button>
     <button type="button" class="btn btn-success" id="btnEvent3">事件测试3</button>
 </div>
+--%>
 
-<span id="currentUserId" style="display: none">8F92FEFB-C5D5-B9AA-24BB-908DB20C2B7C</span>
-<span id="currentName" style="display: none">shucan</span>
-<span id="currentUserName" style="display: none">Scan</span>
-<span id="currentimgPath" style="display: none">gogowisestyle/image/portrait5.jpg</span>
+<span id="currentUserId" style="display: none"><s:property value="#session.userID" /></span>
+<span id="currentName" style="display: none"><s:property value="#session.email" /></span>
+<span id="currentUserName" style="display: none"><s:property value="#session.nickName" /></span>
+<span id="currentimgPath" style="display: none"><s:property value="#session.userLogoUrl" /></span>
 
 <%--<div id="top"></div>--%>
 
@@ -661,11 +663,11 @@ function ShowMessage(name,imgpath,content,bit)
         <!-- </object>
         -->
         <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="720" height="560" name="Girl" id="Girl" wmode="transparent">
-            <param name="movie" value="flash/Student_1.swf" />
+            <param name="movie" value="flash/Player_1.swf" />
             <param name="quality" value="high" />
             <param name="wmode" value="transparent" />
             <param name="allowFullScreen" value="true" />
-            <embed src="flash/Student_1.swf" allowFullScreen="true" width="720" height="560" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" wmode="transparent" name="Girl" id="GirlEmbed"></embed>
+            <embed src="flash/Player_1.swf" allowFullScreen="true" width="720" height="560" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" wmode="transparent" name="Girl" id="GirlEmbed"></embed>
         </object>
     </div>
 </div>
