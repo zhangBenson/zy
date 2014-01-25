@@ -277,7 +277,7 @@
             changeWordNumber(this,$(".course_intro_input_msg"),2000);
         });
         $("#step2_course_student_type").keyup(function(){
-            changeWordNumber(this,$(".course_student_type_input_msg"),50);
+            changeWordNumber(this,$(".course_student_type_input_msg"),300);
         });
         $("#step2_course_teaching_book").keyup(function(){
             changeWordNumber(this,$(".course_teaching_book_input_msg"),50);
@@ -484,7 +484,7 @@
     var plsDeleteOther = "<s:text name="pls.delete.other"/>";
     var warn_charges_empty = "<s:text name="charge.empty"/>";
     var warn_charges_format_wrong = "<s:text name="charges.amount.wrong"/>";
-    var warn_charges_amount_wrong = "<s:text name="pls.select.type"/>";
+    var warn_charges_amount_wrong = "<s:text name="charges.amount.wrong"/>";
     var words_on_uploadButton = "<s:text name="word.browse"/>";
     var showLogoUploadSuccess = "<s:text name="upload.success"/>";
     var warn_class_name_empty = "<s:text name="class.name.empty"/>";

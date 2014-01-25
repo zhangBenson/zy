@@ -33,22 +33,22 @@
                             <input name="course.identity" type="radio" checked="true" value="1" id="type1" />
                             <label for="type1"><s:property value="%{getText('label.select.121')}"/></label>
                         </li>
-                        <li>
+                        <%--<li>
                             <input name="course.identity" type="radio" value="2" id="type2" />
                             <label for="type2"><s:property value="%{getText('label.select.122')}"/></label>
                         </li>
                         <li>
                             <input name="course.identity" type="radio" value="3" id="type3" />
                             <label for="type3"><s:property value="%{getText('label.select.123')}"/>  </label>
-                        </li>
+                        </li>--%>
                         <li>
                             <input name="course.identity" type="radio" value="4" id="type4" />
                             <label for="type4"><s:property value="%{getText('label.select.12many')}"/> </label>
                         </li>
                     </ul>
-                    <div class="repeat_course">
+                    <%--<div class="repeat_course">
                             <a href="myAgeCourses.html"><s:property value="%{getText('label.select.repeat')}"/>?</a>
-                    </div>
+                    </div>--%>
                     <div class="storeWrap">
                         <input type="button" class="store_btn" id="step1_store" value="<s:property value="%{getText('button.save')}"/>" />
                         <span class="tip_words" id="step1_store_msg"></span>
@@ -84,14 +84,14 @@
                         </li>
                         <li>
                             <span class="item"><s:property value="%{getText('course.info.of.student.type')}"/> </span>
-                            <s:textfield cssClass="long_text_field" id="step2_course_student_type" name="course.studentType" type="text" />
+                            <s:textarea cssClass="long_text_area" id="step2_course_student_type" name="course.studentType" type="text" />
                             <span class="course_student_type_input_msg tip_words"></span>
                          </li>
-                        <li>
+                        <%--<li>
                             <span class="item"><s:property value="%{getText('course.info.of.teaching.book')}"/></span>
                             <s:textfield cssClass="long_text_field" id="step2_course_teaching_book" name="course.courseTeachingBook" type="text" />
                             <span class="course_teaching_book_input_msg tip_words"></span>
-                         </li>
+                         </li>--%>
                         <li>
                             <span class="item"><s:property value="%{getText('course.info.of.course.type')}"/></span>
                             <s:select list="#{'1':getText('course.type.1'),'2':getText('course.type.2'),'3':getText('course.type.3'),'4':getText('course.type.4'),'5':getText('course.type.5'),'6':getText('course.type.6')}" headerKey="-1" headerValue="%{getText('please.choose.course.type')}" cssClass="long_text_field" id="step2_course_type" name="course.courseType"/>
@@ -117,7 +117,7 @@
                         <s:if test="courseType == 1 || courseType == 2">
                            <li>
                             <span class="item"><s:property value="%{getText('label.forcast.lecturer')}"/></span>
-                               <s:checkboxlist list="teachers" listKey="id" listValue="email" name="teacherIds"/>
+                               <s:checkboxlist list="teachers" listKey="id" listValue="nickName==null?email:nickName" name="teacherIds"/>
                             <span class="invite_teacher_input_msg tip_words">*</span>
                            </li>
                         </s:if>
