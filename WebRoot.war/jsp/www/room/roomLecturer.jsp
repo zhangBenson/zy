@@ -57,8 +57,8 @@ $(document).ready(function() {
         extraClasses: 'messenger-fixed messenger-theme-block messenger-on-top'
     }
 
-    $("#top").load("top.html");
-    $("#detailfooters").load("footers.html");
+    //$("#top").load("top.html");
+    //$("#detailfooters").load("footers.html");
 
     $("#btnaddUser").click(function() {
         addOneStudent("Scan","gogowisestyle/image/portrait5.jpg","c1",0,1);
