@@ -914,15 +914,14 @@ public class CourseAction extends BasicAction {
 
     @Action(value = "courseAdminManage",
             results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".courseAdminManage"),
-                       @Result(name = ERROR, type = Constants.RESULT_NAME_TILES, location = ".notExist")})
+                       @Result(name = ERROR, type = Constants.RESULT_NAME_TILES, location = ".noPermission")})
     public String courseAdminManage()
     {
-        //BaseUserRoleTypeDao baseUserRoleTypeDao = new BaseUserRoleTypeImpl();
-        //BaseUser admin = baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.SESSION_USER_EMAIL))  ;
-        //Integer userID = (Integer) ActionContext.getContext().getSession().get(Constants.SESSION_USER_ID);
-        //boolean  havePermission = baseUserRoleTypeDao.havePermission(userID, "admin");
+        BaseUser admin = baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.SESSION_USER_EMAIL))  ;
+        Integer userID = (Integer) ActionContext.getContext().getSession().get(Constants.SESSION_USER_ID);
+        boolean  havePermission = baseUserRoleTypeDao.havePermission(userID, "admin");
 
-        //if( !havePermission ) return ERROR;
+        if( !havePermission ) return ERROR;
 
         courses = this.courseDao.findlatestCourses(null);
         return SUCCESS;
@@ -1975,4 +1974,11 @@ public class CourseAction extends BasicAction {
         this.centerCourses = centerCourses;
     }
 
+    public BaseUserRoleTypeDao getBaseUserRoleTypeDao() {
+        return baseUserRoleTypeDao;
+    }
+
+    public void setBaseUserRoleTypeDao(BaseUserRoleTypeDao baseUserRoleTypeDao) {
+        this.baseUserRoleTypeDao = baseUserRoleTypeDao;
+    }
 }
