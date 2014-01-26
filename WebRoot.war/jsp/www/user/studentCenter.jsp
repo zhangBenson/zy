@@ -196,18 +196,19 @@
 											<div style="width: 134px;"><s:property value="%{getText('courses.time.left')}" />
                                                 &nbsp;<b id="timeLeft<s:property value="#idx.index"/>"></b>
                                             </div>
-						                        $("#timeLeft<s:property value="#idx.index"/>").countdown({
-						                                    date:'<s:date name="classOnTheCorner.date" format="%{getText('date.formate.firstpage.course.startdate')}" />',
-						                                    onChange:function (event, timer) {
-						                                    },
-						                                    onComplete:function (event) {
-						                                        $(this).html("<s:text name='course.in.progress'/>");
-						                                    },
-						                                    htmlTemplate: "<span>%{d}<s:property value="%{getText('course.time.day')}" /> %{h}<s:property value="%{getText('course.time.hour')}" />%{m}<s:property value="%{getText('course.time.minute')}" />%{s}<s:property value="%{getText('course.tine.second')}" /></span>",
-						                                    leadingZero:true,
-						                                    direction:"down"
-						                                });
-						                    </script>
+                                            <script type="text/javascript">
+                                                $("#timeLeft<s:property value="#idx.index"/>").countdown({
+                                                    date:'<s:date name="classOnTheCorner.date" format="%{getText('date.formate.firstpage.course.startdate')}" />',
+                                                    onChange:function (event, timer) {
+                                                    },
+                                                    onComplete:function (event) {
+                                                        $(this).html("<s:text name='course.in.progress'/>");
+                                                    },
+                                                    htmlTemplate: "<span><b>%{d}</b><s:property value="%{getText('course.time.day')}" /><b> %{h}</b><s:property value="%{getText('course.time.hour')}" /><b>%{m}</b><s:property value="%{getText('course.time.minute')}" /><b>%{s}</b><s:property value="%{getText('course.tine.second')}" /></span>",
+                                                    leadingZero:true,
+                                                    direction:"down"
+                                                });
+                                            </script>
 										</li>
 										<li style="margin-left: 40px;">
 											<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal"><s:property value="%{getText('others.more')}"/></button>
