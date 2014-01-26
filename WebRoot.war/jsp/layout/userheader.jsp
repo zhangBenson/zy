@@ -11,11 +11,11 @@
                         <s:a action="index"><s:property value="%{getText('label.homepage')}"/></s:a>
                     </div>
                 </li>
-                <li class="hp_item">
+                <%--<li class="hp_item">
                     <div class="menu_base menu_base_course">
                         <s:a action="courseSquare"><s:property value="%{getText('frame.course.center')}"/></s:a>
                     </div>
-                </li>
+                </li>--%>
 
                 <li class="hp_item">
                    <div class="menu_base menu_base_userCenter">
@@ -30,7 +30,7 @@
                <%--</li>--%>
 
 
-                <li class="hp_item">
+                <%--<li class="hp_item">
                     <div class="menu_base menu_base_about"><a href="aboutUs.html"><s:property value="%{getText('link.about.us')}"/></a></div>
                     <div class="menu_popup popup1">
                         <ul class="menu_popup_section">
@@ -40,7 +40,7 @@
                             <li><a href="contactUs.html"><s:property value="%{getText('nav.contact.us')}"/></a></li>
                         </ul>
                     </div>
-                </li>
+                </li>--%>
 
 
             </ul>
@@ -79,17 +79,17 @@
             </s:else>
         </div>
 
-        <div class="uh2">
+        <%--<div class="uh2">
             <s:form method="post" action="searchResult" theme="simple" validate="true">
 
                 <s:hidden name="searchType" value="1"/>
-                <%--<input name="courseName" class="keyWords"/>--%>
+                &lt;%&ndash;<input name="courseName" class="keyWords"/>&ndash;%&gt;
                 <s:textfield cssClass="keyWords" name="searchStr" />
                 <input type="hidden" name="searchTyp" value="1"/>
                 <input class="searchButton" type="submit" value="" />
-                <%--<a class="searchButton" href="search.html"></a>--%>
+                &lt;%&ndash;<a class="searchButton" href="search.html"></a>&ndash;%&gt;
             </s:form>
-        </div>
+        </div>--%>
 
     </div>
 </div>

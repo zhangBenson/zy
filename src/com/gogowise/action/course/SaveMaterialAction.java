@@ -112,11 +112,12 @@ public class SaveMaterialAction extends BasicAction {
 
     private void convertPpt(String nowTimeStr, String dstPath) throws IOException {
         String dstPdfDir = ServletActionContext.getServletContext().getRealPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/");
-        String dstDir = this.getRealPathForBaseDir() + Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/ppt/" + nowTimeStr;
+        String destPptParentDir = Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/ppt/" + nowTimeStr;
+        String dstDir = this.getRealPathForBaseDir() + destPptParentDir;
         String pdfName = courseMaterial.getTypeString() + "_" + nowTimeStr + ".pdf";
         Utils.pptConvert(this.getRealPathForBaseDir() + dstPath, dstPdfDir, pdfName, dstDir);
         File desDirInfo = new File(dstDir);
-        courseMaterial.setConvertPath(dstPath);
+        courseMaterial.setConvertPath(destPptParentDir);
         courseMaterial.setTotalPages(desDirInfo.listFiles().length - 1);
         logger.info("==================PPT files==============" + desDirInfo.listFiles().length);
     }

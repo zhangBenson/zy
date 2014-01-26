@@ -21,8 +21,7 @@
         <s:property value="%{getText('msg.intr')}"/>
     </div>
 
-    <s:hidden name="course.id" id="course_id"/>
-    <div class="stepWrap fl">
+    <%--<div class="stepWrap fl">
 
             <h3 alt="1"><span class="num">1</span><s:property value="%{getText('title.select.type')}"/></h3>
             <div class="stepCont step1Cont">
@@ -33,22 +32,24 @@
                             <input name="course.identity" type="radio" checked="true" value="1" id="type1" />
                             <label for="type1"><s:property value="%{getText('label.select.121')}"/></label>
                         </li>
-                        <%--<li>
+                        <li>
                             <input name="course.identity" type="radio" value="2" id="type2" />
                             <label for="type2"><s:property value="%{getText('label.select.122')}"/></label>
                         </li>
                         <li>
                             <input name="course.identity" type="radio" value="3" id="type3" />
                             <label for="type3"><s:property value="%{getText('label.select.123')}"/>  </label>
-                        </li>--%>
+                        </li>
                         <li>
                             <input name="course.identity" type="radio" value="4" id="type4" />
                             <label for="type4"><s:property value="%{getText('label.select.12many')}"/> </label>
                         </li>
                     </ul>
-                    <%--<div class="repeat_course">
+
+
+                    &lt;%&ndash;<div class="repeat_course">
                             <a href="myAgeCourses.html"><s:property value="%{getText('label.select.repeat')}"/>?</a>
-                    </div>--%>
+                    </div>&ndash;%&gt;
                     <div class="storeWrap">
                         <input type="button" class="store_btn" id="step1_store" value="<s:property value="%{getText('button.save')}"/>" />
                         <span class="tip_words" id="step1_store_msg"></span>
@@ -60,15 +61,20 @@
                 </div>
                 <div class="pic_3"></div>
             </div>
-    </div>
+    </div>--%>
+
+    <s:hidden name="course.id" id="course_id"/>
+
 
     <div class="stepWrap fl">
         <s:form id="course_main_info_form">
             <s:hidden name="course.id" id="course_id"/>
             <s:hidden name="courseType"/>
-            <s:hidden name="course.teachingNum" id="course_identity"/>
-            <h3 alt="2"><span class="num">2</span><s:property value="%{getText('titie.info.course')}"/></h3>
-            <div class="stepCont">
+            <%--<s:hidden name="course.teachingNum" id="course_identity"/>--%>
+            <%-- 直接就是1对多的大班 --%>
+            <input type="hidden" name="course.teachingNum" value="4"/>
+            <h3 alt="2"><span class="num">1</span><s:property value="%{getText('titie.info.course')}"/></h3>
+            <div class="stepCont" style="display: block;">
                 <div class="pic_1"></div>
                 <div class="pic_2">
                     <ul class="content_courseInfo fl">
@@ -117,7 +123,7 @@
                         <s:if test="courseType == 1 || courseType == 2">
                            <li>
                             <span class="item"><s:property value="%{getText('label.forcast.lecturer')}"/></span>
-                               <s:checkboxlist list="teachers" listKey="id" listValue="nickName==null?email:nickName" name="teacherIds"/>
+                            <s:checkboxlist list="teachers" listKey="id" listValue="nickName==null?email:nickName" name="teacherIds"/>
                             <span class="invite_teacher_input_msg tip_words">*</span>
                            </li>
                         </s:if>
@@ -140,7 +146,7 @@
                         <li><s:property value="%{getText('course.info.courseName')}"/>：<span class="orange_words" id="store_name"></span></li>
                         <li><s:property value="%{getText('course.info.description')}"/>：<span class="orange_words" id="store_description"></span></li>
                         <li><s:property value="%{getText('course.info.of.student.type')}"/>：<span class="orange_words" id="store_studentType"></span></li>
-                        <li><s:property value="%{getText('course.info.of.teaching.book')}"/>：<span class="orange_words" id="store_courseTeachingBook"></span></li>
+                        <%--<li><s:property value="%{getText('course.info.of.teaching.book')}"/>：<span class="orange_words" id="store_courseTeachingBook"></span></li>--%>
                         <li><s:property value="%{getText('course.info.of.course.type')}"/>：<span class="orange_words" id="store_courseType"></span></li>
                         <li><s:property value="%{getText('label.online.class.startdate')}"/>：<span class="orange_words" id="store_startDate"></span></li>
                         <li><s:property value="%{getText('label.online.class.tutor.price')}"/>：<span class="orange_words" id="store_charges"></span></li>
@@ -157,7 +163,7 @@
     </div>
 
     <div class="stepWrap fl">
-        <h3 alt="3"><span class="num">3</span><s:property value="%{getText('title.info.class')}"/></h3>
+        <h3 alt="3"><span class="num">2</span><s:property value="%{getText('title.info.class')}"/></h3>
         <div class="stepCont">
             <div class="pic_1"></div>
             <div class="pic_2">

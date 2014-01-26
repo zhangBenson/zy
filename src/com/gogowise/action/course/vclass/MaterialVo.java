@@ -1,5 +1,7 @@
 package com.gogowise.action.course.vclass;
 
+import com.gogowise.common.utils.Utils;
+
 /**
  * Created by benson on 14-1-16.
  */
@@ -10,6 +12,8 @@ public class MaterialVo {
     private String fullPath;
     private String sourceTitle;
     private Integer totalPages;
+    private String convertPath;
+    private String fileExt;
 
     public Integer getId() {
         return id;
@@ -57,5 +61,21 @@ public class MaterialVo {
 
     public void setTotalPages(Integer totalPages) {
         this.totalPages = totalPages;
+    }
+
+    public String getConvertPath() {
+        return convertPath;
+    }
+
+    public void setConvertPath(String convertPath) {
+        this.convertPath = convertPath;
+    }
+
+    public String getFileExt() {
+        return Utils.getExtention(this.fullPath).replace(".", "");
+    }
+
+    public void setFileExt(String fileExt) {
+        this.fileExt = fileExt;
     }
 }

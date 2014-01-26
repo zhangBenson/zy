@@ -33,7 +33,8 @@ public class ConvertQuestionServiceImpl extends ModelServiceImpl implements Conv
                     QuestionItem questionItem = new QuestionItem();
                     questionItem.setDescription(item);
                     questionItem.setIndexValue(i + "");
-                    questionItem.setIsAnswer( (i+"").equalsIgnoreCase(query.getAnswer()));
+                    questionItem.setIsAnswer((i + "").equalsIgnoreCase(query.getAnswer()));
+                    questionItem.setQuestion(question);
                     items.add(questionItem) ;
                     i++;
                 }

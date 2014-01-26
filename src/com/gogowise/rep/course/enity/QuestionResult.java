@@ -18,6 +18,7 @@ public class QuestionResult extends AbstractPersistence {
     @ManyToOne
     private Question question;
 
+    @ManyToOne
     private QuestionItem questionItem;
 
     private Boolean isCorrect;

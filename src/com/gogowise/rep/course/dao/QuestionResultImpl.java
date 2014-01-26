@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("questionResult")
+@Repository("questionResultDao")
 public class QuestionResultImpl extends ModelDaoImpl<QuestionResult> implements QuestionResultDao {
     public List<QuestionResult> findByQuestionAndClass(Integer questionId, Integer courseClassId) {
         return this.find("From QuestionResult qr where qr.question.id=?  and qr.courseClass.id = ?", questionId, courseClassId);
