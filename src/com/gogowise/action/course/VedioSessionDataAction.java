@@ -177,32 +177,15 @@ public class VedioSessionDataAction extends BasicAction {
            courseClass = classDao.findById(this.getCourseClass().getId());
            inviteFriendHref = getBasePath()+"/courseOnlineAudit.html?courseClass.id="+courseClass.getId()+"&courseOnline=true";
            Course course = courseClass.getCourse();
-//           if(course.getTeacher()!=null&&this.getSessionUserId()==course.getTeacher().getId()){
-//               One2ManyTeacherSession one2ManyTeacherSession = new One2ManyTeacherSession();
-//               initOne2manyTeacherSession(one2ManyTeacherSession);
-//               XStream xstream = new XStream();
-//               xstream.alias("Session", One2ManyTeacherSession.class);
-//               OutputStream output = new ByteArrayOutputStream();
-//               xstream.marshal(one2ManyTeacherSession, new CompactWriter(new OutputStreamWriter(output)));
-//               this.setInitSeesionString(output.toString());
-//               this.setFlashPatch("flash/Teacher_1_to_M.swf");
-//               this.setRoleType(1);
-//               courseClass.setTeacherEntered(true);
-//               classDao.persistAbstract(courseClass);
-//               return SUCCESS;
-//           }else {
-               One2ManyStudentSession one2ManyStudentSession = new One2ManyStudentSession();
-               initOne2manyStudentSession(one2ManyStudentSession);
-               XStream xstream = new XStream();
-               xstream.alias("Session", One2ManyStudentSession.class);
-               OutputStream output = new ByteArrayOutputStream();
-                xstream.marshal(one2ManyStudentSession, new CompactWriter(new OutputStreamWriter(output)));
-               this.setInitSeesionString(output.toString());
-//               this.setFlashPatch("flash/Student_1_to_M.swf");
-               this.setRoleType(2);
-               return SUCCESS;
-//
-//           }
+           One2ManyPlayerSession one2ManyPlayerSession = new One2ManyPlayerSession();
+           initOne2manyPlayerSession(one2ManyPlayerSession);
+           XStream xstream = new XStream();
+           xstream.alias("Session", One2ManyPlayerSession.class);
+           OutputStream output = new ByteArrayOutputStream();
+            xstream.marshal(one2ManyPlayerSession, new CompactWriter(new OutputStreamWriter(output)));
+           this.setInitSeesionString(output.toString());
+           this.setRoleType(2);
+           return SUCCESS;
        }
        return ERROR;
    }
@@ -223,7 +206,6 @@ public class VedioSessionDataAction extends BasicAction {
            OutputStream output = new ByteArrayOutputStream();
            xstream.marshal(one2ManyTeacherSession, new CompactWriter(new OutputStreamWriter(output)));
            this.setInitSeesionString(output.toString());
-//           this.setFlashPatch("flash/Teacher_1_to_M.swf");
            this.setRoleType(1);
            courseClass.setTeacherEntered(true);
            classDao.persistAbstract(courseClass);
@@ -248,7 +230,6 @@ public class VedioSessionDataAction extends BasicAction {
            OutputStream output = new ByteArrayOutputStream();
            xstream.marshal(one2ManyTeacherSession, new CompactWriter(new OutputStreamWriter(output)));
            this.setInitSeesionString(output.toString());
-//           this.setFlashPatch("flash/Teacher_1_to_M.swf");
            this.setRoleType(1);
            courseClass.setTeacherEntered(true);
            classDao.persistAbstract(courseClass);
@@ -643,6 +624,17 @@ public class VedioSessionDataAction extends BasicAction {
         one2ManyStudentSession.setUserName(user.getNickName());
         if(user.getPic()!=null)
             one2ManyStudentSession.setUserLogo(user.getPic());
+    }
+
+    private void initOne2manyPlayerSession(One2ManyPlayerSession one2ManyPlayerSession){
+        one2ManyPlayerSession.initWithSession(this.getCourseClass());
+        BaseUser user = baseUserDao.findById(this.getSessionUserId());
+        one2ManyPlayerSession.setUserID(user.getId());
+        one2ManyPlayerSession.setUserName(user.getNickName());
+        if(user.getPic()!=null){
+            one2ManyPlayerSession.setUserLogo(user.getPic());
+            one2ManyPlayerSession.setMasterLogo(user.getPic());
+        }
     }
 
 
