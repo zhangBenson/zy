@@ -149,23 +149,23 @@ public class IndexAction extends BasicAction {
     {
         this.postersAddress = new ArrayList<String>();
 
-        String line  = null;
-        String fPath = "./poster.txt";
-        try
-        {
-            BufferedReader br = new BufferedReader( new FileReader(fPath) );
-            while( ( line = br.readLine() ) != null )
-            {
-                this.postersAddress.add(line);
-            }
-        }
-        catch (FileNotFoundException e)
-        {
-            e.printStackTrace();
-        } catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+//        String line  = null;
+//        String fPath = "./poster.txt";
+//        try
+//        {
+//            BufferedReader br = new BufferedReader( new FileReader(fPath) );
+//            while( ( line = br.readLine() ) != null )
+//            {
+//                this.postersAddress.add(line);
+//            }
+//        }
+//        catch (FileNotFoundException e)
+//        {
+//            e.printStackTrace();
+//        } catch (IOException e)
+//        {
+//            e.printStackTrace();
+//        }
     }
 
     @Action(value = "changePoster",
