@@ -635,7 +635,7 @@ function ShowMessage(name,imgpath,content,bit)
 <div class="thinline"></div>
 <div class="classSchoolinfo" style="text-align: center;">
     <ul class="list-inline">
-        <li  class="classstatusbar">School Name:XXXX</li>
+        <li  class="classstatusbar">School Name:<s:property value="courseClass.course.organization.schoolName" /></li>
         <li  class="classstatusbar">Lecturers Name:<s:property value="courseClass.course.teacher.nickName"/></li>
         <li  class="classstatusbar">Course Name:<s:property value="courseClass.course.name"/></li>
     </ul>
