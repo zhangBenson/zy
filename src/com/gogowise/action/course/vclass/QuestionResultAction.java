@@ -1,6 +1,7 @@
 package com.gogowise.action.course.vclass;
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.rep.course.dao.ClassDao;
 import com.gogowise.rep.course.dao.QuestionDao;
 import com.gogowise.rep.course.dao.QuestionResultDao;
 import com.gogowise.rep.course.enity.Question;
@@ -26,6 +27,7 @@ public class QuestionResultAction extends BasicAction {
     private QuestionResultDao questionResultDao;
     private BaseUserDao baseUserDao;
     private QuestionDao questionDao;
+    private ClassDao classDao;
 
     private Integer courseClassId;
     private Integer questionId;
@@ -50,8 +52,8 @@ public class QuestionResultAction extends BasicAction {
         return RESULT_JSON;
     }
 
-    @Action(value = "saveCourseMaterialWithJson")
-    public String saveCourseMaterialWithJson() {
+    @Action(value = "saveQuestionResult")
+    public String saveQuestionResult() {
         QuestionResult questionResult = new QuestionResult();
         Question question = questionDao.findById(questionId);
         BaseUser owner = baseUserDao.findById(userId);
@@ -70,11 +72,35 @@ public class QuestionResultAction extends BasicAction {
         }
         questionResult.setOwner(owner);
         questionResult.setQuestion(question);
+        questionResult.setCourseClass(classDao.findById(courseClassId));
         questionResultDao.persistAbstract(questionResult);
         return RESULT_JSON;
 
     }
 
+    public void setClassDao(ClassDao classDao) {
+        this.classDao = classDao;
+    }
+
+    public void setBaseUserDao(BaseUserDao baseUserDao) {
+        this.baseUserDao = baseUserDao;
+    }
+
+    public void setQuestionDao(QuestionDao questionDao) {
+        this.questionDao = questionDao;
+    }
+
+    public void setQuestionItemId(Integer questionItemId) {
+        this.questionItemId = questionItemId;
+    }
+
+    public void setCorrectNumber(Integer correctNumber) {
+        this.correctNumber = correctNumber;
+    }
+
+    public void setInCorrectNumber(Integer inCorrectNumber) {
+        this.inCorrectNumber = inCorrectNumber;
+    }
 
     public void setQuestionResultDao(QuestionResultDao questionResultDao) {
         this.questionResultDao = questionResultDao;

@@ -56,8 +56,11 @@
 
                         <div class="col-sm-4">
                             <div class="pull-left">
-                                <s:if test="#status.index < course.FinshedClassNum"><div class="lessonOrange"></s:if>
-                                <s:else><div class="lessonGreen"></s:else>
+                                <s:if test="#status.index < course.FinshedClassNum">
+                                <div class="lessonOrange" onclick="enterPlayerRoom(<s:property value="id"/>)" style="cursor:pointer;"></s:if>
+                                <s:else>
+                                <div class="lessonGreen">
+                                </s:else>
                                     <span><s:property value="#status.index+1"/></span><div>Lesson</div>
                                 </div>
                             </div>
@@ -242,7 +245,9 @@
                                 <br/>
                             </s:iterator>
                         </s:else>
-                        <button type="button" class="btn btn-primary btn-block"><s:property value="%{getText('button.enter')}"/><%--Enter--%></button>
+                        <button type="button" class="btn btn-primary btn-block">
+                            <s:property value="%{getText('button.enter')}"/><%--Enter--%>
+                        </button>
                     </div>
                 </div>
 
@@ -292,7 +297,7 @@
                             </s:else>
                         </div>
                         <br/>
-                        <button type="button" class="btn btn-primary btn-block" id="btn_room_player">
+                        <button type="button" class="btn btn-primary btn-block">
                             <s:property value="%{getText('button.enter')}"/>
                         </button>
                     </div>
@@ -314,15 +319,11 @@
 </div>
 
 <script type="text/javascript">
-
-    $(function(){
-        $("#btn_room_player").unbind("click");;
-        $("#btn_room_player").bind("click",function(){
-            if(validateLogo()){
-                window.location.href = "playerClass.html?courseClass.id=<s:property value="course.id"/>";
-            }
-        });;
-    });
+    function enterPlayerRoom(courseClassId){
+        if(validateLogo()){
+            window.location.href = "playerClass.html?courseClass.id="+courseClassId;
+        }
+    }
 
     $("#message_submit_btn").bind('click', function () {
         if (validateLogo()) {
@@ -341,10 +342,8 @@
     });
     $('#register_btn').click(function(){
         if(validateLogo()){
-
             window.location.href = "initCourseconfirm.html?course.id=<s:property value="course.id"/>";
             return true;
-
 
             <s:if test="course.charges == 0 && !course.limitOver && !course.courseFinished">
             $.post("courseconfirm.html",{'course.id':"<s:property value="course.id"/>"},function(data){
