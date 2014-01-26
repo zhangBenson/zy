@@ -80,6 +80,8 @@ public class MainFilter implements Filter {
         NEED_LOGIN.add("/uploadMaterialWithJson.html");
         NEED_LOGIN.add("/uploadCourseMaterial.html");
         NEED_LOGIN.add("/courseAdminManage.html");
+        NEED_LOGIN.add("/changePoster.html");
+        NEED_LOGIN.add("/lecturerClass.html");
 
     }
 
