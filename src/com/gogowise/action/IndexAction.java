@@ -12,6 +12,7 @@ import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.live.enity.LiveChannel;
 import com.gogowise.rep.live.enity.MyShow;
 import com.gogowise.rep.live.enity.PersonalOnlive;
+import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.ServletActionContext;
@@ -22,10 +23,7 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -58,7 +56,8 @@ public class IndexAction extends BasicAction {
 
     private List<Organization> organizations = new ArrayList<>();
 
-
+    private BaseUserRoleTypeDao baseUserRoleTypeDao;
+    private List<String> postersAddress;
 
     String logInfo = "";
     private String language;
@@ -135,13 +134,46 @@ public class IndexAction extends BasicAction {
     )
     public String index() {
 //        if("en_US".equals(language)){
-            ActionContext.getContext().getSession().put("WW_TRANS_I18N_LOCALE",new Locale("en","US"));
-            ActionContext.getContext().getSession().put("request_locale",new Locale("en","US"));
-            ActionContext.getContext().getSession().put("request_only_locale",new Locale("en","US"));
-            ActionContext.getContext().setLocale(new Locale("en","US"));
+        ActionContext.getContext().getSession().put("WW_TRANS_I18N_LOCALE",new Locale("en","US"));
+        ActionContext.getContext().getSession().put("request_locale",new Locale("en","US"));
+        ActionContext.getContext().getSession().put("request_only_locale",new Locale("en","US"));
+        ActionContext.getContext().setLocale(new Locale("en","US"));
 //        }
         courses = courseDao.findlatestCourses(pagination);
         organizations = organizationDao.findLatestOrgs(new Pagination(8));
+        this.loadPoster();
+        return SUCCESS;
+    }
+
+    public void loadPoster()
+    {
+        this.postersAddress = new ArrayList<String>();
+
+        String line  = null;
+        String fPath = "./poster.txt";
+        try
+        {
+            BufferedReader br = new BufferedReader( new FileReader(fPath) );
+            while( ( line = br.readLine() ) != null )
+            {
+                this.postersAddress.add(line);
+            }
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    @Action(value = "changePoster",
+            results = {@Result(name = SUCCESS, type = "tiles", location = ".changePoster"),
+                    @Result(name = ERROR, type = "tiles", location = ".noPermission")}
+    )
+    public String changePoster()
+    {
         return SUCCESS;
     }
 
@@ -278,5 +310,21 @@ public class IndexAction extends BasicAction {
 
     public void setOrganizations(List<Organization> organizations) {
         this.organizations = organizations;
+    }
+
+    public List<String> getPostersAddress() {
+        return postersAddress;
+    }
+
+    public void setPostersAddress(List<String> postersAddress) {
+        this.postersAddress = postersAddress;
+    }
+
+    public BaseUserRoleTypeDao getBaseUserRoleTypeDao() {
+        return baseUserRoleTypeDao;
+    }
+
+    public void setBaseUserRoleTypeDao(BaseUserRoleTypeDao baseUserRoleTypeDao) {
+        this.baseUserRoleTypeDao = baseUserRoleTypeDao;
     }
 }
