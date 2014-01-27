@@ -1,5 +1,7 @@
 ﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="basePath" value="${pageContext.request.scheme}//${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/"></c:set>
 <%--<%@ include file="/js/virtualClass/virtualClass_js.jsp" %>--%>
 <link rel="stylesheet" href="css/room/bootstrap.min.css">
 <link rel="stylesheet" href="css/room/gogowise.css">
@@ -1068,7 +1070,141 @@ function ShowMessage(name,imgpath,content,bit)
 
 <%--<div id="detailfooters"></div>--%>
 
-<div class="modal fade" id="questionsStudentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="fileModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">
+                    <h1 class = "Subject24">Open File</h1>
+                </h4>
+
+            </div>
+            <div class="modal-body">
+
+                <ul class="nav nav-tabs" id="myTabFile">
+                    <li class="active">
+                        <a href="#filesysDocument" data-toggle="tab">
+                            <span class="glyphicon glyphicon-list-alt" style="margin-right: 5px;"></span>
+                            Speech Draft
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#filesysVideo" data-toggle="tab">
+                            <span class="glyphicon glyphicon-film" style="margin-right: 5px;"></span>
+                            Video
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#filesysQuestionbank" data-toggle="tab">
+                            <span class="glyphicon glyphicon-list" style="margin-right: 5px;"></span>
+                            QuestionBank
+                        </a>
+                    </li>
+                    <!-- <li>
+                        <a href="#filesysUploading" data-toggle="tab">
+                            <span class="glyphicon glyphicon-cloud-upload" style="margin-right: 5px;"></span>
+                            Uploading File
+                        </a>
+                    </li> -->
+                </ul>
+            </div>
+            <div class="tab-content" style="text-align: center;" id="allfileList">
+                <div class="tab-pane active" id="filesysDocument">
+                    <div class="container">
+                        <div id="speechDraftPanle" class="fileList">
+                            <!-- <li>
+                                <a href="#">
+                                    <div class="fileItem">
+                                        <img class="fileicon" src="gogowisestyle/image/icon_pdf.png"  />
+                                        <p class="fileName">file name 1</p>
+                                        <span class="fileDirectory">http://google.com</span>
+                                        <span class="category">http://google.com</span>
+                                        <span class="pageNum">http://google.com</span>
+                                    </div>
+                                </a>
+                            </li>
+                            -->
+                        </div>
+                    </div>
+                    <div style="text-align: center;">
+                        <input type="file" name="fileSpeech" style="position:absolute; z-index:100; margin-left:-180px; font-size:35px;opacity:0;filter:alpha(opacity=0); margin-top:-5px;">
+                        <span style="padding-right: 10px;color: red;">Or</span><button type="button" class="btn btn-success">Select a Local File</button>
+                        <p class="help-block">doc,docx,pdf,xls,xlsx,ppt,pptx</p>
+                        <button type="submit" class="btn btn-default" id="btnUploadspeech">Upload</button>
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="filesysVideo">
+                    <div class="container">
+                        <div id="videoPanle" class="fileList">
+                            <!-- <li>
+                                <a href="#">
+                                    <div class="fileItem">
+                                        <img class="fileicon" src="gogowisestyle/image/icon_mpeg.png"  />
+                                        <p>file name 1</p>
+                                        <span class="fileid"></span>
+                                    </div>
+                                </a>
+                            </li> -->
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <p style="padding-right: 10px;color: red;" class="text-left">Or</p>
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-link" style="color: #999;"></span></span>
+                            <input type="text" class="form-control" placeholder="Input A Link of Youtube File">
+                        </div>
+                        <div class="input-group input-group-sm" style="margin-top: 5px;margin-bottom: 5px;">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-file" style="color: #999;"></span></span>
+                            <input type="text" class="form-control" placeholder="Input A Name for the Link">
+                        </div>
+                        <button type="button" class="btn btn-success btn-sm btn-block">Add Video</button>
+                    </div>
+                </div>
+                <div class="tab-pane" id="filesysQuestionbank">
+                    <div class="container">
+                        <div id="questionbankPanle" class="fileList">
+                            <!-- <li>
+                            <a href="#">
+                                <div class="fileItem">
+                                    <img class="fileicon" src="gogowisestyle/image/icon_text.png"  />
+                                    <p class="filetext">file name 1</p>
+                                    <span class="fileid"></span>
+                                </div>
+                            </a>
+                        </li>
+                        -->
+                        </div>
+
+                    </div>
+                    <div style="text-align: center;">
+                        <input type="file" name="fileQuestion" style="position:absolute; z-index:100; margin-left:-180px; font-size:35px;opacity:0;filter:alpha(opacity=0); margin-top:-5px;">
+                        <span style="padding-right: 10px;color: red;">Or</span><button type="button" class="btn btn-success">Select a Local File</button>
+                        <p class="help-block">doc,docx,pdf</p>
+                        <button type="submit" class="btn btn-default" id="btnUploadquestion">Upload</button>
+                    </div>
+
+                </div>
+                <div class="tab-pane" id="filesysUploading">
+                    <div class="container"></div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <div class="pull-left" id="currentfile"></div>
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btnSelectFile">Ok</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="questionsStudioModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -1079,66 +1215,131 @@ function ShowMessage(name,imgpath,content,bit)
 
             </div>
             <div class="modal-body">
-                <div id="studentQuestionItem">
-                    <div>
-                        <div class="questionsItemText">
-                            1.Which two statements are correct if IGMP snooping is enabled on a Cisco WLC? (Choose two.)
-                        </div>
-                        <span class="questionid"></span>
-                        <div class="listanswer">
-                            <div style="margin-top: 5px;">
-                                <label class="answerItem">
-                                    <p>A</p>
-                                    <input type="radio" name="questionid1">
-								<span >
-									The router IGMP table is updated with the IP address of the wireless clients as the last reporter.
-								</span>
-                                </label>
-                            </div>
 
-                            <div style="margin-top: 5px;">
-                                <label class="answerItem">
-                                    <p>B</p>
-                                    <input type="radio" name="questionid1">
-								<span>
-									The IGMP packets from the wireless clients are forwarded to the router without modifications.
-								</span>
-                                </label>
-                            </div>
-                            <div style="margin-top: 5px;">
-                                <label class="answerItem">
-                                    <p>C</p>
-                                    <input type="radio" name="questionid1">
-								<span>
-									The IGMP packets from the wireless clients are received at the Cisco WLC, which in turn generates a query for the client.
-								</span>
-                                </label>
-                            </div>
-                            <div style="margin-top: 5px;">
-                                <label class="answerItem">
-                                    <p>D</p>
-                                    <input type="radio" name="questionid1">
-								<span>
-									The IGMP packets from the wireless clients are received at the WLC and are used to update the router via Cisco Group Management Protocol update from the Cisco WLC.
-								</span>
-                                </label>
-                            </div>
-                            <div style="margin-top: 5px;">
-                                <label class="answerItem">
-                                    <p>E</p>
-                                    <input type="radio" name="questionid1">
-								<span>
-									The router IGMP table is updated with the IP address of the Cisco WLC as the last reporter.
-								</span>
-                                </label>
-                            </div>
-                        </div>
+                <div class="studioQuestionItem">
+                    <div class="questionsItemText">
+                        1.Which of these network devices primarily functions at the OSI Network layer (layer 3)?
                     </div>
+                    <span class="questionid"></span>
+                    <div class="listanswer">
+                        <li>
+                            <label class="answerItem">
+                                <p>A</p>
+                                <input type="radio" name="questionid1"></label>
+                        </li>
+                        <li>
+                            <label class="answerItem">
+                                <p>B</p>
+                                <input type="radio" name="questionid1"></label>
+                        </li>
+                        <li>
+                            <label class="answerItem">
+                                <p>C</p>
+                                <input type="radio" name="questionid1"></label>
+                        </li>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
+
+                <div class="studioQuestionItem">
+                    <div class="questionsItemText">
+                        2.Which of these network devices primarily functions at the OSI Network layer (layer 3)?
+                    </div>
+                    <span class="questionid"></span>
+                    <div class="listanswer">
+                        <li>
+                            <label class="answerItem">
+                                <p>A</p>
+                                <input type="radio" name="questionid2"></label>
+                        </li>
+                        <li>
+                            <label class="answerItem">
+                                <p>B</p>
+                                <input type="radio" name="questionid2"></label>
+                        </li>
+                        <li>
+                            <label class="answerItem">
+                                <p>C</p>
+                                <input type="radio" name="questionid2"></label>
+                        </li>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="btnQuestion">Ok</button>
+                <button type="button" class="btn btn-primary">Ok</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="questionsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">
+                    <h1 class = "Subject24">Questions</h1>
+                </h4>
+
+            </div>
+            <div class="modal-body">
+                <div id="questionsList">
+                    <!-- <div class="questionsItem">
+                        <label>
+                            <input type="radio" name="selectQuestion" value="1">
+                            <span class="questionsItemText">Who invented IP and some related Internet protocols?</span>
+                            <span class="questionid">1</span>
+                        </label>
+                    </div>
+
+                    <div class="questionsItem">
+                        <label>
+                            <input type="radio" name="selectQuestion" value="2">
+                            <span class="questionsItemText">The upper layers of the OSI model are, in correct order</span>
+                            <span class="questionid">2</span>
+                        </label>
+                    </div>
+
+                    <div class="questionsItem">
+                        <label>
+                            <input type="radio" name="selectQuestion" value="3">
+                            <span class="questionsItemText">
+                                Which of these network devices primarily functions at the OSI Network layer (layer 3)?
+                            </span>
+                            <span class="questionid">3</span>
+                        </label>
+                    </div> -->
+                </div>
+                <div id="resultView" style="display: none;text-align: center;">
+                    <canvas id="canvas" height="450" width="450"></canvas>
+                    <br/>
+                    <br/>
+                    <ul class="list-inline">
+                        <li>
+                            <div class="ColorlumpRight"></div>
+                            <span class="ColorlumpText">Right:24</span>
+                        </li>
+                        <li>
+                            <div class="ColorlumpWrong"></div>
+                            <span class="ColorlumpText">Wrong:16</span>
+                        </li>
+                        <li>
+                            <div class="ColorlumpNoresponse"></div>
+                            <span class="ColorlumpText">NoResponse:2</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btnQuestionResult">Result View</button>
+                <button type="button" class="btn btn-primary" id="btnSubmitQuestions">Ok</button>
             </div>
         </div>
         <!-- /.modal-content -->
