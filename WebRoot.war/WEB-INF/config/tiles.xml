@@ -1294,4 +1294,9 @@
         <put-attribute name="title" value="Change Poster" />
         <put-attribute name="contentBody" value="/jsp/www/common/changePoster.jsp" />
     </definition>
+
+    <definition name=".posterImageProcess" template="/jsp/www/common/posterImageProcess.jsp">
+        <put-attribute name="title" value="title.logo.upload"/>
+    </definition>
+
 </tiles-definitions>
