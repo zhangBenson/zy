@@ -42,6 +42,7 @@ public class QuestionResultAction extends BasicAction {
     public String displayCourseMaterialWithJson() {
         List<QuestionResult> questionResults = questionResultDao.findByQuestionAndClass(questionId, courseClassId);
         correctNumber = 0;
+        inCorrectNumber = 0;
         for (QuestionResult qr : questionResults) {
             if (qr.getIsCorrect()) {
                 correctNumber++;

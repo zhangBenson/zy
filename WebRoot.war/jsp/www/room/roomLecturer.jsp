@@ -241,12 +241,13 @@ function getSpeechList()
 {
     $("#speechDraftPanle li").remove();
     //Speech
-    $.getJSON("fileList.html",function(data){
-        $.each(data,function(key,info)
+    $.getJSON("fileList2.html",function(data){
+        $.each(data.vos,function(key,info)
         {
             var icon_path = "";
+            var filecategory ="speech";
 
-            switch(info["fileType"])
+            switch(info["fileExt"])
             {
                 case "doc":
                     icon_path = "gogowisestyle/image/icon_docx.png"
@@ -266,18 +267,20 @@ function getSpeechList()
                 case "ppt":
                     icon_path = "gogowisestyle/image/icon_pptx.png"
                     break;
-                case "ppt":
+                case "pptx":
                     icon_path = "gogowisestyle/image/icon_pptx.png"
                     break;
             }
 
+
+
             $("#speechDraftPanle").append("<li><a href='#'>"+
                     "<div class='fileItem'>"+
                     "<img class='fileicon' src='"+icon_path+"' />"+
-                    "<p class='fileName'>"+info["fileName"]+"</p>"+
-                    "<span class='fileDirectory'>"+info["fileDirectory"]+"</span>"+
-                    "<span class='category'>"+info["category"]+"</span>"+
-                    "<span class='pageNum'>"+info["pageNum"]+"</span>"+
+                    "<p class='fileName'>"+info["sourceTitle"]+"</p>"+
+                    "<span class='fileDirectory'>"+info["convertPath"]+"</span>"+
+                    "<span class='category'>"+filecategory+"</span>"+
+                    "<span class='pageNum'>"+info["totalPages"]+"</span>"+
                     "</div></a></li>");
         });
 
@@ -310,25 +313,25 @@ function getVideoList()
 function getQuestionList()
 {
     $("#questionbankPanle li").remove();
-    $.getJSON("questionList.html",function(data){
 
-        $.each(data,function(key,info)
+    $.getJSON("questionList2.html",function(data){
+
+        $.each(data.vos,function(key,info)
         {
             var icon_path = "gogowisestyle/image/icon_text.png";
-
+            var filecategory = "question";
             $("#questionbankPanle").append("<li><a href='#'>"+
                     "<div class='fileItem'>"+
                     "<img class='fileicon' src='"+icon_path+"' />"+
-                    "<p class='fileName'>"+info["fileName"]+"</p>"+
-                    "<span class='question'>"+info["questionID"]+"</span>"+
-                    "<span class='category'>"+info["category"]+"</span>"+
+                    "<p class='fileName'>"+info["sourceTitle"]+"</p>"+
+                    "<span class='question'>"+info["id"]+"</span>"+
+                    "<span class='category'>"+filecategory+"</span>"+
                     "</div></a></li>");
         });
 
         bindFileClick();
     });
 }
-
 
 function getQuestionInfo()
 {
