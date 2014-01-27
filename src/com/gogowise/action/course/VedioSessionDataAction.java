@@ -630,6 +630,7 @@ public class VedioSessionDataAction extends BasicAction {
         one2ManyPlayerSession.initWithSession(this.getCourseClass());
         BaseUser user = baseUserDao.findById(this.getSessionUserId());
         one2ManyPlayerSession.setUserID(user.getId());
+        one2ManyPlayerSession.setMasterID(this.getCourseClass().getCourse().getTeacher().getId());
         one2ManyPlayerSession.setUserName(user.getNickName());
         if(user.getPic()!=null){
             one2ManyPlayerSession.setUserLogo(user.getPic());

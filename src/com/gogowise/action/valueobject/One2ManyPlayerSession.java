@@ -14,6 +14,7 @@ import com.gogowise.rep.user.enity.BaseUser;
  */
 public class One2ManyPlayerSession {
     private Integer UserID = Constants.DEFAULT_INT_VALUE;
+    private Integer MasterID = Constants.DEFAULT_INT_VALUE;
     private String UserName = Constants.DEFAULT_BLANK_VALUE;
     private String UserLogo = Constants.DEFAULT_USER_LOGO;
     private String MasterLogo = Constants.DEFAULT_USER_LOGO;
@@ -106,5 +107,13 @@ public class One2ManyPlayerSession {
     }
     private Integer getEmptyInteger(Integer s) {
            return  s == null ? 0: s;
+    }
+
+    public Integer getMasterID() {
+        return MasterID;
+    }
+
+    public void setMasterID(Integer masterID) {
+        MasterID = masterID;
     }
 }

@@ -268,6 +268,18 @@
             <version>4.5</version>
         </dependency>
 
+        <!-- Java EE -->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>taglibs</groupId>
+            <artifactId>standard</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+
         <!-- Struts2 -->
         <dependency>
             <groupId>org.apache.struts</groupId>
