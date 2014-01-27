@@ -177,14 +177,14 @@ public class VedioSessionDataAction extends BasicAction {
            courseClass = classDao.findById(this.getCourseClass().getId());
            inviteFriendHref = getBasePath()+"/courseOnlineAudit.html?courseClass.id="+courseClass.getId()+"&courseOnline=true";
            Course course = courseClass.getCourse();
-           One2ManyPlayerSession one2ManyPlayerSession = new One2ManyPlayerSession();
-           initOne2manyPlayerSession(one2ManyPlayerSession);
+           One2ManyStudentSession one2ManyStudentSession = new One2ManyStudentSession();
+           initOne2manyStudentSession(one2ManyStudentSession);
            XStream xstream = new XStream();
-           xstream.alias("Session", One2ManyPlayerSession.class);
+           xstream.alias("Session", One2ManyStudentSession.class);
            OutputStream output = new ByteArrayOutputStream();
-            xstream.marshal(one2ManyPlayerSession, new CompactWriter(new OutputStreamWriter(output)));
+            xstream.marshal(one2ManyStudentSession, new CompactWriter(new OutputStreamWriter(output)));
            this.setInitSeesionString(output.toString());
-           this.setRoleType(2);
+           this.setRoleType(1);
            return SUCCESS;
        }
        return ERROR;
@@ -200,7 +200,9 @@ public class VedioSessionDataAction extends BasicAction {
 
            Course course = courseClass.getCourse();
            One2ManyTeacherSession one2ManyTeacherSession = new One2ManyTeacherSession();
+           one2ManyTeacherSession.initWithSession(courseClass);
            initOne2manyTeacherSession(one2ManyTeacherSession);
+
            XStream xstream = new XStream();
            xstream.alias("Session", One2ManyTeacherSession.class);
            OutputStream output = new ByteArrayOutputStream();
@@ -223,16 +225,15 @@ public class VedioSessionDataAction extends BasicAction {
            inviteFriendHref = getBasePath()+"/courseOnlineAudit.html?courseClass.id="+courseClass.getId()+"&courseOnline=true";
 
            Course course = courseClass.getCourse();
-           One2ManyTeacherSession one2ManyTeacherSession = new One2ManyTeacherSession();
-           initOne2manyTeacherSession(one2ManyTeacherSession);
+           One2ManyPlayerSession one2ManyPlayerSession = new One2ManyPlayerSession();
+           one2ManyPlayerSession.initWithSession(this.getCourseClass());
+           initOne2manyPlayerSession(one2ManyPlayerSession);
            XStream xstream = new XStream();
-           xstream.alias("Session", One2ManyTeacherSession.class);
+           xstream.alias("Session", One2ManyPlayerSession.class);
            OutputStream output = new ByteArrayOutputStream();
-           xstream.marshal(one2ManyTeacherSession, new CompactWriter(new OutputStreamWriter(output)));
+           xstream.marshal(one2ManyPlayerSession, new CompactWriter(new OutputStreamWriter(output)));
            this.setInitSeesionString(output.toString());
            this.setRoleType(1);
-           courseClass.setTeacherEntered(true);
-           classDao.persistAbstract(courseClass);
            return SUCCESS;
        }
        return ERROR;
@@ -630,7 +631,6 @@ public class VedioSessionDataAction extends BasicAction {
         one2ManyPlayerSession.initWithSession(this.getCourseClass());
         BaseUser user = baseUserDao.findById(this.getSessionUserId());
         one2ManyPlayerSession.setUserID(user.getId());
-        one2ManyPlayerSession.setMasterID(this.getCourseClass().getCourse().getTeacher().getId());
         one2ManyPlayerSession.setUserName(user.getNickName());
         if(user.getPic()!=null){
             one2ManyPlayerSession.setUserLogo(user.getPic());

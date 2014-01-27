@@ -16,6 +16,7 @@ public class One2ManyPlayerSession {
     private Integer UserID = Constants.DEFAULT_INT_VALUE;
     private Integer MasterID = Constants.DEFAULT_INT_VALUE;
     private String UserName = Constants.DEFAULT_BLANK_VALUE;
+    private String MasterName = Constants.DEFAULT_BLANK_VALUE;
     private String UserLogo = Constants.DEFAULT_USER_LOGO;
     private String MasterLogo = Constants.DEFAULT_USER_LOGO;
     private String Abstract = Constants.DEFAULT_BLANK_VALUE; //课程摘要
@@ -27,6 +28,10 @@ public class One2ManyPlayerSession {
         this.setAbstract(getEmptyString(""));
         this.setClassID(getEmptyInteger(courseClass.getId()));
         this.setCourseID(getEmptyInteger(courseClass.getCourse().getId()));
+        if(courseClass.getCourse().getTeacher()!=null){
+            this.setMasterID(getEmptyInteger(courseClass.getCourse().getTeacher().getId()));
+            this.setMasterName(getEmptyString(courseClass.getCourse().getTeacher().getNickName()));
+        }
     }
 
     public void initWithSessionForShow(ShowTerms showTerms,BaseUser user){
@@ -115,5 +120,13 @@ public class One2ManyPlayerSession {
 
     public void setMasterID(Integer masterID) {
         MasterID = masterID;
+    }
+
+    public String getMasterName() {
+        return MasterName;
+    }
+
+    public void setMasterName(String masterName) {
+        MasterName = masterName;
     }
 }
