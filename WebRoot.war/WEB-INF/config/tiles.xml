@@ -609,11 +609,11 @@
         <put-attribute name="title" value="title.classroom.one2many"/>
         <put-attribute name="roomBody" value="/jsp/gogowise/one2manySession.jsp"/>
     </definition>
-    <definition name=".roomStudent" extends=".roomCenter2">
+    <definition name=".roomStudent" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.classroom.one2many"/>
         <put-attribute name="contentBody" value="/jsp/www/room/roomStudent.jsp"/>
     </definition>
-    <definition name=".roomLecturer" extends=".roomCenter2">
+    <definition name=".roomLecturer" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.classroom.one2many"/>
         <put-attribute name="contentBody" value="/jsp/www/room/roomLecturer.jsp"/>
     </definition>
