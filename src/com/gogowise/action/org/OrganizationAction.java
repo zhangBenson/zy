@@ -16,6 +16,7 @@ import com.gogowise.rep.org.enity.OrgMaterial;
 import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.org.enity.OrganizationComment;
 import com.gogowise.rep.org.enity.OrganizationTeacher;
+import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.EmailUtil;
@@ -95,6 +96,8 @@ public class OrganizationAction extends BasicAction {
     private Boolean commentsNumOverflow = false;
 
     private Integer schoolPageShowType; // 0: A-D, 1: E-H, 2: I-L, 3: M-P, 4:Q-T, 5: U-Z, 6: Other 7: Show all
+
+    private BaseUserRoleTypeDao baseUserRoleTypeDao;
 
 
     @Action(value = "schoolCenter", results = {@Result(name=SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".schoolCenter")})
@@ -602,6 +605,38 @@ public class OrganizationAction extends BasicAction {
     }
 
 
+    @Action(value = "orgAdminManage",
+            results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".orgAdminManage"),
+                    @Result(name = ERROR, type = Constants.RESULT_NAME_TILES, location = ".noPermission")})
+    public String orgAdminManage()
+    {
+        BaseUser admin = baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.SESSION_USER_EMAIL))  ;
+        Integer userID = (Integer) ActionContext.getContext().getSession().get(Constants.SESSION_USER_ID);
+        boolean  havePermission = baseUserRoleTypeDao.havePermission(userID, "admin");
+
+        if( !havePermission ) return ERROR;
+
+        organizations = this.organizationDao.findLatestOrgs(null);
+        return SUCCESS;
+    }
+
+    @Action(value = "removeOrgConfirm",
+            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "orgAdminManage"}) })
+    public String removeOrgConfirm()
+    {
+        if (this.getOrg().getId() != null)
+        {
+            Organization org = organizationDao.findById(this.getOrg().getId());
+
+            if(org != null)
+            {
+                org.setIsDeleted(true);
+                organizationDao.persistAbstract(org);
+            }
+        }
+
+        return SUCCESS;
+    }
 
 
     public CourseDao getCourseDao() {
@@ -941,5 +976,13 @@ public class OrganizationAction extends BasicAction {
             return "";
         String text = Jsoup.parse(orgDescription).text();
         return text;
+    }
+
+    public BaseUserRoleTypeDao getBaseUserRoleTypeDao() {
+        return baseUserRoleTypeDao;
+    }
+
+    public void setBaseUserRoleTypeDao(BaseUserRoleTypeDao baseUserRoleTypeDao) {
+        this.baseUserRoleTypeDao = baseUserRoleTypeDao;
     }
 }

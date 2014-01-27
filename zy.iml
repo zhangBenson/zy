@@ -13,29 +13,6 @@
           <root url="file://$MODULE_DIR$/src" />
         </sourceRoots>
       </configuration>
-      <facet type="Struts2" name="Struts 2">
-        <configuration>
-          <fileset id="s2fileset" name="struts" removed="false">
-            <file>jar://$MAVEN_REPOSITORY$/org/apache/struts/struts2-config-browser-plugin/2.3.1.2/struts2-config-browser-plugin-2.3.1.2.jar!/struts-plugin.xml</file>
-            <file>jar://$MAVEN_REPOSITORY$/org/apache/struts/struts2-spring-plugin/2.3.1.2/struts2-spring-plugin-2.3.1.2.jar!/struts-plugin.xml</file>
-            <file>jar://$MAVEN_REPOSITORY$/org/apache/struts/struts2-core/2.3.1.2/struts2-core-2.3.1.2.jar!/struts-default.xml</file>
-            <file>jar://$MAVEN_REPOSITORY$/com/jgeppert/struts2/jquery/struts2-jquery-plugin/3.1.1/struts2-jquery-plugin-3.1.1.jar!/struts-plugin.xml</file>
-            <file>jar://$MAVEN_REPOSITORY$/org/apache/struts/struts2-tiles-plugin/2.3.1.2/struts2-tiles-plugin-2.3.1.2.jar!/struts-plugin.xml</file>
-            <file>jar://$MAVEN_REPOSITORY$/com/jgeppert/struts2/jquery/struts2-jquery-richtext-plugin/3.1.1/struts2-jquery-richtext-plugin-3.1.1.jar!/struts-plugin.xml</file>
-            <file>jar://$MAVEN_REPOSITORY$/org/apache/struts/struts2-json-plugin/2.3.1.2/struts2-json-plugin-2.3.1.2.jar!/struts-plugin.xml</file>
-            <file>jar://$MAVEN_REPOSITORY$/org/apache/struts/struts2-convention-plugin/2.3.1.2/struts2-convention-plugin-2.3.1.2.jar!/struts-plugin.xml</file>
-          </fileset>
-          <propertiesKeys disabled="false" />
-        </configuration>
-      </facet>
-    </facet>
-    <facet type="Spring" name="Spring">
-      <configuration>
-        <fileset id="fileset" name="Spring Application Context" removed="false">
-          <file>file://$MODULE_DIR$/WebRoot.war/WEB-INF/config/applicationContext.xml</file>
-          <file>file://$MODULE_DIR$/etc/applicationContext.xml</file>
-        </fileset>
-      </configuration>
     </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7" inherit-compiler-output="false">

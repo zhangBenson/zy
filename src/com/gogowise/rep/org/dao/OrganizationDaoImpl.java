@@ -1,12 +1,14 @@
 package com.gogowise.rep.org.dao;
 
 import com.gogowise.rep.ModelDaoImpl;
+import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.Pagination;
 import com.gogowise.common.utils.Utils;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -40,11 +42,14 @@ public class OrganizationDaoImpl extends ModelDaoImpl<Organization> implements O
 
     public List<Organization> findOngoingForAdmin(){
         String hql = "select o from Organization o order by o.id desc ";
-        return this.find(hql);
+        //return this.find(hql);
+        List<Organization> orgs = this.find(hql);
+        List<Organization> removeDeletedOrgs = this.removeDeletedOrgs(orgs);
+        return removeDeletedOrgs;
     }
 
     public Organization findConfirmedOrg(Integer userId) {
-        String hql = "select o from Organization o where o.responsiblePerson.id = ? and o.confirmed = true    order by o.createDate desc ";
+        String hql = "select o from Organization o where o.responsiblePerson.id = ? and o.confirmed = true   order by o.createDate desc ";
         return this.findFist(hql, userId);
     }
 
@@ -73,13 +78,19 @@ public class OrganizationDaoImpl extends ModelDaoImpl<Organization> implements O
 
     public List<Organization> findLatestOrgs(Pagination pagination) {
         String hql = "From Organization org where org.confirmed = true order by org.createDate desc";
-        return this.find(hql,pagination);
+        //return this.find(hql,pagination);
+        List<Organization> orgs = this.find(hql,pagination);
+        List<Organization> removeDeletedOrgs = this.removeDeletedOrgs(orgs);
+        return removeDeletedOrgs;
     }
 
     public List<Organization> searchOrgs(String searchStr, Pagination pagination) {
         if(searchStr == null || searchStr.equals("")) return this.findLatestOrgs(pagination);
         String hql = "From Organization org where org.confirmed = true and org.schoolName like ? order by org.id desc";
-        return this.find(hql,pagination,"%"+searchStr+"%");
+        //return this.find(hql,pagination,"%"+searchStr+"%");
+        List<Organization> orgs = this.find(hql,pagination,"%"+searchStr+"%");
+        List<Organization> removeDeletedOrgs = this.removeDeletedOrgs(orgs);
+        return removeDeletedOrgs;
     }
 
     public void updateResposerInfo(BaseUser existUser, BaseUser newUser) {
@@ -111,5 +122,26 @@ public class OrganizationDaoImpl extends ModelDaoImpl<Organization> implements O
         this.persistAbstract(oldOrg);
     }
 
+    public List<Organization> removeDeletedOrgs(List<Organization> orgs)
+    {
+        if(orgs == null) return null;
+
+        List<Organization> result = new ArrayList<Organization>();
+
+        for(Organization org:orgs)
+        {
+            if( org.getIsDeleted()!= null)
+            {
+                if(org.getIsDeleted().booleanValue() == true)
+                {
+                    continue;
+                }
+            }
+
+            result.add(org);
+        }
+
+        return result;
+    }
 
 }

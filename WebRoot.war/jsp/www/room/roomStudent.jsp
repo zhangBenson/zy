@@ -188,7 +188,7 @@ $(document).ready(function() {
 });
 
 document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
+document.addEventListener('onload', function () { setTimeout(loaded, 200); }, false);
 
 function getGirlOjbect() {
     if (/msie/.test(navigator.userAgent.toLowerCase())) {
