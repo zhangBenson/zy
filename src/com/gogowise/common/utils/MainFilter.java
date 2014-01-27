@@ -82,7 +82,7 @@ public class MainFilter implements Filter {
         NEED_LOGIN.add("/courseAdminManage.html");
         NEED_LOGIN.add("/changePoster.html");
         NEED_LOGIN.add("/lecturerClass.html");
-
+        NEED_LOGIN.add("/orgAdminManage.html");
     }
 
     public void destroy() {
