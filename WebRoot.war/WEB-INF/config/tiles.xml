@@ -1281,8 +1281,13 @@
     <!--</definition>-->
 
     <definition name=".courseAdminManage" extends=".wwwBodyCenter">
-        <put-attribute name="title" value="title.course.center"/>
+        <put-attribute name="title" value="Course Manage"/>
         <put-attribute name="contentBody"  value="/jsp/www/course/courseAdminManage.jsp"/>
+    </definition>
+
+    <definition name=".orgAdminManage" extends=".wwwBodyCenter">
+        <put-attribute name="title" value="Organization Manage"/>
+        <put-attribute name="contentBody"  value="/jsp/www/org/orgAdminManage.jsp"/>
     </definition>
 
     <definition name=".noPermission" extends=".wwwBodyCenter">
@@ -1294,4 +1299,9 @@
         <put-attribute name="title" value="Change Poster" />
         <put-attribute name="contentBody" value="/jsp/www/common/changePoster.jsp" />
     </definition>
+
+    <definition name=".posterImageProcess" template="/jsp/www/common/posterImageProcess.jsp">
+        <put-attribute name="title" value="title.logo.upload"/>
+    </definition>
+
 </tiles-definitions>
