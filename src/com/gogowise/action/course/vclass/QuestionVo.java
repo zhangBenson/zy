@@ -2,6 +2,7 @@ package com.gogowise.action.course.vclass;
 
 
 import javax.persistence.Entity;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -10,7 +11,7 @@ public class QuestionVo {
     private Integer id;
     private String description;
     private String answer;
-    private List<String> items;
+    private List<String> items = new ArrayList<>();
     private Integer materialId;
 
 
