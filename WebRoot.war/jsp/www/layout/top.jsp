@@ -39,15 +39,20 @@
 
                     <ul class="dropdown-menu" role="menu">
 
-                        <%-- <li><a href="userBlog.html?user.id=<s:property value="#session.userID"/>">Personal Center</a></li>        --%>
+                            <%-- <li><a href="userBlog.html?user.id=<s:property value="#session.userID"/>">Personal Center</a></li>        --%>
                         <s:if test="#session.roleType==6">
                         <li><a href="personalCenter.html"><s:property value="%{getText('label.personalcenter')}"/></a></li>
                         <%--<a href="#">Profile Settings</a>--%>
                         <li><a href="initUpdate.html"><span></span><s:property value="%{getText('account.item.accountsettings')}" /></a></li>
+                            <li><a href="personalCenter.html"><s:property value="%{getText('label.personalcenter')}"/></a></li>
+                            <%--<a href="#">Profile Settings</a>--%>
+                            <li><a href="initUpdate.html"><span></span><s:property value="%{getText('account.item.accountsettings')}" /></a></li>
                         </s:if>
                         <s:else>
                         <li><a href="myfirstPage.html"><s:property value="%{getText('label.personalcenter')}"/></a></li>
                         <li><a href="myGGWAccount.html"><span></span><s:property value="%{getText('account.item.accountsettings')}" /></a></li>
+                            <li><a href="myfirstPage.html"><s:property value="%{getText('label.personalcenter')}"/></a></li>
+                            <li><a href="setting.html"><span></span><s:property value="%{getText('account.item.accountsettings')}" /></a></li>
                         </s:else>
 
 
