@@ -131,6 +131,7 @@ $(document).ready(function() {
 
     $("#btnEvent").click(function(event){
         //getGirlOjbect().playVideo("xxxx");
+        alert("123");
     });
 
     $("#btnEvent2").click(function(event){
@@ -328,7 +329,7 @@ function getSpeechList()
                     "<div class='fileItem'>"+
                     "<img class='fileicon' src='"+icon_path+"' />"+
                     "<p class='fileName'>"+info["sourceTitle"]+"</p>"+
-                    "<span class='fileDirectory'>"+info["convertPath"]+"</span>"+
+                    /*"<span class='fileDirectory'>"+info["convertPath"]+"</span>"+*/
                     "<span class='category'>"+filecategory+"</span>"+
                     "<span class='pageNum'>"+info["totalPages"]+"</span>"+
                     "</div></a></li>");
