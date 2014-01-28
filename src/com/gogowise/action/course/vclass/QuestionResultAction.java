@@ -32,7 +32,7 @@ public class QuestionResultAction extends BasicAction {
     private Integer courseClassId;
     private Integer questionId;
     private Integer userId;
-    private Integer questionItemId;
+    private String questionItemIndex;
 
     private Integer correctNumber;
     private Integer inCorrectNumber;
@@ -60,7 +60,7 @@ public class QuestionResultAction extends BasicAction {
         BaseUser owner = baseUserDao.findById(userId);
         QuestionItem questionItem = null;
         for (QuestionItem item : question.getQuestionItems()) {
-            if (item.getId().equals(questionItemId)) {
+            if (item.getIndexValue().equals(questionItemIndex)) {
                 questionItem = item;
                 questionResult.setQuestionItem(questionItem);
                 questionResult.setIsCorrect(questionItem.getIsAnswer());
@@ -91,8 +91,8 @@ public class QuestionResultAction extends BasicAction {
         this.questionDao = questionDao;
     }
 
-    public void setQuestionItemId(Integer questionItemId) {
-        this.questionItemId = questionItemId;
+    public void setQuestionItemIndex(String questionItemIndex) {
+        this.questionItemIndex = questionItemIndex;
     }
 
     public void setCorrectNumber(Integer correctNumber) {
