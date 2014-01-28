@@ -290,7 +290,8 @@ function getSpeechList()
 {
     $("#speechDraftPanle li").remove();
     //Speech
-    $.getJSON("fileList2.html",function(data){
+//    $.getJSON("fileList2.html",function(data){
+    $.getJSON("listMaterial.html?typeId=4",{"courseId":<s:property value="courseClass.course.id"/>},function(data){
         $.each(data.vos,function(key,info)
         {
             var icon_path = "";
@@ -385,7 +386,8 @@ function getQuestionList()
 {
     $("#questionbankPanle li").remove();
 
-    $.getJSON("questionList2.html",function(data){
+//    $.getJSON("questionList2.html",function(data){
+    $.getJSON("listMaterial.html?typeId=3",{"courseId":<s:property value="courseClass.course.id"/>},function(data){
 
         $.each(data.vos,function(key,info)
         {
