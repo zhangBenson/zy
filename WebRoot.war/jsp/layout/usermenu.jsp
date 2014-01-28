@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <link type="text/css" href="css/usermenu.css" rel="stylesheet"/>
 
 <div class="menu">
@@ -12,7 +12,7 @@
 
         <div class="start_monitor">
             <%--<a class="submit_btn_large" href="openUserChannelResult.html"><s:property value="%{getText('contentLeft.param1')}"/></a>--%>
-            <a class="submit_btn_large" href="javascript:;"><s:property value="%{getText('contentLeft.param1')}"/></a>
+            <a class="submit_btn_large" href="myfirstPage.html"><s:property value="%{getText('contentLeft.param1')}"/></a>
         </div>
 
         <div class="list">
@@ -21,7 +21,7 @@
                 <li><a href="myForcastClass.html"><s:property value="%{getText('usermenu.item.my.created.courses')}"/></a></li>
                 <li><a href="myRegistration.html"><s:property value="%{getText('usermenu.item.my.reged.courses')}"/></a></li>
                 <%--<li><a href="createCourse.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a></li>--%>
-                <li><a href="createCourseAllInOne.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a></li>
+                <%--<li><a href="createCourseAllInOne.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a></li>--%>
             </ul>
         </div>
 
@@ -32,10 +32,10 @@
             <div class="list">
                 <h3 class="h3_title"><s:property value="%{getText('usermenu.item.organizationmatters')}"/></h3>
                 <ul>
-                    <li><a href="initOrgCourseCreation.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a></li>
-                    <li><a href="courseSupervise.html"><s:property value="%{getText('org.matters.course.supervisions')}"/></a></li>
+                    <li><a href="createCourseAllInOne.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a></li>
+                    <%--<li><a href="courseSupervise.html"><s:property value="%{getText('org.matters.course.supervisions')}"/></a></li>
                     <li><a href="orgInterview.html"><s:property value="%{getText('online.interview')}"/></a></li>
-                    <li><a href="initOrgMeeting.html"><s:property value="%{getText('org.matters.video.meeting')}"/></a></li>
+                    <li><a href="initOrgMeeting.html"><s:property value="%{getText('org.matters.video.meeting')}"/></a></li>--%>
                     <li><a href="orgInfoUpdate.html"><s:property value="%{getText('org.information.setting')}"/></a></li>
                 </ul>
             </div>

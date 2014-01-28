@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 
 <link href="css/course/stepAll.css" rel="stylesheet" type="text/css"/>
 
@@ -63,13 +63,10 @@
             </div>
     </div>--%>
 
-    <s:hidden name="course.id" id="course_id"/>
-
-
     <div class="stepWrap fl">
         <s:form id="course_main_info_form">
             <s:hidden name="course.id" id="course_id"/>
-            <s:hidden name="courseType"/>
+            <s:hidden name="courseType" value="1"/><%-- 1表示组织课程 --%>
             <%--<s:hidden name="course.teachingNum" id="course_identity"/>--%>
             <%-- 直接就是1对多的大班 --%>
             <input type="hidden" name="course.teachingNum" value="4"/>
