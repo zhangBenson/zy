@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 
 <script type="text/javascript">
 
@@ -84,7 +84,7 @@
 //            $("#store_courseTeachingBook").html(courseTeachingBook);
             $("#store_courseType").html(courseType);
             $("#store_startDate").html(startDate);
-            $("#store_charges").html(charges+"&nbsp;<s:text name="%{getText('label.zhibi.true')}"/>");
+            $("#store_charges").html(charges+"&nbsp;<s:text name="label.zhibi.true"/>");
             $("#obv_course_logo").attr("src",courseLogo);
             $("#store_teacherEmail").html(teacherEmail);
             for(var i=0;i<emails.length;i++){

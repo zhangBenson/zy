@@ -52,7 +52,7 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
     public void saveCourse(CourseSpecification specification) {
 
         BaseUser personalTeacher = baseUserDao.findById(specification.getOperatorId());
-        Course course = course = specification.getCourse();
+        Course course = specification.getCourse();
         if (course.getId() == null) {     //if the course.id == null than deal with the org and course's teacher
             if (Constants.COURSE_TYPE_ORG.equals(specification.getCourseType())) {
                 course.setOrganization(organizationDao.findByResId(specification.getOperatorId()));

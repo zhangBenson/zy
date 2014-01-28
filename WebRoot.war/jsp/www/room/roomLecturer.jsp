@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="css/room/messenger-theme-future.css">
 <link rel="stylesheet" href="css/skins/all.css">
 
-<script src="js/room/jquery-1.10.2.min.js"></script>
 <script src="js/room/bootstrap.min.js"></script>
 <script src="js/room/iscroll.js"></script>
 <script src="js/room/messenger.min.js"></script>
@@ -59,8 +58,8 @@ $(document).ready(function() {
         extraClasses: 'messenger-fixed messenger-theme-block messenger-on-top'
     }
 
-    //$("#top").load("top.html");
-    //$("#detailfooters").load("footers.html");
+    $("#top").load("top.html");
+    $("#detailfooters").load("footers.html");
 
     $("#btnaddUser").click(function() {
         addOneStudent("Scan","gogowisestyle/image/portrait5.jpg","c1",0,1);
@@ -239,6 +238,54 @@ function getGirlOjbect() {
     }
 }
 
+// function getSpeechList()
+// {
+// 	$("#speechDraftPanle li").remove();
+// 	//Speech
+// 	$.getJSON("fileList.html",function(data){
+//         		$.each(data,function(key,info)
+//         		{
+//         			var icon_path = "";
+
+//         			switch(info["fileType"])
+//         			{
+//         				case "doc":
+//         					icon_path = "gogowisestyle/image/icon_docx.png"
+//         					break;
+//         				case "docx":
+//         					icon_path = "gogowisestyle/image/icon_docx.png"
+//         					break;
+//         				case "pdf":
+//         					icon_path = "gogowisestyle/image/icon_pdf.png"
+//         					break;
+//         				case "xls":
+//         					icon_path = "gogowisestyle/image/icon_xlsx.png"
+//         					break;
+//         				case "xlsx":
+//         					icon_path = "gogowisestyle/image/icon_xlsx.png"
+//         					break;
+//         				case "ppt":
+//         					icon_path = "gogowisestyle/image/icon_pptx.png"
+//         					break;
+//         				case "ppt":
+//         					icon_path = "gogowisestyle/image/icon_pptx.png"
+//         					break;
+//         			}
+
+//         			$("#speechDraftPanle").append("<li><a href='#'>"+
+// 				 "<div class='fileItem'>"+
+// 				 "<img class='fileicon' src='"+icon_path+"' />"+
+// 				 "<p class='fileName'>"+info["fileName"]+"</p>"+
+// 				 "<span class='fileDirectory'>"+info["fileDirectory"]+"</span>"+
+// 				 "<span class='category'>"+info["category"]+"</span>"+
+// 				 "<span class='pageNum'>"+info["pageNum"]+"</span>"+
+// 				 "</div></a></li>");
+//         		});
+
+//         		bindFileClick();
+// 	});
+// }
+
 function getSpeechList()
 {
     $("#speechDraftPanle li").remove();
@@ -312,6 +359,28 @@ function getVideoList()
     });
 }
 
+// function getQuestionList()
+// {
+// 	$("#questionbankPanle li").remove();
+// 	$.getJSON("questionList.html",function(data){
+
+//         		$.each(data,function(key,info)
+//         		{
+//         			var icon_path = "gogowisestyle/image/icon_text.png";
+
+//         			$("#questionbankPanle").append("<li><a href='#'>"+
+// 				 "<div class='fileItem'>"+
+// 				 "<img class='fileicon' src='"+icon_path+"' />"+
+// 				 "<p class='fileName'>"+info["fileName"]+"</p>"+
+// 				 "<span class='question'>"+info["questionID"]+"</span>"+
+// 				 "<span class='category'>"+info["category"]+"</span>"+
+// 				 "</div></a></li>");
+//         		});
+
+//         		bindFileClick();
+// 	});
+// }
+
 function getQuestionList()
 {
     $("#questionbankPanle li").remove();
@@ -334,6 +403,7 @@ function getQuestionList()
         bindFileClick();
     });
 }
+
 
 function getQuestionInfo()
 {
@@ -676,7 +746,8 @@ function showQuestionsStudio()
     $("#questionsStudioModal").modal('show');
 }
 
-function playVideo(link) {
+function playVideo(link)
+{
     getGirlOjbect().playYoutubeVideo(link);
 }
 
@@ -771,6 +842,8 @@ function ShowMessage(name,imgpath,content,bit)
     else
         chatWrapper.scrollTo(0, $("#charList").height() - inithight, 200, true);
 }
+
+
 </script>
 
 <style type="text/css" media="all">

@@ -6,11 +6,11 @@
     <div class="uh">
         <div class="uh1">
             <ul class="menu_section">
-                <li class="hp_item">
+                <%--<li class="hp_item">
                     <div class="menu_base menu_base_home">
                         <s:a action="index"><s:property value="%{getText('label.homepage')}"/></s:a>
                     </div>
-                </li>
+                </li>--%>
                 <%--<li class="hp_item">
                     <div class="menu_base menu_base_course">
                         <s:a action="courseSquare"><s:property value="%{getText('frame.course.center')}"/></s:a>
@@ -53,17 +53,18 @@
                     <li id="account" class="account1" onmouseover="this.className='account2',document.getElementById('accountlist').className='accountlist2'" onmouseout="this.className='account1',document.getElementById('accountlist').className='accountlist1'">
                         <s:property value="%{getText('menu.item.account')}" /> ▼
                     </li>
-                    <li id="accountlist" class="accountlist1" onmouseover="this.className='accountlist2',document.getElementById('account').className='account2'" onmouseout="this.className='accountlist1',document.getElementById('account').className='account1'">
+                    <li  style="height:110px;" id="accountlist" class="accountlist1" onmouseover="this.className='accountlist2',document.getElementById('account').className='account2'" onmouseout="this.className='accountlist1',document.getElementById('account').className='account1'">
                         <iframe></iframe>
                         <ul>
-                            <li class="info">
+                            <br/>
+                            <%--<li class="info">
                                 <a href="userBlog.html?user.id=<s:property value="#session.userID"/>" title="<s:property value="#session.nickName"/>"><img id="userheader_user_img" src="<s:property value='#session.userLogoUrl' />" alt="<s:property value='#session.nickName'/>"/></a>
                                 <span class="name">
                                     <s:if test="#session.nickName !=null && #session.nickName !=\"\""><s:property value="#session.nickName"/></s:if>
                                     <s:else><s:property value="#session.email"/> </s:else>
                                 </span>
-                            </li>
-                            <li class="setting bg"><a href="initUpdate.html"><span></span><s:property value="%{getText('account.item.accountsettings')}" /></a></li>
+                            </li>--%>
+                            <li class="setting bg"><a href="setting.html"><span></span><s:property value="%{getText('account.item.accountsettings')}" /></a></li>
                             <%--<li class="coupons bg"><a href="javascript:;"><span></span><s:property value="%{getText('menu.item.ticket')}" /></a></li>--%>
                             <li class="money bg"><a href="myGGWAccount.html"><span></span><s:property value="%{getText('usermenu.item.zhibi.myAccount')}" /></a></li>
                             <li class="exit bg"><a href="exitSystem.html"><span></span><s:property value="%{getText('href.logout')}" /></a></li>
