@@ -16,7 +16,7 @@
             </ul>
         </div>
         <div class="userinfo_content">
-            <form action="updateUserInfo.html"  method="post" class="userinfo_form">
+            <form action="update_setting.html"  method="post" class="userinfo_form">
             <s:hidden name="user.lockedOut"/>
             <input type="hidden" id="picHidden" name="user.pic" value="<s:property value="user.pic" />" />
             <div class="userinfo_tittle"><span><s:property value="%{getText('label.account.setting')}"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_change_userinfo"><s:property value="%{getText('link.click.to.change')}"/></span></div>

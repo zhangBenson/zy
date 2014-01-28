@@ -520,10 +520,10 @@ public class UserAction extends BasicAction {
     }
 
     public void validateUpdateUserInfo() {
-        String cardId = this.getUser().getCardId();
+        /*String cardId = this.getUser().getCardId();
         if (!(cardId != null && (cardId.length() == 0 || cardId.length() == 15 || cardId.length() == 18))) {
             addFieldError("user.cardId", "身份证号错误");
-        }
+        }*/
         BaseUser nickNameUser = baseUserDao.findByNickName(StringUtils.trim(user.getNickName()));
         if (nickNameUser != null && !this.getSessionUserId().equals( nickNameUser.getId())) {
             addFieldError("user.nickName", this.getText("member.reg.nickname.exist"));

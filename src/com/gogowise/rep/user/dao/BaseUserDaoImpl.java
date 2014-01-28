@@ -1,8 +1,8 @@
 package com.gogowise.rep.user.dao;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.Pagination;
+import com.gogowise.rep.user.enity.BaseUser;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
