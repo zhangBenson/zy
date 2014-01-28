@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="css/room/messenger-theme-future.css">
 <link rel="stylesheet" href="css/skins/all.css">
 
-<script src="js/room/jquery-1.10.2.min.js"></script>
 <script src="js/room/bootstrap.min.js"></script>
 <script src="js/room/iscroll.js"></script>
 <script src="js/room/messenger.min.js"></script>

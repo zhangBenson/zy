@@ -1,5 +1,5 @@
 ﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--<%@ include file="/js/virtualClass/virtualClass_js.jsp" %>--%>
 <link rel="stylesheet" href="css/room/bootstrap.min.css">
 <link rel="stylesheet" href="css/room/gogowise.css">
@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="css/room/messenger-theme-future.css">
 <link rel="stylesheet" href="css/skins/all.css">
 
-<script src="js/room/jquery-1.10.2.min.js"></script>
 <script src="js/room/bootstrap.min.js"></script>
 <script src="js/room/iscroll.js"></script>
 <script src="js/room/messenger.min.js"></script>

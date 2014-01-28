@@ -92,6 +92,7 @@ public class Constants {
     public static final String SESSION_USER_LOGO_URL = "userLogoUrl";
     public static final String HIG_SEC_USER_EMAIL ="HIG_SEC_USER_EMAIL";
     public static final String SESSION_USER_FANSNUM = "userFansNum";
+    public static final String SESSION_USER_ROLE_TYPE = "roleType";
     public static final String SESSION_USER_OWN_ORG = "user_own_org";
     public static final String SESSION_USER_PRIVATE_CHANNEL_ID = "user_private_channelID";
 

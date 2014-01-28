@@ -729,12 +729,13 @@ public class UserAction extends BasicAction {
         if (StringUtils.isNotBlank(this.getReDirectUrl())) {
             return "redirect";
         } else if (organizationDao.findByResId(user.getId()) != null) {
-            this.setReDirectUrl("organizationMatter.html");
-            return "redirect";
-        } else if (baseUserRoleTypeDao.havePermission(user.getId(), RoleType.TEACHER) ) {
+//            this.setReDirectUrl("organizationMatter.html");
+            return "teacherCenter";
+        } else if (baseUserRoleTypeDao.havePermission(user.getId(), RoleType.TEACHER)) {
             return "teacherCenter";
         }
 
+        ActionContext.getContext().getSession().put(Constants.SESSION_USER_ROLE_TYPE,6);
         return SUCCESS;
     }
 

@@ -15,9 +15,9 @@
         <li class="">
             <a href="myRegistration.html"><s:property value="%{getText('usermenu.item.my.reged.courses')}"/></a>
         </li>
-        <li class="">
+        <%--<li class="">
             <a href="createCourseAllInOne.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a>
-        </li>
+        </li>--%>
     </ul>
 </div>
 <div class="mf_2">

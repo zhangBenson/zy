@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
 
 <div class="thickline"></div>
@@ -40,7 +40,12 @@
                     <ul class="dropdown-menu" role="menu">
 
                         <%-- <li><a href="userBlog.html?user.id=<s:property value="#session.userID"/>">Personal Center</a></li>        --%>
+                        <s:if test="#session.roleType==6">
                         <li><a href="personalCenter.html"><s:property value="%{getText('label.personalcenter')}"/></a></li>
+                        </s:if>
+                        <s:else>
+                        <li><a href="myfirstPage.html"><s:property value="%{getText('label.personalcenter')}"/></a></li>
+                        </s:else>
 
                             <%--<a href="#">Profile Settings</a>--%>
                         <li><a href="initUpdate.html"><span></span><s:property value="%{getText('account.item.accountsettings')}" /></a></li>
