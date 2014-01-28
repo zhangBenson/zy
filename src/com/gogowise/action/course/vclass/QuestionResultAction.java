@@ -60,7 +60,7 @@ public class QuestionResultAction extends BasicAction {
         BaseUser owner = baseUserDao.findById(userId);
         QuestionItem questionItem = null;
         for (QuestionItem item : question.getQuestionItems()) {
-            if (item.getId().equals(questionItemId)) {
+            if (item.getIndexValue().equals(questionItemId)) {
                 questionItem = item;
                 questionResult.setQuestionItem(questionItem);
                 questionResult.setIsCorrect(questionItem.getIsAnswer());
