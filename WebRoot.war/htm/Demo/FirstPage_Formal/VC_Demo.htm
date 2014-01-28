@@ -58,8 +58,8 @@
 			  extraClasses: 'messenger-fixed messenger-theme-block messenger-on-top'
 			}
 
-		  	$("#top").load("top.html");
-          	$("#detailfooters").load("footers.html");
+		  	$("#top").load("top.htm");
+          	$("#detailfooters").load("footers.htm");
 
           	$("#btnaddUser").click(function() {
           		addOneStudent("Scan","gogowisestyle/image/portrait5.jpg","c1",0,1);
@@ -242,7 +242,7 @@
 		{
 			$("#speechDraftPanle li").remove();
 			//Speech
-			$.getJSON("fileList.html",function(data){
+			$.getJSON("fileList.htm",function(data){
           		$.each(data,function(key,info)
           		{
           			var icon_path = "";
@@ -290,7 +290,7 @@
 		{
 			$("#videoPanle li").remove();
 			
-			$.getJSON("videoList.html",function(data){
+			$.getJSON("videoList.htm",function(data){
           		$.each(data,function(key,info)
           		{
           			var icon_path = "gogowisestyle/image/icon_mov.png";
@@ -311,7 +311,7 @@
 		function getQuestionList()
 		{
 			$("#questionbankPanle li").remove();
-			$.getJSON("questionList.html",function(data){
+			$.getJSON("questionList.htm",function(data){
 				
           		$.each(data,function(key,info)
           		{
@@ -337,7 +337,7 @@
 
 			$.ajax({
 				type:"GET",
-				url:"questionInfo.html",
+				url:"questionInfo.htm",
 				dataType:"json",
 				success:function(data){
 
