@@ -329,7 +329,7 @@ function getSpeechList()
                     "<div class='fileItem'>"+
                     "<img class='fileicon' src='"+icon_path+"' />"+
                     "<p class='fileName'>"+info["sourceTitle"]+"</p>"+
-                    /*"<span class='fileDirectory'>"+info["convertPath"]+"</span>"+*/
+                    "<span class='fileDirectory'>"+info["convertPath"]+"</span>"+
                     "<span class='category'>"+filecategory+"</span>"+
                     "<span class='pageNum'>"+info["totalPages"]+"</span>"+
                     "</div></a></li>");
@@ -850,18 +850,95 @@ function ShowMessage(name,imgpath,content,bit)
 </script>
 
 <style type="text/css" media="all">
-    .userId { display:none; }
-    .fileid { display:none; }
-    .questionid { display:none; }
-    #stundioWrapper { position:  relative; left: 0; width: 100%; overflow:auto; z-index: 0; }
-    #stundioWrapper ul { list-style:none; padding:0; margin:0; width: 100%; }
-    #chatWrapper { position:  relative; left: 0; width: 100%; overflow:auto; }
-    #chatWrapper ul { list-style:none; padding:0; margin:0; width: 100%; }
-    #currentfile img { width: 46px; height: 46px; }
+
+    .userId
+    {
+        display:none;
+    }
+
+    .fileid
+    {
+        display:none;
+    }
+
+    .videolink
+    {
+        display:none;
+    }
+
+    .question
+    {
+        display:none;
+    }
+
+    .pageNum
+    {
+        display:none;
+    }
+
+    .fileDirectory
+    {
+        display:none;
+    }
+
+    .category
+    {
+        display:none;
+    }
+
+
+
+    .questionid
+    {
+        display:none;
+    }
+
+    #stundioWrapper {
+        position:  relative;
+        left:0;
+        width:100%;
+        overflow:auto;
+        z-index: 0;
+    }
+
+    #stundioWrapper ul
+    {
+        list-style:none;
+        padding:0;
+        margin:0;
+        width:100%;
+    }
+
+    #chatWrapper {
+        position:  relative;
+        left:0;
+        width:100%;
+        overflow:auto;
+    }
+
+    #chatWrapper ul
+    {
+        list-style:none;
+        padding:0;
+        margin:0;
+        width:100%;
+    }
+
+    #currentfile img
+    {
+        width: 46px;
+        height: 46px;
+    }
+
     #studionList { list-style-type: none; margin: 0; padding: 0; width: 385px; }
     #studionList li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 88px; height: 90px;  text-align: center; background-color: transparent;border-width: 0px;}
+
     .fileList { list-style-type: none; margin: 0; padding: 0; width: 550px; }
     .fileList li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 105px;   text-align: center; background-color: transparent;border-width: 0px;}
+
+    .listanswer { list-style-type: none; margin: 0; padding: 0; width: 550px; margin-top: 5px;}
+    .listanswer li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 95px;   text-align: center; background-color: transparent;border-width: 0px;}
+
 </style>
 
 <%-- Initial js code of virtual room --%>
