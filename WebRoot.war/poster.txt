@@ -1,4 +1,4 @@
-/index1.html
-/index2.html
-/index3.html
-/index4.html
+/voaCourseBlog.html?course.id=5
+/htm/Demo/FirstPage_Formal/Player_Demo.htm
+/orgBlog.html?org.id=4
+/htm/Demo/FirstPage_Formal/VC_Demo.htm
