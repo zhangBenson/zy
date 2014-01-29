@@ -9,11 +9,11 @@
 <link rel="stylesheet" href="css/room/messenger-theme-future.css">
 <link rel="stylesheet" href="css/skins/all.css">
 
-<script src="js/room/bootstrap.min.js"></script>
-<script src="js/room/iscroll.js"></script>
-<script src="js/room/messenger.min.js"></script>
-<script src="js/room/icheck.min.js"></script>
-<script src="js/room/Chart.min.js"></script>
+<%--<script src="js/room/bootstrap.min.js"></script>--%>
+<script src="/js/room/iscroll.js"></script>
+<script src="/js/room/messenger.min.js"></script>
+<script src="/js/room/icheck.min.js"></script>
+<script src="/js/room/Chart.min.js"></script>
 
 <script type="text/javascript">
 var stundioWrapper;
