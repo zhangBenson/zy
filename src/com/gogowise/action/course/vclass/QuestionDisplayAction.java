@@ -41,6 +41,7 @@ public class QuestionDisplayAction extends BasicAction {
             vo.getItems().add(questionItem.getDescription());
         }
         vo.setId(question.getId());
+        vo.setAnswer(question.getAnswer());
         return RESULT_JSON;
     }
 
