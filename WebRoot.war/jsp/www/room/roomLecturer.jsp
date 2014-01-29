@@ -962,18 +962,18 @@ function ShowMessage(name,imgpath,content,bit)
 </script>
 
 
-<div class="btn-group" style="margin:5px;">
-    <button type="button" class="btn btn-success" id="btnaddUser">进入用户</button>
-    <button type="button" class="btn btn-success" id="btndeleteOneStudent">退出用户</button>
-    <button type="button" class="btn btn-success" id="btnreceivemessage">接收消息</button>
-    <button type="button" class="btn btn-success" id="btnsendmessage">发送消息</button>
-    <button type="button" class="btn btn-success" id="btnQuestionsStudio">收到试题</button>
-    <button type="button" class="btn btn-success" id="btnask">学生提问</button>
-    <button type="button" class="btn btn-success" id="btncancelask">取消提问</button>
-    <button type="button" class="btn btn-success" id="btnEvent">事件测试1</button>
-    <button type="button" class="btn btn-success" id="btnEvent2">事件测试2</button>
-    <button type="button" class="btn btn-success" id="btnEvent3">事件测试3</button>
-</div>
+<%--<div class="btn-group" style="margin:5px;">--%>
+    <%--<button type="button" class="btn btn-success" id="btnaddUser">进入用户</button>--%>
+    <%--<button type="button" class="btn btn-success" id="btndeleteOneStudent">退出用户</button>--%>
+    <%--<button type="button" class="btn btn-success" id="btnreceivemessage">接收消息</button>--%>
+    <%--<button type="button" class="btn btn-success" id="btnsendmessage">发送消息</button>--%>
+    <%--<button type="button" class="btn btn-success" id="btnQuestionsStudio">收到试题</button>--%>
+    <%--<button type="button" class="btn btn-success" id="btnask">学生提问</button>--%>
+    <%--<button type="button" class="btn btn-success" id="btncancelask">取消提问</button>--%>
+    <%--<button type="button" class="btn btn-success" id="btnEvent">事件测试1</button>--%>
+    <%--<button type="button" class="btn btn-success" id="btnEvent2">事件测试2</button>--%>
+    <%--<button type="button" class="btn btn-success" id="btnEvent3">事件测试3</button>--%>
+<%--</div>--%>
 
 <span id="currentUserId" style="display: none"><s:property value="#session.userID" /></span>
 <span id="currentName" style="display: none"><s:property value="#session.email" /></span>
