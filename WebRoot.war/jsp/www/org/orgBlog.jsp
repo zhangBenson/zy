@@ -117,14 +117,12 @@
 					</div>
 					<div class="col-sm-6 " style="width:47%;">
 						<div class="statisticsItem">
-							<span>
-								<img src="/images/org/icon_teacher.png" alt=""></span>
+							<span><img src="/images/org/icon_teacher.png" alt=""></span>
 							<span><s:property value="allTeachersNum"/></span>
 						</div>
 
 						<div class="statisticsItem">
-							<span>
-								<img src="/images/org/icon_student.png" alt=""></span>
+							<span><img src="/images/org/icon_student.png" alt=""></span>
 							<span><s:property value="studentsNum"/></span>
 						</div>
 					</div>
@@ -133,6 +131,10 @@
 
 				<br/>
 				<br/>
+
+                <div class="basePanelTextLeft">
+                    <button type="button" class="btn btn-primary btn-block" id="btnBuy">BUY COURSES</button>
+                </div>
 				<!-- excellent Lecturers -->
 
 				<%-- <div class="gogopanelWhole">
@@ -333,6 +335,52 @@
 			</div>
 		</div>
 </div>
+
+    <div class="modal fade" id="modalReminder" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow:hidden;">
+        <div class="modal-dialog" style="width: 1000px;height:580px;margin-top: 5%;background:rgba(255,255,255,.9);border-radius: 12px;">
+            <div style="font-size: 36px;color: #6E8B3D;text-align: center;font-family: 'Trebuchet MS', Helvetica, sans-serif;">BUY ALL COURSES</div>
+            <div style="text-align: center;color: #aaa;">(<s:property value="org.schoolName"/>)</div>
+            <div style="font-size: 12px;color: #aaa;text-align: center;margin-top: 30px;">
+                Read the course catalogs at the schools you’re applying to and familiarize yourself with the offerings.
+            </div>
+            <div class="linegray1"></div>
+            <div class="row" style="margin-top: 30px;">
+
+                <div class="col-sm-4" style="text-align: center;">
+                    <img src="/images/payMoney/sale1.png">
+                    <label style="width: 100px;">
+                        <input type="radio" name="sale" value="0" >
+                        <span style="font-size: 12px;font-weight: lighter;color: #aaa;">Select (1 Year)</span>
+                    </label>
+                </div>
+                <div class="col-sm-4" style="text-align: center;">
+                    <img src="/images/payMoney/sale2.png">
+                    <label style="width: 100px;">
+                        <input type="radio" name="sale" value="0" >
+                        <span style="font-size: 12px;font-weight: lighter;color: #aaa;">Select (3 Month)</span>
+                    </label>
+                </div>
+                <div class="col-sm-4" style="text-align: center;">
+                    <img src="/images/payMoney/sale3.png">
+                    <label style="width: 100px;">
+                        <input type="radio" name="sale" value="0" >
+                        <span style="font-size: 12px;font-weight: lighter;color: #aaa;">Select (1 Month)</span>
+                    </label>
+                </div>
+            </div>
+            <div class="linegray1"></div>
+            <div style="font-size: 12px;font-weight: lighter;color: #aaa;text-align: center;width: 80%;margin: 0 auto;margin-top: 30px;margin-bottom: 30px;">
+
+                As well, there is some financial support available to each participant for career enhancements, such as enrolling in relevant courses, purchasing textbooks and supplies, and credential assessments.
+            </div>
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4"><button type="button" class="btn btn-primary btn-lg btn-block">Confirm Buy</button></div>
+                <div class="col-sm-4"></div>
+            </div>
+        </div>
+
+    </div>
 </div>
 
 <script type="text/javascript">
@@ -353,11 +401,14 @@
                 $("#message_textarea").attr('value',"");
                 $("#message_area_tip").html("");
             }
-
         })
 
         $("#message_textarea").keyup(function(){
             changeWordNumber($(this),$("#message_area_tip"),250);
+        });
+
+        $('#btnBuy').click(function(){
+            $('#modalReminder').modal("show");
         });
     });
     function validateLogo(){
