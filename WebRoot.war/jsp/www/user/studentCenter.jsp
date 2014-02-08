@@ -193,7 +193,7 @@
 											
 											<%-- <div id="remainSeconds" style="display:none">100000</div>
 											<div id="remainTime" style="width: 134px;">Start:</div> --%>
-											<div style="width: 134px;"><s:property value="%{getText('courses.time.left')}" />
+											<div style="width: 260px;"><s:property value="%{getText('courses.time.left')}" />
                                                 &nbsp;<b id="timeLeft<s:property value="#idx.index"/>"></b>
                                             </div>
                                             <script type="text/javascript">
@@ -210,7 +210,7 @@
                                                 });
                                             </script>
 										</li>
-										<li style="margin-left: 40px;">
+										<li style="margin-left: 25px;">
 											<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal"><s:property value="%{getText('others.more')}"/></button>
 										</li>
 									</ul>

@@ -9,11 +9,11 @@
 <link rel="stylesheet" href="css/room/messenger-theme-future.css">
 <link rel="stylesheet" href="css/skins/all.css">
 
-<script src="js/room/bootstrap.min.js"></script>
-<script src="js/room/iscroll.js"></script>
-<script src="js/room/messenger.min.js"></script>
-<script src="js/room/icheck.min.js"></script>
-<script src="js/room/Chart.min.js"></script>
+<%--<script src="js/room/bootstrap.min.js"></script>--%>
+<script src="/js/room/iscroll.js"></script>
+<script src="/js/room/messenger.min.js"></script>
+<script src="/js/room/icheck.min.js"></script>
+<script src="/js/room/Chart.min.js"></script>
 
 <script type="text/javascript">
 var stundioWrapper;
@@ -58,8 +58,8 @@ $(document).ready(function() {
         extraClasses: 'messenger-fixed messenger-theme-block messenger-on-top'
     }
 
-    $("#top").load("top.html");
-    $("#detailfooters").load("footers.html");
+    //$("#top").load("top.html");
+    //$("#detailfooters").load("footers.html");
 
     $("#btnaddUser").click(function() {
         addOneStudent("Scan","gogowisestyle/image/portrait5.jpg","c1",0,1);
@@ -131,6 +131,7 @@ $(document).ready(function() {
 
     $("#btnEvent").click(function(event){
         //getGirlOjbect().playVideo("xxxx");
+        alert("123");
     });
 
     $("#btnEvent2").click(function(event){
@@ -290,7 +291,8 @@ function getSpeechList()
 {
     $("#speechDraftPanle li").remove();
     //Speech
-    $.getJSON("fileList2.html",function(data){
+//    $.getJSON("fileList2.html",function(data){
+    $.getJSON("listMaterial.html?typeId=4",{"courseId":<s:property value="courseClass.course.id"/>},function(data){
         $.each(data.vos,function(key,info)
         {
             var icon_path = "";
@@ -385,7 +387,8 @@ function getQuestionList()
 {
     $("#questionbankPanle li").remove();
 
-    $.getJSON("questionList2.html",function(data){
+//    $.getJSON("questionList2.html",function(data){
+    $.getJSON("listMaterial.html?typeId=3",{"courseId":<s:property value="courseClass.course.id"/>},function(data){
 
         $.each(data.vos,function(key,info)
         {
@@ -847,18 +850,95 @@ function ShowMessage(name,imgpath,content,bit)
 </script>
 
 <style type="text/css" media="all">
-    .userId { display:none; }
-    .fileid { display:none; }
-    .questionid { display:none; }
-    #stundioWrapper { position:  relative; left: 0; width: 100%; overflow:auto; z-index: 0; }
-    #stundioWrapper ul { list-style:none; padding:0; margin:0; width: 100%; }
-    #chatWrapper { position:  relative; left: 0; width: 100%; overflow:auto; }
-    #chatWrapper ul { list-style:none; padding:0; margin:0; width: 100%; }
-    #currentfile img { width: 46px; height: 46px; }
+
+    .userId
+    {
+        display:none;
+    }
+
+    .fileid
+    {
+        display:none;
+    }
+
+    .videolink
+    {
+        display:none;
+    }
+
+    .question
+    {
+        display:none;
+    }
+
+    .pageNum
+    {
+        display:none;
+    }
+
+    .fileDirectory
+    {
+        display:none;
+    }
+
+    .category
+    {
+        display:none;
+    }
+
+
+
+    .questionid
+    {
+        display:none;
+    }
+
+    #stundioWrapper {
+        position:  relative;
+        left:0;
+        width:100%;
+        overflow:auto;
+        z-index: 0;
+    }
+
+    #stundioWrapper ul
+    {
+        list-style:none;
+        padding:0;
+        margin:0;
+        width:100%;
+    }
+
+    #chatWrapper {
+        position:  relative;
+        left:0;
+        width:100%;
+        overflow:auto;
+    }
+
+    #chatWrapper ul
+    {
+        list-style:none;
+        padding:0;
+        margin:0;
+        width:100%;
+    }
+
+    #currentfile img
+    {
+        width: 46px;
+        height: 46px;
+    }
+
     #studionList { list-style-type: none; margin: 0; padding: 0; width: 385px; }
     #studionList li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 88px; height: 90px;  text-align: center; background-color: transparent;border-width: 0px;}
+
     .fileList { list-style-type: none; margin: 0; padding: 0; width: 550px; }
     .fileList li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 105px;   text-align: center; background-color: transparent;border-width: 0px;}
+
+    .listanswer { list-style-type: none; margin: 0; padding: 0; width: 550px; margin-top: 5px;}
+    .listanswer li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 95px;   text-align: center; background-color: transparent;border-width: 0px;}
+
 </style>
 
 <%-- Initial js code of virtual room --%>
@@ -882,18 +962,18 @@ function ShowMessage(name,imgpath,content,bit)
 </script>
 
 
-<div class="btn-group" style="margin:5px;">
-    <button type="button" class="btn btn-success" id="btnaddUser">进入用户</button>
-    <button type="button" class="btn btn-success" id="btndeleteOneStudent">退出用户</button>
-    <button type="button" class="btn btn-success" id="btnreceivemessage">接收消息</button>
-    <button type="button" class="btn btn-success" id="btnsendmessage">发送消息</button>
-    <button type="button" class="btn btn-success" id="btnQuestionsStudio">收到试题</button>
-    <button type="button" class="btn btn-success" id="btnask">学生提问</button>
-    <button type="button" class="btn btn-success" id="btncancelask">取消提问</button>
-    <button type="button" class="btn btn-success" id="btnEvent">事件测试1</button>
-    <button type="button" class="btn btn-success" id="btnEvent2">事件测试2</button>
-    <button type="button" class="btn btn-success" id="btnEvent3">事件测试3</button>
-</div>
+<%--<div class="btn-group" style="margin:5px;">--%>
+    <%--<button type="button" class="btn btn-success" id="btnaddUser">进入用户</button>--%>
+    <%--<button type="button" class="btn btn-success" id="btndeleteOneStudent">退出用户</button>--%>
+    <%--<button type="button" class="btn btn-success" id="btnreceivemessage">接收消息</button>--%>
+    <%--<button type="button" class="btn btn-success" id="btnsendmessage">发送消息</button>--%>
+    <%--<button type="button" class="btn btn-success" id="btnQuestionsStudio">收到试题</button>--%>
+    <%--<button type="button" class="btn btn-success" id="btnask">学生提问</button>--%>
+    <%--<button type="button" class="btn btn-success" id="btncancelask">取消提问</button>--%>
+    <%--<button type="button" class="btn btn-success" id="btnEvent">事件测试1</button>--%>
+    <%--<button type="button" class="btn btn-success" id="btnEvent2">事件测试2</button>--%>
+    <%--<button type="button" class="btn btn-success" id="btnEvent3">事件测试3</button>--%>
+<%--</div>--%>
 
 <span id="currentUserId" style="display: none"><s:property value="#session.userID" /></span>
 <span id="currentName" style="display: none"><s:property value="#session.email" /></span>
