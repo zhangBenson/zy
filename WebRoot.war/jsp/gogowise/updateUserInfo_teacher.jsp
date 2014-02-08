@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ include file="/js/user/updateUserInfo_js.jsp" %>
+<%@ include file="/js/user/updateUserInfo_teacher_js.jsp" %>
 
 <link rel="stylesheet" href="css/user/updateUserInfo.css" type="text/css"/>
 <script type="text/javascript" src="js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
