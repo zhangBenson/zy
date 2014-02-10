@@ -230,6 +230,23 @@ function getQuestionResult(right,wrong,noresponse)
     var myPie = new Chart(document.getElementById("canvas").getContext("2d")).Pie(pieData);
 }
 
+function setQuestionResult(result)
+{
+    $.ajax({
+        type: 'POST',
+        url: "saveQuestionResult.html",
+        data:{"questionId":$("#currentQuestionId").text(),"userId":"1","questionItemIndex":result,"courseClassId":"1"},
+        dataType:"json",
+        success: function(data)
+        {
+            alert("提交成功");
+        },
+        error:function(){
+            alert("error....");
+        }
+    });
+}
+
 function giveMIC()
 {
     if(currentMIC != null)
@@ -399,6 +416,7 @@ function alert(content,type)
 function getQuestionInfo(id)
 {
     $("#studentQuestionItem div").remove();
+    $("#currentQuestionId").text(id);
 
     $.ajax({
         type:"GET",
@@ -406,7 +424,7 @@ function getQuestionInfo(id)
         data:{"questionId":id},
         dataType:"json",
         success:function(data){
-            //alert(data.vo["description"]);
+
             $("#studentQuestionItem").append("<div>"+
                     "<div class='questionsItemText'>"+data.vo["description"]+"</div>"+
                     "<span class='questionid'>"+data.vo["id"]+"</span>"+
@@ -619,6 +637,7 @@ function ShowMessage(name,imgpath,content,bit)
 <span id="currentName" style="display: none"><s:property value="#session.email" /></span>
 <span id="currentUserName" style="display: none"><s:property value="#session.nickName" /></span>
 <span id="currentimgPath" style="display: none"><s:property value="#session.userLogoUrl" /></span>
+<span id="currentQuestionId" style="display: none"></span>
 
 <%--<div id="top"></div>--%>
 

@@ -159,15 +159,9 @@ $(document).ready(function() {
     });
 
     //查看问题结果
-    $("#btnQuestionResult").click(function(){
 
-    });
-
-    //提交选择题目;
     $("#btnQuestionResult").click(function(){
-        $("#resultView").show();
-        $("#questionsList").hide();
-        getQuestionResult(24,16,2);
+        getQuestionResult($('input[name="selectQuestion"]:checked').val());
     });
 
     $("#btnSelectFile").click(function(){
@@ -186,6 +180,7 @@ $(document).ready(function() {
             case "question":
                 getQuestionInfo();
                 showQuestions();
+                $("#btnSubmitQuestions").removeAttr("disabled");
                 break;
         }
     });
@@ -224,6 +219,8 @@ $(document).ready(function() {
     });
 
     $("#btnSubmitQuestions").click(function(){
+        $("#questionsList").hide();
+        $("#btnSubmitQuestions").attr("disabled","disabled");
         seletedQuestions();
     });
 });
@@ -237,6 +234,31 @@ function getGirlOjbect() {
     } else {
         return  document.getElementById("GirlEmbed");
     }
+}
+
+function getQuestionResult(questionId)
+{
+    var studentNum = $("#studionList li").length;
+
+    $.ajax({
+        type:"GET",
+        url:"displayQuestionResult.html",
+        data:{"questionId":questionId,"courseClassId":1},
+        dataType:"json",
+        success:function(data)
+        {
+            $("#resultView").show();
+            $("#questionsList").hide();
+            var noresponseNum = studentNum - data.correctNumber - data.inCorrectNumber;
+            showQuestionResult(data.correctNumber,data.inCorrectNumber,noresponseNum);
+            $("#txtRight").text("Right:"+data.correctNumber);
+            $("#txtWrong").text("Right:"+data.inCorrectNumber);
+            $("#txtNoResponse").text("NoResponse:"+studentNum);
+        },
+        error:function(){
+            alert("no data...");
+        }
+    });
 }
 
 function getSpeechList()
@@ -294,18 +316,19 @@ function getSpeechList()
 function getVideoList()
 {
     $("#videoPanle li").remove();
+    $.getJSON("listMaterial.html?typeId=1",{"courseId":$("#courseId").text()},function(data){
 
-    $.getJSON("videoList.html",function(data){
-        $.each(data,function(key,info)
+        $.each(data.vos,function(key,info)
         {
             var icon_path = "gogowisestyle/image/icon_mov.png";
+            var filecategory = "video";
 
             $("#videoPanle").append("<li><a href='#'>"+
                     "<div class='fileItem'>"+
                     "<img class='fileicon' src='"+icon_path+"' />"+
-                    "<p class='fileName'>"+info["fileName"]+"</p>"+
-                    "<span class='videolink'>"+info["videoLink"]+"</span>"+
-                    "<span class='category'>"+info["category"]+"</span>"+
+                    "<p class='fileName'>"+info["sourceTitle"]+"</p>"+
+                    "<span class='videolink'>"+info["convertPath"]+"</span>"+
+                    "<span class='category'>"+filecategory+"</span>"+
                     "</div></a></li>");
         });
 
@@ -423,7 +446,7 @@ function bindFileClick()
  * @param wrong 答错人数
  * @param noresponse 没有应答
  */
-function getQuestionResult(right,wrong,noresponse)
+function showQuestionResult(right,wrong,noresponse)
 {
     var pieData = [
         {
