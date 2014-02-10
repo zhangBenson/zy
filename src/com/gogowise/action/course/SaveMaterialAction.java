@@ -11,6 +11,7 @@ import com.gogowise.rep.course.dao.CourseMaterialDao;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.course.enity.CourseMaterial;
 import com.gogowise.rep.course.enity.Question;
+import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -85,6 +86,38 @@ public class SaveMaterialAction extends BasicAction {
 
         doConvert(nowTimeStr, dstPath);
         courseMaterialDao.persistAbstract(courseMaterial);
+        return SUCCESS;
+    }
+
+    @Action(value = "saveCourseMaterialHide", results = {@Result(name = SUCCESS, type = "json")})
+    public String saveCourseMaterialHide() {
+        String nowTimeStr = Calendar.getInstance().getTimeInMillis() + "";
+        String extName = Utils.getExtention(courseMaterial.getFullPath());
+        String newName = courseMaterial.getTypeString() + "_" + nowTimeStr + extName;
+
+        String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + courseMaterial.getFullPath());
+        String dstPath = Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/" + newName;
+
+        Utils.copy(new File(srcPath), new File(this.getRealPathForBaseDir() + dstPath));
+
+        //文件相关属性设置
+        courseMaterial.setUploadTime(Calendar.getInstance());
+        courseMaterial.setDescription(courseMaterial.getSourceTitle());
+
+        if (classId != null) {
+            courseMaterial.setCourseClass(classDao.findById(classId));
+        } else {
+            courseMaterial.setCourse(courseDao.findById(this.course.getId()));
+        }
+
+        courseMaterial.setFullPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/" + newName);
+        courseMaterial.setIsDisplay(true);
+        courseMaterialDao.persistAbstract(courseMaterial);
+
+        doConvert(nowTimeStr, dstPath);
+        courseMaterialDao.persistAbstract(courseMaterial);
+
+        ActionContext.getContext().getValueStack().push(courseMaterial);
         return SUCCESS;
     }
 

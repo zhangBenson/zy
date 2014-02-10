@@ -208,14 +208,45 @@ $(document).ready(function() {
             alert("no,select file");
     });
 
+    $("#fileSpeech").change(function(){
+        var fileObj  = this;
+        var allowExtension = "doc, docx, pdf, xls, xlsx, ppt, pptx";
+        var extension = fileObj.value.substring(fileObj.value.lastIndexOf(".")+1).toLowerCase();
 
+        if(allowExtension.indexOf(extension)==-1){
+            alert("Only File of "+allowExtension+" is allowed.");
+            return;
+        }
+
+        speechFullSize = fileObj.size;
+        var fackIndex = fileObj.value.lastIndexOf("\\");
+
+        speechTitle = fackIndex==-1?fileObj.value:fileObj.value.substring(fileObj.value.lastIndexOf("\\")+1);
+        $.ajaxFileUpload({
+            url: 'course/uploadCourseMaterialToTemp.html',
+            type: 'post',
+            secureuri: false,
+            fileElementId: 'fileSpeech',
+            dataType: 'json',
+            success: function (data, status)
+            {
+                speechFullPath = data.genFileName;
+            },
+            error: function (data, status, e)
+            {
+                alert(e);
+            }
+        });
+    });
+
+    var speechFullSize,speechFullPath,speechTitle;
     $("#btnUploadspeech").click(function(){
         if($('input[name=fileSpeech]').val() != "")
         {
-            Uploadspeech();
+            Uploadspeech(<s:property value="courseClass.course.id"/>,4,speechFullPath,speechFullSize,speechTitle);
         }
         else
-            alert("no,select file");
+            alert("Please select file first");
     });
 
     $("#btnSubmitQuestions").click(function(){
@@ -360,27 +391,24 @@ function getQuestionList()
     });
 }
 
-function Uploadspeech()
-{
-    $.ajaxFileUpload
-    (
-            {
-                url: 'uploadPptInit.html',
-                type: 'post',
-                data: { fileuploadFileName: 'le_1.pptx', genFileName: '2014020911045964239.pptx' },
-                secureuri: false,
-                fileElementId: 'fileSpeech',
-                dataType: 'json',
-                success: function (data, status)
-                {
-                    alert("上传成功");
-                },
-                error: function (data, status, e)
-                {
-                    alert(e);
-                }
+function Uploadspeech(courseId,materialType,fullPath,fullSize,title){
+    $.post("saveCourseMaterialHide.html",{
+        "course.id":courseId,
+        "courseMaterial.type":materialType,
+        "courseMaterial.fullPath":fullPath,
+        "courseMaterial.fullSize":fullSize,
+        "courseMaterial.sourceTitle":title
+    },function(data){
+        if(data){
+            alert("Upload success!");
+            switch(materialType){
+                case 4://speech(ppt)
+                    $('#myTabFile a[href="#filesysDocument"]').trigger("click");
+                    break;
             }
-    )
+        }
+    });
+
     return false;
 }
 
@@ -971,25 +999,6 @@ function ShowMessage(name,imgpath,content,bit)
 
 <div class="pull-left">
     <div class="classVedioPanel" >
-        <!-- <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="720" height="560" id="Teacher_1">
-        <param name="movie" value="Teacher_1.swf" />
-        <param name="quality" value="high" />
-        <param name="bgcolor" value="#000000" />
-        <param name="allowScriptAccess" value="sameDomain" />
-        <param name="wmode" value="transparent">
-        <param name="allowFullScreen" value="true" />
-        -->
-        <!--[if !IE]>
-        -->
-        <!-- <object type="application/x-shockwave-flash" data="Teacher_1.swf" width="720" height="560">
-        <param name="quality" value="high" />
-        <param name="bgcolor" value="#000000" />
-        <param name="allowScriptAccess" value="sameDomain" />
-        <param name="allowFullScreen" value="true" />
-    </object>
-    <!--<![endif]-->
-        <!-- </object>
-        -->
         <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="720" height="560" name="Girl" id="Girl" wmode="transparent">
             <param name="movie" value="flash/Teacher_1.swf" />
             <param name="quality" value="high" />
@@ -1258,7 +1267,7 @@ function ShowMessage(name,imgpath,content,bit)
                         </div>
                     </div>
                     <div style="text-align: center;">
-                        <input type="file" name="fileSpeech" style="position:absolute; z-index:100; margin-left:-180px; font-size:35px;opacity:0;filter:alpha(opacity=0); margin-top:-5px;">
+                        <input type="file" name="fileupload" id="fileSpeech" style="position:absolute; z-index:100; margin-left:-180px; font-size:35px;opacity:0;filter:alpha(opacity=0); margin-top:-5px;">
                         <span style="padding-right: 10px;color: red;">Or</span><button type="button" class="btn btn-success">Select a Local File</button>
                         <p class="help-block">doc,docx,pdf,xls,xlsx,ppt,pptx</p>
                         <button type="submit" class="btn btn-default" id="btnUploadspeech">Upload</button>
