@@ -274,7 +274,7 @@ function getQuestionResult(questionId)
     $.ajax({
         type:"GET",
         url:"displayQuestionResult.html",
-        data:{"questionId":questionId,"courseClassId":1},
+        data:{"questionId":questionId,"courseClassId":<s:property value="courseClass.id"/>},
         dataType:"json",
         success:function(data)
         {

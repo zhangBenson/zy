@@ -235,7 +235,7 @@ function setQuestionResult(result)
     $.ajax({
         type: 'POST',
         url: "saveQuestionResult.html",
-        data:{"questionId":$("#currentQuestionId").text(),"userId":"1","questionItemIndex":result,"courseClassId":"1"},
+        data:{"questionId":$("#currentQuestionId").text(),"userId":<s:property value="#session.userID"/>,"questionItemIndex":result,"courseClassId":<s:property value="courseClass.id"/>},
         dataType:"json",
         success: function(data)
         {
