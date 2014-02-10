@@ -224,7 +224,6 @@ $(document).ready(function() {
     });
 
     $("#btnSubmitQuestions").click(function(){
-        //alert($('input[name="selectQuestion"]:checked').val());
         seletedQuestions();
     });
 });
@@ -239,54 +238,6 @@ function getGirlOjbect() {
         return  document.getElementById("GirlEmbed");
     }
 }
-
-// function getSpeechList()
-// {
-// 	$("#speechDraftPanle li").remove();
-// 	//Speech
-// 	$.getJSON("fileList.html",function(data){
-//         		$.each(data,function(key,info)
-//         		{
-//         			var icon_path = "";
-
-//         			switch(info["fileType"])
-//         			{
-//         				case "doc":
-//         					icon_path = "gogowisestyle/image/icon_docx.png"
-//         					break;
-//         				case "docx":
-//         					icon_path = "gogowisestyle/image/icon_docx.png"
-//         					break;
-//         				case "pdf":
-//         					icon_path = "gogowisestyle/image/icon_pdf.png"
-//         					break;
-//         				case "xls":
-//         					icon_path = "gogowisestyle/image/icon_xlsx.png"
-//         					break;
-//         				case "xlsx":
-//         					icon_path = "gogowisestyle/image/icon_xlsx.png"
-//         					break;
-//         				case "ppt":
-//         					icon_path = "gogowisestyle/image/icon_pptx.png"
-//         					break;
-//         				case "ppt":
-//         					icon_path = "gogowisestyle/image/icon_pptx.png"
-//         					break;
-//         			}
-
-//         			$("#speechDraftPanle").append("<li><a href='#'>"+
-// 				 "<div class='fileItem'>"+
-// 				 "<img class='fileicon' src='"+icon_path+"' />"+
-// 				 "<p class='fileName'>"+info["fileName"]+"</p>"+
-// 				 "<span class='fileDirectory'>"+info["fileDirectory"]+"</span>"+
-// 				 "<span class='category'>"+info["category"]+"</span>"+
-// 				 "<span class='pageNum'>"+info["pageNum"]+"</span>"+
-// 				 "</div></a></li>");
-//         		});
-
-//         		bindFileClick();
-// 	});
-// }
 
 function getSpeechList()
 {
@@ -362,28 +313,6 @@ function getVideoList()
     });
 }
 
-// function getQuestionList()
-// {
-// 	$("#questionbankPanle li").remove();
-// 	$.getJSON("questionList.html",function(data){
-
-//         		$.each(data,function(key,info)
-//         		{
-//         			var icon_path = "gogowisestyle/image/icon_text.png";
-
-//         			$("#questionbankPanle").append("<li><a href='#'>"+
-// 				 "<div class='fileItem'>"+
-// 				 "<img class='fileicon' src='"+icon_path+"' />"+
-// 				 "<p class='fileName'>"+info["fileName"]+"</p>"+
-// 				 "<span class='question'>"+info["questionID"]+"</span>"+
-// 				 "<span class='category'>"+info["category"]+"</span>"+
-// 				 "</div></a></li>");
-//         		});
-
-//         		bindFileClick();
-// 	});
-// }
-
 function getQuestionList()
 {
     $("#questionbankPanle li").remove();
@@ -439,20 +368,20 @@ function getQuestionInfo()
 
     $.ajax({
         type:"GET",
-        url:"questionInfo.html",
+        url:"listQuestion.html",
+        data:{"materialId":$("#currentfile").find(".selectQuestion").text()},
         dataType:"json",
         success:function(data){
 
-            $.each(data,function(key,info)
+            $.each(data.vos,function(key,info)
             {
                 $("#questionsList").append("<div class='questionsItem'>"+
                         "<label>"+
-                        "<input type='radio' name='selectQuestion' value='"+info["questionID"]+"'>"+
-                        "<span class='questionsItemText'>"+info["content"]+"</span>"+
-                        "<span class='questionid'>"+info["questionID"]+"</span>"+
+                        "<input type='radio' name='selectQuestion' value='"+info["id"]+"'>"+
+                        "<span class='questionsItemText'>"+info["description"]+"</span>"+
+                        "<span class='questionid'>"+info["id"]+"</span>"+
                         "</label>"+
                         "</div>");
-
             });
 
             $('input').iCheck({

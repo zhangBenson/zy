@@ -402,36 +402,28 @@ function getQuestionInfo(id)
 
     $.ajax({
         type:"GET",
-        url:"questionItem.html",
+        url:"question.html",
+        data:{"questionId":id},
         dataType:"json",
         success:function(data){
-
+            //alert(data.vo["description"]);
             $("#studentQuestionItem").append("<div>"+
-                    "<div class='questionsItemText'>"+data["subjectname"]+"</div>"+
-                    "<span class='questionid'>"+data["questionID"]+"</span>"+
+                    "<div class='questionsItemText'>"+data.vo["description"]+"</div>"+
+                    "<span class='questionid'>"+data.vo["id"]+"</span>"+
                     "<div class='listanswer'></div>");
-
-            $.each(data.options,function(key,info){
+            var index =1;
+            $.each(data.vo.items,function(key,info){
                 $("#studentQuestionItem").find(".listanswer").append("<div style='margin-top:10px;'>"+
                         "<label class='answerItem'>"+
-                        "<p>"+info["itemname"]+"</p>"+
-                        "<input type='radio' name='"+info["value"]+"'>"+
-                        "<span>"+info["itemtext"]+"</span>"+
+                    // "<p>"+info["itemname"]+"</p>"+
+                        "<input type='radio' name='studentQuestion' value='"+index+"'>"+
+                        "<span style='display:none;'>"+index+"</span>"+
+                        "<span>"+info+"</span>"+
                         "</label>"+
                         "</div>");
+                index++;
             });
 
-            //alert(data["subjectname"]);
-            // $.each(data,function(key,info)
-            // {
-            // 	$("#questionsList").append("<div class='questionsItem'>"+
-            // 	"<label>"+
-            // 	"<input type='radio' name='selectQuestion' value='"+info["questionID"]+"'>"+
-            // 	"<span class='questionsItemText'>"+info["content"]+"</span>"+
-            // 	"<span class='questionid'>"+info["questionID"]+"</span>"+
-            // 	"</label>"+
-            // 	"</div>");
-            // });
 
             $('input').iCheck({
                 checkboxClass: 'icheckbox_square-green',
