@@ -14,6 +14,7 @@
 <script src="/js/room/messenger.min.js"></script>
 <script src="/js/room/icheck.min.js"></script>
 <script src="/js/room/Chart.min.js"></script>
+<script src="/js/room/ajaxfileupload.js"></script>
 
 <script type="text/javascript">
 var stundioWrapper;
@@ -216,7 +217,7 @@ $(document).ready(function() {
     $("#btnUploadspeech").click(function(){
         if($('input[name=fileSpeech]').val() != "")
         {
-
+            Uploadspeech();
         }
         else
             alert("no,select file");
@@ -405,6 +406,30 @@ function getQuestionList()
 
         bindFileClick();
     });
+}
+
+function Uploadspeech()
+{
+    $.ajaxFileUpload
+    (
+            {
+                url: 'uploadPptInit.html',
+                type: 'post',
+                data: { fileuploadFileName: 'le_1.pptx', genFileName: '2014020911045964239.pptx' },
+                secureuri: false,
+                fileElementId: 'fileSpeech',
+                dataType: 'json',
+                success: function (data, status)
+                {
+                    alert("上传成功");
+                },
+                error: function (data, status, e)
+                {
+                    alert(e);
+                }
+            }
+    )
+    return false;
 }
 
 
