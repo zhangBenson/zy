@@ -1,18 +1,18 @@
 package com.gogowise.rep.course.dao;
 
-import com.gogowise.rep.Pagination;
-import com.gogowise.rep.finance.ConsumptionOrderDao;
-import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.rep.org.dao.OrganizationDao;
-import com.gogowise.rep.user.dao.BaseUserDao;
-import com.gogowise.rep.course.enity.Course;
-import com.gogowise.rep.course.enity.CourseClass;
-import com.gogowise.rep.course.enity.SeniorClassRoom;
-import com.gogowise.rep.org.enity.Organization;
-import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.MD5;
 import com.gogowise.common.utils.Utils;
+import com.gogowise.rep.ModelDaoImpl;
+import com.gogowise.rep.Pagination;
+import com.gogowise.rep.course.enity.Course;
+import com.gogowise.rep.course.enity.CourseClass;
+import com.gogowise.rep.course.enity.SeniorClassRoom;
+import com.gogowise.rep.finance.ConsumptionOrderDao;
+import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.user.dao.BaseUserDao;
+import com.gogowise.rep.user.enity.BaseUser;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -194,16 +194,13 @@ import java.util.List;
 
     @Override
     public List<Course> findMoocCourses(Pagination pagination) {
-        List<Course> courses = this.find("From Course c where c.cameraManConfirmed=true and c.charges=0 order by c.id desc", pagination);
-        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
-        return noDeletedCourses;
+        return this.find("From Course c where c.isDeleted = false and c.charges=0 order by c.id desc", pagination);
     }
 
     @Override
     public List<Course> findNonMoocCourses(Pagination pagination) {
-        List<Course> courses = this.find("From Course c where  c.cameraManConfirmed=true and c.charges!=0 order by c.id desc",pagination);
-        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
-        return noDeletedCourses;
+        return this.find("From Course c where c.isDeleted = false and c.charges!=0 order by c.id desc", pagination);
+
     }
 
     public List<Course> findCourses2Teacher(Integer tid, Pagination pagination) {
