@@ -192,6 +192,19 @@ import java.util.List;
         return noDeletedCourses;
     }
 
+    @Override
+    public List<Course> findMoocCourses(Pagination pagination) {
+        List<Course> courses = this.find("From Course c where c.cameraManConfirmed=true and c.charges=0 order by c.id desc", pagination);
+        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
+        return noDeletedCourses;
+    }
+
+    @Override
+    public List<Course> findNonMoocCourses(Pagination pagination) {
+        List<Course> courses = this.find("From Course c where  c.cameraManConfirmed=true and c.charges!=0 order by c.id desc",pagination);
+        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
+        return noDeletedCourses;
+    }
 
     public List<Course> findCourses2Teacher(Integer tid, Pagination pagination) {
         //return this.find("select distinct c From    Course c left join c.teachers teacher where   teacher.id=? and c.fromCourse.id = c.id order by c.startDate desc",pagination,tid);

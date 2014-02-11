@@ -49,6 +49,7 @@ public class IndexAction extends BasicAction {
     private MyShowDao myShowDao;
     private BaseUser baseUser;
     private List<Course> courses;
+    private List<Course> moocCourses;
     private List<MyShow> myShows;
     private List<PersonalOnlive> personalOnlives;
     private List<PersonalOnlive> hottestOnlives;
@@ -154,7 +155,8 @@ public class IndexAction extends BasicAction {
         ActionContext.getContext().getSession().put("request_only_locale",new Locale("en","US"));
         ActionContext.getContext().setLocale(new Locale("en","US"));
 //        }
-        courses = courseDao.findlatestCourses(pagination);
+        courses = courseDao.findNonMoocCourses(pagination);
+        moocCourses = courseDao.findMoocCourses(pagination);
         organizations = organizationDao.findLatestOrgs(new Pagination(8));
         this.loadPoster();
         return SUCCESS;
@@ -324,6 +326,14 @@ public class IndexAction extends BasicAction {
 
     public void setCourses(List<Course> courses) {
         this.courses = courses;
+    }
+
+    public List<Course> getMoocCourses() {
+        return moocCourses;
+    }
+
+    public void setMoocCourses(List<Course> moocCourses) {
+        this.moocCourses = moocCourses;
     }
 
     public MyShowDao getMyShowDao() {

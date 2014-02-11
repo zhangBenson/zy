@@ -1,13 +1,6 @@
 ﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="s" uri="struts-tags.tld" %>
-<%--<!doctype html>--%>
-<%--<html lang="en">--%>
-<%--<head>--%>
-    <%--<meta charset="UTF-8">--%>
-    <%--<meta name="viewport" content="width=device-width, initial-scale=1.0">--%>
 
-<%--<title>index</title>--%>
-<%--</head>--%>
 <script type="text/javascript">
     $(document).ready(function(){
         $('.bxslider').bxSlider({
@@ -29,8 +22,6 @@
         });
     });
 </script>
-
-
 
 <div class="container">
 
@@ -119,7 +110,7 @@
             <div class="pull-left"><div class="courseSubhead"><s:property value="%{getText('usermenu.item.mooc')}"/></div></div>
             <div class="clearfix"></div>
 
-            <s:iterator value="Courses" status="status">
+            <s:iterator value="moocCourses" status="status">
                 <s:if test="#status.index<4">
                     <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>">
                         <div class="coursePanel">

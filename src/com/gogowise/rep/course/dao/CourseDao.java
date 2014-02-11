@@ -34,6 +34,10 @@ public interface CourseDao extends ModelDao<Course> {
 
     public List<Course> findlatestCourses(Pagination pagination);
 
+    public List<Course> findMoocCourses(Pagination pagination);
+
+    public List<Course> findNonMoocCourses(Pagination pagination);
+
     public List<Course> findCourses2Teacher(Integer tid,Pagination pagination);
 
     public List<Course> findCourses2Student(Integer tid, Pagination pagination);
@@ -52,7 +56,6 @@ public interface CourseDao extends ModelDao<Course> {
     public  List<Course> findLatestCourseByOrg(Integer orgId, Pagination page);
 
     public List<Course> findHotCoursesByOrg(Integer orgId, Pagination pagination);
-
 
 
     public Course saveRepeatCourse(Calendar startTime,Course course,String teacherEmail);
