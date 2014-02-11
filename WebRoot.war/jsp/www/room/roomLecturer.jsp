@@ -200,53 +200,43 @@ $(document).ready(function() {
     //////////////
 
     $("#btnUploadquestion").click(function(){
-        if($('input[name=fileQuestion]').val() != "")
-        {
-
+        if(questionFullPath){
+            UploadCourseResource({
+                courseId:<s:property value="courseClass.course.id"/>,
+                materialType:3,
+                fullPath:questionFullPath,
+                fullSize:questionFullSize,
+                title:questionTitle,
+                success:function(){
+                    $('#myTabFile a[href="#filesysQuestionbank"]').trigger("click");
+                    questionFullPath = "";
+                    $("#fileQuestion").val("");
+                    $("#fileQuestionTip").html("");
+                }
+            });
+        }else{
+            $("#fileQuestionTip").html("Please select file first");
         }
-        else
-            alert("no,select file");
     });
 
-    $("#fileSpeech").change(function(){
-        var fileObj  = this;
-        var allowExtension = "doc, docx, pdf, xls, xlsx, ppt, pptx";
-        var extension = fileObj.value.substring(fileObj.value.lastIndexOf(".")+1).toLowerCase();
-
-        if(allowExtension.indexOf(extension)==-1){
-            alert("Only File of "+allowExtension+" is allowed.");
-            return;
-        }
-
-        speechFullSize = fileObj.size;
-        var fackIndex = fileObj.value.lastIndexOf("\\");
-
-        speechTitle = fackIndex==-1?fileObj.value:fileObj.value.substring(fileObj.value.lastIndexOf("\\")+1);
-        $.ajaxFileUpload({
-            url: 'course/uploadCourseMaterialToTemp.html',
-            type: 'post',
-            secureuri: false,
-            fileElementId: 'fileSpeech',
-            dataType: 'json',
-            success: function (data, status)
-            {
-                speechFullPath = data.genFileName;
-            },
-            error: function (data, status, e)
-            {
-                alert(e);
-            }
-        });
-    });
-
-    var speechFullSize,speechFullPath,speechTitle;
     $("#btnUploadspeech").click(function(){
-        if($('input[name=fileSpeech]').val() != "")
-        {
-            Uploadspeech(<s:property value="courseClass.course.id"/>,4,speechFullPath,speechFullSize,speechTitle);
+        if(speechFullPath){
+            UploadCourseResource({
+                courseId:<s:property value="courseClass.course.id"/>,
+                materialType:4,
+                fullPath:speechFullPath,
+                fullSize:speechFullSize,
+                title:speechTitle,
+                success:function(){
+                    $('#myTabFile a[href="#filesysDocument"]').trigger("click");
+                    speechFullPath = "";
+                    $("#fileSpeech").val("");
+                    $("#fileSpeechTip").html("");
+                }
+            });
+        }else{
+            $("#fileSpeechTip").html("Please select file first");
         }
-        else
-            alert("Please select file first");
     });
 
     $("#btnSubmitQuestions").click(function(){
@@ -391,22 +381,93 @@ function getQuestionList()
     });
 }
 
-function Uploadspeech(courseId,materialType,fullPath,fullSize,title){
+var speechFullSize,speechFullPath,speechTitle;
+function changeSpeechFile(){
+    var fileObj  = document.getElementById("fileSpeech");
+    var allowExtension = "doc, docx, pdf, xls, xlsx, ppt, pptx";
+    var extension = fileObj.value.substring(fileObj.value.lastIndexOf(".")+1).toLowerCase();
+
+    if(allowExtension.indexOf(extension)==-1){
+        alert("Only File of "+allowExtension+" is allowed.");
+        return;
+    }
+
+    speechFullSize = fileObj.size;
+    var fackIndex = fileObj.value.lastIndexOf("\\");
+
+    speechTitle = fackIndex==-1?fileObj.value:fileObj.value.substring(fileObj.value.lastIndexOf("\\")+1);
+    $.ajaxFileUpload({
+        url: 'course/uploadCourseMaterialToTemp.html',
+        type: 'post',
+        secureuri: false,
+        fileElementId: 'fileSpeech',
+        dataType: 'json',
+        success: function (data, status)
+        {
+            speechFullPath = data.genFileName;
+            $("#fileSpeechTip").html("File "+speechTitle+" selected");
+        },
+        error: function (data, status, e)
+        {
+            alert(e);
+        }
+    });
+}
+
+var questionFullSize,questionFullPath,questionTitle;
+function changeQuestionFile(){
+    var fileObj  = document.getElementById("fileQuestion");
+    var allowExtension = "doc, docx, pdf";
+    var extension = fileObj.value.substring(fileObj.value.lastIndexOf(".")+1).toLowerCase();
+
+    if(allowExtension.indexOf(extension)==-1){
+        alert("Only File of "+allowExtension+" is allowed.");
+        return;
+    }
+
+    questionFullSize = fileObj.size;
+    var fackIndex = fileObj.value.lastIndexOf("\\");
+
+    questionTitle = fackIndex==-1?fileObj.value:fileObj.value.substring(fileObj.value.lastIndexOf("\\")+1);
+    $.ajaxFileUpload({
+        url: 'course/uploadCourseMaterialToTemp.html',
+        type: 'post',
+        secureuri: false,
+        fileElementId: 'fileQuestion',
+        dataType: 'json',
+        success: function (data, status)
+        {
+            questionFullPath = data.genFileName;
+            $("#fileQuestionTip").html("File "+questionTitle+" selected");
+        },
+        error: function (data, status, e)
+        {
+            alert(e);
+        }
+    });
+}
+
+function UploadCourseResource(options){
     $.post("saveCourseMaterialHide.html",{
-        "course.id":courseId,
-        "courseMaterial.type":materialType,
-        "courseMaterial.fullPath":fullPath,
-        "courseMaterial.fullSize":fullSize,
-        "courseMaterial.sourceTitle":title
+        "course.id":options.courseId,
+        "courseMaterial.type":options.materialType,
+        "courseMaterial.fullPath":options.fullPath,
+        "courseMaterial.fullSize":options.fullSize,
+        "courseMaterial.sourceTitle":options.title
     },function(data){
         if(data){
-            alert("Upload success!");
-            switch(materialType){
-                case 4://speech(ppt)
-                    $('#myTabFile a[href="#filesysDocument"]').trigger("click");
-                    break;
+            if(!options.success){
+                alert("Upload success!");
+                return;
             }
+            options.success();
+            return;
         }
+        if(!options.error){
+            alert("Upload failure!");
+            return;
+        }
+        options.error();
     });
 
     return false;
@@ -1267,8 +1328,10 @@ function ShowMessage(name,imgpath,content,bit)
                         </div>
                     </div>
                     <div style="text-align: center;">
-                        <input type="file" name="fileupload" id="fileSpeech" style="position:absolute; z-index:100; margin-left:-180px; font-size:35px;opacity:0;filter:alpha(opacity=0); margin-top:-5px;">
+                        <input type="file" name="fileupload" id="fileSpeech" onchange="changeSpeechFile()"
+                               style="position:absolute; z-index:100; margin-left:-180px; font-size:35px;opacity:0;filter:alpha(opacity=0); margin-top:-5px;">
                         <span style="padding-right: 10px;color: red;">Or</span><button type="button" class="btn btn-success">Select a Local File</button>
+                        <p id="fileSpeechTip" style="color:green;"></p>
                         <p class="help-block">doc,docx,pdf,xls,xlsx,ppt,pptx</p>
                         <button type="submit" class="btn btn-default" id="btnUploadspeech">Upload</button>
                     </div>
@@ -1319,8 +1382,10 @@ function ShowMessage(name,imgpath,content,bit)
 
                     </div>
                     <div style="text-align: center;">
-                        <input type="file" name="fileQuestion" style="position:absolute; z-index:100; margin-left:-180px; font-size:35px;opacity:0;filter:alpha(opacity=0); margin-top:-5px;">
+                        <input type="file" name="fileupload" id="fileQuestion" onchange="changeQuestionFile()"
+                               style="position:absolute; z-index:100; margin-left:-180px; font-size:35px;opacity:0;filter:alpha(opacity=0); margin-top:-5px;">
                         <span style="padding-right: 10px;color: red;">Or</span><button type="button" class="btn btn-success">Select a Local File</button>
+                        <p id="fileQuestionTip" style="color:green;"></p>
                         <p class="help-block">doc,docx,pdf</p>
                         <button type="submit" class="btn btn-default" id="btnUploadquestion">Upload</button>
                     </div>
