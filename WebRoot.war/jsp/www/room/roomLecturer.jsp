@@ -254,6 +254,12 @@ $(document).ready(function() {
         $("#btnSubmitQuestions").attr("disabled","disabled");
         seletedQuestions();
     });
+
+    $("#btnAddVideo").click(function(){
+        setVideoInfo($("#txtVideoLink").val(),$("#txtVideoName").val());
+        $("#txtVideoName").val("");
+        $("#txtVideoLink").val("");
+    });
 });
 
 //document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
@@ -388,6 +394,23 @@ function getQuestionList()
         });
 
         bindFileClick();
+    });
+}
+
+function setVideoInfo(videolink,videoname)
+{
+    $.ajax({
+        type: 'POST',
+        url: "uploadMaterialWithJson.html",
+        data:{"sourceTitle":videoname,"convertPath ":videolink,"course.id":"1","courseMaterial.type":"1"},
+        dataType:"json",
+        success: function(data)
+        {
+            alert("提交成功");
+        },
+        error:function(){
+            alert("error....");
+        }
     });
 }
 
@@ -1293,13 +1316,13 @@ function ShowMessage(name,imgpath,content,bit)
                         <p style="padding-right: 10px;color: red;" class="text-left">Or</p>
                         <div class="input-group input-group-sm">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-link" style="color: #999;"></span></span>
-                            <input type="text" class="form-control" placeholder="Input A Link of Youtube File">
+                            <input type="text" class="form-control" placeholder="Input A Link of Youtube File" id="txtVideoLink">
                         </div>
                         <div class="input-group input-group-sm" style="margin-top: 5px;margin-bottom: 5px;">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-file" style="color: #999;"></span></span>
-                            <input type="text" class="form-control" placeholder="Input A Name for the Link">
+                            <input type="text" class="form-control" placeholder="Input A Name for the Link" id="txtVideoName">
                         </div>
-                        <button type="button" class="btn btn-success btn-sm btn-block">Add Video</button>
+                        <button type="button" class="btn btn-success btn-sm btn-block" id="btnAddVideo">Add Video</button>
                     </div>
                 </div>
                 <div class="tab-pane" id="filesysQuestionbank">
