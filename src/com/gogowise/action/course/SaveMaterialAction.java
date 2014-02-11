@@ -66,7 +66,7 @@ public class SaveMaterialAction extends BasicAction {
         String extName = Utils.getExtention(courseMaterial.getFullPath());
         String newName = courseMaterial.getTypeString() + "_" + nowTimeStr + extName;
 
-        String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + courseMaterial.getFullPath());
+        String srcPath = ServletActionContext.getServletContext().getRealPath("/"+Constants.UPLOAD_FILE_PATH_TMP + File.separator + courseMaterial.getFullPath());
         String dstPath = Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/" + newName;
 
         Utils.copy(new File(srcPath), new File(this.getRealPathForBaseDir() + dstPath));
@@ -95,7 +95,7 @@ public class SaveMaterialAction extends BasicAction {
         String extName = Utils.getExtention(courseMaterial.getFullPath());
         String newName = courseMaterial.getTypeString() + "_" + nowTimeStr + extName;
 
-        String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + courseMaterial.getFullPath());
+        String srcPath = ServletActionContext.getServletContext().getRealPath("/"+Constants.UPLOAD_FILE_PATH_TMP + "/" + courseMaterial.getFullPath());
         String dstPath = Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/" + newName;
 
         Utils.copy(new File(srcPath), new File(this.getRealPathForBaseDir() + dstPath));

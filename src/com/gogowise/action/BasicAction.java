@@ -29,7 +29,7 @@ public class BasicAction extends ActionSupport {
 
     public String getRealPathForBaseDir() {
         if (REAL_PATH_FOR_BASE_DIR == null) {
-            return REAL_PATH_FOR_BASE_DIR = ServletActionContext.getServletContext().getRealPath(".");
+            return REAL_PATH_FOR_BASE_DIR = ServletActionContext.getServletContext().getRealPath("/");
         } else {
             return REAL_PATH_FOR_BASE_DIR;
         }
