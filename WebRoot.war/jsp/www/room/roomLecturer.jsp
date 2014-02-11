@@ -453,7 +453,6 @@ function changeQuestionFile(){
     });
 }
 
-function UploadCourseResource(options){
 function setVideoInfo(videolink,videoname)
 {
     $.ajax({
@@ -471,7 +470,7 @@ function setVideoInfo(videolink,videoname)
     });
 }
 
-function Uploadspeech(courseId,materialType,fullPath,fullSize,title){
+function UploadCourseResource(options){
     $.post("saveCourseMaterialHide.html",{
         "course.id":options.courseId,
         "courseMaterial.type":options.materialType,
