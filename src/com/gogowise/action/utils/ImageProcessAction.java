@@ -53,7 +53,7 @@ public class ImageProcessAction extends BasicAction{
     public void cropUserPortrait() throws IOException {
         if (StringUtils.isNotBlank(this.getUserPortraitName())) {
             String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + this.getUserPortraitName());
-            String toPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + "/userPortrait/" + this.getUserPortraitName());
+            String toPath = ServletActionContext.getServletContext().getRealPath("")+Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + "/userPortrait/" + this.getUserPortraitName();
 
              //获取拓展名
             String extName="";
