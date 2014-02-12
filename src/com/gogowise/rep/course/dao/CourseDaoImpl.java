@@ -22,6 +22,7 @@ import java.util.List;
 @Repository("courseDao")
     public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
 
+    private static final String DELETED_FALSE = "c.isDeleted = false";
     private static String QUERY_RELATED_COURSE = "select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc  left join c.organization org left join c.teachers teacher where c.masterConfirmed=true and c.teacherConfirmed=true and cc.course.id = c.id and  (teacher.id=? or c.cameraMan.id=? or org.responsiblePerson.id=? or sc.student.id=?) ";
     private static String QUERY_MY_FORCAST_CLASS = "select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc  left join c.organization org  left join c.teachers teacher where  cc.course.id = c.id and  (teacher.id=? or sc.student.id=?) ";
     private static String COURSE_CONFIRMED = "  c.cameraManConfirmed=true ";
@@ -194,12 +195,12 @@ import java.util.List;
 
     @Override
     public List<Course> findMoocCourses(Pagination pagination) {
-        return this.find("From Course c where c.isDeleted = false and c.charges=0 order by c.id desc", pagination);
+        return this.find("From Course c where " + DELETED_FALSE + " and c.charges=0 order by c.id desc", pagination);
     }
 
     @Override
     public List<Course> findNonMoocCourses(Pagination pagination) {
-        return this.find("From Course c where c.isDeleted = false and c.charges!=0 order by c.id desc", pagination);
+        return this.find("From Course c where " + DELETED_FALSE + " and c.charges!=0 order by c.id desc", pagination);
 
     }
 
