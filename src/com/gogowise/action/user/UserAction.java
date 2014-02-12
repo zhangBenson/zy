@@ -461,46 +461,22 @@ public class UserAction extends BasicAction {
     @Action(value = "updateUserInfo", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName","initUpdate"}),
             @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".initUpdate")})
     public String updateUserInfo() {
-//        int i = 0;
-//        for (File myFile : this.getUploads()) {
-//            String path = "/" + getSessionUserId() + "/" + i + this.getExtention(this.getUploadsFileName().get(i));
-//            File imageFile = new File(ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_USER_PATH) + path);
-//            if (!imageFile.getParentFile().exists()) {
-//                imageFile.getParentFile().mkdirs();
-//            } else {
-//                File files[] = imageFile.getParentFile().listFiles();
-//                for (File file : files) {
-//                    file.delete();
-//                }
-//            }
-//            copy(myFile, imageFile);
-//            this.getUser().setPic(Constants.UPLOAD_USER_PATH + path);
-//            i++;
-//        }
+        //设置页面更新值
         BaseUser _user = baseUserDao.findById(getSessionUserId());
-        if(user.getNickName()!=null)
-              _user.setNickName(this.user.getNickName());
-        if(user.getCardId()!=null)
-            _user.setCardId(this.user.getCardId());
-        if(user.getPic()!=null)
-            _user.setPic(this.user.getPic());
-        if(user.getUserName()!=null)
-             _user.setUserName(user.getUserName());
-        if(StringUtils.isNotBlank(user.getSelfDescription())){
-            _user.setSelfDescription(user.getSelfDescription());
-        }
+        _user.setNickName(user.getNickName());
+        _user.setUserName(user.getUserName());
+        _user.setSelfDescription(user.getSelfDescription());
         _user.setSexy(user.getSexy());
-        UserAccountInfo userAccountInfoForSave = this.userAccountInfoDao.findByUserId(this.getSessionUserId());
-        userAccountInfoForSave.setBankName(this.getUserAccountInfo().getBankName());
-        userAccountInfoForSave.setDisposeName(this.getUserAccountInfo().getDisposeName());
-        userAccountInfoForSave.setBankAccount(this.getUserAccountInfo().getBankAccount());
-        userAccountInfoForSave.setUser(_user);
-        userAccountInfoDao.persist(userAccountInfoForSave);
+        _user.setBirthDay(user.getBirthDay());
+
+        //持久化
         baseUserDao.persistAbstract(_user);
         this.setUser(_user);
-        this.setUserAccountInfo(userAccountInfoForSave);
+
+        //设置session数据
         this.setUserToSession(_user);
         setUserOrg(_user);
+
         return SUCCESS;
     }
 
