@@ -4,17 +4,16 @@ import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.dao.CourseDao;
-import com.gogowise.rep.course.enity.CourseMaterial;
+import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.live.LiveChannelDao;
 import com.gogowise.rep.live.MyShowDao;
 import com.gogowise.rep.live.PersonalOnliveDao;
-import com.gogowise.rep.org.dao.OrganizationDao;
-import com.gogowise.rep.org.enity.Organization;
-import com.gogowise.rep.user.dao.BaseUserDao;
-import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.live.enity.LiveChannel;
 import com.gogowise.rep.live.enity.MyShow;
 import com.gogowise.rep.live.enity.PersonalOnlive;
+import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.opensymphony.xwork2.ActionContext;
@@ -26,9 +25,10 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 @Controller
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
@@ -214,7 +214,7 @@ public class IndexAction extends BasicAction {
         fw.close();
 
         //更换现在的图片
-        String savePath = ServletActionContext.getServletContext().getRealPath("") + "/" + Constants.UPLOAD_FILE_PATH_TMP + "/";
+        String savePath = ServletActionContext.getServletContext().getRealPath("") + Constants.UPLOAD_FILE_PATH_TMP + "/";
 
         File poster1  = new File( savePath + "/" + this.getPosterAddress1() );
         File poster2  = new File( savePath + "/" + this.getPosterAddress2() );
@@ -237,7 +237,7 @@ public class IndexAction extends BasicAction {
 
 //    @Action(value = "uploadPosterWithJson")
 //    public String uploadPosterWithJson() {
-//        String savePath = ServletActionContext.getServletContext().getRealPath("") + "/" + Constants.UPLOAD_FILE_PATH_TMP + "/";
+//        String savePath = ServletActionContext.getServletContext().getRealPath("") + Constants.UPLOAD_FILE_PATH_TMP + "/";
 //
 //        Random r = new Random();
 //        int rannum = (int) (r.nextDouble() * (99999 - 10000 + 1)) + 10000;

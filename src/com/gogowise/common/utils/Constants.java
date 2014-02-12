@@ -1,7 +1,5 @@
 package com.gogowise.common.utils;
 
-import java.io.File;
-
 /**
  * Created by IntelliJ IDEA.
  * User: zhangb
@@ -12,8 +10,8 @@ import java.io.File;
 public class Constants {
 
     public static final int PAGE_SIZE = 9;
-    public static final String UPLOAD_FILE_PATH_TMP = "upload"+ File.separator+"file"+ File.separator+"tmp";
-    public static final String UPLOAD_FILE_PATH_PPT = "upload/file/ppt";
+    public static final String UPLOAD_FILE_PATH_TMP = "/upload/file/tmp";
+    public static final String UPLOAD_FILE_PATH_PPT = "/upload/file/ppt";
     public static final String UPLOAD_USER_PATH = "/upload/user";
     public static final String UPLOAD_COURSE_PATH = "/upload/course";
     public static final String UPLOAD_SHOW_PATH = "/upload/show";

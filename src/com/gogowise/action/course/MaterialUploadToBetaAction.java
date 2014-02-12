@@ -79,7 +79,7 @@ public class MaterialUploadToBetaAction extends BasicAction {
 
     @Action(value = "uploadCourseMaterialToBeta")
     public String uploadCourseMaterialToBeta() {
-        String savePath = ServletActionContext.getServletContext().getRealPath("") + "/" + Constants.UPLOAD_FILE_PATH_PPT + "/";
+        String savePath = ServletActionContext.getServletContext().getRealPath("") + Constants.UPLOAD_FILE_PATH_PPT + "/";
         Random r = new Random();
         int rannum = (int) (r.nextDouble() * (99999 - 10000 + 1)) + 10000;
         SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
