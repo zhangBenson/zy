@@ -285,10 +285,18 @@ import java.util.List;
     }
     public List<Course> findHotCoursesByOrg(Integer orgId, Pagination pagination) {
         //return this.find("select distinct  c from Course c   left join c.seniorClassRooms sc   where  c.organization.id = ?  group by c order by count(sc.id) desc",pagination,orgId);
-        List<Course> courses = this.find("select distinct  c from Course c   left join c.seniorClassRooms sc   where  c.organization.id = ?  group by c order by count(sc.id) desc",pagination,orgId);
+        List<Course> courses = this.find("select distinct  c from Course c   left join c.seniorClassRooms sc   where  c.organization.id = ? and c.charges!=0 group by c order by count(sc.id) desc", pagination, orgId);
         List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
         return noDeletedCourses;
     }
+
+    public List<Course> findMoocsByOrg(Integer orgId, Pagination pagination) {
+        //return this.find("select distinct  c from Course c   left join c.seniorClassRooms sc   where  c.organization.id = ?  group by c order by count(sc.id) desc",pagination,orgId);
+        List<Course> courses = this.find("select distinct  c from Course c   left join c.seniorClassRooms sc   where  c.organization.id = ? and c.charges=0 group by c order by count(sc.id) desc", pagination, orgId);
+        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
+        return noDeletedCourses;
+    }
+
 
     private List<CourseClass> getLivingClasses(List<CourseClass> courseClasses ){
         List<CourseClass> curr = new ArrayList<CourseClass>();

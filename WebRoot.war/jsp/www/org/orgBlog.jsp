@@ -42,8 +42,8 @@
 				<h3 class="courseSubhead"><s:property value="%{getText('usermenu.item.mooc')}"/></h3> <%--Mooc--%>
 				<div id="Mooccurriculum">
 				<div class="row">
-					 <s:iterator value="hotCourses" status="idx">
-                        <s:if test="#idx.index < 6">
+                    <s:iterator value="moocs" status="idx">
+                    <s:if test="#idx.index < 6">
                             <div class="col-sm-4">
                                 <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>">
                                     <div class="recommended"><img src="<s:property value="logoUrl"/>" alt="" /><br/><span><s:property value="name"/></span></div>
