@@ -359,9 +359,14 @@
         <put-attribute name="contentRight" value="/jsp/gogowise/updateUserInfo_teacher.jsp"/>
     </definition>
 
-    <definition name=".initUpdate" extends=".initUserCenter">
+    <!--<definition name=".initUpdate" extends=".initUserCenter">
         <put-attribute name="title" value="title.account.setting"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/updateUserInfo.jsp"/>
+    </definition>-->
+
+    <definition name=".initUpdate" extends=".wwwBodyCenter">
+        <put-attribute name="title" value="title.account.setting"/>
+        <put-attribute name="contentBody" value="/jsp/www/user/userSetting.jsp"/>
     </definition>
 
 
