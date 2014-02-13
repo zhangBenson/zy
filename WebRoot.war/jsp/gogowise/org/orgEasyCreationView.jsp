@@ -71,7 +71,10 @@
                 </li>
                 <li class="long_li">
                     <div class="option_tittle">描述</div>
-                    <div class="input_content"><s:property value="org.description"/></div>
+                    <div class="input_content">
+                        ${org.description}
+                        <%--<s:property value="org.description"/>--%>
+                    </div>
                 </li>
                     <%--<li class="long_li" style="height: 100px">--%>
                     <%--</li>--%>

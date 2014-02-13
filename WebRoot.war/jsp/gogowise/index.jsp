@@ -78,8 +78,8 @@
 
                             <div class="coursePanelInfoRight">
                                 <p class="textOverSinglerow"><s:property value="name"/></p>
-                                <p class="textOverSinglerow"><s:property value="%{getText('course.school')}"/>:<s:property value="organization.schoolName" /></p>
-                                <p class="textOverSinglerow"><s:property value="%{getText('label.index.classes.start')}"/><%-- Clases start--%>: <s:date name="publicationTime" format="%{getText('dateformat.forclass')}"/></p>
+                                <p class="textOverSinglerow"><s:property value="%{getText('course.school')}"/>:&nbsp;<s:property value="organization.schoolName" /></p>
+                                <p class="textOverSinglerow"><s:property value="%{getText('label.index.classes.start')}"/>:&nbsp;<s:date name="publicationTime" format="%{getText('dateformat.forclass')}"/></p>
                             </div>
                         </div>
                     </a>
@@ -119,8 +119,8 @@
                             </div>
                             <div class="coursePanelInfoRight">
                                 <p class="textOverSinglerow"><s:property value="name"/></p>
-                                <p class="textOverSinglerow"><s:property value="%{getText('course.school')}"/>:<s:property value="organization.schoolName" /></p>
-                                <p class="textOverSinglerow"><s:property value="%{getText('label.index.classes.start')}"/>: <s:date name="publicationTime" format="%{getText('dateformat.forclass')}"/></p>
+                                <p class="textOverSinglerow"><s:property value="%{getText('course.school')}"/>:&nbsp;<s:property value="organization.schoolName" /></p>
+                                <p class="textOverSinglerow"><s:property value="%{getText('label.index.classes.start')}"/>:&nbsp;<s:date name="publicationTime" format="%{getText('dateformat.forclass')}"/></p>
                             </div>
                         </div>
                     </a>
