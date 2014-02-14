@@ -29,7 +29,7 @@
         //头像的上传
         $(document).ready(function(){
             var jcrop_api;
-            var imgX,imgY,imgWidth,imgHeight;
+            var imgX=0,imgY=0,imgWidth,imgHeight;
             var boundx,boundy;
             var originalWidth;
             var originalHeight;
@@ -88,11 +88,15 @@
                         originalWidth = OriginalImage.width;
                         originalHeight = OriginalImage.height;
                         var ratio = originalWidth/originalHeight;
-                        if(ratio>=280/120) {
-                            $("#target").attr("width","560px");
+                        if(ratio>=4/3) {
+                            $("#target").attr("width","400px");
+                            imgHeight = originalHeight;
+                            imgWidth = imgHeight*120/280;
                             imageLong = true;
                         }else {
-                            $("#target").attr("height","240px");
+                            $("#target").attr("height","300px");
+                            imgWidth = originalWidth;
+                            imgHeight = imgWidth*280/120;
                             imageLong = false;
                         }
 
@@ -117,6 +121,7 @@
             //头像的剪裁
             function img_crop() {
                 // Create variables (in this scope) to hold the API and image size
+
                 $('#target').Jcrop({
                     onChange: updatePreview,
                     onSelect: updatePreview,
