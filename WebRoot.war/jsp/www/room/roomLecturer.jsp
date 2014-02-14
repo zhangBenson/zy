@@ -458,7 +458,7 @@ function setVideoInfo(videolink,videoname)
     $.ajax({
         type: 'POST',
         url: "uploadMaterialWithJson.html",
-        data:{"sourceTitle":videoname,"convertPath ":videolink,"course.id":"1","courseMaterial.type":"1"},
+        data:{"sourceTitle":videoname,"convertPath ":videolink,"course.id":<s:property value="courseClass.course.id"/>,"courseMaterial.type":"1"},
         dataType:"json",
         success: function(data)
         {
@@ -1385,7 +1385,7 @@ function ShowMessage(name,imgpath,content,bit)
                             <span class="input-group-addon"><span class="glyphicon glyphicon-file" style="color: #999;"></span></span>
                             <input type="text" class="form-control" placeholder="Input A Name for the Link">
                         </div>
-                        <button type="button" class="btn btn-success btn-sm btn-block">Add Video</button>
+                        <button type="button" class="btn btn-success btn-sm btn-block"  id="btnAddVideo">Add Video</button>
                     </div>
                 </div>
                 <div class="tab-pane" id="filesysQuestionbank">
