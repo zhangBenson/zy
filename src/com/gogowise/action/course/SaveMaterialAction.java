@@ -166,23 +166,27 @@ public class SaveMaterialAction extends BasicAction {
 
         String extName = "";
         String updatedFileNameOnly = "";
-        if (fileuploadFileName.lastIndexOf(".") >= 0) {
+        String dstPath = "";
+        if (fileuploadFileName != null && fileuploadFileName.lastIndexOf(".") >= 0) {
             extName = fileuploadFileName.substring(fileuploadFileName.lastIndexOf("."));
             updatedFileNameOnly = fileuploadFileName.replace(extName, "");
+            String newFileName = rannum + nowTimeStr + extName;
+
+            fileupload.renameTo(new File(savePath + newFileName));
+
+            String newName = courseMaterial.getTypeString() + "_" + nowTimeStr + extName;
+
+            String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + newFileName);
+            dstPath = ServletActionContext.getServletContext().getRealPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/" + newName);
+
+            Utils.copy(new File(srcPath), new File(dstPath));
+            courseMaterial.setFullPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/" + newName);
+            this.setGenFileName(newFileName);
         }
         if (courseMaterial.getSourceTitle() == null) {
             courseMaterial.setSourceTitle(updatedFileNameOnly);
         }
-        String newFileName = rannum + nowTimeStr + extName;
 
-        fileupload.renameTo(new File(savePath + newFileName));
-
-        String newName = courseMaterial.getTypeString() + "_" + nowTimeStr + extName;
-
-        String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + newFileName);
-        String dstPath = ServletActionContext.getServletContext().getRealPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/" + newName);
-
-        Utils.copy(new File(srcPath), new File(dstPath));
 
         //文件相关属性设置
         courseMaterial.setUploadTime(Calendar.getInstance());
@@ -193,7 +197,7 @@ public class SaveMaterialAction extends BasicAction {
             courseMaterial.setCourse(courseDao.findById(this.course.getId()));
         }
 
-        courseMaterial.setFullPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/" + newName);
+
         courseMaterial.setIsDisplay(true);
         courseMaterialDao.persistAbstract(courseMaterial);
 
@@ -202,7 +206,7 @@ public class SaveMaterialAction extends BasicAction {
 
         HttpServletResponse response = ServletActionContext.getResponse();
         response.setCharacterEncoding("utf-8");
-        this.setGenFileName(newFileName);
+
         return RESULT_JSON;
     }
 
