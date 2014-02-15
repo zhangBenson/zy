@@ -738,7 +738,7 @@ public class UserAction extends BasicAction {
     }
 
     @Action(value = "reg",
-            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}),
+            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "personalCenter"}),
                     @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".easyReg"),
                     @Result(name = "redirect", type = "redirect", location = "${reDirectUrl}")}
     )
