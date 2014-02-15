@@ -10,7 +10,7 @@
     })
 
 </script>
-
+<%--<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>--%>
 <div class="thickline"></div>
 <div class="container">
     <div class="row">
@@ -97,7 +97,7 @@
             <h1 class = "courseSubject">Log in</h1>
             <h1 class = "courseSynopsis">Please log in to continue.</h1>
 
-            <form class="form-horizontal" role="form" id="user_login_form">
+            <form class="form-horizontal" role="form" id="user_login_form" method="post">
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                     <div class="col-sm-10">
@@ -131,6 +131,7 @@
 <script type="text/javascript">
     $("#log_btn").click(function(){
         if(checkForm()){
+
             var userData = $("#user_login_form").serialize();
             $.post("ajaxLogin.html",userData,function(data){
                 if(data=="success"){
