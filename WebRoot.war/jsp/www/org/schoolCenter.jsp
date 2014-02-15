@@ -39,7 +39,7 @@
             <div class="schoolRow">
                 <div class="row">
                     <div class="col-sm-3">
-                        <div class="pull-left" style="width:500px;">
+                        <div class="pull-left" style="width:900px;">
                             <a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="nickName"/>">
                                 <div id = "share_title" class="courseSubject"><s:property value="schoolName"/></div>
                             </a>
