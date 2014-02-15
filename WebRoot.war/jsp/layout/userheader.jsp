@@ -19,7 +19,7 @@
 
                 <li class="hp_item">
                    <div class="menu_base menu_base_userCenter">
-                       <a href="myfirstPage.html"><s:property value="%{getText('usermenu.item.myhomepage')}"/></a>
+                       <a href="myfirstPage.html"><s:property value="%{getText('contentLeft.param1')}"/></a>
                    </div>
                </li>
 

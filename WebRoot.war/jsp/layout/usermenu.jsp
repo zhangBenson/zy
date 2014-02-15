@@ -32,6 +32,9 @@
             <div class="list">
                 <h3 class="h3_title"><s:property value="%{getText('usermenu.item.organizationmatters')}"/></h3>
                 <ul>
+
+                    <li><a href="javascript:;">Student Management</a></li>
+                    <li><a href="javascript:;">Teacher Management</a></li>
                     <li><a href="createCourseAllInOne.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a></li>
                     <%--<li><a href="courseSupervise.html"><s:property value="%{getText('org.matters.course.supervisions')}"/></a></li>
                     <li><a href="orgInterview.html"><s:property value="%{getText('online.interview')}"/></a></li>

@@ -1,27 +1,26 @@
 package com.gogowise.action.org;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.rep.Pagination;
-import com.gogowise.rep.course.dao.CourseDao;
-import com.gogowise.rep.course.dao.CourseEvaluationDao;
-import com.gogowise.rep.org.OrgService;
-import com.gogowise.rep.org.dao.OrgMaterialDao;
-import com.gogowise.rep.org.dao.OrganizationCommentDao;
-import com.gogowise.rep.org.dao.OrganizationDao;
-import com.gogowise.rep.user.dao.BaseUserDao;
-import com.gogowise.rep.course.enity.Course;
-import com.gogowise.rep.course.enity.CourseEvaluation;
-import com.gogowise.rep.course.enity.SeniorClassRoom;
-import com.gogowise.rep.org.enity.OrgMaterial;
-import com.gogowise.rep.org.enity.Organization;
-import com.gogowise.rep.org.enity.OrganizationComment;
-import com.gogowise.rep.org.enity.OrganizationTeacher;
-import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
-import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.EmailUtil;
 import com.gogowise.common.utils.MD5;
 import com.gogowise.common.utils.Utils;
+import com.gogowise.rep.Pagination;
+import com.gogowise.rep.course.dao.CourseDao;
+import com.gogowise.rep.course.enity.Course;
+import com.gogowise.rep.course.enity.CourseEvaluation;
+import com.gogowise.rep.course.enity.SeniorClassRoom;
+import com.gogowise.rep.org.OrgService;
+import com.gogowise.rep.org.dao.OrgMaterialDao;
+import com.gogowise.rep.org.dao.OrganizationCommentDao;
+import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.org.enity.OrgMaterial;
+import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.org.enity.OrganizationComment;
+import com.gogowise.rep.org.enity.OrganizationTeacher;
+import com.gogowise.rep.user.dao.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
+import com.gogowise.rep.user.enity.BaseUser;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
@@ -37,12 +36,8 @@ import org.springframework.stereotype.Controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
 import java.text.SimpleDateFormat;
-import java.util.Map;
-import java.util.HashMap;
+import java.util.*;
 
 
 @Controller
@@ -75,6 +70,7 @@ public class OrganizationAction extends BasicAction {
 
     private String organizationName;
     private List<Course> latestCourse;
+    private List<Course> moocs;
     private Course course;
     private List<Course> hotCourses;
     private List<CourseEvaluation> courseEvaluations;
@@ -202,11 +198,11 @@ public class OrganizationAction extends BasicAction {
         Integer orgId = org.getId() == null ? 1 : org.getId();
         this.org = organizationDao.findById(orgId);
 
-        latestCourse = courseDao.findLatestCourseByOrg(orgId, new Pagination(3));
+        latestCourse = courseDao.findLatestCourseByOrg(orgId, new Pagination(4));
         if (latestCourse != null && latestCourse.size() > 0)
             course = latestCourse.get(0);
-        hotCourses = courseDao.findHotCoursesByOrg(orgId, new Pagination(4));
-
+        hotCourses = courseDao.findHotCoursesByOrg(orgId, new Pagination(6));
+        moocs = courseDao.findMoocsByOrg(orgId, new Pagination(6));
         Pagination page  = new Pagination(10);
         comments = organizationCommentDao.findOrgCommentByOrgId(orgId, page);
 
@@ -984,5 +980,13 @@ public class OrganizationAction extends BasicAction {
 
     public void setBaseUserRoleTypeDao(BaseUserRoleTypeDao baseUserRoleTypeDao) {
         this.baseUserRoleTypeDao = baseUserRoleTypeDao;
+    }
+
+    public List<Course> getMoocs() {
+        return moocs;
+    }
+
+    public void setMoocs(List<Course> moocs) {
+        this.moocs = moocs;
     }
 }

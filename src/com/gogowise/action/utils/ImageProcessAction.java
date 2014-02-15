@@ -52,8 +52,8 @@ public class ImageProcessAction extends BasicAction{
     @Action(value = "cropUserPortrait")
     public void cropUserPortrait() throws IOException {
         if (StringUtils.isNotBlank(this.getUserPortraitName())) {
-            String srcPath = ServletActionContext.getServletContext().getRealPath(File.separator+Constants.UPLOAD_FILE_PATH_TMP + File.separator + this.getUserPortraitName());
-            String toPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_USER_PATH + File.separator + getSessionUserId() + "/userPortrait/" + this.getUserPortraitName());
+            String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + this.getUserPortraitName());
+            String toPath = ServletActionContext.getServletContext().getRealPath("")+Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + "/userPortrait/" + this.getUserPortraitName();
 
              //获取拓展名
             String extName="";
@@ -82,7 +82,7 @@ public class ImageProcessAction extends BasicAction{
     @Action(value = "cropCourseLogo")
     public void cropCourseLogo() throws IOException {
         if (StringUtils.isNotBlank(this.getCourseLogoName())) {
-            String srcPath = ServletActionContext.getServletContext().getRealPath("/"+Constants.UPLOAD_FILE_PATH_TMP + "/" + this.getCourseLogoName());
+            String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + this.getCourseLogoName());
 //            String toPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId()+"/"+this.getCourseLogoName());
 //            String toPath = srcPath;
 
@@ -107,7 +107,7 @@ public class ImageProcessAction extends BasicAction{
     @Action(value = "cropOrgLogo")
     public void cropOrgLogo() throws IOException{
         if (StringUtils.isNotBlank(this.getOrgLogoName())) {
-            String srcPath = ServletActionContext.getServletContext().getRealPath("/"+Constants.UPLOAD_FILE_PATH_TMP + "/" + this.getOrgLogoName());
+            String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + this.getOrgLogoName());
 //            String toPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId()+"/"+this.getCourseLogoName());
 //            String toPath = srcPath;
 

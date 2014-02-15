@@ -13,6 +13,7 @@
 
 <link href="js/uploadify/uploadify.css" type="text/css" rel="stylesheet"/>
 <script type="text/javascript" src="js/uploadify/jquery.uploadify.v2.1.4.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
 <script type="text/javascript" src="js/uploadify/swfobject.js"></script>
 <link href="css/orgLeague/<s:text name='orgleague.css.filename'/>" rel="stylesheet" type="text/css"/>
 <style type="text/css">
@@ -41,74 +42,7 @@
         border-right: #B7D2DF solid 1px;
     }
 </style>
-<script type="text/javascript"  >
-    var uploading = false;
-    var words_on_uploadButton = "Browse";
-$(document).ready(function () {
-    $("#fileupload1").uploadify({
-        'uploader':'js/uploadify/uploadify.swf',
-        'script':'utils/uploadFile.html',
-        'cancelImg':'js/uploadify/cancel.png',
-        'queueID':'fileQueue', //和存放队列的DIV的id一致
-        'fileDataName':'fileupload', //和以下input的name属性一致
-        'auto':true, //是否自动开始
-        'multi':false, //是否支持多文件上传
-        'buttonText':words_on_uploadButton, //按钮上的文字
-        'simUploadLimit':1, //一次同步上传的文件数目
-        'sizeLimit':2000000, //设置单个文件大小限制
-        'queueSizeLimit':1, //队列中同时存在的文件个数限制
-        'fileDesc':'jpg/gif/jpeg/png/bmp.', //如果配置了以下的'fileExt'属性，那么这个属性是必须的
-        'fileExt':'*.jpg;*.gif;*.jpeg;*.png;*.bmp;*.png', //允许的格式
-        onComplete:function (event, queueID, fileObj, response, data) {
-            uploading = false;
-            var jsonRep = $.parseJSON(response)
-            document.getElementById('logoUrl').value = jsonRep.genFileName;
-            $('<li></li>').appendTo('.files').text(jsonRep.genFileName);
-        },
-        onError:function (event, queueID, fileObj) {
-            alert("file:" + fileObj.name + "upload failed");
-        },
-        onCancel:function (event, queueID, fileObj) {
-        },
-        onUploadStart:function (event, queueID, fileObj) {
-            uploading = true;
-        }
-    });
 
-    $("#fileupload2").uploadify({
-        'uploader':'js/uploadify/uploadify.swf',
-        'script':'utils/uploadFile.html',
-        'cancelImg':'js/uploadify/cancel.png',
-        'queueID':'fileQueue', //和存放队列的DIV的id一致
-        'fileDataName':'fileupload', //和以下input的name属性一致
-        'auto':true, //是否自动开始
-        'multi':false, //是否支持多文件上传
-        'buttonText':words_on_uploadButton, //按钮上的文字
-        'simUploadLimit':1, //一次同步上传的文件数目
-        'sizeLimit':2000000, //设置单个文件大小限制
-        'queueSizeLimit':1, //队列中同时存在的文件个数限制
-        'fileDesc':'jpg/gif/jpeg/png/bmp.', //如果配置了以下的'fileExt'属性，那么这个属性是必须的
-        'fileExt':'*.jpg;*.gif;*.jpeg;*.png;*.bmp;*.png', //允许的格式
-        onComplete:function (event, queueID, fileObj, response, data) {
-            uploading = false;
-            var jsonRep = $.parseJSON(response)
-            document.getElementById('advUrl').value = jsonRep.genFileName;
-            $('<li></li>').appendTo('.files').text(jsonRep.genFileName);
-        },
-        onError:function (event, queueID, fileObj) {
-            alert("file:" + fileObj.name + "upload failed");
-        },
-        onCancel:function (event, queueID, fileObj) {
-        },
-        onUploadStart:function (event, queueID, fileObj) {
-            uploading = true;
-        }
-    });
-
-
-});
-
-</script>
 
 <div id="orgLeagueDiv">
     <div id="orgCenterDiv" style="height: 500px" >
@@ -140,26 +74,30 @@ $(document).ready(function () {
                 <li class="long_li">
                     <div class="option_tittle">组织LOGO</div>
                     <%--<div class="file_upload"><input type="file" name="fileupload" id="fileupload1" /></div>--%>
-                    <img id="show_log_preview"/>
+                    <img id="show_log_preview" src="<s:property value="org.logoUrl" />" width="140" height="60" onerror="javascript:this.src='images/nopic.jpg'"/>
                    <div class="file_upload">
                        <input type="button" class="submit_btn" id="change_portrait" value="<s:property value="%{getText('onlive.message.update')}"/>" href="orgLogoProcess.html" />
                    </div>
                     <p id="secondStepFileWarn" class="input_msg"></P>
-                    <s:hidden name="logoUrl" id="logoUrl"/>
+
+                    <input type="hidden" name="logoUrl" id="logoUrl" />
                     <div id="fileQueue"></div>
                 </li>
                 <li class="long_li">
                     <div class="option_tittle">广告照片</div>
+                    <img id="show_adv_preview" src="<s:property value="org.advUrl" />" width="140" height="60" onerror="javascript:this.src='images/nopic.jpg'"/>
                     <div class="file_upload"><input type="file" name="fileupload2" id="fileupload2" /></div>
-                    <p id="secondStepFileWarn" class="input_msg"></P>
-                    <s:hidden name="advUrl" id="advUrl"/>
-                    <div id="fileQueue"></div>
+                    <p id="secondStepFileWarn2" class="input_msg"></P>
+
+                    <input type="hidden" name="advUrl" id="advUrl" >
+                    <div id="fileQueue2"></div>
                 </li>
 
                 <li class="long_li" style="height: 200px;">
                     <div class="option_tittle">描述</div>
                     <br/>
                     <br/>
+                    <p id="secondDescWarn" class="input_msg"></P>
                     <%-- <div class="input_content"><s:textarea cssClass="long_text_area" id="step2_course_intro" name="org.description"/></div> --%>
                     <s:textarea cols="80"  id="editor1" name="org.description"  rows="5"></s:textarea>
                     <ckeditor:replace  replace="editor1" basePath="js/ckeditor/"  config="<%=settings %>"/>
@@ -195,27 +133,82 @@ $(document).ready(function () {
 
     </div>
 </div>
-<script type="text/javascript">
+<script type="text/javascript"  >
+    var uploading = false;
+    var words_on_uploadButton = "Browse";
+    $(document).ready(function () {
+        $("#fileupload2").uploadify({
+            'uploader':'js/uploadify/uploadify.swf',
+            'script':'utils/uploadFile.html',
+            'cancelImg':'js/uploadify/cancel.png',
+            'queueID':'fileQueue', //和存放队列的DIV的id一致
+            'fileDataName':'fileupload', //和以下input的name属性一致
+            'auto':true, //是否自动开始
+            'multi':false, //是否支持多文件上传
+            'buttonText':words_on_uploadButton, //按钮上的文字
+            'simUploadLimit':1, //一次同步上传的文件数目
+            'sizeLimit':2000000, //设置单个文件大小限制
+            'queueSizeLimit':1, //队列中同时存在的文件个数限制
+            'fileDesc':'jpg/gif/jpeg/png/bmp.', //如果配置了以下的'fileExt'属性，那么这个属性是必须的
+            'fileExt':'*.jpg;*.gif;*.jpeg;*.png;*.bmp;*.png', //允许的格式
+            onComplete:function (event, queueID, fileObj, response, data) {
+                uploading = false;
+                var jsonRep = $.parseJSON(response)
+                document.getElementById('advUrl').value = jsonRep.genFileName;
+                $('<li></li>').appendTo('.files').text(jsonRep.genFileName);
+                $("#show_adv_preview").attr("src","/upload/file/tmp/"+jsonRep.genFileName);
+            },
+            onError:function (event, queueID, fileObj) {
+                alert("file:" + fileObj.name + "upload failed");
+            },
+            onCancel:function (event, queueID, fileObj) {
+            },
+            onUploadStart:function (event, queueID, fileObj) {
+                uploading = true;
+            }
+        });
+
+        $("#change_portrait").fancybox({
+            type:'iframe',
+            width:720,
+            height:490
+        });
+    });
+
     function checkEvent(){
+        var r1 = checkEmpty('secondStepName','secondStepNameWarn','负责人Email不能为空');
+        var r2 = checkEmpty('secondStepContact','secondStepContactWarn','组织名称不能为空');
+        var r3 = checkEmpty('secondStepID','secondStepIDWarn','负责人手机号码不能为空');
+
+        var r4 = true;
+        $("#secondStepFileWarn").html("");
+        if($("#show_log_preview").attr("src").indexOf("images/nopic.jpg")>-1){
+            $("#secondStepFileWarn").html("请上传组织LOGO");
+            r4 = false;
+        }
+
+        var r5 = true;
+        $("#secondStepFileWarn2").html("");
+        if($("#show_adv_preview").attr("src").indexOf("images/nopic.jpg")>-1){
+            $("#secondStepFileWarn2").html("请上传组织广告图");
+            r5 = false;
+        }
 
         var ckeditor = CKEDITOR.instances.editor1;
         var eventContent = ckeditor.getData();
 
-        var flag;
+        var r6 = true;
         if(eventContent == "") {
-            alert("请填写内容！");
-            flag = false;
+            $("#secondDescWarn").html("请填写内容！");
+            r6 = false;
         }
-        else {
-            flag = true;
+
+        var result = r1&&r2&&r3&&r4&&r5&&r6;
+
+        if(!result){
+            moveToExact(50);
         }
-        return flag;
+
+        return result;
     }
-
-    $("#change_portrait").fancybox({
-        type:'iframe',
-        width:720,
-        height:490
-    });
-
 </script>

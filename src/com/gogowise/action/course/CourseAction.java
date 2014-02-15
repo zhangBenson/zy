@@ -17,7 +17,6 @@ import com.gogowise.rep.system.dao.GoGoWiseAnnounceDao;
 import com.gogowise.rep.system.enity.GoGoWiseAnnounce;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
-import com.gogowise.rep.user.dao.BaseUserRoleTypeImpl;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.lang.StringUtils;
@@ -1010,7 +1009,7 @@ public class CourseAction extends BasicAction {
     }
 
     public String voa() {
-        if (course == null) {
+        /*if (course == null) {
             course = courseDao.findById((Integer) ActionContext.getContext().getSession().get("SessionCourseId"));
             ActionContext.getContext().getSession().remove("SessionCourseId");
             courseComments = courseCommentDao.findByCourseId(new Pagination(10), course.getId());
@@ -1018,7 +1017,7 @@ public class CourseAction extends BasicAction {
             courseQuestions = courseQuestionDao.findNewByCourseId(pagination, course.getId());
             courseResources = courseResourceDao.findByCourseId(pagination, course.getId());
             return SUCCESS;
-        }
+        }*/
         course = courseDao.findById(this.getCourse().getId());
         Pagination page = new Pagination(10);
         courseComments = courseCommentDao.findByCourseId(page, course.getId());

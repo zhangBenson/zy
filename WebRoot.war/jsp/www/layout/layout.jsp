@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="/css/course/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="/css/course/gogowise.css">
         <script src="/js/jquery-1.7.2.min.js"></script>
+        <script src="/js/common.js"></script>
         <script src="/js/course/bootstrap.min.js"></script>
         <script src="/js/index/jquery.bxslider.min.js"></script>
         <link rel="stylesheet" href="/css/index/jquery.bxslider.css">

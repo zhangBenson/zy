@@ -45,6 +45,7 @@ public class OrgForBackendAction extends BasicAction {
     private Boolean language = false;
 
     private String logoUrl;
+    private String advUrl;
     private String contractUrl;
     private String confirmCode;
 
@@ -212,23 +213,18 @@ public class OrgForBackendAction extends BasicAction {
 
             Utils.replaceFileFromTempModified(temp.getAbsolutePath(), this.getLogoUrl());
 
-            //Utils.replaceFileFromTmp(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + Constants.ORG_LOGO_PATH, this.getLogoUrl());
             orgSaved.setLogoUrl(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + Constants.ORG_LOGO_PATH + this.getLogoUrl());
-        }else {
-            orgSaved.setLogoUrl(Constants.DEFAULT_ORGANIZATION_IMAGE);
         }
 
-        if (StringUtils.isNotBlank(this.getLogoUrl()))
-        {
+        if (StringUtils.isNotBlank(this.getAdvUrl())){
             String advDir = userDir + File.separatorChar + getSessionUserId() +  Constants.ORG_ADV_PATH;
 
             File advFile = new File(advDir);
             if(!advFile.exists()) advFile.mkdirs();
 
-            Utils.replaceFileFromTempModified(advFile.getAbsolutePath(), this.getLogoUrl());
+            Utils.replaceFileFromTempModified(advFile.getAbsolutePath(), this.getAdvUrl());
 
-            //Utils.replaceFileFromTmp(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + Constants.ORG_ADV_PATH, this.getLogoUrl());
-            orgSaved.setAdvUrl(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + Constants.ORG_ADV_PATH + this.getLogoUrl());
+            orgSaved.setAdvUrl(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + Constants.ORG_ADV_PATH + this.getAdvUrl());
         }
 
         orgSaved.setResponsiblePerson(baseUser);
@@ -330,6 +326,14 @@ public class OrgForBackendAction extends BasicAction {
 
     public void setLogoUrl(String logoUrl) {
         this.logoUrl = logoUrl;
+    }
+
+    public String getAdvUrl() {
+        return advUrl;
+    }
+
+    public void setAdvUrl(String advUrl) {
+        this.advUrl = advUrl;
     }
 
     public String getContractUrl() {

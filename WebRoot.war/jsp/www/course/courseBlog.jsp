@@ -166,15 +166,17 @@
                 <div class="well">
                     <a href="orgBlog.html?org.id=<s:property value="course.organization.id"/>" title="<s:property value="course.organization.nickName"/>">
                         <img class="schoolPortrait" src="<s:property value="course.organization.logoUrl"/>"/></a>
-                    <h4 class="textOverSinglerow"><s:property value="%{getText('course.school')}"/>:<s:property value="course.organization.schoolName"/></h4>
-                    <h4 class="textOverSinglerow"><s:property value="%{getText('course.code')}"/>: <s:property value="course.id"/></h4>
-                    <h4 class="textOverSinglerow"><s:property value="%{getText('course.teaching.language')}"/>:<s:property value="course.languageType"/></h4>
+                    <h4 class="textOverSinglerow"><s:property value="%{getText('course.school')}"/>:&nbsp;<s:property value="course.organization.schoolName"/></h4>
+                    <h4 class="textOverSinglerow"><s:property value="%{getText('course.code')}"/>:&nbsp;<s:property value="course.id"/></h4>
+                    <h4 class="textOverSinglerow"><s:property value="%{getText('course.teaching.language')}"/>:&nbsp;<s:property value="course.languageType"/></h4>
                     <s:if test="!course.courseFinished">
                         <%-- <a href="javascript:;" id="register_btn" class="act_btn register_btn"><s:property value="%{getText('label.course.register')}"/></a> --%>
                         <button type="button" class="btn btn-primary btn-block" id = "register_btn"><s:property value="%{getText('user.info.identity.finish.reg')}"/> <s:property value="course.name" /></button>
                     </s:if>
                     <s:else>
-                        <button type="button" value="disable" disabled="disabled" class="btn btn-primary btn-block" id = "register_btn"><s:property value="%{getText('user.info.identity.finish.reg')}"/> <s:property value="course.name" /></button>
+                        <button type="button" value="disable" disabled="disabled" class="btn btn-primary btn-block" id = "register_btn">
+                            <s:property value="%{getText('button.course.regist')}"/>
+                        </button>
                     </s:else>
 
                 </div>
@@ -213,7 +215,7 @@
                         <s:if test="course.FinshedClassNum < course.ClassesNum">
                             <s:iterator value="course.ForcastClasses" begin="0" end="0" status="idx">
 
-                                <div><s:property value="%{getText('lable.course.nickname')}"/><%--Topic--%>: <s:property value="nickName"/></div>
+                                <div><s:property value="%{getText('lable.course.nickname')}"/><%--Topic--%>:&nbsp;<s:property value="nickName"/></div>
                                 <p></p>
 
                                 <div><s:property value="%{getText('lable.course.no')}"/><%--Numbers--%>:
@@ -221,27 +223,27 @@
                                 </div>
                                 <p></p>
 
-                                <div><s:property value="%{getText('lable.course.starttime')}"/><%--Time--%>:<s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
+                                <div><s:property value="%{getText('lable.course.starttime')}"/><%--Time--%>:&nbsp;<s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
                                 <p></p>
 
-                                <div><s:property value="%{getText('courses.info.lecturer')}"/><%--Lecturer--%>: <s:property value="course.teacher.nickName"/></div>
+                                <div><s:property value="%{getText('courses.info.lecturer')}"/><%--Lecturer--%>:&nbsp;<s:property value="course.teacher.nickName"/></div>
                                 <br/>
                             </s:iterator>
                         </s:if>
                         <s:else>
                             <s:iterator value="course.classes" begin="course.ClassesNum-1" end="course.ClassesNum -1" status="idx">
-                                <div><s:property value="%{getText('lable.course.nickname')}"/>: <s:property value="nickName"/></div>
+                                <div><s:property value="%{getText('lable.course.nickname')}"/>:&nbsp;<s:property value="nickName"/></div>
                                 <p></p>
 
-                                <div><s:property value="%{getText('lable.course.no')}"/>:
-                                    <s:property value="%{getText('lable.class.no1')}"/><s:property value="course.ClassesNum"/><s:property value="%{getText('lable.class.no2')}"/>
+                                <div><s:property value="%{getText('lable.course.no')}"/>:&nbsp;<s:property value="%{getText('lable.class.no1')}"/>
+                                    <s:property value="course.ClassesNum"/><s:property value="%{getText('lable.class.no2')}"/>
                                 </div>
                                 <p></p>
-                                <div><s:property value="%{getText('lable.course.starttime')}"/>:<s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
+                                <div><s:property value="%{getText('lable.course.starttime')}"/>:&nbsp;<s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
                                 <p></p>
-                                <div><s:property value="%{getText('courses.info.lecturer')}"/>: <s:property value="course.teacher.nickName"/></div>
+                                <div><s:property value="%{getText('courses.info.lecturer')}"/>:&nbsp;<s:property value="course.teacher.nickName"/></div>
                                 <p></p>
-                                <div><s:property value="%{getText('word.audience')}"/>:</div>
+                                <div><s:property value="%{getText('word.audience')}"/>:&nbsp;</div>
                                 <br/>
                             </s:iterator>
                         </s:else>
@@ -258,9 +260,9 @@
 
                 <div class="gogopanelBody">
                     <div class="gogopanelBodyText">
-                        <div><s:property value="%{getText('label.discussion.room.start.time')}"/>:</div>
+                        <div><s:property value="%{getText('label.discussion.room.start.time')}"/>:&nbsp;</div>
                         <p></p>
-                        <div><s:property value="%{getText('label.discussion.room.duration')}"/>:</div>
+                        <div><s:property value="%{getText('label.discussion.room.duration')}"/>:&nbsp;</div>
                         <p></p>
                         <div id="DisUserArea" style="text-align: center;">
                             <s:if test="course.teachers != null">

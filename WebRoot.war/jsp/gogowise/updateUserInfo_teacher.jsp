@@ -102,9 +102,12 @@
              <div class="content_compa">
                  <div class="password_change_inner">
                       <table cellpadding="0" cellspacing="0">
-                          <tr><td class="td_left"><s:property value="%{getText('label.old.password')}"/>：</td><td class="td_right"><s:password cssClass="old_password" name='user.password'  /><span class="old_password_msg input_msg"></span></td></tr>
-                          <tr><td class="td_left"><s:property value="%{getText('label.new.password')}"/>：</td><td class="td_right"><s:password cssClass="new_password" name='newPassword'  /><span class="new_password_msg input_msg"></span></td></tr>
-                          <tr><td class="td_left"><s:property value="%{getText('label.new.password.confirm')}"/>：</td><td class="td_right"><s:password cssClass="new_password_repeat" name='newPasswordConfirm'  /><span class="new_password_repeat_msg input_msg"></span></td></tr>
+                          <tr><td class="td_left"><s:property value="%{getText('label.old.password')}"/>：</td>
+                              <td class="td_right"><s:password cssClass="old_password" name='user.password'  /><span class="old_password_msg input_msg"></span></td></tr>
+                          <tr><td class="td_left"><s:property value="%{getText('label.new.password')}"/>：</td>
+                              <td class="td_right"><s:password cssClass="new_password" name='newPassword'  /><span class="new_password_msg input_msg"></span></td></tr>
+                          <tr><td class="td_left"><s:property value="%{getText('label.new.password.confirm')}"/>：</td>
+                              <td class="td_right"><s:password cssClass="new_password_repeat" name='newPasswordConfirm'  /><span class="new_password_repeat_msg input_msg"></span></td></tr>
                       </table>
                  </div>
                  <div class="password_change_submit">
