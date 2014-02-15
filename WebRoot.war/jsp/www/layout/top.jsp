@@ -94,7 +94,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 
         <div style="padding-left: 20px;padding-right: 20px;">
-            <h1 class = "courseSubject">Log in</h1>
+            <h1 class = "courseSubject">Log in</h1><span id="login_tip"></span>
             <h1 class = "courseSynopsis">Please log in to continue.</h1>
 
             <form class="form-horizontal" role="form" id="user_login_form" method="post">
@@ -113,7 +113,8 @@
                         <div class="checkbox">
                             <label>
                                 <input type="checkbox">Remember me</label>
-                            <a href="#" style="float: right;">Forget password</a>
+                            <%--<a href="#" style="float: right;">Forget password</a>--%>
+                            <a href="javascript:;" style="float: right;" onclick="parent.window.location.href='initRepassword.html';"><s:property value="%{getText('link.forget.pwd')}"/>？</a>
                         </div>
 
                     </div>
