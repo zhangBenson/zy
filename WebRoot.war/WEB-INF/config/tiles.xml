@@ -1310,4 +1310,14 @@
         <put-attribute name="title" value="title.logo.upload"/>
     </definition>
 
+    <!-- demo related tiles -->
+    <definition name=".toPlayerDemo" extends=".wwwBodyCenter">
+        <put-attribute name="title" value="GoGoWise--Player Room"/>
+        <put-attribute name="contentBody" value="/htm/Demo/FirstPage_Formal/Player_Demo.jsp" />
+    </definition>
+    <definition name=".toClassDemo" extends=".wwwBodyCenter">
+        <put-attribute name="title" value="GoGoWise--Virtual Class Room"/>
+        <put-attribute name="contentBody" value="/htm/Demo/FirstPage_Formal/VC_Demo.jsp" />
+    </definition>
+
 </tiles-definitions>
