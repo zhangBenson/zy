@@ -62,12 +62,10 @@
                         <p id="secondStepIDWarn" class="input_msg"></p>
 
                         <div class="input_content">
-                            <%--<input name="responser.cardId" id="secondStepID"--%>
-                                   <%--class="input_text_field" type="text">--%>
                             <s:textfield name="responser.cardId" id="secondStepID" cssClass="input_text_field"/>
                         </div>
                     </li>
-                    <li>
+                    <%--<li>
                         <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param9')}"/></p><p id="fileupload1_FileWarn" class="input_msg"></p><br/>
                         <div class="input_content">
                             <p class="img_div"><img  id="file1_preview_img" src="<s:property value="responser.idCardUrl"/>" width="120px" height="90px" onerror="javascript:this.src='images/nopic.jpg'"/></p>
@@ -76,7 +74,7 @@
                             </p>
                             <input type="hidden" id="idCardUrl" name="responser.idCardUrl"/>
                         </div>
-                    </li>
+                    </li>--%>
                     <li class="commit_modfication1">
                         <span id="submit_msg1" class="_submit_msg"></span>
                         <span><s:submit cssClass="submit_btn" value="%{getText('orgInfoUpdate.param10')}"/></span>
@@ -143,7 +141,7 @@
                             </div>
                     </li>
                     <li class="fileUploadDiv">
-                        <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%getText('orgInfoUpdate.param18')"/></p><p id="fileupload2_FileWarn" class="input_msg"></p><br/>
+                        <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param18')}"/></p><p id="fileupload2_FileWarn" class="input_msg"></p><br/>
                         <div class="input_content">
                             <p class="img_div"><img id="file2_preview_img" src="<s:property value="org.logoUrl"/>" width="120px" height="90px" onerror="javascript:this.src='images/nopic.jpg'"/></p>
                             <p class="file_upload"><input type="file" name="upload" id="fileupload2" /></p>
@@ -151,7 +149,7 @@
                         </div>
                     </li>
                     <li class="fileUploadDiv">
-                        <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%getText('orgInfoUpdate.param19')"/></p><p id="fileupload3_FileWarn" class="input_msg"></p><br/>
+                        <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param19')}"/></p><p id="fileupload3_FileWarn" class="input_msg"></p><br/>
                         <div class="input_content">
                             <p class="img_div"><img  id="file3_preview_img" src="<s:property value="org.businessLicenseUrl"/>" width="120px" height="90px" onerror="javascript:this.src='images/nopic.jpg'"/></p>
                             <p class="file_upload"><input type="file" name="upload" id="fileupload3" /></p>
