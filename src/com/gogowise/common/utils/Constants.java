@@ -96,7 +96,13 @@ public class Constants {
     public static final String SESSION_USER_OWN_ORG = "user_own_org";
     public static final String SESSION_USER_PRIVATE_CHANNEL_ID = "user_private_channelID";
 
-
+    /* ---------------------- definition of role type -----------------------------*/
+    public static final Integer ROLE_TYPE_ADMIN = 1;
+    public static final Integer ROLE_TYPE_ORGCREATOR = 2;
+    public static final Integer ROLE_TYPE_ORGREVIEWER = 3;
+    public static final Integer ROLE_TYPE_GRANT = 4;
+    public static final Integer ROLE_TYPE_TEACHER = 5;
+    public static final Integer ROLE_TYPE_STUDENT = 6;
 
     /*---------------------definition ccs type for myFirstPage menu--------------*/
     public static final Integer OPERA_TYPE_FOR_MYFIRSTPAGE = 1;

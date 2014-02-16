@@ -74,7 +74,7 @@
                         <a href="initReg.html" target="_blank" ><s:property value="%{getText('user.info.identity.finish.reg')}"/></a>
                     </li>
                     <li>
-                        <a href="#" id="btnLogin" ><s:property value="%{getText('Login')}"/></a>
+                        <a href="javascript:;" id="btnLogin" ><s:property value="%{getText('Login')}"/></a>
                     </li>
                 </ul>
                 </s:else>
@@ -94,7 +94,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 
         <div style="padding-left: 20px;padding-right: 20px;">
-            <h1 class = "courseSubject">Log in</h1><span id="login_tip"></span>
+            <h1 class = "courseSubject">Log in</h1><span id="login_tip" style="color:red;"></span>
             <h1 class = "courseSynopsis">Please log in to continue.</h1>
 
             <form class="form-horizontal" role="form" id="user_login_form" method="post">
@@ -121,7 +121,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" id="log_btn" class="btn btn-success  btn-lg btn-block">Log me in!</button>
+                        <input type="button" id="log_btn" class="btn btn-success  btn-lg btn-block" value="Log me in!" />
                     </div>
                 </div>
             </form>
