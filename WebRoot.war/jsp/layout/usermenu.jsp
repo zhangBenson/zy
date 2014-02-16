@@ -50,7 +50,7 @@
         <div class="list">
             <h3 class="h3_title"><s:property value="%{getText('usermenu.item.user.info.setting')}"/></h3>
             <ul>
-                <li><a href="initUpdate.html"><s:property value="%{getText('table.base.info')}"/></a></li>
+                <li><a href="setting.html"><s:property value="%{getText('table.base.info')}"/></a></li>
                 <li><a href="myGGWAccount.html"><s:property value="%{getText('usermenu.item.user.account')}"/></a></li>
             </ul>
         </div>
