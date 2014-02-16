@@ -4,7 +4,11 @@
 
 <script src="js/jqueryTabs.js" type="text/javascript"></script>
 <link href="css/org/orgInfoUpdate.css" rel="stylesheet" type="text/css"/>
-
+<style type="text/css">
+    .wwgrp br { display: none; }
+    .submit_btn{ display: block; float: left; width: 122px; height:31px; background: rgb(80,80,80); color: #FFF; font-size: 16px; box-shadow: 0px 1px 2px rgba(40,160,200,0.3); border-radius: 4px; border: none; cursor: pointer; }
+    .long_text_area{ width: 600px; height:80px; padding:2px; border: #7CADC5 solid 1px; border-bottom: #B7D2DF solid 1px; border-right: #B7D2DF solid 1px; }
+</style>
 <div class="orgInfo_container">
     <div class="testtab" id="testtab2">
         <div id="tabtag2" class="tabtag">
@@ -77,7 +81,7 @@
                     </li>--%>
                     <li class="commit_modfication1">
                         <span id="submit_msg1" class="_submit_msg"></span>
-                        <span><s:submit cssClass="submit_btn" value="%{getText('orgInfoUpdate.param10')}"/></span>
+                        <span><input type="button" class="submit_btn" value="<s:property value="%{getText('orgInfoUpdate.param10')}"/>" /></span>
                     </li>
                 </ul>
             </s:form>
@@ -143,9 +147,15 @@
                     <li class="fileUploadDiv">
                         <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param18')}"/></p><p id="fileupload2_FileWarn" class="input_msg"></p><br/>
                         <div class="input_content">
-                            <p class="img_div"><img id="file2_preview_img" src="<s:property value="org.logoUrl"/>" width="120px" height="90px" onerror="javascript:this.src='images/nopic.jpg'"/></p>
-                            <p class="file_upload"><input type="file" name="upload" id="fileupload2" /></p>
-                            <input type="hidden" name="org.logoUrl" id="hidFile1"/>
+                            <p class="img_div">
+                                <img id="show_log_preview" src="<s:property value="org.logoUrl"/>" width="210px" height="90px" onerror="javascript:this.src='images/nopic.jpg'"/>
+                            </p>
+
+                            <div class="file_upload">
+                                <input type="button" class="submit_btn" id="fileupload2" value="<s:property value="%{getText('onlive.message.update')}"/>" href="orgLogoProcess.html" />
+                            </div>
+                            <p id="secondStepFileWarn" class="input_msg"></p>
+                            <s:hidden name="org.logoUrl" id="logoUrl" />
                         </div>
                     </li>
                     <li class="fileUploadDiv">
@@ -158,7 +168,7 @@
                     </li>
                     <li class="commit_modfication2">
                          <span id="submit_msg2" class="_submit_msg"></span>
-                        <span><s:submit cssClass="submit_btn" value="%{getText('orgInfoUpdate.param10')}"/></span>
+                        <span><input type="button" class="submit_btn" value="<s:property value="%{getText('orgInfoUpdate.param10')}"/>"/></span>
                     </li>
 
                 </ul>
@@ -206,7 +216,7 @@
                     </li>
                     <li class="commit_modfication3">
                         <span id="submit_msg3" class="_submit_msg"></span>
-                        <span><s:submit cssClass="submit_btn" value="%{getText('orgInfoUpdate.param10')}"/></span>
+                        <span><input type="button" class="submit_btn" value="<s:property value="%{getText('orgInfoUpdate.param10')}"/>"/></span>
                     </li>
                 </ul>
                 </s:form>

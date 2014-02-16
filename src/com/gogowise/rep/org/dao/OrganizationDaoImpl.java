@@ -98,6 +98,7 @@ public class OrganizationDaoImpl extends ModelDaoImpl<Organization> implements O
         existUser.setSexy(newUser.getSexy());
         existUser.setBirthDay(newUser.getBirthDay());
         existUser.setTelphone(Utils.getEmptyString(newUser.getTelphone()));
+        existUser.setCardId(Utils.getEmptyString(newUser.getCardId()));
 //        existUser.setIdCardUrl(Utils.getEmptyString(newUser.getIdCardUrl()));
         this.persistAbstract(existUser);
     }

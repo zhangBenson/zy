@@ -231,7 +231,7 @@
                             </s:iterator>
                         </s:if>
                         <s:else>
-                            <s:iterator value="course.classes" begin="course.ClassesNum-1" end="course.ClassesNum -1" status="idx">
+                            <s:iterator value="course.classes" status="idx">
                                 <div><s:property value="%{getText('lable.course.nickname')}"/>:&nbsp;<s:property value="nickName"/></div>
                                 <p></p>
 

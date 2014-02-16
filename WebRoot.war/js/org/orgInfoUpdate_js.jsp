@@ -109,8 +109,8 @@ $(document).ready(function () {
             $("#fileupload1_FileWarn").html(warnDiv+uploading__msg);
         }
     });*/
-    $("#fileupload2").uploadify({
-        /*注意前面需要书写path的代码*/
+    /*$("#fileupload2").uploadify({
+        *//*注意前面需要书写path的代码*//*
         'uploader':'js/uploadify/uploadify.swf',
         'script':'utils/uploadFile.html',
         'cancelImg':'js/uploadify/cancel.png',
@@ -147,6 +147,11 @@ $(document).ready(function () {
             uploading2 = true;
             $("#fileupload2_FileWarn").html(warnDiv+uploading__msg);
         }
+    });*/
+    $("#fileupload2").fancybox({
+        type:'iframe',
+        width:720,
+        height:490
     });
     $("#fileupload3").uploadify({
         /*注意前面需要书写path的代码*/
@@ -531,17 +536,17 @@ $(document).ready(function () {
             $(this).addClass("cur");
         });
 
-        $(".commit_modfication1 input---").click(function(){
+        $(".commit_modfication1 input").click(function(){
             $("#submit_msg1").html("修改中……");
             var url="saveSecStepTest.html";
             var secondStepName=document.getElementById('secondStepName').value;
             var birday=document.getElementById('birday').value;
             var secondStepContact=document.getElementById('secondStepContact').value;
             var secondStepID=document.getElementById('secondStepID').value;
-            var idCardUrl=document.getElementById('idCardUrl').value;
+//            var idCardUrl=document.getElementById('idCardUrl').value;
             var sexy=getSeletedItem('responser.sexy');
 
-            var params = {"responser.userName":secondStepName,"responser.sexy":sexy,"responser.birthDay":birday,"responser.telphone":secondStepContact,"responser.cardId":secondStepID,"idCardUrl":idCardUrl};
+            var params = {"responser.userName":secondStepName,"responser.sexy":sexy,"responser.birthDay":birday,"responser.telphone":secondStepContact,"responser.cardId":secondStepID};
             $.post(url,params,function(data){
                 if(data=='success'){
                     $("#submit_msg1").html("修改成功！！！");
@@ -551,7 +556,7 @@ $(document).ready(function () {
             },"text");
         });
 
-        $(".commit_modfication2 input---").click(function(){
+        $(".commit_modfication2 input").click(function(){
             $("#submit_msg2").html("修改中……");
 
 
@@ -563,7 +568,7 @@ $(document).ready(function () {
             var thirdStepAccountNo=document.getElementById('thirdStepAccountNo').value;
             var memberSize=getSeletedItem('org.memberSize');
             var multipleOrg=getSeletedItem('org.multipleOrg');
-            var hidFile1 =document.getElementById('hidFile1').value;
+            var hidFile1 =document.getElementById('logoUrl').value;
             var hidFile2 =document.getElementById('hidFile2').value;
 
             var params = {"org.schoolName":thirdStepName,"org.description":thirdStepOrgShuoming,"org.depositBankName":bankName,"org.depositName":thirdStepAccount,"org.depositBankAccount":thirdStepAccountNo,"org.memberSize":memberSize,"org.multipleOrg":multipleOrg,"hidFile1":hidFile1,"hidFile2":hidFile2};
@@ -576,7 +581,7 @@ $(document).ready(function () {
             },"text");
         });
 
-        $(".commit_modfication3 input---").click(function(){
+        $(".commit_modfication3 input").click(function(){
             $("#submit_msg3").html("修改中……");
 
 

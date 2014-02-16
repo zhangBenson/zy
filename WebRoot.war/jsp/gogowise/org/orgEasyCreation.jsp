@@ -17,30 +17,9 @@
 <script type="text/javascript" src="js/uploadify/swfobject.js"></script>
 <link href="css/orgLeague/<s:text name='orgleague.css.filename'/>" rel="stylesheet" type="text/css"/>
 <style type="text/css">
-    .wwgrp br {
-        display: none;
-    }
-    .submit_btn{
-        display: block;
-        float:left;
-        width:122px;
-        height:31px;
-        background: rgb(80,80,80);
-        color:#FFF;
-        font-size: 16px;
-        box-shadow: 0px 1px 2px rgba(40,160,200,0.3);
-        border-radius: 4px;
-        border: none;
-        cursor: pointer;
-    }
-    .long_text_area{
-        width:600px;
-        height:80px;
-        padding:2px;
-        border: #7CADC5 solid 1px;
-        border-bottom: #B7D2DF solid 1px;
-        border-right: #B7D2DF solid 1px;
-    }
+    .wwgrp br { display: none; }
+    .submit_btn{ display: block; float: left; width: 122px; height:31px; background: rgb(80,80,80); color: #FFF; font-size: 16px; box-shadow: 0px 1px 2px rgba(40,160,200,0.3); border-radius: 4px; border: none; cursor: pointer; }
+    .long_text_area{ width: 600px; height:80px; padding:2px; border: #7CADC5 solid 1px; border-bottom: #B7D2DF solid 1px; border-right: #B7D2DF solid 1px; }
 </style>
 
 
@@ -78,7 +57,7 @@
                    <div class="file_upload">
                        <input type="button" class="submit_btn" id="change_portrait" value="<s:property value="%{getText('onlive.message.update')}"/>" href="orgLogoProcess.html" />
                    </div>
-                    <p id="secondStepFileWarn" class="input_msg"></P>
+                    <p id="secondStepFileWarn" class="input_msg"></p>
 
                     <input type="hidden" name="logoUrl" id="logoUrl" />
                     <div id="fileQueue"></div>
