@@ -367,12 +367,7 @@
         if (document.getElementById('hidSessionId').value > 0) {
             return true;
         } else {
-            $.fancybox({
-                "type": "iframe",
-                "href": "login.html",
-                "width": 350,
-                "height": 270
-            });
+            $('#modalLogin').modal("show");
             return false;
         }
     }
