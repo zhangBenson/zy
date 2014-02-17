@@ -458,9 +458,8 @@ function setVideoInfo(videolink,videoname)
     $.ajax({
         type: 'POST',
         url: "uploadMaterialWithJson.html",
-        data:{"sourceTitle":videoname,"convertPath":videolink,"course.id":<s:property value="courseClass.course.id"/>,"courseMaterial.type":"1"},
+        data: {"courseMaterial.sourceTitle": videoname, "courseMaterial.convertPath": videolink, "course.id":<s:property value="courseClass.course.id"/>, "courseMaterial.type": "1"},
         dataType:"json",
-        contentType: "application/json",
         success: function(data)
         {
             alert("提交成功");
