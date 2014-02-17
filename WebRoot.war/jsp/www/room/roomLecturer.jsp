@@ -458,8 +458,9 @@ function setVideoInfo(videolink,videoname)
     $.ajax({
         type: 'POST',
         url: "uploadMaterialWithJson.html",
-        data:{"sourceTitle":videoname,"convertPath ":videolink,"course.id":<s:property value="courseClass.course.id"/>,"courseMaterial.type":"1"},
+        data:{"sourceTitle":videoname,"convertPath":videolink,"course.id":<s:property value="courseClass.course.id"/>,"courseMaterial.type":"1"},
         dataType:"json",
+        contentType: "application/json",
         success: function(data)
         {
             alert("提交成功");
@@ -1379,11 +1380,11 @@ function ShowMessage(name,imgpath,content,bit)
                         <p style="padding-right: 10px;color: red;" class="text-left">Or</p>
                         <div class="input-group input-group-sm">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-link" style="color: #999;"></span></span>
-                            <input type="text" class="form-control" placeholder="Input A Link of Youtube File">
+                            <input type="text" class="form-control" placeholder="Input A Link of Youtube File" id="txtVideoLink">
                         </div>
                         <div class="input-group input-group-sm" style="margin-top: 5px;margin-bottom: 5px;">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-file" style="color: #999;"></span></span>
-                            <input type="text" class="form-control" placeholder="Input A Name for the Link">
+                            <input type="text" class="form-control" placeholder="Input A Name for the Link" id="txtVideoName">
                         </div>
                         <button type="button" class="btn btn-success btn-sm btn-block"  id="btnAddVideo">Add Video</button>
                     </div>
