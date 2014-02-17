@@ -56,7 +56,9 @@
                         <li class="searchItemState"><s:property value="%{getText('course.school')}"/>:<a href="orgBlog.html?org.id=<s:property value="organization.id"/>" title="<s:property value="organization.nickName"/>"><s:property value="organization.schoolName"/></a></li>
                         <li class="searchItemState"><s:property value="%{getText('courses.info.lecturer')}"/>:<a href="userBlog.html?user.id=<s:property value="teacher.id"/>" title="<s:property value="teacher.nickName"/>"><s:property value="teacher.nickName"/></a></li>
                         <li class="searchItemState"><s:property value="%{getText('label.student')}"/>:<s:property value="studentNum"/></li>
-                        <li class="searchItemStateBlue"><s:property value="%{getText('usermenu.item.mooc')}"/></li>
+                        <s:if test="charges>0"><li class="searchItemStateBlue">&nbsp;S$&nbsp;<s:property value="charges"/>&nbsp;</li></s:if>
+                        <s:else><li class="searchItemStateBlue"><s:property value="%{getText('usermenu.item.mooc')}"/></li></s:else>
+
                     </ul>
                 </div>
                 <div class="clearfix"></div>
