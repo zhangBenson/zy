@@ -72,6 +72,7 @@ public class MaterialVo {
     }
 
     public String getFileExt() {
+        if (this.fullPath == null) return null;
         return Utils.getExtention(this.fullPath).replace(".", "");
     }
 
