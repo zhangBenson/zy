@@ -325,8 +325,8 @@
     </definition>
     <definition name=".easyReg" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.reg"/>
-        <!--<put-attribute name="contentBody" value="/jsp/gogowise/log_reg/register.jsp"/> -->
-        <put-attribute name="contentBody" value="/jsp/www/log_reg/login.jsp"/>
+        <put-attribute name="contentBody" value="/jsp/www/log_reg/register.jsp"/>
+        <!--<put-attribute name="contentBody" value="/jsp/www/log_reg/login.jsp"/>-->
     </definition>
     <definition name=".initInviteFriend" extends=".basic">
         <put-attribute name="right" value="/jsp/gogowise/inviteFriend.jsp"/>
