@@ -166,7 +166,8 @@
                 <div class="well">
                     <a href="orgBlog.html?org.id=<s:property value="course.organization.id"/>" title="<s:property value="course.organization.nickName"/>">
                         <img class="schoolPortrait" src="<s:property value="course.organization.logoUrl"/>"/></a>
-                    <h4 class="textOverSinglerow"><s:property value="%{getText('label.online.class.tutor.price')}"/>:&nbsp;$<s:property value="course.charges"/></h4>
+                    <div>&nbsp;</div>
+                    <h4 class="textOverSinglerow" style="margin-top: 8px;"><s:property value="%{getText('label.online.class.tutor.price')}"/>:&nbsp;$<s:property value="course.charges"/></h4>
                     <h4 class="textOverSinglerow"><s:property value="%{getText('course.code')}"/>:&nbsp;<s:property value="course.id"/></h4>
                     <h4 class="textOverSinglerow"><s:property value="%{getText('course.school')}"/>:&nbsp;<s:property value="course.organization.schoolName"/></h4>
                     <h4 class="textOverSinglerow"><s:property value="%{getText('course.teaching.language')}"/>:&nbsp;<s:property value="course.languageType"/></h4>
