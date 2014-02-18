@@ -115,7 +115,7 @@
 
     <definition name=".index" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.index"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/index.jsp"/>
+        <put-attribute name="contentBody" value="/jsp/www/index.jsp"/>
     </definition>
 
     <!-- course competition -->

@@ -302,7 +302,7 @@
                         </div>
                         <br/>
                         <button type="button" class="btn btn-primary btn-block">
-                            <s:property value="%{getText('button.enter')}"/>
+                            <s:property value="%{getText('button.classroom.enter')}"/>
                         </button>
                     </div>
                 </div>
