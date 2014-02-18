@@ -74,9 +74,10 @@ public class CoursePurchaseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "purchaseCourse",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName", "myRegistration"}),
+    @Action(value = "purchaseCourse",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName", "personalCenter"}),
                                                   @Result(name = INPUT,type = Constants.RESULT_NAME_TILES,location = ".courseconfirm")})
     public String purchaseCourse() throws Exception{
+            System.out.println("Haha");
             course = courseDao.findById(this.course.getId());
             user = baseUserDao.findById(getSessionUserId());
             consumptionOrderDao.purchaseCourse(user, course);

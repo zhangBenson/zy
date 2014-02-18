@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="thinline"></div>
-    <h1 class = "courseSubjectRow"><a href="voaCourseBlog.html?course.id=<s:property value="course.id"/>" title="<s:property value="name"/>"><s:property value="course.name"/></a></h1>
+    <h1 class = "courseSubjectRow">*****<a href="voaCourseBlog.html?course.id=<s:property value="course.id"/>" title="<s:property value="name"/>"><s:property value="course.name"/></a></h1>
     <a href="voaCourseBlog.html?course.id=<s:property value="course.id"/>" title="<s:property value="name"/>">
         <img src="<s:property value="course.logoUrl" />" class="courseInfoImg"/>
     </a>
