@@ -381,6 +381,7 @@
                     <%--<input type="hidden" name="hosted_button_id" value="CPR764EY9Y6HS">--%>
                     <%--<input type="image" src="https://www.paypalobjects.com/en_GB/SG/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">--%>
                     <%--<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">--%>
+                    <input type="hidden" name="org.id" value="<s:property value="org.id" />">
                     <input type="hidden" name="cmd" value="_xclick">
                     <input type="hidden" name="business" value="1072805997@qq.com">
                     <input type="hidden" name="item_name" value="Course">
@@ -391,11 +392,12 @@
                     <input type="hidden" name="bn" value="IC_Sample">
                     <input type="hidden" name="no_shipping" value="1">
                     <input type="hidden" name="custorm" value="sessionID">
-                    <input type="hidden" name="return" value="/index.html">
+                    <input type="hidden" name="notify_url" value="http://localhost:8080//notifyURL.html?userID=<s:property value="%{#session.userID}"/>&orgID=<s:property value="org.id"/>" >
                     <input type="hidden" name="cancel_return" value="http://localhost:8080/error.html">
-                    <input type="image" src="https://www.paypal.com/en_US/i/btn/x-click-but23.gif" name="submit" alt="Make payments with payPal - it's fast,">
+                    <input type="image" src="https://www.paypalobjects.com/en_GB/SG/i/btn/btn_buynowCC_LG.gif" name="submit" alt="Make payments with payPal - it's fast,">
                     <img alt=""src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
                 </form>
+
                 <div class="col-sm-4"></div>
             </div>
         </div>
