@@ -102,7 +102,7 @@
             <%--</a>--%>
 
 
-            <a href="#"><p class="text-right"><s:property value="%{getText('others.more')}"/></p></a>
+            <a href="courseCenter.html"><p class="text-right"><s:property value="%{getText('others.more')}"/></p></a>
         </div>
 
         <div class="col-sm-6">
@@ -127,7 +127,7 @@
                 </s:if>
             </s:iterator>
 
-            <a href="#"><p class="text-right"><s:property value="%{getText('others.more')}"/></p></a>
+            <a href="courseCenter.html"><p class="text-right"><s:property value="%{getText('others.more')}"/></p></a>
 
         </div>
     </div>
