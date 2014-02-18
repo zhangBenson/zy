@@ -346,22 +346,19 @@
     });
     $('#register_btn').click(function(){
         if(validateLogo()){
-            window.location.href = "initCourseconfirm.html?course.id=<s:property value="course.id"/>";
-            return true;
-
-            <s:if test="course.charges == 0 && !course.limitOver && !course.courseFinished">
-            $.post("courseconfirm.html",{'course.id':"<s:property value="course.id"/>"},function(data){
-                window.location.href = "myRegistration.html";
-                return true;
-            });
-            </s:if>
-            <s:if test="course.charges > 0 && !course.limitOver && !course.courseFinished">
+            <%--<s:if test="course.charges == 0 && !course.limitOver && !course.courseFinished">--%>
+            <%--$.post("courseconfirm.html",{'course.id':"<s:property value="course.id"/>"},function(data){--%>
+                <%--window.location.href = "myRegistration.html";--%>
+                <%--return true;--%>
+            <%--});--%>
+            <%--</s:if>--%>
+            <%--<s:if test="course.charges > 0 && !course.limitOver && !course.courseFinished">--%>
                 window.location.href = "initCourseconfirm.html?course.id=<s:property value="course.id"/>";
                 return true;
-            </s:if>
-            <s:else>
-            window.location.href =  "myRegistration.html";
-            </s:else>
+            <%--</s:if>--%>
+            <%--<s:else>--%>
+            <%--window.location.href =  "myRegistration.html";--%>
+            <%--</s:else>--%>
         }
     });
 
