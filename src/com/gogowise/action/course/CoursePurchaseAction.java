@@ -32,9 +32,7 @@ import java.util.Calendar;
 @Controller
 @Namespace(BasicAction.BASE_NAME_SPACE)
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
-@Results({
-        @Result(name = "json", type = "json")
-})
+@Result(name = "input",type = Constants.RESULT_NAME_TILES,location = ".purchaseError")
 public class CoursePurchaseAction extends BasicAction {
     private Course course;
     private BaseUser user;
@@ -75,11 +73,24 @@ public class CoursePurchaseAction extends BasicAction {
     }
 
     @Action(value = "purchaseCourse",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName", "personalCenter"}),
-                                                  @Result(name = INPUT,type = Constants.RESULT_NAME_TILES,location = ".courseconfirm")})
+                                                  @Result(name = ERROR,type = Constants.RESULT_NAME_TILES,location = ".purchaseError")})
     public String purchaseCourse() throws Exception{
-            System.out.println("Haha");
             course = courseDao.findById(this.course.getId());
             user = baseUserDao.findById(getSessionUserId());
+
+            Double cost = course.getCharges();
+            UserAccountInfo _userAccountInfo = userAccountInfoDao.findByUserId(user.getId());
+            if (course.getConsumptionType() && cost > _userAccountInfo.getZhiBi()) {
+                this.setPurchaseMsg(this.getText("msg.zhibi.not.enough"));
+                addFieldError("","");
+                return ERROR;
+            }
+            if (!course.getConsumptionType() && cost > (_userAccountInfo.getZhiBi() + _userAccountInfo.getZhiQuan())) {
+                this.setPurchaseMsg(this.getText("msg.account.left.not.enough"));
+                addFieldError("","");
+                return ERROR;
+            }
+
             consumptionOrderDao.purchaseCourse(user, course);
             String filePath = "d:/contract/" + course.getName() + ".pdf";
             String tile = this.getText("course.pdf.title",new String[]{user.getNickName(),course.getName()});
@@ -341,4 +352,20 @@ public class CoursePurchaseAction extends BasicAction {
         this.purchaseConfirmMsg = purchaseConfirmMsg;
     }
 
+    public void addActionError(String anErrorMessage){
+        String s=anErrorMessage;
+        System.out.println(s);
+    }
+    public void addActionMessage(String aMessage){
+        String s=aMessage;
+        System.out.println(s);
+
+    }
+    public void addFieldError(String fieldName, String errorMessage){
+        String s=errorMessage;
+        String f=fieldName;
+        System.out.println(s);
+        System.out.println(f);
+
+    }
 }
