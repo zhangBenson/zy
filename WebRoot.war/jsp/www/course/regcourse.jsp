@@ -15,22 +15,9 @@
         <li class="searchItemState"><s:property value="%{getText('lable.course.date')}"/>:<s:date name="course.startDate" format="%{getText('dateformat')}"/></li>
         <li class="searchItemState"><s:property value="%{getText('label.online.class.totalperods')}"/>:<s:property value="course.totalHours"/>&nbsp;<s:property value="%{getText('label.online.class.perods')}"/></li>
         <li class="searchItemState"><s:property value="%{getText('label.course.fee')}"/>:
-            <s:if test="%{course.personalTeacher == null}"><s:property value="%{4 * course.classes.size}"/>
-                <s:if test="course.consumptionType">
-                    <s:property value="%{getText('label.zhibi.true')}"/>
-                </s:if>
-                <s:else>
-                    <s:property value="%{getText('label.course.zhiquan')}"/>
-                </s:else>
-            </s:if>
-            <s:else>
                 <s:property value="course.charges"/>
-                <s:if test="course.consumptionType"><s:property value="%{getText('label.zhibi.true')}"/>
-                </s:if>
-                <s:else>
-                    <s:property value="%{getText('label.course.zhiquan')}"/>
-                </s:else>
-            </s:else></li>
+                <s:if test="course.consumptionType"><s:property value="%{getText('label.zhibi.true')}"/></s:if>
+                <s:else><s:property value="%{getText('label.course.zhiquan')}"/></s:else>
     </ul>
     <h4 class="courseBody">
         <a href="voaCourseBlog.html?course.id=<s:property value="course.id"/>" title="<s:property value="course.name"/>">
