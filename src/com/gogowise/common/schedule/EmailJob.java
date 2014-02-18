@@ -12,14 +12,13 @@ import java.util.Properties;
 
 public class EmailJob implements  Runnable {
     // Email sender
-    private static final String SenderEmailAddr = "service@gogowise.com";
+//    private static final String SenderEmailAddr = "service@gogowise.com";
+    private static final String SenderEmailAddr = "support@gogowise.com";
 
     // Email sender's name
-    private static final String SMTPUserName = "service@gogowise.com";
-
+    private static final String SMTPUserName = "support@gogowise.com";
     // Email password.
-    private static final String SMTPPassword = "gogowise@123";
-
+    private static final String SMTPPassword = "test";
     // SMTP Server
     private static final String SMTPServerName = "mail.gogowise.com";
 
@@ -29,8 +28,10 @@ public class EmailJob implements  Runnable {
     static {
         props = new Properties();
         props.put("mail.smtp.host", SMTPServerName);
+//        props.put("mail.smtp.localhost","gogowise.com");
         props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.socketFactory.port", "465");
+//        props.put("mail.smtp.auth", "false");
+//        props.put("mail.smtp.socketFactory.port", "465");
     }
     private  String emailAddr;
     private  String mailTitle;
@@ -124,5 +125,16 @@ public class EmailJob implements  Runnable {
 
     public void setFilePaths(String[] filePaths) {
         this.filePaths = filePaths;
+    }
+
+    public static void main(String args[]) {
+        EmailJob job = new EmailJob();
+        job.setEmailAddr("zlhades@outlook.com");
+//        job.setEmailAddr("vic@gogowise.com");
+
+        job.setMailTitle("111111111");
+        job.setMailContent("333333333");
+        job.run();
+
     }
 }
