@@ -97,7 +97,7 @@
                          </li>--%>
                         <li>
                             <span class="item"><s:property value="%{getText('course.info.of.course.type')}"/></span>
-                            <s:select list="#{'1':getText('course.type.1'),'2':getText('course.type.2'),'3':getText('course.type.3'),'4':getText('course.type.4'),'5':getText('course.type.5'),'6':getText('course.type.6')}" headerKey="-1" headerValue="%{getText('please.choose.course.type')}" cssClass="long_text_field" id="step2_course_type" name="course.courseType"/>
+                            <s:select list="#{'1':getText('course.type.1'),'2':getText('course.type.2'),'3':getText('course.type.3'),'4':getText('course.type.4')}" headerKey="-1" headerValue="%{getText('please.choose.course.type')}" cssClass="long_text_field" id="step2_course_type" name="course.courseType"/>
                             <span class="course_type_input_msg tip_words">*</span>
                          </li>
                         <li class="long_select_li">
@@ -120,13 +120,16 @@
                         <s:if test="courseType == 1 || courseType == 2">
                            <li>
                             <span class="item"><s:property value="%{getText('label.forcast.lecturer')}"/></span>
-                            <s:checkboxlist list="teachers" listKey="id" listValue="nickName==null?email:nickName" name="teacherIds"/>
+                            <s:iterator value="teachers" status="stx">
+                                <input type="checkbox" name="teacherIds" value="<s:property value="id"/>" id="teacherIds-<s:property value="#stx.count"/>" title="email">
+                                <label for="teacherIds-<s:property value="#stx.count"/>" class="checkboxLabel" tag="<s:property value="email"/>"><s:property value="nickName==null?email:nickName"/></label>
+                            </s:iterator>
                             <span class="invite_teacher_input_msg tip_words">*</span>
                            </li>
                         </s:if>
                         <li>
                             <s:property value="%{getText('course.student.appointed')}"/>
-                            <a class="add_student_btn"><s:property value="%{getText('course.add.student')}"/></a> &nbsp;&nbsp;&nbsp;
+                            <a class="course_teacherEmail"><s:property value="%{getText('course.add.student')}"/></a> &nbsp;&nbsp;&nbsp;
                             <span class="invite_student_input_msg tip_words"></span>
                             <div class="option_content" id="invitedStudents">
                                 <input class="long_text_field_for_student"  placeholder="<s:property value="%{getText('org.course.student.email')}"/>" id="studentEmail1" onblur="checkStudentMail(this);" name="emails" type="text" /> <br/>
@@ -194,6 +197,7 @@
                                     <li>
                                         <span class="item"><s:property value="%{getText('lable.course.nickname')}"/></span>
                                         <s:textfield name="courseClass.nickName" id="class_nickname_input" cssClass="long_text_field course_nick_name" />
+                                        <span class="tip_words" id="class_nick_msg"></span>
                                     </li>
                                     <li class="short_li">
                                         <span class="item"><s:property value="%{getText('lable.course.starttime')}"/></span>
@@ -237,7 +241,7 @@
                                     <table id="add_class_table">
                                         <tr><td><span class="item"><s:property value="%{getText('lable.course.starttime')}"/></span><span class="tip_words" id="form2_start_time_msg"></span></td><td><s:property value="%{getText('label.lastingtime')}"/></td><td>&nbsp;</td></tr>
                                         <tr class="urFirst">
-                                            <td class="time_td"><s:textfield name="startTimes" onblur="checkTimeError(this);" value="" readonly="true" cssClass="WTime short_text_field"/></td>
+                                            <td class="time_td"><s:textfield name="startTimes" onblur="checkTimeError(this);" id="class_nick_input2" value="" readonly="true" cssClass="WTime short_text_field"/></td>
                                             <td><select name="durations" class="long_select">
                                                     <option value=60 selected="selected">60<s:property value="%{getText('label.minute')}"/></option>
                                                     <option value=55>55<s:property value="%{getText('label.minute')}"/></option>
@@ -252,7 +256,8 @@
                                     </table>
                                 </li>
                                 <li class="long_li">
-                                  <span class="item"><s:property value="%{getText('date.fixed.model')}"/></span><span class="tip_words">*</span>
+                                    <span class="item"><s:property value="%{getText('date.fixed.model')}"/></span><span class="tip_words">*</span>
+                                    <span class="tip_words" id="form2_repeat_msg"></span>
                                     <div id="fixed_model_div">
                                         <input name="classDate" id="classDate1" type="checkbox" value="2" />
                                         &nbsp;<label for="classDate1"><s:property value="%{getText('monday')}"/></label>&nbsp;&nbsp;

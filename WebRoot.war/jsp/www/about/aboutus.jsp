@@ -35,11 +35,15 @@
 		<h4 class="courseBody">
 			Gogowise has set its sight on the global online education scene. With technical expertise in Cloud Education, Data Storage, Information Extraction, Cut-out Technology, etc., the company seeks to provide Education Institutions with a powerful yet affordable platform. On top of the conventional Learning Management Systems, Gogowise strives to provide a broad range of features that will bring e-learning to the next level. Recognizing the challenges the education institutions face when integrating the platform into the existing systems, Gogowise provides support to our partners when they adopt our platform.
 With a lean team, the company is agile in making strategic maneuvers and optimizing our processes. Taking a serious perspective towards the feedback we receive from our clients, Gogowise is constantly improving the platform to cater to the needs of our users.
-Gogowise is extremely grateful to our team of consultants who are experts in their own fields. Special thanks to:
-·         Dr Bharadwaj Veeravalli, NUS
-·         Dr Lu Jiangbo, ADSC
-·         Dr Shi Longguang, ViaGold Capital
-·         Mr Andy Kuek, Mind Stretcher
+Gogowise is extremely grateful to our team of consultants who are experts in their own fields.
+            <br /><br />Special thanks to:
+            <ur style="list-style-type:none">
+                <li style="padding-left: 20px">&bull;&nbsp;Dr Bharadwaj Veeravalli, NUS</li>
+                <li style="padding-left: 20px">&bull;&nbsp;Dr Lu Jiangbo, ADSC</li>
+                <li style="padding-left: 20px">&bull;&nbsp;Dr Shi Longguang, ViaGold Capital</li>
+                <li style="padding-left: 20px">&bull;&nbsp;Mr Andy Kuek, Mind Stretcher</li>
+            </ur>
+
 		</h4>
 		<br/>
 		
@@ -47,8 +51,11 @@ Gogowise is extremely grateful to our team of consultants who are experts in the
 		<h3 class="courseSubhead">CONTACT US</h3>
 		<h4 class="courseBody">
 			The Gogowise team is constantly striving for greater heights. If you would like to explore business opportunities with us, pass us your contact details at team@gogowise.com and our business team will get back to you right away!
-			We thank you for your patience as we are steadily building the system. We appreciate any feedback or suggestions that you might have. Feel free to drop us a mail at service@gogowise.com, we would love to hear from you!
-			Have some questions or facing some problems? 
+			<br/><br/>
+            We thank you for your patience as we are steadily building the system. We appreciate any feedback or suggestions that you might have. Feel free to drop us a mail at service@gogowise.com, we would love to hear from you!
+
+            <br/><br/>
+            Have some questions or facing some problems?
 			Contact us at <a href="#"><span style="color: #6ab600;">support@gogowise.com</span></a> and our support team will get back to you as soon as possible.
 		</h4>
 	</div>

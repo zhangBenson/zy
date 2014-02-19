@@ -115,7 +115,7 @@
 
     <definition name=".index" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.index"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/index.jsp"/>
+        <put-attribute name="contentBody" value="/jsp/www/index.jsp"/>
     </definition>
 
     <!-- course competition -->
@@ -325,8 +325,8 @@
     </definition>
     <definition name=".easyReg" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.reg"/>
-        <!--<put-attribute name="contentBody" value="/jsp/gogowise/log_reg/register.jsp"/> -->
-        <put-attribute name="contentBody" value="/jsp/www/log_reg/login.jsp"/>
+        <put-attribute name="contentBody" value="/jsp/www/log_reg/register.jsp"/>
+        <!--<put-attribute name="contentBody" value="/jsp/www/log_reg/login.jsp"/>-->
     </definition>
     <definition name=".initInviteFriend" extends=".basic">
         <put-attribute name="right" value="/jsp/gogowise/inviteFriend.jsp"/>
@@ -714,6 +714,11 @@
         <!--<put-attribute name="contentBody" value="/jsp/gogowise/course/courseBlog.jsp"/>-->
     </definition>
 
+    <definition name=".purchaseError" extends=".wwwBodyCenter">
+        <put-attribute name="title" value="title.course.confirm1"/>
+        <put-attribute name="contentBody" value="/jsp/www/course/purchaseError.jsp"/>
+        <!--<put-attribute name="contentBody" value="/jsp/gogowise/course/courseBlog.jsp"/>-->
+    </definition>
 
     <definition name=".orgBlog" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.org.blog"/>

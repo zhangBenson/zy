@@ -9,6 +9,7 @@
 <script type="text/javascript" language="javascript" src="js/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" language="javascript" src="js/timezone.js"></script>
 <script type="text/javascript" src="js/jquery.boxy.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
 <script type="text/javascript" src="js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 <link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
 

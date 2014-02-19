@@ -385,7 +385,7 @@
                         </s:if>
                     </s:iterator>
 				</div>
-				<a href="#">
+				<a href="schoolCenter.html">
 					<p class="text-right"><s:property value="%{getText('others.more')}"/></p>
 				</a>
 			</div>

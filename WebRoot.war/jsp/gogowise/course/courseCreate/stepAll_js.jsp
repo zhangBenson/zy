@@ -73,7 +73,7 @@
             var courseType = $("option[value='"+courseTypeVal+"']").text();
             var startDate = $("input[type='text'][name='course.startDate']").val();
             var charges = $("input[type='text'][name='course.charges']").val();
-            var teacherEmail =  $("[name='teacherIds']:checked").next().text();
+            var teacherEmail =  $("[name='teacherIds']:checked").next().attr("tag");
             var emails = $("input[type='text'][name='emails']");
             var courseLogo = $("#show_log_preview").attr("src");
             var invitedEamils = "";
@@ -96,6 +96,9 @@
         });
 
         $("#step3_self_store").click(function(){
+             var r1 = checkEmpty('class_nickname_input','class_nick_msg','Please fill in the class name');
+             var r2 = checkTime('class_start_time_input','class_start_time_msg','Please fill in the start time','Wrong time','Start time should be after now');
+             if(!r1 || !r2) return;
              var classInfo = $("#self_class_system_form").serialize();
              $.post("selfSaveClass.html",classInfo,function(data){
                    $("#list_tbody").html(data)
@@ -106,6 +109,13 @@
         });
 
         $("#step3_auto_store").click(function(){
+            var r1 = checkTime('class_nick_input2','form2_start_time_msg','Please fill in the start time','Wrong time','Start time should be after now');
+            var r2 = $("input[name='classDate']:checked").length>0;
+            $("#form2_repeat_msg").html("");
+            if(!r2){
+                $("#form2_repeat_msg").html("Please select the Date-fixed model");
+            }
+            if(!r1 || !r2) return;
             var classInfo = $("#auto_class_system_form").serialize();
             $.post("autoSaveClasses.html",classInfo,function(data){
                 $("#list_tbody").html(data);
@@ -310,12 +320,12 @@
         });
 
         $(".add_student_btn").click(function(){
-            if (maxStudentCount < 4 && count >= maxStudentCount) {
-                 $(".invite_student_input_msg").html(warn_student_number_overflow+maxStudentCount);
-                 return;
-            }
+//            if (maxStudentCount < 4 && count >= maxStudentCount) {
+//                 $(".invite_student_input_msg").html(warn_student_number_overflow+maxStudentCount);
+//                 return;
+//            }
             $("#invitedStudents").append("<input class='long_text_field_for_student' onblur='checkStudentMail(this);' name='emails' type='text' /><span class='del_student_btn' onclick='remove_student(this);'>"+deleteEmail+"</span><br/>");
-            count ++;
+//            count ++;
         });
         $(".del_student_btn").click(function(){
             $(".invite_student_input_msg").html("");
@@ -372,7 +382,7 @@
                 }
              </s:if>
              <s:else>
-                 var teacherEmail = $("#course_teacherEmail").val().replace(/(^\s*)|(\s*$)/g, "");
+                 var teacherEmail =  $("[name='teacherIds']:checked").next().attr("tag");
                  if(emailContent == teacherEmail){
                     $(".invite_student_input_msg").html(warn_email_teacher_student_same);
                     return false;

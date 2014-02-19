@@ -5,8 +5,10 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 
         <div style="padding-left: 20px;padding-right: 20px;">
-            <h1 class = "courseSubject">Log in</h1><span id="login_tip"></span>
+            <h1 class = "courseSubject">Log in</h1>
             <h1 class = "courseSynopsis">Please log in to continue.</h1>
+            <span id="login_tip" style="color:red; "></span>
+            <%--<div style="clear:both"></div>--%>
 
             <form class="form-horizontal" role="form" id="user_login_form" method="post">
                 <div class="form-group">
@@ -32,7 +34,8 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" id="log_btn" class="btn btn-success  btn-lg btn-block">Log me in!</button>
+                        <%--<button type="submit" id="log_btn" class="btn btn-success  btn-lg btn-block">Log me in!</button>--%>
+                        <input type="button" id="log_btn" class="btn btn-success  btn-lg btn-block" value="Log me in!" />
                     </div>
                 </div>
             </form>
