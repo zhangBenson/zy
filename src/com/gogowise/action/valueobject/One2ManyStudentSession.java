@@ -1,9 +1,9 @@
 package com.gogowise.action.valueobject;
 
-import com.gogowise.rep.user.enity.BaseUser;
+import com.gogowise.common.utils.Constants;
 import com.gogowise.rep.course.enity.CourseClass;
 import com.gogowise.rep.live.enity.ShowTerms;
-import com.gogowise.common.utils.Constants;
+import com.gogowise.rep.user.enity.BaseUser;
 
 /**
  * Created by IntelliJ IDEA.
@@ -27,6 +27,7 @@ public class One2ManyStudentSession {
     private String MasterName = Constants.DEFAULT_BLANK_VALUE;        //teacher's name
     private Integer MasterID = Constants.DEFAULT_INT_VALUE;  // teacher's id
     private String UserLocation = Constants.DEFAULT_BLANK_VALUE;
+
 
 
     public void initWithSession(CourseClass courseClass){
