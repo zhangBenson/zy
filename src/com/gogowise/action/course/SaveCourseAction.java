@@ -13,6 +13,7 @@ import com.gogowise.rep.course.enity.CourseInviteStudent;
 import com.gogowise.rep.course.vo.CourseSpecification;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.user.dao.BaseUserDao;
+import com.gogowise.rep.user.enity.BaseUser;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
@@ -76,6 +77,17 @@ public class SaveCourseAction extends BasicAction {
 
             Utils.notReplaceFileFromTmpModified(temp.getAbsolutePath(), course.getLogoUrl());
             course.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + course.getId() + "/" + course.getLogoUrl());
+        }
+
+        //change teacher
+        if(teacherIds != null && teacherIds.size()>0){
+            if(course.getTeachers()!=null){
+                course.getTeachers().clear();
+            }
+            BaseUser teacher = baseUserDao.findById(teacherIds.get(0));
+            if(teacher!=null){
+                course.setTeacher(teacher);
+            }
         }
 
 
