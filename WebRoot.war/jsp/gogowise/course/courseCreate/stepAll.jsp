@@ -121,7 +121,7 @@
                            <li>
                             <span class="item"><s:property value="%{getText('label.forcast.lecturer')}"/></span>
                             <s:iterator value="teachers" status="stx">
-                                <input type="checkbox" name="teacherIds" value="29" id="teacherIds-<s:property value="#stx.count"/>" title="email">
+                                <input type="checkbox" name="teacherIds" value="<s:property value="id"/>" id="teacherIds-<s:property value="#stx.count"/>" title="email">
                                 <label for="teacherIds-<s:property value="#stx.count"/>" class="checkboxLabel" tag="<s:property value="email"/>"><s:property value="nickName==null?email:nickName"/></label>
                             </s:iterator>
                             <span class="invite_teacher_input_msg tip_words">*</span>
