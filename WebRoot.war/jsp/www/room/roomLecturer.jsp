@@ -343,7 +343,7 @@ function getSpeechList()
 function getVideoList()
 {
     $("#videoPanle li").remove();
-    $.getJSON("listMaterial.html?typeId=1",{"courseId":$("#courseId").text()},function(data){
+    $.getJSON("listMaterial.html?typeId=1",{"courseId":<s:property value="courseClass.course.id"/>},function(data){
 
         $.each(data.vos,function(key,info)
         {
@@ -462,7 +462,8 @@ function setVideoInfo(videolink,videoname)
         dataType:"json",
         success: function(data)
         {
-            alert("提交成功");
+            alert("success");
+            getVideoList();
         },
         error:function(){
             alert("error....");
