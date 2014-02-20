@@ -5,7 +5,11 @@ import com.gogowise.common.utils.Constants;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
 import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
+import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,6 +17,10 @@ import org.apache.struts2.convention.annotation.Result;
  * Time: 2014-02-17 19:22
  * Email: jhji@ir.hit.edu.cn
  */
+@SuppressWarnings("UnusedDeclaration")
+@Controller
+@Scope(BeanDefinition.SCOPE_PROTOTYPE)
+@Namespace(BasicAction.BASE_NAME_SPACE)
 public class PayPalAction extends BasicAction
 {
     private String payStatus;
@@ -37,6 +45,13 @@ public class PayPalAction extends BasicAction
     private String amt;
     private String cc;
     private String item_number;
+
+    @Action(value = "SetExpressCheckout", results={@Result(name=SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params={} )} )
+    public String SetExpressCheckout()
+    {
+        
+        return  SUCCESS;
+    }
 
     @Action(value = "payFinish", results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "personalCenter"} ),
                                          @Result(name = "Cancel", type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "orgBlog","org.id", ""})})
