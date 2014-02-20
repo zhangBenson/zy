@@ -1550,15 +1550,15 @@ function ShowMessage(name,imgpath,content,bit)
                     <ul class="list-inline">
                         <li>
                             <div class="ColorlumpRight"></div>
-                            <span class="ColorlumpText">Right:24</span>
+                            <span class="ColorlumpText" id="txtRight">0</span>
                         </li>
                         <li>
                             <div class="ColorlumpWrong"></div>
-                            <span class="ColorlumpText">Wrong:16</span>
+                            <span class="ColorlumpText" id="txtWrong">0</span>
                         </li>
                         <li>
                             <div class="ColorlumpNoresponse"></div>
-                            <span class="ColorlumpText">NoResponse:2</span>
+                            <span class="ColorlumpText" id="txtNoResponse">0</span>
                         </li>
                     </ul>
                 </div>
