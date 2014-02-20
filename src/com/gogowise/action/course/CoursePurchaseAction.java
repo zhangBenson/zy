@@ -92,7 +92,7 @@ public class CoursePurchaseAction extends BasicAction {
             }
 
             consumptionOrderDao.purchaseCourse(user, course);
-            String filePath = "d:/contract/" + course.getName() + ".pdf";
+            String filePath = Constants.DOWNLOAD_CONTRACT + course.getId() + "/" + course.getName() + ".pdf";
             String tile = this.getText("course.pdf.title",new String[]{user.getNickName(),course.getName()});
             String content = this.getText("course.pdf.content");
             PdfUtil.createCourseContract(filePath,course, baseUserDao.findById(getSessionUserId()));
@@ -153,7 +153,7 @@ public class CoursePurchaseAction extends BasicAction {
         if (msg != null && msg.equals("course.first.observation")) {
 //            courseDao.confirmCourse(this.course.getId(), this.getSessionUserId());
             consumptionOrderDao.purchaseCourse(user, course);
-            String filePath = "d:/contract/" + course.getName() + ".pdf";
+            String filePath = Constants.DOWNLOAD_CONTRACT + course.getId() + "/" + course.getName() + ".pdf";
             String tile = this.getText("course.pdf.title",new String[]{user.getNickName(),course.getName()});
             String content = this.getText("course.pdf.content");
             PdfUtil.createCourseContract(filePath,course, baseUserDao.findById(getSessionUserId()));

@@ -31,6 +31,8 @@ public class Constants {
     public static final String DOWNLOAD_ORG_RESOURCE_PAHT = "/download/orgResource";
     public static final String DOWNLOAD_COURSE_RESOURCE_PAHT = "/download/courseResource";
 
+    public static final String DOWNLOAD_CONTRACT = "/download/contract";
+
     public static final int COURSE_MATERIAL_TYPE_VIDEO = 1;
     public static final int COURSE_MATERIAL_TYPE_DOCUMENT = 2;
     public static final int COURSE_MATERIAL_TYPE_OHTER = 3;

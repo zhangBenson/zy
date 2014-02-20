@@ -173,8 +173,8 @@ $(document).ready(function() {
 
 
     $("#btnQuestion").click(function(){
-        if($('input[name="questionid"]:checked').val() != undefined)
-            getGirlOjbect().questionOver("");
+        if($('input[name="studentQuestion"]:checked').val() != undefined)
+            setQuestionResult($('input[name="studentQuestion"]:checked').val());
     });
 
     //提交选择题目;

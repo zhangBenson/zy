@@ -392,8 +392,9 @@
                     <input type="hidden" name="bn" value="IC_Sample">
                     <input type="hidden" name="no_shipping" value="1">
                     <input type="hidden" name="custorm" value="sessionID">
-                    <input type="hidden" name="notify_url" value="http://localhost:8080//notifyURL.html?userID=<s:property value="%{#session.userID}"/>&orgID=<s:property value="org.id"/>" >
-                    <input type="hidden" name="cancel_return" value="http://localhost:8080/error.html">
+                    <input type="hidden" name="notify_url" value="http://test.gogowise.com/ipn.html?userID=<s:property value="%{#session.userID}"/>&orgID=<s:property value="org.id"/>" >
+                    <input type="hidden" name="return_url" value="http://test.gogowise.com/courseCenter.html">
+                    <input type="hidden" name="cancel_url" value="http://test.gogowise.com/error.html">
                     <input type="image" src="https://www.paypalobjects.com/en_GB/SG/i/btn/btn_buynowCC_LG.gif" name="submit" alt="Make payments with payPal - it's fast,">
                     <img alt=""src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
                 </form>
