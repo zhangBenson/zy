@@ -47,19 +47,31 @@
     text-decoration: underline;
     color:#666;
 }
-.org_authorization_container .auth_left .auth_left_1 .auth_list table{
-    float:left;
+
+.auth_left_1 .auth_list table{
+    margin:0px 0 0px 20px;
+}
+.auth_left_1 .auth_list table,.auth_left_1 .auth_list table tr,.auth_left_1 .auth_list table td{
+    border:1px dashed #ccccbb;
+    border-collapse: collapse;
+}
+.auth_left_1 .auth_list table td{
+    padding: 8px;
+}
+
+/*.org_authorization_container .auth_left .auth_left_1 .auth_list table{
+    *//*float:left;*//*
 }
 .org_authorization_container .auth_left .auth_left_1 .auth_list table tr {
-    display: block;
-    float:left;
+    *//*display: block;*//*
+    *//*float:left;*//*
     width:800px;
     text-align: center;
     border-bottom: 1px solid rgb(219,241,249);
 }
 .org_authorization_container .auth_left .auth_left_1 .auth_list table tr .td_portrait{
-    float:left;
-    width:60px;
+    *//*float:left;*//*
+    *//*width:60px;*//*
     padding-top: 3px;
     padding-bottom: 3px;
 }
@@ -117,7 +129,7 @@
     float:left;
     width:100px;
     clear: right;
-}
+}*/
 .org_authorization_container .auth_left .auth_left_1 .auth_list table .show_author{
     display: block;
     float:left;
@@ -191,30 +203,36 @@
     font-size: 14px;
 	color: #666;
 	text-decoration: underline;
-	margin-left: 8px;
-    margin-top:5px;
+	/*margin-left: 3px;*/
+    margin-top:25px;
 	cursor: pointer;
 }
 .org_authorization_container .auth_left .auth_left_2 .addlist .addlist_input input {
-	height: 30px;
+	height: 24px;
 	width: 220px;
 	border: 1px solid #CCC;
-	line-height: 30px;
+	line-height: 24px;
 	padding-left: 3px;
-    margin-bottom: 5px;
     border-radius: 3px;
 }
 .org_authorization_container .auth_left .auth_left_2 .addlist ._add_btn {
-	font-size: 14px;
-	color: #666;
-	text-decoration: underline;
-	margin-left: 10px;
-	cursor: pointer;
+    display: inline-block;
+    height:30px;
+    line-height: 30px;
+    font-size: 14px;
+    color:#FFF;
+    background: rgb(169,204,247);
+    box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.3);
+    border-radius: 2px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left:15px;
+    cursor:pointer;
 }
 
 .org_authorization_container .auth_left .auth_left_2 {
 	float: left;
-	margin-top: 20px;
+	/*margin-top: 20px;*/
 	width:100%;
 }
 .org_authorization_container .auth_left .auth_left_4 {
@@ -267,6 +285,7 @@
 }
 .org_authorization_container .auth_left .auth_left_2 .addlist  table .author_td{
     position: relative;
+    padding-top:8px
 }
 .org_authorization_container .auth_left .auth_left_2 .addlist  table .hide_author_list{
     display: none;

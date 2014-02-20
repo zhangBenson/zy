@@ -1,5 +1,6 @@
 package com.gogowise.rep.org.enity;
 
+import com.gogowise.common.utils.Constants;
 import com.gogowise.rep.AbstractPersistence;
 import com.gogowise.rep.user.enity.BaseUser;
 
@@ -9,7 +10,7 @@ import java.util.Calendar;
 
 /**
  * Created by IntelliJ IDEA.
- * User: Administrator
+ * User: 苑永志
  * Date: 11-10-24
  * Time: 下午3:09
  * To change this template use File | Settings | File Templates.
@@ -23,6 +24,8 @@ public class OrganizationTeacher extends AbstractPersistence {
     private BaseUser teacher;
     @ManyToOne
     private Organization org;
+
+    private Short teacherStatus = Constants.TEACHER_STATUS_UNCONFIRMED;
 
     private Boolean orgRoleType = false;
 
@@ -58,5 +61,13 @@ public class OrganizationTeacher extends AbstractPersistence {
 
     public void setOrgRoleType(Boolean orgRoleType) {
         this.orgRoleType = orgRoleType;
+    }
+
+    public Short getTeacherStatus() {
+        return teacherStatus;
+    }
+
+    public void setTeacherStatus(Short teacherStatus) {
+        this.teacherStatus = teacherStatus;
     }
 }

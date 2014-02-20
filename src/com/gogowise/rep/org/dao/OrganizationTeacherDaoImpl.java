@@ -14,4 +14,9 @@ public class OrganizationTeacherDaoImpl extends ModelDaoImpl<OrganizationTeacher
          return  this.find("From OrganizationTeacher ot where ot.org.id = ? order by ot.id desc", pagination,orgId);
      }
 
+    @Override
+    public OrganizationTeacher findByOrgIdAndTeacherId(Integer orgId, Integer teacherId) {
+        return  this.findFist("From OrganizationTeacher ot where ot.org.id = ? and ot.teacher.id=?",orgId,teacherId);
+    }
+
 }

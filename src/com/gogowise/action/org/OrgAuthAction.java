@@ -1,13 +1,24 @@
 package com.gogowise.action.org;
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.common.schedule.EmailJob;
+import com.gogowise.common.utils.EmailUtil;
+import com.gogowise.common.utils.MD5;
+import com.gogowise.common.utils.PdfUtil;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.dao.OrganizationTeacherDao;
+import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
+import com.gogowise.rep.user.dao.RoleTypeDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.org.enity.OrganizationTeacher;
 import com.gogowise.common.utils.Constants;
+import com.gogowise.rep.user.enity.BaseUserRoleType;
+import com.gogowise.rep.user.enity.RoleType;
+import com.gogowise.vo.TeacherStatusVO;
+import com.opensymphony.xwork2.ActionContext;
+import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -15,7 +26,9 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import javax.management.relation.Role;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 @Controller
@@ -28,7 +41,11 @@ public class OrgAuthAction  extends BasicAction {
 
     private OrganizationTeacherDao organizationTeacherDao;
     private BaseUserDao baseUserDao;
+    private BaseUserRoleTypeDao baseUserRoleTypeDao;
+    private RoleTypeDao roleTypeDao;
     private OrganizationDao organizationDao;
+
+    private List<TeacherStatusVO> teacherStatusVOs = new ArrayList<TeacherStatusVO>();
 
     @Action(value="initOrgAuthorization",results = {@Result(name=SUCCESS,type = Constants.RESULT_NAME_TILES, location = ".orgAuthorization"),
             @Result(name=INPUT,type = Constants.RESULT_NAME_TILES, location = ".orgAuthorization")})
@@ -38,21 +55,83 @@ public class OrgAuthAction  extends BasicAction {
         return SUCCESS;
     }
 
+    @Action(value="manageStudents",results = {@Result(name=SUCCESS,type = Constants.RESULT_NAME_TILES, location = ".studentManage"),
+            @Result(name=INPUT,type = Constants.RESULT_NAME_TILES, location = ".studentManage")})
+    public String manageStudents() {
+        Organization org = this.organizationDao.findByResId(this.getSessionUserId());
+        this.orgTeachers = organizationTeacherDao.find(org.getId(), this.getPagination());
+        return SUCCESS;
+    }
 
-    @Action(value="saveOrgAuthorization",results = {@Result(name=SUCCESS,type = Constants.RESULT_NAME_TILES, location = ".orgAuthorization"),
-            @Result(name=INPUT,type = Constants.RESULT_NAME_TILES, location = ".orgAuthorization")})
+    @Action(value="manageTeachers",results = {@Result(name=SUCCESS,type = Constants.RESULT_NAME_TILES, location = ".teacherManage"),
+            @Result(name=INPUT,type = Constants.RESULT_NAME_TILES, location = ".teacherManage")})
+    public String manageTeachers() {
+        Organization org = this.organizationDao.findByResId(this.getSessionUserId());
+        this.orgTeachers = organizationTeacherDao.find(org.getId(), this.getPagination());
+        return SUCCESS;
+    }
+
+
+    @Action(value="saveOrgAuthorization",results = {@Result(name=SUCCESS,type = Constants.RESULT_NAME_TILES, location = ".teacherManage"),
+            @Result(name=INPUT,type = Constants.RESULT_NAME_TILES, location = ".teacherManage")})
     public String saveOrgAuthorization(){
-        BaseUser teacher = baseUserDao.findByEmailAndNickName(this.getOrgTeacher().getTeacher().getEmail(), this.getOrgTeacher().getTeacher().getNickName());
-        this.orgTeacher.setTeacher( teacher);
         Organization org = organizationDao.findMyOrg(this.getSessionUserId());
-        this.orgTeacher.setOrg(org);
-        organizationTeacherDao.persistAbstract(orgTeacher);
+        //判断添加老师是否已经存在
+        BaseUser teacher = null;
+        BaseUserRoleType baseUserRoleType = null;
+        for(OrganizationTeacher ot : orgTeachers){
+
+            String teacherEmail = ot.getTeacher().getEmail();
+            teacher = baseUserDao.findByEmail(teacherEmail);
+            //该用户注册过
+            if(teacher!=null){
+                //判断是否已经是学校的老师了
+                this.orgTeacher = organizationTeacherDao.findByOrgIdAndTeacherId(org.getId(),teacher.getId());
+                if(orgTeacher!=null){
+                    continue;
+                }
+                teacher.setUserName(ot.getTeacher().getUserName());
+            //该用户没   注册过
+            }else{
+                //设置随机密码，发送至邮件
+                teacher = new BaseUser();
+                teacher.setEmail(ot.getTeacher().getEmail());
+                teacher.setLockedOut(true);
+                teacher.setRegDate(Calendar.getInstance());
+                String md5 = MD5.endCode(String.valueOf(System.currentTimeMillis()));
+                teacher.setActiveCode(md5);
+                teacher.setLanguage(ActionContext.getContext().getLocale().getLanguage());
+                String randomPwd = "123456";
+                teacher.setPassword(MD5.endCode(randomPwd));
+                //2. 发邮件通知
+                String tile = "GoGoWise"+ot.getOrg()+"学校邀请";
+                String content = "GoGoWise"+ot.getOrg()+"学校邀请您成为它的老师，帐号为您的邮箱："+teacherEmail+",密码为："+randomPwd+",点击<a href='http:'>这里</a>接受，点击<a href='#'>这里</a>拒绝";
+                EmailUtil.sendMail(teacherEmail, tile, content, null,null);
+            }
+
+            //保存老师信息
+            baseUserDao.persistAbstract(teacher);
+
+            //添加老师角色信息
+            baseUserRoleType = new BaseUserRoleType();
+            baseUserRoleType.setBaseUser(teacher);
+            baseUserRoleType.setRoleType(roleTypeDao.findById(Constants.ROLE_TYPE_TEACHER));
+            baseUserRoleTypeDao.persistAbstract(baseUserRoleType);
+
+            //保存组织老师关系
+            ot.setOrg(org);
+            ot.setTeacher(teacher);
+            ot.setCreateDate(Calendar.getInstance());
+            ot.setTeacherStatus(Constants.TEACHER_STATUS_UNCONFIRMED);
+            organizationTeacherDao.persistAbstract(ot);
+        }
+
         this.orgTeachers = organizationTeacherDao.find(org.getId(), this.getPagination());
         return SUCCESS;
     }
 
     public void validateSaveOrgAuthorization() {
-        Organization org = this.organizationDao.findByResId(this.getSessionUserId());
+        /*Organization org = this.organizationDao.findByResId(this.getSessionUserId());
 
         BaseUser teacher = baseUserDao.findByEmailAndNickName(this.getOrgTeacher().getTeacher().getEmail(), this.getOrgTeacher().getTeacher().getNickName());
         if (teacher == null) {
@@ -66,7 +145,7 @@ public class OrgAuthAction  extends BasicAction {
                 addFieldError("orgTeacher.teacher.email", "此用户已加入其他组织");
             }
         }
-        this.orgTeachers = organizationTeacherDao.find(org.getId(), this.getPagination());
+        this.orgTeachers = organizationTeacherDao.find(org.getId(), this.getPagination());*/
     }
 
     public List<OrganizationTeacher> getOrgTeachers() {
@@ -101,6 +180,22 @@ public class OrgAuthAction  extends BasicAction {
         this.baseUserDao = baseUserDao;
     }
 
+    public BaseUserRoleTypeDao getBaseUserRoleTypeDao() {
+        return baseUserRoleTypeDao;
+    }
+
+    public void setBaseUserRoleTypeDao(BaseUserRoleTypeDao baseUserRoleTypeDao) {
+        this.baseUserRoleTypeDao = baseUserRoleTypeDao;
+    }
+
+    public RoleTypeDao getRoleTypeDao() {
+        return roleTypeDao;
+    }
+
+    public void setRoleTypeDao(RoleTypeDao roleTypeDao) {
+        this.roleTypeDao = roleTypeDao;
+    }
+
     public Integer getOrgId() {
         return orgId;
     }
@@ -115,5 +210,13 @@ public class OrgAuthAction  extends BasicAction {
 
     public void setOrganizationDao(OrganizationDao organizationDao) {
         this.organizationDao = organizationDao;
+    }
+
+    public List<TeacherStatusVO> getTeacherStatusVOs() {
+        return teacherStatusVOs;
+    }
+
+    public void setTeacherStatusVOs(List<TeacherStatusVO> teacherStatusVOs) {
+        this.teacherStatusVOs = teacherStatusVOs;
     }
 }

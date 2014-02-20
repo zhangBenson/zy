@@ -104,6 +104,13 @@ public class Constants {
     public static final Integer ROLE_TYPE_TEACHER = 5;
     public static final Integer ROLE_TYPE_STUDENT = 6;
 
+    /*---------------------definition of teacher status--------------*/
+    public static final Short TEACHER_STATUS_UNCONFIRMED = 1;
+    public static final Short TEACHER_STATUS_UNACCEPTED = 2;
+    public static final Short TEACHER_STATUS_CONFIRMED = 3;
+    public static final Short TEACHER_STATUS_DISABLED = 4;
+
+
     /*---------------------definition ccs type for myFirstPage menu--------------*/
     public static final Integer OPERA_TYPE_FOR_MYFIRSTPAGE = 1;
     public static final Integer OPERA_TYPE_FOR_NEW_COURSE = 2;
