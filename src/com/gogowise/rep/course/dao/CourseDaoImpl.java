@@ -236,11 +236,11 @@ import java.util.List;
         return  this.find(hql, page, orgId, Utils.getCurrentCalender());
     }
     public List<Course> findHotCoursesByOrg(Integer orgId, Pagination pagination) {
-        return this.find("select distinct  c from Course c   left join c.seniorClassRooms sc   where " + DELETED_FALSE + " and c.organization.id = ?  group by c order by count(sc.id) desc",pagination,orgId);
+        return this.find("select distinct  c from Course c   left join c.seniorClassRooms sc   where " + DELETED_FALSE + " and c.organization.id = ? and charges!=0  group by c order by count(sc.id) desc", pagination, orgId);
     }
 
     public List<Course> findMoocsByOrg(Integer orgId, Pagination pagination) {
-        return this.find("select distinct  c from Course c   left join c.seniorClassRooms sc   where " + DELETED_FALSE + " and c.organization.id = ?  group by c order by count(sc.id) desc",pagination,orgId);
+        return this.find("select distinct  c from Course c   left join c.seniorClassRooms sc   where " + DELETED_FALSE + " and c.organization.id = ?  and charges=0  group by c order by count(sc.id) desc", pagination, orgId);
     }
 
 
