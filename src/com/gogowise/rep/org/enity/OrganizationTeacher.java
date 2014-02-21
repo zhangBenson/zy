@@ -26,6 +26,7 @@ public class OrganizationTeacher extends AbstractPersistence {
     private Organization org;
 
     private Short teacherStatus = Constants.TEACHER_STATUS_UNCONFIRMED;
+    private Short previousStatus = Constants.TEACHER_STATUS_UNCONFIRMED;
 
     private Boolean orgRoleType = false;
 
@@ -69,5 +70,13 @@ public class OrganizationTeacher extends AbstractPersistence {
 
     public void setTeacherStatus(Short teacherStatus) {
         this.teacherStatus = teacherStatus;
+    }
+
+    public Short getPreviousStatus() {
+        return previousStatus;
+    }
+
+    public void setPreviousStatus(Short previousStatus) {
+        this.previousStatus = previousStatus;
     }
 }

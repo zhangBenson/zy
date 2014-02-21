@@ -6,9 +6,14 @@ import com.gogowise.common.utils.MD5;
 import com.gogowise.rep.finance.UserAccountInfoDao;
 import com.gogowise.rep.finance.enity.UserAccountInfo;
 import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.org.dao.OrganizationTeacherDao;
 import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.org.enity.OrganizationTeacher;
 import com.gogowise.rep.user.dao.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import com.gogowise.rep.user.enity.BaseUser;
+import com.gogowise.rep.user.enity.BaseUserRoleType;
+import com.gogowise.vo.ResultData;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.convention.annotation.Action;
@@ -18,6 +23,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+
+import java.util.logging.Logger;
 
 /**
  * TeacherAction
@@ -29,18 +36,101 @@ import org.springframework.stereotype.Controller;
 @Controller
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 @Namespace(BasicAction.BASE_NAME_SPACE)
-public class TeacherAction extends BasicAction{
+public class TeacherAction extends BasicAction {
     @Autowired
     private BaseUserDao baseUserDao;
     @Autowired
     private UserAccountInfoDao userAccountInfoDao;
     @Autowired
     private OrganizationDao organizationDao;
+    @Autowired
+    private OrganizationTeacherDao organizationTeacherDao;
+    @Autowired
+    private BaseUserRoleTypeDao baseUserRoleTypeDao;
 
     private BaseUser user;
     private UserAccountInfo userAccountInfo;
     private String rePwd;
     private String rePasswordCode;
+
+
+    @Action(value = "disableTeacher", results = {@Result(name = SUCCESS, type = "json")})
+    public String disableTeacher() {
+        ResultData<String> rd = new ResultData<String>();
+        ActionContext.getContext().getValueStack().push(rd);
+        try {
+            BaseUser teacher = baseUserDao.findByEmail(user.getEmail());
+            Organization org = organizationDao.findByResId(getSessionUserId());
+            OrganizationTeacher orgTeacher = organizationTeacherDao.findByOrgIdAndTeacherId(org.getId(), teacher.getId());
+            orgTeacher.setPreviousStatus(orgTeacher.getTeacherStatus());
+            orgTeacher.setTeacherStatus(Constants.TEACHER_STATUS_DISABLED);
+            organizationTeacherDao.persistAbstract(orgTeacher);
+            rd.setResult(200);
+        } catch (Exception e) {
+            rd.setResult(500);
+            rd.setMessage("Disable Failure:" + e.getMessage());
+            logger.error("Disable Failure",e);
+        }
+        return SUCCESS;
+    }
+
+    @Action(value = "enableTeacher", results = {@Result(name = SUCCESS, type = "json")})
+    public String enableTeacher() {
+        ResultData<String> rd = new ResultData<String>();
+        ActionContext.getContext().getValueStack().push(rd);
+        try {
+            BaseUser teacher = baseUserDao.findByEmail(user.getEmail());
+            Organization org = organizationDao.findByResId(getSessionUserId());
+            OrganizationTeacher orgTeacher = organizationTeacherDao.findByOrgIdAndTeacherId(org.getId(), teacher.getId());
+            orgTeacher.setTeacherStatus(orgTeacher.getPreviousStatus());
+            organizationTeacherDao.persistAbstract(orgTeacher);
+            rd.setResult(200);
+            rd.setData(String.valueOf(orgTeacher.getPreviousStatus()));
+        } catch (Exception e) {
+            rd.setResult(500);
+            rd.setMessage("Enable Failure:" + e.getMessage());
+            logger.error("Enable Failure",e);
+        }
+        return SUCCESS;
+    }
+
+    @Action(value = "deleteTeacher", results = {@Result(name = SUCCESS, type = "json")})
+    public String deleteTeacher() {
+        ResultData<String> rd = new ResultData<String>();
+        ActionContext.getContext().getValueStack().push(rd);
+        try {
+            BaseUser teacher = baseUserDao.findByEmail(user.getEmail());
+            Organization org = organizationDao.findByResId(getSessionUserId());
+            OrganizationTeacher orgTeacher = organizationTeacherDao.findByOrgIdAndTeacherId(org.getId(), teacher.getId());
+            //删除用户
+            organizationTeacherDao.delete(orgTeacher);
+            //不删除角色
+            rd.setResult(200);
+        } catch (Exception e) {
+            rd.setResult(500);
+            rd.setMessage("Delete Failure:" + e.getMessage());
+            logger.error("Delete Failure",e);
+        }
+        return SUCCESS;
+    }
+    @Action(value = "reInviteTeacher", results = {@Result(name = SUCCESS, type = "json")})
+    public String reInviteTeacher() {
+        ResultData<String> rd = new ResultData<String>();
+        ActionContext.getContext().getValueStack().push(rd);
+        try {
+            BaseUser teacher = baseUserDao.findByEmail(user.getEmail());
+            Organization org = organizationDao.findByResId(getSessionUserId());
+            OrganizationTeacher orgTeacher = organizationTeacherDao.findByOrgIdAndTeacherId(org.getId(), teacher.getId());
+            orgTeacher.setTeacherStatus(Constants.TEACHER_STATUS_UNCONFIRMED);
+            organizationTeacherDao.persistAbstract(orgTeacher);
+            rd.setResult(200);
+        } catch (Exception e) {
+            rd.setResult(500);
+            rd.setMessage("ReInvite Failure:" + e.getMessage());
+            logger.error("ReInvite Failure",e);
+        }
+        return SUCCESS;
+    }
 
     @Action(value = "setting", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initUpdate_teacher")})
     public String initUpdate() {
@@ -49,19 +139,19 @@ public class TeacherAction extends BasicAction{
         return SUCCESS;
     }
 
-    @Action(value = "update_setting", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName","setting"}),
+    @Action(value = "update_setting", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "setting"}),
             @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".initUpdate_teacher")})
     public String updateUserInfo() {
         BaseUser _user = baseUserDao.findById(getSessionUserId());
-        if(user.getNickName()!=null)
+        if (user.getNickName() != null)
             _user.setNickName(this.user.getNickName());
-        if(user.getCardId()!=null)
+        if (user.getCardId() != null)
             _user.setCardId(this.user.getCardId());
-        if(user.getPic()!=null)
+        if (user.getPic() != null)
             _user.setPic(this.user.getPic());
-        if(user.getUserName()!=null)
+        if (user.getUserName() != null)
             _user.setUserName(user.getUserName());
-        if(StringUtils.isNotBlank(user.getSelfDescription())){
+        if (StringUtils.isNotBlank(user.getSelfDescription())) {
             _user.setSelfDescription(user.getSelfDescription());
         }
         _user.setSexy(user.getSexy());
@@ -79,10 +169,10 @@ public class TeacherAction extends BasicAction{
         return SUCCESS;
     }
 
-    private void setUserOrg(BaseUser user){
+    private void setUserOrg(BaseUser user) {
         Organization org = organizationDao.findByResId(user.getId());
-        if(org != null){
-            ActionContext.getContext().getSession().put(Constants.SESSION_USER_OWN_ORG,org.getSchoolName());
+        if (org != null) {
+            ActionContext.getContext().getSession().put(Constants.SESSION_USER_OWN_ORG, org.getSchoolName());
         }
     }
 
@@ -107,7 +197,7 @@ public class TeacherAction extends BasicAction{
             addFieldError("user.cardId", "身份证号错误");
         }*/
         BaseUser nickNameUser = baseUserDao.findByNickName(StringUtils.trim(user.getNickName()));
-        if (nickNameUser != null && !this.getSessionUserId().equals( nickNameUser.getId())) {
+        if (nickNameUser != null && !this.getSessionUserId().equals(nickNameUser.getId())) {
             addFieldError("user.nickName", this.getText("member.reg.nickname.exist"));
         }
     }

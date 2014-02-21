@@ -4,6 +4,7 @@ import com.gogowise.action.BasicAction;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.EmailUtil;
 import com.gogowise.common.utils.MD5;
+import com.gogowise.rep.Pagination;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.dao.OrganizationTeacherDao;
 import com.gogowise.rep.org.enity.Organization;
@@ -13,6 +14,7 @@ import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import com.gogowise.rep.user.dao.RoleTypeDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.user.enity.BaseUserRoleType;
+import com.gogowise.rep.user.enity.RoleType;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -59,10 +61,10 @@ public class OrgAuthAction  extends BasicAction {
             @Result(name=INPUT,type = Constants.RESULT_NAME_TILES, location = ".teacherManage")})
     public String manageTeachers() {
         Organization org = this.organizationDao.findByResId(this.getSessionUserId());
+        this.getPagination().setPageSize(30);
         this.orgTeachers = organizationTeacherDao.find(org.getId(), this.getPagination());
         return SUCCESS;
     }
-
 
     @Action(value="saveOrgAuthorization",results = {@Result(name=SUCCESS,type = Constants.RESULT_NAME_TILES, location = ".teacherManage"),
             @Result(name=INPUT,type = Constants.RESULT_NAME_TILES, location = ".teacherManage")})
@@ -72,6 +74,9 @@ public class OrgAuthAction  extends BasicAction {
         BaseUser teacher = null;
         BaseUserRoleType baseUserRoleType = null;
         for(OrganizationTeacher ot : orgTeachers){
+            if(ot==null){
+                continue;
+            }
 
             String teacherEmail = ot.getTeacher().getEmail();
             teacher = baseUserDao.findByEmail(teacherEmail);
@@ -88,6 +93,8 @@ public class OrgAuthAction  extends BasicAction {
                 //设置随机密码，发送至邮件
                 teacher = new BaseUser();
                 teacher.setEmail(ot.getTeacher().getEmail());
+                teacher.setUserName(ot.getTeacher().getUserName());
+                teacher.setNickName(ot.getTeacher().getUserName());
                 teacher.setLockedOut(true);
                 teacher.setRegDate(Calendar.getInstance());
                 String md5 = MD5.endCode(String.valueOf(System.currentTimeMillis()));
@@ -105,10 +112,13 @@ public class OrgAuthAction  extends BasicAction {
             baseUserDao.persistAbstract(teacher);
 
             //添加老师角色信息
-            baseUserRoleType = new BaseUserRoleType();
-            baseUserRoleType.setBaseUser(teacher);
-            baseUserRoleType.setRoleType(roleTypeDao.findById(Constants.ROLE_TYPE_TEACHER));
-            baseUserRoleTypeDao.persistAbstract(baseUserRoleType);
+            boolean haveTeacherPermission = baseUserRoleTypeDao.havePermission(teacher.getId(), RoleType.TEACHER);
+            if(!haveTeacherPermission){
+                baseUserRoleType = new BaseUserRoleType();
+                baseUserRoleType.setBaseUser(teacher);
+                baseUserRoleType.setRoleType(roleTypeDao.findById(Constants.ROLE_TYPE_TEACHER));
+                baseUserRoleTypeDao.persistAbstract(baseUserRoleType);
+            }
 
             //保存组织老师关系
             ot.setOrg(org);
@@ -118,7 +128,7 @@ public class OrgAuthAction  extends BasicAction {
             organizationTeacherDao.persistAbstract(ot);
         }
 
-        this.orgTeachers = organizationTeacherDao.find(org.getId(), this.getPagination());
+        this.orgTeachers = organizationTeacherDao.find(org.getId(), new Pagination(30));
         return SUCCESS;
     }
 

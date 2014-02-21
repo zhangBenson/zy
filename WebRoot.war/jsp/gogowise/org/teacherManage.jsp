@@ -42,9 +42,17 @@
                           </s:else>
                       </td>
                       <td>
-                          Disable
-                          Enable
-                          Delete
+                          <s:if test="teacherStatus in {1,3}">
+                              <a href="javascript:;" onclick="disableTeacher(this);">Disable</a>&nbsp;
+                              <a href="javascript:;" onclick="deleteTeacher(this);">Delete</a>
+                          </s:if>
+                          <s:elseif test="teacherStatus==4">
+                              <a href="javascript:;" onclick="enableTeacher(this);">Enable</a>&nbsp;
+                              <a href="javascript:;" onclick="deleteTeacher(this);">Delete</a>
+                          </s:elseif>
+                          <s:else>
+                              <a href="javascript:;" onclick="reInviteTeacher(this);">重新邀请</a>&nbsp;
+                          </s:else>
                       </td>
                   </tr>
                   </s:iterator>
@@ -76,7 +84,7 @@
                   </tr>
                   <tr class="addlist_msg_tr">
                       <td class="addlist_input">
-                          <input type="text" name="orgTeachers[0].teacher.email"  onblur='checkAuthorizationEmail(this);' class="autchorization_input" />
+                          <input type="text" name="orgTeachers[0].teacher.email"  onblur='checkAuthorizationEmail(this);' class="authorization_input" />
                       </td>
                       <td class="addlist_input">
                         <input type="text" name="orgTeachers[0].teacher.userName" />
@@ -104,11 +112,77 @@
     var emailError="<s:text name='interview.time.invalid1'/>";
     var officerAuthorizationSameError = "不能是学校负责人的邮箱";
 
-
+    function disableTeacher(obj){
+        if(!confirm("您确定要停用该学生吗？")){
+            return;
+        }
+        var $teacherTds = $(obj).parents("tr").children("td");
+        var teacherEmail = $teacherTds.eq(0).text();
+        $.post("disableTeacher.html",{"user.email":teacherEmail},function(rd){
+            if(rd.result==200){
+                $teacherTds.eq(5).html("Disabled");
+                $teacherTds.eq(6).html('<a href="javascript:;" onclick="enableTeacher(this);">Enable</a>&nbsp;<a href="javascript:;" onclick="deleteTeacher(this);">Delete</a>');
+                return;
+            }
+            alert("停用失败，请稍后再试！");
+        });
+    }
+    function enableTeacher(obj){
+        if(!confirm("您确定要启用该学生吗？")){
+            return;
+        }
+        var $teacherTds = $(obj).parents("tr").children("td");
+        var teacherEmail = $teacherTds.eq(0).text();
+        $.post("enableTeacher.html",{"user.email":teacherEmail},function(rd){
+            if(rd.result==200){
+                var teacherStatus;
+                if(rd.data==1){
+                    teacherStatus = "未确认";
+                }else if(rd.data==2){
+                    teacherStatus = "Unaccepted";
+                }else{
+                    teacherStatus = "已确认";
+                }
+                $teacherTds.eq(5).html(teacherStatus);
+                $teacherTds.eq(6).html('<a href="javascript:;" onclick="disableTeacher(this);">Disable</a>&nbsp;<a href="javascript:;" onclick="deleteTeacher(this);">Delete</a>');
+                return;
+            }
+            alert("启用失败，请稍后再试！");
+        });
+    }
+    function deleteTeacher(obj){
+        if(!confirm("您确定要删除该学生吗？")){
+            return;
+        }
+        var $teacherTds = $(obj).parents("tr").children("td");
+        var teacherEmail = $teacherTds.eq(0).text();
+        $.post("deleteTeacher.html",{"user.email":teacherEmail},function(rd){
+            if(rd.result==200){
+                $teacherTds.eq(0).parent().remove();
+                return;
+            }
+            alert("删除失败，请稍后再试！");
+        });
+    }
+    function reInviteTeacher(obj){
+        if(!confirm("您确定要重新邀请该学生吗？")){
+            return;
+        }
+        var $teacherTds = $(obj).parents("tr").children("td");
+        var teacherEmail = $teacherTds.eq(0).text();
+        $.post("reInviteTeacher.html",{"user.email":teacherEmail},function(rd){
+            if(rd.result==200){
+                $teacherTds.eq(5).html("未确认");
+                $teacherTds.eq(6).html('<a href="javascript:;" onclick="disableTeacher(this);">Disable</a>&nbsp;<a href="javascript:;" onclick="deleteTeacher(this);">Delete</a>');
+                return;
+                return;
+            }
+            alert("重新邀请失败，请稍后再试！");
+        });
+    }
     function removeInput(obj) {
         $(obj).parent().parent().remove();
     }
-
     function checkAuthorizationEmail(obj){
          $(".authorization_input_msg").html("");
         var emailContent = $(obj).val().replace(/(^\s*)|(\s*$)/g, "");
@@ -138,9 +212,9 @@
         return true;
     }
     function checkAuthorizationEmails(){
-        var $emails = $(".authorization_input");
-        for(var index in $emails){
-            if(!checkAuthorizationEmail($emails[index])){
+        var emails = document.getElementsByClassName("authorization_input");
+        for(var index in emails){
+            if(!checkAuthorizationEmail(emails[index])){
                 return false;
             }
         }
