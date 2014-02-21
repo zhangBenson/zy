@@ -884,6 +884,14 @@
         <put-attribute name="title" value="title.of.org.authorization"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/org/orgAuthorization.jsp"/>
     </definition>
+    <definition name=".studentManage" extends=".userCenter">
+        <put-attribute name="title" value="Student Management"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/org/studentManage.jsp"/>
+    </definition>
+    <definition name=".teacherManage" extends=".userCenter">
+        <put-attribute name="title" value="Teacher Management"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/org/teacherManage.jsp"/>
+    </definition>
     <definition name=".initOrgBackEndUserConfirm" extends=".bodyCenter">
         <put-attribute name="title" value="title.of.org.psw.confirmed"/>
         <put-attribute name="contentBody" value="/jsp/gogowise/org/orgPwdRepair.jsp"/>

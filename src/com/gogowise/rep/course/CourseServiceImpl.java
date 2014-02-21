@@ -41,10 +41,10 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
     public Set<BaseUser> findAllTeachersByOrgCreator(Integer userId) {
         Organization org =  organizationDao.findByResId(userId);
         Set<BaseUser> teachers = new HashSet<>();
+        teachers.add(baseUserDao.findById(userId));
         if(org != null) {
             teachers.addAll(orgService.findAllTeachersForOrg(org.getId()));
         }
-        teachers.add(baseUserDao.findById(userId));
 
         return teachers;
     }

@@ -43,7 +43,15 @@
 		<div class="col-sm-4">
 			<div class="basePanelshadow" style="text-align: center;">
 				<div class="basePanelGrey"  style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
-                    <s:property value="%{getText('personalcenter.hall')}"/>(<s:property value="userOrganization.schoolName"/>)
+                    <s:property value="%{getText('personalcenter.hall')}"/>
+                    (
+                        <s:if test="userOrganization.schoolName!=null">
+                            <s:property value="userOrganization.schoolName"/>
+                        </s:if>
+                        <s:else>
+                            GoGoWise Guide Team
+                        </s:else>
+                    )
                 </div>
 				<br/>
 
