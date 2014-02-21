@@ -55,7 +55,8 @@ public class QuestionResultAction extends BasicAction {
 
     @Action(value = "saveQuestionResult")
     public String saveQuestionResult() {
-        QuestionResult questionResult = new QuestionResult();
+        QuestionResult questionResult = questionResultDao.find(userId, questionId, courseClassId);
+        if (questionResult == null) questionResult = new QuestionResult();
         Question question = questionDao.findById(questionId);
         BaseUser owner = baseUserDao.findById(userId);
         QuestionItem questionItem = null;
