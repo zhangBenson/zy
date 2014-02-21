@@ -1,24 +1,19 @@
 package com.gogowise.action.org;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.common.schedule.EmailJob;
+import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.EmailUtil;
 import com.gogowise.common.utils.MD5;
-import com.gogowise.common.utils.PdfUtil;
-import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.dao.OrganizationTeacherDao;
+import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.org.enity.OrganizationTeacher;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import com.gogowise.rep.user.dao.RoleTypeDao;
 import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.rep.org.enity.Organization;
-import com.gogowise.rep.org.enity.OrganizationTeacher;
-import com.gogowise.common.utils.Constants;
 import com.gogowise.rep.user.enity.BaseUserRoleType;
-import com.gogowise.rep.user.enity.RoleType;
-import com.gogowise.vo.TeacherStatusVO;
 import com.opensymphony.xwork2.ActionContext;
-import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -26,7 +21,6 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import javax.management.relation.Role;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -44,8 +38,6 @@ public class OrgAuthAction  extends BasicAction {
     private BaseUserRoleTypeDao baseUserRoleTypeDao;
     private RoleTypeDao roleTypeDao;
     private OrganizationDao organizationDao;
-
-    private List<TeacherStatusVO> teacherStatusVOs = new ArrayList<TeacherStatusVO>();
 
     @Action(value="initOrgAuthorization",results = {@Result(name=SUCCESS,type = Constants.RESULT_NAME_TILES, location = ".orgAuthorization"),
             @Result(name=INPUT,type = Constants.RESULT_NAME_TILES, location = ".orgAuthorization")})
@@ -212,11 +204,4 @@ public class OrgAuthAction  extends BasicAction {
         this.organizationDao = organizationDao;
     }
 
-    public List<TeacherStatusVO> getTeacherStatusVOs() {
-        return teacherStatusVOs;
-    }
-
-    public void setTeacherStatusVOs(List<TeacherStatusVO> teacherStatusVOs) {
-        this.teacherStatusVOs = teacherStatusVOs;
-    }
 }
