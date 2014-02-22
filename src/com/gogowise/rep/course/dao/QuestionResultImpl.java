@@ -12,4 +12,7 @@ public class QuestionResultImpl extends ModelDaoImpl<QuestionResult> implements 
         return this.find("From QuestionResult qr where qr.question.id=?  and qr.courseClass.id = ?", questionId, courseClassId);
     }
 
+    public QuestionResult find(Integer userId, Integer questionId, Integer classId) {
+        return this.findFist("From QuestionResult cm where cm.owner.id=?   and cm.question.id = ? and cm.courseClass.id = ? order by cm.id desc", userId, questionId, classId);
+    }
 }
