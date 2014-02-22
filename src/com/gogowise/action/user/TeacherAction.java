@@ -18,6 +18,7 @@ import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -34,6 +35,7 @@ import java.util.logging.Logger;
  * @since 2014年01月28日 13:41
  */
 @Controller
+@ParentPackage("basic-package")
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 @Namespace(BasicAction.BASE_NAME_SPACE)
 public class TeacherAction extends BasicAction {

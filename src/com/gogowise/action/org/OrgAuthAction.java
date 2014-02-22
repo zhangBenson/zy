@@ -128,7 +128,8 @@ public class OrgAuthAction  extends BasicAction {
             organizationTeacherDao.persistAbstract(ot);
         }
 
-        this.orgTeachers = organizationTeacherDao.find(org.getId(), new Pagination(30));
+        this.getPagination().setPageSize(30);
+        this.orgTeachers = organizationTeacherDao.find(org.getId(),this.getPagination());
         return SUCCESS;
     }
 
