@@ -18,7 +18,7 @@ public class EmailJob implements  Runnable {
     // Email sender's name
     private static final String SMTPUserName = "support@gogowise.com";
     // Email password.
-    private static final String SMTPPassword = "test";
+    private static final String SMTPPassword = "gogowise";
     // SMTP Server
     private static final String SMTPServerName = "mail.gogowise.com";
 
