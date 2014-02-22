@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface QuestionDao extends ModelDao<Question> {
     public List<Question> findByMaterialId(Integer materialId);
+
 }

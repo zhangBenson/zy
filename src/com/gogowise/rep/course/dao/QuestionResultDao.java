@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface QuestionResultDao extends ModelDao<QuestionResult> {
     public List<QuestionResult> findByQuestionAndClass(Integer questionId, Integer courseClassId);
+
+    public QuestionResult find(Integer userId, Integer questionId, Integer classId);
 }
