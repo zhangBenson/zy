@@ -8,9 +8,6 @@
 <link rel="stylesheet" href="htm/Demo/FirstPage_Formal/gogowisestyle/css/messenger-theme-future.css">
 <link rel="stylesheet" href="htm/Demo/FirstPage_Formal/gogowisestyle/skins/all.css">
 
-<script src="htm/Demo/FirstPage_Formal/gogowisestyle/js/jquery-1.10.2.min.js"></script>
-<script src="htm/Demo/FirstPage_Formal/gogowisestyle/js/bootstrap.min.js"></script>
-<script src="htm/Demo/FirstPage_Formal/gogowisestyle/js/iscroll.js"></script>
 <script src="htm/Demo/FirstPage_Formal/gogowisestyle/js/messenger.min.js"></script>
 <script src="htm/Demo/FirstPage_Formal/gogowisestyle/js/icheck.min.js"></script>
 <script src="htm/Demo/FirstPage_Formal/gogowisestyle/js/Chart.min.js"></script>

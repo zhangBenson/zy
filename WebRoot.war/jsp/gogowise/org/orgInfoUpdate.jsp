@@ -131,7 +131,7 @@
                             <div class="input_content" style="width: 460px;">
                                 <div id="wwgrp_orgForm_org_memberSize" class="wwgrp">
                                     <div id="wwctrl_orgForm_org_memberSize" class="wwctrl">
-                                        <s:radio list="#{0:getText('orgleague.info.size1'),1:getText('orgleague.info.size2'),2:getText('orgleague.info.size3'),3:getText('orgleague.info.size4'),4:getText('orgleague.info.size5'),5:getText('orgleague.info.size6')}" name="org.memberSize" cssClass="usersexy" listKey="key" listValue="value"/>
+                                        <s:radio list="#{0:getText('orgleague.info.size1'),1:getText('orgleague.info.size2'),2:getText('orgleague.info.size3'),3:getText('orgleague.info.size4')}" name="org.memberSize" cssClass="usersexy" listKey="key" listValue="value"/>
                                     </div>
                                 </div>
                             </div>
