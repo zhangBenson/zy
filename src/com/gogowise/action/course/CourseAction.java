@@ -18,6 +18,7 @@ import com.gogowise.rep.system.enity.GoGoWiseAnnounce;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import com.gogowise.rep.user.enity.BaseUser;
+import com.gogowise.vo.ResultData;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
@@ -301,6 +302,21 @@ public class CourseAction extends BasicAction {
             return "failed";
         }
         this.setOperaType(Constants.OPERA_TYPE_FOR_COURSE_CREATION);
+        return SUCCESS;
+    }
+
+    @Action(value = "setClassRecord", results = {@Result(name = SUCCESS, type ="json")})
+    public String setRecordStatus() {
+        ResultData<String> rd = new ResultData<>();
+        ActionContext.getContext().getValueStack().push(rd);
+        try{
+            CourseClass _courseClass = classDao.findById(courseClass.getId());
+            _courseClass.setRecord(true);
+            rd.setResult(200);
+        }catch (Exception e){
+            logger.error("Set class record failure",e);
+            rd.setResult(500);
+        }
         return SUCCESS;
     }
 
