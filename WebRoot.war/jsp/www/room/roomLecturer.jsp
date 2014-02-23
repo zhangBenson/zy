@@ -1042,12 +1042,18 @@ function ShowMessage(name,imgpath,content,bit)
     }
     function CloseBrowser(){
         getGirlOjbect().closeBrowser();
-        /*window.location.href="closeBrowser.html?roleType=<s:property value='roleType'/>";*/
-        //TODO: temperarily redirect to personal center
         window.location.href="myfirstPage.html";
     }
     function InRoom(){
         getGirlOjbect().InRoomComplete("<s:property value='initSeesionString' escape='false' />", "");
+    }
+    function startclass(){
+        $.post("setClassRecord.html",{"courseClass.id":"<s:property value="courseClass.id"/>"},function(rd){
+            if(rd.result==200){
+                return;
+            }
+            alert("Set class record failure");
+        });
     }
 </script>
 
