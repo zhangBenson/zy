@@ -98,14 +98,19 @@ public class CoursePurchaseAction extends BasicAction {
             String filePath = ServletActionContext.getServletContext().getRealPath("/");
             filePath += Constants.DOWNLOAD_CONTRACT + File.separator + course.getId() + File.separator + course.getName() + ".pdf";
 
+            //send email to student
             String tile = this.getText("course.pdf.title",new String[]{user.getNickName(),course.getName()});
             String content = this.getText("course.pdf.content", new String[]{user.getNickName(),course.getName()} );
 
             PdfUtil.createCourseContract(filePath,course, baseUserDao.findById(getSessionUserId()));
             EmailUtil.sendMail(user.getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
+
+            //send email to teacher
+            tile = this.getText("course.pdf.title",new String[]{user.getNickName(),course.getName()});
             if(course.getOrganization() != null){
                 EmailUtil.sendMail(course.getOrganization().getResponsiblePerson().getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
             }else {
+                content = this.getText("course.pdf.content", new String[]{course.getTeacher().getNickName()} );
                EmailUtil.sendMail(course.getTeacher().getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
             }
             EmailUtil.sendMail(Constants.COURSE_CONFIRM_EMAIL, tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
