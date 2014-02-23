@@ -24,6 +24,7 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import java.io.File;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -80,6 +81,7 @@ public class CoursePurchaseAction extends BasicAction {
 
             Double cost = course.getCharges();
             UserAccountInfo _userAccountInfo = userAccountInfoDao.findByUserId(user.getId());
+
             if (course.getConsumptionType() && cost > _userAccountInfo.getZhiBi()) {
                 this.setPurchaseMsg(this.getText("msg.zhibi.not.enough"));
                 addFieldError("","");
@@ -92,9 +94,13 @@ public class CoursePurchaseAction extends BasicAction {
             }
 
             consumptionOrderDao.purchaseCourse(user, course);
-            String filePath = Constants.DOWNLOAD_CONTRACT + course.getId() + "/" + course.getName() + ".pdf";
+
+            String filePath = ServletActionContext.getServletContext().getRealPath("/");
+            filePath += Constants.DOWNLOAD_CONTRACT + File.separator + course.getId() + File.separator + course.getName() + ".pdf";
+
             String tile = this.getText("course.pdf.title",new String[]{user.getNickName(),course.getName()});
-            String content = this.getText("course.pdf.content");
+            String content = this.getText("course.pdf.content", new String[]{user.getNickName(),course.getName()} );
+
             PdfUtil.createCourseContract(filePath,course, baseUserDao.findById(getSessionUserId()));
             EmailUtil.sendMail(user.getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
             if(course.getOrganization() != null){
