@@ -79,6 +79,7 @@
                 <value>com.gogowise.rep.course.enity.BrowsedCourse</value>
                 <value>com.gogowise.rep.org.enity.OrganizationComment</value>
                 <value>com.gogowise.rep.org.enity.OrganizationTeacher</value>
+                <value>com.gogowise.rep.org.enity.OrganizationBaseUser</value>
                 <value>com.gogowise.rep.course.enity.CourseInviteStudent</value>
                 <value>com.gogowise.rep.org.enity.Interview</value>
                 <value>com.gogowise.rep.course.enity.CourseReservation</value>

@@ -121,15 +121,15 @@
                            <li>
                             <span class="item"><s:property value="%{getText('label.forcast.lecturer')}"/></span>
                             <s:iterator value="teachers" status="stx">
-                                <input type="checkbox" name="teacherIds" value="<s:property value="id"/>" id="teacherIds-<s:property value="#stx.count"/>" title="email">
-                                <label for="teacherIds-<s:property value="#stx.count"/>" class="checkboxLabel" tag="<s:property value="email"/>"><s:property value="nickName==null?email:nickName"/></label>
+                                <input type="radio" name="teacherIds" value="<s:property value="id"/>" id="teacherIds-<s:property value="#stx.count"/>" title="email">
+                                <label for="teacherIds-<s:property value="#stx.count"/>" class="checkboxLabel" tag="<s:property value="email"/>"><s:property value="nickName==null?email:nickName"/></label>&nbsp;&nbsp;
                             </s:iterator>
                             <span class="invite_teacher_input_msg tip_words">*</span>
                            </li>
                         </s:if>
                         <li>
                             <s:property value="%{getText('course.student.appointed')}"/>
-                            <a class="course_teacherEmail"><s:property value="%{getText('course.add.student')}"/></a> &nbsp;&nbsp;&nbsp;
+                            <a class="add_student_btn"><s:property value="%{getText('course.add.student')}"/></a> &nbsp;&nbsp;&nbsp;
                             <span class="invite_student_input_msg tip_words"></span>
                             <div class="option_content" id="invitedStudents">
                                 <input class="long_text_field_for_student"  placeholder="<s:property value="%{getText('org.course.student.email')}"/>" id="studentEmail1" onblur="checkStudentMail(this);" name="emails" type="text" /> <br/>

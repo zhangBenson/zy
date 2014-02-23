@@ -34,8 +34,8 @@
                 <ul>
 
                     <%--<li><a href="manageStudents.html">Student Management</a></li>--%>
-                    <li><a href="javascript:;">Student Management</a></li>
-                    <li><a href="manageTeachers.html">Teacher Management</a></li>
+                    <li><a href="manageOrgUsers.html?roleType=6">Student Management</a></li>
+                    <li><a href="manageOrgUsers.html?roleType=5">Teacher Management</a></li>
                     <li><a href="createCourseAllInOne.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a></li>
                     <%--<li><a href="courseSupervise.html"><s:property value="%{getText('org.matters.course.supervisions')}"/></a></li>
                     <li><a href="orgInterview.html"><s:property value="%{getText('online.interview')}"/></a></li>

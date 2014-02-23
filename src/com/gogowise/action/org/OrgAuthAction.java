@@ -124,7 +124,7 @@ public class OrgAuthAction  extends BasicAction {
             ot.setOrg(org);
             ot.setTeacher(teacher);
             ot.setCreateDate(Calendar.getInstance());
-            ot.setTeacherStatus(Constants.TEACHER_STATUS_UNCONFIRMED);
+            ot.setTeacherStatus(Constants.USER_STATUS_UNCONFIRMED);
             organizationTeacherDao.persistAbstract(ot);
         }
 
