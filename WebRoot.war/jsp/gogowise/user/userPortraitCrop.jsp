@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
-<html>
+<html style="overflow: hidden;">
     <head>
         <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
         <link rel="stylesheet" href="css/user/userPortraitCrop.css" type="text/css" />
@@ -164,10 +164,10 @@
                          $.post("cropUserPortrait.html",postStr,function(data){
                                //取得图片在服务器上的路径
                                //关闭窗口，并将图片显示在头像Div中
-                               real_path = real_path.replace("upload/file/tmp",data);
+                               real_path = real_path.replace("/upload/file/tmp",data);
                                window.parent.window.document.getElementById("reImg").src = real_path;
                                window.parent.window.document.getElementById("usermenu_user_img").src = real_path;
-                               window.parent.window.document.getElementById("userheader_user_img").src = real_path;
+//                               window.parent.window.document.getElementById("userheader_user_img").src = real_path;
                                window.parent.window.document.getElementById("picHidden").value = real_path;
                                parent.$.fancybox.close();
                          },"text");

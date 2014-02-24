@@ -79,6 +79,7 @@
                 <value>com.gogowise.rep.course.enity.BrowsedCourse</value>
                 <value>com.gogowise.rep.org.enity.OrganizationComment</value>
                 <value>com.gogowise.rep.org.enity.OrganizationTeacher</value>
+                <value>com.gogowise.rep.org.enity.OrganizationBaseUser</value>
                 <value>com.gogowise.rep.course.enity.CourseInviteStudent</value>
                 <value>com.gogowise.rep.org.enity.Interview</value>
                 <value>com.gogowise.rep.course.enity.CourseReservation</value>
@@ -123,6 +124,11 @@
                 <value>com.gogowise.rep.android.enity.IEMI</value>
                 <value>com.gogowise.rep.android.enity.SerialNO</value>
                 <value>com.gogowise.rep.live.enity.MonitorAuthorize</value>
+                <value>com.gogowise.rep.course.enity.Question</value>
+                <value>com.gogowise.rep.course.enity.QuestionItem</value>
+                <value>com.gogowise.rep.course.enity.QuestionResult</value>
+
+
                 <value>com.gogowise.urlfetch.sk.ClassType</value>
 
                 <value>com.gogowise.urlfetch.sk.ClassInfo</value>

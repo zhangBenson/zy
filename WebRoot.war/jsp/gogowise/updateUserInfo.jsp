@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ include file="/js/user/updateUserInfo_js.jsp" %>
 
 <link rel="stylesheet" href="css/user/updateUserInfo.css" type="text/css"/>
@@ -16,7 +16,7 @@
             </ul>
         </div>
         <div class="userinfo_content">
-            <s:form action="updateUserInfo"  method="post" cssClass="userinfo_form" validate="true" theme="simple" enctype="multipart/form-data">
+            <form action="updateUserInfo.html"  method="post" class="userinfo_form">
             <s:hidden name="user.lockedOut"/>
             <input type="hidden" id="picHidden" name="user.pic" value="<s:property value="user.pic" />" />
             <div class="userinfo_tittle"><span><s:property value="%{getText('label.account.setting')}"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_change_userinfo"><s:property value="%{getText('link.click.to.change')}"/></span></div>
@@ -30,7 +30,10 @@
                             <li><span class="option_tittle"><s:property value="%{getText('label.realname')}"/>：</span>
                                     <span class="_username"><s:property value="user.userName"/></span>
                             </li>
-                            <li><span class="option_tittle"><s:property value="%{getText('email')}"/>：</span><span class="_email"><s:property value="user.email"/></span>
+                            <li>
+                                <span class="option_tittle"><s:property value="%{getText('email')}"/>：</span>
+                                <span class="_email"><s:property value="user.email"/></span>
+                                <s:hidden name="user.email"/>
                             </li>
                             <li><span class="option_tittle"><s:property value="%{getText('sex')}"/>：</span>
                                 <s:set name="male" value="%{getText('male')}"/>
@@ -55,10 +58,10 @@
 
                 <div class="userinfo_lessimport">
                     <ul>
-                        <li style="height:30px">
+                        <%--<li style="height:30px">
                              <span class="option_tittle"><s:property value="%{getText('orgleague.info.id')}"/>：</span>
-                             <span class="_cardID"><s:property value="user.cardId"/></span><%--<s:textfield name="user.nickName" type="text" id="nickName" size="20"/>--%>
-                        </li>
+                             <span class="_cardID"><s:property value="user.cardId"/></span>&lt;%&ndash;<s:textfield name="user.nickName" type="text" id="nickName" size="20"/>&ndash;%&gt;
+                        </li>--%>
                         <li>
                             <span class="option_tittle"><s:property value="%{getText('label.user.self.introduction')}"/></span><span class='_self_description_Msg input_msg'></span><br />
                             <span class="_self_description "><s:property value="user.selfDescription"/></span>
@@ -93,7 +96,7 @@
                     <span class="commitBtn" onclick="checkForm();"><s:property value="%{getText('button.account.submit')}"/></span>
                 </div>
             </div>
-            </s:form>
+            </form>
         </div>
         <div class="password_change_content">
              <div class="content_compa">

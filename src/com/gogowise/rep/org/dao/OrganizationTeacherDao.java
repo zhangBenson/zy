@@ -10,4 +10,6 @@ import java.util.List;
 public interface OrganizationTeacherDao extends ModelDao<OrganizationTeacher> {
 
     public List<OrganizationTeacher> find(Integer orgId,Pagination pagination);
+
+    public OrganizationTeacher findByOrgIdAndTeacherId(Integer orgId,Integer teacherId);
 }

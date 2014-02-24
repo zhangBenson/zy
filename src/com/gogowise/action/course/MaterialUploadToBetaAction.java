@@ -2,7 +2,6 @@ package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.common.utils.Constants;
-import com.gogowise.common.utils.Utils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -81,7 +79,7 @@ public class MaterialUploadToBetaAction extends BasicAction {
 
     @Action(value = "uploadCourseMaterialToBeta")
     public String uploadCourseMaterialToBeta() {
-        String savePath = ServletActionContext.getServletContext().getRealPath("") + "/" + Constants.UPLOAD_FILE_PATH_PPT + "/";
+        String savePath = ServletActionContext.getServletContext().getRealPath("") + Constants.UPLOAD_FILE_PATH_PPT + "/";
         Random r = new Random();
         int rannum = (int) (r.nextDouble() * (99999 - 10000 + 1)) + 10000;
         SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -95,11 +93,7 @@ public class MaterialUploadToBetaAction extends BasicAction {
 
         fileupload.renameTo(new File(savePath + newFileName));
         String pptPatch = savePath + rannum + nowTimeStr;
-        try {
-            Utils.pptConvert(savePath + newFileName, pptPatch);
-        } catch (IOException e) {
-            logger.error("Cannot covert to PPT", e);
-        }
+
 
         File pptPath = new File(pptPatch);
         this.totalPages = pptPath.listFiles().length / 2;

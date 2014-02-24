@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 
 <script type="text/javascript">
 
@@ -55,7 +55,7 @@
 
 
         $("#step2_store").click(function(){
-            if(false == yzSaveCourseForm()) return;
+            if(!yzSaveCourseForm()) return;
             var course_info = $("#course_main_info_form").serialize();
             $.post("ajaxSaveCourse.html",course_info,function(data){
                  $("#course_id").attr('value',data.course_id);
@@ -67,13 +67,13 @@
             $(this).parent().parent().hide();
             var name = $("input[type='text'][name='course.name']").val();
             var description =  $("textarea[name='course.description']").val();
-            var studentType = $("input[type='text'][name='course.studentType']").val();
-            var courseTeachingBook = $("input[type='text'][name='course.courseTeachingBook']").val();
+            var studentType = $("textarea[name='course.studentType']").val();
+//            var courseTeachingBook = $("input[type='text'][name='course.courseTeachingBook']").val();
             var courseTypeVal = $("select[name='course.courseType']").val();
             var courseType = $("option[value='"+courseTypeVal+"']").text();
             var startDate = $("input[type='text'][name='course.startDate']").val();
             var charges = $("input[type='text'][name='course.charges']").val();
-            var teacherEmail =  $("input[type='text'][name='course.teacherEmail']").val();
+            var teacherEmail =  $("[name='teacherIds']:checked").next().attr("tag");
             var emails = $("input[type='text'][name='emails']");
             var courseLogo = $("#show_log_preview").attr("src");
             var invitedEamils = "";
@@ -81,10 +81,10 @@
             $("#store_name").html(name);
             $("#store_description").html(description);
             $("#store_studentType").html(studentType);
-            $("#store_courseTeachingBook").html(courseTeachingBook);
+//            $("#store_courseTeachingBook").html(courseTeachingBook);
             $("#store_courseType").html(courseType);
             $("#store_startDate").html(startDate);
-            $("#store_charges").html(charges+"&nbsp;<s:text name="%{getText('label.zhibi.true')}"/>");
+            $("#store_charges").html(charges+"&nbsp;<s:text name="label.zhibi.true"/>");
             $("#obv_course_logo").attr("src",courseLogo);
             $("#store_teacherEmail").html(teacherEmail);
             for(var i=0;i<emails.length;i++){
@@ -96,6 +96,9 @@
         });
 
         $("#step3_self_store").click(function(){
+             var r1 = checkEmpty('class_nickname_input','class_nick_msg','Please fill in the class name');
+             var r2 = checkTime('class_start_time_input','class_start_time_msg','Please fill in the start time','Wrong time','Start time should be after now');
+             if(!r1 || !r2) return;
              var classInfo = $("#self_class_system_form").serialize();
              $.post("selfSaveClass.html",classInfo,function(data){
                    $("#list_tbody").html(data)
@@ -106,6 +109,13 @@
         });
 
         $("#step3_auto_store").click(function(){
+            var r1 = checkTime('class_nick_input2','form2_start_time_msg','Please fill in the start time','Wrong time','Start time should be after now');
+            var r2 = $("input[name='classDate']:checked").length>0;
+            $("#form2_repeat_msg").html("");
+            if(!r2){
+                $("#form2_repeat_msg").html("Please select the Date-fixed model");
+            }
+            if(!r1 || !r2) return;
             var classInfo = $("#auto_class_system_form").serialize();
             $.post("autoSaveClasses.html",classInfo,function(data){
                 $("#list_tbody").html(data);
@@ -172,6 +182,13 @@
               b5 = false;
           }else b5 = true;
 
+            if($("input[name='teacherIds']:checked").length==0){
+                b9 = false;
+                $(".invite_teacher_input_msg").html(warn_teacher_empty);
+            }else{
+                $(".invite_teacher_input_msg").html("");
+            }
+
           var charges = $("#course_charges").val().replace(/(^\s*)|(\s*$)/g, "");
           var chargesExp = /^(\d+)(\.?)(\d{0,2})$/;
           if(charges.length == 0){
@@ -187,7 +204,7 @@
           if(!checkStudentEmails()) b7 = false;
           else b7 = true;
 
-          var result = b1&&b2&&b3&&b4&&b5&&b6&&b7&&b8;
+          var result = b1&&b2&&b3&&b4&&b5&&b6&&b7&&b8&&b9;
 
           return result;
       }
@@ -277,11 +294,11 @@
             changeWordNumber(this,$(".course_intro_input_msg"),2000);
         });
         $("#step2_course_student_type").keyup(function(){
-            changeWordNumber(this,$(".course_student_type_input_msg"),50);
+            changeWordNumber(this,$(".course_student_type_input_msg"),300);
         });
-        $("#step2_course_teaching_book").keyup(function(){
+        /*$("#step2_course_teaching_book").keyup(function(){
             changeWordNumber(this,$(".course_teaching_book_input_msg"),50);
-        });
+        });*/
         $("#step2_course_type").change(function(){
                  if($("#step2_course_type").val() == -1){
                      $(".course_type_input_msg").html(warn_choose_correct_course_type);
@@ -303,12 +320,12 @@
         });
 
         $(".add_student_btn").click(function(){
-            if (maxStudentCount < 4 && count >= maxStudentCount) {
-                 $(".invite_student_input_msg").html(warn_student_number_overflow+maxStudentCount);
-                 return;
-            }
+//            if (maxStudentCount < 4 && count >= maxStudentCount) {
+//                 $(".invite_student_input_msg").html(warn_student_number_overflow+maxStudentCount);
+//                 return;
+//            }
             $("#invitedStudents").append("<input class='long_text_field_for_student' onblur='checkStudentMail(this);' name='emails' type='text' /><span class='del_student_btn' onclick='remove_student(this);'>"+deleteEmail+"</span><br/>");
-            count ++;
+//            count ++;
         });
         $(".del_student_btn").click(function(){
             $(".invite_student_input_msg").html("");
@@ -365,7 +382,7 @@
                 }
              </s:if>
              <s:else>
-                 var teacherEmail = $("#course_teacherEmail").val().replace(/(^\s*)|(\s*$)/g, "");
+                 var teacherEmail =  $("[name='teacherIds']:checked").next().attr("tag");
                  if(emailContent == teacherEmail){
                     $(".invite_student_input_msg").html(warn_email_teacher_student_same);
                     return false;
@@ -473,7 +490,7 @@
     }
 
     var courseClassNum = 0;
-    var step1Stored = false;
+    var step1Stored = true;
     var step2Stored = false;
     var step3Stored = false;
 
@@ -484,7 +501,7 @@
     var plsDeleteOther = "<s:text name="pls.delete.other"/>";
     var warn_charges_empty = "<s:text name="charge.empty"/>";
     var warn_charges_format_wrong = "<s:text name="charges.amount.wrong"/>";
-    var warn_charges_amount_wrong = "<s:text name="pls.select.type"/>";
+    var warn_charges_amount_wrong = "<s:text name="charges.amount.wrong"/>";
     var words_on_uploadButton = "<s:text name="word.browse"/>";
     var showLogoUploadSuccess = "<s:text name="upload.success"/>";
     var warn_class_name_empty = "<s:text name="class.name.empty"/>";
@@ -505,6 +522,7 @@
     var warn_class_startTime_litter_than_course_time = "<s:text name="msg.courseclass.date.error"/>";
     var warn_choose_correct_course_type =  "<s:text name="choose.correct.course.type"/>";
     var warn_upload = "<s:text name="upload"/>";
+    var warn_teacher_empty = "<s:text name="course.teacher.none"/>";
     var deleteEmail="<s:text name='course.class.delete'/>";
     var oneClass = "<s:text name='course.classes.more.than.one'/>";
     var warn_class_nickname_empty = "<s:text name='message.class.content.empty'/>";

@@ -42,8 +42,8 @@
 				<h3 class="courseSubhead"><s:property value="%{getText('usermenu.item.mooc')}"/></h3> <%--Mooc--%>
 				<div id="Mooccurriculum">
 				<div class="row">
-					 <s:iterator value="hotCourses" status="idx">
-                        <s:if test="#idx.index < 6">
+                    <s:iterator value="moocs" status="idx">
+                    <s:if test="#idx.index < 6">
                             <div class="col-sm-4">
                                 <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>">
                                     <div class="recommended"><img src="<s:property value="logoUrl"/>" alt="" /><br/><span><s:property value="name"/></span></div>
@@ -117,14 +117,12 @@
 					</div>
 					<div class="col-sm-6 " style="width:47%;">
 						<div class="statisticsItem">
-							<span>
-								<img src="/images/org/icon_teacher.png" alt=""></span>
+							<span><img src="/images/org/icon_teacher.png" alt=""></span>
 							<span><s:property value="allTeachersNum"/></span>
 						</div>
 
 						<div class="statisticsItem">
-							<span>
-								<img src="/images/org/icon_student.png" alt=""></span>
+							<span><img src="/images/org/icon_student.png" alt=""></span>
 							<span><s:property value="studentsNum"/></span>
 						</div>
 					</div>
@@ -133,6 +131,10 @@
 
 				<br/>
 				<br/>
+
+                <div class="basePanelTextLeft">
+                    <button type="button" class="btn btn-primary btn-block" id="btnBuy">BUY COURSES</button>
+                </div>
 				<!-- excellent Lecturers -->
 
 				<%-- <div class="gogopanelWhole">
@@ -247,7 +249,43 @@
                         <p></p>
                         <div><s:property value="%{getText('label.discussion.room.duration')}"/>:</div>
                         <p></p>
+
                         <div id="DisUserArea" style="text-align: center;">
+                            <s:if test="allTeachersNum != null">
+                                <div class="row">
+                                    <s:iterator value="allTeachersForOrg" status="idx">
+                                        <s:if test="#idx.index < 5">
+                                            <div class="col-md-4">
+                                                <a href="userBlog.html?user.id=<s:property value="id"/>" title="<s:property value="nickName"/>">
+                                                    <img  class="normalPortrait" src="<s:property value="pic" />"/>
+                                                </a>
+                                                <p class="textOverSinglerow"><s:property value="nickName"/></p>
+                                            </div>
+                                        </s:if>
+                                    </s:iterator>
+                                    <s:if test="allTeachersForOrg.size() < 5">
+                                        <s:iterator var="counter" begin="allTeachersForOrg.size() + 1" end = "5">
+                                            <div class="col-md-4">
+                                                <img src="/images/course/noportrait.jpg" class="normalPortrait"/>
+                                                <p class="textOverSinglerow">Available</p>
+                                            </div>
+                                        </s:iterator>
+                                    </s:if>
+                                </div>
+                            </s:if>
+                            <s:else>
+                                <div class="row">
+                                    <s:iterator var="counter" begin="1" end = "5">
+                                        <div class="col-md-4">
+                                            <img src="/images/course/noportrait.jpg" class="normalPortrait"/>
+                                            <p class="textOverSinglerow">Available</p>
+                                        </div>
+                                    </s:iterator>
+                                </div>
+                            </s:else>
+                        </div>
+
+                        <%-- <div id="DisUserArea" style="text-align: center;">
                             <div class="row">
                                 <div class="col-md-4">
                                     <img src="images/course/portrait2.jpg" class="normalPortrait"/>
@@ -288,7 +326,7 @@
                                     </div>
                                 </s:else>
                             </div>
-                        </div>
+                        </div>--%>
 						<br/>
 						<button type="button" class="btn btn-primary btn-block"><s:property value="%{getText('button.enter')}"/></button>
 					</div>
@@ -297,6 +335,74 @@
 			</div>
 		</div>
 </div>
+
+    <div class="modal fade" id="modalReminder" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow:hidden;">
+        <div class="modal-dialog" style="width: 1000px;height:580px;margin-top: 5%;background:rgba(255,255,255,.9);border-radius: 12px;">
+            <div style="font-size: 36px;color: #6E8B3D;text-align: center;font-family: 'Trebuchet MS', Helvetica, sans-serif;">BUY ALL COURSES</div>
+            <div style="text-align: center;color: #aaa;">(<s:property value="org.schoolName"/>)</div>
+            <div style="font-size: 12px;color: #aaa;text-align: center;margin-top: 30px;">
+                Read the course catalogs at the schools you’re applying to and familiarize yourself with the offerings.
+            </div>
+            <div class="linegray1"></div>
+            <div class="row" style="margin-top: 30px;">
+
+                <div class="col-sm-4" style="text-align: center;">
+                    <img src="/images/payMoney/sale1.png">
+                    <label style="width: 100px;">
+                        <input type="radio" name="sale" value="0" >
+                        <span style="font-size: 12px;font-weight: lighter;color: #aaa;">Select (1 Year)</span>
+                    </label>
+                </div>
+                <div class="col-sm-4" style="text-align: center;">
+                    <img src="/images/payMoney/sale2.png">
+                    <label style="width: 100px;">
+                        <input type="radio" name="sale" value="0" >
+                        <span style="font-size: 12px;font-weight: lighter;color: #aaa;">Select (3 Month)</span>
+                    </label>
+                </div>
+                <div class="col-sm-4" style="text-align: center;">
+                    <img src="/images/payMoney/sale3.png">
+                    <label style="width: 100px;">
+                        <input type="radio" name="sale" value="0" >
+                        <span style="font-size: 12px;font-weight: lighter;color: #aaa;">Select (1 Month)</span>
+                    </label>
+                </div>
+            </div>
+            <div class="linegray1"></div>
+            <div style="font-size: 12px;font-weight: lighter;color: #aaa;text-align: center;width: 80%;margin: 0 auto;margin-top: 30px;margin-bottom: 30px;">
+
+                As well, there is some financial support available to each participant for career enhancements, such as enrolling in relevant courses, purchasing textbooks and supplies, and credential assessments.
+            </div>
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4"><button type="button" class="btn btn-primary btn-lg btn-block">Confirm Buy</button></div>
+                <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                    <%--<input type="hidden" name="cmd" value="_s-xclick">--%>
+                    <%--<input type="hidden" name="hosted_button_id" value="CPR764EY9Y6HS">--%>
+                    <%--<input type="image" src="https://www.paypalobjects.com/en_GB/SG/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">--%>
+                    <%--<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">--%>
+                    <input type="hidden" name="org.id" value="<s:property value="org.id" />">
+                    <input type="hidden" name="cmd" value="_xclick">
+                    <input type="hidden" name="business" value="1072805997@qq.com">
+                    <input type="hidden" name="item_name" value="Course">
+                    <input type="hidden" name="item_number" value="2">
+                    <input type="hidden" name="quantity" value="1">
+                    <input type="hidden" name="amount" value="10.00">
+                    <input type="hidden" name="currency_code" value="USD">
+                    <input type="hidden" name="bn" value="IC_Sample">
+                    <input type="hidden" name="no_shipping" value="1">
+                    <input type="hidden" name="custorm" value="sessionID">
+                    <input type="hidden" name="notify_url" value="http://test.gogowise.com/ipn.html?userID=<s:property value="%{#session.userID}"/>&orgID=<s:property value="org.id"/>" >
+                    <input type="hidden" name="return_url" value="http://test.gogowise.com/courseCenter.html">
+                    <input type="hidden" name="cancel_url" value="http://test.gogowise.com/error.html">
+                    <input type="image" src="https://www.paypalobjects.com/en_GB/SG/i/btn/btn_buynowCC_LG.gif" name="submit" alt="Make payments with payPal - it's fast,">
+                    <img alt=""src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                </form>
+
+                <div class="col-sm-4"></div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script type="text/javascript">
@@ -317,23 +423,21 @@
                 $("#message_textarea").attr('value',"");
                 $("#message_area_tip").html("");
             }
-
         })
 
         $("#message_textarea").keyup(function(){
             changeWordNumber($(this),$("#message_area_tip"),250);
+        });
+
+        $('#btnBuy').click(function(){
+            $('#modalReminder').modal("show");
         });
     });
     function validateLogo(){
         if(document.getElementById('hidSessionId').value > 0) {
             return true;
         } else {
-            $.fancybox({
-                "type":"iframe",
-                "href":"login.html",
-                "width":350,
-                "height":270
-            });
+            $('#modalLogin').modal("show");
             return false;
         }
     }

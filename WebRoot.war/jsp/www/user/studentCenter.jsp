@@ -29,7 +29,8 @@
 	        window.location.href = "one2threeSession.html?courseClass.id="+cid;
 	     }
 	     if(type == 4){
-	       window.location.href = "one2manySession.html?courseClass.id="+cid;
+//	       window.location.href = "one2manySession.html?courseClass.id="+cid;
+	       window.location.href = "studentClass.html?courseClass.id="+cid;
 	    }
     }
 </script>
@@ -41,10 +42,20 @@
 
 		<div class="col-sm-4">
 			<div class="basePanelshadow" style="text-align: center;">
-				<div class="basePanelGrey"  style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><s:property value="%{getText('personalcenter.hall')}"/>(<s:property value="userOrganization.schoolName"/>)</div>
-				<br/>				
-				<div class="list-group">
+				<div class="basePanelGrey"  style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+                    <s:property value="%{getText('personalcenter.hall')}"/>
+                    (
+                        <s:if test="userOrganization.schoolName!=null">
+                            <s:property value="userOrganization.schoolName"/>
+                        </s:if>
+                        <s:else>
+                            GoGoWise Guide Team
+                        </s:else>
+                    )
+                </div>
+				<br/>
 
+                <div class="list-group">
 					<a href="#" class="list-group-item active">
 						<img src="../../../images/studentcenter/icon_video_action.png" class="centerIcon">
 						<h4 class="list-group-item-heading">The choice of computer is dictated by our special needs.</h4>
@@ -106,7 +117,10 @@
 			</div>
 			<br/>
 			<div class="basePanelshadow">
-				<div class="basePanelBlueGrey" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><s:property value="%{getText('label.course.discussion.room')}"/>(<s:property value="userOrganization.schoolName"/>)</div>
+				<div class="basePanelBlueGrey" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+                    <s:property value="%{getText('label.course.discussion.room')}"/>
+                    (<s:property value="userOrganization.schoolName"/>)
+                </div>
 
 				<br/>
 				<div class="list-group">
@@ -167,35 +181,44 @@
 				<div class="col-sm-8">
 					<div class="basePanelTextLeftAbsolute">
 						<h3 class="courseSubhead"><s:property value="%{getText('usermenu.item.mycourses')}"/></h3>
-						<s:if test="existLatestCourse">
+
+                        <s:if test="existLatestCourse">
 							<s:iterator value="latestCourse" status="idx">
 								<s:if test="#idx.getIndex() == 0">
-									<ul class="list-inline" style="background-color: #6ab600;color: #fff;border-radius: 4px; padding-top: 3px;padding-bottom: 3px;">		
-										<li><a  href="javascript:;"><s:property value="%{getText('class.count',{classOneTheCornerSequence})}"/></a></li>
+									<ul class="list-inline" style="background-color: #6ab600;color: #fff;border-radius: 4px;
+									                               padding-top: 3px;padding-bottom: 3px;">
+										<li><a  href="javascript:;">
+                                            <s:property value="%{getText('class.count',{classOneTheCornerSequence})}"/>
+                                        </a></li>
 
-										<li><s:property value="%{getText('courses.info.lecturer')}" />:<s:a action="userBlog"><s:param name="user.id"  value="teacher.id"/><s:property value="teacher.nickName"/></s:a></li>
+										<li><s:property value="%{getText('courses.info.lecturer')}" />:<s:a action="userBlog">
+                                            <s:param name="user.id"  value="teacher.id"/>
+                                            <s:property value="teacher.nickName"/>
+                                        </s:a></li>
 
 
 										<li>
 											
 											<%-- <div id="remainSeconds" style="display:none">100000</div>
 											<div id="remainTime" style="width: 134px;">Start:</div> --%>
-											<div style="width: 134px;"><s:property value="%{getText('courses.time.left')}" />&nbsp;<b id="timeLeft<s:property value="#idx.index"/>"></b></div>
-											<script type="text/javascript">
-						                        $("#timeLeft<s:property value="#idx.index"/>").countdown({
-						                                    date:'<s:date name="classOnTheCorner.date" format="%{getText('date.formate.firstpage.course.startdate')}" />',
-						                                    onChange:function (event, timer) {
-						                                    },
-						                                    onComplete:function (event) {
-						                                        $(this).html("<s:text name='course.in.progress'/>");
-						                                    },
-						                                    htmlTemplate: "<span>%{d}<s:property value="%{getText('course.time.day')}" /> %{h}<s:property value="%{getText('course.time.hour')}" />%{m}<s:property value="%{getText('course.time.minute')}" />%{s}<s:property value="%{getText('course.tine.second')}" /></span>",
-						                                    leadingZero:true,
-						                                    direction:"down"
-						                                });
-						                    </script>
+											<div style="width: 260px;"><s:property value="%{getText('courses.time.left')}" />
+                                                &nbsp;<b id="timeLeft<s:property value="#idx.index"/>"></b>
+                                            </div>
+                                            <script type="text/javascript">
+                                                $("#timeLeft<s:property value="#idx.index"/>").countdown({
+                                                    date:'<s:date name="classOnTheCorner.date" format="%{getText('date.formate.firstpage.course.startdate')}" />',
+                                                    onChange:function (event, timer) {
+                                                    },
+                                                    onComplete:function (event) {
+                                                        $(this).html("<s:text name='course.in.progress'/>");
+                                                    },
+                                                    htmlTemplate: "<span><b>%{d}</b><s:property value="%{getText('course.time.day')}" /><b> %{h}</b><s:property value="%{getText('course.time.hour')}" /><b>%{m}</b><s:property value="%{getText('course.time.minute')}" /><b>%{s}</b><s:property value="%{getText('course.tine.second')}" /></span>",
+                                                    leadingZero:true,
+                                                    direction:"down"
+                                                });
+                                            </script>
 										</li>
-										<li style="margin-left: 40px;">
+										<li style="margin-left: 25px;">
 											<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal"><s:property value="%{getText('others.more')}"/></button>
 										</li>
 									</ul>
@@ -362,7 +385,7 @@
                         </s:if>
                     </s:iterator>
 				</div>
-				<a href="#">
+				<a href="schoolCenter.html">
 					<p class="text-right"><s:property value="%{getText('others.more')}"/></p>
 				</a>
 			</div>

@@ -15,9 +15,9 @@
         <li class="">
             <a href="myRegistration.html"><s:property value="%{getText('usermenu.item.my.reged.courses')}"/></a>
         </li>
-        <li class="">
+        <%--<li class="">
             <a href="createCourseAllInOne.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a>
-        </li>
+        </li>--%>
     </ul>
 </div>
 <div class="mf_2">
@@ -79,6 +79,7 @@
                 <a class="manage_course" id="courseRecommend<s:property value="#idx.index"/>" href="#recommdatepanel<s:property value="#idx.index"/>"><s:property value="%{getText('recommend.course')}"/></a>
                 <a class="manage_course" id="courseNewEvents<s:property value="#idx.index"/>" href="newEventsManage.html?course.id=<s:property value="id"/>"><s:property value="%{getText('course.new.events.management')}"/></a>
                 <a class="manage_course" id="" href="uploadCourseMaterial.html?course.id=<s:property value="id"/>"><s:property value="%{getText('course.resource.upload')}"/></a>
+                <%--<a class="manage_course" id="" href="uploadCourseMaterial.html?course.id=<s:property value="id"/>">Upload Questions</a>--%>
             </p>
             </div>
 

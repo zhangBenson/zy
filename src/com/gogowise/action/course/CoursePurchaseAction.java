@@ -24,6 +24,7 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import java.io.File;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -32,9 +33,7 @@ import java.util.Calendar;
 @Controller
 @Namespace(BasicAction.BASE_NAME_SPACE)
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
-@Results({
-        @Result(name = "json", type = "json")
-})
+@Result(name = "input",type = Constants.RESULT_NAME_TILES,location = ".purchaseError")
 public class CoursePurchaseAction extends BasicAction {
     private Course course;
     private BaseUser user;
@@ -74,20 +73,44 @@ public class CoursePurchaseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "purchaseCourse",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName", "myRegistration"}),
-                                                  @Result(name = INPUT,type = Constants.RESULT_NAME_TILES,location = ".courseconfirm")})
+    @Action(value = "purchaseCourse",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName", "personalCenter"}),
+                                                  @Result(name = ERROR,type = Constants.RESULT_NAME_TILES,location = ".purchaseError")})
     public String purchaseCourse() throws Exception{
             course = courseDao.findById(this.course.getId());
             user = baseUserDao.findById(getSessionUserId());
+
+            Double cost = course.getCharges();
+            UserAccountInfo _userAccountInfo = userAccountInfoDao.findByUserId(user.getId());
+
+            if (course.getConsumptionType() && cost > _userAccountInfo.getZhiBi()) {
+                this.setPurchaseMsg(this.getText("msg.zhibi.not.enough"));
+                addFieldError("","");
+                return ERROR;
+            }
+            if (!course.getConsumptionType() && cost > (_userAccountInfo.getZhiBi() + _userAccountInfo.getZhiQuan())) {
+                this.setPurchaseMsg(this.getText("msg.account.left.not.enough"));
+                addFieldError("","");
+                return ERROR;
+            }
+
             consumptionOrderDao.purchaseCourse(user, course);
-            String filePath = "d:/contract/" + course.getName() + ".pdf";
+
+            String filePath = ServletActionContext.getServletContext().getRealPath("/");
+            filePath += Constants.DOWNLOAD_CONTRACT + File.separator + course.getId() + File.separator + course.getName() + ".pdf";
+
+            //send email to student
             String tile = this.getText("course.pdf.title",new String[]{user.getNickName(),course.getName()});
-            String content = this.getText("course.pdf.content");
+            String content = this.getText("course.pdf.content", new String[]{user.getNickName(),course.getName()} );
+
             PdfUtil.createCourseContract(filePath,course, baseUserDao.findById(getSessionUserId()));
             EmailUtil.sendMail(user.getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
+
+            //send email to teacher
+            tile = this.getText("course.pdf.title",new String[]{user.getNickName(),course.getName()});
             if(course.getOrganization() != null){
                 EmailUtil.sendMail(course.getOrganization().getResponsiblePerson().getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
             }else {
+                content = this.getText("course.pdf.content", new String[]{course.getTeacher().getNickName()} );
                EmailUtil.sendMail(course.getTeacher().getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
             }
             EmailUtil.sendMail(Constants.COURSE_CONFIRM_EMAIL, tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
@@ -141,7 +164,7 @@ public class CoursePurchaseAction extends BasicAction {
         if (msg != null && msg.equals("course.first.observation")) {
 //            courseDao.confirmCourse(this.course.getId(), this.getSessionUserId());
             consumptionOrderDao.purchaseCourse(user, course);
-            String filePath = "d:/contract/" + course.getName() + ".pdf";
+            String filePath = Constants.DOWNLOAD_CONTRACT + course.getId() + "/" + course.getName() + ".pdf";
             String tile = this.getText("course.pdf.title",new String[]{user.getNickName(),course.getName()});
             String content = this.getText("course.pdf.content");
             PdfUtil.createCourseContract(filePath,course, baseUserDao.findById(getSessionUserId()));
@@ -340,4 +363,20 @@ public class CoursePurchaseAction extends BasicAction {
         this.purchaseConfirmMsg = purchaseConfirmMsg;
     }
 
+    public void addActionError(String anErrorMessage){
+        String s=anErrorMessage;
+        System.out.println(s);
+    }
+    public void addActionMessage(String aMessage){
+        String s=aMessage;
+        System.out.println(s);
+
+    }
+    public void addFieldError(String fieldName, String errorMessage){
+        String s=errorMessage;
+        String f=fieldName;
+        System.out.println(s);
+        System.out.println(f);
+
+    }
 }

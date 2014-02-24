@@ -14,17 +14,17 @@
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
-                <div class="input-group">
-                    <div class="input-group-btn">
-                        <s:form method="post" action="searchSchool" theme="simple" validate="true">
-                            <s:textfield cssClass="form-control input-lg" name="searchStr" placeholder="search"></s:textfield>
+                <s:form method="post" action="searchSchool" theme="simple" validate="true">
+                    <div class="input-group">
+                        <s:textfield cssClass="form-control input-lg" name="searchStr" placeholder="search"></s:textfield>
+                        <div class="input-group-btn">
                             <button type="submit" class="btn btn-default btn-lg">
                                 <span class="glyphicon glyphicon-search"></span>
                                 <s:property value="%{getText('menu.item.search')}"/>
                             </button>
-                        </s:form>
+                        </div>
                     </div>
-                </div>
+                </s:form>
                 <div class="col-sm-2"></div>
             </div>
         </div>
@@ -39,7 +39,7 @@
             <div class="schoolRow">
                 <div class="row">
                     <div class="col-sm-3">
-                        <div class="pull-left" style="width:500px;">
+                        <div class="pull-left" style="width:900px;">
                             <a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="nickName"/>">
                                 <div id = "share_title" class="courseSubject"><s:property value="schoolName"/></div>
                             </a>
@@ -68,8 +68,8 @@
                         <div class="clearfix"></div>
                         <div id="share_desc" class="searchCourseBody">
                             <a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="nickName"/>">
-                                <s:if test="parseSchoolDescription(id).length() > 100">
-                                    <s:property  value="parseSchoolDescription(id).substring(0,100)+'...'" />
+                                <s:if test="parseSchoolDescription(id).length() > 350">
+                                    <s:property  value="parseSchoolDescription(id).substring(0,350)+'...'" />
                                 </s:if>
                                 <s:else>
                                     <s:property  value="parseSchoolDescription(id)"/>
@@ -77,8 +77,10 @@
                             </a>
                         </div>
                     </div>
+                    <p class="text-right"><a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="nickName"/>"><s:property value="%{getText('label.school.comments')}"/>(<s:property value="organizationCommentDao.findOrgCommentByOrgId(id, null).size()"/>)</a></p>
                     <%-- <p class="text-right"><a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="nickName"/>"><s:property value="%{getText('label.school.comments')}"/>(<s:property value="organizationCommentDao.findOrgCommentByOrgId(id, null).size()"/>)</a> | <a href="#"><s:property value="%{getText('label.shared.with')}"/></a></p> --%>
                     <%--<s:property value="%{getText('label.shared.with')}"/>--%>
+                    <%--
                     <div style="float: right">
                         <div style="float:left"><a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="nickName"/>"><s:property value="%{getText('label.school.comments')}"/>(<s:property value="organizationCommentDao.findOrgCommentByOrgId(id, null).size()"/>)</a> | </div>
                         <div style="float:left" id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
@@ -86,7 +88,7 @@
                             <a class="bds_twi twitter" title="Twitter"></a>
                             <a class="bds_linkedin LinkedIn" title="LinkedIn"></a>
                             <a class="bds_deli delicious" title="Delicious"></a>
-                            <%-- <a class="bds_more"><s:property value="%{getText('label.shared.with')}"/></a> --%>
+
                         </div>
                         <script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
                         <script type="text/javascript" id="bdshell_js"></script>
@@ -111,7 +113,7 @@
                             };
                             document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
                         </script>
-                    </div>
+                    </div> --%>
                 </div>
             </div>
         </s:iterator>
@@ -127,14 +129,14 @@
     <br/>
     <div style="text-align: center;">
         <ul class="pagination pagination-lg">
-            <li><a id="searchType0" href="javascript:startSearch(0);">A-D</a></li>
-            <li><a id="searchType1" href="javascript:startSearch(1);">E-H</a></li>
-            <li><a id="searchType2" href="javascript:startSearch(2);">I-L</a></li>
-            <li><a id="searchType3" href="javascript:startSearch(3);">M-P</a></li>
-            <li><a id="searchType4" href="javascript:startSearch(4);">Q-T</a></li>
-            <li><a id="searchType5" href="javascript:startSearch(5);">U-Z</a></li>
-            <li><a id="searchType6" href="javascript:startSearch(6);"><s:property value="%{getText('label.school.center.button.show.other')}"/></a></li>
-            <li><a id="searchType7" href="javascript:startSearch(7);"><s:property value="%{getText('label.school.center.button.show.all')}"/></a></li>
+            <li id="searchType0"><a href="javascript:startSearch(0);">A-D</a></li>
+            <li id="searchType1"><a href="javascript:startSearch(1);">E-H</a></li>
+            <li id="searchType2"><a href="javascript:startSearch(2);">I-L</a></li>
+            <li id="searchType3"><a href="javascript:startSearch(3);">M-P</a></li>
+            <li id="searchType4"><a href="javascript:startSearch(4);">Q-T</a></li>
+            <li id="searchType5"><a href="javascript:startSearch(5);">U-Z</a></li>
+            <li id="searchType6"><a href="javascript:startSearch(6);"><s:property value="%{getText('label.school.center.button.show.other')}"/></a></li>
+            <li id="searchType7"><a href="javascript:startSearch(7);"><s:property value="%{getText('label.school.center.button.show.all')}"/></a></li>
             <form action="schoolCenter.html" method="POST" id="page_show_form">
                 <s:hidden name="schoolPageShowType" id="showType_msg"/>
             </form>
@@ -152,20 +154,25 @@
 </div>
 
 <script type="text/javascript">
-  /*$(function(){
-        var schoolPageShowType = <s:property value="schoolPageShowType"/>;
-        switch(schoolPageShowType){
-            case 0: $("#searchType0").addClass("search_stand_out"); break;
-            case 1: $("#searchType1").addClass("search_stand_out"); break;
-            case 2: $("#searchType2").addClass("search_stand_out"); break;
-            case 3: $("#searchType3").addClass("search_stand_out"); break;
-            case 4: $("#searchType4").addClass("search_stand_out"); break;
-            case 5: $("#searchType5").addClass("search_stand_out"); break;
-            case 6: $("#searchType6").addClass("search_stand_out"); break;
-            case 7: $("#searchType7").addClass("search_stand_out"); break;
+    $(document).ready(function() {
+        var schoolPageShowType = "<s:property value="schoolPageShowType"/>";
+        if (schoolPageShowType == null || schoolPageShowType == ""){
+            $("#searchType7").addClass("active");
+            return ;
+        }
+        switch(parseInt(schoolPageShowType)){
+            case 0: $("#searchType0").addClass("active");break;
+            case 1: $("#searchType1").addClass("active");break;
+            case 2: $("#searchType2").addClass("active");break;
+            case 3: $("#searchType3").addClass("active"); break;
+            case 4: $("#searchType4").addClass("active"); break;
+            case 5: $("#searchType5").addClass("active"); break;
+            case 6: $("#searchType6").addClass("active"); break;
+            case 7: $("#searchType7").addClass("active"); break;
+            default :
+                break;
         }
     });
-    */
     function startSearch(schoolPageShowType){
         // window.location.href = "searchResult.html?searchType="+searchType+"&searchStr="+encodeURI($("#searchStr_id").val());
         //alert (schoolPageShowType);

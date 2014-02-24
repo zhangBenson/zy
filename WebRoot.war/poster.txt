@@ -1,0 +1,4 @@
+/voaCourseBlog.html?course.id=5
+/playerDemo.html
+/orgBlog.html?org.id=4
+/classDemo.html

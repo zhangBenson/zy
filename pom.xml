@@ -47,8 +47,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
@@ -64,27 +64,28 @@
             <!--</archive>-->
             <!--</configuration>-->
             <!--</plugin>-->
-            <!--<plugin>-->
-            <!--<groupId>org.apache.maven.plugins</groupId>-->
-            <!--<artifactId>maven-surefire-plugin</artifactId>-->
-            <!--<configuration>-->
-            <!--<testFailureIgnore>true</testFailureIgnore>-->
-            <!--</configuration>-->
-            <!--</plugin>-->
             <plugin>
-                	                <groupId>org.apache.maven.plugins</groupId>
-               	                <artifactId>maven-compiler-plugin</artifactId>
-                	                <version>2.3.2</version>
-                	                <configuration>
-                	                    <source>${java-version}</source>
-                	                    <target>${java-version}</target>
-                	                    <encoding>UTF-8</encoding>
-                	                    <compilerArguments>
-                	                        <verbose />
-                	                        <bootclasspath>${java.home}\lib\rt.jar;${java.home}\jre\lib\jce.jar</bootclasspath>
-                	                    </compilerArguments>
-                	                </configuration>
-                	            </plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>
+                    <testFailureIgnore>true</testFailureIgnore>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>${java-version}</source>
+                    <target>${java-version}</target>
+                    <encoding>UTF-8</encoding>
+                    <compilerArguments>
+                        <verbose/>
+                        <bootclasspath>${java.home}\lib\rt.jar;${java.home}\jre\lib\jce.jar</bootclasspath>
+                    </compilerArguments>
+                </configuration>
+            </plugin>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
@@ -106,8 +107,9 @@
                 <version>2.0.2</version>
                 <configuration>
                     <webappDirectory>WebRoot.war</webappDirectory>
-                    <warSourceDirectory>WebRoot.war</warSourceDirectory>
+                    <!--<warSourceDirectory>WebRoot.war</warSourceDirectory>-->
                     <outputDirectory>.</outputDirectory>
+                    <warName>ROOT</warName>
                 </configuration>
             </plugin>
             <plugin>
@@ -161,16 +163,16 @@
                     </execution>
 
                     <!--<execution>-->
-                        <!--<id>ant-build-All</id>-->
-                        <!--<phase>install</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>run</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<tasks>-->
-                                <!--<ant antfile="build.xml" target="copyAllFilesAndDeploy"/>-->
-                            <!--</tasks>-->
-                        <!--</configuration>-->
+                    <!--<id>ant-build-All</id>-->
+                    <!--<phase>install</phase>-->
+                    <!--<goals>-->
+                    <!--<goal>run</goal>-->
+                    <!--</goals>-->
+                    <!--<configuration>-->
+                    <!--<tasks>-->
+                    <!--<ant antfile="build.xml" target="copyAllFilesAndDeploy"/>-->
+                    <!--</tasks>-->
+                    <!--</configuration>-->
                     <!--</execution>-->
 
 
@@ -179,6 +181,7 @@
 
 
         </plugins>
+
     </build>
     <distributionManagement>
         <site>
@@ -265,6 +268,18 @@
             <version>4.5</version>
         </dependency>
 
+        <!-- Java EE -->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>taglibs</groupId>
+            <artifactId>standard</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+
         <!-- Struts2 -->
         <dependency>
             <groupId>org.apache.struts</groupId>
@@ -293,9 +308,9 @@
             <version>${struts2.version}</version>
         </dependency>
         <dependency>
-        <groupId>org.apache.struts</groupId>
-        <artifactId>struts2-json-plugin</artifactId>
-        <version>${struts2.version}</version>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-json-plugin</artifactId>
+            <version>${struts2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.struts</groupId>
@@ -334,9 +349,9 @@
         </dependency>
 
         <!--<dependency>-->
-            <!--<groupId>org.hibernate</groupId>-->
-            <!--<artifactId>hibernate-proxool</artifactId>-->
-            <!--<version>${hibernate.version}</version>-->
+        <!--<groupId>org.hibernate</groupId>-->
+        <!--<artifactId>hibernate-proxool</artifactId>-->
+        <!--<version>${hibernate.version}</version>-->
         <!--</dependency>-->
 
 
@@ -348,9 +363,9 @@
 
 
         <!--<dependency>-->
-            <!--<groupId>org.apache.httpcomponents</groupId>-->
-            <!--<artifactId>httpclient</artifactId>-->
-            <!--<version>4.1.1</version>-->
+        <!--<groupId>org.apache.httpcomponents</groupId>-->
+        <!--<artifactId>httpclient</artifactId>-->
+        <!--<version>4.1.1</version>-->
         <!--</dependency>-->
 
 
@@ -435,9 +450,9 @@
         <!--<version>${spring.version}</version>-->
         <!--</dependency>-->
         <dependency>
-        <groupId>cglib</groupId>
-        <artifactId>cglib</artifactId>
-        <version>2.2.2</version>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>2.2.2</version>
         </dependency>
         <!--<dependency>-->
         <!--<groupId>org.springframework</groupId>-->
@@ -658,18 +673,18 @@
             <version>3.5.3</version>
         </dependency>
         <!--<dependency>-->
-            <!--<groupId>net.sf.buildbox</groupId>-->
-            <!--<artifactId>keeper</artifactId>-->
-            <!--<version>2.0.0</version>-->
+        <!--<groupId>net.sf.buildbox</groupId>-->
+        <!--<artifactId>keeper</artifactId>-->
+        <!--<version>2.0.0</version>-->
         <!--</dependency>-->
 
-    <!--<dependency>-->
+        <!--<dependency>-->
         <!--<groupId>com.keeper</groupId>-->
         <!--<artifactId>keeper</artifactId>-->
         <!--<version>1.0</version>-->
         <!--<scope>system</scope>-->
         <!--<systemPath>${basedir}/WebRoot.war/WEB-INF/lib/keeper.jar</systemPath>-->
-    <!--</dependency>-->
+        <!--</dependency>-->
 
         <dependency>
             <!-- jsoup HTML parser library @ http://jsoup.org/ -->
@@ -683,12 +698,21 @@
             <version>4.1.1</version>
         </dependency>
         <!--<dependency>-->
-            <!--<groupId>com.google.code.gson</groupId>-->
-            <!--<artifactId>gson</artifactId>-->
-            <!--<version>2.2.2</version>-->
+        <!--<groupId>com.google.code.gson</groupId>-->
+        <!--<artifactId>gson</artifactId>-->
+        <!--<version>2.2.2</version>-->
         <!--</dependency>-->
+        <dependency>
+            <groupId>org.tuckey</groupId>
+            <artifactId>urlrewritefilter</artifactId>
+            <version>4.0.3</version>
+        </dependency>
 
-
+        <dependency>
+            <groupId>com.paypal.sdk</groupId>
+            <artifactId>rest-api-sdk</artifactId>
+            <version>0.7.1</version>
+        </dependency>
 
     </dependencies>
 

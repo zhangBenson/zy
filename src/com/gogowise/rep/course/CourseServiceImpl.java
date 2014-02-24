@@ -4,7 +4,10 @@ import com.gogowise.common.utils.Constants;
 import com.gogowise.rep.ModelServiceImpl;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.dao.CourseDao;
+import com.gogowise.rep.course.dao.QuestionDao;
 import com.gogowise.rep.course.enity.Course;
+import com.gogowise.rep.course.enity.CourseMaterial;
+import com.gogowise.rep.course.enity.Question;
 import com.gogowise.rep.course.vo.CourseSpecification;
 import com.gogowise.rep.org.OrgService;
 import com.gogowise.rep.org.dao.OrganizationDao;
@@ -25,14 +28,23 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
     private BaseUserDao baseUserDao;
     private CourseDao courseDao;
     private OrganizationDao organizationDao;
+    private QuestionDao questionDao;
+
+    public void  saveQuestion(CourseMaterial courseMaterial, List<Question> questions) {
+          for (Question question : questions)  {
+              question.setCourseMaterial(courseMaterial);
+              questionDao.persist(question);
+          }
+
+    }
 
     public Set<BaseUser> findAllTeachersByOrgCreator(Integer userId) {
         Organization org =  organizationDao.findByResId(userId);
         Set<BaseUser> teachers = new HashSet<>();
+        teachers.add(baseUserDao.findById(userId));
         if(org != null) {
             teachers.addAll(orgService.findAllTeachersForOrg(org.getId()));
         }
-        teachers.add(baseUserDao.findById(userId));
 
         return teachers;
     }
@@ -40,7 +52,7 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
     public void saveCourse(CourseSpecification specification) {
 
         BaseUser personalTeacher = baseUserDao.findById(specification.getOperatorId());
-        Course course = course = specification.getCourse();
+        Course course = specification.getCourse();
         if (course.getId() == null) {     //if the course.id == null than deal with the org and course's teacher
             if (Constants.COURSE_TYPE_ORG.equals(specification.getCourseType())) {
                 course.setOrganization(organizationDao.findByResId(specification.getOperatorId()));
@@ -106,7 +118,12 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
         this.courseDao = courseDao;
     }
 
+    public void setQuestionDao(QuestionDao questionDao) {
+        this.questionDao = questionDao;
+    }
+
     public void setOrganizationDao(OrganizationDao organizationDao) {
         this.organizationDao = organizationDao;
     }
+
 }

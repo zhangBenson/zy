@@ -1,6 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
-<%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 
 <% request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -51,11 +50,11 @@
                   if(checkForm()){
                       var userData = $("#user_login_form").serialize();
                       $.post("ajaxLogin.html",userData,function(data){
-                          if(data.loginMessage=="success"){
+                          if(data=="success"){
                               var currHref = parent.window.location.href;
                                 parent.window.location.reload();
                           }else{
-                             $("#login_tip").text(data.loginMessage);
+                             $("#login_tip").text(data);
                           }
                       });
                   }
@@ -65,14 +64,14 @@
                     if(checkForm()){
                       var userData = $("#user_login_form").serialize();
                       $.post("ajaxLogin.html",userData,function(data){
-                          if(data.loginMessage=="success"){
+                          if(data=="success"){
                               var currHref = parent.window.location.href;
                               if(currHref.substring(currHref.lastIndexOf('/')) == '/exitSystem.html'){
                                  currHref = currHref.substring(0,currHref.lastIndexOf('/')+1);
                               }
                               parent.window.location.reload();
                           }else{
-                             $("#login_tip").text(data.loginMessage);
+                             $("#login_tip").text(data);
                           }
                       });
                     }

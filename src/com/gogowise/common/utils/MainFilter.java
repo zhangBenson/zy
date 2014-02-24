@@ -76,6 +76,16 @@ public class MainFilter implements Filter {
         NEED_LOGIN.add("/createPrivateChannel.html");
         NEED_LOGIN.add("/openUserChannelResult.html");
         NEED_LOGIN.add("/personalCenter.html");
+        NEED_LOGIN.add("/openVirtualClassRoom.html");
+        NEED_LOGIN.add("/uploadMaterialWithJson.html");
+        NEED_LOGIN.add("/uploadCourseMaterial.html");
+        NEED_LOGIN.add("/courseAdminManage.html");
+        NEED_LOGIN.add("/changePoster.html");
+        NEED_LOGIN.add("/lecturerClass.html");
+        NEED_LOGIN.add("/orgAdminManage.html");
+        NEED_LOGIN.add("/studentClass.html");
+        NEED_LOGIN.add("/manageTeachers.html");
+        NEED_LOGIN.add("/manageStudents.html");
     }
 
     public void destroy() {

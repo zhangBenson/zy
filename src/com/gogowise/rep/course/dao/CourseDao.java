@@ -1,9 +1,9 @@
 package com.gogowise.rep.course.dao;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.Pagination;
+import com.gogowise.rep.course.enity.Course;
+import com.gogowise.rep.user.enity.BaseUser;
 
 import java.util.Calendar;
 import java.util.List;
@@ -34,6 +34,10 @@ public interface CourseDao extends ModelDao<Course> {
 
     public List<Course> findlatestCourses(Pagination pagination);
 
+    public List<Course> findMoocCourses(Pagination pagination);
+
+    public List<Course> findNonMoocCourses(Pagination pagination);
+
     public List<Course> findCourses2Teacher(Integer tid,Pagination pagination);
 
     public List<Course> findCourses2Student(Integer tid, Pagination pagination);
@@ -53,7 +57,7 @@ public interface CourseDao extends ModelDao<Course> {
 
     public List<Course> findHotCoursesByOrg(Integer orgId, Pagination pagination);
 
-
+    public List<Course> findMoocsByOrg(Integer orgId, Pagination pagination);
 
     public Course saveRepeatCourse(Calendar startTime,Course course,String teacherEmail);
 

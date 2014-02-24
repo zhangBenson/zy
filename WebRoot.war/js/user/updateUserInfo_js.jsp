@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 
 <script type="text/javascript">
     var errorDiv = "<div class='tip_error'></div>";
@@ -7,8 +7,8 @@
     var rightDiv = "<div class='tip_right'></div>";
     var bank_empty_msg = errorDiv+"<s:text name='label.account.no.empty'/>";
     var bank_name_empty= errorDiv+"<s:text name='label.bank.name.empty'/>";
-    var disposeName_empty_msg =  errorDiv+"<s:text name='label.account.name.empty'/>";
-    var selfDescription_empty_msg = warnDiv+"输入您对自己的介绍好让别人更好的了解您";
+    var disposeName_empty_msg =  errorDiv+'<s:text name='label.account.name.empty'/>';
+    var selfDescription_empty_msg = warnDiv+"<s:text name='label.selfDescription.empty'/>";
     var modifiedMsg =  false;
     var nickNameEmpty= errorDiv+"<s:text name='menber.reg.nickName.no.empty'/>";
     var realnameEmpty= errorDiv+"<s:text name='messege.realname.empty'/>";

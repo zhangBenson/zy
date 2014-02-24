@@ -29,7 +29,7 @@
         //头像的上传
         $(document).ready(function(){
             var jcrop_api;
-            var imgX,imgY,imgWidth,imgHeight;
+            var imgX=0,imgY=0,imgWidth=0,imgHeight=0;
             var boundx,boundy;
             var originalWidth;
             var originalHeight;
@@ -87,15 +87,15 @@
                     $("#target").load(function(){//图片加载成功后执行
                         originalWidth = OriginalImage.width;
                         originalHeight = OriginalImage.height;
+
                         var ratio = originalWidth/originalHeight;
-                        if(ratio>=280/120) {
-                            $("#target").attr("width","560px");
+                        if(ratio>=4/3.0) {
+                            $("#target").attr("width","400px");
                             imageLong = true;
                         }else {
-                            $("#target").attr("height","240px");
+                            $("#target").attr("height","300px");
                             imageLong = false;
                         }
-
                         //使用剪裁功能
                         img_crop();
                     });
@@ -117,6 +117,7 @@
             //头像的剪裁
             function img_crop() {
                 // Create variables (in this scope) to hold the API and image size
+
                 $('#target').Jcrop({
                     onChange: updatePreview,
                     onSelect: updatePreview,
@@ -127,33 +128,36 @@
                     var bounds = this.getBounds();
                     boundx = bounds[0];
                     boundy = bounds[1];
-                    if(imageLong) this.setSelect([0,0,boundy*280/120,boundy]);
-                    else this.setSelect([0,0,boundx,boundy*120/280]);
+                    if(imageLong){
+                        this.setSelect([0,0,boundy*7.0/3,boundy]);
+                    } else {
+                        this.setSelect([0,0,boundx,3.0/7]);
+                    }
                     // Store the API in the jcrop_api variable
                     jcrop_api = this;
                 });
+            }
 
-                function updatePreview(c) {
-                    if (parseInt(c.w) > 0) {
-                        var ratioX = originalWidth/boundx;
-                        var ratioY = originalHeight/boundy;
+            function updatePreview(c) {
+                if (parseInt(c.w) > 0 && originalWidth) {
+                    var ratioX = originalWidth/boundx;
+                    var ratioY = originalHeight/boundy;
 
-                        imgX = Math.round(ratioX*c.x);
-                        imgY = Math.round(ratioY*c.y);
+                    imgX = Math.round(ratioX*c.x);
+                    imgY = Math.round(ratioY*c.y);
 
-                        imgWidth = Math.round(ratioX*c.w);
-                        imgHeight = Math.round(ratioY*c.h);
+                    imgWidth = Math.round(ratioX*c.w);
+                    imgHeight = Math.round(ratioY*c.h);
 
-                        var rx = 180 / c.w;
-                        var ry = 135 / c.h;
+                    var rx = 180 / c.w;
+                    var ry = 135 / c.h;
 
-                        $('#preview').css({
-                            width: Math.round(rx * boundx) + 'px',
-                            height: Math.round(ry * boundy) + 'px',
-                            marginLeft: '-' + Math.round(rx * c.x) + 'px',
-                            marginTop: '-' + Math.round(ry * c.y) + 'px'
-                        });
-                    }
+                    $('#preview').css({
+                        width: Math.round(rx * boundx) + 'px',
+                        height: Math.round(ry * boundy) + 'px',
+                        marginLeft: '-' + Math.round(rx * c.x) + 'px',
+                        marginTop: '-' + Math.round(ry * c.y) + 'px'
+                    });
                 }
             }
 
@@ -165,6 +169,7 @@
                 //获取剪裁后图片的数据,X坐标，Y坐标，长宽，以及，已上传图片在服务器的路径
                 //将这些数据用Ajax方式送到后台，并对已上传的图片进行处理后保存，传回图片的路径
                 var postStr = {"imgX":imgX,"imgY":imgY,"imgWidth":imgWidth,"imgHeight":imgHeight,"orgLogoName":orgLogoName};
+//                alert(imgX+":"+imgY+":"+imgWidth+":"+imgHeight);
                 $.post("cropOrgLogo.html",postStr,function(){
                     //取得图片在服务器上的路径
                     //关闭窗口，并将图片显示在头像Div中

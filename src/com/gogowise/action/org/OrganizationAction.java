@@ -1,26 +1,26 @@
 package com.gogowise.action.org;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.rep.Pagination;
-import com.gogowise.rep.course.dao.CourseDao;
-import com.gogowise.rep.course.dao.CourseEvaluationDao;
-import com.gogowise.rep.org.OrgService;
-import com.gogowise.rep.org.dao.OrgMaterialDao;
-import com.gogowise.rep.org.dao.OrganizationCommentDao;
-import com.gogowise.rep.org.dao.OrganizationDao;
-import com.gogowise.rep.user.dao.BaseUserDao;
-import com.gogowise.rep.course.enity.Course;
-import com.gogowise.rep.course.enity.CourseEvaluation;
-import com.gogowise.rep.course.enity.SeniorClassRoom;
-import com.gogowise.rep.org.enity.OrgMaterial;
-import com.gogowise.rep.org.enity.Organization;
-import com.gogowise.rep.org.enity.OrganizationComment;
-import com.gogowise.rep.org.enity.OrganizationTeacher;
-import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.EmailUtil;
 import com.gogowise.common.utils.MD5;
 import com.gogowise.common.utils.Utils;
+import com.gogowise.rep.Pagination;
+import com.gogowise.rep.course.dao.CourseDao;
+import com.gogowise.rep.course.enity.Course;
+import com.gogowise.rep.course.enity.CourseEvaluation;
+import com.gogowise.rep.course.enity.SeniorClassRoom;
+import com.gogowise.rep.org.OrgService;
+import com.gogowise.rep.org.dao.OrgMaterialDao;
+import com.gogowise.rep.org.dao.OrganizationCommentDao;
+import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.org.enity.OrgMaterial;
+import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.org.enity.OrganizationComment;
+import com.gogowise.rep.org.enity.OrganizationTeacher;
+import com.gogowise.rep.user.dao.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
+import com.gogowise.rep.user.enity.BaseUser;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
@@ -36,12 +36,8 @@ import org.springframework.stereotype.Controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
 import java.text.SimpleDateFormat;
-import java.util.Map;
-import java.util.HashMap;
+import java.util.*;
 
 
 @Controller
@@ -74,6 +70,7 @@ public class OrganizationAction extends BasicAction {
 
     private String organizationName;
     private List<Course> latestCourse;
+    private List<Course> moocs;
     private Course course;
     private List<Course> hotCourses;
     private List<CourseEvaluation> courseEvaluations;
@@ -95,6 +92,8 @@ public class OrganizationAction extends BasicAction {
     private Boolean commentsNumOverflow = false;
 
     private Integer schoolPageShowType; // 0: A-D, 1: E-H, 2: I-L, 3: M-P, 4:Q-T, 5: U-Z, 6: Other 7: Show all
+
+    private BaseUserRoleTypeDao baseUserRoleTypeDao;
 
 
     @Action(value = "schoolCenter", results = {@Result(name=SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".schoolCenter")})
@@ -199,11 +198,11 @@ public class OrganizationAction extends BasicAction {
         Integer orgId = org.getId() == null ? 1 : org.getId();
         this.org = organizationDao.findById(orgId);
 
-        latestCourse = courseDao.findLatestCourseByOrg(orgId, new Pagination(3));
+        latestCourse = courseDao.findLatestCourseByOrg(orgId, new Pagination(4));
         if (latestCourse != null && latestCourse.size() > 0)
             course = latestCourse.get(0);
-        hotCourses = courseDao.findHotCoursesByOrg(orgId, new Pagination(4));
-
+        hotCourses = courseDao.findHotCoursesByOrg(orgId, new Pagination(6));
+        moocs = courseDao.findMoocsByOrg(orgId, new Pagination(6));
         Pagination page  = new Pagination(10);
         comments = organizationCommentDao.findOrgCommentByOrgId(orgId, page);
 
@@ -602,6 +601,38 @@ public class OrganizationAction extends BasicAction {
     }
 
 
+    @Action(value = "orgAdminManage",
+            results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".orgAdminManage"),
+                    @Result(name = ERROR, type = Constants.RESULT_NAME_TILES, location = ".noPermission")})
+    public String orgAdminManage()
+    {
+        BaseUser admin = baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.SESSION_USER_EMAIL))  ;
+        Integer userID = (Integer) ActionContext.getContext().getSession().get(Constants.SESSION_USER_ID);
+        boolean  havePermission = baseUserRoleTypeDao.havePermission(userID, "admin");
+
+        if( !havePermission ) return ERROR;
+
+        organizations = this.organizationDao.findLatestOrgs(null);
+        return SUCCESS;
+    }
+
+    @Action(value = "removeOrgConfirm",
+            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "orgAdminManage"}) })
+    public String removeOrgConfirm()
+    {
+        if (this.getOrg().getId() != null)
+        {
+            Organization org = organizationDao.findById(this.getOrg().getId());
+
+            if(org != null)
+            {
+                org.setIsDeleted(true);
+                organizationDao.persistAbstract(org);
+            }
+        }
+
+        return SUCCESS;
+    }
 
 
     public CourseDao getCourseDao() {
@@ -941,5 +972,21 @@ public class OrganizationAction extends BasicAction {
             return "";
         String text = Jsoup.parse(orgDescription).text();
         return text;
+    }
+
+    public BaseUserRoleTypeDao getBaseUserRoleTypeDao() {
+        return baseUserRoleTypeDao;
+    }
+
+    public void setBaseUserRoleTypeDao(BaseUserRoleTypeDao baseUserRoleTypeDao) {
+        this.baseUserRoleTypeDao = baseUserRoleTypeDao;
+    }
+
+    public List<Course> getMoocs() {
+        return moocs;
+    }
+
+    public void setMoocs(List<Course> moocs) {
+        this.moocs = moocs;
     }
 }

@@ -15,6 +15,18 @@ public class RoleType extends AbstractPersistence {
     public final static String TEACHER = "teacher";
     public final static String STUDENT = "student";
 
+    public final static String getRoleNameById(Integer roleId){
+        switch (roleId){
+            case 1: return ADMIN;
+            case 2: return ORG_CREATOR;
+            case 3: return ORG_REVIEWER;
+            case 4: return GRANT;
+            case 5: return TEACHER;
+            case 6: return STUDENT;
+        }
+        return "undefined";
+    }
+
     public String getRoleName() {
         return roleName;
     }

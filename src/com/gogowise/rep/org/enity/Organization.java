@@ -50,6 +50,8 @@ public class Organization extends AbstractPersistence {
     private Boolean userFocused = false;  // a temp variable,used to
     private Integer fansNum = 0;
 
+    private Boolean isDeleted;
+
     @OneToMany(mappedBy = "org")
     private List<OrganizationTeacher> organizationTeachers;
 
@@ -259,5 +261,13 @@ public class Organization extends AbstractPersistence {
 
     public void setAdvUrl(String advUrl) {
         this.advUrl = advUrl;
+    }
+
+    public Boolean getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(Boolean isDeleted) {
+        this.isDeleted = isDeleted;
     }
 }

@@ -10,8 +10,8 @@ package com.gogowise.common.utils;
 public class Constants {
 
     public static final int PAGE_SIZE = 9;
-    public static final String UPLOAD_FILE_PATH_TMP = "upload/file/tmp";
-    public static final String UPLOAD_FILE_PATH_PPT = "upload/file/ppt";
+    public static final String UPLOAD_FILE_PATH_TMP = "/upload/file/tmp";
+    public static final String UPLOAD_FILE_PATH_PPT = "/upload/file/ppt";
     public static final String UPLOAD_USER_PATH = "/upload/user";
     public static final String UPLOAD_COURSE_PATH = "/upload/course";
     public static final String UPLOAD_SHOW_PATH = "/upload/show";
@@ -31,6 +31,8 @@ public class Constants {
     public static final String DOWNLOAD_ORG_RESOURCE_PAHT = "/download/orgResource";
     public static final String DOWNLOAD_COURSE_RESOURCE_PAHT = "/download/courseResource";
 
+    public static final String DOWNLOAD_CONTRACT = "/download/contract";
+
     public static final int COURSE_MATERIAL_TYPE_VIDEO = 1;
     public static final int COURSE_MATERIAL_TYPE_DOCUMENT = 2;
     public static final int COURSE_MATERIAL_TYPE_OHTER = 3;
@@ -48,6 +50,7 @@ public class Constants {
     public static final String TYPE_HOST_STRING = "3";
 
     public static final String DEFAULT_BLANK_VALUE = "";
+    public static final String DEFAULT_USER_LOGO = "images/defaultImgs/portrait.png";
     public static final Integer DEFAULT_INT_VALUE = 0;
     public static final Double DEFAULT_DOUBLE_VALUE = 3.0;
     public static final String SUCCESS_OBSERVATED = "您已经成功预定";
@@ -74,6 +77,7 @@ public class Constants {
     public static final String COURSE_CONFIRM_EMAIL = "zlhades@hotmail.com";
 
 
+
     /*---------------------------zhibi------------------------------------------*/
     public static final String ZHIBI_SYSTEM_EMAIL = "zlhades@hotmail.com";
 
@@ -90,9 +94,23 @@ public class Constants {
     public static final String SESSION_USER_LOGO_URL = "userLogoUrl";
     public static final String HIG_SEC_USER_EMAIL ="HIG_SEC_USER_EMAIL";
     public static final String SESSION_USER_FANSNUM = "userFansNum";
+    public static final String SESSION_USER_ROLE_TYPE = "roleType";
     public static final String SESSION_USER_OWN_ORG = "user_own_org";
     public static final String SESSION_USER_PRIVATE_CHANNEL_ID = "user_private_channelID";
 
+    /* ---------------------- definition of role type -----------------------------*/
+    public static final Integer ROLE_TYPE_ADMIN = 1;
+    public static final Integer ROLE_TYPE_ORGCREATOR = 2;
+    public static final Integer ROLE_TYPE_ORGREVIEWER = 3;
+    public static final Integer ROLE_TYPE_GRANT = 4;
+    public static final Integer ROLE_TYPE_TEACHER = 5;
+    public static final Integer ROLE_TYPE_STUDENT = 6;
+
+    /*---------------------definition of teacher status--------------*/
+    public static final Short USER_STATUS_UNCONFIRMED = 1;
+    public static final Short USER_STATUS_UNACCEPTED = 2;
+    public static final Short USER_STATUS_CONFIRMED = 3;
+    public static final Short USER_STATUS_DISABLED = 4;
 
 
     /*---------------------definition ccs type for myFirstPage menu--------------*/
@@ -189,6 +207,14 @@ public class Constants {
     /* -------------------------- Hot List Type ----------------------------------------- */
     public  static  int HOT_TYPE_TEACHER = 1;
     public  static  int HOT_TYPE_BLOGGER = 2;
+
+
+    /* -------------------------- Question patch ----------------------------------------- */
+    public static String QUESTION_EXT_PATH ="/exe/question/batch.sh";
+    public static String QUESTION_FILE_NAME = "/question.xml";
+
+    public static String PPT_PDF_EXT_PATH = "/exe/ppt/PPT2PDF.sh";
+    public static String PPT_EXT_PATH = "/exe/ppt/PDF2PNG.sh";
 
 
 }

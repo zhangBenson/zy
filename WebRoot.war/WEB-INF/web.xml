@@ -127,20 +127,20 @@
         <session-timeout>80</session-timeout>
     </session-config>
 
-    <!--<error-page>-->
-        <!--<error-code>500</error-code>-->
-        <!--<location>/htm/chucuola.htm</location>-->
-    <!--</error-page>-->
+    <error-page>
+        <error-code>500</error-code>
+        <location>/htm/chucuola.htm</location>
+    </error-page>
 
-    <!--<error-page>-->
-        <!--<error-code>404</error-code>-->
-        <!--<location>/htm/chucuola.htm</location>-->
-    <!--</error-page>-->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/htm/chucuola.htm</location>
+    </error-page>
 
-    <!--<error-page>-->
-        <!--<exception-type>java.lang.Exception</exception-type>-->
-        <!--<location>/htm/chucuola.htm</location>-->
-    <!--</error-page>-->
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/htm/chucuola.htm</location>
+    </error-page>
 
 
     <!-- ===================================== JSP Config ===================================== -->
@@ -166,10 +166,7 @@
             </taglib-location>
         </taglib>
 
-        <!--<taglib>-->
-            <!--<taglib-uri>spring.tld</taglib-uri>-->
-            <!--<taglib-location>/WEB-INF/tld/spring.tld</taglib-location>-->
-        <!--</taglib>-->
+
         <jsp-property-group>
             <url-pattern>*.jsp</url-pattern>
             <el-ignored>false</el-ignored>
@@ -216,19 +213,27 @@
         <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
     </listener>
 
-    <!--<filter>-->
-    <!--<filter-name>action2</filter-name>-->
-    <!--<filter-class>-->
-    <!--org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter-->
-    <!--</filter-class>-->
-    <!--</filter>-->
-    <!--<filter-mapping>-->
-    <!--<filter-name>action2</filter-name>-->
-    <!--<url-pattern>/*</url-pattern>-->
-    <!--</filter-mapping>-->
+
+    <filter-mapping>
+        <filter-name>UrlRewriteFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter>
+        <filter-name>UrlRewriteFilter</filter-name>
+        <filter-class>
+            org.tuckey.web.filters.urlrewrite.UrlRewriteFilter
+        </filter-class>
+        <init-param>
+            <param-name>logLevel</param-name>
+            <param-value>WARN</param-value>
+        </init-param>
+    </filter>
+
 
     <filter>
-        <filter-name>mainFilter</filter-name>
+    <filter-name>mainFilter</filter-name>
         <filter-class>com.gogowise.common.utils.MainFilter</filter-class>
     </filter>
     <filter-mapping>
@@ -250,7 +255,6 @@
 
 
 
-
     <filter>
         <filter-name>struts2</filter-name>
         <filter-class>
@@ -264,6 +268,9 @@
     <filter-mapping>
         <filter-name>struts2</filter-name>
         <url-pattern>*.html</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
     </filter-mapping>
 
 

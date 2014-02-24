@@ -1,21 +1,20 @@
 package com.gogowise.action.onlive;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.rep.Pagination;
-import com.gogowise.rep.course.dao.CourseDao;
-import com.gogowise.rep.live.*;
-import com.gogowise.rep.live.enity.*;
-import com.gogowise.rep.org.dao.OrganizationDao;
-import com.gogowise.rep.system.dao.GoGoWiseAnnounceDao;
-import com.gogowise.rep.user.dao.BaseUserDao;
-import com.gogowise.rep.live.UserFansDao;
-import com.gogowise.rep.course.enity.Course;
-import com.gogowise.rep.org.enity.Organization;
-import com.gogowise.rep.system.enity.GoGoWiseAnnounce;
-import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.EmailUtil;
 import com.gogowise.common.utils.Utils;
+import com.gogowise.rep.Pagination;
+import com.gogowise.rep.course.dao.CourseDao;
+import com.gogowise.rep.course.enity.Course;
+import com.gogowise.rep.live.*;
+import com.gogowise.rep.live.enity.*;
+import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.system.dao.GoGoWiseAnnounceDao;
+import com.gogowise.rep.system.enity.GoGoWiseAnnounce;
+import com.gogowise.rep.user.dao.BaseUserDao;
+import com.gogowise.rep.user.enity.BaseUser;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.convention.annotation.Action;
@@ -33,7 +32,7 @@ import java.util.*;
 @Controller
 @Namespace(BasicAction.BASE_NAME_SPACE)
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
-public class LiveChannelAction extends BasicAction{
+public class LiveChannelAction extends BasicAction {
     private LiveChannelDao liveChannelDao;
     private LiveChannel liveChannel;
     private List<LiveChannel> liveChannels;
@@ -59,7 +58,7 @@ public class LiveChannelAction extends BasicAction{
     private MemberOfLiveChannel memberOfLiveChannel;
     private SeasonIncreasedOnliveFansDao seasonIncreasedOnliveFansDao;
     private AdvertisementForLiveDao advertisementForLiveDao;
-    private Map<Integer,String> ads = new HashMap<Integer, String>();
+    private Map<Integer, String> ads = new HashMap<Integer, String>();
     private Boolean focused = false;
     private List<AdvertisementForLive> advertisementForLives = new ArrayList<AdvertisementForLive>();
     private List<Course> courses = new ArrayList<Course>();
@@ -69,7 +68,7 @@ public class LiveChannelAction extends BasicAction{
     private List<LiveChannel> hotestLiveChannels = new ArrayList<LiveChannel>();
     private List<PersonalOnlive> onliveStars = new ArrayList<PersonalOnlive>();
     private List<Course> coursesForAds = new ArrayList<Course>();
-    private Pagination pagination =new Pagination(8);
+    private Pagination pagination = new Pagination(8);
     private List<GoGoWiseAnnounce> goGoWiseAnnounces = new ArrayList<GoGoWiseAnnounce>();
     private GoGoWiseAnnounceDao goGoWiseAnnounceDao;
     private PersonalOnliveDao personalOnliveDao;
@@ -88,66 +87,72 @@ public class LiveChannelAction extends BasicAction{
     private List<LiveTrailer> liveTrailers = new ArrayList<LiveTrailer>();
     private LiveTrailerDao liveTrailerDao;
 
-    @Action(value="liveSquare",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".liveSquare")})
-    public String initLiveSquare(){
+    @Action(value = "liveSquare", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".liveSquare")})
+    public String initLiveSquare() {
         liveChannelsOnline = liveChannelDao.findForcastChannel(pagination);
 
         onlivings = personalOnliveDao.findAllLivingOnline(pagination);
-        for(PersonalOnlive po : onlivings){
+        for (PersonalOnlive po : onlivings) {
             po.getOwner().setUserFocused(false);
-            if(this.getSessionUserId() != null){
-                   if(userFansDao.findByUserAndFans(po.getOwner().getId(),this.getSessionUserId()) != null) po.getOwner().setUserFocused(true);
+            if (this.getSessionUserId() != null) {
+                if (userFansDao.findByUserAndFans(po.getOwner().getId(), this.getSessionUserId()) != null)
+                    po.getOwner().setUserFocused(true);
             }
         }
 
         hotestLiveChannels = liveChannelDao.findAllForBidding(pagination);
-        for(LiveChannel lc :hotestLiveChannels){
-           lc.setUserType(1);
-           if(this.getSessionUserId() != null){
-               if(this.getSessionUserId().equals(lc.getCreator().getId())) lc.setUserType(Constants.MEMBER_TYPE_OF_FANS);
-               else if(onliveFollowerDao.findByLiveAndUser(lc.getId(),this.getSessionUserId()) != null) lc.setUserType(Constants.MEMBER_TYPE_OF_FANS);
-           }
+        for (LiveChannel lc : hotestLiveChannels) {
+            lc.setUserType(1);
+            if (this.getSessionUserId() != null) {
+                if (this.getSessionUserId().equals(lc.getCreator().getId()))
+                    lc.setUserType(Constants.MEMBER_TYPE_OF_FANS);
+                else if (onliveFollowerDao.findByLiveAndUser(lc.getId(), this.getSessionUserId()) != null)
+                    lc.setUserType(Constants.MEMBER_TYPE_OF_FANS);
+            }
         }
 
         onliveStars = personalOnliveDao.findByLiveTimes(pagination);
-        for(PersonalOnlive po : onliveStars){
+        for (PersonalOnlive po : onliveStars) {
             po.getOwner().setUserFocused(false);
-            if(this.getSessionUserId() != null){
-                   if(userFansDao.findByUserAndFans(po.getOwner().getId(),this.getSessionUserId()) != null) po.getOwner().setUserFocused(true);
+            if (this.getSessionUserId() != null) {
+                if (userFansDao.findByUserAndFans(po.getOwner().getId(), this.getSessionUserId()) != null)
+                    po.getOwner().setUserFocused(true);
             }
         }
         coursesForAds = courseDao.findLatest4Course(new Pagination(4));
-       // goGoWiseAnnounces = goGoWiseAnnounceDao.findLatestAnnounce(new Pagination(10));
+        // goGoWiseAnnounces = goGoWiseAnnounceDao.findLatestAnnounce(new Pagination(10));
         liveTrailers = liveTrailerDao.findByPublishTime(new Pagination(13));
         liveChannelNewEvents = liveChannelNewEventDao.findLatestNews(new Pagination(13));
         return SUCCESS;
     }
-    @Action(value="addLiveEvent",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".addLiveEvent")})
-    public String addLiveEvents(){
+
+    @Action(value = "addLiveEvent", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".addLiveEvent")})
+    public String addLiveEvents() {
         return SUCCESS;
     }
 
-     @Action(value="saveLiveEvent",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_REDIRECT_ACTION,
-             params = {"actionName","liveChannelEventRead","liveChannelNewEvent.id","${liveChannelNewEvent.id}"})})
-    public String saveLiveEvent(){
-         liveChannel = liveChannelDao.findById(this.getLiveChannel().getId());
-         liveChannelNewEvent.setCreateTime(Calendar.getInstance());
-         liveChannelNewEvent.setLiveChannel(liveChannel);
-         liveChannelNewEvent.setOwner(baseUserDao.findById(this.getSessionUserId()));
-         liveChannelNewEventDao.persist(liveChannelNewEvent);
+    @Action(value = "saveLiveEvent", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION,
+            params = {"actionName", "liveChannelEventRead", "liveChannelNewEvent.id", "${liveChannelNewEvent.id}"})})
+    public String saveLiveEvent() {
+        liveChannel = liveChannelDao.findById(this.getLiveChannel().getId());
+        liveChannelNewEvent.setCreateTime(Calendar.getInstance());
+        liveChannelNewEvent.setLiveChannel(liveChannel);
+        liveChannelNewEvent.setOwner(baseUserDao.findById(this.getSessionUserId()));
+        liveChannelNewEventDao.persist(liveChannelNewEvent);
         return SUCCESS;
     }
 
-    @Action(value="liveHotList",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".liveHotList")})
-    public String showHotLive(){
+    @Action(value = "liveHotList", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".liveHotList")})
+    public String showHotLive() {
         pagination.setPageSize(5);
         hotestLiveChannels = liveChannelDao.findAllForBidding(pagination);
         hottestUsers = baseUserDao.findByFansNum(new Pagination(3));
         latestChannel = liveChannelDao.findLatest4Channel(new Pagination(4));
         return SUCCESS;
     }
-    @Action(value="liveNewList",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".liveNewList")})
-    public String showNewLive(){
+
+    @Action(value = "liveNewList", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".liveNewList")})
+    public String showNewLive() {
         pagination.setPageSize(5);
         latestChannel = liveChannelDao.findLatest4Channel(pagination);
         hottestUsers = baseUserDao.findByFansNum(new Pagination(3));
@@ -155,35 +160,39 @@ public class LiveChannelAction extends BasicAction{
         return SUCCESS;
     }
 
-    @Action(value="initMyOnlive",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".myOnlive")})
-    public String initMyOnlive(){
-        liveChannels = liveChannelDao.findMyChannelByID(this.getSessionUserId(),pagination);
+    @Action(value = "initMyOnlive", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".myOnlive")})
+    public String initMyOnlive() {
+        liveChannels = liveChannelDao.findMyChannelByID(this.getSessionUserId(), pagination);
         this.setOperaType(Constants.OPERA_TYPE_FOR_ONLIVE_MATTER);
-        return SUCCESS;
-    }
-    @Action(value="listParticipatingChannel",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".myParticipatingChannel")})
-    public String listParticipatingChannel(){
-        liveChannels = liveChannelDao.findUserRegChannel(this.getSessionUserId(), pagination);
-        return SUCCESS;
-    }
-    @Action(value="listFollowingChannel",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".myFollowingChannel")})
-    public String listFollowingChannel(){
-        liveChannels = liveChannelDao.findUserFollowed(this.getSessionUserId(),pagination);
         return SUCCESS;
     }
 
-    @Action(value="createOnlive",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".onliveCreate")})
-    public String createOnlive(){
+    @Action(value = "listParticipatingChannel", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".myParticipatingChannel")})
+    public String listParticipatingChannel() {
+        liveChannels = liveChannelDao.findUserRegChannel(this.getSessionUserId(), pagination);
+        return SUCCESS;
+    }
+
+    @Action(value = "listFollowingChannel", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".myFollowingChannel")})
+    public String listFollowingChannel() {
+        liveChannels = liveChannelDao.findUserFollowed(this.getSessionUserId(), pagination);
+        return SUCCESS;
+    }
+
+    @Action(value = "createOnlive", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".onliveCreate")})
+    public String createOnlive() {
         this.setOperaType(Constants.OPERA_TYPE_FOR_ONLIVE_MATTER);
         return SUCCESS;
     }
-    @Action(value="createLiveTerm",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".liveTermCreate")})
-    public String createLiveTerm(){
+
+    @Action(value = "createLiveTerm", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".liveTermCreate")})
+    public String createLiveTerm() {
         this.setOperaType(Constants.OPERA_TYPE_FOR_ONLIVE_MATTER);
         return SUCCESS;
     }
-    @Action(value="maintenanceOnlive",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".liveTermCreate")})
-    public String maintenanceOnlive(){
+
+    @Action(value = "maintenanceOnlive", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".liveTermCreate")})
+    public String maintenanceOnlive() {
         liveChannel = liveChannelDao.findById(liveChannel.getId());
         channelTerms = new ChannelTerms();
         channelTerms.setHostEmail(this.getSessionUserEmail());
@@ -191,109 +200,113 @@ public class LiveChannelAction extends BasicAction{
         return SUCCESS;
     }
 
-     @Action(value="initLiveChannelManagement",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".liveChannelManagement")})
-     public String liveChannelManagement(){
-         liveChannel = liveChannelDao.findById(liveChannel.getId());
-         this.setOperaType(Constants.OPERA_TYPE_FOR_ONLIVE_MATTER);
-         return SUCCESS;
-     }
-     @Action(value="manageLiveTerm",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".liveTermManagement")})
-     public String manageLiveTerm(){
-         liveChannel = liveChannelDao.findById(this.getLiveChannel().getId());
-         this.setOperaType(Constants.OPERA_TYPE_FOR_ONLIVE_MATTER);
-         return SUCCESS;
-     }
+    @Action(value = "initLiveChannelManagement", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".liveChannelManagement")})
+    public String liveChannelManagement() {
+        liveChannel = liveChannelDao.findById(liveChannel.getId());
+        this.setOperaType(Constants.OPERA_TYPE_FOR_ONLIVE_MATTER);
+        return SUCCESS;
+    }
 
-    @Action(value = "liveChannelManage",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName", "initMyOnlive"})})
-    public String liveChannelManage(){
+    @Action(value = "manageLiveTerm", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".liveTermManagement")})
+    public String manageLiveTerm() {
+        liveChannel = liveChannelDao.findById(this.getLiveChannel().getId());
+        this.setOperaType(Constants.OPERA_TYPE_FOR_ONLIVE_MATTER);
+        return SUCCESS;
+    }
+
+    @Action(value = "liveChannelManage", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "initMyOnlive"})})
+    public String liveChannelManage() {
         LiveChannel existChannel = liveChannelDao.findById(this.getLiveChannel().getId());
-        if(StringUtils.isNotBlank(liveChannel.getName())) existChannel.setName(getEmptyString(liveChannel.getName()));
-        if(StringUtils.isNotBlank(liveChannel.getLogoUrl()) && !liveChannel.getLogoUrl().equals(existChannel.getLogoUrl())){
+        if (StringUtils.isNotBlank(liveChannel.getName()))
+            existChannel.setName(Utils.getEmptyString(liveChannel.getName()));
+        if (StringUtils.isNotBlank(liveChannel.getLogoUrl()) && !liveChannel.getLogoUrl().equals(existChannel.getLogoUrl())) {
             Utils.notReplaceFileFromTmp(Constants.UPLOAD_ONLIVE_PATH + "/" + getSessionUserId(), liveChannel.getLogoUrl());
-            existChannel.setLogoUrl(Constants.UPLOAD_ONLIVE_PATH + "/" + getSessionUserId()+"/"+liveChannel.getLogoUrl());
+            existChannel.setLogoUrl(Constants.UPLOAD_ONLIVE_PATH + "/" + getSessionUserId() + "/" + liveChannel.getLogoUrl());
         }
-        if(StringUtils.isNotBlank(liveChannel.getDescription())) existChannel.setDescription(getEmptyString(liveChannel.getDescription()));
+        if (StringUtils.isNotBlank(liveChannel.getDescription()))
+            existChannel.setDescription(Utils.getEmptyString(liveChannel.getDescription()));
         liveChannelDao.persistAbstract(existChannel);
         return SUCCESS;
     }
-    @Action(value = "manageLiveChannelAds",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".liveChannelAdManage")})
-    public String manageLiveChannelAds(){
+
+    @Action(value = "manageLiveChannelAds", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".liveChannelAdManage")})
+    public String manageLiveChannelAds() {
         liveChannels = liveChannelDao.findByUserID(this.getSessionUserId(), pagination);
         return SUCCESS;
     }
 
-     @Action(value = "initLiveChannelAds",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".liveChannelAdManage")})
-    public String initLiveChannelAds(){
+    @Action(value = "initLiveChannelAds", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".liveChannelAdManage")})
+    public String initLiveChannelAds() {
         liveChannel = liveChannelDao.findById(this.getLiveChannel().getId());
         return SUCCESS;
     }
 
 
-    @Action(value = "rangeLiveChannel",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".liveChannelRangeBoard")})
-    public String rangeLiveChannel(){
+    @Action(value = "rangeLiveChannel", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".liveChannelRangeBoard")})
+    public String rangeLiveChannel() {
         liveChannels = liveChannelDao.findAllForBidding(pagination);
         return SUCCESS;
     }
 
-    @Action(value = "listLiveChannelAdBid",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".liveChannelAdBidList")})
-    public String listLiveChannelAdBid(){
+    @Action(value = "listLiveChannelAdBid", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".liveChannelAdBidList")})
+    public String listLiveChannelAdBid() {
         liveChannel = liveChannelDao.findById(this.getLiveChannel().getId());
         return SUCCESS;
     }
 
-    @Action(value = "createLiveChannelAdBid",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".liveChannelAdBidCreation")})
-    public String createLiveChannelAdBid(){
+    @Action(value = "createLiveChannelAdBid", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".liveChannelAdBidCreation")})
+    public String createLiveChannelAdBid() {
         List<AdvertisementForLive> advertisementForLives = advertisementForLiveDao.findByProvider(this.getSessionUserId());
-        for(AdvertisementForLive ad :advertisementForLives){
-            ads.put(ad.getId(),ad.getProductName());
+        for (AdvertisementForLive ad : advertisementForLives) {
+            ads.put(ad.getId(), ad.getProductName());
         }
-         if(!ads.isEmpty()){
-            ads.put(-1,"其他");
+        if (!ads.isEmpty()) {
+            ads.put(-1, "其他");
         }
         return SUCCESS;
     }
 
-    @Action(value = "saveLiveChannel",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName", "initMyOnlive"}),
-                                                    @Result(name = "createTerms",type = Constants.RESULT_NAME_TILES,location = ".liveTermCreate")})
-    public String saveLiveChannel(){
+    @Action(value = "saveLiveChannel", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "initMyOnlive"}),
+            @Result(name = "createTerms", type = Constants.RESULT_NAME_TILES, location = ".liveTermCreate")})
+    public String saveLiveChannel() {
         liveChannel.setCreator(baseUserDao.findById(this.getSessionUserId()));
         if (StringUtils.isNotBlank(liveChannel.getLogoUrl())) {
             Utils.notReplaceFileFromTmp(Constants.UPLOAD_ONLIVE_PATH + "/" + getSessionUserId(), liveChannel.getLogoUrl());
-            liveChannel.setLogoUrl(Constants.UPLOAD_ONLIVE_PATH + "/" + getSessionUserId()+"/"+liveChannel.getLogoUrl());
-        }else{
+            liveChannel.setLogoUrl(Constants.UPLOAD_ONLIVE_PATH + "/" + getSessionUserId() + "/" + liveChannel.getLogoUrl());
+        } else {
             liveChannel.setLogoUrl(Constants.DEFAULT_ONLIVE_IMAGE);
         }
         Organization org = organizationDao.findByResId(this.getSessionUserId());
-        if(org != null) liveChannel.setOrganization(org);
+        if (org != null) liveChannel.setOrganization(org);
         liveChannel.setCreateTime(Utils.getCurrentCalender());
         liveChannelDao.persistAbstract(liveChannel);
 
-        if(this.getCreateChannelTerm()){
+        if (this.getCreateChannelTerm()) {
             channelTerms = new ChannelTerms();
             this.getChannelTerms().setHostEmail(this.getSessionUserEmail());
             this.getChannelTerms().setSubTitle(liveChannel.getName());
-            return "createTerms" ;
+            return "createTerms";
         }
         return SUCCESS;
     }
 
-    @Action(value = "saveChannelTerms",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName", "initMyOnlive"}),
-                                                     @Result(name = INPUT,type = Constants.RESULT_NAME_TILES,location = ".liveTermCreate")})
-    public String saveChannelTerms(){
+    @Action(value = "saveChannelTerms", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "initMyOnlive"}),
+            @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".liveTermCreate")})
+    public String saveChannelTerms() {
         if (StringUtils.isNotBlank(channelTerms.getLogoUrl())) {
             Utils.notReplaceFileFromTmp(Constants.UPLOAD_ONLIVE_TERM_PATH + "/" + getSessionUserId(), channelTerms.getLogoUrl());
-            channelTerms.setLogoUrl(Constants.UPLOAD_ONLIVE_TERM_PATH + "/" + getSessionUserId()+"/"+channelTerms.getLogoUrl());
-        }else{
+            channelTerms.setLogoUrl(Constants.UPLOAD_ONLIVE_TERM_PATH + "/" + getSessionUserId() + "/" + channelTerms.getLogoUrl());
+        } else {
             channelTerms.setLogoUrl(Constants.DEFAULT_ONLIVE_IMAGE);
         }
         BaseUser host = baseUserDao.findByEmail(channelTerms.getHostEmail());
-        if(host != null){
+        if (host != null) {
             channelTerms.setHost(host);
         }
         channelTerms.setLiveChannel(liveChannelDao.findById(this.getLiveChannel().getId()));
         channelTermsDao.persistAbstract(channelTerms);
-        for(String contestant : contestants){ //处理选手  ，存入相应的email和type
-            if(StringUtils.isNotBlank(contestant) && memberOfLiveChannelDao.findByChannelTermAndEmail(channelTerms.getId(),contestant) == null){
+        for (String contestant : contestants) { //处理选手  ，存入相应的email和type
+            if (StringUtils.isNotBlank(contestant) && memberOfLiveChannelDao.findByChannelTermAndEmail(channelTerms.getId(), contestant) == null) {
                 MemberOfLiveChannel memberOfLiveChannel = new MemberOfLiveChannel();
                 memberOfLiveChannel.setChannelTerms(channelTerms);
                 memberOfLiveChannel.setType(Constants.MEMBER_TYPE_OF_CONTESTANT);
@@ -302,8 +315,8 @@ public class LiveChannelAction extends BasicAction{
                 channelTerms.getMemberOfLiveChannels().add(memberOfLiveChannel);
             }
         }
-        for(String guest : guests){   //处理嘉宾 ，存入相应的email和type
-            if(StringUtils.isNotBlank(guest) && memberOfLiveChannelDao.findByChannelTermAndEmail(channelTerms.getId(),guest) == null){
+        for (String guest : guests) {   //处理嘉宾 ，存入相应的email和type
+            if (StringUtils.isNotBlank(guest) && memberOfLiveChannelDao.findByChannelTermAndEmail(channelTerms.getId(), guest) == null) {
                 MemberOfLiveChannel memberOfLiveChannel = new MemberOfLiveChannel();
                 memberOfLiveChannel.setChannelTerms(channelTerms);
                 memberOfLiveChannel.setType(Constants.MEMBER_TYPE_OF_QUEST);
@@ -312,25 +325,25 @@ public class LiveChannelAction extends BasicAction{
                 channelTerms.getMemberOfLiveChannels().add(memberOfLiveChannel);
             }
         }
-        sendEmailForChannel(channelTerms,channelTerms.getLiveChannel().getOrganization());
+        sendEmailForChannel(channelTerms, channelTerms.getLiveChannel().getOrganization());
         sendEmail2ChannelFollower(channelTerms);
         return SUCCESS;
     }
 
-    public void validateSaveChannelTerms(){
-        for(String contestantEmail : this.getContestants()){
-            if(contestantEmail.equals(channelTerms.getHostEmail())){
-                addFieldError("channelTerms.hostEmail","节目选手不能与主持人重复");
-                return ;
+    public void validateSaveChannelTerms() {
+        for (String contestantEmail : this.getContestants()) {
+            if (contestantEmail.equals(channelTerms.getHostEmail())) {
+                addFieldError("channelTerms.hostEmail", "节目选手不能与主持人重复");
+                return;
             }
-            for(String guestEmail : this.getGuests()){
-                if(guestEmail.equals(channelTerms.getHostEmail())){
-                    addFieldError("channelTerms.hostEmail","节目嘉宾不能与主持人重复");
-                    return ;
+            for (String guestEmail : this.getGuests()) {
+                if (guestEmail.equals(channelTerms.getHostEmail())) {
+                    addFieldError("channelTerms.hostEmail", "节目嘉宾不能与主持人重复");
+                    return;
                 }
-                if(guestEmail.equals(contestantEmail)){
-                    addFieldError("channelTerms.hostEmail","节目选手与节目嘉宾不能重复");
-                    return ;
+                if (guestEmail.equals(contestantEmail)) {
+                    addFieldError("channelTerms.hostEmail", "节目选手与节目嘉宾不能重复");
+                    return;
                 }
             }
         }
@@ -338,26 +351,27 @@ public class LiveChannelAction extends BasicAction{
 
 
     @Action(value = "resetOnLiveCurrentID")
-    public void resetOnLiveCurrentID(){
+    public void resetOnLiveCurrentID() {
         ChannelTerms existChannelTerm = channelTermsDao.findById(this.getChannelTerms().getId());
         existChannelTerm.setCurrentID(this.getChannelTerms().getCurrentID());
         liveChannelDao.persistAbstract(existChannelTerm);
     }
 
-    @Action(value="multiLiveChannel",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".multiLiveChannel")})
-    public String multiLiveChannel(){
+    @Action(value = "multiLiveChannel", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".multiLiveChannel")})
+    public String multiLiveChannel() {
         liveChannels = liveChannelDao.findAllOwnFutureTermsChannel(new Pagination(10));
-        if(this.getSessionUserId() != null) setUserTypeForChannels(liveChannels,this.getSessionUserId());
+        if (this.getSessionUserId() != null) setUserTypeForChannels(liveChannels, this.getSessionUserId());
         return SUCCESS;
     }
-    @Action(value="liveChannelBlog",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".liveChannelBlog")})
-    public String liveChannelBlog(){
-        liveChannel  = liveChannelDao.findById(this.getLiveChannel().getId());
+
+    @Action(value = "liveChannelBlog", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".liveChannelBlog")})
+    public String liveChannelBlog() {
+        liveChannel = liveChannelDao.findById(this.getLiveChannel().getId());
         //留言部分
         Pagination page = new Pagination(10);
-        liveChannelComments = liveChannelCommentDao.findByChannelID(liveChannel.getId(),page);
+        liveChannelComments = liveChannelCommentDao.findByChannelID(liveChannel.getId(), page);
         this.setCommentsNum(liveChannelComments.size());
-        if(page.getTotalSize() <= commentsNum){
+        if (page.getTotalSize() <= commentsNum) {
             this.setCommentsNumOverflow(true);
         }
 
@@ -366,43 +380,45 @@ public class LiveChannelAction extends BasicAction{
         liveChannels = liveChannelDao.findAllForBidding(new Pagination(4));
 
         //判断此用户是否关注了该栏目
-        if(this.getSessionUserId() != null){
-             OnliveFollower off = onliveFollowerDao.findByLiveAndUser(liveChannel.getId(),this.getSessionUserId());
-             if(off != null) this.setFocused(true);
+        if (this.getSessionUserId() != null) {
+            OnliveFollower off = onliveFollowerDao.findByLiveAndUser(liveChannel.getId(), this.getSessionUserId());
+            if (off != null) this.setFocused(true);
         }
         return SUCCESS;
     }
-    @Action(value="liveTermBlog",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".liveTermBlog")})
-    public String liveTermBlog(){
-        channelTerms  = channelTermsDao.findById(this.getChannelTerms().getId());
+
+    @Action(value = "liveTermBlog", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".liveTermBlog")})
+    public String liveTermBlog() {
+        channelTerms = channelTermsDao.findById(this.getChannelTerms().getId());
         Pagination page = new Pagination(10);
-        liveTermComments = liveTermCommentDao.findByTermsID(channelTerms.getId(),page);
-        if(channelTerms.getHost() != null) liveChannelsToHost = liveChannelDao.findByTermHost(channelTerms.getHost().getId(),null);
+        liveTermComments = liveTermCommentDao.findByTermsID(channelTerms.getId(), page);
+        if (channelTerms.getHost() != null)
+            liveChannelsToHost = liveChannelDao.findByTermHost(channelTerms.getHost().getId(), null);
         this.setCommentsNum(liveTermComments.size());
-        if(page.getTotalSize() <= commentsNum){
+        if (page.getTotalSize() <= commentsNum) {
             this.setCommentsNumOverflow(true);
         }
-        liveChannels = liveChannelDao.findOtherLatest4Channel(channelTerms.getLiveChannel().getId(),new Pagination(4));
+        liveChannels = liveChannelDao.findOtherLatest4Channel(channelTerms.getLiveChannel().getId(), new Pagination(4));
 
-        if(this.getSessionUserId() != null){
-             OnliveFollower off = onliveFollowerDao.findByLiveAndUser(this.getChannelTerms().getLiveChannel().getId(),this.getSessionUserId());
-             if(off != null)
-                 this.setFocused(true);
+        if (this.getSessionUserId() != null) {
+            OnliveFollower off = onliveFollowerDao.findByLiveAndUser(this.getChannelTerms().getLiveChannel().getId(), this.getSessionUserId());
+            if (off != null)
+                this.setFocused(true);
         }
 
         List<Course> cs = courseDao.findLatest4Course(new Pagination(4));
         int adNum = channelTerms.getLiveChannel().getThisSeasonAd().size();
-        for(AdvertisementForLive ad : channelTerms.getLiveChannel().getThisSeasonAd()){
+        for (AdvertisementForLive ad : channelTerms.getLiveChannel().getThisSeasonAd()) {
             advertisementForLives.add(ad);
         }
-        for(AdvertisementForLive ad : channelTerms.getLiveChannel().getNextSeasonAd()){
-            if(advertisementForLives.size() < 4){
+        for (AdvertisementForLive ad : channelTerms.getLiveChannel().getNextSeasonAd()) {
+            if (advertisementForLives.size() < 4) {
                 advertisementForLives.add(ad);
-                adNum  ++ ;
+                adNum++;
             }
         }
-        for(int i = 0; i<(cs.size()>4-adNum? 4-adNum:cs.size());i++){
-            if(cs.get(i) != null){
+        for (int i = 0; i < (cs.size() > 4 - adNum ? 4 - adNum : cs.size()); i++) {
+            if (cs.get(i) != null) {
                 courses.add(cs.get(i));
             }
         }
@@ -410,60 +426,60 @@ public class LiveChannelAction extends BasicAction{
         channelTerms.getLiveChannel().setTotalInviteNum(channelTerms.getLiveChannel().getTotalInviteNum() == null ? 1 : channelTerms.getLiveChannel().getTotalInviteNum() + 1);      //用户进入一次博客 栏目访问量加1
         liveChannelDao.persistAbstract(channelTerms.getLiveChannel());
 
-        SeasonIncreasedOnliveFans siof = seasonIncreasedOnliveFansDao.findByLiveAndCalendar(channelTerms.getLiveChannel().getId(),Utils.getCurrentCalender().get(Calendar.YEAR),Utils.getSeasonOfYear(Utils.getCurrentCalender().get(Calendar.MONTH)));
-        if(siof == null){    //用户进一次博客，当前季度用户访问量加1
-               SeasonIncreasedOnliveFans curr = new SeasonIncreasedOnliveFans();
-               curr.setLiveChannel(channelTerms.getLiveChannel());
-               curr.setFocusTime(Utils.getCurrentCalender());
-               curr.setYear(Utils.getCurrentCalender().get(Calendar.YEAR));
-               curr.setSeason(Utils.getSeasonOfYear(Utils.getCurrentCalender().get(Calendar.MONTH)));
-               curr.setInviteNum(1);
-               seasonIncreasedOnliveFansDao.persistAbstract(curr);
-        }else {
-               siof.setInviteNum(siof.getInviteNum()+1);
-               seasonIncreasedOnliveFansDao.persistAbstract(siof);
+        SeasonIncreasedOnliveFans siof = seasonIncreasedOnliveFansDao.findByLiveAndCalendar(channelTerms.getLiveChannel().getId(), Utils.getCurrentCalender().get(Calendar.YEAR), Utils.getSeasonOfYear(Utils.getCurrentCalender().get(Calendar.MONTH)));
+        if (siof == null) {    //用户进一次博客，当前季度用户访问量加1
+            SeasonIncreasedOnliveFans curr = new SeasonIncreasedOnliveFans();
+            curr.setLiveChannel(channelTerms.getLiveChannel());
+            curr.setFocusTime(Utils.getCurrentCalender());
+            curr.setYear(Utils.getCurrentCalender().get(Calendar.YEAR));
+            curr.setSeason(Utils.getSeasonOfYear(Utils.getCurrentCalender().get(Calendar.MONTH)));
+            curr.setInviteNum(1);
+            seasonIncreasedOnliveFansDao.persistAbstract(curr);
+        } else {
+            siof.setInviteNum(siof.getInviteNum() + 1);
+            seasonIncreasedOnliveFansDao.persistAbstract(siof);
         }
 
         return SUCCESS;
     }
 
 
-    @Action(value = "emailHandleForLiveChannelInvitation",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName", "myfirstPage"}),
-                                                                           @Result(name = NONE,type = Constants.RESULT_NAME_TILES,location = ".notExist")})
-    public String emailHandleForLiveChannelInvitation(){
+    @Action(value = "emailHandleForLiveChannelInvitation", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}),
+            @Result(name = NONE, type = Constants.RESULT_NAME_TILES, location = ".notExist")})
+    public String emailHandleForLiveChannelInvitation() {
         channelTerms = channelTermsDao.findById(this.getChannelTerms().getId());
-        if(this.getHost()!=null && this.getHost() == true){
-             if(this.getUser().getEmail().equals(channelTerms.getHostEmail())){
-                 BaseUser host = baseUserDao.findByEmail(this.getUser().getEmail());
-                 channelTerms.setHost(host);
-                 channelTermsDao.persistAbstract(channelTerms);
-             }else {
-                 return NONE;
-             }
-
-        }else if(this.getHost() != null && this.getHost() == false) {
-            MemberOfLiveChannel mlc = memberOfLiveChannelDao.findByChannelTermAndEmail(channelTerms.getId(),user.getEmail());
-            if(mlc!=null){
-                if(mlc.getMember() == null || mlc.getAcceptInvite() == false){
-                   mlc.setMember(baseUserDao.findByEmail(user.getEmail()));
-                   mlc.setAcceptInvite(true);
-                   memberOfLiveChannelDao.persistAbstract(mlc);
-                }
-            }else {
+        if (this.getHost() != null && this.getHost() == true) {
+            if (this.getUser().getEmail().equals(channelTerms.getHostEmail())) {
+                BaseUser host = baseUserDao.findByEmail(this.getUser().getEmail());
+                channelTerms.setHost(host);
+                channelTermsDao.persistAbstract(channelTerms);
+            } else {
                 return NONE;
             }
 
-        }else {
+        } else if (this.getHost() != null && this.getHost() == false) {
+            MemberOfLiveChannel mlc = memberOfLiveChannelDao.findByChannelTermAndEmail(channelTerms.getId(), user.getEmail());
+            if (mlc != null) {
+                if (mlc.getMember() == null || mlc.getAcceptInvite() == false) {
+                    mlc.setMember(baseUserDao.findByEmail(user.getEmail()));
+                    mlc.setAcceptInvite(true);
+                    memberOfLiveChannelDao.persistAbstract(mlc);
+                }
+            } else {
+                return NONE;
+            }
+
+        } else {
             return NONE;
         }
         return SUCCESS;
     }
 
     @Action(value = "addUser2LiveFollower")
-    public void addUser2LiveFollower(){
+    public void addUser2LiveFollower() {
         OnliveFollower of = onliveFollowerDao.findByLiveAndUser(this.getLiveChannel().getId(), this.getSessionUserId());
         liveChannel = liveChannelDao.findById(this.getLiveChannel().getId());
-        if(of == null){
+        if (of == null) {
             OnliveFollower onliveFollower = new OnliveFollower();
             onliveFollower.setLiveChannel(liveChannel);
             onliveFollower.setFollower(baseUserDao.findById(this.getSessionUserId()));
@@ -471,153 +487,152 @@ public class LiveChannelAction extends BasicAction{
             onliveFollowerDao.persistAbstract(onliveFollower);
         }
 
-        SeasonIncreasedOnliveFans siof = seasonIncreasedOnliveFansDao.findByLiveAndCalendar(liveChannel.getId(),Utils.getCurrentCalender().get(Calendar.YEAR),Utils.getSeasonOfYear(Utils.getCurrentCalender().get(Calendar.MONTH)));
-        if(siof == null){    //用户进一次博客，当前季度用户访问量加1
-               SeasonIncreasedOnliveFans curr = new SeasonIncreasedOnliveFans();
-               curr.setLiveChannel(liveChannel);
-               curr.setFocusTime(Utils.getCurrentCalender());
-               curr.setYear(Utils.getCurrentCalender().get(Calendar.YEAR));
-               curr.setSeason(Utils.getSeasonOfYear(Utils.getCurrentCalender().get(Calendar.MONTH)));
-               curr.setFansNum(1);
-               seasonIncreasedOnliveFansDao.persistAbstract(curr);
-        }else {
-               siof.setFansNum(siof.getFansNum()+1);
-               seasonIncreasedOnliveFansDao.persistAbstract(siof);
+        SeasonIncreasedOnliveFans siof = seasonIncreasedOnliveFansDao.findByLiveAndCalendar(liveChannel.getId(), Utils.getCurrentCalender().get(Calendar.YEAR), Utils.getSeasonOfYear(Utils.getCurrentCalender().get(Calendar.MONTH)));
+        if (siof == null) {    //用户进一次博客，当前季度用户访问量加1
+            SeasonIncreasedOnliveFans curr = new SeasonIncreasedOnliveFans();
+            curr.setLiveChannel(liveChannel);
+            curr.setFocusTime(Utils.getCurrentCalender());
+            curr.setYear(Utils.getCurrentCalender().get(Calendar.YEAR));
+            curr.setSeason(Utils.getSeasonOfYear(Utils.getCurrentCalender().get(Calendar.MONTH)));
+            curr.setFansNum(1);
+            seasonIncreasedOnliveFansDao.persistAbstract(curr);
+        } else {
+            siof.setFansNum(siof.getFansNum() + 1);
+            seasonIncreasedOnliveFansDao.persistAbstract(siof);
         }
 
     }
 
-     @Action(value = "saveTitbits")
-     public void saveTitbits(){
-         ChannelTerms ct = channelTermsDao.findById(this.getChannelTerms().getId());
-         ct.setTitbits(this.getChannelTerms().getTitbits());
-         channelTermsDao.persistAbstract(ct);
-     }
+    @Action(value = "saveTitbits")
+    public void saveTitbits() {
+        ChannelTerms ct = channelTermsDao.findById(this.getChannelTerms().getId());
+        ct.setTitbits(this.getChannelTerms().getTitbits());
+        channelTermsDao.persistAbstract(ct);
+    }
 
-    @Action(value = "saveLiveTermComment",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".liveTermComment")})
-    public String saveLiveTermComment(){
+    @Action(value = "saveLiveTermComment", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".liveTermComment")})
+    public String saveLiveTermComment() {
         channelTerms = channelTermsDao.findById(channelTerms.getId());
         BaseUser commenter = baseUserDao.findById(this.getSessionUserId());
         liveTermComment.setChannelTerms(channelTerms);
         liveTermComment.setCommenter(commenter);
         liveTermComment.setCommentTime(Utils.getCurrentCalender());
         Integer toFriendID = (Integer) ActionContext.getContext().getSession().get("toReplyerUserID");
-        if( toFriendID != null){
+        if (toFriendID != null) {
             BaseUser toFriend = baseUserDao.findById(toFriendID);
             liveTermComment.setToFriend(toFriend);
             ActionContext.getContext().getSession().remove("toReplyerUserID");
-            sendEmailForReply(channelTerms,commenter,toFriend,liveTermComment.getContent());
-        }else {
-             sendEmailForComment(channelTerms,commenter,liveTermComment.getContent());
+            sendEmailForReply(channelTerms, commenter, toFriend, liveTermComment.getContent());
+        } else {
+            sendEmailForComment(channelTerms, commenter, liveTermComment.getContent());
         }
         liveTermCommentDao.persistAbstract(liveTermComment);
 
-        Pagination page = new Pagination(commentsNum+1);
+        Pagination page = new Pagination(commentsNum + 1);
         liveTermComments = liveTermCommentDao.findByTermsID(channelTerms.getId(), page);
         this.setCommentsNum(liveTermComments.size());
-        if(page.getTotalSize() <= commentsNum){
+        if (page.getTotalSize() <= commentsNum) {
             this.setCommentsNumOverflow(true);
         }
         return SUCCESS;
     }
-    @Action(value = "saveLiveChannelComment",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".liveChannelComment")})
-    public String saveLiveChannelComment(){
+
+    @Action(value = "saveLiveChannelComment", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".liveChannelComment")})
+    public String saveLiveChannelComment() {
         liveChannel = liveChannelDao.findById(liveChannel.getId());
         BaseUser commenter = baseUserDao.findById(this.getSessionUserId());
         liveChannelComment.setLiveChannel(liveChannel);
         liveChannelComment.setCommenter(commenter);
         liveChannelComment.setCommentTime(Utils.getCurrentCalender());
         Integer toFriendID = (Integer) ActionContext.getContext().getSession().get("toReplyerUserID");
-        if( toFriendID != null){
+        if (toFriendID != null) {
             BaseUser toFriend = baseUserDao.findById(toFriendID);
             liveChannelComment.setToFriend(toFriend);
             ActionContext.getContext().getSession().remove("toReplyerUserID");
-         //  sendEmailForReply(channelTerms,commenter,toFriend,liveTermComment.getContent());
+            //  sendEmailForReply(channelTerms,commenter,toFriend,liveTermComment.getContent());
         }
         liveChannelCommentDao.persistAbstract(liveChannelComment);
 
-        Pagination page = new Pagination(commentsNum+1);
+        Pagination page = new Pagination(commentsNum + 1);
         liveChannelComments = liveChannelCommentDao.findByChannelID(liveChannel.getId(), page);
         this.setCommentsNum(liveChannelComments.size());
-        if(page.getTotalSize() <= commentsNum){
+        if (page.getTotalSize() <= commentsNum) {
             this.setCommentsNumOverflow(true);
         }
         return SUCCESS;
     }
 
 
-    @Action(value = "moreLiveTermsComments",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".liveTermComment")})
-    public String moreLiveTermsComments(){
-        Pagination page = new Pagination(this.getCommentsNum()+Constants.DEFAULT_PAGE_OF_COMMENTS_INCREASED_SIZE);
+    @Action(value = "moreLiveTermsComments", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".liveTermComment")})
+    public String moreLiveTermsComments() {
+        Pagination page = new Pagination(this.getCommentsNum() + Constants.DEFAULT_PAGE_OF_COMMENTS_INCREASED_SIZE);
         liveTermComments = liveTermCommentDao.findByTermsID(channelTerms.getId(), page);
         this.setCommentsNum(liveTermComments.size());
-        if(page.getTotalSize() <= commentsNum){
+        if (page.getTotalSize() <= commentsNum) {
             this.setCommentsNumOverflow(true);
         }
         return SUCCESS;
     }
 
-     @Action(value = "moreLiveChannelComments",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".liveChannelComment")})
-     public String moreLiveChannelComments(){
-         Pagination page = new Pagination(this.getCommentsNum()+Constants.DEFAULT_PAGE_OF_COMMENTS_INCREASED_SIZE);
-         liveChannelComments = liveChannelCommentDao.findByChannelID(this.getLiveChannel().getId(),page);
-         this.setCommentsNum(liveTermComments.size());
-        if(page.getTotalSize() <= commentsNum){
+    @Action(value = "moreLiveChannelComments", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".liveChannelComment")})
+    public String moreLiveChannelComments() {
+        Pagination page = new Pagination(this.getCommentsNum() + Constants.DEFAULT_PAGE_OF_COMMENTS_INCREASED_SIZE);
+        liveChannelComments = liveChannelCommentDao.findByChannelID(this.getLiveChannel().getId(), page);
+        this.setCommentsNum(liveTermComments.size());
+        if (page.getTotalSize() <= commentsNum) {
             this.setCommentsNumOverflow(true);
         }
-         return SUCCESS;
-     }
+        return SUCCESS;
+    }
 //
 //     @Action(value = "liveGoingList",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".liveGoingList")})
 //     public String showLiveGoingList(){
 //         return SUCCESS;
 //     }
 
-     @Action(value = "addLiveGoingAnnouncement",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".addLiveGoingAnnouncement")})
-     public String addLiveAnnouncement(){
-         return SUCCESS;
-     }
-
-
-
-    private void sendEmailForReply(ChannelTerms channelTerms, BaseUser commenter,BaseUser toFriend, String message){
-         String href = getBasePath() + "/liveTermBlog.html?channelTerms.id="+channelTerms.getId();
-         String title = this.getText("channelTerm.blog.reply.comment.title",new String[]{commenter.getNickName(),channelTerms.getSubTitle()});
-         String content = this.getText("channelTerm.blog.reply.comment.content",new String[]{toFriend.getNickName(),commenter.getNickName(),channelTerms.getSubTitle(),message,href,href});
-         EmailUtil.sendMail(toFriend.getEmail(),title,content);
+    @Action(value = "addLiveGoingAnnouncement", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".addLiveGoingAnnouncement")})
+    public String addLiveAnnouncement() {
+        return SUCCESS;
     }
 
-    private void sendEmailForComment(ChannelTerms channelTerms,BaseUser commenter,String message){
-         String href = getBasePath() + "/liveTermBlog.html?channelTerms.id="+channelTerms.getId();
-         String title = this.getText("channelTerm.blog.reply.comment.title",new String[]{commenter.getNickName(),channelTerms.getSubTitle()});
-         String content = this.getText("channelTerm.blog.reply.comment.content",new String[]{channelTerms.getHost().getNickName(),commenter.getNickName(),channelTerms.getSubTitle(),message,href,href});
-         EmailUtil.sendMail(channelTerms.getHost().getEmail(),title,content);
+
+    private void sendEmailForReply(ChannelTerms channelTerms, BaseUser commenter, BaseUser toFriend, String message) {
+        String href = getBasePath() + "/liveTermBlog.html?channelTerms.id=" + channelTerms.getId();
+        String title = this.getText("channelTerm.blog.reply.comment.title", new String[]{commenter.getNickName(), channelTerms.getSubTitle()});
+        String content = this.getText("channelTerm.blog.reply.comment.content", new String[]{toFriend.getNickName(), commenter.getNickName(), channelTerms.getSubTitle(), message, href, href});
+        EmailUtil.sendMail(toFriend.getEmail(), title, content);
     }
 
+    private void sendEmailForComment(ChannelTerms channelTerms, BaseUser commenter, String message) {
+        String href = getBasePath() + "/liveTermBlog.html?channelTerms.id=" + channelTerms.getId();
+        String title = this.getText("channelTerm.blog.reply.comment.title", new String[]{commenter.getNickName(), channelTerms.getSubTitle()});
+        String content = this.getText("channelTerm.blog.reply.comment.content", new String[]{channelTerms.getHost().getNickName(), commenter.getNickName(), channelTerms.getSubTitle(), message, href, href});
+        EmailUtil.sendMail(channelTerms.getHost().getEmail(), title, content);
+    }
 
 
     @Action(value = "deleteLiveTermComment")
-    public void deleteLiveTermComment(){
+    public void deleteLiveTermComment() {
         liveTermComment = liveTermCommentDao.findById(this.getLiveTermComment().getId());
         liveTermCommentDao.delete(liveTermComment);
     }
 
     @Action(value = "deleteLiveChannelComment")
-    public void deleteLiveChannelComment(){
+    public void deleteLiveChannelComment() {
         liveChannelComment = liveChannelCommentDao.findById(this.getLiveChannelComment().getId());
         liveChannelCommentDao.delete(liveChannelComment);
     }
 
     @Action(value = "deleteTermsMember")
-    public void deleteTermsMember(){
-         memberOfLiveChannel = memberOfLiveChannelDao.findById(this.getMemberOfLiveChannel().getId());
-        if(memberOfLiveChannel != null) {
+    public void deleteTermsMember() {
+        memberOfLiveChannel = memberOfLiveChannelDao.findById(this.getMemberOfLiveChannel().getId());
+        if (memberOfLiveChannel != null) {
             memberOfLiveChannelDao.delete(memberOfLiveChannel);
         }
     }
 
     @Action(value = "channelTermRecordStart")
-    public void channelTermRecordStart(){
+    public void channelTermRecordStart() {
         channelTerms = channelTermsDao.findById(this.getChannelTerms().getId());
         channelTerms.setHaveRecord(true);
         channelTerms.setRecordTime(Utils.getCurrentCalender());
@@ -626,17 +641,17 @@ public class LiveChannelAction extends BasicAction{
 
 
     @Action(value = "recommendLiveChannelAjax")
-    public void recommendShowAjax(){
+    public void recommendShowAjax() {
         liveChannel = liveChannelDao.findById(this.getLiveChannel().getId());
-        String title = this.getText("onlive.recommend.friend.email.title",new String[]{this.getSessionNickName(),liveChannel.getName()});
-        String  href = getBasePath()+"/liveChannelBlog.html?liveChannel.id="+liveChannel.getId();
-        for(String email : emails){
-            if(StringUtils.isNotBlank(email)){
+        String title = this.getText("onlive.recommend.friend.email.title", new String[]{this.getSessionNickName(), liveChannel.getName()});
+        String href = getBasePath() + "/liveChannelBlog.html?liveChannel.id=" + liveChannel.getId();
+        for (String email : emails) {
+            if (StringUtils.isNotBlank(email)) {
                 BaseUser _user = baseUserDao.findByEmail(email);
-                String content = Constants.BIG_COURSE_ADVERTISE_EMAIL_CSS + this.getText("onlive.recommend.friend.email.content",new String[]{
-                        _user == null ?email : _user.getNickName(),this.getSessionNickName(),liveChannel.getCreator().getNickName(),liveChannel.getName(),this.getComments(),href,href,email
+                String content = Constants.BIG_COURSE_ADVERTISE_EMAIL_CSS + this.getText("onlive.recommend.friend.email.content", new String[]{
+                        _user == null ? email : _user.getNickName(), this.getSessionNickName(), liveChannel.getCreator().getNickName(), liveChannel.getName(), this.getComments(), href, href, email
                 });
-                EmailUtil.sendMail(email,title,content);
+                EmailUtil.sendMail(email, title, content);
             }
 
         }
@@ -644,66 +659,73 @@ public class LiveChannelAction extends BasicAction{
     }
 
 
-    private void sendEmailForChannel(ChannelTerms channelTerms , Organization org){
-       if(!channelTerms.getHostEmail().equals(this.getSessionUserEmail())){      //email to the host
-           String hostEmailTitle = this.getText("liveChannel.email.to.host.title",new String[]{this.getSessionNickName(),channelTerms.getLiveChannel().getName()});
-           BaseUser _host = baseUserDao.findByEmail(channelTerms.getHostEmail());
-           String hostEmailHead = this.getText("liveChannel.email.head ",new String[]{_host == null?channelTerms.getHostEmail():_host.getNickName()});
-           String hostEmailContent;
-           if(org == null) hostEmailContent = this.getText("liveChannel.email.to.host.main.content.personal",new String[]{this.getSessionNickName(),channelTerms.getLiveChannel().getName()});
-           else  hostEmailContent = this.getText("liveChannel.email.to.host.main.content.org",new String[]{this.getSessionNickName(),channelTerms.getLiveChannel().getName(),org.getSchoolName()});
-           String href = getBasePath() + "/emailHandleForLiveChannelInvitation.html?host=true&channelTerms.id="+channelTerms.getId()+"&user.email="+channelTerms.getHostEmail();
-           String hostEmailBottom = this.getText("liveChannel.email.bottom",new String[]{href,href});
-           EmailUtil.sendMail(channelTerms.getHostEmail(),hostEmailTitle,hostEmailHead+hostEmailContent+hostEmailBottom);
-       }
-       for(MemberOfLiveChannel memberOfLiveChannel : channelTerms.getMemberOfLiveChannels()){     //email to the another member of live
-           String memberEmailTitle;
-           BaseUser _member = baseUserDao.findByEmail(memberOfLiveChannel.getMemberEmail());
-           String memberEmailHead =  this.getText("liveChannel.email.head",new String[]{_member == null ? memberOfLiveChannel.getMemberEmail():_member.getNickName()});
-           String memberEmailContent;
-           if(memberOfLiveChannel.getType().equals(Constants.MEMBER_TYPE_OF_CONTESTANT)) {
-                  memberEmailTitle = this.getText("liveChannel.email.to.contestant.title",new String[]{this.getSessionNickName(),channelTerms.getLiveChannel().getName()});
-                  if(org == null) memberEmailContent = this.getText("liveChannel.email.to.contestant.main.content.personal",new String[]{this.getSessionNickName(),channelTerms.getLiveChannel().getName()});
-                  else  memberEmailContent = this.getText("liveChannel.email.to.contestant.main.content.org",new String[]{this.getSessionNickName(),org.getSchoolName(),channelTerms.getLiveChannel().getName()});
-           }else {
-                  memberEmailTitle = this.getText("liveChannel.email.to.guest.title",new String[]{this.getSessionNickName(),channelTerms.getLiveChannel().getName()});
-                  if(org == null) memberEmailContent = this.getText("liveChannel.email.to.guest.main.content.personal",new String[]{this.getSessionNickName(),channelTerms.getLiveChannel().getName()});
-                  else  memberEmailContent = this.getText("liveChannel.email.to.guest.main.content.org",new String[]{this.getSessionNickName(),org.getSchoolName(),channelTerms.getLiveChannel().getName()});
-           }
-           String href = getBasePath()+ "/emailHandleForLiveChannelInvitation.html?host=false&channelTerms.id="+channelTerms.getId()+"&user.email="+memberOfLiveChannel.getMemberEmail();
-           String memberEmailBottom = this.getText("liveChannel.email.bottom",new String[]{href,href});
-           EmailUtil.sendMail(memberOfLiveChannel.getMemberEmail(),memberEmailTitle,memberEmailHead+memberEmailContent+memberEmailBottom);
-       }
+    private void sendEmailForChannel(ChannelTerms channelTerms, Organization org) {
+        if (!channelTerms.getHostEmail().equals(this.getSessionUserEmail())) {      //email to the host
+            String hostEmailTitle = this.getText("liveChannel.email.to.host.title", new String[]{this.getSessionNickName(), channelTerms.getLiveChannel().getName()});
+            BaseUser _host = baseUserDao.findByEmail(channelTerms.getHostEmail());
+            String hostEmailHead = this.getText("liveChannel.email.head ", new String[]{_host == null ? channelTerms.getHostEmail() : _host.getNickName()});
+            String hostEmailContent;
+            if (org == null)
+                hostEmailContent = this.getText("liveChannel.email.to.host.main.content.personal", new String[]{this.getSessionNickName(), channelTerms.getLiveChannel().getName()});
+            else
+                hostEmailContent = this.getText("liveChannel.email.to.host.main.content.org", new String[]{this.getSessionNickName(), channelTerms.getLiveChannel().getName(), org.getSchoolName()});
+            String href = getBasePath() + "/emailHandleForLiveChannelInvitation.html?host=true&channelTerms.id=" + channelTerms.getId() + "&user.email=" + channelTerms.getHostEmail();
+            String hostEmailBottom = this.getText("liveChannel.email.bottom", new String[]{href, href});
+            EmailUtil.sendMail(channelTerms.getHostEmail(), hostEmailTitle, hostEmailHead + hostEmailContent + hostEmailBottom);
+        }
+        for (MemberOfLiveChannel memberOfLiveChannel : channelTerms.getMemberOfLiveChannels()) {     //email to the another member of live
+            String memberEmailTitle;
+            BaseUser _member = baseUserDao.findByEmail(memberOfLiveChannel.getMemberEmail());
+            String memberEmailHead = this.getText("liveChannel.email.head", new String[]{_member == null ? memberOfLiveChannel.getMemberEmail() : _member.getNickName()});
+            String memberEmailContent;
+            if (memberOfLiveChannel.getType().equals(Constants.MEMBER_TYPE_OF_CONTESTANT)) {
+                memberEmailTitle = this.getText("liveChannel.email.to.contestant.title", new String[]{this.getSessionNickName(), channelTerms.getLiveChannel().getName()});
+                if (org == null)
+                    memberEmailContent = this.getText("liveChannel.email.to.contestant.main.content.personal", new String[]{this.getSessionNickName(), channelTerms.getLiveChannel().getName()});
+                else
+                    memberEmailContent = this.getText("liveChannel.email.to.contestant.main.content.org", new String[]{this.getSessionNickName(), org.getSchoolName(), channelTerms.getLiveChannel().getName()});
+            } else {
+                memberEmailTitle = this.getText("liveChannel.email.to.guest.title", new String[]{this.getSessionNickName(), channelTerms.getLiveChannel().getName()});
+                if (org == null)
+                    memberEmailContent = this.getText("liveChannel.email.to.guest.main.content.personal", new String[]{this.getSessionNickName(), channelTerms.getLiveChannel().getName()});
+                else
+                    memberEmailContent = this.getText("liveChannel.email.to.guest.main.content.org", new String[]{this.getSessionNickName(), org.getSchoolName(), channelTerms.getLiveChannel().getName()});
+            }
+            String href = getBasePath() + "/emailHandleForLiveChannelInvitation.html?host=false&channelTerms.id=" + channelTerms.getId() + "&user.email=" + memberOfLiveChannel.getMemberEmail();
+            String memberEmailBottom = this.getText("liveChannel.email.bottom", new String[]{href, href});
+            EmailUtil.sendMail(memberOfLiveChannel.getMemberEmail(), memberEmailTitle, memberEmailHead + memberEmailContent + memberEmailBottom);
+        }
     }
 
-    private void sendEmail2ChannelFollower(ChannelTerms channelTerms){
+    private void sendEmail2ChannelFollower(ChannelTerms channelTerms) {
 
         DateFormat dateFormat = new SimpleDateFormat(this.getText("dateformat.forclass"));
-        String logo = getBasePath() + "/"+ channelTerms.getLogoUrl();
-        Calendar startTime = (Calendar)channelTerms.getStartTime().clone();
-        startTime.add(Calendar.HOUR_OF_DAY,8);
-        String href = getBasePath() + "/liveChannelBlog.html?liveChannel.id="+channelTerms.getLiveChannel().getId();
-        String[] args = new String[]{logo,channelTerms.getLiveChannel().getName(),channelTerms.getSubTitle(),dateFormat.format(startTime.getTime()),channelTerms.getLiveChannel().getName(),href};
-        String title = this.getText("liveChannel.create.terms.email.to.fans.title",new String[]{channelTerms.getLiveChannel().getName()});
-        String content = this.getText("liveChannel.create.terms.email.to.fans.content",args);
-        for(OnliveFollower onf : channelTerms.getLiveChannel().getOnliveFollowers()){
-              EmailUtil.sendMail(onf.getFollower().getEmail(),title,content);
+        String logo = getBasePath() + "/" + channelTerms.getLogoUrl();
+        Calendar startTime = (Calendar) channelTerms.getStartTime().clone();
+        startTime.add(Calendar.HOUR_OF_DAY, 8);
+        String href = getBasePath() + "/liveChannelBlog.html?liveChannel.id=" + channelTerms.getLiveChannel().getId();
+        String[] args = new String[]{logo, channelTerms.getLiveChannel().getName(), channelTerms.getSubTitle(), dateFormat.format(startTime.getTime()), channelTerms.getLiveChannel().getName(), href};
+        String title = this.getText("liveChannel.create.terms.email.to.fans.title", new String[]{channelTerms.getLiveChannel().getName()});
+        String content = this.getText("liveChannel.create.terms.email.to.fans.content", args);
+        for (OnliveFollower onf : channelTerms.getLiveChannel().getOnliveFollowers()) {
+            EmailUtil.sendMail(onf.getFollower().getEmail(), title, content);
         }
 
 
     }
 
-    private void setUserTypeForChannels(List<LiveChannel> liveChannels,Integer userID){
-        for(LiveChannel lc : liveChannels){
+    private void setUserTypeForChannels(List<LiveChannel> liveChannels, Integer userID) {
+        for (LiveChannel lc : liveChannels) {
             lc.setUserType(1);
-            for(OnliveFollower onf :lc.getOnliveFollowers()){
-                 if(onf.getFollower().getId().equals(userID)){
-                     lc.setUserType(Constants.MEMBER_TYPE_OF_FANS);
-                     break;
-                 }
-             }
+            for (OnliveFollower onf : lc.getOnliveFollowers()) {
+                if (onf.getFollower().getId().equals(userID)) {
+                    lc.setUserType(Constants.MEMBER_TYPE_OF_FANS);
+                    break;
+                }
+            }
         }
     }
+
     public LiveChannelDao getLiveChannelDao() {
         return liveChannelDao;
     }
@@ -751,7 +773,8 @@ public class LiveChannelAction extends BasicAction{
     public void setMemberOfLiveChannelDao(MemberOfLiveChannelDao memberOfLiveChannelDao) {
         this.memberOfLiveChannelDao = memberOfLiveChannelDao;
     }
-     public Integer getOperaType() {
+
+    public Integer getOperaType() {
         return operaType;
     }
 
@@ -799,14 +822,14 @@ public class LiveChannelAction extends BasicAction{
         this.pagination = pagination;
     }
 
-    public Integer getTotalNumOfLiveChannels(){
+    public Integer getTotalNumOfLiveChannels() {
         return this.getLiveChannels().size();
     }
 
-    public Integer getTotalNumOfChannelTerms(){
+    public Integer getTotalNumOfChannelTerms() {
         int totalNum = 0;
-        for(LiveChannel lc : liveChannels){
-           totalNum  = totalNum +lc.getChannelTermses().size();
+        for (LiveChannel lc : liveChannels) {
+            totalNum = totalNum + lc.getChannelTermses().size();
         }
         return totalNum;
     }
@@ -835,21 +858,21 @@ public class LiveChannelAction extends BasicAction{
         this.createChannelTerm = createChannelTerm;
     }
 
-    public Integer getTotalNumOfViewOnlive(){
+    public Integer getTotalNumOfViewOnlive() {
         int total = 0;
-        for(LiveChannel lc : this.getLiveChannels()){
-            for(ChannelTerms ct : lc.getChannelTermses())    {
-                total = total +(ct.getViewTheOnliveNum() == null?0:ct.getViewTheOnliveNum());
+        for (LiveChannel lc : this.getLiveChannels()) {
+            for (ChannelTerms ct : lc.getChannelTermses()) {
+                total = total + (ct.getViewTheOnliveNum() == null ? 0 : ct.getViewTheOnliveNum());
             }
         }
         return total;
     }
 
-    public Integer getTotalNumOfViewVideo(){
+    public Integer getTotalNumOfViewVideo() {
         int total = 0;
-        for(LiveChannel lc : this.getLiveChannels()){
-             for(ChannelTerms ct : lc.getChannelTermses())    {
-                total = total +(ct.getViewTheVideoNum() == null?0:ct.getViewTheVideoNum());
+        for (LiveChannel lc : this.getLiveChannels()) {
+            for (ChannelTerms ct : lc.getChannelTermses()) {
+                total = total + (ct.getViewTheVideoNum() == null ? 0 : ct.getViewTheVideoNum());
             }
         }
         return total;
@@ -911,7 +934,7 @@ public class LiveChannelAction extends BasicAction{
         this.liveTermComments = liveTermComments;
     }
 
-    public Integer getLiveChannelFollowersNum(){
+    public Integer getLiveChannelFollowersNum() {
         return this.getChannelTerms().getLiveChannel().getOnliveFollowers().size();
     }
 
@@ -922,11 +945,13 @@ public class LiveChannelAction extends BasicAction{
     public void setLiveChannelsToHost(List<LiveChannel> liveChannelsToHost) {
         this.liveChannelsToHost = liveChannelsToHost;
     }
-    public Boolean isExistHostChannel(){
-         if(this.getLiveChannelsToHost().size() == 0) return false;
-        return true ;
+
+    public Boolean isExistHostChannel() {
+        if (this.getLiveChannelsToHost().size() == 0) return false;
+        return true;
     }
-    public Integer getHostChannelNum(){
+
+    public Integer getHostChannelNum() {
         return this.getLiveChannelsToHost().size();
     }
 
@@ -962,8 +987,8 @@ public class LiveChannelAction extends BasicAction{
         this.advertisementForLiveDao = advertisementForLiveDao;
     }
 
-    public Boolean isExistAds(){
-        if(this.getAds().isEmpty()){
+    public Boolean isExistAds() {
+        if (this.getAds().isEmpty()) {
             return false;
         }
         return true;
@@ -1121,8 +1146,8 @@ public class LiveChannelAction extends BasicAction{
         this.onlivings = onlivings;
     }
 
-    public Boolean isExistOnlivings(){
-        if(this.getOnlivings().size() == 0) return false;
+    public Boolean isExistOnlivings() {
+        if (this.getOnlivings().size() == 0) return false;
         return true;
     }
 
@@ -1141,19 +1166,20 @@ public class LiveChannelAction extends BasicAction{
     public void setEmails(List<String> emails) {
         this.emails = emails;
     }
-    public List<BaseUser> getHottestUsers() {
-           for(BaseUser teacher : hottestUsers){
-             teacher.setUserFocused(false);
-             if(this.getSessionUserId() != null && userFansDao.findByUserAndFans(teacher.getId(),this.getSessionUserId()) != null){
-                 teacher.setUserFocused(true);
-             }
-         }
-         return hottestUsers;
-     }
 
-     public void setHottestUsers(List<BaseUser> hottestUsers) {
-         this.hottestUsers = hottestUsers;
-     }
+    public List<BaseUser> getHottestUsers() {
+        for (BaseUser teacher : hottestUsers) {
+            teacher.setUserFocused(false);
+            if (this.getSessionUserId() != null && userFansDao.findByUserAndFans(teacher.getId(), this.getSessionUserId()) != null) {
+                teacher.setUserFocused(true);
+            }
+        }
+        return hottestUsers;
+    }
+
+    public void setHottestUsers(List<BaseUser> hottestUsers) {
+        this.hottestUsers = hottestUsers;
+    }
 
     public List<LiveChannel> getLatestChannel() {
         return latestChannel;

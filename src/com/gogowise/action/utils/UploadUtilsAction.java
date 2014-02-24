@@ -72,7 +72,7 @@ public class UploadUtilsAction extends BasicAction {
 
         String savePath = ServletActionContext.getServletContext().getRealPath("");
 
-        savePath = savePath + "/" + Constants.UPLOAD_FILE_PATH_TMP+"/";
+        savePath = savePath + Constants.UPLOAD_FILE_PATH_TMP+"/";
 
 
         //生成随机文件名：当前年月日时分秒+五位随机数（为了在实际项目中防止文件同名而进行的处理）
@@ -111,7 +111,13 @@ public class UploadUtilsAction extends BasicAction {
 
 
         newFileName = nowTimeStr + rannum + extName; //文件重命名后的名字
-        fileupload.renameTo(new File(savePath + newFileName)); //保存文件
+
+        File newFileToCreate = new File(savePath + newFileName);
+        File newPatchToCreate = new File(savePath );
+        if (!newPatchToCreate.exists()) {
+            newPatchToCreate.mkdirs();
+        }
+        fileupload.renameTo(newFileToCreate); //保存文件
 
         HttpServletResponse response = ServletActionContext.getResponse();
         response.setCharacterEncoding("utf-8");

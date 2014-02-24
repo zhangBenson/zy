@@ -11,17 +11,17 @@
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
+                <s:form method="post" action="searchAnswer" theme="simple" validate="true">
                 <div class="input-group">
+                    <s:textfield cssClass="form-control input-lg" name="searchStr" placeholder="search"></s:textfield>
                     <div class="input-group-btn">
-                        <s:form method="post" action="searchAnswer" theme="simple" validate="true">
-                            <s:textfield cssClass="form-control input-lg" name="searchStr" placeholder="search"></s:textfield>
-                            <button type="submit" class="btn btn-default btn-lg">
-                                <span class="glyphicon glyphicon-search"></span>
-                                <s:property value="%{getText('menu.item.search')}"/>
-                            </button>
-                        </s:form>
+                        <button type="submit" class="btn btn-default btn-lg">
+                            <span class="glyphicon glyphicon-search"></span>
+                            <s:property value="%{getText('menu.item.search')}"/>
+                        </button>
                     </div>
                 </div>
+                </s:form>
                 <div class="col-sm-2"></div>
             </div>
         </div>
@@ -51,14 +51,16 @@
                     </a>
                 </h4>
 
-                <p class="text-left">
-                <ul class="list-inline">
-                    <li class="searchItemState"><s:property value="%{getText('course.school')}"/>:<a href="orgBlog.html?org.id=<s:property value="organization.id"/>" title="<s:property value="organization.nickName"/>"><s:property value="organization.schoolName"/></a></li>
-                    <li class="searchItemState"><s:property value="%{getText('courses.info.lecturer')}"/>:<a href="userBlog.html?user.id=<s:property value="teacher.id"/>" title="<s:property value="teacher.nickName"/>"><s:property value="teacher.nickName"/></a></li>
-                    <li class="searchItemState"><s:property value="%{getText('label.student')}"/>:<s:property value="studentNum"/></li>
-                    <li class="searchItemStateBlue"><s:property value="%{getText('usermenu.item.mooc')}"/></li>
-                </ul>
-                </p>
+                <div class="text-right">
+                    <ul class="list-inline">
+                        <li class="searchItemState"><s:property value="%{getText('course.school')}"/>:<a href="orgBlog.html?org.id=<s:property value="organization.id"/>" title="<s:property value="organization.nickName"/>"><s:property value="organization.schoolName"/></a></li>
+                        <li class="searchItemState"><s:property value="%{getText('courses.info.lecturer')}"/>:<a href="userBlog.html?user.id=<s:property value="teacher.id"/>" title="<s:property value="teacher.nickName"/>"><s:property value="teacher.nickName"/></a></li>
+                        <li class="searchItemState"><s:property value="%{getText('label.student')}"/>:<s:property value="studentNum"/></li>
+                        <s:if test="charges>0"><li class="searchItemStateBlue">&nbsp;S$&nbsp;<s:property value="charges"/>&nbsp;</li></s:if>
+                        <s:else><li class="searchItemStateBlue"><s:property value="%{getText('usermenu.item.mooc')}"/></li></s:else>
+
+                    </ul>
+                </div>
                 <div class="clearfix"></div>
             </div>
             <s:if test="!#idx.last">
@@ -76,14 +78,14 @@
 <br/>
 <div style="text-align: center;">
     <ul class="pagination pagination-lg">
-        <li class="active"><a id="searchType0" href="javascript:startSearch(0);">A-D</a></li>
-        <li><a id="searchType1" href="javascript:startSearch(1);">E-H</a></li>
-        <li><a id="searchType2" href="javascript:startSearch(2);">I-L</a></li>
-        <li><a id="searchType3" href="javascript:startSearch(3);">M-P</a></li>
-        <li><a id="searchType4" href="javascript:startSearch(4);">Q-T</a></li>
-        <li><a id="searchType5" href="javascript:startSearch(5);">U-Z</a></li>
-        <li><a id="searchType6" href="javascript:startSearch(6);"><s:property value="%{getText('label.school.center.button.show.other')}"/></a></li>
-        <li><a id="searchType7" href="javascript:startSearch(7);"><s:property value="%{getText('label.school.center.button.show.all')}"/></a></li>
+        <li id="searchType0"><a href="javascript:startSearch(0);">A-D</a></li>
+        <li id="searchType1"><a href="javascript:startSearch(1);">E-H</a></li>
+        <li id="searchType2"><a href="javascript:startSearch(2);">I-L</a></li>
+        <li id="searchType3"><a href="javascript:startSearch(3);">M-P</a></li>
+        <li id="searchType4"><a href="javascript:startSearch(4);">Q-T</a></li>
+        <li id="searchType5"><a href="javascript:startSearch(5);">U-Z</a></li>
+        <li id="searchType6"><a href="javascript:startSearch(6);"><s:property value="%{getText('label.school.center.button.show.other')}"/></a></li>
+        <li id="searchType7"><a href="javascript:startSearch(7);"><s:property value="%{getText('label.school.center.button.show.all')}"/></a></li>
 
         <form action="courseCenter.html" method="POST" id="page_show_form">
             <s:hidden name="coursePageShowType" id="showType_msg"/>
@@ -92,23 +94,30 @@
 </div>
 
 <script type="text/javascript">
-    /* $(function(){
-     var coursePageShowType = <s:property value="coursePageShowType"/>;
-     switch(coursePageShowType){
-     case 0: $("#searchType0").addClass("search_stand_out");break;
-     case 1: $("#searchType1").addClass("search_stand_out");break;
-     case 2: $("#searchType2").addClass("search_stand_out");break;
-     case 3: $("#searchType3").addClass("search_stand_out"); break;
-     case 4: $("#searchType4").addClass("search_stand_out"); break;
-     case 5: $("#searchType5").addClass("search_stand_out"); break;
-     case 6: $("#searchType6").addClass("search_stand_out"); break;
-     case 6: $("#searchType7").addClass("search_stand_out"); break;
-     }
-     });
-     */
+
+    $(document).ready(function() {
+        var coursePageShowType = "<s:property value="coursePageShowType"/>";
+        if (coursePageShowType == null || coursePageShowType == ""){
+            $("#searchType7").addClass("active");
+            return ;
+        }
+        switch(parseInt(coursePageShowType)){
+            case 0: $("#searchType0").addClass("active");break;
+            case 1: $("#searchType1").addClass("active");break;
+            case 2: $("#searchType2").addClass("active");break;
+            case 3: $("#searchType3").addClass("active"); break;
+            case 4: $("#searchType4").addClass("active"); break;
+            case 5: $("#searchType5").addClass("active"); break;
+            case 6: $("#searchType6").addClass("active"); break;
+            case 7: $("#searchType7").addClass("active"); break;
+            default :
+                break;
+        }
+    });
     function startSearch(coursePageShowType){
         // window.location.href = "searchResult.html?searchType="+searchType+"&searchStr="+encodeURI($("#searchStr_id").val());
         //alert (coursePageShowType);
+
         $("#showType_msg").attr('value',coursePageShowType);
         $("#page_show_form").submit();
     }

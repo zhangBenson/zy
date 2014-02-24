@@ -8,24 +8,17 @@
     <div class="row">
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
-            <div class="input-group">
-                <div class="input-group-btn">
-                <s:form method="post" action="searchAnswer" theme="simple" validate="true">
+            <s:form method="post" action="searchAnswer" theme="simple" validate="true">
+                <div class="input-group">
                     <s:textfield cssClass="form-control input-lg" name="searchStr" placeholder="search"></s:textfield>
-                    <button type="submit" class="btn btn-default btn-lg">
-                        <span class="glyphicon glyphicon-search"></span>
-                        <s:property value="%{getText('menu.item.search')}"/>
-                    </button>
-                </s:form>
+                    <div class="input-group-btn">
+                        <button type="submit" class="btn btn-default btn-lg">
+                            <span class="glyphicon glyphicon-search"></span>
+                            <s:property value="%{getText('menu.item.search')}"/>
+                        </button>
+                    </div>
                 </div>
-
-           <%--<input type="text" class="form-control" name="searchStr" placeholder="search">
-                <s:textfield cssClass="form-control input-lg" name="searchStr" placeholder="search"  ></s:textfield>
-                <s:property value="searchType"/>
-                <div class="input-group-btn">
-                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" style="margin-right: 15px;"></span><s:property value="%{getText('menu.item.search')}"/></button>
-                </div>        --%>
-            </div>
+            </s:form>
             <div class="col-sm-2"></div>
         </div>
     </div>
@@ -53,14 +46,14 @@
                     </a>
                 </h4>
                 </h4>
-                <p class="text-left">
+                <div class="text-right">
                     <ul class="list-inline">
                       <li class="searchItemState"><s:property value="%{getText('course.school')}"/>:<a href="orgBlog.html?org.id=<s:property value="organization.id"/>" title="<s:property value="organization.nickName"/>"><s:property value="organization.schoolName"/></a></li>
                       <li class="searchItemState"><s:property value="%{getText('courses.info.lecturer')}"/>:<a href="userBlog.html?user.id=<s:property value="teacher.id"/>" title="<s:property value="teacher.nickName"/>"><s:property value="teacher.nickName"/></a></li>
                       <li class="searchItemState"><s:property value="%{getText('label.student')}"/>:<s:property value="studentNum"/></li>
                       <li class="searchItemStateBlue"><s:property value="%{getText('usermenu.item.mooc')}"/></li>
                     </ul>
-                </p>
+                </div>
                 <div class="clearfix"></div>
             </div>
             <s:if test="!#idx.last">

@@ -4,7 +4,11 @@
 
 <script src="js/jqueryTabs.js" type="text/javascript"></script>
 <link href="css/org/orgInfoUpdate.css" rel="stylesheet" type="text/css"/>
-
+<style type="text/css">
+    .wwgrp br { display: none; }
+    .submit_btn{ display: block; float: left; width: 122px; height:31px; background: rgb(80,80,80); color: #FFF; font-size: 16px; box-shadow: 0px 1px 2px rgba(40,160,200,0.3); border-radius: 4px; border: none; cursor: pointer; }
+    .long_text_area{ width: 600px; height:80px; padding:2px; border: #7CADC5 solid 1px; border-bottom: #B7D2DF solid 1px; border-right: #B7D2DF solid 1px; }
+</style>
 <div class="orgInfo_container">
     <div class="testtab" id="testtab2">
         <div id="tabtag2" class="tabtag">
@@ -62,12 +66,10 @@
                         <p id="secondStepIDWarn" class="input_msg"></p>
 
                         <div class="input_content">
-                            <%--<input name="responser.cardId" id="secondStepID"--%>
-                                   <%--class="input_text_field" type="text">--%>
                             <s:textfield name="responser.cardId" id="secondStepID" cssClass="input_text_field"/>
                         </div>
                     </li>
-                    <li>
+                    <%--<li>
                         <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param9')}"/></p><p id="fileupload1_FileWarn" class="input_msg"></p><br/>
                         <div class="input_content">
                             <p class="img_div"><img  id="file1_preview_img" src="<s:property value="responser.idCardUrl"/>" width="120px" height="90px" onerror="javascript:this.src='images/nopic.jpg'"/></p>
@@ -76,10 +78,10 @@
                             </p>
                             <input type="hidden" id="idCardUrl" name="responser.idCardUrl"/>
                         </div>
-                    </li>
+                    </li>--%>
                     <li class="commit_modfication1">
                         <span id="submit_msg1" class="_submit_msg"></span>
-                        <span><s:submit cssClass="submit_btn" value="%{getText('orgInfoUpdate.param10')}"/></span>
+                        <span><input type="button" class="submit_btn" value="<s:property value="%{getText('orgInfoUpdate.param10')}"/>" /></span>
                     </li>
                 </ul>
             </s:form>
@@ -129,7 +131,7 @@
                             <div class="input_content" style="width: 460px;">
                                 <div id="wwgrp_orgForm_org_memberSize" class="wwgrp">
                                     <div id="wwctrl_orgForm_org_memberSize" class="wwctrl">
-                                        <s:radio list="#{0:getText('orgleague.info.size1'),1:getText('orgleague.info.size2'),2:getText('orgleague.info.size3'),3:getText('orgleague.info.size4'),4:getText('orgleague.info.size5'),5:getText('orgleague.info.size6')}" name="org.memberSize" cssClass="usersexy" listKey="key" listValue="value"/>
+                                        <s:radio list="#{0:getText('orgleague.info.size1'),1:getText('orgleague.info.size2'),2:getText('orgleague.info.size3'),3:getText('orgleague.info.size4')}" name="org.memberSize" cssClass="usersexy" listKey="key" listValue="value"/>
                                     </div>
                                 </div>
                             </div>
@@ -143,15 +145,21 @@
                             </div>
                     </li>
                     <li class="fileUploadDiv">
-                        <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%getText('orgInfoUpdate.param18')"/></p><p id="fileupload2_FileWarn" class="input_msg"></p><br/>
+                        <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param18')}"/></p><p id="fileupload2_FileWarn" class="input_msg"></p><br/>
                         <div class="input_content">
-                            <p class="img_div"><img id="file2_preview_img" src="<s:property value="org.logoUrl"/>" width="120px" height="90px" onerror="javascript:this.src='images/nopic.jpg'"/></p>
-                            <p class="file_upload"><input type="file" name="upload" id="fileupload2" /></p>
-                            <input type="hidden" name="org.logoUrl" id="hidFile1"/>
+                            <p class="img_div">
+                                <img id="show_log_preview" src="<s:property value="org.logoUrl"/>" width="210px" height="90px" onerror="javascript:this.src='images/nopic.jpg'"/>
+                            </p>
+
+                            <div class="file_upload">
+                                <input type="button" class="submit_btn" id="fileupload2" value="<s:property value="%{getText('onlive.message.update')}"/>" href="orgLogoProcess.html" />
+                            </div>
+                            <p id="secondStepFileWarn" class="input_msg"></p>
+                            <s:hidden name="org.logoUrl" id="logoUrl" />
                         </div>
                     </li>
                     <li class="fileUploadDiv">
-                        <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%getText('orgInfoUpdate.param19')"/></p><p id="fileupload3_FileWarn" class="input_msg"></p><br/>
+                        <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param19')}"/></p><p id="fileupload3_FileWarn" class="input_msg"></p><br/>
                         <div class="input_content">
                             <p class="img_div"><img  id="file3_preview_img" src="<s:property value="org.businessLicenseUrl"/>" width="120px" height="90px" onerror="javascript:this.src='images/nopic.jpg'"/></p>
                             <p class="file_upload"><input type="file" name="upload" id="fileupload3" /></p>
@@ -160,7 +168,7 @@
                     </li>
                     <li class="commit_modfication2">
                          <span id="submit_msg2" class="_submit_msg"></span>
-                        <span><s:submit cssClass="submit_btn" value="%{getText('orgInfoUpdate.param10')}"/></span>
+                        <span><input type="button" class="submit_btn" value="<s:property value="%{getText('orgInfoUpdate.param10')}"/>"/></span>
                     </li>
 
                 </ul>
@@ -208,7 +216,7 @@
                     </li>
                     <li class="commit_modfication3">
                         <span id="submit_msg3" class="_submit_msg"></span>
-                        <span><s:submit cssClass="submit_btn" value="%{getText('orgInfoUpdate.param10')}"/></span>
+                        <span><input type="button" class="submit_btn" value="<s:property value="%{getText('orgInfoUpdate.param10')}"/>"/></span>
                     </li>
                 </ul>
                 </s:form>

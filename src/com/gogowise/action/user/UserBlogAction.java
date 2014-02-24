@@ -1,29 +1,28 @@
 package com.gogowise.action.user;
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.common.utils.Constants;
+import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.dao.BrowsedCourseDao;
 import com.gogowise.rep.course.dao.CommentsDao;
 import com.gogowise.rep.course.dao.CourseDao;
-import com.gogowise.rep.course.dao.CourseEvaluationDao;
-import com.gogowise.rep.live.MyShowDao;
-import com.gogowise.rep.live.PersonalOnliveDao;
-import com.gogowise.rep.org.dao.OrganizationDao;
-import com.gogowise.rep.org.enity.Organization;
-import com.gogowise.rep.user.dao.BaseUserDao;
-import com.gogowise.rep.live.UserFansDao;
 import com.gogowise.rep.course.enity.BrowsedCourse;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.course.enity.CourseEvaluation;
 import com.gogowise.rep.course.enity.SeniorClassRoom;
+import com.gogowise.rep.live.MyShowDao;
+import com.gogowise.rep.live.PersonalOnliveDao;
+import com.gogowise.rep.live.UserFansDao;
 import com.gogowise.rep.live.enity.MyShow;
 import com.gogowise.rep.live.enity.PersonalOnlive;
 import com.gogowise.rep.live.enity.ShowFans;
 import com.gogowise.rep.live.enity.UserFans;
+import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.user.enity.Comments;
-import com.gogowise.common.utils.Constants;
-import com.gogowise.common.utils.Utils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -39,9 +38,6 @@ import java.util.List;
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 @Namespace(BasicAction.BASE_NAME_SPACE)
 public class UserBlogAction extends BasicAction {
-
-    public static Integer USER_ID;
-
     private BaseUserDao baseUserDao;
     private CourseDao courseDao;
     private CommentsDao commentsDao;
@@ -77,19 +73,11 @@ public class UserBlogAction extends BasicAction {
             results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".userBlog")}
     )
     public String userBlog() {
-        Integer userId ;
-        if(this.getUser() != null && this.getUser().getId() != null){
-              userId =  this.getUser().getId();
-              USER_ID = userId;
-        }else {
-              userId = USER_ID;
-        }
-
+        Integer userId = user.getId();
         user = this.baseUserDao.findById(userId);
         personalOnlive = personalOnliveDao.findLatestOneForUser(userId, new Pagination(1));
         coursesAsTeacher = courseDao.findCourses2Teacher(userId, new Pagination(3));
         coursesAsStudent = courseDao.findCourses2Student(userId, new Pagination(4));
-
 
         personalOnlives = personalOnliveDao.findOnliveHistoryForUser(userId,pagination);
 

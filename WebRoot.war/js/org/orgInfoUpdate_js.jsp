@@ -18,38 +18,38 @@ var uploading2 = false;
 var uploaded2 = false;
 var uploading3 = false;
 var uploaded3 = false;
-var name_blank_msg = "姓名不能为空";
-var name_length_msg = "姓名不能长于30位";
-var orgName_blank_msg = "组织名不能为空";
-var orgName_length_msg = "组织名不能超过30位";
-var orgName_exist_msg = "对不起，该组织已被注册";
-var content_blank_msg = "说明不能为空";
-var content_length_msg = "请不要超过40个字";
-var accountName_blank_msg = "银行账户不能为空";
+var name_blank_msg = "<s:text name='orgInfoUpdate.param35'/>";
+var name_length_msg = "<s:text name='orgInfoUpdate.param36'/>";
+var orgName_blank_msg = "<s:text name='orgInfoUpdate.param37'/>";
+var orgName_length_msg = "<s:text name='orgInfoUpdate.param36'/>";
+var orgName_exist_msg = "<s:text name='orgInfoUpdate.param38'/>";
+var content_blank_msg = "<s:text name='orgInfoUpdate.param39'/>";
+var content_length_msg = "<s:text name='orgInfoUpdate.param40'/>";
+var accountName_blank_msg = "<s:text name='orgInfoUpdate.param41'/>";
 var accountName_form_msg = "";
-var accountNo_blank_msg = "银行账号不能为空";
-var accountNo_form_msg = "银行账号填写错误";
-var fixedTel_blank_msg = "固定电话不能为空,eg:010-43892437";
-var fixedTel_form_msg = "固定电话填写错误,eg:010-43892437";
-var  mobile_blank_msg = "移动电话不能为空";
+var accountNo_blank_msg = "<s:text name='orgInfoUpdate.param42'/>";
+var accountNo_form_msg = "<s:text name='orgInfoUpdate.param43'/>";
+var fixedTel_blank_msg = "<s:text name='orgInfoUpdate.param44'/>";
+var fixedTel_form_msg = "<s:text name='orgInfoUpdate.param45'/>";
+var  mobile_blank_msg = "<s:text name='orgInfoUpdate.param46'/>";
 var mobile_form_msg = "";
-var address_blank_msg = "地址不能为空";
+var address_blank_msg = "<s:text name='orgInfoUpdate.param47'/>";
 var address_length_msg = "";
-var postCode_blank_msg = "邮编不能为空";
-var postCode_form_msg = "邮编填写错误";
-var contact_blank_msg = "联系方式不能为空";
-var contact_form_msg = "请输入正确的联系方式，如：0731-88732306或者15078326351";
-var birth_blank_msg = "请选择您的生日";
-var id_blank_msg = "身份证号不能为空";
-var id_form_msg = "身份证号格式不正确";
-var upload_idCard_msg = "请上传身份证复印件电子档";
-var upload_orgLogo_msg = "请先上传组织Logo图片";
-var upload_certificate_msg = "请先上传营业执照图片";
-var uploaded__msg = "文件上传成功";
-var uploading__msg = "文件正在上传，请稍候";
+var postCode_blank_msg = "<s:text name='orgInfoUpdate.param48'/>";
+var postCode_form_msg = "<s:text name='orgInfoUpdate.param49'/>";
+var contact_blank_msg = "<s:text name='orgInfoUpdate.param50'/>";
+var contact_form_msg = "<s:text name='orgInfoUpdate.param51'/>";
+var birth_blank_msg = "<s:text name='orgInfoUpdate.param52'/>";
+var id_blank_msg = "<s:text name='orgInfoUpdate.param53'/>";
+var id_form_msg = "<s:text name='orgInfoUpdate.param54'/>";
+var upload_idCard_msg = "<s:text name='orgInfoUpdate.param55'/>";
+var upload_orgLogo_msg = "<s:text name='orgInfoUpdate.param56'/>";
+var upload_certificate_msg = "<s:text name='orgInfoUpdate.param57'/>";
+var uploaded__msg = "<s:text name='orgInfoUpdate.param58'/>";
+var uploading__msg = "<s:text name='orgInfoUpdate.param59'/>";
 
 //获得焦点时的提示
-var userNameTip = "5-20个字符，一个汉字为两个字符，推荐使用有意义的单词";
+var userNameTip = "<s:text name='orgInfoUpdate.param60'/>";
 
 function InitAjax(){
         var ajax=false;
@@ -69,8 +69,8 @@ function InitAjax(){
 }
 //second step checking
 $(document).ready(function () {
-    $("#fileupload1").uploadify({
-        /*注意前面需要书写path的代码*/
+    /*$("#fileupload1").uploadify({
+        *//*注意前面需要书写path的代码*//*
         'uploader':'js/uploadify/uploadify.swf',
         'script':'utils/uploadFile.html',
         'cancelImg':'js/uploadify/cancel.png',
@@ -108,9 +108,9 @@ $(document).ready(function () {
             uploading1 = true;
             $("#fileupload1_FileWarn").html(warnDiv+uploading__msg);
         }
-    });
-    $("#fileupload2").uploadify({
-        /*注意前面需要书写path的代码*/
+    });*/
+    /*$("#fileupload2").uploadify({
+        *//*注意前面需要书写path的代码*//*
         'uploader':'js/uploadify/uploadify.swf',
         'script':'utils/uploadFile.html',
         'cancelImg':'js/uploadify/cancel.png',
@@ -147,6 +147,11 @@ $(document).ready(function () {
             uploading2 = true;
             $("#fileupload2_FileWarn").html(warnDiv+uploading__msg);
         }
+    });*/
+    $("#fileupload2").fancybox({
+        type:'iframe',
+        width:720,
+        height:490
     });
     $("#fileupload3").uploadify({
         /*注意前面需要书写path的代码*/
@@ -241,7 +246,8 @@ function checkBirthday() {
     return true;
 }
 function checkContact() {
-    var reContact = /^(1[3,4,5,8,7]{1}[\d]{9})|(((400)-(\d{3})-(\d{4}))|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{3,7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$)$/;
+    //var reContact = /^(1[3,4,5,8,7]{1}[\d]{9})|(((400)-(\d{3})-(\d{4}))|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{3,7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$)$/;
+    var reContact = /^\+?\d{5,30}$/;
     var content = $("#secondStepContact").val();
     var contactContent = content.replace(/(^\s*)|(\s*$)/g, "");
     if (contactContent == "") {
@@ -286,7 +292,8 @@ function checkID() {
         $("#secondStepIDWarn").html(errorDiv+id_blank_msg);
         return false;
     } else {
-        var pattern = /^[1-9][0-9]{5}(19[0-9]{2}|200[0-9]|2010)(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])[0-9]{3}[0-9xX]$/;
+        //var pattern = /^[1-9][0-9]{5}(19[0-9]{2}|200[0-9]|2010)(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])[0-9]{3}[0-9xX]$/;
+        var pattern = /^\w{4,50}$/;
         var cardID = $("#secondStepID").attr("value");
         if (!pattern.test(cardID)) {
             $("#secondStepIDWarn").html(errorDiv+id_form_msg);
@@ -529,17 +536,17 @@ $(document).ready(function () {
             $(this).addClass("cur");
         });
 
-        $(".commit_modfication1 input---").click(function(){
+        $(".commit_modfication1 input").click(function(){
             $("#submit_msg1").html("修改中……");
             var url="saveSecStepTest.html";
             var secondStepName=document.getElementById('secondStepName').value;
             var birday=document.getElementById('birday').value;
             var secondStepContact=document.getElementById('secondStepContact').value;
             var secondStepID=document.getElementById('secondStepID').value;
-            var idCardUrl=document.getElementById('idCardUrl').value;
+//            var idCardUrl=document.getElementById('idCardUrl').value;
             var sexy=getSeletedItem('responser.sexy');
 
-            var params = {"responser.userName":secondStepName,"responser.sexy":sexy,"responser.birthDay":birday,"responser.telphone":secondStepContact,"responser.cardId":secondStepID,"idCardUrl":idCardUrl};
+            var params = {"responser.userName":secondStepName,"responser.sexy":sexy,"responser.birthDay":birday,"responser.telphone":secondStepContact,"responser.cardId":secondStepID};
             $.post(url,params,function(data){
                 if(data=='success'){
                     $("#submit_msg1").html("修改成功！！！");
@@ -549,7 +556,7 @@ $(document).ready(function () {
             },"text");
         });
 
-        $(".commit_modfication2 input---").click(function(){
+        $(".commit_modfication2 input").click(function(){
             $("#submit_msg2").html("修改中……");
 
 
@@ -561,7 +568,7 @@ $(document).ready(function () {
             var thirdStepAccountNo=document.getElementById('thirdStepAccountNo').value;
             var memberSize=getSeletedItem('org.memberSize');
             var multipleOrg=getSeletedItem('org.multipleOrg');
-            var hidFile1 =document.getElementById('hidFile1').value;
+            var hidFile1 =document.getElementById('logoUrl').value;
             var hidFile2 =document.getElementById('hidFile2').value;
 
             var params = {"org.schoolName":thirdStepName,"org.description":thirdStepOrgShuoming,"org.depositBankName":bankName,"org.depositName":thirdStepAccount,"org.depositBankAccount":thirdStepAccountNo,"org.memberSize":memberSize,"org.multipleOrg":multipleOrg,"hidFile1":hidFile1,"hidFile2":hidFile2};
@@ -574,7 +581,7 @@ $(document).ready(function () {
             },"text");
         });
 
-        $(".commit_modfication3 input---").click(function(){
+        $(".commit_modfication3 input").click(function(){
             $("#submit_msg3").html("修改中……");
 
 
