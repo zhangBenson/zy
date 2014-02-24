@@ -658,6 +658,41 @@ public class UserAction extends BasicAction {
         return SUCCESS;
     }
 
+    @Action(value = "teacherLogin",
+            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".teacherLogin")}
+    )
+    public String teacherLogin() {
+        return SUCCESS;
+    }
+
+    @Action(value = "teacherLoginProcess",
+            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}),
+                    @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".teacherLogin"),
+                    @Result(name = "redirect", type = "redirect", location = "${reDirectUrl}"),
+                    @Result(name = "studentCenter", type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "personalCenter"} )
+            }
+    )
+    public String teacherLoginProcess() {
+
+        BaseUser user = baseUserDao.findByEmail(this.getUser().getEmail());
+        setUserToSession(user);
+        setUserOrg(user);
+
+        user.setLastLoginDate(Calendar.getInstance());
+        baseUserDao.persistAbstract(user);
+
+        if (StringUtils.isNotBlank(this.getReDirectUrl())) {
+            return "redirect";
+        } else if (organizationDao.findByResId(user.getId()) != null) {
+//            this.setReDirectUrl("organizationMatter.html");
+            return SUCCESS;
+        } else if ( !baseUserRoleTypeDao.havePermission(user.getId(), RoleType.TEACHER) ) {
+            return "studentCenter";
+        }
+
+        ActionContext.getContext().getSession().put(Constants.SESSION_USER_ROLE_TYPE,6);
+        return SUCCESS;
+    }
 
     @Action(value = "postIl8nString")
     public void setTimezone() {
