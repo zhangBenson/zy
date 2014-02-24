@@ -16,28 +16,27 @@ import java.util.Calendar;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-public class OrganizationTeacher extends AbstractPersistence {
+public class OrganizationBaseUser extends AbstractPersistence {
 
     public final static  Integer ORG_ROLE_TYPE_AUTH = 1;
 
     @ManyToOne
-    private BaseUser teacher;
+    private BaseUser user;
     @ManyToOne
     private Organization org;
 
-    private Short teacherStatus = Constants.USER_STATUS_UNCONFIRMED;
+    private Short userStatus = Constants.USER_STATUS_UNCONFIRMED;
     private Short previousStatus = Constants.USER_STATUS_UNCONFIRMED;
-
-    private Boolean orgRoleType = false;
+    private Integer roleType = Constants.ROLE_TYPE_STUDENT;
 
     private Calendar createDate = Calendar.getInstance();
 
-    public BaseUser getTeacher() {
-        return teacher;
+    public BaseUser getUser() {
+        return user;
     }
 
-    public void setTeacher(BaseUser teacher) {
-        this.teacher = teacher;
+    public void setUser(BaseUser user) {
+        this.user = user;
     }
 
     public Organization getOrg() {
@@ -56,20 +55,20 @@ public class OrganizationTeacher extends AbstractPersistence {
         this.createDate = createDate;
     }
 
-    public Boolean getOrgRoleType() {
-        return orgRoleType;
+    public Integer getRoleType() {
+        return roleType;
     }
 
-    public void setOrgRoleType(Boolean orgRoleType) {
-        this.orgRoleType = orgRoleType;
+    public void setRoleType(Integer roleType) {
+        this.roleType = roleType;
     }
 
-    public Short getTeacherStatus() {
-        return teacherStatus;
+    public Short getUserStatus() {
+        return userStatus;
     }
 
-    public void setTeacherStatus(Short teacherStatus) {
-        this.teacherStatus = teacherStatus;
+    public void setUserStatus(Short userStatus) {
+        this.userStatus = userStatus;
     }
 
     public Short getPreviousStatus() {

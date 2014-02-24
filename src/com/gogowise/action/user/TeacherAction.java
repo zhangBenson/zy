@@ -65,7 +65,7 @@ public class TeacherAction extends BasicAction {
             Organization org = organizationDao.findByResId(getSessionUserId());
             OrganizationTeacher orgTeacher = organizationTeacherDao.findByOrgIdAndTeacherId(org.getId(), teacher.getId());
             orgTeacher.setPreviousStatus(orgTeacher.getTeacherStatus());
-            orgTeacher.setTeacherStatus(Constants.TEACHER_STATUS_DISABLED);
+            orgTeacher.setTeacherStatus(Constants.USER_STATUS_DISABLED);
             organizationTeacherDao.persistAbstract(orgTeacher);
             rd.setResult(200);
         } catch (Exception e) {
@@ -123,7 +123,7 @@ public class TeacherAction extends BasicAction {
             BaseUser teacher = baseUserDao.findByEmail(user.getEmail());
             Organization org = organizationDao.findByResId(getSessionUserId());
             OrganizationTeacher orgTeacher = organizationTeacherDao.findByOrgIdAndTeacherId(org.getId(), teacher.getId());
-            orgTeacher.setTeacherStatus(Constants.TEACHER_STATUS_UNCONFIRMED);
+            orgTeacher.setTeacherStatus(Constants.USER_STATUS_UNCONFIRMED);
             organizationTeacherDao.persistAbstract(orgTeacher);
             rd.setResult(200);
         } catch (Exception e) {

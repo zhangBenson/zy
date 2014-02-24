@@ -8,14 +8,18 @@ import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.CourseService;
 import com.gogowise.rep.course.dao.*;
 import com.gogowise.rep.course.enity.*;
+import com.gogowise.rep.org.dao.OrganizationBaseUserDao;
+import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
+import com.gogowise.rep.user.enity.RoleType;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.CompactWriter;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -37,19 +41,26 @@ import java.util.*;
 @Namespace(BasicAction.BASE_NAME_SPACE)
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 public class MaintenCourseAction extends BasicAction {
-    private Set<BaseUser> teachers = new HashSet<>();
+    private List<BaseUser> teachers = new ArrayList<>();
+    private List<BaseUser> students = new ArrayList<>();
     private CourseService courseService;
     private Integer courseType = 1;
-    private List<Course> courses = new ArrayList();
+    private List<Course> courses = new ArrayList<>();
     private Course course;
     private Integer operaType;
     private CourseDao courseDao;
+    @Autowired
+    private OrganizationBaseUserDao organizationBaseUserDao;
+    @Autowired
+    private OrganizationDao organizationDao;
 
 
     @Action(value = "createCourseAllInOne", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".createCourseAllInOne"),
             @Result(name = "failed", type = Constants.RESULT_NAME_TILES, location = ".identityConfirmation")})
     public String createCourseAllInOne() {
-        teachers = courseService.findAllTeachersByOrgCreator(this.getSessionUserId());
+        Organization org = organizationDao.findByResId(this.getSessionUserId());
+        teachers = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(),Constants.ROLE_TYPE_TEACHER,null);
+        students = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(),Constants.ROLE_TYPE_STUDENT,null);
         return SUCCESS;
     }
 
@@ -65,15 +76,25 @@ public class MaintenCourseAction extends BasicAction {
             @Result(name = "failed", type = Constants.RESULT_NAME_TILES, location = ".identityConfirmation")})
     public String maintenanceCourse() {
         course = courseDao.findById(this.getCourse().getId());
-        teachers = courseService.findAllTeachersByOrgCreator(this.getSessionUserId());
+        Organization org = organizationDao.findByResId(this.getSessionUserId());
+        teachers = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(),Constants.ROLE_TYPE_TEACHER,null);
+        students = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(),Constants.ROLE_TYPE_STUDENT,null);
         return SUCCESS;
     }
 
-    public Set<BaseUser> getTeachers() {
+    public List<BaseUser> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<BaseUser> students) {
+        this.students = students;
+    }
+
+    public List<BaseUser> getTeachers() {
         return teachers;
     }
 
-    public void setTeachers(Set<BaseUser> teachers) {
+    public void setTeachers(List<BaseUser> teachers) {
         this.teachers = teachers;
     }
 
