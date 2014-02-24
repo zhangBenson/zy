@@ -312,6 +312,7 @@ public class CourseAction extends BasicAction {
         try{
             CourseClass _courseClass = classDao.findById(courseClass.getId());
             _courseClass.setRecord(true);
+            classDao.persistAbstract(_courseClass);
             rd.setResult(200);
         }catch (Exception e){
             logger.error("Set class record failure",e);

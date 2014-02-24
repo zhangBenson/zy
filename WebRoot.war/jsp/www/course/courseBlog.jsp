@@ -56,11 +56,11 @@
 
                         <div class="col-sm-4">
                             <div class="pull-left">
-                                <s:if test="!isRecord">
-                                <div class="lessonOrange">
+                                <s:if test="record">
+                                <div class="lessonGreen" onclick="enterPlayerRoom(<s:property value="id"/>)" style="cursor:pointer;">
                                 </s:if>
                                 <s:else>
-                                <div class="lessonGreen" onclick="enterPlayerRoom(<s:property value="id"/>)" style="cursor:pointer;">
+                                <div class="lessonOrange">
                                 </s:else>
                                     <span><s:property value="#status.index+1"/></span><div>Lesson</div>
                                 </div>
