@@ -30,8 +30,9 @@ $(document).ready(function() {
         increaseArea: '20%' // optional
     });
 
-    $("body").keydown(function() {
-        if (event.keyCode == "13") {
+    $("body").keydown(function(e){
+        var curKey = e.which;
+        if(curKey == 13){
             $('#btnSendMsg').click();
         }
     });
