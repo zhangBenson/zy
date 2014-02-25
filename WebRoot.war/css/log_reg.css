@@ -188,3 +188,5 @@
 .lr_right .submit input.subBtn:hover{
     background: url(../images/log_reg/log_reg_bg.png) -4px -49px no-repeat;
 }
+.errorinfo{margin: 5px;color:red;}
+.errorMessage{margin: 5px;color:red;}

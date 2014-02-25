@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
 <link href="css/log_reg.css" rel="stylesheet"/>
 
@@ -9,9 +9,8 @@
     <div class="basePanelTextLeft">
         <h1 class = "courseSubject"><s:property value="%{getText('button.log.in.teacher')}"/></h1>
         <h1 class = "courseSynopsis"><s:property value="%{getText('label.log.in.info')}"/></h1>
-
+        <span class="errorinfo"><s:property value="actionErrors[0]"/></span>
         <s:form validate="true" theme="css_xhtml" cssClass="form-horizontal"  method="POST" action="teacherLoginProcess">
-
             <div class="form-group">
                 <label class="col-sm-2 control-label"> <s:property value="%{getText('email')}" /></label>
                 <div class="col-sm-10">

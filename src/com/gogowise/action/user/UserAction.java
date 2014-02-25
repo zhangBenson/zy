@@ -667,31 +667,32 @@ public class UserAction extends BasicAction {
 
     @Action(value = "teacherLoginProcess",
             results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}),
-                    @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".teacherLogin"),
-                    @Result(name = "redirect", type = "redirect", location = "${reDirectUrl}"),
-                    @Result(name = "studentCenter", type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "personalCenter"} )
-            }
-    )
+                    @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".teacherLogin")})
     public String teacherLoginProcess() {
-
         BaseUser user = baseUserDao.findByEmail(this.getUser().getEmail());
-        setUserToSession(user);
-        setUserOrg(user);
 
-        user.setLastLoginDate(Calendar.getInstance());
-        baseUserDao.persistAbstract(user);
-
-        if (StringUtils.isNotBlank(this.getReDirectUrl())) {
-            return "redirect";
-        } else if (organizationDao.findByResId(user.getId()) != null) {
-//            this.setReDirectUrl("organizationMatter.html");
-            return SUCCESS;
-        } else if ( !baseUserRoleTypeDao.havePermission(user.getId(), RoleType.TEACHER) ) {
-            return "studentCenter";
+        if (user == null) {
+            addFieldError("user.email", this.getText("message.logon.account.not.exist"));
+            return INPUT;
+        } else if (!user.getPassword().equals(MD5.endCode(this.user.getPassword()))) {
+            addFieldError("user.password", this.getText("message.logon.password.error"));
+            return INPUT;
         }
 
-        ActionContext.getContext().getSession().put(Constants.SESSION_USER_ROLE_TYPE,6);
-        return SUCCESS;
+        //如果是学校负责人或老师
+        if ((organizationDao.findByResId(user.getId()) != null) || (baseUserRoleTypeDao.havePermission(user.getId(), RoleType.TEACHER))) {
+            user.setLastLoginDate(Calendar.getInstance());
+            baseUserDao.persistAbstract(user);
+
+            setUserToSession(user);
+            setUserOrg(user);
+
+            return SUCCESS;
+        }
+
+        //如果是学生
+        this.addActionError("You're not a school administrator or teacher");
+        return INPUT;
     }
 
     @Action(value = "postIl8nString")
@@ -709,13 +710,13 @@ public class UserAction extends BasicAction {
     public String logon() {
         BaseUser user = baseUserDao.findByEmail(this.getUser().getEmail());
 
-//        if (user == null) {
-//            addFieldError("user.email", this.getText("message.logon.account.not.exist"));
-//            return INPUT;
-//        } else if (!user.getPassword().equals(MD5.endCode(this.user.getPassword()))) {
-//            addFieldError("user.password", this.getText("message.logon.password.error"));
-//            return INPUT;
-//        }
+        if (user == null) {
+            addFieldError("user.email", this.getText("message.logon.account.not.exist"));
+            return INPUT;
+        } else if (!user.getPassword().equals(MD5.endCode(this.user.getPassword()))) {
+            addFieldError("user.password", this.getText("message.logon.password.error"));
+            return INPUT;
+        }
 //        if (user.getLockedOut()) {
 //            //没有激活
 //            String md5 = MD5.endCode(String.valueOf(System.currentTimeMillis()));
