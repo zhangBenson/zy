@@ -153,13 +153,8 @@
         if (checkForm()) {
 
             var userData = $("#user_login_form").serialize();
-            $.post("ajaxLogin.html", userData, function (data) {
-                if (data == "success") {
-                    var currHref = parent.window.location.href;
-                    parent.window.location.reload();
-                } else {
-                    $("#login_tip").text(data);
-                }
+            $.post("ajaxLogin.html",userData,function(data){
+                handlePostResult(data);
             });
         }
     });
@@ -167,21 +162,28 @@
         if (event.keyCode == 13) {
             if (checkForm()) {
                 var userData = $("#user_login_form").serialize();
-                $.post("ajaxLogin.html", userData, function (data) {
-                    if (data == "success") {
-                        var currHref = parent.window.location.href;
-                        if (currHref.substring(currHref.lastIndexOf('/')) == '/exitSystem.html') {
-                            currHref = currHref.substring(0, currHref.lastIndexOf('/') + 1);
-                        }
-                        parent.window.location.reload();
-                    } else {
-                        $("#login_tip").text(data);
-                    }
+                $.post("ajaxLogin.html",userData,function(data){
+                    handlePostResult(data);
                 });
             }
         }
     });
-    function checkForm() {
+    function handlePostResult(data){
+        if(data=="success"){
+            var currHref = window.location.href;
+            if(currHref.substring(currHref.lastIndexOf('/')) == '/exitSystem.html'){
+                currHref = currHref.substring(0,currHref.lastIndexOf('/')+1);
+            }
+            if(currHref.indexOf("index.html")>-1){
+                window.location.href = "personalCenter.html";
+                return;
+            }
+            window.location.reload();
+        }else{
+            $("#login_tip").text(data);
+        }
+    }
+    function checkForm(){
 
         return checkEmail() && checkPwd();
     }
