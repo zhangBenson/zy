@@ -1,15 +1,17 @@
 package com.gogowise.action.higsec;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.rep.user.dao.BaseUserDao;
-import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
-import com.gogowise.rep.org.dao.OrganizationDao;
-import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.EmailUtil;
 import com.gogowise.common.utils.MD5;
 import com.gogowise.common.utils.Utils;
+import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.user.UserService;
+import com.gogowise.rep.user.dao.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
+import com.gogowise.rep.user.enity.BaseUser;
+import com.gogowise.rep.user.enity.RoleType;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
@@ -52,6 +54,8 @@ public class OrgForBackendAction extends BasicAction {
     private Boolean canReview = false;
     private Boolean canEdit = false;
 
+    private UserService userService;
+
     public void validateHigSecConfirmOrgByAdmin() {
         BaseUser admin = baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL))  ;
         if (admin ==  null )   {
@@ -75,7 +79,9 @@ public class OrgForBackendAction extends BasicAction {
             org.setConfirmed(true);
             organizationDao.persistAbstract(org);
             EmailUtil.sendMail(org.getResponsiblePerson().getEmail(), "组织机构已经通过审核", "您好，你申请的" + org.getSchoolName() + "已经通过审核。");
+            this.userService.grantPermission(this.getOrg().getCreator(), RoleType.TEACHER);
         }
+
         return SUCCESS;
     }
 
@@ -87,6 +93,7 @@ public class OrgForBackendAction extends BasicAction {
             org.setConfirmed(false);
             org.setReviewer(baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL))  );
             organizationDao.persistAbstract(org);
+//            this.userService.removePermission(org.getCreator(), RoleType.TEACHER);
 //            if(this.org.getResponsiblePerson().getPassword() == null ) {
 //                sendOrgConfirmEamil(org);
 //            } else {
@@ -382,5 +389,9 @@ public class OrgForBackendAction extends BasicAction {
 
     public void setCanEdit(Boolean canEdit) {
         this.canEdit = canEdit;
+    }
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 }

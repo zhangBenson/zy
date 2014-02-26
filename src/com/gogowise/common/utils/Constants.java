@@ -77,7 +77,6 @@ public class Constants {
     public static final String COURSE_CONFIRM_EMAIL = "zlhades@hotmail.com";
 
 
-
     /*---------------------------zhibi------------------------------------------*/
     public static final String ZHIBI_SYSTEM_EMAIL = "zlhades@hotmail.com";
 
@@ -92,9 +91,10 @@ public class Constants {
     public static final String SESSION_USER_NICKNANE = "nickName";
     public static final String SESSION_USER_EMAIL = "email";
     public static final String SESSION_USER_LOGO_URL = "userLogoUrl";
-    public static final String HIG_SEC_USER_EMAIL ="HIG_SEC_USER_EMAIL";
+    public static final String HIG_SEC_USER_EMAIL = "HIG_SEC_USER_EMAIL";
     public static final String SESSION_USER_FANSNUM = "userFansNum";
     public static final String SESSION_USER_ROLE_TYPE = "roleType";
+    public static final String SESSION_USER_IS_TEACHER = "isTeacher";
     public static final String SESSION_USER_OWN_ORG = "user_own_org";
     public static final String SESSION_USER_PRIVATE_CHANNEL_ID = "user_private_channelID";
 
@@ -170,47 +170,47 @@ public class Constants {
     public static final Integer MEMBER_TYPE_OF_QUEST = 3;
     public static final Integer MEMBER_TYPE_OF_FANS = 0;
     public static final String CSS = "<style type=\"text/css\">\n" +
-                            "*{padding:0;margin:0;}\n" +
-                            "#receiptContainer {float: left;width: 100%;font-family: \"微软雅黑\", \"宋体\", \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif;font-size: 16px;}\n" +
-                            "#receiptContainer .orangeWords {color: #F90;}\n" +
-                            "#logoDiv {float: left;height: 60px;width: 100%;text-align: left;}\n" +
-                            "#receiptContent {float: left;width: 100%;}\n" +
-                            "#receiptContainer #receiptContent ul li {height: 30px;}\n" +
-                            "#receiptContainer #receiptContent ul li a {margin-left: 20px;margin-top: 15px;margin-bottom: 15px;}\n" +
-                            "#receiptContainer #receiptContent ul .sayhello {margin-top: 30px;}\n" +
-                            "#receiptContainer #receiptContent ul .tittle {margin-bottom: 15px;}\n" +
-                            "#receiptContainer #receiptContent ul .courseName {margin-top: 20px;}\n" +
-                            "#receiptContainer #receiptContent ul .startTime {margin-bottom: 20px;}\n" +
-                            "</style>";
+            "*{padding:0;margin:0;}\n" +
+            "#receiptContainer {float: left;width: 100%;font-family: \"微软雅黑\", \"宋体\", \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif;font-size: 16px;}\n" +
+            "#receiptContainer .orangeWords {color: #F90;}\n" +
+            "#logoDiv {float: left;height: 60px;width: 100%;text-align: left;}\n" +
+            "#receiptContent {float: left;width: 100%;}\n" +
+            "#receiptContainer #receiptContent ul li {height: 30px;}\n" +
+            "#receiptContainer #receiptContent ul li a {margin-left: 20px;margin-top: 15px;margin-bottom: 15px;}\n" +
+            "#receiptContainer #receiptContent ul .sayhello {margin-top: 30px;}\n" +
+            "#receiptContainer #receiptContent ul .tittle {margin-bottom: 15px;}\n" +
+            "#receiptContainer #receiptContent ul .courseName {margin-top: 20px;}\n" +
+            "#receiptContainer #receiptContent ul .startTime {margin-bottom: 20px;}\n" +
+            "</style>";
 
     public static final String BIG_COURSE_ADVERTISE_EMAIL_CSS = "<style type=\"text/css\">\n" +
-                            "#rvmDiv #logoDiv { background-image: url(http://www.gogowise.com/images/logo.jpg); background-repeat: no-repeat; height: 65px; margin-left: 45px; }\n" +
-                            "#rvmDiv #rvmcontentDiv ul .welcomeTittle { margin-left: 30px; }\n" +
-                            "#rvmDiv { float: left; width: 100%; font-family: \"微软雅黑\", \"宋体\", \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; }\n" +
-                            "#logoDiv { float: left; width: 100%; }\n" +
-                            "#rvmcontentDiv { float: left; width: 100%; }\n" +
-                            "#rvmDiv #rvmcontentDiv ul li { list-style-type: none; }\n" +
-                            "#rvmDiv #rvmcontentDiv .orangeWords { color: rgb(255,155,55); }\n" +
-                            "#rvmDiv #rvmcontentDiv ul .lastWords { margin-top: 50px; }\n" +
-                            "table tr td{border:1px solid #09F;}\n" +
-                            "table, tr, td { border-collapse:collapse;}\n" +
-                            "</style>";
+            "#rvmDiv #logoDiv { background-image: url(http://www.gogowise.com/images/logo.jpg); background-repeat: no-repeat; height: 65px; margin-left: 45px; }\n" +
+            "#rvmDiv #rvmcontentDiv ul .welcomeTittle { margin-left: 30px; }\n" +
+            "#rvmDiv { float: left; width: 100%; font-family: \"微软雅黑\", \"宋体\", \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; }\n" +
+            "#logoDiv { float: left; width: 100%; }\n" +
+            "#rvmcontentDiv { float: left; width: 100%; }\n" +
+            "#rvmDiv #rvmcontentDiv ul li { list-style-type: none; }\n" +
+            "#rvmDiv #rvmcontentDiv .orangeWords { color: rgb(255,155,55); }\n" +
+            "#rvmDiv #rvmcontentDiv ul .lastWords { margin-top: 50px; }\n" +
+            "table tr td{border:1px solid #09F;}\n" +
+            "table, tr, td { border-collapse:collapse;}\n" +
+            "</style>";
 
     /* ---------------------  Search Type ----------------------------------- */
     public static int SEARCH_TYPE_ALL = 1;
-    public static  int SEARCH_TYPE_MEMBER = 2;
-    public static  int SEARCH_TYPE_ORG = 3;
-    public static  int SEARCH_TYPE_COURSE = 4;
-    public static  int SEARCH_TYPE_SHOW = 5;
-    public static  int SEARCH_TYPE_LIVE = 6;
+    public static int SEARCH_TYPE_MEMBER = 2;
+    public static int SEARCH_TYPE_ORG = 3;
+    public static int SEARCH_TYPE_COURSE = 4;
+    public static int SEARCH_TYPE_SHOW = 5;
+    public static int SEARCH_TYPE_LIVE = 6;
 
     /* -------------------------- Hot List Type ----------------------------------------- */
-    public  static  int HOT_TYPE_TEACHER = 1;
-    public  static  int HOT_TYPE_BLOGGER = 2;
+    public static int HOT_TYPE_TEACHER = 1;
+    public static int HOT_TYPE_BLOGGER = 2;
 
 
     /* -------------------------- Question patch ----------------------------------------- */
-    public static String QUESTION_EXT_PATH ="/exe/question/batch.sh";
+    public static String QUESTION_EXT_PATH = "/exe/question/batch.sh";
     public static String QUESTION_FILE_NAME = "/question.xml";
 
     public static String PPT_PDF_EXT_PATH = "/exe/ppt/PPT2PDF.sh";

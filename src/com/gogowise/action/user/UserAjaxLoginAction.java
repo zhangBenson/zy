@@ -44,8 +44,8 @@ public class UserAjaxLoginAction extends BasicAction{
             user.setLastLoginDate(Calendar.getInstance());
             baseUserDao.persistAbstract(user);
 
-           if(organizationDao.findByResId(user.getId()) == null && !baseUserRoleTypeDao.havePermission(user.getId(), RoleType.TEACHER)) {
-               ActionContext.getContext().getSession().put(Constants.SESSION_USER_ROLE_TYPE,6);
+            if (baseUserRoleTypeDao.havePermission(user.getId(), RoleType.TEACHER)) {
+                ActionContext.getContext().getSession().put(Constants.SESSION_USER_IS_TEACHER, true);
             }
 
             this.setLoginMessage("success");
