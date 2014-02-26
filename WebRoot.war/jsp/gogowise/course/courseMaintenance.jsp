@@ -15,7 +15,7 @@
     </div>
 
     <s:hidden name="course.id" id="course_id"/>
-    <div class="stepWrap fl">
+    <%--<div class="stepWrap fl">
 
             <h3 alt="1"><span class="num">1</span><s:property value="%{getText('title.select.type')}"/></h3>
             <div class="stepCont step1Cont">
@@ -57,13 +57,13 @@
                 </div>
                 <div class="pic_3"></div>
             </div>
-    </div>
+    </div>--%>
 
     <div class="stepWrap fl">
         <s:form id="course_main_info_form">
             <s:hidden name="course.id" id="course_id"/>
-            <h3 alt="2"><span class="num">2</span><s:property value="%{getText('titie.info.course')}"/></h3>
-            <div class="stepCont">
+            <h3 alt="2"><span class="num">1</span><s:property value="%{getText('titie.info.course')}"/></h3>
+            <div class="stepCont" style="display:block;">
                 <div class="pic_1"></div>
                 <div class="pic_2">
                     <ul class="content_courseInfo fl">
@@ -105,8 +105,8 @@
                         </li>
                         <li>
                             <span class="item"><s:property value="%{getText('label.online.class.logo')}"/></span><span class="tip_words" id="course_logo_input_msg">*</span><br/>
-                            <img src="images/defaultImgs/course.gif" id="show_log_preview"/>
-                            <s:hidden id="course_logo" cssClass="long_text_field" name="course.logoUrl" />
+                            <img src="<s:property value="course.logoUrl"/>" id="show_log_preview"/>
+                            <s:hidden id="course_logo" cssClass="long_text_field" name="course.logoUrl" value=""/>
                             <input type="button" class="submit_btn" id="change_portrait" value="<s:property value="%{getText('onlive.message.update')}"/>" href="courseLogoProcess.html"/>
                         </li>
                         <s:if test="courseType == 1 || courseType == 2">
@@ -152,7 +152,7 @@
     </div>
 
     <div class="stepWrap fl">
-        <h3 alt="3"><span class="num">3</span><s:property value="%{getText('title.info.class')}"/></h3>
+        <h3 alt="3"><span class="num">2</span><s:property value="%{getText('title.info.class')}"/></h3>
         <div class="stepCont">
             <div class="pic_1"></div>
             <div class="pic_2 after_store">

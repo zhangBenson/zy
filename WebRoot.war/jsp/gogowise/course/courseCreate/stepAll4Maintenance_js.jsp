@@ -169,10 +169,10 @@
               b4 = false;
           } else b4 = true;
 
-          if($("#course_logo").val().length==0){
+          /*if($("#course_logo").val().length==0){
               $("#course_logo_input_msg").html(warn_upload);
               b5 = false;
-          }else b5 = true;
+          }else b5 = true;*/
 
           var charges = $("#course_charges").val().replace(/(^\s*)|(\s*$)/g, "");
           var chargesExp = /^(\d+)(\.?)(\d{0,2})$/;
