@@ -1,6 +1,8 @@
 package com.gogowise.rep.user.enity;
 
 import com.gogowise.rep.AbstractPersistence;
+import org.apache.commons.collections.BidiMap;
+import org.apache.commons.collections.bidimap.DualHashBidiMap;
 
 import javax.persistence.Entity;
 
@@ -15,16 +17,23 @@ public class RoleType extends AbstractPersistence {
     public final static String TEACHER = "teacher";
     public final static String STUDENT = "student";
 
+    private static final BidiMap roleMap = new DualHashBidiMap();
+
+    static {
+        roleMap.put(1, ADMIN);
+        roleMap.put(2, ORG_CREATOR);
+        roleMap.put(3, ORG_REVIEWER);
+        roleMap.put(4, GRANT);
+        roleMap.put(5, TEACHER);
+        roleMap.put(6, STUDENT);
+    }
+
     public final static String getRoleNameById(Integer roleId){
-        switch (roleId){
-            case 1: return ADMIN;
-            case 2: return ORG_CREATOR;
-            case 3: return ORG_REVIEWER;
-            case 4: return GRANT;
-            case 5: return TEACHER;
-            case 6: return STUDENT;
-        }
-        return "undefined";
+        return roleMap.get(roleId) == null ? "undefined" : (String) roleMap.get(roleId);
+    }
+
+    public final static Integer getIdByRoleName(String roleName) {
+        return (Integer) roleMap.inverseBidiMap().get(roleName);
     }
 
     public String getRoleName() {

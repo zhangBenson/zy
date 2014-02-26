@@ -100,6 +100,8 @@ public class PayPalAction extends BasicAction
             uc.setDoOutput(true);
             uc.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
 
+            uc.connect();
+
             PrintWriter pw = new PrintWriter(uc.getOutputStream());
             pw.println(str);
             pw.close();
@@ -143,7 +145,7 @@ public class PayPalAction extends BasicAction
         {
             e.printStackTrace();
         }
-        return SUCCESS;
+        return "failed";
     }
 
     public String getPayStatus() {

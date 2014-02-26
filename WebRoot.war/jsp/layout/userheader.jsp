@@ -18,16 +18,16 @@
                 </li>--%>
 
                 <li class="hp_item">
-                   <div class="menu_base menu_base_userCenter">
-                       <a href="myfirstPage.html"><s:property value="%{getText('contentLeft.param1')}"/></a>
-                   </div>
-               </li>
+                    <div class="menu_base menu_base_userCenter">
+                        <a href="myfirstPage.html"><s:property value="%{getText('label.orgcenter')}"/></a>
+                    </div>
+                </li>
 
                 <%--<li class="hp_item">--%>
-                   <%--<div class="menu_base menu_base_map">--%>
-                       <%--<a href="liveBMap2.html"><s:property value="%{getText('live.map')}"/></a>--%>
-                   <%--</div>--%>
-               <%--</li>--%>
+                <%--<div class="menu_base menu_base_map">--%>
+                <%--<a href="liveBMap2.html"><s:property value="%{getText('live.map')}"/></a>--%>
+                <%--</div>--%>
+                <%--</li>--%>
 
 
                 <%--<li class="hp_item">
@@ -48,34 +48,46 @@
 
         <div class="uh3">
             <s:if test="#session.email !=null">
-            <div class="user_info">
-                <ul class="ul_out">
-                    <li id="account" class="account1" onmouseover="this.className='account2',document.getElementById('accountlist').className='accountlist2'" onmouseout="this.className='account1',document.getElementById('accountlist').className='accountlist1'">
-                        <s:property value="%{getText('menu.item.account')}" /> ▼
-                    </li>
-                    <li  style="height:110px;" id="accountlist" class="accountlist1" onmouseover="this.className='accountlist2',document.getElementById('account').className='account2'" onmouseout="this.className='accountlist1',document.getElementById('account').className='account1'">
-                        <iframe></iframe>
-                        <ul>
-                            <br/>
-                            <%--<li class="info">
-                                <a href="userBlog.html?user.id=<s:property value="#session.userID"/>" title="<s:property value="#session.nickName"/>"><img id="userheader_user_img" src="<s:property value='#session.userLogoUrl' />" alt="<s:property value='#session.nickName'/>"/></a>
-                                <span class="name">
-                                    <s:if test="#session.nickName !=null && #session.nickName !=\"\""><s:property value="#session.nickName"/></s:if>
-                                    <s:else><s:property value="#session.email"/> </s:else>
-                                </span>
-                            </li>--%>
-                            <li class="setting bg"><a href="setting.html"><span></span><s:property value="%{getText('account.item.accountsettings')}" /></a></li>
-                            <%--<li class="coupons bg"><a href="javascript:;"><span></span><s:property value="%{getText('menu.item.ticket')}" /></a></li>--%>
-                            <li class="money bg"><a href="myGGWAccount.html"><span></span><s:property value="%{getText('usermenu.item.zhibi.myAccount')}" /></a></li>
-                            <li class="exit bg"><a href="exitSystem.html"><span></span><s:property value="%{getText('href.logout')}" /></a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+                <div class="user_info">
+                    <ul class="ul_out">
+                        <li id="account" class="account1"
+                            onmouseover="this.className='account2',document.getElementById('accountlist').className='accountlist2'"
+                            onmouseout="this.className='account1',document.getElementById('accountlist').className='accountlist1'">
+                            <s:property value="%{getText('menu.item.account')}"/> ▼
+                        </li>
+                        <li style="height:140px;" id="accountlist" class="accountlist1"
+                            onmouseover="this.className='accountlist2',document.getElementById('account').className='account2'"
+                            onmouseout="this.className='accountlist1',document.getElementById('account').className='account1'">
+                            <iframe></iframe>
+                            <ul>
+                                <br/>
+                                    <%--<li class="info">
+                                        <a href="userBlog.html?user.id=<s:property value="#session.userID"/>" title="<s:property value="#session.nickName"/>"><img id="userheader_user_img" src="<s:property value='#session.userLogoUrl' />" alt="<s:property value='#session.nickName'/>"/></a>
+                                        <span class="name">
+                                            <s:if test="#session.nickName !=null && #session.nickName !=\"\""><s:property value="#session.nickName"/></s:if>
+                                            <s:else><s:property value="#session.email"/> </s:else>
+                                        </span>
+                                    </li>--%>
+                                <li class="setting bg"><a href="myfirstPage.html"><s:property
+                                        value="%{getText('label.orgcenter')}"/></a></li>
+                                <li class="setting bg"><a href="personalCenter.html"><s:property
+                                        value="%{getText('label.personalcenter')}"/></a></li>
+
+                                <li class="setting bg"><a href="initUpdate.html"><span></span><s:property
+                                        value="%{getText('account.item.accountsettings')}"/></a></li>
+
+                                <li class="exit bg"><a href="exitSystem.html"><span></span><s:property
+                                        value="%{getText('href.logout')}"/></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </s:if>
             <s:else>
                 <div class="handle">
-                    <a href="login.html" id="login_btn"><s:property value="%{getText('Login')}"/></a>&nbsp;&nbsp;<strong>|</strong>&nbsp;&nbsp;<a href="initReg.html"><s:property value="%{getText('user.info.identity.finish.reg')}"/></a>
+                    <a href="login.html" id="login_btn"><s:property
+                            value="%{getText('Login')}"/></a>&nbsp;&nbsp;<strong>|</strong>&nbsp;&nbsp;<a
+                        href="initReg.html"><s:property value="%{getText('user.info.identity.finish.reg')}"/></a>
                 </div>
             </s:else>
         </div>
@@ -96,24 +108,24 @@
 </div>
 
 <script type="text/javascript">
-    $(function(){
+    $(function () {
         $("#login_btn").fancybox({
-            "type":"iframe",
-            "width":350,
-            "height":270
+            "type": "iframe",
+            "width": 350,
+            "height": 270
         });
 
         var nextItemList;
-        $("div.menu_base").hover(function(){
+        $("div.menu_base").hover(function () {
             nextItemList = $(this).next("div");
             nextItemList.show();
-        },function(){
+        }, function () {
             nextItemList.hide();
         });
 
-        $("div.menu_popup").hover(function(){
+        $("div.menu_popup").hover(function () {
             nextItemList.show();
-        },function(){
+        }, function () {
             nextItemList.hide();
         });
 

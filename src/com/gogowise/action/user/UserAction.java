@@ -1,30 +1,33 @@
 package com.gogowise.action.user;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.rep.Pagination;
-import com.gogowise.rep.competition.CompetitionSessionDao;
-import com.gogowise.rep.course.dao.*;
-import com.gogowise.rep.org.dao.InterviewAppointerDao;
-import com.gogowise.rep.org.dao.InterviewDao;
-import com.gogowise.rep.org.dao.OrganizationDao;
-import com.gogowise.rep.user.dao.*;
-import com.gogowise.rep.finance.UserAccountInfoDao;
-import com.gogowise.rep.competition.enity.Competition;
-import com.gogowise.rep.competition.enity.CompetitionPhase;
-import com.gogowise.rep.competition.enity.CompetitionSession;
-import com.gogowise.rep.competition.enity.Subject;
-import com.gogowise.rep.course.enity.*;
-import com.gogowise.rep.finance.enity.UserAccountInfo;
-import com.gogowise.rep.org.enity.Interview;
-import com.gogowise.rep.org.enity.Organization;
-import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.rep.user.enity.BaseUserRoleType;
-import com.gogowise.rep.user.enity.RoleType;
-import com.gogowise.rep.user.enity.UserRelationship;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.EmailUtil;
 import com.gogowise.common.utils.MD5;
 import com.gogowise.common.utils.TextCode;
+import com.gogowise.rep.Pagination;
+import com.gogowise.rep.competition.CompetitionSessionDao;
+import com.gogowise.rep.competition.enity.Competition;
+import com.gogowise.rep.competition.enity.CompetitionPhase;
+import com.gogowise.rep.competition.enity.CompetitionSession;
+import com.gogowise.rep.competition.enity.Subject;
+import com.gogowise.rep.course.dao.*;
+import com.gogowise.rep.course.enity.*;
+import com.gogowise.rep.finance.UserAccountInfoDao;
+import com.gogowise.rep.finance.enity.UserAccountInfo;
+import com.gogowise.rep.org.dao.InterviewAppointerDao;
+import com.gogowise.rep.org.dao.InterviewDao;
+import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.org.enity.Interview;
+import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.user.dao.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
+import com.gogowise.rep.user.dao.InviteRelationshipDao;
+import com.gogowise.rep.user.dao.UserRelationshipDao;
+import com.gogowise.rep.user.enity.BaseUser;
+import com.gogowise.rep.user.enity.BaseUserRoleType;
+import com.gogowise.rep.user.enity.RoleType;
+import com.gogowise.rep.user.enity.UserRelationship;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
@@ -85,13 +88,13 @@ public class UserAction extends BasicAction {
     private String tpwd;
     private OrganizationDao organizationDao;
     private Organization org;
-     private CourseRecommendDao courseRecommendDao;
+    private CourseRecommendDao courseRecommendDao;
     private CourseRecommend courseRecommend;
     private CourseDao courseDao;
     private Course course;
     private String email;
     private String code;
-    private Boolean accept=false;
+    private Boolean accept = false;
     private CourseInviteStudentDao courseInviteStudentDao;
     private SeniorClassRoomDao seniorClassRoomDao;
     private Interview interview;
@@ -105,19 +108,19 @@ public class UserAction extends BasicAction {
     private Integer courseType = 0;
     private Map<Integer, String> orgs = new HashMap<Integer, String>();
     private DateFormat dateFormat = new SimpleDateFormat(this.getText("dateformat.email"));
-    private  String  css = "<style type=\"text/css\">\n" +
-                            "*{padding:0;margin:0;}\n" +
-                            "#receiptContainer {float: left;width: 100%;font-family: \"微软雅黑\", \"宋体\", \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif;font-size: 16px;}\n" +
-                            "#receiptContainer .orangeWords {color: #F90;}\n" +
-                            "#logoDiv {float: left;height: 60px;width: 100%;text-align: left;}\n" +
-                            "#receiptContent {float: left;width: 100%;}\n" +
-                            "#receiptContainer #receiptContent ul li {height: 30px;}\n" +
-                            "#receiptContainer #receiptContent ul li a {margin-left: 20px;margin-top: 15px;margin-bottom: 15px;}\n" +
-                            "#receiptContainer #receiptContent ul .sayhello {margin-top: 30px;}\n" +
-                            "#receiptContainer #receiptContent ul .tittle {margin-bottom: 15px;}\n" +
-                            "#receiptContainer #receiptContent ul .courseName {margin-top: 20px;}\n" +
-                            "#receiptContainer #receiptContent ul .startTime {margin-bottom: 20px;}\n" +
-                            "</style>";
+    private String css = "<style type=\"text/css\">\n" +
+            "*{padding:0;margin:0;}\n" +
+            "#receiptContainer {float: left;width: 100%;font-family: \"微软雅黑\", \"宋体\", \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif;font-size: 16px;}\n" +
+            "#receiptContainer .orangeWords {color: #F90;}\n" +
+            "#logoDiv {float: left;height: 60px;width: 100%;text-align: left;}\n" +
+            "#receiptContent {float: left;width: 100%;}\n" +
+            "#receiptContainer #receiptContent ul li {height: 30px;}\n" +
+            "#receiptContainer #receiptContent ul li a {margin-left: 20px;margin-top: 15px;margin-bottom: 15px;}\n" +
+            "#receiptContainer #receiptContent ul .sayhello {margin-top: 30px;}\n" +
+            "#receiptContainer #receiptContent ul .tittle {margin-bottom: 15px;}\n" +
+            "#receiptContainer #receiptContent ul .courseName {margin-top: 20px;}\n" +
+            "#receiptContainer #receiptContent ul .startTime {margin-bottom: 20px;}\n" +
+            "</style>";
     private String reDirectUrl;
     private int imgX;
     private int imgY;
@@ -133,7 +136,7 @@ public class UserAction extends BasicAction {
     private String userRoleType;
     private BaseUserRoleType baseUserRoleType;
 
-    @Action(value = "initInviteFriend", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initInviteFriend") })
+    @Action(value = "initInviteFriend", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initInviteFriend")})
     public String initFriendsList() {
 
         List<UserRelationship> relationships = userRelationshipDao.queryFriendsByUserId(getSessionUserId(), this.getPagination());
@@ -169,16 +172,17 @@ public class UserAction extends BasicAction {
         }
         out.close();
     }
-    @Action(value = "initOrgInviteIdentityConfirm",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".orgCourseCreationIdentityConfirm")})
-    public String orgInviteIdentityConfirm(){
-         BaseUser curr = new BaseUser();
+
+    @Action(value = "initOrgInviteIdentityConfirm", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgCourseCreationIdentityConfirm")})
+    public String orgInviteIdentityConfirm() {
+        BaseUser curr = new BaseUser();
         curr.setEmail(this.getEmail());
         this.setUser(curr);
         return SUCCESS;
     }
 
-    @Action(value = "initInterviewIdentityConfirm",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".orgInterviewIdentityConfirm")})
-    public String initOrgInterviewIdentityConfirm(){
+    @Action(value = "initInterviewIdentityConfirm", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgInterviewIdentityConfirm")})
+    public String initOrgInterviewIdentityConfirm() {
         BaseUser curr = new BaseUser();
         curr.setEmail(this.getEmail());
         this.setUser(curr);
@@ -187,7 +191,7 @@ public class UserAction extends BasicAction {
 
     @Action(value = "identityConfirm", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".CourseSession"),
             @Result(name = "failed", type = Constants.RESULT_NAME_TILES, location = ".identityConfirmation"),
-            @Result(name = "courseconfirm",type = Constants.RESULT_NAME_TILES,location = ".courseconfirm")})
+            @Result(name = "courseconfirm", type = Constants.RESULT_NAME_TILES, location = ".courseconfirm")})
     public String identityConfirm() {
         BaseUser curr = baseUserDao.findByEmail(this.getUser().getEmail());
         if (curr != null) {
@@ -197,7 +201,7 @@ public class UserAction extends BasicAction {
             }
             setUserToSession(curr);
             setUserOrg(curr);
-        } else if(!user.getNickName().equals("")){
+        } else if (!user.getNickName().equals("")) {
             user.setLockedOut(true);
             user.setPassword(MD5.endCode(user.getPassword()));
             user.setRegDate(Calendar.getInstance());
@@ -212,7 +216,7 @@ public class UserAction extends BasicAction {
             identityConfirmMsg = this.getText("identity.confirm.account.not.exist");
             return "failed";
         }
-        if(this.getCourse().getId()!=null){
+        if (this.getCourse().getId() != null) {
             course = courseDao.findById(this.getCourse().getId());
             return "courseconfirm";
 
@@ -231,7 +235,7 @@ public class UserAction extends BasicAction {
             }
             setUserToSession(curr);
             setUserOrg(curr);
-        } else if(!user.getNickName().equals("")) {
+        } else if (!user.getNickName().equals("")) {
             user.setLockedOut(true);
             user.setPassword(MD5.endCode(user.getPassword()));
             user.setRegDate(Calendar.getInstance());
@@ -242,7 +246,7 @@ public class UserAction extends BasicAction {
             this.emailBoxUrl = EmailUtil.getEmailBoxUrl(user.getEmail());
             setUserToSession(user);
             setUserToSession(user);
-        }else {
+        } else {
             identityConfirmMsg = this.getText("identity.confirm.account.not.exist");
             return "failed";
         }
@@ -252,9 +256,9 @@ public class UserAction extends BasicAction {
     @Action(value = "orgCourseCreationIdentityConfirm", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "createCourse", "courseType", "1"}),
             @Result(name = "failed", type = Constants.RESULT_NAME_TILES, location = ".orgCourseCreationIdentityConfirm"),
             @Result(name = "tips", type = Constants.RESULT_NAME_TILES, location = ".orgInitCourseCreation"),
-            @Result(name = "emailSuccess",type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName", "myfirstPage"}),
-            @Result(name = "adjust",type = Constants.RESULT_NAME_TILES,location = ".adjustCenter"),
-            @Result(name = NONE,type = Constants.RESULT_NAME_TILES,location = ".notExist")})
+            @Result(name = "emailSuccess", type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}),
+            @Result(name = "adjust", type = Constants.RESULT_NAME_TILES, location = ".adjustCenter"),
+            @Result(name = NONE, type = Constants.RESULT_NAME_TILES, location = ".notExist")})
     public String orgCourseCreationIdentityConfirmation() {
         BaseUser curr = baseUserDao.findByEmail(this.getUser().getEmail());
         if (curr != null) {
@@ -264,7 +268,7 @@ public class UserAction extends BasicAction {
             }
             setUserToSession(curr);
             setUserOrg(curr);
-        } else if(!user.getNickName().equals("")){
+        } else if (!user.getNickName().equals("")) {
             user.setLockedOut(true);
             user.setPassword(MD5.endCode(user.getPassword()));
             user.setRegDate(Calendar.getInstance());
@@ -276,72 +280,71 @@ public class UserAction extends BasicAction {
             setUserToSession(user);
             setUserOrg(user);
 
-        }else {
+        } else {
             identityConfirmMsg = this.getText("identity.confirm.account.not.exist");
             return "failed";
         }
 
-          //===============================  邮件处理部分 ================================
-            //  1.如果是老师，course.id ，email,code 不为空，accept为true则解释，false则不接受
-            //  2.如果是学生，则没有code
-            if(this.getCourse().getId()!=null&&this.getEmail()!=null&&!this.getCode().equals("")){
-                course = courseDao.findById(this.getCourse().getId());
-              //if(MD5.endCode(course.getId().toString()+this.getEmail()+course.getPublicationTime().getTimeInMillis()).equals(this.getCode()))
-              if(true)
-                {
-                    // 只有在code比对正确的情况下才能正确接收和提出课程调整
-                     BaseUser std  = baseUserDao.findByEmail(this.getUser().getEmail());
-                     course.setTeacher(std);
-                     courseDao.persistAbstract(course);
-                     if(accept==true){
-                         return "emailSuccess";
-                     }else {
-                         return "adjust";
-                     }
-                }else {
-                    return NONE;
-                }
-            }
-            if(this.getCourse().getId()!=null&&this.getEmail()!=null&&this.getCode().equals("")){
-                course = courseDao.findById(this.getCourse().getId());
+        //===============================  邮件处理部分 ================================
+        //  1.如果是老师，course.id ，email,code 不为空，accept为true则解释，false则不接受
+        //  2.如果是学生，则没有code
+        if (this.getCourse().getId() != null && this.getEmail() != null && !this.getCode().equals("")) {
+            course = courseDao.findById(this.getCourse().getId());
+            //if(MD5.endCode(course.getId().toString()+this.getEmail()+course.getPublicationTime().getTimeInMillis()).equals(this.getCode()))
+            if (true) {
+                // 只有在code比对正确的情况下才能正确接收和提出课程调整
                 BaseUser std = baseUserDao.findByEmail(this.getUser().getEmail());
-                CourseInviteStudent courseInviteStudent = courseInviteStudentDao.findByCourseAndEmail(this.getCourse().getId(), this.getEmail());
-                if(courseInviteStudent!=null){
-                    courseInviteStudent.setAcceptInvite(true);
-                    courseInviteStudent.setStudent(std);
-                    courseInviteStudentDao.persistAbstract(courseInviteStudent);
-                    SeniorClassRoom seniorClassRoom = new SeniorClassRoom();
-                    seniorClassRoom.setCourse(courseDao.findById(this.getCourse().getId()));
-                    seniorClassRoom.setStudent(std);
-                    SeniorClassRoom sc = seniorClassRoomDao.findClassRoomByCourseAndStudent(this.getCourse().getId(), std.getId());
-                    if (sc != null) {
-                         return "emailSuccess";
-                   } else {
-                        seniorClassRoomDao.persistAbstract(seniorClassRoom);
-                        if(accept==true){
-                             return "emailSuccess";
-                        }else {
-                             return "adjust";
-                        }
-                   }
+                course.setTeacher(std);
+                courseDao.persistAbstract(course);
+                if (accept == true) {
+                    return "emailSuccess";
+                } else {
+                    return "adjust";
+                }
+            } else {
+                return NONE;
+            }
+        }
+        if (this.getCourse().getId() != null && this.getEmail() != null && this.getCode().equals("")) {
+            course = courseDao.findById(this.getCourse().getId());
+            BaseUser std = baseUserDao.findByEmail(this.getUser().getEmail());
+            CourseInviteStudent courseInviteStudent = courseInviteStudentDao.findByCourseAndEmail(this.getCourse().getId(), this.getEmail());
+            if (courseInviteStudent != null) {
+                courseInviteStudent.setAcceptInvite(true);
+                courseInviteStudent.setStudent(std);
+                courseInviteStudentDao.persistAbstract(courseInviteStudent);
+                SeniorClassRoom seniorClassRoom = new SeniorClassRoom();
+                seniorClassRoom.setCourse(courseDao.findById(this.getCourse().getId()));
+                seniorClassRoom.setStudent(std);
+                SeniorClassRoom sc = seniorClassRoomDao.findClassRoomByCourseAndStudent(this.getCourse().getId(), std.getId());
+                if (sc != null) {
+                    return "emailSuccess";
+                } else {
+                    seniorClassRoomDao.persistAbstract(seniorClassRoom);
+                    if (accept == true) {
+                        return "emailSuccess";
+                    } else {
+                        return "adjust";
+                    }
                 }
             }
+        }
 
-        if (organizationDao.findByResId(this.getSessionUserId()) !=  null) {
+        if (organizationDao.findByResId(this.getSessionUserId()) != null) {
             return SUCCESS;
         } else {
             return "tips";
         }
     }
 
-     @Action(value = "orgInterviewIdentityConfirm",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName", "myfirstPage"}),
-                                                                   @Result(name = "failed",type = Constants.RESULT_NAME_TILES,location = ".orgInterviewIdentityConfirm"),
-                                                                   @Result(name = "CourseCreation",type = Constants.RESULT_NAME_TILES,location = ".repeatCourseInfo"),
-                                                                   @Result(name = "courseBlog",type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName", "voaCourseBlog","course.id","${courseRecommend.course.id}"}),
-                                                                   @Result(name = NONE,type = Constants.RESULT_NAME_TILES,location = ".notExist"),
-                                                                   @Result(name = "inviteReject",type = Constants.RESULT_NAME_TILES,location = ".emailHandleReject")})
+    @Action(value = "orgInterviewIdentityConfirm", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}),
+            @Result(name = "failed", type = Constants.RESULT_NAME_TILES, location = ".orgInterviewIdentityConfirm"),
+            @Result(name = "CourseCreation", type = Constants.RESULT_NAME_TILES, location = ".repeatCourseInfo"),
+            @Result(name = "courseBlog", type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "voaCourseBlog", "course.id", "${courseRecommend.course.id}"}),
+            @Result(name = NONE, type = Constants.RESULT_NAME_TILES, location = ".notExist"),
+            @Result(name = "inviteReject", type = Constants.RESULT_NAME_TILES, location = ".emailHandleReject")})
     public String orgInterviewIdentityConfirm() throws Exception {
-      BaseUser curr = baseUserDao.findByEmail(this.getUser().getEmail());
+        BaseUser curr = baseUserDao.findByEmail(this.getUser().getEmail());
         if (curr != null) {
             if (!MD5.endCode(this.getUser().getPassword()).equals(curr.getPassword())) {
                 this.setIdentityConfirmMsg("您输入的密码有误");
@@ -349,7 +352,7 @@ public class UserAction extends BasicAction {
             }
             setUserToSession(curr);
             setUserOrg(curr);
-        } else if(!user.getNickName().equals("")){
+        } else if (!user.getNickName().equals("")) {
             user.setLockedOut(true);
             user.setPassword(MD5.endCode(user.getPassword()));
             user.setRegDate(Calendar.getInstance());
@@ -360,35 +363,35 @@ public class UserAction extends BasicAction {
             this.emailBoxUrl = EmailUtil.getEmailBoxUrl(user.getEmail());
             setUserToSession(user);
             setUserOrg(user);
-            }else {
+        } else {
             identityConfirmMsg = this.getText("identity.confirm.account.not.exist");
             return "failed";
         }
-         //===============================  邮件处理部分 ================================
-         if(this.getCourseRecommend().getId()!=null){
-             courseRecommend = courseRecommendDao.findById(this.getCourseRecommend().getId());
-             if(MD5.endCode(courseRecommend.getEmail()).equals(this.getCode())){
-                  BaseUser user = baseUserDao.findByEmail(courseRecommend.getEmail());
-                 courseRecommend.setUser(user);
-                 courseRecommendDao.persistAbstract(courseRecommend);
-                 return "courseBlog";
-             }
-             return NONE;
-         }else if(this.getCourseReservation().getId()!=null){
-             if(MD5.endCode(this.getUser().getEmail()).equals(this.getCode())){
-                  courseReservation = courseReservationDao.findById(this.getCourseReservation().getId());
-                  courseReservation.setUnActive(true);
-                  courseReservationDao.persistAbstract(courseReservation);
-                  course = courseReservation.getCourse();
-                  this.setOperaType(Constants.OPERA_TYPE_FOR_COURSE_CREATION);
-                  if(course.getOrganization()!=null){
-                            this.setCourseType(Constants.COURSE_TYPE_ORG);
-                  }
-                  orgs.put(course.getId(),course.getName());
-                  return "CourseCreation";
-             }
-             return NONE;
-         }else {
+        //===============================  邮件处理部分 ================================
+        if (this.getCourseRecommend().getId() != null) {
+            courseRecommend = courseRecommendDao.findById(this.getCourseRecommend().getId());
+            if (MD5.endCode(courseRecommend.getEmail()).equals(this.getCode())) {
+                BaseUser user = baseUserDao.findByEmail(courseRecommend.getEmail());
+                courseRecommend.setUser(user);
+                courseRecommendDao.persistAbstract(courseRecommend);
+                return "courseBlog";
+            }
+            return NONE;
+        } else if (this.getCourseReservation().getId() != null) {
+            if (MD5.endCode(this.getUser().getEmail()).equals(this.getCode())) {
+                courseReservation = courseReservationDao.findById(this.getCourseReservation().getId());
+                courseReservation.setUnActive(true);
+                courseReservationDao.persistAbstract(courseReservation);
+                course = courseReservation.getCourse();
+                this.setOperaType(Constants.OPERA_TYPE_FOR_COURSE_CREATION);
+                if (course.getOrganization() != null) {
+                    this.setCourseType(Constants.COURSE_TYPE_ORG);
+                }
+                orgs.put(course.getId(), course.getName());
+                return "CourseCreation";
+            }
+            return NONE;
+        } else {
             return SUCCESS;
         }
     }
@@ -401,14 +404,14 @@ public class UserAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "exitSystem", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName","index"})})
+    @Action(value = "exitSystem", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "index"})})
     public String exitSystem() {
         ActionContext.getContext().getSession().clear();
-       // courses = courseDao.findCourseOnline(new Pagination(10));
+        // courses = courseDao.findCourseOnline(new Pagination(10));
         return SUCCESS;
     }
 
-    @Action(value = "initRepassword", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initRepassword") })
+    @Action(value = "initRepassword", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initRepassword")})
     public String initRepassword() {
         return SUCCESS;
     }
@@ -428,26 +431,26 @@ public class UserAction extends BasicAction {
         _user.setActiveCode(validationCode);
         baseUserDao.persistAbstract(_user);
         String css = "<style type=\"text/css\">\n" +
-                 "#rvmDiv #logoDiv { background-image: url(http://www.gogowise.com/images/logo.jpg); background-repeat: no-repeat; height: 65px; margin-left: 45px; }\n" +
-                 "#rvmDiv #rvmcontentDiv ul .welcomeTittle { margin-left: 30px; }\n" +
-                 "#rvmDiv { float: left; width: 100%; font-family: \"微软雅黑\", \"宋体\", \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; }\n" +
-                 "#logoDiv { float: left; width: 100%; }\n" +
-                 "#rvmcontentDiv { float: left; width: 100%; }\n" +
-                 "#rvmDiv #rvmcontentDiv ul li { list-style-type: none; }\n" +
-                 "#rvmDiv #rvmcontentDiv .orangeWords { color: rgb(255,155,55); }\n" +
-                 "#rvmDiv #rvmcontentDiv ul .lastWords { margin-top: 50px; }\n" +
-                 "table, tr, td { border-collapse:collapse; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-color: #09F; border-right-color: #09F; border-bottom-color: #09F; border-left-color: #09F; }\n" +
-                 "tr.odd { background-color:#CEFFFF; }\n" +
-                 "</style>";
+                "#rvmDiv #logoDiv { background-image: url(http://www.gogowise.com/images/logo.jpg); background-repeat: no-repeat; height: 65px; margin-left: 45px; }\n" +
+                "#rvmDiv #rvmcontentDiv ul .welcomeTittle { margin-left: 30px; }\n" +
+                "#rvmDiv { float: left; width: 100%; font-family: \"微软雅黑\", \"宋体\", \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; }\n" +
+                "#logoDiv { float: left; width: 100%; }\n" +
+                "#rvmcontentDiv { float: left; width: 100%; }\n" +
+                "#rvmDiv #rvmcontentDiv ul li { list-style-type: none; }\n" +
+                "#rvmDiv #rvmcontentDiv .orangeWords { color: rgb(255,155,55); }\n" +
+                "#rvmDiv #rvmcontentDiv ul .lastWords { margin-top: 50px; }\n" +
+                "table, tr, td { border-collapse:collapse; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-color: #09F; border-right-color: #09F; border-bottom-color: #09F; border-left-color: #09F; }\n" +
+                "tr.odd { background-color:#CEFFFF; }\n" +
+                "</style>";
 
 
-        String str=this.getText("email.user.forget.password.title");
-        EmailUtil.sendMail(user.getEmail(), this.getText("email.user.forget.password.title"), css+this.getText("email.user.forget.password.content",new String[]{
+        String str = this.getText("email.user.forget.password.title");
+        EmailUtil.sendMail(user.getEmail(), this.getText("email.user.forget.password.title"), css + this.getText("email.user.forget.password.content", new String[]{
                 _user.getEmail(),
-               validationCode,
-               _user.getEmail(),
-              new SimpleDateFormat(this.getText("dateformat")).format(new Date())
-         }), "text/html;charset=utf-8");
+                validationCode,
+                _user.getEmail(),
+                new SimpleDateFormat(this.getText("dateformat")).format(new Date())
+        }), "text/html;charset=utf-8");
         return NONE;
     }
 
@@ -458,7 +461,7 @@ public class UserAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "updateUserInfo", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName","initUpdate"}),
+    @Action(value = "updateUserInfo", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "initUpdate"}),
             @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".initUpdate")})
     public String updateUserInfo() {
         //设置页面更新值
@@ -501,7 +504,7 @@ public class UserAction extends BasicAction {
             addFieldError("user.cardId", "身份证号错误");
         }*/
         BaseUser nickNameUser = baseUserDao.findByNickName(StringUtils.trim(user.getNickName()));
-        if (nickNameUser != null && !this.getSessionUserId().equals( nickNameUser.getId())) {
+        if (nickNameUser != null && !this.getSessionUserId().equals(nickNameUser.getId())) {
             addFieldError("user.nickName", this.getText("member.reg.nickname.exist"));
         }
     }
@@ -547,7 +550,7 @@ public class UserAction extends BasicAction {
         if (StringUtils.isNotBlank(this.getReDirectUrl())
                 && StringUtils.contains(this.getReDirectUrl(), "user.email=")) {
             this.user = new BaseUser();
-            this.user.setEmail(URLDecoder.decode(StringUtils.substringAfter(this.getReDirectUrl(), "user.email="),Constants.CHAT_TYPE_UTF_8));
+            this.user.setEmail(URLDecoder.decode(StringUtils.substringAfter(this.getReDirectUrl(), "user.email="), Constants.CHAT_TYPE_UTF_8));
             if (this.getUser().getEmail() != null) {
                 if (baseUserDao.findByEmail(this.getUser().getEmail()) == null) {
                     return "REG";
@@ -556,13 +559,14 @@ public class UserAction extends BasicAction {
         }
         return SUCCESS;
     }
-    @Action(value = "login",results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".login")})
-    public String login(){
+
+    @Action(value = "login", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".login")})
+    public String login() {
         return SUCCESS;
     }
 
-    @Action(value = "loginForVirtualRoom",results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".loginForVirtual")})
-    public String loginForVirtual(){
+    @Action(value = "loginForVirtualRoom", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".loginForVirtual")})
+    public String loginForVirtual() {
         return SUCCESS;
     }
 
@@ -617,7 +621,7 @@ public class UserAction extends BasicAction {
     public String easyRegCheck() {
 
         BaseUser localUser = baseUserDao.findByEmail(this.getUser().getEmail());
-        if(localUser != null) {
+        if (localUser != null) {
             addFieldError("user.email", this.getText("reEmail"));
             return INPUT;
         }
@@ -630,15 +634,15 @@ public class UserAction extends BasicAction {
         user.setRegDate(Calendar.getInstance());
         String md5 = MD5.endCode(String.valueOf(System.currentTimeMillis()));
         user.setActiveCode(md5);
-        user.setLanguage( ActionContext.getContext().getLocale().getLanguage());
+        user.setLanguage(ActionContext.getContext().getLocale().getLanguage());
         baseUserDao.persistAbstract(user);
-        if(ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL) == null){
+        if (ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL) == null) {
             sendEmail(user);
         }
         this.emailBoxUrl = EmailUtil.getEmailBoxUrl(user.getEmail());
         setUserToSession(user);
         setUserOrg(user);
-        if(StringUtils.isNotBlank(this.getReDirectUrl())) {
+        if (StringUtils.isNotBlank(this.getReDirectUrl())) {
             return "redirect";
         }
         return SUCCESS;
@@ -667,31 +671,36 @@ public class UserAction extends BasicAction {
 
     @Action(value = "teacherLoginProcess",
             results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}),
-                    @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".teacherLogin"),
-                    @Result(name = "redirect", type = "redirect", location = "${reDirectUrl}"),
-                    @Result(name = "studentCenter", type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "personalCenter"} )
-            }
-    )
+                    @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".teacherLogin")})
     public String teacherLoginProcess() {
-
         BaseUser user = baseUserDao.findByEmail(this.getUser().getEmail());
-        setUserToSession(user);
-        setUserOrg(user);
 
-        user.setLastLoginDate(Calendar.getInstance());
-        baseUserDao.persistAbstract(user);
-
-        if (StringUtils.isNotBlank(this.getReDirectUrl())) {
-            return "redirect";
-        } else if (organizationDao.findByResId(user.getId()) != null) {
-//            this.setReDirectUrl("organizationMatter.html");
-            return SUCCESS;
-        } else if ( !baseUserRoleTypeDao.havePermission(user.getId(), RoleType.TEACHER) ) {
-            return "studentCenter";
+        if (user == null) {
+            addFieldError("user.email", this.getText("message.logon.account.not.exist"));
+            return INPUT;
+        } else if (!user.getPassword().equals(MD5.endCode(this.user.getPassword()))) {
+            addFieldError("user.password", this.getText("message.logon.password.error"));
+            return INPUT;
         }
 
-        ActionContext.getContext().getSession().put(Constants.SESSION_USER_ROLE_TYPE,6);
-        return SUCCESS;
+        if (baseUserRoleTypeDao.havePermission(user.getId(), RoleType.TEACHER)) {
+            ActionContext.getContext().getSession().put(Constants.SESSION_USER_IS_TEACHER, true);
+        }
+        
+        //如果是学校负责人或老师
+        if ((organizationDao.findByResId(user.getId()) != null) || (baseUserRoleTypeDao.havePermission(user.getId(), RoleType.TEACHER))) {
+            user.setLastLoginDate(Calendar.getInstance());
+            baseUserDao.persistAbstract(user);
+
+            setUserToSession(user);
+            setUserOrg(user);
+
+            return SUCCESS;
+        }
+
+        //如果是学生
+        this.addActionError("You're not a school administrator or teacher");
+        return INPUT;
     }
 
     @Action(value = "postIl8nString")
@@ -703,19 +712,19 @@ public class UserAction extends BasicAction {
             results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "personalCenter"}),
                     @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".easyLogin"),
                     @Result(name = "redirect", type = "redirect", location = "${reDirectUrl}"),
-                    @Result(name = "teacherCenter", type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"} )
+                    @Result(name = "teacherCenter", type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"})
             }
     )
     public String logon() {
         BaseUser user = baseUserDao.findByEmail(this.getUser().getEmail());
 
-//        if (user == null) {
-//            addFieldError("user.email", this.getText("message.logon.account.not.exist"));
-//            return INPUT;
-//        } else if (!user.getPassword().equals(MD5.endCode(this.user.getPassword()))) {
-//            addFieldError("user.password", this.getText("message.logon.password.error"));
-//            return INPUT;
-//        }
+        if (user == null) {
+            addFieldError("user.email", this.getText("message.logon.account.not.exist"));
+            return INPUT;
+        } else if (!user.getPassword().equals(MD5.endCode(this.user.getPassword()))) {
+            addFieldError("user.password", this.getText("message.logon.password.error"));
+            return INPUT;
+        }
 //        if (user.getLockedOut()) {
 //            //没有激活
 //            String md5 = MD5.endCode(String.valueOf(System.currentTimeMillis()));
@@ -736,7 +745,9 @@ public class UserAction extends BasicAction {
 //            }
         user.setLastLoginDate(Calendar.getInstance());
         baseUserDao.persistAbstract(user);
-
+        if (baseUserRoleTypeDao.havePermission(user.getId(), RoleType.TEACHER)) {
+            ActionContext.getContext().getSession().put(Constants.SESSION_USER_IS_TEACHER, true);
+        }
         if (StringUtils.isNotBlank(this.getReDirectUrl())) {
             return "redirect";
         } else if (organizationDao.findByResId(user.getId()) != null) {
@@ -746,7 +757,7 @@ public class UserAction extends BasicAction {
             return "teacherCenter";
         }
 
-        ActionContext.getContext().getSession().put(Constants.SESSION_USER_ROLE_TYPE,6);
+
         return SUCCESS;
     }
 
@@ -780,7 +791,7 @@ public class UserAction extends BasicAction {
     public String reg() {
 
         BaseUser localUser = baseUserDao.findByEmail(this.getUser().getEmail());
-        if(localUser != null) {
+        if (localUser != null) {
             addFieldError("user.email", this.getText("reEmail"));
             return INPUT;
         }
@@ -792,15 +803,15 @@ public class UserAction extends BasicAction {
         user.setRegDate(Calendar.getInstance());
         String md5 = MD5.endCode(String.valueOf(System.currentTimeMillis()));
         user.setActiveCode(md5);
-        user.setLanguage( ActionContext.getContext().getLocale().getLanguage());
+        user.setLanguage(ActionContext.getContext().getLocale().getLanguage());
         baseUserDao.persistAbstract(user);
-        if(ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL) == null){
+        if (ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL) == null) {
             sendEmail(user);
         }
         this.emailBoxUrl = EmailUtil.getEmailBoxUrl(user.getEmail());
         setUserToSession(user);
         setUserOrg(user);
-        if(StringUtils.isNotBlank(this.getReDirectUrl())) {
+        if (StringUtils.isNotBlank(this.getReDirectUrl())) {
             return "redirect";
         }
         return SUCCESS;
@@ -815,7 +826,7 @@ public class UserAction extends BasicAction {
     public String teacherReg() {
 
         BaseUser localUser = baseUserDao.findByEmail(this.getUser().getEmail());
-        if(localUser != null) {
+        if (localUser != null) {
             addFieldError("user.email", this.getText("reEmail"));
             return INPUT;
         }
@@ -827,15 +838,15 @@ public class UserAction extends BasicAction {
         user.setRegDate(Calendar.getInstance());
         String md5 = MD5.endCode(String.valueOf(System.currentTimeMillis()));
         user.setActiveCode(md5);
-        user.setLanguage( ActionContext.getContext().getLocale().getLanguage());
+        user.setLanguage(ActionContext.getContext().getLocale().getLanguage());
         baseUserDao.persistAbstract(user);
-        if(ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL) == null){
+        if (ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL) == null) {
             sendEmail(user);
         }
         this.emailBoxUrl = EmailUtil.getEmailBoxUrl(user.getEmail());
         setUserToSession(user);
         setUserOrg(user);
-        if(StringUtils.isNotBlank(this.getReDirectUrl())) {
+        if (StringUtils.isNotBlank(this.getReDirectUrl())) {
             return "redirect";
         }
 
@@ -888,7 +899,7 @@ public class UserAction extends BasicAction {
         } else {
             user = users.get(0);
         }
-        if (user == null || !StringUtils.equals(user.getActiveCode(),activeCode)) {
+        if (user == null || !StringUtils.equals(user.getActiveCode(), activeCode)) {
             return SUCCESS;
         }
         //激活码相同，同时登陆
@@ -923,15 +934,13 @@ public class UserAction extends BasicAction {
             addFieldError("user.email", this.getText("message.logon.account.not.exist"));
         } else if (user.getPassword() == null) {
             addFieldError("user.password", this.getText("message.logon.password.missing"));
-        }else if (!user.getPassword().equals(MD5.endCode(this.user.getPassword()))) {
+        } else if (!user.getPassword().equals(MD5.endCode(this.user.getPassword()))) {
             addFieldError("user.password", this.getText("message.logon.password.error"));
         } else if ((Integer) ActionContext.getContext().getSession().get("logonTimes") > 0 && yzmCode != null &&
                 !yzmCode.equalsIgnoreCase((String) ActionContext.getContext().getSession().get("validationCode"))) {
             addFieldError("yzmCode", this.getText("message.valid.code.error"));
         }
     }
-
-
 
 
     @Action(value = "courseInviteIdentityLogin", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}),
@@ -944,17 +953,17 @@ public class UserAction extends BasicAction {
     }
 
     @Action(value = "updatePassword")
-    public void updatePassword(){
-        BaseUser user=baseUserDao.findByEmail(this.getSessionUserEmail());
+    public void updatePassword() {
+        BaseUser user = baseUserDao.findByEmail(this.getSessionUserEmail());
 
-        if(user.getPassword().equals(MD5.endCode(this.user.getPassword()))){
+        if (user.getPassword().equals(MD5.endCode(this.user.getPassword()))) {
             user.setPassword(MD5.endCode(this.getNewPassword()));
             baseUserDao.persist(user);
-            try{
-                 PrintWriter out = ServletActionContext.getResponse().getWriter();
-                 out.print("success");
-                 out.close();
-            }catch (Exception e){
+            try {
+                PrintWriter out = ServletActionContext.getResponse().getWriter();
+                out.print("success");
+                out.close();
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -964,26 +973,26 @@ public class UserAction extends BasicAction {
         BaseUser user = baseUserDao.findByEmail(this.getUser().getEmail());
         this.setEmail(user.getEmail());
         if (user == null) {
-            addFieldError("user.email",this.getText("message.logon.account.not.exist"));
+            addFieldError("user.email", this.getText("message.logon.account.not.exist"));
         } else if (!user.getPassword().equals(MD5.endCode(this.user.getPassword()))) {
-            addFieldError("user.password",this.getText("message.logon.password.error"));
+            addFieldError("user.password", this.getText("message.logon.password.error"));
         }
 
     }
 
-    @Action(value = "initOrgBackEndUserConfirm",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".initOrgBackEndUserConfirm")})
-    public String initOrgBackEndUserConfirm(){
+    @Action(value = "initOrgBackEndUserConfirm", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initOrgBackEndUserConfirm")})
+    public String initOrgBackEndUserConfirm() {
 
         org = organizationDao.findById(org.getId());
         return SUCCESS;
     }
 
-    @Action(value = "orgBackEndUserConfirm",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName","organizationMatter"}),
-                                                          @Result(name = NONE,type = Constants.RESULT_NAME_TILES,location = ".notExist")})
-    public String orgBackEndUserConfirm(){
+    @Action(value = "orgBackEndUserConfirm", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "organizationMatter"}),
+            @Result(name = NONE, type = Constants.RESULT_NAME_TILES, location = ".notExist")})
+    public String orgBackEndUserConfirm() {
         BaseUser _user = baseUserDao.findByEmail(this.getUser().getEmail());
-        if(_user != null && _user.getActiveCode() != null && _user.getActiveCode().equals(this.getUser().getActiveCode())){
-             _user.setPassword(MD5.endCode(user.getPassword()));
+        if (_user != null && _user.getActiveCode() != null && _user.getActiveCode().equals(this.getUser().getActiveCode())) {
+            _user.setPassword(MD5.endCode(user.getPassword()));
             _user.setActiveCode("");
             baseUserDao.persistAbstract(_user);
             setUserToSession(_user);
@@ -993,32 +1002,35 @@ public class UserAction extends BasicAction {
         return NONE;
     }
 
-    @Action(value = "helpCenter",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".helpCenter")})
-    public String showHelpCenter(){
+    @Action(value = "helpCenter", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".helpCenter")})
+    public String showHelpCenter() {
         return SUCCESS;
     }
 
-    @Action(value = "aboutUs",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".aboutUs")})
-    public String showGoGoWiseInfo(){
-        return SUCCESS;
-    }
-    @Action(value = "contactUs",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".contactUs")})
-    public String showContact(){
-        return SUCCESS;
-    }
-    @Action(value = "history",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".history")})
-    public String showHistory(){
-        return SUCCESS;
-    }
-    @Action(value = "team",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".team")})
-    public String showTeamInfo(){
+    @Action(value = "aboutUs", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".aboutUs")})
+    public String showGoGoWiseInfo() {
         return SUCCESS;
     }
 
-    private void setUserOrg(BaseUser user){
+    @Action(value = "contactUs", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".contactUs")})
+    public String showContact() {
+        return SUCCESS;
+    }
+
+    @Action(value = "history", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".history")})
+    public String showHistory() {
+        return SUCCESS;
+    }
+
+    @Action(value = "team", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".team")})
+    public String showTeamInfo() {
+        return SUCCESS;
+    }
+
+    private void setUserOrg(BaseUser user) {
         Organization org = organizationDao.findByResId(user.getId());
-        if(org != null){
-           ActionContext.getContext().getSession().put(Constants.SESSION_USER_OWN_ORG,org.getSchoolName());
+        if (org != null) {
+            ActionContext.getContext().getSession().put(Constants.SESSION_USER_OWN_ORG, org.getSchoolName());
         }
     }
 
@@ -1479,7 +1491,7 @@ public class UserAction extends BasicAction {
         this.reDirectUrl = reDirectUrl;
     }
 
-     public int getImgY() {
+    public int getImgY() {
         return imgY;
     }
 
@@ -1551,25 +1563,27 @@ public class UserAction extends BasicAction {
         this.courses = courses;
     }
 
-    public BaseUserRoleTypeDao getBaseUserRoleTypeDao(){
+    public BaseUserRoleTypeDao getBaseUserRoleTypeDao() {
         return baseUserRoleTypeDao;
     }
+
     public void setBaseUserRoleTypeDao(BaseUserRoleTypeDao baseUserRoleTypeDao) {
         this.baseUserRoleTypeDao = baseUserRoleTypeDao;
     }
 
-    public void setUserRoleType(String userRoleType ){
+    public void setUserRoleType(String userRoleType) {
         this.userRoleType = userRoleType;
     }
-    public String getUserRoleType(){
+
+    public String getUserRoleType() {
         return userRoleType;
     }
 
-    public BaseUserRoleType getBaseUserRoleType(){
+    public BaseUserRoleType getBaseUserRoleType() {
         return baseUserRoleType;
     }
 
-    public void setBaseUserRoleType(BaseUserRoleType baseUserRoleType){
+    public void setBaseUserRoleType(BaseUserRoleType baseUserRoleType) {
         this.baseUserRoleType = baseUserRoleType;
     }
 }

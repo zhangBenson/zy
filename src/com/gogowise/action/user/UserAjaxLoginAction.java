@@ -39,13 +39,14 @@ public class UserAjaxLoginAction extends BasicAction{
     public String ajaxLogin(){
         if(validateUserInfo(this.getUser().getEmail())){
             BaseUser user = baseUserDao.findByEmail(this.getUser().getEmail());
-            setUserToSession(user);
-            setUserOrg(user);
             user.setLastLoginDate(Calendar.getInstance());
             baseUserDao.persistAbstract(user);
-
-           if(organizationDao.findByResId(user.getId()) == null && !baseUserRoleTypeDao.havePermission(user.getId(), RoleType.TEACHER)) {
-               ActionContext.getContext().getSession().put(Constants.SESSION_USER_ROLE_TYPE,6);
+           
+            setUserToSession(user);
+            setUserOrg(user);
+            
+            if (baseUserRoleTypeDao.havePermission(user.getId(), RoleType.TEACHER)) {
+                ActionContext.getContext().getSession().put(Constants.SESSION_USER_IS_TEACHER, true);
             }
 
             this.setLoginMessage("success");
