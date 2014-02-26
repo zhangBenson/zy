@@ -12,6 +12,7 @@ import com.gogowise.rep.org.dao.OrganizationBaseUserDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.user.dao.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.user.enity.RoleType;
 import com.thoughtworks.xstream.XStream;
@@ -53,6 +54,8 @@ public class MaintenCourseAction extends BasicAction {
     private OrganizationBaseUserDao organizationBaseUserDao;
     @Autowired
     private OrganizationDao organizationDao;
+    @Autowired
+    private BaseUserDao baseUserDao;
 
 
     @Action(value = "createCourseAllInOne", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".createCourseAllInOne"),
@@ -60,6 +63,8 @@ public class MaintenCourseAction extends BasicAction {
     public String createCourseAllInOne() {
         Organization org = organizationDao.findByResId(this.getSessionUserId());
         teachers = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(),Constants.ROLE_TYPE_TEACHER,null);
+        //机构负责人本人也可以当老师
+        teachers.add(baseUserDao.findByEmail(this.getSessionUserEmail()));
         students = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(),Constants.ROLE_TYPE_STUDENT,null);
         return SUCCESS;
     }
