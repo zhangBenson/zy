@@ -74,7 +74,8 @@ public class CoursePurchaseAction extends BasicAction {
     }
 
     @Action(value = "purchaseCourse",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName", "personalCenter"}),
-                                                  @Result(name = ERROR,type = Constants.RESULT_NAME_TILES,location = ".purchaseError")})
+                                                  @Result(name = ERROR,type = Constants.RESULT_NAME_TILES,location = ".purchaseError"),
+                                                  @Result(name = INPUT,type = Constants.RESULT_NAME_TILES,location = ".ERROR")})
     public String purchaseCourse() throws Exception{
             course = courseDao.findById(this.course.getId());
             user = baseUserDao.findById(getSessionUserId());
@@ -93,6 +94,8 @@ public class CoursePurchaseAction extends BasicAction {
                 return ERROR;
             }
 
+            String msg = seniorClassRoomDao.saveSeniorClassRoom(this.course.getId(), this.getSessionUserId());
+
             consumptionOrderDao.purchaseCourse(user, course);
 
             String filePath = ServletActionContext.getServletContext().getRealPath("/");
@@ -102,18 +105,30 @@ public class CoursePurchaseAction extends BasicAction {
             String tile = this.getText("course.pdf.title",new String[]{user.getNickName(),course.getName()});
             String content = this.getText("course.pdf.content", new String[]{user.getNickName(),course.getName()} );
 
-            PdfUtil.createCourseContract(filePath,course, baseUserDao.findById(getSessionUserId()));
-            EmailUtil.sendMail(user.getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
+            try
+            {
+                PdfUtil.createCourseContract(filePath,course, baseUserDao.findById(getSessionUserId()));
+                EmailUtil.sendMail(user.getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
 
-            //send email to teacher
-            tile = this.getText("course.pdf.title",new String[]{user.getNickName(),course.getName()});
-            if(course.getOrganization() != null){
-                EmailUtil.sendMail(course.getOrganization().getResponsiblePerson().getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
-            }else {
-                content = this.getText("course.pdf.content", new String[]{course.getTeacher().getNickName()} );
-               EmailUtil.sendMail(course.getTeacher().getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
+                //send email to teacher
+                tile = this.getText("course.pdf.title",new String[]{user.getNickName(),course.getName()});
+                if(course.getOrganization() != null){
+                    EmailUtil.sendMail(course.getOrganization().getResponsiblePerson().getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
+                }else {
+                    content = this.getText("course.pdf.content", new String[]{course.getTeacher().getNickName()} );
+                   EmailUtil.sendMail(course.getTeacher().getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
+                }
+                EmailUtil.sendMail(Constants.COURSE_CONFIRM_EMAIL, tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
             }
-            EmailUtil.sendMail(Constants.COURSE_CONFIRM_EMAIL, tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+
+        Matter matter =new Matter(Calendar.getInstance(),this.getSessionNickName()+(new SimpleDateFormat("yyyyddMMHHmmssms").format(Calendar.getInstance().getTime())),Matter.MATTER_COURSE_REGISTER,baseUserDao.findByEmail(this.getSessionUserEmail()),null,course.getTeacherEmail()==(null)? course.getTeacher().getEmail():course.getTeacherEmail(),course,null,null,null,false);
+        matterDao.persistAbstract(matter);
+
+        System.out.println("Register Course End!!!");
         return SUCCESS;
     }
 
