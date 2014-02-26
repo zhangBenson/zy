@@ -44,6 +44,7 @@ public class ConsumptionOrderDaoImpl extends ModelDaoImpl<ConsumptionOrder>
 
     public void  purchaseCourse(BaseUser owner, Course course ) {
         ConsumptionOrder consumptionOrder = new ConsumptionOrder();
+        consumptionOrder.setCourse(course);
         consumptionOrder.setOrderId(Utils.getOrderId());
         consumptionOrder.setPayer(owner);
         consumptionOrder.setPayee(course.getPayee() );

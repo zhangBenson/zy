@@ -73,14 +73,15 @@ public class SeniorClassRoomDaoImpl extends ModelDaoImpl<SeniorClassRoom> implem
         if (identityTell(course, student.getEmail())) {
             return "course.identity.exist";    //   您不需要购买该课程
         }
-        if (limitNumOver(course)) {
-            return "course.studentNum.overflow"; //对不起，该课程预定人数已满
-        }
+//        if (limitNumOver(course)) {
+//            return "course.studentNum.overflow"; //对不起，该课程预定人数已满
+//        }
 
         if (existInRoom(course.getId(), userId)) {
             return "course.already.observation";  //您已经购买了该课程
         }
-        if (!limitNumOver(course) & !identityTell(course, student.getEmail()) & !existInRoom(course.getId(), userId)) {
+        //if (!limitNumOver(course) & !identityTell(course, student.getEmail()) & !existInRoom(course.getId(), userId)) {
+        if ( !identityTell(course, student.getEmail()) & !existInRoom(course.getId(), userId) ) {
             this.saveStudentforSeniorClassRoom(seniorClassRoom);
             return "course.first.observation";      //恭喜您，购买成功
         }
