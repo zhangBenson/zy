@@ -65,7 +65,7 @@
                                 <%--<li><a href="setting.html"><span></span><s:property value="%{getText('account.item.accountsettings')}" /></a></li>--%>
                                 <%--</s:else>--%>
 
-                                <%--<li class="divider"></li>--%>
+                                <li class="divider"></li>
 
                                 <%--<a href="#">Log out</a>--%>
                             <li><a href="exitSystem.html"><span></span><s:property
