@@ -678,7 +678,9 @@ public class UserAction extends BasicAction {
         if (user == null) {
             addFieldError("user.email", this.getText("message.logon.account.not.exist"));
             return INPUT;
-        } else if (!user.getPassword().equals(MD5.endCode(this.user.getPassword()))) {
+        }
+
+        if (!user.getPassword().equals(MD5.endCode(this.user.getPassword()))) {
             addFieldError("user.password", this.getText("message.logon.password.error"));
             return INPUT;
         }
