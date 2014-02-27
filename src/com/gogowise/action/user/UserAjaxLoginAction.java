@@ -10,6 +10,7 @@ import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.user.enity.RoleType;
 import com.opensymphony.xwork2.ActionContext;
+import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -46,6 +47,11 @@ public class UserAjaxLoginAction extends BasicAction{
             setUserOrg(user);
             
             if (baseUserRoleTypeDao.havePermission(user.getId(), RoleType.TEACHER)) {
+                ActionContext.getContext().getSession().put(Constants.SESSION_USER_IS_TEACHER, true);
+            }
+
+            if (organizationDao.findByResId(user.getId()) != null)
+            {
                 ActionContext.getContext().getSession().put(Constants.SESSION_USER_IS_TEACHER, true);
             }
 
