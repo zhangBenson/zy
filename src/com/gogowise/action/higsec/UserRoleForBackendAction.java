@@ -1,14 +1,15 @@
 package com.gogowise.action.higsec;
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.common.utils.Constants;
+import com.gogowise.common.utils.EmailUtil;
+import com.gogowise.rep.user.UserService;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import com.gogowise.rep.user.dao.RoleTypeDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.user.enity.BaseUserRoleType;
 import com.gogowise.rep.user.enity.RoleType;
-import com.gogowise.common.utils.Constants;
-import com.gogowise.common.utils.EmailUtil;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -34,6 +35,7 @@ public class UserRoleForBackendAction extends BasicAction {
     private Map<Integer, String> roles = new HashMap<Integer, String>();
     private List<Integer> myRoles = new ArrayList<Integer>();
     private BaseUser user;
+    private UserService userService;
 
     @Action(value = "higSecInitGrantPermission", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".higSecInitGrantPermission"),
             @Result(name = INPUT, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "easyLogon"})})
@@ -73,10 +75,7 @@ public class UserRoleForBackendAction extends BasicAction {
                 }
             }
             if (!exist) {
-                BaseUserRoleType baseUserRoleTypeForSave = new BaseUserRoleType();
-                baseUserRoleTypeForSave.setBaseUser(user);
-                baseUserRoleTypeForSave.setRoleType(roleTypeDao.findById(roleId));
-                baseUserRoleTypeDao.persist(baseUserRoleTypeForSave);
+                userService.grantPermission(user, RoleType.getRoleNameById(roleId));
             }
         }
 
@@ -146,5 +145,9 @@ public class UserRoleForBackendAction extends BasicAction {
 
     public void setUser(BaseUser user) {
         this.user = user;
+    }
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 }
