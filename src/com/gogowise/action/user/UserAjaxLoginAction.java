@@ -50,6 +50,11 @@ public class UserAjaxLoginAction extends BasicAction{
                 ActionContext.getContext().getSession().put(Constants.SESSION_USER_IS_TEACHER, true);
             }
 
+            if (organizationDao.findByResId(user.getId()) != null)
+            {
+                ActionContext.getContext().getSession().put(Constants.SESSION_USER_IS_TEACHER, true);
+            }
+
             this.setLoginMessage("success");
         }
 
