@@ -280,7 +280,7 @@ function getQuestionResult(questionId)
             var noresponseNum = studentNum - data.correctNumber - data.inCorrectNumber;
             showQuestionResult(data.correctNumber,data.inCorrectNumber,noresponseNum);
             $("#txtRight").text("Right:"+data.correctNumber);
-            $("#txtWrong").text("Right:"+data.inCorrectNumber);
+            $("#txtWrong").text("Wrong:"+data.inCorrectNumber);
             $("#txtNoResponse").text("NoResponse:"+studentNum);
         },
         error:function(){
