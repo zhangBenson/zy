@@ -63,8 +63,6 @@ public class MaintenCourseAction extends BasicAction {
     public String createCourseAllInOne() {
         Organization org = organizationDao.findByResId(this.getSessionUserId());
         teachers = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(),Constants.ROLE_TYPE_TEACHER,null);
-        //机构负责人本人也可以当老师
-        teachers.add(baseUserDao.findByEmail(this.getSessionUserEmail()));
         students = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(),Constants.ROLE_TYPE_STUDENT,null);
         return SUCCESS;
     }

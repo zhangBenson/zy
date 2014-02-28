@@ -5,12 +5,16 @@ import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.EmailUtil;
 import com.gogowise.common.utils.MD5;
 import com.gogowise.common.utils.Utils;
+import com.gogowise.rep.org.dao.OrganizationBaseUserDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.org.enity.OrganizationBaseUser;
 import com.gogowise.rep.user.UserService;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
+import com.gogowise.rep.user.dao.RoleTypeDao;
 import com.gogowise.rep.user.enity.BaseUser;
+import com.gogowise.rep.user.enity.BaseUserRoleType;
 import com.gogowise.rep.user.enity.RoleType;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.lang.StringUtils;
@@ -24,6 +28,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import java.io.File;
+import java.util.Calendar;
 import java.util.List;
 
 @Controller
@@ -38,6 +43,8 @@ public class OrgForBackendAction extends BasicAction {
     private OrganizationDao organizationDao;
     private BaseUserDao baseUserDao;
     private BaseUserRoleTypeDao baseUserRoleTypeDao;
+    private RoleTypeDao roleTypeDao;
+    private OrganizationBaseUserDao organizationBaseUserDao;
 
 
 
@@ -192,8 +199,17 @@ public class OrgForBackendAction extends BasicAction {
         baseUser.setActiveCode(activeCode);
         baseUserDao.persistAbstract(baseUser);
 
+        //如果没有老师权限，则添加
+        if(!baseUserRoleTypeDao.havePermission(baseUser.getId(),RoleType.TEACHER)){
+            //创建组织的时候同时为其加上老师角色（权限）
+            BaseUserRoleType baseUserRoleType = new BaseUserRoleType();
+            baseUserRoleType.setBaseUser(baseUser);
+            baseUserRoleType.setRoleType(roleTypeDao.findById(Constants.ROLE_TYPE_TEACHER));
+            baseUserRoleTypeDao.persistAbstract(baseUserRoleType);
+        }
 
-
+        //保存组织或者新建组织
+        boolean isOrgNew = false;
         Organization orgTmp = null;
         if (this.getOrg()!= null && this.getOrg().getId() != null)
             orgTmp = organizationDao.findById(this.getOrg().getId());
@@ -207,39 +223,43 @@ public class OrgForBackendAction extends BasicAction {
             orgSaved.setDescription(this.org.getDescription());
         } else {
             orgSaved = this.org;
+            isOrgNew = true;
         }
+
 
         String userDir = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_USER_PATH);
-
-        if (StringUtils.isNotBlank(this.getLogoUrl()))
-        {
+        //保存LOGO
+        if (StringUtils.isNotBlank(this.getLogoUrl())) {
             String logoDir = userDir + File.separatorChar  + getSessionUserId() + Constants.ORG_LOGO_PATH;
-
             File temp = new File(logoDir);
             if( !temp.exists() ) temp.mkdirs();
-
             Utils.replaceFileFromTempModified(temp.getAbsolutePath(), this.getLogoUrl());
-
             orgSaved.setLogoUrl(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + Constants.ORG_LOGO_PATH + this.getLogoUrl());
         }
-
+        //保存ADV LOGO
         if (StringUtils.isNotBlank(this.getAdvUrl())){
             String advDir = userDir + File.separatorChar + getSessionUserId() +  Constants.ORG_ADV_PATH;
-
             File advFile = new File(advDir);
             if(!advFile.exists()) advFile.mkdirs();
-
             Utils.replaceFileFromTempModified(advFile.getAbsolutePath(), this.getAdvUrl());
-
             orgSaved.setAdvUrl(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + Constants.ORG_ADV_PATH + this.getAdvUrl());
         }
 
         orgSaved.setResponsiblePerson(baseUser);
-        orgSaved.setCreator( baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL))  );
-//        orgSaved.setConfirmed(true);
-
+        orgSaved.setCreator(baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL))  );
+        orgSaved.setConfirmed(false);
         organizationDao.persist(orgSaved);
 
+        //如果负责不是学校的老师，则添加
+        if(organizationBaseUserDao.findByOrgIdAndUserId(orgSaved.getId(),baseUser.getId(),Constants.ROLE_TYPE_TEACHER)==null){
+            OrganizationBaseUser organizationBaseUser = new OrganizationBaseUser();
+            organizationBaseUser.setOrg(orgSaved);
+            organizationBaseUser.setUser(baseUser);
+            organizationBaseUser.setRoleType(Constants.ROLE_TYPE_TEACHER);
+            organizationBaseUser.setUserStatus(Constants.USER_STATUS_CONFIRMED);
+            organizationBaseUser.setCreateDate(Calendar.getInstance());
+            organizationBaseUserDao.persistAbstract(organizationBaseUser);
+        }
 
         return SUCCESS;
     }
@@ -373,6 +393,22 @@ public class OrgForBackendAction extends BasicAction {
 
     public void setBaseUserRoleTypeDao(BaseUserRoleTypeDao baseUserRoleTypeDao) {
         this.baseUserRoleTypeDao = baseUserRoleTypeDao;
+    }
+
+    public RoleTypeDao getRoleTypeDao() {
+        return roleTypeDao;
+    }
+
+    public void setRoleTypeDao(RoleTypeDao roleTypeDao) {
+        this.roleTypeDao = roleTypeDao;
+    }
+
+    public OrganizationBaseUserDao getOrganizationBaseUserDao() {
+        return organizationBaseUserDao;
+    }
+
+    public void setOrganizationBaseUserDao(OrganizationBaseUserDao organizationBaseUserDao) {
+        this.organizationBaseUserDao = organizationBaseUserDao;
     }
 
     public Boolean getCanReview() {
