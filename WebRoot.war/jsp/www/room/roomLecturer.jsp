@@ -282,6 +282,7 @@ function getQuestionResult(questionId)
             $("#txtRight").text("Right:"+data.correctNumber);
             $("#txtWrong").text("Wrong:"+data.inCorrectNumber);
             $("#txtNoResponse").text("NoResponse:"+studentNum);
+            getGirlOjbect().checkResult();
         },
         error:function(){
             alert("no data...");

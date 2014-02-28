@@ -240,7 +240,8 @@ function setQuestionResult(result)
         dataType:"json",
         success: function(data)
         {
-            alert("提交成功");
+            alert("success");
+            getGirlOjbect().submitAnswer();
         },
         error:function(){
             alert("error....");
@@ -505,10 +506,16 @@ function showFile()
     $('#fileModal').modal('show');
 }
 
-function showQuestionsStudio(id)
+function showQuestionsStudio(id,isSubmit)
 {
     getQuestionInfo(id);
     $("#questionsStudentModal").modal('show');
+
+    if(isSubmit)
+        $("#btnQuestion").removeAttr("disabled");
+    else
+        $("#btnQuestion").attr("disabled","disabled");
+
 }
 
 //根据ID，State状态值（1，2，3）设置状态，bit是否需要排序到最上.
