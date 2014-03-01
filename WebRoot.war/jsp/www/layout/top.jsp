@@ -151,15 +151,16 @@
 
 <script type="text/javascript">
     $("#log_btn").click(function () {
-        if (checkForm()) {
 
-            var currHref = window.location.href;
-            if(currHref.indexOf("index.html")>-1){
-                document.getElementById("isIndex").value=1;
-            }
-            else{
-                document.getElementById("isIndex").value=0;
-            }
+        var currHref = window.location.href;
+        if(currHref.indexOf("index.html")>-1){
+            document.getElementById("isIndex").value=1;
+        }
+        else{
+            document.getElementById("isIndex").value=0;
+        }
+
+        if (checkForm()) {
 
             var userData = $("#user_login_form").serialize();
             $.post("ajaxLogin.html",userData,function(data){
