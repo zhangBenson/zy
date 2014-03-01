@@ -65,7 +65,7 @@
     });
 
     function handlePostResult(data){
-        if(data=="success"){
+        if(data=="success" || data=="Teacher"){
             var currHref = parent.window.location.href;
             if(currHref.substring(currHref.lastIndexOf('/')) == '/exitSystem.html'){
                 currHref = currHref.substring(0,currHref.lastIndexOf('/')+1);
