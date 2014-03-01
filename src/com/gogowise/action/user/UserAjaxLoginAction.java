@@ -54,7 +54,7 @@ public class UserAjaxLoginAction extends BasicAction{
                 ActionContext.getContext().getSession().put(Constants.SESSION_USER_IS_TEACHER, true);
             }
             if(this.getIsIndex() == null){
-                this.setLoginMessage("Error");
+                this.setLoginMessage("success");
             }
             else if(isTeacher && (this.getIsIndex().intValue() == 1) ){
                 this.setLoginMessage("Teacher");
