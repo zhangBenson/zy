@@ -35,6 +35,8 @@ public class UserAjaxLoginAction extends BasicAction{
     private BaseUser user;
     private String loginMessage;
 
+    private Integer isIndex;
+
 
     @Action(value = "ajaxLogin",results = {@Result(name = SUCCESS,type = "json")})
     public String ajaxLogin(){
@@ -45,12 +47,15 @@ public class UserAjaxLoginAction extends BasicAction{
            
             setUserToSession(user);
             setUserOrg(user);
-            
+
+            boolean isTeacher = false;
             if (baseUserRoleTypeDao.havePermission(user.getId(), RoleType.TEACHER)) {
+                isTeacher = true;
                 ActionContext.getContext().getSession().put(Constants.SESSION_USER_IS_TEACHER, true);
             }
-            
-            this.setLoginMessage("success");
+
+            if(isTeacher && this.isIndex == 1)  this.setLoginMessage("Teacher");
+            else this.setLoginMessage("success");
         }
 
         ActionContext.getContext().getValueStack().push(loginMessage);
@@ -91,5 +96,13 @@ public class UserAjaxLoginAction extends BasicAction{
 
     public void setLoginMessage(String loginMessage) {
         this.loginMessage = loginMessage;
+    }
+
+    public Integer getIsIndex() {
+        return isIndex;
+    }
+
+    public void setIsIndex(Integer index) {
+        isIndex = index;
     }
 }

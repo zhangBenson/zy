@@ -111,6 +111,7 @@
             <h1 class="courseSynopsis">Please log in to continue.</h1>
 
             <form class="form-horizontal" role="form" id="user_login_form" method="post">
+                <s:hidden name="isIndex" id="isIndex"/>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
 
@@ -152,6 +153,14 @@
     $("#log_btn").click(function () {
         if (checkForm()) {
 
+            var currHref = window.location.href;
+            if(currHref.indexOf("index.html")>-1){
+                document.getElementById("isIndex").value=1;
+            }
+            else{
+                document.getElementById("isIndex").value=0;
+            }
+
             var userData = $("#user_login_form").serialize();
             $.post("ajaxLogin.html",userData,function(data){
                 handlePostResult(data);
@@ -169,13 +178,18 @@
         }
     });
     function handlePostResult(data){
-        if(data=="success"){
+        if(data=="success" || data=="Teacher"){
             var currHref = window.location.href;
             if(currHref.substring(currHref.lastIndexOf('/')) == '/exitSystem.html'){
                 currHref = currHref.substring(0,currHref.lastIndexOf('/')+1);
             }
             if(currHref.indexOf("index.html")>-1){
-                window.location.href = "personalCenter.html";
+                if(data=="success"){
+                    window.location.href = "personalCenter.html";
+                }
+                else{
+                    window.location.href = "myfirstPage.html";
+                }
                 return;
             }
             window.location.reload();
