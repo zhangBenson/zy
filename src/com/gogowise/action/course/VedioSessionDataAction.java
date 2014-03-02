@@ -220,23 +220,25 @@ public class VedioSessionDataAction extends BasicAction {
     @Action(value = "playerClass",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".roomPlayer"),
                                                      @Result(name = ERROR,type = Constants.RESULT_NAME_TILES,location = ".notExist")})
     public String toRoomPlayer(){
-       if (this.getCourseClass().getId() != null) {
-           courseClass = classDao.findById(this.getCourseClass().getId());
-           inviteFriendHref = getBasePath()+"/courseOnlineAudit.html?courseClass.id="+courseClass.getId()+"&courseOnline=true";
+        if (this.getCourseClass().getId() != null) {
+            courseClass = classDao.findById(this.getCourseClass().getId());
+            inviteFriendHref = getBasePath()+"/courseOnlineAudit.html?courseClass.id="+courseClass.getId()+"&courseOnline=true";
+            Course course = courseClass.getCourse();
+            One2ManyPlayerSession one2ManyPlayerSession = new One2ManyPlayerSession();
+            initOne2manyPlayerSession(one2ManyPlayerSession);
 
-           Course course = courseClass.getCourse();
-           One2ManyPlayerSession one2ManyPlayerSession = new One2ManyPlayerSession();
-           one2ManyPlayerSession.initWithSession(this.getCourseClass());
-           initOne2manyPlayerSession(one2ManyPlayerSession);
-           XStream xstream = new XStream();
-           xstream.alias("Session", One2ManyPlayerSession.class);
-           OutputStream output = new ByteArrayOutputStream();
-           xstream.marshal(one2ManyPlayerSession, new CompactWriter(new OutputStreamWriter(output)));
-           this.setInitSeesionString(output.toString());
-           this.setRoleType(1);
-           return SUCCESS;
-       }
-       return ERROR;
+            /*One2ManyStudentSession one2ManyStudentSession = new One2ManyStudentSession();
+            initOne2manyStudentSession(one2ManyStudentSession);*/
+
+            XStream xstream = new XStream();
+            xstream.alias("Session", One2ManyPlayerSession.class);
+            OutputStream output = new ByteArrayOutputStream();
+            xstream.marshal(one2ManyPlayerSession, new CompactWriter(new OutputStreamWriter(output)));
+            this.setInitSeesionString(output.toString());
+            this.setRoleType(1);
+            return SUCCESS;
+        }
+        return ERROR;
    }
 
 
