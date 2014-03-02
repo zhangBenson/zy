@@ -636,7 +636,6 @@ public class VedioSessionDataAction extends BasicAction {
         one2ManyPlayerSession.setUserName(user.getNickName());
         if(user.getPic()!=null){
             one2ManyPlayerSession.setUserLogo(user.getPic());
-            one2ManyPlayerSession.setMasterLogo(user.getPic());
         }
     }
 

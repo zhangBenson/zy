@@ -31,6 +31,7 @@ public class One2ManyPlayerSession {
         if(courseClass.getCourse().getTeacher()!=null){
             this.setMasterID(getEmptyInteger(courseClass.getCourse().getTeacher().getId()));
             this.setMasterName(getEmptyString(courseClass.getCourse().getTeacher().getNickName()));
+            this.setMasterLogo(getEmptyString(courseClass.getCourse().getTeacher().getPic()));
         }
     }
 
