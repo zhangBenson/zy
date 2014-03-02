@@ -86,6 +86,7 @@ public class MainFilter implements Filter {
         NEED_LOGIN.add("/studentClass.html");
         NEED_LOGIN.add("/manageTeachers.html");
         NEED_LOGIN.add("/manageStudents.html");
+        NEED_LOGIN.add("/playerClass.html");
     }
 
     public void destroy() {
