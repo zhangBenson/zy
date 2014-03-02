@@ -628,7 +628,7 @@
         <put-attribute name="title" value="title.classroom.one2many"/>
         <put-attribute name="contentBody" value="/jsp/www/room/roomLecturer.jsp"/>
     </definition>
-    <definition name=".roomPlayer" extends=".roomCenter2">
+    <definition name=".roomPlayer" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.classroom.one2many"/>
         <put-attribute name="contentBody" value="/jsp/www/room/roomPlayer.jsp"/>
     </definition>
