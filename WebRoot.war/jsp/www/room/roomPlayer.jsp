@@ -1,5 +1,5 @@
 ﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--<%@ include file="/js/virtualClass/virtualClass_js.jsp" %>--%>
 <link rel="stylesheet" href="css/room/bootstrap.min.css">
 <link rel="stylesheet" href="css/room/gogowise.css">
@@ -7,8 +7,7 @@
 <link rel="stylesheet" href="css/room/messenger-theme-future.css">
 <link rel="stylesheet" href="css/skins/all.css">
 
-<script src="js/room/jquery-1.10.2.min.js"></script>
-<script src="js/room/bootstrap.min.js"></script>
+<%--<script src="js/room/bootstrap.min.js"></script>--%>
 <script src="js/room/iscroll.js"></script>
 <script src="js/room/messenger.min.js"></script>
 <script src="js/room/icheck.min.js"></script>
@@ -31,8 +30,9 @@ $(document).ready(function() {
         increaseArea: '20%' // optional
     });
 
-    $("body").keydown(function() {
-        if (event.keyCode == "13") {
+    $("body").keydown(function(e){
+        var curKey = e.which;
+        if(curKey == 13){
             $('#btnSendMsg').click();
         }
     });
@@ -174,8 +174,8 @@ $(document).ready(function() {
 
 
     $("#btnQuestion").click(function(){
-        if($('input[name="questionid"]:checked').val() != undefined)
-            getGirlOjbect().questionOver("");
+        if($('input[name="studentQuestion"]:checked').val() != undefined)
+            setQuestionResult($('input[name="studentQuestion"]:checked').val());
     });
 
     //提交选择题目;
@@ -188,7 +188,7 @@ $(document).ready(function() {
 });
 
 document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
+document.addEventListener('onload', function () { setTimeout(loaded, 200); }, false);
 
 function getGirlOjbect() {
     if (/msie/.test(navigator.userAgent.toLowerCase())) {
@@ -229,6 +229,24 @@ function getQuestionResult(right,wrong,noresponse)
     ];
 
     var myPie = new Chart(document.getElementById("canvas").getContext("2d")).Pie(pieData);
+}
+
+function setQuestionResult(result)
+{
+    $.ajax({
+        type: 'POST',
+        url: "saveQuestionResult.html",
+        data:{"questionId":$("#currentQuestionId").text(),"userId":<s:property value="#session.userID"/>,"questionItemIndex":result,"courseClassId":<s:property value="courseClass.id"/>},
+        dataType:"json",
+        success: function(data)
+        {
+            alert("success");
+            getGirlOjbect().submitAnswer();
+        },
+        error:function(){
+            alert("error....");
+        }
+    });
 }
 
 function giveMIC()
@@ -400,39 +418,32 @@ function alert(content,type)
 function getQuestionInfo(id)
 {
     $("#studentQuestionItem div").remove();
+    $("#currentQuestionId").text(id);
 
     $.ajax({
         type:"GET",
-        url:"questionItem.html",
+        url:"question.html",
+        data:{"questionId":id},
         dataType:"json",
         success:function(data){
 
             $("#studentQuestionItem").append("<div>"+
-                    "<div class='questionsItemText'>"+data["subjectname"]+"</div>"+
-                    "<span class='questionid'>"+data["questionID"]+"</span>"+
+                    "<div class='questionsItemText'>"+data.vo["description"]+"</div>"+
+                    "<span class='questionid'>"+data.vo["id"]+"</span>"+
                     "<div class='listanswer'></div>");
-
-            $.each(data.options,function(key,info){
+            var index =1;
+            $.each(data.vo.items,function(key,info){
                 $("#studentQuestionItem").find(".listanswer").append("<div style='margin-top:10px;'>"+
                         "<label class='answerItem'>"+
-                        "<p>"+info["itemname"]+"</p>"+
-                        "<input type='radio' name='"+info["value"]+"'>"+
-                        "<span>"+info["itemtext"]+"</span>"+
+                    // "<p>"+info["itemname"]+"</p>"+
+                        "<input type='radio' name='studentQuestion' value='"+index+"'>"+
+                        "<span style='display:none;'>"+index+"</span>"+
+                        "<span>"+info+"</span>"+
                         "</label>"+
                         "</div>");
+                index++;
             });
 
-            //alert(data["subjectname"]);
-            // $.each(data,function(key,info)
-            // {
-            // 	$("#questionsList").append("<div class='questionsItem'>"+
-            // 	"<label>"+
-            // 	"<input type='radio' name='selectQuestion' value='"+info["questionID"]+"'>"+
-            // 	"<span class='questionsItemText'>"+info["content"]+"</span>"+
-            // 	"<span class='questionid'>"+info["questionID"]+"</span>"+
-            // 	"</label>"+
-            // 	"</div>");
-            // });
 
             $('input').iCheck({
                 checkboxClass: 'icheckbox_square-green',
@@ -495,10 +506,16 @@ function showFile()
     $('#fileModal').modal('show');
 }
 
-function showQuestionsStudio(id)
+function showQuestionsStudio(id,isSubmit)
 {
     getQuestionInfo(id);
     $("#questionsStudentModal").modal('show');
+
+    if(isSubmit)
+        $("#btnQuestion").removeAttr("disabled");
+    else
+        $("#btnQuestion").attr("disabled","disabled");
+
 }
 
 //根据ID，State状态值（1，2，3）设置状态，bit是否需要排序到最上.
@@ -628,6 +645,7 @@ function ShowMessage(name,imgpath,content,bit)
 <span id="currentName" style="display: none"><s:property value="#session.email" /></span>
 <span id="currentUserName" style="display: none"><s:property value="#session.nickName" /></span>
 <span id="currentimgPath" style="display: none"><s:property value="#session.userLogoUrl" /></span>
+<span id="currentQuestionId" style="display: none"></span>
 
 <%--<div id="top"></div>--%>
 
