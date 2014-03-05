@@ -47,7 +47,6 @@ public class OrgForBackendAction extends BasicAction {
     private OrganizationBaseUserDao organizationBaseUserDao;
 
 
-
     private Organization org;
     private List<Organization> organizations;
     private String message;
@@ -64,17 +63,17 @@ public class OrgForBackendAction extends BasicAction {
     private UserService userService;
 
     public void validateHigSecConfirmOrgByAdmin() {
-        BaseUser admin = baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL))  ;
-        if (admin ==  null )   {
+        BaseUser admin = baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL));
+        if (admin == null) {
             addFieldError("org.responsiblePerson.email", "请先登录");
             return;
         }
-        if (!baseUserRoleTypeDao.havePermission(admin.getId(),"orgReviewer")){
+        if (!baseUserRoleTypeDao.havePermission(admin.getId(), "orgReviewer")) {
             addFieldError("org.responsiblePerson.email", "没权限");
         }
 
-        Organization orgTemp = organizationDao.findOrganizationByOrganizationName(this.getOrg().getSchoolName()) ;
-        if (orgTemp != null && !orgTemp.getId().equals(this.getOrg().getId()) ){
+        Organization orgTemp = organizationDao.findOrganizationByOrganizationName(this.getOrg().getSchoolName());
+        if (orgTemp != null && !orgTemp.getId().equals(this.getOrg().getId())) {
             addFieldError("org.schoolName", "组织名称已被注册");
         }
     }
@@ -93,12 +92,12 @@ public class OrgForBackendAction extends BasicAction {
     }
 
     @Action(value = "higSecRemoveConfirm", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "higSecOrgListView"}),
-            @Result(name = INPUT, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "higSecOrgListView"})  })
+            @Result(name = INPUT, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "higSecOrgListView"})})
     public String higSecRemoveConfirm() {
         if (this.getOrg().getId() != null) {
             org = organizationDao.findById(this.getOrg().getId());
             org.setConfirmed(false);
-            org.setReviewer(baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL))  );
+            org.setReviewer(baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL)));
             organizationDao.persistAbstract(org);
 //            this.userService.removePermission(org.getCreator(), RoleType.TEACHER);
 //            if(this.org.getResponsiblePerson().getPassword() == null ) {
@@ -111,14 +110,14 @@ public class OrgForBackendAction extends BasicAction {
     }
 
     @Action(value = "higSecConfirmOrgByAdmin", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "higSecOrgListView"}),
-            @Result(name = INPUT, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "higSecOrgListView"})  })
+            @Result(name = INPUT, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "higSecOrgListView"})})
     public String higSecConfirmOrgByAdmin() {
         if (this.getOrg().getId() != null) {
             org = organizationDao.findById(this.getOrg().getId());
             org.setConfirmed(true);
-            org.setReviewer(baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL))  );
+            org.setReviewer(baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL)));
             organizationDao.persistAbstract(org);
-            if(this.org.getResponsiblePerson().getPassword() == null ) {
+            if (this.org.getResponsiblePerson().getPassword() == null) {
                 sendOrgConfirmEamil(org);
             } else {
                 sendOrgConfirmEmailForUserExist(org);
@@ -128,14 +127,13 @@ public class OrgForBackendAction extends BasicAction {
     }
 
     private void sendOrgConfirmEmailForUserExist(Organization org) {
-        String href = getBasePath() + "/organizationMatter.html?user.email="+org.getResponsiblePerson().getEmail();
-        EmailUtil.sendMail(org.getResponsiblePerson().getEmail(), this.getText("org.email.confirm.admin.title"),  this.getText("org.email.confirm.admin.body", new String[]{
+        String href = getBasePath() + "/organizationMatter.html?user.email=" + org.getResponsiblePerson().getEmail();
+        EmailUtil.sendMail(org.getResponsiblePerson().getEmail(), this.getText("org.email.confirm.admin.title"), this.getText("org.email.confirm.admin.body", new String[]{
                 org.getResponsiblePerson().getEmail(),
                 org.getSchoolName(),
                 href
 
         }));
-
 
 
     }
@@ -169,26 +167,27 @@ public class OrgForBackendAction extends BasicAction {
 
 
     }
+
     @Action(value = "higSecOrgCreationView", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".higSecOrgCreateView")})
     public String higSecOrgCreationView() {
         if (org != null && org.getId() != null) {
             this.org = organizationDao.findById(org.getId());
         } else {
-            this.org =  organizationDao.findByResId(this.getSessionUserId());
+            this.org = organizationDao.findByResId(this.getSessionUserId());
         }
         return SUCCESS;
     }
 
 
     @Action(value = "higSecOrgCreate", results = {
-            @Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "higSecOrgCreationView", "org.id","${org.id}"}),
+            @Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "higSecOrgCreationView", "org.id", "${org.id}"}),
             @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".higSecOrgCreate")})
     public String higSecOrgCreate() {
 
         BaseUser baseUser = baseUserDao.findByEmail(this.getOrg().getResponsiblePerson().getEmail());
         if (baseUser == null) {
             baseUser = new BaseUser();
-            baseUser.setEmail(this.getOrg().getResponsiblePerson().getEmail() );
+            baseUser.setEmail(this.getOrg().getResponsiblePerson().getEmail());
             if (this.org.getResponsiblePerson().getNickName() != null) {
                 baseUser.setNickName(this.org.getResponsiblePerson().getNickName());
             } else {
@@ -200,7 +199,7 @@ public class OrgForBackendAction extends BasicAction {
         baseUserDao.persistAbstract(baseUser);
 
         //如果没有老师权限，则添加
-        if(!baseUserRoleTypeDao.havePermission(baseUser.getId(),RoleType.TEACHER)){
+        if (!baseUserRoleTypeDao.havePermission(baseUser.getId(), RoleType.TEACHER)) {
             //创建组织的时候同时为其加上老师角色（权限）
             BaseUserRoleType baseUserRoleType = new BaseUserRoleType();
             baseUserRoleType.setBaseUser(baseUser);
@@ -211,16 +210,17 @@ public class OrgForBackendAction extends BasicAction {
         //保存组织或者新建组织
         boolean isOrgNew = false;
         Organization orgTmp = null;
-        if (this.getOrg()!= null && this.getOrg().getId() != null)
+        if (this.getOrg() != null && this.getOrg().getId() != null)
             orgTmp = organizationDao.findById(this.getOrg().getId());
 
         Organization orgSaved;
-        if (orgTmp !=  null){
+        if (orgTmp != null) {
             orgSaved = orgTmp;
             orgSaved.setCellPhone(this.org.getCellPhone());
             orgSaved.setSchoolName(this.org.getSchoolName());
             orgSaved.setContractSignDate(this.org.getContractSignDate());
             orgSaved.setDescription(this.org.getDescription());
+            orgSaved.setSecDomain(org.getSecDomain());
         } else {
             orgSaved = this.org;
             isOrgNew = true;
@@ -230,28 +230,28 @@ public class OrgForBackendAction extends BasicAction {
         String userDir = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_USER_PATH);
         //保存LOGO
         if (StringUtils.isNotBlank(this.getLogoUrl())) {
-            String logoDir = userDir + File.separatorChar  + getSessionUserId() + Constants.ORG_LOGO_PATH;
+            String logoDir = userDir + File.separatorChar + getSessionUserId() + Constants.ORG_LOGO_PATH;
             File temp = new File(logoDir);
-            if( !temp.exists() ) temp.mkdirs();
+            if (!temp.exists()) temp.mkdirs();
             Utils.replaceFileFromTempModified(temp.getAbsolutePath(), this.getLogoUrl());
             orgSaved.setLogoUrl(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + Constants.ORG_LOGO_PATH + this.getLogoUrl());
         }
         //保存ADV LOGO
-        if (StringUtils.isNotBlank(this.getAdvUrl())){
-            String advDir = userDir + File.separatorChar + getSessionUserId() +  Constants.ORG_ADV_PATH;
+        if (StringUtils.isNotBlank(this.getAdvUrl())) {
+            String advDir = userDir + File.separatorChar + getSessionUserId() + Constants.ORG_ADV_PATH;
             File advFile = new File(advDir);
-            if(!advFile.exists()) advFile.mkdirs();
+            if (!advFile.exists()) advFile.mkdirs();
             Utils.replaceFileFromTempModified(advFile.getAbsolutePath(), this.getAdvUrl());
             orgSaved.setAdvUrl(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + Constants.ORG_ADV_PATH + this.getAdvUrl());
         }
 
         orgSaved.setResponsiblePerson(baseUser);
-        orgSaved.setCreator(baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL))  );
+        orgSaved.setCreator(baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL)));
         orgSaved.setConfirmed(false);
         organizationDao.persist(orgSaved);
 
         //如果负责不是学校的老师，则添加
-        if(organizationBaseUserDao.findByOrgIdAndUserId(orgSaved.getId(),baseUser.getId(),Constants.ROLE_TYPE_TEACHER)==null){
+        if (organizationBaseUserDao.findByOrgIdAndUserId(orgSaved.getId(), baseUser.getId(), Constants.ROLE_TYPE_TEACHER) == null) {
             OrganizationBaseUser organizationBaseUser = new OrganizationBaseUser();
             organizationBaseUser.setOrg(orgSaved);
             organizationBaseUser.setUser(baseUser);
@@ -276,8 +276,8 @@ public class OrgForBackendAction extends BasicAction {
                 "#rvmDiv #rvmcontentDiv .orangeWords { color: rgb(255,155,55); }\n" +
                 "#rvmDiv #rvmcontentDiv ul .lastWords { margin-top: 20px; }\n" +
                 "</style>";
-        String href = getBasePath() + "/initOrgBackEndUserConfirm.html?org.id="+orgSaved.getId()+"&user.email="+orgSaved.getResponsiblePerson().getEmail()+"&user.activeCode="+ orgSaved.getResponsiblePerson().getActiveCode();
-        EmailUtil.sendMail( orgSaved.getResponsiblePerson().getEmail(), this.getText("org.back.end.high.sec.to.res.email.title"), css + this.getText("org.back.end.high.sec.to.res.email.content", new String[]{
+        String href = getBasePath() + "/initOrgBackEndUserConfirm.html?org.id=" + orgSaved.getId() + "&user.email=" + orgSaved.getResponsiblePerson().getEmail() + "&user.activeCode=" + orgSaved.getResponsiblePerson().getActiveCode();
+        EmailUtil.sendMail(orgSaved.getResponsiblePerson().getEmail(), this.getText("org.back.end.high.sec.to.res.email.title"), css + this.getText("org.back.end.high.sec.to.res.email.content", new String[]{
                 orgSaved.getResponsiblePerson().getEmail(),
                 orgSaved.getSchoolName(),
                 href,
@@ -292,7 +292,7 @@ public class OrgForBackendAction extends BasicAction {
         if (org != null && org.getId() != null) {
             this.org = organizationDao.findById(org.getId());
         } else {
-            this.org =  organizationDao.findById(this.getSessionUserId());
+            this.org = organizationDao.findById(this.getSessionUserId());
         }
         return SUCCESS;
     }
@@ -301,9 +301,9 @@ public class OrgForBackendAction extends BasicAction {
     @Action(value = "higSecOrgListView", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".higSecOrgListView")})
     public String higSecOrgListView() {
         this.organizations = organizationDao.findOngoingForAdmin();
-        BaseUser admin = baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL))  ;
-        this.canEdit = baseUserRoleTypeDao.havePermission(admin.getId(), "orgCreator") ;
-        this.canReview = baseUserRoleTypeDao.havePermission(admin.getId(), "orgReviewer") ;
+        BaseUser admin = baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL));
+        this.canEdit = baseUserRoleTypeDao.havePermission(admin.getId(), "orgCreator");
+        this.canReview = baseUserRoleTypeDao.havePermission(admin.getId(), "orgReviewer");
         return SUCCESS;
     }
 

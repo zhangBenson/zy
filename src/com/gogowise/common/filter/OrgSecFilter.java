@@ -1,8 +1,10 @@
-package com.gogowise.common.utils;
+package com.gogowise.common.filter;
 
+import com.gogowise.common.utils.Constants;
+import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
-import com.gogowise.rep.org.dao.OrganizationDao;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.*;
@@ -11,13 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-/**
- * Created by IntelliJ IDEA.
- * User: Benson
- * Date: Jun 21, 2009
- * Time: 3:29:14 PM
- * To change this template use File | Settings | File Templates.
- */
+
+@Component
 public class OrgSecFilter implements Filter {
 
 
@@ -41,16 +38,14 @@ public class OrgSecFilter implements Filter {
         String requestUrl = request.getServletPath();
 
 
-        if ( StringUtils.startsWithIgnoreCase(requestUrl, "/higSec")
-                && (session.getAttribute(Constants.HIG_SEC_USER_EMAIL) ==null ||!baseUserRoleTypeDao.havePermission(baseUserDao.findByEmail((String) session.getAttribute(Constants.HIG_SEC_USER_EMAIL)).getId(), "admin") )) {
+        if (StringUtils.startsWithIgnoreCase(requestUrl, "/higSec")
+                && (session.getAttribute(Constants.HIG_SEC_USER_EMAIL) == null || !baseUserRoleTypeDao.havePermission(baseUserDao.findByEmail((String) session.getAttribute(Constants.HIG_SEC_USER_EMAIL)).getId(), "admin"))) {
             response.sendRedirect("easyLogon.html");
             return;
         }
 
         arg2.doFilter(arg0, arg1);
     }
-
-
 
 
     public OrganizationDao getOrganizationDao() {

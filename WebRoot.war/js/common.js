@@ -2,13 +2,13 @@
 function convertArray(objs) {
 
     var json = {};
-    $(objs).each(function(index,item){
-        if(typeof json[this.name] == 'undefined'){
+    $(objs).each(function (index, item) {
+        if (typeof json[this.name] == 'undefined') {
             json[this.name] = this.value;
-        }else{
-            if(json[this.name] instanceof Object){
+        } else {
+            if (json[this.name] instanceof Object) {
                 json[this.name].push(this.value);
-            }else{
+            } else {
                 json[this.name] = new Array(json[this.name]);
                 json[this.name].push(this.value);
             }
@@ -32,27 +32,27 @@ function getStrLength(str) {
     return len;
 }
 
-function getSubString(str,sLength){
+function getSubString(str, sLength) {
     var len = 0;
     for (var i = 0; i < str.length; i++) {
         var c = str.charCodeAt(i);
         if ((c >= 0x0001 && c <= 0x007e) || (0xff60 <= c && c <= 0xff9f)) {
             len++;
-        }else {
+        } else {
             len += 2;
         }
-        if(len > sLength){
-            return str.substring(0,i);
-        }else if(len == sLength){
-            return str.substring(0,i+1);
+        if (len > sLength) {
+            return str.substring(0, i);
+        } else if (len == sLength) {
+            return str.substring(0, i + 1);
         }
     }
     return str;
 }
 
 function changeWordNumber(inputId, tipId, maxLength) {
-    var $input = $("#"+inputId);
-    var $tip = $("#"+tipId);
+    var $input = $("#" + inputId);
+    var $tip = $("#" + tipId);
     var str = $.trim($input.val());
     var exist_words_number = getStrLength(str);
     if (exist_words_number >= maxLength) {
@@ -64,15 +64,15 @@ function changeWordNumber(inputId, tipId, maxLength) {
 }
 
 //浮点数校验
-function checkDoubleNumber(id,tipId,emptyMsg,wrongMsg){
-    if(!checkEmpty(id,tipId,emptyMsg)){
+function checkDoubleNumber(id, tipId, emptyMsg, wrongMsg) {
+    if (!checkEmpty(id, tipId, emptyMsg)) {
         return false;
     }
-    var $tip = $("#"+tipId);
-    var numStr = $.trim($("#"+id).val());
+    var $tip = $("#" + tipId);
+    var numStr = $.trim($("#" + id).val());
     var numExp = /(^[1-9]\d*(\.\d*)?)|(0\.\d*[1-9]\d*)/;
-    if(!numExp.test(numStr)){
-        $("#"+tipId).html(wrongMsg);
+    if (!numExp.test(numStr)) {
+        $("#" + tipId).html(wrongMsg);
         return false;
     }
 
@@ -81,15 +81,15 @@ function checkDoubleNumber(id,tipId,emptyMsg,wrongMsg){
 }
 
 //正整数校验
-function checkNumber(id,tipId,emptyMsg,wrongMsg){
-    if(!checkEmpty(id,tipId,emptyMsg)){
+function checkNumber(id, tipId, emptyMsg, wrongMsg) {
+    if (!checkEmpty(id, tipId, emptyMsg)) {
         return false;
     }
-    var $tip = $("#"+tipId);
-    var numStr = $.trim($("#"+id).val());
+    var $tip = $("#" + tipId);
+    var numStr = $.trim($("#" + id).val());
     var numExp = /^[1-9]\d*$/;
-    if(!numExp.test(numStr)){
-        $("#"+tipId).html(wrongMsg);
+    if (!numExp.test(numStr)) {
+        $("#" + tipId).html(wrongMsg);
         return false;
     }
 
@@ -98,23 +98,23 @@ function checkNumber(id,tipId,emptyMsg,wrongMsg){
 }
 
 //时间校验
-function checkTime(id,tipId,emptyMsg,wrongMsg,lessMsg){
-    if(!checkEmpty(id,tipId,emptyMsg)){
+function checkTime(id, tipId, emptyMsg, wrongMsg, lessMsg) {
+    if (!checkEmpty(id, tipId, emptyMsg)) {
         return false;
     }
 
-    var $tip = $("#"+tipId);
-    var startTime = $.trim($("#"+id).val()).replace(/-/g,   "/");
-    try{
+    var $tip = $("#" + tipId);
+    var startTime = $.trim($("#" + id).val()).replace(/-/g, "/");
+    try {
         startTime = Date.parse(startTime);
-    }catch(ex){
-        $("#"+tipId).html(wrongMsg);
+    } catch (ex) {
+        $("#" + tipId).html(wrongMsg);
         return false;
     }
 
     var timeNow = new Date();
-    if(startTime <= timeNow){
-        $("#"+tipId).html(lessMsg);
+    if (startTime <= timeNow) {
+        $("#" + tipId).html(lessMsg);
         return false;
     }
 
@@ -122,13 +122,29 @@ function checkTime(id,tipId,emptyMsg,wrongMsg,lessMsg){
     return true;
 }
 
-function checkLength(id,tipId,maxLength,tipMsg){
-    var $tip = $("#"+tipId);
-    var str = $.trim($("#"+id).val());
-    if(str && getStrLength(str)>maxLength){
-        if(!tipMsg){
-            $tip.html("不能超过"+Math.ceil(maxLength/2)+"字（英文"+maxLength+"）");
-        }else{
+function checkMinLength(id, tipId, minLength, tipMsg) {
+    var $tip = $("#" + tipId);
+    var str = $.trim($("#" + id).val());
+    if (str && getStrLength(str) < minLength) {
+        if (!tipMsg) {
+            $tip.html("不能超过" + minLength + "字");
+        } else {
+            $tip.html(tipMsg);
+        }
+        return false;
+    }
+
+    $tip.html("");
+    return true;
+}
+
+function checkLength(id, tipId, maxLength, tipMsg) {
+    var $tip = $("#" + tipId);
+    var str = $.trim($("#" + id).val());
+    if (str && getStrLength(str) > maxLength) {
+        if (!tipMsg) {
+            $tip.html("不能超过" + Math.ceil(maxLength / 2) + "字（英文" + maxLength + "）");
+        } else {
             $tip.html(tipMsg);
         }
         return false;
@@ -145,13 +161,13 @@ function checkLength(id,tipId,maxLength,tipMsg){
  * @param tipId
  * @param tipMsg
  */
-function checkEmpty(id,tipId,tipMsg){
-    var $tip = $("#"+tipId);
-    var str = $.trim($("#"+id).val());
-    if(!str){
-        if(!tipMsg){
+function checkEmpty(id, tipId, tipMsg) {
+    var $tip = $("#" + tipId);
+    var str = $.trim($("#" + id).val());
+    if (!str) {
+        if (!tipMsg) {
             $tip.html("输入不能为空");
-        }else{
+        } else {
             $tip.html(tipMsg);
         }
         return false;
@@ -162,8 +178,7 @@ function checkEmpty(id,tipId,tipMsg){
 }
 
 //HTML 转义
-function html_encode(str)
-{
+function html_encode(str) {
     var s = "";
     if (str.length == 0) return "";
     s = str.replace(/&/g, "&gt;");
@@ -177,8 +192,7 @@ function html_encode(str)
 }
 
 //HTML 反转义
-function html_decode(str)
-{
+function html_decode(str) {
     var s = "";
     if (str.length == 0) return "";
     s = str.replace(/&gt;/g, "&");
@@ -192,10 +206,10 @@ function html_decode(str)
 }
 
 //平滑跳转到某个位置
-function moveTo(destId){
-    $("html,body").animate({scrollTop: $("#"+destId).offset().top-30}, 500);
+function moveTo(destId) {
+    $("html,body").animate({scrollTop: $("#" + destId).offset().top - 30}, 500);
 }
 
-function moveToExact(topPixes){
+function moveToExact(topPixes) {
     $("html,body").animate({scrollTop: topPixes}, 500);
 }

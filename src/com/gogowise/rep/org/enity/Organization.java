@@ -49,6 +49,7 @@ public class Organization extends AbstractPersistence {
 
     private Boolean userFocused = false;  // a temp variable,used to
     private Integer fansNum = 0;
+    private String secDomain;
 
     private Boolean isDeleted;
 
@@ -269,5 +270,13 @@ public class Organization extends AbstractPersistence {
 
     public void setIsDeleted(Boolean isDeleted) {
         this.isDeleted = isDeleted;
+    }
+
+    public String getSecDomain() {
+        return secDomain;
+    }
+
+    public void setSecDomain(String secDomain) {
+        this.secDomain = secDomain;
     }
 }

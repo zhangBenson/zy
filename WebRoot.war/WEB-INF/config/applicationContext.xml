@@ -19,7 +19,6 @@
     <context:component-scan base-package="com.gogowise"/>
 
 
-
     <!--<jee:jndi-lookup id="dataSource" jndi-name="gogowiseDs"/>-->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="myDataSource"/>
@@ -36,12 +35,21 @@
                 <prop key="hibernate.autoReconnect">true</prop>
                 <prop key="connection.autoReconnectForPools">true</prop>
 
-                <prop key="hibernate.ejb.event.post-insert">org.hibernate.ejb.event.EJB3PostInsertEventListener,org.hibernate.envers.event.AuditEventListener</prop>
-                <prop key="hibernate.ejb.event.post-update">org.hibernate.ejb.event.EJB3PostUpdateEventListener,org.hibernate.envers.event.AuditEventListener</prop>
-                <prop key="hibernate.ejb.event.post-delete">org.hibernate.ejb.event.EJB3PostDeleteEventListener,org.hibernate.envers.event.AuditEventListener</prop>
-                <prop key="hibernate.ejb.event.pre-collection-update">org.hibernate.envers.event.AuditEventListener</prop>
-                <prop key="hibernate.ejb.event.pre-collection-remove">org.hibernate.envers.event.AuditEventListener</prop>
-                <prop key="hibernate.ejb.event.post-collection-recreate">org.hibernate.envers.event.AuditEventListener</prop>
+                <prop key="hibernate.ejb.event.post-insert">
+                    org.hibernate.ejb.event.EJB3PostInsertEventListener,org.hibernate.envers.event.AuditEventListener
+                </prop>
+                <prop key="hibernate.ejb.event.post-update">
+                    org.hibernate.ejb.event.EJB3PostUpdateEventListener,org.hibernate.envers.event.AuditEventListener
+                </prop>
+                <prop key="hibernate.ejb.event.post-delete">
+                    org.hibernate.ejb.event.EJB3PostDeleteEventListener,org.hibernate.envers.event.AuditEventListener
+                </prop>
+                <prop key="hibernate.ejb.event.pre-collection-update">org.hibernate.envers.event.AuditEventListener
+                </prop>
+                <prop key="hibernate.ejb.event.pre-collection-remove">org.hibernate.envers.event.AuditEventListener
+                </prop>
+                <prop key="hibernate.ejb.event.post-collection-recreate">org.hibernate.envers.event.AuditEventListener
+                </prop>
             </props>
         </property>
         <property name="annotatedClasses">
@@ -161,15 +169,16 @@
     <bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
         <!--<property name="driverClassName" value="com.p6spy.engine.spy.P6SpyDriver"/>-->
-        <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/gogowise?useUnicode=true&amp;characterEncoding=utf8"/>
+        <property name="jdbcUrl"
+                  value="jdbc:mysql://127.0.0.1:3306/gogowise?useUnicode=true&amp;characterEncoding=utf8"/>
         <property name="user" value="${db.user}"/>
         <property name="password" value="${db.password}"/>
-        <property name="maxPoolSize" value="30" />
-        <property name="minPoolSize" value="10" />
-        <property name="maxIdleTime" value="1800" />
-        <property name="maxStatements" value="0" />
-        <property name="initialPoolSize" value="10" />
-        <property name="idleConnectionTestPeriod" value="1800" />
+        <property name="maxPoolSize" value="30"/>
+        <property name="minPoolSize" value="10"/>
+        <property name="maxIdleTime" value="1800"/>
+        <property name="maxStatements" value="0"/>
+        <property name="initialPoolSize" value="10"/>
+        <property name="idleConnectionTestPeriod" value="1800"/>
     </bean>
 
     <bean id="transactionManager"
@@ -184,17 +193,10 @@
     <bean id="basicAction" class="com.gogowise.action.BasicAction">
     </bean>
 
-    <!--============================filter================================-->
-    <bean id="orgSecFilter" class="com.gogowise.common.utils.OrgSecFilter">
-        <!--<property name="name">-->
-        <!--<value>SpringFilter</value>-->
-        <!--</property>-->
-    </bean>
-
     <!--============================Schedule================================-->
-    <task:executor id="executor" pool-size="1" />
-    <task:scheduler id="scheduler" pool-size="5"  />
-    <task:annotation-driven executor="executor" scheduler="scheduler"  />
+    <task:executor id="executor" pool-size="1"/>
+    <task:scheduler id="scheduler" pool-size="5"/>
+    <task:annotation-driven executor="executor" scheduler="scheduler"/>
 
 
     <!--============================webservice================================-->

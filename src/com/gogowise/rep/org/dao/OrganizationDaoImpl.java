@@ -1,11 +1,10 @@
 package com.gogowise.rep.org.dao;
 
-import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.rep.course.enity.Course;
-import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.rep.org.enity.Organization;
-import com.gogowise.rep.Pagination;
 import com.gogowise.common.utils.Utils;
+import com.gogowise.rep.ModelDaoImpl;
+import com.gogowise.rep.Pagination;
+import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.user.enity.BaseUser;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -121,6 +120,10 @@ public class OrganizationDaoImpl extends ModelDaoImpl<Organization> implements O
         oldOrg.setBusinessAddress(Utils.getEmptyString(newOrg.getBusinessAddress()));
         oldOrg.setZipCode(Utils.getEmptyString(newOrg.getZipCode()));
         this.persistAbstract(oldOrg);
+    }
+
+    public Organization findBySecDomain(String secDomain) {
+        return this.findFist("From Organization org where org.secDomain = ? ", secDomain);
     }
 
     public List<Organization> removeDeletedOrgs(List<Organization> orgs)

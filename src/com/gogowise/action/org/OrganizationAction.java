@@ -195,8 +195,15 @@ public class OrganizationAction extends BasicAction {
             results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgBlog")}
     )
     public String orgBlog() {
-        Integer orgId = org.getId() == null ? 1 : org.getId();
-        this.org = organizationDao.findById(orgId);
+        Integer orgId;
+        if (StringUtils.isNotBlank(org.getSecDomain())) {
+            this.org = this.organizationDao.findBySecDomain(org.getSecDomain());
+        } else {
+            orgId = org.getId() == null ? 1 : org.getId();
+            this.org = organizationDao.findById(orgId);
+        }
+        orgId = org.getId();
+
 
         latestCourse = courseDao.findLatestCourseByOrg(orgId, new Pagination(4));
         if (latestCourse != null && latestCourse.size() > 0)
