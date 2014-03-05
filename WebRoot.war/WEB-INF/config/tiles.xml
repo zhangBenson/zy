@@ -336,24 +336,39 @@
     <definition name=".initInviteFriend" extends=".basic">
         <put-attribute name="right" value="/jsp/gogowise/inviteFriend.jsp"/>
     </definition>
-    <definition name=".initRepassword" extends=".bodyCenter">
+    <!--<definition name=".initRepassword" extends=".bodyCenter">-->
+        <!--<put-attribute name="title" value="title.modify.password"/>-->
+        <!--<put-attribute name="contentBody" value="/jsp/gogowise/rePassword.jsp"/>-->
+    <!--</definition>-->
+    <definition name=".initRepassword" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.modify.password"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/rePassword.jsp"/>
+        <put-attribute name="contentBody" value="/jsp/www/user/rePassword.jsp"/>
     </definition>
 
-
-    <definition name=".findEmailUser" extends=".bodyCenter">
+    <definition name=".findEmailUser" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.modify.password"></put-attribute>
-        <put-attribute name="contentBody" value="/jsp/gogowise/enterRePassword.jsp"/>
+        <put-attribute name="contentBody" value="/jsp/www/user/enterRePassword.jsp"/>
     </definition>
-    <definition name=".yzRePasswordCode" extends=".bodyCenter">
+    <definition name=".yzRePasswordCode" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.modify.password"></put-attribute>
-        <put-attribute name="contentBody" value="/jsp/gogowise/reWritePassword.jsp"/>
+        <put-attribute name="contentBody" value="/jsp/www/user/reWritePassword.jsp"/>
     </definition>
     <definition name=".reWritePassword" extends=".bodyCenter">
         <put-attribute name="title" value="title.modify.password"></put-attribute>
-        <put-attribute name="contentBody" value="/jsp/gogowise/rePwdSuccess.jsp"/>
+        <put-attribute name="contentBody" value="/jsp/www/user/rePwdSuccess.jsp"/>
     </definition>
+    <!--<definition name=".findEmailUser" extends=".bodyCenter">-->
+        <!--<put-attribute name="title" value="title.modify.password"></put-attribute>-->
+        <!--<put-attribute name="contentBody" value="/jsp/gogowise/enterRePassword.jsp"/>-->
+    <!--</definition>-->
+    <!--<definition name=".yzRePasswordCode" extends=".bodyCenter">-->
+        <!--<put-attribute name="title" value="title.modify.password"></put-attribute>-->
+        <!--<put-attribute name="contentBody" value="/jsp/gogowise/reWritePassword.jsp"/>-->
+    <!--</definition>-->
+    <!--<definition name=".reWritePassword" extends=".bodyCenter">-->
+        <!--<put-attribute name="title" value="title.modify.password"></put-attribute>-->
+        <!--<put-attribute name="contentBody" value="/jsp/gogowise/rePwdSuccess.jsp"/>-->
+    <!--</definition>-->
     <definition name=".initRecomond" extends=".userCenter">
         <put-attribute name="title" value="title.invite.friend"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/recomondFriend.jsp"/>
