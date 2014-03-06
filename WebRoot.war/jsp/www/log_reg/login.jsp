@@ -1,100 +1,105 @@
-<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow:hidden;">
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
+<link href="css/log_reg.css" rel="stylesheet"/>
 
-    <div class="modal-dialog" style="width: 580px;height:370px;margin-top: 5%;background:rgba(255,255,255,.9);border-radius: 4px;">
+<div style="clear: both;"></div>
 
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+<div style="text-align: center; width: 30%; margin-left: 30%; margin-bottom: 5%; margin-top: 1%;">
 
-        <div style="padding-left: 20px;padding-right: 20px;">
-            <h1 class = "courseSubject">Log in</h1>
-            <h1 class = "courseSynopsis">Please log in to continue.</h1>
-            <span id="login_tip" style="color:red; "></span>
-            <%--<div style="clear:both"></div>--%>
+    <div class="basePanelTextLeft">
 
-            <form class="form-horizontal" role="form" id="user_login_form" method="post">
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" check="mail" name="user.email"></div>
+        <h1 class = "courseSubject"><s:property value="%{getText('button.log.in')}"/></h1>
+        <h1 class = "courseSynopsis"><s:property value="%{getText('label.log.in.info')}"/></h1>
+        <span class="errorinfo"><s:property value="actionErrors[0]"/></span>
+
+        <s:form validate="true" theme="css_xhtml" cssClass="form-horizontal"  method="POST" action="logon">
+
+            <s:hidden name="reDirectUrl" id="reDirectUrl"/>
+            <div class="form-group">
+                <label class="col-sm-2 control-label"> <s:property value="%{getText('email')}" /></label>
+                <div class="col-sm-10">
+                    <span class="errorinfo" id="yzemail"></span>
+                    <s:textfield name="user.email" id="logonemail" cssClass="form-control" placeholder="Email"/>
                 </div>
-                <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password" name="user.password"></div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox">Remember me</label>
-                            <%--<a href="#" style="float: right;">Forget password</a>--%>
-                            <a href="javascript:;" style="float: right;" onclick="parent.window.location.href='initRepassword.html';"><s:property value="%{getText('link.forget.pwd')}"/>？</a>
-                        </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label"> <s:property value="%{getText('password')}"/></label>
 
+                <div class="col-sm-10">
+                    <span class="errorinfo" id="yzpwd"><s:property value="identityConfirmMsg"/></span>
+                    <s:password name="user.password" id="pwd" cssClass="form-control" placeholder="Password"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"><s:property value="%{getText('label.log.in.remember.me.info')}"/></label>
+                            <a href="initRepassword.html" style="float: right;"><span><s:property value="%{getText('link.forget.pwd')}" />？</span></a>
                     </div>
+
                 </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <%--<button type="submit" id="log_btn" class="btn btn-success  btn-lg btn-block">Log me in!</button>--%>
-                        <input type="button" id="log_btn" class="btn btn-success  btn-lg btn-block" value="Log me in!" />
-                    </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input class = "btn btn-success  btn-lg btn-block" type="submit" name="button" id="btn1" onclick="return checkForm();" value="<s:property value="%{getText('button.log.in')}" />"/>
                 </div>
-            </form>
-        </div>
+            </div>
+        </s:form>
+
     </div>
 </div>
 
+<div style="clear: both;"></div>
+
 <script type="text/javascript">
-    $("#log_btn").click(function(){
-        if(checkForm()){
+    var pwdEmpty = "<s:text name='psdEmpty'/>";
+    var pwdFormatWrong = "<s:text name='psdFormatWrong'/>";
+    var repwdAgain = "<s:text name='psdagain'/>";
+    var repwdNotEqual = "<s:text name='psdNOsame'/>";
+    var emailEmpty = "<s:text name='emailEmpty'/>";
+    var emailFormatWrong = "<s:text name='emailerror'/>";
+    var acceptClauseMsg = "<s:text name='message.accept.rule'/>";
 
-            var userData = $("#user_login_form").serialize();
-            $.post("ajaxLogin.html",userData,function(data){
-                handlePostResult(data);
-            });
-        }
-    });
-    $("#inputPassword3").keydown(function(event){
-        if(event.keyCode == 13){
-            if(checkForm()){
-                var userData = $("#user_login_form").serialize();
-                $.post("ajaxLogin.html",userData,function(data){
-                    handlePostResult(data);
-                });
-            }
-        }
-    });
 
-    function handlePostResult(data){
-        if(data=="success" || data=="Teacher"){
-            var currHref = parent.window.location.href;
-            if(currHref.substring(currHref.lastIndexOf('/')) == '/exitSystem.html'){
-                currHref = currHref.substring(0,currHref.lastIndexOf('/')+1);
-            }
-            if(currHref.indexOf("index.html")>-1){
-                currHref = "personalCenter.html";
-            }
-            parent.window.location.reload();
-        }else{
-            $("#login_tip").text(data);
-            alert(data);
-        }
+    function goToReg(){
+        window.location.href = "initReg.html?user.email="+$("#logonemail").attr("value")+"&reDirectUrl="+encodeURIComponent($("#reDirectUrl").attr("value"));
     }
 
-    function checkForm(){
+    $("#logonemail").blur(function(){
+        checkEmail();
+    });
 
+    $("#logonemail").focus(function(){
+        $("#yzemail").text("*");
+        $("#wwerr_email .errorMessage").html("");
+    });
+
+    $("#pwd").focus(function(){
+        $("#yzpwd").text("*");
+        $("#wwerr_pwd .errorMessage").html("");
+    });
+
+    $("#pwd").blur(function() {
+        checkPwd();
+    });
+
+    function checkForm() {
         return checkEmail()&&checkPwd();
     }
+
     function checkEmail(){
-        $("#login_tip").text("");
-        if ($("#inputEmail3").attr('value') != "") {
-            var pattern = /^(?:[a-z\d]+[_\-\+\.]?)*[a-z\d]+@(?:([a-z\d]+\-?)*[a-z\d]+\.)+([a-z]{2,})+$/i;
-            var email = $("#inputEmail3").val();
-            if (!pattern.test(email)) {
-                $("#login_tip").text("<s:text name="emailerror"/>");
+        $("#yzemail").text("*");
+        if($("#logonemail").attr('value')!="" ){
+            var pattern = /^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/;
+            var email = $("#logonemail").val();
+            if(!pattern.test(email)){
+                $("#yzemail").text("<s:text name="emailerror"/>");
                 return false;
             }
-        } else {
-            $("#login_tip").text("<s:text name="emailEmpty"/>");
+        }else{
+            $("#yzemail").text("<s:text name="emailEmpty"/>");
             return false;
         }
 
@@ -102,8 +107,10 @@
     }
 
     function checkPwd(){
-        if($("#inputPassword3").val()==""){
-            $("#login_tip").text("<s:text name="psdEmpty"/>");
+        $("#yzpwd").text("*");
+        var pwd = $("#pwd").attr('value');
+        if (pwd == "") {
+            $("#yzpwd").text("<s:text name="psdEmpty"/>");
             return false;
         }
         return true;
