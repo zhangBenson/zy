@@ -1,7 +1,10 @@
-package com.gogowise.common.utils;
+package com.gogowise.common.filter;
 
+import com.gogowise.common.utils.Constants;
+import com.gogowise.common.utils.Utils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.*;
@@ -12,7 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Component
 public class MainFilter implements Filter {
 
 //    private static Logger logger = LogManager.getLogger(MainFilter.class);
@@ -112,7 +115,7 @@ public class MainFilter implements Filter {
             int endIndex = fileName.lastIndexOf('_');
             String perOnliveID = fileName.substring(beginIndex+1,endIndex);
 
-            Utils.notReplaceFileFromfms((Integer)session.getAttribute(Constants.SESSION_USER_ID),Integer.parseInt(perOnliveID));
+            Utils.notReplaceFileFromfms((Integer) session.getAttribute(Constants.SESSION_USER_ID), Integer.parseInt(perOnliveID));
 
         }
         for (String url : NEED_LOGIN) {

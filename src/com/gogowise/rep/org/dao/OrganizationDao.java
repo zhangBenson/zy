@@ -3,9 +3,9 @@ package com.gogowise.rep.org.dao;
 //import com.gogowise.domain.ApplyOrganization;
 
 import com.gogowise.rep.ModelDao;
-import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.Pagination;
+import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.user.enity.BaseUser;
 
 import java.util.List;
 
@@ -40,4 +40,6 @@ public interface OrganizationDao extends ModelDao<Organization> {
     public List<Organization> findLatestOrgs(Pagination pagination);
 
     public List<Organization> searchOrgs(String searchStr , Pagination pagination);
+
+    public Organization findBySecDomain(String secDomain);
 }
