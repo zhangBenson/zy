@@ -1,7 +1,6 @@
 package com.gogowise.common.filter;
 
 import com.gogowise.rep.org.dao.OrganizationDao;
-import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import org.apache.commons.lang.StringUtils;
@@ -46,13 +45,14 @@ public class SecDomainFilter implements Filter {
             //orgBlog.html?org.id=1
             String disPatcherUrl = "/orgBlog.html?org.secDomain=" + secDomainString.trim();
             request.getRequestDispatcher(disPatcherUrl).forward(request, response);
-        } else if (requestUrl.equalsIgnoreCase("/orgBlog.html") && request.getParameter("org.id") != null) {
-            Integer orgId = Integer.parseInt(request.getParameter("org.id"));
-            Organization organization = organizationDao.findById(orgId);
-            if (organization != null && StringUtils.isNotBlank(organization.getSecDomain())) {
-                response.sendRedirect("http://" + organization.getSecDomain() + ".gogowise.com");
-            }
         }
+//        else if (requestUrl.equalsIgnoreCase("/orgBlog.html") && request.getParameter("org.id") != null) {
+//            Integer orgId = Integer.parseInt(request.getParameter("org.id"));
+//            Organization organization = organizationDao.findById(orgId);
+//            if (organization != null && StringUtils.isNotBlank(organization.getSecDomain())) {
+//                response.sendRedirect("http://" + organization.getSecDomain() + ".gogowise.com");
+//            }
+//        }
 //        else if (StringUtils.contains(".html") ) {
 //
 //        }
