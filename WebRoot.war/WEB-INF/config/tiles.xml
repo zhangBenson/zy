@@ -324,10 +324,16 @@
         <put-attribute name="title" value="title.quick.login"/>
         <put-attribute name="contentBody" value="/jsp/gogowise/easyLogon.jsp"/>
     </definition>
-    <definition name=".easyLogin" extends=".bodyCenter">
+
+    <definition name=".easyLogin" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.quick.login"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/log_reg/login.jsp"/>
+        <put-attribute name="contentBody" value="/jsp/www/log_reg/login.jsp"/>
     </definition>
+
+    <!--<definition name=".easyLogin" extends=".bodyCenter">-->
+        <!--<put-attribute name="title" value="title.quick.login"/>-->
+        <!--<put-attribute name="contentBody" value="/jsp/gogowise/log_reg/login.jsp"/>-->
+    <!--</definition>-->
     <definition name=".easyReg" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.reg"/>
         <put-attribute name="contentBody" value="/jsp/www/log_reg/register.jsp"/>
