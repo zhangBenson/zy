@@ -79,5 +79,5 @@ public interface CourseDao extends ModelDao<Course> {
 
     public List<Course>  findMaintenanceCourses(Integer userId , Pagination pagination);
 
-
+    public List<Course> findFinishedCourseForUserCenter(Pagination page,Integer sid);
 }

@@ -293,9 +293,12 @@
 
     <definition name=".studentCenter" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.myfirstpage"/>
-        <put-attribute name="contentBody" value="/jsp/www/user/studentCenter.jsp"/>
+        <put-attribute name="contentBody" value="/jsp/www/user/personalCenter.jsp"/>
     </definition>
-
+    <definition name=".studentCenterFinished" extends=".wwwBodyCenter">
+        <put-attribute name="title" value="title.myfirstpage"/>
+        <put-attribute name="contentBody" value="/jsp/www/user/personalCenterFinished.jsp"/>
+    </definition>
     <!--<definition name=".userCenterImp" extends=".basic">-->
     <!--<put-attribute name="contentLeft" value="/jsp/layout/usermenu.jsp"/>-->
     <!--<put-attribute name="contentheader" value="/jsp/layout/userheader.jsp"/>-->

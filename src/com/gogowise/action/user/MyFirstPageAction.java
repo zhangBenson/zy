@@ -39,6 +39,7 @@ import java.util.List;
 @Namespace(BasicAction.BASE_NAME_SPACE)
 public class MyFirstPageAction  extends BasicAction {
 
+    private List<Course> finishedCourse = new ArrayList<Course>();
     private List<Course> latestCourse = new ArrayList<Course>();
     private List<Organization> latestOrgs = new ArrayList<>();
     private OrganizationDao organizationDao;
@@ -133,11 +134,24 @@ public class MyFirstPageAction  extends BasicAction {
         showUserCenter();
         return SUCCESS;
     }
+
+    @Action(value = "personalCenterFinished",
+            results = {@Result(name =  SUCCESS, type =  Constants.RESULT_NAME_TILES, location = ".studentCenterFinished")}
+    )
+    public String studentCenterFinished() {
+        latestOrgs = organizationDao.findLatestOrgs(new Pagination(3));
+        userOrganization = organizationDao.findMyOrg(this.getSessionUserId());
+        showUserCenter();
+        return SUCCESS;
+    }
+
+
     @Action(value = "myfirstPage",
             results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".myGoGoWise")}
     )
     public String showUserCenter() {
 //        ActionContext.getContext().getSession().put("WW_TRANS_I18N_LOCALE", Locale.US);
+        finishedCourse = courseDao.findFinishedCourseForUserCenter(new Pagination(3), this.getSessionUserId());
         latestCourse = courseDao.findMyCourseOfForcastClassForUserCenter(new Pagination(3),this.getSessionUserId());
 
         todayCourse = courseDao.findTodayCourse(this.getSessionUserId());
@@ -550,5 +564,20 @@ public class MyFirstPageAction  extends BasicAction {
     }
     public void setUserOrganization (Organization userOrganization) {
         this.userOrganization = userOrganization;
+    }
+
+    public List<Course> getFinishedCourse() {
+        return finishedCourse;
+    }
+
+    public void setFinishedCourse(List<Course> finishedCourse) {
+        this.finishedCourse = finishedCourse;
+    }
+
+    public Boolean isExistFinishedCourse(){
+        if(this.getFinishedCourse().size()==0){
+            return false;
+        }
+        return true ;
     }
 }

@@ -123,6 +123,16 @@ import java.util.List;
         List<Course> courses = this.find(hql,page,sid,sid,now);
         return courses;
     }
+
+    public List<Course> findFinishedCourseForUserCenter(Pagination page,Integer sid) {
+        String hql = QUERY_MY_FORCAST_CLASS +" and "+getFinisDateLessThanNow()+ " and " + DELETED_FALSE + "   group by c  order by MIN(cc.date) asc ";
+        Calendar now = Calendar.getInstance();
+        now.add(Calendar.MINUTE,-15);
+        List<Course> courses = this.find(hql,page,sid,sid,now);
+        return courses;
+    }
+
+
     private String getFinisDateBiggerThanNow(){
         return  " cc.duration > timestampdiff(minute,cc.date ,? ) ";
     }
