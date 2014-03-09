@@ -669,6 +669,37 @@ public class UserAction extends BasicAction {
         return SUCCESS;
     }
 
+    @Action(value="studentLogin",
+            results={@Result(name=SUCCESS, type=Constants.RESULT_NAME_TILES, location=".studentLogin")}
+    )
+    public String studentLogin() {
+        return SUCCESS;
+    }
+
+    @Action(value="studentLoginProcess",
+            results={@Result(name=SUCCESS, type=Constants.RESULT_NAME_REDIRECT_ACTION, params={"actionName", "myfirstPage"}),
+                     @Result(name=INPUT, type=Constants.RESULT_NAME_TILES, location=".studentLogin")}
+    )
+    public String studentLoginProcess() {
+        BaseUser user = baseUserDao.findByEmail(this.getUser().getEmail());
+        if (user == null) {
+            addFieldError("user.email", this.getText("message.logon.account.not.exist"));
+            return INPUT;
+        }
+
+        if (!user.getPassword().equals(MD5.endCode(this.user.getPassword()))) {
+            addFieldError("user.password", this.getText("message.logon.password.error"));
+            return INPUT;
+        }
+
+        if (baseUserRoleTypeDao.havePermission(user.getId(), RoleType.STUDENT)) {
+            return SUCCESS;
+        }
+
+        this.addActionError("You are not a student");
+        return INPUT;
+    }
+
     @Action(value = "teacherLoginProcess",
             results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}),
                     @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".teacherLogin")})
