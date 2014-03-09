@@ -4,7 +4,7 @@
 
     <!-- ===================== Need you config youself ===================== -->
     <!--<property name="tomcat.home" value="D:\dev\apache-tomcat-7.0.21"/>-->
-    <property name="tomcat.home" value="D:\Software\WebServer\tomcat7.0"/>
+    <property name="tomcat.home" value="D:\dev\apache-tomcat-7.0.21"/>
 
 
 
