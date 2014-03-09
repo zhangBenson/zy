@@ -6,9 +6,9 @@
 
 <div class="org_authorization_container">
     <div class="auth_upper">
-        <h3><s:property value="%{getText('org.student.management')}"/></h3>
+        <h3><s:property value="%{getText('org.teacher.management')}"/></h3>
         <br/>
-        <p><s:property value="%{getText('org.student.regret')}"/></p>
+        <p><s:property value="%{getText('org.teacher.regret')}"/></p>
     </div>
     <div class="auth_left">
         <div class="auth_left_1">

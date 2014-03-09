@@ -113,6 +113,11 @@
         <put-attribute name="contentBody" value="/jsp/www/log_reg/teacherLogin.jsp"/>
     </definition>
 
+    <definition name=".studentLogin" extends=".wwwBodyCenter">
+        <put-attribute name="title" value="Student Login"/>
+        <put-attribute name="contentBody" value="/jsp/www/log_reg/studentLogin.jsp"/>
+    </definition>
+
      <!--<definition name=".index" extends=".bodyCenter">-->
         <!--<put-attribute name="title" value="title.index"/>-->
          <!--<put-attribute name="contentBody" value="/jsp/gogowise/index.jsp"/>-->
