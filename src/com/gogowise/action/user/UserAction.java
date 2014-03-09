@@ -732,7 +732,7 @@ public class UserAction extends BasicAction {
         }
 
         //如果是学生
-        this.addActionError("You're not a school administrator or teacher");
+        addFieldError("user.password", this.getText("You're not a school administrator or teacher"));
         return INPUT;
     }
 
