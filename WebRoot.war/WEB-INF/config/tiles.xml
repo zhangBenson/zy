@@ -108,9 +108,19 @@
         <put-attribute name="contentBody" value="/jsp/www/log_reg/teacherRegister.jsp"/>
     </definition>
 
+    <definition name=".studentRegister" extends=".bodyCenter">
+        <put-attribute name="title" value="title.reg"/>
+        <put-attribute name="contentBody" value="/jsp/www/log_reg/studentRegister.jsp"/>
+    </definition>
+
     <definition name=".teacherLogin" extends=".wwwBodyCenter">
         <put-attribute name="title" value="Teacher Login"/>
         <put-attribute name="contentBody" value="/jsp/www/log_reg/teacherLogin.jsp"/>
+    </definition>
+
+    <definition name=".studentLogin" extends=".wwwBodyCenter">
+        <put-attribute name="title" value="Student Login"/>
+        <put-attribute name="contentBody" value="/jsp/www/log_reg/studentLogin.jsp"/>
     </definition>
 
      <!--<definition name=".index" extends=".bodyCenter">-->
@@ -293,9 +303,12 @@
 
     <definition name=".studentCenter" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.myfirstpage"/>
-        <put-attribute name="contentBody" value="/jsp/www/user/studentCenter.jsp"/>
+        <put-attribute name="contentBody" value="/jsp/www/user/personalCenter.jsp"/>
     </definition>
-
+    <definition name=".studentCenterFinished" extends=".wwwBodyCenter">
+        <put-attribute name="title" value="title.myfirstpage"/>
+        <put-attribute name="contentBody" value="/jsp/www/user/personalCenterFinished.jsp"/>
+    </definition>
     <!--<definition name=".userCenterImp" extends=".basic">-->
     <!--<put-attribute name="contentLeft" value="/jsp/layout/usermenu.jsp"/>-->
     <!--<put-attribute name="contentheader" value="/jsp/layout/userheader.jsp"/>-->
@@ -324,10 +337,16 @@
         <put-attribute name="title" value="title.quick.login"/>
         <put-attribute name="contentBody" value="/jsp/gogowise/easyLogon.jsp"/>
     </definition>
-    <definition name=".easyLogin" extends=".bodyCenter">
+
+    <definition name=".easyLogin" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.quick.login"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/log_reg/login.jsp"/>
+        <put-attribute name="contentBody" value="/jsp/www/log_reg/login.jsp"/>
     </definition>
+
+    <!--<definition name=".easyLogin" extends=".bodyCenter">-->
+        <!--<put-attribute name="title" value="title.quick.login"/>-->
+        <!--<put-attribute name="contentBody" value="/jsp/gogowise/log_reg/login.jsp"/>-->
+    <!--</definition>-->
     <definition name=".easyReg" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.reg"/>
         <put-attribute name="contentBody" value="/jsp/www/log_reg/register.jsp"/>

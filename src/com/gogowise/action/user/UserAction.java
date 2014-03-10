@@ -669,6 +669,37 @@ public class UserAction extends BasicAction {
         return SUCCESS;
     }
 
+    @Action(value="studentLogin",
+            results={@Result(name=SUCCESS, type=Constants.RESULT_NAME_TILES, location=".studentLogin")}
+    )
+    public String studentLogin() {
+        return SUCCESS;
+    }
+
+    @Action(value="studentLoginProcess",
+            results={@Result(name=SUCCESS, type=Constants.RESULT_NAME_REDIRECT_ACTION, params={"actionName", "myfirstPage"}),
+                     @Result(name=INPUT, type=Constants.RESULT_NAME_TILES, location=".studentLogin")}
+    )
+    public String studentLoginProcess() {
+        BaseUser user = baseUserDao.findByEmail(this.getUser().getEmail());
+        if (user == null) {
+            addFieldError("user.email", this.getText("message.logon.account.not.exist"));
+            return INPUT;
+        }
+
+        if (!user.getPassword().equals(MD5.endCode(this.user.getPassword()))) {
+            addFieldError("user.password", this.getText("message.logon.password.error"));
+            return INPUT;
+        }
+
+        if (baseUserRoleTypeDao.havePermission(user.getId(), RoleType.STUDENT)) {
+            return SUCCESS;
+        }
+
+        this.addActionError("You are not a student");
+        return INPUT;
+    }
+
     @Action(value = "teacherLoginProcess",
             results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}),
                     @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".teacherLogin")})
@@ -701,7 +732,7 @@ public class UserAction extends BasicAction {
         }
 
         //如果是学生
-        this.addActionError("You're not a school administrator or teacher");
+        addFieldError("user.password", this.getText("You're not a school administrator or teacher"));
         return INPUT;
     }
 
@@ -854,6 +885,53 @@ public class UserAction extends BasicAction {
 
         baseUserRoleType.setBaseUser(user);
         baseUserRoleType.getRoleType().setId(5);
+        baseUserRoleTypeDao.persist(baseUserRoleType);
+
+        return SUCCESS;
+    }
+
+    @Action(value = "studentRegister",
+            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}),
+                    @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".easyReg"),
+                    @Result(name = "redirect", type = "redirect", location = "${reDirectUrl}")}
+    )
+    public String studentRegister() {
+        if (this.getUser().getEmail() == null || this.getUser().getEmail().trim() == "") {
+            addFieldError("user.email", this.getText("please enter email"));
+            return INPUT;
+        }
+
+        BaseUser localUser = baseUserDao.findByEmail(this.getUser().getEmail());
+        if (localUser != null) {
+            addFieldError("user.email", this.getText("reEmail"));
+            return INPUT;
+        }
+
+        user.setEmail(StringUtils.trim(user.getEmail()));
+        user.setNickName(StringUtils.trim(user.getNickName()));
+        user.setLockedOut(true);
+        user.setPassword(MD5.endCode(user.getPassword()));
+        user.setRegDate(Calendar.getInstance());
+        String md5 = MD5.endCode(String.valueOf(System.currentTimeMillis()));
+        user.setActiveCode(md5);
+        user.setLanguage(ActionContext.getContext().getLocale().getLanguage());
+        baseUserDao.persistAbstract(user);
+        if (ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL) == null) {
+            sendEmail(user);
+        }
+        if (user.getEmail() != null)
+            this.emailBoxUrl = EmailUtil.getEmailBoxUrl(user.getEmail());
+        setUserToSession(user);
+        setUserOrg(user);
+        if (StringUtils.isNotBlank(this.getReDirectUrl())) {
+            return "redirect";
+        }
+
+        baseUserRoleType = new BaseUserRoleType();
+        baseUserRoleType.setBaseUser(user);
+        baseUserRoleType.setRoleType(new RoleType());
+        baseUserRoleType.getRoleType().setRoleName("student");
+        baseUserRoleType.getRoleType().setId(6);
         baseUserRoleTypeDao.persist(baseUserRoleType);
 
         return SUCCESS;
