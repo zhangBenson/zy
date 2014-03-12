@@ -1,6 +1,8 @@
 package com.gogowise.common.filter;
 
+import com.gogowise.common.utils.Constants;
 import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import org.apache.commons.lang.StringUtils;
@@ -38,21 +40,22 @@ public class SecDomainFilter implements Filter {
 //        HttpSession session = request.getSession();
         String requestUrl = request.getServletPath();
 
-        String secDomainString = getSecDomainString(request);
+        String secDomainString = getSecDomainString(request).trim();
         if (StringUtils.isNotBlank(secDomainString) && StringUtils.endsWith(requestUrl, "index.jsp")
-                && secDomainString.length() > 4
+                && secDomainString.length() >= Constants.MIN_SECDOMAIN_LENGTH
                 ) {
             //orgBlog.html?org.id=1
-            String disPatcherUrl = "/orgBlog.html?org.secDomain=" + secDomainString.trim();
+            String disPatcherUrl = "/orgBlog.html?org.secDomain=" + secDomainString;
             request.getRequestDispatcher(disPatcherUrl).forward(request, response);
+        } else if (requestUrl.equalsIgnoreCase("/index.html") && secDomainString.length() >= Constants.MIN_SECDOMAIN_LENGTH) {
+            response.sendRedirect("http://" + Constants.WHICH_SITE_CAN＿HAVE＿SECDOMAIN);
+        } else if (requestUrl.equalsIgnoreCase("/orgBlog.html") && request.getParameter("org.id") != null && (secDomainString.length() >= Constants.MIN_SECDOMAIN_LENGTH || Constants.WHICH_SITE_CAN＿HAVE＿SECDOMAIN.equalsIgnoreCase(request.getServerName()))) {
+            Integer orgId = Integer.parseInt(request.getParameter("org.id"));
+            Organization organization = organizationDao.findById(orgId);
+            if (organization != null && StringUtils.isNotBlank(organization.getSecDomain())) {
+                response.sendRedirect("http://" + organization.getSecDomain() + ".gogowise.com");
+            }
         }
-//        else if (requestUrl.equalsIgnoreCase("/orgBlog.html") && request.getParameter("org.id") != null) {
-//            Integer orgId = Integer.parseInt(request.getParameter("org.id"));
-//            Organization organization = organizationDao.findById(orgId);
-//            if (organization != null && StringUtils.isNotBlank(organization.getSecDomain())) {
-//                response.sendRedirect("http://" + organization.getSecDomain() + ".gogowise.com");
-//            }
-//        }
 //        else if (StringUtils.contains(".html") ) {
 //
 //        }
@@ -72,7 +75,7 @@ public class SecDomainFilter implements Filter {
                 }
             }
         }
-        return null;
+        return "";
     }
 
 

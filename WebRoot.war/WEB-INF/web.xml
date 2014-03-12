@@ -187,6 +187,7 @@
     <filter-mapping>
         <filter-name>hibernateFilter</filter-name>
         <url-pattern>*.html</url-pattern>
+        <url-pattern>*.jsp</url-pattern>
     </filter-mapping>
 
 
