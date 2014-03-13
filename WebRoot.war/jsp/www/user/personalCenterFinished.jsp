@@ -20,10 +20,12 @@
 
     <div class="basePanelTextLeft" style="text-align: center;">
         <button type="button" class="btn btn-info btn-block">
-            <span class="glyphicon glyphicon-tag" style="margin-right: 10px;"></span>Courses Underway
+            <span class="glyphicon glyphicon-tag" style="margin-right: 10px;"></span>
+            <a href="personalCenter.html" style="display: block; text-decoration: none">Courses Underway</a>
         </button>
         <button type="button" class="btn btn-warning btn-block">
-            <span class="glyphicon glyphicon-tags" style="margin-right: 10px;"></span>Courses Finished
+            <span class="glyphicon glyphicon-tags" style="margin-right: 10px;"></span>
+            <a href="personalCenterFinished.html" style="display: block; text-decoration: none">Courses Finished</a>
         </button>
     </div>
 
