@@ -11,7 +11,9 @@
 <div class="col-sm-3">
 
     <div class="basePanelTextLeft" style="text-align: center;">
+        <a href="initUpdate.html">
         <img src="<s:property value="#session.userLogoUrl" />" style="width: 160px;height: 160px;border-radius: 12px;">
+        </a>
         <p></p>
         <p class="teacherTitle"><s:property value="#session.nickName" /></p>
     </div>
