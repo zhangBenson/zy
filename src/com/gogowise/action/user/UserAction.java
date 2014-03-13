@@ -890,6 +890,53 @@ public class UserAction extends BasicAction {
         return SUCCESS;
     }
 
+    @Action(value = "studentRegister",
+            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}),
+                    @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".easyReg"),
+                    @Result(name = "redirect", type = "redirect", location = "${reDirectUrl}")}
+    )
+    public String studentRegister() {
+        if (this.getUser().getEmail() == null || this.getUser().getEmail().trim() == "") {
+            addFieldError("user.email", this.getText("please enter email"));
+            return INPUT;
+        }
+
+        BaseUser localUser = baseUserDao.findByEmail(this.getUser().getEmail());
+        if (localUser != null) {
+            addFieldError("user.email", this.getText("reEmail"));
+            return INPUT;
+        }
+
+        user.setEmail(StringUtils.trim(user.getEmail()));
+        user.setNickName(StringUtils.trim(user.getNickName()));
+        user.setLockedOut(true);
+        user.setPassword(MD5.endCode(user.getPassword()));
+        user.setRegDate(Calendar.getInstance());
+        String md5 = MD5.endCode(String.valueOf(System.currentTimeMillis()));
+        user.setActiveCode(md5);
+        user.setLanguage(ActionContext.getContext().getLocale().getLanguage());
+        baseUserDao.persistAbstract(user);
+        if (ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL) == null) {
+            sendEmail(user);
+        }
+        if (user.getEmail() != null)
+            this.emailBoxUrl = EmailUtil.getEmailBoxUrl(user.getEmail());
+        setUserToSession(user);
+        setUserOrg(user);
+        if (StringUtils.isNotBlank(this.getReDirectUrl())) {
+            return "redirect";
+        }
+
+        baseUserRoleType = new BaseUserRoleType();
+        baseUserRoleType.setBaseUser(user);
+        baseUserRoleType.setRoleType(new RoleType());
+        baseUserRoleType.getRoleType().setRoleName("student");
+        baseUserRoleType.getRoleType().setId(6);
+        baseUserRoleTypeDao.persist(baseUserRoleType);
+
+        return SUCCESS;
+    }
+
     public void validateReg() {
         if (baseUserDao.findByEmail(StringUtils.trim(user.getEmail())) != null) {
             String reEmail = getText("reEmail");

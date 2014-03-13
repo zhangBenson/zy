@@ -15,13 +15,13 @@
         <a href="javascript:;" class="stand_out"><s:property value="%{getText('user.info.identity.finish.reg')}" /></a>
     </div>
     <div class="lr_right lr_right_reg fr">
-        <s:form validate="true" theme="css_xhtml" method="POST" action="teacherReg">
+        <s:form validate="true" theme="css_xhtml" method="POST" action="studentRegister">
             <s:hidden name="reDirectUrl" id="reDirectUrl"/>
-            <s:hidden name="baseUserRoleType.roleType.roleName" value="teacher"/>
-            <s:hidden name="baseUserRoleType.roleType.id" value="5" />
+            <s:hidden name="baseUserRoleType.roleType.roleName" value="student"/>
+            <s:hidden name="baseUserRoleType.roleType.id" value="6" />
 
             <div class="item_wrap item_wrap_reg">
-                <div class="option_title_reg">Teacher's <s:property value="%{getText('email')}" /></div> &nbsp;&nbsp;
+                <div class="option_title_reg">Student's <s:property value="%{getText('email')}" /></div> &nbsp;&nbsp;
                 <span id="log_email_tip" class="tip_words">*</span>
                 <s:textfield cssClass="textfield" name="user.email" />
                 <span class="email_img"></span>
