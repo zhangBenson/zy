@@ -11,7 +11,9 @@
 <div class="col-sm-3">
 
     <div class="basePanelTextLeft" style="text-align: center;">
+        <a href="initUpdate.html">
         <img src="<s:property value="#session.userLogoUrl" />" style="width: 160px;height: 160px;border-radius: 12px;">
+        </a>
         <p></p>
         <p class="teacherTitle"><s:property value="#session.nickName" /></p>
     </div>
@@ -20,10 +22,12 @@
 
     <div class="basePanelTextLeft" style="text-align: center;">
         <button type="button" class="btn btn-info btn-block">
-            <span class="glyphicon glyphicon-tag" style="margin-right: 10px;"></span>Courses Underway
+            <span class="glyphicon glyphicon-tag" style="margin-right: 10px;"></span>
+            <a href="personalCenter.html" style="display: block; text-decoration: none">Courses Underway</a>
         </button>
         <button type="button" class="btn btn-warning btn-block">
-            <span class="glyphicon glyphicon-tags" style="margin-right: 10px;"></span>Courses Finished
+            <span class="glyphicon glyphicon-tags" style="margin-right: 10px;"></span>
+            <a href="personalCenterFinished.html" style="display: block; text-decoration: none">Courses Finished</a>
         </button>
     </div>
 

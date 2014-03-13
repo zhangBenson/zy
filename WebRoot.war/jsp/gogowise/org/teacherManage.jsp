@@ -74,7 +74,7 @@
         </div>
 
         <s:form  id="form1" method="POST" validate="false" theme="simple" action="saveOrgUser" onsubmit="return checkAuthorizationEmails();">
-            <s:hidden name="roleType" value="6"/>
+            <s:hidden name="roleType" value="5"/>
             <div class="auth_left_2">
                 <div class="addlist">
                     <div>
