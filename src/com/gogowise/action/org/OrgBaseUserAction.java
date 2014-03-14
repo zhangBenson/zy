@@ -4,14 +4,10 @@ import com.gogowise.action.BasicAction;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.EmailUtil;
 import com.gogowise.common.utils.MD5;
-import com.gogowise.rep.finance.UserAccountInfoDao;
-import com.gogowise.rep.finance.enity.UserAccountInfo;
-import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.dao.OrganizationBaseUserDao;
-import com.gogowise.rep.org.dao.OrganizationTeacherDao;
+import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.org.enity.OrganizationBaseUser;
-import com.gogowise.rep.org.enity.OrganizationTeacher;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import com.gogowise.rep.user.dao.RoleTypeDao;
@@ -20,10 +16,8 @@ import com.gogowise.rep.user.enity.BaseUserRoleType;
 import com.gogowise.rep.user.enity.RoleType;
 import com.gogowise.vo.ResultData;
 import com.opensymphony.xwork2.ActionContext;
-import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
-import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -110,7 +104,8 @@ public class OrgBaseUserAction extends BasicAction {
                 //2. 发邮件通知
                 String tile = "GoGoWise"+org.getSchoolName()+"学校邀请";
                 //TODO: 邮件内容待确认
-                String content = "GoGoWise"+org.getSchoolName()+"学校邀请您成为它的老师，帐号为您的邮箱："+userEmail+",密码为："+randomPwd+",点击<a href='http:'>这里</a>接受，点击<a href='#'>这里</a>拒绝";
+                String content = "GoGoWise" + org.getSchoolName() + "学校邀请您成为它的老师，帐号为您的邮箱：" + userEmail + ",密码为：" + randomPwd;
+//                        +",点击<a href='http:'>这里</a>接受，点击<a href='#'>这里</a>拒绝";
                 EmailUtil.sendMail(userEmail, tile, content, null, null);
             }
 
