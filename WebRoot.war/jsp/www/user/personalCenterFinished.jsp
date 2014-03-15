@@ -22,12 +22,14 @@
 
     <div class="basePanelTextLeft" style="text-align: center;">
         <button type="button" class="btn btn-info btn-block">
-            <span class="glyphicon glyphicon-tag" style="margin-right: 10px;"></span>
-            <a href="personalCenter.html" style="display: block; text-decoration: none">Courses Underway</a>
+            <a href="personalCenter.html" style="display: block; text-decoration: none">
+                <span class="glyphicon glyphicon-tag" style="margin-right: 10px;"></span>Courses Underway
+            </a>
         </button>
         <button type="button" class="btn btn-warning btn-block">
-            <span class="glyphicon glyphicon-tags" style="margin-right: 10px;"></span>
-            <a href="personalCenterFinished.html" style="display: block; text-decoration: none">Courses Finished</a>
+            <a href="personalCenterFinished.html" style="display: block; text-decoration: none">
+                <span class="glyphicon glyphicon-tags" style="margin-right: 10px;"></span>Courses Finished
+            </a>
         </button>
     </div>
 
@@ -118,12 +120,17 @@
                         </ul>
 
                         <div class="media">
-                            <a class="pull-left" href="#">
-                                <div class="mycourseImg "><img src="<s:property value="logoUrl" />"  class="media-object" alt=""></div>
+                            <a class="pull-left" href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>">
+                                <div class="mycourseImg ">
+                                        <img src="<s:property value="logoUrl" />"  class="media-object" alt="">
+                                </div>
                             </a>
 
                             <div class="media-body">
-                                <h4 class="media-heading" style="color: #6ab600;"><s:property value="name"/></h4>
+                                <h4 class="media-heading" style="color: #6ab600;">
+                                    <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>">
+                                    <s:property value="name"/>
+                                </a></h4>
                                 <s:if test="description.length() > 50">
                                     <p><s:property value="description.substring(0,50)+'...'" /></p>
                                 </s:if>

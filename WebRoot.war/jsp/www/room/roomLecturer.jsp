@@ -241,9 +241,11 @@ $(document).ready(function() {
     });
 
     $("#btnSubmitQuestions").click(function(){
+        $("#QuestionItem").show();
         $("#questionsList").hide();
         $("#btnSubmitQuestions").attr("disabled","disabled");
         seletedQuestions();
+        getQuestionItemInfo($('input[name="selectQuestion"]:checked').val());
     });
 
     $("#btnAddVideo").click(function(){
@@ -499,6 +501,46 @@ function UploadCourseResource(options){
     return false;
 }
 
+function getQuestionItemInfo(id)
+{
+
+    $("#QuestionItem div").remove();
+
+    $.ajax({
+        type:"GET",
+        url:"question.html",
+        data:{"questionId":id},
+        dataType:"json",
+        success:function(data){
+
+            $("#QuestionItem").append("<div>"+
+                    "<div class='questionsItemText'>"+data.vo["description"]+"</div>"+
+                    "<span class='questionid'>"+data.vo["id"]+"</span>"+
+                    "<div class='listanswer' style='text-align:left;margin-left:20px;'></div>");
+            var index =1;
+            $.each(data.vo.items,function(key,info){
+                $("#QuestionItem").find(".listanswer").append("<div style='margin-top:10px;'>"+
+                        "<label>"+
+
+                        "<span style='display:none;'>"+index+"</span>"+
+                        "<div><span style='color:#6ab600;'>"+index+":</span><span style='color:red;'>"+info+"</span></div>"+
+                        "</label>"+
+                        "</div>");
+                index++;
+            });
+
+
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+            });
+        },
+        error:function(){
+            alert("no data....");
+        }
+    });
+}
 
 function getQuestionInfo()
 {
@@ -1026,7 +1068,7 @@ function ShowMessage(name,imgpath,content,bit)
     #studionList li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 88px; height: 90px;  text-align: center; background-color: transparent;border-width: 0px;}
 
     .fileList { list-style-type: none; margin: 0; padding: 0; width: 550px; }
-    .fileList li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 105px;   text-align: center; background-color: transparent;border-width: 0px;}
+    .fileList li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 105px;height: 180px; text-align: center; background-color: transparent;border-width: 0px;}
 
     .listanswer { list-style-type: none; margin: 0; padding: 0; width: 550px; margin-top: 5px;}
     .listanswer li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 95px;   text-align: center; background-color: transparent;border-width: 0px;}
@@ -1550,6 +1592,9 @@ function ShowMessage(name,imgpath,content,bit)
                             <span class="questionid">3</span>
                         </label>
                     </div> -->
+                </div>
+                <div id="QuestionItem" style="display: none;text-align: center;">
+
                 </div>
                 <div id="resultView" style="display: none;text-align: center;">
                     <canvas id="canvas" height="450" width="450"></canvas>
