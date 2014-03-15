@@ -275,7 +275,7 @@
 
     <div class="mfp_right fl">
         <div class="rtItem1 fl">
-            <h3 class="h3_title"><s:property value="%{getText('title.newest.matters')}"/></h3>
+            <h3 class="h3_title"><s:property value="%{getText('title.newest.notifications')}"/></h3>
             <s:if test="matterCount != 0">
                 <div class="message_tip" id="message_tip_elipse" title="<s:property value="matterCount"/><s:property value="%{getText('my.firstpage.new.matter.num')}"/>"><s:property value="matterCount"/> </div>
                 <div id="message_box" class="message_box"></div>
