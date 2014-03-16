@@ -25,6 +25,8 @@ import java.util.List;
     private static final String DELETED_FALSE = "c.isDeleted = false";
     private static String QUERY_RELATED_COURSE = "select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc  left join c.organization org left join c.teachers teacher where c.masterConfirmed=true and c.teacherConfirmed=true and cc.course.id = c.id and  (teacher.id=? or c.cameraMan.id=? or org.responsiblePerson.id=? or sc.student.id=?) ";
     private static String QUERY_MY_FORCAST_CLASS = "select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc  left join c.organization org  left join c.teachers teacher where  cc.course.id = c.id and  (teacher.id=? or sc.student.id=?) ";
+    private static String QUERY_MY_FORCAST_CLASS_Teacher = "select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc  left join c.organization org  left join c.teachers teacher where  cc.course.id = c.id and teacher.id=? ";
+    private static String QUERY_MY_FORCAST_CLASS_Student = "select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc  left join c.organization org  left join c.teachers teacher where  cc.course.id = c.id and sc.student.id=? ";
     private static String COURSE_CONFIRMED = "  c.cameraManConfirmed=true ";
     private BaseUserDao baseUserDao;
     private OrganizationDao organizationDao;
@@ -124,14 +126,42 @@ import java.util.List;
         return courses;
     }
 
-    public List<Course> findFinishedCourseForUserCenter(Pagination page,Integer sid) {
-        String hql = QUERY_MY_FORCAST_CLASS +" and "+getFinisDateLessThanNow()+ " and " + DELETED_FALSE + "   group by c  order by MIN(cc.date) asc ";
+    public List<Course> findFinishedCourseForUserCenter(Pagination page,Integer sid, int type)
+    {
+        String hql = QUERY_MY_FORCAST_CLASS_Student +" and "+getFinisDateLessThanNow()+ " and " + DELETED_FALSE + "   group by c  order by MIN(cc.date) asc ";
+        if( type == Constants.ROLE_TYPE_STUDENT )
+        {
+            hql = QUERY_MY_FORCAST_CLASS_Student +" and "+getFinisDateLessThanNow()+ " and " + DELETED_FALSE + "   group by c  order by MIN(cc.date) asc ";
+        }
+        if( type == Constants.ROLE_TYPE_TEACHER )
+        {
+            hql = QUERY_MY_FORCAST_CLASS_Teacher +" and "+getFinisDateLessThanNow()+ " and " + DELETED_FALSE + "   group by c  order by MIN(cc.date) asc ";
+        }
+
         Calendar now = Calendar.getInstance();
         now.add(Calendar.MINUTE,-15);
-        List<Course> courses = this.find(hql,page,sid,sid,now);
+        List<Course> courses = this.find(hql,page,sid,now);
         return courses;
     }
 
+    public List<Course> findMyCourseOfForcastClassForUserCenter(Pagination page,Integer sid, int type)
+    {
+        String hql = QUERY_MY_FORCAST_CLASS +" and "+getFinisDateBiggerThanNow()+ " and " + DELETED_FALSE + "   group by c  order by MIN(cc.date) asc ";
+
+        if( type == Constants.ROLE_TYPE_TEACHER )
+        {
+            hql = QUERY_MY_FORCAST_CLASS_Teacher +" and "+getFinisDateBiggerThanNow()+ " and " + DELETED_FALSE + "   group by c  order by MIN(cc.date) asc ";
+        }
+        if( type == Constants.ROLE_TYPE_STUDENT )
+        {
+            hql = QUERY_MY_FORCAST_CLASS_Student +" and "+getFinisDateBiggerThanNow()+ " and " + DELETED_FALSE + "   group by c  order by MIN(cc.date) asc ";
+        }
+
+        Calendar now = Calendar.getInstance();
+        now.add(Calendar.MINUTE,-15);
+        List<Course> courses = this.find(hql,page,sid,now);
+        return courses;
+    }
 
     private String getFinisDateBiggerThanNow(){
         return  " cc.duration > timestampdiff(minute,cc.date ,? ) ";
