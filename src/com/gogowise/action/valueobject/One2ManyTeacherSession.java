@@ -29,7 +29,7 @@ public class One2ManyTeacherSession {
         if(courseClass.getCourse().getPersonalTeacher()!=null) this.setType(4);
         this.setTitle(getEmptyString(courseClass.getCourse().getName()));
         this.setAbstract(getEmptyString(""));
-        this.setContent(getEmptyString(courseClass.getCourse().getDescription()));
+        //this.setContent(getEmptyString(courseClass.getCourse().getDescription()));
         this.setClassID(getEmptyInteger(courseClass.getId()));
         this.setCourseID(getEmptyInteger(courseClass.getCourse().getId()));
     }
