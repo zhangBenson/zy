@@ -51,7 +51,7 @@
 
         </div>
 
-        <h3 class="courseSubhead"><s:property value="%{getText('title.newest.matters')}"/></h3>
+        <h3 class="courseSubhead"><s:property value="%{getText('title.newest.notifications')}"/></h3>
 
         <div class="thickline"></div>
 
@@ -254,7 +254,7 @@
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel1"><s:property value="%{getText('title.newest.matters')}"/></h4>
+                <h4 class="modal-title" id="myModalLabel1"><s:property value="%{getText('title.newest.notifications')}"/></h4>
             </div>
 
             <div class="modal-body">
