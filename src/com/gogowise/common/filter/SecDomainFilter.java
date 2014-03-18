@@ -47,6 +47,7 @@ public class SecDomainFilter implements Filter {
             //orgBlog.html?org.id=1
             String disPatcherUrl = "/orgBlog.html?org.secDomain=" + secDomainString;
             request.getRequestDispatcher(disPatcherUrl).forward(request, response);
+            return;
         } else if (requestUrl.equalsIgnoreCase("/index.html") && secDomainString.length() >= Constants.MIN_SECDOMAIN_LENGTH) {
             response.sendRedirect("http://" + Constants.WHICH_SITE_CAN＿HAVE＿SECDOMAIN);
         } else if (requestUrl.equalsIgnoreCase("/orgBlog.html") && request.getParameter("org.id") != null && (secDomainString.length() >= Constants.MIN_SECDOMAIN_LENGTH || Constants.WHICH_SITE_CAN＿HAVE＿SECDOMAIN.equalsIgnoreCase(request.getServerName()))) {
