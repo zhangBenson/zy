@@ -176,6 +176,7 @@ $(document).ready(function() {
     $("#btnQuestion").click(function(){
         if($('input[name="studentQuestion"]:checked').val() != undefined)
             setQuestionResult($('input[name="studentQuestion"]:checked').val());
+        $("#questionsStudentModal").modal('hide');
     });
 
     //提交选择题目;
