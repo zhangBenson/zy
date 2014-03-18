@@ -147,7 +147,7 @@
      }
 
     function yzSaveCourseClassForm(){
-        var result = rue;
+        var result = true;
         if( $("#class_nickname_input").val().length == 0 )
         {
             result = false;
@@ -188,10 +188,12 @@
           if($("#courseStartDate").val().length==0){
               $(".course_date_input_msg").html(warn_course_date_empty);
               b4 = false;
-          }else if(!dateComparator("#courseStartDate")){
-              $(".course_date_input_msg").html(warn_start_time_error);
-              b4 = false;
-          } else b4 = true;
+          }
+          //else if(!dateComparator("#courseStartDate")){
+          //    $(".course_date_input_msg").html(warn_start_time_error);
+          //    b4 = false;
+          //}
+          else b4 = true;
 
           /*if($("#course_logo").val().length==0){
               $("#course_logo_input_msg").html(warn_upload);
@@ -322,7 +324,7 @@
              if($(this).val() == ""){
                $(".course_date_input_msg").html(warn_course_date_empty);
              }else if(!dateComparator(this)){
-                $(".course_date_input_msg").html(warn_start_time_error);
+                //$(".course_date_input_msg").html(warn_start_time_error);
              }else{
                  $(".course_date_input_msg").html("*");
              }
