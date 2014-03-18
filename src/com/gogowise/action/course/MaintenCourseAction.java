@@ -80,8 +80,23 @@ public class MaintenCourseAction extends BasicAction {
     public String maintenanceCourse() {
         course = courseDao.findById(this.getCourse().getId());
         Organization org = organizationDao.findByResId(this.getSessionUserId());
+
+        //if org is null, then this user is a teacher
+        if( org == null )
+        {
+            org = organizationDao.findMyOrg(this.getSessionUserId());
+        }
+
         teachers = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(),Constants.ROLE_TYPE_TEACHER,null);
+
+        //If there is no teachers
+        if(teachers == null || teachers.size() < 1)
+        {
+            teachers = organizationDao.findHotTeacherByOrgId(org.getId(),null);
+        }
+
         students = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(),Constants.ROLE_TYPE_STUDENT,null);
+
         return SUCCESS;
     }
 
