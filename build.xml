@@ -13,8 +13,10 @@
 
 
     <property name="src.home" value="./src"/>
+    <property name="myConfig.home" value="./MyConfig"/>
     <property name="lib.home" value="${web.home}/WEB-INF/lib"/>
     <property name="classes.home" value="${web.home}/WEB-INF/classes"/>
+    <property name="META.home" value="${web.home}/META-INF"/>
     <property name="deploy.home" value="${tomcat.home}/webapps/gogowise.war"/>
 
     <!-- ==================== Copy Files =========================== -->
@@ -43,6 +45,13 @@
                 <include name="**/*"/>
             </fileset>
         </copy>
+        <echo message="${META.home}"/>
+        <copy verbose="${verbose.value}" todir="${META.home}">
+            <fileset dir="${myConfig.home}/META-INF">
+                <include name="**/*"/>
+            </fileset>
+        </copy>
+
     </target>
 
     <target name="copyAllFilesAndDeploy" depends="copyAllFiles,native">
