@@ -287,7 +287,7 @@ function getQuestionResult(questionId)
             getGirlOjbect().checkResult();
         },
         error:function(){
-            alert("no data...");
+            //alert("no data...");
         }
     });
 }
@@ -398,7 +398,7 @@ function changeSpeechFile(){
     var extension = fileObj.value.substring(fileObj.value.lastIndexOf(".")+1).toLowerCase();
 
     if(allowExtension.indexOf(extension)==-1){
-        alert("Only File of "+allowExtension+" is allowed.");
+        //alert("Only File of "+allowExtension+" is allowed.");
         return;
     }
 
@@ -419,7 +419,7 @@ function changeSpeechFile(){
         },
         error: function (data, status, e)
         {
-            alert(e);
+            //alert(e);
         }
     });
 }
@@ -431,7 +431,7 @@ function changeQuestionFile(){
     var extension = fileObj.value.substring(fileObj.value.lastIndexOf(".")+1).toLowerCase();
 
     if(allowExtension.indexOf(extension)==-1){
-        alert("Only File of "+allowExtension+" is allowed.");
+        //alert("Only File of "+allowExtension+" is allowed.");
         return;
     }
 
@@ -452,7 +452,7 @@ function changeQuestionFile(){
         },
         error: function (data, status, e)
         {
-            alert(e);
+            //alert(e);
         }
     });
 }
@@ -466,11 +466,11 @@ function setVideoInfo(videolink,videoname)
         dataType:"json",
         success: function(data)
         {
-            alert("success");
+            //alert("success");
             getVideoList();
         },
         error:function(){
-            alert("error....");
+            //alert("error....");
         }
     });
 }
@@ -485,14 +485,14 @@ function UploadCourseResource(options){
     },function(data){
         if(data){
             if(!options.success){
-                alert("Upload success!");
+                //alert("Upload success!");
                 return;
             }
             options.success();
             return;
         }
         if(!options.error){
-            alert("Upload failure!");
+            //alert("Upload failure!");
             return;
         }
         options.error();
@@ -537,7 +537,7 @@ function getQuestionItemInfo(id)
             });
         },
         error:function(){
-            alert("no data....");
+            //alert("no data....");
         }
     });
 }
@@ -571,7 +571,7 @@ function getQuestionInfo()
             });
         },
         error:function(){
-            alert("no data....");
+            //alert("no data....");
         }
     });
 }
@@ -825,8 +825,8 @@ function addOneStudent(name,imgpath,id,ismsg,isMic)
         showControlBar(id,event.pageX,event.pageY);
     });
 
-    if(ismsg)
-        alert("进入学生:"+name,"success");
+    //if(ismsg)
+        //alert("进入学生:"+name,"success");
 }
 
 //根据ID退出一个学生
@@ -1096,7 +1096,7 @@ function ShowMessage(name,imgpath,content,bit)
             if(rd.result==200){
                 return;
             }
-            alert("Set class record failure");
+            //alert("Set class record failure");
         });
     }
 </script>
@@ -1473,7 +1473,7 @@ function ShowMessage(name,imgpath,content,bit)
             <div class="modal-footer">
                 <div class="pull-left" id="currentfile"></div>
 
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
                 <button type="button" class="btn btn-primary" id="btnSelectFile">Ok</button>
             </div>
         </div>
@@ -1546,7 +1546,7 @@ function ShowMessage(name,imgpath,content,bit)
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
                 <button type="button" class="btn btn-primary">Ok</button>
             </div>
         </div>
@@ -1618,7 +1618,7 @@ function ShowMessage(name,imgpath,content,bit)
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
                 <button type="button" class="btn btn-primary" id="btnQuestionResult">Result View</button>
                 <button type="button" class="btn btn-primary" id="btnSubmitQuestions">Ok</button>
             </div>

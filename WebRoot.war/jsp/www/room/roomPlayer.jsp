@@ -240,11 +240,11 @@ function setQuestionResult(result)
         dataType:"json",
         success: function(data)
         {
-            alert("success");
+            //alert("success");
             getGirlOjbect().submitAnswer();
         },
         error:function(){
-            alert("error....");
+            //alert("error....");
         }
     });
 }
@@ -417,8 +417,7 @@ function alert(content,type)
 
 function getQuestionInfo(id)
 {
-    $("#studentQuestionItem div").remove();
-    $("#currentQuestionId").text(id);
+
 
     $.ajax({
         type:"GET",
@@ -426,7 +425,8 @@ function getQuestionInfo(id)
         data:{"questionId":id},
         dataType:"json",
         success:function(data){
-
+            $("#studentQuestionItem div").remove();
+            $("#currentQuestionId").text(id);
             $("#studentQuestionItem").append("<div>"+
                     "<div class='questionsItemText'>"+data.vo["description"]+"</div>"+
                     "<span class='questionid'>"+data.vo["id"]+"</span>"+
@@ -475,8 +475,8 @@ function addOneStudent(name,imgpath,id,ismsg,isMic)
     //        			showControlBar(id,event.pageX,event.pageY);
     //        		});
 
-    if(ismsg)
-        alert("进入学生:"+name,"success");
+    //if(ismsg)
+        //alert("进入学生:"+name,"success");
 }
 
 //根据ID退出一个学生
@@ -959,7 +959,7 @@ function ShowMessage(name,imgpath,content,bit)
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
                 <button type="button" class="btn btn-primary" id="btnQuestion">Ok</button>
             </div>
         </div>
