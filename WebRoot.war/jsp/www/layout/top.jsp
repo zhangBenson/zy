@@ -4,6 +4,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#btnLogin").click(function (event) {
+            $("#login_tip").html(" ");
             $('#modalLogin').modal("show");
         });
 

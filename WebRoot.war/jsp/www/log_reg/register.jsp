@@ -72,24 +72,24 @@
 
                     <div class="form-group">
                         <label><s:property value="%{getText('email')}" /></label>
-                        <span id="log_email_tip" class="tip_words">*</span>
+                        <span id="log_email_tip" class="errorinfo">*</span>
 
                         <s:textfield cssClass="form-control" name="user.email" id="registeremail" placeholder="Enter Email"/>
                     </div>
                     <div class="form-group">
                         <label ><s:property value="%{getText('password')}"/></label>
-                        <span id="log_pwd_tip" class="tip_words">*</span>
+                        <span id="log_pwd_tip" class="errorinfo">*</span>
                         <s:password cssClass="form-control" name="user.password" id="registerpwd" placeholder="Password"/>
                     </div>
                     <div class="form-group">
                         <label><s:property value="%{getText('psdagain')}"/></label>
-                        <span id="log_repwd_tip" class="tip_words">*</span>
+                        <span id="log_repwd_tip" class="errorinfo">*</span>
 
                         <s:password cssClass="form-control" name="duplicate"   placeholder="Password"/>
                     </div>
                     <div class="form-group">
                         <label ><s:property value="%{getText('menber.reg.nickName')}"/></label>
-                        <span id="log_nickName_tip" class="tip_words">*</span>
+                        <span id="log_nickName_tip" class="errorinfo">*</span>
 
                         <s:textfield cssClass="form-control" name="user.nickName"  placeholder="Nick Name"/>
                     </div>
@@ -159,7 +159,8 @@
             checkRegisterPwd(1,pwd,"log_pwd_tip");
         });
         $("input[name='duplicate']").blur(function(){
-            var pwd = $("input[name='user.password']").val();
+            //var pwd = $("input[name='user.password']").val();
+            var pwd = $("#registerpwd").val();
             var repwd = $(this).val();
             checkRepwd(1,pwd,repwd,"log_pwd_tip","log_repwd_tip");
         });
@@ -238,6 +239,7 @@
                     if(repwd == ""){
                         return true;
                     }else if(pwd != repwd){
+                        //alert(pwd + " " + repwd);
                         repwdTipObj.innerHTML = repwdNotEqual;
                         return false;
                     }else{
