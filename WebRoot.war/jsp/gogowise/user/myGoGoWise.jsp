@@ -8,7 +8,9 @@
 <div class="mfp_left fl">
 <div>
     <%--<a class="submit_btn_large" href="openUserChannelResult.html"><s:property value="%{getText('contentLeft.param1')}"/></a>--%>
-    <a class="submit_btn" href="createCourseAllInOne.html"><s:property value="%{getText('course.create')}"/></a>
+    <s:if test="#session.user_own_org != null">
+        <a  class="submit_btn_large" href="createCourseAllInOne.html"><s:property value="%{getText('course.create')}"/></a>
+    </s:if>
 </div>
 <s:if test="existLatestCourse">
     <div class="usItem_wrap fl">

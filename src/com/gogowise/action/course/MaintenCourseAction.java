@@ -87,15 +87,17 @@ public class MaintenCourseAction extends BasicAction {
             org = organizationDao.findMyOrg(this.getSessionUserId());
         }
 
-        teachers = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(),Constants.ROLE_TYPE_TEACHER,null);
-
-        //If there is no teachers
-        if(teachers == null || teachers.size() < 1)
+        //If this teacher doesn't belong to any org
+        if( org == null )
         {
-            teachers = organizationDao.findHotTeacherByOrgId(org.getId(),null);
+            teachers = new ArrayList<>();
+            teachers.add( baseUserDao.findById(this.getSessionUserId()) );
         }
-
-        students = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(),Constants.ROLE_TYPE_STUDENT,null);
+        else
+        {
+            teachers = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(),Constants.ROLE_TYPE_TEACHER,null);
+            students = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(),Constants.ROLE_TYPE_STUDENT,null);
+        }
 
         return SUCCESS;
     }
