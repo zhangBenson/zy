@@ -157,7 +157,8 @@ public class MyFirstPageAction  extends BasicAction {
     public String showUserCenter() {
 //        ActionContext.getContext().getSession().put("WW_TRANS_I18N_LOCALE", Locale.US);
         finishedCourse = courseDao.findFinishedCourseForUserCenter(new Pagination(3), this.getSessionUserId(), Constants.ROLE_TYPE_TEACHER);
-        latestCourse = courseDao.findMyCourseOfForcastClassForUserCenter(new Pagination(3),this.getSessionUserId());
+        //latestCourse = courseDao.findMyCourseOfForcastClassForUserCenter(new Pagination(3),this.getSessionUserId());
+        latestCourse = courseDao.findMyCourseOfForcastClassForUserCenter(new Pagination(3),this.getSessionUserId(), Constants.ROLE_TYPE_TEACHER);
 
         todayCourse = courseDao.findTodayCourse(this.getSessionUserId());
         tomorrowCourse = courseDao.findTomorrowCourse(this.getSessionUserId());
