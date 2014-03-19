@@ -656,7 +656,9 @@ function ShowMessage(name,imgpath,content,bit)
     <ul class="list-inline">
         <li  class="classstatusbar">School Name:<s:property value="courseClass.course.organization.schoolName" /></li>
         <li  class="classstatusbar">Lecturers Name:<s:property value="courseClass.course.teacher.nickName"/></li>
-        <li  class="classstatusbar">Course Name:<s:property value="courseClass.course.name"/></li>
+        <li class="classstatusbar">Course Name: <a class="img"
+                                                   href="voaCourseBlog.html?course.id=<s:property value="courseClass.course.id"/>">
+            <s:property value="courseClass.course.name"/> </a></li>
     </ul>
 </div>
 

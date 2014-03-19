@@ -41,7 +41,7 @@ public class SecDomainFilter implements Filter {
         String requestUrl = request.getServletPath();
 
         String secDomainString = getSecDomainString(request).trim();
-        if (StringUtils.isNotBlank(secDomainString) && StringUtils.endsWith(requestUrl, "index.jsp")
+        if (StringUtils.isNotBlank(secDomainString) && StringUtils.endsWith(requestUrl, Constants.WELCOME_PAGE)
                 && secDomainString.length() >= Constants.MIN_SECDOMAIN_LENGTH
                 ) {
             //orgBlog.html?org.id=1
@@ -56,6 +56,10 @@ public class SecDomainFilter implements Filter {
             if (organization != null && StringUtils.isNotBlank(organization.getSecDomain())) {
                 response.sendRedirect("http://" + organization.getSecDomain() + ".gogowise.com");
             }
+        } else if ("org".equalsIgnoreCase(secDomainString) && StringUtils.endsWith(requestUrl, Constants.WELCOME_PAGE)) {
+            String disPatcherUrl = "/teacherLogin.html";
+            request.getRequestDispatcher(disPatcherUrl).forward(request, response);
+            return;
         }
 //        else if (StringUtils.contains(".html") ) {
 //
