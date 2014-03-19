@@ -199,7 +199,7 @@ import java.util.List;
     }
 
     public List<Course> findlatestCourses(Pagination pagination) {
-        return this.find("From Course c where " + DELETED_FALSE + " and c.cameraManConfirmed=true order by c.id desc",pagination);
+        return this.find("From Course c where " + DELETED_FALSE + " and c.cameraManConfirmed=true order by c.startDate desc", pagination);
     }
 
     @Override
