@@ -98,6 +98,9 @@
         });
 
         $("#step3_self_store").click(function(){
+
+            if(!yzSaveCourseClassForm()) return;
+
              var classInfo = $("#self_class_system_form").serialize();
              $.post("selfSaveClass.html",classInfo,function(data){
                    $("#list_tbody").html(data)
@@ -142,6 +145,27 @@
                step3Stored = false;
            }
      }
+
+    function yzSaveCourseClassForm(){
+        var result = true;
+        if( $("#class_nickname_input").val().length == 0 )
+        {
+            result = false;
+            $("#class_start_time_msg").html(warn_course_name_empty);
+        }
+        if( $("#class_start_time_input").val().length == 0 )
+        {
+            result = false;
+            $("#class_start_time_msg").html(warn_start_time_error);
+        }
+        if( $("#class_durations_input").val().length == 0 )
+        {
+            result = false;
+        }
+
+        return result;
+    }
+
      function yzSaveCourseForm(){
          var b1=true,b2=true,b3=true,b4=true,b5=true,b6=true,b7=true,b8=true,b9=true;
          if($("#step2_course_name").val().replace(/(^\s*)|(\s*$)/g, "").length == 0){
@@ -164,10 +188,12 @@
           if($("#courseStartDate").val().length==0){
               $(".course_date_input_msg").html(warn_course_date_empty);
               b4 = false;
-          }else if(!dateComparator("#courseStartDate")){
-              $(".course_date_input_msg").html(warn_start_time_error);
-              b4 = false;
-          } else b4 = true;
+          }
+          //else if(!dateComparator("#courseStartDate")){
+          //    $(".course_date_input_msg").html(warn_start_time_error);
+          //    b4 = false;
+          //}
+          else b4 = true;
 
           /*if($("#course_logo").val().length==0){
               $("#course_logo_input_msg").html(warn_upload);
@@ -298,7 +324,7 @@
              if($(this).val() == ""){
                $(".course_date_input_msg").html(warn_course_date_empty);
              }else if(!dateComparator(this)){
-                $(".course_date_input_msg").html(warn_start_time_error);
+                //$(".course_date_input_msg").html(warn_start_time_error);
              }else{
                  $(".course_date_input_msg").html("*");
              }

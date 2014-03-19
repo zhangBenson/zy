@@ -173,30 +173,22 @@
                                 <th class="htitle">&nbsp;</th>
                                 <th class="htitle">&nbsp;</th>
                               </tr>
-                              <tr>
-                                <th class="htitle"><s:property value="%{getText('lable.course.no')}"/></th>
-                                <th class="htitle"><s:property value="%{getText('lable.course.nickname')}"/></th>
-                                <th class="htitle"><s:property value="%{getText('lable.course.starttime')}"/></th>
-                                <th class="htitle"><s:property value="%{getText('label.lastingtime')}"/></th>
-                                <th class="htitle">&nbsp;</th>
-                                <th class="htitle">&nbsp;</th>
-                              </tr>
-                              <s:iterator value="course.classes" status="idx">
-                                  <tr id="classes<s:property value="id"/>">
-                                      <td id="course_name<s:property value="id"/>"><s:property value="#idx.index+1"/></td>
-                                      <td id="course_nickName<s:property value="id"/>" class="course_nickName_text"><s:property value="nickName"/></td>
-                                      <td id="course_date<s:property value="id"/>"><s:date name="date" format="%{getText('global.display.hour.minute')}"/></td>
-                                      <td id="course_duration<s:property value="id"/>"><s:property value="duration"/></td>
-                                      <td>
-                                          <a class="class_btn edit_class_btn" id="course_edit<s:property value="id"/>" onclick="editSpecifiedClass(<s:property value="id"/>);"><s:property value="%{getText('course.class.edit')}"/></a>
-                                      </td>
-                                      <td>
-                                          <a class="class_btn" onclick="deleteAddedClass('classes<s:property value="id"/>',<s:property value="id"/>);"><s:property value="%{getText('course.class.delete')}"/></a>
-                                      </td>
-                                  </tr>
-                              </s:iterator>
-                              <tbody class="list_tbody" id="list_tbody">
 
+                            <tbody class="list_tbody" id="list_tbody">
+                                  <s:iterator value="course.classes" status="idx">
+                                      <tr id="classes<s:property value="id"/>">
+                                          <td id="course_name<s:property value="id"/>"><s:property value="#idx.index+1"/></td>
+                                          <td id="course_nickName<s:property value="id"/>" class="course_nickName_text"><s:property value="nickName"/></td>
+                                          <td id="course_date<s:property value="id"/>"><s:date name="date" format="%{getText('global.display.hour.minute')}"/></td>
+                                          <td id="course_duration<s:property value="id"/>"><s:property value="duration"/></td>
+                                          <td>
+                                              <a class="class_btn edit_class_btn" id="course_edit<s:property value="id"/>" onclick="editSpecifiedClass(<s:property value="id"/>);"><s:property value="%{getText('course.class.edit')}"/></a>
+                                          </td>
+                                          <td>
+                                              <a class="class_btn" onclick="deleteAddedClass('classes<s:property value="id"/>',<s:property value="id"/>);"><s:property value="%{getText('course.class.delete')}"/></a>
+                                          </td>
+                                      </tr>
+                                  </s:iterator>
                               </tbody>
                             </table>
                       </div>
@@ -218,7 +210,7 @@
                                     </li>
                                     <li class="short_li">
                                         <span class="item"><s:property value="%{getText('label.lastingtime')}"/></span>
-                                        <select name="durations" class="long_select">
+                                        <select name="durations" class="long_select" id="class_durations_input">
                                                 <option value=60 selected="selected">60<s:property
                                                         value="%{getText('label.minute')}"/></option>
                                                 <option value=55>55<s:property
