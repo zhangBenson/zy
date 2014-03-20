@@ -764,6 +764,11 @@
         <put-attribute name="contentBody" value="/jsp/www/org/orgBlog.jsp"/>
     </definition>
 
+    <definition name=".orgMoreTeacher" extends=".wwwBodyCenter">
+        <put-attribute name="title" value="title.org.blog"/>
+        <put-attribute name="contentBody" value="/jsp/www/org/orgMoreTeacher.jsp"/>
+    </definition>
+
     <definition name=".userBlog" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.person.blog"/>
         <put-attribute name="contentBody" value="/jsp/www/user/userBlog.jsp"/>

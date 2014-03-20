@@ -147,15 +147,17 @@
      }
 
     function yzSaveCourseClassForm(){
-        var result = true;
+        var result = true; var emptyNum = 0;
         if( $("#class_nickname_input").val().length == 0 )
         {
             result = false;
-            $("#class_start_time_msg").html(warn_course_name_empty);
+            emptyNum = emptyNum + 1;
+            $("#class_nickname_input_msg").html(warn_course_name_empty);
         }
         if( $("#class_start_time_input").val().length == 0 )
         {
             result = false;
+            emptyNum = emptyNum + 1;
             $("#class_start_time_msg").html(warn_start_time_error);
         }
         if( $("#class_durations_input").val().length == 0 )
@@ -163,6 +165,11 @@
             result = false;
         }
 
+        if(emptyNum == 2)
+        {
+            $("#class_nickname_input_msg").html("");
+            $("#class_start_time_msg").html("");
+        }
         return result;
     }
 

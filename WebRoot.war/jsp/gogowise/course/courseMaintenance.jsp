@@ -200,6 +200,7 @@
                                     <li>
                                         <span class="item"><s:property value="%{getText('lable.course.nickname')}"/></span>
                                         <s:textfield name="courseClass.nickName" id="class_nickname_input" cssClass="long_text_field course_nick_name" />
+                                        <span id="class_nickname_input_msg" class="tip_words"></span>
                                     </li>
                                     <li class="short_li">
                                         <span class="item"><s:property value="%{getText('lable.course.starttime')}"/></span>
