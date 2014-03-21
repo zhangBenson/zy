@@ -169,6 +169,7 @@
         {
             $("#class_nickname_input_msg").html("");
             $("#class_start_time_msg").html("");
+            step3Stored = true;
         }
         return result;
     }
