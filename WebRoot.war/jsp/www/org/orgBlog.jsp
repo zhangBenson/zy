@@ -33,7 +33,7 @@
             </s:iterator>
         </div>
         <br/>
-        <p class="text-right"><a href="#"><s:property value="%{getText('others.more')}"/></a></p>
+        <p class="text-right"><a href="orgMoreCourse.html?org.id=<s:property value="org.id"/>" ><s:property value="%{getText('others.more')}"/></a></p>
     </div>
     <br/>
 
@@ -53,7 +53,11 @@
                 </s:iterator>
             </div>
             <br/>
-            <p class="text-right"><a href="#"><s:property value="%{getText('others.more')}"/></a></p>
+            <p class="text-right">
+                <s:if test="moocs.size()>5">
+                    <a href="orgMoreMooc.html?org.id=<s:property value="org.id"/>" ><s:property value="%{getText('others.more')}"/></a>
+                </s:if>
+            </p>
         </div>
     </div>
 
@@ -186,7 +190,11 @@
             </s:if>
         </s:iterator>
         <a href="#">
-            <div class="text-right"><s:property value="%{getText('label.org.lecturer.see.all')}"/></div>
+            <div class="text-right">
+                <a href="orgMoreTeacher.html?org.id=<s:property value="org.id"/>" >
+                    <s:property value="%{getText('label.org.lecturer.see.all')}"/>
+                </a>
+            </div>
         </a>
     </div>
 </div>
