@@ -10,16 +10,18 @@
 
             <s:iterator value="hotTeachers" status="#status">
 
-                <div class="lecturerInfo">
+                <div id="lecturerInfo">
                     <a href="userBlog.html?user.id=<s:property value="id"/>"title="<s:property value="nickName"/>">
-                        <img src="<s:property value="pic"/>" style="float:left;margin-right:15px;margin-bottom:15px;border-radius: 6px;width: 120px;height: 120px;">
+                        <img src="<s:property value="pic"/>" style="float:left;margin-right:15px;margin-bottom:15px;border-radius: 6px;width: 120px;height: 120px;" />
                     </a>
+
                     <a href="userBlog.html?user.id=<s:property value="id"/>"title="<s:property value="nickName"/>">
-                        <h1 class = "lecturerName"><s:property value="nickName"/> </h1>
+                        <h1 class = "lecturerName"><s:property value="nickName"/></h1>
                     </a>
+
                     <h4 class="courseBody"><s:property escapeHtml="false" value="selfDescription"/> </h4>
                 </div>
-                <s:if test="#status.last"><div class="thick70"></div></s:if>
+                <div class="thick70" style="clear: both"></div>
             </s:iterator>
 
             <tiles:insertTemplate template="/jsp/gogowise/pagination.jsp">
