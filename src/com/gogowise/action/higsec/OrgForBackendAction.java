@@ -292,7 +292,7 @@ public class OrgForBackendAction extends BasicAction {
         if (org != null && org.getId() != null) {
             this.org = organizationDao.findById(org.getId());
         } else {
-            this.org = organizationDao.findById(this.getSessionUserId());
+            this.org = organizationDao.findByResId(this.getSessionUserId());
         }
         return SUCCESS;
     }
