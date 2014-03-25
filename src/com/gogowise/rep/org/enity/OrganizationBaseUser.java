@@ -1,8 +1,8 @@
 package com.gogowise.rep.org.enity;
 
-import com.gogowise.common.utils.Constants;
 import com.gogowise.rep.AbstractPersistence;
 import com.gogowise.rep.user.enity.BaseUser;
+import com.gogowise.rep.user.enity.RoleType;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -18,7 +18,11 @@ import java.util.Calendar;
 @Entity
 public class OrganizationBaseUser extends AbstractPersistence {
 
-
+    /*---------------------definition of teacher status--------------*/
+    public static final Short USER_STATUS_UNCONFIRMED = 1;
+    public static final Short USER_STATUS_CONFIRMED = 3;
+    public static final Short USER_STATUS_UNACCEPTED = 2;
+    public static final Short USER_STATUS_DISABLED = 4;
     @ManyToOne
     private BaseUser user;
     @ManyToOne
@@ -26,9 +30,10 @@ public class OrganizationBaseUser extends AbstractPersistence {
 
     private String email;
 
-    private Short userStatus = Constants.USER_STATUS_UNCONFIRMED;
-    private Short previousStatus = Constants.USER_STATUS_UNCONFIRMED;
-    private Integer roleType = Constants.ROLE_TYPE_STUDENT;
+
+    private Short userStatus = USER_STATUS_UNCONFIRMED;
+    private Short previousStatus = USER_STATUS_UNCONFIRMED;
+    private Integer roleType = RoleType.ROLE_TYPE_STUDENT;
 
     private Calendar createDate = Calendar.getInstance();
 

@@ -15,6 +15,7 @@ import com.gogowise.rep.course.dao.*;
 import com.gogowise.rep.course.enity.*;
 import com.gogowise.rep.finance.UserAccountInfoDao;
 import com.gogowise.rep.finance.enity.UserAccountInfo;
+import com.gogowise.rep.org.OrgService;
 import com.gogowise.rep.org.dao.InterviewAppointerDao;
 import com.gogowise.rep.org.dao.InterviewDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
@@ -34,6 +35,7 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -56,6 +58,8 @@ import java.util.*;
 @Namespace(BasicAction.BASE_NAME_SPACE)
 public class UserAction extends BasicAction {
 
+    @Autowired
+    private OrgService orgService;
     private BaseUserDao baseUserDao;
     private UserRelationshipDao userRelationshipDao;
     private InterviewAppointerDao interviewAppointerDao;
@@ -135,6 +139,8 @@ public class UserAction extends BasicAction {
 
     private String userRoleType;
     private BaseUserRoleType baseUserRoleType;
+    private boolean confirmForOrg = false;
+
 
     @Action(value = "initInviteFriend", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initInviteFriend")})
     public String initFriendsList() {
@@ -879,13 +885,18 @@ public class UserAction extends BasicAction {
         this.emailBoxUrl = EmailUtil.getEmailBoxUrl(user.getEmail());
         setUserToSession(user);
         setUserOrg(user);
+        baseUserRoleType.setBaseUser(user);
+        baseUserRoleType.getRoleType().setId(RoleType.ROLE_TYPE_TEACHER);
+        baseUserRoleTypeDao.persist(baseUserRoleType);
+
+        if (this.confirmForOrg && org.getId() != null) {
+            orgService.confirmOrgTeacher(user.getId(), org.getId());
+        }
+
         if (StringUtils.isNotBlank(this.getReDirectUrl())) {
             return "redirect";
         }
 
-        baseUserRoleType.setBaseUser(user);
-        baseUserRoleType.getRoleType().setId(5);
-        baseUserRoleTypeDao.persist(baseUserRoleType);
 
         return SUCCESS;
     }
@@ -1665,5 +1676,9 @@ public class UserAction extends BasicAction {
 
     public void setBaseUserRoleType(BaseUserRoleType baseUserRoleType) {
         this.baseUserRoleType = baseUserRoleType;
+    }
+
+    public void setConfirmForOrg(boolean confirmForOrg) {
+        this.confirmForOrg = confirmForOrg;
     }
 }

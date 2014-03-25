@@ -53,42 +53,42 @@ public class OrgBaseUserAction extends BasicAction {
     private BaseUser user;
     private Integer roleType;
 
-    @Action(value="manageOrgUsers",results = {@Result(name=RoleType.STUDENT,type = Constants.RESULT_NAME_TILES, location = ".studentManage"),
-            @Result(name=RoleType.TEACHER,type = Constants.RESULT_NAME_TILES, location = ".teacherManage")})
+    @Action(value = "manageOrgUsers", results = {@Result(name = RoleType.STUDENT, type = Constants.RESULT_NAME_TILES, location = ".studentManage"),
+            @Result(name = RoleType.TEACHER, type = Constants.RESULT_NAME_TILES, location = ".teacherManage")})
     public String manageOrgUsers() {
         Organization org = this.organizationDao.findByResId(this.getSessionUserId());
-        this.orgUsers = organizationBaseUserDao.findOrgUsers(org.getId(),roleType,this.getPagination());
-        if(roleType==Constants.ROLE_TYPE_TEACHER){
+        this.orgUsers = organizationBaseUserDao.findOrgUsers(org.getId(), roleType, this.getPagination());
+        if (roleType == RoleType.ROLE_TYPE_TEACHER) {
             return RoleType.TEACHER;
         }
         return RoleType.STUDENT;
     }
 
-    @Action(value="saveOrgUser",results = {@Result(name = RoleType.STUDENT,type = Constants.RESULT_NAME_TILES, location = ".studentManage"),
-            @Result(name=RoleType.TEACHER,type = Constants.RESULT_NAME_TILES, location = ".teacherManage")})
-    public String saveOrgUser(){
+    @Action(value = "saveOrgUser", results = {@Result(name = RoleType.STUDENT, type = Constants.RESULT_NAME_TILES, location = ".studentManage"),
+            @Result(name = RoleType.TEACHER, type = Constants.RESULT_NAME_TILES, location = ".teacherManage")})
+    public String saveOrgUser() {
         Organization org = organizationDao.findMyOrg(this.getSessionUserId());
         //判断添加老师是否已经存在
         BaseUser baseUser = null;
         BaseUserRoleType baseUserRoleType = null;
         OrganizationBaseUser orgUser = null;
-        for(OrganizationBaseUser ou : orgUsers){
-            if(ou==null){
+        for (OrganizationBaseUser ou : orgUsers) {
+            if (ou == null) {
                 continue;
             }
 
             String userEmail = ou.getUser().getEmail();
             baseUser = baseUserDao.findByEmail(userEmail);
             //该用户注册过
-            if(baseUser!=null){
+            if (baseUser != null) {
                 //判断该用户是否已经属于该学校
-                orgUser = organizationBaseUserDao.findByOrgIdAndUserId(org.getId(),baseUser.getId(),roleType);
-                if(orgUser!=null){
+                orgUser = organizationBaseUserDao.findByOrgIdAndUserId(org.getId(), baseUser.getId(), roleType);
+                if (orgUser != null) {
                     continue;
                 }
                 baseUser.setUserName(ou.getUser().getUserName());
                 //该用户没   注册过
-            }else{
+            } else {
                 //设置随机密码，发送至邮件
                 baseUser = new BaseUser();
                 baseUser.setEmail(ou.getUser().getEmail());
@@ -102,7 +102,7 @@ public class OrgBaseUserAction extends BasicAction {
                 String randomPwd = "123456";
                 baseUser.setPassword(MD5.endCode(randomPwd));
                 //2. 发邮件通知
-                String tile = "GoGoWise"+org.getSchoolName()+"学校邀请";
+                String tile = "GoGoWise" + org.getSchoolName() + "学校邀请";
                 //TODO: 邮件内容待确认
                 String content = "GoGoWise" + org.getSchoolName() + "学校邀请您成为它的老师，帐号为您的邮箱：" + userEmail + ",密码为：" + randomPwd;
 //                        +",点击<a href='http:'>这里</a>接受，点击<a href='#'>这里</a>拒绝";
@@ -114,7 +114,7 @@ public class OrgBaseUserAction extends BasicAction {
 
             //添加用户角色信息
             boolean haveTeacherPermission = baseUserRoleTypeDao.havePermission(baseUser.getId(), RoleType.getRoleNameById(roleType));
-            if(!haveTeacherPermission){
+            if (!haveTeacherPermission) {
                 baseUserRoleType = new BaseUserRoleType();
                 baseUserRoleType.setBaseUser(baseUser);
                 baseUserRoleType.setRoleType(roleTypeDao.findById(roleType));
@@ -125,7 +125,7 @@ public class OrgBaseUserAction extends BasicAction {
             ou.setOrg(org);
             ou.setUser(baseUser);
             ou.setCreateDate(Calendar.getInstance());
-            ou.setUserStatus(Constants.USER_STATUS_UNCONFIRMED);
+            ou.setUserStatus(OrganizationBaseUser.USER_STATUS_UNCONFIRMED);
             ou.setRoleType(roleType);
             organizationBaseUserDao.persistAbstract(ou);
         }
@@ -142,15 +142,15 @@ public class OrgBaseUserAction extends BasicAction {
         try {
             BaseUser baseUser = baseUserDao.findByEmail(user.getEmail());
             Organization org = organizationDao.findByResId(getSessionUserId());
-            OrganizationBaseUser orgUser = organizationBaseUserDao.findByOrgIdAndUserId(org.getId(), baseUser.getId(),roleType);
+            OrganizationBaseUser orgUser = organizationBaseUserDao.findByOrgIdAndUserId(org.getId(), baseUser.getId(), roleType);
             orgUser.setPreviousStatus(orgUser.getUserStatus());
-            orgUser.setUserStatus(Constants.USER_STATUS_DISABLED);
+            orgUser.setUserStatus(OrganizationBaseUser.USER_STATUS_DISABLED);
             organizationBaseUserDao.persistAbstract(orgUser);
             rd.setResult(200);
         } catch (Exception e) {
             rd.setResult(500);
             rd.setMessage("Disable Failure:" + e.getMessage());
-            logger.error("Disable Failure",e);
+            logger.error("Disable Failure", e);
         }
         return SUCCESS;
     }
@@ -170,7 +170,7 @@ public class OrgBaseUserAction extends BasicAction {
         } catch (Exception e) {
             rd.setResult(500);
             rd.setMessage("Enable Failure:" + e.getMessage());
-            logger.error("Enable Failure",e);
+            logger.error("Enable Failure", e);
         }
         return SUCCESS;
     }
@@ -182,7 +182,7 @@ public class OrgBaseUserAction extends BasicAction {
         try {
             BaseUser baseUser = baseUserDao.findByEmail(user.getEmail());
             Organization org = organizationDao.findByResId(getSessionUserId());
-            OrganizationBaseUser orgUser = organizationBaseUserDao.findByOrgIdAndUserId(org.getId(), baseUser.getId(),roleType);
+            OrganizationBaseUser orgUser = organizationBaseUserDao.findByOrgIdAndUserId(org.getId(), baseUser.getId(), roleType);
             //删除用户
             organizationBaseUserDao.delete(orgUser);
             //不删除角色
@@ -190,10 +190,11 @@ public class OrgBaseUserAction extends BasicAction {
         } catch (Exception e) {
             rd.setResult(500);
             rd.setMessage("Delete Failure:" + e.getMessage());
-            logger.error("Delete Failure",e);
+            logger.error("Delete Failure", e);
         }
         return SUCCESS;
     }
+
     @Action(value = "reInviteUser", results = {@Result(name = SUCCESS, type = "json")})
     public String reInviteUser() {
         ResultData<String> rd = new ResultData<String>();
@@ -202,13 +203,13 @@ public class OrgBaseUserAction extends BasicAction {
             BaseUser student = baseUserDao.findByEmail(user.getEmail());
             Organization org = organizationDao.findByResId(getSessionUserId());
             OrganizationBaseUser orgUser = organizationBaseUserDao.findByOrgIdAndUserId(org.getId(), student.getId(), roleType);
-            orgUser.setUserStatus(Constants.USER_STATUS_UNCONFIRMED);
+            orgUser.setUserStatus(OrganizationBaseUser.USER_STATUS_UNCONFIRMED);
             organizationBaseUserDao.persistAbstract(orgUser);
             rd.setResult(200);
         } catch (Exception e) {
             rd.setResult(500);
             rd.setMessage("ReInvite Failure:" + e.getMessage());
-            logger.error("ReInvite Failure",e);
+            logger.error("ReInvite Failure", e);
         }
         return SUCCESS;
     }
