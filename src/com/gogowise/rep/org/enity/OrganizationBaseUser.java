@@ -18,12 +18,13 @@ import java.util.Calendar;
 @Entity
 public class OrganizationBaseUser extends AbstractPersistence {
 
-    public final static  Integer ORG_ROLE_TYPE_AUTH = 1;
 
     @ManyToOne
     private BaseUser user;
     @ManyToOne
     private Organization org;
+
+    private String email;
 
     private Short userStatus = Constants.USER_STATUS_UNCONFIRMED;
     private Short previousStatus = Constants.USER_STATUS_UNCONFIRMED;
@@ -77,5 +78,13 @@ public class OrganizationBaseUser extends AbstractPersistence {
 
     public void setPreviousStatus(Short previousStatus) {
         this.previousStatus = previousStatus;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
