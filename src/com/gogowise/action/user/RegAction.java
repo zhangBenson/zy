@@ -7,10 +7,10 @@ import com.gogowise.common.utils.MD5;
 import com.gogowise.rep.org.OrgService;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.user.UserService;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.rep.user.enity.BaseUserRoleType;
 import com.gogowise.rep.user.enity.RoleType;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.lang.StringUtils;
@@ -39,14 +39,17 @@ public class RegAction extends BasicAction {
     @Autowired
     private OrgService orgService;
 
+    @Autowired
+    private UserService userService;
+
     private String duplicate;
 
     private BaseUser user = new BaseUser();
     private String reDirectUrl;
     private String emailBoxUrl;
-    private BaseUserRoleType baseUserRoleType;
     private boolean confirmForOrg = false;
     private Organization org;
+    private boolean isT = false;
 
 
     @Action(value = "easyReg",
@@ -129,19 +132,9 @@ public class RegAction extends BasicAction {
     }
 
     public void sendEmail(BaseUser user) {
-        String css = "<style type=\"text/css\">\n" +
-                "#rvmDiv #logoDiv {background-image: url(http://www.gogowise.com/images/logo.jpg);background-repeat: no-repeat;height: 65px;margin-left: 45px;}\n" +
-                "#rvmDiv #rvmcontentDiv ul .welcomeTittle {margin-left: 30px;}\n" +
-                "#rvmDiv {float: left;width: 100%;font-family: \"微软雅黑\", \"宋体\", \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif;}\n" +
-                "#logoDiv {float: left;width: 100%;}\n" +
-                "#rvmcontentDiv {float: left;width: 100%;}\n" +
-                "#rvmDiv #rvmcontentDiv ul li {list-style-type: none;}\n" +
-                "#rvmDiv #rvmcontentDiv .orangeWords {color: rgb(255,155,55);}\n" +
-                "#rvmDiv #rvmcontentDiv ul .lastWords {margin-top: 50px;}\n" +
-                "</style>";
+        String css = "<style type=\"text/css\">\n#rvmDiv #logoDiv {background-image: url(http://www.gogowise.com/images/logo.jpg);background-repeat: no-repeat;height: 65px;margin-left: 45px;}\n#rvmDiv #rvmcontentDiv ul .welcomeTittle {margin-left: 30px;}\n#rvmDiv {float: left;width: 100%;font-family: \"微软雅黑\", \"宋体\", \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif;}\n#logoDiv {float: left;width: 100%;}\n#rvmcontentDiv {float: left;width: 100%;}\n#rvmDiv #rvmcontentDiv ul li {list-style-type: none;}\n#rvmDiv #rvmcontentDiv .orangeWords {color: rgb(255,155,55);}\n#rvmDiv #rvmcontentDiv ul .lastWords {margin-top: 50px;}\n</style>";
 
         String activeUrl = getBasePath() + "/active.html?email=" + user.getEmail() + "&activeCode=" + user.getActiveCode();
-        //String recommedUrl = getBasePath() + "/index.html?id=" + user.getId();
         EmailUtil.sendMail(user.getEmail(), this.getText("member.email.validation"), css + this.getText("member.reg.email", new String[]{user.getEmail(), activeUrl, activeUrl, user.getEmail()}), "text/html;charset=utf-8");
 
     }
@@ -158,10 +151,6 @@ public class RegAction extends BasicAction {
     public String reg() {
 
         BaseUser localUser = baseUserDao.findByEmail(this.getUser().getEmail());
-        if (localUser != null) {
-            addFieldError("user.email", this.getText("reEmail"));
-            return INPUT;
-        }
 
         user.setEmail(StringUtils.trim(user.getEmail()));
         user.setNickName(StringUtils.trim(user.getNickName()));
@@ -171,111 +160,31 @@ public class RegAction extends BasicAction {
         String md5 = MD5.endCode(String.valueOf(System.currentTimeMillis()));
         user.setActiveCode(md5);
         user.setLanguage(ActionContext.getContext().getLocale().getLanguage());
-        baseUserDao.persistAbstract(user);
-        if (ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL) == null) {
-            sendEmail(user);
+        String permission;
+        if (isT) {
+            permission = RoleType.TEACHER;
+        } else {
+            permission = RoleType.STUDENT;
         }
-        this.emailBoxUrl = EmailUtil.getEmailBoxUrl(user.getEmail());
-        setUserToSession(user);
-        setUserOrg(user);
-        if (StringUtils.isNotBlank(this.getReDirectUrl())) {
-            return "redirect";
-        }
-        return SUCCESS;
-    }
-
-
-    @Action(value = "teacherReg",
-            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}),
-                    @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".easyReg"),
-                    @Result(name = "redirect", type = "redirect", location = "${reDirectUrl}")}
-    )
-    public String teacherReg() {
-
-        BaseUser localUser = baseUserDao.findByEmail(this.getUser().getEmail());
-        if (localUser != null) {
-            addFieldError("user.email", this.getText("reEmail"));
-            return INPUT;
-        }
-
-        user.setEmail(StringUtils.trim(user.getEmail()));
-        user.setNickName(StringUtils.trim(user.getNickName()));
-        user.setLockedOut(true);
-        user.setPassword(MD5.endCode(user.getPassword()));
-        user.setRegDate(Calendar.getInstance());
-        String md5 = MD5.endCode(String.valueOf(System.currentTimeMillis()));
-        user.setActiveCode(md5);
-        user.setLanguage(ActionContext.getContext().getLocale().getLanguage());
-        baseUserDao.persistAbstract(user);
-        if (ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL) == null) {
-            sendEmail(user);
-        }
-        this.emailBoxUrl = EmailUtil.getEmailBoxUrl(user.getEmail());
-        setUserToSession(user);
-        setUserOrg(user);
-        baseUserRoleType.setBaseUser(user);
-        baseUserRoleType.getRoleType().setId(RoleType.ROLE_TYPE_TEACHER);
-        baseUserRoleTypeDao.persist(baseUserRoleType);
+        userService.regUser(user, permission);
 
         if (this.confirmForOrg && org.getId() != null) {
             orgService.confirmOrgTeacher(user.getId(), org.getId());
         }
 
-        if (StringUtils.isNotBlank(this.getReDirectUrl())) {
-            return "redirect";
-        }
 
-
-        return SUCCESS;
-    }
-
-    @Action(value = "studentRegister",
-            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}),
-                    @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".easyReg"),
-                    @Result(name = "redirect", type = "redirect", location = "${reDirectUrl}")}
-    )
-    public String studentRegister() {
-        if (this.getUser().getEmail() == null || this.getUser().getEmail().trim() == "") {
-            addFieldError("user.email", this.getText("please enter email"));
-            return INPUT;
-        }
-
-        BaseUser localUser = baseUserDao.findByEmail(this.getUser().getEmail());
-        if (localUser != null) {
-            addFieldError("user.email", this.getText("reEmail"));
-            return INPUT;
-        }
-
-        user.setEmail(StringUtils.trim(user.getEmail()));
-        user.setNickName(StringUtils.trim(user.getNickName()));
-        user.setLockedOut(true);
-        user.setPassword(MD5.endCode(user.getPassword()));
-        user.setRegDate(Calendar.getInstance());
-        String md5 = MD5.endCode(String.valueOf(System.currentTimeMillis()));
-        user.setActiveCode(md5);
-        user.setLanguage(ActionContext.getContext().getLocale().getLanguage());
-        baseUserDao.persistAbstract(user);
         if (ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL) == null) {
             sendEmail(user);
         }
-        if (user.getEmail() != null)
-            this.emailBoxUrl = EmailUtil.getEmailBoxUrl(user.getEmail());
+
+        this.emailBoxUrl = EmailUtil.getEmailBoxUrl(user.getEmail());
         setUserToSession(user);
         setUserOrg(user);
         if (StringUtils.isNotBlank(this.getReDirectUrl())) {
             return "redirect";
         }
-
-        baseUserRoleType = new BaseUserRoleType();
-        baseUserRoleType.setBaseUser(user);
-        baseUserRoleType.setRoleType(new RoleType());
-        baseUserRoleType.getRoleType().setRoleName("student");
-        baseUserRoleType.getRoleType().setId(6);
-        baseUserRoleTypeDao.persist(baseUserRoleType);
-
         return SUCCESS;
     }
-
 
     public void validateReg() {
         if (baseUserDao.findByEmail(StringUtils.trim(user.getEmail())) != null) {
@@ -285,14 +194,6 @@ public class RegAction extends BasicAction {
         if (baseUserDao.findByNickName(StringUtils.trim(user.getNickName())) != null) {
             addFieldError("user.nickName", this.getText("member.reg.nickname.exist"));
         }
-    }
-
-    public BaseUserRoleType getBaseUserRoleType() {
-        return baseUserRoleType;
-    }
-
-    public void setBaseUserRoleType(BaseUserRoleType baseUserRoleType) {
-        this.baseUserRoleType = baseUserRoleType;
     }
 
     public boolean isConfirmForOrg() {
@@ -321,5 +222,13 @@ public class RegAction extends BasicAction {
 
     public void setDuplicate(String duplicate) {
         this.duplicate = duplicate;
+    }
+
+    public boolean isT() {
+        return isT;
+    }
+
+    public void setT(boolean isT) {
+        this.isT = isT;
     }
 }
