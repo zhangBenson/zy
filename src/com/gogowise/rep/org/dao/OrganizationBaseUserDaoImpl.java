@@ -20,6 +20,11 @@ public class OrganizationBaseUserDaoImpl extends ModelDaoImpl<OrganizationBaseUs
         return this.find("From OrganizationBaseUser ot where ot.org.id = ? and ot.roleType=? order by ot.id desc",pagination,orgId,roleType);
     }
 
+    public List<OrganizationBaseUser> findLatestUserByOrgId(Integer orgId,  Integer roleType, Pagination pagination) {
+        String hql = "select ot.teacher from OrganizationBaseUser ot where ot.org.id= ? and ot.roleType=? order by ot.createDate desc ";
+        return this.find(hql, pagination, orgId, pagination);
+    }
+
     @Override
     public OrganizationBaseUser findByOrgIdAndUserId(Integer orgId, Integer userId,Integer roleType) {
         return this.findFist("From OrganizationBaseUser ot where ot.org.id = ? and ot.user.id=? and ot.roleType=?", orgId, userId,roleType);
@@ -30,4 +35,8 @@ public class OrganizationBaseUserDaoImpl extends ModelDaoImpl<OrganizationBaseUs
         return find("select ot.user From OrganizationBaseUser ot where ot.org.id = ? and ot.roleType=?",pagination,orgId,roleType);
     }
 
+    @Override
+    public List<BaseUser> findLatestUsersByOrgIdAndRoleType(Integer orgId, Integer roleType, Pagination pagination) {
+        return find("select ot.user From OrganizationBaseUser ot where ot.org.id = ? and ot.roleType=? order by ot.createDate desc",pagination,orgId,roleType);
+    }
 }

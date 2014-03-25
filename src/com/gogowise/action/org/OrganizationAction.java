@@ -12,12 +12,10 @@ import com.gogowise.rep.course.enity.CourseEvaluation;
 import com.gogowise.rep.course.enity.SeniorClassRoom;
 import com.gogowise.rep.org.OrgService;
 import com.gogowise.rep.org.dao.OrgMaterialDao;
+import com.gogowise.rep.org.dao.OrganizationBaseUserDao;
 import com.gogowise.rep.org.dao.OrganizationCommentDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
-import com.gogowise.rep.org.enity.OrgMaterial;
-import com.gogowise.rep.org.enity.Organization;
-import com.gogowise.rep.org.enity.OrganizationComment;
-import com.gogowise.rep.org.enity.OrganizationTeacher;
+import com.gogowise.rep.org.enity.*;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import com.gogowise.rep.user.enity.BaseUser;
@@ -94,7 +92,9 @@ public class OrganizationAction extends BasicAction {
     private Integer schoolPageShowType; // 0: A-D, 1: E-H, 2: I-L, 3: M-P, 4:Q-T, 5: U-Z, 6: Other 7: Show all
 
     private BaseUserRoleTypeDao baseUserRoleTypeDao;
+    private Pagination pagination = new Pagination();
 
+    private OrganizationBaseUserDao organizationBaseUserDao;
 
     @Action(value = "schoolCenter", results = {@Result(name=SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".schoolCenter")})
     public String schoolCenter() {
@@ -204,7 +204,6 @@ public class OrganizationAction extends BasicAction {
         }
         orgId = org.getId();
 
-
         latestCourse = courseDao.findLatestCourseByOrg(orgId, new Pagination(4));
         if (latestCourse != null && latestCourse.size() > 0)
             course = latestCourse.get(0);
@@ -217,9 +216,16 @@ public class OrganizationAction extends BasicAction {
         if(page.getTotalSize() <= commentsNum){
             this.setCommentsNumOverflow(true);
         }
+        /**
         hotTeachers = organizationDao.findHotTeacherByOrgId(orgId, new Pagination(4));
         latestTeachers = organizationDao.findLatestTeacherByOrgId(orgId, new Pagination(6));
         allTeachersForOrg = orgService.findAllTeachersForOrg(orgId);
+        allTeachersForOrg = organizationBaseUserDao.findUsersByOrgIdAndRoleType(orgId, Constants.ROLE_TYPE_TEACHER,null);
+         **/
+        hotTeachers = organizationBaseUserDao.findUsersByOrgIdAndRoleType(orgId, Constants.ROLE_TYPE_TEACHER, pagination);
+        latestTeachers = organizationBaseUserDao.findLatestUsersByOrgIdAndRoleType(orgId, Constants.ROLE_TYPE_TEACHER, pagination);
+        allTeachersForOrg = hotTeachers;
+
         return SUCCESS;
     }
 
@@ -641,6 +647,46 @@ public class OrganizationAction extends BasicAction {
         return SUCCESS;
     }
 
+    @Action(value = "orgMoreCourse",
+            results = {@Result(name = SUCCESS, type=Constants.RESULT_NAME_TILES, location = ".orgMoreCourse"),
+                       @Result(name = INPUT, type=Constants.RESULT_NAME_TILES, location = ".notExist")
+            }
+    )
+    public String orgMoreCourse()
+    {
+        this.org = organizationDao.findById(this.getOrg().getId());
+        pagination.setPageSize(8);
+        this.latestCourse = this.courseDao.findLatestCourseByOrg(this.getOrg().getId(), pagination);
+        return SUCCESS;
+    }
+
+    @Action(value = "orgMoreMooc",
+            results = {@Result(name = SUCCESS, type=Constants.RESULT_NAME_TILES, location = ".orgMoreMooc"),
+                    @Result(name = INPUT, type=Constants.RESULT_NAME_TILES, location = ".notExist")
+            }
+    )
+    public String orgMoreMooc()
+    {
+        this.org = organizationDao.findById(this.getOrg().getId());
+        pagination.setPageSize(8);
+        this.moocs = courseDao.findMoocsByOrg(this.getOrg().getId(), pagination);
+        return SUCCESS;
+    }
+
+    @Action(value = "orgMoreTeacher",
+            results = {@Result(name = SUCCESS, type=Constants.RESULT_NAME_TILES, location = ".orgMoreTeacher"),
+                       @Result(name = INPUT, type=Constants.RESULT_NAME_TILES, location = ".notExist")
+           }
+    )
+    public String orgMoreTeacher()
+    {
+        //this.hotTeachers = this.organizationDao.findHotTeacherByOrgId(this.getOrg().getId(), pagination);
+        this.org = organizationDao.findById(this.getOrg().getId());
+        hotTeachers = organizationBaseUserDao.findUsersByOrgIdAndRoleType(this.getOrg().getId(), Constants.ROLE_TYPE_TEACHER, pagination);
+        return  SUCCESS;
+    }
+
+
 
     public CourseDao getCourseDao() {
         return courseDao;
@@ -995,5 +1041,21 @@ public class OrganizationAction extends BasicAction {
 
     public void setMoocs(List<Course> moocs) {
         this.moocs = moocs;
+    }
+
+    public Pagination getPagination() {
+        return pagination;
+    }
+
+    public void setPagination(Pagination pagination) {
+        this.pagination = pagination;
+    }
+
+    public OrganizationBaseUserDao getOrganizationBaseUserDao() {
+        return organizationBaseUserDao;
+    }
+
+    public void setOrganizationBaseUserDao(OrganizationBaseUserDao organizationBaseUserDao) {
+        this.organizationBaseUserDao = organizationBaseUserDao;
     }
 }
