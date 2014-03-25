@@ -81,7 +81,10 @@
                          </li>
                         <li>
                             <span class="item"><s:property value="%{getText('course.info.of.course.type')}"/></span>
-                            <s:select list="#{'1':getText('course.type.1'),'2':getText('course.type.2'),'3':getText('course.type.3'),'4':getText('course.type.4'),'5':getText('course.type.5'),'6':getText('course.type.6')}" headerKey="-1" headerValue="%{getText('please.choose.course.type')}" cssClass="long_text_field" id="step2_course_type" name="course.courseType"/>
+                            <s:select
+                                    list="#{'7':getText('course.type.7'),'1':getText('course.type.1'),'2':getText('course.type.2'),'3':getText('course.type.3'),'4':getText('course.type.4'),'5':getText('course.type.5'),'6':getText('course.type.6')}"
+                                    headerKey="-1" headerValue="%{getText('please.choose.course.type')}"
+                                    cssClass="long_text_field" id="step2_course_type" name="course.courseType"/>
                             <span class="course_type_input_msg tip_words">*</span>
                          </li>
                         <li class="long_select_li">
