@@ -8,11 +8,11 @@ import com.gogowise.rep.finance.enity.UserAccountInfo;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.dao.OrganizationTeacherDao;
 import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.org.enity.OrganizationBaseUser;
 import com.gogowise.rep.org.enity.OrganizationTeacher;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.rep.user.enity.BaseUserRoleType;
 import com.gogowise.vo.ResultData;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.lang.StringUtils;
@@ -24,8 +24,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-
-import java.util.logging.Logger;
 
 /**
  * TeacherAction
@@ -65,13 +63,13 @@ public class TeacherAction extends BasicAction {
             Organization org = organizationDao.findByResId(getSessionUserId());
             OrganizationTeacher orgTeacher = organizationTeacherDao.findByOrgIdAndTeacherId(org.getId(), teacher.getId());
             orgTeacher.setPreviousStatus(orgTeacher.getTeacherStatus());
-            orgTeacher.setTeacherStatus(Constants.USER_STATUS_DISABLED);
+            orgTeacher.setTeacherStatus(OrganizationBaseUser.USER_STATUS_DISABLED);
             organizationTeacherDao.persistAbstract(orgTeacher);
             rd.setResult(200);
         } catch (Exception e) {
             rd.setResult(500);
             rd.setMessage("Disable Failure:" + e.getMessage());
-            logger.error("Disable Failure",e);
+            logger.error("Disable Failure", e);
         }
         return SUCCESS;
     }
@@ -91,7 +89,7 @@ public class TeacherAction extends BasicAction {
         } catch (Exception e) {
             rd.setResult(500);
             rd.setMessage("Enable Failure:" + e.getMessage());
-            logger.error("Enable Failure",e);
+            logger.error("Enable Failure", e);
         }
         return SUCCESS;
     }
@@ -111,10 +109,11 @@ public class TeacherAction extends BasicAction {
         } catch (Exception e) {
             rd.setResult(500);
             rd.setMessage("Delete Failure:" + e.getMessage());
-            logger.error("Delete Failure",e);
+            logger.error("Delete Failure", e);
         }
         return SUCCESS;
     }
+
     @Action(value = "reInviteTeacher", results = {@Result(name = SUCCESS, type = "json")})
     public String reInviteTeacher() {
         ResultData<String> rd = new ResultData<String>();
@@ -123,13 +122,13 @@ public class TeacherAction extends BasicAction {
             BaseUser teacher = baseUserDao.findByEmail(user.getEmail());
             Organization org = organizationDao.findByResId(getSessionUserId());
             OrganizationTeacher orgTeacher = organizationTeacherDao.findByOrgIdAndTeacherId(org.getId(), teacher.getId());
-            orgTeacher.setTeacherStatus(Constants.USER_STATUS_UNCONFIRMED);
+            orgTeacher.setTeacherStatus(OrganizationBaseUser.USER_STATUS_UNCONFIRMED);
             organizationTeacherDao.persistAbstract(orgTeacher);
             rd.setResult(200);
         } catch (Exception e) {
             rd.setResult(500);
             rd.setMessage("ReInvite Failure:" + e.getMessage());
-            logger.error("ReInvite Failure",e);
+            logger.error("ReInvite Failure", e);
         }
         return SUCCESS;
     }

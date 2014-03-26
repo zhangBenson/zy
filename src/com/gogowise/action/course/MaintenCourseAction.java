@@ -1,22 +1,16 @@
 package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.action.valueobject.ClassSession;
-import com.gogowise.action.valueobject.OpenClassSession;
 import com.gogowise.common.utils.Constants;
-import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.CourseService;
-import com.gogowise.rep.course.dao.*;
-import com.gogowise.rep.course.enity.*;
+import com.gogowise.rep.course.dao.CourseDao;
+import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.org.dao.OrganizationBaseUserDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.user.dao.BaseUserDao;
-import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.user.enity.RoleType;
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.CompactWriter;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -25,10 +19,8 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -62,8 +54,8 @@ public class MaintenCourseAction extends BasicAction {
             @Result(name = "failed", type = Constants.RESULT_NAME_TILES, location = ".identityConfirmation")})
     public String createCourseAllInOne() {
         Organization org = organizationDao.findByResId(this.getSessionUserId());
-        teachers = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(),Constants.ROLE_TYPE_TEACHER,null);
-        students = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(),Constants.ROLE_TYPE_STUDENT,null);
+        teachers = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(), RoleType.ROLE_TYPE_TEACHER, null);
+        students = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(), RoleType.ROLE_TYPE_STUDENT, null);
         return SUCCESS;
     }
 
@@ -82,21 +74,17 @@ public class MaintenCourseAction extends BasicAction {
         Organization org = organizationDao.findByResId(this.getSessionUserId());
 
         //if org is null, then this user is a teacher
-        if( org == null )
-        {
+        if (org == null) {
             org = organizationDao.findMyOrg(this.getSessionUserId());
         }
 
         //If this teacher doesn't belong to any org
-        if( org == null )
-        {
+        if (org == null) {
             teachers = new ArrayList<>();
-            teachers.add( baseUserDao.findById(this.getSessionUserId()) );
-        }
-        else
-        {
-            teachers = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(),Constants.ROLE_TYPE_TEACHER,null);
-            students = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(),Constants.ROLE_TYPE_STUDENT,null);
+            teachers.add(baseUserDao.findById(this.getSessionUserId()));
+        } else {
+            teachers = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(), RoleType.ROLE_TYPE_TEACHER, null);
+            students = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(), RoleType.ROLE_TYPE_STUDENT, null);
         }
 
         return SUCCESS;

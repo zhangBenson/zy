@@ -56,6 +56,7 @@ import java.util.*;
 @Namespace(BasicAction.BASE_NAME_SPACE)
 public class UserAction extends BasicAction {
 
+
     private BaseUserDao baseUserDao;
     private UserRelationshipDao userRelationshipDao;
     private InterviewAppointerDao interviewAppointerDao;
@@ -81,7 +82,7 @@ public class UserAction extends BasicAction {
     private String invitedCode;//邀请码
     private String recTime;//推荐人推荐的时间 用作处理推荐栏目
     private Integer recUser;
-    private String duplicate;
+
     private Float il8nStr;
     private String identityConfirmMsg;
     private String tname;
@@ -135,6 +136,7 @@ public class UserAction extends BasicAction {
 
     private String userRoleType;
     private BaseUserRoleType baseUserRoleType;
+
 
     @Action(value = "initInviteFriend", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initInviteFriend")})
     public String initFriendsList() {
@@ -606,61 +608,6 @@ public class UserAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "easyReg",
-            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".easyReg")}
-    )
-    public String easyReg() {
-        return SUCCESS;
-    }
-
-    @Action(value = "easyRegCheck",
-            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}),
-                    @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".easyReg"),
-                    @Result(name = "redirect", type = "redirect", location = "${reDirectUrl}")}
-    )
-    public String easyRegCheck() {
-
-        BaseUser localUser = baseUserDao.findByEmail(this.getUser().getEmail());
-        if (localUser != null) {
-            addFieldError("user.email", this.getText("reEmail"));
-            return INPUT;
-        }
-
-
-        user.setEmail(StringUtils.trim(user.getEmail()));
-        user.setNickName(StringUtils.trim(user.getNickName()));
-        user.setLockedOut(true);
-        user.setPassword(MD5.endCode(user.getPassword()));
-        user.setRegDate(Calendar.getInstance());
-        String md5 = MD5.endCode(String.valueOf(System.currentTimeMillis()));
-        user.setActiveCode(md5);
-        user.setLanguage(ActionContext.getContext().getLocale().getLanguage());
-        baseUserDao.persistAbstract(user);
-        if (ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL) == null) {
-            sendEmail(user);
-        }
-        this.emailBoxUrl = EmailUtil.getEmailBoxUrl(user.getEmail());
-        setUserToSession(user);
-        setUserOrg(user);
-        if (StringUtils.isNotBlank(this.getReDirectUrl())) {
-            return "redirect";
-        }
-        return SUCCESS;
-    }
-
-    @Action(value = "initReg",
-            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".easyReg")}
-    )
-    public String initReg() {
-        return SUCCESS;
-    }
-
-    @Action(value = "initTeacherReg",
-            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".teacherReg")}
-    )
-    public String initTeacherReg() {
-        return SUCCESS;
-    }
 
     @Action(value = "teacherLogin",
             results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".teacherLogin")}
@@ -816,136 +763,6 @@ public class UserAction extends BasicAction {
         validateLogon();
     }
 
-    @Action(value = "reg",
-            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "personalCenter"}),
-                    @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".easyReg"),
-                    @Result(name = "redirect", type = "redirect", location = "${reDirectUrl}")}
-    )
-    public String reg() {
-
-        BaseUser localUser = baseUserDao.findByEmail(this.getUser().getEmail());
-        if (localUser != null) {
-            addFieldError("user.email", this.getText("reEmail"));
-            return INPUT;
-        }
-
-        user.setEmail(StringUtils.trim(user.getEmail()));
-        user.setNickName(StringUtils.trim(user.getNickName()));
-        user.setLockedOut(true);
-        user.setPassword(MD5.endCode(user.getPassword()));
-        user.setRegDate(Calendar.getInstance());
-        String md5 = MD5.endCode(String.valueOf(System.currentTimeMillis()));
-        user.setActiveCode(md5);
-        user.setLanguage(ActionContext.getContext().getLocale().getLanguage());
-        baseUserDao.persistAbstract(user);
-        if (ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL) == null) {
-            sendEmail(user);
-        }
-        this.emailBoxUrl = EmailUtil.getEmailBoxUrl(user.getEmail());
-        setUserToSession(user);
-        setUserOrg(user);
-        if (StringUtils.isNotBlank(this.getReDirectUrl())) {
-            return "redirect";
-        }
-        return SUCCESS;
-    }
-
-
-    @Action(value = "teacherReg",
-            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}),
-                    @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".easyReg"),
-                    @Result(name = "redirect", type = "redirect", location = "${reDirectUrl}")}
-    )
-    public String teacherReg() {
-
-        BaseUser localUser = baseUserDao.findByEmail(this.getUser().getEmail());
-        if (localUser != null) {
-            addFieldError("user.email", this.getText("reEmail"));
-            return INPUT;
-        }
-
-        user.setEmail(StringUtils.trim(user.getEmail()));
-        user.setNickName(StringUtils.trim(user.getNickName()));
-        user.setLockedOut(true);
-        user.setPassword(MD5.endCode(user.getPassword()));
-        user.setRegDate(Calendar.getInstance());
-        String md5 = MD5.endCode(String.valueOf(System.currentTimeMillis()));
-        user.setActiveCode(md5);
-        user.setLanguage(ActionContext.getContext().getLocale().getLanguage());
-        baseUserDao.persistAbstract(user);
-        if (ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL) == null) {
-            sendEmail(user);
-        }
-        this.emailBoxUrl = EmailUtil.getEmailBoxUrl(user.getEmail());
-        setUserToSession(user);
-        setUserOrg(user);
-        if (StringUtils.isNotBlank(this.getReDirectUrl())) {
-            return "redirect";
-        }
-
-        baseUserRoleType.setBaseUser(user);
-        baseUserRoleType.getRoleType().setId(5);
-        baseUserRoleTypeDao.persist(baseUserRoleType);
-
-        return SUCCESS;
-    }
-
-    @Action(value = "studentRegister",
-            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}),
-                    @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".easyReg"),
-                    @Result(name = "redirect", type = "redirect", location = "${reDirectUrl}")}
-    )
-    public String studentRegister() {
-        if (this.getUser().getEmail() == null || this.getUser().getEmail().trim() == "") {
-            addFieldError("user.email", this.getText("please enter email"));
-            return INPUT;
-        }
-
-        BaseUser localUser = baseUserDao.findByEmail(this.getUser().getEmail());
-        if (localUser != null) {
-            addFieldError("user.email", this.getText("reEmail"));
-            return INPUT;
-        }
-
-        user.setEmail(StringUtils.trim(user.getEmail()));
-        user.setNickName(StringUtils.trim(user.getNickName()));
-        user.setLockedOut(true);
-        user.setPassword(MD5.endCode(user.getPassword()));
-        user.setRegDate(Calendar.getInstance());
-        String md5 = MD5.endCode(String.valueOf(System.currentTimeMillis()));
-        user.setActiveCode(md5);
-        user.setLanguage(ActionContext.getContext().getLocale().getLanguage());
-        baseUserDao.persistAbstract(user);
-        if (ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL) == null) {
-            sendEmail(user);
-        }
-        if (user.getEmail() != null)
-            this.emailBoxUrl = EmailUtil.getEmailBoxUrl(user.getEmail());
-        setUserToSession(user);
-        setUserOrg(user);
-        if (StringUtils.isNotBlank(this.getReDirectUrl())) {
-            return "redirect";
-        }
-
-        baseUserRoleType = new BaseUserRoleType();
-        baseUserRoleType.setBaseUser(user);
-        baseUserRoleType.setRoleType(new RoleType());
-        baseUserRoleType.getRoleType().setRoleName("student");
-        baseUserRoleType.getRoleType().setId(6);
-        baseUserRoleTypeDao.persist(baseUserRoleType);
-
-        return SUCCESS;
-    }
-
-    public void validateReg() {
-        if (baseUserDao.findByEmail(StringUtils.trim(user.getEmail())) != null) {
-            String reEmail = getText("reEmail");
-            addFieldError("user.email", reEmail);
-        }
-        if (baseUserDao.findByNickName(StringUtils.trim(user.getNickName())) != null) {
-            addFieldError("user.nickName", this.getText("member.reg.nickname.exist"));
-        }
-    }
 
     public void sendEmail(BaseUser user) {
         String css = "<style type=\"text/css\">\n" +
@@ -1362,15 +1179,6 @@ public class UserAction extends BasicAction {
         this.recUser = recUser;
     }
 
-
-    public String getDuplicate() {
-        return duplicate;
-    }
-
-    public void setDuplicate(String duplicate) {
-        this.duplicate = duplicate;
-    }
-
     public Float getIl8nStr() {
         return il8nStr;
     }
@@ -1666,4 +1474,6 @@ public class UserAction extends BasicAction {
     public void setBaseUserRoleType(BaseUserRoleType baseUserRoleType) {
         this.baseUserRoleType = baseUserRoleType;
     }
+
+
 }

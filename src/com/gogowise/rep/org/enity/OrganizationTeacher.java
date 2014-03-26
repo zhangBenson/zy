@@ -1,6 +1,5 @@
 package com.gogowise.rep.org.enity;
 
-import com.gogowise.common.utils.Constants;
 import com.gogowise.rep.AbstractPersistence;
 import com.gogowise.rep.user.enity.BaseUser;
 
@@ -18,15 +17,15 @@ import java.util.Calendar;
 @Entity
 public class OrganizationTeacher extends AbstractPersistence {
 
-    public final static  Integer ORG_ROLE_TYPE_AUTH = 1;
+    public final static Integer ORG_ROLE_TYPE_AUTH = 1;
 
     @ManyToOne
     private BaseUser teacher;
     @ManyToOne
     private Organization org;
 
-    private Short teacherStatus = Constants.USER_STATUS_UNCONFIRMED;
-    private Short previousStatus = Constants.USER_STATUS_UNCONFIRMED;
+    private Short teacherStatus = OrganizationBaseUser.USER_STATUS_UNCONFIRMED;
+    private Short previousStatus = OrganizationBaseUser.USER_STATUS_UNCONFIRMED;
 
     private Boolean orgRoleType = false;
 

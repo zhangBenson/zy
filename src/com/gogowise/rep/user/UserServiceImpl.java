@@ -1,11 +1,14 @@
 package com.gogowise.rep.user;
 
 import com.gogowise.rep.ModelServiceImpl;
+import com.gogowise.rep.org.OrgService;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import com.gogowise.rep.user.dao.RoleTypeDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.user.enity.BaseUserRoleType;
 import com.gogowise.rep.user.enity.RoleType;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +18,12 @@ public class UserServiceImpl extends ModelServiceImpl implements UserService {
 
     private BaseUserRoleTypeDao baseUserRoleTypeDao;
     private RoleTypeDao roleTypeDao;
+
+    @Autowired
+    private OrgService orgService;
+
+    @Autowired
+    private BaseUserDao baseUserDao;
 
     public void grantPermission(BaseUser owner, String permission) {
         if (baseUserRoleTypeDao.havePermission(owner.getId(), permission)) {
@@ -35,6 +44,11 @@ public class UserServiceImpl extends ModelServiceImpl implements UserService {
                 break;
             }
         }
+    }
+
+    public void regUser(BaseUser user, String roleType) {
+        baseUserDao.persistAbstract(user);
+        this.grantPermission(user, roleType);
     }
 
     public void setBaseUserRoleTypeDao(BaseUserRoleTypeDao baseUserRoleTypeDao) {

@@ -8,6 +8,14 @@ import javax.persistence.Entity;
 
 @Entity
 public class RoleType extends AbstractPersistence {
+
+    /* ---------------------- definition of role type -----------------------------*/
+    public static final Integer ROLE_TYPE_ORGREVIEWER = 3;
+    public static final Integer ROLE_TYPE_ADMIN = 1;
+    public static final Integer ROLE_TYPE_ORGCREATOR = 2;
+    public static final Integer ROLE_TYPE_GRANT = 4;
+    public static final Integer ROLE_TYPE_TEACHER = 5;
+    public static final Integer ROLE_TYPE_STUDENT = 6;
     private String roleName;
 
     public final static String ADMIN = "admin";
