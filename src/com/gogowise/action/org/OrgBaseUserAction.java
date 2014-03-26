@@ -11,7 +11,6 @@ import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import com.gogowise.rep.user.dao.RoleTypeDao;
 import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.rep.user.enity.BaseUserRoleType;
 import com.gogowise.rep.user.enity.RoleType;
 import com.gogowise.vo.ResultData;
 import com.opensymphony.xwork2.ActionContext;
@@ -47,6 +46,9 @@ public class OrgBaseUserAction extends BasicAction {
     private BaseUserRoleTypeDao baseUserRoleTypeDao;
     @Autowired
     private RoleTypeDao roleTypeDao;
+//    @Autowired
+//    private UserService userService;
+
 
     private List<OrganizationBaseUser> orgUsers;
     private BaseUser user;
@@ -63,50 +65,28 @@ public class OrgBaseUserAction extends BasicAction {
         return RoleType.STUDENT;
     }
 
+
     @Action(value = "saveOrgUser", results = {@Result(name = RoleType.STUDENT, type = Constants.RESULT_NAME_TILES, location = ".studentManage"),
-            @Result(name = RoleType.TEACHER, type = Constants.RESULT_NAME_TILES, location = ".teacherManage")})
+            @Result(name = RoleType.TEACHER, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "manageOrgUsers", "roleType", "${roleType}"})})
     public String saveOrgUser() {
         Organization org = organizationDao.findMyOrg(this.getSessionUserId());
         //判断添加老师是否已经存在
-        BaseUser baseUser = null;
-        BaseUserRoleType baseUserRoleType = null;
-        OrganizationBaseUser orgUser = null;
         for (OrganizationBaseUser ou : orgUsers) {
             if (ou == null) {
                 continue;
             }
 
-            String userEmail = ou.getUser().getEmail();
-            baseUser = baseUserDao.findByEmail(userEmail);
-            //该用户注册过
-            if (baseUser != null) {
-                //判断该用户是否已经属于该学校
-                orgUser = organizationBaseUserDao.findByOrgIdAndUserId(org.getId(), baseUser.getId(), roleType);
-                if (orgUser != null) {
-                    continue;
-                }
-                //该用户没   注册过
-            } else {
-
-                //2. 发邮件通知
-                String title = this.getText("org.modify.teacher.email.title", org.getSchoolName());
-                String url = getBasePath() + "/initReg.html?user.email=" + user.getEmail() + "&isT=true&org.id=" + org.getId() + "&confirmForOrg=true";
-                String content = this.getText("org.modify.teacher.email.content", url);
-                EmailUtil.sendMail(userEmail, title, content);
+            String userEmail = ou.getEmail();
+            BaseUser baseUser = baseUserDao.findByEmail(userEmail);
+            OrganizationBaseUser orgUser = organizationBaseUserDao.findByOrgIdAndEmailAndRoleType(org.getId(), userEmail, roleType);
+            if (orgUser != null) {
+                continue;
             }
+            sendInviteEmail(org, ou, userEmail, true, baseUser != null);
 
-            //添加用户角色信息
-            boolean haveTeacherPermission = baseUserRoleTypeDao.havePermission(baseUser.getId(), RoleType.getRoleNameById(roleType));
-            if (!haveTeacherPermission) {
-                baseUserRoleType = new BaseUserRoleType();
-                baseUserRoleType.setBaseUser(baseUser);
-                baseUserRoleType.setRoleType(roleTypeDao.findById(roleType));
-                baseUserRoleTypeDao.persistAbstract(baseUserRoleType);
-            }
 
             //保存组织用户关系
             ou.setOrg(org);
-            ou.setUser(baseUser);
             ou.setCreateDate(Calendar.getInstance());
             ou.setUserStatus(OrganizationBaseUser.USER_STATUS_UNCONFIRMED);
             ou.setRoleType(roleType);
@@ -118,25 +98,19 @@ public class OrgBaseUserAction extends BasicAction {
         return RoleType.getRoleNameById(roleType);
     }
 
-    @Action(value = "disableUser", results = {@Result(name = SUCCESS, type = "json")})
-    public String disableUser() {
-        ResultData<String> rd = new ResultData<String>();
-        ActionContext.getContext().getValueStack().push(rd);
-        try {
-            BaseUser baseUser = baseUserDao.findByEmail(user.getEmail());
-            Organization org = organizationDao.findByResId(getSessionUserId());
-            OrganizationBaseUser orgUser = organizationBaseUserDao.findByOrgIdAndUserId(org.getId(), baseUser.getId(), roleType);
-            orgUser.setPreviousStatus(orgUser.getUserStatus());
-            orgUser.setUserStatus(OrganizationBaseUser.USER_STATUS_DISABLED);
-            organizationBaseUserDao.persistAbstract(orgUser);
-            rd.setResult(200);
-        } catch (Exception e) {
-            rd.setResult(500);
-            rd.setMessage("Disable Failure:" + e.getMessage());
-            logger.error("Disable Failure", e);
+    private void sendInviteEmail(Organization org, OrganizationBaseUser ou, String userEmail, boolean isTeacher, boolean isExist) {
+        //2. 发邮件通知
+        String title = this.getText("org.invite.be.member.title", new String[]{org.getSchoolName()});
+        String url;
+        if (isExist) {
+            url = getBasePath() + "/initReg.html?user.email=" + ou.getEmail() + "&isT=" + isTeacher + "&org.id=" + org.getId() + "&confirmForOrg=true";
+        } else {
+            url = getBasePath() + "/initReg.html?user.email=" + ou.getEmail() + "&isT=" + isTeacher + "&org.id=" + org.getId() + "&confirmForOrg=true";
         }
-        return SUCCESS;
+        String content = this.getText("org.invite.be.member.content", new String[]{url});
+        EmailUtil.sendMail(userEmail, title, content);
     }
+
 
     @Action(value = "enableUser", results = {@Result(name = SUCCESS, type = "json")})
     public String enableUser() {
@@ -163,9 +137,9 @@ public class OrgBaseUserAction extends BasicAction {
         ResultData<String> rd = new ResultData<String>();
         ActionContext.getContext().getValueStack().push(rd);
         try {
-            BaseUser baseUser = baseUserDao.findByEmail(user.getEmail());
+            String email = user.getEmail();
             Organization org = organizationDao.findByResId(getSessionUserId());
-            OrganizationBaseUser orgUser = organizationBaseUserDao.findByOrgIdAndUserId(org.getId(), baseUser.getId(), roleType);
+            OrganizationBaseUser orgUser = organizationBaseUserDao.findByOrgIdAndEmailAndRoleType(org.getId(), email, roleType);
             //删除用户
             organizationBaseUserDao.delete(orgUser);
             //不删除角色
@@ -183,11 +157,12 @@ public class OrgBaseUserAction extends BasicAction {
         ResultData<String> rd = new ResultData<String>();
         ActionContext.getContext().getValueStack().push(rd);
         try {
-            BaseUser student = baseUserDao.findByEmail(user.getEmail());
+            String email = user.getEmail();
             Organization org = organizationDao.findByResId(getSessionUserId());
-            OrganizationBaseUser orgUser = organizationBaseUserDao.findByOrgIdAndUserId(org.getId(), student.getId(), roleType);
+            OrganizationBaseUser orgUser = organizationBaseUserDao.findByOrgIdAndEmailAndRoleType(org.getId(), email, roleType);
             orgUser.setUserStatus(OrganizationBaseUser.USER_STATUS_UNCONFIRMED);
             organizationBaseUserDao.persistAbstract(orgUser);
+            sendInviteEmail(org, orgUser, email, RoleType.ROLE_TYPE_TEACHER.equals(roleType), baseUserDao.findByEmail(email) != null);
             rd.setResult(200);
         } catch (Exception e) {
             rd.setResult(500);

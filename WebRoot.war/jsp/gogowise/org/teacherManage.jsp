@@ -26,9 +26,9 @@
 
                     <s:iterator value="orgUsers">
                         <tr>
-                            <td><s:property value="user.email"/></td>
+                            <td><s:property value="email"/></td>
                             <td class="orangeWords"><s:property value="user.nickName"/> </td>
-                            <td><s:property value="user.userName"/></td>
+                            <td><s:property value="realName"/></td>
                             <td><s:property value="user.telphone"/></td>
                             <td><s:property value="user.sexy?getText('male'):getText('female')"/></td>
                             <td>
@@ -46,17 +46,14 @@
                                 </s:else>
                             </td>
                             <td>
-                                <s:if test="userStatus in {1,3}">
-                                    <a href="javascript:;" onclick="disableUser(this);"><s:property value="%{getText('org.user.disable')}"/></a>&nbsp;
+                                <s:if test="userStatus == 1">
+                                    <a href="javascript:;" onclick="reInviteUser(this);"><s:property
+                                            value="%{getText('org.user.reinvite')}"/></a>&nbsp;
                                     <a href="javascript:;" onclick="deleteUser(this);"><s:property value="%{getText('course.class.delete')}"/></a>
                                 </s:if>
-                                <s:elseif test="userStatus==4">
-                                    <a href="javascript:;" onclick="enableUser(this);"><s:property value="%{getText('org.user.enable')}"/></a>&nbsp;
-                                    <a href="javascript:;" onclick="deleteUser(this);"><s:property value="%{getText('course.class.delete')}"/></a>
+                                <s:elseif test="userStatus==3">
+                                <a href="javascript:;" onclick="deleteUser(this);"><s:property value="%{getText('course.class.delete')}"/></a>
                                 </s:elseif>
-                                <s:else>
-                                    <a href="javascript:;" onclick="reInviteUser(this);"><s:property value="%{getText('org.user.reinvite')}"/></a>&nbsp;
-                                </s:else>
                             </td>
                         </tr>
                     </s:iterator>
@@ -91,10 +88,11 @@
                         </tr>
                         <tr class="addlist_msg_tr">
                             <td class="addlist_input">
-                                <input type="text" name="orgUsers[0].user.email"  onblur='checkAuthorizationEmail(this);' class="authorization_input" />
+                                <input type="text" name="orgUsers[0].email" onblur='checkAuthorizationEmail(this);'
+                                       class="authorization_input"/>
                             </td>
                             <td class="addlist_input">
-                                <input type="text" name="orgUsers[0].user.userName" />
+                                <input type="text" name="orgUsers[0].realName"/>
                             </td>
                             <td class="author_td">
                             </td>

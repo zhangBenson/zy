@@ -29,6 +29,7 @@ public class OrganizationBaseUser extends AbstractPersistence {
     private Organization org;
 
     private String email;
+    private String realName;
 
 
     private Short userStatus = USER_STATUS_UNCONFIRMED;
@@ -91,5 +92,13 @@ public class OrganizationBaseUser extends AbstractPersistence {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
     }
 }
