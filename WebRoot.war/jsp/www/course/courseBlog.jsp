@@ -4,6 +4,10 @@
 
 <link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox-1.3.4.css" media="screen"/>
 
+<style>
+    .none{display: none}
+</style>
+
 <div class="container">
 
 <div class="thinline"></div>
@@ -40,44 +44,68 @@
     <h3 class="courseSubhead"><s:property value="%{getText('online.class.avigation.course.video')}"/></h3>
 
     <%-- Course Videos--%>
-    <s:set var="isMore" value="false"></s:set>
+    <div id = "videoList">
+        <s:iterator value="course.classes" id="class" status="status">
+            <s:if test="#status.index<6">
+                <s:if test="#status.index % 3 == 0"><div class="row"></s:if>
 
-    <s:iterator value="course.classes" id="class" status="status">
-    <s:if test="#status.index<6">
-    <s:if test="#status.index % 3 == 0"><div class="row"></s:if>
+                <div class="col-sm-4">
+                    <div class="pull-left">
+                        <s:if test="record">
+                            <div class="lessonGreen" onclick="enterPlayerRoom(<s:property value="id"/>)" style="cursor:pointer;">
+                        </s:if>
+                        <s:else>
+                            <div class="lessonOrange">
+                        </s:else>
+                                <span><s:property value="#status.index+1"/></span><div>Lesson</div>
+                            </div>
+                        </div>
 
-        <%--<div class="col-sm-4">--%>
-        <%--<s:if test="#status.index < course.FinshedClassNum"><div class="lessonOrange"></s:if>--%>
-        <%--<s:else><div class="lessonGreen"></s:else>--%>
-        <%--<div id="lessonText"><s:property value="#status.index+1" /></div>--%>
-        <%--<div id="lessonName"><s:property value="nickName"/></div>--%>
-        <%--</div>--%>
-        <%--</div>--%>
+                        <div class="pull-left">
+                            <div class="lessonName"><s:property value="nickName"/></div>
+                            <div class="lessonTime"><s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
+                        </div>
+                    </div>
 
-    <div class="col-sm-4">
-        <div class="pull-left">
-            <s:if test="record">
-            <div class="lessonGreen" onclick="enterPlayerRoom(<s:property value="id"/>)" style="cursor:pointer;">
-                </s:if>
-                <s:else>
-                <div class="lessonOrange">
+                <s:if test="#status.index % 3 == 2||#status.last"></div><br/></s:if>
+            </s:if>
+        </s:iterator>
+
+
+        <s:if test="course.classes.size()>6">
+            <p class="text-right">
+                <a id="moreClass" onClick="showdiv('hiddenVideoList')"><s:property value="%{getText('others.more')}"/></a>
+            </p>
+        </s:if>
+    </div>
+
+    <div id="hiddenVideoList" class="none">
+        <s:iterator value="course.classes" id="class" status="status">
+            <s:if test="#status.index>5">
+                <s:if test="#status.index % 3 == 0"><div class="row"></s:if>
+
+                <div class="col-sm-4">
+                    <div class="pull-left">
+                    <s:if test="record">
+                        <div class="lessonGreen" onclick="enterPlayerRoom(<s:property value="id"/>)" style="cursor:pointer;">
+                    </s:if>
+                    <s:else>
+                        <div class="lessonOrange">
                     </s:else>
-                    <span><s:property value="#status.index+1"/></span><div>Lesson</div>
+                            <span><s:property value="#status.index+1"/></span><div>Lesson</div>
+                        </div>
+                    </div>
+
+                    <div class="pull-left">
+                        <div class="lessonName"><s:property value="nickName"/></div>
+                        <div class="lessonTime"><s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="pull-left">
-                <div class="lessonName"><s:property value="nickName"/></div>
-                <div class="lessonTime"><s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
-            </div>
-        </div>
-
-        <s:if test="#status.index % 3 == 2||#status.last"></div><br/></s:if>
-    </s:if>
-    <s:else><s:set var="isMore" value="true"></s:set></s:else>
-    </s:iterator>
-
-    <s:if test="isMore"><p class="text-right"><a href="#"><s:property value="%{getText('others.more')}"/></a></p></s:if>
+                <s:if test="#status.index % 3 == 2||#status.last"></div><br/></s:if>
+            </s:if>
+        </s:iterator>
+    </div>
 
     <br/>
     <%-- Forum --%>
@@ -86,25 +114,9 @@
     <br/>
 
 
-    <%--<div class="forumsinfo">--%>
-    <%--<div class="forumsUserContainer">--%>
-    <%--<img src="gogowisestyle/image/portrait1.jpg" alt="" class="forumportrait">--%>
-    <%--<p class="textOverSinglerow">Name</p>--%>
-    <%--</div>--%>
-    <%--<div class="forumsContentContainer">--%>
-    <%--<div class="forumText">--%>
-    <%--For students, that means you really have to pay attention in all your computer scienceclasses.For students, that means you really have to pay attention in all your computer scienceclasses.--%>
-    <%--</div>--%>
-    <%--<p class="text-right">2013-11-12</p>--%>
-    <%--</div>--%>
-    <%--<div class="clearfix"></div>--%>
-    <%--</div>--%>
-
     <div id="message_list_ul">
-        <s:set var="flag" value="true"/>
         <s:iterator value="courseComments" status="idx">
             <%--<p>--%>
-            <s:if test="flag">
                 <div class="row">
                     <div class="forumsinfo">
                         <div class="forumsUserContainer">
@@ -121,10 +133,17 @@
                     </div>
 
                 </div>
-                <s:if test="#idx.index > 3"><s:set var="flag" value="false"/></s:if>
-            </s:if>
             <%--</p>--%>
         </s:iterator>
+
+        <s:if test="commentsNum != 0">
+            <s:if test="commentsNumOverflow">
+                <a href="javascript:;" class="more_or_close" onclick="getMoreComments();"><s:property value="%{getText('blog.comments.more.result')}"/>&nbsp;&nbsp;&gt;&gt;</a>
+            </s:if>
+            <s:elseif test="!commentsNumOverflow && commentsNum>=10">
+                <a href="javascript:;" class="more_or_close" onclick="rollBack();">&lt;&lt;&nbsp;&nbsp;<s:property value="%{getText('blog.comments.rollBack')}"/></a>
+            </s:elseif>
+        </s:if>
     </div>
 
     <br/>
@@ -271,6 +290,31 @@
             $('#modalLogin').modal("show");
             return false;
         }
+    }
+
+    function showdiv(targetid){
+
+        var target=document.getElementById(targetid);
+
+        if (target.style.display=="block"){
+            target.style.display="none";
+
+        } else {
+            target.style.display="block";
+            document.getElementById('showtext2').style.display = "none";
+        }
+    }
+
+    function getMoreComments(){
+        $.post("moreCourseComments.html",{'course.id':<s:property value="course.id"/>,'commentsNum':<s:property value="commentsNum"/>},function(data){
+            $("#message_list_ul").html(data);
+        });
+    }
+
+    function rollBack(){
+        $.post("moreCourseComments.html",{'course.id':<s:property value="course.id"/>,'commentsNum':0},function(data){
+            $("#message_list_ul").html(data);
+        });
     }
 
 </script>

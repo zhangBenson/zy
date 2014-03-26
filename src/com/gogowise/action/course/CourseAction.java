@@ -1036,11 +1036,13 @@ public class CourseAction extends BasicAction {
             return SUCCESS;
         }*/
         course = courseDao.findById(this.getCourse().getId());
-        Pagination page = new Pagination(10);
+        Pagination page = new Pagination(Constants.DEFAULT_PAGE_OF_COMMENTS_INCREASED_SIZE);
         courseComments = courseCommentDao.findByCourseId(page, course.getId());
         this.setCommentsNum(courseComments.size());
-        if (page.getTotalSize() <= commentsNum) {
+        if( commentsNum < page.getTotalSize()) {
             this.setCommentsNumOverflow(true);
+        }else{
+            this.setCommentsNumOverflow(false);
         }
         courseQuestions = courseQuestionDao.findNewByCourseId(pagination, course.getId());
         courseResources = courseResourceDao.findByCourseId(pagination, course.getId());
