@@ -69,6 +69,9 @@
                 <h1 class = "courseSynopsis"><s:property value="%{getText('label.login.no.account.info')}"/></h1>
                 <s:form validate="true" theme="css_xhtml" method="POST" action="reg">
                     <s:hidden name="reDirectUrl" id="reDirectUrl"/>
+                    <s:hidden name="org.id"/>
+                    <s:hidden name="isT"/>
+                    <s:hidden name="confirmForOrg"/>
 
                     <div class="form-group">
                         <label><s:property value="%{getText('email')}" /></label>

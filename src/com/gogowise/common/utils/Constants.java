@@ -185,6 +185,8 @@ public class Constants {
             "table, tr, td { border-collapse:collapse;}\n" +
             "</style>";
 
+    public static final String REG_CSS = "<style type=\"text/css\">\n#rvmDiv #logoDiv {background-image: url(http://www.gogowise.com/images/logo.jpg);background-repeat: no-repeat;height: 65px;margin-left: 45px;}\n#rvmDiv #rvmcontentDiv ul .welcomeTittle {margin-left: 30px;}\n#rvmDiv {float: left;width: 100%;font-family: \"微软雅黑\", \"宋体\", \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif;}\n#logoDiv {float: left;width: 100%;}\n#rvmcontentDiv {float: left;width: 100%;}\n#rvmDiv #rvmcontentDiv ul li {list-style-type: none;}\n#rvmDiv #rvmcontentDiv .orangeWords {color: rgb(255,155,55);}\n#rvmDiv #rvmcontentDiv ul .lastWords {margin-top: 50px;}\n</style>";
+
     /* ---------------------  Search Type ----------------------------------- */
     public static int SEARCH_TYPE_ALL = 1;
     public static int SEARCH_TYPE_MEMBER = 2;

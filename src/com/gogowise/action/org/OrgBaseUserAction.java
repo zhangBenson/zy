@@ -3,7 +3,6 @@ package com.gogowise.action.org;
 import com.gogowise.action.BasicAction;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.EmailUtil;
-import com.gogowise.common.utils.MD5;
 import com.gogowise.rep.org.dao.OrganizationBaseUserDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
@@ -86,31 +85,15 @@ public class OrgBaseUserAction extends BasicAction {
                 if (orgUser != null) {
                     continue;
                 }
-                baseUser.setUserName(ou.getUser().getUserName());
                 //该用户没   注册过
             } else {
-                //设置随机密码，发送至邮件
-                baseUser = new BaseUser();
-                baseUser.setEmail(ou.getUser().getEmail());
-                baseUser.setUserName(ou.getUser().getUserName());
-                baseUser.setNickName(ou.getUser().getUserName());
-                baseUser.setLockedOut(true);
-                baseUser.setRegDate(Calendar.getInstance());
-                String md5 = MD5.endCode(String.valueOf(System.currentTimeMillis()));
-                baseUser.setActiveCode(md5);
-                baseUser.setLanguage(ActionContext.getContext().getLocale().getLanguage());
-                String randomPwd = "123456";
-                baseUser.setPassword(MD5.endCode(randomPwd));
-                //2. 发邮件通知
-                String tile = "GoGoWise" + org.getSchoolName() + "学校邀请";
-                //TODO: 邮件内容待确认
-                String content = "GoGoWise" + org.getSchoolName() + "学校邀请您成为它的老师，帐号为您的邮箱：" + userEmail + ",密码为：" + randomPwd;
-//                        +",点击<a href='http:'>这里</a>接受，点击<a href='#'>这里</a>拒绝";
-                EmailUtil.sendMail(userEmail, tile, content, null, null);
-            }
 
-            //保存老师信息
-            baseUserDao.persistAbstract(baseUser);
+                //2. 发邮件通知
+                String title = this.getText("org.modify.teacher.email.title", org.getSchoolName());
+                String url = getBasePath() + "/initReg.html?user.email=" + user.getEmail() + "&isT=true&org.id=" + org.getId() + "&confirmForOrg=true";
+                String content = this.getText("org.modify.teacher.email.content", url);
+                EmailUtil.sendMail(userEmail, title, content);
+            }
 
             //添加用户角色信息
             boolean haveTeacherPermission = baseUserRoleTypeDao.havePermission(baseUser.getId(), RoleType.getRoleNameById(roleType));
