@@ -117,8 +117,10 @@ public class CourseCommentAction extends BasicAction {
         Pagination page = new Pagination(this.getCommentsNum()+Constants.DEFAULT_PAGE_OF_COMMENTS_INCREASED_SIZE);
         courseComments = courseCommentDao.findByCourseId(page,this.getCourse().getId());
         this.setCommentsNum(courseComments.size());
-        if(page.getTotalSize() <= commentsNum){
+        if( commentsNum < page.getTotalSize()){
             this.setCommentsNumOverflow(true);
+        }else{
+            this.setCommentsNumOverflow(false);
         }
         return SUCCESS;
     }

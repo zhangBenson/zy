@@ -179,6 +179,7 @@ $(document).ready(function() {
                 $('#fileModal').modal('hide');
                 break;
             case "question":
+                $("#QuestionItem").empty();
                 getQuestionInfo();
                 showQuestions();
                 $("#btnSubmitQuestions").removeAttr("disabled");
@@ -523,7 +524,7 @@ function getQuestionItemInfo(id)
                         "<label>"+
 
                         "<span style='display:none;'>"+index+"</span>"+
-                        "<div><span style='color:#6ab600;'>"+index+":</span><span style='color:red;'>"+info+"</span></div>"+
+                        "<div><span style='color:#6ab600;'>"+index+":</span>&nbsp;&nbsp;<span style='color:#6ab600;'>"+info+"</span></div>"+
                         "</label>"+
                         "</div>");
                 index++;
