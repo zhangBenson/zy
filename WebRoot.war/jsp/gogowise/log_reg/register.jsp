@@ -17,6 +17,9 @@
     <div class="lr_right lr_right_reg fr">
         <s:form validate="true" theme="css_xhtml" method="POST" action="reg">
             <s:hidden name="reDirectUrl" id="reDirectUrl"/>
+            <s:hidden name="org.id"/>
+            <s:hidden name="isT"/>
+            <s:hidden name="confirmForOrg"/>
 
             <div class="item_wrap item_wrap_reg">
                 <div class="option_title_reg"><s:property value="%{getText('email')}" /></div> &nbsp;&nbsp;
