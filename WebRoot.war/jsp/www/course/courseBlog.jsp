@@ -137,12 +137,14 @@
         </s:iterator>
 
         <s:if test="commentsNum != 0">
-            <s:if test="commentsNumOverflow">
-                <a href="javascript:;" class="more_or_close" onclick="getMoreComments();"><s:property value="%{getText('blog.comments.more.result')}"/>&nbsp;&nbsp;&gt;&gt;</a>
-            </s:if>
-            <s:elseif test="!commentsNumOverflow && commentsNum>=10">
-                <a href="javascript:;" class="more_or_close" onclick="rollBack();">&lt;&lt;&nbsp;&nbsp;<s:property value="%{getText('blog.comments.rollBack')}"/></a>
-            </s:elseif>
+            <p class="text-right">
+                <s:if test="commentsNumOverflow">
+                    <a href="javascript:;" class="more_or_close" onclick="getMoreComments();"><s:property value="%{getText('blog.comments.more.result')}"/>&nbsp;&nbsp;&gt;&gt;</a>
+                </s:if>
+                <s:if test="commentsNum>5">
+                    &nbsp;|&nbsp;<a href="javascript:;" class="more_or_close" onclick="rollBack();">&lt;&lt;&nbsp;&nbsp;<s:property value="%{getText('blog.comments.rollBack')}"/></a>
+                </s:if>
+            </p>
         </s:if>
     </div>
 
@@ -174,7 +176,7 @@
                 </a>
             </div>
         </s:iterator>
-        <p class="text-right"><a href="#"><s:property value="%{getText('others.more')}"/></a></p>
+        <%--<p class="text-right"><a href="#"><s:property value="%{getText('others.more')}"/></a></p>--%>
     </div>
 </div>
 </div>
