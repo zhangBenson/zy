@@ -297,13 +297,15 @@
     function showdiv(targetid){
 
         var target=document.getElementById(targetid);
+        //var rollBack = ;
 
         if (target.style.display=="block"){
             target.style.display="none";
+            document.getElementById('moreClass').innerHTML = "<s:text name="%{getText('blog.comments.more.result')}"/>";
 
         } else {
             target.style.display="block";
-            document.getElementById('showtext2').style.display = "none";
+           document.getElementById('moreClass').innerHTML = "<s:text name="%{getText('blog.comments.rollBack')}"/>";
         }
     }
 
