@@ -4,11 +4,11 @@
 <validators>
     <field name="user.email">
         <field-validator type="requiredstring">
-            <param name="trim" >true</param>
+            <param name="trim">true</param>
             <message key="emailEmpty"></message>
         </field-validator>
         <field-validator type="email">
-            <param name="trim" >true</param>
+            <param name="trim">true</param>
             <message key="emailerror"></message>
         </field-validator>
     </field>
@@ -24,7 +24,7 @@
     </field>
     <field name="user.nickName">
         <field-validator type="requiredstring">
-            <param name="trim" >true</param>
+            <param name="trim">true</param>
             <message key="menber.reg.nickName.no.empty"></message>
         </field-validator>
     </field>

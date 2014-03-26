@@ -12,6 +12,7 @@ import com.gogowise.rep.course.enity.CourseEvaluation;
 import com.gogowise.rep.course.enity.SeniorClassRoom;
 import com.gogowise.rep.org.OrgService;
 import com.gogowise.rep.org.dao.OrgMaterialDao;
+import com.gogowise.rep.org.dao.OrganizationBaseUserDao;
 import com.gogowise.rep.org.dao.OrganizationCommentDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.OrgMaterial;
@@ -21,6 +22,7 @@ import com.gogowise.rep.org.enity.OrganizationTeacher;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import com.gogowise.rep.user.enity.BaseUser;
+import com.gogowise.rep.user.enity.RoleType;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
@@ -47,7 +49,6 @@ import java.util.*;
         @Result(name = "index", type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "index"})
 })
 public class OrganizationAction extends BasicAction {
-
 
 
     private CourseDao courseDao;
@@ -88,42 +89,41 @@ public class OrganizationAction extends BasicAction {
     private Integer operaType;
     private Integer orgRoleType;
 
-     private Integer commentsNum;
+    private Integer commentsNum;
     private Boolean commentsNumOverflow = false;
 
     private Integer schoolPageShowType; // 0: A-D, 1: E-H, 2: I-L, 3: M-P, 4:Q-T, 5: U-Z, 6: Other 7: Show all
 
     private BaseUserRoleTypeDao baseUserRoleTypeDao;
+    private Pagination pagination = new Pagination();
 
+    private OrganizationBaseUserDao organizationBaseUserDao;
 
-    @Action(value = "schoolCenter", results = {@Result(name=SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".schoolCenter")})
+    @Action(value = "schoolCenter", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".schoolCenter")})
     public String schoolCenter() {
         List<Organization> allOrgs = organizationDao.findLatestOrgs(null);
-        Map<Character, List<Organization>> mapOrgs = new HashMap<Character, List<Organization> >();
+        Map<Character, List<Organization>> mapOrgs = new HashMap<Character, List<Organization>>();
         for (Organization org : allOrgs) {
             if (org.getSchoolName() == null || org.getSchoolName().equals(""))
                 continue;
             char c = Character.toUpperCase(org.getSchoolName().trim().charAt(0));
-            if ( c >= 'A' && c <= 'Z' ) {
+            if (c >= 'A' && c <= 'Z') {
                 if (mapOrgs.containsKey(c)) {
                     List<Organization> tmp = mapOrgs.get(c);
                     tmp.add(org);
                     mapOrgs.put(c, tmp);
-                }
-                else {
+                } else {
                     List<Organization> tmpList = new ArrayList<Organization>();
                     tmpList.add(org);
                     mapOrgs.put(c, tmpList);
                 }
-            }
-            else {
+            } else {
                 c = '#';  // others
                 if (mapOrgs.containsKey(c)) {
                     List<Organization> tmpList = mapOrgs.get(c);
                     tmpList.add(org);
                     mapOrgs.put(c, tmpList);
-                }
-                else {
+                } else {
                     List<Organization> tmpList = new ArrayList<Organization>();
                     tmpList.add(org);
                     mapOrgs.put(c, tmpList);
@@ -131,7 +131,7 @@ public class OrganizationAction extends BasicAction {
             }
         }
 
-        if (this.getSchoolPageShowType() != null ) {
+        if (this.getSchoolPageShowType() != null) {
             String range = "";
             switch (this.getSchoolPageShowType()) {
                 case 0: // A-D
@@ -141,13 +141,13 @@ public class OrganizationAction extends BasicAction {
                     range = "EFGH";
                     break;
                 case 2: // I-L
-                    range =  "IJKL";
+                    range = "IJKL";
                     break;
                 case 3: // M-P
                     range = "MNOP";
                     break;
                 case 4: // Q-T
-                    range =  "QRST";
+                    range = "QRST";
                     break;
                 case 5: //U-Z
                     range = "UVWXYZ";
@@ -159,28 +159,26 @@ public class OrganizationAction extends BasicAction {
                     range = "";
                     break;
             }
-            if ( !range.equals("")) {
+            if (!range.equals("")) {
                 if (this.organizations == null)
                     this.organizations = new ArrayList<>();
                 else
                     this.organizations.clear();
-                for (char c: range.toCharArray()) {
+                for (char c : range.toCharArray()) {
                     if (mapOrgs.containsKey(c)) {
                         this.organizations.addAll(mapOrgs.get(c));
                     }
                 }
+            } else {
+                this.organizations = allOrgs;
             }
-            else {
-                this.organizations =  allOrgs;
-            }
-        }
-        else { // first time in schoolcenter page
+        } else { // first time in schoolcenter page
             if (this.organizations == null)
                 this.organizations = new ArrayList<>();
             else
                 this.organizations.clear();
             String range = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#";
-            for (char c: range.toCharArray()) {
+            for (char c : range.toCharArray()) {
                 if (mapOrgs.containsKey(c)) {
                     this.organizations.addAll(mapOrgs.get(c));
                 }
@@ -204,65 +202,70 @@ public class OrganizationAction extends BasicAction {
         }
         orgId = org.getId();
 
-
         latestCourse = courseDao.findLatestCourseByOrg(orgId, new Pagination(4));
         if (latestCourse != null && latestCourse.size() > 0)
             course = latestCourse.get(0);
         hotCourses = courseDao.findHotCoursesByOrg(orgId, new Pagination(6));
         moocs = courseDao.findMoocsByOrg(orgId, new Pagination(6));
-        Pagination page  = new Pagination(10);
+        Pagination page = new Pagination(10);
         comments = organizationCommentDao.findOrgCommentByOrgId(orgId, page);
 
         this.setCommentsNum(comments.size());
-        if(page.getTotalSize() <= commentsNum){
+        if (page.getTotalSize() <= commentsNum) {
             this.setCommentsNumOverflow(true);
         }
-        hotTeachers = organizationDao.findHotTeacherByOrgId(orgId, new Pagination(4));
-        latestTeachers = organizationDao.findLatestTeacherByOrgId(orgId, new Pagination(6));
-        allTeachersForOrg = orgService.findAllTeachersForOrg(orgId);
+        /**
+         hotTeachers = organizationDao.findHotTeacherByOrgId(orgId, new Pagination(4));
+         latestTeachers = organizationDao.findLatestTeacherByOrgId(orgId, new Pagination(6));
+         allTeachersForOrg = orgService.findAllTeachersForOrg(orgId);
+         allTeachersForOrg = organizationBaseUserDao.findUsersByOrgIdAndRoleType(orgId, Constants.ROLE_TYPE_TEACHER,null);
+         **/
+        hotTeachers = organizationBaseUserDao.findUsersByOrgIdAndRoleType(orgId, RoleType.ROLE_TYPE_TEACHER, pagination);
+        latestTeachers = organizationBaseUserDao.findLatestUsersByOrgIdAndRoleType(orgId, RoleType.ROLE_TYPE_TEACHER, pagination);
+        allTeachersForOrg = hotTeachers;
+
         return SUCCESS;
     }
 
-    @Action(value = "saveOrgComment",results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgComments")})
+    @Action(value = "saveOrgComment", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgComments")})
     public String saveOrgComment() {
         if (comment != null && comment.getDescription() != null) {
-                comment.setCommenter(baseUserDao.findById(this.getSessionUserId()));
-                comment.setOrganization(organizationDao.findById(org.getId()));
-                comment.setCreateDate(Utils.getCurrentCalender());
-                Integer toFriendID = (Integer) ActionContext.getContext().getSession().get("toReplyerUserID");
-                if( toFriendID != null){
-                    BaseUser toFriend = baseUserDao.findById(toFriendID);
-                    comment.setToFriend(toFriend);
-                    ActionContext.getContext().getSession().remove("toReplyerUserID");
-                }
-                organizationCommentDao.persistAbstract(comment);
-                Pagination page = new Pagination(commentsNum+1);
-                comments = organizationCommentDao.findOrgCommentByOrgId(org.getId(), page);
-                this.setCommentsNum(comments.size());
-                if(page.getTotalSize() <= commentsNum){
-                    this.setCommentsNumOverflow(true);
-                }
+            comment.setCommenter(baseUserDao.findById(this.getSessionUserId()));
+            comment.setOrganization(organizationDao.findById(org.getId()));
+            comment.setCreateDate(Utils.getCurrentCalender());
+            Integer toFriendID = (Integer) ActionContext.getContext().getSession().get("toReplyerUserID");
+            if (toFriendID != null) {
+                BaseUser toFriend = baseUserDao.findById(toFriendID);
+                comment.setToFriend(toFriend);
+                ActionContext.getContext().getSession().remove("toReplyerUserID");
+            }
+            organizationCommentDao.persistAbstract(comment);
+            Pagination page = new Pagination(commentsNum + 1);
+            comments = organizationCommentDao.findOrgCommentByOrgId(org.getId(), page);
+            this.setCommentsNum(comments.size());
+            if (page.getTotalSize() <= commentsNum) {
+                this.setCommentsNumOverflow(true);
+            }
         }
         return SUCCESS;
     }
 
-    @Action(value = "moreOrgComments",results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgComments")})
-    public String moreOrgComments(){
-        Pagination page = new Pagination(this.getCommentsNum()+Constants.DEFAULT_PAGE_OF_COMMENTS_INCREASED_SIZE);
-        comments = organizationCommentDao.findOrgCommentByOrgId(this.getOrg().getId(),page);
+    @Action(value = "moreOrgComments", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgComments")})
+    public String moreOrgComments() {
+        Pagination page = new Pagination(this.getCommentsNum() + Constants.DEFAULT_PAGE_OF_COMMENTS_INCREASED_SIZE);
+        comments = organizationCommentDao.findOrgCommentByOrgId(this.getOrg().getId(), page);
         this.setCommentsNum(comments.size());
-        if(page.getTotalSize() <= commentsNum){
+        if (page.getTotalSize() <= commentsNum) {
             this.setCommentsNumOverflow(true);
         }
         return SUCCESS;
     }
 
     @Action(value = "deleteOrgComment")
-    public void deleteOrgComment(){
+    public void deleteOrgComment() {
         comment = organizationCommentDao.findById(this.getComment().getId());
         organizationCommentDao.delete(comment);
     }
-
 
 
     @Action(value = "initOrgLeague", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".go2FirstStep")})
@@ -281,6 +284,7 @@ public class OrganizationAction extends BasicAction {
     public String quickReg() {
         return SUCCESS;
     }
+
     @Action(value = "quickRegPreview", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".quickRegPreview")})
     public String quickRegPreview() {
         return SUCCESS;
@@ -309,8 +313,9 @@ public class OrganizationAction extends BasicAction {
         this.responser = saveUser;
         return SUCCESS;
     }
-     @Action(value = "saveSecStepTest")
-    public void saveSecStepTest() throws Exception{
+
+    @Action(value = "saveSecStepTest")
+    public void saveSecStepTest() throws Exception {
 
         BaseUser saveUser = baseUserDao.findByEmail(this.getSessionUserEmail());
         saveUser.setUserName(responser.getUserName());
@@ -328,12 +333,12 @@ public class OrganizationAction extends BasicAction {
         }
         baseUserDao.persistAbstract(saveUser);
         this.responser = saveUser;
-         PrintWriter out = ServletActionContext.getResponse().getWriter();
-         out.print("success");
-         out.close();
+        PrintWriter out = ServletActionContext.getResponse().getWriter();
+        out.print("success");
+        out.close();
     }
 
-//    .quickReg
+    //    .quickReg
 //    @Action(value = "initThirdStep", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".go2ThirdStep"),
 //            @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".go2FirstStep")})
     @Action(value = "initThirdStep", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".quickReg"),
@@ -347,13 +352,13 @@ public class OrganizationAction extends BasicAction {
     }
 
     @Action(value = "identityOgrNameCheck")
-    public void identityOgrNameCheck(){
+    public void identityOgrNameCheck() {
         Organization school = organizationDao.findOrganizationByOrganizationName(organizationName);
         try {
             PrintWriter out = ServletActionContext.getResponse().getWriter();
-            if(school==null){
+            if (school == null) {
                 out.print("not exist");
-            }else{
+            } else {
                 out.print("exist");
             }
             out.close();
@@ -415,17 +420,17 @@ public class OrganizationAction extends BasicAction {
     }
 
     @Action(value = "saveThirdStepTest")
-    public void saveThirdStepInfoTest() throws IOException{
+    public void saveThirdStepInfoTest() throws IOException {
         Organization saveOrg;
 //        if (this.getOrg().getId() != null) {
-            saveOrg = organizationDao.findMyOrg(this.getSessionUserId());
-            saveOrg.setSchoolName(this.getOrg().getSchoolName());
-            saveOrg.setDescription(this.getOrg().getDescription());
-            saveOrg.setDepositName(this.getOrg().getDepositName());
-            saveOrg.setDepositBankName(this.getOrg().getDepositBankName());
-            saveOrg.setDepositBankAccount(this.getOrg().getDepositBankAccount());
-            saveOrg.setMemberSize(this.getOrg().getMemberSize());
-            saveOrg.setMultipleOrg(this.getOrg().getMultipleOrg());
+        saveOrg = organizationDao.findMyOrg(this.getSessionUserId());
+        saveOrg.setSchoolName(this.getOrg().getSchoolName());
+        saveOrg.setDescription(this.getOrg().getDescription());
+        saveOrg.setDepositName(this.getOrg().getDepositName());
+        saveOrg.setDepositBankName(this.getOrg().getDepositBankName());
+        saveOrg.setDepositBankAccount(this.getOrg().getDepositBankAccount());
+        saveOrg.setMemberSize(this.getOrg().getMemberSize());
+        saveOrg.setMultipleOrg(this.getOrg().getMultipleOrg());
 //        } else {
 //            saveOrg = this.getOrg();
 //        }
@@ -451,30 +456,30 @@ public class OrganizationAction extends BasicAction {
         }
         organizationDao.persistAbstract(saveOrg);
         org = saveOrg;
-         PrintWriter out = ServletActionContext.getResponse().getWriter();
-         out.print("success");
-         out.close();
+        PrintWriter out = ServletActionContext.getResponse().getWriter();
+        out.print("success");
+        out.close();
     }
 
 
-        @Action(value = "saveOrgInfo")
-    public void saveOrgInfo() throws IOException{
+    @Action(value = "saveOrgInfo")
+    public void saveOrgInfo() throws IOException {
         Organization saveOrg;
 //        if (this.getOrg().getId() != null) {
-            saveOrg = organizationDao.findMyOrg(this.getSessionUserId());
-            saveOrg.setContactName(this.getOrg().getContactName());
-            saveOrg.setTelPhone(this.getOrg().getTelPhone());
-            saveOrg.setCellPhone(this.getOrg().getCellPhone());
-            saveOrg.setBusinessAddress(this.getOrg().getBusinessAddress());
-            saveOrg.setZipCode(this.getOrg().getZipCode());
+        saveOrg = organizationDao.findMyOrg(this.getSessionUserId());
+        saveOrg.setContactName(this.getOrg().getContactName());
+        saveOrg.setTelPhone(this.getOrg().getTelPhone());
+        saveOrg.setCellPhone(this.getOrg().getCellPhone());
+        saveOrg.setBusinessAddress(this.getOrg().getBusinessAddress());
+        saveOrg.setZipCode(this.getOrg().getZipCode());
 //        } else {
 //            saveOrg = this.getOrg();
 //        }
         organizationDao.persistAbstract(saveOrg);
         org = saveOrg;
-         PrintWriter out = ServletActionContext.getResponse().getWriter();
-         out.print("success");
-         out.close();
+        PrintWriter out = ServletActionContext.getResponse().getWriter();
+        out.print("success");
+        out.close();
     }
 
     @Action(value = "initForthStep", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".quickRegPreview")})
@@ -503,31 +508,31 @@ public class OrganizationAction extends BasicAction {
         return "index";
     }
 
-    @Action(value="orgInfoUpdate",results = {@Result(name=SUCCESS,type = Constants.RESULT_NAME_TILES, location = ".orgInfoUpdate")})
-    public String orgInfoUpdate(){
+    @Action(value = "orgInfoUpdate", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgInfoUpdate")})
+    public String orgInfoUpdate() {
         responser = baseUserDao.findById(this.getSessionUserId());
         org = organizationDao.findByResId(this.getSessionUserId());
-        orgMaterials = orgMaterialDao.findByOrgId(null,org.getId());
+        orgMaterials = orgMaterialDao.findByOrgId(null, org.getId());
         return SUCCESS;
     }
 
-    @Action(value = "organizationMatter",results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location=".organizationMatter")})
-    public String organizationMatter(){
+    @Action(value = "organizationMatter", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".organizationMatter")})
+    public String organizationMatter() {
         this.setOperaType(Constants.OPERA_TYPE_FOR_ORG_MATTER);
-        this.org =   organizationDao.findConfirmedOrg(this.getSessionUserId()) ;
-        if (org != null){
+        this.org = organizationDao.findConfirmedOrg(this.getSessionUserId());
+        if (org != null) {
             return SUCCESS;
         }
-        this.org =  organizationDao.findByAuthTeacher(this.getSessionUserId());
-        if (org != null){
+        this.org = organizationDao.findByAuthTeacher(this.getSessionUserId());
+        if (org != null) {
             this.setOrgRoleType(OrganizationTeacher.ORG_ROLE_TYPE_AUTH);
             return SUCCESS;
         }
         return "myfirstPage";
     }
 
-    @Action(value = "orgSaveResPerson",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".orgInfoUpdate")})
-    public String orgSaveResPerson(){
+    @Action(value = "orgSaveResPerson", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgInfoUpdate")})
+    public String orgSaveResPerson() {
         BaseUser existResposer = baseUserDao.findById(this.getSessionUserId());
         if (StringUtils.isNotBlank(responser.getIdCardUrl())) {
             String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + responser.getIdCardUrl());
@@ -535,18 +540,18 @@ public class OrganizationAction extends BasicAction {
 
             Utils.replaceFile(srcPath, toPath);
             existResposer.setIdCardUrl(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + "/idCard/" + responser.getIdCardUrl());
-        }else {
+        } else {
             existResposer.setIdCardUrl(Constants.DEFAULT_PERSON_IMAGE);
         }
-        organizationDao.updateResposerInfo(existResposer,responser);
+        organizationDao.updateResposerInfo(existResposer, responser);
         responser = existResposer;
         org = organizationDao.findByResId(this.getSessionUserId());
-        orgMaterials = orgMaterialDao.findByOrgId(null,org.getId());
+        orgMaterials = orgMaterialDao.findByOrgId(null, org.getId());
         return SUCCESS;
     }
 
-    @Action(value = "orgSaveOrgInfo",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".orgInfoUpdate")})
-    public String orgSaveOrgInfo(){
+    @Action(value = "orgSaveOrgInfo", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgInfoUpdate")})
+    public String orgSaveOrgInfo() {
         Organization oldOrg = organizationDao.findByResId(this.getSessionUserId());
         if (StringUtils.isNotBlank(org.getLogoUrl())) {
             String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + org.getLogoUrl());
@@ -554,7 +559,7 @@ public class OrganizationAction extends BasicAction {
 
             Utils.replaceFile(srcPath, toPath);
             oldOrg.setLogoUrl(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + "/orgLogo/" + org.getLogoUrl());
-        }else {
+        } else {
             oldOrg.setLogoUrl(Constants.DEFAULT_ORGANIZATION_IMAGE);
         }
 
@@ -564,29 +569,29 @@ public class OrganizationAction extends BasicAction {
 
             Utils.replaceFile(srcPath, toPath);
             oldOrg.setBusinessLicenseUrl(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + "/orgBuLic/" + org.getBusinessLicenseUrl());
-        }else {
+        } else {
             oldOrg.setLogoUrl(Constants.DEFAULT_OTHER_IMAGE);
         }
-        organizationDao.updateOrgInfo(oldOrg,org);
+        organizationDao.updateOrgInfo(oldOrg, org);
         responser = baseUserDao.findById(this.getSessionUserId());
         org = oldOrg;
-        orgMaterials = orgMaterialDao.findByOrgId(null,org.getId());
+        orgMaterials = orgMaterialDao.findByOrgId(null, org.getId());
         return SUCCESS;
     }
 
-    @Action(value = "orgSaveContactInfo",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".orgInfoUpdate")})
-    public String orgSaveContactInfo(){
+    @Action(value = "orgSaveContactInfo", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgInfoUpdate")})
+    public String orgSaveContactInfo() {
         Organization oldOrg = organizationDao.findByResId(this.getSessionUserId());
-        organizationDao.updateOrgContactInfo(oldOrg ,org);
+        organizationDao.updateOrgContactInfo(oldOrg, org);
         responser = baseUserDao.findById(this.getSessionUserId());
         org = oldOrg;
-        orgMaterials = orgMaterialDao.findByOrgId(null,org.getId());
+        orgMaterials = orgMaterialDao.findByOrgId(null, org.getId());
         return SUCCESS;
     }
 
-    @Action(value = "saveOrgAdvertiseFile",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".orgInfoUpdate"),
-                                                         @Result(name = INPUT,type = Constants.RESULT_NAME_TILES,location = ".orgInfoUpdate")})
-    public String saveOrgAdvertiseFile(){
+    @Action(value = "saveOrgAdvertiseFile", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgInfoUpdate"),
+            @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".orgInfoUpdate")})
+    public String saveOrgAdvertiseFile() {
         org = organizationDao.findByResId(this.getSessionUserId());
         responser = baseUserDao.findById(this.getSessionUserId());
         String path = "/" + org.getId() + "/" + this.getUploadFileName();
@@ -603,41 +608,73 @@ public class OrganizationAction extends BasicAction {
         orgMaterial.setOrganization(org);
         //TODO: need zhangZong add the size to File
         orgMaterialDao.persistAbstract(orgMaterial);
-        orgMaterials = orgMaterialDao.findByOrgId(null,org.getId());
+        orgMaterials = orgMaterialDao.findByOrgId(null, org.getId());
         return SUCCESS;
     }
 
 
     @Action(value = "orgAdminManage",
-            results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".orgAdminManage"),
+            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgAdminManage"),
                     @Result(name = ERROR, type = Constants.RESULT_NAME_TILES, location = ".noPermission")})
-    public String orgAdminManage()
-    {
-        BaseUser admin = baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.SESSION_USER_EMAIL))  ;
+    public String orgAdminManage() {
+        BaseUser admin = baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.SESSION_USER_EMAIL));
         Integer userID = (Integer) ActionContext.getContext().getSession().get(Constants.SESSION_USER_ID);
-        boolean  havePermission = baseUserRoleTypeDao.havePermission(userID, "admin");
+        boolean havePermission = baseUserRoleTypeDao.havePermission(userID, "admin");
 
-        if( !havePermission ) return ERROR;
+        if (!havePermission) return ERROR;
 
         organizations = this.organizationDao.findLatestOrgs(null);
         return SUCCESS;
     }
 
     @Action(value = "removeOrgConfirm",
-            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "orgAdminManage"}) })
-    public String removeOrgConfirm()
-    {
-        if (this.getOrg().getId() != null)
-        {
+            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "orgAdminManage"})})
+    public String removeOrgConfirm() {
+        if (this.getOrg().getId() != null) {
             Organization org = organizationDao.findById(this.getOrg().getId());
 
-            if(org != null)
-            {
+            if (org != null) {
                 org.setIsDeleted(true);
                 organizationDao.persistAbstract(org);
             }
         }
 
+        return SUCCESS;
+    }
+
+    @Action(value = "orgMoreCourse",
+            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgMoreCourse"),
+                    @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".notExist")
+            }
+    )
+    public String orgMoreCourse() {
+        this.org = organizationDao.findById(this.getOrg().getId());
+        pagination.setPageSize(8);
+        this.latestCourse = this.courseDao.findLatestCourseByOrg(this.getOrg().getId(), pagination);
+        return SUCCESS;
+    }
+
+    @Action(value = "orgMoreMooc",
+            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgMoreMooc"),
+                    @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".notExist")
+            }
+    )
+    public String orgMoreMooc() {
+        this.org = organizationDao.findById(this.getOrg().getId());
+        pagination.setPageSize(8);
+        this.moocs = courseDao.findMoocsByOrg(this.getOrg().getId(), pagination);
+        return SUCCESS;
+    }
+
+    @Action(value = "orgMoreTeacher",
+            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgMoreTeacher"),
+                    @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".notExist")
+            }
+    )
+    public String orgMoreTeacher() {
+        //this.hotTeachers = this.organizationDao.findHotTeacherByOrgId(this.getOrg().getId(), pagination);
+        this.org = organizationDao.findById(this.getOrg().getId());
+        hotTeachers = organizationBaseUserDao.findUsersByOrgIdAndRoleType(this.getOrg().getId(), RoleType.ROLE_TYPE_TEACHER, pagination);
         return SUCCESS;
     }
 
@@ -867,31 +904,33 @@ public class OrganizationAction extends BasicAction {
         this.orgMaterialDao = orgMaterialDao;
     }
 
-    public OrgService getOrgService () {
+    public OrgService getOrgService() {
         return this.orgService;
     }
 
-    public  void setOrgService (OrgService orgService) {
+    public void setOrgService(OrgService orgService) {
         this.orgService = orgService;
     }
 
-    public Integer getOrgCourseNum(){
-        return courseDao.findByOrg(this.getOrg().getId(),null).size();
+    public Integer getOrgCourseNum() {
+        return courseDao.findByOrg(this.getOrg().getId(), null).size();
     }
-    public Integer getStudentsNum(){
+
+    public Integer getStudentsNum() {
         return getStudents().size();
     }
-    public Integer getStudentsNumByOrgId (Integer orgId) {
+
+    public Integer getStudentsNumByOrgId(Integer orgId) {
         if (orgId == null || orgId < 0)
             return 0;
         List<BaseUser> students = new ArrayList<BaseUser>();
-        for(Course c : courseDao.findByOrg(orgId, null)){
-            for(SeniorClassRoom sc : c.getSeniorClassRooms()){
+        for (Course c : courseDao.findByOrg(orgId, null)) {
+            for (SeniorClassRoom sc : c.getSeniorClassRooms()) {
                 Boolean exist = false;
-                for (BaseUser user : students){
-                    if(user.getId().equals(sc.getStudent().getId())) exist = true;
+                for (BaseUser user : students) {
+                    if (user.getId().equals(sc.getStudent().getId())) exist = true;
                 }
-                if(!exist){
+                if (!exist) {
                     students.add(sc.getStudent());
                 }
             }
@@ -899,34 +938,35 @@ public class OrganizationAction extends BasicAction {
         return students.size();
     }
 
-    public Integer getBestCoursesNum(){
+    public Integer getBestCoursesNum() {
         return this.getHotCourses().size();
     }
+
     public List<BaseUser> getStudents() {
         List<BaseUser> students = new ArrayList<BaseUser>();
-        for(Course c : courseDao.findByOrg(this.getOrg().getId(), null)){
-            for(SeniorClassRoom sc : c.getSeniorClassRooms()){
-                 Boolean exist = false;
-                 for (BaseUser user : students){
-                     if(user.getId().equals(sc.getStudent().getId())) exist = true;
-                 }
-                 if(!exist){
-                     students.add(sc.getStudent());
-                 }
+        for (Course c : courseDao.findByOrg(this.getOrg().getId(), null)) {
+            for (SeniorClassRoom sc : c.getSeniorClassRooms()) {
+                Boolean exist = false;
+                for (BaseUser user : students) {
+                    if (user.getId().equals(sc.getStudent().getId())) exist = true;
+                }
+                if (!exist) {
+                    students.add(sc.getStudent());
+                }
             }
         }
         return students;
     }
 
-    public List<BaseUser> getAllTeachersForOrg () {
+    public List<BaseUser> getAllTeachersForOrg() {
         return this.allTeachersForOrg;
     }
 
-    public void setAllTeachersForOrg (List<BaseUser> allTeachersForOrg) {
+    public void setAllTeachersForOrg(List<BaseUser> allTeachersForOrg) {
         this.allTeachersForOrg = allTeachersForOrg;
     }
 
-    public Integer getAllTeachersNum () {
+    public Integer getAllTeachersNum() {
         if (allTeachersForOrg == null)
             return 0;
         return allTeachersForOrg.size();
@@ -948,31 +988,37 @@ public class OrganizationAction extends BasicAction {
     public void setCommentsNumOverflow(Boolean commentsNumOverflow) {
         this.commentsNumOverflow = commentsNumOverflow;
     }
-    public String getOrgCreateDate () {
-        SimpleDateFormat df=new SimpleDateFormat("yyyy/MM/dd");
+
+    public String getOrgCreateDate() {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
         return df.format(this.org.getCreateDate().getTime());
     }
-    public  Course getCourse() {
+
+    public Course getCourse() {
         return this.course;
     }
-    public void setCourse (Course course) {
+
+    public void setCourse(Course course) {
         this.course = course;
     }
-    public List<Organization> getOrganizations () {
+
+    public List<Organization> getOrganizations() {
         return this.organizations;
     }
-    public void setOrganizations (List<Organization> organizations) {
+
+    public void setOrganizations(List<Organization> organizations) {
         this.organizations = organizations;
     }
 
-    public Integer getSchoolPageShowType () {
+    public Integer getSchoolPageShowType() {
         return this.schoolPageShowType;
     }
 
-    public void setSchoolPageShowType (Integer schoolPageShowType) {
+    public void setSchoolPageShowType(Integer schoolPageShowType) {
         this.schoolPageShowType = schoolPageShowType;
     }
-    public  String parseSchoolDescription (Integer orgId) {
+
+    public String parseSchoolDescription(Integer orgId) {
         Organization org = organizationDao.findById(orgId);
         String orgDescription = org.getDescription();
         if (orgDescription == null || orgDescription.equals(""))
@@ -995,5 +1041,21 @@ public class OrganizationAction extends BasicAction {
 
     public void setMoocs(List<Course> moocs) {
         this.moocs = moocs;
+    }
+
+    public Pagination getPagination() {
+        return pagination;
+    }
+
+    public void setPagination(Pagination pagination) {
+        this.pagination = pagination;
+    }
+
+    public OrganizationBaseUserDao getOrganizationBaseUserDao() {
+        return organizationBaseUserDao;
+    }
+
+    public void setOrganizationBaseUserDao(OrganizationBaseUserDao organizationBaseUserDao) {
+        this.organizationBaseUserDao = organizationBaseUserDao;
     }
 }

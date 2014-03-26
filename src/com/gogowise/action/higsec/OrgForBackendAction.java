@@ -203,7 +203,7 @@ public class OrgForBackendAction extends BasicAction {
             //创建组织的时候同时为其加上老师角色（权限）
             BaseUserRoleType baseUserRoleType = new BaseUserRoleType();
             baseUserRoleType.setBaseUser(baseUser);
-            baseUserRoleType.setRoleType(roleTypeDao.findById(Constants.ROLE_TYPE_TEACHER));
+            baseUserRoleType.setRoleType(roleTypeDao.findById(RoleType.ROLE_TYPE_TEACHER));
             baseUserRoleTypeDao.persistAbstract(baseUserRoleType);
         }
 
@@ -251,12 +251,12 @@ public class OrgForBackendAction extends BasicAction {
         organizationDao.persist(orgSaved);
 
         //如果负责不是学校的老师，则添加
-        if (organizationBaseUserDao.findByOrgIdAndUserId(orgSaved.getId(), baseUser.getId(), Constants.ROLE_TYPE_TEACHER) == null) {
+        if (organizationBaseUserDao.findByOrgIdAndUserId(orgSaved.getId(), baseUser.getId(), RoleType.ROLE_TYPE_TEACHER) == null) {
             OrganizationBaseUser organizationBaseUser = new OrganizationBaseUser();
             organizationBaseUser.setOrg(orgSaved);
             organizationBaseUser.setUser(baseUser);
-            organizationBaseUser.setRoleType(Constants.ROLE_TYPE_TEACHER);
-            organizationBaseUser.setUserStatus(Constants.USER_STATUS_CONFIRMED);
+            organizationBaseUser.setRoleType(RoleType.ROLE_TYPE_TEACHER);
+            organizationBaseUser.setUserStatus(OrganizationBaseUser.USER_STATUS_CONFIRMED);
             organizationBaseUser.setCreateDate(Calendar.getInstance());
             organizationBaseUserDao.persistAbstract(organizationBaseUser);
         }
@@ -292,7 +292,7 @@ public class OrgForBackendAction extends BasicAction {
         if (org != null && org.getId() != null) {
             this.org = organizationDao.findById(org.getId());
         } else {
-            this.org = organizationDao.findById(this.getSessionUserId());
+            this.org = organizationDao.findByResId(this.getSessionUserId());
         }
         return SUCCESS;
     }

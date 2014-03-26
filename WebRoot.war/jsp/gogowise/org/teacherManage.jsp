@@ -147,7 +147,7 @@
         }
         var $userTds = $(obj).parents("tr").children("td");
         var userEmail = $userTds.eq(0).text();
-        $.post("disableUser.html",{"user.email":userEmail,"roleType":6},function(rd){
+        $.post("disableUser.html", {"user.email": userEmail, "roleType": 5}, function (rd) {
             if(rd.result==200){
                 $userTds.eq(5).html("Disabled");
                 $userTds.eq(6).html('<a href="javascript:;" onclick="enableUser(this);">'+org_user_enable+'</a>&nbsp;<a href="javascript:;" onclick="deleteUser(this);">'+org_user_delete+'</a>');
@@ -162,7 +162,7 @@
         }
         var $userTds = $(obj).parents("tr").children("td");
         var userEmail = $userTds.eq(0).text();
-        $.post("enableUser.html",{"user.email":userEmail,"roleType":6},function(rd){
+        $.post("enableUser.html", {"user.email": userEmail, "roleType": 5}, function (rd) {
             if(rd.result==200){
                 var userStatus;
                 if(rd.data==1){
@@ -185,7 +185,7 @@
         }
         var $userTds = $(obj).parents("tr").children("td");
         var userEmail = $userTds.eq(0).text();
-        $.post("deleteUser.html",{"user.email":userEmail,"roleType":6},function(rd){
+        $.post("deleteUser.html", {"user.email": userEmail, "roleType": 5}, function (rd) {
             if(rd.result==200){
                 $userTds.eq(0).parent().remove();
                 return;
@@ -199,7 +199,7 @@
         }
         var $userTds = $(obj).parents("tr").children("td");
         var userEmail = $userTds.eq(0).text();
-        $.post("reInviteUser.html",{"user.email":userEmail,"roleType":6},function(rd){
+        $.post("reInviteUser.html", {"user.email": userEmail, "roleType": 5}, function (rd) {
             if(rd.result==200){
                 $userTds.eq(5).html(user_status_unconfirmed);
                 $userTds.eq(6).html('<a href="javascript:;" onclick="disableUser(this);">'+org_user_disable+'</a>&nbsp;<a href="javascript:;" onclick="deleteUser(this);">'+org_user_delete+'</a>');

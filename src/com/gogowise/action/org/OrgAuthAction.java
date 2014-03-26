@@ -4,10 +4,10 @@ import com.gogowise.action.BasicAction;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.EmailUtil;
 import com.gogowise.common.utils.MD5;
-import com.gogowise.rep.Pagination;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.dao.OrganizationTeacherDao;
 import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.org.enity.OrganizationBaseUser;
 import com.gogowise.rep.org.enity.OrganizationTeacher;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
@@ -30,7 +30,7 @@ import java.util.List;
 @Controller
 @Namespace(BasicAction.BASE_NAME_SPACE)
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
-public class OrgAuthAction  extends BasicAction {
+public class OrgAuthAction extends BasicAction {
     private List<OrganizationTeacher> orgTeachers = new ArrayList<OrganizationTeacher>();
     private OrganizationTeacher orgTeacher;
     private Integer orgId;
@@ -41,24 +41,24 @@ public class OrgAuthAction  extends BasicAction {
     private RoleTypeDao roleTypeDao;
     private OrganizationDao organizationDao;
 
-    @Action(value="initOrgAuthorization",results = {@Result(name=SUCCESS,type = Constants.RESULT_NAME_TILES, location = ".orgAuthorization"),
-            @Result(name=INPUT,type = Constants.RESULT_NAME_TILES, location = ".orgAuthorization")})
+    @Action(value = "initOrgAuthorization", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgAuthorization"),
+            @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".orgAuthorization")})
     public String initOrgAuthorization() {
         Organization org = this.organizationDao.findByResId(this.getSessionUserId());
         this.orgTeachers = organizationTeacherDao.find(org.getId(), this.getPagination());
         return SUCCESS;
     }
 
-    @Action(value="manageStudents",results = {@Result(name=SUCCESS,type = Constants.RESULT_NAME_TILES, location = ".studentManage"),
-            @Result(name=INPUT,type = Constants.RESULT_NAME_TILES, location = ".studentManage")})
+    @Action(value = "manageStudents", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".studentManage"),
+            @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".studentManage")})
     public String manageStudents() {
         Organization org = this.organizationDao.findByResId(this.getSessionUserId());
         this.orgTeachers = organizationTeacherDao.find(org.getId(), this.getPagination());
         return SUCCESS;
     }
 
-    @Action(value="manageTeachers",results = {@Result(name=SUCCESS,type = Constants.RESULT_NAME_TILES, location = ".teacherManage"),
-            @Result(name=INPUT,type = Constants.RESULT_NAME_TILES, location = ".teacherManage")})
+    @Action(value = "manageTeachers", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".teacherManage"),
+            @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".teacherManage")})
     public String manageTeachers() {
         Organization org = this.organizationDao.findByResId(this.getSessionUserId());
         this.getPagination().setPageSize(30);
@@ -66,30 +66,30 @@ public class OrgAuthAction  extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value="saveOrgAuthorization",results = {@Result(name=SUCCESS,type = Constants.RESULT_NAME_TILES, location = ".teacherManage"),
-            @Result(name=INPUT,type = Constants.RESULT_NAME_TILES, location = ".teacherManage")})
-    public String saveOrgAuthorization(){
+    @Action(value = "saveOrgAuthorization", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".teacherManage"),
+            @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".teacherManage")})
+    public String saveOrgAuthorization() {
         Organization org = organizationDao.findMyOrg(this.getSessionUserId());
         //判断添加老师是否已经存在
         BaseUser teacher = null;
         BaseUserRoleType baseUserRoleType = null;
-        for(OrganizationTeacher ot : orgTeachers){
-            if(ot==null){
+        for (OrganizationTeacher ot : orgTeachers) {
+            if (ot == null) {
                 continue;
             }
 
             String teacherEmail = ot.getTeacher().getEmail();
             teacher = baseUserDao.findByEmail(teacherEmail);
             //该用户注册过
-            if(teacher!=null){
+            if (teacher != null) {
                 //判断是否已经是学校的老师了
-                this.orgTeacher = organizationTeacherDao.findByOrgIdAndTeacherId(org.getId(),teacher.getId());
-                if(orgTeacher!=null){
+                this.orgTeacher = organizationTeacherDao.findByOrgIdAndTeacherId(org.getId(), teacher.getId());
+                if (orgTeacher != null) {
                     continue;
                 }
                 teacher.setUserName(ot.getTeacher().getUserName());
-            //该用户没   注册过
-            }else{
+                //该用户没   注册过
+            } else {
                 //设置随机密码，发送至邮件
                 teacher = new BaseUser();
                 teacher.setEmail(ot.getTeacher().getEmail());
@@ -103,9 +103,9 @@ public class OrgAuthAction  extends BasicAction {
                 String randomPwd = "123456";
                 teacher.setPassword(MD5.endCode(randomPwd));
                 //2. 发邮件通知
-                String tile = "GoGoWise"+ot.getOrg()+"学校邀请";
-                String content = "GoGoWise"+ot.getOrg()+"学校邀请您成为它的老师，帐号为您的邮箱："+teacherEmail+",密码为："+randomPwd+",点击<a href='http:'>这里</a>接受，点击<a href='#'>这里</a>拒绝";
-                EmailUtil.sendMail(teacherEmail, tile, content, null,null);
+                String tile = "GoGoWise" + ot.getOrg() + "学校邀请";
+                String content = "GoGoWise" + ot.getOrg() + "学校邀请您成为它的老师，帐号为您的邮箱：" + teacherEmail + ",密码为：" + randomPwd + ",点击<a href='http:'>这里</a>接受，点击<a href='#'>这里</a>拒绝";
+                EmailUtil.sendMail(teacherEmail, tile, content, null, null);
             }
 
             //保存老师信息
@@ -113,10 +113,10 @@ public class OrgAuthAction  extends BasicAction {
 
             //添加老师角色信息
             boolean haveTeacherPermission = baseUserRoleTypeDao.havePermission(teacher.getId(), RoleType.TEACHER);
-            if(!haveTeacherPermission){
+            if (!haveTeacherPermission) {
                 baseUserRoleType = new BaseUserRoleType();
                 baseUserRoleType.setBaseUser(teacher);
-                baseUserRoleType.setRoleType(roleTypeDao.findById(Constants.ROLE_TYPE_TEACHER));
+                baseUserRoleType.setRoleType(roleTypeDao.findById(RoleType.ROLE_TYPE_TEACHER));
                 baseUserRoleTypeDao.persistAbstract(baseUserRoleType);
             }
 
@@ -124,12 +124,12 @@ public class OrgAuthAction  extends BasicAction {
             ot.setOrg(org);
             ot.setTeacher(teacher);
             ot.setCreateDate(Calendar.getInstance());
-            ot.setTeacherStatus(Constants.USER_STATUS_UNCONFIRMED);
+            ot.setTeacherStatus(OrganizationBaseUser.USER_STATUS_UNCONFIRMED);
             organizationTeacherDao.persistAbstract(ot);
         }
 
         this.getPagination().setPageSize(30);
-        this.orgTeachers = organizationTeacherDao.find(org.getId(),this.getPagination());
+        this.orgTeachers = organizationTeacherDao.find(org.getId(), this.getPagination());
         return SUCCESS;
     }
 
