@@ -3,8 +3,10 @@ package com.gogowise.action.course;
 import com.gogowise.action.BasicAction;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.rep.course.CourseService;
+import com.gogowise.rep.course.dao.ClassDao;
 import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.enity.Course;
+import com.gogowise.rep.course.enity.CourseClass;
 import com.gogowise.rep.org.dao.OrganizationBaseUserDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
@@ -49,6 +51,9 @@ public class MaintenCourseAction extends BasicAction {
     @Autowired
     private BaseUserDao baseUserDao;
 
+    private ClassDao classDao;
+    private List<CourseClass> classes = new ArrayList<>();
+
 
     @Action(value = "createCourseAllInOne", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".createCourseAllInOne"),
             @Result(name = "failed", type = Constants.RESULT_NAME_TILES, location = ".identityConfirmation")})
@@ -86,6 +91,9 @@ public class MaintenCourseAction extends BasicAction {
             teachers = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(), RoleType.ROLE_TYPE_TEACHER, null);
             students = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(), RoleType.ROLE_TYPE_STUDENT, null);
         }
+
+        //find the classes
+        classes = classDao.findByCourseId( course.getId() );
 
         return SUCCESS;
     }
@@ -152,5 +160,46 @@ public class MaintenCourseAction extends BasicAction {
 
     public void setCourseDao(CourseDao courseDao) {
         this.courseDao = courseDao;
+    }
+
+
+    public OrganizationBaseUserDao getOrganizationBaseUserDao() {
+        return organizationBaseUserDao;
+    }
+
+    public void setOrganizationBaseUserDao(OrganizationBaseUserDao organizationBaseUserDao) {
+        this.organizationBaseUserDao = organizationBaseUserDao;
+    }
+
+    public OrganizationDao getOrganizationDao() {
+        return organizationDao;
+    }
+
+    public void setOrganizationDao(OrganizationDao organizationDao) {
+        this.organizationDao = organizationDao;
+    }
+
+    public BaseUserDao getBaseUserDao() {
+        return baseUserDao;
+    }
+
+    public void setBaseUserDao(BaseUserDao baseUserDao) {
+        this.baseUserDao = baseUserDao;
+    }
+
+    public ClassDao getClassDao() {
+        return classDao;
+    }
+
+    public void setClassDao(ClassDao classDao) {
+        this.classDao = classDao;
+    }
+
+    public List<CourseClass> getClasses() {
+        return classes;
+    }
+
+    public void setClasses(List<CourseClass> classes) {
+        this.classes = classes;
     }
 }

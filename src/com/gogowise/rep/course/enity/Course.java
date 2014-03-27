@@ -218,7 +218,18 @@ public class Course extends AbstractPersistence {
     }
 
     public List<CourseClass> getClasses() {
-        return classes;
+        //return classes;
+        List<CourseClass> removeDeletedClass = new ArrayList<>();
+
+        for(CourseClass curClass : classes)
+        {
+            if( curClass.getIsDeleted() == null || curClass.getIsDeleted() == false )
+            {
+                removeDeletedClass.add(curClass);
+            }
+        }
+
+        return removeDeletedClass;
     }
 
     public void setClasses(List<CourseClass> classes) {

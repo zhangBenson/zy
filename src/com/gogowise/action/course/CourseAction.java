@@ -117,6 +117,7 @@ public class CourseAction extends BasicAction {
 
     private BaseUserRoleTypeDao baseUserRoleTypeDao;
 
+    private List<CourseClass> classes = new ArrayList<>();
 //    @Action(value = "search",
 //            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".listClass")}
 //    )
@@ -1036,6 +1037,7 @@ public class CourseAction extends BasicAction {
             return SUCCESS;
         }*/
         course = courseDao.findById(this.getCourse().getId());
+
         Pagination page = new Pagination(Constants.DEFAULT_PAGE_OF_COMMENTS_INCREASED_SIZE);
         courseComments = courseCommentDao.findByCourseId(page, course.getId());
         this.setCommentsNum(courseComments.size());
@@ -1044,6 +1046,7 @@ public class CourseAction extends BasicAction {
         }else{
             this.setCommentsNumOverflow(false);
         }
+
         courseQuestions = courseQuestionDao.findNewByCourseId(pagination, course.getId());
         courseResources = courseResourceDao.findByCourseId(pagination, course.getId());
         hotCourses = courseDao.findHotCourses(new Pagination(4));
@@ -1052,6 +1055,8 @@ public class CourseAction extends BasicAction {
         }
         courseRelateCourses = courseDao.findCourseRelateCourses("%" + course.getName() + "%", new Pagination(4));
         courseNewEvents = courseNewEventDao.findLatestTenEvents(new Pagination(10));
+
+        classes = classDao.findByCourseId( course.getId() );
         return SUCCESS;
     }
 
@@ -1998,5 +2003,13 @@ public class CourseAction extends BasicAction {
 
     public void setBaseUserRoleTypeDao(BaseUserRoleTypeDao baseUserRoleTypeDao) {
         this.baseUserRoleTypeDao = baseUserRoleTypeDao;
+    }
+
+    public List<CourseClass> getClasses() {
+        return classes;
+    }
+
+    public void setClasses(List<CourseClass> classes) {
+        this.classes = classes;
     }
 }

@@ -20,6 +20,8 @@ public class CourseClass extends AbstractPersistence {
     private Course course;
     private Integer anonyNum = 0;
 
+    private Boolean isDeleted = false;
+
     public Calendar getDate() {
         return date;
     }
@@ -98,5 +100,13 @@ public class CourseClass extends AbstractPersistence {
 
     public void setAnonyNum(Integer anonyNum) {
         this.anonyNum = anonyNum;
+    }
+
+    public Boolean getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(Boolean deleted) {
+        isDeleted = deleted;
     }
 }

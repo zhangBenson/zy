@@ -33,6 +33,8 @@ public class ClassDaoImpl extends ModelDaoImpl<CourseClass> implements ClassDao 
     private CourseInviteStudentDao courseInviteStudentDao;
     private SeniorClassRoomDao  seniorClassRoomDao;
 
+    private static final String DELETED_FALSE = "c.isDeleted = false";
+
     public void saveClass(CourseClass courseClass, Course course, Integer duration) {
         courseClass.setCourse(course);
         Calendar cal = Calendar.getInstance();
@@ -81,12 +83,12 @@ public class ClassDaoImpl extends ModelDaoImpl<CourseClass> implements ClassDao 
     }
 
     public List<CourseClass> findByCourseId(Integer cid) {
-        return this.find("From CourseClass c where c.course.id=? order by c.date", cid);
+        return this.find("From CourseClass c where c.course.id=? and " + DELETED_FALSE +" order by c.date", cid);
     }
 
     public CourseClass findByClassNameAndCourseId(String className, Integer cid) {
         List<CourseClass> classes = new ArrayList<CourseClass>();
-        classes = this.find("From CourseClass c where c.course.id=? and c.name=?", cid, className);
+        classes = this.find("From CourseClass c where c.course.id=? and c.name=? and " + DELETED_FALSE, cid, className);
         if (classes.size() == 0) {
             return null;
         } else {
@@ -241,12 +243,12 @@ public class ClassDaoImpl extends ModelDaoImpl<CourseClass> implements ClassDao 
     }
 
     public List<CourseClass> find(Calendar startTime, Calendar endTime) {
-         String sql = "select cs From CourseClass cs left join cs.course c where c.masterConfirmed=true and c.teacherConfirmed=true and c.cameraManConfirmed=true and cs.date between ? and ?";
+         String sql = "select cs From CourseClass cs left join cs.course c where cs.isDeleted=false and c.masterConfirmed=true and c.teacherConfirmed=true and c.cameraManConfirmed=true and cs.date between ? and ?";
         return find(sql, startTime, endTime);
     }
 
     public List<CourseClass> find(Calendar startTime){
-        String sql = "select cs From CourseClass cs left join cs.course c where c.masterConfirmed=true and c.teacherConfirmed=true and c.cameraManConfirmed=true and cs.date = ? ";
+        String sql = "select cs From CourseClass cs left join cs.course c where where cs.isDeleted=false and c.masterConfirmed=true and c.teacherConfirmed=true and c.cameraManConfirmed=true and cs.date = ? ";
         return find(sql, startTime);
     }
 

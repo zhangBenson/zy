@@ -333,7 +333,10 @@ public class ClassAction extends BasicAction {
     public void deleteClasses(){
         courseClass = classDao.findById(this.getCourseClass().getId());
         course = courseClass.getCourse();
-        classDao.delete(courseClass);
+        //classDao.delete(courseClass);
+        courseClass.setIsDeleted(true);
+        classDao.persist(courseClass);
+
         classes = classDao.findByCourseId(course.getId());
         for (int i = 0; i < classes.size(); i++) {
             int j = i + 1;
