@@ -8,12 +8,11 @@ import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.org.enity.OrganizationBaseUser;
 import com.gogowise.rep.user.dao.BaseUserDao;
-import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
-import com.gogowise.rep.user.dao.RoleTypeDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.user.enity.RoleType;
 import com.gogowise.vo.ResultData;
 import com.opensymphony.xwork2.ActionContext;
+import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -22,6 +21,8 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Calendar;
 import java.util.List;
 
@@ -42,10 +43,7 @@ public class OrgBaseUserAction extends BasicAction {
     private OrganizationDao organizationDao;
     @Autowired
     private OrganizationBaseUserDao organizationBaseUserDao;
-    @Autowired
-    private BaseUserRoleTypeDao baseUserRoleTypeDao;
-    @Autowired
-    private RoleTypeDao roleTypeDao;
+
 //    @Autowired
 //    private UserService userService;
 
@@ -53,7 +51,8 @@ public class OrgBaseUserAction extends BasicAction {
     private List<OrganizationBaseUser> orgUsers;
     private BaseUser user;
     private Integer roleType;
-    private String isT;
+    private boolean isT;
+    private OrganizationBaseUser orgUser;
 
     @Action(value = "manageOrgUsers", results = {@Result(name = RoleType.STUDENT, type = Constants.RESULT_NAME_TILES, location = ".studentManage"),
             @Result(name = RoleType.TEACHER, type = Constants.RESULT_NAME_TILES, location = ".teacherManage")})
@@ -69,7 +68,7 @@ public class OrgBaseUserAction extends BasicAction {
 
     @Action(value = "saveOrgUser", results = {@Result(name = RoleType.STUDENT, type = Constants.RESULT_NAME_TILES, location = ".studentManage"),
             @Result(name = RoleType.TEACHER, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "manageOrgUsers", "roleType", "${roleType}"})})
-    public String saveOrgUser() {
+    public String saveOrgUser() throws UnsupportedEncodingException {
         Organization org = organizationDao.findMyOrg(this.getSessionUserId());
         //判断添加老师是否已经存在
         for (OrganizationBaseUser ou : orgUsers) {
@@ -83,7 +82,7 @@ public class OrgBaseUserAction extends BasicAction {
             if (orgUser != null) {
                 continue;
             }
-            sendInviteEmail(org, ou, userEmail, true, baseUser != null);
+            sendInviteEmail(ou, userEmail, ou.getRealName(), true, baseUser != null);
 
 
             //保存组织用户关系
@@ -99,16 +98,40 @@ public class OrgBaseUserAction extends BasicAction {
         return RoleType.getRoleNameById(roleType);
     }
 
-    private void sendInviteEmail(Organization org, OrganizationBaseUser ou, String userEmail, boolean isTeacher, boolean isExist) {
+
+    @Action(value = "confirmBaseUserForOrg")
+    public String confirmBaseUserForOrg() {
+        if (!StringUtils.equalsIgnoreCase(this.getSessionUserEmail(), orgUser.getEmail()) || orgUser.getOrg() == null) {
+            return COMMON_ERROR;
+        }
+
+        if (isT) {
+            this.roleType = RoleType.ROLE_TYPE_TEACHER;
+        } else {
+            this.roleType = RoleType.ROLE_TYPE_STUDENT;
+        }
+        OrganizationBaseUser exist = organizationBaseUserDao.findByOrgIdAndEmailAndRoleType(orgUser.getOrg().getId(), this.getSessionUserEmail(), roleType);
+        if (exist == null) return COMMON_ERROR;
+
+        exist.setPreviousStatus(exist.getUserStatus());
+        exist.setUserStatus(OrganizationBaseUser.USER_STATUS_CONFIRMED);
+        organizationBaseUserDao.persistAbstract(exist);
+
+        return redirectToMyCenter(isT);
+    }
+
+
+    private void sendInviteEmail(OrganizationBaseUser ou, String userEmail, String realName, boolean isTeacher, boolean isExist) throws UnsupportedEncodingException {
         //2. 发邮件通知
-        String title = this.getText("org.invite.be.member.title", new String[]{org.getSchoolName()});
+        String title = this.getText("org.invite.be.member.title", new String[]{ou.getOrg().getSchoolName()});
+        String confirmUrl = URLEncoder.encode("/confirmBaseUserForOrg.html?orgUser.email=" + ou.getEmail() + "&ou.org.id=" + ou.getOrg().getId() + "&isT=" + isTeacher, "utf-8");
         String url;
         if (isExist) {
-            url = getBasePath() + "/initReg.html?user.email=" + ou.getEmail() + "&isT=" + isTeacher + "&org.id=" + org.getId() + "&confirmForOrg=true";
+            url = getBasePath() + "/easyLogon.html?user.email=" + ou.getEmail() + "&reDirectUrl=" + confirmUrl;
         } else {
-            url = getBasePath() + "/initReg.html?user.email=" + ou.getEmail() + "&isT=" + isTeacher + "&org.id=" + org.getId() + "&confirmForOrg=true";
+            url = getBasePath() + "/initReg.html?user.email=" + ou.getEmail() + "&reDirectUrl=" + confirmUrl;
         }
-        String content = this.getText("org.invite.be.member.content", new String[]{url});
+        String content = this.getText("org.invite.be.member.content", new String[]{realName, ou.getOrg().getSchoolName(), url, userEmail});
         EmailUtil.sendMail(userEmail, title, content);
     }
 
@@ -163,7 +186,7 @@ public class OrgBaseUserAction extends BasicAction {
             OrganizationBaseUser orgUser = organizationBaseUserDao.findByOrgIdAndEmailAndRoleType(org.getId(), email, roleType);
             orgUser.setUserStatus(OrganizationBaseUser.USER_STATUS_UNCONFIRMED);
             organizationBaseUserDao.persistAbstract(orgUser);
-            sendInviteEmail(org, orgUser, email, RoleType.ROLE_TYPE_TEACHER.equals(roleType), baseUserDao.findByEmail(email) != null);
+            sendInviteEmail(orgUser, email, orgUser.getRealName(), RoleType.ROLE_TYPE_TEACHER.equals(roleType), baseUserDao.findByEmail(email) != null);
             rd.setResult(200);
         } catch (Exception e) {
             rd.setResult(500);
@@ -197,11 +220,15 @@ public class OrgBaseUserAction extends BasicAction {
         this.orgUsers = orgUsers;
     }
 
-    public String getIsT() {
+    public boolean getIsT() {
         return isT;
     }
 
-    public void setIsT(String isT) {
+    public void setIsT(boolean isT) {
         this.isT = isT;
+    }
+
+    public void setOrgUser(OrganizationBaseUser orgUser) {
+        this.orgUser = orgUser;
     }
 }

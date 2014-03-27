@@ -209,7 +209,7 @@
         $.post("reInviteUser.html", {"user.email": userEmail, "roleType": 6}, function (rd) {
             if (rd.result == 200) {
                 $userTds.eq(5).html(user_status_unconfirmed);
-                $userTds.eq(6).html('<a href="javascript:;" onclick="disableUser(this);">' + org_user_disable + '</a>&nbsp;<a href="javascript:;" onclick="deleteUser(this);">' + org_user_delete + '</a>');
+//                $userTds.eq(6).html('<a href="javascript:;" onclick="disableUser(this);">' + org_user_disable + '</a>&nbsp;<a href="javascript:;" onclick="deleteUser(this);">' + org_user_delete + '</a>');
                 return;
                 return;
             }
