@@ -23,6 +23,7 @@ import org.springframework.stereotype.Controller;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -48,7 +49,7 @@ public class OrgBaseUserAction extends BasicAction {
 //    private UserService userService;
 
 
-    private List<OrganizationBaseUser> orgUsers;
+    private List<OrganizationBaseUser> orgUsers = new ArrayList<>();
     private BaseUser user;
     private Integer roleType;
     private boolean isT;
@@ -82,15 +83,14 @@ public class OrgBaseUserAction extends BasicAction {
             if (orgUser != null) {
                 continue;
             }
-            sendInviteEmail(ou, userEmail, ou.getRealName(), true, baseUser != null);
-
-
             //保存组织用户关系
             ou.setOrg(org);
             ou.setCreateDate(Calendar.getInstance());
             ou.setUserStatus(OrganizationBaseUser.USER_STATUS_UNCONFIRMED);
             ou.setRoleType(roleType);
             organizationBaseUserDao.persistAbstract(ou);
+
+            sendInviteEmail(ou, userEmail, ou.getRealName(), true, baseUser != null);
         }
 
         this.getPagination().setPageSize(30);
@@ -124,7 +124,7 @@ public class OrgBaseUserAction extends BasicAction {
     private void sendInviteEmail(OrganizationBaseUser ou, String userEmail, String realName, boolean isTeacher, boolean isExist) throws UnsupportedEncodingException {
         //2. 发邮件通知
         String title = this.getText("org.invite.be.member.title", new String[]{ou.getOrg().getSchoolName()});
-        String confirmUrl = URLEncoder.encode("/confirmBaseUserForOrg.html?orgUser.email=" + ou.getEmail() + "&ou.org.id=" + ou.getOrg().getId() + "&isT=" + isTeacher, "utf-8");
+        String confirmUrl = URLEncoder.encode("/confirmBaseUserForOrg.html?orgUser.email=" + ou.getEmail() + "&orgUser.org.id=" + ou.getOrg().getId() + "&isT=" + isTeacher, "utf-8");
         String url;
         if (isExist) {
             url = getBasePath() + "/easyLogon.html?user.email=" + ou.getEmail() + "&reDirectUrl=" + confirmUrl;
