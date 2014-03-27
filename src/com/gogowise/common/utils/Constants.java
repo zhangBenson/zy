@@ -87,6 +87,7 @@ public class Constants {
     /* ----------------------basic action-----------------------------*/
     public static final String RESULT_NAME_TILES = "tiles";
     public static final String RESULT_NAME_REDIRECT_ACTION = "redirectAction";
+    public static final String RESULT_NAME_REDIRECT = "redirect";
     public static final String RESULT_CHAIN_ACTION = "chain";
 
     /* ----------------------Session variable-----------------------------*/

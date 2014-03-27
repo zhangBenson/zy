@@ -20,6 +20,7 @@ import com.gogowise.rep.org.dao.InterviewDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Interview;
 import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.user.UserService;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import com.gogowise.rep.user.dao.InviteRelationshipDao;
@@ -34,6 +35,7 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -136,6 +138,8 @@ public class UserAction extends BasicAction {
 
     private String userRoleType;
     private BaseUserRoleType baseUserRoleType;
+    @Autowired
+    private UserService userService;
 
 
     @Action(value = "initInviteFriend", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initInviteFriend")})
@@ -639,7 +643,7 @@ public class UserAction extends BasicAction {
             return INPUT;
         }
 
-        if (baseUserRoleTypeDao.havePermission(user.getId(), RoleType.STUDENT)) {
+        if (userService.havePermission(user.getId(), RoleType.STUDENT)) {
             return SUCCESS;
         }
 
@@ -663,12 +667,12 @@ public class UserAction extends BasicAction {
             return INPUT;
         }
 
-        if (baseUserRoleTypeDao.havePermission(user.getId(), RoleType.TEACHER)) {
+        if (userService.havePermission(user.getId(), RoleType.TEACHER)) {
             ActionContext.getContext().getSession().put(Constants.SESSION_USER_IS_TEACHER, true);
         }
         
         //如果是学校负责人或老师
-        if ((organizationDao.findByResId(user.getId()) != null) || (baseUserRoleTypeDao.havePermission(user.getId(), RoleType.TEACHER))) {
+        if ((organizationDao.findByResId(user.getId()) != null) || (userService.havePermission(user.getId(), RoleType.TEACHER))) {
             user.setLastLoginDate(Calendar.getInstance());
             baseUserDao.persistAbstract(user);
 
@@ -725,7 +729,7 @@ public class UserAction extends BasicAction {
 //            }
         user.setLastLoginDate(Calendar.getInstance());
         baseUserDao.persistAbstract(user);
-        if (baseUserRoleTypeDao.havePermission(user.getId(), RoleType.TEACHER)) {
+        if (userService.havePermission(user.getId(), RoleType.TEACHER)) {
             ActionContext.getContext().getSession().put(Constants.SESSION_USER_IS_TEACHER, true);
         }
         if (StringUtils.isNotBlank(this.getReDirectUrl())) {
@@ -733,7 +737,7 @@ public class UserAction extends BasicAction {
         } else if (organizationDao.findByResId(user.getId()) != null) {
 //            this.setReDirectUrl("organizationMatter.html");
             return "teacherCenter";
-        } else if (baseUserRoleTypeDao.havePermission(user.getId(), RoleType.TEACHER)) {
+        } else if (userService.havePermission(user.getId(), RoleType.TEACHER)) {
             return "teacherCenter";
         }
 

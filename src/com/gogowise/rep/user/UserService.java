@@ -9,5 +9,7 @@ public interface UserService extends ModelService {
 
     public void removePermission(BaseUser owner, String permission);
 
+    public Boolean havePermission(Integer userId, String roleName);
+
     public void regUser(BaseUser user, String roleType);
 }

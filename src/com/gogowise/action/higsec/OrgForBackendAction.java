@@ -68,7 +68,7 @@ public class OrgForBackendAction extends BasicAction {
             addFieldError("org.responsiblePerson.email", "请先登录");
             return;
         }
-        if (!baseUserRoleTypeDao.havePermission(admin.getId(), "orgReviewer")) {
+        if (!userService.havePermission(admin.getId(), "orgReviewer")) {
             addFieldError("org.responsiblePerson.email", "没权限");
         }
 
@@ -144,7 +144,7 @@ public class OrgForBackendAction extends BasicAction {
             addFieldError("org.responsiblePerson.email", "请先登录");
             return;
         }
-        if (!baseUserRoleTypeDao.havePermission(admin.getId(), "orgCreator"))
+        if (!userService.havePermission(admin.getId(), "orgCreator"))
             addFieldError("org.responsiblePerson.email", "没权限");
 
         Organization orgTemp = organizationDao.findOrganizationByOrganizationName(this.getOrg().getSchoolName());
@@ -199,7 +199,7 @@ public class OrgForBackendAction extends BasicAction {
         baseUserDao.persistAbstract(baseUser);
 
         //如果没有老师权限，则添加
-        if (!baseUserRoleTypeDao.havePermission(baseUser.getId(), RoleType.TEACHER)) {
+        if (!userService.havePermission(baseUser.getId(), RoleType.TEACHER)) {
             //创建组织的时候同时为其加上老师角色（权限）
             BaseUserRoleType baseUserRoleType = new BaseUserRoleType();
             baseUserRoleType.setBaseUser(baseUser);
@@ -302,8 +302,8 @@ public class OrgForBackendAction extends BasicAction {
     public String higSecOrgListView() {
         this.organizations = organizationDao.findOngoingForAdmin();
         BaseUser admin = baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL));
-        this.canEdit = baseUserRoleTypeDao.havePermission(admin.getId(), "orgCreator");
-        this.canReview = baseUserRoleTypeDao.havePermission(admin.getId(), "orgReviewer");
+        this.canEdit = userService.havePermission(admin.getId(), "orgCreator");
+        this.canReview = userService.havePermission(admin.getId(), "orgReviewer");
         return SUCCESS;
     }
 

@@ -5,12 +5,12 @@ import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.MD5;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.user.UserService;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.user.enity.RoleType;
 import com.opensymphony.xwork2.ActionContext;
-import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -32,6 +32,9 @@ public class UserAjaxLoginAction extends BasicAction{
     @Autowired
     private BaseUserDao baseUserDao;
 
+    @Autowired
+    private UserService userService;
+
     private BaseUser user;
     private String loginMessage;
 
@@ -49,7 +52,7 @@ public class UserAjaxLoginAction extends BasicAction{
             setUserOrg(user);
 
             boolean isTeacher = false;
-            if (baseUserRoleTypeDao.havePermission(user.getId(), RoleType.TEACHER)) {
+            if (userService.havePermission(user.getId(), RoleType.TEACHER)) {
                 isTeacher = true;
                 ActionContext.getContext().getSession().put(Constants.SESSION_USER_IS_TEACHER, true);
             }

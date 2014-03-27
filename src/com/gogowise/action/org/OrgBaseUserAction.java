@@ -53,6 +53,7 @@ public class OrgBaseUserAction extends BasicAction {
     private List<OrganizationBaseUser> orgUsers;
     private BaseUser user;
     private Integer roleType;
+    private String isT;
 
     @Action(value = "manageOrgUsers", results = {@Result(name = RoleType.STUDENT, type = Constants.RESULT_NAME_TILES, location = ".studentManage"),
             @Result(name = RoleType.TEACHER, type = Constants.RESULT_NAME_TILES, location = ".teacherManage")})
@@ -194,5 +195,13 @@ public class OrgBaseUserAction extends BasicAction {
 
     public void setOrgUsers(List<OrganizationBaseUser> orgUsers) {
         this.orgUsers = orgUsers;
+    }
+
+    public String getIsT() {
+        return isT;
+    }
+
+    public void setIsT(String isT) {
+        this.isT = isT;
     }
 }

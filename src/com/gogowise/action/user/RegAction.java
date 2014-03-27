@@ -143,8 +143,9 @@ public class RegAction extends BasicAction {
 
     @Action(value = "reg",
             results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "personalCenter"}),
+                    @Result(name = "myFirstPage", type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}),
                     @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".easyReg"),
-                    @Result(name = "redirect", type = "redirect", location = "${reDirectUrl}")}
+                    @Result(name = "redirect", type = Constants.RESULT_NAME_REDIRECT, location = "${reDirectUrl}")}
     )
     public String reg() {
 
@@ -180,6 +181,8 @@ public class RegAction extends BasicAction {
         setUserOrg(user);
         if (StringUtils.isNotBlank(this.getReDirectUrl())) {
             return "redirect";
+        } else if (userService.havePermission(user.getId(), RoleType.TEACHER)) {
+            return "myFirstPage";
         }
         return SUCCESS;
     }

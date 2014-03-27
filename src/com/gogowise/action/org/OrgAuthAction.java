@@ -9,6 +9,7 @@ import com.gogowise.rep.org.dao.OrganizationTeacherDao;
 import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.org.enity.OrganizationBaseUser;
 import com.gogowise.rep.org.enity.OrganizationTeacher;
+import com.gogowise.rep.user.UserService;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import com.gogowise.rep.user.dao.RoleTypeDao;
@@ -19,6 +20,7 @@ import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -40,6 +42,9 @@ public class OrgAuthAction extends BasicAction {
     private BaseUserRoleTypeDao baseUserRoleTypeDao;
     private RoleTypeDao roleTypeDao;
     private OrganizationDao organizationDao;
+    @Autowired
+    private UserService userService;
+
 
     @Action(value = "initOrgAuthorization", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgAuthorization"),
             @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".orgAuthorization")})
@@ -112,7 +117,7 @@ public class OrgAuthAction extends BasicAction {
             baseUserDao.persistAbstract(teacher);
 
             //添加老师角色信息
-            boolean haveTeacherPermission = baseUserRoleTypeDao.havePermission(teacher.getId(), RoleType.TEACHER);
+            boolean haveTeacherPermission = userService.havePermission(teacher.getId(), RoleType.TEACHER);
             if (!haveTeacherPermission) {
                 baseUserRoleType = new BaseUserRoleType();
                 baseUserRoleType.setBaseUser(teacher);
