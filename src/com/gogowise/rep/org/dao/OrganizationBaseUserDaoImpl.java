@@ -32,7 +32,12 @@ public class OrganizationBaseUserDaoImpl extends ModelDaoImpl<OrganizationBaseUs
 
     @Override
     public OrganizationBaseUser findByOrgIdAndEmail(Integer orgId, String email) {
-        return this.findFist("From OrganizationBaseUser ot where ot.org.id = ? and ot.email.id=?  ", orgId, email);
+        return this.findFist("From OrganizationBaseUser ot where ot.org.id = ? and ot.email=?  ", orgId, email);
+    }
+
+    @Override
+    public OrganizationBaseUser findByOrgIdAndEmailAndRoleType(Integer orgId, String email, Integer roleTyp) {
+        return this.findFist("From OrganizationBaseUser ot where ot.org.id = ? and ot.email=? and ot.roleType=? ", orgId, email, roleTyp);
     }
 
 

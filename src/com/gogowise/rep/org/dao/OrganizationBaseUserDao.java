@@ -17,6 +17,8 @@ public interface OrganizationBaseUserDao extends ModelDao<OrganizationBaseUser> 
 
     OrganizationBaseUser findByOrgIdAndEmail(Integer orgId, String email);
 
+    public OrganizationBaseUser findByOrgIdAndEmailAndRoleType(Integer orgId, String email, Integer roleTyp);
+
     List<BaseUser> findUsersByOrgIdAndRoleType(Integer orgId,Integer roleType,Pagination pagination);
 
     List<BaseUser> findLatestUsersByOrgIdAndRoleType(Integer orgId, Integer roleType, Pagination pagination);

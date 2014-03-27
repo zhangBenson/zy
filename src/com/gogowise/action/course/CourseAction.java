@@ -15,6 +15,7 @@ import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.system.dao.GoGoWiseAnnounceDao;
 import com.gogowise.rep.system.enity.GoGoWiseAnnounce;
+import com.gogowise.rep.user.UserService;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import com.gogowise.rep.user.enity.BaseUser;
@@ -25,6 +26,7 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -116,6 +118,8 @@ public class CourseAction extends BasicAction {
     private List<Course> centerCourses;
 
     private BaseUserRoleTypeDao baseUserRoleTypeDao;
+    @Autowired
+    private UserService userService;
 
     private List<CourseClass> classes = new ArrayList<>();
 //    @Action(value = "search",
@@ -936,7 +940,7 @@ public class CourseAction extends BasicAction {
     {
         BaseUser admin = baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.SESSION_USER_EMAIL))  ;
         Integer userID = (Integer) ActionContext.getContext().getSession().get(Constants.SESSION_USER_ID);
-        boolean  havePermission = baseUserRoleTypeDao.havePermission(userID, "admin");
+        boolean havePermission = userService.havePermission(userID, "admin");
 
         if( !havePermission ) return ERROR;
 

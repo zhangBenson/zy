@@ -7,6 +7,7 @@ import com.gogowise.rep.org.dao.OrganizationTeacherDao;
 import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.org.enity.OrganizationBaseUser;
 import com.gogowise.rep.org.enity.OrganizationTeacher;
+import com.gogowise.rep.user.UserService;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service("orgService")
-public class OrgServiceImpl extends ModelServiceImpl implements OrgService{
+public class OrgServiceImpl extends ModelServiceImpl implements OrgService {
 
     private OrganizationTeacherDao organizationTeacherDao;
 
@@ -27,12 +28,15 @@ public class OrgServiceImpl extends ModelServiceImpl implements OrgService{
     @Autowired
     private OrganizationBaseUserDao organizationBaseUserDao;
 
+    @Autowired
+    private UserService userService;
+
 
     public List<BaseUser> findAllTeachersForOrg(Integer orgId) {
-        List<OrganizationTeacher> organizationTeachers =  organizationTeacherDao.find(orgId, null);
-        if (organizationTeachers == null) return  null;
+        List<OrganizationTeacher> organizationTeachers = organizationTeacherDao.find(orgId, null);
+        if (organizationTeachers == null) return null;
         List<BaseUser> teachers = new ArrayList<>();
-        for (OrganizationTeacher organizationTeacher : organizationTeachers)  {
+        for (OrganizationTeacher organizationTeacher : organizationTeachers) {
             teachers.add(organizationTeacher.getTeacher());
         }
         return teachers;
@@ -47,6 +51,7 @@ public class OrgServiceImpl extends ModelServiceImpl implements OrgService{
         organizationBaseUser.setUserStatus(organizationBaseUser.USER_STATUS_CONFIRMED);
         organizationBaseUser.setUser(teacher);
         organizationBaseUserDao.persistAbstract(organizationBaseUser);
+//        userService.
         return true;
     }
 

@@ -2,8 +2,10 @@ package com.gogowise.common.filter;
 
 import com.gogowise.common.utils.Constants;
 import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.user.UserService;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
@@ -19,6 +21,8 @@ public class OrgSecFilter implements Filter {
 
 
     private BaseUserDao baseUserDao;
+    @Autowired
+    private UserService userService;
 
     public void destroy() {
     }
@@ -39,7 +43,7 @@ public class OrgSecFilter implements Filter {
 
 
         if (StringUtils.startsWithIgnoreCase(requestUrl, "/higSec")
-                && (session.getAttribute(Constants.HIG_SEC_USER_EMAIL) == null || !baseUserRoleTypeDao.havePermission(baseUserDao.findByEmail((String) session.getAttribute(Constants.HIG_SEC_USER_EMAIL)).getId(), "admin"))) {
+                && (session.getAttribute(Constants.HIG_SEC_USER_EMAIL) == null || !userService.havePermission(baseUserDao.findByEmail((String) session.getAttribute(Constants.HIG_SEC_USER_EMAIL)).getId(), "admin"))) {
             response.sendRedirect("easyLogon.html");
             return;
         }

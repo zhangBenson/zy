@@ -26,7 +26,7 @@ public class UserServiceImpl extends ModelServiceImpl implements UserService {
     private BaseUserDao baseUserDao;
 
     public void grantPermission(BaseUser owner, String permission) {
-        if (baseUserRoleTypeDao.havePermission(owner.getId(), permission)) {
+        if (this.havePermission(owner.getId(), permission)) {
             return;
         } else {
             BaseUserRoleType baseUserRoleTypeForSave = new BaseUserRoleType();
@@ -34,6 +34,10 @@ public class UserServiceImpl extends ModelServiceImpl implements UserService {
             baseUserRoleTypeForSave.setRoleType(roleTypeDao.findById(RoleType.getIdByRoleName(permission)));
             baseUserRoleTypeDao.persist(baseUserRoleTypeForSave);
         }
+    }
+
+    public Boolean havePermission(Integer userId, String roleName) {
+        return baseUserRoleTypeDao.findByUserIdAndRoleName(userId, roleName) != null;
     }
 
     public void removePermission(BaseUser owner, String permission) {

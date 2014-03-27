@@ -21,6 +21,10 @@ public class BasicAction extends ActionSupport {
     public static String HOST_URL_APP;
     public static String REAL_PATH_FOR_BASE_DIR;
 
+    public static final String MY_FIRST_PAGE = "myfirstPage";
+    public static final String PERSONAL_CENTER = "personalCenter";
+    public static final String COMMON_ERROR = "common_error";
+
     private Pagination pagination = new Pagination();
 
 
@@ -92,6 +96,9 @@ public class BasicAction extends ActionSupport {
         ActionContext.getContext().getSession().put(Constants.SESSION_USER_FANSNUM, user.getFansNum() != null ? user.getFansNum() : 0);
     }
 
+    protected String redirectToMyCenter(boolean isTeacher) {
+        return isTeacher ? MY_FIRST_PAGE : PERSONAL_CENTER;
+    }
 
     public Pagination getPagination() {
         return pagination;

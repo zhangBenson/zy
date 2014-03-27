@@ -40,7 +40,8 @@ public class UserRoleForBackendAction extends BasicAction {
     @Action(value = "higSecInitGrantPermission", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".higSecInitGrantPermission"),
             @Result(name = INPUT, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "easyLogon"})})
     public String higSecInitGrantPermission() {
-        if (!baseUserRoleTypeDao.havePermission(baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL)).getId(), "grant"))  return INPUT;
+        if (!userService.havePermission(baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL)).getId(), "grant"))
+            return INPUT;
         user = baseUserDao.findByEmail(this.email);
         List<RoleType> roleTypes = roleTypeDao.findAll();
         for (RoleType type : roleTypes) {
@@ -57,7 +58,8 @@ public class UserRoleForBackendAction extends BasicAction {
     @Action(value = "higSecGrantPermission", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "higSecInitGrantPermission", "email","${email}"}),
             @Result(name = INPUT, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "easyLogon"})})
     public String higSecGrantPermission() {
-        if (!baseUserRoleTypeDao.havePermission(baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL)).getId(), "grant"))  return INPUT;
+        if (!userService.havePermission(baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL)).getId(), "grant"))
+            return INPUT;
         user = baseUserDao.findByEmail(this.email);
         List<BaseUserRoleType> baseUserRoleTypes = baseUserRoleTypeDao.findByUserId(user.getId());
 

@@ -29,6 +29,7 @@ public class OrganizationTeacher extends AbstractPersistence {
 
     private Boolean orgRoleType = false;
 
+
     private Calendar createDate = Calendar.getInstance();
 
     public BaseUser getTeacher() {

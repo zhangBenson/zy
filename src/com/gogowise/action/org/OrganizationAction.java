@@ -19,6 +19,7 @@ import com.gogowise.rep.org.enity.OrgMaterial;
 import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.org.enity.OrganizationComment;
 import com.gogowise.rep.org.enity.OrganizationTeacher;
+import com.gogowise.rep.user.UserService;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import com.gogowise.rep.user.enity.BaseUser;
@@ -31,6 +32,7 @@ import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.jsoup.Jsoup;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -98,6 +100,8 @@ public class OrganizationAction extends BasicAction {
     private Pagination pagination = new Pagination();
 
     private OrganizationBaseUserDao organizationBaseUserDao;
+    @Autowired
+    private UserService userService;
 
     @Action(value = "schoolCenter", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".schoolCenter")})
     public String schoolCenter() {
@@ -619,7 +623,7 @@ public class OrganizationAction extends BasicAction {
     public String orgAdminManage() {
         BaseUser admin = baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.SESSION_USER_EMAIL));
         Integer userID = (Integer) ActionContext.getContext().getSession().get(Constants.SESSION_USER_ID);
-        boolean havePermission = baseUserRoleTypeDao.havePermission(userID, "admin");
+        boolean havePermission = userService.havePermission(userID, "admin");
 
         if (!havePermission) return ERROR;
 

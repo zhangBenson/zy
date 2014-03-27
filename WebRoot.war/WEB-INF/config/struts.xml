@@ -109,6 +109,9 @@
             <result name="myfirstPage" type="redirectAction">
                 <param name="actionName">myfirstPage</param>
             </result>
+            <result name="personalCenter" type="redirectAction">
+                <param name="actionName">personalCenter</param>
+            </result>
         </global-results>
         <action name="competitionHome" class="competitionAction" method="competitionHome">
             <result name="success" type="tiles">.competitionHome</result>
