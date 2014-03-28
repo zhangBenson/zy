@@ -58,7 +58,7 @@ public class OrganizationBaseUserDaoImpl extends ModelDaoImpl<OrganizationBaseUs
 
     @Override
     public OrganizationBaseUser findMyOrgByUserID(Integer userID, Integer roleType) {
-        String hql = "select ot.org From OrganizationBaseUser ot where ot.user.id = ? and ot.roleType=? order by ot.createDate desc";
+        String hql = "From OrganizationBaseUser ot where ot.user.id = ? and ot.roleType=? order by ot.createDate desc";
         return this.findFist(hql, userID, roleType);
     }
 }
