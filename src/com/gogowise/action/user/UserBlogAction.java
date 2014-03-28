@@ -18,11 +18,14 @@ import com.gogowise.rep.live.enity.MyShow;
 import com.gogowise.rep.live.enity.PersonalOnlive;
 import com.gogowise.rep.live.enity.ShowFans;
 import com.gogowise.rep.live.enity.UserFans;
+import com.gogowise.rep.org.dao.OrganizationBaseUserDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.org.enity.OrganizationBaseUser;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.user.enity.Comments;
+import com.gogowise.rep.user.enity.RoleType;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -65,7 +68,7 @@ public class UserBlogAction extends BasicAction {
     private Pagination pagination = new Pagination(5);
     private OrganizationDao organizationDao;
     private Organization userOrganization;
-
+    private OrganizationBaseUserDao organizationBaseUserDao;
 
 
 
@@ -87,7 +90,16 @@ public class UserBlogAction extends BasicAction {
             this.setBiggestSquence(personalOnlives.get(0).getSequence());
         }
 
-        userOrganization = organizationDao.findMyOrg(userId);
+        userOrganization = organizationDao.findByResId(userId);
+
+        //If the user is not an organization responsible person
+        if( userOrganization == null )
+        {
+            OrganizationBaseUser baseUser = organizationBaseUserDao.findMyOrgByUserID(userId, RoleType.ROLE_TYPE_TEACHER);
+            if(baseUser == null ) baseUser = organizationBaseUserDao.findMyOrgByUserID(userId, RoleType.ROLE_TYPE_STUDENT);
+
+            if(baseUser != null ) userOrganization = baseUser.getOrg();
+        }
 
         comments = commentsDao.findByCommentTo(user.getId(), new Pagination(10));
         myShows = myShowDao.findByUser(user.getId(),new Pagination(4));
@@ -452,5 +464,14 @@ public class UserBlogAction extends BasicAction {
     }
     public void setUserOrganization (Organization userOrganization) {
         this.userOrganization = userOrganization;
+    }
+
+
+    public OrganizationBaseUserDao getOrganizationBaseUserDao() {
+        return organizationBaseUserDao;
+    }
+
+    public void setOrganizationBaseUserDao(OrganizationBaseUserDao organizationBaseUserDao) {
+        this.organizationBaseUserDao = organizationBaseUserDao;
     }
 }

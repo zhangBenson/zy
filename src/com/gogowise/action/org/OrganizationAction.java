@@ -445,19 +445,26 @@ public class OrganizationAction extends BasicAction {
 
         saveOrg.setResponsiblePerson(rer);
 
-        if (StringUtils.isNotBlank(this.getHidFile1())) {
-            String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + this.getHidFile1());
-            String toPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + "/orgLogo/" + this.getHidFile1());
-            Utils.replaceFile(srcPath, toPath);
-            saveOrg.setLogoUrl(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + Constants.ORG_LOGO_PATH + this.getHidFile1());
+        if( this.getHidFile1() != null && !this.getHidFile1().equalsIgnoreCase(saveOrg.getLogoUrl()) )
+        {
+            if (StringUtils.isNotBlank(this.getHidFile1())) {
+                String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + this.getHidFile1());
+                String toPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + "/orgLogo/" + this.getHidFile1());
+                Utils.replaceFile(srcPath, toPath);
+                saveOrg.setLogoUrl(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + Constants.ORG_LOGO_PATH + this.getHidFile1());
+            }
         }
 
-        if (StringUtils.isNotBlank(this.getHidFile2())) {
-            String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + this.getHidFile2());
-            String toPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + "/orgBuLic/" + this.getHidFile2());
-            Utils.replaceFile(srcPath, toPath);
-            saveOrg.setBusinessLicenseUrl(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + "/orgBuLic/" + this.getHidFile2());
+        if( this.getHidFile2() != null && !this.getHidFile2().equalsIgnoreCase(saveOrg.getAdvUrl()) )
+        {
+            if (StringUtils.isNotBlank(this.getHidFile2())) {
+                String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + this.getHidFile2());
+                String toPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + "/orgBuLic/" + this.getHidFile2());
+                Utils.replaceFile(srcPath, toPath);
+                saveOrg.setBusinessLicenseUrl(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + "/orgBuLic/" + this.getHidFile2());
+            }
         }
+
         organizationDao.persistAbstract(saveOrg);
         org = saveOrg;
         PrintWriter out = ServletActionContext.getResponse().getWriter();

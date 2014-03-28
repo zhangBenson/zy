@@ -2,6 +2,7 @@ package com.gogowise.rep.org.dao;
 
 import com.gogowise.rep.ModelDao;
 import com.gogowise.rep.Pagination;
+import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.org.enity.OrganizationBaseUser;
 import com.gogowise.rep.user.enity.BaseUser;
 
@@ -22,4 +23,6 @@ public interface OrganizationBaseUserDao extends ModelDao<OrganizationBaseUser> 
     List<BaseUser> findUsersByOrgIdAndRoleType(Integer orgId,Integer roleType,Pagination pagination);
 
     List<BaseUser> findLatestUsersByOrgIdAndRoleType(Integer orgId, Integer roleType, Pagination pagination);
+
+    OrganizationBaseUser findMyOrgByUserID(Integer userID, Integer roleType);
 }
