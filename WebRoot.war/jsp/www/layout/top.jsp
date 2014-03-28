@@ -24,21 +24,26 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            <div class="topLogo"></div>
+            <a href="index.html"><div class="topLogo"></div></a>
 
         </div>
         <div class="col-md-6">
             <ul class="nav nav-pills">
                 <li>
-                    <a href="index.html" class="navlink"><s:property value="%{getText('menu.item.index')}"/></a>
+                    <%--<a href="index.html" class="navlink"><s:property value="%{getText('menu.item.index')}"/></a>--%>
+                    <a href="aboutUs.html" class="navlink">About Us</a>
                 </li>
                 <li>
                     <s:a action="courseCenter" cssClass="navlink"><s:property
                             value="%{getText('frame.course.center')}"/></s:a>
+
                 </li>
                 <li>
                     <a href="schoolCenter.html" class="navlink"><s:property
                             value="%{getText('frame.schools.center')}"/></a>
+                </li>
+                <li>
+                    <a href="#" class="navlink">FAQ</a>
                 </li>
             </ul>
         </div>
