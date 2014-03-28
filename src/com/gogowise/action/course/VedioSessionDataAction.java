@@ -631,11 +631,15 @@ public class VedioSessionDataAction extends BasicAction {
 
     private void initOne2manyPlayerSession(One2ManyPlayerSession one2ManyPlayerSession){
         one2ManyPlayerSession.initWithSession(this.getCourseClass());
-        BaseUser user = baseUserDao.findById(this.getSessionUserId());
-        one2ManyPlayerSession.setUserID(user.getId());
-        one2ManyPlayerSession.setUserName(user.getNickName());
-        if(user.getPic()!=null){
-            one2ManyPlayerSession.setUserLogo(user.getPic());
+        if (this.getSessionUserId() == null ) {
+            one2ManyPlayerSession.setUserID(-1);
+        } else  {
+            BaseUser user = baseUserDao.findById(this.getSessionUserId());
+            one2ManyPlayerSession.setUserID(user.getId());
+            one2ManyPlayerSession.setUserName(user.getNickName());
+            if(user.getPic()!=null){
+                one2ManyPlayerSession.setUserLogo(user.getPic());
+            }
         }
     }
 
