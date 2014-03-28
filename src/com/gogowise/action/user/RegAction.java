@@ -167,11 +167,6 @@ public class RegAction extends BasicAction {
         }
         userService.regUser(user, permission);
 
-        if (this.confirmForOrg && org.getId() != null) {
-            orgService.confirmOrgTeacher(user.getId(), org.getId());
-        }
-
-
         if (ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL) == null) {
             sendEmail(user);
         }

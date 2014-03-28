@@ -3,10 +3,12 @@ package com.gogowise.action.org;
 import com.gogowise.action.BasicAction;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.EmailUtil;
+import com.gogowise.rep.org.OrgService;
 import com.gogowise.rep.org.dao.OrganizationBaseUserDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.org.enity.OrganizationBaseUser;
+import com.gogowise.rep.user.UserService;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.user.enity.RoleType;
@@ -45,8 +47,11 @@ public class OrgBaseUserAction extends BasicAction {
     @Autowired
     private OrganizationBaseUserDao organizationBaseUserDao;
 
-//    @Autowired
-//    private UserService userService;
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private OrgService orgService;
 
 
     private List<OrganizationBaseUser> orgUsers = new ArrayList<>();
@@ -54,6 +59,7 @@ public class OrgBaseUserAction extends BasicAction {
     private Integer roleType;
     private boolean isT;
     private OrganizationBaseUser orgUser;
+    private String applicantEmail;
 
     @Action(value = "manageOrgUsers", results = {@Result(name = RoleType.STUDENT, type = Constants.RESULT_NAME_TILES, location = ".studentManage"),
             @Result(name = RoleType.TEACHER, type = Constants.RESULT_NAME_TILES, location = ".teacherManage")})
@@ -80,9 +86,11 @@ public class OrgBaseUserAction extends BasicAction {
             String userEmail = ou.getEmail();
             BaseUser baseUser = baseUserDao.findByEmail(userEmail);
             OrganizationBaseUser orgUser = organizationBaseUserDao.findByOrgIdAndEmailAndRoleType(org.getId(), userEmail, roleType);
+
             if (orgUser != null) {
                 continue;
             }
+
             //保存组织用户关系
             ou.setOrg(org);
             ou.setCreateDate(Calendar.getInstance());
@@ -90,7 +98,7 @@ public class OrgBaseUserAction extends BasicAction {
             ou.setRoleType(roleType);
             organizationBaseUserDao.persistAbstract(ou);
 
-            sendInviteEmail(ou, userEmail, ou.getRealName(), true, baseUser != null);
+            sendInviteEmail(ou, userEmail, ou.getRealName(), RoleType.ROLE_TYPE_TEACHER.equals(roleType), baseUser != null);
         }
 
         this.getPagination().setPageSize(30);
@@ -101,7 +109,7 @@ public class OrgBaseUserAction extends BasicAction {
 
     @Action(value = "confirmBaseUserForOrg")
     public String confirmBaseUserForOrg() {
-        if (!StringUtils.equalsIgnoreCase(this.getSessionUserEmail(), orgUser.getEmail()) || orgUser.getOrg() == null) {
+        if (!StringUtils.equalsIgnoreCase(this.getSessionUserEmail(), applicantEmail) || orgUser.getOrg() == null) {
             return COMMON_ERROR;
         }
 
@@ -112,26 +120,29 @@ public class OrgBaseUserAction extends BasicAction {
         }
         OrganizationBaseUser exist = organizationBaseUserDao.findByOrgIdAndEmailAndRoleType(orgUser.getOrg().getId(), this.getSessionUserEmail(), roleType);
         if (exist == null) return COMMON_ERROR;
-
+        BaseUser applicant = baseUserDao.findById(this.getSessionUserId());
         exist.setPreviousStatus(exist.getUserStatus());
         exist.setUserStatus(OrganizationBaseUser.USER_STATUS_CONFIRMED);
+        exist.setUser(applicant);
         organizationBaseUserDao.persistAbstract(exist);
-
+        userService.grantPermission(applicant, RoleType.getRoleNameById(roleType));
         return redirectToMyCenter(isT);
     }
 
 
     private void sendInviteEmail(OrganizationBaseUser ou, String userEmail, String realName, boolean isTeacher, boolean isExist) throws UnsupportedEncodingException {
         //2. 发邮件通知
-        String title = this.getText("org.invite.be.member.title", new String[]{ou.getOrg().getSchoolName()});
-        String confirmUrl = URLEncoder.encode("/confirmBaseUserForOrg.html?orgUser.email=" + ou.getEmail() + "&orgUser.org.id=" + ou.getOrg().getId() + "&isT=" + isTeacher, "utf-8");
+
+        String confirmUrl = URLEncoder.encode("/confirmBaseUserForOrg.html?applicantEmail=" + ou.getEmail() + "&orgUser.org.id=" + ou.getOrg().getId() + "&isT=" + isTeacher, "utf-8");
         String url;
         if (isExist) {
             url = getBasePath() + "/easyLogon.html?user.email=" + ou.getEmail() + "&reDirectUrl=" + confirmUrl;
         } else {
             url = getBasePath() + "/initReg.html?user.email=" + ou.getEmail() + "&reDirectUrl=" + confirmUrl;
         }
-        String content = this.getText("org.invite.be.member.content", new String[]{realName, ou.getOrg().getSchoolName(), url, userEmail});
+        String teacherOrStudent = isTeacher ? this.getText("label.teacher") : this.getText("label.student");
+        String title = this.getText("org.invite.be.member.title", new String[]{teacherOrStudent});
+        String content = this.getText("org.invite.be.member.content", new String[]{realName, ou.getOrg().getSchoolName(), url, userEmail, teacherOrStudent, url});
         EmailUtil.sendMail(userEmail, title, content);
     }
 
@@ -184,7 +195,7 @@ public class OrgBaseUserAction extends BasicAction {
             String email = user.getEmail();
             Organization org = organizationDao.findByResId(getSessionUserId());
             OrganizationBaseUser orgUser = organizationBaseUserDao.findByOrgIdAndEmailAndRoleType(org.getId(), email, roleType);
-            orgUser.setUserStatus(OrganizationBaseUser.USER_STATUS_UNCONFIRMED);
+//            orgUser.setUserStatus(OrganizationBaseUser.USER_STATUS_UNCONFIRMED);
             organizationBaseUserDao.persistAbstract(orgUser);
             sendInviteEmail(orgUser, email, orgUser.getRealName(), RoleType.ROLE_TYPE_TEACHER.equals(roleType), baseUserDao.findByEmail(email) != null);
             rd.setResult(200);
@@ -230,5 +241,9 @@ public class OrgBaseUserAction extends BasicAction {
 
     public void setOrgUser(OrganizationBaseUser orgUser) {
         this.orgUser = orgUser;
+    }
+
+    public void setApplicantEmail(String applicantEmail) {
+        this.applicantEmail = applicantEmail;
     }
 }
