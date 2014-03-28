@@ -104,91 +104,9 @@ public class OrganizationAction extends BasicAction {
     private UserService userService;
 
     @Action(value = "schoolCenter", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".schoolCenter")})
-    public String schoolCenter() {
-        List<Organization> allOrgs = organizationDao.findLatestOrgs(null);
-        Map<Character, List<Organization>> mapOrgs = new HashMap<Character, List<Organization>>();
-        for (Organization org : allOrgs) {
-            if (org.getSchoolName() == null || org.getSchoolName().equals(""))
-                continue;
-            char c = Character.toUpperCase(org.getSchoolName().trim().charAt(0));
-            if (c >= 'A' && c <= 'Z') {
-                if (mapOrgs.containsKey(c)) {
-                    List<Organization> tmp = mapOrgs.get(c);
-                    tmp.add(org);
-                    mapOrgs.put(c, tmp);
-                } else {
-                    List<Organization> tmpList = new ArrayList<Organization>();
-                    tmpList.add(org);
-                    mapOrgs.put(c, tmpList);
-                }
-            } else {
-                c = '#';  // others
-                if (mapOrgs.containsKey(c)) {
-                    List<Organization> tmpList = mapOrgs.get(c);
-                    tmpList.add(org);
-                    mapOrgs.put(c, tmpList);
-                } else {
-                    List<Organization> tmpList = new ArrayList<Organization>();
-                    tmpList.add(org);
-                    mapOrgs.put(c, tmpList);
-                }
-            }
-        }
-
-        if (this.getSchoolPageShowType() != null) {
-            String range = "";
-            switch (this.getSchoolPageShowType()) {
-                case 0: // A-D
-                    range = "ABCD";
-                    break;
-                case 1: // E-H
-                    range = "EFGH";
-                    break;
-                case 2: // I-L
-                    range = "IJKL";
-                    break;
-                case 3: // M-P
-                    range = "MNOP";
-                    break;
-                case 4: // Q-T
-                    range = "QRST";
-                    break;
-                case 5: //U-Z
-                    range = "UVWXYZ";
-                    break;
-                case 6: // Other
-                    range = "#";
-                    break;
-                default: // show all
-                    range = "";
-                    break;
-            }
-            if (!range.equals("")) {
-                if (this.organizations == null)
-                    this.organizations = new ArrayList<>();
-                else
-                    this.organizations.clear();
-                for (char c : range.toCharArray()) {
-                    if (mapOrgs.containsKey(c)) {
-                        this.organizations.addAll(mapOrgs.get(c));
-                    }
-                }
-            } else {
-                this.organizations = allOrgs;
-            }
-        } else { // first time in schoolcenter page
-            if (this.organizations == null)
-                this.organizations = new ArrayList<>();
-            else
-                this.organizations.clear();
-            String range = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#";
-            for (char c : range.toCharArray()) {
-                if (mapOrgs.containsKey(c)) {
-                    this.organizations.addAll(mapOrgs.get(c));
-                }
-            }
-        }
-
+    public String schoolCenter()
+    {
+        this.organizations = organizationDao.findLatestOrgs(pagination);
         return SUCCESS;
     }
 
