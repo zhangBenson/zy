@@ -156,7 +156,7 @@ public class SaveCourseAction extends BasicAction {
         _course.setCourseType(course.getCourseType());
         _course.setCharges(course.getCharges());
 
-        if (StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(), "upload/")) {
+        if (StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(), "/upload/course")) {
             String courseDir = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_COURSE_PATH);
             courseDir = courseDir + File.separator + course.getId();
 
