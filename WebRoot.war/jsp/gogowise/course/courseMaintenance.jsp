@@ -106,7 +106,7 @@
                         <li>
                             <span class="item"><s:property value="%{getText('label.online.class.logo')}"/></span><span class="tip_words" id="course_logo_input_msg">*</span><br/>
                             <img src="<s:property value="course.logoUrl"/>" id="show_log_preview"/>
-                            <s:hidden id="course_logo" cssClass="long_text_field" name="course.logoUrl" value=""/>
+                            <s:hidden id="course_logo" cssClass="long_text_field" name="course.logoUrl"/>
                             <input type="button" class="submit_btn" id="change_portrait" value="<s:property value="%{getText('onlive.message.update')}"/>" href="courseLogoProcess.html"/>
                         </li>
                         <s:if test="courseType == 1 || courseType == 2">

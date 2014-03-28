@@ -71,12 +71,6 @@
             </s:if>
         </s:iterator>
 
-
-        <s:if test="course.classes.size()>6">
-            <p class="text-right">
-                <a id="moreClass" onClick="showdiv('hiddenVideoList')"><s:property value="%{getText('others.more')}"/></a>
-            </p>
-        </s:if>
     </div>
 
     <div id="hiddenVideoList" class="none">
@@ -106,6 +100,14 @@
             </s:if>
         </s:iterator>
     </div>
+
+    <s:if test="course.classes.size()>6">
+        <p class="text-right">
+            <button id="moreClass" style="cursor:hand; border: 1px dotted;background-color: #ffffff;" onClick="showdiv('hiddenVideoList')">
+                <s:property value="%{getText('others.more')}"/>
+            </button>
+        </p>
+    </s:if>
 
     <br/>
     <%-- Forum --%>

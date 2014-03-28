@@ -2,6 +2,7 @@ package com.gogowise.rep.org.dao;
 
 import com.gogowise.rep.ModelDaoImpl;
 import com.gogowise.rep.Pagination;
+import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.org.enity.OrganizationBaseUser;
 import com.gogowise.rep.user.enity.BaseUser;
 import org.springframework.stereotype.Repository;
@@ -53,5 +54,11 @@ public class OrganizationBaseUserDaoImpl extends ModelDaoImpl<OrganizationBaseUs
     @Override
     public List<BaseUser> findLatestUsersByOrgIdAndRoleType(Integer orgId, Integer roleType, Pagination pagination) {
         return find("select ot.user From OrganizationBaseUser ot where ot.org.id = ? and ot.roleType=? order by ot.createDate desc",pagination,orgId,roleType);
+    }
+
+    @Override
+    public OrganizationBaseUser findMyOrgByUserID(Integer userID, Integer roleType) {
+        String hql = "From OrganizationBaseUser ot where ot.user.id = ? and ot.roleType=? order by ot.createDate desc";
+        return this.findFist(hql, userID, roleType);
     }
 }
