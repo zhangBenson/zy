@@ -51,6 +51,11 @@ var uploading__msg = "<s:text name='orgInfoUpdate.param59'/>";
 //获得焦点时的提示
 var userNameTip = "<s:text name='orgInfoUpdate.param60'/>";
 
+var saveSuccess = "<s:text name='orgInfoUpdate.save.success'/>";
+var saveFailed  = "<s:text name='orgInfoUpdate.save.failed'/>";
+
+
+
 function InitAjax(){
         var ajax=false;
         try {
@@ -549,9 +554,9 @@ $(document).ready(function () {
             var params = {"responser.userName":secondStepName,"responser.sexy":sexy,"responser.birthDay":birday,"responser.telphone":secondStepContact,"responser.cardId":secondStepID};
             $.post(url,params,function(data){
                 if(data=='success'){
-                    $("#submit_msg1").html("修改成功！！！");
+                    $("#submit_msg1").html(saveSuccess);
                 }else{
-                    $("#submit_msg1").html("修改失败！！！");
+                    $("#submit_msg1").html(saveFailed);
                 }
             },"text");
         });
@@ -574,9 +579,9 @@ $(document).ready(function () {
             var params = {"org.schoolName":thirdStepName,"org.description":thirdStepOrgShuoming,"org.depositBankName":bankName,"org.depositName":thirdStepAccount,"org.depositBankAccount":thirdStepAccountNo,"org.memberSize":memberSize,"org.multipleOrg":multipleOrg,"hidFile1":hidFile1,"hidFile2":hidFile2};
             $.post(url,params,function(data){
                 if(data=='success'){
-                 $("#submit_msg2").html("修改成功！！！");
+                 $("#submit_msg2").html(saveSuccess);
                 }else{
-                 $("#submit_msg2").html("修改失败！！！");
+                 $("#submit_msg2").html(saveFailed);
                 }
             },"text");
         });
@@ -595,9 +600,9 @@ $(document).ready(function () {
             var params = {"org.contactName":thirdStepOfficerName,"org.telPhone":thirdStepfixedTel,"org.cellPhone":thirdStepMobile,"org.businessAddress":thirdStepAddress,"org.zipCode":thirdStepPostCode};
             $.post(url,params,function(data){
                 if(data=='success'){
-                 $("#submit_msg3").html("修改成功！！！");
+                 $("#submit_msg3").html(saveSuccess);
                 }else{
-                 $("#submit_msg3").html("修改失败！！！");
+                 $("#submit_msg3").html(saveFailed);
                 }
             },"text");
         });
