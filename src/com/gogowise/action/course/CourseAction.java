@@ -863,9 +863,10 @@ public class CourseAction extends BasicAction {
 
         if( !havePermission ) return ERROR;
 
-        courses = this.courseDao.findlatestCourses(null);
+        courses = this.courseDao.findlatestCourses(pagination);
         return SUCCESS;
     }
+
 
     @Action(value = "removeCourseConfirm",
             results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "courseAdminManage"}) })
@@ -1935,4 +1936,6 @@ public class CourseAction extends BasicAction {
     public void setClasses(List<CourseClass> classes) {
         this.classes = classes;
     }
+
+
 }
