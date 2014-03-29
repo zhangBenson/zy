@@ -37,6 +37,10 @@
 
         </s:iterator>
     </table>
+
+    <tiles:insertTemplate template="/jsp/gogowise/pagination.jsp">
+        <tiles:putAttribute name="pagination" value="${pagination}"/>
+    </tiles:insertTemplate>
 </div>
 
 
