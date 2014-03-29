@@ -234,10 +234,17 @@ function getQuestionResult(right,wrong,noresponse)
 
 function setQuestionResult(result)
 {
+    var sessionUserId;
+    <s:if test ="#session.userID != null" >
+        sessionUserId =   <s:property value="#session.userID"/>;
+    </s:if>
+    <s:else>
+        sessionUserId = -1
+    </s:else>
     $.ajax({
         type: 'POST',
         url: "saveQuestionResult.html",
-        data:{"questionId":$("#currentQuestionId").text(),"userId":<s:property value="#session.userID"/>,"questionItemIndex":result,"courseClassId":<s:property value="courseClass.id"/>},
+        data:{"questionId":$("#currentQuestionId").text(),"userId":sessionUserId,"questionItemIndex":result,"courseClassId":<s:property value="courseClass.id"/>},
         dataType:"json",
         success: function(data)
         {
