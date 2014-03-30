@@ -2,10 +2,74 @@
 <%@ taglib prefix="s" uri="struts-tags.tld" %>
 <%@ include file="/js/recommendForFriend_js.jsp" %>
 <%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
+<%@ taglib prefix="sj" uri="/struts-jquery-tags" %>
 <%--<link href="css/course/myForcastClass.css" rel="stylesheet" type="text/css"/>--%>
 <link href="css/user/user_center_list.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="js/uploadify/jquery.uploadify.v2.1.4.js"></script>
 <script type="text/javascript" src="js/uploadify/swfobject.js"></script>
+
+<style>
+    .col-sm-4{
+        position:relative;min-height:1px;padding-right:10px;padding-left:0px;float:left;width:46%;
+        border-left: 1px;
+    }
+    .pull-left{float:left!important}
+    .pull-left2{ float:right!important}
+
+
+    .lessonOrange,.lessonGreen
+    {
+        background-color: #e65c18;
+        border-radius: 6px;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        background-repeat: no-repeat;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        padding-top: 5px;
+        color: #fff;
+        font-size: 16px;
+    }
+
+    .lessonOrange{
+        background-color: #e65c18;
+    }
+    .lessonGreen
+    {
+        background-color: #6ab600;
+    }
+
+    .lessonName
+    {
+        padding-top: 4px; font-size: 12px;font-family: Arial, Helvetica, sans-serif;color: #999;
+        width: 130px;word-wrap:break-word;padding-left: 5px;text-align: center;height: 40px;overflow: hidden;
+    }
+
+    .lessonTime
+    {
+        text-align: center;height: 6px;font-family: Arial, Helvetica, sans-serif;font-size: 12px;color: #999;
+    }
+
+    .lessonOrange div,.lessonGreen div
+    {
+        font-size: 12px;
+    }
+
+    .makeVideo, .viewVideo{
+        width: 90px;
+        height: 70%;
+        margin-bottom: 20%;
+        margin-top: 5%;
+    }
+    .makeVideo a{
+        color: red;
+    }
+    .viewVideo{
+        color: #006400;
+    }
+
+</style>
 
 <div class="mf_1">
     <ul class="sub_nav cf">
@@ -77,7 +141,8 @@
                 <%--<a class="manage_course" href="initCourseInfoModify.html?course.id=<s:property value="id"/>"><s:property value="%{getText('my.forcast.course.info.manage')}"/></a>--%>
                 <a class="manage_course" href="maintenanceCourse.html?course.id=<s:property value="id"/>"><s:property value="%{getText('my.forcast.course.info.manage')}"/></a>
                 <a class="manage_course" id="courseRecommend<s:property value="#idx.index"/>" href="#recommdatepanel<s:property value="#idx.index"/>"><s:property value="%{getText('recommend.course')}"/></a>
-                <a class="manage_course" id="courseNewEvents<s:property value="#idx.index"/>" href="newEventsManage.html?course.id=<s:property value="id"/>"><s:property value="%{getText('course.new.events.management')}"/></a>
+                <%--<a class="manage_course" id="courseNewEvents<s:property value="#idx.index"/>" href="newEventsManage.html?course.id=<s:property value="id"/>"><s:property value="%{getText('course.new.events.management')}"/></a>--%>
+                <a class="makeVideos" id="makeVideos<s:property value="#idx.index"/>"  href="javascript:;"><s:property value="%{getText('course.makeVideos')}"/></a>
                 <a class="manage_course" id="" href="uploadCourseMaterial.html?course.id=<s:property value="id"/>"><s:property value="%{getText('course.resource.upload')}"/></a>
                 <%--<a class="manage_course" id="" href="uploadCourseMaterial.html?course.id=<s:property value="id"/>">Upload Questions</a>--%>
             </p>
@@ -93,29 +158,70 @@
                             <td><s:property value="%{getText('lable.course.endtime')}"/>：<b><s:date name="finishDate" format="%{getText('dateformat.forclass')}"/></b></td></tr></s:iterator>
                 </table>
             </div>
+
+            <div class="allClassesInfo">
+                <%--<link href="/css/course/gogowise.css" rel="stylesheet" type="text/css"/>--%>
+                <%--<link rel="stylesheet" href="/css/course/bootstrap.min.css">--%>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <s:iterator value="classes" status="status">
+                        <s:if test="#status.index<6">
+                            <s:if test="#status.index % 2 == 0"><div class="row"></s:if>
+
+                        <div class="col-sm-4" >
+                            <div class="pull-left">
+                                <s:if test="record">
+                                <div class="lessonGreen" onclick="enterPlayerRoom(<s:property value="id"/>)" style="cursor:pointer;">
+                                    </s:if>
+                                    <s:else>
+                                    <div class="lessonOrange">
+                                        </s:else>
+                                        <span><s:property value="#status.index+1"/></span><div>Lesson</div>
+                                    </div>
+                                </div>
+
+                                <div class="pull-left">
+                                    <div class="lessonName"><s:property value="nickName"/></div>
+                                    <div class="lessonTime"><s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
+                                </div>
+                                <div class="pull-left2">
+                                    <div class="makeVideo">
+                                        <a href="javascript:getVideoUrl('<s:property value="id"/>','<s:property value="teachingNum"/>');">
+                                        Make Video
+                                    </a></div>
+                                    <s:if test="record">
+                                    <div class="viewVideo"><a href="javascript:enterPlayerRoom('<s:property value="id"/>');">View Video</a></div>
+                                    </s:if>
+                                </div>
+                            </div>
+
+                            <s:if test="#status.index % 2 == 1||#status.last"></div><div style="clear: both;height: 10px;"></div></s:if>
+                        </s:if>
+                    </s:iterator>
+                </table>
+            </div>
         </div>
 
-    <%-- 推荐Div --%>
-    <div style="display: none;">
+        <%-- 推荐Div --%>
+        <div style="display: none;">
 
-          <div id="recommdatepanel<s:property value="#idx.index"/>" style="font-size: 16px;color:#666;">
+              <div id="recommdatepanel<s:property value="#idx.index"/>" style="font-size: 16px;color:#666;">
 
-            <div id="recommendMsg<s:property value="#idx.index"/>" style="float:left;margin-top: 3px;color:red;font-size: 12px;"></div>
-            <form id="recommendCourseForm<s:property value="#idx.index"/>" name="recommendCourseForm<s:property value="#idx.index"/>">
-                <input type="hidden" name="course.id" value="<s:property value="id"/>"/>
-                <div class="recommdatepanel_inner">
-                    <table>
-                        <tr><td></td><td class="add_friend_email" onclick="addFriendEmail(<s:property value="#idx.index"/>);"><s:property value="%{getText('button.add.email.friend')}"/></td></tr>
-                        <tr><td width="80px" align="right" valign="top"><s:property value="%{getText('label.email.friend')}"/>&nbsp;</td><td><input class="recommdate_email" value="" type ="text" name="emails" onblur="checkEmail(this,<s:property value="#idx.index"/>);"/></tr>
-                        <tbody class="added_line" id="added_line<s:property value="#idx.index"/>"></tbody>
-                        <tr><td align="right" valign="top"><s:property value="%{getText('button.message')}"/>&nbsp;</td><td><s:textarea cssClass="recommdate_message" placeholder="%{getText('message.course.wonderful')}" name="comments"></s:textarea></td></tr>
-                        <tr><td></td><td><input class="recommdate_submit" type="button" onclick="checkCourseRecommend(<s:property value="#idx.index"/>);" value="<s:property value="%{getText('button.submit')}" />" />&nbsp;&nbsp;<span class="recommdate_close recommdatebtn" onclick="$.fancybox.close();"><s:property value="%{getText('button.close')}"/></span>&nbsp;&nbsp;<div id="recommend_message<s:property value="#idx.index"/>"></div></td></tr>
-                    </table>
-                </div>
-            </form>
-           </div>
+                <div id="recommendMsg<s:property value="#idx.index"/>" style="float:left;margin-top: 3px;color:red;font-size: 12px;"></div>
+                <form id="recommendCourseForm<s:property value="#idx.index"/>" name="recommendCourseForm<s:property value="#idx.index"/>">
+                    <input type="hidden" name="course.id" value="<s:property value="id"/>"/>
+                    <div class="recommdatepanel_inner">
+                        <table>
+                            <tr><td></td><td class="add_friend_email" onclick="addFriendEmail(<s:property value="#idx.index"/>);"><s:property value="%{getText('button.add.email.friend')}"/></td></tr>
+                            <tr><td width="80px" align="right" valign="top"><s:property value="%{getText('label.email.friend')}"/>&nbsp;</td><td><input class="recommdate_email" value="" type ="text" name="emails" onblur="checkEmail(this,<s:property value="#idx.index"/>);"/></tr>
+                            <tbody class="added_line" id="added_line<s:property value="#idx.index"/>"></tbody>
+                            <tr><td align="right" valign="top"><s:property value="%{getText('button.message')}"/>&nbsp;</td><td><s:textarea cssClass="recommdate_message" placeholder="%{getText('message.course.wonderful')}" name="comments"></s:textarea></td></tr>
+                            <tr><td></td><td><input class="recommdate_submit" type="button" onclick="checkCourseRecommend(<s:property value="#idx.index"/>);" value="<s:property value="%{getText('button.submit')}" />" />&nbsp;&nbsp;<span class="recommdate_close recommdatebtn" onclick="$.fancybox.close();"><s:property value="%{getText('button.close')}"/></span>&nbsp;&nbsp;<div id="recommend_message<s:property value="#idx.index"/>"></div></td></tr>
+                        </table>
+                    </div>
+                </form>
+               </div>
 
-    </div>
+        </div>
 
     </s:iterator>
     <tiles:insertTemplate template="../pagination.jsp">
@@ -132,6 +238,11 @@
         $(".upcoming_class").click(function(){
             $(".classintro").not($(this).parents("div.course_item").children()).hide();
             $(this).parents("div.course_item").children("div.classintro").slideToggle(500);
+        });
+
+        $(".makeVideos").click(function(){
+            $(".allClassesInfo").not($(this).parents("div.course_item").children()).hide();
+            $(this).parents("div.course_item").children("div.allClassesInfo").slideToggle(500);
         });
     });
 
@@ -170,5 +281,26 @@
         return true;
     }
 
+     function enterPlayerRoom(courseClassId){
+//        if(validateLogo()){
+         window.location.href = "playerClass.html?courseClass.id="+courseClassId;
+//        }
+     }
+
+     function getVideoUrl(cid,type){
+         if(type == 1){
+             window.location.href = "openClassSession.html?courseClass.id="+cid;
+         }
+         if(type == 2){
+             window.location.href = "one2twoSession.html?courseClass.id="+cid;
+         }
+         if(type == 3){
+             window.location.href = "one2threeSession.html?courseClass.id="+cid;
+         }
+         if(type == 4){
+//           window.location.href = "one2manySession.html?courseClass.id="+cid;
+             window.location.href = "lecturerClass.html?courseClass.id="+cid;
+         }
+     }
 
 </script>
