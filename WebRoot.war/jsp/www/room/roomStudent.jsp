@@ -660,6 +660,7 @@ function ShowMessage(name,imgpath,content,bit)
         <li class="classstatusbar">Course Name: <a class="img"
                                                    href="voaCourseBlog.html?course.id=<s:property value="courseClass.course.id"/>">
             <s:property value="courseClass.course.name"/> </a></li>
+        <li class="classstatusbar">Class Name:<s:property value="courseClass.name"/><s:property value="courseClass.nickName"/></li>
     </ul>
 </div>
 
