@@ -753,6 +753,13 @@
         <!--<put-attribute name="contentBody" value="/jsp/gogowise/course/courseBlog.jsp"/>-->
     </definition>
 
+    <definition name=".makeCourseVideo" extends=".wwwBodyCenter">
+        <put-attribute name="title" value="title.course.blog"/>
+        <put-attribute name="contentBody" value="/jsp/www/course/makeCourseVideo.jsp"/>
+        <!--<put-attribute name="contentBody" value="/jsp/gogowise/course/courseBlog.jsp"/>-->
+    </definition>
+
+
     <definition name=".purchaseError" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.course.confirm1"/>
         <put-attribute name="contentBody" value="/jsp/www/course/purchaseError.jsp"/>

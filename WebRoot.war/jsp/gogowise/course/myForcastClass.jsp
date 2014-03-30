@@ -142,7 +142,8 @@
                 <a class="manage_course" href="maintenanceCourse.html?course.id=<s:property value="id"/>"><s:property value="%{getText('my.forcast.course.info.manage')}"/></a>
                 <a class="manage_course" id="courseRecommend<s:property value="#idx.index"/>" href="#recommdatepanel<s:property value="#idx.index"/>"><s:property value="%{getText('recommend.course')}"/></a>
                 <%--<a class="manage_course" id="courseNewEvents<s:property value="#idx.index"/>" href="newEventsManage.html?course.id=<s:property value="id"/>"><s:property value="%{getText('course.new.events.management')}"/></a>--%>
-                <a class="makeVideos" id="makeVideos<s:property value="#idx.index"/>"  href="javascript:;"><s:property value="%{getText('course.makeVideos')}"/></a>
+                <%--<a class="makeVideos" id="makeVideos<s:property value="#idx.index"/>"  href="javascript:;"><s:property value="%{getText('course.makeVideos')}"/></a>--%>
+                <a class="makeVideos"  href="/makeCourseVideo.html?course.id=<s:property value="id"/>"><s:property value="%{getText('course.makeVideos')}"/></a>
                 <a class="manage_course" id="" href="uploadCourseMaterial.html?course.id=<s:property value="id"/>"><s:property value="%{getText('course.resource.upload')}"/></a>
                 <%--<a class="manage_course" id="" href="uploadCourseMaterial.html?course.id=<s:property value="id"/>">Upload Questions</a>--%>
             </p>
@@ -159,47 +160,48 @@
                 </table>
             </div>
 
-            <div class="allClassesInfo">
-                <%--<link href="/css/course/gogowise.css" rel="stylesheet" type="text/css"/>--%>
-                <%--<link rel="stylesheet" href="/css/course/bootstrap.min.css">--%>
-                <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                    <s:iterator value="classes" status="status">
-                        <s:if test="#status.index<6">
-                            <s:if test="#status.index % 2 == 0"><div class="row"></s:if>
+            <%--<div class="allClassesInfo">--%>
+                <%--&lt;%&ndash;<link href="/css/course/gogowise.css" rel="stylesheet" type="text/css"/>&ndash;%&gt;--%>
+                <%--&lt;%&ndash;<link rel="stylesheet" href="/css/course/bootstrap.min.css">&ndash;%&gt;--%>
+                <%--<table width="100%" border="0" cellspacing="0" cellpadding="0">--%>
+                    <%--<s:iterator value="classes" status="status">--%>
+                        <%--<s:if test="#status.index<6">--%>
+                            <%--<s:if test="#status.index % 2 == 0"><div class="row"></s:if>--%>
 
-                        <div class="col-sm-4" >
-                            <div class="pull-left">
-                                <s:if test="record">
-                                <div class="lessonGreen" onclick="enterPlayerRoom(<s:property value="id"/>)" style="cursor:pointer;">
-                                    </s:if>
-                                    <s:else>
-                                    <div class="lessonOrange">
-                                        </s:else>
-                                        <span><s:property value="#status.index+1"/></span><div>Lesson</div>
-                                    </div>
-                                </div>
+                        <%--<div class="col-sm-4" >--%>
+                            <%--<div class="pull-left">--%>
+                                <%--<s:if test="record">--%>
+                                <%--<div class="lessonGreen" onclick="enterPlayerRoom(<s:property value="id"/>)" style="cursor:pointer;">--%>
+                                    <%--</s:if>--%>
+                                    <%--<s:else>--%>
+                                    <%--<div class="lessonOrange">--%>
+                                        <%--</s:else>--%>
+                                        <%--<span><s:property value="#status.index+1"/></span><div>Lesson</div>--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
 
-                                <div class="pull-left">
-                                    <div class="lessonName"><s:property value="nickName"/></div>
-                                    <div class="lessonTime"><s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
-                                </div>
-                                <div class="pull-left2">
-                                    <div class="makeVideo">
-                                        <a href="javascript:getVideoUrl('<s:property value="id"/>','<s:property value="teachingNum"/>');">
-                                        Make Video
-                                    </a></div>
-                                    <s:if test="record">
-                                    <div class="viewVideo"><a href="javascript:enterPlayerRoom('<s:property value="id"/>');">View Video</a></div>
-                                    </s:if>
-                                </div>
-                            </div>
+                                <%--<div class="pull-left">--%>
+                                    <%--<div class="lessonName"><s:property value="nickName"/></div>--%>
+                                    <%--<div class="lessonTime"><s:date name="date" format="%{getText('dateformat.forclass')}"/></div>--%>
+                                <%--</div>--%>
+                                <%--<div class="pull-left2">--%>
+                                    <%--<div class="makeVideo">--%>
+                                        <%--<a href="javascript:getVideoUrl('<s:property value="id"/>','<s:property value="teachingNum"/>');">--%>
+                                        <%--Make Video--%>
+                                    <%--</a></div>--%>
+                                    <%--<s:if test="record">--%>
+                                    <%--<div class="viewVideo"><a href="javascript:enterPlayerRoom('<s:property value="id"/>');">View Video</a></div>--%>
+                                    <%--</s:if>--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
 
-                            <s:if test="#status.index % 2 == 1||#status.last"></div><div style="clear: both;height: 10px;"></div></s:if>
-                        </s:if>
-                    </s:iterator>
-                </table>
-            </div>
-        </div>
+                            <%--<s:if test="#status.index % 2 == 1||#status.last"></div><div style="clear: both;height: 10px;"></div></s:if>--%>
+                        <%--</s:if>--%>
+                    <%--</s:iterator>--%>
+                <%--</table>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+
 
         <%-- 推荐Div --%>
         <div style="display: none;">
