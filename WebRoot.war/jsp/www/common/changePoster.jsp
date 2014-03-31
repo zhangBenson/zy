@@ -47,7 +47,7 @@
     $(document).ready(function () {
         $("#fileupload1").uploadify({
             'uploader':'js/uploadify/uploadify.swf',
-            'script':'utils/uploadFile.html',
+            'script':'utils/uploadFileWithOutZoom.html',
             'cancelImg':'js/uploadify/cancel.png',
             'queueID':'fileQueue', //和存放队列的DIV的id一致
             'fileDataName':'fileupload', //和以下input的name属性一致
@@ -66,6 +66,8 @@
                 $('<li></li>').appendTo('.files').text(jsonRep.genFileName);
                 //alert(jsonRep.genFileName);
                 document.getElementById('warning1').innerHTML = jsonRep.genFileName;
+                var real_path = fileObj.filePath.replace(fileObj.name,jsonRep.genFileName);
+                $("#show_log_preview1").attr("src",real_path);
             },
             onError:function (event, queueID, fileObj) {
                 alert("file:" + fileObj.name + "upload failed");
@@ -79,7 +81,7 @@
 
         $("#fileupload2").uploadify({
             'uploader':'js/uploadify/uploadify.swf',
-            'script':'utils/uploadFile.html',
+            'script':'utils/uploadFileWithOutZoom.html',
             'cancelImg':'js/uploadify/cancel.png',
             'queueID':'fileQueue', //和存放队列的DIV的id一致
             'fileDataName':'fileupload', //和以下input的name属性一致
@@ -98,6 +100,8 @@
                 $('<li></li>').appendTo('.files').text(jsonRep.genFileName);
                 //alert(jsonRep.genFileName);
                 document.getElementById('warning2').innerHTML = jsonRep.genFileName;
+                var real_path = fileObj.filePath.replace(fileObj.name,jsonRep.genFileName);
+                $("#show_log_preview2").attr("src",real_path);
             },
             onError:function (event, queueID, fileObj) {
                 alert("file:" + fileObj.name + "upload failed");
@@ -111,7 +115,7 @@
 
         $("#fileupload3").uploadify({
             'uploader':'js/uploadify/uploadify.swf',
-            'script':'utils/uploadFile.html',
+            'script':'utils/uploadFileWithOutZoom.html',
             'cancelImg':'js/uploadify/cancel.png',
             'queueID':'fileQueue', //和存放队列的DIV的id一致
             'fileDataName':'fileupload', //和以下input的name属性一致
@@ -130,6 +134,8 @@
                 $('<li></li>').appendTo('.files').text(jsonRep.genFileName);
                 //alert(jsonRep.genFileName);
                 document.getElementById('warning3').innerHTML = jsonRep.genFileName;
+                var real_path = fileObj.filePath.replace(fileObj.name,jsonRep.genFileName);
+                $("#show_log_preview3").attr("src",real_path);
             },
             onError:function (event, queueID, fileObj) {
                 alert("file:" + fileObj.name + "upload failed");
@@ -143,7 +149,7 @@
 
         $("#fileupload4").uploadify({
             'uploader':'js/uploadify/uploadify.swf',
-            'script':'utils/uploadFile.html',
+            'script':'utils/uploadFileWithOutZoom.html',
             'cancelImg':'js/uploadify/cancel.png',
             'queueID':'fileQueue', //和存放队列的DIV的id一致
             'fileDataName':'fileupload', //和以下input的name属性一致
@@ -162,6 +168,9 @@
                 $('<li></li>').appendTo('.files').text(jsonRep.genFileName);
                 //alert(jsonRep.genFileName);
                 document.getElementById('warning4').innerHTML = jsonRep.genFileName;
+
+                var real_path = fileObj.filePath.replace(fileObj.name,jsonRep.genFileName);
+                $("#show_log_preview4").attr("src",real_path);
             },
             onError:function (event, queueID, fileObj) {
                 alert("file:" + fileObj.name + "upload failed");
@@ -186,7 +195,7 @@
 
                 <li class="long_li">
                     <div class="option_tittle">Poster 1</div>
-                    <img id="show_log_preview"/>
+                    <img id="show_log_preview1"/>
                     <div class="file_upload">
                         <%--<input type="button" class="submit_btn" id="change_portrait" value="<s:property value="%{getText('onlive.message.update')}"/>" href="posterImageProcess.html" />--%>
                         <div class="file_upload"><input type="file" name="fileupload" id="fileupload1" /></div>
@@ -209,7 +218,7 @@
                 <%----------------------------------poster 2---------------------------%>
                 <li class="long_li">
                     <div class="option_tittle">Poster 2</div>
-                    <img id="show_log_preview"/>
+                    <img id="show_log_preview2"/>
                     <div class="file_upload">
                             <%--<input type="button" class="submit_btn" id="change_portrait" value="<s:property value="%{getText('onlive.message.update')}"/>" href="posterImageProcess.html" />--%>
                         <div class="file_upload"><input type="file" name="fileupload" id="fileupload2" /></div>
@@ -233,7 +242,7 @@
                 <%----------------------------------poster 3---------------------------%>
                 <li class="long_li">
                     <div class="option_tittle">Poster 3</div>
-                    <img id="show_log_preview"/>
+                    <img id="show_log_preview3" />
                     <div class="file_upload">
                             <%--<input type="button" class="submit_btn" id="change_portrait" value="<s:property value="%{getText('onlive.message.update')}"/>" href="posterImageProcess.html" />--%>
                         <div class="file_upload"><input type="file" name="fileupload" id="fileupload3" /></div>
@@ -257,7 +266,7 @@
                 <%----------------------------------poster 4---------------------------%>
                 <li class="long_li">
                     <div class="option_tittle">Poster 4</div>
-                    <img id="show_log_preview"/>
+                    <img id="show_log_preview4"/>
                     <div class="file_upload">
                             <%--<input type="button" class="submit_btn" id="change_portrait" value="<s:property value="%{getText('onlive.message.update')}"/>" href="posterImageProcess.html" />--%>
                         <div class="file_upload"><input type="file" name="fileupload" id="fileupload4" /></div>
