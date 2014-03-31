@@ -147,36 +147,13 @@ public class OrgBaseUserAction extends BasicAction {
     }
 
 
-    @Action(value = "enableUser", results = {@Result(name = SUCCESS, type = "json")})
-    public String enableUser() {
-        ResultData<String> rd = new ResultData<String>();
-        ActionContext.getContext().getValueStack().push(rd);
-        try {
-            BaseUser baseUser = baseUserDao.findByEmail(user.getEmail());
-            Organization org = organizationDao.findByResId(getSessionUserId());
-            OrganizationBaseUser orgUser = organizationBaseUserDao.findByOrgIdAndUserId(org.getId(), baseUser.getId(), roleType);
-            orgUser.setUserStatus(orgUser.getPreviousStatus());
-            organizationBaseUserDao.persistAbstract(orgUser);
-            rd.setResult(200);
-            rd.setData(String.valueOf(orgUser.getPreviousStatus()));
-        } catch (Exception e) {
-            rd.setResult(500);
-            rd.setMessage("Enable Failure:" + e.getMessage());
-            logger.error("Enable Failure", e);
-        }
-        return SUCCESS;
-    }
-
     @Action(value = "deleteUser", results = {@Result(name = SUCCESS, type = "json")})
     public String deleteUser() {
         ResultData<String> rd = new ResultData<String>();
         ActionContext.getContext().getValueStack().push(rd);
         try {
-            String email = user.getEmail();
-            Organization org = organizationDao.findByResId(getSessionUserId());
-            OrganizationBaseUser orgUser = organizationBaseUserDao.findByOrgIdAndEmailAndRoleType(org.getId(), email, roleType);
-            //删除用户
-            organizationBaseUserDao.delete(orgUser);
+
+            organizationBaseUserDao.delete(organizationBaseUserDao.findById(orgUser.getId()));
             //不删除角色
             rd.setResult(200);
         } catch (Exception e) {
