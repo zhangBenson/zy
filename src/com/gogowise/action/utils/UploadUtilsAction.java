@@ -149,31 +149,6 @@ public class UploadUtilsAction extends BasicAction {
             extName = fileuploadFileName.substring(fileuploadFileName.lastIndexOf("."));
         }
 
-        //缩放处理，长宽不过200
-        BufferedImage bufferedImage = ImageIO.read(fileupload);
-        int imgWidth = bufferedImage.getWidth();
-        int imgHeight = bufferedImage.getHeight();
-        int newWidth = imgWidth, newHeight = imgHeight;
-        Image image;
-        if(imgWidth>imgHeight){
-            if(imgWidth>300){
-                newWidth = 300;
-                newHeight = 300*imgHeight/imgWidth;
-            }
-        }else{
-            if(imgHeight>300){
-                newWidth = 300*imgWidth/imgHeight;
-                newHeight = 300;
-            }
-        }
-        image = bufferedImage.getScaledInstance(newWidth,newHeight,Image.SCALE_DEFAULT);
-        BufferedImage tag = new BufferedImage(newWidth,newHeight,BufferedImage.TYPE_INT_BGR);
-        Graphics2D g = (Graphics2D)tag.getGraphics();
-        g.drawImage(image,0,0,null);
-        String extNameWithoutDot = extName.substring(extName.indexOf(".")+1);
-        ImageIO.write(tag,extNameWithoutDot,fileupload);
-
-
         newFileName = nowTimeStr + rannum + extName; //文件重命名后的名字
 
         File newFileToCreate = new File(savePath + newFileName);
