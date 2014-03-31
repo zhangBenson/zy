@@ -577,6 +577,46 @@ function getQuestionInfo()
     });
 }
 
+function DirectOpenQuestionsWindow()
+{
+    DirectGetQuestionInfo();
+    showQuestions();
+}
+
+function DirectGetQuestionInfo()
+{
+    $("#questionsList div").remove();
+
+    $.ajax({
+        type:"GET",
+        url:"listQuestion.html",
+        data:{"materialId":$("#currentfile").find(".selectQuestion").text()},
+        dataType:"json",
+        success:function(data){
+
+            $.each(data.vos,function(key,info)
+            {
+                $("#questionsList").append("<div class='questionsItem'>"+
+                        "<label>"+
+                        "<input type='radio' name='selectQuestion' value='"+info["id"]+"'>"+
+                        "<span class='questionsItemText'>"+info["description"]+"</span>"+
+                        "<span class='questionid'>"+info["id"]+"</span>"+
+                        "</label>"+
+                        "</div>");
+            });
+
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+            });
+        },
+        error:function(){
+            //alert("no data....");
+        }
+    });
+}
+
 function bindFileClick()
 {
     $(".fileList li a").bind("click",function(event){
