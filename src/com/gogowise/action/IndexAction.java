@@ -170,13 +170,21 @@ public class IndexAction extends BasicAction {
         {
             BufferedReader br = new BufferedReader( new FileReader(fPath) );
             line = br.readLine();
+            if(line.trim().length() == 0) line = "index.html";
             this.posterLink1 = line;
+
             line = br.readLine();
+            if(line.trim().length() == 0) line = "index.html";
             this.posterLink2 = line;
+
             line = br.readLine();
+            if(line.trim().length() == 0) line = "index.html";
             this.posterLink3 = line;
+
             line = br.readLine();
+            if(line.trim().length() == 0) line = "index.html";
             this.posterLink4 = line;
+
             br.close();
         }
         catch (Exception e)
@@ -191,6 +199,7 @@ public class IndexAction extends BasicAction {
     )
     public String changePoster()
     {
+        this.loadPoster();
         return SUCCESS;
     }
 

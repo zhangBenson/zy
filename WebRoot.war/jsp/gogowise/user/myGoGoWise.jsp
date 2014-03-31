@@ -3,6 +3,22 @@
 <link type="text/css" href="css/user/user_center.css" rel="stylesheet"/>
 <script type="text/javascript" src="js/jquery.jcountdown1.3.min.js"></script>
 
+<style>
+    .usItem_cont .handle a.a_j{
+        float: right;
+        clear: both;
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        color: #fff;
+        /*background: #f5d173;*/
+        background: cornflowerBlue;
+        margin-top: 10px;
+        /*color: #333;*/
+    }
+</style>
+
 <div class="mfp">
 
 <div class="mfp_left fl">
@@ -41,9 +57,10 @@
                 </div>
                 <div class="handle fr">
                     <a class="a_1" href="javascript:;"><s:property value="%{getText('class.count',{classOneTheCornerSequence})}"/></a>
+                    <a class="a_2" href="makeCourseVideo.html?course.id=<s:property value="id"/>"><s:property value="%{getText('course.makeVideos')}"/></a>
                     <a class="a_2" href="javascript:getVideoUrl('<s:property value="classOnTheCorner.id"/>','<s:property value="teachingNum"/>');"><s:property value="%{getText('button.start.class')}"/></a>
                 </div>
-                <div class="desc fl">
+                <div class="desc fl" style="float: left">
                     <p><s:property value="description"/></p>
                 </div>
             </div>

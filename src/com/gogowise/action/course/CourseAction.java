@@ -916,6 +916,33 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
+    @Action(value = "makeCourseVideo", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".makeCourseVideo")})
+//     @Action(value = "myForcastClass", results = {@Result(name = SUCCESS, location = "/jsp/gogowise/course/myForcastClass.css")})
+    public String makeCourseVideo() {
+        //   courses = courseDao.findMyCourseOfForcastClass(pagination, this.getSessionUserId());
+        course = courseDao.findById(this.getCourse().getId());
+        Pagination page = new Pagination(Constants.DEFAULT_PAGE_OF_COMMENTS_INCREASED_SIZE);
+        courseComments = courseCommentDao.findByCourseId(page, course.getId());
+        this.setCommentsNum(courseComments.size());
+        if( commentsNum < page.getTotalSize()) {
+            this.setCommentsNumOverflow(true);
+        }else{
+            this.setCommentsNumOverflow(false);
+        }
+
+        courseQuestions = courseQuestionDao.findNewByCourseId(pagination, course.getId());
+        courseResources = courseResourceDao.findByCourseId(pagination, course.getId());
+        hotCourses = courseDao.findHotCourses(new Pagination(4));
+        if (course.getTeacher() != null) {
+            courses2teacher = courseDao.findCourses2Teacher(course.getTeacher().getId(), new Pagination(4));
+        }
+        courseRelateCourses = courseDao.findCourseRelateCourses("%" + course.getName() + "%", new Pagination(4));
+        courseNewEvents = courseNewEventDao.findLatestTenEvents(new Pagination(10));
+
+        classes = classDao.findByCourseId( course.getId() );
+        return SUCCESS;
+    }
+
     @Action(value = "myRegistration", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".myRegistration")})
 //     @Action(value = "myForcastClass", results = {@Result(name = SUCCESS, location = "/jsp/gogowise/course/myForcastClass.css")})
     public String myRegister() {

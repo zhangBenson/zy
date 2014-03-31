@@ -152,7 +152,7 @@
 .mf_2 .course_item .time a:hover{
  text-decoration: underline;
 }
-.mf_2 .course_item .manage_course {
+.mf_2 .course_item .manage_course, .makeVideos {
   color: #3e8fda;
   margin-right: 15px;
 }
@@ -185,6 +185,31 @@
     color: #006699;
     width: 60px;
 }
+
+.allClassesInfo {
+    float: left;
+    margin: 8px 0px 8px 40px;
+    width: 85%;
+    display: none;
+    position: relative;
+    color:#666;
+}
+
+.allClassesInfo tr {
+    height: 28px;
+}
+
+.allClassesInfo td {
+    padding: 3px 2px 3px 4px;
+    border-bottom: 1px dashed #999;
+    text-align: right;
+}
+
+.allClassesInfo .td1 {
+    color: #006699;
+    width: 60px;
+}
+
 .tip_right {
     float: left;
     margin-right: 3px;

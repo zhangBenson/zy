@@ -2,12 +2,25 @@
 <%@ taglib prefix="s" uri="struts-tags.tld" %>
 <%@ include file="/js/org/orgInfoUpdate_js.jsp"%>
 
+<%@ page import="com.ckeditor.CKEditorConfig" %>
+
+<%@ taglib uri="http://ckeditor.com" prefix="ckeditor" %>
+<%
+    CKEditorConfig settings = new CKEditorConfig();
+    settings.addConfigValue("width", "500");
+    settings.addConfigValue("height", "100");
+    settings.addConfigValue("toolbar", "[[ 'Source', '-', 'Bold', 'Italic','-','Image','-','NumberedList','BulletedList','-','Outdent','Indent','-','JustifyLeft'," +
+            "'JustifyCenter','JustifyRight','JustifyBlock','-','Link','Unlink','Anchor' ]]");
+%>
 <script src="js/jqueryTabs.js" type="text/javascript"></script>
 <link href="css/org/orgInfoUpdate.css" rel="stylesheet" type="text/css"/>
 <style type="text/css">
     .wwgrp br { display: none; }
     .submit_btn{ display: block; float: left; width: 122px; height:31px; background: rgb(80,80,80); color: #FFF; font-size: 16px; box-shadow: 0px 1px 2px rgba(40,160,200,0.3); border-radius: 4px; border: none; cursor: pointer; }
     .long_text_area{ width: 600px; height:80px; padding:2px; border: #7CADC5 solid 1px; border-bottom: #B7D2DF solid 1px; border-right: #B7D2DF solid 1px; }
+    .long_li{
+        width:700px;
+    }
 </style>
 <div class="orgInfo_container">
     <div class="testtab" id="testtab2">
@@ -98,12 +111,11 @@
                             <s:textfield name="org.schoolName" id="thirdStepName" cssClass="input_text_field" />
                         </div>
                     </li>
-                    <li class="orgShuoming">
+                    <li class="long_li" style="height:200px">
+                        <%--<p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param12')}"/></p>--%>
                         <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param12')}"/></p>
-                        <div id="orgShuomingWarn"  class="input_msg"></div>
-                        <div class="input_content">
-                            <s:textarea name="org.description" cols="20" rows="5" id="thirdStepOrgShuoming" cssClass="descArea"/>
-                        </div>
+                        <s:textarea name="org.description" cols="80" id="thirdStepOrgShuoming" cssClass="descArea" rows="5"/>
+                        <ckeditor:replace replace="thirdStepOrgShuoming" basePath="js/ckeditor/" config="<%=settings %>"/>
                     </li>
                     <li>
                         <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param13')}"/></p>
