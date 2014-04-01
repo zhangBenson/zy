@@ -172,16 +172,17 @@ public class SaveCourseAction extends BasicAction {
         if (StringUtils.isBlank(course.getLogoUrl())) _course.setLogoUrl(Constants.DEFAULT_COURSE_IMAGE);
 
         //change teachers
-        if( teacherIds != null && teacherIds.size()>0 )
-        {
-            if(course.getTeachers()!=null)
-            {
-                course.getTeachers().clear();
+        if (teacherIds != null && teacherIds.size() > 0) {
+
+            if (_course.getTeachers() != null) {
+                _course.getTeachers().clear();
             }
-            BaseUser teacher = baseUserDao.findById(teacherIds.get(0));
-            if(teacher!=null)
-            {
-                course.setTeacher(teacher);
+
+            for (Integer teacherId : teacherIds) {
+                BaseUser teacher = baseUserDao.findById(teacherId);
+                if (teacher != null) {
+                    _course.addTeacher(teacher);
+                }
             }
         }
 
