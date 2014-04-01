@@ -10,4 +10,6 @@ public interface OrgService extends ModelService {
     public List<BaseUser> findAllTeachersForOrg(Integer orgId);
 
     public boolean confirmOrgTeacher(Integer userId, Integer orgId);
+
+    public boolean confirmedOtherOrg(Integer userId, Integer orgId);
 }

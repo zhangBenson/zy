@@ -10,6 +10,7 @@ import com.gogowise.rep.org.enity.OrganizationTeacher;
 import com.gogowise.rep.user.UserService;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
+import com.gogowise.rep.user.enity.RoleType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -54,6 +55,18 @@ public class OrgServiceImpl extends ModelServiceImpl implements OrgService {
 //        userService.
         return true;
     }
+
+    public boolean confirmedOtherOrg(Integer userId, Integer orgId) {
+        List<OrganizationBaseUser> orgUsers = organizationBaseUserDao.findByIdAndStatus(userId, OrganizationBaseUser.USER_STATUS_CONFIRMED, RoleType.ROLE_TYPE_TEACHER);
+        if (orgUsers == null || orgUsers.size() == 0) return false;
+        for (OrganizationBaseUser orgUser : orgUsers) {
+            if (!orgId.equals(orgUser.getOrg().getId())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     public void setOrganizationTeacherDao(OrganizationTeacherDao organizationTeacherDao) {
         this.organizationTeacherDao = organizationTeacherDao;

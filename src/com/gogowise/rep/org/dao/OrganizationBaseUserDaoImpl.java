@@ -2,7 +2,6 @@ package com.gogowise.rep.org.dao;
 
 import com.gogowise.rep.ModelDaoImpl;
 import com.gogowise.rep.Pagination;
-import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.org.enity.OrganizationBaseUser;
 import com.gogowise.rep.user.enity.BaseUser;
 import org.springframework.stereotype.Repository;
@@ -44,6 +43,11 @@ public class OrganizationBaseUserDaoImpl extends ModelDaoImpl<OrganizationBaseUs
     @Override
     public OrganizationBaseUser findByEmailAndStatus(String email, Integer status) {
         return this.findFist("From OrganizationBaseUser ot where ot.email=? and ot.userStatus=? ", email, status);
+    }
+
+    @Override
+    public List<OrganizationBaseUser> findByIdAndStatus(Integer id, Short status, Integer roleTyp) {
+        return this.find("From OrganizationBaseUser ot where ot.user.id=? and ot.userStatus=? and  ot.roleType=?  ", id, status, roleTyp);
     }
 
     @Override

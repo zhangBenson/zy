@@ -47,7 +47,7 @@
                                 </s:else>
                             </td>
                             <td>
-                                <s:if test="userStatus == 1">
+                                <s:if test="userStatus in {1,2}">
                                     <a href="javascript:;" onclick="reInviteUser(this);"><s:property
                                             value="%{getText('org.user.reinvite')}"/></a>&nbsp;
                                     <a href="javascript:;"

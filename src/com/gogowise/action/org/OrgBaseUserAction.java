@@ -112,14 +112,25 @@ public class OrgBaseUserAction extends BasicAction {
         if (!StringUtils.equalsIgnoreCase(this.getSessionUserEmail(), applicantEmail) || orgUser.getOrg() == null) {
             return COMMON_ERROR;
         }
-
         if (isT) {
             this.roleType = RoleType.ROLE_TYPE_TEACHER;
         } else {
             this.roleType = RoleType.ROLE_TYPE_STUDENT;
         }
+
         OrganizationBaseUser exist = organizationBaseUserDao.findByOrgIdAndEmailAndRoleType(orgUser.getOrg().getId(), this.getSessionUserEmail(), roleType);
-        if (exist == null) return COMMON_ERROR;
+        if (exist == null && isT) {
+            return COMMON_ERROR;
+        }
+
+        if (isT && orgService.confirmedOtherOrg(orgUser.getId(), orgUser.getOrg().getId())) {
+            addActionError(this.getText("org.apply.teacher.confirm.error"));
+            exist.setUserStatus(OrganizationBaseUser.USER_STATUS_UNACCEPTED);
+            organizationBaseUserDao.persistAbstract(exist);
+            return COMMON_ERROR;
+        }
+
+
         BaseUser applicant = baseUserDao.findById(this.getSessionUserId());
         exist.setPreviousStatus(exist.getUserStatus());
         exist.setUserStatus(OrganizationBaseUser.USER_STATUS_CONFIRMED);
