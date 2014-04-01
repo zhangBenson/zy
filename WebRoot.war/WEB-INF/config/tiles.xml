@@ -1394,4 +1394,9 @@
         <put-attribute name="contentBody" value="/htm/Demo/FirstPage_Formal/VC_Demo.jsp" />
     </definition>
 
+    <definition name=".FAQ" extends=".wwwBodyCenter">
+        <put-attribute name="title" value="GoGoWise--FAQ"/>
+        <put-attribute name="contentBody" value="/jsp/www/FAQ.jsp" />
+    </definition>
+
 </tiles-definitions>
