@@ -53,6 +53,7 @@ public class MaintenCourseAction extends BasicAction {
 
     private ClassDao classDao;
     private List<CourseClass> classes = new ArrayList<>();
+    private List<Integer> teacherIds = new ArrayList<>();
 
 
     @Action(value = "createCourseAllInOne", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".createCourseAllInOne"),
@@ -90,6 +91,10 @@ public class MaintenCourseAction extends BasicAction {
         } else {
             teachers = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(), RoleType.ROLE_TYPE_TEACHER, null);
             students = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(), RoleType.ROLE_TYPE_STUDENT, null);
+        }
+
+        for (BaseUser existTeacher : course.getTeachers()) {
+            teacherIds.add(existTeacher.getId());
         }
 
         //find the classes
@@ -201,5 +206,13 @@ public class MaintenCourseAction extends BasicAction {
 
     public void setClasses(List<CourseClass> classes) {
         this.classes = classes;
+    }
+
+    public List<Integer> getTeacherIds() {
+        return teacherIds;
+    }
+
+    public void setTeacherIds(List<Integer> teacherIds) {
+        this.teacherIds = teacherIds;
     }
 }

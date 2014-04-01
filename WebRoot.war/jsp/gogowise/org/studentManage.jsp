@@ -50,11 +50,13 @@
                                 <s:if test="userStatus == 1">
                                     <a href="javascript:;" onclick="reInviteUser(this);"><s:property
                                             value="%{getText('org.user.reinvite')}"/></a>&nbsp;
-                                    <a href="javascript:;" onclick="deleteUser(this);"><s:property
+                                    <a href="javascript:;"
+                                       onclick="deleteUser(this,  <s:property value="id"/>);"><s:property
                                             value="%{getText('course.class.delete')}"/></a>
                                 </s:if>
                                 <s:elseif test="userStatus==3">
-                                    <a href="javascript:;" onclick="deleteUser(this);"><s:property
+                                    <a href="javascript:;"
+                                       onclick="deleteUser(this, <s:property value="id"/>);"><s:property
                                             value="%{getText('course.class.delete')}"/></a>
                                 </s:elseif>
                             </td>
@@ -186,13 +188,13 @@
             alert(org_user_enable_fail_tip);
         });
     }
-    function deleteUser(obj) {
+    function deleteUser(obj, id) {
         if (!confirm(org_student_delete_tip)) {
             return;
         }
         var $userTds = $(obj).parents("tr").children("td");
         var userEmail = $userTds.eq(0).text();
-        $.post("deleteUser.html", {"user.email": userEmail, "roleType": 6}, function (rd) {
+        $.post("deleteUser.html", {"user.email": userEmail, "roleType": 6, 'orgUser.id': id}, function (rd) {
             if (rd.result == 200) {
                 $userTds.eq(0).parent().remove();
                 return;

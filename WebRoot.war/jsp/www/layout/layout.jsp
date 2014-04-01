@@ -27,7 +27,7 @@
         <script type="text/javascript" src="/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
         <script type="text/javascript" src="/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
 
-
+        <%@ include file="includeForLayOut.jsp" %>
     </head>
 
 

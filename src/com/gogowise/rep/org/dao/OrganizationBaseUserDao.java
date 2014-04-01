@@ -2,7 +2,6 @@ package com.gogowise.rep.org.dao;
 
 import com.gogowise.rep.ModelDao;
 import com.gogowise.rep.Pagination;
-import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.org.enity.OrganizationBaseUser;
 import com.gogowise.rep.user.enity.BaseUser;
 
@@ -12,9 +11,9 @@ public interface OrganizationBaseUserDao extends ModelDao<OrganizationBaseUser> 
 
     List<OrganizationBaseUser> find(Integer orgId, Pagination pagination);
 
-    List<OrganizationBaseUser> findOrgUsers(Integer orgId,Integer roleType,Pagination pagination);
+    List<OrganizationBaseUser> findOrgUsers(Integer orgId, Integer roleType, Pagination pagination);
 
-    OrganizationBaseUser findByOrgIdAndUserId(Integer orgId, Integer userId,Integer roleType);
+    OrganizationBaseUser findByOrgIdAndUserId(Integer orgId, Integer userId, Integer roleType);
 
     OrganizationBaseUser findByOrgIdAndEmail(Integer orgId, String email);
 
@@ -22,7 +21,9 @@ public interface OrganizationBaseUserDao extends ModelDao<OrganizationBaseUser> 
 
     public OrganizationBaseUser findByEmailAndStatus(String email, Integer status);
 
-    List<BaseUser> findUsersByOrgIdAndRoleType(Integer orgId,Integer roleType,Pagination pagination);
+    public List<OrganizationBaseUser> findByIdAndStatus(Integer id, Short status, Integer roleTyp);
+
+    List<BaseUser> findUsersByOrgIdAndRoleType(Integer orgId, Integer roleType, Pagination pagination);
 
     List<BaseUser> findLatestUsersByOrgIdAndRoleType(Integer orgId, Integer roleType, Pagination pagination);
 
