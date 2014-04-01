@@ -88,6 +88,8 @@ public class UserAjaxLoginAction extends BasicAction{
         Organization org = organizationDao.findByResId(user.getId());
         if(org != null){
            ActionContext.getContext().getSession().put(Constants.SESSION_USER_OWN_ORG,org.getSchoolName());
+        } else {
+            ActionContext.getContext().getSession().remove(Constants.SESSION_USER_OWN_ORG);
         }
     }
 
