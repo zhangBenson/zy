@@ -43,7 +43,7 @@
                             value="%{getText('frame.schools.center')}"/></a>
                 </li>
                 <li>
-                    <a href="#" class="navlink">FAQ</a>
+                    <a href="FAQ.html" class="navlink">FAQ</a>
                 </li>
             </ul>
         </div>
