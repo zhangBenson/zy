@@ -140,7 +140,7 @@
                 <p class="time">
                 <%--<a class="manage_course" href="initCourseInfoModify.html?course.id=<s:property value="id"/>"><s:property value="%{getText('my.forcast.course.info.manage')}"/></a>--%>
                 <a class="manage_course" href="maintenanceCourse.html?course.id=<s:property value="id"/>"><s:property value="%{getText('my.forcast.course.info.manage')}"/></a>
-                <a class="manage_course" id="courseRecommend<s:property value="#idx.index"/>" href="#recommdatepanel<s:property value="#idx.index"/>"><s:property value="%{getText('recommend.course')}"/></a>
+                        <%--<a class="manage_course" id="courseRecommend<s:property value="#idx.index"/>" href="#recommdatepanel<s:property value="#idx.index"/>"><s:property value="%{getText('recommend.course')}"/></a>--%>
                 <%--<a class="manage_course" id="courseNewEvents<s:property value="#idx.index"/>" href="newEventsManage.html?course.id=<s:property value="id"/>"><s:property value="%{getText('course.new.events.management')}"/></a>--%>
                 <%--<a class="makeVideos" id="makeVideos<s:property value="#idx.index"/>"  href="javascript:;"><s:property value="%{getText('course.makeVideos')}"/></a>--%>
                 <a class="makeVideos"  href="/makeCourseVideo.html?course.id=<s:property value="id"/>"><s:property value="%{getText('course.makeVideos')}"/></a>
