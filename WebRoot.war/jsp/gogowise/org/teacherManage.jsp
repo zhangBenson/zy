@@ -94,7 +94,9 @@
                         <tr class="tittle">
                             <td><span class="option_tittle"><s:property value="%{getText('email')}"/></span><span
                                     class="authorization_input_msg input_msg"></span></td>
-                            <td><s:property value="%{getText('label.realname')}"/></td>
+                            <td><span class="option_tittle"><s:property
+                                    value="%{getText('label.realname')}"/></span><span
+                                    class="authorization_realName_input_msg input_msg"></span></td>
                             <td></td>
                         </tr>
                         <tr class="addlist_msg_tr">
@@ -103,7 +105,7 @@
                                        class="authorization_input"/>
                             </td>
                             <td class="addlist_input">
-                                <input type="text" name="orgUsers[0].realName"/>
+                                <input type="text" name="orgUsers[0].realName" class='authorization_realName_input'/>
                             </td>
                             <td class="author_td">
                             </td>
@@ -124,6 +126,7 @@
     var warnDiv = "<div class='tip_warn'></div>";
     var rightDiv = "<div class='tip_right'></div>";
     var emailEmpty = "<s:text name='interview.email.invalid'/>";
+    var realNameEmpty = "<s:text name='messege.realname.empty'/>";
     var emailError = "<s:text name='interview.time.invalid1'/>";
     var officerAuthorizationSameError = "<s:text name='org.user.tip.not.responser'/>";
     var label_not_empty = "<s:text name='label.not.empty'/>";
@@ -251,17 +254,25 @@
     }
     function checkAuthorizationEmails() {
         var emails = document.getElementsByClassName("authorization_input");
-        for (var index in emails) {
-            if (!checkAuthorizationEmail(emails[index])) {
+        for (var i = 0; i < emails.length; i++) {
+            if (!checkAuthorizationEmail(emails[i])) {
                 return false;
             }
         }
+        var realNames = document.getElementsByClassName("authorization_realName_input");
+        for (var j = 0; j < realNames.length; j++) {
+            if ($(realNames[j]).val() == "") {
+                $(".authorization_realName_input_msg").html(errorDiv + realNameEmpty);
+                return false;
+            }
+        }
+
         return true;
     }
     $(document).ready(function () {
         $("#add_one_btn").click(function () {
-            $(".auth_left_2 .addlist table").append("<tr><td class='addlist_input'><input name='orgUsers[" + userIndex + "].user.email' onblur='checkAuthorizationEmail(this);' class='authorization_input' type='text'/></td>"
-                    + "<td  class='addlist_input'><input name='orgUsers[" + userIndex + "].user.userName' type='text'/>"
+            $(".auth_left_2 .addlist table").append("<tr><td class='addlist_input'><input name='orgUsers[" + userIndex + "].email' onblur='checkAuthorizationEmail(this);' class='authorization_input' type='text'/></td>"
+                    + "<td  class='addlist_input'><input name='orgUsers[" + userIndex + "].realName' class='authorization_realName_input' type='text'/>"
                     + "<td class='author_td'><span onclick='removeInput(this);' class='delete_btn'>" + org_user_delete + "</span></td></tr>");
             userIndex++;
         });
@@ -278,8 +289,8 @@
                 return;
             }
             for (var i = 0; i < number; i++) {
-                $(".auth_left_2 .addlist table").append("<tr><td class='addlist_input'><input name='orgUsers[" + userIndex + "].user.email' onblur='checkAuthorizationEmail(this);' class='authorization_input' type='text'/></td>"
-                        + "<td  class='addlist_input'><input name='orgUsers[" + userIndex + "].user.userName' type='text'/>"
+                $(".auth_left_2 .addlist table").append("<tr><td class='addlist_input'><input name='orgUsers[" + userIndex + "].email' onblur='checkAuthorizationEmail(this);' class='authorization_input' type='text'/></td>"
+                        + "<td  class='addlist_input'><input name='orgUsers[" + userIndex + "].realName' class='authorization_realName_input' type='text'/>"
                         + "<td class='author_td'><span onclick='removeInput(this);' class='delete_btn'>" + org_user_delete + "</span></td></tr>");
                 userIndex++;
             }
