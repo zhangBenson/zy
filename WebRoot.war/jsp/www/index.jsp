@@ -109,7 +109,6 @@
     </div>
 </div>
 
-<%--
 <div class="container">
 
     <div class="pull-left">
@@ -143,4 +142,3 @@
         </a>
     </div>
 </div>
---%>
