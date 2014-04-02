@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 
 
 <link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox-1.3.4.css" media="screen"/>
@@ -211,24 +211,34 @@
         <div class="gogopanelHead"><div class="gogopanelTitle"><s:property value="%{getText('course.lecturers')}"/><%--Lecturers--%></div></div>
 
         <div class="gogopanelBody">
-            <div class="gogopanelBodyText">
-                <a href="userBlog.html?user.id=<s:property value="course.teacher.id"/>"title="<s:property value="course.teacher.nickName"/>">
-                    <img class="teacherPortrait" src="<s:property value="course.teacher.pic"/>"/>
-                </a>
 
-                <div>
-                    <p class="teacherTitle"><s:property value="course.teacher.nickName"/></p>
-                    <p><s:property value="course.teacher.selfDescription"/></p>
-                    <p></p>
-                    <br/>
+            <s:iterator value="course.teachers" status="teacherIdx">
+                <div class="gogopanelBodyText">
+
+
+                    <a href="userBlog.html?user.id=<s:property value="id"/>" title="<s:property value="nickName"/>">
+                        <img class="teacherPortrait" src="<s:property value="pic"/>"/>
+                    </a>
+
+                    <div>
+                        <p class="teacherTitle"><s:property value="nickName"/></p>
+
+                        <p><s:property value="selfDescription"/></p>
+
+                        <p></p>
+                        <br/>
+                    </div>
+                        <%-- <div class="thicklineExtra"></div>
+                        <img class="teacherPortrait" src="/images/course/portrait1.jpg"  />
+                        <div>
+                            <p class="teacherTitle">Name</p>
+                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                        </div>--%>
                 </div>
-                <%-- <div class="thicklineExtra"></div>
-                <img class="teacherPortrait" src="/images/course/portrait1.jpg"  />
-                <div>
-                    <p class="teacherTitle">Name</p>
-                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                </div>--%>
-            </div>
+
+            </s:iterator>
+
+
         </div>
 
         <br/>
@@ -246,7 +256,7 @@
 </div>
 
 </div>
-
+</div>
 <script type="text/javascript">
     function enterPlayerRoom(courseClassId){
 //        if(validateLogo()){
