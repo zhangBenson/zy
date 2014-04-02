@@ -155,12 +155,26 @@ public class IndexAction extends BasicAction {
         ActionContext.getContext().getSession().put("request_only_locale",new Locale("en","US"));
         ActionContext.getContext().setLocale(new Locale("en","US"));
 //        }
-        courses = courseDao.findNonMoocCourses(pagination);
+        pagination.setPageSize(6);
+        //courses = courseDao.findNonMoocCourses(pagination);
+        courses = courseDao.findlatestCourses(pagination);
         moocCourses = courseDao.findMoocCourses(pagination);
         organizations = organizationDao.findLatestOrgs(new Pagination(8));
         this.loadPoster();
         return SUCCESS;
     }
+
+    @Action(value = "getMoreCourse",
+            results = {@Result(name = SUCCESS, type = "tiles", location = ".indexMoreCourse")}
+    )
+    public String getMoreCourse() {
+        pagination.setPageSize(6);
+        courses = courseDao.findlatestCourses(pagination);
+        moocCourses = courseDao.findMoocCourses(pagination);
+        organizations = organizationDao.findLatestOrgs(new Pagination(8));
+        return  SUCCESS;
+    }
+
 
     public void loadPoster()
     {

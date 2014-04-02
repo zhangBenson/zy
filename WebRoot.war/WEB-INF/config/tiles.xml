@@ -133,6 +133,10 @@
         <put-attribute name="contentBody" value="/jsp/www/index.jsp"/>
     </definition>
 
+    <definition name=".indexMoreCourse" template="/jsp/www/indexMoreCourse.jsp">
+    </definition>
+
+
     <!-- course competition -->
     <definition name=".courseCompetition" extends=".bodyCenter">
         <put-attribute name="title" value="title.course.competition"/>

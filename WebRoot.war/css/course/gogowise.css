@@ -562,6 +562,17 @@ a:hover .recommended  img
 
 }
 
+.newLeft, .newRight{
+    float: left;
+    width: 45%
+}
+.newLeft{
+    margin-right: 5%;
+}
+.newRight{
+    margin-left: 5%;
+}
+
 .coursePanelPortrait
 {
     margin-right: 20px;
