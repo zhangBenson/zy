@@ -203,6 +203,12 @@ public class IndexAction extends BasicAction {
         return SUCCESS;
     }
 
+
+    @Action(value = "FAQ", results={@Result(name=SUCCESS, type=Constants.RESULT_NAME_TILES, location = ".FAQ")})
+    public String FAQ(){
+        return SUCCESS;
+    }
+
     @Action(value = "posterImageProcess", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".posterImageProcess") })
     public String orgLogoProcess() {
         return SUCCESS;
