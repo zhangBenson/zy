@@ -21,6 +21,15 @@
             mode: 'fade'
         });
     });
+
+    function getMoreCousre(pageNow)
+    {
+        var pageNext = pageNow + 1;
+        document.getElementById("link"+pageNow).style.display="none";
+        $.post("getMoreCourse.html",{'pagination.pageNow':pageNext},function(data){
+            $("#courseList"+pageNext).html(data);
+        });
+    }
 </script>
 
 <div class="container">
@@ -62,77 +71,45 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-6">
+        <div class="row" id="courselists">
 
             <div class="pull-left"><img src="../../images/index/icon_new.png"  /></div>
             <div class="pull-left"><div class="courseSubhead"><s:property value="%{getText('usermenu.item.newestcourses')}"/></div></div>
             <div class="clearfix"></div>
 
-            <s:iterator value="Courses" status="status">
-                <s:if test="#status.index<4">
-                    <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>">
-                        <div class="coursePanel">
-                            <div class="coursePanelInfoLeft">
-                                <img class="coursePanelPortrait" src="<s:property value="logoUrl"/>"/>
+            <div id="courseList<s:property value="pagination.pageNow"/>" >
+                <s:iterator value="courses" status="status">
+                    <s:if test="#status.index<6">
+                        <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>" class="newLeft">
+                            <div class="coursePanel">
+                                <div class="coursePanelInfoLeft">
+                                    <img class="coursePanelPortrait" src="<s:property value="logoUrl"/>"/>
+                                </div>
+
+                                <div class="coursePanelInfoRight">
+                                    <p class="textOverSinglerow"><s:property value="name"/></p>
+                                    <p class="textOverSinglerow"><s:property value="%{getText('course.school')}"/>:&nbsp;<s:property value="organization.schoolName" /></p>
+                                    <p class="textOverSinglerow"><s:property value="%{getText('label.index.classes.start')}"/>:&nbsp;<s:date name="publicationTime" format="%{getText('dateformat.forclass')}"/></p>
+                                </div>
                             </div>
+                        </a>
+                        <s:if test="#status.index%2==1"><br/></s:if>
+                    </s:if>
+                </s:iterator>
+            </div>
 
-                            <div class="coursePanelInfoRight">
-                                <p class="textOverSinglerow"><s:property value="name"/></p>
-                                <p class="textOverSinglerow"><s:property value="%{getText('course.school')}"/>:&nbsp;<s:property value="organization.schoolName" /></p>
-                                <p class="textOverSinglerow"><s:property value="%{getText('label.index.classes.start')}"/>:&nbsp;<s:date name="publicationTime" format="%{getText('dateformat.forclass')}"/></p>
-                            </div>
-                        </div>
-                    </a>
-                </s:if>
-            </s:iterator>
+            <s:if test="pagination.hasNext">
+                <a href="javascript:;" id="link<s:property value="pagination.pageNow"/>" onclick="getMoreCousre(<s:property value="pagination.pageNow"/>);">
+                    <p class="text-right"><s:property value="%{getText('others.more')}"/></p>
+                </a>
+            </s:if>
 
-            <!--Panel1 -->
-            <%--<a href="#">--%>
-            <%--<div class="coursePanel">--%>
-            <%--<div class="coursePanelInfoLeft">--%>
-            <%--<img class="coursePanelPortrait" src="gogowisestyle/image/recommended5.jpg"  />--%>
-
-            <%--</div>--%>
-            <%--<div class="coursePanelInfoRight">--%>
-            <%--<p>Pellentesque habitant morbi tristique senectus.</p>--%>
-            <%--<p>School:MITx</p>--%>
-            <%--<p>Clases start:16 Oct 2013</p>--%>
-            <%--</div>--%>
-            <%--</div>--%>
-            <%--</a>--%>
-
-
-            <a href="courseCenter.html"><p class="text-right"><s:property value="%{getText('others.more')}"/></p></a>
-        </div>
-
-        <div class="col-sm-6">
-            <div class="pull-left"><img src="../../images/index/icon_MOOC.png"  /></div>
-            <div class="pull-left"><div class="courseSubhead"><s:property value="%{getText('usermenu.item.mooc')}"/></div></div>
-            <div class="clearfix"></div>
-
-            <s:iterator value="moocCourses" status="status">
-                <s:if test="#status.index<4">
-                    <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>">
-                        <div class="coursePanel">
-                            <div class="coursePanelInfoLeft">
-                                <img class="coursePanelPortrait" src="<s:property value="logoUrl"/>" />
-                            </div>
-                            <div class="coursePanelInfoRight">
-                                <p class="textOverSinglerow"><s:property value="name"/></p>
-                                <p class="textOverSinglerow"><s:property value="%{getText('course.school')}"/>:&nbsp;<s:property value="organization.schoolName" /></p>
-                                <p class="textOverSinglerow"><s:property value="%{getText('label.index.classes.start')}"/>:&nbsp;<s:date name="publicationTime" format="%{getText('dateformat.forclass')}"/></p>
-                            </div>
-                        </div>
-                    </a>
-                </s:if>
-            </s:iterator>
-
-            <a href="courseCenter.html"><p class="text-right"><s:property value="%{getText('others.more')}"/></p></a>
-
+            <div id="courseList<s:property value="pagination.pageNow+1"/>"></div>
         </div>
     </div>
 </div>
 
+<%--
 <div class="container">
 
     <div class="pull-left">
@@ -165,24 +142,5 @@
             <span class="glyphicon glyphicon-chevron-right" style="position: relative;left:70px;top: 50px;"></span>
         </a>
     </div>
-</div>
-
-<%--
-<div class="container">
-    <ul class="bxsliderLogolist">
-
-            <s:iterator value="organizations" status="status">
-                <s:if test="#status.index%4==0"><li><ul class="list-inline"></s:if>
-
-                <li><a href="orgBlog.html?org.id=<s:property value="id"/>" >
-                    <img src="<s:property value="logoUrl" />"  alt="<s:property value="schoolName"/>" class="popOrgLogo" /></a>
-                </li>
-
-                <s:if test="#status.index%4==3"></ul></li></s:if>
-                <s:elseif test="#status.last"></ul></li></s:elseif>
-
-            </s:iterator>
-    </ul>
-
 </div>
 --%>
