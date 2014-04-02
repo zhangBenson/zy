@@ -111,10 +111,10 @@
                             <s:textfield name="org.schoolName" id="thirdStepName" cssClass="input_text_field" />
                         </div>
                     </li>
-                    <li class="long_li" style="height:200px">
+                    <li class="long_li" style="height:200px;">
                         <%--<p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param12')}"/></p>--%>
                         <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param12')}"/></p>
-                        <s:textarea name="org.description" cols="80" id="thirdStepOrgShuoming" cssClass="descArea" rows="5"/>
+                        <s:textarea name="org.description" cols="80" id="thirdStepOrgShuoming" cssClass="descArea" rows="15"/>
                         <ckeditor:replace replace="thirdStepOrgShuoming" basePath="js/ckeditor/" config="<%=settings %>"/>
                     </li>
                     <li>

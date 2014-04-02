@@ -247,6 +247,8 @@ $(document).ready(function() {
         $("#btnSubmitQuestions").attr("disabled","disabled");
         seletedQuestions();
         getQuestionItemInfo($('input[name="selectQuestion"]:checked').val());
+
+        $('#fileModal').modal('hide');
     });
 
     $("#btnAddVideo").click(function(){
@@ -579,6 +581,8 @@ function getQuestionInfo()
 
 function DirectOpenQuestionsWindow()
 {
+    $("#QuestionItem").empty();
+    $("#btnSubmitQuestions").removeAttr("disabled");
     DirectGetQuestionInfo();
     showQuestions();
 }
@@ -890,6 +894,7 @@ function showQuestions()
     $("#questionsModal").modal('show');
     $("#questionsList").show();
     $("#resultView").hide();
+    $("#QuestionItem").hide();
 }
 
 function showFile(index)
