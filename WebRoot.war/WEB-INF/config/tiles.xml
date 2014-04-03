@@ -1399,7 +1399,7 @@
     </definition>
 
     <definition name=".FAQ" extends=".wwwBodyCenter">
-        <put-attribute name="title" value="GoGoWise--FAQ"/>
+        <put-attribute name="title" value="title.faq"/>
         <put-attribute name="contentBody" value="/jsp/www/FAQ.jsp" />
     </definition>
 

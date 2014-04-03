@@ -50,7 +50,6 @@
         color:#6ab600;
     }
 </style>
-<body>
 <div class="container">
 <div class="thinline"></div>
 <div class="row">
