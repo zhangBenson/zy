@@ -2,7 +2,6 @@ package com.gogowise.common.schedule;
 
 import com.gogowise.rep.course.dao.ClassDao;
 import com.gogowise.rep.course.enity.CourseClass;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +18,7 @@ public class NoticeEmailScheduleManger {
     private ClassDao classDao;
     private final static Integer MINUTE_FOR_NOTICE = 30;
 
-    @Scheduled(cron = "0 0/30 * * * ?")
+    //    @Scheduled(cron = "0 0/30 * * * ?")// comment this schedule for too many email issue.
     private void doJob() {
         Calendar olderCalendar = (Calendar) calendar.clone();
         Calendar futureCalendar = Calendar.getInstance();
