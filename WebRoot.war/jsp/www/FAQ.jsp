@@ -68,7 +68,7 @@
             <span class="glyphicon glyphicon-user icon2"></span>
             Student
         </button>
-        <button type="button" class="btn btn-success btn-block" id="btnCourse" onclick="self.location='voaCourseBlog.html?course.id=60'">
+        <button type="button" class="btn btn-success btn-block" id="btnCourse" onclick="self.location='voaCourseBlog.html?course.id=53'">
             <span class="glyphicon glyphicon-question-sign icon2"></span>
             Help Course
         </button>
