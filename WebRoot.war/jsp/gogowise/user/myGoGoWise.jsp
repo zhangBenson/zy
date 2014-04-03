@@ -57,9 +57,10 @@
                 </div>
                 <div class="handle fr">
                     <a class="a_1" href="javascript:;"><s:property value="%{getText('class.count',{classOneTheCornerSequence})}"/></a>
+                    <a class="a_2"  href="javascript:getVideoUrl('<s:property value="classOnTheCorner.id"/>','<s:property value="teachingNum"/>');"><s:property value="%{getText('button.start.class')}"/></a>
                     <a class="a_2" href="makeCourseVideo.html?course.id=<s:property value="id"/>"><s:property value="%{getText('course.makeVideos')}"/></a>
-                    <a class="a_2" href="javascript:getVideoUrl('<s:property value="classOnTheCorner.id"/>','<s:property value="teachingNum"/>');"><s:property value="%{getText('button.start.class')}"/></a>
                 </div>
+                <div style="height:45px;clear: both"></div>
                 <div class="desc fl" style="float: left">
                     <p><s:property value="description"/></p>
                 </div>
