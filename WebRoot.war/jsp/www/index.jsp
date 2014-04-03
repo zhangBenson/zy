@@ -69,19 +69,18 @@
 
 <br/>
 
-<div class="container">
-    <div class="row">
-        <div class="row" id="courselists">
+<div class="container" >
+        <div  id="courselists">
 
             <div class="pull-left"><img src="../../images/index/icon_new.png"  /></div>
             <div class="pull-left"><div class="courseSubhead"><s:property value="%{getText('usermenu.item.newestcourses')}"/></div></div>
             <div class="clearfix"></div>
 
-            <div id="courseList<s:property value="pagination.pageNow"/>" >
+            <div style="width:1180px;" id="courseList<s:property value="pagination.pageNow"/>" >
                 <s:iterator value="courses" status="status">
                     <s:if test="#status.index<6">
                         <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>" class="newLeft">
-                            <div class="coursePanel">
+                            <div class="coursePanel" style="width:550px;">
                                 <div class="coursePanelInfoLeft">
                                     <img class="coursePanelPortrait" src="<s:property value="logoUrl"/>"/>
                                 </div>
@@ -98,15 +97,15 @@
                 </s:iterator>
             </div>
 
-            <s:if test="pagination.hasNext">
-                <a href="javascript:;" id="link<s:property value="pagination.pageNow"/>" onclick="getMoreCousre(<s:property value="pagination.pageNow"/>);">
-                    <p class="text-right"><s:property value="%{getText('others.more')}"/></p>
-                </a>
-            </s:if>
+
 
             <div id="courseList<s:property value="pagination.pageNow+1"/>"></div>
         </div>
-    </div>
+    <s:if test="pagination.hasNext">
+        <a href="javascript:;" id="link<s:property value="pagination.pageNow"/>" onclick="getMoreCousre(<s:property value="pagination.pageNow"/>);">
+            <p class="text-right"><s:property value="%{getText('others.more')}"/></p>
+        </a>
+    </s:if>
 </div>
 
 <%--
