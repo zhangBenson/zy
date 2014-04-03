@@ -28,6 +28,7 @@
         document.getElementById("link"+pageNow).style.display="none";
         $.post("getMoreCourse.html",{'pagination.pageNow':pageNext},function(data){
             $("#courseList"+pageNext).html(data);
+            //$("#courseLists").append(data);
         });
     }
 </script>
@@ -96,8 +97,6 @@
                     </s:if>
                 </s:iterator>
             </div>
-
-
 
             <div id="courseList<s:property value="pagination.pageNow+1"/>"></div>
         </div>
