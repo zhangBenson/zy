@@ -118,7 +118,7 @@
 <div class="FAQcontent">
     <div class="FAQItem">
         <span class="glyphicon glyphicon-chevron-right icon1"></span>
-        <span class="FAQname" id="title1">Who can take an edX course? How do I sign up?</span>
+        <span class="FAQname" id="title1">How can I join Gogowise platform and start teaching online?</span>
         <h4 class="courseBody">
             Answer: Thank you for your interest to join us. Please drop us an email at support@gogowise.com and our business team will contact you shortly. Once your account has been set up, you will receive your organization account, password, and the customized domain name on Gogowise. For example, if your organization is ABC, then the domain name of your organization on Gogowise will be ABC.GOGOWISE.COM.
         </h4>
@@ -370,10 +370,13 @@
             <a href="#title_teachers2">2.How do I start a class?</a>
         </div>
         <div class="FAQname">
-            <a href="#title_teachers3">3.I have prepared some materials. How can I upload them?</a>
+            <a href="#title_teachers5">3.I have some videos made by ourselves and I want to share them with my students. What shall I do?</a>
         </div>
         <div class="FAQname">
-            <a href="#title_teachers4">4.How do I watch my previous lessons?</a>
+            <a href="#title_teachers3">4.I have prepared some materials. How can I upload them?</a>
+        </div>
+        <div class="FAQname">
+            <a href="#title_teachers4">5.How do I watch my previous lessons?</a>
         </div>
     </div>
 
@@ -412,6 +415,22 @@
 						</span>
     </div>
 
+    <div class="imaginaryline"></div>
+    <div class="FAQcontent">
+        <div class="FAQItem">
+            <span class="glyphicon glyphicon-chevron-right icon1"></span>
+            <span class="FAQname" id="title_teachers5">I have some videos made by ourselves and I want to share them with my students. What shall I do?</span>
+            <h4 class="courseBody">
+                Answer: You can upload the video files to YouTube as “Private” and record the links of the files on YouTube. Private video files on YouTube mean that they are not public and no one can find it through searching engines. Only the persons who have the links can watch them. The students can watch the videos through the virtual classroom but cannot obtain the links.
+            </h4>
+
+
+        </div>
+						<span style="font-size: 14px;color:#6ab600">
+							<span class="glyphicon glyphicon-circle-arrow-up" style="font-size: 20px;color:#6ab600;margin-right: 10px;"></span>
+							<a href="#FAQtitle" style="color:#6ab600;">Goto Top</a>
+						</span>
+    </div>
     <div class="imaginaryline"></div>
 
     <div class="FAQcontent">
