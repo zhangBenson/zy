@@ -23,3 +23,8 @@
 			</div>
 		</div>
 	</div>
+
+<script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F7a385c45f142eb625e3851e626090111' type='text/javascript'%3E%3C/script%3E"));
+</script>
