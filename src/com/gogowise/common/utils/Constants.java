@@ -188,6 +188,14 @@ public class Constants {
 
     public static final String REG_CSS = "<style type=\"text/css\">\n#rvmDiv #logoDiv {background-image: url(http://www.gogowise.com/images/logo.jpg);background-repeat: no-repeat;height: 65px;margin-left: 45px;}\n#rvmDiv #rvmcontentDiv ul .welcomeTittle {margin-left: 30px;}\n#rvmDiv {float: left;width: 100%;font-family: \"微软雅黑\", \"宋体\", \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif;}\n#logoDiv {float: left;width: 100%;}\n#rvmcontentDiv {float: left;width: 100%;}\n#rvmDiv #rvmcontentDiv ul li {list-style-type: none;}\n#rvmDiv #rvmcontentDiv .orangeWords {color: rgb(255,155,55);}\n#rvmDiv #rvmcontentDiv ul .lastWords {margin-top: 50px;}\n</style>";
 
+
+    public static Integer Student_Age_Type0 = 0;  //0 - 3 age
+    public static Integer Student_Age_Type1 = 1;  //4 - 5 age
+    public static Integer Student_Age_Type2 = 2;  //5 - 6 age
+    public static Integer Student_Age_Type3 = 3;  //6 - 7 age
+    public static Integer Student_Age_Type4 = 4;  //7 - 11 age
+    public static Integer Student_Age_Type5 = 7;  //above 12 age Adult
+
     /* ---------------------  Search Type ----------------------------------- */
     public static int SEARCH_TYPE_ALL = 1;
     public static int SEARCH_TYPE_MEMBER = 2;
