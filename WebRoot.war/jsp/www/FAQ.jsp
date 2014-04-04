@@ -57,7 +57,7 @@
     <div class="btn-group-vertical btn-block" style="margin-top: 25px;">
         <button type="button" class="btn btn-info btn-block" id="btnQrganization">
             <span class="glyphicon glyphicon-tower icon2"></span>
-            Qrganization
+            Organization
         </button>
         <button type="button" class="btn btn-warning btn-block" id="btnLecturer">
             <span class="glyphicon glyphicon-home icon2"></span>
