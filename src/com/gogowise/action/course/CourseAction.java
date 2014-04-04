@@ -533,21 +533,21 @@ public class CourseAction extends BasicAction {
                 matterDao.persistAbstract(matter);
             }
         }
-        if (this.getCourse().getTeachingNum() == 4) {  //if the course is a normal big class,so we'll send an advertisement email to the course creator for him to resend
-            String courseCreatorEmail = this.getSessionNickName();
-            String href = getBasePath() + "/initBigCourseAdvertiseEmail.html?course.id=" + course.getId();
-            String advertiseTitle = this.getText("big.course.advertisement.email.title", new String[]{courseCreatorEmail, course.getName()});
-            String advertiseContent = Constants.BIG_COURSE_ADVERTISE_EMAIL_CSS + this.getText("big.course.advertisement.email.content", new String[]{
-                    this.getSessionNickName(),
-                    course.getName(),
-                    Utils.getEmptyString(course.getDescription()),
-                    dateFormat.format(courseStartTime.getTime()),
-                    course.getTotalHours().toString(),
-                    classesInfo.toString(),
-                    href, href
-            });
-            EmailUtil.sendMail(this.getSessionUserEmail(), advertiseTitle, advertiseContent, "text/html;charset=utf-8");
-        }
+//        if (this.getCourse().getTeachingNum() == 4) {  //if the course is a normal big class,so we'll send an advertisement email to the course creator for him to resend
+//            String courseCreatorEmail = this.getSessionNickName();
+//            String href = getBasePath() + "/initBigCourseAdvertiseEmail.html?course.id=" + course.getId();
+//            String advertiseTitle = this.getText("big.course.advertisement.email.title", new String[]{courseCreatorEmail, course.getName()});
+//            String advertiseContent = Constants.BIG_COURSE_ADVERTISE_EMAIL_CSS + this.getText("big.course.advertisement.email.content", new String[]{
+//                    this.getSessionNickName(),
+//                    course.getName(),
+//                    Utils.getEmptyString(course.getDescription()),
+//                    dateFormat.format(courseStartTime.getTime()),
+//                    course.getTotalHours().toString(),
+//                    classesInfo.toString(),
+//                    href, href
+//            });
+//            EmailUtil.sendMail(this.getSessionUserEmail(), advertiseTitle, advertiseContent, "text/html;charset=utf-8");
+//        }
         if (course.getOrganization() != null) {
             return "orgSUCCESS";
         }
