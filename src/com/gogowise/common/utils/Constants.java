@@ -49,7 +49,7 @@ public class Constants {
     public static final String TYPE_JUDGE_STRING = "2";
     public static final String TYPE_HOST_STRING = "3";
 
-    public static final String WHICH_SITE_CAN＿HAVE＿SECDOMAIN = "test.gogowise.com";
+    public static final String WHICH_SITE_CAN＿HAVE＿SECDOMAIN = "www.gogowise.com";
     public static final String WELCOME_PAGE = "index.jsp";
     public static final int MIN_SECDOMAIN_LENGTH = 5;
     public static final String DEFAULT_BLANK_VALUE = "";
