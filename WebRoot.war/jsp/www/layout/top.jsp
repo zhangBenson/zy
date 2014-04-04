@@ -27,7 +27,7 @@
             <a href="index.html"><div class="topLogo"></div></a>
 
         </div>
-        <div class="col-md-6">
+        <div class="col-md-7">
             <ul class="nav nav-pills">
                 <li>
                     <%--<a href="index.html" class="navlink"><s:property value="%{getText('menu.item.index')}"/></a>--%>
@@ -48,7 +48,7 @@
             </ul>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="pull-right">
                 <s:if test="#session.email !=null">
                     <div class="btn-group">

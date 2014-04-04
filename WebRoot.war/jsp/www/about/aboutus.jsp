@@ -56,7 +56,7 @@ Gogowise is extremely grateful to our team of consultants who are experts in the
 
             <br/><br/>
             Have some questions or facing some problems?
-			Contact us at <a href="#"><span style="color: #6ab600;">support@gogowise.com</span></a> and our support team will get back to you as soon as possible.
+			Contact us at <a href="mailto:support@gogowise.com"><span style="color: #6ab600;">support@gogowise.com</span></a> and our support team will get back to you as soon as possible.
 		</h4>
 	</div>
 </body>
