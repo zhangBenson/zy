@@ -129,7 +129,7 @@ public class EmailJob implements  Runnable {
 
     public static void main(String args[]) {
         EmailJob job = new EmailJob();
-        job.setEmailAddr("zlhades@outlook.com");
+        job.setEmailAddr("jijianhui@gogowise.com");
 //        job.setEmailAddr("vic@gogowise.com");
 
         job.setMailTitle("111111111");
