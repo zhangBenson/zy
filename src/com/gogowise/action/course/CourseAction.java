@@ -863,7 +863,7 @@ public class CourseAction extends BasicAction {
 
         if( !havePermission ) return ERROR;
 
-        courses = this.courseDao.findlatestCourses(pagination);
+        courses = this.courseDao.findlatestCoursesForAdmin(pagination);
         return SUCCESS;
     }
 

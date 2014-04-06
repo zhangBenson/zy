@@ -21,6 +21,7 @@ public class EmailJob implements  Runnable {
     private static final String SMTPPassword = "gogowise";
     // SMTP Server
     private static final String SMTPServerName = "mail.gogowise.com";
+    //private static final String SMTPServerName = "137.132.153.218";
 
 
     //  EMAIL Related attribute.
