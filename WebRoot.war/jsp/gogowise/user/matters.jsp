@@ -67,20 +67,20 @@
     <s:iterator value="courseTeacherMatters" status="idx">
     <tr>
         <%--<td class="td_1"><s:property value="course.organization.schoolName"/>指定您为<s:property value="course.name"/>课程的老师，具体信息请查看邮件</td>--%>
-        <td class="td_1"><s:property value="%{getText('title.matters.appointTeacher')}"/><s:property value="course.name"/><s:property value="%{getText('title.matters.appointTeacherBy')}"/><s:property value="course.organization.schoolName"/></td>
+        <td class="td_1"><s:property value="%{getText('title.matters.appointTeacher')}"/>&nbsp;<s:property value="course.name"/><s:property value="%{getText('title.matters.appointTeacherBy')}"/><s:property value="course.organization.schoolName"/></td>
         <td class="td_2"><a href="#" onclick="deleteThatRow(this,'<s:property value="id"/>');"><s:property value="%{getText('title.matters.confim')}"/></a></td>
     </tr>
     </s:iterator>
     <s:iterator value="courseStudentMatters" status="idx">
     <tr>
-        <td class="td_1"><s:property value="%{getText('title.matters.course.invite',{course.organization.schoolName})}"/><s:property value="course.name"/></td>
+        <td class="td_1"><s:property value="%{getText('title.matters.course.invite',{course.organization.schoolName})}"/>&nbsp;<s:property value="course.name"/></td>
         <td class="td_2"><a href="#" onclick="deleteThatRow(this,'<s:property value="id"/>');"><s:property value="%{getText('title.matters.confim')}"/></a></td>
     </tr>
     </s:iterator>
 
     <s:iterator value="courseStudentNoOrgMatters" status="idx">
     <tr>
-        <td class="td_1"><s:property value="%{getText('title.matters.course.invite',{fromUser.nickName})}"/><s:property value="course.name"/></td>
+        <td class="td_1"><s:property value="%{getText('title.matters.course.invite',{fromUser.nickName})}"/>&nbsp;<s:property value="course.name"/></td>
         <td class="td_2"><a href="#" onclick="deleteThatRow(this,'<s:property value="id"/>');"><s:property value="%{getText('title.matters.confim')}"/></a></td>
     </tr>
     </s:iterator>
