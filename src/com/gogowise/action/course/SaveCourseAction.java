@@ -66,6 +66,9 @@ public class SaveCourseAction extends BasicAction {
 
         course = courseService.findById(course.getId());
 
+        course.setStudentAgeType(this.getCourse().getStudentAgeType());
+        courseDao.persist(course);
+
         // copy jpg
         if (StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(), "upload/")) {
             //Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());

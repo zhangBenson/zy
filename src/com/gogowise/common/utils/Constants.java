@@ -190,11 +190,12 @@ public class Constants {
 
 
     public static Integer Student_Age_Type0 = 0;  //0 - 3 age
-    public static Integer Student_Age_Type1 = 1;  //4 - 5 age
-    public static Integer Student_Age_Type2 = 2;  //5 - 6 age
-    public static Integer Student_Age_Type3 = 3;  //6 - 7 age
-    public static Integer Student_Age_Type4 = 4;  //7 - 11 age
-    public static Integer Student_Age_Type5 = 7;  //above 12 age Adult
+    public static Integer Student_Age_Type1 = 1;  //3 - 4 age
+    public static Integer Student_Age_Type2 = 2;  //4 - 5 age
+    public static Integer Student_Age_Type3 = 3;  //5 - 6 age
+    public static Integer Student_Age_Type4 = 4;  //6 - 7 age
+    public static Integer Student_Age_Type5 = 7;  //k - 12 age
+    public static Integer Student_Age_Type6 = 8;  //Adult
 
     /* ---------------------  Search Type ----------------------------------- */
     public static int SEARCH_TYPE_ALL = 1;

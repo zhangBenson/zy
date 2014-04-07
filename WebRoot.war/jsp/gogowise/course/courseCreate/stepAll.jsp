@@ -89,9 +89,14 @@
                     </li>
                     <li>
                         <span class="item"><s:property value="%{getText('course.info.of.student.type')}"/> </span>
-                        <s:textarea cssClass="long_text_area" id="step2_course_student_type" name="course.studentType"
-                                    type="text"/>
-                        <span class="course_student_type_input_msg tip_words"></span>
+                        <%--<s:textarea cssClass="long_text_area" id="step2_course_student_type" name="course.studentType"--%>
+                                    <%--type="text"/>--%>
+                        <s:select
+                                list="#{'1':getText('course.student.type.1'),'2':getText('course.student.type.2'),'3':getText('course.student.type.3'),
+                                '4':getText('course.student.type.4'),'5':getText('course.student.type.5'),'6':getText('course.student.type.6')}"
+                                headerKey="-1" headerValue="%{getText('course.student.default')}"
+                                cssClass="long_text_field" id="step2_studentAge_type" name="course.studentAgeType"/>
+                        <span class="course_student_type_input_msg tip_words">*</span>
                     </li>
                         <%--<li>
                             <span class="item"><s:property value="%{getText('course.info.of.teaching.book')}"/></span>

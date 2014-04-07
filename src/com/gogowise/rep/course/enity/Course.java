@@ -49,6 +49,8 @@ public class Course extends AbstractPersistence {
     private Integer courseType;
 
     private Boolean isDeleted = false;
+    private Integer studentAgeType = 0;
+    private Boolean isPublic = true;
 
 
     @OneToMany(mappedBy = "course")
@@ -572,5 +574,21 @@ public class Course extends AbstractPersistence {
 
     public void setIsDeleted(Boolean deleted) {
         isDeleted = deleted;
+    }
+
+    public Integer getStudentAgeType() {
+        return studentAgeType;
+    }
+
+    public void setStudentAgeType(Integer studentAgeType) {
+        this.studentAgeType = studentAgeType;
+    }
+
+    public Boolean getPublic() {
+        return isPublic;
+    }
+
+    public void setPublic(Boolean aPublic) {
+        isPublic = aPublic;
     }
 }
