@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <style type="text/css">
     #protocol {
         width: 700px;
@@ -64,9 +64,21 @@
         font-size: 12px;
         color: #999;
     }
-    #message{ font-family:"微软雅黑", "宋体"; font-size:14px; text-align: center;}
-    #message b{ color:#800040;}
-    #message a{ text-decoration: underline; color:#0000ff;}
+
+    #message {
+        font-family: "微软雅黑", "宋体";
+        font-size: 14px;
+        text-align: center;
+    }
+
+    #message b {
+        color: #800040;
+    }
+
+    #message a {
+        text-decoration: underline;
+        color: #0000ff;
+    }
 </style>
 <div>
     <div id="protocol">
@@ -169,21 +181,21 @@
 </div>
 <script type="text/javascript">
     var time = 10;
-    function descTime(){
-        time = time -1;
-        if(time < 0){
+    function descTime() {
+        time = time - 1;
+        if (time < 0) {
             time = 0;
         }
-       $("#time").text(time);
+        $("#time").text(time);
     }
 
-   function goUrl(){
-        window.location.href='index.html';
-   }
-    function disshow(){
+    function goUrl() {
+        window.location.href = 'index.html';
+    }
+    function disshow() {
         $("#protocol").css('display', 'none');
         $("#tizhuan").css('display', 'block');
-        setTimeout(goUrl,10000)//500是0.5秒 \
-        setInterval('descTime()',1000);
+        setTimeout(goUrl, 10000)//500是0.5秒 \
+        setInterval('descTime()', 1000);
     }
 </script>

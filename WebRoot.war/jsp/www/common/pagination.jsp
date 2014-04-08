@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
 
 <tiles:useAttribute name="pagination" classname="com.gogowise.rep.Pagination"/>
@@ -11,7 +11,8 @@
                 <s:url id="url_pre" action="%{pagination.actionName}">
                     <s:param name="pagination.pageNow" value="pagination.pageNow-1"></s:param>
                 </s:url>
-                <s:a href="%{url_pre}" cssClass="page_pre" title="%{getText('pagination.last.page')}"><s:property value="%{getText('pagination.last.page')}" /><s:property value="actionName"/></s:a>
+                <s:a href="%{url_pre}" cssClass="page_pre" title="%{getText('pagination.last.page')}"><s:property
+                        value="%{getText('pagination.last.page')}"/><s:property value="actionName"/></s:a>
             </s:if>
             <s:bean name="org.apache.struts2.util.Counter" id="counter">
                 <s:param name="first" value="1"/>
@@ -19,7 +20,7 @@
             </s:bean>
         </li>
 
-        <s:iterator value="counter"  status="status">
+        <s:iterator value="counter" status="status">
             <s:url id="getNextPage" action="%{pagination.actionName}">
                 <s:param name="pagination.pageNow"><s:property/></s:param>
             </s:url>
@@ -30,7 +31,7 @@
             </s:if>
             <s:else>
                 <li>
-                <s:a href="%{getNextPage}"><s:property/></s:a>
+                    <s:a href="%{getNextPage}"><s:property/></s:a>
                 </li>
             </s:else>
         </s:iterator>
@@ -39,7 +40,8 @@
                 <s:url id="url_next" action="%{pagination.actionName}">
                     <s:param name="pagination.pageNow" value="pagination.pageNow+1"></s:param>
                 </s:url>
-                <s:a href="%{url_next}" cssClass="page_next" title="%{getText('pagination.next.page')}"><s:property value="%{getText('pagination.next.page')}" /></s:a>
+                <s:a href="%{url_next}" cssClass="page_next" title="%{getText('pagination.next.page')}"><s:property
+                        value="%{getText('pagination.next.page')}"/></s:a>
             </s:if>
         </li>
     </ul>

@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
 <link href="css/log_reg.css" rel="stylesheet"/>
 
@@ -7,8 +7,8 @@
     <meta charset="UTF-8">
     <script src="js/jquery.validate.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
-            $("#btnclauses").click(function(){
+        $(document).ready(function () {
+            $("#btnclauses").click(function () {
                 $('#myModal').modal();
             });
         });
@@ -25,13 +25,15 @@
     <div class="row">
         <div class="col-sm-5">
             <div class="basePanelTextLeft">
-                <h1 class = "courseSubject"><s:property value="%{getText('button.log.in')}"/></h1>
-                <h1 class = "courseSynopsis"><s:property value="%{getText('label.log.in.info')}"/></h1>
+                <h1 class="courseSubject"><s:property value="%{getText('button.log.in')}"/></h1>
 
-                <s:form validate="true" theme="css_xhtml" cssClass="form-horizontal"  method="POST" action="logon">
+                <h1 class="courseSynopsis"><s:property value="%{getText('label.log.in.info')}"/></h1>
+
+                <s:form validate="true" theme="css_xhtml" cssClass="form-horizontal" method="POST" action="logon">
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label"> <s:property value="%{getText('email')}" /></label>
+                        <label class="col-sm-2 control-label"> <s:property value="%{getText('email')}"/></label>
+
                         <div class="col-sm-10">
                             <span class="errorinfo" id="yzemail"></span>
                             <s:textfield name="user.email" id="logonemail" cssClass="form-control" placeholder="Email"/>
@@ -50,14 +52,17 @@
                             <div class="checkbox">
                                 <label>
                                         <%-- <input type="checkbox"><s:property value="%{getText('label.log.in.remember.me.info')}"/></label> --%>
-                                    <a href="initRepassword.html" style="float: right;"><span><s:property value="%{getText('link.forget.pwd')}" />？</span></a>
+                                    <a href="initRepassword.html" style="float: right;"><span><s:property
+                                            value="%{getText('link.forget.pwd')}"/>？</span></a>
                             </div>
 
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <input class = "btn btn-success  btn-lg btn-block" type="submit" name="button" id="btn1" onclick="return checkForm();" value="<s:property value="%{getText('button.log.in')}" />"/>
+                            <input class="btn btn-success  btn-lg btn-block" type="submit" name="button" id="btn1"
+                                   onclick="return checkForm();"
+                                   value="<s:property value="%{getText('button.log.in')}" />"/>
                         </div>
                     </div>
                 </s:form>
@@ -65,8 +70,9 @@
         </div>
         <div class="col-sm-6">
             <div class="basePanelTextLeft">
-                <h1 class = "courseSubject"><s:property value="%{getText('user.info.identity.confirm.no.account')}"/></h1>
-                <h1 class = "courseSynopsis"><s:property value="%{getText('label.login.no.account.info')}"/></h1>
+                <h1 class="courseSubject"><s:property value="%{getText('user.info.identity.confirm.no.account')}"/></h1>
+
+                <h1 class="courseSynopsis"><s:property value="%{getText('label.login.no.account.info')}"/></h1>
                 <s:form validate="true" theme="css_xhtml" method="POST" action="reg">
                     <s:hidden name="reDirectUrl" id="reDirectUrl"/>
                     <s:hidden name="org.id"/>
@@ -74,27 +80,29 @@
                     <s:hidden name="confirmForOrg"/>
 
                     <div class="form-group">
-                        <label><s:property value="%{getText('email')}" /></label>
+                        <label><s:property value="%{getText('email')}"/></label>
                         <span id="log_email_tip" class="errorinfo">*</span>
 
-                        <s:textfield cssClass="form-control" name="user.email" id="registeremail" placeholder="Enter Email"/>
+                        <s:textfield cssClass="form-control" name="user.email" id="registeremail"
+                                     placeholder="Enter Email"/>
                     </div>
                     <div class="form-group">
-                        <label ><s:property value="%{getText('password')}"/></label>
+                        <label><s:property value="%{getText('password')}"/></label>
                         <span id="log_pwd_tip" class="errorinfo">*</span>
-                        <s:password cssClass="form-control" name="user.password" id="registerpwd" placeholder="Password"/>
+                        <s:password cssClass="form-control" name="user.password" id="registerpwd"
+                                    placeholder="Password"/>
                     </div>
                     <div class="form-group">
                         <label><s:property value="%{getText('psdagain')}"/></label>
                         <span id="log_repwd_tip" class="errorinfo">*</span>
 
-                        <s:password cssClass="form-control" name="duplicate"   placeholder="Password"/>
+                        <s:password cssClass="form-control" name="duplicate" placeholder="Password"/>
                     </div>
                     <div class="form-group">
-                        <label ><s:property value="%{getText('menber.reg.nickName')}"/></label>
+                        <label><s:property value="%{getText('menber.reg.nickName')}"/></label>
                         <span id="log_nickName_tip" class="errorinfo">*</span>
 
-                        <s:textfield cssClass="form-control" name="user.nickName"  placeholder="Nick Name"/>
+                        <s:textfield cssClass="form-control" name="user.nickName" placeholder="Nick Name"/>
                     </div>
                     <div class="form-group">
 
@@ -113,7 +121,9 @@
                                     <span id="yxcheckbox" class="tip_words"></span> <br/>
                                         <%--<input name="checkbox" type="checkbox" value="checked" id="checkbox"/>
                                         <a href="<%=request.getContextPath()%>/jsp/gogowise/Clause.htm" class="boxy" id="reg_clause"><s:property value="%{getText('read')}"/></a>--%>
-                                    <input name="checkbox" type="checkbox" value="checked" id="checkbox" ><a href="#" id="btnclauses"><s:property value="%{getText('read')}"/></a>
+                                    <input name="checkbox" type="checkbox" value="checked" id="checkbox"><a href="#"
+                                                                                                            id="btnclauses"><s:property
+                                        value="%{getText('read')}"/></a>
                                 </label>
                                     <%--<a href="#" id="btnclauses"><s:property value="%{getText('label.login.clause.msg')}"/></a> --%>
                             </div>
@@ -122,7 +132,9 @@
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                                 <%-- <button type="submit" class="btn btn-primary btn-lg btn-block">Sign me up!</button> --%>
-                            <input type="submit" class="btn btn-primary btn-lg btn-block" onclick="return checkRegForm();" value="<s:property value="%{getText('createButton')}"/>" />
+                            <input type="submit" class="btn btn-primary btn-lg btn-block"
+                                   onclick="return checkRegForm();"
+                                   value="<s:property value="%{getText('createButton')}"/>"/>
                         </div>
                     </div>
                 </s:form>
@@ -142,169 +154,168 @@
     var emailEmpty = "<s:text name='emailEmpty'/>";
     var emailFormatWrong = "<s:text name='emailerror'/>";
     var acceptClauseMsg = "<s:text name='message.accept.rule'/>";
-    function checkCheckBox(){
-        if($("#checkbox").is(":checked"))
+    function checkCheckBox() {
+        if ($("#checkbox").is(":checked"))
             return true;
-        else{
+        else {
             $("#yxcheckbox").html(acceptClauseMsg);
             return false;
         }
     }
 
-    $(function(){
-        $("#registeremail").blur(function(){
+    $(function () {
+        $("#registeremail").blur(function () {
             var email = $(this).val();
             //alert("email : " + email);
-            checkRegisterEmail(1,email,"log_email_tip");
+            checkRegisterEmail(1, email, "log_email_tip");
         });
-        $("#registerpwd").blur(function(){
+        $("#registerpwd").blur(function () {
             var pwd = $(this).val();
-            checkRegisterPwd(1,pwd,"log_pwd_tip");
+            checkRegisterPwd(1, pwd, "log_pwd_tip");
         });
-        $("input[name='duplicate']").blur(function(){
+        $("input[name='duplicate']").blur(function () {
             //var pwd = $("input[name='user.password']").val();
             var pwd = $("#registerpwd").val();
             var repwd = $(this).val();
-            checkRepwd(1,pwd,repwd,"log_pwd_tip","log_repwd_tip");
+            checkRepwd(1, pwd, repwd, "log_pwd_tip", "log_repwd_tip");
         });
         $("#reg_clause").fancybox();
     });
 
-    function checkRegisterEmail(type,email,tipId){
+    function checkRegisterEmail(type, email, tipId) {
         document.getElementById(tipId).innerHTML = "*";
         //alert("checkRigisterEmail : " + email);
-        if(email == ""){
-            if(type == 0){
+        if (email == "") {
+            if (type == 0) {
                 document.getElementById(tipId).innerHTML = emailEmpty;
                 return false;
-            }else{
+            } else {
                 return true;
             }
-        }else{
+        } else {
             var emailPattern = /^(?:[a-z\d]+[_\-\+\.]?)*[a-z\d]+@(?:([a-z\d]+\-?)*[a-z\d]+\.)+([a-z]{2,})+$/i;
-            if(emailPattern.test(email)){
+            if (emailPattern.test(email)) {
                 return true;
-            }else{
+            } else {
                 document.getElementById(tipId).innerHTML = emailFormatWrong;
                 return false;
             }
         }
     }
 
-    function checkRegisterPwd(type,pwd,tipId){ //0表示提交表单时候的验证
+    function checkRegisterPwd(type, pwd, tipId) { //0表示提交表单时候的验证
         document.getElementById(tipId).innerHTML = "*";
-        if(pwd == ""){
-            if(type == 0){
+        if (pwd == "") {
+            if (type == 0) {
                 document.getElementById(tipId).innerHTML = pwdEmpty;
                 return false;
-            }else{
+            } else {
                 return true;
             }
-        }else{
+        } else {
             var pwdPattern = /[\d|\w]{8,}/;
-            if(!pwdPattern.test(pwd)){
-                $("#"+tipId).text(pwdFormatWrong);
+            if (!pwdPattern.test(pwd)) {
+                $("#" + tipId).text(pwdFormatWrong);
 
                 document.getElementById(tipId).innerHTML = pwdFormatWrong;
                 return false;
-            }else{
+            } else {
                 return true;
             }
         }
     }
-    function checkRepwd(type,pwd,repwd,pwdTipId,repwdTipId){
+    function checkRepwd(type, pwd, repwd, pwdTipId, repwdTipId) {
         var repwdTipObj = document.getElementById(repwdTipId);
         repwdTipObj.innerHTML = "*";
-        if(type == 0){    //提交表单时
-            if(pwd == ""){
+        if (type == 0) {    //提交表单时
+            if (pwd == "") {
                 return false;
-            }else{
-                if(checkRegisterPwd(1,pwd,pwdTipId)){
-                    if(repwd == ""){
+            } else {
+                if (checkRegisterPwd(1, pwd, pwdTipId)) {
+                    if (repwd == "") {
                         repwdTipObj.innerHTML = repwdAgain;
                         return false;
-                    }else if(pwd != repwd){
+                    } else if (pwd != repwd) {
                         repwdTipObj.innerHTML = repwdNotEqual;
                         return false;
-                    }else{
+                    } else {
                         return true;
                     }
-                }else{
+                } else {
 
                     return false;
                 }
             }
-        }else{
-            if(pwd == ""){
+        } else {
+            if (pwd == "") {
                 return false;
-            }else{
-                if(checkRegisterPwd(1,pwd,pwdTipId)){
-                    if(repwd == ""){
+            } else {
+                if (checkRegisterPwd(1, pwd, pwdTipId)) {
+                    if (repwd == "") {
                         return true;
-                    }else if(pwd != repwd){
+                    } else if (pwd != repwd) {
                         //alert(pwd + " " + repwd);
                         repwdTipObj.innerHTML = repwdNotEqual;
                         return false;
-                    }else{
+                    } else {
                         return true;
                     }
-                }else{
+                } else {
                     return false;
                 }
             }
         }
     }
 
-    function checkRegForm(){
+    function checkRegForm() {
         var email = $("#registeremail").attr('value');
         var pwd = $("#registerpwd").attr('value');
         var repwd = $("input[name='duplicate']").val();
-        var b1 = checkRegisterEmail(0,email,"log_email_tip");
-        var b2 = checkRegisterPwd(0,pwd,"log_pwd_tip");
-        var b3 = checkRepwd(0,pwd,repwd,"log_pwd_tip","log_repwd_tip");
+        var b1 = checkRegisterEmail(0, email, "log_email_tip");
+        var b2 = checkRegisterPwd(0, pwd, "log_pwd_tip");
+        var b3 = checkRepwd(0, pwd, repwd, "log_pwd_tip", "log_repwd_tip");
         var b4 = checkCheckBox();
         //alert (b1 + "--" + b2 + "--" + b3 + "--" + b4);
-        return b1&&b2&&b3&&b4;
+        return b1 && b2 && b3 && b4;
     }
 
 
-
-    function goToReg(){
-        window.location.href = "initReg.html?user.email="+$("#logonemail").attr("value")+"&reDirectUrl="+encodeURIComponent($("#reDirectUrl").attr("value"));
+    function goToReg() {
+        window.location.href = "initReg.html?user.email=" + $("#logonemail").attr("value") + "&reDirectUrl=" + encodeURIComponent($("#reDirectUrl").attr("value"));
     }
 
-    $("#logonemail").blur(function(){
+    $("#logonemail").blur(function () {
         checkEmail();
     });
 
-    $("#logonemail").focus(function(){
+    $("#logonemail").focus(function () {
         $("#yzemail").text("*");
         $("#wwerr_email .errorMessage").html("");
     });
 
-    $("#pwd").focus(function(){
+    $("#pwd").focus(function () {
         $("#yzpwd").text("*");
         $("#wwerr_pwd .errorMessage").html("");
     });
 
-    $("#pwd").blur(function() {
+    $("#pwd").blur(function () {
         checkPwd();
     });
 
     function checkForm() {
-        return checkEmail()&&checkPwd();
+        return checkEmail() && checkPwd();
     }
 
-    function checkEmail(){
+    function checkEmail() {
         $("#yzemail").text("*");
-        if($("#logonemail").attr('value')!="" ){
+        if ($("#logonemail").attr('value') != "") {
             var pattern = /^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/;
             var email = $("#logonemail").val();
-            if(!pattern.test(email)){
+            if (!pattern.test(email)) {
                 $("#yzemail").text("<s:text name="emailerror"/>");
                 return false;
             }
-        }else{
+        } else {
             $("#yzemail").text("<s:text name="emailEmpty"/>");
             return false;
         }
@@ -312,7 +323,7 @@
         return true;
     }
 
-    function checkPwd(){
+    function checkPwd() {
         $("#yzpwd").text("*");
         var pwd = $("#pwd").attr('value');
         if (pwd == "") {
@@ -383,7 +394,6 @@
     --%>
 
 
-
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -393,6 +403,7 @@
             </div>
             <div class="modal-body">
                 <p>欢迎您注册成为知元网用户！</p>
+
                 <p>请仔细阅读下面的协议，只有接受协议才能继续进行注册。</p>
                 <ol>
                     <li>
@@ -402,19 +413,19 @@
                     <li>
                         <h4>知元网服务简介</h4>
                         知元网通过国际互联网为用户提供新闻及文章浏览、图片浏览、软件下载、网上留言和BBS论坛等服务。
-                        <br />
+                        <br/>
                         用户必须：
-                        <br />
+                        <br/>
                         （1）购置设备，包括个人电脑一台、调制解调器一个及配备上网装置。
-                        <br />
+                        <br/>
                         （2）个人上网和支付与此服务有关的电话费用、网络费用。
-                        <br />
+                        <br/>
                         用户同意：
-                        <br />
+                        <br/>
                         （1）提供及时、详尽及准确的个人资料。
-                        <br />
+                        <br/>
                         （2）不断更新注册资料，符合及时、详尽、准确的要求。所有原始键入的资料将引用为注册资料。
-                        <br />
+                        <br/>
                         （3）用户同意遵守《中华人民共和国保守国家秘密法》、《中华人民共和国计算机信息系统安全保护条例》、《计算机软件保护条例》等有关计算机及互联网规定的法律和法规、实施办法。在任何情况下，知元网合理地认为用户的行为可能违反上述法律、法规，知元网可以在任何时候，不经事先通知终止向该用户提供服务。用户应了解国际互联网的无国界性，应特别注意遵守当地所有有关的法律和法规。
                     </li>
                     <li>
@@ -428,13 +439,13 @@
                     <li>
                         <h4>用户隐私制度</h4>
                         尊重用户个人隐私是知元网的 基本政策。知元网不会公开、编辑或透露用户的注册信息，除非有法律许可要求，或知元网在诚信的基础上认为透露这些信息在以下三种情况是必要的：
-                        <br />
+                        <br/>
                         a、遵守有关法律规定，遵从合法服务程序。
-                        <br />
+                        <br/>
                         b、保持维护知元网的商标所有权。
-                        <br />
+                        <br/>
                         c、在紧急情况下竭力维护用户个人和社会大众的隐私安全。
-                        <br />
+                        <br/>
                         d、符合其他相关的要求。
                     </li>
                     <li>
@@ -444,7 +455,7 @@
                     <li>
                         <h4>免责条款</h4>
                         用户明确同意网站服务的使用由用户个人承担风险。
-                        <br />
+                        <br/>
                         知元网不作任何类型的担保，不担保服务一定能满足用户的要求，也不担保服务不会受中断，对服务的及时性，安全性，出错发生都不作担保。用户理解并接受：任何通过知元网服务取得的信息资料的可靠性取决于用户自己，用户自己承担所有风险和责任。
                     </li>
                     <li>
@@ -458,42 +469,43 @@
                     <li>
                         <h4>用户责任</h4>
                         用户单独承担传输内容的责任。用户必须遵循：
-                        <br />
+                        <br/>
                         （1）从中国境内向外传输技术性资料时必须符合中国有关法规。
-                        <br />
+                        <br/>
                         （2）使用网站服务不作非法用途。
-                        <br />
+                        <br/>
                         （3）不干扰或混乱网络服务。
-                        <br />
+                        <br/>
                         （4）不在论坛BBS或留言簿发表任何与政治相关的信息。
-                        <br />
+                        <br/>
                         （5）遵守所有使用网站服务的网络协议、规定、程序和惯例。
-                        <br />
+                        <br/>
                         （6）不得利用本站危害国家安全、泄露国家秘密，不得侵犯国家社会集体的和公民的合法权益。
-                        <br />
+                        <br/>
                         （7）不得利用本站制作、复制和传播下列信息：
-                        <br />
+                        <br/>
                         1、煽动抗拒、破坏宪法和法律、行政法规实施的；
-                        <br />
+                        <br/>
                         2、煽动颠覆国家政权，推翻社会主义制度的；
-                        <br />
+                        <br/>
                         3、煽动分裂国家、破坏国家统一的；
-                        <br />
+                        <br/>
                         4、煽动民族仇恨、民族歧视，破坏民族团结的；
-                        <br />
+                        <br/>
                         5、捏造或者歪曲事实，散布谣言，扰乱社会秩序的；
-                        <br />
+                        <br/>
                         6、宣扬封建迷信、淫秽、色情、赌博、暴力、凶杀、恐怖、教唆犯罪的；
-                        <br />
+                        <br/>
                         7、公然侮辱他人或者捏造事实诽谤他人的，或者进行其他恶意攻击的；
-                        <br />
+                        <br/>
                         8、损害国家机关信誉的；
-                        <br />
+                        <br/>
                         9、其他违反宪法和法律行政法规的；
                     </li>
                     <li>
                         <h4>进行商业广告的行为</h4>
-                        用户不能传输任何教唆他人构成犯罪行为的资料；不能传输长国内不利条件和涉及国家安全的资料；不能传输任何不符合当地法规、国家法律和国际法 律的资料。未经许可而非法进入其它电脑系统是禁止的。若用户的行为不符合以上的条款，知元网将取消用户服务帐号。
+                        用户不能传输任何教唆他人构成犯罪行为的资料；不能传输长国内不利条件和涉及国家安全的资料；不能传输任何不符合当地法规、国家法律和国际法
+                        律的资料。未经许可而非法进入其它电脑系统是禁止的。若用户的行为不符合以上的条款，知元网将取消用户服务帐号。
                     </li>
                     <li>
                         <h4>网站内容的所有权</h4>

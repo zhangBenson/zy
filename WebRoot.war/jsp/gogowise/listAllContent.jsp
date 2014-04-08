@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
 <%@ taglib prefix="sjr" uri="/struts-jquery-richtext-tags" %>
 
@@ -21,33 +21,35 @@
             <TD align="center">
                 <s:textfield name="searchValue"/> <br/>
                 <s:submit name="method" value="index" type="button">查找</s:submit>
-                <%-- MyBlog Page (进入我的博客页面) --%>
+                    <%-- MyBlog Page (进入我的博客页面) --%>
                 <s:a action="blog">blog url(我的博客)
                     <s:param name="singUpInfo.id" value="1"/>
                 </s:a> <br/>
-                <%-- signUp(报名页面） --%>
+                    <%-- signUp(报名页面） --%>
                 <s:a action="initSingUp"> signup url(报名页面)
                     <s:param name="competition.id" value="1"/>
                     <s:param name="type" value="1"/>
                     <s:param name="singUpInfo.id" value="1"/>
                 </s:a> <br/>
-                <%-- List All Competition Phases (列出所有的比赛场次) --%>
+                    <%-- List All Competition Phases (列出所有的比赛场次) --%>
                 <s:a action="listCompetitionPhase">list competiton(列出所有的比赛场次)</s:a> <br/>
-                <%-- Init Competitions information (初始化大赛信息) --%>
-                <s:a action="initCompetition">initCompetition.html(设置大赛信息) <s:param name="competition.id" value="1"/> </s:a> <br/>
-                <%-- Init Competition Phases (初始化比赛阶段) --%>
-                <s:a action="initCompetitionPhase">initCompetitionPhase.html(设置比赛阶段)<s:param name="competitionPhase.id" value="1"/>   </s:a> <br/>
+                    <%-- Init Competitions information (初始化大赛信息) --%>
+                <s:a action="initCompetition">initCompetition.html(设置大赛信息) <s:param name="competition.id" value="1"/>
+                </s:a> <br/>
+                    <%-- Init Competition Phases (初始化比赛阶段) --%>
+                <s:a action="initCompetitionPhase">initCompetitionPhase.html(设置比赛阶段)<s:param name="competitionPhase.id"
+                                                                                             value="1"/> </s:a> <br/>
 
-                <%-- Creat Competition Subject (创建大赛主题) --%>
+                    <%-- Creat Competition Subject (创建大赛主题) --%>
                 <s:a action="initSubject">initSubject.html(创建大赛主题)
                     <s:param name="subject.id" value="1"/></s:a> <br/>
 
-                <%-- Enter Vadio Page (进入视频界面) --%>
+                    <%-- Enter Vadio Page (进入视频界面) --%>
                 <s:a action="openSession"> openSession url(进入视频界面)
                     <s:param name="competitionSession.id" value="1"/>
                 </s:a> <br/>
 
-                <%-- Enter easyLogon Page(快速登录） --%>
+                    <%-- Enter easyLogon Page(快速登录） --%>
                 <s:a action="initlogon">initlogon.html(快速登录) </s:a> <br/>
 
                 <s:a action="deployBeta">deployBeta.html(部署) </s:a> <br/>
@@ -86,10 +88,11 @@
 
     <table>
         <tr>
-        <td>
-            <s:property value="logInfo" escape="false"/>
-        </td>
-    </tr></table>
+            <td>
+                <s:property value="logInfo" escape="false"/>
+            </td>
+        </tr>
+    </table>
     <%--<table width="100%">--%>
     <%--<tr style="background-color:#8fbc8f;font-weight:bold">--%>
     <%--<td width="25%">组名111111111111</td>--%>
