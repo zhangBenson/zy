@@ -502,9 +502,12 @@
         <put-attribute  name="contentRight" value="/jsp/gogowise/course/saveCourseError.jsp"/>
     </definition>
     <!-- modified course creation pages -->
+    <definition name=".createCourseInOneStep" template="/jsp/gogowise/course/courseCreate/stepAll.jsp">
+        <put-attribute name="courseInfo" value="/jsp/gogowise/course/courseCreate/courseInfo.jsp"/>
+    </definition>
     <definition name=".createCourseAllInOne" extends=".userCenter">
         <put-attribute name="title" value="title.course.creation"/>
-        <put-attribute name="contentRight" value="/jsp/gogowise/course/courseCreate/stepAll.jsp"/>
+        <put-attribute name="contentRight" value=".createCourseInOneStep"/>
     </definition>
     <definition name=".courseRepeat" extends=".userCenter">
         <put-attribute name="title" value="title.of.course.template"/>
