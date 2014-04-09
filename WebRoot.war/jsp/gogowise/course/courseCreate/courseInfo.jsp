@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<link href="css/course/stepAll.css" rel="stylesheet" type="text/css"/>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <div class="pic_2">
     <ul class="content_courseInfo fl">
@@ -26,7 +25,8 @@
         </li>
         <%--<li>
             <span class="item"><s:property value="%{getText('course.info.of.teaching.book')}"/></span>
-            <s:textfield cssClass="long_text_field" id="step2_course_teaching_book" name="course.courseTeachingBook" type="text" />
+            <s:textfield cssClass="long_text_field" id="step2_course_teaching_book"
+                         name="course.courseTeachingBook" type="text"/>
             <span class="course_teaching_book_input_msg tip_words"></span>
          </li>--%>
         <li>
@@ -54,7 +54,8 @@
         <li>
             <span class="item"><s:property value="%{getText('label.online.class.logo')}"/></span><span
                 class="tip_words" id="course_logo_input_msg">*</span><br/>
-            <img src="images/defaultImgs/course.gif" id="show_log_preview"/>
+            <img src="<s:property value="course.logoUrl"/>" id="show_log_preview"
+                 onerror="this.onerror=null;this.src='images/defaultImgs/course.gif'"/>
             <s:hidden id="course_logo" cssClass="long_text_field" name="course.logoUrl"/>
             <input type="button" class="submit_btn" id="change_portrait"
                    value="<s:property value="%{getText('onlive.message.update')}"/>"
@@ -81,9 +82,8 @@
     </ul>
     <div class="storeWrap">
         <input type="button" class="store_btn" id="step2_store"
-               value="<s:property value="%{getText('button.save')}"/>"/>
+               value="<s:property value="%{getText('term.info.save')}"/>"/>
         <span class="tip_words" id="step2_store_msg"></span>
     </div>
 </div>
-
 

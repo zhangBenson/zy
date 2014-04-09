@@ -77,7 +77,7 @@
         <div class="stepCont" style="display: block;">
             <div class="pic_1"></div>
 
-            <tiles
+
             <tiles:insertAttribute name="courseInfo"/>
 
 
