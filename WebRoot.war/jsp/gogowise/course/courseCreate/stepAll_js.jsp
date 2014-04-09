@@ -74,7 +74,7 @@
             var courseType = $("#step2_course_type").find("option:selected").text();
             var startDate = $("input[type='text'][name='course.startDate']").val();
             var charges = $("input[type='text'][name='course.charges']").val();
-            var teacherEmail =  $("[name='teacherIds']:checked").next().attr("tag");
+            var teacherEmail = $("[name='teacherIds']:checked").next().html();
             var emails = $("input[type='text'][name='emails']");
             var courseLogo = $("#show_log_preview").attr("src");
             var invitedEamils = "";

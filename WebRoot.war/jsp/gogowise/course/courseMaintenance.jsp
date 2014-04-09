@@ -71,44 +71,6 @@
             <tiles:insertAttribute name="courseInfo"/>
 
 
-            <div class="pic_2 after_store" id="step2_store_cont">
-                <ul>
-                    <li><s:property value="%{getText('course.info.courseName')}"/>：<span class="orange_words"
-                                                                                         id="store_name"><s:property
-                            value="course.name"/></span></li>
-                    <li><s:property value="%{getText('course.info.description')}"/>：<span class="orange_words"
-                                                                                          id="store_description"><s:property
-                            value="course.description"/></span></li>
-                    <li><s:property value="%{getText('course.info.of.student.type')}"/>：<span class="orange_words"
-                                                                                              id="store_studentType"><s:property
-                            value="course.studentType"/></span></li>
-                    <li><s:property value="%{getText('course.info.of.teaching.book')}"/>：<span class="orange_words"
-                                                                                               id="store_courseTeachingBook"><s:property
-                            value="course.courseTeachingBook"/></span></li>
-                    <li><s:property value="%{getText('course.info.of.course.type')}"/>：<span class="orange_words"
-                                                                                             id="store_courseType"><s:property
-                            value="course.courseType"/></span></li>
-                    <li><s:property value="%{getText('label.online.class.startdate')}"/>：<span class="orange_words"
-                                                                                               id="store_startDate"><s:date
-                            name="course.startDate" format="%{getText('dateformat')}"/></span></li>
-                    <li><s:property value="%{getText('label.online.class.tutor.price')}"/>：<span class="orange_words"
-                                                                                                 id="store_charges"><s:property
-                            value="course.charges"/>&nbsp;<s:property value="%{getText('label.zhibi.true')}"/></span>
-                    </li>
-                    <li><s:property value="%{getText('label.forcast.lecturer')}"/>：<span class="orange_words"
-                                                                                         id="store_teacherEmail"><s:property
-                            value="course.teacher.nickName"/></span></li>
-                    <li><s:property value="%{getText('course.student.appointed')}"/>：<span class="orange_words"
-                                                                                           id="store_emails"><s:property
-                            value="course.courseTeachingBook"/></span></li>
-                </ul>
-                <div class="obv_logo"><s:property value="%{getText('label.online.class.logo')}"/><br/><img
-                        id="obv_course_logo" src="<s:property value="course.logoUrl"/>"/></div>
-
-                <input type="button" class="store_btn" id="step2_modify"
-                       value="<s:property value="%{getText('onlive.message.update')}"/>"
-                       onclick="modifyStepMsg(this,2);"/>
-            </div>
             <div class="pic_3"></div>
         </div>
     </s:form>

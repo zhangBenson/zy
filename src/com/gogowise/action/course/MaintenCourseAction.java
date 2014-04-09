@@ -62,6 +62,8 @@ public class MaintenCourseAction extends BasicAction {
         Organization org = organizationDao.findByResId(this.getSessionUserId());
         teachers = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(), RoleType.ROLE_TYPE_TEACHER, null);
         students = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(), RoleType.ROLE_TYPE_STUDENT, null);
+        if (course == null) course = new Course();
+        course.setCharges(0D);
         return SUCCESS;
     }
 

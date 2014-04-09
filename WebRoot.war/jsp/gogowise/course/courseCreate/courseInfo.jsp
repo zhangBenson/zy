@@ -46,7 +46,7 @@
         <li class="long_select_li">
             <span class="item"><s:property value="%{getText('label.online.class.tutor.price')}"/></span>
             <s:hidden name="course.consumptionType" value="true"/>
-            <s:textfield cssClass="short_text_field" id="course_charges" name="course.charges" value="0"
+            <s:textfield cssClass="short_text_field" id="course_charges" name="course.charges"
                          type="text" readonly="false"/>&nbsp;<s:property
                 value="%{getText('label.zhibi.true')}"/>
             <span class="course_charges_msg tip_words">*</span>
@@ -64,7 +64,7 @@
         <s:if test="courseType == 1 || courseType == 2">
             <li>
                 <span class="item"><s:property value="%{getText('label.forcast.lecturer')}"/></span>
-                <s:checkboxlist list="teachers" listKey="id" listValue="email" name="teacherIds"/>
+                <s:radio list="teachers" listKey="id" listValue="nickName" name="teacherIds" value="course.teacher.id"/>
                 <span class="invite_teacher_input_msg tip_words">*</span>
             </li>
         </s:if>
@@ -91,32 +91,36 @@
 <div class="pic_2 after_store" id="step2_store_cont">
     <ul>
         <li><s:property value="%{getText('course.info.courseName')}"/>：<span class="orange_words"
-                                                                             id="store_name"></span></li>
+                                                                             id="store_name"><s:property
+                value="course.name"/></span></li>
         <li><s:property value="%{getText('course.info.description')}"/>：<span class="orange_words"
-                                                                              id="store_description"></span>
-        </li>
+                                                                              id="store_description"><s:property
+                value="course.description"/></span></li>
         <li><s:property value="%{getText('course.info.of.student.type')}"/>：<span class="orange_words"
-                                                                                  id="store_studentType"></span>
-        </li>
-        <%--<li><s:property value="%{getText('course.info.of.teaching.book')}"/>：<span class="orange_words" id="store_courseTeachingBook"></span></li>--%>
+                                                                                  id="store_studentType"><s:property
+                value="course.studentType"/></span></li>
+        <li><s:property value="%{getText('course.info.of.teaching.book')}"/>：<span class="orange_words"
+                                                                                   id="store_courseTeachingBook"><s:property
+                value="course.courseTeachingBook"/></span></li>
         <li><s:property value="%{getText('course.info.of.course.type')}"/>：<span class="orange_words"
-                                                                                 id="store_courseType"></span>
-        </li>
+                                                                                 id="store_courseType"><s:property
+                value="course.courseType"/></span></li>
         <li><s:property value="%{getText('label.online.class.startdate')}"/>：<span class="orange_words"
-                                                                                   id="store_startDate"></span>
-        </li>
+                                                                                   id="store_startDate"><s:date
+                name="course.startDate" format="%{getText('dateformat')}"/></span></li>
         <li><s:property value="%{getText('label.online.class.tutor.price')}"/>：<span class="orange_words"
-                                                                                     id="store_charges"></span>
+                                                                                     id="store_charges"><s:property
+                value="course.charges"/>&nbsp;<s:property value="%{getText('label.zhibi.true')}"/></span>
         </li>
         <li><s:property value="%{getText('label.forcast.lecturer')}"/>：<span class="orange_words"
-                                                                             id="store_teacherEmail"></span>
-        </li>
+                                                                             id="store_teacherEmail"><s:property
+                value="course.teacher.nickName"/></span></li>
         <li><s:property value="%{getText('course.student.appointed')}"/>：<span class="orange_words"
-                                                                               id="store_emails"></span>
-        </li>
+                                                                               id="store_emails"><s:property
+                value="course.courseTeachingBook"/></span></li>
     </ul>
     <div class="obv_logo"><s:property value="%{getText('label.online.class.logo')}"/><br/><img
-            id="obv_course_logo"/></div>
+            id="obv_course_logo" src="<s:property value="course.logoUrl"/>"/></div>
 
     <input type="button" class="store_btn" id="step2_modify"
            value="<s:property value="%{getText('onlive.message.update')}"/>"
