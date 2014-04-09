@@ -122,6 +122,9 @@ public class CourseAction extends BasicAction {
     private UserService userService;
 
     private List<CourseClass> classes = new ArrayList<>();
+
+    private String redirectURL;
+
 //    @Action(value = "search",
 //            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".listClass")}
 //    )
@@ -869,7 +872,10 @@ public class CourseAction extends BasicAction {
 
 
     @Action(value = "removeCourseConfirm",
-            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "courseAdminManage"}) })
+            results = {
+                    @Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "courseAdminManage"}),
+                    @Result(name = "redirect", type = "redirect", location = "${redirectURL}")
+            })
     public String removeCourseConfirm()
     {
         if (this.getCourse().getId() != null)
@@ -881,6 +887,11 @@ public class CourseAction extends BasicAction {
                 course.setIsDeleted(true);
                 courseDao.persistAbstract(course);
             }
+        }
+
+        if( StringUtils.isNotBlank(this.getRedirectURL()) )
+        {
+            return "redirect";
         }
 
         return SUCCESS;
@@ -1964,5 +1975,11 @@ public class CourseAction extends BasicAction {
         this.classes = classes;
     }
 
+    public String getRedirectURL() {
+        return redirectURL;
+    }
 
+    public void setRedirectURL(String redirectURL) {
+        this.redirectURL = redirectURL;
+    }
 }
