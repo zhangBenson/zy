@@ -504,6 +504,7 @@
     <!-- modified course creation pages -->
     <definition name=".createCourseInOneStep" template="/jsp/gogowise/course/courseCreate/stepAll.jsp">
         <put-attribute name="courseInfo" value="/jsp/gogowise/course/courseCreate/courseInfo.jsp"/>
+        <put-attribute name="classInfo" value="/jsp/gogowise/course/courseCreate/classInfo.jsp"/>
     </definition>
     <definition name=".createCourseAllInOne" extends=".userCenter">
         <put-attribute name="title" value="title.course.creation"/>
@@ -516,6 +517,7 @@
 
     <definition name=".maintenanceCourseOneStep" template="/jsp/gogowise/course/courseMaintenance.jsp">
         <put-attribute name="courseInfo" value="/jsp/gogowise/course/courseCreate/courseInfo.jsp"/>
+        <put-attribute name="classInfo" value="/jsp/gogowise/course/courseCreate/classInfo.jsp"/>
     </definition>
     <definition name=".maintenanceCourse" extends=".userCenter">
         <put-attribute name="title" value="title.course.maintenance1"/>
