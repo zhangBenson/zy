@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <link href="css/about/aboutMenu.css" rel="stylesheet" type="text/css"/>
 
 <div class="auleft">
@@ -21,7 +21,7 @@
 </div>
 
 <script type="text/javascript">
-    $(function(){
+    $(function () {
         $(".menu_base_about").addClass("menu_base_current");
     });
 </script>

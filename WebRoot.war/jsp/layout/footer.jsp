@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <link type="text/css" href="css/footer.css" rel="stylesheet"/>
 
 <div id="footer">
@@ -13,7 +13,7 @@
         <a href="aboutUs.html"><s:property value="%{getText('link.about.us')}"/></a> |
         <a href="aboutUs.html"><s:property value="%{getText('link.contact.us')}"/></a> |
         <a href="aboutUs.html"><s:property value="%{getText('link.legal.dept')}"/></a> |
-        <a href="courseSelection.html"><s:property value="%{getText('link.online.search')}"/></a>   <br/>
+        <a href="courseSelection.html"><s:property value="%{getText('link.online.search')}"/></a> <br/>
 
         <%--<s:property value="%{getText('text.rights.reserved')}"/> |--%>
         <s:property value="%{getText('text.service.email')}"/>&nbsp;&nbsp;&nbsp;

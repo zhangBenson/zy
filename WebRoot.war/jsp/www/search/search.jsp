@@ -1,7 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
-
 
 
 <div class="container">
@@ -32,13 +31,13 @@
                 </a>
 
                 <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>">
-                    <h1 class = "searchCourseName"><s:property value="name"/></h1>
+                    <h1 class="searchCourseName"><s:property value="name"/></h1>
                 </a>
 
                 <h4 class="searchCourseBody">
                     <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>">
                         <s:if test="description.length() > 200">
-                            <s:property value="description.substring(0,200)+'...'" />
+                            <s:property value="description.substring(0,200)+'...'"/>
                         </s:if>
                         <s:else>
                             <s:property value="description"/>
@@ -48,10 +47,17 @@
                 </h4>
                 <div class="text-right">
                     <ul class="list-inline">
-                      <li class="searchItemState"><s:property value="%{getText('course.school')}"/>:<a href="orgBlog.html?org.id=<s:property value="organization.id"/>" title="<s:property value="organization.nickName"/>"><s:property value="organization.schoolName"/></a></li>
-                      <li class="searchItemState"><s:property value="%{getText('courses.info.lecturer')}"/>:<a href="userBlog.html?user.id=<s:property value="teacher.id"/>" title="<s:property value="teacher.nickName"/>"><s:property value="teacher.nickName"/></a></li>
-                      <li class="searchItemState"><s:property value="%{getText('label.student')}"/>:<s:property value="studentNum"/></li>
-                      <li class="searchItemStateBlue"><s:property value="%{getText('usermenu.item.mooc')}"/></li>
+                        <li class="searchItemState"><s:property value="%{getText('course.school')}"/>:<a
+                                href="orgBlog.html?org.id=<s:property value="organization.id"/>"
+                                title="<s:property value="organization.nickName"/>"><s:property
+                                value="organization.schoolName"/></a></li>
+                        <li class="searchItemState"><s:property value="%{getText('courses.info.lecturer')}"/>:<a
+                                href="userBlog.html?user.id=<s:property value="teacher.id"/>"
+                                title="<s:property value="teacher.nickName"/>"><s:property
+                                value="teacher.nickName"/></a></li>
+                        <li class="searchItemState"><s:property value="%{getText('label.student')}"/>:<s:property
+                                value="studentNum"/></li>
+                        <li class="searchItemStateBlue"><s:property value="%{getText('usermenu.item.mooc')}"/></li>
                     </ul>
                 </div>
                 <div class="clearfix"></div>
@@ -63,7 +69,7 @@
     </s:if>
     <s:else>
         <div class="searchCourseItem" style="text-align: center;">
-            <strong><s:property value = "%{getText('search.course.no.result.message')}"/></strong>
+            <strong><s:property value="%{getText('search.course.no.result.message')}"/></strong>
         </div>
     </s:else>
 </div>

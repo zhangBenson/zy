@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
 
 
@@ -16,7 +16,8 @@
                 </li>
                 <li>
                     <%--<a href="#" class="navlink"><s:property value="%{getText('frame.course.center')}"/></a>--%>
-                    <s:a action="courseSquare" cssClass="navlink"><s:property value="%{getText('frame.course.center')}"/></s:a>
+                    <s:a action="courseSquare" cssClass="navlink"><s:property
+                            value="%{getText('frame.course.center')}"/></s:a>
                 </li>
                 <li>
                     <a href="#" class="navlink">SCHOOLS</a>

@@ -1,5 +1,5 @@
 <%--<link href="css/orgLeague/orgLeague.css" rel="stylesheet" type="text/css"/>--%>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <link href="css/orgLeague/<s:text name='orgleague.css.filename'/>" rel="stylesheet" type="text/css"/>
 <style type="text/css">
 
@@ -36,10 +36,11 @@
 </style>
 
 <script type="text/javascript">
-    //    var rule = "<s:text name='rule'/>";
+    //    var rule = "
+    <s:text name='rule'/>";
     var rule = "<s:text name='orgleague.info.clause'/>";
     $(function () {
-        $(".boxy").boxy({title:rule, closeable:true, modal:true});
+        $(".boxy").boxy({title: rule, closeable: true, modal: true});
     });
 
     $(document).ready(function () {
@@ -70,9 +71,11 @@
 
             <div class="fourthLeft">
                 <ul>
-                    <li class="leftAndRightHead headTittle"><s:property value="%{getText('orgleague.info.orgInfo')}"/></li>
+                    <li class="leftAndRightHead headTittle"><s:property
+                            value="%{getText('orgleague.info.orgInfo')}"/></li>
                     <li class="leftAndRightHead">
-                        <s:property value="%{getText('orgleague.info.orgName')}"/>：<br/><s:property value="org.schoolName"/></li>
+                        <s:property value="%{getText('orgleague.info.orgName')}"/>：<br/><s:property
+                            value="org.schoolName"/></li>
                     <li class="leftAndRightHead"><s:property
                             value="%{getText('orgleague.info.orgIntro')}"/>：<br/><s:property value="org.description"/>
                     </li>
@@ -158,8 +161,8 @@
                             <font color="red"><s:property
                                     value="%{getText('lable.yesno.'+org.confirmed)}"/></font>
                             <s:if test="#session.HIG_SEC_USER_EMAIL != null">
-                            <s:hidden name="confirmCode"/>
-                            <s:submit action="higSecConfirmOrg" key="orgleague.info.confirm" ></s:submit>
+                                <s:hidden name="confirmCode"/>
+                                <s:submit action="higSecConfirmOrg" key="orgleague.info.confirm"></s:submit>
                             </s:if>
                         </div>
                     </s:if>

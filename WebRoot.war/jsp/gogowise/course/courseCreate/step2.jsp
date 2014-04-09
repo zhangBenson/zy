@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ include file="/js/course/courseCreation_js.jsp" %>
 
 <link rel="stylesheet" href="js/wokaobox/wokaobox.css" type="text/css"/>

@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ include file="/js/org/orgInfoUpdate_js.jsp" %>
 
 <script src="js/jqueryTabs.js" type="text/javascript"></script>

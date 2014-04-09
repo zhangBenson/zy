@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
 <script type="text/javascript" src="js/jquery.rate.js"></script>
 
@@ -113,6 +113,7 @@
     display: inline;
     float: left;
 }
+
 .courseinfo p {
     margin: 0;
     line-height: 24px;
@@ -212,7 +213,7 @@ img.frame1bottom {
 .ps40 {
     top: 85px;
     height: 25px;
-    right:10px;
+    right: 10px;
 }
 
 .ps65 {
@@ -233,7 +234,7 @@ img.frame1bottom {
     width: 140px;
     font-size: 12px;
     color: #666;
-    right:0px;
+    right: 0px;
 }
 
 .classintro {
@@ -304,29 +305,29 @@ h6 .seeallclass {
         if (type == 3) {
             window.location.href = "one2threeSession.html?courseClass.id=" + cid;
         }
-        if(type == 4){
-           window.location.href = "one2manySession.html?courseClass.id="+cid;
+        if (type == 4) {
+            window.location.href = "one2manySession.html?courseClass.id=" + cid;
         }
     }
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         <s:iterator value="courses" status="idx">
-            var str = $("#descriptionMsg<s:property value="#idx.index"/>").text();
-            $("#descriptionMsg<s:property value="#idx.index"/>").text(getSpecialSubString(str,200));
+        var str = $("#descriptionMsg<s:property value="#idx.index"/>").text();
+        $("#descriptionMsg<s:property value="#idx.index"/>").text(getSpecialSubString(str, 200));
         </s:iterator>
     });
 
-    function getSpecialSubString(str,sLength){
+    function getSpecialSubString(str, sLength) {
         var len = 0;
         for (var i = 0; i < str.length; i++) {
             var c = str.charCodeAt(i);
             if ((c >= 0x0001 && c <= 0x007e) || (0xff60 <= c && c <= 0xff9f)) {
                 len++;
-            }else {
+            } else {
                 len += 2;
             }
-            if(len >= sLength){
-                return str.substring(0,i)+" ...";
+            if (len >= sLength) {
+                return str.substring(0, i) + " ...";
             }
         }
         return str;
@@ -342,8 +343,9 @@ h6 .seeallclass {
             <div class="blogframe">
                 <img src="images/blogindex/courseframetop.gif"/>
 
-                <div class="video" > <s:a action="voaCourseBlog"><s:param name="course.id" value="id"/><img src="<s:property value="logoUrl"/>"
-                                                    border="0"/></s:a></div>
+                <div class="video"><s:a action="voaCourseBlog"><s:param name="course.id" value="id"/><img
+                        src="<s:property value="logoUrl"/>"
+                        border="0"/></s:a></div>
                 <h6><s:property value="name"/>
                     <s:if test="personalTeacher!=null">
                         <s:if test="teachingNum==1"><b
@@ -377,9 +379,13 @@ h6 .seeallclass {
 
                     <span id="rate_t_<s:property value="#idx.index"/>" class="type2"></span>
                     <span class="seeall ps80">
-                        <input name="" type="button" onclick="startClass(<s:property value="classOnTheCorner.id"/>,<s:property value="teachingNum"/>);" class="btn1 classbegin"/>
+                        <input name="" type="button"
+                               onclick="startClass(<s:property value="classOnTheCorner.id"/>,<s:property
+                                       value="teachingNum"/>);" class="btn1 classbegin"/>
                     </span>
-                    <span class="seeall ps65"><s:property value="%{getText('label.course.currentcourse')}"/>：<b><s:property value="classOnTheCorner.name"/></b></span>
+                    <span class="seeall ps65"><s:property
+                            value="%{getText('label.course.currentcourse')}"/>：<b><s:property
+                            value="classOnTheCorner.name"/></b></span>
                     <span class="seeall ps40">[<s:property value="%{getText('span.ready.course')}"/>]</span>
 
                 </h6>
@@ -418,8 +424,13 @@ h6 .seeallclass {
                             <tr>
                                 <td class="td1"><s:property value="name"/></td>
                                 <td><b><s:property value="nickName"/></b></td>
-                                <td><s:property value="%{getText('lable.course.starttime')}"/>：<b><s:date name="date" format="%{getText('dateformat.forclass')}"/></b></td>
-                                <td><s:property value="%{getText('lable.course.endtime')}"/>：<b><s:date name="finishDate" format="%{getText('dateformat.forclass')}"/></b></td></tr></s:iterator>
+                                <td><s:property value="%{getText('lable.course.starttime')}"/>：<b><s:date name="date"
+                                                                                                          format="%{getText('dateformat.forclass')}"/></b>
+                                </td>
+                                <td><s:property value="%{getText('lable.course.endtime')}"/>：<b><s:date
+                                        name="finishDate" format="%{getText('dateformat.forclass')}"/></b></td>
+                            </tr>
+                        </s:iterator>
                     </table>
                 </div>
                 <img src="images/blogindex/courseframebottom.gif" class="frame1bottom"/>
@@ -435,14 +446,14 @@ h6 .seeallclass {
     <s:iterator value="courses" status="idx">
     $("#rate_t_<s:property value="#idx.index"/>").rate({
         selected:<s:property value="synthetical"/>,
-        selectable:false,
-        decimal:true,
-        revert:true,
-        fullStar:false
+        selectable: false,
+        decimal: true,
+        revert: true,
+        fullStar: false
     });
     </s:iterator>
 
-    $("span.ps40").click(function() {
+    $("span.ps40").click(function () {
         $(".classintro").not($(this).parents("div.blogframe").children()).hide();
         $(this).parents("div.blogframe").children("div.classintro").slideToggle(500);
     });

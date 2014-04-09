@@ -1,5 +1,5 @@
 <%--<link href="css/orgLeague/orgLeague.css" rel="stylesheet" type="text/css"/>--%>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <link href="css/orgLeague/<s:text name='orgleague.css.filename'/>" rel="stylesheet" type="text/css"/>
 <link href="js/uploadify/uploadify.css" type="text/css" rel="stylesheet"/>
 <%--<script type="text/javascript" src="js/uploadify/jquery.uploadify.v2.1.4.js"></script>--%>
@@ -13,6 +13,7 @@
         padding-right: 95px;
         padding-left: 70px;
     }
+
     .nameBF {
         float: left;
     }
@@ -22,7 +23,8 @@
         method="post">
     <s:hidden name="org.id"/>
     <div id="orgLeagueDiv">
-        <div id="orgCenterDiv" style="background-image: url(images/orgLeague/contentbg2.gif);background-repeat: no-repeat; height: 525px;">
+        <div id="orgCenterDiv"
+             style="background-image: url(images/orgLeague/contentbg2.gif);background-repeat: no-repeat; height: 525px;">
 
             <p class="thirdHead"><s:property value="%{getText('orgleague.info.provide')}"/></p>
 
@@ -31,55 +33,60 @@
                     <li class="headTittle"><s:property value="%{getText('orgleague.info.orgInfo')}"/></li>
                     <li>
                         <div class="nameBF">
-                        <div class="option_tittle"><s:property value="%{getText('orgleague.info.orgName')}"/> </div>
-                        <p id="orgNameWarn" style="color: red; display: inline;"></p></div>
+                            <div class="option_tittle"><s:property value="%{getText('orgleague.info.orgName')}"/></div>
+                            <p id="orgNameWarn" style="color: red; display: inline;"></p></div>
                         <s:textfield id="thirdStepName" name="org.schoolName" cssClass="orgName"/>
                     </li>
-                    <li class="orgShuoming"><div class="nameBF">
-                        <div class="option_tittle"><s:property value="%{getText('orgleague.info.orgIntro')}"/></div>
-                        <p id="orgShuomingWarn" style="color: red; display: inline;"></p></div>
+                    <li class="orgShuoming">
+                        <div class="nameBF">
+                            <div class="option_tittle"><s:property value="%{getText('orgleague.info.orgIntro')}"/></div>
+                            <p id="orgShuomingWarn" style="color: red; display: inline;"></p></div>
                         <s:textarea id="thirdStepOrgShuoming" name="org.description" cssClass="descArea"/>
                     </li>
                     <li>
                         <div class="nameBF">
-                            <div class="option_tittle"><s:property value="%{getText('orgleague.info.accountName')}"/></div>
+                            <div class="option_tittle"><s:property
+                                    value="%{getText('orgleague.info.accountName')}"/></div>
                             <p id="accountNameWarn" style="color: red; display: inline;"></p></div>
                         <s:textfield id="thirdStepAccount" name="org.depositName" cssClass="inputField"/>
                     </li>
                     <li>
                         <div class="nameBF">
-                            <div class="option_tittle"><s:property value="%{getText('orgleague.info.accountNo')}"/></div>
+                            <div class="option_tittle"><s:property
+                                    value="%{getText('orgleague.info.accountNo')}"/></div>
                             <p id="accountNoWarn" style="color: red; display: inline;"></p></div>
                         <s:textfield id="thirdStepAccountNo" cssClass="inputField" name="org.depositBankAccount"/>
                     </li>
                     <li class="orgScale">
                         <div class="nameBF">
                             <div class="option_tittle"><s:property value="%{getText('orgleague.info.orgSize')}"/></div>
-                        <div style="width: 290px"><s:radio name="org.memberSize"
-                                 list="#{0:getText('orgleague.info.size1'),1:getText('orgleague.info.size2'),2:getText('orgleague.info.size3'),3:getText('orgleague.info.size4'),4:getText('orgleague.info.size5'),5:getText('orgleague.info.size6')}"/></div>
+                            <div style="width: 290px"><s:radio name="org.memberSize"
+                                                               list="#{0:getText('orgleague.info.size1'),1:getText('orgleague.info.size2'),2:getText('orgleague.info.size3'),3:getText('orgleague.info.size4'),4:getText('orgleague.info.size5'),5:getText('orgleague.info.size6')}"/></div>
                     </li>
                     <li>
                         <div class="nameBF">
                             <div class="option_tittle"><s:property value="%{getText('orgleague.info.chain')}"/></div>
-                        <s:radio name="org.multipleOrg" list="#{true:getText('lable.yesno.true'),false:getText('lable.yesno.false')}"/>
+                                <s:radio name="org.multipleOrg"
+                                         list="#{true:getText('lable.yesno.true'),false:getText('lable.yesno.false')}"/>
                     </li>
                     <li class="fileUploadDiv">
                         <div class="photoTitle">
                             <div class="option_tittle"><s:property value="%{getText('orgleague.info.orgLogo')}"/></div>
-                            <%--<s:file name="upload"/>--%>
-                        <div class="file_upload"><s:file name="fileupload" id="fileupload1"/></div>
-                        <div class="file_upload_msg1 input_msg"></div>
-                        <s:hidden name="hidFile1" id="hidFile1"/>
-                        <div id="fileQueue"></div>
+                                <%--<s:file name="upload"/>--%>
+                            <div class="file_upload"><s:file name="fileupload" id="fileupload1"/></div>
+                            <div class="file_upload_msg1 input_msg"></div>
+                                <s:hidden name="hidFile1" id="hidFile1"/>
+                            <div id="fileQueue"></div>
                     </li>
-                    <li  class="fileUploadDiv">
+                    <li class="fileUploadDiv">
                         <div class="photoTitle">
-                            <div class="option_tittle"><s:property value="%{getText('orgleague.info.cetification')}"/></div>
-                            <%--<s:file name="upload1"/>--%>
-                         <div class="file_upload"><s:file name="fileupload2" id="fileupload2"/></div>
-                         <div class="file_upload_msg2 input_msg"></div>
-                        <s:hidden name="hidFile2" id="hidFile2"/>
-                        <div id="fileQueue"></div>
+                            <div class="option_tittle"><s:property
+                                    value="%{getText('orgleague.info.cetification')}"/></div>
+                                <%--<s:file name="upload1"/>--%>
+                            <div class="file_upload"><s:file name="fileupload2" id="fileupload2"/></div>
+                            <div class="file_upload_msg2 input_msg"></div>
+                                <s:hidden name="hidFile2" id="hidFile2"/>
+                            <div id="fileQueue"></div>
                     </li>
                 </ul>
             </div>
@@ -88,9 +95,11 @@
                     <li class="headTittle"><s:property value="%{getText('orgleague.info.contactMethod')}"/></li>
                     <li>
                         <div class="nameBF">
-                            <div class="option_tittle"><s:property value="%{getText('orgleague.info.officerName')}"/></div>
+                            <div class="option_tittle"><s:property
+                                    value="%{getText('orgleague.info.officerName')}"/></div>
                             <p id="thirdStepOfficerNameWarn" style="color: red;display:inline;"></p></div>
-                        <s:textfield id="thirdStepOfficerName" name="org.contactName" cssClass="contactName thirdRightInput"/>
+                        <s:textfield id="thirdStepOfficerName" name="org.contactName"
+                                     cssClass="contactName thirdRightInput"/>
                     </li>
                     <li>
                         <div class="nameBF">
@@ -106,15 +115,15 @@
                     </li>
                     <li>
                         <div class="nameBF">
-                                <div class="option_tittle"><s:property value="%{getText('orgleague.info.address')}"/></div>
-                                <p id="thirdStepAddressWarn" style="color: red;display:inline;"></p></div>
+                            <div class="option_tittle"><s:property value="%{getText('orgleague.info.address')}"/></div>
+                            <p id="thirdStepAddressWarn" style="color: red;display:inline;"></p></div>
                         <s:textfield id="thirdStepAddress" name="org.businessAddress" cssClass="thirdRightInput"/>
                     </li>
                     <li>
                         <div class="nameBF">
                             <div class="option_tittle"><s:property value="%{getText('orgleague.info.postCode')}"/></div>
                             <p id="thirdStepPostCodeWarn" style="color: red;display:inline;"></p></div>
-                        <s:textfield id="thirdStepPostCode" name="org.zipCode" cssClass="thirdRightInput" />
+                        <s:textfield id="thirdStepPostCode" name="org.zipCode" cssClass="thirdRightInput"/>
                     </li>
                     <li></li>
                     <li></li>
@@ -130,10 +139,10 @@
                 </a>
             </div>
             <ul class="orgStep" style="top:510px;">
-                 <li><s:property value="%{getText('org.warmtip')}"/></li>
-             <li><s:property value="%{getText('orgleague.identity.confirm')}"/></li>
-             <li  class="third"><s:property value="%{getText('orgleague.info.fill')}"/></li>
-            <li><s:property value="%{getText('orgleague.info.submit')}"/></li>
+                <li><s:property value="%{getText('org.warmtip')}"/></li>
+                <li><s:property value="%{getText('orgleague.identity.confirm')}"/></li>
+                <li class="third"><s:property value="%{getText('orgleague.info.fill')}"/></li>
+                <li><s:property value="%{getText('orgleague.info.submit')}"/></li>
             </ul>
         </div>
     </div>

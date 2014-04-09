@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
 
 
@@ -116,16 +116,16 @@
                                     </td>
                                     <td>
                                         <table style="border-color: Green">
-                                            <%--<tr>--%>
+                                                <%--<tr>--%>
                                                 <%--<td>--%>
-                                                    <%--评委1：<br/>--%>
-                                                    <%--<s:property value="judgeAllocation1.singUpInfo.user.email"/> <br/>--%>
-                                                    <%--<input id="Button2" type="button" value="发送确认信"/><br/>--%>
-                                                    <%--评委2： <br/>--%>
-                                                    <%--<s:property value="judgeAllocation2.singUpInfo.user.email"/> <br/>--%>
-                                                    <%--<input id="Button2" type="button" value="发送确认信"/>--%>
+                                                <%--评委1：<br/>--%>
+                                                <%--<s:property value="judgeAllocation1.singUpInfo.user.email"/> <br/>--%>
+                                                <%--<input id="Button2" type="button" value="发送确认信"/><br/>--%>
+                                                <%--评委2： <br/>--%>
+                                                <%--<s:property value="judgeAllocation2.singUpInfo.user.email"/> <br/>--%>
+                                                <%--<input id="Button2" type="button" value="发送确认信"/>--%>
                                                 <%--</td>--%>
-                                            <%--</tr>--%>
+                                                <%--</tr>--%>
 
                                             <s:iterator value="judgeAllocations" id="ja" var="sa">
                                                 <tr>
