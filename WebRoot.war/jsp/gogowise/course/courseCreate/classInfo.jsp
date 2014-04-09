@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<div class="pic_2">
+<div class="pic_2 after_store_class">
     <div class="content_inner fl">
         <ul class="system_ul_list">
             <li id="self_click_li" class="stand_out"><s:property
@@ -23,7 +23,27 @@
                     <th class="htitle">&nbsp;</th>
                 </tr>
                 <tbody class="list_tbody" id="list_tbody">
-
+                <s:iterator value="course.classes" status="idx">
+                    <tr id="classes<s:property value="id"/>">
+                        <td id="course_name<s:property value="id"/>"><s:property value="#idx.index+1"/></td>
+                        <td id="course_nickName<s:property value="id"/>" class="course_nickName_text">
+                            <s:property value="nickName"/></td>
+                        <td id="course_date<s:property value="id"/>"><s:date name="date"
+                                                                             format="%{getText('global.display.hour.minute')}"/></td>
+                        <td id="course_duration<s:property value="id"/>"><s:property value="duration"/></td>
+                        <td>
+                            <a class="class_btn edit_class_btn" id="course_edit<s:property value="id"/>"
+                               onclick="editSpecifiedClass(<s:property value="id"/>);"><s:property
+                                    value="%{getText('course.class.edit')}"/></a>
+                        </td>
+                        <td>
+                            <a class="class_btn"
+                               onclick="deleteAddedClass('classes<s:property value="id"/>',<s:property
+                                       value="id"/>);"><s:property
+                                    value="%{getText('course.class.delete')}"/></a>
+                        </td>
+                    </tr>
+                </s:iterator>
                 </tbody>
             </table>
         </div>
@@ -48,8 +68,8 @@
                     </li>
                     <li class="short_li">
                         <span class="item"><s:property value="%{getText('label.lastingtime')}"/></span>
-                        <select name="durations" class="long_select">
-                            <option value=60 selected="selected">60<s:property
+                        <select name="durations" class="long_select" id="class_durations_input">
+                        <option value=60 selected="selected">60<s:property
                                     value="%{getText('label.minute')}"/></option>
                             <option value=55>55<s:property
                                     value="%{getText('label.minute')}"/></option>
@@ -89,8 +109,8 @@
                             </tr>
                             <tr class="urFirst">
                                 <td class="time_td"><s:textfield name="startTimes"
-                                                                 onblur="checkTimeError(this);"
-                                                                 id="class_nick_input2" value="" readonly="true"
+                                                                 onblur="checkTimeError(this);" value=""
+                                                                 readonly="true"
                                                                  cssClass="WTime short_text_field"/></td>
                                 <td><select name="durations" class="long_select">
                                     <option value=60 selected="selected">60<s:property
