@@ -3,7 +3,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
 <div class="container" text-align="center">
-    <table style="width: 95%; height: 136;" >
+    <table style="width: 98%; height: 136;" >
         <tr >
             <td colspan="100">
             </td>
@@ -14,7 +14,7 @@
             <th width="120" scope="col">Lecturer</th>
             <th width="120" scope="col">Lecturer's Email</th>
             <th width="120" scope="col">Organization</th>
-            <th width="101" scope="col">Introduction</th>
+            <th width="120" scope="col">Introduction</th>
 
             <th width="80" scope="col">Edit|Delete</th>
         </tr>
@@ -27,13 +27,13 @@
                 <td><s:property value="teacher.nickName" /> </td>
                 <td><s:property value="teacher.email" /> </td>
                 <td><s:property value="organization.schoolName" /> </td>
-                <td>
+                <td style="height: 72px">
                 <s:if test="description.length() < 80"><s:property value="description"/></s:if>
                 <s:else><s:property value="description.substring(0,80)+'...'" /></s:else>
                 </td>
 
                 <td>
-                    <a href="javascript:;" style="cursor: hand;text-align: center" onclick="confirmRemoveCourse('<s:property value="id"/>', '<s:property value="name" />')"> Delete</a>
+                    <a href="javascript:;" style="cursor: hand;padding-left: 20px;" onclick="confirmRemoveCourse('<s:property value="id"/>', '<s:property value="name" />')"> Delete</a>
                 </td>
             </tr>
 
