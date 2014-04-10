@@ -110,11 +110,13 @@
                             <input type="button" class="submit_btn" id="change_portrait" value="<s:property value="%{getText('onlive.message.update')}"/>" href="courseLogoProcess.html"/>
                         </li>
                         <s:if test="courseType == 1 || courseType == 2">
-                           <li>
+                            <%--
+                           <li style="display: none">
                             <span class="item"><s:property value="%{getText('label.forcast.lecturer')}"/></span>
                                <s:checkboxlist list="teachers" listKey="id" listValue="email" name="teacherIds"/>
                             <span class="invite_teacher_input_msg tip_words">*</span>
                            </li>
+                           --%>
                         </s:if>
                         <li>
                             <s:property value="%{getText('course.student.appointed')}"/>
