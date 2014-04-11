@@ -1,5 +1,5 @@
 ﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
 <link rel="stylesheet" href="htm/Demo/FirstPage_Formal/gogowisestyle/css/bootstrap.min.css">
 <link rel="stylesheet" href="htm/Demo/FirstPage_Formal/gogowisestyle/css/gogowise.css">
@@ -725,7 +725,124 @@ function ShowMessage(name, imgpath, content, bit) {
 </script>
 
 <style type="text/css" media="all">
-    .userId { display: none; } .fileid { display: none; } .videolink { display: none; } .question { display: none; } .pageNum { display: none; } .fileDirectory { display: none; } .category { display: none; } .questionid { display: none; } #stundioWrapper { position: relative; left: 0; width: 100%; overflow: auto; z-index: 0; } #stundioWrapper ul { list-style: none; padding: 0; margin: 0; width: 100%; } #chatWrapper { position: relative; left: 0; width: 100%; overflow: auto; } #chatWrapper ul { list-style: none; padding: 0; margin: 0; width: 100%; } #currentfile img { width: 46px; height: 46px; } #studionList { list-style-type: none; margin: 0; padding: 0; width: 385px; } #studionList li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 88px; height: 90px; text-align: center; background-color: transparent; border-width: 0px; } .fileList { list-style-type: none; margin: 0; padding: 0; width: 550px; } .fileList li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 105px; text-align: center; background-color: transparent; border-width: 0px; } .listanswer { list-style-type: none; margin: 0; padding: 0; width: 550px; margin-top: 5px; } .listanswer li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 95px; text-align: center; background-color: transparent; border-width: 0px; }
+    .userId {
+        display: none;
+    }
+
+    .fileid {
+        display: none;
+    }
+
+    .videolink {
+        display: none;
+    }
+
+    .question {
+        display: none;
+    }
+
+    .pageNum {
+        display: none;
+    }
+
+    .fileDirectory {
+        display: none;
+    }
+
+    .category {
+        display: none;
+    }
+
+    .questionid {
+        display: none;
+    }
+
+    #stundioWrapper {
+        position: relative;
+        left: 0;
+        width: 100%;
+        overflow: auto;
+        z-index: 0;
+    }
+
+    #stundioWrapper ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    #chatWrapper {
+        position: relative;
+        left: 0;
+        width: 100%;
+        overflow: auto;
+    }
+
+    #chatWrapper ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    #currentfile img {
+        width: 46px;
+        height: 46px;
+    }
+
+    #studionList {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 385px;
+    }
+
+    #studionList li {
+        margin: 3px 3px 3px 0;
+        padding: 1px;
+        float: left;
+        width: 88px;
+        height: 90px;
+        text-align: center;
+        background-color: transparent;
+        border-width: 0px;
+    }
+
+    .fileList {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 550px;
+    }
+
+    .fileList li {
+        margin: 3px 3px 3px 0;
+        padding: 1px;
+        float: left;
+        width: 105px;
+        text-align: center;
+        background-color: transparent;
+        border-width: 0px;
+    }
+
+    .listanswer {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 550px;
+        margin-top: 5px;
+    }
+
+    .listanswer li {
+        margin: 3px 3px 3px 0;
+        padding: 1px;
+        float: left;
+        width: 95px;
+        text-align: center;
+        background-color: transparent;
+        border-width: 0px;
+    }
 </style>
 
 <div id="images"></div>
@@ -789,7 +906,8 @@ function ShowMessage(name, imgpath, content, bit) {
                     <param name="quality" value="high"/>
                     <param name="wmode" value="transparent"/>
                     <param name="allowFullScreen" value="true"/>
-                    <embed src="htm/Demo/FirstPage_Formal/VC_Demo.swf" allowFullScreen="true" width="720" height="560" quality="high"
+                    <embed src="htm/Demo/FirstPage_Formal/VC_Demo.swf" allowFullScreen="true" width="720" height="560"
+                           quality="high"
                            pluginspage="http://www.macromedia.com/go/getflashplayer"
                            type="application/x-shockwave-flash" wmode="transparent" name="Girl" id="GirlEmbed"></embed>
                 </object>

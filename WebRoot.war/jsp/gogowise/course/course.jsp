@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 
 <div class="container">
 <div class="thinline"></div>
@@ -9,14 +9,14 @@
 <%-- Course Info--%>
 <img src="<s:property value="course.logoUrl" />" alt="..." class="img-rounded">
 <%-- <h1 class = "courseSubject">Introduction to Computer Science</h1>  --%>
-<h1 class = "courseSubject"><s:property value="course.name"/></h1>
+<h1 class="courseSubject"><s:property value="course.name"/></h1>
 <%-- <h5 class ="courseSynopsis">
     An introduction to the intellectual enterprises of computer science and the art of
 programming.
 </h5>--%>
 
 <%-- <h5 class ="courseSynopsis"><s:property value="%{getText('course.info')}"/></h5> --%>
-<div class = "row">
+<div class="row">
     <div class="col-md-8">
         <h3 class="courseSubhead"><s:property value="%{getText('course.info')}"/></h3>
     </div>
@@ -31,7 +31,8 @@ programming.
     CS50x is Harvard College's introduction to the intellectual enterprises of computer science
 </h4> --%>
 
-<h4 class="courseBody" ><s:property value="course.description"/></h4>
+<h4 class="courseBody"><s:property value="course.description"/></h4>
+
 <div class="thickline"></div>
 <h3 class="courseSubhead">Course Videos</h3>
 
@@ -44,17 +45,20 @@ programming.
 
     <div class="col-sm-4">
 
-        <s:if test="#status.index < course.FinshedClassNum"><div class="lessonOrange"></s:if>
-        <s:else><div class="lessonGreen"></s:else>
+        <s:if test="#status.index < course.FinshedClassNum">
+        <div class="lessonOrange"></s:if>
+            <s:else>
+            <div class="lessonGreen"></s:else>
 
-            <div id="lessonText"><s:property value="#status.index+1" /></div>
-            <div id="lessonName"><s:property value="nickName"/></div>
+                <div id="lessonText"><s:property value="#status.index+1"/></div>
+                <div id="lessonName"><s:property value="nickName"/></div>
+            </div>
+
         </div>
 
-    </div>
-
         <s:if test="#status.index % 3 == 2||#status.last">
-    </div><br/>
+    </div>
+    <br/>
     </s:if>
     </s:iterator>
 
@@ -65,16 +69,19 @@ programming.
     <br/>
 
     <%--spkang added forum content begin --%>
-    <s:set var="flag" value="true" />
+    <s:set var="flag" value="true"/>
     <s:iterator value="courseComments" status="idx">
         <%--<p>--%>
         <s:if test="flag">
             <div class="row">
                 <div class="col-md-2">
                     <div class="portrait">
-                        <s:a action="userBlog" ><s:param name="user.id" value="commenter.id"/><img src="<s:property value="commenter.pic"/>"/></s:a>
+                        <s:a action="userBlog"><s:param name="user.id" value="commenter.id"/><img
+                                src="<s:property value="commenter.pic"/>"/></s:a>
 					                    	<span>
-					                    		<s:a action="userBlog" ><s:param name="user.id" value="commenter.id"/><s:property value="commenter.nickName"/></s:a>
+					                    		<s:a action="userBlog"><s:param name="user.id"
+                                                                                value="commenter.id"/><s:property
+                                                        value="commenter.nickName"/></s:a>
 					                    	</span>
                     </div>
                 </div>
@@ -106,7 +113,7 @@ programming.
 
             </div>
             <s:if test="#idx.getIndex() > 1">
-                <s:set var="flag" value="false" />
+                <s:set var="flag" value="false"/>
             </s:if>
         </s:if>
         <%--</p>--%>
@@ -135,6 +142,7 @@ programming.
      </script>
    --%>
     <br/>
+
     <div class="thickline"></div>
     <%--  added end --%>
 
@@ -172,19 +180,20 @@ programming.
     --%>
 
 
-
-
-
     <%-- Recommend courses --%>
     <%--<s:property value="%{getText('recommend.course')}">--%>
     <div class="courseSubhead"><s:property value="%{getText('recommend.course')}"/></div>
     <br/>
+
     <div class="row">
         <s:iterator value="courses2teacher">
             <div class="col-sm-4">
                 <div class="recommended">
                     <ul>
-                        <li><a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"><img src="<s:property value="logoUrl"/>" alt=""></a></li><span><s:property value="name"/></span>
+                        <li><a href="voaCourseBlog.html?course.id=<s:property value="id"/>"
+                               title="<s:property value="name"/>"><img src="<s:property value="logoUrl"/>" alt=""></a>
+                        </li>
+                        <span><s:property value="name"/></span>
                             <%-- <li class="li_turn"><a href="javascript:;" class="turn_left" title="<s:property value="%{getText('pagination.last.page')}" />"></a><a href="javascript:;"class="turn_right" title="<s:property value="%{getText('pagination.next.page')}" />"></a>
                             </li> --%>
                     </ul>
@@ -248,18 +257,24 @@ programming.
                 </div>
                 --%>
                 <%-- <p><s:property value="course.teacher.selfDescription"/></p> --%>
-                <a href="userBlog.html?user.id=<s:property value="course.teacher.id"/>" title="<s:property value="course.teacher.nickName"/>"><img class="teacherPortrait" src="<s:property value="course.teacher.pic"/>"/></a>
+                <a href="userBlog.html?user.id=<s:property value="course.teacher.id"/>"
+                   title="<s:property value="course.teacher.nickName"/>"><img class="teacherPortrait"
+                                                                              src="<s:property value="course.teacher.pic"/>"/></a>
                 <%-- <img class="teacherPortrait" src="<s:property value="course.teacher.pic"/>"/> --%>
                 <div>
                     <p class="teacherTitle"><s:property value="course.teacher.nickName"/></p>
+
                     <p><s:property value="course.teacher.selfDescription"/></p>
+
                     <p></p>
                     <br/>
                 </div>
                 <div class="thicklineExtra"></div>
-                <img class="teacherPortrait" src="/images/course/portrait1.jpg"  />
+                <img class="teacherPortrait" src="/images/course/portrait1.jpg"/>
+
                 <div>
                     <p class="teacherTitle">Name</p>
+
                     <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
 
                 </div>
@@ -277,14 +292,17 @@ programming.
                 <s:iterator value="course.ForcastClasses" begin="0" end="0" status="idx">
                     <div>topic: <s:property value="nickName"/></div>
                     <p></p>
+
                     <div>numbers:
-                        <s:property value="%{getText('lable.class.no1')}" />
+                        <s:property value="%{getText('lable.class.no1')}"/>
                         <s:property value="course.FinshedClassNum+1"/>
-                        <s:property value="%{getText('lable.class.no2')}" />
+                        <s:property value="%{getText('lable.class.no2')}"/>
                     </div>
                     <p></p>
+
                     <div>times:<s:date name="date" format="%{getText('dateformat.forclass')}"/></div>
                     <p></p>
+
                     <div>teacher: <s:property value="course.teacher.nickName"/></div>
                     <br/>
                 </s:iterator>
@@ -299,9 +317,9 @@ programming.
         <div class="gogopanelBody">
             <div class="gogopanelBodyText">
                 <div class="row">
-                    <div class="col-md-4"><img class="teacherPortrait" src="/images/course/portrait2.jpg"  /></div>
-                    <div class="col-md-4"><img class="teacherPortrait" src="/images/course/portrait4.jpg"  /></div>
-                    <div class="col-md-4"><img class="teacherPortrait" src="/images/course/portrait5.jpg"  /></div>
+                    <div class="col-md-4"><img class="teacherPortrait" src="/images/course/portrait2.jpg"/></div>
+                    <div class="col-md-4"><img class="teacherPortrait" src="/images/course/portrait4.jpg"/></div>
+                    <div class="col-md-4"><img class="teacherPortrait" src="/images/course/portrait5.jpg"/></div>
                 </div>
 
                 <br/>

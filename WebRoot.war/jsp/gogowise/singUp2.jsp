@@ -1,4 +1,4 @@
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <style type="text/css">
     <!--
     .bigcn {
@@ -57,7 +57,7 @@
             <tr>
                 <td width="163" rowspan="6" valign="top"><p><img src="images/shangbiao11.gif" width="163" height="71"/>
                     <img
-                        src="images/CCCC_03.gif" width="163" height="704"/></p>
+                            src="images/CCCC_03.gif" width="163" height="704"/></p>
                 </td>
 
             </tr>
@@ -99,12 +99,12 @@
             <td height="104" align="center">
                 <table width="809" height="499" align="center" cellpadding="3" cellspacing="0">
                     <tr>
-                        <td height="24" colspan="2" align="left" class="bigcn"> 参加人员信息 &nbsp;&nbsp; <s:fielderror />
-                        <div id="errorInfo" align="left"> </div>
+                        <td height="24" colspan="2" align="left" class="bigcn"> 参加人员信息 &nbsp;&nbsp; <s:fielderror/>
+                            <div id="errorInfo" align="left"></div>
                         </td>
                     </tr>
 
-                 <s:if test="%{haveUserInfo}">
+                    <s:if test="%{haveUserInfo}">
                         <tr>
                             <td height="40" align="left" class="tdline2 STYLE20">Email:
                                 <span class="STYLE16">
@@ -120,7 +120,7 @@
                         <tr>
                             <td height="40" align="left" class="tdline2 STYLE20">Email:<span class="STYLE16">
                             <s:textfield name="singUpInfo.user.email" id="email" cssClass="STYLE21"/>
-                        </span>   <span class="STYLE14">*</span>
+                        </span> <span class="STYLE14">*</span>
                             </td>
                         </tr>
                         <tr>
@@ -241,11 +241,10 @@
 </s:form>
 
 
-
 <script type="text/javascript">
     var errorsString = "";
     function addError(field, error) {
-        errorsString += '<li><span>'+error + '</span></li>';
+        errorsString += '<li><span>' + error + '</span></li>';
     }
     function validateForm_initSingUp() {
         errorsString = "";
@@ -276,7 +275,7 @@
             if (continueValidation && field.value != null && field.value.length > 0 && field.value.match(/\b(^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@([A-Za-z0-9-])+(\.[A-Za-z0-9-]+)*((\.[A-Za-z0-9]{2,})|(\.[A-Za-z0-9]{2,}\.[A-Za-z0-9]{2,}))$)\b/gi) == null) {
                 addError(field, error);
                 errors = true;
-                 return !errors;
+                return !errors;
             }
         }
         // field name: singUpInfo.user.password
@@ -287,7 +286,7 @@
             if (continueValidation && field.value != null && (field.value == "" || field.value.replace(/^\s+|\s+$/g, "").length == 0)) {
                 addError(field, error);
                 errors = true;
-                 return !errors;
+                return !errors;
             }
         }
         // field name: duplicate
@@ -309,7 +308,7 @@
             if (continueValidation && field1.value != field2.value) {
                 addError(field1, error);
                 errors = true;
-                 return !errors;
+                return !errors;
             }
         }
         // field name: singUpInfo.user.userName
@@ -320,7 +319,7 @@
             if (continueValidation && field.value != null && (field.value == "" || field.value.replace(/^\s+|\s+$/g, "").length == 0)) {
                 addError(field, error);
                 errors = true;
-                 return !errors;
+                return !errors;
             }
         }
         // field name: singUpInfo.user.nickName
@@ -337,15 +336,15 @@
 
         // field name: singUpInfo.user.nickName
         // validator name: requiredstring
-       // if (form.elements['singUpInfo.user.nickName']) {
-      //      field = form.elements['singUpInfo.user.nickName'];
-       //     var error = "昵称是必填的";
-      //      if (continueValidation && field.value != null && (field.value == "" || field.value.replace(/^\s+|\s+$/g, "").length == 0)) {
-       //         addError(field, error);
-       //         errors = true;
+        // if (form.elements['singUpInfo.user.nickName']) {
+        //      field = form.elements['singUpInfo.user.nickName'];
+        //     var error = "昵称是必填的";
+        //      if (continueValidation && field.value != null && (field.value == "" || field.value.replace(/^\s+|\s+$/g, "").length == 0)) {
+        //         addError(field, error);
+        //         errors = true;
 
-       //     }
-       // }
+        //     }
+        // }
         // field name: singUpInfo.cellPhone
         // validator name: required
         if (form.elements['singUpInfo.phone']) {
@@ -354,7 +353,7 @@
             if (field.value == "") {
                 addError(field, error);
                 errors = true;
-                 return !errors;
+                return !errors;
             }
         }
         // field name: singUpInfo.cellPhone
@@ -362,10 +361,10 @@
         if (form.elements['singUpInfo.cellPhone']) {
             field = form.elements['singUpInfo.cellPhone'];
             var error = "请输入正确的手机号码";
-             if (field.value == "") {
+            if (field.value == "") {
                 addError(field, error);
                 errors = true;
-                 return !errors;
+                return !errors;
             }
         }
         // field name: singUpInfo.enounce
@@ -376,7 +375,7 @@
             if (continueValidation && field.value != null && (field.value == "" || field.value.replace(/^\s+|\s+$/g, "").length == 0)) {
                 addError(field, error);
                 errors = true;
-                 return !errors;
+                return !errors;
             }
         }
         // field name: singUpInfo.description
@@ -387,7 +386,7 @@
             if (continueValidation && field.value != null && (field.value == "" || field.value.replace(/^\s+|\s+$/g, "").length == 0)) {
                 addError(field, error);
                 errors = true;
-                 return !errors;
+                return !errors;
             }
         }
         // field name: singUpInfo.regedCompetitionSession.id
@@ -398,13 +397,13 @@
             if (field.value == "") {
                 addError(field, error);
                 errors = true;
-                 return !errors;
+                return !errors;
             }
         }
 
         if (errors != "") {
-            errorsString = ' <ul  class="errorMessage">'      + errorsString + ' </ul>';
-             $('#errorInfo').html(errorsString);
+            errorsString = ' <ul  class="errorMessage">' + errorsString + ' </ul>';
+            $('#errorInfo').html(errorsString);
 //            alert(errorsString);
             return false;
         }

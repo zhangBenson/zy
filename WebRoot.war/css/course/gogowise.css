@@ -392,7 +392,7 @@ a:hover .recommended  img
     font-family: Verdana, Geneva, sans-serif;
     font-weight: bold;
     font-size: 14px;
-    text-overflow : clip;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;
+    /*text-overflow : clip;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;*/
 }
 
 .basePanel

@@ -21,6 +21,7 @@ public class EmailJob implements  Runnable {
     private static final String SMTPPassword = "gogowise";
     // SMTP Server
     private static final String SMTPServerName = "mail.gogowise.com";
+    //private static final String SMTPServerName = "137.132.153.218";
 
 
     //  EMAIL Related attribute.
@@ -47,12 +48,12 @@ public class EmailJob implements  Runnable {
                     return new PasswordAuthentication(SMTPUserName, SMTPPassword);
                 }
             });
-//            session.setDebug(true);
+            session.setDebug(true);
             // Define message
             MimeMessage message =
                     new MimeMessage(session);
             message.setFrom(
-                    new InternetAddress(SenderEmailAddr,"知元客服--GoGoWise Service"));
+                    new InternetAddress(SenderEmailAddr,"GoGoWise Service"));
 //        message.setReplyTo(new InternetAddress[]{new InternetAddress("reply email")});
             message.addRecipient(Message.RecipientType.TO,new InternetAddress(emailAddr));
 
@@ -129,7 +130,7 @@ public class EmailJob implements  Runnable {
 
     public static void main(String args[]) {
         EmailJob job = new EmailJob();
-        job.setEmailAddr("zlhades@outlook.com");
+        job.setEmailAddr("jijianhui@gogowise.com");
 //        job.setEmailAddr("vic@gogowise.com");
 
         job.setMailTitle("111111111");

@@ -1,5 +1,5 @@
 ﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <link type="text/css" href="css/userheader.css" rel="stylesheet"/>
 
 <div class="uho">
@@ -68,9 +68,9 @@
                                             <s:else><s:property value="#session.email"/> </s:else>
                                         </span>
                                     </li>--%>
-                                <li class="setting bg"><a href="myfirstPage.html"><s:property
+                                <li class="setting bg" style="text-align: center;"><a href="myfirstPage.html"><s:property
                                         value="%{getText('label.orgcenter')}"/></a></li>
-                                <li class="setting bg"><a href="personalCenter.html"><s:property
+                                <li class="setting bg" style="text-align: center;"><a href="personalCenter.html"><s:property
                                         value="%{getText('label.personalcenter')}"/></a></li>
 
                                 <li class="setting bg"><a href="initUpdate.html"><span></span><s:property

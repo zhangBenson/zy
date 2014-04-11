@@ -1,6 +1,6 @@
 <%@ page import="com.opensymphony.xwork2.ActionContext" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
 
 <style type="text/css" media="screen,print">
@@ -66,26 +66,26 @@
             <tiles:putAttribute name="pagination" value="${pagination}"/>
         </tiles:insertTemplate>
 
-        <%--<table>--%>
+            <%--<table>--%>
             <%--<tr>--%>
-                <%--<td>--%>
-                    <%--<s:if test="pagination.hasPre">--%>
-                        <%--<s:url id="url_pre" value="search.html">--%>
-                            <%--<s:param name="pagination.pageNow" value="pagination.pageNow-1"></s:param>--%>
-                            <%--<s:param name="searchValue" value="searchValue"></s:param>--%>
-                        <%--</s:url>--%>
-                        <%--<s:a href="%{url_pre}">上一页</s:a>--%>
-                    <%--</s:if>--%>
-                    <%--<s:if test="pagination.hasNext">--%>
-                        <%--<s:url id="url_next" value="search.html">--%>
-                            <%--<s:param name="pagination.pageNow" value="pagination.pageNow+1"></s:param>--%>
-                            <%--<s:param name="searchValue" value="searchValue"></s:param>--%>
-                        <%--</s:url>--%>
-                        <%--<s:a href="%{url_next}">下一页</s:a>--%>
-                    <%--</s:if>--%>
-                <%--</td>--%>
+            <%--<td>--%>
+            <%--<s:if test="pagination.hasPre">--%>
+            <%--<s:url id="url_pre" value="search.html">--%>
+            <%--<s:param name="pagination.pageNow" value="pagination.pageNow-1"></s:param>--%>
+            <%--<s:param name="searchValue" value="searchValue"></s:param>--%>
+            <%--</s:url>--%>
+            <%--<s:a href="%{url_pre}">上一页</s:a>--%>
+            <%--</s:if>--%>
+            <%--<s:if test="pagination.hasNext">--%>
+            <%--<s:url id="url_next" value="search.html">--%>
+            <%--<s:param name="pagination.pageNow" value="pagination.pageNow+1"></s:param>--%>
+            <%--<s:param name="searchValue" value="searchValue"></s:param>--%>
+            <%--</s:url>--%>
+            <%--<s:a href="%{url_next}">下一页</s:a>--%>
+            <%--</s:if>--%>
+            <%--</td>--%>
             <%--</tr>--%>
-        <%--</table>--%>
+            <%--</table>--%>
 
     </div>
 

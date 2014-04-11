@@ -1,26 +1,32 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 
 <span class="title"><s:property value="%{getText('my.firstpage.users.i.followed')}"/></span>
 <s:if test="userFansNum > 6 && !numOverFlow">
-    <span class="more"><a href="javascript:;" onclick="getMoreConcernUserFans();"><s:property value="%{getText('others.more')}"/></a></span>
+    <span class="more"><a href="javascript:;" onclick="getMoreConcernUserFans();"><s:property
+            value="%{getText('others.more')}"/></a></span>
 </s:if>
 <ul class="courseul">
     <s:iterator value="userFanses">
         <li class="host">
-            <a class="host_img" href="userBlog.html?user.id=<s:property value="user.id"/>" title="<s:property value="user.nickName"/>"><img src="<s:property value="user.pic"/>"/></a>
-            <a class="host_name" href="userBlog.html?user.id=<s:property value="user.id"/>" title="<s:property value="user.nickName"/>"><s:property value="user.nickName"/></a>
+            <a class="host_img" href="userBlog.html?user.id=<s:property value="user.id"/>"
+               title="<s:property value="user.nickName"/>"><img src="<s:property value="user.pic"/>"/></a>
+            <a class="host_name" href="userBlog.html?user.id=<s:property value="user.id"/>"
+               title="<s:property value="user.nickName"/>"><s:property value="user.nickName"/></a>
 
             <s:if test="userLiving">
-                <a class="live_tip" href="watchPersonalOnlive.html?personalOnlive.id=<s:property value="personalOnliveID"/>" title="<s:property value="%{getText('click.to.watch')}"/>"><s:property value="%{getText('video.is.living')}"/></a>
+                <a class="live_tip"
+                   href="watchPersonalOnlive.html?personalOnlive.id=<s:property value="personalOnliveID"/>"
+                   title="<s:property value="%{getText('click.to.watch')}"/>"><s:property
+                        value="%{getText('video.is.living')}"/></a>
             </s:if>
         </li>
     </s:iterator>
     <script type="text/javascript">
-         function getMoreConcernUserFans(){
-             $.post("getMoreConcernUserFans.html",{'currentPageSize':<s:property value="currentPageSize"/>},function(data){
-                   $("#userFans_data").html(data);
-             })
-         }
+        function getMoreConcernUserFans() {
+            $.post("getMoreConcernUserFans.html", {'currentPageSize':<s:property value="currentPageSize"/>}, function (data) {
+                $("#userFans_data").html(data);
+            })
+        }
     </script>
 </ul>

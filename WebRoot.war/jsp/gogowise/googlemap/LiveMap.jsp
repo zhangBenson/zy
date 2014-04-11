@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <link type="text/css" href="css/googlemap/LiveMap.css" rel="stylesheet"/>
 
 <div id="mapArea">
@@ -20,12 +20,12 @@
     </div>
 </div>
 
-<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false" > </script>
-<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&libraries=places" > </script>
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&libraries=places"></script>
 <%--<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&language=ja"> </script>--%>
 <%--<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&region=GB"> </script>--%>
 <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&libraries=geometry"></script>
-<script type="text/javascript" src="js/map/toLatLng.js" > </script>
+<script type="text/javascript" src="js/map/toLatLng.js"></script>
 
 <script type="text/javascript">
     var initialLocation;
@@ -34,31 +34,31 @@
     var liveMap;
     var geocoder;
 
-    $(function(){
+    $(function () {
         newyork = new google.maps.LatLng(40.69847032728747, -73.9514422416687);
         beijingLoc = new google.maps.LatLng(39.90403, 116.40752599999996);
-        initialLocation  = beijingLoc;
+        initialLocation = beijingLoc;
         geocoder = new google.maps.Geocoder();
         initialize();
 
         //标记正在进行的直播
         <s:iterator value="personalOnlives">
-            var location = new google.maps.LatLng(<s:property value="personalOnlive.latitude"/>,<s:property value="longitude"/>);
-            var title = <s:property value="personalOnlive.title"/>;
-            alert(location,title);
-            placeMarker(location,title);
+        var location = new google.maps.LatLng(<s:property value="personalOnlive.latitude"/>, <s:property value="longitude"/>);
+        var title = <s:property value="personalOnlive.title"/>;
+        alert(location, title);
+        placeMarker(location, title);
         </s:iterator>
     });
 
     function initialize() {
-		  var myOptions = { //设置map的相关属性
-		    zoom: 12,        //设置地图的缩放级别
-            center:initialLocation,
-		    mapTypeId: google.maps.MapTypeId.ROADMAP                  /*设置地图类型*/
-		  };
+        var myOptions = { //设置map的相关属性
+            zoom: 12,        //设置地图的缩放级别
+            center: initialLocation,
+            mapTypeId: google.maps.MapTypeId.ROADMAP                  /*设置地图类型*/
+        };
 
-		  //初始化map，传入两个参数，第一个是放置map的容器，第二个是其属性对象
-		  liveMap = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+        //初始化map，传入两个参数，第一个是放置map的容器，第二个是其属性对象
+        liveMap = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
 //        getUserLocation();
 
@@ -66,34 +66,34 @@
 //            placeMarker(event.latLng);
 //          });
 
-          new google.maps.places.Autocomplete($("#address"));
-          enterPress($("#address"));
+        new google.maps.places.Autocomplete($("#address"));
+        enterPress($("#address"));
     }
 
     <%-- 在地图上放置标记 --%>
-    function placeMarker(location,title) {
-	  var marker = new google.maps.Marker({ //通过Maker对象放置小气球
-	      position: location,             //小气球的坐标
-	      map: liveMap,
-	      title:title                   //小气球的提示信息
-	  });
+    function placeMarker(location, title) {
+        var marker = new google.maps.Marker({ //通过Maker对象放置小气球
+            position: location,             //小气球的坐标
+            map: liveMap,
+            title: title                   //小气球的提示信息
+        });
 
 //        liveMap.setCenter(location);
-	}
+    }
 
     /* 获取用户的位置 */
-    function getUserLocation(){
+    function getUserLocation() {
         var browserSupportFlag = false;
         var userLocation = null;
 
-         //尝试W3C方案获取用户地理位置的方法
-        if(navigator.geolocation) {
+        //尝试W3C方案获取用户地理位置的方法
+        if (navigator.geolocation) {
             browserSupportFlag = true;
-            navigator.geolocation.getCurrentPosition(function(position) {
-                  userLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+            navigator.geolocation.getCurrentPosition(function (position) {
+                userLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                 alert(postion.address);
                 liveMap.setCenter(userLocation);
-            }, function() {
+            }, function () {
                 handleNoGeolocation(browserSupportFlag);
             });
         }
@@ -101,10 +101,10 @@
         else if (google.gears) {
             browserSupportFlag = true;
             var geo = google.gears.factory.create('beta.geolocation');
-            geo.getCurrentPosition(function(position) {
-                userLocation = new google.maps.LatLng(position.latitude,position.longitude);
+            geo.getCurrentPosition(function (position) {
+                userLocation = new google.maps.LatLng(position.latitude, position.longitude);
                 liveMap.setCenter(userLocation);
-            }, function() {
+            }, function () {
                 handleNoGeolocation(browserSupportFlag);
             });
         }
@@ -118,9 +118,9 @@
     <%-- 无法自动获取用户位置时的处理 --%>
     function handleNoGeolocation(errorFlag) {
         if (errorFlag == true) {
-          alert("获取用户位置失败！");
+            alert("获取用户位置失败！");
         } else {
-          alert("Your browser doesn't support geolocation. We've placed you in Siberia.");
+            alert("Your browser doesn't support geolocation. We've placed you in Siberia.");
         }
     }
 </script>

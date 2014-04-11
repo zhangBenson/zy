@@ -22,6 +22,7 @@
 }
 .pagination tr td a.page_now{
     background: none;
+    background-color: #afeeee;
 }
 .pagination tr td a.page_other:hover{
     background: url(../images/page-turn-bg.gif) -89px 0px;

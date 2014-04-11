@@ -1,7 +1,7 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <style type="text/css">
     #protocol {
         width: 700px;
@@ -65,9 +65,21 @@
         font-size: 12px;
         color: #999;
     }
-    #message{ font-family:"微软雅黑", "宋体"; font-size:14px; text-align: center;}
-    #message b{ color:#800040;}
-    #message a{ text-decoration: underline; color:#0000ff;}
+
+    #message {
+        font-family: "微软雅黑", "宋体";
+        font-size: 14px;
+        text-align: center;
+    }
+
+    #message b {
+        color: #800040;
+    }
+
+    #message a {
+        text-decoration: underline;
+        color: #0000ff;
+    }
 </style>
 <div>
     <div id="protocol">
@@ -78,9 +90,11 @@
         <div id="cons">
             <p>
 
-            <h2><s:property value="organization.schoolName"/>组织免费使用知元网教学平台协议 </h2> <p id="bianma"> 协议编码：<span class="highlight"><s:property value="organization.id"/></span>  </p>
+            <h2><s:property value="organization.schoolName"/>组织免费使用知元网教学平台协议 </h2> <p id="bianma"> 协议编码：<span
+                class="highlight"><s:property value="organization.id"/></span>  </p>
             </p>
-            <p><span class="highlight"><s:property value="organization.schoolName"/></span>组织（以下简称甲方）同长沙知金电子科技有限公司（以下简称乙方）就甲方免费使用乙方所属的知元网网络教学平台达成以下协议： </p>
+            <p><span class="highlight"><s:property value="organization.schoolName"/></span>组织（以下简称甲方）同长沙知金电子科技有限公司（以下简称乙方）就甲方免费使用乙方所属的知元网网络教学平台达成以下协议：
+            </p>
 
             <p>1、 甲方及所属所有教师使用知元网进行网络教学，如实时网络公开课等，知元网将不收取任何费用； </p>
 
@@ -88,8 +102,13 @@
 
             <p> 3、甲方所属教师（此教师）在知元网进行网上教学所产生的收益，包括此老师的网络实时教学、教学录像、教学课件等（以下简称为甲方此教师版权收益），乙方将支付此教师此收益的30%作为此教师的版权收益； </p>
 
-            <p> 4、甲方指定甲方教师: 姓名:<span class="highlight"><s:property value="organization.responsiblePerson.userName"/></span>，身份证号码:<span class="highlight"><span class="highlight"><s:property value="organization.responsiblePerson.cardId"/></span>，知元网注册email:<span
-                    class="highlight"><s:property value="organization.responsiblePerson.email"/></span>, 联系电话号码:<s:property value="organization.responsiblePerson.telphone"/>,
+            <p> 4、甲方指定甲方教师: 姓名:<span class="highlight"><s:property
+                    value="organization.responsiblePerson.userName"/></span>，身份证号码:<span class="highlight"><span
+                    class="highlight"><s:property
+                    value="organization.responsiblePerson.cardId"/></span>，知元网注册email:<span
+                    class="highlight"><s:property
+                    value="organization.responsiblePerson.email"/></span>, 联系电话号码:<s:property
+                    value="organization.responsiblePerson.telphone"/>,
                 为甲方在知元网上甲方注册组织唯一指定负责人，全权负责课程的开设、教师身份的确认、课堂内容的监管等实体学校相同的工作，并承担相关的责任，保证教学内容健康、合法。乙方将支付此负责人在负责期间内甲方新教学课件所产生的版权收益（以下简称负责人负责期内甲方版权收益）的8%作为此负责人的劳动报酬；
             </span></p>
 
@@ -107,8 +126,9 @@
             <p>
                 10、乙方将按季度定期结算甲方负责人以及原负责人（如果发生负责人变更）的收益，乙方将相关收益转账至甲方负责人及原负责人的私人账户，同时附上收益清单，如果出现异议，甲方负责人及原负责人有清查个人收益的权利，甲方负责人须在知元网上提交真实的个人账户信息； </p>
 
-            <p> 11、甲方对公账户信息：开户名称：<span class="highlight"><s:property value="organization.depositName"/></span>, 开户银行：<span class="highlight"><s:property value="organization.depositBankName"/></span>，开户账号：<span
-                    class="highlight"><s:property value="organization.depositBankAccount"/></span></p>
+            <p> 11、甲方对公账户信息：开户名称：<span class="highlight"><s:property value="organization.depositName"/></span>,
+                开户银行：<span class="highlight"><s:property value="organization.depositBankName"/></span>，开户账号：<span
+                        class="highlight"><s:property value="organization.depositBankAccount"/></span></p>
 
             <p> 12、为了避免恶性竞争影响甲方正常的教学次序，严禁甲方接受除乙方以外其他非官方网站提供的同乙方相类似的服务，否则，乙方将有权终止支付甲方及甲方所属老师的版权收益；</p>
 
@@ -133,7 +153,8 @@
                 </tr>
                 <tr>
                     <td>签署时间：</td>
-                    <td>签署时间：<%=new SimpleDateFormat("yyyy年MM日dd天").format(new Date())%></td>
+                    <td>签署时间：<%=new SimpleDateFormat("yyyy年MM日dd天").format(new Date())%>
+                    </td>
                 </tr>
                 <tr>
                     <td>公章：</td>
@@ -142,7 +163,8 @@
             </table>
         </div>
         <div id="bottom">
-            <input type="button" name="button" id="button" value="我已阅读，同意" style=" color:#0063C6; margin:4px;" onclick="index();"/>
+            <input type="button" name="button" id="button" value="我已阅读，同意" style=" color:#0063C6; margin:4px;"
+                   onclick="index();"/>
         </div>
         <img src="form/bottom.png" alt="">
     </div>
@@ -159,22 +181,22 @@
     </div>
 </div>
 <script type="text/javascript">
-     var time = 10;
-    function descTime(){
-        time = time -1;
-        if(time < 0){
+    var time = 10;
+    function descTime() {
+        time = time - 1;
+        if (time < 0) {
             time = 0;
         }
-       $("#time").text(time);
+        $("#time").text(time);
     }
 
-   function goUrl(){
-        window.location.href='index.html';
-   }
-   function index(){
-       $("#protocol").css('display', 'none');
+    function goUrl() {
+        window.location.href = 'index.html';
+    }
+    function index() {
+        $("#protocol").css('display', 'none');
         $("#tizhuan").css('display', 'block');
-        setTimeout(goUrl,10000)//500是0.5秒 \
-        setInterval('descTime()',1000);
-   }
+        setTimeout(goUrl, 10000)//500是0.5秒 \
+        setInterval('descTime()', 1000);
+    }
 </script>

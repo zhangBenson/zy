@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 
 <link rel="stylesheet" type="text/css" href="css/view2.css" media="all">
 <script type="text/javascript" src="js/view.js"></script>
@@ -54,14 +54,15 @@
                 border: 0px;
                 cursor: pointer;
             }
-             .wwlbl {
-        float: none;
-        clear: both;
-         }
 
-     .wwctrl {
-        float: none;
-     }
+            .wwlbl {
+                float: none;
+                clear: both;
+            }
+
+            .wwctrl {
+                float: none;
+            }
         </style>
     </div>
 
@@ -87,7 +88,7 @@
     </div>
 </div>
 <s:form id="form" action="changeResponser" method="POST" validate="true" theme="css_xhtml">
-<div id="formdiv" style="display:none;" align="center">
+    <div id="formdiv" style="display:none;" align="center">
 
         <div id="sinupfirst">
             <img id="top" src="images/form/top.png" alt="">
@@ -105,7 +106,9 @@
                 <ul id="ul"><h3>现负责人信息</h3>
 
                     <li id="li_10">
-                        <label class="description" for="element_10">注册组织<b style="color:red;" id="yzschoolname">*</b></label>
+                        <label class="description" for="element_10">注册组织<b style="color:red;"
+                                                                           id="yzschoolname">*</b></label>
+
                         <div>
                             <s:select name="changeResponserHistory.organization.country"
                                       list="#{'中国':'中国','加拿大':'加拿大'}" value="'中国'"
@@ -122,10 +125,12 @@
                             <s:select name="changeResponserHistory.organization.schoolName"
                                       list="#{'湖南大学':'湖南大学','其它':'其它'}" value="'湖南大学'"
                                       cssClass="element select medium" id="schoolname"/>
-                            组织</div>
+                            组织
+                        </div>
                     </li>
                     <li id="li_1">
-                        <label class="description" for="crusername">组织现负责人姓名<b style="color:red;" id="yzcrusername">*</b></label>
+                        <label class="description" for="crusername">组织现负责人姓名<b style="color:red;"
+                                                                               id="yzcrusername">*</b></label>
 
                         <div>
                             <s:textfield id="crusername" name="changeResponserHistory.currentResponser.userName"
@@ -134,7 +139,8 @@
                         </div>
                     </li>
                     <li id="li_2">
-                        <label class="description" for="cremail">组织现负责人Email<b style="color:red;" id="yzcremail">*</b></label>
+                        <label class="description" for="cremail">组织现负责人Email<b style="color:red;"
+                                                                               id="yzcremail">*</b></label>
 
                         <div>
                             <s:textfield id="cremail" name="changeResponserHistory.currentResponser.email"
@@ -143,7 +149,8 @@
                         </div>
                     </li>
                     <li id="li_3">
-                        <label class="description" for="crtelphone">组织现负责人联系电话<b style="color:red;" id="yzcrtelphone">*</b></label>
+                        <label class="description" for="crtelphone">组织现负责人联系电话<b style="color:red;"
+                                                                                 id="yzcrtelphone">*</b></label>
 
                         <div>
                             <s:textfield id="crtelphone" name="changeResponserHistory.currentResponser.telphone"
@@ -162,7 +169,8 @@
                         </div>
                     </li>
                     <li id="li_5">
-                        <label class="description" for="nremail">申请人Email <b style="color:red;" id="yznremail">*</b></label>
+                        <label class="description" for="nremail">申请人Email <b style="color:red;"
+                                                                             id="yznremail">*</b></label>
 
                         <div>
                             <s:textfield id="nremail" name="changeResponserHistory.newResponser.email"
@@ -171,7 +179,8 @@
                         </div>
                     </li>
                     <li id="li_6">
-                        <label class="description" for="nrtelphone">申请人联系电话 <b style="color:red;" id="yznrtelphone">*</b></label>
+                        <label class="description" for="nrtelphone">申请人联系电话 <b style="color:red;"
+                                                                               id="yznrtelphone">*</b></label>
 
                         <div>
                             <s:textfield id="nrtelphone" name="changeResponserHistory.newResponser.telphone"
@@ -208,7 +217,8 @@
                         </div>
                     </li>
                     <li id="li_11">
-                        <label class="description" for="element_10">重复申请人开户账号 <b style="color:red;" id="yzrereelement_10"></b></label>
+                        <label class="description" for="element_10">重复申请人开户账号 <b style="color:red;"
+                                                                                 id="yzrereelement_10"></b></label>
 
                         <div>
                             <s:textfield id="reelement_10" name=""
@@ -228,7 +238,8 @@
             <img id="bottom" src="images/form/bottom.png" alt="">
         </div>
 
-</div></s:form>
+    </div>
+</s:form>
 </div>
 <script type="text/javascript">
     var errorMsg = "信息填写不全，无法提交";
@@ -236,114 +247,115 @@
         $("#tishi").css('display', 'none');
         $("#formdiv").css('display', 'block');
     }
-    $("#schoolname").change(function() {
+    $("#schoolname").change(function () {
         var school = $("#schoolname").val();
         if (school == "其它") {
             $("<input id='schoolname' name='changeResponserHistory.organization.schoolName' value='' onblur='check(this);'/>").replaceAll($(this));
         }
     });
 
-        function check(obj) {
-            $("#yzschoolname").text("*");
-            if ($(obj).val() == "") {
-                errorMsg = "   请输入学校名称！！";
-                $("#yzschoolname").text(errorMsg);
-                return;
-            }
-            errorMsg = "";
+    function check(obj) {
+        $("#yzschoolname").text("*");
+        if ($(obj).val() == "") {
+            errorMsg = "   请输入学校名称！！";
+            $("#yzschoolname").text(errorMsg);
+            return;
         }
+        errorMsg = "";
+    }
 
-        $("#crusername").blur(function() {
-            $("#yzcrusername").text("*");
-            if ($("#crusername").attr('value') == "") {
-                errorMsg = "用户名不能为空";
-                $("#yzcrusername").text(errorMsg);
-                return;
-            }
-            errorMsg = "";
-        });
-        $("#nrusername").blur(function() {
-            $("#yznrusername").text("*");
-            if ($("#nrusername").attr('value') == "") {
-                errorMsg = "用户名不能为空";
-                $("#yznrusername").text(errorMsg);
-                return;
-            }
-            errorMsg = "";
-        });
-        $("#cremail").blur(function() {
-            $("#yzcremail").text("*");
-            if ($("#cremail").attr('value') != "") {
-                var pattern = /^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/;
-                var email = $("#cremail").val();
-                if (!pattern.test(email)) {
-                    errorMsg = "邮件格式不对";
-                    $("#yzcremail").text(errorMsg);
-                    return;
-                }
-                errorMsg = "";
-            } else {
-                errorMsg = "邮件不能为空";
+    $("#crusername").blur(function () {
+        $("#yzcrusername").text("*");
+        if ($("#crusername").attr('value') == "") {
+            errorMsg = "用户名不能为空";
+            $("#yzcrusername").text(errorMsg);
+            return;
+        }
+        errorMsg = "";
+    });
+    $("#nrusername").blur(function () {
+        $("#yznrusername").text("*");
+        if ($("#nrusername").attr('value') == "") {
+            errorMsg = "用户名不能为空";
+            $("#yznrusername").text(errorMsg);
+            return;
+        }
+        errorMsg = "";
+    });
+    $("#cremail").blur(function () {
+        $("#yzcremail").text("*");
+        if ($("#cremail").attr('value') != "") {
+            var pattern = /^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/;
+            var email = $("#cremail").val();
+            if (!pattern.test(email)) {
+                errorMsg = "邮件格式不对";
                 $("#yzcremail").text(errorMsg);
                 return;
             }
-        });
-        $("#nremail").blur(function() {
-            $("#yznremail").text("*");
-            if ($("#nremail").attr('value') != "") {
-                var pattern = /^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/;
-                var email = $("#nremail").val();
-                if (!pattern.test(email)) {
-                    errorMsg = "邮件格式不对";
-                    $("#yznremail").text(errorMsg);
-                    return;
-                }
-                errorMsg = "";
-            } else {
-                errorMsg = "邮件不能为空";
+            errorMsg = "";
+        } else {
+            errorMsg = "邮件不能为空";
+            $("#yzcremail").text(errorMsg);
+            return;
+        }
+    });
+    $("#nremail").blur(function () {
+        $("#yznremail").text("*");
+        if ($("#nremail").attr('value') != "") {
+            var pattern = /^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/;
+            var email = $("#nremail").val();
+            if (!pattern.test(email)) {
+                errorMsg = "邮件格式不对";
                 $("#yznremail").text(errorMsg);
                 return;
             }
-        });
-        $("#crtelphone").blur(function() {
-            $("#yzcrtelphone").text("*");
-            if ($("#crtelphone").attr('value') == "") {
-                errorMsg = "电话号码不能为空";
-                $("#yzcrtelphone").text(errorMsg);
-                return;
-            }
             errorMsg = "";
-        });
-        $("#nrtelphone").blur(function() {
-            $("#yznrtelphone").text("*");
-            if ($("#nrtelphone").attr('value') == "") {
-                errorMsg = "电话号码不能为空";
-                $("#yznrtelphone").text(errorMsg);
-                return;
-            }
-            errorMsg = "";
-        });
-        function checkForm(){
-            if($("#schoolname").val() != null && $("#crusername").val() != null && $("#nrusername").val() != null){}
-            else{
+        } else {
+            errorMsg = "邮件不能为空";
+            $("#yznremail").text(errorMsg);
+            return;
+        }
+    });
+    $("#crtelphone").blur(function () {
+        $("#yzcrtelphone").text("*");
+        if ($("#crtelphone").attr('value') == "") {
+            errorMsg = "电话号码不能为空";
+            $("#yzcrtelphone").text(errorMsg);
+            return;
+        }
+        errorMsg = "";
+    });
+    $("#nrtelphone").blur(function () {
+        $("#yznrtelphone").text("*");
+        if ($("#nrtelphone").attr('value') == "") {
+            errorMsg = "电话号码不能为空";
+            $("#yznrtelphone").text(errorMsg);
+            return;
+        }
+        errorMsg = "";
+    });
+    function checkForm() {
+        if ($("#schoolname").val() != null && $("#crusername").val() != null && $("#nrusername").val() != null) {
+        }
+        else {
 
-            }
         }
-        $("#saveForm").click(function(){
-           if(errorMsg == ""){
-           document.forms[0].submit();
-        }else{
-           $("#ul").before(function(){
-               return "<div><span style='color: red;'>对不起，信息填写不全，无法提交</span></div>";
-           });
+    }
+    $("#saveForm").click(function () {
+        if (errorMsg == "") {
+            document.forms[0].submit();
+        } else {
+            $("#ul").before(function () {
+                return "<div><span style='color: red;'>对不起，信息填写不全，无法提交</span></div>";
+            });
         }
-        });
-        $("#reelement_10").blur(function(){
-            if($("#reelement_10").val()!=$("#element_9").val()){
-                errorMsg = "账户信息不一致";
-                $("#yzrereelement_10").text(errorMsg);
-            }else{
-                errorMsg = "";
-            }
-        });
+    });
+    $("#reelement_10").blur(function () {
+        if ($("#reelement_10").val() != $("#element_9").val()) {
+            errorMsg = "账户信息不一致";
+            $("#yzrereelement_10").text(errorMsg);
+        } else {
+            errorMsg = "";
+        }
+    });
 </script>

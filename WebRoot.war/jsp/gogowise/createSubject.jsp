@@ -1,5 +1,5 @@
 ﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
 
 
@@ -14,7 +14,7 @@
         主题名称：<s:textfield name="subject.name"/>
     </p>
     <%--<p>--%>
-        <%--email：<s:textfield name="subject.name"/>--%>
+    <%--email：<s:textfield name="subject.name"/>--%>
     <%--</p>--%>
 
 

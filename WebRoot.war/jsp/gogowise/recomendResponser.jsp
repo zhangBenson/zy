@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
 
 <style type="text/css">
@@ -182,84 +182,89 @@
         </div>
     </div>
     <s:form id="form" action="recomendResponser" method="POST">
-    <div id="onlingclass">
-        <div id="con1">
-            <table width="400" border="0" cellspacing="0" cellpadding="0">
-                <tr><td><s:fielderror><s:param>errorInfo</s:param></s:fielderror></td></tr>
-                <tr id="before">
-                    <td><h1>推荐人基本信息</h1></td>
-                </tr>
-                <tr>
-                    <td class="tdleft">您的Email<span class="errorinfo" id="yzemail">*</span></td>
-                </tr>
-                <tr>
-                    <td class="tdleft"><s:textfield type="text" name="organization.agent.email" id="email"/></td>
-                </tr>
-                <tr>
-                    <td class="tdleft">您的密码<span class="errorinfo" id="yzpwd">*</span></td>
-                </tr>
-                <tr>
-                    <td class="tdleft"><s:password type="text" name="password" id="pwd"/></td>
-                </tr>
-                <tr>
-                    <td class="tdleft">密码确认<span class="errorinfo" id="yzrepwd">*</span></td>
-                </tr>
-                <tr>
-                    <td class="tdleft"><s:password type="text" name="repassword" id="repwd"/></td>
-                </tr>
-                <tr>
-                    <td class="tdleft">您的真实姓名<span class="errorinfo" id="yzusername">*</span></td>
-                </tr>
-                <tr>
-                    <td class="tdleft"><s:textfield type="text" name="organization.agent.userName" id="username"/></td>
-                </tr>
-                <tr>
-                    <td class="tdleft">身份证号码<span class="errorinfo" id="yzcard">*</span></td>
-                </tr>
-                <tr>
-                    <td class="tdleft"><s:textfield type="text" name="organization.agent.cardId" id="card"/></td>
-                </tr>
-                <tr>
-                    <td class="tdleft">您的联系电话<span class="errorinfo" id="yztelphone">*</span></td>
-                </tr>
-                <tr>
-                    <td class="tdleft"><s:textfield type="text" name="organization.agent.telphone" id="telphone"/></td>
-                </tr>
-                <tr>
-                    <td><h1>推荐组织机构负责人信息</h1></td>
-                </tr>
-                <tr>
-                    <td class="tdleft">您所推荐的组织机构<span class="errorinfo" id="yzschool">*</span></td>
-                </tr>
-                <tr>
-                    <td class="tdleft"><s:select name="organization.schoolName" list="#{'湖南大学':'湖南大学','其它':'其它'}" value="'湖南大学'" id="select"/></td>
-                </tr>
-                <tr>
-                    <td class="tdleft">负责人姓名<span class="errorinfo" id="yzresusername">*</span></td>
-                </tr>
-                <tr>
-                    <td class="tdleft"><s:textfield type="text" name="responser.userName" id="resusername"/></td>
-                </tr>
-                <tr>
-                    <td class="tdleft">负责人Email<span class="errorinfo" id="yzresemail">*</span></td>
-                </tr>
-                <tr>
-                    <td class="tdleft"><s:textfield type="text" name="responser.email" id="resemail"/></td>
-                </tr>
-                <tr>
-                    <td class="tdleft">负责人联系电话<span class="errorinfo" id="yzrestelphone">*</span></td>
-                </tr>
-                <tr>
-                    <td class="tdleft"><s:textfield type="text" name="responser.telphone" id="restelphone"/></td>
-                </tr>
+        <div id="onlingclass">
+            <div id="con1">
+                <table width="400" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td><s:fielderror><s:param>errorInfo</s:param></s:fielderror></td>
+                    </tr>
+                    <tr id="before">
+                        <td><h1>推荐人基本信息</h1></td>
+                    </tr>
+                    <tr>
+                        <td class="tdleft">您的Email<span class="errorinfo" id="yzemail">*</span></td>
+                    </tr>
+                    <tr>
+                        <td class="tdleft"><s:textfield type="text" name="organization.agent.email" id="email"/></td>
+                    </tr>
+                    <tr>
+                        <td class="tdleft">您的密码<span class="errorinfo" id="yzpwd">*</span></td>
+                    </tr>
+                    <tr>
+                        <td class="tdleft"><s:password type="text" name="password" id="pwd"/></td>
+                    </tr>
+                    <tr>
+                        <td class="tdleft">密码确认<span class="errorinfo" id="yzrepwd">*</span></td>
+                    </tr>
+                    <tr>
+                        <td class="tdleft"><s:password type="text" name="repassword" id="repwd"/></td>
+                    </tr>
+                    <tr>
+                        <td class="tdleft">您的真实姓名<span class="errorinfo" id="yzusername">*</span></td>
+                    </tr>
+                    <tr>
+                        <td class="tdleft"><s:textfield type="text" name="organization.agent.userName"
+                                                        id="username"/></td>
+                    </tr>
+                    <tr>
+                        <td class="tdleft">身份证号码<span class="errorinfo" id="yzcard">*</span></td>
+                    </tr>
+                    <tr>
+                        <td class="tdleft"><s:textfield type="text" name="organization.agent.cardId" id="card"/></td>
+                    </tr>
+                    <tr>
+                        <td class="tdleft">您的联系电话<span class="errorinfo" id="yztelphone">*</span></td>
+                    </tr>
+                    <tr>
+                        <td class="tdleft"><s:textfield type="text" name="organization.agent.telphone"
+                                                        id="telphone"/></td>
+                    </tr>
+                    <tr>
+                        <td><h1>推荐组织机构负责人信息</h1></td>
+                    </tr>
+                    <tr>
+                        <td class="tdleft">您所推荐的组织机构<span class="errorinfo" id="yzschool">*</span></td>
+                    </tr>
+                    <tr>
+                        <td class="tdleft"><s:select name="organization.schoolName" list="#{'湖南大学':'湖南大学','其它':'其它'}"
+                                                     value="'湖南大学'" id="select"/></td>
+                    </tr>
+                    <tr>
+                        <td class="tdleft">负责人姓名<span class="errorinfo" id="yzresusername">*</span></td>
+                    </tr>
+                    <tr>
+                        <td class="tdleft"><s:textfield type="text" name="responser.userName" id="resusername"/></td>
+                    </tr>
+                    <tr>
+                        <td class="tdleft">负责人Email<span class="errorinfo" id="yzresemail">*</span></td>
+                    </tr>
+                    <tr>
+                        <td class="tdleft"><s:textfield type="text" name="responser.email" id="resemail"/></td>
+                    </tr>
+                    <tr>
+                        <td class="tdleft">负责人联系电话<span class="errorinfo" id="yzrestelphone">*</span></td>
+                    </tr>
+                    <tr>
+                        <td class="tdleft"><s:textfield type="text" name="responser.telphone" id="restelphone"/></td>
+                    </tr>
 
-                <tr>
-                    <td align="left"><input type="button" name="button1" id="button1" value=""/>
-                        <input type="reset" name="button2" id="button2" value=""/></td>
-                </tr>
-            </table>
+                    <tr>
+                        <td align="left"><input type="button" name="button1" id="button1" value=""/>
+                            <input type="reset" name="button2" id="button2" value=""/></td>
+                    </tr>
+                </table>
+            </div>
         </div>
-    </div>
     </s:form>
 </div>
 <script type="text/javascript">
@@ -269,145 +274,145 @@
         $("#onlingclass").css('display', 'block');
     }
 
-    $("#select").change(function(){
+    $("#select").change(function () {
         var school = $("#select").val();
-        if(school == "其它"){
-           $("<input id='select' name='organization.schoolName' value='' onblur='check(this);'/>").replaceAll($(this));
+        if (school == "其它") {
+            $("<input id='select' name='organization.schoolName' value='' onblur='check(this);'/>").replaceAll($(this));
         }
     });
-    function check(obj){
+    function check(obj) {
         $("#yzschool").text("*");
-        if($(obj).val() == ""){
-            errorMsg = "   请输入学校名称！！"   ;
-          $("#yzschool").text(errorMsg);
-                  return;
-       }
+        if ($(obj).val() == "") {
+            errorMsg = "   请输入学校名称！！";
+            $("#yzschool").text(errorMsg);
+            return;
+        }
         errorMsg = "";
     }
-    $("#pwd").blur(function(){
+    $("#pwd").blur(function () {
         $("#yzpwd").text("*");
-        if($("#pwd").attr('value') ==""){
-           errorMsg = "密码不能为空";
-           $("#yzpwd").text(errorMsg);
-                  return;
+        if ($("#pwd").attr('value') == "") {
+            errorMsg = "密码不能为空";
+            $("#yzpwd").text(errorMsg);
+            return;
         }
         errorMsg = "";
     });
-    $("#repwd").blur(function(){
+    $("#repwd").blur(function () {
         $("#yzrepwd").text("*");
-         if($("#repwd").attr('value')!=$("#pwd").attr('value')){
-           errorMsg = "两次密码不一致";
-           $("#yzrepwd").text(errorMsg);
-                   return;
+        if ($("#repwd").attr('value') != $("#pwd").attr('value')) {
+            errorMsg = "两次密码不一致";
+            $("#yzrepwd").text(errorMsg);
+            return;
         }
         errorMsg = "";
     });
-    $("#email").blur(function(){
+    $("#email").blur(function () {
         $("#yzemail").text("*");
-        if($("#email").attr('value')!="" ){
-           var pattern = /^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/;
-           var email = $("#email").val();
-            if(!pattern.test(email)){
+        if ($("#email").attr('value') != "") {
+            var pattern = /^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/;
+            var email = $("#email").val();
+            if (!pattern.test(email)) {
                 errorMsg = "邮件格式不对";
                 $("#yzemail").text(errorMsg);
-                      return;
+                return;
             }
             errorMsg = "";
-        }else{
-           errorMsg = "邮件不能为空";
-           $("#yzemail").text(errorMsg);
-                  return;
+        } else {
+            errorMsg = "邮件不能为空";
+            $("#yzemail").text(errorMsg);
+            return;
         }
 
     });
-    $("#username").blur(function(){
+    $("#username").blur(function () {
         $("#yzusername").text("*");
-        if($("#username").attr('value') ==""){
-           errorMsg = "用户名不能为空";
-           $("#yzusername").text(errorMsg);
-                  return;
+        if ($("#username").attr('value') == "") {
+            errorMsg = "用户名不能为空";
+            $("#yzusername").text(errorMsg);
+            return;
         }
         errorMsg = "";
     });
-    $("#card").blur(function(){
+    $("#card").blur(function () {
         $("#yzcard").text("*");
-        if($("#card").attr('value') ==""){
-           errorMsg = "身份证号不能为空";
-           $("#yzcard").text(errorMsg);
-                  return;
+        if ($("#card").attr('value') == "") {
+            errorMsg = "身份证号不能为空";
+            $("#yzcard").text(errorMsg);
+            return;
         }
         errorMsg = "";
     });
-    $("#telphone").blur(function(){
+    $("#telphone").blur(function () {
         $("#yztelphone").text("*");
-        if($("#telphone").attr('value') ==""){
-           errorMsg = "手机号不能为空";
-           $("#yztelphone").text(errorMsg);
-                  return;
+        if ($("#telphone").attr('value') == "") {
+            errorMsg = "手机号不能为空";
+            $("#yztelphone").text(errorMsg);
+            return;
         }
         errorMsg = "";
     });
-    $("#depositName").blur(function(){
+    $("#depositName").blur(function () {
         $("#yzdepositName").text("*");
-        if($("#depositName").attr('value') ==""){
-           errorMsg = "开户人姓名不能为空";
-           $("#yzdepositName").text(errorMsg);
-                  return;
+        if ($("#depositName").attr('value') == "") {
+            errorMsg = "开户人姓名不能为空";
+            $("#yzdepositName").text(errorMsg);
+            return;
         }
         errorMsg = "";
     });
-    $("#depositBankName").blur(function(){
+    $("#depositBankName").blur(function () {
         $("#yzdepositBankName").text("*");
-        if($("#depositBankName").attr('value') ==""){
-           errorMsg = "开户银行不能为空";
-           $("#yzdepositBankName").text(errorMsg);
-                  return;
+        if ($("#depositBankName").attr('value') == "") {
+            errorMsg = "开户银行不能为空";
+            $("#yzdepositBankName").text(errorMsg);
+            return;
         }
         errorMsg = "";
     });
-    $("#depositBankAccount").blur(function(){
+    $("#depositBankAccount").blur(function () {
         $("#yzdepositBankAccount").text("*");
-        if($("#depositBankAccount").attr('value') ==""){
-           errorMsg = "开户帐号不能为空";
-           $("#yzdepositBankAccount").text(errorMsg);
+        if ($("#depositBankAccount").attr('value') == "") {
+            errorMsg = "开户帐号不能为空";
+            $("#yzdepositBankAccount").text(errorMsg);
             return;
         }
         errorMsg = "";
     });
-    $("#resusername").blur(function(){
+    $("#resusername").blur(function () {
         $("#yzresusername").text("*");
-        if($("#resusername").attr('value') ==""){
-           errorMsg = "负责人姓名不能为空";
-           $("#yzresusername").text(errorMsg);
+        if ($("#resusername").attr('value') == "") {
+            errorMsg = "负责人姓名不能为空";
+            $("#yzresusername").text(errorMsg);
             return;
         }
         errorMsg = "";
     });
-    $("#resemail").blur(function(){
+    $("#resemail").blur(function () {
         $("#yzresemail").text("*");
-        if($("#resemail").attr('value') ==""){
-           errorMsg = "负责人邮件不能为空";
-           $("#yzresemail").text(errorMsg);
+        if ($("#resemail").attr('value') == "") {
+            errorMsg = "负责人邮件不能为空";
+            $("#yzresemail").text(errorMsg);
             return;
         }
         errorMsg = "";
     });
-    $("#restelphone").blur(function(){
+    $("#restelphone").blur(function () {
         $("#yzrestelphone").text("*");
-        if($("#restelphone").attr('value') ==""){
-           errorMsg = "负责人电话不能为空";
-           $("#yzrestelphone").text(errorMsg);
+        if ($("#restelphone").attr('value') == "") {
+            errorMsg = "负责人电话不能为空";
+            $("#yzrestelphone").text(errorMsg);
             return;
         }
         errorMsg = "";
     });
-    $("#button1").click(function(){
-        if(errorMsg == ""){
+    $("#button1").click(function () {
+        if (errorMsg == "") {
             document.forms[0].submit();
-        }else{
-           $("#before").before(function(){
-               return "<tr><td><span class='errorinfo'>对不起，信息填写不全，无法提交</span></td></tr>";
-           });
+        } else {
+            $("#before").before(function () {
+                return "<tr><td><span class='errorinfo'>对不起，信息填写不全，无法提交</span></td></tr>";
+            });
         }
     });
 </script>

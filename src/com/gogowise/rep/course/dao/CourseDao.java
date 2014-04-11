@@ -34,6 +34,8 @@ public interface CourseDao extends ModelDao<Course> {
 
     public List<Course> findlatestCourses(Pagination pagination);
 
+    public List<Course> findlatestCoursesForAdmin(Pagination pagination);
+
     public List<Course> findMoocCourses(Pagination pagination);
 
     public List<Course> findNonMoocCourses(Pagination pagination);

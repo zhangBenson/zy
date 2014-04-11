@@ -1,21 +1,21 @@
 <%--<link href="css/orgLeague/orgLeague.css" rel="stylesheet" type="text/css"/>--%>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <link href="css/orgLeague/<s:text name='orgleague.css.filename'/>" rel="stylesheet" type="text/css"/>
 <style type="text/css">
 
 
     /*#orgLeagueDiv #orgCenterDiv {*/
-        /*float: left;*/
-        /*margin-top: 20px;*/
-        /*margin-right: 40px;*/
-        /*margin-bottom: 20px;*/
-        /*margin-left: 40px;*/
-        /*height: 425px;*/
-        /*width: 844px;*/
-        /*padding-top: 30px;*/
-        /*padding-right: 55px;*/
-        /*padding-left: 40px;*/
-        /*position: relative;*/
+    /*float: left;*/
+    /*margin-top: 20px;*/
+    /*margin-right: 40px;*/
+    /*margin-bottom: 20px;*/
+    /*margin-left: 40px;*/
+    /*height: 425px;*/
+    /*width: 844px;*/
+    /*padding-top: 30px;*/
+    /*padding-right: 55px;*/
+    /*padding-left: 40px;*/
+    /*position: relative;*/
     /*}*/
 
     .forthhead {
@@ -36,10 +36,11 @@
 </style>
 
 <script type="text/javascript">
-    //    var rule = "<s:text name='rule'/>";
+    //    var rule = "
+    <s:text name='rule'/>";
     var rule = "<s:text name='orgleague.info.clause'/>";
     $(function () {
-        $(".boxy").boxy({title:rule, closeable:true, modal:true});
+        $(".boxy").boxy({title: rule, closeable: true, modal: true});
     });
 
     $(document).ready(function () {
@@ -70,27 +71,30 @@
 
             <div class="fourthLeft">
                 <ul>
-                    <li>&nbsp;&nbsp;</li><li>&nbsp;&nbsp;</li>
+                    <li>&nbsp;&nbsp;</li>
+                    <li>&nbsp;&nbsp;</li>
                     <li class="leftAndRightHead">组织负责人姓名：<s:property value="org.responsiblePerson.userName"/></li>
                     <li>&nbsp;&nbsp;</li>
                     <li class="leftAndRightHead">
-                        <s:property value="%{getText('orgleague.info.orgName')}"/><s:property value="org.schoolName"/></li>
+                        <s:property value="%{getText('orgleague.info.orgName')}"/><s:property
+                            value="org.schoolName"/></li>
                     <li>&nbsp;&nbsp;</li>
-                    <li class="leftAndRightHead"><s:property value="%{getText('orgleague.info.contact')}"/><s:property value="org.responsiblePerson.telphone"/></li>
+                    <li class="leftAndRightHead"><s:property value="%{getText('orgleague.info.contact')}"/><s:property
+                            value="org.responsiblePerson.telphone"/></li>
                 </ul>
             </div>
             <div class="fourthMid">
                 <ul>
-                        <li class="leftAndRightHead">
-                            <div class="imgWords"><s:property value="%{getText('orgleague.info.orgLogo')}"/><br/><img
+                    <li class="leftAndRightHead">
+                        <div class="imgWords"><s:property value="%{getText('orgleague.info.orgLogo')}"/><br/><img
                                 src="<s:property value="org.logoUrl"/> " width="111" height="89"
                                 onerror="javascript:this.src='images/nopic.jpg'"></div>
-                        </li>
-                        <li class="leftAndRightHead">
-                            <div class="imgWords"><s:property value="%{getText('orgleague.info.cetification')}"/><br/><img
+                    </li>
+                    <li class="leftAndRightHead">
+                        <div class="imgWords"><s:property value="%{getText('orgleague.info.cetification')}"/><br/><img
                                 src="<s:property value="org.businessLicenseUrl"/> " width="111" height="89"
                                 onerror="javascript:this.src='images/nopic.jpg'"></div>
-                        </li>
+                    </li>
                 </ul>
             </div>
             <div class="backAndNext">
@@ -114,12 +118,12 @@
                     <s:if test="confirmCode != null">
                         <div style="height: 37px;width: 420px;float: right;display: block;margin-left: 400px;">
                             <s:property value="%{getText('orgleague.info.userMail')}"/>：
-                                 <font color="red"><s:property value="org.responsiblePerson.email"/></font>
+                            <font color="red"><s:property value="org.responsiblePerson.email"/></font>
                             <s:property value="%{getText('orgleague.info.isConfirmed')}"/> :
-                                 <font color="red"><s:property value="%{getText('lable.yesno.'+org.confirmed)}"/></font>
+                            <font color="red"><s:property value="%{getText('lable.yesno.'+org.confirmed)}"/></font>
                             <s:if test="#session.HIG_SEC_USER_EMAIL != null">
-                            <s:hidden name="confirmCode"/>
-                            <s:submit action="higSecConfirmOrg" key="orgleague.info.confirm" ></s:submit>
+                                <s:hidden name="confirmCode"/>
+                                <s:submit action="higSecConfirmOrg" key="orgleague.info.confirm"></s:submit>
                             </s:if>
                         </div>
                     </s:if>
@@ -127,10 +131,10 @@
                     <%--</form>--%>
             </div>
             <ul class="orgStep">
-                 <li><s:property value="%{getText('org.warmtip')}"/></li>
-                 <%--<li><s:property value="%{getText('orgleague.identity.confirm')}"/></li>--%>
-                 <li><s:property value="%{getText('orgleague.info.fill')}"/></li>
-                 <li class="fourth"><s:property value="%{getText('orgleague.info.submit')}"/></li>
+                <li><s:property value="%{getText('org.warmtip')}"/></li>
+                    <%--<li><s:property value="%{getText('orgleague.identity.confirm')}"/></li>--%>
+                <li><s:property value="%{getText('orgleague.info.fill')}"/></li>
+                <li class="fourth"><s:property value="%{getText('orgleague.info.submit')}"/></li>
             </ul>
         </div>
     </div>

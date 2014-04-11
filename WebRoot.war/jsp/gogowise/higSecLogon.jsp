@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
 
 
@@ -90,22 +90,27 @@
 
     <div id="register">
         <div id="regleft">
-            <div id="regtitle"><s:property value="%{getText('member.login.label')}" /></div>
-            <div id="regtitle2"><s:property value="%{getText(member.login.center')}" /></div>
+            <div id="regtitle"><s:property value="%{getText('member.login.label')}"/></div>
+            <div id="regtitle2"><s:property value="%{getText(member.login.center')}"/></div>
 
             <div id="links"></div>
         </div>
         <div id="regright">
-            <p><s:property value="%{getText('email')}" />&nbsp;&nbsp;<span class="errorinfo" id="yzemail">*</span><br/><br/>
-                <input type="text" name="user.email"id="email" class="text" />
+            <p><s:property value="%{getText('email')}"/>&nbsp;&nbsp;<span class="errorinfo"
+                                                                          id="yzemail">*</span><br/><br/>
+                <input type="text" name="user.email" id="email" class="text"/>
             </p>
             <br/>
-            <p id="addnext"><s:property value="%{getText('password')}" />&nbsp;&nbsp;<span class="errorinfo" id="yzpwd">*<s:property value="identityConfirmMsg"/></span><br/><br/>
+
+            <p id="addnext"><s:property value="%{getText('password')}"/>&nbsp;&nbsp;<span class="errorinfo" id="yzpwd">*<s:property
+                    value="identityConfirmMsg"/></span><br/><br/>
                 <s:password name="user.password" id="pwd" cssClass="text"/>
             </p>
             <br/>
-            <p><input type="submit" name="button" id="btn1" onclick="return checkForm();" value="<s:property value="%{getText('Login')}" />"/> <a
-                    href="initRepassword.html"><span><s:property value="%{getText('link.forget.pwd')}" />？</span></a>
+
+            <p><input type="submit" name="button" id="btn1" onclick="return checkForm();"
+                      value="<s:property value="%{getText('Login')}" />"/> <a
+                    href="initRepassword.html"><span><s:property value="%{getText('link.forget.pwd')}"/>？</span></a>
             </p>
         </div>
     </div>
@@ -114,45 +119,45 @@
 
 <script type="text/javascript">
 
-     $("#email").blur(function(){
-         checkEmail();
+    $("#email").blur(function () {
+        checkEmail();
     });
 
-    $("#email").focus(function(){
+    $("#email").focus(function () {
         $("#yzemail").text("*");
     });
 
-     $("#pwd").focus(function(){
+    $("#pwd").focus(function () {
         $("#yzpwd").text("*");
     });
 
-    $("#pwd").blur(function() {
-          checkPwd();
+    $("#pwd").blur(function () {
+        checkPwd();
     });
 
     function checkForm() {
-        return checkEmail()&&checkPwd();
+        return checkEmail() && checkPwd();
     }
 
-    function checkEmail(){
-         $("#yzemail").text("*");
-        if($("#email").attr('value')!="" ){
-           var pattern = /^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/;
-           var email = $("#email").val();
-            if(!pattern.test(email)){
+    function checkEmail() {
+        $("#yzemail").text("*");
+        if ($("#email").attr('value') != "") {
+            var pattern = /^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/;
+            var email = $("#email").val();
+            if (!pattern.test(email)) {
                 $("#yzemail").text("<s:text name="emailerror"/>");
                 return false;
             }
-        }else{
-                 $("#yzemail").text("<s:text name="emailEmpty"/>");
+        } else {
+            $("#yzemail").text("<s:text name="emailEmpty"/>");
             return false;
         }
 
         return true;
     }
 
-    function checkPwd(){
-         $("#yzpwd").text("*");
+    function checkPwd() {
+        $("#yzpwd").text("*");
         var pwd = $("#pwd").attr('value');
         if (pwd == "") {
             $("#yzpwd").text("<s:text name="psdEmpty"/>");

@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -9,11 +9,11 @@
         });
 
         var currHref = window.location.href;
-        if(currHref.indexOf("index.html")>-1){
-            document.getElementById("isIndex").value=1;
+        if (currHref.indexOf("index.html") > -1) {
+            document.getElementById("isIndex").value = 1;
         }
-        else{
-            document.getElementById("isIndex").value=0;
+        else {
+            document.getElementById("isIndex").value = 0;
         }
 
     })
@@ -24,10 +24,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            <a href="index.html"><div class="topLogo"></div></a>
+            <a href="index.html">
+                <div class="topLogo"></div>
+            </a>
 
         </div>
-        <div class="col-md-6">
+        <div class="col-md-7">
             <ul class="nav nav-pills">
                 <li>
                     <%--<a href="index.html" class="navlink"><s:property value="%{getText('menu.item.index')}"/></a>--%>
@@ -48,7 +50,7 @@
             </ul>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="pull-right">
                 <s:if test="#session.email !=null">
                     <div class="btn-group">
@@ -79,7 +81,7 @@
                                 <%--<li><a href="setting.html"><span></span><s:property value="%{getText('account.item.accountsettings')}" /></a></li>--%>
                                 <%--</s:else>--%>
 
-                                <li class="divider"></li>
+                            <li class="divider"></li>
 
                                 <%--<a href="#">Log out</a>--%>
                             <li><a href="exitSystem.html"><span></span><s:property
@@ -168,7 +170,7 @@
         if (checkForm()) {
 
             var userData = $("#user_login_form").serialize();
-            $.post("ajaxLogin.html",userData,function(data){
+            $.post("ajaxLogin.html", userData, function (data) {
                 handlePostResult(data);
             });
         }
@@ -177,33 +179,33 @@
         if (event.keyCode == 13) {
             if (checkForm()) {
                 var userData = $("#user_login_form").serialize();
-                $.post("ajaxLogin.html",userData,function(data){
+                $.post("ajaxLogin.html", userData, function (data) {
                     handlePostResult(data);
                 });
             }
         }
     });
-    function handlePostResult(data){
-        if(data=="success" || data=="Teacher"){
+    function handlePostResult(data) {
+        if (data == "success" || data == "Teacher") {
             var currHref = window.location.href;
-            if(currHref.substring(currHref.lastIndexOf('/')) == '/exitSystem.html'){
-                currHref = currHref.substring(0,currHref.lastIndexOf('/')+1);
+            if (currHref.substring(currHref.lastIndexOf('/')) == '/exitSystem.html') {
+                currHref = currHref.substring(0, currHref.lastIndexOf('/') + 1);
             }
-            if(currHref.indexOf("index.html")>-1){
-                if(data=="success"){
+            if (currHref.indexOf("index.html") > -1) {
+                if (data == "success") {
                     window.location.href = "personalCenter.html";
                 }
-                else{
+                else {
                     window.location.href = "myfirstPage.html";
                 }
                 return;
             }
             window.location.reload();
-        }else{
+        } else {
             $("#login_tip").text(data);
         }
     }
-    function checkForm(){
+    function checkForm() {
 
         return checkEmail() && checkPwd();
     }

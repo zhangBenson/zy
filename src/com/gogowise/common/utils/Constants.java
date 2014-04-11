@@ -49,7 +49,7 @@ public class Constants {
     public static final String TYPE_JUDGE_STRING = "2";
     public static final String TYPE_HOST_STRING = "3";
 
-    public static final String WHICH_SITE_CAN＿HAVE＿SECDOMAIN = "test.gogowise.com";
+    public static final String WHICH_SITE_CAN＿HAVE＿SECDOMAIN = "www.gogowise.com";
     public static final String WELCOME_PAGE = "index.jsp";
     public static final int MIN_SECDOMAIN_LENGTH = 5;
     public static final String DEFAULT_BLANK_VALUE = "";
@@ -187,6 +187,15 @@ public class Constants {
             "</style>";
 
     public static final String REG_CSS = "<style type=\"text/css\">\n#rvmDiv #logoDiv {background-image: url(http://www.gogowise.com/images/logo.jpg);background-repeat: no-repeat;height: 65px;margin-left: 45px;}\n#rvmDiv #rvmcontentDiv ul .welcomeTittle {margin-left: 30px;}\n#rvmDiv {float: left;width: 100%;font-family: \"微软雅黑\", \"宋体\", \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif;}\n#logoDiv {float: left;width: 100%;}\n#rvmcontentDiv {float: left;width: 100%;}\n#rvmDiv #rvmcontentDiv ul li {list-style-type: none;}\n#rvmDiv #rvmcontentDiv .orangeWords {color: rgb(255,155,55);}\n#rvmDiv #rvmcontentDiv ul .lastWords {margin-top: 50px;}\n</style>";
+
+
+    public static Integer Student_Age_Type0 = 0;  //0 - 3 age
+    public static Integer Student_Age_Type1 = 1;  //3 - 4 age
+    public static Integer Student_Age_Type2 = 2;  //4 - 5 age
+    public static Integer Student_Age_Type3 = 3;  //5 - 6 age
+    public static Integer Student_Age_Type4 = 4;  //6 - 7 age
+    public static Integer Student_Age_Type5 = 7;  //k - 12 age
+    public static Integer Student_Age_Type6 = 8;  //Adult
 
     /* ---------------------  Search Type ----------------------------------- */
     public static int SEARCH_TYPE_ALL = 1;

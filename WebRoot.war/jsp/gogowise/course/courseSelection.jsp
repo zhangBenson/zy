@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
 <script type="text/javascript" src="js/jquery.rate.js"></script>
 <style type="text/css">
@@ -55,6 +55,7 @@
     margin: 8px 0 0 5px;
     text-align: left;
 }
+
 .courseinfo p {
     margin: 0;
     line-height: 24px;
@@ -65,7 +66,7 @@ b {
 }
 
 /*a:link, a:visited {*/
-    /*color: #cc6600;*/
+/*color: #cc6600;*/
 /*}*/
 
 .blogframe h6 .courseName {
@@ -74,7 +75,7 @@ b {
 }
 
 /*a:hover {*/
-    /*color: #F90;*/
+/*color: #F90;*/
 /*}*/
 
 b a {
@@ -347,7 +348,7 @@ h6 .seeallclass {
     display: block;
     width: 130px;
     margin-left: 20px;
-    margin-bottom:10px;
+    margin-bottom: 10px;
     font-family: "微软雅黑", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     font-size: 14px;
 }
@@ -423,8 +424,8 @@ h6 .seeallclass {
 
 #courseRight .rightVideoBorder {
     float: left;
-    width:124px;
-    height:93px;
+    width: 124px;
+    height: 93px;
     border: solid 1px #ccc;
     background: #fff;
     padding: 2px;
@@ -439,21 +440,21 @@ h6 .seeallclass {
 
 #courseRight .videoLi {
     display: block;
-    float:left;
-    width:130px;
-    height:144px;
+    float: left;
+    width: 130px;
+    height: 144px;
     text-align: center;
     overflow: hidden;
 }
 
-#courseright  .videoLi .videoWords {
+#courseright .videoLi .videoWords {
     display: block;
-    float:left;
+    float: left;
     font-size: 14px;
     line-height: 22px;
     overflow: hidden;
-    height:44px;
-    width:124px;
+    height: 44px;
+    width: 124px;
     background: #9acd32
 }
 </style>
@@ -671,149 +672,150 @@ h6 .seeallclass {
 <s:form action="courseSelection" theme="css_xhtml" id="postPageForm">
 <s:hidden name="searchTyp" id="searchTyp"/>
 <div id="courseLeft">
-    <div id="courseSearch">
-        <div id="normalSearch">
-            <s:textfield name="courseName" cssClass="keyWords"/>
-                <%--<input name="keyWords" type="text" class="keyWords"/>--%>
+<div id="courseSearch">
+    <div id="normalSearch">
+        <s:textfield name="courseName" cssClass="keyWords"/>
+            <%--<input name="keyWords" type="text" class="keyWords"/>--%>
 
-            <div class="advSearchButton" onclick="javascript:submitSearchForm()">
-                <span><s:property value="%{getText('menu.item.search')}"/> </span>
-            </div>
+        <div class="advSearchButton" onclick="javascript:submitSearchForm()">
+            <span><s:property value="%{getText('menu.item.search')}"/> </span>
         </div>
-        <div class="advanceTittle"><span id="advanceExtendOrClose"><s:property value="%{getText('course.selection.advSearch')}"/></span></div>
     </div>
+    <div class="advanceTittle"><span id="advanceExtendOrClose"><s:property
+            value="%{getText('course.selection.advSearch')}"/></span></div>
+</div>
 
-    <!--高级搜搜Div-->
-    <div id="searchDiv">
-        <div class="advanceExtendDiv" id="advanceExtendDiv">
-            <div class="searchTip">
-                <p class="normalTip"><s:property value="%{getText('course.selection.tip')}"/></p>
-                    <%--<p class="warmTip"> <b>温馨提示</b>:点击添加按钮之后可以输入更多搜索选项 </p>--%>
-            </div>
-
-            <table border="0" align="left" cellpadding="0" cellspacing="0">
-                <tr height="45px">
-                    <s:hidden name="searchConditions[0].orRelation" value="true"/>
-                    <s:hidden name="searchConditions[0].operationName" value="like"/>
-                    <td width="112px"></td>
-                    <td>
-                        <s:select name="searchConditions[0].columnName"
-                                  list="#{'c.name':getText('course.info.courseName'),'c.teacher.nickName':getText('course.lecturer.nickname'),'c.organization.schoolName':getText('org.nickname'),'c.description':getText('course.content')}"> </s:select>
-                    </td>
-                    <td width="84px" class="insertedWords"><s:property
-                            value="%{getText('course.selection.contain')}"/></td>
-                    <td width="200px">
-                        <s:textfield name="searchConditions[0].value" type="text" cssClass="inputField" size="13"/>
-                    </td>
-                </tr>
-
-                <tr height="45px">
-                    <s:hidden name="searchConditions[1].operationName" value="like"/>
-                    <td width="60px">
-                        <s:select name="searchConditions[1].orRelation"
-                                  list="#{'false':getText('course.selection.and'),'true':getText('course.selection.or')}"> </s:select>
-                            <%--<select name="dateLogic">--%>
-                            <%--<option name="dateLogic">并且</option>--%>
-                            <%--<option name="dateLogic">或者</option>--%>
-                            <%--</select>--%>
-                    </td>
-                    <td width="80px" align="right">
-                        <s:select name="searchConditions[1].columnName"
-                                  list="#{'c.name':getText('course.info.courseName'),'c.teacher.nickName':getText('course.lecturer.nickname'),'c.organization.schoolName':getText('org.nickname'),'c.description':getText('course.content')}"> </s:select>
-                    </td>
-                    <td width="60px" class="insertedWords"><s:property
-                            value="%{getText('course.selection.contain')}"/></td>
-                    <td width="188px">
-                        <s:textfield name="searchConditions[1].value" type="text" cssClass="inputField" size="13"/>
-                    </td>
-                </tr>
-
-                <tr height=45px>
-                    <td width="60px">
-                        <s:select name="searchConditions[2].orRelation"
-                                  list="#{'false':getText('course.selection.and'),'true':getText('course.selection.or')}"> </s:select>
-                            <%--<select name="dateLogic" >--%>
-                            <%--<option name="dateLogic">并且</option>--%>
-                            <%--<option name="dateLogic">或者</option>--%>
-                            <%--</select>--%>
-                    </td>
-                    <td width="80px">
-                        <s:select name="searchConditions[2].columnName"
-                                  list="#{'c.startDate':getText('course.startDate'),'c.finishDate':getText('lable.course.endtime')}"> </s:select>
-                            <%--<select name="courseTime">--%>
-                            <%--<option name="courseTime">开始时间</option>--%>
-                            <%--<option name="courseTime">结束时间</option>--%>
-                            <%--</select>--%>
-                    </td>
-                    <td width="60px">
-                        <s:select name="searchConditions[2].operationName"
-                                  list="#{'>':getText('course.selection.earlierThan'),'<':getText('course.selection.laterThan')}"> </s:select>
-                            <%--<select name="beforeOrAfter">--%>
-                            <%--<option name="beforeOrAfter">早于</option>--%>
-                            <%--<option name="beforeOrAfter">晚于</option>--%>
-                            <%--</select>--%>
-                    </td>
-                    <td width="188px" align="left">
-                        <input type="text" class="Wdatepicker inputField" id="courseStartDateCalenderValue"
-                               name="searchConditions[2].calendarValue"
-                               value="<s:date name='searchConditions.{calendarValue}[2]' format="%{getText('global.display.date')}" />"
-                               size="13"/>
-                    </td>
-                </tr>
-                <tr height="45px">
-                    <td width="60px">
-                        <s:select name="searchConditions[3].orRelation"
-                                  list="#{'false':getText('course.selection.and'),'true':getText('course.selection.or')}"> </s:select>
-                            <%--<select name="dateLogic">--%>
-                            <%--<option name="dateLogic">并且</option>--%>
-                            <%--<option name="dateLogic">或者</option>--%>
-                            <%--</select>--%>
-                    </td>
-                    <td width="80px">
-                        <s:select name="searchConditions[3].columnName"
-                                  list="#{'zhiQuan':getText('course.zhiquan.fee'),'zhiBi':getText('course.zhibi.fee')}"> </s:select>
-                    </td>
-                    <td width="45px">
-                        <s:select name="searchConditions[3].operationName"
-                                  list="#{'>':getText('course.selection.greaterThan'),'<':getText('course.selection.lessThan')}"> </s:select>
-                            <%--<select name="beforeOrAfter">--%>
-                            <%--<option name="beforeOrAfter">大于</option>--%>
-                            <%--<option name="beforeOrAfter">小于</option>--%>
-                            <%--</select>--%>
-                    </td>
-                    <td width="188px">
-                        <s:textfield name="searchConditions[3].doubleValue" type="text" cssClass="inputField"
-                                     size="13"/>
-                            <%--<input name="conclude" type="text" class="inputField" size="13" /></td>--%>
-                    </td>
-                </tr>
-
-                <tbody id="tbody">
-
-                </tbody>
-                <tr height="32px">
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td></td>
-                    <td>
-                        <div class="advSearchButton"
-                             onclick="javascript:submitAdvForm()">
-                            <span><s:property value="%{getText('menu.item.search')}"/></span></div>
-                    </td>
-                        <%--<td><button id="advSearch"  onclick="javascript:document.getElementById('advSearchForm').submit()" >搜索</button></td>--%>
-                    <td></td>
-                </tr>
-            </table>
-
+<!--高级搜搜Div-->
+<div id="searchDiv">
+    <div class="advanceExtendDiv" id="advanceExtendDiv">
+        <div class="searchTip">
+            <p class="normalTip"><s:property value="%{getText('course.selection.tip')}"/></p>
+                <%--<p class="warmTip"> <b>温馨提示</b>:点击添加按钮之后可以输入更多搜索选项 </p>--%>
         </div>
-        <!--end of searchExtendDiv-->
+
+        <table border="0" align="left" cellpadding="0" cellspacing="0">
+            <tr height="45px">
+                <s:hidden name="searchConditions[0].orRelation" value="true"/>
+                <s:hidden name="searchConditions[0].operationName" value="like"/>
+                <td width="112px"></td>
+                <td>
+                    <s:select name="searchConditions[0].columnName"
+                              list="#{'c.name':getText('course.info.courseName'),'c.teacher.nickName':getText('course.lecturer.nickname'),'c.organization.schoolName':getText('org.nickname'),'c.description':getText('course.content')}"> </s:select>
+                </td>
+                <td width="84px" class="insertedWords"><s:property
+                        value="%{getText('course.selection.contain')}"/></td>
+                <td width="200px">
+                    <s:textfield name="searchConditions[0].value" type="text" cssClass="inputField" size="13"/>
+                </td>
+            </tr>
+
+            <tr height="45px">
+                <s:hidden name="searchConditions[1].operationName" value="like"/>
+                <td width="60px">
+                    <s:select name="searchConditions[1].orRelation"
+                              list="#{'false':getText('course.selection.and'),'true':getText('course.selection.or')}"> </s:select>
+                        <%--<select name="dateLogic">--%>
+                        <%--<option name="dateLogic">并且</option>--%>
+                        <%--<option name="dateLogic">或者</option>--%>
+                        <%--</select>--%>
+                </td>
+                <td width="80px" align="right">
+                    <s:select name="searchConditions[1].columnName"
+                              list="#{'c.name':getText('course.info.courseName'),'c.teacher.nickName':getText('course.lecturer.nickname'),'c.organization.schoolName':getText('org.nickname'),'c.description':getText('course.content')}"> </s:select>
+                </td>
+                <td width="60px" class="insertedWords"><s:property
+                        value="%{getText('course.selection.contain')}"/></td>
+                <td width="188px">
+                    <s:textfield name="searchConditions[1].value" type="text" cssClass="inputField" size="13"/>
+                </td>
+            </tr>
+
+            <tr height=45px>
+                <td width="60px">
+                    <s:select name="searchConditions[2].orRelation"
+                              list="#{'false':getText('course.selection.and'),'true':getText('course.selection.or')}"> </s:select>
+                        <%--<select name="dateLogic" >--%>
+                        <%--<option name="dateLogic">并且</option>--%>
+                        <%--<option name="dateLogic">或者</option>--%>
+                        <%--</select>--%>
+                </td>
+                <td width="80px">
+                    <s:select name="searchConditions[2].columnName"
+                              list="#{'c.startDate':getText('course.startDate'),'c.finishDate':getText('lable.course.endtime')}"> </s:select>
+                        <%--<select name="courseTime">--%>
+                        <%--<option name="courseTime">开始时间</option>--%>
+                        <%--<option name="courseTime">结束时间</option>--%>
+                        <%--</select>--%>
+                </td>
+                <td width="60px">
+                    <s:select name="searchConditions[2].operationName"
+                              list="#{'>':getText('course.selection.earlierThan'),'<':getText('course.selection.laterThan')}"> </s:select>
+                        <%--<select name="beforeOrAfter">--%>
+                        <%--<option name="beforeOrAfter">早于</option>--%>
+                        <%--<option name="beforeOrAfter">晚于</option>--%>
+                        <%--</select>--%>
+                </td>
+                <td width="188px" align="left">
+                    <input type="text" class="Wdatepicker inputField" id="courseStartDateCalenderValue"
+                           name="searchConditions[2].calendarValue"
+                           value="<s:date name='searchConditions.{calendarValue}[2]' format="%{getText('global.display.date')}" />"
+                           size="13"/>
+                </td>
+            </tr>
+            <tr height="45px">
+                <td width="60px">
+                    <s:select name="searchConditions[3].orRelation"
+                              list="#{'false':getText('course.selection.and'),'true':getText('course.selection.or')}"> </s:select>
+                        <%--<select name="dateLogic">--%>
+                        <%--<option name="dateLogic">并且</option>--%>
+                        <%--<option name="dateLogic">或者</option>--%>
+                        <%--</select>--%>
+                </td>
+                <td width="80px">
+                    <s:select name="searchConditions[3].columnName"
+                              list="#{'zhiQuan':getText('course.zhiquan.fee'),'zhiBi':getText('course.zhibi.fee')}"> </s:select>
+                </td>
+                <td width="45px">
+                    <s:select name="searchConditions[3].operationName"
+                              list="#{'>':getText('course.selection.greaterThan'),'<':getText('course.selection.lessThan')}"> </s:select>
+                        <%--<select name="beforeOrAfter">--%>
+                        <%--<option name="beforeOrAfter">大于</option>--%>
+                        <%--<option name="beforeOrAfter">小于</option>--%>
+                        <%--</select>--%>
+                </td>
+                <td width="188px">
+                    <s:textfield name="searchConditions[3].doubleValue" type="text" cssClass="inputField"
+                                 size="13"/>
+                        <%--<input name="conclude" type="text" class="inputField" size="13" /></td>--%>
+                </td>
+            </tr>
+
+            <tbody id="tbody">
+
+            </tbody>
+            <tr height="32px">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td></td>
+                <td>
+                    <div class="advSearchButton"
+                         onclick="javascript:submitAdvForm()">
+                        <span><s:property value="%{getText('menu.item.search')}"/></span></div>
+                </td>
+                    <%--<td><button id="advSearch"  onclick="javascript:document.getElementById('advSearchForm').submit()" >搜索</button></td>--%>
+                <td></td>
+            </tr>
+        </table>
 
     </div>
-    <!--end of searchDiv-->
-    <!--高级搜搜Div-->
+    <!--end of searchExtendDiv-->
+
+</div>
+<!--end of searchDiv-->
+<!--高级搜搜Div-->
 
 
-    <div id="newCourses">
+<div id="newCourses">
     <div class="newCourseTittle">
         <div class="innerDiv"><span id="researchResult" class="leftWords"></span> <span class="rightWords"></span></div>
     </div>
@@ -824,13 +826,19 @@ h6 .seeallclass {
 
                 <div class="video"><s:a action="voaCourseBlog">
                     <s:param name="course.id" value="id"/>
-                    <img src="<s:property value="logoUrl"/>" onerror="javascript:this.src='images/nopic.jpg'" title="<s:property value="name"/>" />
+                    <img src="<s:property value="logoUrl"/>" onerror="javascript:this.src='images/nopic.jpg'"
+                         title="<s:property value="name"/>"/>
                 </s:a></div>
                 <h6><span class="courseName"><s:property value="name"/></span>
                     <span id="rate_t_0" class="type2"><span class="seeallclass"></span></span>
                     <span class="seeall">
-                            <a onclick="saveReservation(<s:property value="#idx.index"/> ,<s:property value="id"/>,<s:if test="teacher!=null"><s:property value="teacher.id"/></s:if><s:else>0</s:else>);">
-                            <input name="" type="button" value="" id="reservationbtn"/></a>
+                            <a onclick="saveReservation(
+                                <s:property value="#idx.index"/> ,<s:property value="id"/>,
+                                <s:if test="teacher!=null">
+                                    <s:property value="teacher.id"/>
+                                </s:if>
+                                <s:else>0</s:else>);">
+                                <input name="" type="button" value="" id="reservationbtn"/></a>
                     </span>
                     <span id="msg0" class="reservationsucceed"></span>
                 </h6>
@@ -840,6 +848,7 @@ h6 .seeallclass {
                             name="org.id"
                             value="organization.id"/><s:property
                             value="organization.schoolName"/></s:a></b></p>
+
                     <p><s:property value="%{getText('label.forcast.lecturer')}"/>：<b><s:a action="userBlog"><s:param
                             name="user.id" value="teacher.id"/><s:property
                             value="teacher.nickName"/></s:a></b></p>
@@ -857,13 +866,13 @@ h6 .seeallclass {
                             value="totalHours"/>&nbsp;<s:property
                             value="%{getText('label.online.class.perods')}"/></b></p>
                 </div>
-                <%--<div class="courseinfo">--%>
+                    <%--<div class="courseinfo">--%>
                     <%--<p><s:property value="%{getText('label.forcast.enrollment')}"/>：<b><s:property--%>
-                            <%--value="observationNum"/></b> 人</p>--%>
+                    <%--value="observationNum"/></b> 人</p>--%>
 
                     <%--<p><s:property value="%{getText('label.forcast.subscriber')}"/>：<b><s:property--%>
-                            <%--value="buyAgesNum"/></b> 人</p>--%>
-                <%--</div>--%>
+                    <%--value="buyAgesNum"/></b> 人</p>--%>
+                    <%--</div>--%>
                 <div class="courseintro"><span class="introduction"></span><strong><s:property
                         value="%{getText('course.intro')}"/>：</strong><s:property
                         value="description"/></div>
@@ -919,9 +928,9 @@ h6 .seeallclass {
                         <s:a action="userBlog"><s:param name="user.id" value="id"></s:param>
                             <div class="rightVideoBorder"><img
                                     src="<s:property value= "pic"/>"
-                                onerror="javascript:this.src='images/nopic.jpg'"
-                                title="<s:property value="nickName"/>"/></div>
-                    </s:a>
+                                    onerror="javascript:this.src='images/nopic.jpg'"
+                                    title="<s:property value="nickName"/>"/></div>
+                        </s:a>
                         <span class="videoWords"><s:property value="nickName"/></span></li>
 
                     </li>
@@ -932,34 +941,34 @@ h6 .seeallclass {
     </div>
 
     <%--<div id="hotOrganizations">--%>
-        <%--<div class="hotTittle">--%>
-            <%--<div class="innerDiv"><span class="leftWords"><s:property value="%{getText('org.hottest')}"/></span><span--%>
-                    <%--class="rightWords"><s:property value="%{getText('others.more')}"/></span></div>--%>
-            <%--<div class="hotList">--%>
-                <%--<ul>--%>
-                    <%--<s:iterator value="hotCourse">--%>
-                        <%--<li class="videoLi"><s:a action="voaCourseBlog"><s:param name="course.id" value="id"/>--%>
-                            <%--<div class="rightVideoBorder"><img--%>
-                                    <%--src="<s:property value="logoUrl"/>"--%>
-                                    <%--onerror="javascript:this.src='images/nopic.jpg'"--%>
-                                    <%--alt="courseIcon"/></div>--%>
-                        <%--</s:a>--%>
-                            <%--<span class="videoWords"><s:property value="name"/></span></li>--%>
+    <%--<div class="hotTittle">--%>
+    <%--<div class="innerDiv"><span class="leftWords"><s:property value="%{getText('org.hottest')}"/></span><span--%>
+    <%--class="rightWords"><s:property value="%{getText('others.more')}"/></span></div>--%>
+    <%--<div class="hotList">--%>
+    <%--<ul>--%>
+    <%--<s:iterator value="hotCourse">--%>
+    <%--<li class="videoLi"><s:a action="voaCourseBlog"><s:param name="course.id" value="id"/>--%>
+    <%--<div class="rightVideoBorder"><img--%>
+    <%--src="<s:property value="logoUrl"/>"--%>
+    <%--onerror="javascript:this.src='images/nopic.jpg'"--%>
+    <%--alt="courseIcon"/></div>--%>
+    <%--</s:a>--%>
+    <%--<span class="videoWords"><s:property value="name"/></span></li>--%>
 
-                        <%--</li>--%>
+    <%--</li>--%>
 
-                    <%--</s:iterator>--%>
-                    <%--&lt;%&ndash;<li><a href="#"><img src="images/blogindex/courseIcon.png" width="130" height="98"&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;alt="courseIcon"/></a> <span><s:property value="%{getText('org.tittle')}"/></span></li>&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;<li><a href="#"><img src="images/blogindex/courseIcon.png" width="130" height="98"&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;alt="courseIcon"/></a> <span><s:property value="%{getText('org.tittle')}"/></span></li>&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;<li><a href="#"><img src="images/blogindex/courseIcon.png" width="130" height="98"&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;alt="courseIcon"/></a> <span><s:property value="%{getText('org.tittle')}"/></span></li>&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;<li><a href="v"><img src="images/blogindex/courseIcon.png" width="130" height="98"&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;alt="courseIcon"/></a> <span><s:property value="%{getText('org.tittle')}"/></span></li>&ndash;%&gt;--%>
-                <%--</ul>--%>
-            <%--</div>--%>
-        <%--</div>--%>
+    <%--</s:iterator>--%>
+    <%--&lt;%&ndash;<li><a href="#"><img src="images/blogindex/courseIcon.png" width="130" height="98"&ndash;%&gt;--%>
+    <%--&lt;%&ndash;alt="courseIcon"/></a> <span><s:property value="%{getText('org.tittle')}"/></span></li>&ndash;%&gt;--%>
+    <%--&lt;%&ndash;<li><a href="#"><img src="images/blogindex/courseIcon.png" width="130" height="98"&ndash;%&gt;--%>
+    <%--&lt;%&ndash;alt="courseIcon"/></a> <span><s:property value="%{getText('org.tittle')}"/></span></li>&ndash;%&gt;--%>
+    <%--&lt;%&ndash;<li><a href="#"><img src="images/blogindex/courseIcon.png" width="130" height="98"&ndash;%&gt;--%>
+    <%--&lt;%&ndash;alt="courseIcon"/></a> <span><s:property value="%{getText('org.tittle')}"/></span></li>&ndash;%&gt;--%>
+    <%--&lt;%&ndash;<li><a href="v"><img src="images/blogindex/courseIcon.png" width="130" height="98"&ndash;%&gt;--%>
+    <%--&lt;%&ndash;alt="courseIcon"/></a> <span><s:property value="%{getText('org.tittle')}"/></span></li>&ndash;%&gt;--%>
+    <%--</ul>--%>
+    <%--</div>--%>
+    <%--</div>--%>
     <%--</div>--%>
 </div>
 </div>

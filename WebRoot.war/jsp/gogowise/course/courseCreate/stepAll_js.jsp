@@ -67,10 +67,11 @@
             $(this).parent().parent().hide();
             var name = $("input[type='text'][name='course.name']").val();
             var description =  $("textarea[name='course.description']").val();
-            var studentType = $("textarea[name='course.studentType']").val();
+            //var studentAgeTypeVal = $("select[name='course.studentAgeType']").val();
+            var studentAgeType = $("#step2_studentAge_type").find("option:selected").text();
 //            var courseTeachingBook = $("input[type='text'][name='course.courseTeachingBook']").val();
             var courseTypeVal = $("select[name='course.courseType']").val();
-            var courseType = $("option[value='"+courseTypeVal+"']").text();
+            var courseType = $("#step2_course_type").find("option:selected").text();
             var startDate = $("input[type='text'][name='course.startDate']").val();
             var charges = $("input[type='text'][name='course.charges']").val();
             var teacherEmail =  $("[name='teacherIds']:checked").next().attr("tag");
@@ -80,7 +81,7 @@
 
             $("#store_name").html(name);
             $("#store_description").html(description);
-            $("#store_studentType").html(studentType);
+            $("#store_studentType").html(studentAgeType);
 //            $("#store_courseTeachingBook").html(courseTeachingBook);
             $("#store_courseType").html(courseType);
             $("#store_startDate").html(startDate);
@@ -151,7 +152,7 @@
            }
      }
      function yzSaveCourseForm(){
-         var b1=true,b2=true,b3=true,b4=true,b5=true,b6=true,b7=true,b8=true,b9=true;
+         var b1=true,b2=true,b3=true,b4=true,b5=true,b6=true,b7=true,b8=true,b9=true, b10=true;
          if($("#step2_course_name").val().replace(/(^\s*)|(\s*$)/g, "").length == 0){
              $(".course_name_input_msg").html(warn_course_name_empty);
              b1 = false;
@@ -189,6 +190,14 @@
                 $(".invite_teacher_input_msg").html("");
             }
 
+         if($("#step2_studentAge_type").val() == -1){
+             $(".course_student_type_input_msg").html(warn_student_age_type);
+             b10 = false;
+         }else{
+             $(".course_student_type_input_msg").html("");
+             b10 = true;
+         }
+
           var charges = $("#course_charges").val().replace(/(^\s*)|(\s*$)/g, "");
           var chargesExp = /^(\d+)(\.?)(\d{0,2})$/;
           if(charges.length == 0){
@@ -204,7 +213,7 @@
           if(!checkStudentEmails()) b7 = false;
           else b7 = true;
 
-          var result = b1&&b2&&b3&&b4&&b5&&b6&&b7&&b8&&b9;
+          var result = b1&&b2&&b3&&b4&&b5&&b6&&b7&&b8&&b9&&b10;
 
           return result;
       }
@@ -301,12 +310,22 @@
         });*/
         $("#step2_course_type").change(function(){
                  if($("#step2_course_type").val() == -1){
-                     $(".course_type_input_msg").html(warn_choose_correct_course_type);
+                     $(".course_student_type_input_msg").html(warn_choose_correct_course_type);
                      return false;
                  }else{
-                     $(".course_type_input_msg").html("*");
+                     $(".course_student_type_input_msg").html("*");
                  }
         });
+
+        $("#step2_studentAge_type").change(function(){
+            if($("#step2_studentAge_type").val() == -1){
+                $(".course_type_input_msg").html(warn_choose_correct_course_type);
+                return false;
+            }else{
+                $(".course_type_input_msg").html("*");
+            }
+        });
+
         $("#courseStartDate").blur(function(){
              $(".course_date_input_msg").html("");
              if($(this).val() == ""){
@@ -529,5 +548,6 @@
     var warn_start_time_empty = "<s:text name='course.start.time.of.class'/>";
     var editClass = "<s:text name='course.class.edit'/>";
     var saveClass = "<s:text name='course.class.save'/>";
-    var minute = "<s:text name='label.minute'/>"
+    var minute = "<s:text name='label.minute'/>";
+    var warn_student_age_type = "<s:text name='course.studentAgeTypeEmpty'/>";
 </script>

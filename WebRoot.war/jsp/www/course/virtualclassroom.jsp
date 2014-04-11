@@ -1,66 +1,83 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
-
+<%@ taglib prefix="s" uri="/struts-tags" %>
 
 
 <script type="text/javascript">
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         new iScroll('stundioWrapper');
         new iScroll('chatWrapper');
-        $("#btnaddUser").click(function() {
+        $("#btnaddUser").click(function () {
             addUser();
         });
     });
 
 
-    document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-    document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
+    document.addEventListener('touchmove', function (e) {
+        e.preventDefault();
+    }, false);
+    document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(loaded, 200);
+    }, false);
 
     /*function addUser()
-    {
+     {
 
-        var domObject = $("#stundioWrapper ul li li");
-        $("#testDiv").html(domObject);
-        alert(domObject);
-    }*/
+     var domObject = $("#stundioWrapper ul li li");
+     $("#testDiv").html(domObject);
+     alert(domObject);
+     }*/
 
 </script>
 
 <style type="text/css" media="all">
 
     #stundioWrapper {
-        position:  relative;
-        left:0;
-        width:100%;
-        overflow:auto;
+        position: relative;
+        left: 0;
+        width: 100%;
+        overflow: auto;
     }
 
-    #stundioWrapper ul
-    {
-        list-style:none;
-        padding:0;
-        margin:0;
-        width:100%;
+    #stundioWrapper ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
     }
 
     #chatWrapper {
-        position:  relative;
-        left:0;
-        width:100%;
-        overflow:auto;
+        position: relative;
+        left: 0;
+        width: 100%;
+        overflow: auto;
     }
 
-    #chatWrapper ul
-    {
-        list-style:none;
-        padding:0;
-        margin:0;
-        width:100%;
+    #chatWrapper ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
     }
-    #sortable { list-style-type: none; margin: 0; padding: 0; width: 385px; }
-    #sortable li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 88px; height: 90px; font-size: 4em; text-align: center; background-color: transparent;border-width: 0px;}
 
+    #sortable {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 385px;
+    }
+
+    #sortable li {
+        margin: 3px 3px 3px 0;
+        padding: 1px;
+        float: left;
+        width: 88px;
+        height: 90px;
+        font-size: 4em;
+        text-align: center;
+        background-color: transparent;
+        border-width: 0px;
+    }
 
 
 </style>
@@ -86,7 +103,8 @@
 <div class="container">
     <div class="thinline"></div>
     <div class="pull-left">
-        <div class="classVedioPanel" id="videodiv" style="dislay:block;border-color: #999;border-width: 1px;border-style:  solid;border-spacing: 15px;border-radius: 6px;">
+        <div class="classVedioPanel" id="videodiv"
+             style="dislay:block;border-color: #999;border-width: 1px;border-style:  solid;border-spacing: 15px;border-radius: 6px;">
             <script type="text/javascript">
                 swfobject.embedSWF("../../images/course/Teacher_1.swf", "videodiv", "720", "540", "9.0.0");
             </script>
@@ -99,8 +117,9 @@
                 <div class="classPanleHead">
                     <div class="classPanleTitle">Studio List</div>
                 </div>
-                <div class="classPanleBody" >
+                <div class="classPanleBody">
                     <p></p>
+
                     <div id="stundioWrapper" style="width: 100%; height: 220px; overflow: auto;">
                         <ul>
                             <li>
@@ -108,24 +127,28 @@
                                     <li class="ui-state-default">
                                         <div class="studioPortraitPanel">
                                             <img src="../../images/course/portrait1.jpg" alt="">
+
                                             <p>Name</p>
                                         </div>
                                     </li>
                                     <li class="ui-state-default">
                                         <div class="studioPortraitPanel">
                                             <img src="../../images/course/portrait2.jpg" alt="">
+
                                             <p>Name</p>
                                         </div>
                                     </li>
                                     <li class="ui-state-default">
                                         <div class="studioPortraitPanel">
                                             <img src="../../images/course/portrait3.jpg" alt="">
+
                                             <p>Name</p>
                                         </div>
                                     </li>
                                     <li class="ui-state-default">
                                         <div class="studioPortraitPanel">
                                             <img src="../../images/course/portrait4.jpg" alt="">
+
                                             <p>Name</p>
                                         </div>
                                     </li>
@@ -145,6 +168,7 @@
                 </div>
             </div>
             <br/>
+
             <div id="chatWindow">
 
                 <div class="classPanleHead">
@@ -156,14 +180,17 @@
                         <ul>
                             <li>
                                 <!--left message-->
-                                <div  class="chatMessage">
+                                <div class="chatMessage">
                                     <div class="pull-left" style="width:70px;">
-                                        <img class="chatPortraitImg" src="../../images/course/portrait4.jpg"  />
+                                        <img class="chatPortraitImg" src="../../images/course/portrait4.jpg"/>
+
                                         <div class="chatPortraitTitle">Name</div>
                                     </div>
                                     <div style="width: 290px;" class="pull-left">
                                         <div class="chatContent">
-                                            I liked it becaug. hahaI liked it becaug. hahaI likedI liked it becaug. hahaI liked it becaug. hahaI liked it becaug. I liked it becaug. hahaI liked it becaug. hahaI liked it becaug.
+                                            I liked it becaug. hahaI liked it becaug. hahaI likedI liked it becaug.
+                                            hahaI liked it becaug. hahaI liked it becaug. I liked it becaug. hahaI liked
+                                            it becaug. hahaI liked it becaug.
                                         </div>
                                     </div>
 
@@ -171,9 +198,10 @@
 
                                 <div class="clearfix"></div>
                                 <!--right message-->
-                                <div  class="chatMessage">
+                                <div class="chatMessage">
                                     <div class="pull-right" style="width:70px;">
-                                        <img class="chatPortraitImg" src="../../images/course/portrait4.jpg"  />
+                                        <img class="chatPortraitImg" src="../../images/course/portrait4.jpg"/>
+
                                         <div class="chatPortraitTitle">Name</div>
                                     </div>
                                     <div style="width: 290px;" class="pull-right">
@@ -184,14 +212,17 @@
                                 </div>
                                 <div class="clearfix"></div>
                                 <!--left message-->
-                                <div  class="chatMessage">
+                                <div class="chatMessage">
                                     <div class="pull-left" style="width:70px;">
-                                        <img class="chatPortraitImg" src="../../images/course/portrait4.jpg"  />
+                                        <img class="chatPortraitImg" src="../../images/course/portrait4.jpg"/>
+
                                         <div class="chatPortraitTitle">Name</div>
                                     </div>
                                     <div style="width: 290px;" class="pull-left">
                                         <div class="chatContent">
-                                            I liked it becaug. hahaI liked it becaug. hahaI liked it becaug. hahaI liked it becaug. hahaI liked it becaug. hahaI liked it becaug. hahaI liked it becaug. haha
+                                            I liked it becaug. hahaI liked it becaug. hahaI liked it becaug. hahaI liked
+                                            it becaug. hahaI liked it becaug. hahaI liked it becaug. hahaI liked it
+                                            becaug. haha
                                         </div>
                                     </div>
                                 </div>

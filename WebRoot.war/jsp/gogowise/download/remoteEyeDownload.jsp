@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 
 <link type="text/css" href="css/download/download.css" rel="stylesheet"/>
 
@@ -10,10 +10,15 @@
     </div>
 
     <div class="desc">
-        <p><s:property value="%{getText('download.version')}"/>1.0 &nbsp;&nbsp;&nbsp;<s:property value="%{getText('download.size')}"/>9.2MB</p>
+        <p><s:property value="%{getText('download.version')}"/>1.0 &nbsp;&nbsp;&nbsp;<s:property
+                value="%{getText('download.size')}"/>9.2MB</p>
+
         <p><s:property value="%{getText('download.publish.time')}"/>11/2/2012</p>
+
         <p><s:property value="%{getText('download.sys.require')}"/>Android2.2+</p>
-        <p><s:property value="%{getText('android.download.time')}"/>：<s:property value="downloadTime.downloadTimes"/></p>
+
+        <p><s:property value="%{getText('android.download.time')}"/>：<s:property
+                value="downloadTime.downloadTimes"/></p>
     </div>
     <div class="android"></div>
 
@@ -35,24 +40,27 @@
     <div class="content_m">
         <div class="content_mm">
             <h2><s:property value="%{getText('eye.home.monitor')}"/></h2>
+
             <p><s:property value="%{getText('eye.home.monitor.care')}"/></p>
-            <img src="images/download/img4.png" />
+            <img src="images/download/img4.png"/>
         </div>
 
-        <img style="float:left;margin-right:60px;" src="images/download/line.png" />
+        <img style="float:left;margin-right:60px;" src="images/download/line.png"/>
 
         <div class="content_mm">
             <h2><s:property value="%{getText('eye.comp.monitor')}"/></h2>
+
             <p><s:property value="%{getText('eye.comp.monitor.improve')}"/></p>
-            <img src="images/download/img5.png" />
+            <img src="images/download/img5.png"/>
         </div>
 
-        <img style="float:left;margin-right:60px;"  src="images/download/line.png" />
+        <img style="float:left;margin-right:60px;" src="images/download/line.png"/>
 
         <div class="content_mm">
             <h2><s:property value="%{getText('eye.shop.monitor')}"/></h2>
+
             <p><s:property value="%{getText('eye.shop.monitor.out')}"/></p>
-            <img src="images/download/img6.png" />
+            <img src="images/download/img6.png"/>
         </div>
 
         <div style="clear:both"></div>
@@ -60,15 +68,15 @@
 </div>
 
 <script type="text/javascript">
-    $(function(){
+    $(function () {
         $(".menu_base_download").addClass("menu_base_current");
     });
 
-    function startDownload(){
+    function startDownload() {
         $.post("addDownloadTime.html");
         window.location.href = "software/RemoteEyes.apk";
     }
-    function goToGooglePlay(){
+    function goToGooglePlay() {
         $.post("addDownloadTime.html");
         var url = "https://play.google.com/store/apps/details?id=air.GoGoWiseMonitor";
         goUrl(url);

@@ -13,7 +13,7 @@ Dear {0} <p>You have been appointed by {1} as a teacher. Please click <a href="{
 
 
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
 <head>

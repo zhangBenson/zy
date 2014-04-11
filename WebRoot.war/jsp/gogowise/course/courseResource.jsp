@@ -1,9 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="s" uri="struts-tags.tld" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
 
 ﻿<style type="text/css">
-#blogindex ,#blogindex div#blogindex ,ul,#blogindex li,#blogindex h1,#blogindex h2,#blogindex h3,#blogindex h4,#blogindex h5,#blogindex  table{ margin:0px; padding:0px; font-family:Verdana, Geneva, sans-serif; color:#666; background:#FFF;}
+#blogindex ,#blogindex div#blogindex ,ul,#blogindex li,#blogindex h1,#blogindex h2,#blogindex h3,#blogindex h4,#blogindex h5,#blogindex table{ margin:0px; padding:0px; font-family:Verdana, Geneva, sans-serif; color:#666; background:#FFF;}
 #blogindex ul,#blogindex li{ list-style:none;}
 #blogindex div{ float:left; text-align: left;}
 #blogindex a:link,#blogindex a:visited{ color:#cc6600; text-decoration:underline;}
@@ -16,7 +16,7 @@
 #blogindex h2{ color:#006699; font-size:22px;padding-bottom:2px; float:left; width:320px;}
 #evaluate{ width:260px; margin:30px 0px 5px;}
 #evaluate b{ font-style:oblique;}
-#evaluate h3{  font-size:18px; height:28px; padding-bottom:2px;}
+#evaluate h3{ font-size:18px; height:28px; padding-bottom:2px;}
 #evaluate h3 b{ font-size:24px;}
 img.frame1bottom{ position:absolute; left:0; bottom:0;}
 #blogindex .btn1{border:none; height:54px; width:183px; cursor:pointer; margin:5px 30px 0px 15px;}
@@ -58,7 +58,7 @@ img.frame1bottom{ position:absolute; left:0; bottom:0;}
 .blogframe3{ width:270px; background:url(images/blogindex/frame3center.gif) middle repeat-y; position:relative; padding-bottom:15px; float:left;}
 .photolist{ list-style:none; padding:0px;float:left; margin:15px 10px 5px 10px; width:250px; font-size:12px;}
 .photolist li{ float:left; margin-left:4px;}
-.photolist li a{ display:block; width:120px;  text-align:center; text-decoration:none; color:#333333; font-size:12px;margin-left:4px;}
+.photolist li a{ display:block; width:120px; text-align:center; text-decoration:none; color:#333333; font-size:12px;margin-left:4px;}
 .photolist li a:hover,.photolist li a:active{ color:#CCCCCC;}
 .photolist a img{ display:block; width:110px; height:90px; border:1px #999 solid; margin-bottom:2px; padding:4px;}
 .photolist li td{ text-align:center; height:20px;}
@@ -110,14 +110,14 @@ img.frame1bottom{ position:absolute; left:0; bottom:0;}
 .commentdetail .tdtime{ font-size:12px; color:#666; width:120px;}
 .commentdetail table{ margin-top:6px; float:left;}
 
- .replylist{width:620px; display:none; margin: 3px 0 3px 70px;border-bottom:1px dotted #999;}
-  .ireply{ width:620px; margin-left:60px; padding:3px 5px 3px 2px; background-color:#EEE; font-size:12px; display:none; border-top:1px dotted #999}
+.replylist{width:620px; display:none; margin: 3px 0 3px 70px;border-bottom:1px dotted #999;}
+.ireply{ width:620px; margin-left:60px; padding:3px 5px 3px 2px; background-color:#EEE; font-size:12px; display:none; border-top:1px dotted #999}
 
 .infolist{ border:1px dotted #999; margin-bottom: 5px; width:650px;}
 .infolist td{ padding:3px 4px;}
- .infotitle{ width:100px; border-right:1px dotted #999;}
- .infopeople{ width:120px; border-bottom:1px dashed #999}
-  .uploadtime{ border-bottom:1px dashed #999; width:160px;}
+.infotitle{ width:100px; border-right:1px dotted #999;}
+.infopeople{ width:120px; border-bottom:1px dashed #999}
+.uploadtime{ border-bottom:1px dashed #999; width:160px;}
 
 
 .toggles{ width:640px; margin-left:15px; display:inline;}
@@ -144,9 +144,8 @@ img.frame1bottom{ position:absolute; left:0; bottom:0;}
 
 <script type="text/javascript" src="js/jquery.rate.js"></script>
 <script type="text/javascript">
-    function InitAjax()
-    {
-        var ajax=false;
+    function InitAjax() {
+        var ajax = false;
         try {
             ajax = new ActiveXObject("Msxml2.XMLHTTP");
         } catch (e) {
@@ -156,13 +155,13 @@ img.frame1bottom{ position:absolute; left:0; bottom:0;}
                 ajax = false;
             }
         }
-        if (!ajax && typeof XMLHttpRequest!='undefined') {
+        if (!ajax && typeof XMLHttpRequest != 'undefined') {
             ajax = new XMLHttpRequest();
         }
         return ajax;
     }
 
-    function saveEvaluation(cid){
+    function saveEvaluation(cid) {
 
         var msg = document.getElementById("msg");
         var msg1 = document.getElementById("syntheticalMsg");
@@ -173,237 +172,244 @@ img.frame1bottom{ position:absolute; left:0; bottom:0;}
         var costPerformance = document.getElementById("costPerformance").innerHTML;
 
         var url = "saveCourseEvaluation.html";
-        var postStr = "courseEvaluation.interest="+interest+"&courseEvaluation.available="+available+"&courseEvaluation.interaction="+interaction+"&courseEvaluation.costPerformance="+costPerformance+"&courseEvaluation.course.id="+cid;
+        var postStr = "courseEvaluation.interest=" + interest + "&courseEvaluation.available=" + available + "&courseEvaluation.interaction=" + interaction + "&courseEvaluation.costPerformance=" + costPerformance + "&courseEvaluation.course.id=" + cid;
         var ajax = InitAjax();
         ajax.open("POST", url, true);
-        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         ajax.send(postStr);
-        ajax.onreadystatechange = function() {
+        ajax.onreadystatechange = function () {
             if (ajax.readyState == 4) {
-              var str = ajax.responseText.split("$");
-              //alert(str[0]+"   "+str[1]);
-              msg1.innerHTML = "您给该课程的综合评分：";
-              synthetical.innerHTML = str[1];
-              msg.innerHTML = str[0];
+                var str = ajax.responseText.split("$");
+                //alert(str[0]+"   "+str[1]);
+                msg1.innerHTML = "您给该课程的综合评分：";
+                synthetical.innerHTML = str[1];
+                msg.innerHTML = str[0];
             }
         }
     }
-     function getGirlOjbect(){
-       if ($.browser.msie) {
-               //alert("the edition is IE");
-               return   document.getElementById("Girl")
-            } else {
-             //alert("the edition is ff");
-             return   document.getElementById("GirlEmbed")
-            }
-     }
+    function getGirlOjbect() {
+        if ($.browser.msie) {
+            //alert("the edition is IE");
+            return   document.getElementById("Girl")
+        } else {
+            //alert("the edition is ff");
+            return   document.getElementById("GirlEmbed")
+        }
+    }
 
-     function LoadVideo(cid) {
-            var url = href="openVideoClass.html";
-            var postStr = "courseClass.id="+cid;
-            var ajax = InitAjax();
-            ajax.open("POST", url, true);
-            ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-            ajax.send(postStr);
-            ajax.onreadystatechange = function() {
-                if (ajax.readyState == 4) {
-                    //alert(getGirlOjbect().LoadVideoURL);
-                    getGirlOjbect().LoadVideoURL(ajax.responseText);
-                    //alert(getGirlOjbect().LoadVideoURL);
+    function LoadVideo(cid) {
+        var url = href = "openVideoClass.html";
+        var postStr = "courseClass.id=" + cid;
+        var ajax = InitAjax();
+        ajax.open("POST", url, true);
+        ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        ajax.send(postStr);
+        ajax.onreadystatechange = function () {
+            if (ajax.readyState == 4) {
+                //alert(getGirlOjbect().LoadVideoURL);
+                getGirlOjbect().LoadVideoURL(ajax.responseText);
+                //alert(getGirlOjbect().LoadVideoURL);
+            }
+        }
+
+    }
+
+
+    var SellerScroll = function (options) {
+        this.SetOptions(options);
+        this.lButton = this.options.lButton;
+        this.rButton = this.options.rButton;
+        this.oList = this.options.oList;
+        this.showSum = this.options.showSum;
+
+        this.iList = $("#" + this.options.oList + " > li");
+        this.iListSum = this.iList.length;
+        this.iListWidth = this.iList.outerWidth(true);
+        this.moveWidth = this.iListWidth * this.showSum;
+
+        this.dividers = Math.ceil(this.iListSum / this.showSum);	//共分为多少块
+        this.moveMaxOffset = (this.dividers - 1) * this.moveWidth;
+        this.LeftScroll();
+        this.RightScroll();
+    };
+    SellerScroll.prototype = {
+        SetOptions: function (options) {
+            this.options = {
+                lButton: "left_scroll",
+                rButton: "right_scroll",
+                oList: "carousel_ul",
+                showSum: 6	//一次滚动多少个items
+            };
+            $.extend(this.options, options || {});
+        },
+        ReturnLeft: function () {
+            return isNaN(parseInt($("#" + this.oList).css("left"))) ? 0 : parseInt($("#" + this.oList).css("left"));
+        },
+        LeftScroll: function () {
+            if (this.dividers == 1) return;
+            var _this = this, currentOffset;
+            $("#" + this.lButton).click(function () {
+                currentOffset = _this.ReturnLeft();
+                if (currentOffset == 0) {
+                    for (var i = 1; i <= _this.showSum; i++) {
+                        $(_this.iList[_this.iListSum - i]).prependTo($("#" + _this.oList));
+                    }
+                    $("#" + _this.oList).css({ left: -_this.moveWidth });
+                    $("#" + _this.oList + ":not(:animated)").animate({ left: "+=" + _this.moveWidth }, { duration: "slow", complete: function () {
+                        for (var j = _this.showSum + 1; j <= _this.iListSum; j++) {
+                            $(_this.iList[_this.iListSum - j]).prependTo($("#" + _this.oList));
+                        }
+                        $("#" + _this.oList).css({ left: -_this.moveWidth * (_this.dividers - 1) });
+                    } });
+                } else {
+                    $("#" + _this.oList + ":not(:animated)").animate({ left: "+=" + _this.moveWidth }, "slow");
                 }
-            }
+            });
+        },
+        RightScroll: function () {
+            if (this.dividers == 1) return;
+            var _this = this, currentOffset;
+            $("#" + this.rButton).click(function () {
+                currentOffset = _this.ReturnLeft();
+                if (Math.abs(currentOffset) >= _this.moveMaxOffset) {
+                    for (var i = 0; i < _this.showSum; i++) {
+                        $(_this.iList[i]).appendTo($("#" + _this.oList));
+                    }
+                    $("#" + _this.oList).css({ left: -_this.moveWidth * (_this.dividers - 2) });
 
-     }
+                    $("#" + _this.oList + ":not(:animated)").animate({ left: "-=" + _this.moveWidth }, { duration: "slow", complete: function () {
+                        for (var j = _this.showSum; j < _this.iListSum; j++) {
+                            $(_this.iList[j]).appendTo($("#" + _this.oList));
+                        }
+                        $("#" + _this.oList).css({ left: 0 });
+                    } });
+                } else {
+                    $("#" + _this.oList + ":not(:animated)").animate({ left: "-=" + _this.moveWidth }, "slow");
+                }
+            });
+        }
+    };
+    $(document).ready(function () {
+        var ff = new SellerScroll();
+    });
 
-
-    var SellerScroll = function(options){
-	this.SetOptions(options);
-	this.lButton = this.options.lButton;
-	this.rButton = this.options.rButton;
-	this.oList = this.options.oList;
-	this.showSum = this.options.showSum;
-
-	this.iList = $("#" + this.options.oList + " > li");
-	this.iListSum = this.iList.length;
-	this.iListWidth = this.iList.outerWidth(true);
-	this.moveWidth = this.iListWidth * this.showSum;
-
-	this.dividers = Math.ceil(this.iListSum / this.showSum);	//共分为多少块
-	this.moveMaxOffset = (this.dividers - 1) * this.moveWidth;
-	this.LeftScroll();
-	this.RightScroll();
-};
-SellerScroll.prototype = {
-	SetOptions: function(options){
-		this.options = {
-			lButton: "left_scroll",
-			rButton: "right_scroll",
-			oList: "carousel_ul",
-			showSum: 6	//一次滚动多少个items
-		};
-		$.extend(this.options, options || {});
-	},
-	ReturnLeft: function(){
-		return isNaN(parseInt($("#" + this.oList).css("left"))) ? 0 : parseInt($("#" + this.oList).css("left"));
-	},
-	LeftScroll: function(){
-		if(this.dividers == 1) return;
-		var _this = this, currentOffset;
-		$("#" + this.lButton).click(function(){
-			currentOffset = _this.ReturnLeft();
-			if(currentOffset == 0){
-				for(var i = 1; i <= _this.showSum; i++){
-					$(_this.iList[_this.iListSum - i]).prependTo($("#" + _this.oList));
-				}
-				$("#" + _this.oList).css({ left: -_this.moveWidth });
-				$("#" + _this.oList + ":not(:animated)").animate( { left: "+=" + _this.moveWidth }, { duration: "slow", complete: function(){
-					for(var j = _this.showSum + 1; j <= _this.iListSum; j++){
-						$(_this.iList[_this.iListSum - j]).prependTo($("#" + _this.oList));
-					}
-					$("#" + _this.oList).css({ left: -_this.moveWidth * (_this.dividers - 1) });
-				} } );
-			}else{
-				$("#" + _this.oList + ":not(:animated)").animate( { left: "+=" + _this.moveWidth }, "slow" );
-			}
-		});
-	},
-	RightScroll: function(){
-		if(this.dividers == 1) return;
-		var _this = this, currentOffset;
-		$("#" + this.rButton).click(function(){
-			currentOffset = _this.ReturnLeft();
-			if(Math.abs(currentOffset) >= _this.moveMaxOffset){
-				for(var i = 0; i < _this.showSum; i++){
-					$(_this.iList[i]).appendTo($("#" + _this.oList));
-				}
-				$("#" + _this.oList).css({ left: -_this.moveWidth * (_this.dividers - 2) });
-
-				$("#" + _this.oList + ":not(:animated)").animate( { left: "-=" + _this.moveWidth }, { duration: "slow", complete: function(){
-					for(var j = _this.showSum; j < _this.iListSum; j++){
-						$(_this.iList[j]).appendTo($("#" + _this.oList));
-					}
-					$("#" + _this.oList).css({ left: 0 });
-				} } );
-			}else{
-				$("#" + _this.oList + ":not(:animated)").animate( { left: "-=" + _this.moveWidth }, "slow" );
-			}
-		});
-	}
-};
-$(document).ready(function(){
-	var ff = new SellerScroll();
-});
-
-$(document).ready(function(){
-	$("#evaluatebtn").click(function(){
-		$("#evaluatepanel").slideToggle(500);
-		});
-});
-$(document).ready(function(){
-	$("#commentspry").click(function(){
-		$("#infopanel").hide("fast");
-		$("#communicatepanel").hide("fast");
-		$("#commentpanel").show("fast");
-		});
-});
-$(document).ready(function(){
-	$("#communicatespry").click(function(){
-		$("#infopanel").hide("fast");
-		$("#communicatepanel").show("fast");
-		$("#commentpanel").hide("fast");
-		});
-});
-$(document).ready(function(){
-	$("#infospry").click(function(){
-		$("#infopanel").show("fast");
-		$("#communicatepanel").hide("fast");
-		$("#commentpanel").hide("fast");
-		});
-});
+    $(document).ready(function () {
+        $("#evaluatebtn").click(function () {
+            $("#evaluatepanel").slideToggle(500);
+        });
+    });
+    $(document).ready(function () {
+        $("#commentspry").click(function () {
+            $("#infopanel").hide("fast");
+            $("#communicatepanel").hide("fast");
+            $("#commentpanel").show("fast");
+        });
+    });
+    $(document).ready(function () {
+        $("#communicatespry").click(function () {
+            $("#infopanel").hide("fast");
+            $("#communicatepanel").show("fast");
+            $("#commentpanel").hide("fast");
+        });
+    });
+    $(document).ready(function () {
+        $("#infospry").click(function () {
+            $("#infopanel").show("fast");
+            $("#communicatepanel").hide("fast");
+            $("#commentpanel").hide("fast");
+        });
+    });
 
 
-$(document).ready(function(){
-$(" dl dd").hide();
-$("dl dd.ddcurrent").show();
-$("dl dt").click(function(){
-$("dl dd").not($(this).next()).hide();
-$("dl dt").not($(this).next()).removeClass("current");
-$(this).next().slideToggle(500);
-$(this).toggleClass("current");
-});
-});
+    $(document).ready(function () {
+        $(" dl dd").hide();
+        $("dl dd.ddcurrent").show();
+        $("dl dt").click(function () {
+            $("dl dd").not($(this).next()).hide();
+            $("dl dt").not($(this).next()).removeClass("current");
+            $(this).next().slideToggle(500);
+            $(this).toggleClass("current");
+        });
+    });
 
 
-// $(document).ready(function(){
-//      $("#saveCourseResource").click(function(){
-//            $.post("saveCourseResource.html",$("#resourceForm").serialize(),function(data){
-//                $('#courseResourceAjax').html(data);
-//            });
-//      });
-//  });
+    // $(document).ready(function(){
+    //      $("#saveCourseResource").click(function(){
+    //            $.post("saveCourseResource.html",$("#resourceForm").serialize(),function(data){
+    //                $('#courseResourceAjax').html(data);
+    //            });
+    //      });
+    //  });
 </script>
 <div id="courseCommentAjax">
-<div id="infopanel">
+    <div id="infopanel">
 
-<dl>
-<dt class="dt2">课程资源上传</dt>
-<dd>
-<s:form action="saveCourseResource" id="resourceForm" name="resourceForm" encType="multipart/form-data"  method="post" target="hidden_frame"  onsubmit="return validateLogo()" >
-     <s:hidden name="course.id"/>
-<table border="0" cellspacing="0" cellpadding="0" width="90%">
-  <tr>
-    <td class="filefield">资料路径：
-      <label for="fileField"></label>
-      <s:file name="download" id="fileField" /></td>
-    </tr>
-  <tr>
-    <td class="infointro"><strong>添加资料简介：</strong></td>
-    </tr>
-  <tr>
-    <td class="infointro">
-      <label for="textarea"></label>
-      <s:textarea name="courseResource.description" id="textarea" cols="60" rows="3"></s:textarea>
-    </td>
-  </tr>
-  <tr>
-    <td class="filefield">
-      <s:submit id="saveCourseResource" value="上传资料，并提交信息" /></td>
-  </tr>
-</table>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            if (parent && $("#resourceList").html()) {
-                parent.refreshResourcePage($("#resourceList").html());
-            }
-        });
-    </script>
-     <iframe name='hidden_frame' id="hidden_frame"  style="display: none;"></iframe>
- </s:form>
+        <dl>
+            <dt class="dt2">课程资源上传</dt>
+            <dd>
+                <s:form action="saveCourseResource" id="resourceForm" name="resourceForm" encType="multipart/form-data"
+                        method="post" target="hidden_frame" onsubmit="return validateLogo()">
+                    <s:hidden name="course.id"/>
+                    <table border="0" cellspacing="0" cellpadding="0" width="90%">
+                        <tr>
+                            <td class="filefield">资料路径：
+                                <label for="fileField"></label>
+                                <s:file name="download" id="fileField"/></td>
+                        </tr>
+                        <tr>
+                            <td class="infointro"><strong>添加资料简介：</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="infointro">
+                                <label for="textarea"></label>
+                                <s:textarea name="courseResource.description" id="textarea" cols="60"
+                                            rows="3"></s:textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="filefield">
+                                <s:submit id="saveCourseResource" value="上传资料，并提交信息"/></td>
+                        </tr>
+                    </table>
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            if (parent && $("#resourceList").html()) {
+                                parent.refreshResourcePage($("#resourceList").html());
+                            }
+                        });
+                    </script>
+                    <iframe name='hidden_frame' id="hidden_frame" style="display: none;"></iframe>
+                </s:form>
 
 
-</dd>
-</dl>
+            </dd>
+        </dl>
 
-<dl>
-<dt class="dt2">课程资源列表</dt>
-<dd class="ddcurrent" id="resourceList">
+        <dl>
+            <dt class="dt2">课程资源列表</dt>
+            <dd class="ddcurrent" id="resourceList">
 
-<s:iterator value="courseResources">
-<table border="0" cellspacing="0" cellpadding="0" class="infolist">
-  <tr>
-    <td  rowspan="2" class="infotitle"><a href="download.html?courseResource.id=<s:property value="id"/>"><s:property value="sourceTitle"/></a></td>
-    <td class="infopeople">上传者：<s:property value="provider.userName"/></td>
-    <td class="uploadtime">上传时间：<s:date name="provideTime" format="%{getText('global.display.datetime')}" /></td>
-    <td class="uploadtime">审核时间：<s:date name="estimateTime" format="%{getText('global.display.datetime')}" /></td>
-    </tr>
-  <tr>
-    <td colspan="3" class="infointro"><strong>资料简介：</strong><s:property value="description"/></td>
-    </tr>
-</table>
- </s:iterator>
+                <s:iterator value="courseResources">
+                    <table border="0" cellspacing="0" cellpadding="0" class="infolist">
+                        <tr>
+                            <td rowspan="2" class="infotitle"><a
+                                    href="download.html?courseResource.id=<s:property value="id"/>"><s:property
+                                    value="sourceTitle"/></a></td>
+                            <td class="infopeople">上传者：<s:property value="provider.userName"/></td>
+                            <td class="uploadtime">上传时间：<s:date name="provideTime"
+                                                                format="%{getText('global.display.datetime')}"/></td>
+                            <td class="uploadtime">审核时间：<s:date name="estimateTime"
+                                                                format="%{getText('global.display.datetime')}"/></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" class="infointro"><strong>资料简介：</strong><s:property value="description"/>
+                            </td>
+                        </tr>
+                    </table>
+                </s:iterator>
 
-</dd>
-</dl>
+            </dd>
+        </dl>
 
-</div>
+    </div>
 </div>
