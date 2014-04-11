@@ -4,7 +4,6 @@ import com.gogowise.rep.ModelDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.finance.enity.ConsumptionOrder;
 import com.gogowise.rep.course.enity.Course;
-import com.gogowise.rep.live.enity.UserPrivateChannel;
 
 import java.util.Calendar;
 import java.util.List;
@@ -22,6 +21,5 @@ public interface ConsumptionOrderDao extends ModelDao<ConsumptionOrder> {
 
     public List<ConsumptionOrder> findUnclosedOrderByCloseTime(Calendar closeTime);
 
-    public void chargeForPrivateChannel(Double totalCharges,UserPrivateChannel userPrivateChannel);
 
 }

@@ -1,9 +1,7 @@
 package com.gogowise.action.valueobject;
 
-import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.rep.course.enity.CourseClass;
-import com.gogowise.rep.org.enity.OrgMeeting;
 import com.gogowise.common.utils.Constants;
+import com.gogowise.rep.course.enity.CourseClass;
 
 /**
  * Created by IntelliJ IDEA.
@@ -42,47 +40,6 @@ public class One2threeStudentSession {
         if(courseClass.getCourse().getTeacher()!=null){
             this.setMasterID(getEmptyInteger(courseClass.getCourse().getTeacher().getId()));
             this.setMasterName(getEmptyString(courseClass.getCourse().getTeacher().getNickName()));
-        }
-    }
-
-    public void initSessionWithMeeting(OrgMeeting orgMeeting ,BaseUser user , String userEmail){
-        this.setUserID(getEmptyInteger(user.getId()));
-        this.setUserName(getEmptyString(user.getNickName()));
-        this.setType(4);
-        this.setTitle(getEmptyString(orgMeeting.getOrganization().getSchoolName()));
-        this.setAbstract(getEmptyString(""));
-        this.setContent(getEmptyString(orgMeeting.getContent()));
-        this.setClassID(getEmptyInteger(0));
-        this.setCourseID("meeting"+getEmptyString(orgMeeting.getId().toString()));
-        if(orgMeeting.getOrgMeetingMembers().size()==3){
-            if(orgMeeting.getOrgMeetingMembers().get(0).getMemberEmail() == userEmail){
-                  if(orgMeeting.getOrgMeetingMembers().get(1).getMember() != null){
-                       this.setStudentID1(orgMeeting.getOrgMeetingMembers().get(1).getMember().getId());
-                       this.setStudentName1(orgMeeting.getOrgMeetingMembers().get(1).getMember().getNickName());
-                  }
-                  if(orgMeeting.getOrgMeetingMembers().get(2).getMember() != null){
-                       this.setStudentID2(orgMeeting.getOrgMeetingMembers().get(2).getMember().getId());
-                       this.setStudentName2(orgMeeting.getOrgMeetingMembers().get(2).getMember().getNickName());
-                  }
-            }else if(orgMeeting.getOrgMeetingMembers().get(1).getMemberEmail() == userEmail) {
-                if(orgMeeting.getOrgMeetingMembers().get(0).getMember() != null){
-                       this.setStudentID1(orgMeeting.getOrgMeetingMembers().get(0).getMember().getId());
-                       this.setStudentName1(orgMeeting.getOrgMeetingMembers().get(0).getMember().getNickName());
-                }
-                if(orgMeeting.getOrgMeetingMembers().get(2).getMember() != null){
-                       this.setStudentID2(orgMeeting.getOrgMeetingMembers().get(2).getMember().getId());
-                       this.setStudentName2(orgMeeting.getOrgMeetingMembers().get(2).getMember().getNickName());
-                  }
-            }else {
-                if(orgMeeting.getOrgMeetingMembers().get(0).getMember() != null){
-                       this.setStudentID1(orgMeeting.getOrgMeetingMembers().get(0).getMember().getId());
-                       this.setStudentName1(orgMeeting.getOrgMeetingMembers().get(0).getMember().getNickName());
-                }
-                if(orgMeeting.getOrgMeetingMembers().get(1).getMember() != null){
-                       this.setStudentID2(orgMeeting.getOrgMeetingMembers().get(1).getMember().getId());
-                       this.setStudentName2(orgMeeting.getOrgMeetingMembers().get(1).getMember().getNickName());
-                  }
-            }
         }
     }
 

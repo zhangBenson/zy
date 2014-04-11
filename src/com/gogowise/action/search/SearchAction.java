@@ -1,32 +1,27 @@
 package com.gogowise.action.search;
 
-import com.gogowise.action.BasicAction;
-import com.gogowise.rep.Pagination;
-import com.gogowise.rep.course.dao.CourseDao;
-import com.gogowise.rep.course.enity.SeniorClassRoom;
-import com.gogowise.rep.live.LiveChannelDao;
-import com.gogowise.rep.live.MyShowDao;
-import com.gogowise.rep.org.dao.OrgFansDao;
-import com.gogowise.rep.org.dao.OrganizationCommentDao;
-import com.gogowise.rep.org.dao.OrganizationDao;
-import com.gogowise.rep.user.dao.BaseUserDao;
-import com.gogowise.rep.live.UserFansDao;
-import com.gogowise.rep.course.enity.Course;
-import com.gogowise.rep.live.enity.LiveChannel;
-import com.gogowise.rep.live.enity.MyShow;
-import com.gogowise.rep.org.enity.Organization;
-import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.common.utils.Constants;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
+import org.jsoup.Jsoup;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.jsoup.Jsoup;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.gogowise.action.BasicAction;
+import com.gogowise.common.utils.Constants;
+import com.gogowise.rep.Pagination;
+import com.gogowise.rep.course.dao.CourseDao;
+import com.gogowise.rep.course.enity.Course;
+import com.gogowise.rep.course.enity.SeniorClassRoom;
+import com.gogowise.rep.org.dao.OrganizationCommentDao;
+import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.user.dao.BaseUserDao;
+import com.gogowise.rep.user.enity.BaseUser;
 
 
 
@@ -45,17 +40,11 @@ public class SearchAction extends BasicAction{
     private CourseDao courseDao;
     private OrganizationDao organizationDao;
     private BaseUserDao baseUserDao;
-    private MyShowDao myShowDao;
-    private LiveChannelDao liveChannelDao;
-    private UserFansDao userFansDao;
-    private OrgFansDao orgFansDao;
     private OrganizationCommentDao organizationCommentDao;
 
     private List<Course> courses;
     private List<BaseUser> baseUsers;
     private List<Organization> organizations;
-    private List<MyShow> myShows;
-    private List<LiveChannel> liveChannels;
     private List<BaseUser> hottestTeachers;
     private List<Course> hottestCourses;
     private List<BaseUser> hottestBloggers;
@@ -84,47 +73,7 @@ public class SearchAction extends BasicAction{
         courses = courseDao.searchCourses(searchStr ,pagination);
         return SUCCESS;
     }
-    @Action(value = "searchResult",results = { @Result(name = "all", type = Constants.RESULT_NAME_TILES, location = ".search"),
-                                                 @Result(name = "member", type = Constants.RESULT_NAME_TILES, location = ".searchMemberList"),
-                                                 @Result(name = "org", type = Constants.RESULT_NAME_TILES, location = ".searchOrgList"),
-                                                 @Result(name = "course", type = Constants.RESULT_NAME_TILES, location = ".searchCourseList"),
-                                                 @Result(name = "show", type = Constants.RESULT_NAME_TILES, location = ".searchShowList"),
-                                                 @Result(name = "liveChannel", type = Constants.RESULT_NAME_TILES, location = ".searchLiveList")})
-    public String search() throws Exception{
 
-        hottestTeachers = baseUserDao.findHottestTeacher(pagination);
-        hottestCourses = courseDao.findHotCourses(pagination);
-
-       if(this.getSearchType().equals(Constants.SEARCH_TYPE_ALL)){
-           pagination.setPageSize(3);
-           baseUsers = baseUserDao.searchUsers(searchStr ,pagination);
-           organizations = organizationDao.searchOrgs(searchStr ,pagination);
-           courses = courseDao.searchCourses(searchStr ,pagination);
-           myShows = myShowDao.searchShows(searchStr ,pagination);
-           liveChannels = liveChannelDao.searchLiveChannels(searchStr,pagination);
-           return "all";
-       }else if(this.getSearchType().equals(Constants.SEARCH_TYPE_MEMBER)){
-           pagination.setPageSize(9);
-           baseUsers = baseUserDao.searchUsers(searchStr ,pagination);
-           return "member";
-       }else if(this.getSearchType().equals(Constants.SEARCH_TYPE_ORG)){
-           pagination.setPageSize(9);
-           organizations = organizationDao.searchOrgs(searchStr ,pagination);
-           return "org";
-       }else if(this.getSearchType().equals(Constants.SEARCH_TYPE_COURSE)){
-           pagination.setPageSize(9);
-           courses = courseDao.searchCourses(searchStr ,pagination);
-           return "course";
-       }else if(this.getSearchType().equals(Constants.SEARCH_TYPE_SHOW)){
-           pagination.setPageSize(9);
-           myShows = myShowDao.searchShows(searchStr ,pagination);
-           return "show";
-       }else{
-           pagination.setPageSize(9);
-           liveChannels = liveChannelDao.searchLiveChannels(searchStr,pagination);
-           return "liveChannel";
-       }
-    }
 
     @Action(value = "teacherHotList",results = {@Result(name=SUCCESS,type=Constants.RESULT_NAME_TILES,location = ".teacherHotList")})
     public String listHottestTeachers(){
@@ -181,29 +130,6 @@ public class SearchAction extends BasicAction{
         this.baseUserDao = baseUserDao;
     }
 
-    public MyShowDao getMyShowDao() {
-        return myShowDao;
-    }
-
-    public void setMyShowDao(MyShowDao myShowDao) {
-        this.myShowDao = myShowDao;
-    }
-
-    public LiveChannelDao getLiveChannelDao() {
-        return liveChannelDao;
-    }
-
-    public void setLiveChannelDao(LiveChannelDao liveChannelDao) {
-        this.liveChannelDao = liveChannelDao;
-    }
-
-    public OrgFansDao getOrgFansDao() {
-        return orgFansDao;
-    }
-
-    public void setOrgFansDao(OrgFansDao orgFansDao) {
-        this.orgFansDao = orgFansDao;
-    }
 
     public List<Course> getCourses() {
         return courses;
@@ -214,12 +140,6 @@ public class SearchAction extends BasicAction{
     }
 
     public List<BaseUser> getBaseUsers() {
-        for(BaseUser user : baseUsers){
-            user.setUserFocused(false);
-             if(this.getSessionUserId() != null && userFansDao.findByUserAndFans(user.getId(),this.getSessionUserId()) != null){
-                user.setUserFocused(true);
-            }
-        }
         return baseUsers;
     }
 
@@ -228,12 +148,6 @@ public class SearchAction extends BasicAction{
     }
 
     public List<Organization> getOrganizations() {
-        for(Organization org : organizations){
-            org.setUserFocused(false);
-            if(this.getSessionUserId() != null && orgFansDao.findByOrgAndUser(org.getId(),this.getSessionUserId()) != null){
-                org.setUserFocused(true);
-            }
-        }
         return organizations;
     }
 
@@ -241,21 +155,6 @@ public class SearchAction extends BasicAction{
         this.organizations = organizations;
     }
 
-    public List<MyShow> getMyShows() {
-        return myShows;
-    }
-
-    public void setMyShows(List<MyShow> myShows) {
-        this.myShows = myShows;
-    }
-
-    public List<LiveChannel> getLiveChannels() {
-        return liveChannels;
-    }
-
-    public void setLiveChannels(List<LiveChannel> liveChannels) {
-        this.liveChannels = liveChannels;
-    }
 
     public List<BaseUser> getHottestTeachers() {
         return hottestTeachers;
@@ -279,14 +178,6 @@ public class SearchAction extends BasicAction{
 
     public void setPagination(Pagination pagination) {
         this.pagination = pagination;
-    }
-
-    public UserFansDao getUserFansDao() {
-        return userFansDao;
-    }
-
-    public void setUserFansDao(UserFansDao userFansDao) {
-        this.userFansDao = userFansDao;
     }
 
     public List<Course> getHottestCourses() {

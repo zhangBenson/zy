@@ -18,7 +18,6 @@ import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.OrgMaterial;
 import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.org.enity.OrganizationComment;
-import com.gogowise.rep.org.enity.OrganizationTeacher;
 import com.gogowise.rep.user.UserService;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
@@ -443,21 +442,6 @@ public class OrganizationAction extends BasicAction {
         org = organizationDao.findByResId(this.getSessionUserId());
         orgMaterials = orgMaterialDao.findByOrgId(null, org.getId());
         return SUCCESS;
-    }
-
-    @Action(value = "organizationMatter", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".organizationMatter")})
-    public String organizationMatter() {
-        this.setOperaType(Constants.OPERA_TYPE_FOR_ORG_MATTER);
-        this.org = organizationDao.findConfirmedOrg(this.getSessionUserId());
-        if (org != null) {
-            return SUCCESS;
-        }
-        this.org = organizationDao.findByAuthTeacher(this.getSessionUserId());
-        if (org != null) {
-            this.setOrgRoleType(OrganizationTeacher.ORG_ROLE_TYPE_AUTH);
-            return SUCCESS;
-        }
-        return "myfirstPage";
     }
 
     @Action(value = "orgSaveResPerson", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgInfoUpdate")})

@@ -9,8 +9,8 @@ import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.course.enity.CourseComment;
 import com.gogowise.rep.course.enity.SeniorClassRoom;
-import com.gogowise.rep.live.MatterDao;
-import com.gogowise.rep.live.enity.Matter;
+import com.gogowise.rep.system.MatterDao;
+import com.gogowise.rep.system.enity.Matter;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.opensymphony.xwork2.ActionContext;
@@ -79,7 +79,7 @@ public class CourseCommentAction extends BasicAction {
         if(this.getSessionUserId().equals(course.getTeacher() != null?course.getTeacher().getId():0)){
             for(SeniorClassRoom seniorClassRoom: course.getSeniorClassRooms()){      // teacher left a message for a course then send the message to all students
 
-                Matter matter =new Matter(Calendar.getInstance(),serialNo,Matter.MATTER_COURSE_MESSAGE,baseUserDao.findByEmail(this.getSessionUserEmail()),null,seniorClassRoom.getStudent().getEmail(),course,null,null,null,false);
+                Matter matter =new Matter(Calendar.getInstance(),serialNo,Matter.MATTER_COURSE_MESSAGE,baseUserDao.findByEmail(this.getSessionUserEmail()),null,seniorClassRoom.getStudent().getEmail(),course, false);
                  String href = getBasePath() + "/voaCourseBlog.html?course.id="+course.getId();
                  String title = this.getText("course.blog.teacher.comment.to.st.title",new String[]{course.getTeacher().getNickName(),course.getName()});
                  String content = this.getText("course.blog.teacher.comment.to.st.content",new String[]{
@@ -104,7 +104,7 @@ public class CourseCommentAction extends BasicAction {
                          href,href
                  });
                  EmailUtil.sendMail(course.getTeacher().getEmail(),title,content);
-                 Matter matter =new Matter(Calendar.getInstance(),serialNo,Matter.MATTER_COURSE_MESSAGE,baseUserDao.findByEmail(this.getSessionUserEmail()),null,course.getTeacher().getEmail(),course,null,null,null,false);
+                 Matter matter =new Matter(Calendar.getInstance(),serialNo,Matter.MATTER_COURSE_MESSAGE,baseUserDao.findByEmail(this.getSessionUserEmail()),null,course.getTeacher().getEmail(),course, false);
                  matterDao.persistAbstract(matter);
              }
 

@@ -4,12 +4,12 @@ import com.gogowise.action.BasicAction;
 import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.dao.SeniorClassRoomDao;
 import com.gogowise.rep.finance.ConsumptionOrderDao;
-import com.gogowise.rep.live.MatterDao;
+import com.gogowise.rep.system.MatterDao;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.finance.UserAccountInfoDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.course.enity.Course;
-import com.gogowise.rep.live.enity.Matter;
+import com.gogowise.rep.system.enity.Matter;
 import com.gogowise.rep.finance.enity.UserAccountInfo;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.EmailUtil;
@@ -18,7 +18,6 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
-import org.apache.struts2.convention.annotation.Results;
 import org.apache.struts2.json.annotations.JSON;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
@@ -125,7 +124,7 @@ public class CoursePurchaseAction extends BasicAction {
                 e.printStackTrace();
             }
 
-        Matter matter =new Matter(Calendar.getInstance(),this.getSessionNickName()+(new SimpleDateFormat("yyyyddMMHHmmssms").format(Calendar.getInstance().getTime())),Matter.MATTER_COURSE_REGISTER,baseUserDao.findByEmail(this.getSessionUserEmail()),null,course.getTeacherEmail()==(null)? course.getTeacher().getEmail():course.getTeacherEmail(),course,null,null,null,false);
+        Matter matter =new Matter(Calendar.getInstance(),this.getSessionNickName()+(new SimpleDateFormat("yyyyddMMHHmmssms").format(Calendar.getInstance().getTime())),Matter.MATTER_COURSE_REGISTER,baseUserDao.findByEmail(this.getSessionUserEmail()),null,course.getTeacherEmail()==(null)? course.getTeacher().getEmail():course.getTeacherEmail(),course ,false);
         matterDao.persistAbstract(matter);
 
         System.out.println("Register Course End!!!");
@@ -201,7 +200,7 @@ public class CoursePurchaseAction extends BasicAction {
         zhiBi = userAccountInfo.getZhiBi();
         zhiQuan = userAccountInfo.getZhiQuan();
 
-        Matter matter =new Matter(Calendar.getInstance(),this.getSessionNickName()+(new SimpleDateFormat("yyyyddMMHHmmssms").format(Calendar.getInstance().getTime())),Matter.MATTER_COURSE_REGISTER,baseUserDao.findByEmail(this.getSessionUserEmail()),null,course.getTeacherEmail()==(null)? course.getTeacher().getEmail():course.getTeacherEmail(),course,null,null,null,false);
+        Matter matter =new Matter(Calendar.getInstance(),this.getSessionNickName()+(new SimpleDateFormat("yyyyddMMHHmmssms").format(Calendar.getInstance().getTime())),Matter.MATTER_COURSE_REGISTER,baseUserDao.findByEmail(this.getSessionUserEmail()),null,course.getTeacherEmail()==(null)? course.getTeacher().getEmail():course.getTeacherEmail(),course, false);
         matterDao.persistAbstract(matter);
 
         return "json";

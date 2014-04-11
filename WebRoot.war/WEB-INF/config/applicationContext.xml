@@ -55,21 +55,8 @@
         <property name="annotatedClasses">
             <list>
                 <value>com.gogowise.rep.user.enity.BaseUser</value>
-                <value>com.gogowise.rep.competition.enity.SingUpInfo</value>
                 <value>com.gogowise.rep.user.enity.Comments</value>
-                <value>com.gogowise.rep.competition.enity.Competition</value>
-                <value>com.gogowise.rep.competition.enity.CompetitionComments</value>
-                <value>com.gogowise.rep.competition.enity.CompetitionPhase</value>
-                <value>com.gogowise.rep.competition.enity.CompetitionSession</value>
-                <value>com.gogowise.rep.competition.enity.Allocation</value>
-                <value>com.gogowise.rep.competition.enity.JudgeAllocation</value>
-                <value>com.gogowise.rep.competition.enity.HostAllocation</value>
-                <value>com.gogowise.rep.competition.enity.SingerAllocation</value>
-                <value>com.gogowise.rep.competition.enity.SingUpRole</value>
-                <value>com.gogowise.rep.competition.enity.Subject</value>
-                <value>com.gogowise.rep.competition.enity.InviteRelationship</value>
                 <value>com.gogowise.rep.user.enity.UserRelationship</value>
-                <value>com.gogowise.rep.competition.enity.CompetitionAudience</value>
                 <value>com.gogowise.rep.course.enity.Course</value>
                 <value>com.gogowise.rep.course.enity.CourseClass</value>
                 <value>com.gogowise.rep.org.enity.Organization</value>
@@ -86,52 +73,18 @@
                 <value>com.gogowise.rep.course.enity.CourseQuestion</value>
                 <value>com.gogowise.rep.course.enity.BrowsedCourse</value>
                 <value>com.gogowise.rep.org.enity.OrganizationComment</value>
-                <value>com.gogowise.rep.org.enity.OrganizationTeacher</value>
                 <value>com.gogowise.rep.org.enity.OrganizationBaseUser</value>
                 <value>com.gogowise.rep.course.enity.CourseInviteStudent</value>
-                <value>com.gogowise.rep.org.enity.Interview</value>
                 <value>com.gogowise.rep.course.enity.CourseReservation</value>
-                <value>com.gogowise.rep.org.enity.InterviewAppointer</value>
                 <value>com.gogowise.rep.course.enity.CourseRecommend</value>
-                <value>com.gogowise.rep.org.enity.OrgMeeting</value>
-                <value>com.gogowise.rep.org.enity.OrgMeetingMember</value>
                 <value>com.gogowise.rep.user.enity.BaseUserRoleType</value>
                 <value>com.gogowise.rep.user.enity.RoleType</value>
                 <value>com.gogowise.rep.org.enity.OrgMaterial</value>
-                <value>com.gogowise.rep.live.enity.MyShow</value>
-                <value>com.gogowise.rep.live.enity.ShowTerms</value>
-                <value>com.gogowise.rep.live.enity.ShowFans</value>
-                <value>com.gogowise.rep.live.enity.Matter</value>
-                <value>com.gogowise.rep.live.enity.Advertisement</value>
-                <value>com.gogowise.rep.live.enity.SeasonIncreasedShowFans</value>
-                <value>com.gogowise.rep.live.enity.ShowComment</value>
-                <value>com.gogowise.rep.live.enity.LiveChannel</value>
-                <value>com.gogowise.rep.live.enity.MemberOfLiveChannel</value>
-                <value>com.gogowise.rep.live.enity.ChannelTerms</value>
-                <value>com.gogowise.rep.live.enity.OnliveFollower</value>
-                <value>com.gogowise.rep.live.enity.LiveTermComment</value>
-                <value>com.gogowise.rep.live.enity.SeasonIncreasedOnliveFans</value>
-                <value>com.gogowise.rep.live.enity.AdvertisementForLive</value>
-                <value>com.gogowise.rep.live.enity.PersonalOnlive</value>
-                <value>com.gogowise.rep.live.enity.UserFans</value>
+                <value>com.gogowise.rep.system.enity.Matter</value>
                 <value>com.gogowise.rep.user.enity.UserMatters</value>
                 <value>com.gogowise.rep.course.enity.CourseNewEvent</value>
-                <value>com.gogowise.rep.live.enity.LiveChannelNewEvent</value>
-                <value>com.gogowise.rep.live.enity.ShowNewEvent</value>
-                <value>com.gogowise.rep.system.enity.GoGoWiseAnnounce</value>
-                <value>com.gogowise.rep.live.enity.LiveChannelComment</value>
                 <value>com.gogowise.rep.system.enity.FeedBackInfo</value>
-                <value>com.gogowise.rep.live.enity.LiveTrailer</value>
-                <value>com.gogowise.rep.android.enity.AndroidFeedback</value>
-                <value>com.gogowise.rep.org.enity.OrgFans</value>
-                <value>com.gogowise.rep.system.enity.DownloadTime</value>
-                <value>com.gogowise.rep.live.enity.UserPrivateChannel</value>
-                <value>com.gogowise.rep.live.enity.SubPrivateChannel</value>
-                <value>com.gogowise.rep.android.enity.ValidUser</value>
                 <value>com.gogowise.rep.course.enity.CourseMaterial</value>
-                <value>com.gogowise.rep.android.enity.IEMI</value>
-                <value>com.gogowise.rep.android.enity.SerialNO</value>
-                <value>com.gogowise.rep.live.enity.MonitorAuthorize</value>
                 <value>com.gogowise.rep.course.enity.Question</value>
                 <value>com.gogowise.rep.course.enity.QuestionItem</value>
                 <value>com.gogowise.rep.course.enity.QuestionResult</value>

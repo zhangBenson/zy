@@ -13,7 +13,6 @@ import java.util.Set;
 
 public interface CourseService extends ModelService {
 
-    public Set<BaseUser> findAllTeachersByOrgCreator(Integer userId);
     public void saveCourse(CourseSpecification specification);
     public Course findById(Integer id);
     public List<Course>  findMaintenanceCourses(Integer userId , Pagination pagination);

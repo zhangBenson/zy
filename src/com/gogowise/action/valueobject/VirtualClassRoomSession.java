@@ -2,8 +2,6 @@ package com.gogowise.action.valueobject;
 
 import com.gogowise.common.utils.Constants;
 import com.gogowise.rep.course.enity.CourseClass;
-import com.gogowise.rep.live.enity.ShowTerms;
-import com.gogowise.rep.user.enity.BaseUser;
 
 public class VirtualClassRoomSession {
     public static final String DEFAULT_CLASS_VER = "1";

@@ -1,22 +1,14 @@
 package com.gogowise.action;
 
-import com.gogowise.common.utils.Constants;
-import com.gogowise.common.utils.Utils;
-import com.gogowise.rep.Pagination;
-import com.gogowise.rep.course.dao.CourseDao;
-import com.gogowise.rep.course.enity.Course;
-import com.gogowise.rep.live.LiveChannelDao;
-import com.gogowise.rep.live.MyShowDao;
-import com.gogowise.rep.live.PersonalOnliveDao;
-import com.gogowise.rep.live.enity.LiveChannel;
-import com.gogowise.rep.live.enity.MyShow;
-import com.gogowise.rep.live.enity.PersonalOnlive;
-import com.gogowise.rep.org.dao.OrganizationDao;
-import com.gogowise.rep.org.enity.Organization;
-import com.gogowise.rep.user.dao.BaseUserDao;
-import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
-import com.gogowise.rep.user.enity.BaseUser;
-import com.opensymphony.xwork2.ActionContext;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
@@ -25,10 +17,17 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import com.gogowise.common.utils.Constants;
+import com.gogowise.common.utils.Utils;
+import com.gogowise.rep.Pagination;
+import com.gogowise.rep.course.dao.CourseDao;
+import com.gogowise.rep.course.enity.Course;;
+import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.user.dao.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
+import com.gogowise.rep.user.enity.BaseUser;
+import com.opensymphony.xwork2.ActionContext;
 
 @Controller
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
@@ -43,17 +42,10 @@ public class IndexAction extends BasicAction {
 
     private BaseUserDao baseUserDao;
     private OrganizationDao organizationDao;
-    private PersonalOnliveDao personalOnliveDao;
-    private LiveChannelDao liveChannelDao;
     private CourseDao courseDao;
-    private MyShowDao myShowDao;
     private BaseUser baseUser;
     private List<Course> courses;
     private List<Course> moocCourses;
-    private List<MyShow> myShows;
-    private List<PersonalOnlive> personalOnlives;
-    private List<PersonalOnlive> hottestOnlives;
-    private List<LiveChannel> liveChannels;
     private Pagination pagination = new Pagination(3);
 
 
@@ -294,20 +286,8 @@ public class IndexAction extends BasicAction {
 //        return RESULT_JSON;
 //    }
 
-    public Integer getPersonalOnlivesNum(){
-        return this.getPersonalOnlives().size();
-    }
-
     public Integer getCoursesNum(){
         return this.getCourses().size();
-    }
-
-    public Integer getShowsNum(){
-        return this.getMyShows().size();
-    }
-
-    public Integer getLiveChannelsNum(){
-        return this.getLiveChannels().size();
     }
 
     public OrganizationDao getOrganizationDao() {
@@ -365,53 +345,6 @@ public class IndexAction extends BasicAction {
         this.moocCourses = moocCourses;
     }
 
-    public MyShowDao getMyShowDao() {
-        return myShowDao;
-    }
-
-    public void setMyShowDao(MyShowDao myShowDao) {
-        this.myShowDao = myShowDao;
-    }
-
-    public List<MyShow> getMyShows() {
-        return myShows;
-    }
-
-    public void setMyShows(List<MyShow> myShows) {
-        this.myShows = myShows;
-    }
-
-    public List<PersonalOnlive> getPersonalOnlives() {
-        return personalOnlives;
-    }
-
-    public void setPersonalOnlives(List<PersonalOnlive> personalOnlives) {
-        this.personalOnlives = personalOnlives;
-    }
-
-    public List<LiveChannel> getLiveChannels() {
-        return liveChannels;
-    }
-
-    public void setLiveChannels(List<LiveChannel> liveChannels) {
-        this.liveChannels = liveChannels;
-    }
-
-    public PersonalOnliveDao getPersonalOnliveDao() {
-        return personalOnliveDao;
-    }
-
-    public void setPersonalOnliveDao(PersonalOnliveDao personalOnliveDao) {
-        this.personalOnliveDao = personalOnliveDao;
-    }
-
-    public LiveChannelDao getLiveChannelDao() {
-        return liveChannelDao;
-    }
-
-    public void setLiveChannelDao(LiveChannelDao liveChannelDao) {
-        this.liveChannelDao = liveChannelDao;
-    }
 
     public Pagination getPagination() {
         return pagination;
@@ -421,13 +354,6 @@ public class IndexAction extends BasicAction {
         this.pagination = pagination;
     }
 
-    public List<PersonalOnlive> getHottestOnlives() {
-        return hottestOnlives;
-    }
-
-    public void setHottestOnlives(List<PersonalOnlive> hottestOnlives) {
-        this.hottestOnlives = hottestOnlives;
-    }
 
     public List<Organization> getOrganizations() {
         return organizations;

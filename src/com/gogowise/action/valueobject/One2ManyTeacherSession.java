@@ -1,9 +1,7 @@
 package com.gogowise.action.valueobject;
 
-import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.rep.course.enity.CourseClass;
-import com.gogowise.rep.live.enity.ShowTerms;
 import com.gogowise.common.utils.Constants;
+import com.gogowise.rep.course.enity.CourseClass;
 
 /**
  * Created by IntelliJ IDEA.
@@ -34,16 +32,6 @@ public class One2ManyTeacherSession {
         this.setCourseID(getEmptyInteger(courseClass.getCourse().getId()));
     }
 
-    public void initWithSessionForShow(ShowTerms showTerms,BaseUser user){
-         this.setUserID(getEmptyInteger(user.getId()));
-         this.setUserName(getEmptyString(user.getNickName()));
-         this.setType(3);
-         this.setTitle(getEmptyString(showTerms.getMyShow().getName()));
-         this.setAbstract(getEmptyString(""));
-         this.setContent(getEmptyString(showTerms.getMyShow().getDescription()));
-         this.setClassID(getEmptyInteger(showTerms.getId()));
-         this.setCourseID(getEmptyInteger(showTerms.getMyShow().getId()));
-    }
     public Integer getUserID() {
         return UserID;
     }

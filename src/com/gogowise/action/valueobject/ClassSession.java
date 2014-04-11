@@ -1,9 +1,7 @@
 package com.gogowise.action.valueobject;
 
-import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.rep.course.enity.CourseClass;
-import com.gogowise.rep.org.enity.OrgMeeting;
 import com.gogowise.common.utils.Constants;
+import com.gogowise.rep.course.enity.CourseClass;
 
 /**
  * Created by IntelliJ IDEA.
@@ -158,25 +156,7 @@ public class ClassSession {
 
     }
 
-    public void initSessionWithMeeting(OrgMeeting orgMeeting ,BaseUser user){
-        this.setUserID(getEmptyInteger(user.getId()));
-        this.setUserName(getEmptyString(user.getNickName()));
-        if(orgMeeting.getHostMan()!=null){
-            this.setMasterID(getEmptyInteger(orgMeeting.getHostMan().getId()));
-            this.setMasterName(getEmptyString(orgMeeting.getHostMan().getNickName()));
-        }
-        this.setTitle(getEmptyString(orgMeeting.getOrganization().getSchoolName()));
-        this.setAbstract(getEmptyString(""));
-        this.setContent(getEmptyString(orgMeeting.getContent()));
-        this.setCourseID("meeting"+getEmptyString(orgMeeting.getId().toString()));
-        this.setClassID(getEmptyInteger(0));
-        if(orgMeeting.getOrgMeetingMembers().size() == 1){
-            if(orgMeeting.getOrgMeetingMembers().get(0).getMember() != null){
-                 this.setStudentID(orgMeeting.getOrgMeetingMembers().get(0).getMember().getId());
-                this.setStudentName(orgMeeting.getOrgMeetingMembers().get(0).getMember().getNickName());
-            }
-        }
-    }
+
     private String getEmptyString(String s) {
            return  s== null ? "": s;
     }

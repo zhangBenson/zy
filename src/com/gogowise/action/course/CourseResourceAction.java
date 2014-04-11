@@ -5,10 +5,10 @@ import com.gogowise.action.valueobject.VideoSession;
 import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.dao.*;
-import com.gogowise.rep.live.MatterDao;
+import com.gogowise.rep.system.MatterDao;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.course.enity.*;
-import com.gogowise.rep.live.enity.Matter;
+import com.gogowise.rep.system.enity.Matter;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.EmailUtil;
@@ -123,7 +123,7 @@ public class CourseResourceAction extends BasicAction {
                          href,href
                  });
                  EmailUtil.sendMail(regs.get(i).getEmail(),title,content);
-                 Matter matter =new Matter(Calendar.getInstance(),null,Matter.MATTER_COURSE_RESOURCE,baseUserDao.findByEmail(this.getSessionUserEmail()),null,regs.get(i).getEmail(),course,null,null,null,false);
+                 Matter matter =new Matter(Calendar.getInstance(),null,Matter.MATTER_COURSE_RESOURCE,baseUserDao.findByEmail(this.getSessionUserEmail()),null,regs.get(i).getEmail(),course, false);
                  matterDao.persistAbstract(matter);
                  }
             }

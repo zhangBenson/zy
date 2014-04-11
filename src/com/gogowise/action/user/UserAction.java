@@ -1,35 +1,23 @@
 package com.gogowise.action.user;
 
-import com.gogowise.action.BasicAction;
-import com.gogowise.common.utils.Constants;
-import com.gogowise.common.utils.EmailUtil;
-import com.gogowise.common.utils.MD5;
-import com.gogowise.common.utils.TextCode;
-import com.gogowise.rep.Pagination;
-import com.gogowise.rep.competition.CompetitionSessionDao;
-import com.gogowise.rep.competition.enity.Competition;
-import com.gogowise.rep.competition.enity.CompetitionPhase;
-import com.gogowise.rep.competition.enity.CompetitionSession;
-import com.gogowise.rep.competition.enity.Subject;
-import com.gogowise.rep.course.dao.*;
-import com.gogowise.rep.course.enity.*;
-import com.gogowise.rep.finance.UserAccountInfoDao;
-import com.gogowise.rep.finance.enity.UserAccountInfo;
-import com.gogowise.rep.org.dao.InterviewAppointerDao;
-import com.gogowise.rep.org.dao.InterviewDao;
-import com.gogowise.rep.org.dao.OrganizationDao;
-import com.gogowise.rep.org.enity.Interview;
-import com.gogowise.rep.org.enity.Organization;
-import com.gogowise.rep.user.UserService;
-import com.gogowise.rep.user.dao.BaseUserDao;
-import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
-import com.gogowise.rep.user.dao.InviteRelationshipDao;
-import com.gogowise.rep.user.dao.UserRelationshipDao;
-import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.rep.user.enity.BaseUserRoleType;
-import com.gogowise.rep.user.enity.RoleType;
-import com.gogowise.rep.user.enity.UserRelationship;
-import com.opensymphony.xwork2.ActionContext;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.imageio.ImageIO;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
@@ -40,17 +28,33 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import javax.imageio.ImageIO;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import com.gogowise.action.BasicAction;
+import com.gogowise.common.utils.Constants;
+import com.gogowise.common.utils.EmailUtil;
+import com.gogowise.common.utils.MD5;
+import com.gogowise.common.utils.TextCode;
+import com.gogowise.rep.course.dao.CourseDao;
+import com.gogowise.rep.course.dao.CourseInviteStudentDao;
+import com.gogowise.rep.course.dao.CourseRecommendDao;
+import com.gogowise.rep.course.dao.CourseReservationDao;
+import com.gogowise.rep.course.dao.SeniorClassRoomDao;
+import com.gogowise.rep.course.enity.Course;
+import com.gogowise.rep.course.enity.CourseInviteStudent;
+import com.gogowise.rep.course.enity.CourseRecommend;
+import com.gogowise.rep.course.enity.CourseReservation;
+import com.gogowise.rep.course.enity.SeniorClassRoom;
+import com.gogowise.rep.finance.UserAccountInfoDao;
+import com.gogowise.rep.finance.enity.UserAccountInfo;
+import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.user.UserService;
+import com.gogowise.rep.user.dao.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
+import com.gogowise.rep.user.dao.UserRelationshipDao;
+import com.gogowise.rep.user.enity.BaseUser;
+import com.gogowise.rep.user.enity.BaseUserRoleType;
+import com.gogowise.rep.user.enity.RoleType;
+import com.opensymphony.xwork2.ActionContext;
 
 @SuppressWarnings("UnusedDeclaration")
 @Controller
@@ -61,11 +65,8 @@ public class UserAction extends BasicAction {
 
     private BaseUserDao baseUserDao;
     private UserRelationshipDao userRelationshipDao;
-    private InterviewAppointerDao interviewAppointerDao;
-    private InviteRelationshipDao inviteRelationshipDao;
     private List<BaseUser> myFriends = new ArrayList<BaseUser>();
     private Map<Integer, String> competitionSessions = new HashMap<Integer, String>();
-    private CompetitionSessionDao competitionSessionDao;
     private List<BaseUser> invitedFriends = new ArrayList<BaseUser>();
     private List<String> invitedEmails = new ArrayList<String>();
     private List<Boolean> checkBox = new ArrayList<Boolean>();
@@ -100,8 +101,6 @@ public class UserAction extends BasicAction {
     private Boolean accept = false;
     private CourseInviteStudentDao courseInviteStudentDao;
     private SeniorClassRoomDao seniorClassRoomDao;
-    private Interview interview;
-    private InterviewDao interviewDao;
     private UserAccountInfoDao userAccountInfoDao;
     private CourseReservationDao courseReservationDao;
     private CourseReservation courseReservation;
@@ -141,33 +140,6 @@ public class UserAction extends BasicAction {
     @Autowired
     private UserService userService;
 
-
-    @Action(value = "initInviteFriend", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initInviteFriend")})
-    public String initFriendsList() {
-
-        List<UserRelationship> relationships = userRelationshipDao.queryFriendsByUserId(getSessionUserId(), this.getPagination());
-        for (UserRelationship relationship : relationships) {
-            myFriends.add(relationship.getUserFriend());
-        }
-
-        List<CompetitionSession> list = competitionSessionDao.findForcastByUser(getSessionUserId(), new Pagination());
-        for (CompetitionSession competition : list) {
-            CompetitionPhase competitionPhase = competition.getCompetitionPhase();
-            Competition compet = competitionPhase.getCompetition();
-            Subject subject = compet.getSubject();
-            competitionSessions.put(competition.getId(), subject.getName() + compet.getName() + competitionPhase.getName());
-        }
-        return SUCCESS;
-    }
-
-//    @Action(value="changePassword",  results={@Result(name=SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".changPassword")})
-//       public String sendVerificationCode4ChangePassword(){
-//        BaseUser user = baseUserDao.findByEmail(this.getUser().getEmail());
-//        user.setActiveCode("");
-//
-//
-//        return SUCCESS;
-//    }
 
     @Action(value = "identityConfirmEmailCheck")
     public void identityConfirmEmailCheck() throws IOException {
@@ -987,12 +959,7 @@ public class UserAction extends BasicAction {
     }
 
 
-    public String initInviteFriend() {
-        myFriends.clear();
-        competitionSessions.clear();
-        initFriendsList();
-        return SUCCESS;
-    }
+
 
     public BaseUser getUser() {
         return user;
@@ -1018,13 +985,6 @@ public class UserAction extends BasicAction {
         this.invitedUsers = invitedUsers;
     }
 
-    public InviteRelationshipDao getInviteRelationshipDao() {
-        return inviteRelationshipDao;
-    }
-
-    public void setInviteRelationshipDao(InviteRelationshipDao inviteRelationshipDao) {
-        this.inviteRelationshipDao = inviteRelationshipDao;
-    }
 
     public String getInvitedCode() {
         return invitedCode;
@@ -1080,14 +1040,6 @@ public class UserAction extends BasicAction {
 
     public void setCompetitionSessions(Map<Integer, String> competitionSessions) {
         this.competitionSessions = competitionSessions;
-    }
-
-    public CompetitionSessionDao getCompetitionSessionDao() {
-        return competitionSessionDao;
-    }
-
-    public void setCompetitionSessionDao(CompetitionSessionDao competitionSessionDao) {
-        this.competitionSessionDao = competitionSessionDao;
     }
 
     public String invite() {
@@ -1255,28 +1207,12 @@ public class UserAction extends BasicAction {
         this.seniorClassRoomDao = seniorClassRoomDao;
     }
 
-    public Interview getInterview() {
-        return interview;
-    }
-
-    public void setInterview(Interview interview) {
-        this.interview = interview;
-    }
-
     public Integer getIdentityType() {
         return identityType;
     }
 
     public void setIdentityType(Integer identityType) {
         this.identityType = identityType;
-    }
-
-    public InterviewDao getInterviewDao() {
-        return interviewDao;
-    }
-
-    public void setInterviewDao(InterviewDao interviewDao) {
-        this.interviewDao = interviewDao;
     }
 
     public UserAccountInfoDao getUserAccountInfoDao() {
@@ -1295,13 +1231,6 @@ public class UserAction extends BasicAction {
         this.userAccountInfo = userAccountInfo;
     }
 
-    public InterviewAppointerDao getInterviewAppointerDao() {
-        return interviewAppointerDao;
-    }
-
-    public void setInterviewAppointerDao(InterviewAppointerDao interviewAppointerDao) {
-        this.interviewAppointerDao = interviewAppointerDao;
-    }
 
     public CourseReservationDao getCourseReservationDao() {
         return courseReservationDao;

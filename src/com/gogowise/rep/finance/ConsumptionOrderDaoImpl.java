@@ -1,17 +1,17 @@
 package com.gogowise.rep.finance;
 
-import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.rep.user.dao.BaseUserDao;
-import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.rep.finance.enity.ConsumptionOrder;
-import com.gogowise.rep.course.enity.Course;
-import com.gogowise.rep.live.enity.UserPrivateChannel;
-import com.gogowise.common.utils.Constants;
-import com.gogowise.common.utils.Utils;
-import org.springframework.stereotype.Repository;
-
 import java.util.Calendar;
 import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.gogowise.common.utils.Constants;
+import com.gogowise.common.utils.Utils;
+import com.gogowise.rep.ModelDaoImpl;
+import com.gogowise.rep.course.enity.Course;
+import com.gogowise.rep.finance.enity.ConsumptionOrder;
+import com.gogowise.rep.user.dao.BaseUserDao;
+import com.gogowise.rep.user.enity.BaseUser;
 
 /**
  * Created by IntelliJ IDEA.
@@ -75,17 +75,6 @@ public class ConsumptionOrderDaoImpl extends ModelDaoImpl<ConsumptionOrder>
         consumptionRecordDao.createRecordForTransfer(consumptionOrder);
     }
 
-    public void chargeForPrivateChannel(Double totalCharges, UserPrivateChannel userPrivateChannel) {
-        ConsumptionOrder consumptionOrder = new ConsumptionOrder();
-        consumptionOrder.setOrderId(Utils.getOrderId());
-        consumptionOrder.setPayer(userPrivateChannel.getUser());                 //确定付款人
-        BaseUser zhiYuan = baseUserDao.findByEmail(Constants.ZHIBI_SYSTEM_EMAIL);    //转入知元对公账户
-        consumptionOrder.setPayee(zhiYuan);
-        consumptionOrder.setCloseTime(Calendar.getInstance());
-        consumptionOrder.setState(ConsumptionOrder.ORDER_STATE_CLOSE);
-
-
-    }
 
     public List<ConsumptionOrder> findUnclosedOrder() {
         String hql = "From ConsumptionOrder co where co.state = 1";

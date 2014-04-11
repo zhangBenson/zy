@@ -1,14 +1,9 @@
 package com.gogowise.action.course;
 
 
-import com.gogowise.action.BasicAction;
-import com.gogowise.rep.Pagination;
-import com.gogowise.rep.course.dao.CourseDao;
-import com.gogowise.rep.live.MyShowDao;
-import com.gogowise.rep.course.enity.Course;
-import com.gogowise.rep.live.enity.MyShow;
-import com.gogowise.rep.live.enity.ShowFans;
-import com.gogowise.rep.user.enity.BaseUser;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -16,8 +11,11 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.gogowise.action.BasicAction;
+import com.gogowise.rep.Pagination;
+import com.gogowise.rep.course.dao.CourseDao;
+import com.gogowise.rep.course.enity.Course;
+import com.gogowise.rep.user.enity.BaseUser;
 
 @Controller
 @Namespace(BasicAction.BASE_NAME_SPACE)
@@ -26,27 +24,9 @@ public class ShowRegMembersAction extends BasicAction {
 
     private  CourseDao courseDao;
     private Course course;
-    private MyShow myShow;
-    private MyShowDao myShowDao;
     private  List<BaseUser> regs = new ArrayList<BaseUser>();
 
     private Pagination pagination = new Pagination(20);
-
-    @Action(value = "showRegMembers", results = {@Result(name = SUCCESS, location ="/jsp/gogowise/course/showRegMember.jsp" )})
-    public String showRegMembers() {
-
-        if(this.getMyShow() != null && this.getMyShow().getId()!=null){
-            myShow = myShowDao.findById(this.getMyShow().getId());
-            for(ShowFans showFans : myShow.getShowFanses()){
-                regs.add(showFans.getFan());
-            }
-        }else {
-            if(this.getCourse()!=null && this.getCourse().getId() != null){
-                regs = courseDao.findRegUser(course.getId(), pagination);
-            }
-        }
-        return SUCCESS;
-    }
 
     public CourseDao getCourseDao() {
         return courseDao;
@@ -80,19 +60,4 @@ public class ShowRegMembersAction extends BasicAction {
         this.pagination = pagination;
     }
 
-    public MyShow getMyShow() {
-        return myShow;
-    }
-
-    public void setMyShow(MyShow myShow) {
-        this.myShow = myShow;
-    }
-
-    public MyShowDao getMyShowDao() {
-        return myShowDao;
-    }
-
-    public void setMyShowDao(MyShowDao myShowDao) {
-        this.myShowDao = myShowDao;
-    }
 }

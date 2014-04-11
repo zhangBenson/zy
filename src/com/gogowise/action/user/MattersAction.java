@@ -1,15 +1,12 @@
 package com.gogowise.action.user;
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.rep.system.MatterDao;
 import com.gogowise.rep.user.dao.BaseUserDao;
-import com.gogowise.rep.live.MatterDao;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.course.enity.CourseClass;
 import com.gogowise.rep.course.enity.CourseReservation;
-import com.gogowise.rep.live.enity.Matter;
-import com.gogowise.rep.live.enity.MyShow;
-import com.gogowise.rep.org.enity.Interview;
-import com.gogowise.rep.org.enity.OrgMeeting;
+import com.gogowise.rep.system.enity.Matter;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.common.utils.Constants;
 import org.apache.struts2.convention.annotation.Action;
@@ -50,16 +47,13 @@ public class MattersAction extends BasicAction{
     private MatterDao matterDao;
     private Integer courseId;
     private Course course;
-    private OrgMeeting orgMeeting;
     private BaseUserDao baseUserDao;
     private BaseUser user;
     private Matter matter;
     private CourseReservation courseReservation;
     private boolean accept;
     private CourseClass courseClass;
-    private Interview interview;
     private Integer identityType;
-    private MyShow myShow;
 
 
     @Action(value = "initMatters", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location =".matters")})
@@ -204,13 +198,7 @@ public class MattersAction extends BasicAction{
         this.orgMeetingMatters = orgMeetingMatters;
     }
 
-    public OrgMeeting getOrgMeeting() {
-        return orgMeeting;
-    }
 
-    public void setOrgMeeting(OrgMeeting orgMeeting) {
-        this.orgMeeting = orgMeeting;
-    }
 
     public BaseUser getUser() {
         return user;
@@ -308,14 +296,6 @@ public class MattersAction extends BasicAction{
         this.interviewerMatters = interviewerMatters;
     }
 
-    public Interview getInterview() {
-        return interview;
-    }
-
-    public void setInterview(Interview interview) {
-        this.interview = interview;
-    }
-
     public Integer getIdentityType() {
         return identityType;
     }
@@ -332,13 +312,6 @@ public class MattersAction extends BasicAction{
         this.myShowMessageMatters = myShowMessageMatters;
     }
 
-    public MyShow getMyShow() {
-        return myShow;
-    }
-
-    public void setMyShow(MyShow myShow) {
-        this.myShow = myShow;
-    }
 
     public List<Matter> getOrgMeetingHostManMatters() {
         return orgMeetingHostManMatters;

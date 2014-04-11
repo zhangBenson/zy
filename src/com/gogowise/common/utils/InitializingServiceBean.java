@@ -1,6 +1,6 @@
 package com.gogowise.common.utils;
 
-import com.gogowise.rep.live.MatterDao;
+import com.gogowise.rep.system.MatterDao;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.stereotype.Component;
 

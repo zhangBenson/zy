@@ -1,14 +1,13 @@
-package com.gogowise.rep.live.enity;
+package com.gogowise.rep.system.enity;
 
-import com.gogowise.rep.AbstractPersistence;
-import com.gogowise.rep.course.enity.Course;
-import com.gogowise.rep.org.enity.Interview;
-import com.gogowise.rep.org.enity.OrgMeeting;
-import com.gogowise.rep.user.enity.BaseUser;
+import java.util.Calendar;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
-import java.util.Calendar;
+
+import com.gogowise.rep.AbstractPersistence;
+import com.gogowise.rep.course.enity.Course;
+import com.gogowise.rep.user.enity.BaseUser;
 
 /**
  * Created by IntelliJ IDEA.
@@ -28,12 +27,8 @@ public class Matter extends AbstractPersistence {
     private String toEmail;
     @OneToOne
     private Course course;
-    @OneToOne
-    private Interview interview;
-    @OneToOne
-    private MyShow myShow;
-    @OneToOne
-    private OrgMeeting orgMeeting;
+
+
     private Boolean done;
     private Calendar createDate;
     private String serialNo;
@@ -54,15 +49,12 @@ public class Matter extends AbstractPersistence {
     public static final Integer MATTER_COURSE_STUDENT_NO_ORG=13;
 
 
-    public Matter(Calendar createDate,String serialNo, Integer type, BaseUser fromUser,String email, String toEmail, Course course, Interview interview, MyShow myShow, OrgMeeting orgMeeting, Boolean done) {
+    public Matter(Calendar createDate,String serialNo, Integer type, BaseUser fromUser,String email, String toEmail, Course course, Boolean done) {
         this.createDate = createDate;
         this.type = type;
         this.fromUser = fromUser;
         this.toEmail = toEmail;
         this.course = course;
-        this.interview = interview;
-        this.myShow = myShow;
-        this.orgMeeting = orgMeeting;
         this.done = done;
         this.serialNo=serialNo;
         this.email=email;
@@ -117,30 +109,6 @@ public class Matter extends AbstractPersistence {
 
     public void setCourse(Course course) {
         this.course = course;
-    }
-
-    public Interview getInterview() {
-        return interview;
-    }
-
-    public void setInterview(Interview interview) {
-        this.interview = interview;
-    }
-
-    public MyShow getMyShow() {
-        return myShow;
-    }
-
-    public void setMyShow(MyShow myShow) {
-        this.myShow = myShow;
-    }
-
-    public OrgMeeting getOrgMeeting() {
-        return orgMeeting;
-    }
-
-    public void setOrgMeeting(OrgMeeting orgMeeting) {
-        this.orgMeeting = orgMeeting;
     }
 
     public String getSerialNo() {

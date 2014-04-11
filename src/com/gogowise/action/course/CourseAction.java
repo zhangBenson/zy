@@ -1,26 +1,18 @@
 package com.gogowise.action.course;
 
-import com.gogowise.action.BasicAction;
-import com.gogowise.common.utils.*;
-import com.gogowise.rep.Pagination;
-import com.gogowise.rep.course.CourseService;
-import com.gogowise.rep.course.dao.*;
-import com.gogowise.rep.course.enity.*;
-import com.gogowise.rep.course.vo.CourseSpecification;
-import com.gogowise.rep.live.MatterDao;
-import com.gogowise.rep.live.UserFansDao;
-import com.gogowise.rep.live.enity.Matter;
-import com.gogowise.rep.live.enity.UserFans;
-import com.gogowise.rep.org.dao.OrganizationDao;
-import com.gogowise.rep.org.enity.Organization;
-import com.gogowise.rep.system.dao.GoGoWiseAnnounceDao;
-import com.gogowise.rep.system.enity.GoGoWiseAnnounce;
-import com.gogowise.rep.user.UserService;
-import com.gogowise.rep.user.dao.BaseUserDao;
-import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
-import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.vo.ResultData;
-import com.opensymphony.xwork2.ActionContext;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
@@ -31,12 +23,46 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import com.gogowise.action.BasicAction;
+import com.gogowise.common.utils.Constants;
+import com.gogowise.common.utils.EmailUtil;
+import com.gogowise.common.utils.MD5;
+import com.gogowise.common.utils.PdfUtil;
+import com.gogowise.common.utils.Utils;
+import com.gogowise.rep.Pagination;
+import com.gogowise.rep.course.CourseService;
+import com.gogowise.rep.course.dao.ClassDao;
+import com.gogowise.rep.course.dao.ClassRoomDao;
+import com.gogowise.rep.course.dao.CourseCommentDao;
+import com.gogowise.rep.course.dao.CourseDao;
+import com.gogowise.rep.course.dao.CourseInviteStudentDao;
+import com.gogowise.rep.course.dao.CourseNewEventDao;
+import com.gogowise.rep.course.dao.CourseQuestionDao;
+import com.gogowise.rep.course.dao.CourseRecommendDao;
+import com.gogowise.rep.course.dao.CourseReservationDao;
+import com.gogowise.rep.course.dao.CourseResourceDao;
+import com.gogowise.rep.course.dao.SeniorClassRoomDao;
+import com.gogowise.rep.course.enity.Course;
+import com.gogowise.rep.course.enity.CourseClass;
+import com.gogowise.rep.course.enity.CourseComment;
+import com.gogowise.rep.course.enity.CourseInviteStudent;
+import com.gogowise.rep.course.enity.CourseNewEvent;
+import com.gogowise.rep.course.enity.CourseQuestion;
+import com.gogowise.rep.course.enity.CourseRecommend;
+import com.gogowise.rep.course.enity.CourseReservation;
+import com.gogowise.rep.course.enity.CourseResource;
+import com.gogowise.rep.course.enity.SeniorClassRoom;
+import com.gogowise.rep.course.vo.CourseSpecification;
+import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.system.MatterDao;
+import com.gogowise.rep.system.enity.Matter;
+import com.gogowise.rep.user.UserService;
+import com.gogowise.rep.user.dao.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
+import com.gogowise.rep.user.enity.BaseUser;
+import com.gogowise.vo.ResultData;
+import com.opensymphony.xwork2.ActionContext;
 
 
 @Controller
@@ -102,14 +128,11 @@ public class CourseAction extends BasicAction {
     private Integer commentsNum;
     private Boolean commentsNumOverflow = false;
     private MatterDao matterDao;
-    private UserFansDao userFansDao;
     private List<BaseUser> hottestTeacher;
     private CourseNewEventDao courseNewEventDao;
     private List<CourseNewEvent> courseNewEvents;
     private CourseNewEvent courseNewEvent;
     private List<Organization> organizations = new ArrayList<>();
-    private GoGoWiseAnnounceDao goGoWiseAnnounceDao;
-    private List<GoGoWiseAnnounce> goGoWiseAnnounces = new ArrayList<>();
     private Set<BaseUser> teachers = new HashSet<>();
     private CourseService courseService;
     private List<Integer> teacherIds;
@@ -154,7 +177,6 @@ public class CourseAction extends BasicAction {
         hottestTeacher = baseUserDao.findHottestTeacher(new Pagination(9));
         organizations = organizationDao.findLatestOrgs(new Pagination(4));
         coursesForAds = courseDao.findLatest4Course(new Pagination(3));
-        goGoWiseAnnounces = goGoWiseAnnounceDao.findLatestAnnounce(new Pagination(13));
         courseNewEvents = courseNewEventDao.findLatestTenEvents(new Pagination(13));  //课程新鲜事
         return SUCCESS;
     }
@@ -277,7 +299,6 @@ public class CourseAction extends BasicAction {
         if (Constants.COURSE_TYPE_ORG.equals(this.getCourseType())) {
             Organization orgTmp = organizationDao.findMyOrg(this.getSessionUserId());
             if (orgTmp != null) orgs.put(orgTmp.getId(), orgTmp.getSchoolName());
-            teachers = courseService.findAllTeachersByOrgCreator(this.getSessionUserId());
         }
         return SUCCESS;
     }
@@ -353,9 +374,6 @@ public class CourseAction extends BasicAction {
     }
 
     public void validateSaveCourse() {
-        if (Constants.COURSE_TYPE_ORG.equals(this.getCourseType())) {
-            teachers = courseService.findAllTeachersByOrgCreator(this.getSessionUserId());
-        }
 
     }
 
@@ -461,7 +479,7 @@ public class CourseAction extends BasicAction {
         }
         if (course.getOrganization() != null) {
             String serialNo = this.getSessionNickName() + (new SimpleDateFormat("yyyyddMMHHmmssms").format(Calendar.getInstance().getTime()));
-            Matter matter = new Matter(Calendar.getInstance(), serialNo, Matter.MATTER_COURSE_TEACHER, baseUserDao.findByEmail(this.getSessionUserEmail()), null, course.getTeacherEmail(), course, null, null, null, false);
+            Matter matter = new Matter(Calendar.getInstance(), serialNo, Matter.MATTER_COURSE_TEACHER, baseUserDao.findByEmail(this.getSessionUserEmail()),  null,course.getTeacherEmail(), course, false);
             matterDao.persistAbstract(matter);
 
 
@@ -498,7 +516,7 @@ public class CourseAction extends BasicAction {
                 String[] args2student = {courseInviteStudent.getInvitedStudentEmail(), course.getOrganization().getSchoolName(), course.getName(), course.getDescription(), dateFormat.format(courseStartTime.getTime()),
                         course.getTotalHours().toString(), classesInfo.toString(), acceptArrange2student, rejectArrange2student, acceptArrange2student, rejectArrange2student, courseInviteStudent.getInvitedStudentEmail()};
                 EmailUtil.sendMail(courseInviteStudent.getInvitedStudentEmail(), tile2, css + this.getText("org.invite.student.email.content", args2student), "text/html;charset=utf-8");
-                matter = new Matter(Calendar.getInstance(), serialNo, Matter.MATTER_COURSE_STUDENT, baseUserDao.findByEmail(this.getSessionUserEmail()), null, courseInviteStudent.getInvitedStudentEmail(), course, null, null, null, false);
+                matter = new Matter(Calendar.getInstance(), serialNo, Matter.MATTER_COURSE_STUDENT, baseUserDao.findByEmail(this.getSessionUserEmail()), null, courseInviteStudent.getInvitedStudentEmail(), course, false);
                 matterDao.persistAbstract(matter);
             }
 
@@ -529,7 +547,7 @@ public class CourseAction extends BasicAction {
                                 hrefAccept, hrefReject,
                                 courseInviteStudent.getInvitedStudentEmail()}),
                         "text/html;charset=utf-8");
-                Matter matter = new Matter(Calendar.getInstance(), null, Matter.MATTER_COURSE_STUDENT_NO_ORG, baseUserDao.findByEmail(this.getSessionUserEmail()), null, courseInviteStudent.getInvitedStudentEmail(), course, null, null, null, false);
+                Matter matter = new Matter(Calendar.getInstance(), null, Matter.MATTER_COURSE_STUDENT_NO_ORG, baseUserDao.findByEmail(this.getSessionUserEmail()), null, courseInviteStudent.getInvitedStudentEmail(), course,  false);
                 matterDao.persistAbstract(matter);
             }
         }
@@ -1094,7 +1112,7 @@ public class CourseAction extends BasicAction {
 
             String serialNo = this.getSessionNickName() + (new SimpleDateFormat("yyyyddMMHHmmssms").format(Calendar.getInstance().getTime()));
 
-            Matter matter = new Matter(Calendar.getInstance(), serialNo, Matter.MATTER_COURSE_RESERVATION, baseUserDao.findByEmail(this.getSessionUserEmail()), MD5.endCode(email), email, course, null, null, null, false);
+            Matter matter = new Matter(Calendar.getInstance(), serialNo, Matter.MATTER_COURSE_RESERVATION, baseUserDao.findByEmail(this.getSessionUserEmail()), MD5.endCode(email), email, course,   false);
             matterDao.persistAbstract(matter);
             String href = getBasePath() + "/matterHandler.html?courseReservation.id=" + this.getCourseReservation().getId() + "&email=" + email + "&code=" + MD5.endCode(email) + "&serialNo=" + serialNo + "&matterType=" + Matter.MATTER_COURSE_RESERVATION;
             Calendar startTime = Calendar.getInstance();
@@ -1192,7 +1210,7 @@ public class CourseAction extends BasicAction {
 
         for (String email : emails) {
             String serialNo = this.getSessionNickName() + (new SimpleDateFormat("yyyyddMMHHmmssms").format(Calendar.getInstance().getTime()));
-            Matter matter = new Matter(Calendar.getInstance(), serialNo, Matter.MATTER_COURSE_INVITE, friend, courseClass.getId() + "", email, courseClass.getCourse(), null, null, null, false);
+            Matter matter = new Matter(Calendar.getInstance(), serialNo, Matter.MATTER_COURSE_INVITE, friend, courseClass.getId() + "", email, courseClass.getCourse(), false);
             matterDao.persistAbstract(matter);
             String content = this.getText("virtual.room.invite.friend.email.content", new String[]{
                     email,
@@ -1782,33 +1800,11 @@ public class CourseAction extends BasicAction {
     }
 
     public List<BaseUser> getHottestTeacher() {
-        for (BaseUser teacher : hottestTeacher) {
-            teacher.setUserFocused(false);
-            if (this.getSessionUserId() != null && userFansDao.findByUserAndFans(teacher.getId(), this.getSessionUserId()) != null) {
-                teacher.setUserFocused(true);
-            }
-        }
         return hottestTeacher;
     }
 
     public void setHottestTeacher(List<BaseUser> hottestTeacher) {
         this.hottestTeacher = hottestTeacher;
-    }
-
-    public GoGoWiseAnnounceDao getGoGoWiseAnnounceDao() {
-        return goGoWiseAnnounceDao;
-    }
-
-    public void setGoGoWiseAnnounceDao(GoGoWiseAnnounceDao goGoWiseAnnounceDao) {
-        this.goGoWiseAnnounceDao = goGoWiseAnnounceDao;
-    }
-
-    public List<GoGoWiseAnnounce> getGoGoWiseAnnounces() {
-        return goGoWiseAnnounces;
-    }
-
-    public void setGoGoWiseAnnounces(List<GoGoWiseAnnounce> goGoWiseAnnounces) {
-        this.goGoWiseAnnounces = goGoWiseAnnounces;
     }
 
     public Boolean getCommentsNumOverflow() {
@@ -1825,14 +1821,6 @@ public class CourseAction extends BasicAction {
 
     public void setCourseNewEvent(CourseNewEvent courseNewEvent) {
         this.courseNewEvent = courseNewEvent;
-    }
-
-    public UserFansDao getUserFansDao() {
-        return userFansDao;
-    }
-
-    public void setUserFansDao(UserFansDao userFansDao) {
-        this.userFansDao = userFansDao;
     }
 
     public MatterDao getMatterDao() {
@@ -1868,14 +1856,6 @@ public class CourseAction extends BasicAction {
             return curr.size();
         }
         return 0;
-    }
-
-    public Boolean getFocusedCourseTeacher() {
-        if (this.getCourse() != null && this.getCourse().getTeacher() != null) {
-            UserFans uf = userFansDao.findByUserAndFans(this.getCourse().getTeacher().getId(), this.getSessionUserId() == null ? 0 : this.getSessionUserId());
-            if (uf != null) return true;
-        }
-        return false;
     }
 
     public Integer getOrgCourseNum() {

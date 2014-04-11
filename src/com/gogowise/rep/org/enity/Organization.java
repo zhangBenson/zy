@@ -53,9 +53,6 @@ public class Organization extends AbstractPersistence {
 
     private Boolean isDeleted;
 
-    @OneToMany(mappedBy = "org")
-    private List<OrganizationTeacher> organizationTeachers;
-
 
     @ManyToOne(fetch = FetchType.LAZY)
     private BaseUser creator;
@@ -197,14 +194,6 @@ public class Organization extends AbstractPersistence {
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
-    }
-
-    public List<OrganizationTeacher> getOrganizationTeachers() {
-        return organizationTeachers;
-    }
-
-    public void setOrganizationTeachers(List<OrganizationTeacher> organizationTeachers) {
-        this.organizationTeachers = organizationTeachers;
     }
 
     public Calendar getContractSignDate() {

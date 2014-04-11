@@ -1,19 +1,18 @@
 package com.gogowise.rep.user.enity;
 
 
-import com.gogowise.rep.AbstractPersistence;
-import com.gogowise.rep.live.enity.PersonalOnlive;
+import java.util.Calendar;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
-import java.util.Calendar;
+
+import com.gogowise.rep.AbstractPersistence;
 @Entity
 public class UserMatters extends AbstractPersistence {
 
     @OneToOne
     private BaseUser user;
-    @OneToOne
-    private PersonalOnlive personalOnlive;
+
     private Boolean viewed = false;
     private Calendar createTime;
 
@@ -23,14 +22,6 @@ public class UserMatters extends AbstractPersistence {
 
     public void setUser(BaseUser user) {
         this.user = user;
-    }
-
-    public PersonalOnlive getPersonalOnlive() {
-        return personalOnlive;
-    }
-
-    public void setPersonalOnlive(PersonalOnlive personalOnlive) {
-        this.personalOnlive = personalOnlive;
     }
 
     public Boolean getViewed() {
