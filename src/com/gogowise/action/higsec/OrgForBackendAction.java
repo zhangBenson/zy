@@ -154,7 +154,7 @@ public class OrgForBackendAction extends BasicAction {
 
         BaseUser currUser = baseUserDao.findByEmail(this.getOrg().getResponsiblePerson().getEmail());
         if (currUser != null) {
-            Organization userOrg = organizationDao.findMyOrg(currUser.getId());
+            Organization userOrg = organizationDao.findByResId(currUser.getId());
             if (userOrg != null && !userOrg.getId().equals(this.getOrg().getId())) {
                 addFieldError("org.responsiblePerson.email", "该用户以有组织，不能再加入组织");
             } else {

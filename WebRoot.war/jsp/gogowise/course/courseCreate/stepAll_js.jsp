@@ -548,6 +548,6 @@
     var warn_start_time_empty = "<s:text name='course.start.time.of.class'/>";
     var editClass = "<s:text name='course.class.edit'/>";
     var saveClass = "<s:text name='course.class.save'/>";
-    var minute = "<s:text name='label.minute'/>"
+    var minute = "<s:text name='label.minute'/>";
     var warn_student_age_type = "<s:text name='course.studentAgeTypeEmpty'/>";
 </script>

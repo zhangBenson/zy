@@ -4,6 +4,7 @@
 
 <table id="message_table">
     <tr class="tr_x"><td colspan="3" class="td_0"><s:property value="%{getText('title.matters.courseRelated')}"/></td></tr>
+    <tr><td class="td_1">&nbsp;</td><td colspan="2" class="td_3"><a href="#" onclick="deleteAllRow();"><s:property value="%{getText('title.matters.markAllAsRead')}" /></a></td></tr>
     <s:iterator value="courseReservationMatters" status="idx">
     <tr>
         <td class="td_1"><s:property value="%{getText('title.matters.course.reserve',{fromUser.nickName})}"/><a href="matterHandler.html?matter.id=<s:property value="id"/>&course.id=<s:property value="course.id"/>&matter.type=1" target="_blank" onclick="deleteThisRow(this);"><s:property value="course.name"/></a></td>
@@ -106,7 +107,6 @@
         <td class="td_2"><a href="#" onclick="deleteThatRow(this,'<s:property value="id"/>');"><s:property value="%{getText('title.matters.ignore')}"/></a></td>
     </tr>
     </s:iterator>--%>
-    <tr><td class="td_1">&nbsp;</td><td colspan="2" class="td_3"><a href="#" onclick="deleteAllRow();"><s:property value="%{getText('title.matters.markAllAsRead')}" /></a></td></tr>
 </table>
 
 <script type="text/javascript">
