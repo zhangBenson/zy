@@ -79,8 +79,12 @@
                         </li>
                         <li>
                             <span class="item"><s:property value="%{getText('course.info.of.student.type')}"/> </span>
-                            <s:textfield cssClass="long_text_field" id="step2_course_student_type" name="course.studentType" type="text" />
-                            <span class="course_student_type_input_msg tip_words"></span>
+                            <s:select
+                                    list="#{'1':getText('course.student.type.1'),'2':getText('course.student.type.2'),'3':getText('course.student.type.3'),
+                                '4':getText('course.student.type.4'),'5':getText('course.student.type.5'),'6':getText('course.student.type.6')}"
+                                    headerKey="-1" headerValue="%{getText('course.student.default')}"
+                                    cssClass="long_text_field" id="step2_studentAge_type" name="course.studentAgeType"/>
+                            <span class="course_student_type_input_msg tip_words">*</span>
                          </li>
                         <li>
                             <span class="item"><s:property value="%{getText('course.info.of.teaching.book')}"/></span>
@@ -136,9 +140,19 @@
                     <ul>
                         <li><s:property value="%{getText('course.info.courseName')}"/>：<span class="orange_words" id="store_name"><s:property value="course.name"/></span></li>
                         <li><s:property value="%{getText('course.info.description')}"/>：<span class="orange_words" id="store_description"><s:property value="course.description"/></span></li>
-                        <li><s:property value="%{getText('course.info.of.student.type')}"/>：<span class="orange_words" id="store_studentType"><s:property value="course.studentType"/></span></li>
+                        <li><s:property value="%{getText('course.info.of.student.type')}"/>：<span class="orange_words" id="store_studentType"></span>
+                            <script>
+                                var studentAgeType = document.getElementById('step2_studentAge_type').options[<s:property value="course.studentAgeType"/>].text;
+                                $("#store_studentType").html(studentAgeType);
+                            </script>
+                        </li>
                         <li><s:property value="%{getText('course.info.of.teaching.book')}"/>：<span class="orange_words" id="store_courseTeachingBook"><s:property value="course.courseTeachingBook"/></span></li>
-                        <li><s:property value="%{getText('course.info.of.course.type')}"/>：<span class="orange_words" id="store_courseType"><s:property value="course.courseType"/></span></li>
+                        <li><s:property value="%{getText('course.info.of.course.type')}"/>：<span class="orange_words" id="store_courseType"></span>
+                            <script>
+                                var courseType = document.getElementById('step2_course_type').options[<s:property value="course.courseType"/>].text;
+                                $("#store_courseType").html(courseType);
+                            </script>
+                        </li>
                         <li><s:property value="%{getText('label.online.class.startdate')}"/>：<span class="orange_words" id="store_startDate"><s:date name="course.startDate" format="%{getText('dateformat')}"/></span></li>
                         <li><s:property value="%{getText('label.online.class.tutor.price')}"/>：<span class="orange_words" id="store_charges"><s:property value="course.charges"/>&nbsp;<s:property value="%{getText('label.zhibi.true')}"/></span></li>
                         <li><s:property value="%{getText('label.forcast.lecturer')}"/>：<span class="orange_words" id="store_teacherEmail"><s:property value="course.teacher.nickName"/></span></li>
