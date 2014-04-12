@@ -95,6 +95,11 @@ ul{
 .stepCont .after_store{
     display: none;
 }
+
+.stepCont .after_store_class {
+    display: block;
+}
+
 #step1_store_cont p{
     float: left;
     display: inline;

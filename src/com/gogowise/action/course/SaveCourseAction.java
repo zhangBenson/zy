@@ -87,9 +87,11 @@ public class SaveCourseAction extends BasicAction {
             if(course.getTeachers()!=null){
                 course.getTeachers().clear();
             }
-            BaseUser teacher = baseUserDao.findById(teacherIds.get(0));
-            if(teacher!=null){
-                course.setTeacher(teacher);
+            for (Integer tId : teacherIds) {
+                BaseUser teacher = baseUserDao.findById(tId);
+                if (teacher != null) {
+                    course.addTeacher(teacher);
+                }
             }
         }
 
