@@ -4,6 +4,11 @@
 .stepCont .after_store{
     display: block;
 }
+
+.stepCont .after_store_class {
+    display: block;
+}
+
 .stepTip a{
     color: #3E8FDA;
     font-size: 14px;

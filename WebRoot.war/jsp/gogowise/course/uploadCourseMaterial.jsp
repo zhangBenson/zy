@@ -139,8 +139,8 @@
                 b1 = false;
             }
         } else if (sourceType == 4) {
-            if (!questionExt.test(".ppt.pptx")) {
-                $("#cm_upload").html("Please select ppt/pptx.");
+            if (!questionExt.test(".ppt.pptx.pdf")) {
+                $("#cm_upload").html("Please select ppt/pptx/pdf.");
                 b1 = false;
             }
 
