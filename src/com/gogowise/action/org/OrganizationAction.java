@@ -60,6 +60,8 @@ public class OrganizationAction extends BasicAction {
     private List<OrgMaterial> orgMaterials = new ArrayList<OrgMaterial>();
     private OrgMaterial orgMaterial;
     private OrgMaterialDao orgMaterialDao;
+
+    @Autowired
     private OrgService orgService;
 
     private BaseUser responser;
@@ -191,7 +193,7 @@ public class OrganizationAction extends BasicAction {
 
     @Action(value = "initOrgLeague", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".go2FirstStep")})
     public String initOrgLeague() {
-        this.org = organizationDao.findMyOrg(this.getSessionUserId());
+        this.org = orgService.findMyOrg(this.getSessionUserId());
         return SUCCESS;
     }
 
@@ -265,7 +267,7 @@ public class OrganizationAction extends BasicAction {
     @Action(value = "initThirdStep", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".quickReg"),
             @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".go2FirstStep")})
     public String initThirdStep() {
-        this.org = organizationDao.findMyOrg(this.getSessionUserId());
+        this.org = orgService.findMyOrg(this.getSessionUserId());
         if (org != null) return INPUT;
         this.org = this.organizationDao.findOngoingOrg(super.getSessionUserId());
         if (this.org == null) org = new Organization();
@@ -344,7 +346,7 @@ public class OrganizationAction extends BasicAction {
     public void saveThirdStepInfoTest() throws IOException {
         Organization saveOrg;
 //        if (this.getOrg().getId() != null) {
-        saveOrg = organizationDao.findMyOrg(this.getSessionUserId());
+        saveOrg = orgService.findMyOrg(this.getSessionUserId());
         saveOrg.setSchoolName(this.getOrg().getSchoolName());
         saveOrg.setDescription(this.getOrg().getDescription());
         saveOrg.setDepositName(this.getOrg().getDepositName());
@@ -394,7 +396,7 @@ public class OrganizationAction extends BasicAction {
     public void saveOrgInfo() throws IOException {
         Organization saveOrg;
 //        if (this.getOrg().getId() != null) {
-        saveOrg = organizationDao.findMyOrg(this.getSessionUserId());
+        saveOrg = orgService.findMyOrg(this.getSessionUserId());
         saveOrg.setContactName(this.getOrg().getContactName());
         saveOrg.setTelPhone(this.getOrg().getTelPhone());
         saveOrg.setCellPhone(this.getOrg().getCellPhone());
@@ -815,14 +817,6 @@ public class OrganizationAction extends BasicAction {
 
     public void setOrgMaterialDao(OrgMaterialDao orgMaterialDao) {
         this.orgMaterialDao = orgMaterialDao;
-    }
-
-    public OrgService getOrgService() {
-        return this.orgService;
-    }
-
-    public void setOrgService(OrgService orgService) {
-        this.orgService = orgService;
     }
 
     public Integer getOrgCourseNum() {

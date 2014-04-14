@@ -26,6 +26,13 @@ public class OrgServiceImpl extends ModelServiceImpl implements OrgService {
     @Autowired
     private OrganizationBaseUserDao organizationBaseUserDao;
 
+    public Organization findMyOrg(Integer userId) {
+        Organization ret = organizationDao.findByResId(userId);
+        if (ret != null) return  ret;
+       OrganizationBaseUser orgUser = organizationBaseUserDao.findMyOrgByUserID(userId, RoleType.ROLE_TYPE_TEACHER);
+        return  orgUser == null ? null: orgUser.getOrg();
+    }
+
 
     public boolean confirmOrgTeacher(Integer userId, Integer orgId) {
         BaseUser teacher = baseUserDao.findById(userId);

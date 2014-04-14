@@ -76,7 +76,7 @@ public class OrgBaseUserAction extends BasicAction {
     @Action(value = "saveOrgUser", results = {@Result(name = RoleType.STUDENT, type = Constants.RESULT_NAME_TILES, location = ".studentManage"),
             @Result(name = RoleType.TEACHER, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "manageOrgUsers", "roleType", "${roleType}"})})
     public String saveOrgUser() throws UnsupportedEncodingException {
-        Organization org = organizationDao.findMyOrg(this.getSessionUserId());
+        Organization org = orgService.findMyOrg(this.getSessionUserId());
         //判断添加老师是否已经存在
         for (OrganizationBaseUser ou : orgUsers) {
             if (ou == null) {

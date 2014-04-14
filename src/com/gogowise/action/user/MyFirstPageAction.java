@@ -4,9 +4,12 @@ package com.gogowise.action.user;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.gogowise.rep.org.OrgService;
+import com.gogowise.rep.user.enity.RoleType;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -54,55 +57,47 @@ public class MyFirstPageAction extends BasicAction {
     private Boolean numOverFlow = false;
     private Pagination pagination = new Pagination();
 
+    @Autowired
+    private OrgService orgService;
 
-    //    @Action(value = "myfirstPage",
-//            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".myfirstPage")}
-//    )
-//    public String myFirstPage() {
-////        ActionContext.getContext().getSession().put("WW_TRANS_I18N_LOCALE", Locale.US);
-//        latestCourse = courseDao.findMyCourseOfForcastClassForUserCenter(new Pagination(3),this.getSessionUserId());
-//
-//        todayCourse = courseDao.findTodayCourse(this.getSessionUserId());
-//        tomorrowCourse = courseDao.findTomorrowCourse(this.getSessionUserId());
-//        yesterdayCourse = courseDao.findYesterdayCourse(this.getSessionUserId());
-//        if(moreRequire.equals(Constants.MY_FIRST_PAGE_INTERVIEW_MORE)){
-//               interviews =interviewDao.findByUser(this.getSessionUserId(),null);
-//        }else  {
-//               interviews =interviewDao.findByUser(this.getSessionUserId(),new Pagination(3));
-//        }
-//        if(moreRequire.equals(Constants.MY_FIRST_PAGE_MEETING_MORE)){
-//                orgMeetings = orgMeetingDao.findForUserCenter(null,this.getSessionUserId());
-//        }else {
-//               orgMeetings = orgMeetingDao.findForUserCenter(new Pagination(3),this.getSessionUserId());
-//        }
-//        myShows = myShowDao.findByUser(this.getSessionUserId(),new Pagination(3));
-//        liveChannels = liveChannelDao.findByUserID(this.getSessionUserId(),new Pagination(5));
-//        for(LiveChannel lc : liveChannels){
-//             lc.setUserType(1);
-//             for(OnliveFollower onf :lc.getOnliveFollowers()){
-//                 if(onf.getFollower().getId().equals(this.getSessionUserId())){
-//                     lc.setUserType(Constants.MEMBER_TYPE_OF_FANS);
-//                     break;
-//                 }
-//             }
-//        }
-//        hotCourse = courseDao.findHotCourses(new Pagination(6));
-//        userLikeCourse = courseDao.findlatestCourses(new Pagination(3));
-//
-//        this.baseUser = baseUserDao.findById(this.getSessionUserId());
-//        this.browsedCourses = browsedCourseDao.findByUserId(this.getSessionUserId());
-//
-//        Pagination userFansPage = new Pagination(6);
-//        userFanses = userFansDao.findUsersAsFans(this.getSessionUserId(),userFansPage);
-//        this.setCurrentPageSize(userFanses.size());
-//        if(userFansPage.getTotalSize() == userFanses.size()){
-//            this.setNumOverFlow(true);
-//        }
-//
-//        matterCount=matterDao.getMatterCount(this.getSessionUserEmail());
-//        return SUCCESS;
-//    }
 
+
+    @Action(value = "personalCenter",
+            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".studentCenter")}
+    )
+    public String studentCenter() {
+        latestOrgs = organizationDao.findLatestOrgs(new Pagination(3));
+        userOrganization = orgService.findMyOrg(this.getSessionUserId());
+        showUserCenter();
+
+        latestCourse = courseDao.findMyCourseOfForcastClassForUserCenter(new Pagination(3), this.getSessionUserId(), RoleType.ROLE_TYPE_STUDENT);
+
+        return SUCCESS;
+    }
+
+
+    @Action(value = "myfirstPage",
+            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".myGoGoWise")}
+    )
+    public String showUserCenter() {
+//        ActionContext.getContext().getSession().put("WW_TRANS_I18N_LOCALE", Locale.US);
+        finishedCourse = courseDao.findFinishedCourseForUserCenter(new Pagination(3), this.getSessionUserId(), RoleType.ROLE_TYPE_TEACHER);
+        //latestCourse = courseDao.findMyCourseOfForcastClassForUserCenter(new Pagination(3),this.getSessionUserId());
+        latestCourse = courseDao.findMyCourseOfForcastClassForUserCenter(new Pagination(3), this.getSessionUserId(), RoleType.ROLE_TYPE_TEACHER);
+
+        todayCourse = courseDao.findTodayCourse(this.getSessionUserId());
+        tomorrowCourse = courseDao.findTomorrowCourse(this.getSessionUserId());
+        yesterdayCourse = courseDao.findYesterdayCourse(this.getSessionUserId());
+
+        hotCourse = courseDao.findLatest4Course(new Pagination(8));
+        userLikeCourse = courseDao.findlatestCourses(new Pagination(4));
+
+        this.baseUser = baseUserDao.findById(this.getSessionUserId());
+        this.browsedCourses = browsedCourseDao.findByUserId(this.getSessionUserId());
+
+        matterCount = matterDao.getMatterCount(this.getSessionUserEmail());
+        return SUCCESS;
+    }
 
     @Action(value = "error", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".error")})
     public String showErrorPage() {

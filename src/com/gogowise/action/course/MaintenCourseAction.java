@@ -7,6 +7,7 @@ import com.gogowise.rep.course.dao.ClassDao;
 import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.course.enity.CourseClass;
+import com.gogowise.rep.org.OrgService;
 import com.gogowise.rep.org.dao.OrganizationBaseUserDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
@@ -51,6 +52,9 @@ public class MaintenCourseAction extends BasicAction {
     @Autowired
     private BaseUserDao baseUserDao;
 
+    @Autowired
+    private OrgService orgService;
+
     private ClassDao classDao;
     private List<CourseClass> classes = new ArrayList<>();
     private List<Integer> teacherIds = new ArrayList<>();
@@ -81,7 +85,7 @@ public class MaintenCourseAction extends BasicAction {
 
         //if org is null, then this user is a teacher
         if (org == null) {
-            org = organizationDao.findMyOrg(this.getSessionUserId());
+            org = orgService.findMyOrg(this.getSessionUserId());
         }
 
         //If this teacher doesn't belong to any org

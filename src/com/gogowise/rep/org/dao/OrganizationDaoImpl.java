@@ -19,20 +19,6 @@ public class OrganizationDaoImpl extends ModelDaoImpl<Organization> implements O
         this.persistAbstract(organization);
     }
 
-    public List<BaseUser> findHotTeacherByOrgId(Integer orgId, Pagination pagination) {
-
-//        String hql = "select distinct ot.teacher from OrganizationTeacher ot, CourseEvaluation ce  where ot.teacher.id = ce.course.teacher.id and  ot.org.id= ?  group by ot.teacher  order by count(ce.id) desc ";
-        String hql = "select distinct ot.teacher from OrganizationTeacher ot where  ot.org.id= ?    order by ot.id desc ";
-        return this.find(hql, pagination, orgId);
-
-    }
-
-
-    public List<BaseUser> findLatestTeacherByOrgId(Integer orgId, Pagination pagination) {
-        String hql = "select ot.teacher from OrganizationTeacher ot where ot.org.id= ?  order by ot.createDate desc ";
-        return this.find(hql, pagination, orgId);
-    }
-
 
     public Organization findOngoingOrg(Integer userId) {
         String hql = "select o from Organization o where o.responsiblePerson.id = ? and o.confirmed = false    order by o.createDate desc ";
@@ -47,32 +33,14 @@ public class OrganizationDaoImpl extends ModelDaoImpl<Organization> implements O
         return removeDeletedOrgs;
     }
 
-    public Organization findConfirmedOrg(Integer userId) {
-        String hql = "select o from Organization o where o.responsiblePerson.id = ? and o.confirmed = true   order by o.createDate desc ";
-        return this.findFist(hql, userId);
-    }
-
     public Organization findByResId(Integer userId) {
         String hql = "select o from Organization o where o.responsiblePerson.id = ? and o.confirmed = true    order by o.createDate desc ";
         return this.findFist(hql, userId);
     }
 
-    public Organization findMyOrg(Integer userId) {
-        Organization ret = this.findByResId(userId);
-        if (ret != null) return  ret;
-        return this.findByOrgTeacherId(userId);
-    }
 
     public Organization findOrganizationByOrganizationName(String name) {
         return this.findFist("From Organization sc where sc.schoolName = ?", name);
-    }
-
-    private Organization findByOrgTeacherId(Integer id) {
-       return this.findFist("select ot.org From OrganizationTeacher ot where ot.teacher.id = ?", id);
-    }
-
-    public Organization findByAuthTeacher(Integer id) {
-        return this.findFist("select ot.org From OrganizationTeacher ot where ot.teacher.id = ? and orgRoleType = true"  , id);
     }
 
     public List<Organization> findLatestOrgs(Pagination pagination) {

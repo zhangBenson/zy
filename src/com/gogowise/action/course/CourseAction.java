@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.gogowise.rep.org.OrgService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
@@ -147,6 +148,8 @@ public class CourseAction extends BasicAction {
     private List<CourseClass> classes = new ArrayList<>();
 
     private String redirectURL;
+    @Autowired
+    private OrgService orgService;
 
 //    @Action(value = "search",
 //            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".listClass")}
@@ -300,7 +303,7 @@ public class CourseAction extends BasicAction {
             courseInviteStudents = courseInviteStudentDao.findByCourseId(this.getCourse().getId());
         }
         if (Constants.COURSE_TYPE_ORG.equals(this.getCourseType())) {
-            Organization orgTmp = organizationDao.findMyOrg(this.getSessionUserId());
+            Organization orgTmp = orgService.findMyOrg(this.getSessionUserId());
             if (orgTmp != null) orgs.put(orgTmp.getId(), orgTmp.getSchoolName());
         }
         return SUCCESS;
@@ -759,7 +762,7 @@ public class CourseAction extends BasicAction {
         course = courseDao.findById(this.getCourse().getId());
         courseInviteStudents = courseInviteStudentDao.findByCourseId(this.getCourse().getId());
         if (Constants.COURSE_TYPE_ORG.equals(this.getCourseType())) {
-            Organization orgTmp = organizationDao.findMyOrg(super.getSessionUserId());
+            Organization orgTmp = orgService.findMyOrg(super.getSessionUserId());
             if (orgTmp != null) orgs.put(orgTmp.getId(), orgTmp.getSchoolName());
 
         }
@@ -1043,7 +1046,7 @@ public class CourseAction extends BasicAction {
     @Action(value = "initOrgCourseCreation", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "createCourse", "courseType", "1"}),
             @Result(name = "tips", type = Constants.RESULT_NAME_TILES, location = ".orgInitCourseCreation")})
     public String initOrgCourseCreation() {
-        Organization org = organizationDao.findMyOrg(this.getSessionUserId());
+        Organization org = orgService.findMyOrg(this.getSessionUserId());
         if (org != null) {
             this.setCourseType(Constants.COURSE_TYPE_ORG);
             return SUCCESS;
@@ -1096,7 +1099,7 @@ public class CourseAction extends BasicAction {
 
     @Action(value = "orgInterview", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgInterview")})
     public String orgInterview() {
-        Organization orgTmp = organizationDao.findMyOrg(super.getSessionUserId());
+        Organization orgTmp = orgService.findMyOrg(super.getSessionUserId());
         if (orgTmp != null)
             orgs.put(orgTmp.getId(), orgTmp.getSchoolName());
         return SUCCESS;
