@@ -420,7 +420,7 @@
             <span class="glyphicon glyphicon-chevron-right icon1"></span>
             <span class="FAQname" id="title_teachers5">I have some videos made by ourselves and I want to share them with my students. What shall I do?</span>
             <h4 class="courseBody">
-                Answer: You can upload the video files to YouTube as “Private” and record the links of the files on YouTube. Private video files on YouTube mean that they are not public and no one can find it through searching engines. Only the persons who have the links can watch them. The students can watch the videos through the virtual classroom but cannot obtain the links.
+                Answer: You can upload the video files to YouTube as “Unlisted” and record the links of the files on YouTube. Private video files on YouTube mean that they are not public and no one can find it through searching engines. Only the persons who have the links can watch them. The students can watch the videos through the virtual classroom but cannot obtain the links.
             </h4>
 
 
