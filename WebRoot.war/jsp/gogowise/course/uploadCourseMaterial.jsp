@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ include file="/js/org/orgInfoUpdate_js.jsp" %>
-
+<link href="js/uploadify/uploadify.css" type="text/css" rel="stylesheet"/>
 <script src="js/jqueryTabs.js" type="text/javascript"></script>
 <script type='text/javascript' src='js/uploadify/jquery.uploadify.v2.1.4.js'></script>
 <script type='text/javascript' src='js/uploadify/swfobject.js'></script>
