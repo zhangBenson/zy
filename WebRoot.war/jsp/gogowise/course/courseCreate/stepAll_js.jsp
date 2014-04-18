@@ -484,8 +484,10 @@
             course_nameObj.html(course_nameObj.html());
             course_nickNameObj.html("<input  type='text' onkeyup='changeWordNumInHTML(this);' value='"+course_nickNameObj.html()+"' />");
             course_dateObj.html("<input type='text' id='course_date_input"+lineId+"' value='"+course_dateObj.html()+"'/>");
-            course_durationObj.html(timeStr);
-            createDateTimePicker('course_date_input'+lineId);
+             var durationString = course_durationObj.html();
+             course_durationObj.html(timeStr);
+             $("#course_duration" + lineId).find("option[value=" + durationString + "]").attr("selected", "true")
+             createDateTimePicker('course_date_input'+lineId);
         }else if($("#course_edit"+lineId).html()==saveClass){
              $.post("editClassInfo.html", {'courseClass.id':lineId, 'courseClass.nickName':course_nickNameObj.children("input").val(), 'courseClass.date':course_dateObj.children("input").val(), 'courseClass.duration':course_durationObj.children("select").val()}, function (data) {});
              $($("#course_edit"+lineId)).html(editClass);

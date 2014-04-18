@@ -26,8 +26,8 @@
                 <s:iterator value="course.classes" status="idx">
                     <tr id="classes<s:property value="id"/>">
                         <td id="course_name<s:property value="id"/>"><s:property value="#idx.index+1"/></td>
-                        <td id="course_nickName<s:property value="id"/>" class="course_nickName_text">
-                            <s:property value="nickName"/></td>
+                        <td id="course_nickName<s:property value="id"/>" class="course_nickName_text"><s:property
+                                value="nickName"/></td>
                         <td id="course_date<s:property value="id"/>"><s:date name="date"
                                                                              format="%{getText('global.display.hour.minute')}"/></td>
                         <td id="course_duration<s:property value="id"/>"><s:property value="duration"/></td>
@@ -69,7 +69,7 @@
                     <li class="short_li">
                         <span class="item"><s:property value="%{getText('label.lastingtime')}"/></span>
                         <select name="durations" class="long_select" id="class_durations_input">
-                        <option value=60 selected="selected">60<s:property
+                            <option value=60 selected="selected">60<s:property
                                     value="%{getText('label.minute')}"/></option>
                             <option value=55>55<s:property
                                     value="%{getText('label.minute')}"/></option>
@@ -113,7 +113,7 @@
                                                                  readonly="true"
                                                                  cssClass="WTime short_text_field"/></td>
                                 <td><select name="durations" class="long_select">
-                                    <option value=60 selected="selected">60<s:property
+                                    <option value=60>60<s:property
                                             value="%{getText('label.minute')}"/></option>
                                     <option value=55>55<s:property value="%{getText('label.minute')}"/></option>
                                     <option value=50>50<s:property value="%{getText('label.minute')}"/></option>
