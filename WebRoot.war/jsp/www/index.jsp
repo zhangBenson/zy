@@ -98,8 +98,16 @@
                                         value="organization.schoolName"/></p>
 
                                 <p class="textOverSinglerow"><s:property
-                                        value="%{getText('label.index.classes.start')}"/>:&nbsp;<s:date
-                                        name="publicationTime" format="%{getText('dateformat.forclass')}"/></p>
+                                        value="%{getText('label.index.classes.start')}"/>:&nbsp;
+                                    <s:if test="classOnTheCorner == null">
+                                        <s:property value="%{getText('label.ended')}"/>
+                                    </s:if>
+                                    <s:else>
+                                        <s:date name="classOnTheCorner.date"
+                                                format="%{getText('dateformat.forclass')}"/>
+                                    </s:else>
+
+                                </p>
                             </div>
                         </div>
                     </a>
