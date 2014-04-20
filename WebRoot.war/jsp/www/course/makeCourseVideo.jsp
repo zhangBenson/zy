@@ -60,36 +60,37 @@
             <div id="videoList">
                 <s:iterator value="course.classes" id="class" status="status">
                 <s:if test="#status.index<6">
-                <s:if test="#status.index % 3 == 0">
-                <div class="row"></s:if>
+                    <s:if test="#status.index % 3 == 0">
+                    <div class="row"></s:if>
 
                     <div class="col-sm-4">
                         <div class="pull-left">
                             <s:if test="record">
                             <div class="lessonGreen" onclick="getVideoUrl(<s:property value="id"/>)"
                                  style="cursor:pointer;">
-                                </s:if>
-                                <s:else>
-                                <div class="lessonOrange" onclick="getVideoUrl(<s:property value="id"/>)"
+                            </s:if>
+
+                            <s:else>
+                            <div class="lessonOrange" onclick="getVideoUrl(<s:property value="id"/>)"
                                      style="cursor:pointer;">
-                                    </s:else>
-                                    <span><s:property value="#status.index+1"/></span>
+                            </s:else>
+                                <span><s:property value="#status.index+1"/></span>
 
-                                    <div>Lesson</div>
-                                </div>
-                            </div>
-
-                            <div class="pull-left">
-                                <div class="lessonName"><s:property value="nickName"/></div>
-                                <div class="lessonTime"><s:date name="date"
-                                                                format="%{getText('dateformat.forclass')}"/></div>
+                                <div>Lesson</div>
                             </div>
                         </div>
 
-                        <s:if test="#status.index % 3 == 2||#status.last"></div>
+                        <div class="pull-left">
+                            <div class="lessonName"><s:property value="nickName"/></div>
+                            <div class="lessonTime"><s:date name="date"
+                                                            format="%{getText('dateformat.forclass')}"/></div>
+                        </div>
+                    </div>
+
+                    <s:if test="#status.index % 3 == 2||#status.last"></div>
                     <br/></s:if>
-                    </s:if>
-                    </s:iterator>
+                </s:if>
+                </s:iterator>
 
                 </div>
 
@@ -102,12 +103,12 @@
                         <div class="col-sm-4">
                             <div class="pull-left">
                                 <s:if test="record">
-                                <div class="lessonGreen" onclick="enterPlayerRoom(<s:property value="id"/>)"
+                                <div class="lessonGreen" onclick="getVideoUrl(<s:property value="id"/>)"
                                      style="cursor:pointer;">
-                                    </s:if>
-                                    <s:else>
-                                    <div class="lessonOrange">
-                                        </s:else>
+                                </s:if>
+                                <s:else>
+                                    <div class="lessonOrange" onclick="getVideoUrl(<s:property value="id"/>)">
+                                </s:else>
                                         <span><s:property value="#status.index+1"/></span>
 
                                         <div>Lesson</div>
@@ -121,11 +122,11 @@
                                 </div>
                             </div>
 
-                            <s:if test="#status.index % 3 == 2||#status.last"></div>
+                        <s:if test="#status.index % 3 == 2||#status.last"></div>
                         <br/></s:if>
                         </s:if>
-                        </s:iterator>
-                    </div>
+                    </s:iterator>
+                </div>
 
                     <s:if test="course.classes.size()>6">
                         <p class="text-right">
