@@ -19,6 +19,33 @@
     <property name="META.home" value="${web.home}/META-INF"/>
     <property name="deploy.home" value="${tomcat.home}/webapps/gogowise.war"/>
 
+
+    <macrodef name="git">
+        <attribute name="command"/>
+        <attribute name="dir" default=""/>
+        <element name="args" optional="true"/>
+        <sequential>
+            <echo message="git @{command}"/>
+            <exec executable="git" dir="@{dir}">
+                <arg value="@{command}"/>
+                <args/>
+            </exec>
+        </sequential>
+    </macrodef>
+    <macrodef name="git-clone-pull">
+        <attribute name="repository"/>
+        <attribute name="dest"/>
+        <sequential>
+            <git command="clone">
+                <args>
+                    <arg value="@{repository}"/>
+                    <arg value="@{dest}"/>
+                </args>
+            </git>
+            <git command="pull" dir="@{dest}"/>
+        </sequential>
+    </macrodef>
+
     <!-- ==================== Copy Files =========================== -->
 
     <target name="all" depends="native">
@@ -56,7 +83,7 @@
 
     <target name="copyAllFilesAndDeploy" depends="copyAllFiles,native">
         <touch file="${deploy.home}/WEB-INF/web.xml"/>
-       <rename  src="${deploy.home}/../beta.war.deployed" dest="${deploy.home}/../beta.war.dodeploy"/>
+        <rename src="${deploy.home}/../beta.war.deployed" dest="${deploy.home}/../beta.war.dodeploy"/>
     </target>
 
     <target name="copyJsp">
@@ -89,4 +116,16 @@
         </exec>
 
     </target>
+    <target name="gitClonePull">
+        <git-clone-pull repository="git://github.com/zhangBenson/zy.git" dest="."/>
+    </target>
+    <target name="gitPull">
+        <git command="pull" dir="."/>
+    </target>
+    <git command = "clone">
+        <args>
+            <arg value = "git://github.com/zhangBenson/zy.git" />
+            <arg value = "." />
+        </args>
+    </git>
 </project>
