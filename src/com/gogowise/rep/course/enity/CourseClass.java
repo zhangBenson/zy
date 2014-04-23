@@ -16,6 +16,7 @@ public class CourseClass extends AbstractPersistence {
     private Boolean isTeacherEntered = false;
     private Boolean isRecord = false;
     private Integer duration;
+    private int videoVersionId = 0;
     @ManyToOne
     private Course course;
     private Integer anonyNum = 0;
@@ -108,5 +109,13 @@ public class CourseClass extends AbstractPersistence {
 
     public void setIsDeleted(Boolean deleted) {
         isDeleted = deleted;
+    }
+
+    public int getVideoVersionId() {
+        return videoVersionId;
+    }
+
+    public void setVideoVersionId(int videoVersionId) {
+        this.videoVersionId = videoVersionId;
     }
 }

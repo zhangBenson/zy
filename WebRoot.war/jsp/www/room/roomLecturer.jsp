@@ -1137,8 +1137,8 @@ function ShowMessage(name,imgpath,content,bit)
     function InRoom(){
         getGirlOjbect().InRoomComplete("<s:property value='initSeesionString' escape='false' />", "");
     }
-    function startclass(){
-        $.post("setClassRecord.html",{"courseClass.id":"<s:property value="courseClass.id"/>"},function(rd){
+    function startclass(vid) {
+        $.post("setClassRecord.html", {"courseClass.id": "<s:property value="courseClass.id"/>", "videoVersionId": vid }, function (rd) {
             if(rd.result==200){
                 return;
             }
