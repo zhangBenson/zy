@@ -82,7 +82,7 @@
 
         <div style="" id="courseList<s:property value="pagination.pageNow"/>">
             <s:iterator value="courses" status="status">
-                <s:if test="#status.index<6">
+                <s:if test="#status.index<10">
                     <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"
                        class="newLeft">
                         <div class="coursePanel" style="width:550px;">
