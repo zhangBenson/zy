@@ -155,7 +155,7 @@ public class IndexAction extends BasicAction {
         ActionContext.getContext().getSession().put("request_only_locale",new Locale("en","US"));
         ActionContext.getContext().setLocale(new Locale("en","US"));
 //        }
-        pagination.setPageSize(6);
+        pagination.setPageSize(10);
         //courses = courseDao.findNonMoocCourses(pagination);
         courses = courseDao.findlatestCourses(pagination);
         moocCourses = courseDao.findMoocCourses(pagination);
