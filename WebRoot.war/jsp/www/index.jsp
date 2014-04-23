@@ -32,7 +32,7 @@
     }
 </script>
 
-<div class="container">
+<div class="container" >
 
     <ul class="bxslider">
         <li><a href="<s:property value="posterLink1" />"><img src="../../images/index/pic1.jpg" class="bannerImg"/></a>
@@ -80,7 +80,7 @@
         </div>
         <div class="clearfix"></div>
 
-        <div style="width:1180px;" id="courseList<s:property value="pagination.pageNow"/>">
+        <div style="" id="courseList<s:property value="pagination.pageNow"/>">
             <s:iterator value="courses" status="status">
                 <s:if test="#status.index<6">
                     <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"
@@ -121,7 +121,7 @@
     <s:if test="pagination.hasNext">
         <a href="javascript:;" id="link<s:property value="pagination.pageNow"/>"
            onclick="getMoreCousre(<s:property value="pagination.pageNow"/>);">
-            <p class="text-right"><s:property value="%{getText('others.more')}"/></p>
+            <p class="text-right" style="margin-right: 20px;"><s:property value="%{getText('others.more')}"/></p>
         </a>
     </s:if>
 </div>

@@ -30,7 +30,7 @@
         <%@ include file="includeForLayOut.jsp" %>
     </head>
 
-
+    <meta name='viewport' content='width=1270'>
     <body>
         <div id="top"><tiles:insertAttribute name="top"/></div>
         <div id="detailInfo"><tiles:insertAttribute name="contentBody"/></div>
