@@ -158,7 +158,7 @@ public class IndexAction extends BasicAction {
         pagination.setPageSize(10);
         //courses = courseDao.findNonMoocCourses(pagination);
         courses = courseDao.findlatestCourses(pagination);
-        moocCourses = courseDao.findMoocCourses(pagination);
+        //moocCourses = courseDao.findMoocCourses(pagination);
         organizations = organizationDao.findLatestOrgs(new Pagination(8));
         this.loadPoster();
         return SUCCESS;
@@ -168,7 +168,7 @@ public class IndexAction extends BasicAction {
             results = {@Result(name = SUCCESS, type = "tiles", location = ".indexMoreCourse")}
     )
     public String getMoreCourse() {
-        pagination.setPageSize(6);
+        pagination.setPageSize(10);
         courses = courseDao.findlatestCourses(pagination);
         moocCourses = courseDao.findMoocCourses(pagination);
         organizations = organizationDao.findLatestOrgs(new Pagination(8));

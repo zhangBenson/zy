@@ -195,7 +195,8 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
     }
 
     public List<Course> findlatestCourses(Pagination pagination) {
-        return this.find("From Course c where " + DELETED_FALSE + " and c.cameraManConfirmed=true order by c.startDate desc", pagination);
+        //return this.find("From Course c where " + DELETED_FALSE + " and c.cameraManConfirmed=true order by c.startDate desc", pagination);
+        return this.find("From Course c where " + DELETED_FALSE + " order by c.startDate desc", pagination);
     }
 
     public List<Course> findlatestCoursesForAdmin(Pagination pagination) {
