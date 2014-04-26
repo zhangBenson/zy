@@ -401,7 +401,7 @@ function changeSpeechFile(){
     var extension = fileObj.value.substring(fileObj.value.lastIndexOf(".")+1).toLowerCase();
 
     if(allowExtension.indexOf(extension)==-1){
-        //alert("Only File of "+allowExtension+" is allowed.");
+        alert("Only File of "+allowExtension+" is allowed.");
         return;
     }
 
@@ -422,7 +422,7 @@ function changeSpeechFile(){
         },
         error: function (data, status, e)
         {
-            //alert(e);
+            alert("<s:text name="course.resource.size.limit"/>");
         }
     });
 }
@@ -434,7 +434,7 @@ function changeQuestionFile(){
     var extension = fileObj.value.substring(fileObj.value.lastIndexOf(".")+1).toLowerCase();
 
     if(allowExtension.indexOf(extension)==-1){
-        //alert("Only File of "+allowExtension+" is allowed.");
+        alert("Only File of "+allowExtension+" is allowed.");
         return;
     }
 
