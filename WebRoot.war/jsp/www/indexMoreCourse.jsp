@@ -17,8 +17,11 @@
                         <p class="textOverSinglerow"><s:property value="%{getText('course.school')}"/>:&nbsp;<s:property
                                 value="organization.schoolName"/></p>
 
-                        <p class="textOverSinglerow"><s:property value="%{getText('label.index.classes.start')}"/>:&nbsp;<s:date
-                                name="publicationTime" format="%{getText('dateformat.forclass')}"/></p>
+                        <p class="textOverSinglerow">
+                            <s:property value="%{getText('courses.info.lecturer')}"/>:&nbsp;
+                            <s:if test="teacher.userName != null"><s:property value="teacher.userName"/></s:if>
+                            <s:else><s:property value="teacher.nickName"/></s:else>
+                        </p>
                     </div>
                 </div>
             </a>
