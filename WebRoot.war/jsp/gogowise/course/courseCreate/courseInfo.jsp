@@ -6,6 +6,12 @@
             <span class="item"><s:property value="%{getText('course.info.courseName')}"/></span>
             <s:textfield cssClass="long_text_field" id="step2_course_name" name="course.name" type="text"/>
             <span class="course_name_input_msg tip_words">*</span>
+
+        </li>
+        <li>
+            <s:property value="%{getText('course.access')}"/>：
+            <s:radio name="course.isPublic" list="#{true:getText('course.public'),false:getText('course.private')}"
+                    value="course.isPublic" cssStyle="margin-left: 10px;margin-right: 10px;"/>
         </li>
         <li>
             <span class="item"><s:property value="%{getText('course.info.description')}"/></span>
@@ -90,12 +96,21 @@
 
 <div class="pic_2 after_store" id="step2_store_cont">
     <ul>
-        <li><s:property value="%{getText('course.info.courseName')}"/>：<span class="orange_words"
-                                                                             id="store_name"><s:property
-                value="course.name"/></span></li>
-        <li><s:property value="%{getText('course.info.description')}"/>：<span class="orange_words"
-                                                                              id="store_description"><s:property
-                value="course.description"/></span></li>
+        <li>
+            <s:property value="%{getText('course.info.courseName')}"/>：
+            <span class="orange_words" id="store_name"><s:property value="course.name"/></span>
+        </li>
+        <li>
+            <s:property value="%{getText('course.access')}"/>：
+            <span class="orange_words" id="store_course_access">
+                <s:if test="course.isPublic != true"><s:property value="%{getText('course.private')}" /></s:if>
+                <s:else><s:property value="%{getText('course.public')}" /></s:else>
+            </span>
+        </li>
+        <li>
+            <s:property value="%{getText('course.info.description')}"/>：
+            <span class="orange_words" id="store_description"><s:property value="course.description"/></span>
+        </li>
         <li><s:property value="%{getText('course.info.of.student.type')}"/>：<span class="orange_words"
                                                                                   id="store_studentType"><s:property
                 value="course.studentType"/></span></li>

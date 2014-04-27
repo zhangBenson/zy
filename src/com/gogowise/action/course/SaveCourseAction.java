@@ -67,6 +67,7 @@ public class SaveCourseAction extends BasicAction {
         course = courseService.findById(course.getId());
 
         course.setStudentAgeType(this.getCourse().getStudentAgeType());
+        course.setIsPublic( this.getCourse().getIsPublic() );
         courseDao.persist(course);
 
         // copy jpg
