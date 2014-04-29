@@ -80,7 +80,7 @@
         </div>
         <div class="clearfix"></div>
 
-        <div style="" id="courseList<s:property value="pagination.pageNow"/>">
+        <div style="width:1180px;" id="courseList<s:property value="pagination.pageNow"/>">
             <s:iterator value="courses" status="status">
                 <s:if test="#status.index<10">
                     <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"
@@ -115,7 +115,7 @@
     <s:if test="pagination.hasNext">
         <a href="javascript:;" id="link<s:property value="pagination.pageNow"/>"
            onclick="getMoreCousre(<s:property value="pagination.pageNow"/>);">
-            <p class="text-right" style="margin-right: 20px;"><s:property value="%{getText('others.more')}"/></p>
+            <p class="text-right" style="margin-right: 0px;"><s:property value="%{getText('others.more')}"/></p>
         </a>
     </s:if>
 </div>

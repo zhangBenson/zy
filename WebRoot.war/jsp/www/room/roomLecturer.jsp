@@ -256,6 +256,12 @@ $(document).ready(function() {
     });
 
     $("#btnAddVideo").click(function(){
+        if($("#txtVideoLink").val() == "" && $("#txtVideoName").val() =="")
+        {
+            alert("Cannot be a null value");
+            return;
+        }
+
         setVideoInfo($("#txtVideoLink").val(),$("#txtVideoName").val());
         $("#txtVideoName").val("");
         $("#txtVideoLink").val("");
