@@ -49,17 +49,6 @@ public class CourseMaterial extends AbstractPersistence {
         this.type = type;
     }
 
-    public void setTypeWithFileExtension(String extension)
-    {
-        for( Map.Entry<Integer, String> entry : TYPE_MAP.entrySet())
-        {
-            if( entry.getValue().equalsIgnoreCase(extension) )
-            {
-                this.setType( entry.getKey() );
-            }
-        }
-    }
-
     public String getSourceTitle() {
         return sourceTitle;
     }
