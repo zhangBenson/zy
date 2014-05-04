@@ -1044,7 +1044,10 @@ function ShowMessage(name,imgpath,content,bit)
 </script>
 
 <style type="text/css" media="all">
-
+    .uploadifyQueueItem
+    {
+         margin-left: 120px;
+    }
     .userId
     {
         display:none;
@@ -1465,17 +1468,20 @@ function ShowMessage(name,imgpath,content,bit)
                         </div>
                     </div>
                     <div style="text-align: center;">
-                        <input type="file" name="fileupload2" id="fileSpeech" onchange="changeSpeechFile()"
-                               style="position:absolute; z-index:100; margin-left:-180px; font-size:35px;opacity:0;filter:alpha(opacity=0); margin-top:-5px;">
-                        <span style="padding-right: 10px;color: red;">Or</span><button type="button" class="btn btn-success">Select a Local File</button>
+                        <%--<input type="file" name="fileupload2" id="fileSpeech" onchange="changeSpeechFile()"--%>
+                               <%--style="position:absolute; z-index:100; margin-left:-180px; font-size:35px;opacity:0;filter:alpha(opacity=0); margin-top:-5px;">--%>
+                        <%--<span style="padding-right: 10px;color: red;">Or</span><button type="button" class="btn btn-success">Select a Local File</button>--%>
+                            <div ><input type="file" name="fileupload"  value="浏览" id="cm_upload_input"/>
+                            </div>
+                            <span class="errorMessage" style="" id="cm_upload"></span>
+
                         <p id="fileSpeechTip" style="color:green;"></p>
                         <p class="help-block">doc,docx,pdf,xls,xlsx,ppt,pptx</p>
-                        <button type="submit" class="btn btn-default" id="btnUploadspeech">Upload</button>
+                        <%--<button type="submit" class="btn btn-default" id="btnUploadspeech">Upload</button>--%>
 
 
-                        <div style="float: left;"><input type="file" name="fileupload" value="浏览" id="cm_upload_input"/>
-                        </div>
-                        <span class="errorMessage" style="float: left;" id="cm_upload"></span>
+
+
 
                     </div>
                 </div>
