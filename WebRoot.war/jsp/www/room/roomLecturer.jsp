@@ -1478,11 +1478,6 @@ function ShowMessage(name,imgpath,content,bit)
                         <p id="fileSpeechTip" style="color:green;"></p>
                         <p class="help-block">doc,docx,pdf,xls,xlsx,ppt,pptx</p>
                         <%--<button type="submit" class="btn btn-default" id="btnUploadspeech">Upload</button>--%>
-
-
-
-
-
                     </div>
                 </div>
 
@@ -1531,12 +1526,16 @@ function ShowMessage(name,imgpath,content,bit)
 
                     </div>
                     <div style="text-align: center;">
-                        <input type="file" name="fileupload" id="fileQuestion" onchange="changeQuestionFile()"
-                               style="position:absolute; z-index:100; margin-left:-180px; font-size:35px;opacity:0;filter:alpha(opacity=0); margin-top:-5px;">
-                        <span style="padding-right: 10px;color: red;">Or</span><button type="button" class="btn btn-success">Select a Local File</button>
+                        <%--<input type="file" name="fileupload" id="fileQuestion" onchange="changeQuestionFile()"--%>
+                               <%--style="position:absolute; z-index:100; margin-left:-180px; font-size:35px;opacity:0;filter:alpha(opacity=0); margin-top:-5px;">--%>
+                        <%--<span style="padding-right: 10px;color: red;">Or</span><button type="button" class="btn btn-success">Select a Local File</button>--%>
+                        <div><input type="file" name="fileupload"  value="浏览" id="cm_upload_input_question"/>
+                        </div>
+                        <span class="errorMessage" style="" id="cm_upload"></span>
+
                         <p id="fileQuestionTip" style="color:green;"></p>
                         <p class="help-block">doc,docx,pdf</p>
-                        <button type="submit" class="btn btn-default" id="btnUploadquestion">Upload</button>
+                        <%--<button type="submit" class="btn btn-default" id="btnUploadquestion">Upload</button>--%>
                     </div>
 
                 </div>
@@ -1733,6 +1732,45 @@ function ShowMessage(name,imgpath,content,bit)
                 speechFullPath = "";
                 $("#fileSpeech").val("");
                 $("#fileSpeechTip").html("");
+
+                $("#cm_size").val(fileObj.size);
+                $("#cm_upload").html("<s:text name="course.resource.upload.success"/>");
+            },
+            onError: function (event, queueID, fileObj) {
+                $("#cm_upload").html("<s:text name="course.resource.size.limit"/>");
+            },
+            onCancel: function (event, queueID, fileObj) {
+                $("#cm_upload").html("<s:text name="course.resource.reselect"/>");
+            },
+            onUploadStart: function (event, queueID, fileObj) {
+            }
+        });
+
+        $("#cm_upload_input_question").uploadify({
+            /*注意前面需要书写path的代码*/
+            'uploader': 'js/uploadify/uploadify.swf',
+//            'fileDesc':'select files ',
+//            'fileExt':'*.doc;*.docx;*.pdf;*.ppt;*.pptx',
+            'script': 'uploadMaterialWithJson.html',
+            'cancelImg': 'js/uploadify/cancel.png',
+            'queueID': 'cm_upload', //和存放队列的DIV的id一致
+            'fileDataName': 'fileupload', //和以下input的name属性一致
+            'auto': true, //是否自动开始
+            'multi': false, //是否支持多文件上传
+            'buttonText': 'Select File ', //按钮上的文字
+            'scriptData': {'classId': <s:property value="courseClass.id"/>, 'courseMaterial.type': 3 },
+            'simUploadLimit': 1, //一次同步上传的文件数目
+            'sizeLimit': 30000000, //设置单个文件大小限制
+            'queueSizeLimit': 1, //队列中同时存在的文件个数限制
+            'folder': 'upload/file/tmp',
+            onComplete: function (event, queueID, fileObj, response, data) {
+                var jsonRep = $.parseJSON(response);
+                $("#cm_path").val(jsonRep.genFileName);
+
+                $('#myTabFile a[href="#filesysQuestionbank"]').trigger("click");
+                questionFullPath = "";
+                $("#fileQuestion").val("");
+                $("#fileQuestionTip").html("");
 
                 $("#cm_size").val(fileObj.size);
                 $("#cm_upload").html("<s:text name="course.resource.upload.success"/>");
