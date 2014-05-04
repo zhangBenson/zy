@@ -174,6 +174,7 @@ public class SaveMaterialAction extends BasicAction {
         String updatedFileNameOnly = "";
         String dstPath = "";
         setCourseOrClassInMaterial();
+
         if (fileuploadFileName != null && fileuploadFileName.lastIndexOf(".") >= 0) {
             extName = fileuploadFileName.substring(fileuploadFileName.lastIndexOf("."));
             updatedFileNameOnly = fileuploadFileName.replace(extName, "");
@@ -188,6 +189,7 @@ public class SaveMaterialAction extends BasicAction {
 
             Utils.copy(new File(srcPath), new File(dstPath));
             courseMaterial.setFullPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/" + newName);
+            courseMaterial.setTypeWithFileExtension(extName);
             this.setGenFileName(newFileName);
         }
         if (courseMaterial.getSourceTitle() == null) {

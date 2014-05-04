@@ -1714,7 +1714,7 @@ function ShowMessage(name,imgpath,content,bit)
             'auto': true, //是否自动开始
             'multi': false, //是否支持多文件上传
             'buttonText': 'Select File ', //按钮上的文字
-            'scriptData': {'classId': 330, 'courseMaterial.type': 4 },
+            'scriptData': {'classId': <s:property value="courseClass.id"/>, 'courseMaterial.type': 4 },
             'simUploadLimit': 1, //一次同步上传的文件数目
             'sizeLimit': 30000000, //设置单个文件大小限制
             'queueSizeLimit': 1, //队列中同时存在的文件个数限制
@@ -1722,6 +1722,12 @@ function ShowMessage(name,imgpath,content,bit)
             onComplete: function (event, queueID, fileObj, response, data) {
                 var jsonRep = $.parseJSON(response);
                 $("#cm_path").val(jsonRep.genFileName);
+
+                $('#myTabFile a[href="#filesysDocument"]').trigger("click");
+                speechFullPath = "";
+                $("#fileSpeech").val("");
+                $("#fileSpeechTip").html("");
+
                 $("#cm_size").val(fileObj.size);
                 $("#cm_upload").html("<s:text name="course.resource.upload.success"/>");
             },
