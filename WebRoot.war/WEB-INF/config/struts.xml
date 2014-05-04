@@ -112,6 +112,9 @@
             <result name="personalCenter" type="redirectAction">
                 <param name="actionName">personalCenter</param>
             </result>
+            <result name="index" type="redirectAction">
+                <param name="actionName">index</param>
+            </result>
         </global-results>
 
 

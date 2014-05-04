@@ -102,7 +102,7 @@
             'queueID': 'cm_upload', //和存放队列的DIV的id一致
             'fileDataName': 'fileupload', //和以下input的name属性一致
 //            'scriptData'     : $("#userInfoForm").serialize(),
-            'scriptData': {'course.id': 219},
+            'scriptData': {'classId': 278, 'courseMaterial.type': 4 },
             'auto': true, //是否自动开始
             'multi': false, //是否支持多文件上传
             'buttonText': 'Select File ', //按钮上的文字

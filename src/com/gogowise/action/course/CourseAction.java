@@ -151,6 +151,7 @@ public class CourseAction extends BasicAction {
     @Autowired
     private OrgService orgService;
 
+    private Integer videoVersionId;
 //    @Action(value = "search",
 //            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".listClass")}
 //    )
@@ -264,7 +265,11 @@ public class CourseAction extends BasicAction {
         try{
             CourseClass _courseClass = classDao.findById(courseClass.getId());
             _courseClass.setRecord(true);
+            if (this.getVideoVersionId() != null) {
+                _courseClass.setVideoVersionId(this.getVideoVersionId());
+            }
             classDao.persistAbstract(_courseClass);
+
             rd.setResult(200);
         }catch (Exception e){
             logger.error("Set class record failure",e);
@@ -1964,5 +1969,13 @@ public class CourseAction extends BasicAction {
 
     public void setRedirectURL(String redirectURL) {
         this.redirectURL = redirectURL;
+    }
+
+    public Integer getVideoVersionId() {
+        return videoVersionId;
+    }
+
+    public void setVideoVersionId(Integer videoVersionId) {
+        this.videoVersionId = videoVersionId;
     }
 }

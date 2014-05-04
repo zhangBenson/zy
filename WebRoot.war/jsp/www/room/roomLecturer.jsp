@@ -16,6 +16,10 @@
 <script src="/js/room/Chart.min.js"></script>
 <script src="/js/room/ajaxfileupload.js"></script>
 
+<script type='text/javascript' src='js/uploadify/jquery.uploadify.v2.1.4.js'></script>
+<script type='text/javascript' src='js/uploadify/swfobject.js'></script>
+<link href="js/uploadify/uploadify.css" type="text/css" rel="stylesheet"/>
+
 <script type="text/javascript">
 var stundioWrapper;
 var chatWrapper;
@@ -252,6 +256,12 @@ $(document).ready(function() {
     });
 
     $("#btnAddVideo").click(function(){
+        if($("#txtVideoLink").val() == "" && $("#txtVideoName").val() =="")
+        {
+            alert("Cannot be a null value");
+            return;
+        }
+
         setVideoInfo($("#txtVideoLink").val(),$("#txtVideoName").val());
         $("#txtVideoName").val("");
         $("#txtVideoLink").val("");
@@ -401,7 +411,7 @@ function changeSpeechFile(){
     var extension = fileObj.value.substring(fileObj.value.lastIndexOf(".")+1).toLowerCase();
 
     if(allowExtension.indexOf(extension)==-1){
-        //alert("Only File of "+allowExtension+" is allowed.");
+        alert("Only File of "+allowExtension+" is allowed.");
         return;
     }
 
@@ -409,22 +419,22 @@ function changeSpeechFile(){
     var fackIndex = fileObj.value.lastIndexOf("\\");
 
     speechTitle = fackIndex==-1?fileObj.value:fileObj.value.substring(fileObj.value.lastIndexOf("\\")+1);
-    $.ajaxFileUpload({
-        url: 'course/uploadCourseMaterialToTemp.html',
-        type: 'post',
-        secureuri: false,
-        fileElementId: 'fileSpeech',
-        dataType: 'json',
-        success: function (data, status)
-        {
-            speechFullPath = data.genFileName;
-            $("#fileSpeechTip").html("File "+speechTitle+" selected");
-        },
-        error: function (data, status, e)
-        {
-            //alert(e);
-        }
-    });
+    <%--$.ajaxFileUpload({--%>
+    <%--url: 'course/uploadCourseMaterialToTemp.html',--%>
+    <%--type: 'post',--%>
+    <%--secureuri: false,--%>
+    <%--fileElementId: 'fileSpeech',--%>
+    <%--dataType: 'json',--%>
+    <%--success: function (data, status)--%>
+    <%--{--%>
+    <%--speechFullPath = data.genFileName;--%>
+    <%--$("#fileSpeechTip").html("File "+speechTitle+" selected");--%>
+    <%--},--%>
+    <%--error: function (data, status, e)--%>
+    <%--{--%>
+    <%--alert("<s:text name="course.resource.size.limit"/>");--%>
+    <%--}--%>
+    <%--});--%>
 }
 
 var questionFullSize,questionFullPath,questionTitle;
@@ -434,7 +444,7 @@ function changeQuestionFile(){
     var extension = fileObj.value.substring(fileObj.value.lastIndexOf(".")+1).toLowerCase();
 
     if(allowExtension.indexOf(extension)==-1){
-        //alert("Only File of "+allowExtension+" is allowed.");
+        alert("Only File of "+allowExtension+" is allowed.");
         return;
     }
 
@@ -442,22 +452,22 @@ function changeQuestionFile(){
     var fackIndex = fileObj.value.lastIndexOf("\\");
 
     questionTitle = fackIndex==-1?fileObj.value:fileObj.value.substring(fileObj.value.lastIndexOf("\\")+1);
-    $.ajaxFileUpload({
-        url: 'course/uploadCourseMaterialToTemp.html',
-        type: 'post',
-        secureuri: false,
-        fileElementId: 'fileQuestion',
-        dataType: 'json',
-        success: function (data, status)
-        {
-            questionFullPath = data.genFileName;
-            $("#fileQuestionTip").html("File "+questionTitle+" selected");
-        },
-        error: function (data, status, e)
-        {
-            //alert(e);
-        }
-    });
+//    $.ajaxFileUpload({
+//        url: 'course/uploadCourseMaterialToTemp.html',
+//        type: 'post',
+//        secureuri: false,
+//        fileElementId: 'fileQuestion',
+//        dataType: 'json',
+//        success: function (data, status)
+//        {
+//            questionFullPath = data.genFileName;
+//            $("#fileQuestionTip").html("File "+questionTitle+" selected");
+//        },
+//        error: function (data, status, e)
+//        {
+//            //alert(e);
+//        }
+//    });
 }
 
 function setVideoInfo(videolink,videoname)
@@ -1137,8 +1147,8 @@ function ShowMessage(name,imgpath,content,bit)
     function InRoom(){
         getGirlOjbect().InRoomComplete("<s:property value='initSeesionString' escape='false' />", "");
     }
-    function startclass(){
-        $.post("setClassRecord.html",{"courseClass.id":"<s:property value="courseClass.id"/>"},function(rd){
+    function startclass(vid) {
+        $.post("setClassRecord.html", {"courseClass.id": "<s:property value="courseClass.id"/>", "videoVersionId": vid }, function (rd) {
             if(rd.result==200){
                 return;
             }
@@ -1451,12 +1461,18 @@ function ShowMessage(name,imgpath,content,bit)
                         </div>
                     </div>
                     <div style="text-align: center;">
-                        <input type="file" name="fileupload" id="fileSpeech" onchange="changeSpeechFile()"
+                        <input type="file" name="fileupload2" id="fileSpeech" onchange="changeSpeechFile()"
                                style="position:absolute; z-index:100; margin-left:-180px; font-size:35px;opacity:0;filter:alpha(opacity=0); margin-top:-5px;">
                         <span style="padding-right: 10px;color: red;">Or</span><button type="button" class="btn btn-success">Select a Local File</button>
                         <p id="fileSpeechTip" style="color:green;"></p>
                         <p class="help-block">doc,docx,pdf,xls,xlsx,ppt,pptx</p>
                         <button type="submit" class="btn btn-default" id="btnUploadspeech">Upload</button>
+
+
+                        <div style="float: left;"><input type="file" name="fileupload" value="浏览" id="cm_upload_input"/>
+                        </div>
+                        <span class="errorMessage" style="float: left;" id="cm_upload"></span>
+
                     </div>
                 </div>
 
@@ -1676,4 +1692,45 @@ function ShowMessage(name,imgpath,content,bit)
     </div>
     <!-- /.modal-dialog -->
 </div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        //点击图片选择按钮
+        $("#cm_upload_input").uploadify({
+            /*注意前面需要书写path的代码*/
+            'uploader': 'js/uploadify/uploadify.swf',
+//            'fileDesc':'select files ',
+//            'fileExt':'*.doc;*.docx;*.pdf;*.ppt;*.pptx',
+            'script': 'uploadMaterialWithJson.html',
+            'cancelImg': 'js/uploadify/cancel.png',
+            'queueID': 'cm_upload', //和存放队列的DIV的id一致
+            'fileDataName': 'fileupload', //和以下input的name属性一致
+            'auto': true, //是否自动开始
+            'multi': false, //是否支持多文件上传
+            'buttonText': 'Select File ', //按钮上的文字
+            'scriptData': {'classId': 624, 'courseMaterial.type': 4 },
+            'simUploadLimit': 1, //一次同步上传的文件数目
+            'sizeLimit': 30000000, //设置单个文件大小限制
+            'queueSizeLimit': 1, //队列中同时存在的文件个数限制
+            'folder': 'upload/file/tmp',
+            onComplete: function (event, queueID, fileObj, response, data) {
+                var jsonRep = $.parseJSON(response);
+                $("#cm_path").val(jsonRep.genFileName);
+                $("#cm_size").val(fileObj.size);
+                $("#cm_upload").html("<s:text name="course.resource.upload.success"/>");
+            },
+            onError: function (event, queueID, fileObj) {
+                $("#cm_upload").html("<s:text name="course.resource.size.limit"/>");
+            },
+            onCancel: function (event, queueID, fileObj) {
+                $("#cm_upload").html("<s:text name="course.resource.reselect"/>");
+            },
+            onUploadStart: function (event, queueID, fileObj) {
+            }
+        });
+    });
+
+</script>
 

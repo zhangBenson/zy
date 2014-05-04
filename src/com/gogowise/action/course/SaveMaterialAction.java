@@ -9,6 +9,7 @@ import com.gogowise.rep.course.dao.ClassDao;
 import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.dao.CourseMaterialDao;
 import com.gogowise.rep.course.enity.Course;
+import com.gogowise.rep.course.enity.CourseClass;
 import com.gogowise.rep.course.enity.CourseMaterial;
 import com.gogowise.rep.course.enity.Question;
 import com.opensymphony.xwork2.ActionContext;
@@ -74,11 +75,7 @@ public class SaveMaterialAction extends BasicAction {
         //文件相关属性设置
         courseMaterial.setUploadTime(Calendar.getInstance());
 
-        if (classId != null) {
-            courseMaterial.setCourseClass(classDao.findById(classId));
-        } else {
-            courseMaterial.setCourse(courseDao.findById(this.course.getId()));
-        }
+        setCourseOrClassInMaterial();
 
         courseMaterial.setFullPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/" + newName);
         courseMaterial.setIsDisplay(true);
@@ -104,11 +101,7 @@ public class SaveMaterialAction extends BasicAction {
         courseMaterial.setUploadTime(Calendar.getInstance());
         courseMaterial.setDescription(courseMaterial.getSourceTitle());
 
-        if (classId != null) {
-            courseMaterial.setCourseClass(classDao.findById(classId));
-        } else {
-            courseMaterial.setCourse(courseDao.findById(this.course.getId()));
-        }
+        setCourseOrClassInMaterial();
 
         courseMaterial.setFullPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/" + newName);
         courseMaterial.setIsDisplay(true);
@@ -121,6 +114,19 @@ public class SaveMaterialAction extends BasicAction {
         return SUCCESS;
     }
 
+    private void setCourseOrClassInMaterial() {
+        if (classId != null) {
+            CourseClass courseClass = classDao.findById(classId);
+            if (courseClass != null) {
+                courseMaterial.setCourseClass(courseClass);
+                courseMaterial.setCourse(courseClass.getCourse());
+                this.course = courseClass.getCourse();
+            }
+        } else {
+            courseMaterial.setCourse(courseDao.findById(this.course.getId()));
+        }
+    }
+
 
     private void doConvert(String nowTimeStr, String dstPath) {
         try {
@@ -130,7 +136,7 @@ public class SaveMaterialAction extends BasicAction {
             } else if (CourseMaterial.QUESTION == courseMaterial.getType()) {
                 convertQuestion(nowTimeStr, dstPath);
             }
-        } catch (Exception e) {
+        } catch (Throwable e) {
             logger.error("Cannot covert ", e);
         }
     }
@@ -167,6 +173,7 @@ public class SaveMaterialAction extends BasicAction {
         String extName = "";
         String updatedFileNameOnly = "";
         String dstPath = "";
+        setCourseOrClassInMaterial();
         if (fileuploadFileName != null && fileuploadFileName.lastIndexOf(".") >= 0) {
             extName = fileuploadFileName.substring(fileuploadFileName.lastIndexOf("."));
             updatedFileNameOnly = fileuploadFileName.replace(extName, "");
@@ -190,12 +197,6 @@ public class SaveMaterialAction extends BasicAction {
 
         //文件相关属性设置
         courseMaterial.setUploadTime(Calendar.getInstance());
-
-        if (classId != null) {
-            courseMaterial.setCourseClass(classDao.findById(classId));
-        } else {
-            courseMaterial.setCourse(courseDao.findById(this.course.getId()));
-        }
 
 
         courseMaterial.setIsDisplay(true);

@@ -21,11 +21,13 @@ public class One2ManyPlayerSession {
     private Integer ClassID = Constants.DEFAULT_INT_VALUE;  //课堂的ClassId
     private Integer CourseID = Constants.DEFAULT_INT_VALUE;//课堂所属课程的 Id
     private String Server = Constants.DEFAULT_BLANK_VALUE; //video 服务器地
+    private Integer videoVersionId = Constants.DEFAULT_INT_VALUE;
 
     public void initWithSession(CourseClass courseClass){
         this.setAbstract(getEmptyString(""));
         this.setClassID(getEmptyInteger(courseClass.getId()));
         this.setCourseID(getEmptyInteger(courseClass.getCourse().getId()));
+        this.setVideoVersionId(courseClass.getVideoVersionId());
         if(courseClass.getCourse().getTeacher()!=null){
             this.setMasterID(getEmptyInteger(courseClass.getCourse().getTeacher().getId()));
             this.setMasterName(getEmptyString(courseClass.getCourse().getTeacher().getNickName()));
@@ -119,5 +121,13 @@ public class One2ManyPlayerSession {
 
     public void setMasterName(String masterName) {
         MasterName = masterName;
+    }
+
+    public Integer getVideoVersionId() {
+        return videoVersionId;
+    }
+
+    public void setVideoVersionId(Integer videoVersionId) {
+        this.videoVersionId = videoVersionId;
     }
 }

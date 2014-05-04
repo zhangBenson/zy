@@ -22,14 +22,14 @@
 <%--<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>--%>
 <div class="thickline"></div>
 <div class="container">
-    <div class="row">
-        <div class="col-md-3">
+    <div>
+        <div class="col-md-3" style="width:250px;">
             <a href="index.html">
                 <div class="topLogo"></div>
             </a>
 
         </div>
-        <div class="col-md-7">
+        <div class="col-md-7" style="width:670px;">
             <ul class="nav nav-pills">
                 <li>
                     <%--<a href="index.html" class="navlink"><s:property value="%{getText('menu.item.index')}"/></a>--%>

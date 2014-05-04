@@ -3,7 +3,7 @@
 
 <div style="width:1180px;" id="courseList<s:property value="pagination.pageNow"/>">
     <s:iterator value="courses" status="status">
-        <s:if test="#status.index<6">
+        <s:if test="#status.index<10">
             <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"
                class="newLeft">
                 <div class="coursePanel" style="width:550px;">
@@ -17,8 +17,11 @@
                         <p class="textOverSinglerow"><s:property value="%{getText('course.school')}"/>:&nbsp;<s:property
                                 value="organization.schoolName"/></p>
 
-                        <p class="textOverSinglerow"><s:property value="%{getText('label.index.classes.start')}"/>:&nbsp;<s:date
-                                name="publicationTime" format="%{getText('dateformat.forclass')}"/></p>
+                        <p class="textOverSinglerow">
+                            <s:property value="%{getText('courses.info.lecturer')}"/>:&nbsp;
+                            <s:if test="teacher.userName != null"><s:property value="teacher.userName"/></s:if>
+                            <s:else><s:property value="teacher.nickName"/></s:else>
+                        </p>
                     </div>
                 </div>
             </a>

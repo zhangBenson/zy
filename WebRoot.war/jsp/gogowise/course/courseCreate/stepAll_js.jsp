@@ -66,6 +66,7 @@
 
             $(this).parent().parent().hide();
             var name = $("input[type='text'][name='course.name']").val();
+            var access = $("[name='course.isPublic']:checked").next().html();
             var description =  $("textarea[name='course.description']").val();
             //var studentAgeTypeVal = $("select[name='course.studentAgeType']").val();
             var studentAgeType = $("#step2_studentAge_type").find("option:selected").text();
@@ -80,6 +81,7 @@
             var invitedEamils = "";
 
             $("#store_name").html(name);
+            $("#store_course_access").html(access);
             $("#store_description").html(description);
             $("#store_studentType").html(studentAgeType);
 //            $("#store_courseTeachingBook").html(courseTeachingBook);
