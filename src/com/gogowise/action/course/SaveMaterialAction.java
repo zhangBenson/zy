@@ -154,9 +154,10 @@ public class SaveMaterialAction extends BasicAction {
         String destPptParentDir = Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/ppt/" + nowTimeStr;
         String dstDir = this.getRealPathForBaseDir() + destPptParentDir;
         String pdfName = courseMaterial.getTypeString() + "_" + nowTimeStr + ".pdf";
+        courseMaterial.setConvertPath(destPptParentDir);
+
         Utils.pptConvert(this.getRealPathForBaseDir() + dstPath, dstPdfDir, pdfName, dstDir);
         File desDirInfo = new File(dstDir);
-        courseMaterial.setConvertPath(destPptParentDir);
         courseMaterial.setTotalPages(desDirInfo.listFiles().length - 1);
         logger.info("==================PPT files==============" + desDirInfo.listFiles().length);
     }

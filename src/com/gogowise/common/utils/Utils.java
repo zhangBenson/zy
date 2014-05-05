@@ -399,9 +399,14 @@ public class Utils {
         String BASE_PATCH = ServletActionContext.getServletContext().getRealPath(".");
         String cmdPdf = BASE_PATCH + Constants.PPT_PDF_EXT_PATH + " " + srcPpt + " " + pdfPath;
         String cmdPpt = BASE_PATCH + Constants.PPT_EXT_PATH + " " + pdfPath + "/" + pdfName + " " + desDir + "/brif";
-
-        exe(cmdPdf);
+        logger.info("==================start convert==============");
+        if (!StringUtils.endsWithIgnoreCase(srcPpt, "pdf")) {
+            logger.info("==================start PDF==============");
+            exe(cmdPdf);
+        }
+        logger.info("==================end pdf==============");
         exe(cmdPpt);
+        logger.info("==================end ppt==============");
     }
 
     public static void questionConvert(String srcPpt, String desDir) throws IOException {
