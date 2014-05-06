@@ -71,7 +71,7 @@
                 <span class="errorMessage" style="float: left;" id="cm_upload"></span>
             </td>
         </tr>
-        <s:form action="saveCourseMaterial" method="POST">
+        <s:form action="saveCourseMaterial" method="POST" onsubmit="disableForm();">
             <input type="hidden" name="course.id" value="<s:property value="course.id" />"/>
             <input type="hidden" name="courseMaterial.fullSize" id="cm_size"/>
             <input type="hidden" name="courseMaterial.fullPath" id="cm_path"/>
@@ -99,7 +99,7 @@
             <tr>
                 <td></td>
                 <td><s:submit cssClass="submit_material_btn" onclick="return checkUploadForm();"
-                              value="%{getText('course.resource.upload.resource')}"/></td>
+                              value="%{getText('course.resource.upload.resource')}" id="uploadCourseMaterialButton"/></td>
             </tr>
         </s:form>
     </table>
@@ -107,6 +107,11 @@
 
 
 <script type="text/javascript">
+
+    function disableForm(){
+        document.getElementById("uploadCourseMaterialButton").disabled = true;
+    }
+
     var upload, sourceTitle, sourceType, sourceDesc;
     function checkUploadForm() {
         var b1 = true, b2 = true, b3 = true;
@@ -145,7 +150,6 @@
             }
 
         }
-
         return b1 && b2 && b3;
     }
 
