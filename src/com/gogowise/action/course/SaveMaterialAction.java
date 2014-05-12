@@ -154,9 +154,10 @@ public class SaveMaterialAction extends BasicAction {
         String destPptParentDir = Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/ppt/" + nowTimeStr;
         String dstDir = this.getRealPathForBaseDir() + destPptParentDir;
         String pdfName = courseMaterial.getTypeString() + "_" + nowTimeStr + ".pdf";
+        courseMaterial.setConvertPath(destPptParentDir);
+
         Utils.pptConvert(this.getRealPathForBaseDir() + dstPath, dstPdfDir, pdfName, dstDir);
         File desDirInfo = new File(dstDir);
-        courseMaterial.setConvertPath(destPptParentDir);
         courseMaterial.setTotalPages(desDirInfo.listFiles().length - 1);
         logger.info("==================PPT files==============" + desDirInfo.listFiles().length);
     }
@@ -184,9 +185,9 @@ public class SaveMaterialAction extends BasicAction {
             String newName = courseMaterial.getTypeString() + "_" + nowTimeStr + extName;
 
             String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + newFileName);
-            dstPath = ServletActionContext.getServletContext().getRealPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/" + newName);
+            dstPath = Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/" + newName;
 
-            Utils.copy(new File(srcPath), new File(dstPath));
+            Utils.copy(new File(srcPath), new File(ServletActionContext.getServletContext().getRealPath(dstPath)));
             courseMaterial.setFullPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/" + newName);
             this.setGenFileName(newFileName);
         }

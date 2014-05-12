@@ -27,7 +27,7 @@
     <constant name="struts.i18n.encoding" value="UTF-8"/>
     <!--  扩展-->
     <constant name="struts.action.extension" value="html"/>
-    <!--<constant name="struts.multipart.saveDir" value="/tmp"/>-->
+    <constant name="struts.multipart.saveDir" value="/tmp"/>
 
     <!-- 启用动态方法调用 -->
     <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
