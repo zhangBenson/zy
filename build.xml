@@ -116,16 +116,16 @@
         </exec>
 
     </target>
-    <target name="gitClonePull">
-        <git-clone-pull repository="git://github.com/zhangBenson/zy.git" dest="."/>
-    </target>
-    <target name="gitPull">
-        <git command="pull" dir="."/>
-    </target>
-    <git command = "clone">
-        <args>
-            <arg value = "git://github.com/zhangBenson/zy.git" />
-            <arg value = "." />
-        </args>
-    </git>
+    <!--<target name="gitClonePull">-->
+    <!--<git-clone-pull repository="git://github.com/zhangBenson/zy.git" dest="."/>-->
+    <!--</target>-->
+    <!--<target name="gitPull">-->
+    <!--<git command="pull" dir="."/>-->
+    <!--</target>-->
+    <!--<git command = "clone">-->
+    <!--<args>-->
+    <!--<arg value = "git://github.com/zhangBenson/zy.git" />-->
+    <!--<arg value = "." />-->
+    <!--</args>-->
+    <!--</git>-->
 </project>
