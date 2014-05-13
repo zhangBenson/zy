@@ -84,7 +84,8 @@
                     <p id="secondDomainWarn" class="input_msg"></P>
 
                     <div class="input_content"><s:textfield id="secondDomain" cssClass="inputName"
-                                                            name="org.secDomain"/></div>
+                                                            name="org.secDomain"/>.gogowise.com
+                    </div>
                 </li>
 
                 <li class="long_li">
@@ -206,7 +207,7 @@
         var sdEmpty = checkEmpty('secondDomain', 'secondDomainWarn', '二级域名不能为空');
         var sdMinLength = false;
         if (sdEmpty) {
-            sdMinLength = checkMinLength('secondDomain', 'secondDomainWarn', 5, '二级域名不能少于5位');
+            sdMinLength = checkMinLength('secondDomain', 'secondDomainWarn', 5, '二级域名不能少于5位') && checkOnlyNumAndChar('secondDomain', 'secondDomainWarn', "二级域名只能数字和字母");
         }
         var r4 = true;
         $("#secondStepFileWarn").html("");
