@@ -177,6 +177,26 @@ function checkEmpty(id, tipId, tipMsg) {
     return true;
 }
 
+
+function checkOnlyNumAndChar(id, tipId, tipMsg) {
+    var re = /^[A-Za-z0-9]*$/;
+    var $tip = $("#" + tipId);
+    var str = $.trim($("#" + id).val());
+    if (re.test(str) == false) {
+        if (!tipMsg) {
+            $tip.html("只能输入字母和数字！");
+        } else {
+            $tip.html(tipMsg);
+        }
+        return false;
+    }
+
+    $tip.html("");
+    return true;
+
+
+}
+
 //HTML 转义
 function html_encode(str) {
     var s = "";
