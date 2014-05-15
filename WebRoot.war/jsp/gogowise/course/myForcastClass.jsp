@@ -2,7 +2,6 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ include file="/js/recommendForFriend_js.jsp" %>
 <%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
-<%@ taglib prefix="sj" uri="/struts-jquery-tags" %>
 <%--<link href="css/course/myForcastClass.css" rel="stylesheet" type="text/css"/>--%>
 <link href="css/user/user_center_list.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="js/uploadify/jquery.uploadify.v2.1.4.js"></script>

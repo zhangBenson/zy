@@ -2,7 +2,8 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
 
-<tiles:useAttribute name="pagination" classname="com.gogowise.rep.Pagination"/>
+
+<tiles:importAttribute name="pagination"/>
 
 <div style="text-align: center;">
     <ul class="pagination pagination-lg">
