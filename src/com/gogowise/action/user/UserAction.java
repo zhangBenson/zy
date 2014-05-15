@@ -432,7 +432,7 @@ public class UserAction extends BasicAction {
         return NONE;
     }
 
-    @Action(value = "initUpdate", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initUpdate")})
+    @Action(value = "initUpdate", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = "www.user.setting")})
     public String initUpdate() {
         user = baseUserDao.findById(getSessionUserId());
         userAccountInfo = userAccountInfoDao.findByUserId(this.getSessionUserId());
@@ -440,7 +440,7 @@ public class UserAction extends BasicAction {
     }
 
     @Action(value = "updateUserInfo", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "initUpdate"}),
-            @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".initUpdate")})
+            @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = "www.user.setting")})
     public String updateUserInfo() {
         //设置页面更新值
         BaseUser _user = baseUserDao.findById(getSessionUserId());

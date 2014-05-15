@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
         <!DOCTYPE tiles-definitions PUBLIC
         "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
-        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+                "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 
     <definition name=".basic" template="/jsp/layout/layoutOfFont.jsp">
@@ -129,7 +129,7 @@
      <!--</definition>-->
 
     <definition name=".index" extends=".wwwBodyCenter">
-        <put-attribute name="title" value="title.index"/>
+        <put-attribute name="title" type="string" value="title.index"/>
         <put-attribute name="contentBody" value="/jsp/www/index.jsp"/>
     </definition>
 
@@ -328,15 +328,6 @@
         <put-attribute name="contentRight" value="/jsp/gogowise/myFriends.jsp"/>
     </definition>
 
-    <!--发送邀请email -->
-    <definition name=".sendInviteEmails" extends=".userCenter">
-        <put-attribute name="title" value="title.myfirstpage"/>
-        <put-attribute name="contentRight" value="/jsp/gogowise/myGoGoWise.jsp"/>
-    </definition>
-
-    <!--<definition name=".exit" extends=".basic">-->
-        <!--<put-attribute name="right" value="/jsp/gogowise/index.jsp"/>-->
-    <!--</definition>-->
     <definition name=".easyLogon" extends=".bodyCenter">
         <put-attribute name="title" value="title.quick.login"/>
         <put-attribute name="contentBody" value="/jsp/gogowise/easyLogon.jsp"/>
@@ -407,15 +398,8 @@
         <put-attribute name="contentRight" value="/jsp/gogowise/updateUserInfo.jsp"/>
     </definition>-->
 
-    <definition name=".initUpdate" extends=".wwwBodyCenter">
-        <put-attribute name="title" value="title.account.setting"/>
-        <put-attribute name="contentBody" value="/jsp/www/user/userSetting.jsp"/>
-    </definition>
 
 
-    <definition name=".test" extends=".basic">
-        <put-attribute name="right" value="/jsp/gogowise/test.jsp"/>
-    </definition>
     <definition name=".initOrganization" extends=".basic">
         <put-attribute name="title" value="title.org.creation"/>
         <put-attribute name="right" value="/jsp/gogowise/createOrganization.jsp"/>
@@ -449,9 +433,6 @@
          <put-attribute name="title" value="title.gogowise.search.result"/>
          <put-attribute name="contentLeft" value="/jsp/gogowise/course/list/courseSearchList.jsp"/>
          <put-attribute name="contentRight" value="/jsp/gogowise/course/list/courseSearchListRight.jsp"/>
-    </definition>
-    <definition name=".coursePart" extends=".userCenter">
-        <put-attribute name="contentRight" value="/jsp/gogowise/course/myCourse.jsp"/>
     </definition>
 
     <definition name=".identityConfirmation" extends=".bodyCenter">
@@ -637,10 +618,6 @@
         <put-attribute name="title" value="title.of.course.template"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/course/courseCreate/repeatPresentation.jsp"/>
     </definition>
-    <definition name=".repeatClasses" extends=".userCenter">
-        <put-attribute name="title" value="title.of.course.template"/>
-        <put-attribute name="contentRight" value="/jsp/gogowise/course/courseCreate/classInfoOfRepeat.jsp"/>
-    </definition>
 
        <!-- =====================the video tiles=========================== -->
     <definition name=".openClassSession" extends=".roomCenter" >
@@ -749,11 +726,8 @@
         <put-attribute name="title" value="title.course.maintenance1"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/course/courseMaintenance/maintenanceForPersonal.jsp"/>
     </definition>
-    <definition name=".modifyPresentation" extends=".userCenter">
-        <put-attribute name="title" value="title.course.maintenance1"/>
-        <put-attribute name="contentRight" value="/jsp/gogowise/course/courseMaintenance/modifyPresentation.jsp"/>
-    </definition>
-     <definition name=".personalModiPre" extends=".userCenter">
+
+    <definition name=".personalModiPre" extends=".userCenter">
         <put-attribute name="title" value="title.course.maintenance1"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/course/courseMaintenance/peronalModiPresentation.jsp"/>
     </definition>
@@ -912,10 +886,7 @@
 
 
 <!--  ===================== org  course creation ==============================================  -->
-     <definition name=".orgSecondStep" extends=".userCenter">
-         <put-attribute name="title" value="title.org.course.creation"/>
-        <put-attribute name="contentRight" value="/jsp/gogowise/org/orgCourseCreation/secondstep.jsp"/>
-    </definition>
+
     <definition name=".adjustCenter" extends=".bodyCenter">
         <put-attribute name="title" value="title.course.maintenance"/>
         <put-attribute name="contentBody" value="/jsp/gogowise/org/orgCourseCreation/adjustCenter.jsp"/>
@@ -1411,5 +1382,17 @@
         <put-attribute name="title" value="title.faq"/>
         <put-attribute name="contentBody" value="/jsp/www/FAQ.jsp" />
     </definition>
+
+
+    <!-- new tiles -->
+    <definition name="wwwTemplate" template="/jsp/www/layout/layout.jsp">
+        <put-attribute name="top" value="/jsp/www/layout/top.jsp"/>
+        <put-attribute name="footer" value="/jsp/www/layout/footer.jsp"/>
+    </definition>
+    <definition name="WILDCARD:www.*.*" extends="wwwTemplate">
+        <put-attribute name="title" value="title.gogowise"/>
+        <put-attribute name="contentBody" value="/jsp/www/{1}/{2}.jsp"/>
+    </definition>
+
 
 </tiles-definitions>

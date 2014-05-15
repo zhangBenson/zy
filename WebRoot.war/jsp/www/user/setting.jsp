@@ -10,6 +10,7 @@
 <style type="text/css">
     .input_msg{color:red;font-size:12px;margin-left:5px;}
 </style>
+<input type="hidden" id="gogowiseTitle" value="<s:property value="%{getText('title.account.setting')}"/>">
 
 <div class="container">
 

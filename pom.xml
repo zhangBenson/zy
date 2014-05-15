@@ -17,7 +17,7 @@
 
     <properties>
         <spring.version>3.1.1.RELEASE</spring.version>
-        <struts2.version>2.3.1.2</struts2.version>
+        <struts2.version>2.3.16.3</struts2.version>
         <hibernate.version>4.2.0.CR2</hibernate.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
@@ -110,6 +110,9 @@
                     <!--<warSourceDirectory>WebRoot.war</warSourceDirectory>-->
                     <outputDirectory>.</outputDirectory>
                     <warName>ROOT</warName>
+                    <warSourceDirectory>
+                        WebRoot.war
+                    </warSourceDirectory>
                 </configuration>
             </plugin>
             <plugin>
@@ -283,7 +286,7 @@
         <!-- Struts2 -->
         <dependency>
             <groupId>org.apache.struts</groupId>
-            <artifactId>struts2-tiles-plugin</artifactId>
+            <artifactId>struts2-tiles3-plugin</artifactId>
             <version>${struts2.version}</version>
         </dependency>
         <dependency>
@@ -517,11 +520,11 @@
         <!--<artifactId>commons-codec</artifactId>-->
         <!--<version>1.3</version>-->
         <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>commons-collections</groupId>-->
-        <!--<artifactId>commons-collections</artifactId>-->
-        <!--<version>3.2.1</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.1</version>
+        </dependency>
         <!--<dependency>-->
         <!--<groupId>org.apache.ibatis</groupId>-->
         <!--<artifactId>ibatis-sqlmap</artifactId>-->
@@ -532,89 +535,6 @@
             <artifactId>log4j</artifactId>
             <version>1.2.16</version>
         </dependency>
-        <!--<dependency>-->
-        <!--<groupId>commons-io</groupId>-->
-        <!--<artifactId>commons-io</artifactId>-->
-        <!--<version>1.4</version>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-        <!--<groupId>commons-fileupload</groupId>-->
-        <!--<artifactId>commons-fileupload</artifactId>-->
-        <!--<version>1.2.1</version>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-        <!--<groupId>org.apache.struts</groupId>-->
-        <!--<artifactId>struts-core</artifactId>-->
-        <!--<version>1.3.10</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>org.apache.struts</groupId>-->
-        <!--<artifactId>struts-extras</artifactId>-->
-        <!--<version>1.3.10</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>org.apache.tiles</groupId>-->
-        <!--<artifactId>tiles-portlet</artifactId>-->
-        <!--<version>2.1.2</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>com.googlecode</groupId>-->
-        <!--<artifactId>jsonplugin</artifactId>-->
-        <!--<version>0.34</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>org.apache.geronimo.specs</groupId>-->
-        <!--<artifactId>geronimo-jsp_2.0_spec</artifactId>-->
-        <!--<version>1.1</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>org.apache.geronimo.specs</groupId>-->
-        <!--<artifactId>geronimo-servlet_2.4_spec</artifactId>-->
-        <!--<version>1.1.1</version>-->
-        <!--</dependency>-->
-        <!--&lt;!&ndash;<dependency>&ndash;&gt;-->
-        <!--&lt;!&ndash;<groupId>lucene</groupId>&ndash;&gt;-->
-        <!--&lt;!&ndash;<artifactId>lucene</artifactId>&ndash;&gt;-->
-        <!--&lt;!&ndash;<version>1.4.3</version>&ndash;&gt;-->
-        <!--&lt;!&ndash;</dependency>&ndash;&gt;-->
-        <!--&lt;!&ndash;<dependency>&ndash;&gt;-->
-        <!--&lt;!&ndash;<groupId>org.apache.lucene</groupId>&ndash;&gt;-->
-        <!--&lt;!&ndash;<artifactId>lucene-analyzers</artifactId>&ndash;&gt;-->
-        <!--&lt;!&ndash;<version>2.2.0</version>&ndash;&gt;-->
-        <!--&lt;!&ndash;</dependency>&ndash;&gt;-->
-        <!--<dependency>-->
-        <!--<groupId>org.apache.lucene</groupId>-->
-        <!--<artifactId>lucene-core</artifactId>-->
-        <!--<version>2.2.0</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>org.mira.lucene.analysis</groupId>-->
-        <!--<artifactId>IKAnalyzer</artifactId>-->
-        <!--<version>2.2.0</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>org.apache.tiles</groupId>-->
-        <!--<artifactId>tiles-jsp</artifactId>-->
-        <!--<version>2.1.2</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>org.apache.tiles</groupId>-->
-        <!--<artifactId>tiles-core</artifactId>-->
-        <!--<version>2.1.2</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>org.slf4j</groupId>-->
-        <!--<artifactId>slf4j-log4j12</artifactId>-->
-        <!--<version>1.5.0</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>org.slf4j</groupId>-->
-        <!--<artifactId>slf4j-log4j12</artifactId>-->
-        <!--<version>1.6.1</version>-->
-        <!--</dependency>-->
-
 
         <!--<dependency>-->
         <!--<groupId>classworlds.classworlds</groupId>-->
@@ -627,16 +547,16 @@
         <!--<artifactId>commons-collections</artifactId>-->
         <!--<version>3.2.1</version>-->
         <!--</dependency>-->
-        <dependency>
-            <groupId>com.jgeppert.struts2.jquery</groupId>
-            <artifactId>struts2-jquery-plugin</artifactId>
-            <version>3.1.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.jgeppert.struts2.jquery</groupId>
-            <artifactId>struts2-jquery-richtext-plugin</artifactId>
-            <version>3.1.1</version>
-        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>com.jgeppert.struts2.jquery</groupId>-->
+        <!--<artifactId>struts2-jquery-plugin</artifactId>-->
+        <!--<version>3.1.1</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>com.jgeppert.struts2.jquery</groupId>-->
+        <!--<artifactId>struts2-jquery-richtext-plugin</artifactId>-->
+        <!--<version>3.1.1</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
@@ -713,6 +633,12 @@
             <artifactId>rest-api-sdk</artifactId>
             <version>0.7.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.5.8</version>
+        </dependency>
+
 
     </dependencies>
 
