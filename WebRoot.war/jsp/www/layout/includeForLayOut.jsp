@@ -7,7 +7,9 @@
 
 <script>
     $(document).ready(function () {
-        document.title = $("#gogowiseTitle").val();
+        if ($("#gogowiseTitle").val()) {
+            document.title = $("#gogowiseTitle").val();
+        }
     });
 
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
