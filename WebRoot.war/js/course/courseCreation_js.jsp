@@ -168,10 +168,10 @@ $(document).ready(function () {
 
     });
     $(".add_student_btn").click(function () {
-        if (maxStudentCount < 4 && count >= maxStudentCount) {
-            $(".invite_student_input_msg").html(warn_student_number_overflow);
-            return;
-        }
+//        if (maxStudentCount < 4 && count >= maxStudentCount) {
+//            $(".invite_student_input_msg").html(warn_student_number_overflow);
+//            return;
+//        }
         $("#invitedStudents").append("<input class='long_text_field_for_student' onblur='checkStudentMail(this);' name='emails' type='text' /><span class='del_student_btn' onclick='remove_student(this);'>" + deleteEmail + "</span>");
         count++;
     });
