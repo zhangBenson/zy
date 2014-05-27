@@ -860,6 +860,7 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
+    @Action(value = "voaCourseBlog", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".voaCourseBlog") })
     public String voa() {
 
         /*if (course == null) {

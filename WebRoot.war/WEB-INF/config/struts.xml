@@ -123,8 +123,12 @@
         </global-results>
 
 
-
-
+        <!--<action name="download" class="courseResourceAction" method="downloadFile">-->
+        <!--<result name="success" type="stream">-->
+        <!--<param name="inputName">fstream</param>-->
+        <!--<param name="contentDisposition">attachment;filename=${fname}</param>-->
+        <!--</result>-->
+        <!--</action>-->
 
 
         <action name="uploadCourseMaterialToTemp" class="com.gogowise.action.course.CourseMaterialUploadAction"
