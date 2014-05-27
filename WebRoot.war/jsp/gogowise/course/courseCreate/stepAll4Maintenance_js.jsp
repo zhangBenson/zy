@@ -104,6 +104,7 @@
             if(!yzSaveCourseClassForm()) return;
 
              var classInfo = $("#self_class_system_form").serialize();
+            alert(classInfo);
              $.post("selfSaveClass.html",classInfo,function(data){
                    $("#list_tbody").html(data)
              });

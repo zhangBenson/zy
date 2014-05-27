@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
-<s:iterator value="courseClasses" status="idx">
+<s:iterator value="classes" status="idx">
     <tr id="classes<s:property value="id"/>">
         <td id="course_name<s:property value="id"/>"><s:property value="#idx.index+1"/></td>
         <td id="course_nickName<s:property value="id"/>" class="course_nickName_text"><s:property

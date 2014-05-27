@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-        <!DOCTYPE tiles-definitions PUBLIC
+<!DOCTYPE tiles-definitions PUBLIC
         "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
-                "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 
     <definition name=".basic" template="/jsp/layout/layoutOfFont.jsp">
@@ -66,8 +66,7 @@
     </definition>
 
 
-
-   <definition name=".multiVideoSolution" extends=".bodyCenter">
+    <definition name=".multiVideoSolution" extends=".bodyCenter">
         <put-attribute name="title" value="title.multi.video.solution"/>
         <put-attribute name="contentBody" value="/jsp/gogowise/solution/multiVideoSolution.jsp"/>
     </definition>
@@ -123,10 +122,10 @@
         <put-attribute name="contentBody" value="/jsp/www/log_reg/studentLogin.jsp"/>
     </definition>
 
-     <!--<definition name=".index" extends=".bodyCenter">-->
-        <!--<put-attribute name="title" value="title.index"/>-->
-         <!--<put-attribute name="contentBody" value="/jsp/gogowise/index.jsp"/>-->
-     <!--</definition>-->
+    <!--<definition name=".index" extends=".bodyCenter">-->
+    <!--<put-attribute name="title" value="title.index"/>-->
+    <!--<put-attribute name="contentBody" value="/jsp/gogowise/index.jsp"/>-->
+    <!--</definition>-->
 
     <definition name=".index" extends=".wwwBodyCenter">
         <put-attribute name="title" type="string" value="title.index"/>
@@ -135,13 +134,6 @@
 
     <definition name=".indexMoreCourse" template="/jsp/www/indexMoreCourse.jsp">
     </definition>
-
-
-    <!-- course competition -->
-    <definition name=".courseCompetition" extends=".bodyCenter">
-        <put-attribute name="title" value="title.course.competition"/>
-         <put-attribute name="contentBody" value="/jsp/gogowise/competition/courseCompetition.jsp" />
-     </definition>
 
 
     <definition name=".competitionHome" extends=".simple">
@@ -203,7 +195,6 @@
     </definition>
 
 
-
     <definition name=".higSecLogon" extends=".basic">
         <put-attribute name="title" value="title.admin.system"/>
         <put-attribute name="right" value="/jsp/gogowise/higSecLogon.jsp"/>
@@ -225,20 +216,20 @@
         <put-attribute name="contentBody" value="/jsp/gogowise/news/announceReader.jsp"/>
     </definition>
 
-     <definition name=".liveTrailerRead" extends=".bodyCenter">
+    <definition name=".liveTrailerRead" extends=".bodyCenter">
         <put-attribute name="title" value="title.of.news.center"/>
         <put-attribute name="contentBody" value="/jsp/gogowise/news/liveTrailerReader.jsp"/>
     </definition>
 
-     <definition name=".courseEventRead" extends=".bodyCenter">
+    <definition name=".courseEventRead" extends=".bodyCenter">
         <put-attribute name="title" value="title.of.news.center"/>
         <put-attribute name="contentBody" value="/jsp/gogowise/news/courseEventsReader.jsp"/>
     </definition>
-     <definition name=".showEventRead" extends=".bodyCenter">
+    <definition name=".showEventRead" extends=".bodyCenter">
         <put-attribute name="title" value="title.of.news.center"/>
         <put-attribute name="contentBody" value="/jsp/gogowise/news/showEventsReader.jsp"/>
     </definition>
-     <definition name=".liveChannelEventRead" extends=".bodyCenter">
+    <definition name=".liveChannelEventRead" extends=".bodyCenter">
         <put-attribute name="title" value="title.of.news.center"/>
         <put-attribute name="contentBody" value="/jsp/gogowise/news/liveChannelEventsReader.jsp"/>
     </definition>
@@ -264,11 +255,9 @@
         <put-attribute name="right" value="/jsp/gogowise/user/sendEmail.jsp"/>
     </definition>
     <!--<definition name=".higSecOrgCreateView" extends=".basic">-->
-        <!--<put-attribute name="title" value="title.quick.login"/>-->
-        <!--<put-attribute name="right" value="/jsp/gogowise/org/orgEasyCreationView.jsp"/>-->
+    <!--<put-attribute name="title" value="title.quick.login"/>-->
+    <!--<put-attribute name="right" value="/jsp/gogowise/org/orgEasyCreationView.jsp"/>-->
     <!--</definition>    -->
-
-
 
 
     <definition name=".error" template="/jsp/gogowise/error.jsp">
@@ -280,9 +269,9 @@
     </definition>
 
 
-   <definition name=".groupCompetition" extends=".userCenter">
-       <put-attribute name="contentRight" value="/jsp/gogowise/orgernize.jsp"/>
-   </definition>
+    <definition name=".groupCompetition" extends=".userCenter">
+        <put-attribute name="contentRight" value="/jsp/gogowise/orgernize.jsp"/>
+    </definition>
     <definition name=".live" extends=".userCenter">
         <put-attribute name="contentRight" value="/jsp/gogowise/living.jsp"/>
     </definition>
@@ -301,7 +290,7 @@
     <definition name=".myCompetitionSession" extends=".userCenter">
         <put-attribute name="contentRight" value="/jsp/gogowise/mySessions.jsp"/>
     </definition>
-     <definition name=".personalInfoPhase" extends=".userCenter">
+    <definition name=".personalInfoPhase" extends=".userCenter">
         <put-attribute name="contentRight" value="/jsp/gogowise/personalinfo.jsp"/>
     </definition>
 
@@ -339,8 +328,8 @@
     </definition>
 
     <!--<definition name=".easyLogin" extends=".bodyCenter">-->
-        <!--<put-attribute name="title" value="title.quick.login"/>-->
-        <!--<put-attribute name="contentBody" value="/jsp/gogowise/log_reg/login.jsp"/>-->
+    <!--<put-attribute name="title" value="title.quick.login"/>-->
+    <!--<put-attribute name="contentBody" value="/jsp/gogowise/log_reg/login.jsp"/>-->
     <!--</definition>-->
     <definition name=".easyReg" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.reg"/>
@@ -351,8 +340,8 @@
         <put-attribute name="right" value="/jsp/gogowise/inviteFriend.jsp"/>
     </definition>
     <!--<definition name=".initRepassword" extends=".bodyCenter">-->
-        <!--<put-attribute name="title" value="title.modify.password"/>-->
-        <!--<put-attribute name="contentBody" value="/jsp/gogowise/rePassword.jsp"/>-->
+    <!--<put-attribute name="title" value="title.modify.password"/>-->
+    <!--<put-attribute name="contentBody" value="/jsp/gogowise/rePassword.jsp"/>-->
     <!--</definition>-->
     <definition name=".initRepassword" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.modify.password"/>
@@ -372,23 +361,23 @@
         <put-attribute name="contentBody" value="/jsp/www/user/rePwdSuccess.jsp"/>
     </definition>
     <!--<definition name=".findEmailUser" extends=".bodyCenter">-->
-        <!--<put-attribute name="title" value="title.modify.password"></put-attribute>-->
-        <!--<put-attribute name="contentBody" value="/jsp/gogowise/enterRePassword.jsp"/>-->
+    <!--<put-attribute name="title" value="title.modify.password"></put-attribute>-->
+    <!--<put-attribute name="contentBody" value="/jsp/gogowise/enterRePassword.jsp"/>-->
     <!--</definition>-->
     <!--<definition name=".yzRePasswordCode" extends=".bodyCenter">-->
-        <!--<put-attribute name="title" value="title.modify.password"></put-attribute>-->
-        <!--<put-attribute name="contentBody" value="/jsp/gogowise/reWritePassword.jsp"/>-->
+    <!--<put-attribute name="title" value="title.modify.password"></put-attribute>-->
+    <!--<put-attribute name="contentBody" value="/jsp/gogowise/reWritePassword.jsp"/>-->
     <!--</definition>-->
     <!--<definition name=".reWritePassword" extends=".bodyCenter">-->
-        <!--<put-attribute name="title" value="title.modify.password"></put-attribute>-->
-        <!--<put-attribute name="contentBody" value="/jsp/gogowise/rePwdSuccess.jsp"/>-->
+    <!--<put-attribute name="title" value="title.modify.password"></put-attribute>-->
+    <!--<put-attribute name="contentBody" value="/jsp/gogowise/rePwdSuccess.jsp"/>-->
     <!--</definition>-->
     <definition name=".initRecomond" extends=".userCenter">
         <put-attribute name="title" value="title.invite.friend"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/recomondFriend.jsp"/>
     </definition>
 
-     <definition name=".initUpdate_teacher" extends=".userCenter">
+    <definition name=".initUpdate_teacher" extends=".userCenter">
         <put-attribute name="title" value="title.account.setting"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/updateUserInfo_teacher.jsp"/>
     </definition>
@@ -397,7 +386,6 @@
         <put-attribute name="title" value="title.account.setting"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/updateUserInfo.jsp"/>
     </definition>-->
-
 
 
     <definition name=".initOrganization" extends=".basic">
@@ -426,22 +414,22 @@
     </definition>
 
     <!--<definition name="." extends=".bodyCenter">-->
-        <!--<put-attribute name="title" value="title.course.search"/>-->
-        <!--<put-attribute name="contentBody" value="/jsp/gogowise/course/courseSelection.jsp"/>-->
+    <!--<put-attribute name="title" value="title.course.search"/>-->
+    <!--<put-attribute name="contentBody" value="/jsp/gogowise/course/courseSelection.jsp"/>-->
     <!--</definition>-->
     <definition name=".courseSelection" extends=".searchCenter">
-         <put-attribute name="title" value="title.gogowise.search.result"/>
-         <put-attribute name="contentLeft" value="/jsp/gogowise/course/list/courseSearchList.jsp"/>
-         <put-attribute name="contentRight" value="/jsp/gogowise/course/list/courseSearchListRight.jsp"/>
+        <put-attribute name="title" value="title.gogowise.search.result"/>
+        <put-attribute name="contentLeft" value="/jsp/gogowise/course/list/courseSearchList.jsp"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/course/list/courseSearchListRight.jsp"/>
     </definition>
 
     <definition name=".identityConfirmation" extends=".bodyCenter">
-         <put-attribute name="title" value="title.course.search"/>
+        <put-attribute name="title" value="title.course.search"/>
         <put-attribute name="contentBody" value="/jsp/gogowise/course/courseCreate/identityConfirmation.jsp"/>
     </definition>
     <!--<definition name=".CourseSession" extends=".userCenter">-->
-        <!--<put-attribute name="title" value="title.course.creation"/>-->
-        <!--<put-attribute name="contentRight" value="/jsp/gogowise/course/courseCreate/firststep.jsp"/>-->
+    <!--<put-attribute name="title" value="title.course.creation"/>-->
+    <!--<put-attribute name="contentRight" value="/jsp/gogowise/course/courseCreate/firststep.jsp"/>-->
     <!--</definition>-->
     <definition name=".initStep1" extends=".userCenter">
         <put-attribute name="title" value="title.course.creation"/>
@@ -450,37 +438,37 @@
     <definition name=".createCourseClause" template="/jsp/gogowise/course/courseCreate/createCourseClause.jsp">
     </definition>
     <!--<definition name=".initSaveCourse" extends=".userCenter">-->
-           <!--<put-attribute name="title" value="title.course.creation"/>-->
-         <!--<put-attribute name="contentRight" value="/jsp/gogowise/course/courseCreate/secondstep.jsp"/>-->
+    <!--<put-attribute name="title" value="title.course.creation"/>-->
+    <!--<put-attribute name="contentRight" value="/jsp/gogowise/course/courseCreate/secondstep.jsp"/>-->
     <!--</definition>-->
     <definition name=".initStep2" extends=".userCenter">
-         <put-attribute name="title" value="title.course.creation"/>
-         <put-attribute name="contentRight" value="/jsp/gogowise/course/courseCreate/step2.jsp"/>
+        <put-attribute name="title" value="title.course.creation"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/course/courseCreate/step2.jsp"/>
     </definition>
-     <!--<definition name=".saveCourse" extends=".userCenter">-->
-         <!--<put-attribute name="title" value="title.course.creation"/>-->
-         <!--<put-attribute name="contentRight" value="/jsp/gogowise/course/courseCreate/thirdstep.jsp"/>-->
-     <!--</definition>-->
+    <!--<definition name=".saveCourse" extends=".userCenter">-->
+    <!--<put-attribute name="title" value="title.course.creation"/>-->
+    <!--<put-attribute name="contentRight" value="/jsp/gogowise/course/courseCreate/thirdstep.jsp"/>-->
+    <!--</definition>-->
     <definition name=".initStep3" extends=".userCenter">
-         <put-attribute name="title" value="title.course.creation"/>
-         <put-attribute name="contentRight" value="/jsp/gogowise/course/courseCreate/step3.jsp"/>
-     </definition>
-     <!--<definition name=".saveClass" extends=".userCenter">-->
-         <!--<put-attribute name="title" value="title.course.creation"/>-->
-         <!--<put-attribute name="contentRight" value="/jsp/gogowise/course/courseCreate/thirdstep.jsp"/>-->
-     <!--</definition>-->
-     <definition name=".saveClass" extends=".userCenter">
-         <put-attribute name="title" value="title.course.creation"/>
-         <put-attribute name="contentRight" value="/jsp/gogowise/course/courseCreate/step3.jsp"/>
-     </definition>
+        <put-attribute name="title" value="title.course.creation"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/course/courseCreate/step3.jsp"/>
+    </definition>
+    <!--<definition name=".saveClass" extends=".userCenter">-->
+    <!--<put-attribute name="title" value="title.course.creation"/>-->
+    <!--<put-attribute name="contentRight" value="/jsp/gogowise/course/courseCreate/thirdstep.jsp"/>-->
+    <!--</definition>-->
+    <definition name=".saveClass" extends=".userCenter">
+        <put-attribute name="title" value="title.course.creation"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/course/courseCreate/step3.jsp"/>
+    </definition>
 
     <definition name=".presentation" extends=".userCenter">
         <put-attribute name="title" value="title.course.creation"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/course/courseCreate/step4.jsp"/>
     </definition>
     <definition name=".saveCourseError" extends=".userCenter">
-          <put-attribute name="title" value="title.course.creation"/>
-        <put-attribute  name="contentRight" value="/jsp/gogowise/course/saveCourseError.jsp"/>
+        <put-attribute name="title" value="title.course.creation"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/course/saveCourseError.jsp"/>
     </definition>
     <!-- modified course creation pages -->
     <definition name=".createCourseInOneStep" template="/jsp/gogowise/course/courseCreate/stepAll.jsp">
@@ -493,7 +481,7 @@
     </definition>
     <definition name=".courseRepeat" extends=".userCenter">
         <put-attribute name="title" value="title.of.course.template"/>
-        <put-attribute name="contentRight" value="/jsp/gogowise/course/courseRepeat.jsp" />
+        <put-attribute name="contentRight" value="/jsp/gogowise/course/courseRepeat.jsp"/>
     </definition>
 
     <definition name=".maintenanceCourseOneStep" template="/jsp/gogowise/course/courseMaintenance.jsp">
@@ -508,55 +496,55 @@
         <put-attribute name="title" value="title.course.creation"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/course/courseCreate/step1.jsp"/>
     </definition>
-       <definition name=".step2" extends=".userCenter">
-           <put-attribute name="title" value="title.course.creation"/>
-         <put-attribute name="contentRight" value="/jsp/gogowise/course/courseCreate/step2.jsp"/>
+    <definition name=".step2" extends=".userCenter">
+        <put-attribute name="title" value="title.course.creation"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/course/courseCreate/step2.jsp"/>
     </definition>
-     <definition name=".step3" extends=".userCenter">
-         <put-attribute name="title" value="title.course.creation"/>
-         <put-attribute name="contentRight" value="/jsp/gogowise/course/courseCreate/step3.jsp"/>
-     </definition>
+    <definition name=".step3" extends=".userCenter">
+        <put-attribute name="title" value="title.course.creation"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/course/courseCreate/step3.jsp"/>
+    </definition>
     <definition name=".step4" extends=".bodyCenter">
-         <put-attribute name="title" value="title.course.creation"/>
-         <put-attribute name="contentBody" value="/jsp/gogowise/course/courseQuickReg.jsp"/>
-     </definition>
-     <definition name=".initBigCourseAdvertiseEmail" extends=".bodyCenter">
-         <put-attribute name="title" value="title.course.quick.reg"/>
-         <put-attribute name="contentBody" value="/jsp/gogowise/course/courseQuickReg.jsp"/>
-     </definition>
+        <put-attribute name="title" value="title.course.creation"/>
+        <put-attribute name="contentBody" value="/jsp/gogowise/course/courseQuickReg.jsp"/>
+    </definition>
+    <definition name=".initBigCourseAdvertiseEmail" extends=".bodyCenter">
+        <put-attribute name="title" value="title.course.quick.reg"/>
+        <put-attribute name="contentBody" value="/jsp/gogowise/course/courseQuickReg.jsp"/>
+    </definition>
 
-     <definition name=".emailHandleReject" extends=".simple">
-         <put-attribute name="title" value="title.gogowise.thank"/>
-         <put-attribute name="right" value="/jsp/gogowise/course/thanks.jsp"/>
-     </definition>
-     <!--<definition name=".emailHandleReject" extends=".simple">-->
-         <!--<put-attribute name="right" value="/jsp/gogowise/course/rejectorComments.jsp"/>-->
-     <!--</definition>-->
-     <definition name=".saveRejectComments" extends=".simple">
-         <put-attribute name="title" value="title.index"/>
-         <put-attribute name="right" value="/jsp/gogowise/index.jsp"/>
-     </definition>
+    <definition name=".emailHandleReject" extends=".simple">
+        <put-attribute name="title" value="title.gogowise.thank"/>
+        <put-attribute name="right" value="/jsp/gogowise/course/thanks.jsp"/>
+    </definition>
+    <!--<definition name=".emailHandleReject" extends=".simple">-->
+    <!--<put-attribute name="right" value="/jsp/gogowise/course/rejectorComments.jsp"/>-->
+    <!--</definition>-->
+    <definition name=".saveRejectComments" extends=".simple">
+        <put-attribute name="title" value="title.index"/>
+        <put-attribute name="right" value="/jsp/gogowise/index.jsp"/>
+    </definition>
     <definition name=".showResSuccessMsg" extends=".basic">
-         <put-attribute name="right" value="/jsp/gogowise/showResSuccessMsg.jsp"/>
-     </definition>
+        <put-attribute name="right" value="/jsp/gogowise/showResSuccessMsg.jsp"/>
+    </definition>
 
-     <definition name=".changeResponser" extends=".basic">
-         <put-attribute name="right" value="/jsp/gogowise/changeResponser.jsp"/>
+    <definition name=".changeResponser" extends=".basic">
+        <put-attribute name="right" value="/jsp/gogowise/changeResponser.jsp"/>
     </definition>
     <definition name=".changeResponserSuccess" extends=".basic">
-         <put-attribute name="right" value="/jsp/gogowise/showChangedSuccessMsg.jsp"/>
+        <put-attribute name="right" value="/jsp/gogowise/showChangedSuccessMsg.jsp"/>
     </definition>
 
     <definition name=".ageClass" extends=".userCenter">
         <put-attribute name="title" value="title.age.course"/>
-       <put-attribute name="contentRight" value="/jsp/gogowise/course/ageClass.jsp"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/course/ageClass.jsp"/>
     </definition>
     <definition name=".livingClass" extends=".userCenter">
         <put-attribute name="title" value="title.living.course"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/course/livingClass.jsp"/>
     </definition>
     <definition name=".forcastClass" extends=".userCenter">
-          <put-attribute name="title" value="title.newest.course"/>
+        <put-attribute name="title" value="title.newest.course"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/course/forcastClasses.jsp"/>
     </definition>
 
@@ -619,13 +607,13 @@
         <put-attribute name="contentRight" value="/jsp/gogowise/course/courseCreate/repeatPresentation.jsp"/>
     </definition>
 
-       <!-- =====================the video tiles=========================== -->
-    <definition name=".openClassSession" extends=".roomCenter" >
+    <!-- =====================the video tiles=========================== -->
+    <definition name=".openClassSession" extends=".roomCenter">
         <put-attribute name="title" value="title.classroom"/>
         <put-attribute name="roomBody" value="/jsp/gogowise/openSession.jsp"/>
     </definition>
-     <definition name=".openClass" extends=".roomCenter" >
-         <put-attribute name="title" value="title.classroom"/>
+    <definition name=".openClass" extends=".roomCenter">
+        <put-attribute name="title" value="title.classroom"/>
         <put-attribute name="roomBody" value="/jsp/gogowise/openClass.jsp"/>
     </definition>
     <definition name=".one2oneAnonySession" extends=".roomCenter">
@@ -657,9 +645,9 @@
         <put-attribute name="contentBody" value="/jsp/www/room/roomPlayer.jsp"/>
     </definition>
 
-     <definition name=".interviewVideo" extends=".bodyCenter">
-         <put-attribute name="title" value="title.interview.video.session"/>
-         <put-attribute name="contentBody" value="/jsp/gogowise/InterviewVideoSession.jsp"/>
+    <definition name=".interviewVideo" extends=".bodyCenter">
+        <put-attribute name="title" value="title.interview.video.session"/>
+        <put-attribute name="contentBody" value="/jsp/gogowise/InterviewVideoSession.jsp"/>
     </definition>
     <definition name=".orgMeetingOne2one" extends=".roomCenter">
         <put-attribute name="title" value="org.virtual.teaching.room.title"/>
@@ -669,7 +657,7 @@
         <put-attribute name="title" value="org.virtual.teaching.room.title"/>
         <put-attribute name="roomBody" value="/jsp/gogowise/org/meetingOne2two.jsp"/>
     </definition>
-     <definition name=".orgMeetingOne2three" extends=".roomCenter">
+    <definition name=".orgMeetingOne2three" extends=".roomCenter">
         <put-attribute name="title" value="org.virtual.teaching.room.title"/>
         <put-attribute name="roomBody" value="/jsp/gogowise/org/meetingOne2three.jsp"/>
     </definition>
@@ -704,12 +692,13 @@
     </definition>
     <!-- =====================course maintenance=========================== -->
     <!--<definition name=".initCourseInfoModify" extends=".userCenter">-->
-        <!--<put-attribute name="title" value="title.course.maintenance1"/>-->
-        <!--<put-attribute name="contentRight" value="/jsp/gogowise/course/courseMaintenance/courseInforMdify.jsp"/>-->
+    <!--<put-attribute name="title" value="title.course.maintenance1"/>-->
+    <!--<put-attribute name="contentRight" value="/jsp/gogowise/course/courseMaintenance/courseInforMdify.jsp"/>-->
     <!--</definition>-->
     <definition name=".initMaintenanceInfo" extends=".userCenter">
         <put-attribute name="title" value="title.course.maintenance1"/>
-        <put-attribute name="contentRight" value="/jsp/gogowise/course/courseMaintenance/beforeMaintenceForPersonal.jsp"/>
+        <put-attribute name="contentRight"
+                       value="/jsp/gogowise/course/courseMaintenance/beforeMaintenceForPersonal.jsp"/>
     </definition>
     <definition name=".modifyCourseStep3" extends=".userCenter">
         <put-attribute name="title" value="title.course.maintenance1"/>
@@ -731,7 +720,6 @@
         <put-attribute name="title" value="title.course.maintenance1"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/course/courseMaintenance/peronalModiPresentation.jsp"/>
     </definition>
-
 
 
     <definition name=".voaCourseBlog" extends=".wwwBodyCenter">
@@ -788,7 +776,7 @@
     </definition>
 
     <definition name=".courseResource" extends=".simple">
-         <put-attribute name="right" value="/jsp/gogowise/course/courseResource.jsp"/>
+        <put-attribute name="right" value="/jsp/gogowise/course/courseResource.jsp"/>
     </definition>
 
     <definition name=".regCourseSystem" extends=".userCenter">
@@ -800,15 +788,15 @@
     </definition>
     <!--<definition name=".orgComments"  template="/jsp/gogowise/org/orgComments.jsp" >-->
     <!--</definition>-->
-    <definition name=".orgComments"  template="/jsp/www/org/orgComments.jsp" >
+    <definition name=".orgComments" template="/jsp/www/org/orgComments.jsp">
     </definition>
     <!-- <definition name=".userComment"  template="/jsp/gogowise/user/userComment.jsp" >
     </definition>-->
-    <definition name=".userComment"  template="/jsp/www/user/userComment.jsp" >
+    <definition name=".userComment" template="/jsp/www/user/userComment.jsp">
     </definition>
     <definition name=".perOnliveTerms" template="/jsp/gogowise/onlive/perOnliveTermsRecord.jsp">
     </definition>
-     <definition name=".coursesInTypes" template="/jsp/gogowise/course/courseInTypes.jsp">
+    <definition name=".coursesInTypes" template="/jsp/gogowise/course/courseInTypes.jsp">
     </definition>
     <definition name=".moreUserFans" template="/jsp/gogowise/myFirstPage/moreUserFans.jsp">
     </definition>
@@ -829,33 +817,33 @@
     <!--  ===================== org  location ==============================================  -->
 
     <definition name=".orgIdentityConfirm" extends=".bodyCenter">
-         <put-attribute name="title" value="title.organization.league"/>
-         <put-attribute name="contentBody" value="/jsp/gogowise/org/orgLeague/orgIdentityConfirmation.jsp"/>
+        <put-attribute name="title" value="title.organization.league"/>
+        <put-attribute name="contentBody" value="/jsp/gogowise/org/orgLeague/orgIdentityConfirmation.jsp"/>
     </definition>
 
     <definition name=".go2FirstStep" extends=".bodyCenter">
-          <put-attribute name="title" value="title.organization.league"/>
-          <put-attribute name="contentBody" value="/jsp/gogowise/org/orgLeague/firstStep.jsp"/>
+        <put-attribute name="title" value="title.organization.league"/>
+        <put-attribute name="contentBody" value="/jsp/gogowise/org/orgLeague/firstStep.jsp"/>
     </definition>
-     <definition name=".go2SecondStep" extends=".bodyCenter">
-           <put-attribute name="title" value="title.organization.league"/>
-           <put-attribute name="contentBody" value="/jsp/gogowise/org/orgLeague/secondStep.jsp"/>
+    <definition name=".go2SecondStep" extends=".bodyCenter">
+        <put-attribute name="title" value="title.organization.league"/>
+        <put-attribute name="contentBody" value="/jsp/gogowise/org/orgLeague/secondStep.jsp"/>
     </definition>
     <definition name=".quickReg" extends=".bodyCenter">
-           <put-attribute name="title" value="title.organization.league"/>
-           <put-attribute name="contentBody" value="/jsp/gogowise/org/orgLeague/quickReg.jsp"/>
+        <put-attribute name="title" value="title.organization.league"/>
+        <put-attribute name="contentBody" value="/jsp/gogowise/org/orgLeague/quickReg.jsp"/>
     </definition>
     <definition name=".quickRegPreview" extends=".bodyCenter">
-           <put-attribute name="title" value="title.organization.league"/>
-           <put-attribute name="contentBody" value="/jsp/gogowise/org/orgLeague/quickRegPreview.jsp"/>
+        <put-attribute name="title" value="title.organization.league"/>
+        <put-attribute name="contentBody" value="/jsp/gogowise/org/orgLeague/quickRegPreview.jsp"/>
     </definition>
     <definition name=".go2ThirdStep" extends=".bodyCenter">
         <put-attribute name="title" value="title.organization.league"/>
         <put-attribute name="contentBody" value="/jsp/gogowise/org/orgLeague/thirdStep.jsp"/>
     </definition>
     <definition name=".go2ForthStep" extends=".bodyCenter">
-           <put-attribute name="title" value="title.organization.league"/>
-           <put-attribute name="contentBody" value="/jsp/gogowise/org/orgLeague/fourthStep.jsp"/>
+        <put-attribute name="title" value="title.organization.league"/>
+        <put-attribute name="contentBody" value="/jsp/gogowise/org/orgLeague/fourthStep.jsp"/>
     </definition>
 
 
@@ -865,7 +853,8 @@
     </definition>
     <definition name=".orgCourseCreationIdentityConfirm" extends=".bodyCenter">
         <put-attribute name="title" value="title.org.course.creation"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/org/orgCourseCreation/orgCourseCreationIdentityConfirmation.jsp"/>
+        <put-attribute name="contentBody"
+                       value="/jsp/gogowise/org/orgCourseCreation/orgCourseCreationIdentityConfirmation.jsp"/>
     </definition>
     <definition name=".orgInterviewIdentityConfirm" extends=".bodyCenter">
         <put-attribute name="title" value="title.interview.identification"/>
@@ -875,17 +864,17 @@
 
     <definition name=".courseCenter" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.course.center"/>
-        <put-attribute name="contentBody"  value="/jsp/www/course/courseCenter.jsp"/>
+        <put-attribute name="contentBody" value="/jsp/www/course/courseCenter.jsp"/>
     </definition>
 
 
     <definition name=".schoolCenter" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.school.center"/>
-        <put-attribute name="contentBody"  value="/jsp/www/org/schoolCenter.jsp"/>
+        <put-attribute name="contentBody" value="/jsp/www/org/schoolCenter.jsp"/>
     </definition>
 
 
-<!--  ===================== org  course creation ==============================================  -->
+    <!--  ===================== org  course creation ==============================================  -->
 
     <definition name=".adjustCenter" extends=".bodyCenter">
         <put-attribute name="title" value="title.course.maintenance"/>
@@ -893,25 +882,25 @@
     </definition>
 
 
- <!-- org matters  -->
+    <!-- org matters  -->
     <definition name=".organizationMatter" extends=".userCenter">
         <put-attribute name="title" value="title.org.matters"/>
-        <put-attribute name="contentRight" value="/jsp/gogowise/org/orgMatters.jsp" />
+        <put-attribute name="contentRight" value="/jsp/gogowise/org/orgMatters.jsp"/>
     </definition>
 
- <!-- org interview -->
+    <!-- org interview -->
     <definition name=".orgInterview" extends=".userCenter">
         <put-attribute name="title" value="title.online.interview"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/org/orgInterview.jsp"/>
     </definition>
 
- <!-- org info update -->
+    <!-- org info update -->
     <definition name=".orgInfoUpdate" extends=".userCenter">
         <put-attribute name="title" value="title.online.interview"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/org/orgInfoUpdate.jsp"/>
     </definition>
 
-  <!-- org course supervise -->
+    <!-- org course supervise -->
     <definition name=".courseSupervise" extends=".userCenter">
         <put-attribute name="title" value="title.online.interview"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/org/courseSupervise.jsp"/>
@@ -1107,42 +1096,42 @@
         <put-attribute name="title" value="title.of.channel.blog"/>
         <put-attribute name="contentBody" value="/jsp/gogowise/onlive/liveChannelBlog.jsp"/>
     </definition>
-     <definition name=".liveChannelManagement" extends=".userCenter">
+    <definition name=".liveChannelManagement" extends=".userCenter">
         <put-attribute name="title" value="title.gogowise.live.channel.management"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/onlive/liveChannelManagement.jsp"/>
     </definition>
-     <definition name=".liveTermManagement" extends=".userCenter">
+    <definition name=".liveTermManagement" extends=".userCenter">
         <put-attribute name="title" value="title.gogowise.term.management"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/onlive/liveTermManagement.jsp"/>
     </definition>
-     <definition name=".liveChannelAdManage" extends=".userCenter">
+    <definition name=".liveChannelAdManage" extends=".userCenter">
         <put-attribute name="title" value="title.gogowise.channel.ad.management"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/onlive/liveChannelAdsManage.jsp"/>
     </definition>
-     <definition name=".liveChannelRangeBoard" extends=".userCenter">
+    <definition name=".liveChannelRangeBoard" extends=".userCenter">
         <put-attribute name="title" value="title.gogosie.channel.arrangement"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/onlive/liveChannelRangeBoard.jsp"/>
     </definition>
-     <definition name=".liveChannelAdBidList" extends=".userCenter">
+    <definition name=".liveChannelAdBidList" extends=".userCenter">
         <put-attribute name="title" value="title.gogowise.channel.ad.bidding.list"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/onlive/liveChannelAdBidList.jsp"/>
     </definition>
-     <definition name=".liveChannelAdBidCreation" extends=".userCenter">
+    <definition name=".liveChannelAdBidCreation" extends=".userCenter">
         <put-attribute name="title" value="title.gogowise.channel.ad.bidding.create"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/onlive/liveChannelAdBidCreation.jsp"/>
     </definition>
 
-     <definition name=".liveGoingList" extends=".listCenter">
+    <definition name=".liveGoingList" extends=".listCenter">
         <put-attribute name="title" value="title.gogowise.live.going"/>
         <put-attribute name="contentLeft" value="/jsp/gogowise/onlive/list/liveGoingList.jsp"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/onlive/list/liveGoingListRight.jsp"/>
     </definition>
-      <definition name=".hotOnLiveList" extends=".listCenter">
+    <definition name=".hotOnLiveList" extends=".listCenter">
         <put-attribute name="title" value="index.onlive.hottest"/>
         <put-attribute name="contentLeft" value="/jsp/gogowise/onlive/list/hotOnLiveList.jsp"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/onlive/list/liveGoingListRight.jsp"/>
     </definition>
-     <definition name=".addLiveGoingAnnouncement" extends=".userCenter">
+    <definition name=".addLiveGoingAnnouncement" extends=".userCenter">
         <put-attribute name="title" value="title.gogowise.edit.onlive.trailer"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/onlive/addLiveGoingAnnouncement.jsp"/>
     </definition>
@@ -1154,110 +1143,108 @@
     <definition name=".courseLogoProcess" template="/jsp/gogowise/course/courseLogoProcess.jsp">
         <put-attribute name="title" value="title.logo.upload"/>
     </definition>
-    <definition name=".startPersonalOnlive" extends=".roomCenter" >
+    <definition name=".startPersonalOnlive" extends=".roomCenter">
         <put-attribute name="title" value="title.personal.onlive.room"/>
-       <put-attribute name="roomBody" value="/jsp/gogowise/onlive/personalVirtualRoom.jsp"/>
+        <put-attribute name="roomBody" value="/jsp/gogowise/onlive/personalVirtualRoom.jsp"/>
     </definition>
-    <definition name=".openVirtualClassRoom" extends=".wwwBodyCenter" >
+    <definition name=".openVirtualClassRoom" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.personal.onlive.room"/>
         <put-attribute name="contentBody" value="/jsp/www/course/openVirtualClassRoom.jsp"/>
     </definition>
-    <definition name=".roomAudienceList" template="/jsp/gogowise/onlive/roomAudienceList.jsp" >
+    <definition name=".roomAudienceList" template="/jsp/gogowise/onlive/roomAudienceList.jsp">
     </definition>
-    <definition name=".openPrivateChannel" extends=".bodyCenter" >
+    <definition name=".openPrivateChannel" extends=".bodyCenter">
         <put-attribute name="title" value="title.personal.onlive.room"/>
-       <put-attribute name="contentBody" value="/jsp/gogowise/privateLive/privateChannel.jsp"/>
+        <put-attribute name="contentBody" value="/jsp/gogowise/privateLive/privateChannel.jsp"/>
     </definition>
-    <definition name=".openPrivateChannel_guest" extends=".bodyCenter" >
+    <definition name=".openPrivateChannel_guest" extends=".bodyCenter">
         <put-attribute name="title" value="title.personal.onlive.room"/>
-       <put-attribute name="contentBody" value="/jsp/gogowise/privateLive/privateChannel_guest.jsp"/>
+        <put-attribute name="contentBody" value="/jsp/gogowise/privateLive/privateChannel_guest.jsp"/>
     </definition>
-    <definition name=".multiVideoRoomPrivate" extends=".roomCenter" >
+    <definition name=".multiVideoRoomPrivate" extends=".roomCenter">
         <put-attribute name="title" value="title.multi.video.room.private"/>
-       <put-attribute name="roomBody" value="/jsp/gogowise/onlive/multiVideoRoom_private.jsp"/>
+        <put-attribute name="roomBody" value="/jsp/gogowise/onlive/multiVideoRoom_private.jsp"/>
     </definition>
 
-    <definition name=".privateLiveTip" extends=".userCenter" >
+    <definition name=".privateLiveTip" extends=".userCenter">
         <put-attribute name="title" value="title.private.charge.tip"/>
-       <put-attribute name="contentRight" value="/jsp/gogowise/privateLive/privateLiveTip.jsp"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/privateLive/privateLiveTip.jsp"/>
     </definition>
-    <definition name=".privateLiveCharge" extends=".userCenter" >
+    <definition name=".privateLiveCharge" extends=".userCenter">
         <put-attribute name="title" value="title.private.charge.tip2"/>
-       <put-attribute name="contentRight" value="/jsp/gogowise/privateLive/privateLiveCharge.jsp"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/privateLive/privateLiveCharge.jsp"/>
     </definition>
-    <definition name=".chargeSuccess" extends=".userCenter" >
+    <definition name=".chargeSuccess" extends=".userCenter">
         <put-attribute name="title" value="title.private.charge.tip3"/>
-       <put-attribute name="contentRight" value="/jsp/gogowise/privateLive/charge_success.jsp"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/privateLive/charge_success.jsp"/>
     </definition>
-    <definition name=".initConfirmCharge" extends=".userCenter" >
+    <definition name=".initConfirmCharge" extends=".userCenter">
         <put-attribute name="title" value="title.private.charge.tip4"/>
-       <put-attribute name="contentRight" value="/jsp/gogowise/privateLive/comfirm_charge.jsp"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/privateLive/comfirm_charge.jsp"/>
     </definition>
     <definition name=".newEventsManage" extends=".userCenter">
-         <put-attribute name="title" value="title.gogowise.course.events.manage"/>
-         <put-attribute name="contentRight" value="/jsp/gogowise/course/newEventsManage.jsp"/>
+        <put-attribute name="title" value="title.gogowise.course.events.manage"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/course/newEventsManage.jsp"/>
     </definition>
     <definition name=".uploadCourseMaterial" extends=".userCenter">
-         <put-attribute name="title" value="title.gogowise.course.material"/>
-         <put-attribute name="contentRight" value="/jsp/gogowise/course/uploadCourseMaterial.jsp"/>
+        <put-attribute name="title" value="title.gogowise.course.material"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/course/uploadCourseMaterial.jsp"/>
     </definition>
     <definition name=".uploadPptMaterial" extends=".userCenter">
         <put-attribute name="title" value="title.gogowise.course.material"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/course/uploadPpt.jsp"/>
     </definition>
     <!--<definition name=".uploadQuestionMaterial" extends=".userCenter">-->
-        <!--<put-attribute name="title" value="title.gogowise.course.material"/>-->
-        <!--<put-attribute name="contentRight" value="/jsp/gogowise/course/uploadPpt.jsp"/>-->
+    <!--<put-attribute name="title" value="title.gogowise.course.material"/>-->
+    <!--<put-attribute name="contentRight" value="/jsp/gogowise/course/uploadPpt.jsp"/>-->
     <!--</definition>-->
 
 
     <definition name=".addCourseEvent" extends=".userCenter">
-         <put-attribute name="title" value="title.gogowise.add.show.events"/>
-         <put-attribute name="contentRight" value="/jsp/gogowise/course/addCourseEvent.jsp"/>
+        <put-attribute name="title" value="title.gogowise.add.show.events"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/course/addCourseEvent.jsp"/>
     </definition>
-     <definition name=".courseNewEventsEdit" extends=".userCenter">
-         <put-attribute name="title" value="title.gogowise.course.events.manage"/>
-         <put-attribute name="contentRight" value="/jsp/gogowise/course/courseNewEventEdit.jsp"/>
+    <definition name=".courseNewEventsEdit" extends=".userCenter">
+        <put-attribute name="title" value="title.gogowise.course.events.manage"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/course/courseNewEventEdit.jsp"/>
     </definition>
-      <definition name=".showNewEventsManage" extends=".userCenter">
-         <put-attribute name="title" value="title.gogowise.user.show.events.manage"/>
-         <put-attribute name="contentRight" value="/jsp/gogowise/show/showNewEventsManage.jsp"/>
+    <definition name=".showNewEventsManage" extends=".userCenter">
+        <put-attribute name="title" value="title.gogowise.user.show.events.manage"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/show/showNewEventsManage.jsp"/>
     </definition>
-      <definition name=".showNewEventsEdit" extends=".userCenter">
-         <put-attribute name="title" value="title.gogowise.user.show.events.manage"/>
-         <put-attribute name="contentRight" value="/jsp/gogowise/show/showNewEventEdit.jsp"/>
+    <definition name=".showNewEventsEdit" extends=".userCenter">
+        <put-attribute name="title" value="title.gogowise.user.show.events.manage"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/show/showNewEventEdit.jsp"/>
     </definition>
 
-    <definition name=".initConsumption" extends=".userCenter" >
+    <definition name=".initConsumption" extends=".userCenter">
         <put-attribute name="title" value="page.title.zhibi.record.query"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/zhibi/consumtionList.jsp"/>
     </definition>
     <definition name=".initTransfer" extends=".userCenter">
-         <put-attribute name="title" value="page.title.zhibi.transfer"/>
-         <put-attribute name="contentRight" value="/jsp/gogowise/zhibi/transfer.jsp"/>
+        <put-attribute name="title" value="page.title.zhibi.transfer"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/zhibi/transfer.jsp"/>
     </definition>
-   <definition name=".initRecharge" extends=".userCenter">
-         <put-attribute name="title" value="title.charge.center"/>
-         <put-attribute name="contentRight" value="/jsp/gogowise/zhibi/recharge_page.jsp"/>
+    <definition name=".initRecharge" extends=".userCenter">
+        <put-attribute name="title" value="title.charge.center"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/zhibi/recharge_page.jsp"/>
     </definition>
-   <definition name=".myGGWAccount" extends=".userCenter">
-         <put-attribute name="title" value="title.my.account"/>
-         <put-attribute name="contentRight" value="/jsp/gogowise/zhibi/userAccount.jsp"/>
+    <definition name=".myGGWAccount" extends=".userCenter">
+        <put-attribute name="title" value="title.my.account"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/zhibi/userAccount.jsp"/>
     </definition>
-   <definition name=".channelUsedUp" extends=".userCenter">
-         <put-attribute name="title" value="知元网--子频道已用完"/>
-         <put-attribute name="contentRight" value="/jsp/gogowise/privateLive/withoutChannelTip.jsp"/>
+    <definition name=".channelUsedUp" extends=".userCenter">
+        <put-attribute name="title" value="知元网--子频道已用完"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/privateLive/withoutChannelTip.jsp"/>
     </definition>
     <definition name=".openUserChannelResult" extends=".userCenter">
-         <put-attribute name="title" value="title.multi.video.room.private"/>
-         <put-attribute name="contentRight" value="/jsp/gogowise/privateLive/shiyong_tip.jsp"/>
+        <put-attribute name="title" value="title.multi.video.room.private"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/privateLive/shiyong_tip.jsp"/>
     </definition>
     <definition name=".monitorAuthority" extends=".userCenter">
-         <put-attribute name="title" value="title.room.private.authority" />
-         <put-attribute name="contentRight" value="/jsp/gogowise/privateLive/monitorAuthority.jsp" />
+        <put-attribute name="title" value="title.room.private.authority"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/privateLive/monitorAuthority.jsp"/>
     </definition>
-
-
 
 
     <!-- search related tiles begin -->
@@ -1271,53 +1258,51 @@
         <put-attribute name="contentBody" value="/jsp/www/search/search.jsp"/>
     </definition>
 
-  <definition name=".search" extends=".searchCenter">
-         <put-attribute name="title" value="title.gogowise.search.result"/>
-         <put-attribute name="contentLeft" value="/jsp/gogowise/search/searchList.jsp"/>
-         <put-attribute name="contentRight" value="/jsp/gogowise/search/searchRight.jsp"/>
+    <definition name=".search" extends=".searchCenter">
+        <put-attribute name="title" value="title.gogowise.search.result"/>
+        <put-attribute name="contentLeft" value="/jsp/gogowise/search/searchList.jsp"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/search/searchRight.jsp"/>
     </definition>
 
     <definition name=".searchMemberList" extends=".searchCenter">
-         <put-attribute name="title" value="title.gogowise.search.result"/>
-         <put-attribute name="contentLeft" value="/jsp/gogowise/search/searchMemberList.jsp"/>
-         <put-attribute name="contentRight" value="/jsp/gogowise/search/searchRight.jsp"/>
+        <put-attribute name="title" value="title.gogowise.search.result"/>
+        <put-attribute name="contentLeft" value="/jsp/gogowise/search/searchMemberList.jsp"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/search/searchRight.jsp"/>
     </definition>
     <definition name=".teacherHotList" extends=".listCenter">
-         <put-attribute name="title" value="title.hot.teacher"/>
-         <put-attribute name="contentLeft" value="/jsp/gogowise/user/userHotList.jsp"/>
-         <put-attribute name="contentRight" value="/jsp/gogowise/user/userHotListRight.jsp"/>
+        <put-attribute name="title" value="title.hot.teacher"/>
+        <put-attribute name="contentLeft" value="/jsp/gogowise/user/userHotList.jsp"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/user/userHotListRight.jsp"/>
     </definition>
     <definition name=".bloggerHotList" extends=".listCenter">
-         <put-attribute name="title" value="title.hot.blogger"/>
-         <put-attribute name="contentLeft" value="/jsp/gogowise/user/userHotList.jsp"/>
-         <put-attribute name="contentRight" value="/jsp/gogowise/user/userHotListRight.jsp"/>
+        <put-attribute name="title" value="title.hot.blogger"/>
+        <put-attribute name="contentLeft" value="/jsp/gogowise/user/userHotList.jsp"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/user/userHotListRight.jsp"/>
     </definition>
     <definition name=".searchOrgList" extends=".searchCenter">
-         <put-attribute name="title" value="title.gogowise.search.result"/>
-         <put-attribute name="contentLeft" value="/jsp/gogowise/search/searchOrgList.jsp"/>
-         <put-attribute name="contentRight" value="/jsp/gogowise/search/searchRight.jsp"/>
+        <put-attribute name="title" value="title.gogowise.search.result"/>
+        <put-attribute name="contentLeft" value="/jsp/gogowise/search/searchOrgList.jsp"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/search/searchRight.jsp"/>
     </definition>
     <definition name=".searchCourseList" extends=".searchCenter">
-         <put-attribute name="title" value="title.gogowise.search.result"/>
-         <put-attribute name="contentLeft" value="/jsp/gogowise/search/searchCourseList.jsp"/>
-         <put-attribute name="contentRight" value="/jsp/gogowise/search/searchRight.jsp"/>
+        <put-attribute name="title" value="title.gogowise.search.result"/>
+        <put-attribute name="contentLeft" value="/jsp/gogowise/search/searchCourseList.jsp"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/search/searchRight.jsp"/>
     </definition>
     <definition name=".searchShowList" extends=".searchCenter">
-         <put-attribute name="title" value="title.gogowise.search.result"/>
-         <put-attribute name="contentLeft" value="/jsp/gogowise/search/searchShowList.jsp"/>
-         <put-attribute name="contentRight" value="/jsp/gogowise/search/searchRight.jsp"/>
+        <put-attribute name="title" value="title.gogowise.search.result"/>
+        <put-attribute name="contentLeft" value="/jsp/gogowise/search/searchShowList.jsp"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/search/searchRight.jsp"/>
     </definition>
     <definition name=".searchLiveList" extends=".searchCenter">
-         <put-attribute name="title" value="title.gogowise.search.result"/>
-         <put-attribute name="contentLeft" value="/jsp/gogowise/search/searchLiveList.jsp"/>
-         <put-attribute name="contentRight" value="/jsp/gogowise/search/searchRight.jsp"/>
+        <put-attribute name="title" value="title.gogowise.search.result"/>
+        <put-attribute name="contentLeft" value="/jsp/gogowise/search/searchLiveList.jsp"/>
+        <put-attribute name="contentRight" value="/jsp/gogowise/search/searchRight.jsp"/>
     </definition>
     <definition name=".vid" extends=".simple">
         <put-attribute name="title" value="vid"/>
         <put-attribute name="right" value="/jsp/gogowise/solution/vid.jsp"/>
     </definition>
-
-
 
 
     <!-- search related tiles end -->
@@ -1326,42 +1311,41 @@
     <!-- download related tiles begin -->
 
     <definition name=".gogowise4android" extends=".bodyCenter">
-         <put-attribute name="title" value="download.center.title"/>
-         <put-attribute name="contentBody" value="/jsp/gogowise/download/gogowise4android.jsp"/>
+        <put-attribute name="title" value="download.center.title"/>
+        <put-attribute name="contentBody" value="/jsp/gogowise/download/gogowise4android.jsp"/>
     </definition>
     <definition name=".remoteEyeDownload" extends=".bodyCenter">
-         <put-attribute name="title" value="download.center.title"/>
-         <put-attribute name="contentBody" value="/jsp/gogowise/download/remoteEyeDownload.jsp"/>
+        <put-attribute name="title" value="download.center.title"/>
+        <put-attribute name="contentBody" value="/jsp/gogowise/download/remoteEyeDownload.jsp"/>
     </definition>
-
 
 
     <!-- download related tiles end -->
 
     <!--<definition name=".openVirtualClassRoom" extends=".wwwBodyCenter">-->
-        <!--<put-attribute name="title" value="download.virtual.room"/>-->
-        <!--<put-attribute name="contentBody" value="/jsp/www/course/openVirtualClassRoom.jsp"/>-->
-        <!--&lt;!&ndash;<put-attribute name="contentBody" value="/jsp/gogowise/course/courseBlog.jsp"/>&ndash;&gt;-->
+    <!--<put-attribute name="title" value="download.virtual.room"/>-->
+    <!--<put-attribute name="contentBody" value="/jsp/www/course/openVirtualClassRoom.jsp"/>-->
+    <!--&lt;!&ndash;<put-attribute name="contentBody" value="/jsp/gogowise/course/courseBlog.jsp"/>&ndash;&gt;-->
     <!--</definition>-->
 
     <definition name=".courseAdminManage" extends=".wwwBodyCenter">
         <put-attribute name="title" value="Course Manage"/>
-        <put-attribute name="contentBody"  value="/jsp/www/course/courseAdminManage.jsp"/>
+        <put-attribute name="contentBody" value="/jsp/www/course/courseAdminManage.jsp"/>
     </definition>
 
     <definition name=".orgAdminManage" extends=".wwwBodyCenter">
         <put-attribute name="title" value="Organization Manage"/>
-        <put-attribute name="contentBody"  value="/jsp/www/org/orgAdminManage.jsp"/>
+        <put-attribute name="contentBody" value="/jsp/www/org/orgAdminManage.jsp"/>
     </definition>
 
     <definition name=".noPermission" extends=".wwwBodyCenter">
-        <put-attribute name="title" value="No Permission" />
-        <put-attribute name="contentBody" value="/jsp/www/common/noPermission.jsp" />
+        <put-attribute name="title" value="No Permission"/>
+        <put-attribute name="contentBody" value="/jsp/www/common/noPermission.jsp"/>
     </definition>
 
     <definition name=".changePoster" extends=".wwwBodyCenter">
-        <put-attribute name="title" value="Change Poster" />
-        <put-attribute name="contentBody" value="/jsp/www/common/changePoster.jsp" />
+        <put-attribute name="title" value="Change Poster"/>
+        <put-attribute name="contentBody" value="/jsp/www/common/changePoster.jsp"/>
     </definition>
 
     <definition name=".posterImageProcess" template="/jsp/www/common/posterImageProcess.jsp">
@@ -1371,16 +1355,16 @@
     <!-- demo related tiles -->
     <definition name=".toPlayerDemo" extends=".wwwBodyCenter">
         <put-attribute name="title" value="GoGoWise--Player Room"/>
-        <put-attribute name="contentBody" value="/htm/Demo/FirstPage_Formal/Player_Demo.jsp" />
+        <put-attribute name="contentBody" value="/htm/Demo/FirstPage_Formal/Player_Demo.jsp"/>
     </definition>
     <definition name=".toClassDemo" extends=".wwwBodyCenter">
         <put-attribute name="title" value="GoGoWise--Virtual Class Room"/>
-        <put-attribute name="contentBody" value="/htm/Demo/FirstPage_Formal/VC_Demo.jsp" />
+        <put-attribute name="contentBody" value="/htm/Demo/FirstPage_Formal/VC_Demo.jsp"/>
     </definition>
 
     <definition name=".FAQ" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.faq"/>
-        <put-attribute name="contentBody" value="/jsp/www/FAQ.jsp" />
+        <put-attribute name="contentBody" value="/jsp/www/FAQ.jsp"/>
     </definition>
 
 

@@ -32,44 +32,7 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
     private BaseUserDao baseUserDao;
     private OrganizationDao organizationDao;
     private ClassDao classDao;
-    private ConsumptionOrderDao consumptionOrderDao;
     private SeniorClassRoomDao seniorClassRoomDao;
-    private ClassRoomDao classRoomDao;
-
-
-    public void saveCourse(Course course) {
-
-        if (course.getTeacher() != null) {
-            BaseUser teacher = baseUserDao.findByEmail(course.getTeacher().getEmail());
-            if (teacher == null) {
-                course.getTeacher().setPassword(MD5.endCode(Constants.DEFAULT_PASSWORD));  //waiting to encrypt
-                baseUserDao.persistAbstract(course.getTeacher());
-            } else {
-                course.setTeacher(teacher);
-            }
-
-        }
-        if (course.getCameraMan() != null) {
-            BaseUser cameraMan = baseUserDao.findByEmail(course.getCameraMan().getEmail());
-            if (cameraMan == null) {
-                course.getCameraMan().setPassword(MD5.endCode(Constants.DEFAULT_PASSWORD));
-                baseUserDao.persistAbstract(course.getCameraMan());
-            } else {
-                course.setCameraMan(cameraMan);
-            }
-        }
-        if (course.getOrganization() != null) {
-            Organization org = organizationDao.findOrganizationByOrganizationName(course.getOrganization().getSchoolName());
-            if (org != null) {
-                course.setOrganization(org);
-
-            } else {
-//                course.getOrganization().setVirtual(true);
-                organizationDao.createOrganization(course.getOrganization());
-            }
-        }
-        this.persistAbstract(course);
-    }
 
     public void courseModification(Course course, Course modified) {
 
@@ -97,37 +60,33 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
     }
 
     public List<Course> findMaintenanceCourses(Integer tid, Pagination pagination) {
+
         String hql = "select distinct c from Course c,CourseClass cc  left join c.organization org left join c.teachers teacher  where " + DELETED_FALSE + " and cc.course.id = c.id and (teacher.id=? or org.responsiblePerson.id = ?)  order by c.id desc";
         List<Course> courses = this.find(hql, pagination, tid, tid, Utils.getCurrentCalender());
         return courses;
     }
 
-
     public List<Course> findUserCreatedCourses(Integer userID, Pagination pagination) {
+
         String hql = "select distinct c from Course c left join c.organization org left join c.teachers teacher where " + getCourseConfirmedStr() + " and " + DELETED_FALSE + " and (teacher.id=? or org.responsiblePerson.id=?) order by c.publicationTime desc ";
 
         return this.find(hql, pagination, userID, userID);
     }
 
     public List<Course> findUserRegCourses(Integer userID, Pagination pagination) {
+
         String hql = "select distinct c from Course c left join c.seniorClassRooms sc where " + getCourseConfirmedStr() + " and " + DELETED_FALSE + " and sc.course.id = c.id and  (sc.student.id=?) order by c.publicationTime desc ";
         return this.find(hql, pagination, userID);
     }
 
     public List<Course> findMyCourseOFAgePart(Pagination pagination, Integer sid) {
+
         String hql = "select distinct c from Course c  left join c.organization org left join c.teachers teacher where " + DELETED_FALSE + " and (teacher.id=? or org.responsiblePerson.id=?) and c.id= (select max(nc.id) from Course nc where nc.fromCourse.id = c.fromCourse.id and nc.masterConfirmed=true and nc.teacherConfirmed=true and nc.cameraManConfirmed=true ) order by c.publicationTime desc";
         return this.find(hql, pagination, sid, sid);
     }
 
-    public List<Course> findMyCourseOfForcastClassForUserCenter(Pagination page, Integer sid) {
-        String hql = QUERY_MY_FORCAST_CLASS + " and " + getFinisDateBiggerThanNow() + " and " + DELETED_FALSE + "   group by c  order by MIN(cc.date) asc ";
-        Calendar now = Calendar.getInstance();
-        now.add(Calendar.MINUTE, -15);
-        List<Course> courses = this.find(hql, page, sid, sid, now);
-        return courses;
-    }
-
     public List<Course> findFinishedCourseForUserCenter(Pagination page, Integer sid, int type) {
+
         String hql = QUERY_MY_FORCAST_CLASS_Student + " and " + getFinisDateLessThanNow() + " and " + DELETED_FALSE + "   group by c  order by MIN(cc.date) asc ";
         if (type == RoleType.ROLE_TYPE_STUDENT) {
             hql = QUERY_MY_FORCAST_CLASS_Student + " and " + getFinisDateLessThanNow() + " and " + DELETED_FALSE + "   group by c  order by MIN(cc.date) asc ";
@@ -143,6 +102,7 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
     }
 
     public List<Course> findMyCourseOfForcastClassForUserCenter(Pagination page, Integer sid, int type) {
+
         String hql = QUERY_MY_FORCAST_CLASS + " and " + getFinisDateBiggerThanNow() + " and " + DELETED_FALSE + "   group by c  order by MIN(cc.date) asc ";
 
         if (type == RoleType.ROLE_TYPE_TEACHER) {
@@ -159,18 +119,22 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
     }
 
     private String getFinisDateBiggerThanNow() {
+
         return " cc.duration > timestampdiff(minute,cc.date ,? ) ";
     }
 
     private String getFinisDateLessThanNow() {
+
         return " cc.duration < timestampdiff(minute,cc.date ,? ) ";
     }
 
     private String getCourseConfirmedStr() {
+
         return "  c.cameraManConfirmed=true ";
     }
 
     public List<Course> findTheCanRegCourseByUid(Pagination pagination, Integer userId) {
+
         List<SeniorClassRoom> seniorClassRooms = seniorClassRoomDao.findAllClassRoomByUser(pagination, userId);
         List<Course> courses = new ArrayList<Course>();
         for (SeniorClassRoom seniorClassRoom : seniorClassRooms) {
@@ -180,9 +144,11 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
                 if (curr.getFinished()) {
                     k++;
                 }
-                if (k > 2) break;
+                if (k > 2)
+                    break;
             }
-            if (k <= 2) courses.add(seniorClassRoom.getCourse());
+            if (k <= 2)
+                courses.add(seniorClassRoom.getCourse());
         }
         //return courses;
 
@@ -191,45 +157,43 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
     }
 
     public List<Course> findHotCourses(Pagination pagination) {
+
         return this.find("select distinct  c from Course c   left join c.seniorClassRooms sc   where " + DELETED_FALSE + " and c.cameraManConfirmed=true group by c order by count(sc.id) desc", pagination);
     }
 
     public List<Course> findlatestCourses(Pagination pagination) {
+
         return this.find("From Course c where " + DELETED_FALSE + " and c.cameraManConfirmed=true order by c.startDate desc", pagination);
     }
 
     public List<Course> findlatestCoursesForAdmin(Pagination pagination) {
+
         return this.find("From Course c where " + DELETED_FALSE + " order by c.startDate desc", pagination);
     }
 
     @Override
     public List<Course> findMoocCourses(Pagination pagination) {
+
         return this.find("From Course c where " + DELETED_FALSE + " and c.charges=0 order by c.id desc", pagination);
     }
 
-    @Override
-    public List<Course> findNonMoocCourses(Pagination pagination) {
-        return this.find("From Course c where " + DELETED_FALSE + " and c.charges!=0 order by c.id desc", pagination);
-
-    }
-
     public List<Course> findCourses2Teacher(Integer tid, Pagination pagination) {
+
         return this.find("select distinct c From    Course c left join c.teachers teacher where " + DELETED_FALSE + " and teacher.id=? and c.fromCourse.id = c.id order by c.startDate desc", pagination, tid);
     }
 
     public List<Course> findCourses2Student(Integer tid, Pagination pagination) {
+
         return this.find("select c From Course c join  c.seniorClassRooms sc where " + DELETED_FALSE + " and sc.student.id=? order by c.startDate desc", pagination, tid);
     }
 
-    public List<Course> findCourseWithStudentIdAndCourseId(Integer tid, Integer cid) {
-        return this.find("select c From Course c join  c.seniorClassRooms sc where " + DELETED_FALSE + " and c.id =? and   sc.student.id=? order by c.startDate desc", cid, tid);
-    }
-
     public List<Course> findCourseRelateCourses(String courseName, Pagination pagination) {
+
         return this.find("From Course c where " + DELETED_FALSE + " and c.name like ? order by c.id asc", new Pagination(2), courseName);
     }
 
     public Course findTodayCourse(Integer userId) {
+
         String s = QUERY_RELATED_COURSE + " and " + this.getFinisDateBiggerThanNow() + " and cc.date < ? group by c order by MIN(cc.date) asc";
         Calendar tomorrow = Utils.getClientTodayCalendar();
         tomorrow.add(Calendar.DAY_OF_YEAR, 1);
@@ -240,11 +204,10 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
         return noDeletedCourses != null && noDeletedCourses.size() > 0 ? noDeletedCourses.get(0) : null;
     }
 
-
     public Course findTomorrowCourse(Integer userId) {
 
         String s = QUERY_RELATED_COURSE + " and cc.date between ? and ? group by c order by MIN(cc.date) asc";
-//        String s ="select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc    where  cc.course.id = c.id and sc.course.id=c.id and (c.teacher.id=3 or c.cameraMan.id=3 or c.organization.responsiblePerson.id=3 or sc.student.id=3)  order by cc.date desc";
+        //        String s ="select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc    where  cc.course.id = c.id and sc.course.id=c.id and (c.teacher.id=3 or c.cameraMan.id=3 or c.organization.responsiblePerson.id=3 or sc.student.id=3)  order by cc.date desc";
 
         Calendar tomorrow = Utils.getClientTodayCalendar();
         tomorrow.add(Calendar.DAY_OF_YEAR, 1);
@@ -260,7 +223,7 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
     public Course findYesterdayCourse(Integer userId) {
 
         String s = QUERY_RELATED_COURSE + " and cc.date between ? and ? group by c order by MAX(cc.date) desc";
-//        String s ="select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc    where  cc.course.id = c.id and sc.course.id=c.id and (c.teacher.id=3 or c.cameraMan.id=3 or c.organization.responsiblePerson.id=3 or sc.student.id=3)  order by cc.date desc";
+        //        String s ="select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc    where  cc.course.id = c.id and sc.course.id=c.id and (c.teacher.id=3 or c.cameraMan.id=3 or c.organization.responsiblePerson.id=3 or sc.student.id=3)  order by cc.date desc";
 
         Calendar yesterday = Utils.getClientTodayCalendar();
         yesterday.add(Calendar.DAY_OF_YEAR, -1);
@@ -272,20 +235,23 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
     }
 
     public List<Course> findLatestCourseByOrg(Integer orgId, Pagination page) {
+
         String hql = "select c from Course c  join c.classes cc  where " + DELETED_FALSE + " and c.organization.id = ? and cc.date > ?  order by c.id desc";
         return this.find(hql, page, orgId, Utils.getCurrentCalender());
     }
 
     public List<Course> findHotCoursesByOrg(Integer orgId, Pagination pagination) {
+
         return this.find("select distinct  c from Course c   left join c.seniorClassRooms sc   where " + DELETED_FALSE + " and c.organization.id = ? and charges!=0  group by c order by count(sc.id) desc", pagination, orgId);
     }
 
     public List<Course> findMoocsByOrg(Integer orgId, Pagination pagination) {
+
         return this.find("select distinct  c from Course c   left join c.seniorClassRooms sc   where " + DELETED_FALSE + " and c.organization.id = ?  and charges=0  group by c order by count(sc.id) desc", pagination, orgId);
     }
 
-
     private List<CourseClass> getLivingClasses(List<CourseClass> courseClasses) {
+
         List<CourseClass> curr = new ArrayList<CourseClass>();
         for (CourseClass cc : courseClasses) {
             if (cc.getDate().getTimeInMillis() < Utils.getCurrentCalender().getTimeInMillis() && cc.getFinishDate().getTimeInMillis() > Utils.getCurrentCalender().getTimeInMillis()) {
@@ -298,6 +264,7 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
     }
 
     private List<CourseClass> getForcastClasses(List<CourseClass> courseClasses) {
+
         List<CourseClass> curr = new ArrayList<CourseClass>();
         for (CourseClass cc : courseClasses) {
             if (cc.getDate().getTimeInMillis() > Utils.getCurrentCalender().getTimeInMillis()) {
@@ -310,6 +277,7 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
     }
 
     public Course saveRepeatCourse(Calendar startTime, Course course, String teacherEmail) {
+
         Course curr = new Course();
         curr.setStartDate(startTime);
         curr.setName(course.getName());
@@ -365,6 +333,7 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
     }
 
     public List<Course> findMyOrgCourseForSupervision(Integer Rid, Pagination pagination) {
+
         String QUERY_ORG_SUPERVISION_COURSE = "select distinct c from Course c   join c.classes cc left join c.organization org  where  cc.course.id = c.id and  (org.responsiblePerson.id=?) ";
         String hql = QUERY_ORG_SUPERVISION_COURSE + " and cc.duration > timestampdiff(minute,cc.date ,? ) group by c  order by MIN(cc.date) asc ";
         Calendar now = Calendar.getInstance();
@@ -377,6 +346,7 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
     }
 
     public List<Course> findCourseOnline(Pagination pagination) {
+
         String Query_online = "select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc  left join c.organization org  where " + DELETED_FALSE + " and cc.course.id = c.id ";
         String hql = Query_online + " and " + getFinisDateBiggerThanNow() + "   group by c  order by MIN(cc.date) asc ";
         Calendar now = Calendar.getInstance();
@@ -385,38 +355,47 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
     }
 
     public List<BaseUser> findRegUser(Integer courseId, Pagination pagination) {
+
         String sql = "select distinct sr.student From SeniorClassRoom  sr  where sr.course.fromCourse.id = ? order by sr.id desc ";
         return this.find(sql, pagination, courseId);
     }
 
     public List<Course> findByOrg(Integer orgID, Pagination pagination) {
+
         String hql = "From Course c where " + DELETED_FALSE + " and c.organization.id=? and c.fromCourse.id = c.id";
         return this.find(hql, pagination, orgID);
     }
 
     public List<Course> findByFromCourse(Integer fromCourseID, Pagination pagination) {
+
         String hql = "From Course c where " + DELETED_FALSE + " and c.fromCourse.id=?";
         return this.find(hql, pagination, fromCourseID);
     }
 
     public List<Course> findLatest4Course(Pagination pagination) {
+
         String hql = "From Course c where " + DELETED_FALSE + " and c.cameraManConfirmed=true order by c.publicationTime desc";
         return this.find(hql, pagination);
     }
 
     public List<Course> findCoursesInTypes(Integer type, Pagination pagination) {
+
         String hql = "From Course c where " + DELETED_FALSE + " and c.courseType=? order by c.publicationTime desc";
         return this.find(hql, pagination, type);
     }
 
     public List<Course> searchCourses(String searchStr, Pagination pagination) {
-        if (searchStr == null || searchStr.equals("")) return this.findHotCourses(pagination);
+
+        if (searchStr == null || searchStr.equals(""))
+            return this.findHotCourses(pagination);
         String hql = "select distinct c  From Course c left join  c.teachers teacher  where " + COURSE_CONFIRMED + " and " + DELETED_FALSE + " and (c.name like ? or teacher.nickName like ?) order by c.id desc";
         return this.find(hql, pagination, "%" + searchStr + "%", "%" + searchStr + "%");
     }
 
     public List<Course> removeDeletedCourse(List<Course> courses) {
-        if (courses == null) return null;
+
+        if (courses == null)
+            return null;
 
         List<Course> result = new ArrayList<Course>();
 
@@ -432,56 +411,47 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
 
         return result;
     }
+
     //================getter and setter==========
 
-
-    public ConsumptionOrderDao getConsumptionOrderDao() {
-        return consumptionOrderDao;
-    }
-
-    public void setConsumptionOrderDao(ConsumptionOrderDao consumptionOrderDao) {
-        this.consumptionOrderDao = consumptionOrderDao;
-    }
-
     public ClassDao getClassDao() {
+
         return classDao;
     }
 
     public void setClassDao(ClassDao classDao) {
+
         this.classDao = classDao;
     }
 
     public BaseUserDao getBaseUserDao() {
+
         return baseUserDao;
     }
 
     public void setBaseUserDao(BaseUserDao baseUserDao) {
+
         this.baseUserDao = baseUserDao;
     }
 
     public OrganizationDao getOrganizationDao() {
+
         return organizationDao;
     }
 
     public void setOrganizationDao(OrganizationDao organizationDao) {
+
         this.organizationDao = organizationDao;
     }
 
     public SeniorClassRoomDao getSeniorClassRoomDao() {
+
         return seniorClassRoomDao;
     }
 
     public void setSeniorClassRoomDao(SeniorClassRoomDao seniorClassRoomDao) {
+
         this.seniorClassRoomDao = seniorClassRoomDao;
     }
-
-    public ClassRoomDao getClassRoomDao() {
-        return classRoomDao;
-    }
-
-    public void setClassRoomDao(ClassRoomDao classRoomDao) {
-        this.classRoomDao = classRoomDao;
-    }
-
 
 }

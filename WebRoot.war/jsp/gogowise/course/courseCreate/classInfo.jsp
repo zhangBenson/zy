@@ -54,13 +54,13 @@
                 <ul class="self_system_ul" id="self_show_ul">
                     <li>
                         <span class="item"><s:property value="%{getText('lable.course.nickname')}"/></span>
-                        <s:textfield name="courseClass.nickName" id="class_nickname_input"
+                        <s:textfield name="classInfo.nickName" id="class_nickname_input"
                                      cssClass="long_text_field course_nick_name"/>
                         <span class="tip_words" id="class_nick_msg"></span>
                     </li>
                     <li class="short_li">
                         <span class="item"><s:property value="%{getText('lable.course.starttime')}"/></span>
-                        <s:textfield name="courseClass.date" id="class_start_time_input" value=""
+                        <s:textfield name="classInfo.date" id="class_start_time_input" value=""
                                      readonly="true"
                                      cssClass="WdateTime short_text_field"
                                      onfocus="WdatePicker({lang:'%{getText('language')}',startDate:'%y-%M-01 00:00:00',dateFmt:'%{getText('dateformat.forclass')}',alwaysUseStartDate:true})"/>

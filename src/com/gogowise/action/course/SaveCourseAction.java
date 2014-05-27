@@ -36,14 +36,14 @@ import java.util.List;
 @Results({@Result(name = "json", type = "json")})
 public class SaveCourseAction extends BasicAction {
     private Course course;
-    private CourseClass courseClass;
+    private CourseClass classInfo;
     private BaseUserDao baseUserDao;
     private OrganizationDao organizationDao;
     private ClassDao classDao;
     private CourseDao courseDao;
     private CourseInviteStudentDao courseInviteStudentDao;
 
-    private List<CourseClass> courseClasses = new ArrayList<CourseClass>();
+    private List<CourseClass> classes = new ArrayList<CourseClass>();
     private List<Integer> durations = new ArrayList<Integer>();    //持续时间
     private Integer courseType = 0;
     private Integer course_id;
@@ -124,8 +124,8 @@ public class SaveCourseAction extends BasicAction {
     @Action(value = "selfSaveClass", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".classesList")})
     public String selfSaveClass() {
         course = courseDao.findById(this.getCourse().getId());
-        classDao.saveClass(courseClass, course, durations.get(0));
-        courseClasses = classDao.findByCourseId(course.getId());
+        classDao.saveClass(classInfo, course, durations.get(0));
+        classes = classDao.findByCourseId(course.getId());
         return SUCCESS;
     }
 
@@ -133,11 +133,11 @@ public class SaveCourseAction extends BasicAction {
     public String autoSaveClasses() {
         course = courseDao.findById(this.getCourse().getId());
         classDao.autoClassSystemSave(startTimes, durations, classDate, repeatTimes, course);
-        courseClasses = classDao.findByCourseId(course.getId());
-        for (int i = 0; i < courseClasses.size(); i++) {
+        classes = classDao.findByCourseId(course.getId());
+        for (int i = 0; i < classes.size(); i++) {
             int j = i + 1;
-            courseClasses.get(i).setName(this.getText("lable.class.no1") + j + this.getText("lable.class.no2"));
-            classDao.persistAbstract(courseClasses.get(i));
+            classes.get(i).setName(this.getText("lable.class.no1") + j + this.getText("lable.class.no2"));
+            classDao.persistAbstract(classes.get(i));
         }
 
         course.setTotalHours(course.getTotalHours() + startTimes.size() * classDate.size() * repeatTimes);
@@ -208,15 +208,18 @@ public class SaveCourseAction extends BasicAction {
     }
 
     @JSON(serialize = false)
-    public CourseClass getCourseClass() {
-        return courseClass;
-    }
+    public CourseClass getClassInfo() {
 
-    public void setCourseClass(CourseClass courseClass) {
-        this.courseClass = courseClass;
-    }
+        return classInfo;
+   }
 
-    @JSON(serialize = false)
+    public void setClassInfo(CourseClass classInfo) {
+
+        this.classInfo = classInfo;
+   }
+
+
+   @JSON(serialize = false)
     public BaseUserDao getBaseUserDao() {
         return baseUserDao;
     }
@@ -253,12 +256,14 @@ public class SaveCourseAction extends BasicAction {
     }
 
     @JSON(serialize = false)
-    public List<CourseClass> getCourseClasses() {
-        return courseClasses;
+    public List<CourseClass> getClasses() {
+
+        return classes;
     }
 
-    public void setCourseClasses(List<CourseClass> courseClasses) {
-        this.courseClasses = courseClasses;
+    public void setClasses(List<CourseClass> classes) {
+
+        this.classes = classes;
     }
 
     @JSON(serialize = false)
