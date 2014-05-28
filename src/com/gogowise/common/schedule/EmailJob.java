@@ -10,9 +10,9 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import java.util.Properties;
 
-public class EmailJob implements  Runnable {
+public class EmailJob implements Runnable {
     // Email sender
-//    private static final String SenderEmailAddr = "service@gogowise.com";
+    //    private static final String SenderEmailAddr = "service@gogowise.com";
     private static final String SenderEmailAddr = "support@gogowise.com";
 
     // Email sender's name
@@ -23,43 +23,41 @@ public class EmailJob implements  Runnable {
     private static final String SMTPServerName = "mail.gogowise.com";
     //private static final String SMTPServerName = "137.132.153.218";
 
-
     //  EMAIL Related attribute.
     private static Properties props;
     static {
         props = new Properties();
         props.put("mail.smtp.host", SMTPServerName);
-//        props.put("mail.smtp.localhost","gogowise.com");
+        //        props.put("mail.smtp.localhost","gogowise.com");
         props.put("mail.smtp.auth", "true");
-//        props.put("mail.smtp.auth", "false");
-//        props.put("mail.smtp.socketFactory.port", "465");
+        //        props.put("mail.smtp.auth", "false");
+        //        props.put("mail.smtp.socketFactory.port", "465");
     }
-    private  String emailAddr;
-    private  String mailTitle;
-    private  String mailContent;
-    private  String[] fileNames;
-    private  String[] filePaths;
-
+    private String emailAddr;
+    private String mailTitle;
+    private String mailContent;
+    private String[] fileNames;
+    private String[] filePaths;
 
     public void run() {
+
         try {
             Session session = Session.getDefaultInstance(props, new Authenticator() {
                 protected PasswordAuthentication getPasswordAuthentication() {
+
                     return new PasswordAuthentication(SMTPUserName, SMTPPassword);
                 }
             });
-            session.setDebug(true);
+            session.setDebug(false);
             // Define message
-            MimeMessage message =
-                    new MimeMessage(session);
-            message.setFrom(
-                    new InternetAddress(SenderEmailAddr,"GoGoWise Service"));
-//        message.setReplyTo(new InternetAddress[]{new InternetAddress("reply email")});
-            message.addRecipient(Message.RecipientType.TO,new InternetAddress(emailAddr));
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(SenderEmailAddr, "GoGoWise Service"));
+            //        message.setReplyTo(new InternetAddress[]{new InternetAddress("reply email")});
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(emailAddr));
 
             message.setSubject(mailTitle, "utf-8");
 
-            MimeBodyPart messageBodyPart =new MimeBodyPart();
+            MimeBodyPart messageBodyPart = new MimeBodyPart();
 
             messageBodyPart.setContent(mailContent, "text/html;charset=utf-8");
             Multipart multipart = new MimeMultipart();
@@ -69,10 +67,8 @@ public class EmailJob implements  Runnable {
                 for (int i = 0; i < fileNames.length; i++) {
                     // Part two is attachment
                     messageBodyPart = new MimeBodyPart();
-                    DataSource source =
-                            new FileDataSource(filePaths[i]);//attachment
-                    messageBodyPart.setDataHandler(
-                            new DataHandler(source));
+                    DataSource source = new FileDataSource(filePaths[i]);//attachment
+                    messageBodyPart.setDataHandler(new DataHandler(source));
                     messageBodyPart.setFileName(fileNames[i]);//attachment name
                     multipart.addBodyPart(messageBodyPart);
                 }
@@ -83,55 +79,66 @@ public class EmailJob implements  Runnable {
             // Send the message
             Transport.send(message);//Send email
         } catch (Exception e) {
-//            logger.error("mail address:" + emailAddr + " title:" + mailTitle + "fail in: " + e.getMessage());
+            //            logger.error("mail address:" + emailAddr + " title:" + mailTitle + "fail in: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
     public String getEmailAddr() {
+
         return emailAddr;
     }
 
     public void setEmailAddr(String emailAddr) {
+
         this.emailAddr = emailAddr;
     }
 
     public String getMailTitle() {
+
         return mailTitle;
     }
 
     public void setMailTitle(String mailTitle) {
+
         this.mailTitle = mailTitle;
     }
 
     public String getMailContent() {
+
         return mailContent;
     }
 
     public void setMailContent(String mailContent) {
+
         this.mailContent = mailContent;
     }
 
     public String[] getFileNames() {
+
         return fileNames;
     }
 
     public void setFileNames(String[] fileNames) {
+
         this.fileNames = fileNames;
     }
 
     public String[] getFilePaths() {
+
         return filePaths;
     }
 
     public void setFilePaths(String[] filePaths) {
+
         this.filePaths = filePaths;
     }
 
     public static void main(String args[]) {
+
         EmailJob job = new EmailJob();
         job.setEmailAddr("jijianhui@gogowise.com");
-//        job.setEmailAddr("vic@gogowise.com");
+        //        job.setEmailAddr("vic@gogowise.com");
 
         job.setMailTitle("111111111");
         job.setMailContent("333333333");

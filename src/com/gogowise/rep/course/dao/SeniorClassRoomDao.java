@@ -18,13 +18,13 @@ public interface SeniorClassRoomDao extends ModelDao<SeniorClassRoom> {
 
     public void saveStudentforSeniorClassRoom(SeniorClassRoom seniorClassRoom);
 
-    public SeniorClassRoom findClassRoomByCourseAndStudent(Integer cid,Integer sid);
+    public SeniorClassRoom findClassRoomByCourseAndStudent(Integer cid, Integer sid);
 
     public List<SeniorClassRoom> findClassRoomByCourseId(Integer cid);
 
-    public List<SeniorClassRoom> findAllClassRoomByUser(Pagination pagination,Integer userId);
+    public List<SeniorClassRoom> findAllClassRoomByUser(Pagination pagination, Integer userId);
 
-    public String  saveSeniorClassRoom(Integer courseId,Integer userId) throws IOException;
+    public void saveSeniorClassRoom(Integer courseId, Integer userId) throws IOException;
 
-    public String deleteSeniorClassRoom(Integer cid,Integer uid);
+    public String deleteSeniorClassRoom(Integer cid, Integer uid);
 }

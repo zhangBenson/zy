@@ -22,10 +22,11 @@ public class SchoolConvert extends BaseJunitTest implements Runnable {
 
     @Test
     public void covert() throws InterruptedException {
-//        List<SkSchool> skSchools = super.getModelDao().find("From SkSchool where homePageUrl = ?" ,"/xuexiao/551711.html");
+
+        //        List<SkSchool> skSchools = super.getModelDao().find("From SkSchool where homePageUrl = ?" ,"/xuexiao/551711.html");
         List<SkSchool> skSchools = super.getModelDao().find("From SkSchool");
-//        List<SkSchool> skSchools = new ArrayList<SkSchool>();
-//        skSchools.add((SkSchool) super.getModelDao().findFist("From SkSchool"));
+        //        List<SkSchool> skSchools = new ArrayList<SkSchool>();
+        //        skSchools.add((SkSchool) super.getModelDao().findFist("From SkSchool"));
 
         for (SkSchool skSchoolTemp : skSchools) {
             SchoolConvert schoolConvert = new SchoolConvert();
@@ -38,13 +39,13 @@ public class SchoolConvert extends BaseJunitTest implements Runnable {
         super.waitAllDone();
     }
 
-
     public void saveSchool() {
 
         String uid = "sk" + skSchool.getSchoolId();
         List<School> schools = super.getModelDao().find("From School where uid= ? ", uid);
         School school = new School();
-        if (schools.size() > 0) school = schools.get(0);
+        if (schools.size() > 0)
+            school = schools.get(0);
         school.setUid(uid);
         super.getModelDao().persistWithSwitch(school, skSchool);
         super.getModelDao().flush();
@@ -54,7 +55,8 @@ public class SchoolConvert extends BaseJunitTest implements Runnable {
 
             XiaoQu xiaoQu = new XiaoQu();
             List<XiaoQu> st = super.getModelDao().find("From XiaoQu st where st.school.id = ? and st.name = ? ", school.getId(), skXiaoQu.getName());
-            if (st.size() > 0) xiaoQu = st.get(0);
+            if (st.size() > 0)
+                xiaoQu = st.get(0);
             super.getModelDao().persistWithSwitch(xiaoQu, skXiaoQu);
             xiaoQu.setSchool(school);
             if (xiaoQu.getLat() == null && xiaoQu.getAddress() != null) {
@@ -69,21 +71,24 @@ public class SchoolConvert extends BaseJunitTest implements Runnable {
             if ((skClass.getExpire() != null && skClass.getExpire()) || (this.getClassType(skClass.getTypeId()) == null))
                 continue;
             String skUid = "sk" + skClass.getClassId();
-            ClassInfo classInfo = new ClassInfo();
-            List<ClassInfo> slassInfos = super.getModelDao().find("From ClassInfo where uid =  ?", skUid);
-            if (slassInfos.size() > 0) classInfo = slassInfos.get(0);
-            classInfo.setUid(skUid);
-            super.getModelDao().persistWithSwitch(classInfo, skClass);
-            classInfo.setSchool(school);
-            classInfo.setClassType(this.getClassType(skClass.getTypeId()));
-            if (classInfo.getClassType() == null) logger.error("==========================" + skClass.getTypeId());
-            super.getModelDao().persistAbstract(classInfo);
+            ClassInfoSk classInfoSk = new ClassInfoSk();
+            List<ClassInfoSk> slassInfos = super.getModelDao().find("From ClassInfo where uid =  ?", skUid);
+            if (slassInfos.size() > 0)
+                classInfoSk = slassInfos.get(0);
+            classInfoSk.setUid(skUid);
+            super.getModelDao().persistWithSwitch(classInfoSk, skClass);
+            classInfoSk.setSchool(school);
+            classInfoSk.setClassType(this.getClassType(skClass.getTypeId()));
+            if (classInfoSk.getClassType() == null)
+                logger.error("==========================" + skClass.getTypeId());
+            super.getModelDao().persistAbstract(classInfoSk);
             for (SkXiaoQu skXiaoQu : skClass.getXiaoqus()) {
                 List<XiaoQu> xiaoPs = super.getModelDao().find("From XiaoQu st where st.school.id = ? and st.name = ? ", school.getId(), skXiaoQu.getName());
-                List<ClassXiaoQu> classXiaoQus = super.getModelDao().find("From ClassXiaoQu where classInfo.id = ? and xiaoQu.id=?", classInfo.getId(), xiaoPs.get(0).getId());
-                if (classXiaoQus.size() > 0) continue;
+                List<ClassXiaoQu> classXiaoQus = super.getModelDao().find("From ClassXiaoQu where classInfo.id = ? and xiaoQu.id=?", classInfoSk.getId(), xiaoPs.get(0).getId());
+                if (classXiaoQus.size() > 0)
+                    continue;
                 ClassXiaoQu classXiaoQu = new ClassXiaoQu();
-                classXiaoQu.setClassInfo(classInfo);
+                classXiaoQu.setClassInfoSk(classInfoSk);
                 classXiaoQu.setXiaoQu(xiaoPs.get(0));
                 super.getModelDao().persistAbstract(classXiaoQu);
             }
@@ -93,6 +98,7 @@ public class SchoolConvert extends BaseJunitTest implements Runnable {
 
     @Test
     public void testAddress() {
+
         List<XiaoQu> xiaoQus = super.getModelDao().find("From XiaoQu where lat = ?", 0.0f);
         for (XiaoQu xiaoQu : xiaoQus) {
             if (xiaoQu.getAddress() != null)
@@ -106,8 +112,8 @@ public class SchoolConvert extends BaseJunitTest implements Runnable {
     }
 
     public void setLatandLng(XiaoQu xiaoQu) {
-        try {
 
+        try {
 
             String address = URLEncoder.encode(xiaoQu.getAddress(), "UTF-8");
             Random random = new Random(1000000);
@@ -120,7 +126,6 @@ public class SchoolConvert extends BaseJunitTest implements Runnable {
                 xiaoQu.setLng(Float.parseFloat(lng));
             }
 
-
         } catch (Exception e) {
             logger.error("======encod error======" + xiaoQu.getAddress());
             e.printStackTrace();
@@ -128,7 +133,9 @@ public class SchoolConvert extends BaseJunitTest implements Runnable {
     }
 
     public ClassType getClassType(Integer skTypeId) {
-        if (skTypeId == null) return null;
+
+        if (skTypeId == null)
+            return null;
         List<SkTypeRule> rules = super.getModelDao().find("From SkTypeRule where typeId3 = ? ", skTypeId);
         if (rules.size() == 0) {
             return null;
@@ -139,10 +146,11 @@ public class SchoolConvert extends BaseJunitTest implements Runnable {
     }
 
     public void run() {
+
         try {
             saveSchool();
         } catch (Exception e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace(); //To change body of catch statement use File | Settings | File Templates.
         }
     }
 }

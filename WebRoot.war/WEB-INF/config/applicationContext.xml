@@ -92,7 +92,7 @@
 
                 <value>com.gogowise.urlfetch.sk.ClassType</value>
 
-                <value>com.gogowise.urlfetch.sk.ClassInfo</value>
+                <value>com.gogowise.urlfetch.sk.ClassInfoSk</value>
                 <value>com.gogowise.urlfetch.sk.XiaoQu</value>
                 <value>com.gogowise.urlfetch.sk.ClassXiaoQu</value>
                 <value>com.gogowise.urlfetch.sk.School</value>

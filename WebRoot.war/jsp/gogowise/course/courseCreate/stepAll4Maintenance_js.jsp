@@ -104,12 +104,11 @@
             if(!yzSaveCourseClassForm()) return;
 
              var classInfo = $("#self_class_system_form").serialize();
-            alert(classInfo);
              $.post("selfSaveClass.html",classInfo,function(data){
                    $("#list_tbody").html(data)
              });
-             $(".self_system_wrap input[name='courseClass.nickName']").attr('value',"");
-             $(".self_system_wrap input[type='text'][name='courseClass.date']").attr('value',"");
+            $(".self_system_wrap input[name='classInfo.nickName']").attr('value', "");
+            $(".self_system_wrap input[type='text'][name='classInfo.date']").attr('value', "");
              step3Stored = true;
         });
 
