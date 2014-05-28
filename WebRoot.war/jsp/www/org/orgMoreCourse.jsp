@@ -13,7 +13,7 @@
                 <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>">
                     <div class="recommended">
                         <img src="<s:property value="logoUrl" />" alt="<s:property value="name" />">
-                        <span><s:property value="name" /> </span>
+                        <br/><span><s:property value="name" /> </span>
                     </div>
                 </a>
             </div>
