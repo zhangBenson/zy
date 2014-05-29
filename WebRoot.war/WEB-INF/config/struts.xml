@@ -94,7 +94,7 @@
     <package name="basic-package" extends="tiles-default,json-default" namespace="/">
 
 
-        <interceptors>
+    <interceptors>
             <interceptor name="validator" class="com.opensymphony.xwork2.validator.ValidationInterceptor"/>
             <interceptor name="rollBackForAction" class="com.gogowise.common.utils.RollBackForAction"></interceptor>
             <interceptor-stack name="myStack">
