@@ -11,4 +11,6 @@ public class RoleTypeImpl extends ModelDaoImpl<RoleType> implements RoleTypeDao 
     public List<RoleType> findAll(){
         return this.find("From RoleType ");
     }
+
+
 }
