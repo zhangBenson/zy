@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class ClassInfo extends AbstractPersistence {
+public class ClassInfoSk extends AbstractPersistence {
     private String name;
     private String uid;
 

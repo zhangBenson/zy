@@ -8,23 +8,27 @@ import javax.persistence.ManyToOne;
 @Entity
 public class ClassXiaoQu extends AbstractPersistence {
     @ManyToOne
-    private ClassInfo classInfo;
+    private ClassInfoSk classInfoSk;
     @ManyToOne
     private XiaoQu xiaoQu;
 
-    public ClassInfo getClassInfo() {
-        return classInfo;
+    public ClassInfoSk getClassInfoSk() {
+
+        return classInfoSk;
     }
 
-    public void setClassInfo(ClassInfo classInfo) {
-        this.classInfo = classInfo;
+    public void setClassInfoSk(ClassInfoSk classInfoSk) {
+
+        this.classInfoSk = classInfoSk;
     }
 
     public XiaoQu getXiaoQu() {
+
         return xiaoQu;
     }
 
     public void setXiaoQu(XiaoQu xiaoQu) {
+
         this.xiaoQu = xiaoQu;
     }
 }

@@ -93,12 +93,8 @@
 
     <package name="basic-package" extends="tiles-default,json-default" namespace="/">
 
-        <result-types>
-            <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"/>
-        </result-types>
 
-
-        <interceptors>
+    <interceptors>
             <interceptor name="validator" class="com.opensymphony.xwork2.validator.ValidationInterceptor"/>
             <interceptor name="rollBackForAction" class="com.gogowise.common.utils.RollBackForAction"></interceptor>
             <interceptor-stack name="myStack">
@@ -123,8 +119,12 @@
         </global-results>
 
 
-
-
+        <!--<action name="download" class="courseResourceAction" method="downloadFile">-->
+        <!--<result name="success" type="stream">-->
+        <!--<param name="inputName">fstream</param>-->
+        <!--<param name="contentDisposition">attachment;filename=${fname}</param>-->
+        <!--</result>-->
+        <!--</action>-->
 
 
         <action name="uploadCourseMaterialToTemp" class="com.gogowise.action.course.CourseMaterialUploadAction"

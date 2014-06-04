@@ -89,6 +89,12 @@
         </s:if>
     </table>
 
+    <div style="text-align: center;font-size: 16;color: red">
+
+        <s:actionerror></s:actionerror>
+
+
+    </div>
     <div style="text-align: center;">
         <div class="row">
             <s:form action="purchaseCourse" method="POST" theme="css_xhtml" id="purchaseCourse_Form">
@@ -134,7 +140,7 @@
         <%--var zhibi = <s:property value="userAccountInfo.zhiBi"/> +'';--%>
         <%--var zhiquan = <s:property value="userAccountInfo.zhiQuan"/>+'';--%>
         <%--var cost =  <s:property value="course.charges" />;--%>
-        <%--&lt;%&ndash;var cost = <s:if test="%{course.personalTeacher == null}"><s:property value="%{4 * course.classes.size}"/></s:if><s:else><s:property value="course.charges" /></s:else> ;&ndash;%&gt;--%>
+        <%--<%--var cost = <s:if test="%{course.personalTeacher == null}"><s:property value="%{4 * course.classes.size}"/></s:if><s:else><s:property value="course.charges" /></s:else> ;--%>
         <%--if((zhibi+zhiquan) >= cost){--%>
         <%--$.post(url,{'course.id':"<s:property value="course.id"/>"},function(data){--%>
         <%--// alert(data.message);--%>

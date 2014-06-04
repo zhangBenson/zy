@@ -199,6 +199,7 @@
         </s:if>
     </div>
 
+
     <p class="text-right">
         <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal"><s:property
                 value="%{getText('others.more')}"/></button>

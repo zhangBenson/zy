@@ -99,8 +99,8 @@ $(function () {
         $.post("selfSaveClass.html", classInfo, function (data) {
             $("#list_tbody").html(data)
         });
-        $(".self_system_wrap input[name='courseClass.nickName']").attr('value', "");
-        $(".self_system_wrap input[type='text'][name='courseClass.date']").attr('value', "");
+        $(".self_system_wrap input[name='classInf.nickName']").attr('value', "");
+        $(".self_system_wrap input[type='text'][name='classInf.date']").attr('value', "");
         step3Stored = true;
     });
 
