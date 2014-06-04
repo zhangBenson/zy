@@ -33,6 +33,7 @@ import java.util.Calendar;
 @Namespace(BasicAction.BASE_NAME_SPACE)
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 @Result(name = "input",type = Constants.RESULT_NAME_TILES,location = ".purchaseError")
+
 public class CoursePurchaseAction extends BasicAction {
     private Course course;
     private BaseUser user;
