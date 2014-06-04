@@ -38,6 +38,7 @@ public class UserRelationShipDaoImpl extends ModelDaoImpl<UserRelationship> impl
         return null;
     }
 
+
     public void addUnknownFriends(Integer inviter, String invitedCode) {
         UserRelationship userRelationship = new UserRelationship();
         userRelationship.setUser(baseUserDao.findById(inviter));
@@ -45,6 +46,7 @@ public class UserRelationShipDaoImpl extends ModelDaoImpl<UserRelationship> impl
         this.persistAbstract(userRelationship);
     }
 
+    @SuppressWarnings("unchecked")
     public List<UserRelationship> queryFriendsByUserId(int id, Pagination page) {
         Criteria c = createRelationshipCriteria();
         c.add(Restrictions.eq("user.id", id));
@@ -52,8 +54,7 @@ public class UserRelationShipDaoImpl extends ModelDaoImpl<UserRelationship> impl
     }
 
     private Criteria createRelationshipCriteria() {
-        Criteria c = this.getSession().createCriteria(UserRelationship.class);
-        return c;
+        return this.getSession().createCriteria(UserRelationship.class);
     }
 
     public BaseUserDao getBaseUserDao() {
