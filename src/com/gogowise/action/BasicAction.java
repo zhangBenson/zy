@@ -27,11 +27,10 @@ public class BasicAction extends ActionSupport {
 
     private Pagination pagination = new Pagination();
 
-
     protected Logger logger = LogManager.getLogger(this.getClass().getName());
 
-
     public String getRealPathForBaseDir() {
+
         if (REAL_PATH_FOR_BASE_DIR == null) {
             return REAL_PATH_FOR_BASE_DIR = ServletActionContext.getServletContext().getRealPath("/");
         } else {
@@ -40,6 +39,7 @@ public class BasicAction extends ActionSupport {
     }
 
     public void redirectToLogin() {
+
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
         HttpServletResponse response = (HttpServletResponse) ActionContext.getContext().get(ServletActionContext.HTTP_RESPONSE);
         try {
@@ -50,20 +50,24 @@ public class BasicAction extends ActionSupport {
     }
 
     protected Integer getSessionUserId() {
+
         if (ActionContext.getContext().getSession().get(Constants.SESSION_USER_ID) != null)
             return (Integer) ActionContext.getContext().getSession().get(Constants.SESSION_USER_ID);
         return null;
     }
 
     protected String getSessionNickName() {
+
         return (String) ActionContext.getContext().getSession().get(Constants.SESSION_USER_NICKNANE);
     }
 
     protected String getSessionUserEmail() {
+
         return (String) ActionContext.getContext().getSession().get(Constants.SESSION_USER_EMAIL);
     }
 
     public static String getBasePath() {
+
         if (HOST_URL_APP != null) {
             return HOST_URL_APP;
         }
@@ -71,11 +75,9 @@ public class BasicAction extends ActionSupport {
             return "http://www.gogowise.com";
         }
         ActionContext ctx = ActionContext.getContext();
-        HttpServletRequest request = (HttpServletRequest) ctx
-                .get(ServletActionContext.HTTP_REQUEST);
-//        String path = request.getContextPath();
-        String basePath = request.getScheme() + "://" + request.getServerName()
-                + ":" + request.getServerPort();
+        HttpServletRequest request = (HttpServletRequest) ctx.get(ServletActionContext.HTTP_REQUEST);
+        //        String path = request.getContextPath();
+        String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
         if (basePath.contains("beta")) {
             HOST_URL_APP = "http://beta.gogowise.com";
         } else if (basePath.contains("localhost")) {
@@ -89,6 +91,7 @@ public class BasicAction extends ActionSupport {
     }
 
     protected void setUserToSession(BaseUser user) {
+
         ActionContext.getContext().getSession().put(Constants.SESSION_USER_ID, user.getId());
         ActionContext.getContext().getSession().put(Constants.SESSION_USER_NICKNANE, user.getNickName());
         ActionContext.getContext().getSession().put(Constants.SESSION_USER_EMAIL, user.getEmail());
@@ -97,16 +100,23 @@ public class BasicAction extends ActionSupport {
     }
 
     protected String redirectToMyCenter(boolean isTeacher) {
+
         return isTeacher ? MY_FIRST_PAGE : PERSONAL_CENTER;
     }
 
     public Pagination getPagination() {
+
         return pagination;
     }
 
     public void setPagination(Pagination pagination) {
+
         this.pagination = pagination;
     }
 
+    public void addActionErrorInfoWithKey(String messageKey) {
+
+        this.addActionError(this.getText(messageKey));
+    }
 
 }

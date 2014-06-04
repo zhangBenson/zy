@@ -1,7 +1,6 @@
 package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.dao.CourseInviteStudentDao;
 import com.gogowise.rep.course.dao.SeniorClassRoomDao;
@@ -52,7 +51,6 @@ public class CoursePurchaseAction extends BasicAction {
     private ConsumptionOrderDao consumptionOrderDao;
     private SeniorClassRoomDao seniorClassRoomDao;
     private UserAccountInfoDao userAccountInfoDao;
-    private String purchaseMsg;
     private String purchaseConfirmMsg;
     private MatterDao matterDao;
     @Autowired
@@ -129,25 +127,23 @@ public class CoursePurchaseAction extends BasicAction {
 
         course = courseDao.findById(this.course.getId());
         user = baseUserDao.findById(getSessionUserId());
-        Double cost = 0.000;
+        Double cost;
         cost = course.getCharges();
         UserAccountInfo _userAccountInfo = userAccountInfoDao.findByUserId(user.getId());
         if (course.getConsumptionType() && cost > _userAccountInfo.getZhiBi()) {
-            this.setPurchaseMsg("msg.zhibi.not.enough");
-            addFieldError("", "");
+            this.addActionErrorInfoWithKey("msg.zhibi.not.enough");
             return;
         }
         if (!course.getConsumptionType() && cost > (_userAccountInfo.getZhiBi() + _userAccountInfo.getZhiQuan())) {
-            this.setPurchaseMsg("msg.account.left.not.enough");
-            addFieldError("", "");
+            this.addActionErrorInfoWithKey("msg.account.left.not.enough");
             return;
         }
         if (existInStudentInvitation(course, user.getEmail())) {
-            this.setPurchaseMsg("course.exist.in.studentInvitation"); //您是被邀请的用户，请在您的邮件中点击接受完成购买
+            this.addActionErrorInfoWithKey("course.exist.in.studentInvitation"); //您是被邀请的用户，请在您的邮件中点击接受完成购买
             return;
         }
         if (isNeed(course, user.getEmail())) {
-            this.setPurchaseMsg("course.identity.exist"); //   您不需要购买该课程
+            this.addActionErrorInfoWithKey("course.identity.exist"); //   您不需要购买该课程
             return;
         }
         //        if (limitNumOver(course)) {
@@ -155,7 +151,7 @@ public class CoursePurchaseAction extends BasicAction {
         //        }
 
         if (existInRoom(course.getId(), getSessionUserId())) {
-            this.setPurchaseMsg("course.already.observation"); //您已经购买了该课程
+            this.addActionErrorInfoWithKey("course.already.observation"); //您已经购买了该课程
         }
 
     }
@@ -176,19 +172,13 @@ public class CoursePurchaseAction extends BasicAction {
     private Boolean existInStudentInvitation(Course course, String email) {
 
         CourseInviteStudent courseInviteStudent = courseInviteStudentDao.findByCourseAndEmail(course.getId(), email);
-        if (courseInviteStudent != null) {
-            return true;
-        }
-        return false;
+        return courseInviteStudent != null;
     }
 
     private Boolean existInRoom(Integer cid, Integer uid) {
 
         SeniorClassRoom scr = seniorClassRoomDao.findClassRoomByCourseAndStudent(cid, uid);
-        if (scr != null) {
-            return true;
-        }
-        return false;
+        return scr != null;
     }
 
     @Action(value = "courseconfirm")
@@ -414,17 +404,6 @@ public class CoursePurchaseAction extends BasicAction {
     public void setMatterDao(MatterDao matterDao) {
 
         this.matterDao = matterDao;
-    }
-
-    public String getPurchaseMsg() {
-
-        return purchaseMsg;
-    }
-
-    public void setPurchaseMsg(String purchaseMsg) {
-
-        this.purchaseMsg = this.getText(purchaseMsg);
-        this.addActionError(this.purchaseMsg);
     }
 
     public String getPurchaseConfirmMsg() {
