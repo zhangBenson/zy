@@ -85,34 +85,33 @@ public class CourseAction extends BasicAction {
     private ClassDao classDao;
     private CourseClass courseClass;
     private CourseReservation courseReservation;
-    private List<CourseInviteStudent> courseInviteStudents = new ArrayList<CourseInviteStudent>();
-    private List<String> emails = new ArrayList<String>();
+    private List<CourseInviteStudent> courseInviteStudents = new ArrayList<>();
+    private List<String> emails = new ArrayList<>();
     private String email;
-    private List<CourseQuestion> courseQuestions = new ArrayList<CourseQuestion>();
-    private List<CourseResource> courseResources = new ArrayList<CourseResource>();
+    private List<CourseQuestion> courseQuestions = new ArrayList<>();
+    private List<CourseResource> courseResources = new ArrayList<>();
     private File upload;
     private String uploadFileName;
     private Course course;
     private Course repeatCourse;
     private Integer identity;
     private String role;
-    private List<CourseComment> courseComments = new ArrayList<CourseComment>();
-    private List<Course> courses = new ArrayList<Course>();
-    private List<Course> coursesOnline = new ArrayList<Course>();
-    private List<Course> courses2teacher = new ArrayList<Course>();//老师还教过的课程
-    private List<Course> hotCourses = new ArrayList<Course>(); //热门课程
-    private List<Course> userConcernCourses = new ArrayList<Course>(); //用户还关心的课程
-    private List<Course> courseRelateCourses = new ArrayList<Course>(); //与该课程相关的课程
-    private List<Course> coursesInTypes = new ArrayList<Course>();
-    private List<Course> coursesForAds = new ArrayList<Course>();
-    private List<SeniorClassRoom> seniorClassRooms = new ArrayList<SeniorClassRoom>();
-    private Map<Integer, String> orgs = new HashMap<Integer, String>();
+    private List<CourseComment> courseComments = new ArrayList<>();
+    private List<Course> courses = new ArrayList<>();
+    private List<Course> coursesOnline = new ArrayList<>();
+    private List<Course> courses2teacher = new ArrayList<>();//老师还教过的课程
+    private List<Course> hotCourses = new ArrayList<>(); //热门课程
+    private List<Course> userConcernCourses = new ArrayList<>(); //用户还关心的课程
+    private List<Course> courseRelateCourses = new ArrayList<>(); //与该课程相关的课程
+    private List<Course> coursesInTypes = new ArrayList<>();
+    private List<Course> coursesForAds = new ArrayList<>();
+    private List<SeniorClassRoom> seniorClassRooms = new ArrayList<>();
+    private Map<Integer, String> orgs = new HashMap<>();
     private Pagination pagination = new Pagination();
     private BaseUser user;
     private CourseRecommendDao courseRecommendDao;
     private CourseRecommend courseRecommend;
     private String comments;
-    private Integer classCount;
     private String inviteMessage;
     private String searchValue;
     private String searchType = "1";
@@ -344,8 +343,8 @@ public class CourseAction extends BasicAction {
         // Courser invitation;
         courseInviteStudents = courseInviteStudentDao.findByCourseId(this.getCourse().getId());
         if (courseInviteStudents.size() != 0) {
-            for (int i = 0; i < courseInviteStudents.size(); i++) {
-                courseInviteStudentDao.delete(courseInviteStudents.get(i));
+            for (CourseInviteStudent courseInviteStudent : courseInviteStudents) {
+                courseInviteStudentDao.delete(courseInviteStudent);
             }
         }
 
@@ -399,7 +398,7 @@ public class CourseAction extends BasicAction {
 
         Course realCourse = courseDao.findById(this.getCourse().getId());
         courseDao.courseModification(realCourse, this.getCourse());
-        if (this.getUploadFileName() != null && this.getUploadFileName() == "") {
+        if (this.getUploadFileName() != null && "".equals(this.getUploadFileName())) {
             String path = "/" + this.getCourse().getId() + "/" + this.getUploadFileName();
             File imageFile = new File(ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_IMAGE_PATH_FOR_COURSE) + path);
             if (!imageFile.getParentFile().exists()) {
@@ -416,8 +415,8 @@ public class CourseAction extends BasicAction {
 
         courseInviteStudents = courseInviteStudentDao.findByCourseId(this.getCourse().getId());
         if (courseInviteStudents.size() != 0) {
-            for (int i = 0; i < courseInviteStudents.size(); i++) {
-                courseInviteStudentDao.delete(courseInviteStudents.get(i));
+            for (CourseInviteStudent courseInviteStudent : courseInviteStudents) {
+                courseInviteStudentDao.delete(courseInviteStudent);
             }
         }
 
@@ -459,7 +458,7 @@ public class CourseAction extends BasicAction {
         for (CourseClass cc : course.getClasses()) {
             Calendar classStartTime = Calendar.getInstance();
             classStartTime.setTime(cc.getDate().getTime());
-            classesInfo = classesInfo.append("<tr><td>" + cc.getName() + "</td><td>" + Utils.getEmptyString(cc.getNickName()) + "</td><td>" + dateFormat.format(Utils.changeBaseOnTimeZone4Action(classStartTime).getTime()) + "</td><td>" + cc.getDuration() + "</td><td>" + this.getText("label.day.of.week." + classStartTime.get(Calendar.DAY_OF_WEEK)) + "</td></tr>");
+            classesInfo = classesInfo.append("<tr><td>").append(cc.getName()).append("</td><td>").append(Utils.getEmptyString(cc.getNickName())).append("</td><td>").append(dateFormat.format(Utils.changeBaseOnTimeZone4Action(classStartTime).getTime())).append("</td><td>").append(cc.getDuration()).append("</td><td>").append(this.getText("label.day.of.week." + classStartTime.get(Calendar.DAY_OF_WEEK))).append("</td></tr>");
         }
         if (course.getOrganization() != null) {
             String serialNo = this.getSessionNickName() + (new SimpleDateFormat("yyyyddMMHHmmssms").format(Calendar.getInstance().getTime()));
@@ -540,7 +539,7 @@ public class CourseAction extends BasicAction {
         for (CourseClass cc : course.getClasses()) {
             Calendar classStartTime = Calendar.getInstance();
             classStartTime.setTime(cc.getDate().getTime());
-            classesInfo = classesInfo.append("<tr><td>" + cc.getName() + "</td><td>" + Utils.getEmptyString(cc.getNickName()) + "</td><td>" + dateFormat.format(Utils.changeBaseOnTimeZone4Action(classStartTime).getTime()) + "</td><td>" + cc.getDuration() + "</td><td>" + this.getText("label.day.of.week." + classStartTime.get(Calendar.DAY_OF_WEEK)) + "</td></tr>");
+            classesInfo = classesInfo.append("<tr><td>").append(cc.getName()).append("</td><td>").append(Utils.getEmptyString(cc.getNickName())).append("</td><td>").append(dateFormat.format(Utils.changeBaseOnTimeZone4Action(classStartTime).getTime())).append("</td><td>").append(cc.getDuration()).append("</td><td>").append(this.getText("label.day.of.week." + classStartTime.get(Calendar.DAY_OF_WEEK))).append("</td></tr>");
         }
         String href = getBasePath() + "/emailHandleForCourseCreation.html?course.id=" + course.getId() + "&accept=true&teacher=false&user.email=" + this.getEmail();
         String title = this.getText("big.course.advertise.email.confirm.title", new String[] { course.getName() });
@@ -648,7 +647,7 @@ public class CourseAction extends BasicAction {
         for (CourseClass cc : course.getClasses()) {
             Calendar classStartTime = Calendar.getInstance();
             classStartTime.setTime(cc.getDate().getTime());
-            classesInfo = classesInfo.append("<tr><td>" + cc.getName() + "</td><td>" + Utils.getEmptyString(cc.getNickName()) + "</td><td>" + dateFormat.format(Utils.changeBaseOnTimeZone4Action(classStartTime).getTime()) + "</td><td>" + cc.getDuration() + "</td><td>" + this.getText("label.day.of.week." + classStartTime.get(Calendar.DAY_OF_WEEK)) + "</td></tr>");
+            classesInfo = classesInfo.append("<tr><td>").append(cc.getName()).append("</td><td>").append(Utils.getEmptyString(cc.getNickName())).append("</td><td>").append(dateFormat.format(Utils.changeBaseOnTimeZone4Action(classStartTime).getTime())).append("</td><td>").append(cc.getDuration()).append("</td><td>").append(this.getText("label.day.of.week." + classStartTime.get(Calendar.DAY_OF_WEEK))).append("</td></tr>");
         }
         String css = "<style type=\"text/css\">\n" + "#rvmDiv #logoDiv {background-image: url(http://www.gogowise.com/images/logo.jpg);background-repeat: no-repeat;height: 65px;margin-left: 45px;}\n" + "#rvmDiv #rvmcontentDiv ul .welcomeTittle {margin-left: 30px;}\n" + "#rvmDiv {float: left;width: 100%;font-family: \"微软雅黑\", \"宋体\", \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif;}\n" + "#logoDiv {float: left;width: 100%;}\n" + "#rvmcontentDiv {float: left;width: 100%;}\n" + "#rvmDiv #rvmcontentDiv ul li {list-style-type: none;}\n" + "#rvmDiv #rvmcontentDiv .orangeWords {color: rgb(255,155,55);}\n" + "#rvmDiv #rvmcontentDiv ul .lastWords {margin-top: 50px;}\n" + "table,tr,td{border-collapse:collapse;border-top-width: 1px;border-right-width: 1px;border-bottom-width: 1px;border-left-width: 1px;\n" + "border-right-color:#09F;border-bottom-color: #09F;border-left-color: #09F;}\n" + "tr.odd{background-color:#CEFFFF;}\n" + "</style>";
         if ((course.getOrganization() != null) && this.getTeacherChange()) { //变化
@@ -658,7 +657,7 @@ public class CourseAction extends BasicAction {
             String rejectArrange = getBasePath() + "/emailHandleForCourseCreation.html?course.id=" + course.getId() + "&accept=false&teacher=true&user.email=" + course.getTeacherEmail();
             String[] args = { course.getTeacherEmail(), course.getOrganization().getSchoolName(), course.getName(), course.getDescription(), dateFormat4StartDate.format(Utils.changeBaseOnTimeZone4Action(courseStartTime).getTime()), course.getTotalHours().toString(), classesInfo.toString(), acceptArrange, rejectArrange, acceptArrange, acceptArrange, this.getCourse().getTeacherEmail() };
             EmailUtil.sendMail(course.getTeacherEmail(), tile, css + this.getText("org.invite.teacher.email.content", args), "text/html;charset=utf-8");
-        } else if ((course.getOrganization() != null) && !this.getTeacherChange()) {
+        } else if ((course.getOrganization() != null)) {
 
             String tile = this.getText("org.modify.teacher.email.title", new String[] { course.getName() });
 
@@ -735,7 +734,6 @@ public class CourseAction extends BasicAction {
     @Action(value = "courseAdminManage", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseAdminManage"), @Result(name = ERROR, type = Constants.RESULT_NAME_TILES, location = ".noPermission") })
     public String courseAdminManage() {
 
-        BaseUser admin = baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.SESSION_USER_EMAIL));
         Integer userID = (Integer) ActionContext.getContext().getSession().get(Constants.SESSION_USER_ID);
         boolean havePermission = userService.havePermission(userID, "admin");
 
@@ -974,7 +972,7 @@ public class CourseAction extends BasicAction {
                 courseReservation.setComments(this.getText("course.reservation.comments"));
             }
             courseReservationDao.persistAbstract(this.getCourseReservation());
-            String email = "";
+            String email;
             if (course.getOrganization() != null)
                 email = course.getOrganization().getResponsiblePerson().getEmail();
             else
@@ -1039,7 +1037,7 @@ public class CourseAction extends BasicAction {
     public void virtualRoomEmailInviteFriends() {
 
         courseClass = classDao.findById(this.getCourseClass().getId());
-        BaseUser friend = null;
+        BaseUser friend;
         if (this.getUser().getId() != null) {
 
             friend = baseUserDao.findById(this.getUser().getId());
@@ -1473,7 +1471,7 @@ public class CourseAction extends BasicAction {
 
     public List<String> getEmails() {
 
-        List<String> finalEmails = new ArrayList<String>();
+        List<String> finalEmails = new ArrayList<>();
         for (String email : emails) {
             if (!email.equals("")) {
                 finalEmails.add(email);
@@ -1599,7 +1597,7 @@ public class CourseAction extends BasicAction {
 
     public String getComments() {
 
-        if (this.getComments().equals("")) {
+        if (this.comments.equals("")) {
             comments = this.getText("course.recommend.default");
         }
         return comments;
@@ -1812,15 +1810,12 @@ public class CourseAction extends BasicAction {
 
     public Boolean isExistCourses() {
 
-        if (this.getCourses().size() == 0) {
-            return false;
-        }
-        return true;
+        return this.getCourses().size() != 0;
     }
 
     public List<Course> getCoursesInTypesLeft() {
 
-        List<Course> courses = new ArrayList<Course>();
+        List<Course> courses = new ArrayList<>();
         int k = this.getCoursesInTypes().size();
         int end = (k % 2 == 0 ? k / 2 : (k / 2) + 1);
         for (int i = 0; i < end; i++) {
@@ -1831,7 +1826,7 @@ public class CourseAction extends BasicAction {
 
     public List<Course> getCoursesInTypesRight() {
 
-        List<Course> courses = new ArrayList<Course>();
+        List<Course> courses = new ArrayList<>();
         int k = this.getCoursesInTypes().size();
         int end = (k % 2 == 0 ? k / 2 : (k / 2) + 1);
         for (int i = end; i < k; i++) {
