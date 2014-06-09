@@ -1,6 +1,8 @@
 package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.rep.ServiceException;
+import com.gogowise.rep.course.CourseService;
 import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.dao.CourseInviteStudentDao;
 import com.gogowise.rep.course.dao.SeniorClassRoomDao;
@@ -53,8 +55,9 @@ public class CoursePurchaseAction extends BasicAction {
     private UserAccountInfoDao userAccountInfoDao;
     private String purchaseConfirmMsg;
     private MatterDao matterDao;
+
     @Autowired
-    private CourseInviteStudentDao courseInviteStudentDao;
+    private CourseService courseService;
 
     @Action(value = "initCourseconfirm", results = { @Result(name = SUCCESS, type = "tiles", location = ".courseconfirm"), @Result(name = LOGIN, type = Constants.RESULT_NAME_TILES, location = ".identityConfirmation")
     //                    ,
@@ -118,68 +121,16 @@ public class CoursePurchaseAction extends BasicAction {
         }
     }
 
-    public void validatePurchaseCourse() throws Exception {
+    public void validatePurchaseCourse() {
 
-        validateBeforePurchase();
-    }
-
-    private void validateBeforePurchase() {
-
-        course = courseDao.findById(this.course.getId());
-        user = baseUserDao.findById(getSessionUserId());
-        Double cost;
-        cost = course.getCharges();
-        UserAccountInfo _userAccountInfo = userAccountInfoDao.findByUserId(user.getId());
-        if (course.getConsumptionType() && cost > _userAccountInfo.getZhiBi()) {
-            this.addActionErrorInfoWithKey("msg.zhibi.not.enough");
-            return;
+        try {
+            courseService.validateBeforePurchase(courseDao.findById(this.course.getId()), baseUserDao.findById(getSessionUserId()));
+        } catch (ServiceException e) {
+            this.addActionErrorInfoWithKey(e.getMessage());
         }
-        if (!course.getConsumptionType() && cost > (_userAccountInfo.getZhiBi() + _userAccountInfo.getZhiQuan())) {
-            this.addActionErrorInfoWithKey("msg.account.left.not.enough");
-            return;
-        }
-        if (existInStudentInvitation(course, user.getEmail())) {
-            this.addActionErrorInfoWithKey("course.exist.in.studentInvitation"); //您是被邀请的用户，请在您的邮件中点击接受完成购买
-            return;
-        }
-        if (isNeed(course, user.getEmail())) {
-            this.addActionErrorInfoWithKey("course.identity.exist"); //   您不需要购买该课程
-            return;
-        }
-        //        if (limitNumOver(course)) {
-        //            return "course.studentNum.overflow"; //对不起，该课程预定人数已满
-        //        }
+   }
 
-        if (existInRoom(course.getId(), getSessionUserId())) {
-            this.addActionErrorInfoWithKey("course.already.observation"); //您已经购买了该课程
-        }
 
-    }
-
-    private Boolean isNeed(Course course, String userEmail) {
-
-        // return true suggest that the user is already an menber of the coures
-        if (course.getTeacher() != null && course.getTeacher().getEmail().equals(userEmail)) {
-            return true;
-        } else if (course.getTeacherEmail() != null && course.getTeacherEmail().equals(userEmail)) {
-            return true;
-        } else if (course.getOrganization() != null && course.getOrganization().getResponsiblePerson().getEmail().equals(userEmail)) {
-            return true;
-        }
-        return false;
-    }
-
-    private Boolean existInStudentInvitation(Course course, String email) {
-
-        CourseInviteStudent courseInviteStudent = courseInviteStudentDao.findByCourseAndEmail(course.getId(), email);
-        return courseInviteStudent != null;
-    }
-
-    private Boolean existInRoom(Integer cid, Integer uid) {
-
-        SeniorClassRoom scr = seniorClassRoomDao.findClassRoomByCourseAndStudent(cid, uid);
-        return scr != null;
-    }
 
     @Action(value = "courseconfirm")
     public String courseconfirm() throws Exception {
@@ -187,15 +138,15 @@ public class CoursePurchaseAction extends BasicAction {
         this.course = courseDao.findById(this.course.getId());
         this.user = baseUserDao.findById(getSessionUserId());
 
-        validateBeforePurchase();
-        if (this.getPurchaseConfirmMsg() != null) {
-            this.setMessage(this.getPurchaseConfirmMsg());
-            return RESULT_JSON;
+        try {
+            courseService.validateBeforePurchase(this.course, this.user);
+        } catch (ServiceException e) {
+            this.setMessage(this.getText(e.getMessage()));
+          return RESULT_JSON;
         }
 
         seniorClassRoomDao.saveSeniorClassRoom(this.course.getId(), this.getSessionUserId());
 
-        //            courseDao.confirmCourse(this.course.getId(), this.getSessionUserId());
         consumptionOrderDao.purchaseCourse(user, course);
         String filePath = Constants.DOWNLOAD_CONTRACT + course.getId() + "/" + course.getName() + ".pdf";
         String tile = this.getText("course.pdf.title", new String[] { user.getNickName(), course.getName() });

@@ -3,18 +3,22 @@ package com.gogowise.rep.course;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.rep.ModelServiceImpl;
 import com.gogowise.rep.Pagination;
+import com.gogowise.rep.ServiceException;
 import com.gogowise.rep.course.dao.CourseDao;
+import com.gogowise.rep.course.dao.CourseInviteStudentDao;
 import com.gogowise.rep.course.dao.QuestionDao;
-import com.gogowise.rep.course.enity.Course;
-import com.gogowise.rep.course.enity.CourseMaterial;
-import com.gogowise.rep.course.enity.Question;
+import com.gogowise.rep.course.dao.SeniorClassRoomDao;
+import com.gogowise.rep.course.enity.*;
 import com.gogowise.rep.course.vo.CourseSpecification;
+import com.gogowise.rep.finance.UserAccountInfoDao;
+import com.gogowise.rep.finance.enity.UserAccountInfo;
 import com.gogowise.rep.org.OrgService;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -24,11 +28,22 @@ import java.util.Set;
 @Service("courseService")
 public class CourseServiceImpl extends ModelServiceImpl implements CourseService{
 
+    @Autowired
     private OrgService orgService;
+    @Autowired
     private BaseUserDao baseUserDao;
+    @Autowired
     private CourseDao courseDao;
+    @Autowired
     private OrganizationDao organizationDao;
+    @Autowired
     private QuestionDao questionDao;
+    @Autowired
+    private UserAccountInfoDao userAccountInfoDao;
+    @Autowired
+    private CourseInviteStudentDao courseInviteStudentDao;
+    @Autowired
+    private SeniorClassRoomDao seniorClassRoomDao;
 
     public void  saveQuestion(CourseMaterial courseMaterial, List<Question> questions) {
           for (Question question : questions)  {
@@ -95,24 +110,60 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
     }
 
 
-    public void setOrgService(OrgService orgService) {
-        this.orgService = orgService;
+
+    public void validateBeforePurchase(Course course, BaseUser user) throws ServiceException {
+
+        //        course = courseDao.findById(this.course.getId());
+        //        user = baseUserDao.findById(getSessionUserId());
+        Double cost;
+        cost = course.getCharges();
+        UserAccountInfo _userAccountInfo = userAccountInfoDao.findByUserId(user.getId());
+        if (course.getConsumptionType() && cost > _userAccountInfo.getZhiBi()) {
+            throw new ServiceException("msg.zhibi.not.enough");
+        }
+        if (!course.getConsumptionType() && cost > (_userAccountInfo.getZhiBi() + _userAccountInfo.getZhiQuan())) {
+            throw new ServiceException("msg.account.left.not.enough");
+        }
+        if (existInStudentInvitation(course, user.getEmail())) {
+            throw new ServiceException("course.exist.in.studentInvitation"); //您是被邀请的用户，请在您的邮件中点击接受完成购买
+        }
+        if (isNeed(course, user.getEmail())) {
+            throw new ServiceException("course.identity.exist"); //   您不需要购买该课程
+        }
+        //        if (limitNumOver(course)) {
+        //            return "course.studentNum.overflow"; //对不起，该课程预定人数已满
+        //        }
+
+        if (existInRoom(course.getId(), user.getId())) {
+            throw new ServiceException("course.already.observation"); //您已经购买了该课程
+        }
+
     }
 
-    public void setBaseUserDao(BaseUserDao baseUserDao) {
-        this.baseUserDao = baseUserDao;
+    private Boolean isNeed(Course course, String userEmail) {
+
+        // return true suggest that the user is already an menber of the coures
+        if (course.getTeacher() != null && course.getTeacher().getEmail().equals(userEmail)) {
+            return true;
+        } else if (course.getTeacherEmail() != null && course.getTeacherEmail().equals(userEmail)) {
+            return true;
+        } else if (course.getOrganization() != null && course.getOrganization().getResponsiblePerson().getEmail().equals(userEmail)) {
+            return true;
+        }
+        return false;
     }
 
-    public void setCourseDao(CourseDao courseDao) {
-        this.courseDao = courseDao;
+    private Boolean existInStudentInvitation(Course course, String email) {
+
+        CourseInviteStudent courseInviteStudent = courseInviteStudentDao.findByCourseAndEmail(course.getId(), email);
+        return courseInviteStudent != null;
     }
 
-    public void setQuestionDao(QuestionDao questionDao) {
-        this.questionDao = questionDao;
+    private Boolean existInRoom(Integer cid, Integer uid) {
+
+        SeniorClassRoom scr = seniorClassRoomDao.findClassRoomByCourseAndStudent(cid, uid);
+        return scr != null;
     }
 
-    public void setOrganizationDao(OrganizationDao organizationDao) {
-        this.organizationDao = organizationDao;
-    }
 
 }
