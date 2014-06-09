@@ -1378,5 +1378,24 @@
         <put-attribute name="contentBody" value="/jsp/www/{1}/{2}.jsp"/>
     </definition>
 
+    <definition name="backendTemplate" template="/jsp/layout/layoutUserCenter.jsp">
+        <put-attribute name="header" value="/jsp/layout/header.jsp"/>
+        <put-attribute name="bottom" value="/jsp/layout/footer.jsp"/>
+        <put-attribute name="contentHeader" value="/jsp/layout/userheader.jsp"/>
+        <put-attribute name="contentLeft" value="/jsp/layout/usermenu.jsp"/>
+    </definition>
+    <definition name="WILDCARD:bc.*.*" extends=".userCenter">
+        <put-attribute name="title" value="title.myfirstpage"/>
+        <put-attribute name="contentRight" value="/jsp/bc/{1}/{2}.jsp"/>
+    </definition>
+
+    <definition name=".createMeetingContentRight" template="/jsp/bc/meeting/stepAll.jsp">
+        <put-attribute name="courseInfo" value="/jsp/bc/meeting/courseInfo.jsp"/>
+    </definition>
+    <definition name=".createMeeting" extends=".userCenter">
+        <put-attribute name="title" value="title.gogowise"/>
+        <put-attribute name="contentRight" value=".createMeetingContentRight"/>
+    </definition>
+
 
 </tiles-definitions>

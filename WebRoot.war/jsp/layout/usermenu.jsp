@@ -20,7 +20,9 @@
             <ul>
                 <li><a href="myForcastClass.html"><s:property value="%{getText('usermenu.item.my.created.courses')}"/></a></li>
                 <li><a href="myRegistration.html"><s:property value="%{getText('usermenu.item.my.reged.courses')}"/></a></li>
-                <%--<li><a href="createCourse.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a></li>--%>
+
+                <li><a href="meetingHome.html">会议</a></li>
+            <%--<li><a href="createCourse.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a></li>--%>
                 <%--<li><a href="createCourseAllInOne.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a></li>--%>
             </ul>
         </div>
