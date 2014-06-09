@@ -1,10 +1,7 @@
-package com.gogowise.vo;
+package com.gogowise.action.valueobject;
 
 import java.io.Serializable;
 
-/**
- * Created by Peter Young on 14-2-21.
- */
 public class ResultData<T> implements Serializable {
     private T data;
     private int result;

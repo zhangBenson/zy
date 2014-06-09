@@ -62,7 +62,7 @@ import com.gogowise.rep.user.UserService;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.vo.ResultData;
+import com.gogowise.action.valueobject.ResultData;
 import com.opensymphony.xwork2.ActionContext;
 
 @Controller

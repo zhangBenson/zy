@@ -12,7 +12,7 @@ import com.gogowise.rep.user.UserService;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.user.enity.RoleType;
-import com.gogowise.vo.ResultData;
+import com.gogowise.action.valueobject.ResultData;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.convention.annotation.Action;
@@ -53,7 +53,6 @@ public class OrgBaseUserAction extends BasicAction {
     @Autowired
     private OrgService orgService;
 
-
     private List<OrganizationBaseUser> orgUsers = new ArrayList<>();
     private BaseUser user;
     private Integer roleType;
@@ -61,9 +60,9 @@ public class OrgBaseUserAction extends BasicAction {
     private OrganizationBaseUser orgUser;
     private String applicantEmail;
 
-    @Action(value = "manageOrgUsers", results = {@Result(name = RoleType.STUDENT, type = Constants.RESULT_NAME_TILES, location = ".studentManage"),
-            @Result(name = RoleType.TEACHER, type = Constants.RESULT_NAME_TILES, location = ".teacherManage")})
+    @Action(value = "manageOrgUsers", results = { @Result(name = RoleType.STUDENT, type = Constants.RESULT_NAME_TILES, location = ".studentManage"), @Result(name = RoleType.TEACHER, type = Constants.RESULT_NAME_TILES, location = ".teacherManage") })
     public String manageOrgUsers() {
+
         Organization org = this.organizationDao.findByResId(this.getSessionUserId());
         this.orgUsers = organizationBaseUserDao.findOrgUsers(org.getId(), roleType, this.getPagination());
         if (roleType == RoleType.ROLE_TYPE_TEACHER) {
@@ -72,10 +71,9 @@ public class OrgBaseUserAction extends BasicAction {
         return RoleType.STUDENT;
     }
 
-
-    @Action(value = "saveOrgUser", results = {@Result(name = RoleType.STUDENT, type = Constants.RESULT_NAME_TILES, location = ".studentManage"),
-            @Result(name = RoleType.TEACHER, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "manageOrgUsers", "roleType", "${roleType}"})})
+    @Action(value = "saveOrgUser", results = { @Result(name = RoleType.STUDENT, type = Constants.RESULT_NAME_TILES, location = ".studentManage"), @Result(name = RoleType.TEACHER, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = { "actionName", "manageOrgUsers", "roleType", "${roleType}" }) })
     public String saveOrgUser() throws UnsupportedEncodingException {
+
         Organization org = orgService.findMyOrg(this.getSessionUserId());
         //判断添加老师是否已经存在
         for (OrganizationBaseUser ou : orgUsers) {
@@ -106,9 +104,9 @@ public class OrgBaseUserAction extends BasicAction {
         return RoleType.getRoleNameById(roleType);
     }
 
-
     @Action(value = "confirmBaseUserForOrg")
     public String confirmBaseUserForOrg() {
+
         if (!StringUtils.equalsIgnoreCase(this.getSessionUserEmail(), applicantEmail) || orgUser.getOrg() == null) {
             return COMMON_ERROR;
         }
@@ -130,7 +128,6 @@ public class OrgBaseUserAction extends BasicAction {
             return COMMON_ERROR;
         }
 
-
         BaseUser applicant = baseUserDao.findById(this.getSessionUserId());
         exist.setPreviousStatus(exist.getUserStatus());
         exist.setUserStatus(OrganizationBaseUser.USER_STATUS_CONFIRMED);
@@ -140,8 +137,8 @@ public class OrgBaseUserAction extends BasicAction {
         return redirectToMyCenter(isT);
     }
 
-
     private void sendInviteEmail(OrganizationBaseUser ou, String userEmail, String realName, boolean isTeacher, boolean isExist) throws UnsupportedEncodingException {
+
         //2. 发邮件通知
 
         String confirmUrl = URLEncoder.encode("/confirmBaseUserForOrg.html?applicantEmail=" + ou.getEmail() + "&orgUser.org.id=" + ou.getOrg().getId() + "&isT=" + isTeacher, "utf-8");
@@ -152,14 +149,14 @@ public class OrgBaseUserAction extends BasicAction {
             url = getBasePath() + "/initReg.html?user.email=" + ou.getEmail() + "&reDirectUrl=" + confirmUrl;
         }
         String teacherOrStudent = isTeacher ? this.getText("label.teacher") : this.getText("label.student");
-        String title = this.getText("org.invite.be.member.title", new String[]{teacherOrStudent});
-        String content = this.getText("org.invite.be.member.content", new String[]{realName, ou.getOrg().getSchoolName(), url, userEmail, teacherOrStudent, url});
+        String title = this.getText("org.invite.be.member.title", new String[] { teacherOrStudent });
+        String content = this.getText("org.invite.be.member.content", new String[] { realName, ou.getOrg().getSchoolName(), url, userEmail, teacherOrStudent, url });
         EmailUtil.sendMail(userEmail, title, content);
     }
 
-
-    @Action(value = "deleteUser", results = {@Result(name = SUCCESS, type = "json")})
+    @Action(value = "deleteUser", results = { @Result(name = SUCCESS, type = "json") })
     public String deleteUser() {
+
         ResultData<String> rd = new ResultData<String>();
         ActionContext.getContext().getValueStack().push(rd);
         try {
@@ -175,15 +172,16 @@ public class OrgBaseUserAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "reInviteUser", results = {@Result(name = SUCCESS, type = "json")})
+    @Action(value = "reInviteUser", results = { @Result(name = SUCCESS, type = "json") })
     public String reInviteUser() {
+
         ResultData<String> rd = new ResultData<String>();
         ActionContext.getContext().getValueStack().push(rd);
         try {
             String email = user.getEmail();
             Organization org = organizationDao.findByResId(getSessionUserId());
             OrganizationBaseUser orgUser = organizationBaseUserDao.findByOrgIdAndEmailAndRoleType(org.getId(), email, roleType);
-//            orgUser.setUserStatus(OrganizationBaseUser.USER_STATUS_UNCONFIRMED);
+            //            orgUser.setUserStatus(OrganizationBaseUser.USER_STATUS_UNCONFIRMED);
             organizationBaseUserDao.persistAbstract(orgUser);
             sendInviteEmail(orgUser, email, orgUser.getRealName(), RoleType.ROLE_TYPE_TEACHER.equals(roleType), baseUserDao.findByEmail(email) != null);
             rd.setResult(200);
@@ -196,42 +194,52 @@ public class OrgBaseUserAction extends BasicAction {
     }
 
     public BaseUser getUser() {
+
         return user;
     }
 
     public void setUser(BaseUser user) {
+
         this.user = user;
     }
 
     public Integer getRoleType() {
+
         return roleType;
     }
 
     public void setRoleType(Integer roleType) {
+
         this.roleType = roleType;
     }
 
     public List<OrganizationBaseUser> getOrgUsers() {
+
         return orgUsers;
     }
 
     public void setOrgUsers(List<OrganizationBaseUser> orgUsers) {
+
         this.orgUsers = orgUsers;
     }
 
     public boolean getIsT() {
+
         return isT;
     }
 
     public void setIsT(boolean isT) {
+
         this.isT = isT;
     }
 
     public void setOrgUser(OrganizationBaseUser orgUser) {
+
         this.orgUser = orgUser;
     }
 
     public void setApplicantEmail(String applicantEmail) {
+
         this.applicantEmail = applicantEmail;
     }
 }
