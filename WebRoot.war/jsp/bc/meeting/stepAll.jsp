@@ -61,4 +61,4 @@
 
 </div>
 
-<%@ include file="/jsp/gogowise/course/courseCreate/stepAll_js.jsp" %>
+<%@ include file="/jsp/bc/meeting/stepAll_js.jsp" %>

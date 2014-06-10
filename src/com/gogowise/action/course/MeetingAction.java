@@ -57,12 +57,6 @@ public class MeetingAction extends BasicAction {
     @Autowired
     private CourseInviteStudentDao courseInviteStudentDao;
 
-    @Action(value = "meetingHome", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = "bc.meeting.initHome") })
-    public String meetingHome() {
-
-        return SUCCESS;
-    }
-
     @Action(value = "initCreateMeeting", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".createMeeting") })
     public String initCreateMeeting() {
 
