@@ -4,11 +4,15 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.gogowise.rep.course.dao.ClassDao;
+import com.gogowise.rep.course.enity.CourseClass;
+import com.gogowise.rep.org.OrgService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.json.annotations.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
@@ -56,6 +60,10 @@ public class MeetingAction extends BasicAction {
     private BaseUserDao baseUserDao;
     @Autowired
     private CourseInviteStudentDao courseInviteStudentDao;
+    @Autowired
+    private ClassDao classDao;
+    @Autowired
+    private OrgService orgService;
 
     @Action(value = "initCreateMeeting", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".createMeeting") })
     public String initCreateMeeting() {
@@ -98,6 +106,7 @@ public class MeetingAction extends BasicAction {
         this.students = students;
     }
 
+    @JSON(serialize = false)
     public Course getCourse() {
 
         return course;
@@ -138,11 +147,12 @@ public class MeetingAction extends BasicAction {
         this.emails = emails;
     }
 
-    @Action(value = "ajaxSaveCourse")
-    public String ajaxSaveCourse() {
+    @Action(value = "ajaxSaveMeeting")
+    public String ajaxSaveMeeting() {
 
         // Save course
         CourseSpecification specification = CourseSpecification.create(course, this.getSessionUserId(), 101, this.getTeacherIds());
+        String logUrlFromPage = course.getLogoUrl();
         courseService.saveCourse(specification);
 
         course = courseService.findById(course.getId());
@@ -153,6 +163,7 @@ public class MeetingAction extends BasicAction {
 
         // copy jpg
         if (StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(), "upload/")) {
+            if (StringUtils.isNotBlank(logUrlFromPage)  ) course.setLogoUrl(logUrlFromPage);
             //Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
             String courseDir = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_COURSE_PATH);
             courseDir = courseDir + File.separator + course.getId();
@@ -197,8 +208,39 @@ public class MeetingAction extends BasicAction {
             }
         }
 
+        CourseClass courseClass = new CourseClass();
+        courseClass.setName("meeting");
+        courseClass.setDate(course.getStartDate() );
+        classDao.saveClass(courseClass, course,Integer.MAX_VALUE);
+
         this.setCourse_id(course.getId());
         return "json";
+    }
+
+    @Action(value = "maintenanceMeeting", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".createMeeting")})
+    public String maintenanceCourse() {
+        course = courseDao.findById(this.getCourse().getId());
+        Organization org = organizationDao.findByResId(this.getSessionUserId());
+
+        //if org is null, then this user is a teacher
+        if (org == null) {
+            org = orgService.findMyOrg(this.getSessionUserId());
+        }
+
+        //If this teacher doesn't belong to any org
+        if (org == null) {
+            teachers = new ArrayList<>();
+            teachers.add(baseUserDao.findById(this.getSessionUserId()));
+        } else {
+            teachers = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(), RoleType.ROLE_TYPE_TEACHER, null);
+            students = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(), RoleType.ROLE_TYPE_STUDENT, null);
+        }
+
+        for (BaseUser existTeacher : course.getTeachers()) {
+            teacherIds.add(existTeacher.getId());
+        }
+
+        return SUCCESS;
     }
 
 }

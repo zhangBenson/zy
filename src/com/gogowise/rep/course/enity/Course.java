@@ -510,10 +510,7 @@ public class Course extends AbstractPersistence {
     }
 
     public Boolean getCourseFinished() {
-        if (this.getClasses().get(classes.size() - 1).getFinishDate().before(Utils.getCurrentCalender())) {
-            return true;
-        }
-        return false;
+        return this.getClasses().size() > 1 && this.getClasses().get(classes.size() - 1).getFinishDate().before(Utils.getCurrentCalender());
     }
 
     public Integer getCourseRecommendNum() {

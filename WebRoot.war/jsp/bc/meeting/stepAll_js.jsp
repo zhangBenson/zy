@@ -56,7 +56,7 @@ $(function () {
     $("#step2_store").click(function () {
         if (!yzSaveCourseForm()) return;
         var course_info = $("#course_main_info_form").serialize();
-        $.post("ajaxSaveCourse.html", course_info, function (data) {
+        $.post("ajaxSaveMeeting.html", course_info, function (data) {
             $("#course_id").attr('value', data.course_id);
             $("#self_class_courseID").attr('value', data.course_id);
             $("#auto_class_courseID").attr('value', data.course_id);
@@ -171,17 +171,7 @@ function yzSaveCourseForm() {
     }
 
 
-    var charges = $("#course_charges").val().replace(/(^\s*)|(\s*$)/g, "");
-    var chargesExp = /^(\d+)(\.?)(\d{0,2})$/;
-    if (charges.length == 0) {
-        $(".course_charges_msg").html(warn_charges_empty);
-        b8 = false;
-    } else if (!charges.match(chargesExp)) {
-        $(".course_charges_msg").html(warn_charges_format_wrong);
-        b8 = false;
-    } else if (charges > 1000) {
-        $(".course_charges_msg").html(warn_charges_amount_wrong);
-    } else b8 = true;
+    var b8 = true;
 
     if (!checkStudentEmails()) b7 = false;
     else b7 = true;

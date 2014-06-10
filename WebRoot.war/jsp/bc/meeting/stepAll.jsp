@@ -46,18 +46,18 @@
     </div>
 
 
-    <div class="content_clause">
-        <input name="checkbox" type="checkbox" id="clauseCheckbox"/>
-        <label for="clauseCheckbox"><s:property value="%{getText('course.creation.document.accept')}"/></label>
-        <a href="createCourseClause.html" id="course_creation_clause"><s:property
-                value="%{getText('course.creation.document.rule')}"/></a><br/>
-        <span id="checkboxMsg" class="tip_words"></span>
-    </div>
+    <%--<div class="content_clause">--%>
+        <%--<input name="checkbox" type="checkbox" id="clauseCheckbox"/>--%>
+        <%--<label for="clauseCheckbox"><s:property value="%{getText('course.creation.document.accept')}"/></label>--%>
+        <%--<a href="createCourseClause.html" id="course_creation_clause"><s:property--%>
+                <%--value="%{getText('course.creation.document.rule')}"/></a><br/>--%>
+        <%--<span id="checkboxMsg" class="tip_words"></span>--%>
+    <%--</div>--%>
 
-    <div class="create_confirm">
-        <input type="button" id="submit_btn_large" class="submit_btn_large" onclick="publishCourse();"
-               value="<s:property value="%{getText('org.course.creation')}"/>"/>
-    </div>
+    <%--<div class="create_confirm">--%>
+        <%--<input type="button" id="submit_btn_large" class="submit_btn_large" onclick="publishCourse();"--%>
+               <%--value="<s:property value="%{getText('org.course.creation')}"/>"/>--%>
+    <%--</div>--%>
 
 </div>
 
