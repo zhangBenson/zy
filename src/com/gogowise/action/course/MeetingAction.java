@@ -154,7 +154,7 @@ public class MeetingAction extends BasicAction {
     public String ajaxSaveMeeting() {
 
         // Save course
-        CourseSpecification specification = CourseSpecification.create(course, this.getSessionUserId(), 101, this.getTeacherIds());
+        CourseSpecification specification = CourseSpecification.create(course, this.getSessionUserId(), Constants.COURSE_TYPE_ORG, this.getTeacherIds());
         String logUrlFromPage = course.getLogoUrl();
         courseService.saveCourse(specification);
 
@@ -162,6 +162,7 @@ public class MeetingAction extends BasicAction {
 
         course.setStudentAgeType(this.getCourse().getStudentAgeType());
         course.setIsPublic(this.getCourse().getIsPublic());
+        course.setStudentType(Constants.MEETING_TYPE);
         courseDao.persist(course);
 
         // copy jpg
@@ -212,7 +213,7 @@ public class MeetingAction extends BasicAction {
         }
 
         CourseClass courseClass = new CourseClass();
-        courseClass.setName("meeting");
+        courseClass.setName(Constants.MEETING_TYPE);
         courseClass.setDate(course.getStartDate() );
         classDao.saveClass(courseClass, course,Integer.MAX_VALUE);
 

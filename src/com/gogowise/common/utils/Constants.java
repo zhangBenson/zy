@@ -217,5 +217,8 @@ public class Constants {
     public static String PPT_PDF_EXT_PATH = "/exe/ppt/PPT2PDF.sh";
     public static String PPT_EXT_PATH = "/exe/ppt/PDF2PNG.sh";
 
+    public static String MEETING_TYPE = "meeting";
+
+
 
 }

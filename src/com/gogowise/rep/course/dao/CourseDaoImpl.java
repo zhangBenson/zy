@@ -1,16 +1,13 @@
 package com.gogowise.rep.course.dao;
 
 import com.gogowise.common.utils.Constants;
-import com.gogowise.common.utils.MD5;
 import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.ModelDaoImpl;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.course.enity.CourseClass;
 import com.gogowise.rep.course.enity.SeniorClassRoom;
-import com.gogowise.rep.finance.ConsumptionOrderDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
-import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.user.enity.RoleType;
@@ -55,15 +52,13 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
     public List<Course> findCourseOfForcastClass(Pagination page) {
 
         String hql = "select distinct c from Course c,CourseClass cc where " + DELETED_FALSE + " and cc.course.id = c.id and " + this.getFinisDateBiggerThanNow() + " order by c.publicationTime desc";
-        List<Course> courses = this.find(hql, page, Utils.getCurrentCalender());
-        return courses;
+        return this.find(hql, page, Utils.getCurrentCalender());
     }
 
     public List<Course> findMaintenanceCourses(Integer tid, Pagination pagination) {
 
         String hql = "select distinct c from Course c,CourseClass cc  left join c.organization org left join c.teachers teacher  where " + DELETED_FALSE + " and cc.course.id = c.id and (teacher.id=? or org.responsiblePerson.id = ?)  order by c.id desc";
-        List<Course> courses = this.find(hql, pagination, tid, tid, Utils.getCurrentCalender());
-        return courses;
+        return this.find(hql, pagination, tid, tid, Utils.getCurrentCalender());
     }
 
     public List<Course> findUserCreatedCourses(Integer userID, Pagination pagination) {
@@ -97,8 +92,7 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
 
         Calendar now = Calendar.getInstance();
         now.add(Calendar.MINUTE, -15);
-        List<Course> courses = this.find(hql, page, sid, now);
-        return courses;
+        return this.find(hql, page, sid, now);
     }
 
     public List<Course> findMyCourseOfForcastClassForUserCenter(Pagination page, Integer sid, int type) {
@@ -114,9 +108,13 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
 
         Calendar now = Calendar.getInstance();
         now.add(Calendar.MINUTE, -15);
-        List<Course> courses = this.find(hql, page, sid, now);
-        return courses;
+        return this.find(hql, page, sid, now);
     }
+
+    public List<Course> findMeeting(Integer orgId, Pagination page) {
+        return this.find("from Course c where c.organization.id = ? and c.studentType =  ?", orgId, Constants.MASTER_TYPE);
+    }
+
 
     private String getFinisDateBiggerThanNow() {
 
@@ -136,7 +134,7 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
     public List<Course> findTheCanRegCourseByUid(Pagination pagination, Integer userId) {
 
         List<SeniorClassRoom> seniorClassRooms = seniorClassRoomDao.findAllClassRoomByUser(pagination, userId);
-        List<Course> courses = new ArrayList<Course>();
+        List<Course> courses = new ArrayList<>();
         for (SeniorClassRoom seniorClassRoom : seniorClassRooms) {
             List<CourseClass> classes = seniorClassRoom.getCourse().getClasses();
             int k = 0;
@@ -152,8 +150,7 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
         }
         //return courses;
 
-        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
-        return noDeletedCourses;
+        return this.removeDeletedCourse(courses);
     }
 
     public List<Course> findHotCourses(Pagination pagination) {
@@ -250,31 +247,7 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
         return this.find("select distinct  c from Course c   left join c.seniorClassRooms sc   where " + DELETED_FALSE + " and c.organization.id = ?  and charges=0  group by c order by count(sc.id) desc", pagination, orgId);
     }
 
-    private List<CourseClass> getLivingClasses(List<CourseClass> courseClasses) {
 
-        List<CourseClass> curr = new ArrayList<CourseClass>();
-        for (CourseClass cc : courseClasses) {
-            if (cc.getDate().getTimeInMillis() < Utils.getCurrentCalender().getTimeInMillis() && cc.getFinishDate().getTimeInMillis() > Utils.getCurrentCalender().getTimeInMillis()) {
-                if (cc.getCourse().getIsDeleted() == null || cc.getCourse().getIsDeleted() == false) {
-                    curr.add(cc);
-                }
-            }
-        }
-        return curr;
-    }
-
-    private List<CourseClass> getForcastClasses(List<CourseClass> courseClasses) {
-
-        List<CourseClass> curr = new ArrayList<CourseClass>();
-        for (CourseClass cc : courseClasses) {
-            if (cc.getDate().getTimeInMillis() > Utils.getCurrentCalender().getTimeInMillis()) {
-                if (cc.getCourse().getIsDeleted() == null || cc.getCourse().getIsDeleted() == false) {
-                    curr.add(cc);
-                }
-            }
-        }
-        return curr;
-    }
 
     public Course saveRepeatCourse(Calendar startTime, Course course, String teacherEmail) {
 
@@ -341,8 +314,7 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
         //return this.find(hql,pagination,Rid,now);
 
         List<Course> courses = this.find(hql, pagination, Rid, now);
-        List<Course> noDeletedCourses = this.removeDeletedCourse(courses);
-        return noDeletedCourses;
+        return this.removeDeletedCourse(courses);
     }
 
     public List<Course> findCourseOnline(Pagination pagination) {
@@ -397,11 +369,11 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
         if (courses == null)
             return null;
 
-        List<Course> result = new ArrayList<Course>();
+        List<Course> result = new ArrayList<>();
 
         for (Course course : courses) {
             if (course.getIsDeleted() != null) {
-                if (course.getIsDeleted().booleanValue() == true) {
+                if (course.getIsDeleted()) {
                     continue;
                 }
             }
