@@ -2,15 +2,12 @@ package com.gogowise.rep.course.dao;
 
 import com.gogowise.rep.ModelDaoImpl;
 import com.gogowise.rep.Pagination;
-import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.course.enity.Course;
-import com.gogowise.rep.course.enity.CourseInviteStudent;
 import com.gogowise.rep.course.enity.SeniorClassRoom;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.common.utils.Utils;
 import org.springframework.stereotype.Repository;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,18 +49,18 @@ public class SeniorClassRoomDaoImpl extends ModelDaoImpl<SeniorClassRoom> implem
 
     public List<SeniorClassRoom> findAllClassRoomByUser(Pagination pagination, Integer userId) {
 
-        List<SeniorClassRoom> seniorClassRooms = new ArrayList<SeniorClassRoom>();
-        List<SeniorClassRoom> seniorClassRooms2 = new ArrayList<SeniorClassRoom>();
+        List<SeniorClassRoom> seniorClassRooms = new ArrayList<>();
+        List<SeniorClassRoom> seniorClassRooms2 = new ArrayList<>();
         seniorClassRooms = this.find("From SeniorClassRoom scr where scr.student.id=?", userId);
-        for (int i = 0; i < seniorClassRooms.size(); i++) {
-            if (seniorClassRooms.get(i).getCourse().getClasses().size() != 0) {
-                seniorClassRooms2.add(seniorClassRooms.get(i));
+        for (SeniorClassRoom seniorClassRoom : seniorClassRooms) {
+            if (seniorClassRoom.getCourse().getClasses().size() != 0) {
+                seniorClassRooms2.add(seniorClassRoom);
             }
         }
         return seniorClassRooms2;
     }
 
-    public void saveSeniorClassRoom(Integer courseId, Integer userId) throws IOException {
+    public void saveSeniorClassRoom(Integer courseId, Integer userId)  {
 
         SeniorClassRoom seniorClassRoom = new SeniorClassRoom();
         BaseUser student = baseUserDao.findById(userId);
@@ -85,18 +82,6 @@ public class SeniorClassRoomDaoImpl extends ModelDaoImpl<SeniorClassRoom> implem
             return "course.reg.success";
         }
         return "course.reg.failed";
-    }
-
-    private Boolean limitNumOver(Course course) {
-
-        if (course.getTeachingNum() <= 3) {
-            if (course.getObservationNum() + course.getCourseInviteStudents().size() >= course.getTeachingNum()) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        return false;
     }
 
     public CourseDao getCourseDao() {

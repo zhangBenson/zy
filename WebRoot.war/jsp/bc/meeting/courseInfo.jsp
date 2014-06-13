@@ -3,7 +3,7 @@
 <div class="pic_2">
     <ul class="content_courseInfo fl">
         <li>
-            <span class="item"><s:property value="%{getText('course.info.courseName')}"/></span>
+            <span class="item">Name of Meeting</span>
             <s:textfield cssClass="long_text_field" id="step2_course_name" name="course.name" type="text"/>
             <span class="course_name_input_msg tip_words">*</span>
 
@@ -14,7 +14,7 @@
                      value="course.isPublic" cssStyle="margin-left: 10px;margin-right: 10px;"/>
         </li>
         <li>
-            <span class="item"><s:property value="%{getText('course.info.description')}"/></span>
+            <span class="item">Meeting Description</span>
             <span class="course_intro_input_msg tip_words">*</span> <br/>
             <s:textarea cssClass="long_text_area" id="step2_course_intro" name="course.description"/>
         </li>
@@ -28,7 +28,7 @@
         </li>
 
         <li>
-            <span class="item"><s:property value="%{getText('label.online.class.logo')}"/></span><span
+            <span class="item">Meeting Logo</span><span
                 class="tip_words" id="course_logo_input_msg">*</span><br/>
             <img src="<s:property value="course.logoUrl"/>" id="show_log_preview"
                  onerror="this.onerror=null;this.src='images/defaultImgs/course.gif'"/>
@@ -39,13 +39,13 @@
         </li>
 
             <li>
-                <span class="item"><s:property value="%{getText('label.forcast.lecturer')}"/></span>
+                <span class="item">Host</span>
                 <s:radio list="teachers" listKey="id" listValue="nickName" name="teacherIds" value="course.teacher.id"/>
                 <span class="invite_teacher_input_msg tip_words">*</span>
             </li>
 
         <li>
-            <s:property value="%{getText('course.student.appointed')}"/>
+            The Participant(s) Appointed
             <a class="add_student_btn"><s:property value="%{getText('course.add.student')}"/></a> &nbsp;&nbsp;&nbsp;
             <span class="invite_student_input_msg tip_words"></span>
 

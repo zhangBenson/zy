@@ -4,7 +4,6 @@ import com.gogowise.rep.ModelDao;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.enity.SeniorClassRoom;
 
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -24,7 +23,7 @@ public interface SeniorClassRoomDao extends ModelDao<SeniorClassRoom> {
 
     public List<SeniorClassRoom> findAllClassRoomByUser(Pagination pagination, Integer userId);
 
-    public void saveSeniorClassRoom(Integer courseId, Integer userId) throws IOException;
+    public void saveSeniorClassRoom(Integer courseId, Integer userId);
 
     public String deleteSeniorClassRoom(Integer cid, Integer uid);
 }

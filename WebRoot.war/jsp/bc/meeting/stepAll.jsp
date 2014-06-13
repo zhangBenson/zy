@@ -4,23 +4,23 @@
 
 <link href="css/course/stepAll.css" rel="stylesheet" type="text/css"/>
 
-<div class="mf_1">
-    <ul class="sub_nav cf">
-        <li class="">
-            <a href="myForcastClass.html"><s:property value="%{getText('usermenu.item.my.created.courses')}"/></a>
-        </li>
-        <li class="">
-            <a href="myRegistration.html"><s:property value="%{getText('usermenu.item.my.reged.courses')}"/></a>
-        </li>
-        <li class="stand_out">
-            <a href="javascript:;"><s:property value="%{getText('usermenu.item.createcourse')}"/></a>
-        </li>
-    </ul>
-</div>
+<%--<div class="mf_1">--%>
+    <%--<ul class="sub_nav cf">--%>
+        <%--<li class="">--%>
+            <%--<a href="myForcastClass.html"><s:property value="%{getText('usermenu.item.my.created.courses')}"/></a>--%>
+        <%--</li>--%>
+        <%--<li class="">--%>
+            <%--<a href="myRegistration.html"><s:property value="%{getText('usermenu.item.my.reged.courses')}"/></a>--%>
+        <%--</li>--%>
+        <%--<li class="stand_out">--%>
+            <%--<a href="javascript:;"><s:property value="%{getText('usermenu.item.createcourse')}"/></a>--%>
+        <%--</li>--%>
+    <%--</ul>--%>
+<%--</div>--%>
 <div class="create_cont fl">
-    <div class="stepTip fl">
-        <s:property value="%{getText('msg.intr')}"/>
-    </div>
+    <%--<div class="stepTip fl">--%>
+        <%--<s:property value="%{getText('msg.intr')}"/>--%>
+    <%--</div>--%>
 
 
     <div class="stepWrap fl">
@@ -31,7 +31,7 @@
             <%-- 直接就是1对多的大班 --%>
             <input type="hidden" name="course.teachingNum" value="4"/>
 
-            <h3 alt="2"><span class="num">1</span><s:property value="%{getText('titie.info.course')}"/></h3>
+            <h3 alt="2"><span class="num">1</span>Meeting Info</h3>
 
             <div class="stepCont" style="display: block;">
                 <div class="pic_1"></div>

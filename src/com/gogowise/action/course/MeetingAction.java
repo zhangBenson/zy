@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.gogowise.rep.course.dao.ClassDao;
+import com.gogowise.rep.course.dao.SeniorClassRoomDao;
 import com.gogowise.rep.course.enity.CourseClass;
 import com.gogowise.rep.org.OrgService;
 import org.apache.commons.lang.StringUtils;
@@ -64,6 +65,8 @@ public class MeetingAction extends BasicAction {
     private ClassDao classDao;
     @Autowired
     private OrgService orgService;
+    @Autowired
+    private SeniorClassRoomDao seniorClassRoomDao;
 
     @Action(value = "initCreateMeeting", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".createMeeting") })
     public String initCreateMeeting() {
@@ -212,6 +215,15 @@ public class MeetingAction extends BasicAction {
         courseClass.setName("meeting");
         courseClass.setDate(course.getStartDate() );
         classDao.saveClass(courseClass, course,Integer.MAX_VALUE);
+
+
+        for (String email : emails) {
+            if (StringUtils.isNotBlank(email)) {
+                BaseUser studentTemp = baseUserDao.findByEmail(email);
+                if (studentTemp != null )
+                    seniorClassRoomDao.saveSeniorClassRoom(this.course.getId(),studentTemp.getId());
+            }
+        }
 
         this.setCourse_id(course.getId());
         return "json";
