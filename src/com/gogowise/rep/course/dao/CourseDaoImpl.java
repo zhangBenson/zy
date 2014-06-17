@@ -115,6 +115,12 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
         return this.find("from Course c where c.organization.id = ? and c.studentType =  ?", orgId, Constants.MASTER_TYPE);
     }
 
+    public List<Course> findMeetingForStudent(Integer userID, Pagination pagination) {
+
+        String hql = "select distinct c from Course c left join c.seniorClassRooms sc where" + "  sc.course.id = c.id   and  (sc.student.id=?) and c.studentType =  ? order by c.publicationTime desc ";
+        return this.find(hql, pagination, userID, Constants.MASTER_TYPE);
+    }
+
 
     private String getFinisDateBiggerThanNow() {
 

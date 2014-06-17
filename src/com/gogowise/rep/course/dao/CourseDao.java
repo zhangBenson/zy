@@ -76,4 +76,6 @@ public interface CourseDao extends ModelDao<Course> {
 
 
     public List<Course> findMeeting(Integer orgId, Pagination page);
+
+    public List<Course> findMeetingForStudent(Integer userID, Pagination pagination);
 }
