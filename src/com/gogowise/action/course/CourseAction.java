@@ -151,7 +151,7 @@ public class CourseAction extends BasicAction {
 
     private Integer videoVersionId;
 
-    @Action(value = "courseCenter", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseCenter") })
+    @Action(value = "courseCenter", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseCenter")})
     public String courseCenter() {
 
         centerCourses = courseDao.findlatestCourses(pagination);
@@ -159,7 +159,7 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "courseSquare", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseSquare") })
+    @Action(value = "courseSquare", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseSquare")})
     public String courseSquare() {
 
         coursesOnline = courseDao.findCourseOnline(new Pagination(3));
@@ -173,7 +173,7 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "courseHotList", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseHotList") })
+    @Action(value = "courseHotList", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseHotList")})
     public String showHotCourses() {
 
         pagination.setPageSize(5);
@@ -183,7 +183,7 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "courseNewList", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseNewList") })
+    @Action(value = "courseNewList", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseNewList")})
     public String showNewCourseList() {
 
         pagination.setPageSize(5);
@@ -204,7 +204,7 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "loadCoursesDivideByType", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".coursesInTypes") })
+    @Action(value = "loadCoursesDivideByType", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".coursesInTypes")})
     public String loadCoursesDivideByType() {
 
         if (this.getCourse().getCourseType() != 0) {
@@ -215,31 +215,31 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "step1", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".step1") })
+    @Action(value = "step1", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".step1")})
     public String step1() {
 
         return SUCCESS;
     }
 
-    @Action(value = "step2", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".step2") })
+    @Action(value = "step2", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".step2")})
     public String step2() {
 
         return SUCCESS;
     }
 
-    @Action(value = "step3", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".step3") })
+    @Action(value = "step3", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".step3")})
     public String step3() {
 
         return SUCCESS;
     }
 
-    @Action(value = "step4", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".step4") })
+    @Action(value = "step4", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".step4")})
     public String step4() {
 
         return SUCCESS;
     }
 
-    @Action(value = "createCourse", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initStep1"), @Result(name = "failed", type = Constants.RESULT_NAME_TILES, location = ".identityConfirmation") })
+    @Action(value = "createCourse", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initStep1"), @Result(name = "failed", type = Constants.RESULT_NAME_TILES, location = ".identityConfirmation")})
     public String initCourse() {
 
         if (getSessionUserId() == null) {
@@ -249,7 +249,7 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "setClassRecord", results = { @Result(name = SUCCESS, type = "json") })
+    @Action(value = "setClassRecord", results = {@Result(name = SUCCESS, type = "json")})
     public String setRecordStatus() {
 
         ResultData<String> rd = new ResultData<>();
@@ -270,13 +270,13 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "createCourseClause", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".createCourseClause") })
+    @Action(value = "createCourseClause", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".createCourseClause")})
     public String createCourseClause() {
 
         return SUCCESS;
     }
 
-    @Action(value = "courseRepeat", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseRepeat") })
+    @Action(value = "courseRepeat", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseRepeat")})
     public String courseRepeat() {
 
         courses = courseDao.findMyCourseOFAgePart(pagination, this.getSessionUserId());
@@ -293,7 +293,7 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "initSaveCourse", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initStep2") })
+    @Action(value = "initSaveCourse", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initStep2")})
     public String initSaveCourse() {
 
         if (this.getCourse().getId() != null) {
@@ -308,7 +308,7 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "saveCourse", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initStep3"), @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".initStep2") })
+    @Action(value = "saveCourse", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initStep3"), @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".initStep2")})
     public String saveCourse() {
 
         if (this.getIdentity() != null) {
@@ -366,7 +366,7 @@ public class CourseAction extends BasicAction {
 
     }
 
-    @Action(value = "initCourseInfoModify", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initMaintenanceInfo") })
+    @Action(value = "initCourseInfoModify", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initMaintenanceInfo")})
     public String initCourseInfoModify() {
 
         course = courseDao.findById(this.getCourse().getId());
@@ -379,7 +379,7 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "initRepeatCourseInfo", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".repeatCourseInfo") })
+    @Action(value = "initRepeatCourseInfo", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".repeatCourseInfo")})
     public String initRepeatCourseInfo() {
 
         course = courseDao.findById(this.getCourse().getId());
@@ -393,7 +393,7 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "courseInfoModify", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseInfoModified"), @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".initCourseInfoModify") })
+    @Action(value = "courseInfoModify", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseInfoModified"), @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".initCourseInfoModify")})
     public String courseInfoModify() {
 
         Course realCourse = courseDao.findById(this.getCourse().getId());
@@ -435,7 +435,7 @@ public class CourseAction extends BasicAction {
 
     }
 
-    @Action(value = "courseGet2public", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = { "actionName", "myfirstPage" }), @Result(name = "orgSUCCESS", type = Constants.RESULT_NAME_REDIRECT_ACTION, params = { "actionName", "myForcastClass", "course.id", "${course.id}" }) })
+    @Action(value = "courseGet2public", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}), @Result(name = "orgSUCCESS", type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myForcastClass", "course.id", "${course.id}"})})
     public String go2public() {
 
         course = courseDao.findById(this.getCourse().getId());
@@ -468,20 +468,20 @@ public class CourseAction extends BasicAction {
             String css = "<style type=\"text/css\">\n" + "#rvmDiv #logoDiv {background-image: url(http://www.gogowise.com/images/logo.jpg);background-repeat: no-repeat;height: 65px;margin-left: 45px;}\n" + "#rvmDiv #rvmcontentDiv ul .welcomeTittle {margin-left: 30px;}\n" + "#rvmDiv {float: left;width: 100%;font-family: \"微软雅黑\", \"宋体\", \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif;}\n" + "#logoDiv {float: left;width: 100%;}\n" + "#rvmcontentDiv {float: left;width: 100%;}\n" + "#rvmDiv #rvmcontentDiv ul li {list-style-type: none;}\n" + "#rvmDiv #rvmcontentDiv .orangeWords {color: rgb(255,155,55);}\n" + "#rvmDiv #rvmcontentDiv ul .lastWords {margin-top: 50px;}\n" + "table,tr,td{border-collapse:collapse;border-top-width: 1px;border-right-width: 1px;border-bottom-width: 1px;border-left-width: 1px;\n" + "border-right-color:#09F;border-bottom-color: #09F;border-left-color: #09F;}\n" + "tr.odd{background-color:#CEFFFF;}\n" + "</style>";
             //=====================================  课程发布时，组织发送邮件给老师   =====================
 
-            String tile = this.getText("org.invite.teacher.email.title", new String[] { course.getOrganization().getSchoolName() });
+            String tile = this.getText("org.invite.teacher.email.title", new String[]{course.getOrganization().getSchoolName()});
 
             String acceptArrange = getBasePath() + "/emailHandleForCourseCreation.html?course.id=" + course.getId() + "&accept=true&teacher=true&user.email=" + course.getTeacherEmail();
             String rejectArrange = getBasePath() + "/emailHandleForCourseCreation.html?course.id=" + course.getId() + "&accept=false&teacher=true&user.email=" + course.getTeacherEmail();
-            String[] args = { course.getTeacherEmail(), course.getOrganization().getSchoolName(), course.getName(), course.getDescription(), dateFormat.format(Utils.changeBaseOnTimeZone4Action(courseStartTime).getTime()), course.getTotalHours().toString(), classesInfo.toString(), acceptArrange, rejectArrange, acceptArrange, rejectArrange, this.getCourse().getTeacherEmail() };
+            String[] args = {course.getTeacherEmail(), course.getOrganization().getSchoolName(), course.getName(), course.getDescription(), dateFormat.format(Utils.changeBaseOnTimeZone4Action(courseStartTime).getTime()), course.getTotalHours().toString(), classesInfo.toString(), acceptArrange, rejectArrange, acceptArrange, rejectArrange, this.getCourse().getTeacherEmail()};
             EmailUtil.sendMail(course.getTeacherEmail(), tile, css + this.getText("org.invite.teacher.email.content", args), "text/html;charset=utf-8");
 
             //=====================================  课程发布时，组织发送邮件给学生   =====================
 
             for (CourseInviteStudent courseInviteStudent : courseInviteStudents) {
-                String tile2 = this.getText("org.invite.student.email.title", new String[] { course.getName() });
+                String tile2 = this.getText("org.invite.student.email.title", new String[]{course.getName()});
                 String acceptArrange2student = getBasePath() + "/emailHandleForCourseCreation.html?course.id=" + course.getId() + "&accept=true&teacher=false&user.email=" + courseInviteStudent.getInvitedStudentEmail();
                 String rejectArrange2student = getBasePath() + "/emailHandleForCourseCreation.html?course.id=" + course.getId() + "&accept=false&teacher=false&user.email=" + courseInviteStudent.getInvitedStudentEmail();
-                String[] args2student = { courseInviteStudent.getInvitedStudentEmail(), course.getOrganization().getSchoolName(), course.getName(), course.getDescription(), dateFormat.format(courseStartTime.getTime()), course.getTotalHours().toString(), classesInfo.toString(), acceptArrange2student, rejectArrange2student, acceptArrange2student, rejectArrange2student, courseInviteStudent.getInvitedStudentEmail() };
+                String[] args2student = {courseInviteStudent.getInvitedStudentEmail(), course.getOrganization().getSchoolName(), course.getName(), course.getDescription(), dateFormat.format(courseStartTime.getTime()), course.getTotalHours().toString(), classesInfo.toString(), acceptArrange2student, rejectArrange2student, acceptArrange2student, rejectArrange2student, courseInviteStudent.getInvitedStudentEmail()};
                 EmailUtil.sendMail(courseInviteStudent.getInvitedStudentEmail(), tile2, css + this.getText("org.invite.student.email.content", args2student), "text/html;charset=utf-8");
                 matter = new Matter(Calendar.getInstance(), serialNo, Matter.MATTER_COURSE_STUDENT, baseUserDao.findByEmail(this.getSessionUserEmail()), null, courseInviteStudent.getInvitedStudentEmail(), course, false);
                 matterDao.persistAbstract(matter);
@@ -493,7 +493,7 @@ public class CourseAction extends BasicAction {
             for (CourseInviteStudent courseInviteStudent : courseInviteStudents) {
                 String hrefAccept = getBasePath() + "/emailHandleForCourseCreation.html?course.id=" + course.getId() + "&accept=true&teacher=false&user.email=" + courseInviteStudent.getInvitedStudentEmail();
                 String hrefReject = getBasePath() + "/emailHandleForCourseCreation.html?course.id=" + course.getId() + "&accept=false&teacher=false&user.email=" + courseInviteStudent.getInvitedStudentEmail();
-                EmailUtil.sendMail(courseInviteStudent.getInvitedStudentEmail(), this.getText("course.invite.student.email.content.you.friend") + " " + course.getTeacher().getNickName() + " " + this.getText("course.invite.student.email.content.invite") + " " + course.getName() + " " + this.getText("course.invite.student.email.content.course"), css + this.getText("course.invite.student.email.content", new String[] { course.getTeacher().getNickName(), course.getTeacher().getEmail(), course.getName(), course.getDescription(), dateFormat.format(Utils.changeBaseOnTimeZone4Action(courseStartTime).getTime()), course.getTotalHours().toString(), hrefAccept, hrefReject, hrefAccept, hrefReject, courseInviteStudent.getInvitedStudentEmail() }), "text/html;charset=utf-8");
+                EmailUtil.sendMail(courseInviteStudent.getInvitedStudentEmail(), this.getText("course.invite.student.email.content.you.friend") + " " + course.getTeacher().getNickName() + " " + this.getText("course.invite.student.email.content.invite") + " " + course.getName() + " " + this.getText("course.invite.student.email.content.course"), css + this.getText("course.invite.student.email.content", new String[]{course.getTeacher().getNickName(), course.getTeacher().getEmail(), course.getName(), course.getDescription(), dateFormat.format(Utils.changeBaseOnTimeZone4Action(courseStartTime).getTime()), course.getTotalHours().toString(), hrefAccept, hrefReject, hrefAccept, hrefReject, courseInviteStudent.getInvitedStudentEmail()}), "text/html;charset=utf-8");
                 Matter matter = new Matter(Calendar.getInstance(), null, Matter.MATTER_COURSE_STUDENT_NO_ORG, baseUserDao.findByEmail(this.getSessionUserEmail()), null, courseInviteStudent.getInvitedStudentEmail(), course, false);
                 matterDao.persistAbstract(matter);
             }
@@ -519,7 +519,7 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "initBigCourseAdvertiseEmail", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initBigCourseAdvertiseEmail"), @Result(name = NONE, type = Constants.RESULT_NAME_TILES, location = ".notExist") })
+    @Action(value = "initBigCourseAdvertiseEmail", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initBigCourseAdvertiseEmail"), @Result(name = NONE, type = Constants.RESULT_NAME_TILES, location = ".notExist")})
     public String initBigCourseAdvertiseEmail() {
 
         if (this.getCourse().getId() != null) {
@@ -542,8 +542,8 @@ public class CourseAction extends BasicAction {
             classesInfo = classesInfo.append("<tr><td>").append(cc.getName()).append("</td><td>").append(Utils.getEmptyString(cc.getNickName())).append("</td><td>").append(dateFormat.format(Utils.changeBaseOnTimeZone4Action(classStartTime).getTime())).append("</td><td>").append(cc.getDuration()).append("</td><td>").append(this.getText("label.day.of.week." + classStartTime.get(Calendar.DAY_OF_WEEK))).append("</td></tr>");
         }
         String href = getBasePath() + "/emailHandleForCourseCreation.html?course.id=" + course.getId() + "&accept=true&teacher=false&user.email=" + this.getEmail();
-        String title = this.getText("big.course.advertise.email.confirm.title", new String[] { course.getName() });
-        String content = Constants.BIG_COURSE_ADVERTISE_EMAIL_CSS + this.getText("big.course.advertise.email.confirm.content", new String[] { this.getEmail(), course.getName(), course.getDescription(), classesInfo.toString(), href, href, this.getEmail() });
+        String title = this.getText("big.course.advertise.email.confirm.title", new String[]{course.getName()});
+        String content = Constants.BIG_COURSE_ADVERTISE_EMAIL_CSS + this.getText("big.course.advertise.email.confirm.content", new String[]{this.getEmail(), course.getName(), course.getDescription(), classesInfo.toString(), href, href, this.getEmail()});
         if (StringUtils.isNotBlank(this.getEmail())) {
             if (curr == null && course.getTeachingNum().equals(4)) {
                 EmailUtil.sendMail(this.getEmail(), title, content, "text/html;charset=utf-8");
@@ -555,7 +555,7 @@ public class CourseAction extends BasicAction {
         }
     }
 
-    @Action(value = "emailHandleForCourseCreation", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = { "actionName", "myfirstPage" }), @Result(name = "inviteReject", type = Constants.RESULT_NAME_TILES, location = ".emailHandleReject"), @Result(name = NONE, type = Constants.RESULT_NAME_TILES, location = ".notExist") })
+    @Action(value = "emailHandleForCourseCreation", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}), @Result(name = "inviteReject", type = Constants.RESULT_NAME_TILES, location = ".emailHandleReject"), @Result(name = NONE, type = Constants.RESULT_NAME_TILES, location = ".notExist")})
     public String emailHandleForCourseCreation() throws Exception {
 
         if (this.getCourse().getId() != null && this.getUser().getEmail() != null) {
@@ -578,16 +578,16 @@ public class CourseAction extends BasicAction {
 
                     //=============================给老师和学生发送的课程预定协议===========================================
                     String filePath = "d:/contract/" + course.getName() + ".pdf";
-                    String tile = this.getText("course.pdf.title", new String[] { user.getNickName(), course.getName() });
+                    String tile = this.getText("course.pdf.title", new String[]{user.getNickName(), course.getName()});
                     String content = this.getText("course.pdf.content");
                     PdfUtil.createCourseContract(filePath, courseDao.findById(course.getId()), user);
-                    EmailUtil.sendMail(user.getEmail(), tile, content, new String[] { "contract.pdf" }, new String[] { filePath });
+                    EmailUtil.sendMail(user.getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
                     if (course.getOrganization() != null) {
-                        EmailUtil.sendMail(course.getOrganization().getResponsiblePerson().getEmail(), tile, content, new String[] { "contract.pdf" }, new String[] { filePath });
+                        EmailUtil.sendMail(course.getOrganization().getResponsiblePerson().getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
                     } else {
-                        EmailUtil.sendMail(course.getTeacher().getEmail(), tile, content, new String[] { "contract.pdf" }, new String[] { filePath });
+                        EmailUtil.sendMail(course.getTeacher().getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
                     }
-                    EmailUtil.sendMail(Constants.COURSE_CONFIRM_EMAIL, tile, content, new String[] { "contract.pdf" }, new String[] { filePath });
+                    EmailUtil.sendMail(Constants.COURSE_CONFIRM_EMAIL, tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
                     return SUCCESS;
                 }
                 return NONE;
@@ -604,7 +604,7 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "modifyCourseStep2", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".modifyCourseStep3") })
+    @Action(value = "modifyCourseStep2", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".modifyCourseStep3")})
     public String modifyCourseStep2() {
 
         Course existCourse = courseDao.findById(this.getCourse().getId());
@@ -635,7 +635,7 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "modifyGet2public", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = { "actionName", "myForcastClass", "course.id", "${course.id}" }) })
+    @Action(value = "modifyGet2public", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myForcastClass", "course.id", "${course.id}"})})
     public String modifyGet2public() {
 
         DateFormat dateFormat = new SimpleDateFormat(this.getText("dateformat.forclass"));
@@ -652,30 +652,30 @@ public class CourseAction extends BasicAction {
         String css = "<style type=\"text/css\">\n" + "#rvmDiv #logoDiv {background-image: url(http://www.gogowise.com/images/logo.jpg);background-repeat: no-repeat;height: 65px;margin-left: 45px;}\n" + "#rvmDiv #rvmcontentDiv ul .welcomeTittle {margin-left: 30px;}\n" + "#rvmDiv {float: left;width: 100%;font-family: \"微软雅黑\", \"宋体\", \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif;}\n" + "#logoDiv {float: left;width: 100%;}\n" + "#rvmcontentDiv {float: left;width: 100%;}\n" + "#rvmDiv #rvmcontentDiv ul li {list-style-type: none;}\n" + "#rvmDiv #rvmcontentDiv .orangeWords {color: rgb(255,155,55);}\n" + "#rvmDiv #rvmcontentDiv ul .lastWords {margin-top: 50px;}\n" + "table,tr,td{border-collapse:collapse;border-top-width: 1px;border-right-width: 1px;border-bottom-width: 1px;border-left-width: 1px;\n" + "border-right-color:#09F;border-bottom-color: #09F;border-left-color: #09F;}\n" + "tr.odd{background-color:#CEFFFF;}\n" + "</style>";
         if ((course.getOrganization() != null) && this.getTeacherChange()) { //变化
 
-            String tile = this.getText("org.invite.teacher.email.title", new String[] { course.getOrganization().getSchoolName() });
+            String tile = this.getText("org.invite.teacher.email.title", new String[]{course.getOrganization().getSchoolName()});
             String acceptArrange = getBasePath() + "/emailHandleForCourseCreation.html?course.id=" + course.getId() + "&accept=true&teacher=true&user.email=" + course.getTeacherEmail();
             String rejectArrange = getBasePath() + "/emailHandleForCourseCreation.html?course.id=" + course.getId() + "&accept=false&teacher=true&user.email=" + course.getTeacherEmail();
-            String[] args = { course.getTeacherEmail(), course.getOrganization().getSchoolName(), course.getName(), course.getDescription(), dateFormat4StartDate.format(Utils.changeBaseOnTimeZone4Action(courseStartTime).getTime()), course.getTotalHours().toString(), classesInfo.toString(), acceptArrange, rejectArrange, acceptArrange, acceptArrange, this.getCourse().getTeacherEmail() };
+            String[] args = {course.getTeacherEmail(), course.getOrganization().getSchoolName(), course.getName(), course.getDescription(), dateFormat4StartDate.format(Utils.changeBaseOnTimeZone4Action(courseStartTime).getTime()), course.getTotalHours().toString(), classesInfo.toString(), acceptArrange, rejectArrange, acceptArrange, acceptArrange, this.getCourse().getTeacherEmail()};
             EmailUtil.sendMail(course.getTeacherEmail(), tile, css + this.getText("org.invite.teacher.email.content", args), "text/html;charset=utf-8");
         } else if ((course.getOrganization() != null)) {
 
-            String tile = this.getText("org.modify.teacher.email.title", new String[] { course.getName() });
+            String tile = this.getText("org.modify.teacher.email.title", new String[]{course.getName()});
 
-            String[] args = { course.getTeacherEmail(), course.getName(), course.getName(), course.getDescription(), dateFormat4StartDate.format(Utils.changeBaseOnTimeZone4Action(courseStartTime).getTime()), course.getTotalHours().toString(), classesInfo.toString(), this.getCourse().getTeacherEmail() };
+            String[] args = {course.getTeacherEmail(), course.getName(), course.getName(), course.getDescription(), dateFormat4StartDate.format(Utils.changeBaseOnTimeZone4Action(courseStartTime).getTime()), course.getTotalHours().toString(), classesInfo.toString(), this.getCourse().getTeacherEmail()};
             EmailUtil.sendMail(course.getTeacherEmail(), tile, css + this.getText("org.modify.teacher.email.content", args), "text/html;charset=utf-8");
         }
         List<BaseUser> regs = courseDao.findRegUser(course.getId(), new Pagination(2000));
         for (BaseUser bu : regs) {
-            String tile = this.getText("org.modify.teacher.email.title", new String[] { course.getName() });
+            String tile = this.getText("org.modify.teacher.email.title", new String[]{course.getName()});
 
-            String[] args = { bu.getNickName(), course.getName(), course.getName(), course.getDescription(), dateFormat4StartDate.format(Utils.changeBaseOnTimeZone4Action(courseStartTime).getTime()), course.getTotalHours().toString(), classesInfo.toString(), bu.getNickName() };
+            String[] args = {bu.getNickName(), course.getName(), course.getName(), course.getDescription(), dateFormat4StartDate.format(Utils.changeBaseOnTimeZone4Action(courseStartTime).getTime()), course.getTotalHours().toString(), classesInfo.toString(), bu.getNickName()};
             EmailUtil.sendMail(bu.getEmail(), tile, css + this.getText("org.modify.teacher.email.content", args), "text/html;charset=utf-8");
         }
 
         return SUCCESS;
     }
 
-    @Action(value = "goback2saveCourse", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initStep2") })
+    @Action(value = "goback2saveCourse", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initStep2")})
     public String goBack2SaveCourse() {
 
         course = courseDao.findById(this.getCourse().getId());
@@ -689,7 +689,7 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "goback2firstStep", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initStep1") })
+    @Action(value = "goback2firstStep", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initStep1")})
     public String goBack2firstStep() {
 
         if (this.getCourse().getId() != null) {
@@ -698,13 +698,13 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "teacherIdentityLogin", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseInviteLogin") })
+    @Action(value = "teacherIdentityLogin", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseInviteLogin")})
     public String teacherIdentityLogin() {
 
         return SUCCESS;
     }
 
-    @Action(value = "courseInviteIdentityConfirm", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = { "actionName", "myfirstPage" }) })
+    @Action(value = "courseInviteIdentityConfirm", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"})})
     public String courseInviteIdentityConfirm() throws Exception {
 
         user.setLockedOut(false);
@@ -721,17 +721,17 @@ public class CourseAction extends BasicAction {
         String tile = "预定课程协议";
         String content = "内容见附件";
         PdfUtil.createCourseContract(filePath, courseDao.findById(course.getId()), user);
-        EmailUtil.sendMail(user.getEmail(), tile, content, new String[] { "contract.pdf" }, new String[] { filePath });
-        EmailUtil.sendMail(course.getTeacher().getEmail(), tile, content, new String[] { "contract.pdf" }, new String[] { filePath });
-        EmailUtil.sendMail(Constants.COURSE_CONFIRM_EMAIL, tile, content, new String[] { "contract.pdf" }, new String[] { filePath });
+        EmailUtil.sendMail(user.getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
+        EmailUtil.sendMail(course.getTeacher().getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
+        EmailUtil.sendMail(Constants.COURSE_CONFIRM_EMAIL, tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
 
         //=============================给老师的邮件反馈===========================================
 
-        EmailUtil.sendMail(course.getTeacher().getEmail(), this.getText("course.invite.student.email.content.you.friend") + user.getNickName() + this.getText("course.invite.student.and.accept"), Constants.CSS + this.getText("course.invite.student.to.teacher.feedback", new String[] { user.getNickName(), course.getName(), dateFormat.format(course.getStartDate().getTime()), course.getTeacher().getEmail(), course.getTeacher().getEmail() }), "text/html;charset=utf-8");
+        EmailUtil.sendMail(course.getTeacher().getEmail(), this.getText("course.invite.student.email.content.you.friend") + user.getNickName() + this.getText("course.invite.student.and.accept"), Constants.CSS + this.getText("course.invite.student.to.teacher.feedback", new String[]{user.getNickName(), course.getName(), dateFormat.format(course.getStartDate().getTime()), course.getTeacher().getEmail(), course.getTeacher().getEmail()}), "text/html;charset=utf-8");
         return SUCCESS;
     }
 
-    @Action(value = "courseAdminManage", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseAdminManage"), @Result(name = ERROR, type = Constants.RESULT_NAME_TILES, location = ".noPermission") })
+    @Action(value = "courseAdminManage", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseAdminManage"), @Result(name = ERROR, type = Constants.RESULT_NAME_TILES, location = ".noPermission")})
     public String courseAdminManage() {
 
         Integer userID = (Integer) ActionContext.getContext().getSession().get(Constants.SESSION_USER_ID);
@@ -744,7 +744,7 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "removeCourseConfirm", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = { "actionName", "courseAdminManage" }), @Result(name = "redirect", type = "redirect", location = "${redirectURL}") })
+    @Action(value = "removeCourseConfirm", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "courseAdminManage"}), @Result(name = "redirect", type = "redirect", location = "${redirectURL}")})
     public String removeCourseConfirm() {
 
         if (this.getCourse().getId() != null) {
@@ -778,7 +778,7 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "forcastClass", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".forcastClass") })
+    @Action(value = "forcastClass", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".forcastClass")})
     //     @Action(value = "forcastClass", results = {@Result(name = SUCCESS, location = "/jsp/gogowise/course/forcastClasses.jsp")})
     public String forcast() {
 
@@ -787,7 +787,7 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "myForcastClass", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".myForcastClass") })
+    @Action(value = "myForcastClass", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".myForcastClass")})
     //     @Action(value = "myForcastClass", results = {@Result(name = SUCCESS, location = "/jsp/gogowise/course/myForcastClass.css")})
     public String myForcast() {
 
@@ -796,7 +796,7 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "makeCourseVideo", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".makeCourseVideo") })
+    @Action(value = "makeCourseVideo", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".makeCourseVideo")})
     //     @Action(value = "myForcastClass", results = {@Result(name = SUCCESS, location = "/jsp/gogowise/course/myForcastClass.css")})
     public String makeCourseVideo() {
 
@@ -824,7 +824,16 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "myRegistration", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".myRegistration") })
+
+    @Action(value = "designGame", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = "www.course.designGame")})
+    public String designGame() {
+        course = courseDao.findById(this.getCourse().getId());
+        classes = classDao.findByCourseId(course.getId());
+        return SUCCESS;
+    }
+
+
+    @Action(value = "myRegistration", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".myRegistration")})
     //     @Action(value = "myForcastClass", results = {@Result(name = SUCCESS, location = "/jsp/gogowise/course/myForcastClass.css")})
     public String myRegister() {
 
@@ -834,7 +843,7 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "myAgeCourses", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".repeatCourseInfo"), @Result(name = NONE, type = Constants.RESULT_NAME_TILES, location = ".repeatCourseNotExist") })
+    @Action(value = "myAgeCourses", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".repeatCourseInfo"), @Result(name = NONE, type = Constants.RESULT_NAME_TILES, location = ".repeatCourseNotExist")})
     public String myAgeCourses() {
 
         if (this.getCourse() != null && this.getCourse().getId() != null) {
@@ -851,14 +860,14 @@ public class CourseAction extends BasicAction {
         return NONE;
     }
 
-    @Action(value = "regCourseSystem", results = { @Result(name = SUCCESS, type = "tiles", location = ".regCourseSystem") })
+    @Action(value = "regCourseSystem", results = {@Result(name = SUCCESS, type = "tiles", location = ".regCourseSystem")})
     public String regCourse() {
 
         courses = courseDao.findTheCanRegCourseByUid(pagination, this.getSessionUserId());
         return SUCCESS;
     }
 
-    @Action(value = "voaCourseBlog", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".voaCourseBlog") })
+    @Action(value = "voaCourseBlog", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".voaCourseBlog")})
     public String voa() {
 
         /*if (course == null) {
@@ -894,7 +903,7 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "initOrgCourseCreation", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = { "actionName", "createCourse", "courseType", "1" }), @Result(name = "tips", type = Constants.RESULT_NAME_TILES, location = ".orgInitCourseCreation") })
+    @Action(value = "initOrgCourseCreation", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "createCourse", "courseType", "1"}), @Result(name = "tips", type = Constants.RESULT_NAME_TILES, location = ".orgInitCourseCreation")})
     public String initOrgCourseCreation() {
 
         Organization org = orgService.findMyOrg(this.getSessionUserId());
@@ -906,14 +915,14 @@ public class CourseAction extends BasicAction {
         }
     }
 
-    @Action(value = "repeatCourseInfo", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".repeatCourseInfo") })
+    @Action(value = "repeatCourseInfo", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".repeatCourseInfo")})
     public String repeatCourseInfo() {
 
         course = courseDao.findById(this.getCourse().getId());
         return SUCCESS;
     }
 
-    @Action(value = "repeatCourse", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".repeatClassInfo"), @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".repeatCourseInfo") })
+    @Action(value = "repeatCourse", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".repeatClassInfo"), @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".repeatCourseInfo")})
     public String repeatCourse() {
 
         Course _course = courseDao.findById(this.getCourse().getFromCourse().getId());
@@ -948,7 +957,7 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "orgInterview", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgInterview") })
+    @Action(value = "orgInterview", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgInterview")})
     public String orgInterview() {
 
         Organization orgTmp = orgService.findMyOrg(super.getSessionUserId());
@@ -987,7 +996,7 @@ public class CourseAction extends BasicAction {
             startTime.setTime(this.getCourseReservation().getInitial().getTime());
             Calendar endTime = Calendar.getInstance();
             endTime.setTime(this.getCourseReservation().getAtLatest().getTime());
-            EmailUtil.sendMail(email, this.getText("course.reservation.email.title", new String[] { course.getName() }), Constants.CSS + this.getText("course.reservation.email.content", new String[] { course.getName(), this.getSessionUserEmail(), dateFormat.format(Utils.changeBaseOnTimeZone4Action(startTime).getTime()), dateFormat.format(Utils.changeBaseOnTimeZone4Action(endTime).getTime()), course.getCharges() + this.getText("label.zhibi." + course.getConsumptionType()), this.getCourseReservation().getComments(), href, href, email }));
+            EmailUtil.sendMail(email, this.getText("course.reservation.email.title", new String[]{course.getName()}), Constants.CSS + this.getText("course.reservation.email.content", new String[]{course.getName(), this.getSessionUserEmail(), dateFormat.format(Utils.changeBaseOnTimeZone4Action(startTime).getTime()), dateFormat.format(Utils.changeBaseOnTimeZone4Action(endTime).getTime()), course.getCharges() + this.getText("label.zhibi." + course.getConsumptionType()), this.getCourseReservation().getComments(), href, href, email}));
             out.println("success");
         } else {
             out.println("");
@@ -1021,11 +1030,11 @@ public class CourseAction extends BasicAction {
             courseRecommendDao.persistAbstract(courseRecommend);
 
             String href = getBasePath() + "/initInterviewIdentityConfirm.html?courseRecommend.id=" + courseRecommend.getId() + "&email=" + email + "&code=" + MD5.endCode(email);
-            EmailUtil.sendMail(email, this.getText("course.recommend.email.title", new String[] { this.getSessionNickName(), course.getName() }), Constants.BIG_COURSE_ADVERTISE_EMAIL_CSS + this.getText("course.recommend.email.content", new String[] { email, this.getSessionUserEmail(), course.getName(), comments, href, href, email }), "text/html;charset=utf-8");
+            EmailUtil.sendMail(email, this.getText("course.recommend.email.title", new String[]{this.getSessionNickName(), course.getName()}), Constants.BIG_COURSE_ADVERTISE_EMAIL_CSS + this.getText("course.recommend.email.content", new String[]{email, this.getSessionUserEmail(), course.getName(), comments, href, href, email}), "text/html;charset=utf-8");
         }
     }
 
-    @Action(value = "courseSupervise", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseSupervise") })
+    @Action(value = "courseSupervise", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseSupervise")})
     public String courseSupervise() {
 
         this.getPagination().setPageSize(9);
@@ -1052,7 +1061,7 @@ public class CourseAction extends BasicAction {
 
         DateFormat dateFormat = new SimpleDateFormat(this.getText("dateformat.forclass"));
         String href = getBasePath() + "/courseOnlineAudit.html?courseClass.id=" + this.getCourseClass().getId() + "&courseOnline=true";
-        String title = this.getText("virtual.room.invite.friend.email.title", new String[] { friend.getNickName(), courseClass.getCourse().getName() });
+        String title = this.getText("virtual.room.invite.friend.email.title", new String[]{friend.getNickName(), courseClass.getCourse().getName()});
         Calendar startTime = Calendar.getInstance();
         startTime.setTime(courseClass.getDate().getTime());
         Calendar endTime = Calendar.getInstance();
@@ -1062,12 +1071,12 @@ public class CourseAction extends BasicAction {
             String serialNo = this.getSessionNickName() + (new SimpleDateFormat("yyyyddMMHHmmssms").format(Calendar.getInstance().getTime()));
             Matter matter = new Matter(Calendar.getInstance(), serialNo, Matter.MATTER_COURSE_INVITE, friend, courseClass.getId() + "", email, courseClass.getCourse(), false);
             matterDao.persistAbstract(matter);
-            String content = this.getText("virtual.room.invite.friend.email.content", new String[] { email, friend.getNickName(), courseClass.getCourse().getName(), courseClass.getCourse().getClassOneTheCornerSequence().toString(), dateFormat.format(Utils.changeBaseOnTimeZone4Action(startTime).getTime()), dateFormat.format(Utils.changeBaseOnTimeZone4Action(endTime).getTime()), this.getInviteMessage().equals("") ? this.getText("virtual.room.invite.friend.message.default") : this.getInviteMessage(), href, href, });
+            String content = this.getText("virtual.room.invite.friend.email.content", new String[]{email, friend.getNickName(), courseClass.getCourse().getName(), courseClass.getCourse().getClassOneTheCornerSequence().toString(), dateFormat.format(Utils.changeBaseOnTimeZone4Action(startTime).getTime()), dateFormat.format(Utils.changeBaseOnTimeZone4Action(endTime).getTime()), this.getInviteMessage().equals("") ? this.getText("virtual.room.invite.friend.message.default") : this.getInviteMessage(), href, href,});
             EmailUtil.sendMail(email, title, content, "text/html;charset=utf-8");
         }
     }
 
-    @Action(value = "newEventsManage", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".newEventsManage") })
+    @Action(value = "newEventsManage", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".newEventsManage")})
     public String newEventsManage() {
 
         pagination.setPageSize(20);
@@ -1075,13 +1084,13 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "initAddCourseEvent", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".addCourseEvent") })
+    @Action(value = "initAddCourseEvent", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".addCourseEvent")})
     public String initAddCourseEvent() {
 
         return SUCCESS;
     }
 
-    @Action(value = "addCourseEvent", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = { "actionName", "courseEventRead", "courseNewEvent.id", "${courseNewEvent.id}" }) })
+    @Action(value = "addCourseEvent", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "courseEventRead", "courseNewEvent.id", "${courseNewEvent.id}"})})
     public String addCourseEvent() {
 
         course = courseDao.findById(this.getCourse().getId());
@@ -1099,14 +1108,14 @@ public class CourseAction extends BasicAction {
         courseNewEventDao.delete(courseNewEvent);
     }
 
-    @Action(value = "initEditCourseNewEvent", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseNewEventsEdit") })
+    @Action(value = "initEditCourseNewEvent", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseNewEventsEdit")})
     public String initEditCourseNewEvent() {
 
         courseNewEvent = courseNewEventDao.findById(this.getCourseNewEvent().getId());
         return SUCCESS;
     }
 
-    @Action(value = "editCourseNewEvent", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".newEventsManage") })
+    @Action(value = "editCourseNewEvent", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".newEventsManage")})
     public String editCourseNewEvent() {
 
         CourseNewEvent cne = courseNewEventDao.findById(this.getCourseNewEvent().getId());

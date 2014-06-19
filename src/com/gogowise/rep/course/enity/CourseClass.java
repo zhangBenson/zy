@@ -1,6 +1,7 @@
 package com.gogowise.rep.course.enity;
 
 import com.gogowise.rep.AbstractPersistence;
+import org.apache.commons.lang.StringUtils;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -17,6 +18,7 @@ public class CourseClass extends AbstractPersistence {
     private Boolean isRecord = false;
     private Integer duration;
     private int videoVersionId = 0;
+    private String gameId;
     @ManyToOne
     private Course course;
     private Integer anonyNum = 0;
@@ -117,5 +119,17 @@ public class CourseClass extends AbstractPersistence {
 
     public void setVideoVersionId(int videoVersionId) {
         this.videoVersionId = videoVersionId;
+    }
+
+    public String getGameId() {
+        return gameId;
+    }
+
+    public void setGameId(String gameId) {
+        this.gameId = gameId;
+    }
+
+    public boolean getGameExist() {
+        return !StringUtils.isBlank(this.gameId);
     }
 }

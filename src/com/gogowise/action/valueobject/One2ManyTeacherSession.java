@@ -22,6 +22,7 @@ public class One2ManyTeacherSession {
     private Integer CourseID = Constants.DEFAULT_INT_VALUE;//课堂所属课程的 Id
     private String Server = Constants.DEFAULT_BLANK_VALUE; //video 服务器地
     private String UserLocation = Constants.DEFAULT_BLANK_VALUE;
+    private String GGame = Constants.DEFAULT_BLANK_VALUE;
 
     public void initWithSession(CourseClass courseClass){
         if(courseClass.getCourse().getPersonalTeacher()!=null) this.setType(4);
@@ -30,6 +31,9 @@ public class One2ManyTeacherSession {
         //this.setContent(getEmptyString(courseClass.getCourse().getDescription()));
         this.setClassID(getEmptyInteger(courseClass.getId()));
         this.setCourseID(getEmptyInteger(courseClass.getCourse().getId()));
+        if (courseClass.getGameExist()) {
+            this.setGGame("http://games.gogowise.com/question.html?id=" + this.getGGame());
+        }
     }
 
     public Integer getUserID() {
@@ -118,6 +122,14 @@ public class One2ManyTeacherSession {
 
     public void setUserLocation(String userLocation) {
         UserLocation = userLocation;
+    }
+
+    public String getGGame() {
+        return GGame;
+    }
+
+    public void setGGame(String GGame) {
+        this.GGame = GGame;
     }
 
     private String getEmptyString(String s) {
