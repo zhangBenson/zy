@@ -22,6 +22,7 @@ public class One2ManyPlayerSession {
     private Integer CourseID = Constants.DEFAULT_INT_VALUE;//课堂所属课程的 Id
     private String Server = Constants.DEFAULT_BLANK_VALUE; //video 服务器地
     private Integer videoVersionId = Constants.DEFAULT_INT_VALUE;
+    private String GGame = Constants.DEFAULT_BLANK_VALUE;
 
     public void initWithSession(CourseClass courseClass){
         this.setAbstract(getEmptyString(""));
@@ -32,6 +33,9 @@ public class One2ManyPlayerSession {
             this.setMasterID(getEmptyInteger(courseClass.getCourse().getTeacher().getId()));
             this.setMasterName(getEmptyString(courseClass.getCourse().getTeacher().getNickName()));
             this.setMasterLogo(getEmptyString(courseClass.getCourse().getTeacher().getPic()));
+        }
+        if (courseClass.getGameExist()) {
+            this.setGGame("http://games.gogowise.com/question.html?id=" + this.getGGame());
         }
     }
 
@@ -125,6 +129,14 @@ public class One2ManyPlayerSession {
 
     public Integer getVideoVersionId() {
         return videoVersionId;
+    }
+
+    public String getGGame() {
+        return GGame;
+    }
+
+    public void setGGame(String GGame) {
+        this.GGame = GGame;
     }
 
     public void setVideoVersionId(Integer videoVersionId) {
