@@ -126,7 +126,7 @@
                 <div class="col-sm-4">
                     <div class="pull-left">
                         <s:if test="gameExist">
-                        <div class="lessonGreen" onclick="enterPlayerRoom(<s:property value="id"/>)"
+                            <div class="lessonGreen" onclick="openGame(<s:property value="gameId"/>)"
                              style="cursor:pointer;">
                             </s:if>
                             <s:else>
@@ -160,8 +160,8 @@
 
                     <div class="col-sm-4">
                         <div class="pull-left">
-                            <s:if test="record">
-                            <div class="lessonGreen" onclick="enterPlayerRoom(<s:property value="id"/>)"
+                            <s:if test="gameExist">
+                            <div class="lessonGreen" onclick="openGame(<s:property value="gameId"/>)"
                                  style="cursor:pointer;">
                                 </s:if>
                                 <s:else>
@@ -346,10 +346,14 @@
 </div>
 </div>
 <script type="text/javascript">
-    function enterPlayerRoom(courseClassId){
-//        if(validateLogo()){
-            window.location.href = "playerClass.html?courseClass.id="+courseClassId;
-//        }
+    function openGame(gameId) {
+        window.open("http://games.gogowise.com/question.html?id=" + gameId);
+    }
+
+    function enterPlayerRoom(courseClassId) {
+        if (validateLogo()) {
+            window.location.href = "playerClass.html?courseClass.id=" + courseClassId;
+        }
     }
 
     $("#message_submit_btn").bind('click', function () {

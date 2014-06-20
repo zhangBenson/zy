@@ -54,9 +54,9 @@
 
             <div class="thickline"></div>
 
-            <h3 class="courseSubhead"><s:property value="%{getText('online.class.avigation.course.video')}"/></h3>
+            <h3 class="courseSubhead"><s:property value="%{getText('design.game.title')}"/></h3>
 
-            <%-- Course Videos--%>
+        <%-- Course Videos--%>
             <div id="videoList">
                 <s:iterator value="course.classes" id="class" status="status">
                 <s:if test="#status.index<6">
@@ -170,9 +170,9 @@
         <%--}--%>
         <%--if (type == 4) {--%>
 //           window.location.href = "one2manySession.html?courseClass.id="+cid;
-            window.location.href = "lecturerClass.html?courseClass.id=" + cid;
+//            window.location.href = "lecturerClass.html?courseClass.id=" + cid;
 //        }
-        <%--window.open ('http://games.gogowise.com/addquestion.html?userId='+ <s:property value="%{#session.userID}"/> +'&classId='+cid);--%>
+        window.open('http://games.gogowise.com/addquestion.html?userId=' + <s:property value="%{#session.userID}"/> +'&classId=' + cid);
 
     }
 
