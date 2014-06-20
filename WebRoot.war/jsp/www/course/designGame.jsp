@@ -34,7 +34,10 @@
                 </div>
             </div>
 
-            <img src="<s:property value="course.logoUrl" />" class="courseInfoImg"/>
+            <a href="voaCourseBlog.html?course.id=<s:property value="course.id"/>"
+               title="<s:property value="course.name"/>">
+                <img src="<s:property value="course.logoUrl" />" class="courseInfoImg"/>
+            </a>
             <h4 class="courseBody"><s:property value="course.description"/></h4>
 
             <div style="clear: left">
