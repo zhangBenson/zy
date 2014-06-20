@@ -32,7 +32,7 @@ public class One2ManyTeacherSession {
         this.setClassID(getEmptyInteger(courseClass.getId()));
         this.setCourseID(getEmptyInteger(courseClass.getCourse().getId()));
         if (courseClass.getGameExist()) {
-            this.setGGame("http://games.gogowise.com/question.html?id=" + this.getGGame());
+            this.setGGame("http://games.gogowise.com/question.html?id=" + courseClass.getGameId());
         }
     }
 

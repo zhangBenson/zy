@@ -35,7 +35,7 @@ public class One2ManyPlayerSession {
             this.setMasterLogo(getEmptyString(courseClass.getCourse().getTeacher().getPic()));
         }
         if (courseClass.getGameExist()) {
-            this.setGGame("http://games.gogowise.com/question.html?id=" + this.getGGame());
+            this.setGGame("http://games.gogowise.com/question.html?id=" + courseClass.getGameId());
         }
     }
 
