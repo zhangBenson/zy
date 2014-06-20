@@ -65,7 +65,7 @@
 
                     <div class="col-sm-4">
                         <div class="pull-left">
-                            <s:if test="record">
+                            <s:if test="gameExist">
                             <div class="lessonGreen" onclick="getVideoUrl(<s:property value="id"/>)"
                                  style="cursor:pointer;">
                                 </s:if>
