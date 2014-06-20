@@ -126,7 +126,7 @@
                 <div class="col-sm-4">
                     <div class="pull-left">
                         <s:if test="gameExist">
-                            <div class="lessonGreen" onclick="openGame('<s:property value="gameId"/>'')"
+                            <div class="lessonGreen" onclick="openGame('<s:property value="gameId"/>')"
                              style="cursor:pointer;">
                             </s:if>
                             <s:else>
@@ -161,8 +161,7 @@
                     <div class="col-sm-4">
                         <div class="pull-left">
                             <s:if test="gameExist">
-                                <div class="lessonGreen" onclick="openGame(<'s:property value=" gameId
-                                "/>')"
+                                <div class="lessonGreen" onclick="openGame('<s:property value="gameId"/>')"
                                  style="cursor:pointer;">
                                 </s:if>
                                 <s:else>
