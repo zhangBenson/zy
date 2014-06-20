@@ -110,7 +110,95 @@
     </s:if>
 
     <br/>
-    <%-- Forum --%>
+
+
+        <div class="thickline"></div>
+
+        <h3 class="courseSubhead"><s:property value="%{getText('design.game.title')}"/></h3>
+
+        <%-- Course Videos--%>
+        <div id="videoList">
+            <s:iterator value="course.classes" id="class" status="status">
+            <s:if test="#status.index<6">
+            <s:if test="#status.index % 3 == 0">
+            <div class="row"></s:if>
+
+                <div class="col-sm-4">
+                    <div class="pull-left">
+                        <s:if test="gameExist">
+                        <div class="lessonGreen" onclick="enterPlayerRoom(<s:property value="id"/>)"
+                             style="cursor:pointer;">
+                            </s:if>
+                            <s:else>
+                            <div class="lessonOrange">
+                                </s:else>
+                                <span><s:property value="#status.index+1"/></span>
+
+                                <div>Lesson</div>
+                            </div>
+                        </div>
+
+                        <div class="pull-left">
+                            <div class="lessonName"><s:property value="nickName"/></div>
+                            <div class="lessonTime"><s:date name="date"
+                                                            format="%{getText('dateformat.forclass')}"/></div>
+                        </div>
+                    </div>
+
+                    <s:if test="#status.index % 3 == 2||#status.last"></div>
+                <br/></s:if>
+                </s:if>
+                </s:iterator>
+
+            </div>
+
+            <div id="hiddenGameList" class="none">
+                <s:iterator value="course.classes" id="class" status="status">
+                <s:if test="#status.index>5">
+                <s:if test="#status.index % 3 == 0">
+                <div class="row"></s:if>
+
+                    <div class="col-sm-4">
+                        <div class="pull-left">
+                            <s:if test="record">
+                            <div class="lessonGreen" onclick="enterPlayerRoom(<s:property value="id"/>)"
+                                 style="cursor:pointer;">
+                                </s:if>
+                                <s:else>
+                                <div class="lessonOrange">
+                                    </s:else>
+                                    <span><s:property value="#status.index+1"/></span>
+
+                                    <div>Lesson</div>
+                                </div>
+                            </div>
+
+                            <div class="pull-left">
+                                <div class="lessonName"><s:property value="nickName"/></div>
+                                <div class="lessonTime"><s:date name="date"
+                                                                format="%{getText('dateformat.forclass')}"/></div>
+                            </div>
+                        </div>
+
+                        <s:if test="#status.index % 3 == 2||#status.last"></div>
+                    <br/></s:if>
+                    </s:if>
+                    </s:iterator>
+                </div>
+
+                <s:if test="course.classes.size()>6">
+                    <p class="text-right">
+                        <button id="moreClass" style="cursor:hand; border: 1px dotted;background-color: #ffffff;"
+                                onClick="showdiv('hiddenGameList')">
+                            <s:property value="%{getText('others.more')}"/>
+                        </button>
+                    </p>
+                </s:if>
+
+                <br/>
+
+
+            <%-- Forum --%>
     <div class="thickline"></div>
     <div class="courseSubhead"><s:property value="%{getText('blog.message.board')}"/><%--Forum--%></div>
     <br/>

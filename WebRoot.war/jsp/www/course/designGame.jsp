@@ -158,20 +158,22 @@
     }
 
     function getVideoUrl(cid) {
-        var type = <s:property value="course.teachingNum"/>;
-        if (type == 1) {
-            window.location.href = "openClassSession.html?courseClass.id=" + cid;
-        }
-        if (type == 2) {
-            window.location.href = "one2twoSession.html?courseClass.id=" + cid;
-        }
-        if (type == 3) {
-            window.location.href = "one2threeSession.html?courseClass.id=" + cid;
-        }
-        if (type == 4) {
+        <%--var type = <s:property value="course.teachingNum"/>;--%>
+        <%--if (type == 1) {--%>
+        <%--window.location.href = "openClassSession.html?courseClass.id=" + cid;--%>
+        <%--}--%>
+        <%--if (type == 2) {--%>
+        <%--window.location.href = "one2twoSession.html?courseClass.id=" + cid;--%>
+        <%--}--%>
+        <%--if (type == 3) {--%>
+        <%--window.location.href = "one2threeSession.html?courseClass.id=" + cid;--%>
+        <%--}--%>
+        <%--if (type == 4) {--%>
 //           window.location.href = "one2manySession.html?courseClass.id="+cid;
             window.location.href = "lecturerClass.html?courseClass.id=" + cid;
-        }
+//        }
+        <%--window.open ('http://games.gogowise.com/addquestion.html?userId='+ <s:property value="%{#session.userID}"/> +'&classId='+cid);--%>
+
     }
 
 
