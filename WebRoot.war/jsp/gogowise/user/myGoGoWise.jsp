@@ -71,6 +71,9 @@
                             value="%{getText('button.start.class')}"/></a>
                     <a class="a_2" href="makeCourseVideo.html?course.id=<s:property value="id"/>"><s:property
                             value="%{getText('course.makeVideos')}"/></a>
+                    <a class="a_2" href="/designGame.html?course.id=<s:property value="id"/>"><s:property
+                            value="%{getText('course.designGame')}"/></a>
+
                 </div>
                 <div style="height:45px;clear: both"></div>
                 <div class="desc fl" style="float: left">
