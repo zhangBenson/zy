@@ -91,6 +91,7 @@ public class MainFilter implements Filter {
         NEED_LOGIN.add("/manageStudents.html");
 //        NEED_LOGIN.add("/playerClass.html");
         NEED_LOGIN.add("/manageOrgUsers.html");
+        NEED_LOGIN.add("/designGame.html");
 
     }
 
