@@ -347,7 +347,7 @@
 </div>
 <script type="text/javascript">
     function openGame(gameId) {
-        window.open("http://games.gogowise.com/question.html?id=" + gameId);
+        window.open("http://games.gogowise.com/questionpublic.html?id=" + gameId);
     }
 
     function enterPlayerRoom(courseClassId) {
