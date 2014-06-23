@@ -31,7 +31,7 @@
             <%-- 直接就是1对多的大班 --%>
             <input type="hidden" name="course.teachingNum" value="4"/>
 
-            <h3 alt="2"><span class="num">1</span><s:property value="%{getText('org.onlineMetting.create.info')}"/> </h3>
+            <h3 alt="2"><span class="num">1</span><s:property value="%{getText('org.onlineMeeting.create.info')}"/> </h3>
 
             <div class="stepCont" style="display: block;">
                 <div class="pic_1"></div>

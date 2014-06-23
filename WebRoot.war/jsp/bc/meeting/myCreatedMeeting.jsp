@@ -101,10 +101,10 @@
 <div class="mf_1">
     <ul class="sub_nav cf">
         <li class="stand_out">
-            <a href="javascript:;"><s:property value="%{getText('org.onlineMetting.myCreatedMeeting')}"/></a>
+            <a href="javascript:;"><s:property value="%{getText('org.onlineMeeting.myCreatedMeeting')}"/></a>
         </li>
         <li class="">
-            <a href="myRegisteredMeeting.html"><s:property value="%{getText('org.onlineMetting.myRegisteredMeeting')}"/></a>
+            <a href="myRegisteredMeeting.html"><s:property value="%{getText('org.onlineMeeting.myRegisteredMeeting')}"/></a>
         </li>
         <%--<li class="">
             <a href="createCourseAllInOne.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a>
@@ -172,18 +172,18 @@
         <p class="time">
                 <%--<a class="manage_course" href="initCourseInfoModify.html?course.id=<s:property value="id"/>"><s:property value="%{getText('my.forcast.course.info.manage')}"/></a>--%>
             <a class="manage_course" href="maintenanceMeeting.html?course.id=<s:property value="id"/>"><s:property
-                    value="%{getText('my.forcast.course.info.manage')}"/></a>
+                    value="%{getText('org.onlineMeeting.infoManage')}"/></a>
                 <%--<a class="manage_course" id="courseRecommend<s:property value="#idx.index"/>" href="#recommdatepanel<s:property value="#idx.index"/>"><s:property value="%{getText('recommend.course')}"/></a>--%>
                 <%--<a class="manage_course" id="courseNewEvents<s:property value="#idx.index"/>" href="newEventsManage.html?course.id=<s:property value="id"/>"><s:property value="%{getText('course.new.events.management')}"/></a>--%>
                 <%--<a class="makeVideos" id="makeVideos<s:property value="#idx.index"/>"  href="javascript:;"><s:property value="%{getText('course.makeVideos')}"/></a>--%>
-            <a class="makeVideos" href="/makeCourseVideo.html?course.id=<s:property value="id"/>"><s:property
-                    value="%{getText('course.makeVideos')}"/></a>
+            <%--<a class="makeVideos" href="/makeCourseVideo.html?course.id=<s:property value="id"/>"><s:property--%>
+                    <%--value="%{getText('course.makeVideos')}"/></a>--%>
 
-            <a class="makeVideos" href="/designGame.html?course.id=<s:property value="id"/>"><s:property
-                    value="%{getText('course.designGame')}"/></a>
+            <%--<a class="makeVideos" href="/designGame.html?course.id=<s:property value="id"/>"><s:property--%>
+                    <%--value="%{getText('course.designGame')}"/></a>--%>
             <a class="manage_course" id=""
                href="uploadCourseMaterial.html?course.id=<s:property value="id"/>"><s:property
-                    value="%{getText('course.resource.upload')}"/></a>
+                    value="%{getText('org.onlineMeeting.resource')}"/></a>
                 <%--<a class="manage_course" id="" href="uploadCourseMaterial.html?course.id=<s:property value="id"/>">Upload Questions</a>--%>
         </p>
     </div>

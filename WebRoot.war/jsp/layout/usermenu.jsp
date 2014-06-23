@@ -27,13 +27,13 @@
         </div>
 
         <div class="list">
-            <h3 class="h3_title"><s:property value="%{getText('org.onlineMetting')}"/></h3>
+            <h3 class="h3_title"><s:property value="%{getText('org.onlineMeeting')}"/></h3>
             <ul>
                 <%--<li><a href="myForcastClass.html"><s:property value="%{getText('usermenu.item.my.created.courses')}"/></a></li>--%>
                 <%--<li><a href="myRegistration.html"><s:property value="%{getText('usermenu.item.my.reged.courses')}"/></a></li>--%>
 
-                    <li><a href="initCreateMeeting.html"><s:property value="%{getText('org.onlineMetting.newMeeting')}"/></a></li>
-                    <li><a href="meetingHome.html"><s:property value="%{getText('org.onlineMetting.meetingList')}"/></a></li>
+                    <li><a href="initCreateMeeting.html"><s:property value="%{getText('org.onlineMeeting.newMeeting')}"/></a></li>
+                    <li><a href="meetingHome.html"><s:property value="%{getText('org.onlineMeeting.meetingList')}"/></a></li>
                     <%--<li><a href="createCourse.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a></li>--%>
                     <%--<li><a href="createCourseAllInOne.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a></li>--%>
             </ul>

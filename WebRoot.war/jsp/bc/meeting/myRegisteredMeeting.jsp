@@ -21,10 +21,10 @@
 <div class="mf_1">
     <ul class="sub_nav cf">
         <li>
-            <a href="myCreatedMeeting.html"><s:property value="%{getText('org.onlineMetting.myCreatedMeeting')}"/></a>
+            <a href="myCreatedMeeting.html"><s:property value="%{getText('org.onlineMeeting.myCreatedMeeting')}"/></a>
         </li>
         <li class="stand_out">
-            <a href="javascript:;"><s:property value="%{getText('org.onlineMetting.myRegisteredMeeting')}"/></a>
+            <a href="javascript:;"><s:property value="%{getText('org.onlineMeeting.myRegisteredMeeting')}"/></a>
         </li>
         <%--<li class="">
             <a href="createCourseAllInOne.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a>
