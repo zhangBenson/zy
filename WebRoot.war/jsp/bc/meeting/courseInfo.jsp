@@ -21,7 +21,7 @@
 
 
         <li class="long_select_li">
-            <span class="item"><s:property value="%{getText('label.online.class.startdate')}"/></span>
+            <span class="item"><s:property value="%{getText('org.onlineMetting.create.startDate ')}"/></span>
             <s:textfield id="courseStartDate" name="course.startDate" readonly="true"
                          cssClass="WdateTime short_text_field"/>
             <span class="course_date_input_msg tip_words">*</span>
