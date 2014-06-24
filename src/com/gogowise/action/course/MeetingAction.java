@@ -165,6 +165,8 @@ public class MeetingAction extends BasicAction {
 
         course = courseService.findById(course.getId());
 
+        course.setCameraManConfirmed(true);
+        course.setTeacherConfirmed(true);
         course.setStudentAgeType(this.getCourse().getStudentAgeType());
         course.setIsPublic(this.getCourse().getIsPublic());
         course.setStudentType(Constants.MEETING_TYPE);
