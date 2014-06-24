@@ -45,7 +45,9 @@
             </li>
 
         <li>
-            <s:property value="%{getText('org.onlineMeeting.create.participants')}"/>
+            <s:property value="%{getText('org.onlineMeeting.create.participants')}"/> :
+            <div></div>
+            <s:checkboxlist list="teachers" listKey="id" listValue="nickName" name="invitedTeacherIDs" value="course.teacher.id" />
             <a class="add_student_btn"><s:property value="%{getText('org.onlineMeeting.addMoreParticipants')}"/></a> &nbsp;&nbsp;&nbsp;
             <span class="invite_student_input_msg tip_words"></span>
 
