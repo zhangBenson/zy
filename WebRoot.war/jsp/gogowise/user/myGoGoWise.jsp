@@ -47,7 +47,7 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;<s:date name="classOnTheCorner.date"
                                                         format="%{getText('dateformat.forclass')}"/>
                     </p>
-                    <strong><s:property value="%{getText('courses.time.left')}"/>&nbsp;<b
+                    <strong><span id="timer"><s:property value="%{getText('courses.time.left')}"/></span>&nbsp;<b
                             id="timeLeft<s:property value="#idx.index"/>"></b></strong>
                     <script type="text/javascript">
                         $("#timeLeft<s:property value="#idx.index"/>").countdown({
@@ -55,6 +55,7 @@
                             onChange: function (event, timer) {
                             },
                             onComplete: function (event) {
+                                $("#timer").html("");
                                 $(this).html("<s:text name='course.in.progress'/>");
                             },
                             htmlTemplate: "<span><b>%{d}</b><s:property value="%{getText('course.time.day')}" /><b> %{h}</b><s:property value="%{getText('course.time.hour')}" /><b>%{m}</b><s:property value="%{getText('course.time.minute')}" /><b>%{s}</b><s:property value="%{getText('course.tine.second')}" /></span>",
