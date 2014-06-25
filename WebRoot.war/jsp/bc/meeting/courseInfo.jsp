@@ -3,7 +3,7 @@
 <div class="pic_2">
     <ul class="content_courseInfo fl">
         <li>
-            <span class="item">Name of Meeting</span>
+            <span class="item"><s:property value="%{getText('org.onlineMeeting.create.name')}"/></span>
             <s:textfield cssClass="long_text_field" id="step2_course_name" name="course.name" type="text"/>
             <span class="course_name_input_msg tip_words">*</span>
 
@@ -14,21 +14,21 @@
                      value="course.isPublic" cssStyle="margin-left: 10px;margin-right: 10px;"/>
         </li>
         <li>
-            <span class="item">Meeting Description</span>
+            <span class="item"><s:property value="%{getText('org.onlineMeeting.create.description')}"/></span>
             <span class="course_intro_input_msg tip_words">*</span> <br/>
             <s:textarea cssClass="long_text_area" id="step2_course_intro" name="course.description"/>
         </li>
 
 
         <li class="long_select_li">
-            <span class="item"><s:property value="%{getText('label.online.class.startdate')}"/></span>
+            <span class="item"><s:property value="%{getText('org.onlineMeeting.create.startDate')}"/></span>
             <s:textfield id="courseStartDate" name="course.startDate" readonly="true"
                          cssClass="WdateTime short_text_field"/>
             <span class="course_date_input_msg tip_words">*</span>
         </li>
 
         <li>
-            <span class="item">Meeting Logo</span><span
+            <span class="item"><s:property value="%{getText('org.onlineMeeting.create.logo')}"/></span><span
                 class="tip_words" id="course_logo_input_msg">*</span><br/>
             <img src="<s:property value="course.logoUrl"/>" id="show_log_preview"
                  onerror="this.onerror=null;this.src='images/defaultImgs/course.gif'"/>
@@ -39,19 +39,21 @@
         </li>
 
             <li>
-                <span class="item">Host</span>
+                <span class="item"><s:property value="%{getText('org.onlineMeeting.create.host')}"/></span>
                 <s:radio list="teachers" listKey="id" listValue="nickName" name="teacherIds" value="course.teacher.id"/>
                 <span class="invite_teacher_input_msg tip_words">*</span>
             </li>
 
         <li>
-            The Participant(s) Appointed
-            <a class="add_student_btn"><s:property value="%{getText('course.add.student')}"/></a> &nbsp;&nbsp;&nbsp;
+            <s:property value="%{getText('org.onlineMeeting.create.participants')}"/> :
+            <div></div>
+            <s:checkboxlist list="teachers" listKey="id" listValue="nickName" name="invitedTeacherIDs" value="course.teacher.id" />
+            <a class="add_student_btn"><s:property value="%{getText('org.onlineMeeting.addMoreParticipants')}"/></a> &nbsp;&nbsp;&nbsp;
             <span class="invite_student_input_msg tip_words"></span>
 
             <div class="option_content" id="invitedStudents">
                 <input class="long_text_field_for_student"
-                       placeholder="<s:property value="%{getText('org.course.student.email')}"/>"
+                       placeholder="<s:property value="%{getText('org.onlineMeeting.participantEmail')}"/>"
                        id="studentEmail1" onblur="checkStudentMail(this);" name="emails" type="text"/> <br/>
             </div>
         </li>

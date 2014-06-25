@@ -382,9 +382,9 @@ programming.
     }
 
     function enterPlayerRoom(courseClassId) {
-        if (validateLogo()) {
+//        if (validateLogo()) {
             window.location.href = "playerClass.html?courseClass.id=" + courseClassId;
-        }
+//        }
     }
 
     $("#message_submit_btn").bind('click', function () {

@@ -1390,6 +1390,21 @@
         <put-attribute name="contentRight" value=".createMeetingContentRight"/>
     </definition>
 
+    <definition name=".myCreatedMeeting" extends=".userCenter">
+        <put-attribute name="title" value="title.gogowise"/>
+        <put-attribute name="contentRight" value="/jsp/bc/meeting/myCreatedMeeting.jsp"/>
+    </definition>
+
+
+    <definition name=".myRegisteredMeeting" extends=".userCenter">
+        <put-attribute name="title" value="title.gogowise"/>
+        <put-attribute name="contentRight" value="/jsp/bc/meeting/myRegisteredMeeting.jsp"/>
+    </definition>
+
+    <definition name=".maintenanceMeeting" extends=".userCenter">
+        <put-attribute name="title" value="title.gogowise"/>
+        <put-attribute name="contentRight" value="/jsp/bc/meeting/maintenanceMeeting.jsp"/>
+    </definition>
 
     <!-- common tiles for backend-->
     <definition name="WILDCARD:bc.*.*" extends=".userCenter">

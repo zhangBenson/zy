@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.dao.ClassDao;
 import com.gogowise.rep.course.dao.SeniorClassRoomDao;
 import com.gogowise.rep.course.enity.CourseClass;
@@ -14,6 +15,7 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.json.annotations.JSON;
+import org.omg.PortableInterceptor.SUCCESSFUL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
@@ -47,6 +49,10 @@ public class MeetingAction extends BasicAction {
     private List<CourseInviteStudent> courseInviteStudents = new ArrayList<>();
     private List<String> emails = new ArrayList<>();
     private Integer course_id;
+
+    private List<Course> meetings;
+    private Pagination pagination = new Pagination();
+    private List<Integer> invitedTeacherIDs;
 
     @Autowired
     private OrganizationDao organizationDao;
@@ -160,6 +166,8 @@ public class MeetingAction extends BasicAction {
 
         course = courseService.findById(course.getId());
 
+        course.setCameraManConfirmed(true);
+        course.setTeacherConfirmed(true);
         course.setStudentAgeType(this.getCourse().getStudentAgeType());
         course.setIsPublic(this.getCourse().getIsPublic());
         course.setStudentType(Constants.MEETING_TYPE);
@@ -226,6 +234,28 @@ public class MeetingAction extends BasicAction {
             }
         }
 
+        for( Integer invitedTeacherID : invitedTeacherIDs )
+        {
+            CourseInviteStudent curr = courseInviteStudentDao.findById(invitedTeacherID);
+            if (curr == null) {
+                CourseInviteStudent courseInviteStudent = new CourseInviteStudent();
+                courseInviteStudent.setCourse(this.getCourse());
+
+                BaseUser invitedTeacher = baseUserDao.findById(invitedTeacherID);
+                courseInviteStudent.setInvitedStudentEmail(invitedTeacher.getEmail());
+                courseInviteStudentDao.persistAbstract(courseInviteStudent);
+            }
+        }
+
+        for( Integer invitedTeacherID : invitedTeacherIDs )
+        {
+            BaseUser invitedTeacher = baseUserDao.findById(invitedTeacherID);
+            if(invitedTeacher != null )
+            {
+                seniorClassRoomDao.saveSeniorClassRoom(this.course.getId(),invitedTeacher.getId());
+            }
+        }
+
         this.setCourse_id(course.getId());
         return "json";
     }
@@ -256,4 +286,67 @@ public class MeetingAction extends BasicAction {
         return SUCCESS;
     }
 
+    @Action(value = "meetingHome", results={@Result(name= SUCCESS, type=Constants.RESULT_NAME_TILES, location = ".myCreatedMeeting")})
+    public String meetingHome()
+    {
+        Organization org = organizationDao.findByResId(this.getSessionUserId());
+
+        //if org is null, then this user is a teacher
+        if (org == null) {
+            org = orgService.findMyOrg(this.getSessionUserId());
+        }
+
+        meetings = this.courseDao.findMeeting(org.getId(), pagination);
+
+
+        return SUCCESS;
+    }
+
+    @Action(value = "myCreatedMeeting", results={@Result(name= SUCCESS, type=Constants.RESULT_NAME_TILES, location = ".myCreatedMeeting")})
+    public String myCreatedMeeting()
+    {
+        Organization org = organizationDao.findByResId(this.getSessionUserId());
+
+        //if org is null, then this user is a teacher
+        if (org == null) {
+            org = orgService.findMyOrg(this.getSessionUserId());
+        }
+
+        meetings = this.courseDao.findMeeting(org.getId(),pagination);
+
+        return SUCCESS;
+    }
+
+    @Action(value = "myRegisteredMeeting", results={@Result(name= SUCCESS, type=Constants.RESULT_NAME_TILES, location = ".myRegisteredMeeting")})
+    public String myRegisteredMeeting()
+    {
+        meetings = this.courseDao.findMeetingForStudent(this.getSessionUserId(),pagination);
+
+        return SUCCESS;
+    }
+
+
+    public List<Course> getMeetings() {
+        return meetings;
+    }
+
+    public void setMeetings(List<Course> meetings) {
+        this.meetings = meetings;
+    }
+
+    public Pagination getPagination() {
+        return pagination;
+    }
+
+    public void setPagination(Pagination pagination) {
+        this.pagination = pagination;
+    }
+
+    public List<Integer> getInvitedTeacherIDs() {
+        return invitedTeacherIDs;
+    }
+
+    public void setInvitedTeacherIDs(List<Integer> invitedTeacherIDs) {
+        this.invitedTeacherIDs = invitedTeacherIDs;
+    }
 }
