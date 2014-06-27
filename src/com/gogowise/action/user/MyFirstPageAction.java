@@ -61,7 +61,6 @@ public class MyFirstPageAction extends BasicAction {
     private OrgService orgService;
 
 
-
     @Action(value = "personalCenter",
             results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".studentCenter")}
     )
@@ -72,6 +71,18 @@ public class MyFirstPageAction extends BasicAction {
 
         latestCourse = courseDao.findMyCourseOfForcastClassForUserCenter(new Pagination(3), this.getSessionUserId(), RoleType.ROLE_TYPE_STUDENT);
 
+        return SUCCESS;
+    }
+
+    @Action(value = "personalCenterFinished",
+            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".studentCenterFinished")}
+    )
+    public String studentCenterFinished() {
+        latestOrgs = organizationDao.findLatestOrgs(new Pagination(3));
+        userOrganization = orgService.findMyOrg(this.getSessionUserId());
+        showUserCenter();
+
+        finishedCourse = courseDao.findFinishedCourseForUserCenter(new Pagination(3), this.getSessionUserId(), RoleType.ROLE_TYPE_STUDENT);
         return SUCCESS;
     }
 

@@ -10,11 +10,6 @@ import java.util.List;
 
 public interface CourseDao extends ModelDao<Course> {
 
-    public void courseModification(Course exist, Course modified);
-
-    public List<Course> findCourseOfAgeClass(Pagination page);
-
-    public List<Course> findCourseOfForcastClass(Pagination page);
 
     public List<Course> findUserCreatedCourses(Integer userID, Pagination pagination);
 
@@ -22,7 +17,6 @@ public interface CourseDao extends ModelDao<Course> {
 
     public List<Course> findMyCourseOFAgePart(Pagination pagination, Integer sid);
 
-    public List<Course> findTheCanRegCourseByUid(Pagination pagination, Integer userId);
 
     public List<Course> findHotCourses(Pagination pagination);
 
