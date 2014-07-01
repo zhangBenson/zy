@@ -72,7 +72,8 @@
     <!--<constant name="struts.convention.redirect.to.slash" value="true"/>-->
 
 
-    <constant name="struts.custom.i18n.resources" value="ApplicationResources"/>
+    <constant name="struts.custom.i18n.resources"
+              value="CommonMessage,ArticleMessage,EmailMessage,ErrorMessage,TitleMessage"/>
 
     <constant name="struts.convention.exclude.parentClassLoader" value="true"/>
     <constant name="struts.convention.action.fileProtocols" value="jar,vfs,vfsfile,vfszip,"/>
