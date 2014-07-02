@@ -92,13 +92,17 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
     }
 
     public List<Course> findMeeting(Integer orgId, Pagination page) {
-        return this.find("from Course c where c.organization.id = ? and c.studentType =  ?", page,orgId, Constants.MEETING_TYPE);
+        Calendar yesterday = Calendar.getInstance();
+        yesterday.add(Calendar.DAY_OF_MONTH, -1);
+        return this.find("from Course c where c.organization.id = ? and c.studentType =  ?  and startDate > ? ", page, orgId, Constants.MEETING_TYPE, yesterday);
     }
 
     public List<Course> findMeetingForStudent(Integer userID, Pagination pagination) {
+        Calendar yesterday = Calendar.getInstance();
+        yesterday.add(Calendar.DAY_OF_MONTH, -1);
 
-        String hql = "select distinct c from Course c left join c.seniorClassRooms sc where" + "  sc.course.id = c.id   and  (sc.student.id=?) and c.studentType =  ? order by c.publicationTime desc ";
-        return this.find(hql, pagination, userID, Constants.MEETING_TYPE);
+        String hql = "select distinct c from Course c left join c.seniorClassRooms sc where" + "  sc.course.id = c.id   and  (sc.student.id=?) and c.studentType =  ?  and startDate > ?  order by c.publicationTime desc ";
+        return this.find(hql, pagination, userID, Constants.MEETING_TYPE, yesterday);
     }
 
 
