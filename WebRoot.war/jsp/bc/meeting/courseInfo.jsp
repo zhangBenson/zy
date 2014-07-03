@@ -21,7 +21,7 @@
 
 
         <li class="long_select_li">
-            <span class="item"><s:property value="%{getText('org.onlineMeeting.create.startDate ')}"/></span>
+            <span class="item"><s:property value="%{getText('org.onlineMeeting.create.startDate')}"/></span>
             <s:textfield id="courseStartDate" name="course.startDate" readonly="true"
                          cssClass="WdateTime short_text_field"/>
             <span class="course_date_input_msg tip_words">*</span>
@@ -45,13 +45,15 @@
             </li>
 
         <li>
-            <s:property value="%{getText('org.onlineMeeting.create.participants')}"/>
-            <a class="add_student_btn"><s:property value="%{getText('course.add.student')}"/></a> &nbsp;&nbsp;&nbsp;
+            <s:property value="%{getText('org.onlineMeeting.create.participants')}"/> :
+            <div></div>
+            <s:checkboxlist list="teachers" listKey="id" listValue="nickName" name="invitedTeacherIDs" value="course.teacher.id" />
+            <a class="add_student_btn"><s:property value="%{getText('org.onlineMeeting.addMoreParticipants')}"/></a> &nbsp;&nbsp;&nbsp;
             <span class="invite_student_input_msg tip_words"></span>
 
             <div class="option_content" id="invitedStudents">
                 <input class="long_text_field_for_student"
-                       placeholder="<s:property value="%{getText('org.course.student.email')}"/>"
+                       placeholder="<s:property value="%{getText('org.onlineMeeting.participantEmail')}"/>"
                        id="studentEmail1" onblur="checkStudentMail(this);" name="emails" type="text"/> <br/>
             </div>
         </li>

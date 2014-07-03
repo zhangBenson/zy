@@ -159,20 +159,6 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "courseSquare", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseSquare")})
-    public String courseSquare() {
-
-        coursesOnline = courseDao.findCourseOnline(new Pagination(3));
-        coursesInTypes = courseDao.findLatest4Course(new Pagination(20));
-        courses = courseDao.findCourseOfForcastClass(new Pagination(8)); //最新课程
-        hotCourses = courseDao.findHotCourses(new Pagination(8)); //最热课程
-        hottestTeacher = baseUserDao.findHottestTeacher(new Pagination(9));
-        organizations = organizationDao.findLatestOrgs(new Pagination(4));
-        coursesForAds = courseDao.findLatest4Course(new Pagination(3));
-        courseNewEvents = courseNewEventDao.findLatestTenEvents(new Pagination(13)); //课程新鲜事
-        return SUCCESS;
-    }
-
     @Action(value = "courseHotList", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseHotList")})
     public String showHotCourses() {
 
@@ -393,47 +379,6 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "courseInfoModify", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseInfoModified"), @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".initCourseInfoModify")})
-    public String courseInfoModify() {
-
-        Course realCourse = courseDao.findById(this.getCourse().getId());
-        courseDao.courseModification(realCourse, this.getCourse());
-        if (this.getUploadFileName() != null && "".equals(this.getUploadFileName())) {
-            String path = "/" + this.getCourse().getId() + "/" + this.getUploadFileName();
-            File imageFile = new File(ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_IMAGE_PATH_FOR_COURSE) + path);
-            if (!imageFile.getParentFile().exists()) {
-                imageFile.getParentFile().mkdirs();
-            }
-            Utils.copy(this.getUpload(), imageFile);
-            realCourse.setLogoUrl(Constants.UPLOAD_IMAGE_PATH_FOR_COURSE + path);
-        }
-
-        realCourse.setInviteStudentNum(this.getEmails().size());
-        this.setCourse(realCourse);
-
-        courseDao.persistAbstract(realCourse);
-
-        courseInviteStudents = courseInviteStudentDao.findByCourseId(this.getCourse().getId());
-        if (courseInviteStudents.size() != 0) {
-            for (CourseInviteStudent courseInviteStudent : courseInviteStudents) {
-                courseInviteStudentDao.delete(courseInviteStudent);
-            }
-        }
-
-        for (String email : emails) {
-            if (email != null && !email.equals("")) {
-                CourseInviteStudent curr = courseInviteStudentDao.findByCourseAndEmail(this.getCourse().getId(), email);
-                if (curr == null) {
-                    CourseInviteStudent courseInviteStudent = new CourseInviteStudent();
-                    courseInviteStudent.setCourse(this.getCourse());
-                    courseInviteStudent.setInvitedStudentEmail(email);
-                    courseInviteStudentDao.persistAbstract(courseInviteStudent);
-                }
-            }
-        }
-        return SUCCESS;
-
-    }
 
     @Action(value = "courseGet2public", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}), @Result(name = "orgSUCCESS", type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myForcastClass", "course.id", "${course.id}"})})
     public String go2public() {
@@ -763,27 +708,12 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    public String age() {
-
-        courses = courseDao.findCourseOfAgeClass(pagination);
-        this.setOperaType(Constants.OPERA_TYPE_FOR_AGE_COURSE);
-        return SUCCESS;
-    }
 
     public String living() {
 
         this.getPagination().setPageSize(9);
         courses = courseDao.findCourseOnline(pagination);
         this.setOperaType(Constants.OPERA_TYPE_FOR_LIVING_COURSE);
-        return SUCCESS;
-    }
-
-    @Action(value = "forcastClass", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".forcastClass")})
-    //     @Action(value = "forcastClass", results = {@Result(name = SUCCESS, location = "/jsp/gogowise/course/forcastClasses.jsp")})
-    public String forcast() {
-
-        courses = courseDao.findCourseOfForcastClass(pagination);
-        this.setOperaType(Constants.OPERA_TYPE_FOR_NEW_COURSE);
         return SUCCESS;
     }
 
@@ -843,29 +773,6 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "myAgeCourses", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".repeatCourseInfo"), @Result(name = NONE, type = Constants.RESULT_NAME_TILES, location = ".repeatCourseNotExist")})
-    public String myAgeCourses() {
-
-        if (this.getCourse() != null && this.getCourse().getId() != null) {
-            course = courseDao.findById(this.getCourse().getId());
-            courseInviteStudents = courseInviteStudentDao.findByCourseId(this.getCourse().getId());
-        }
-        courses = courseDao.findMyCourseOFAgePart(pagination, this.getSessionUserId());
-        if (courses.size() > 0) {
-            for (Course c : courses) {
-                orgs.put(c.getFromCourse().getId(), c.getName());
-            }
-            return SUCCESS;
-        }
-        return NONE;
-    }
-
-    @Action(value = "regCourseSystem", results = {@Result(name = SUCCESS, type = "tiles", location = ".regCourseSystem")})
-    public String regCourse() {
-
-        courses = courseDao.findTheCanRegCourseByUid(pagination, this.getSessionUserId());
-        return SUCCESS;
-    }
 
     @Action(value = "voaCourseBlog", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".voaCourseBlog")})
     public String voa() {

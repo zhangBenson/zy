@@ -21,7 +21,7 @@ public class OrderCloseScheduleManager {
     private Calendar calendar = Calendar.getInstance();
     private ThreadPoolTaskScheduler scheduler;
 
-    @Scheduled(cron = "0 0/30 * * * ?")
+    //    @Scheduled(cron = "0 0/30 * * * ?")
     public void generateJob(){
         List<ConsumptionOrder> consumptionOrders = consumptionOrderDao.findUnclosedOrder();
         for(ConsumptionOrder co : consumptionOrders){

@@ -52,6 +52,7 @@ public class MeetingAction extends BasicAction {
 
     private List<Course> meetings;
     private Pagination pagination = new Pagination();
+    private List<Integer> invitedTeacherIDs;
 
     @Autowired
     private OrganizationDao organizationDao;
@@ -233,6 +234,28 @@ public class MeetingAction extends BasicAction {
             }
         }
 
+        for( Integer invitedTeacherID : invitedTeacherIDs )
+        {
+            CourseInviteStudent curr = courseInviteStudentDao.findById(invitedTeacherID);
+            if (curr == null) {
+                CourseInviteStudent courseInviteStudent = new CourseInviteStudent();
+                courseInviteStudent.setCourse(this.getCourse());
+
+                BaseUser invitedTeacher = baseUserDao.findById(invitedTeacherID);
+                courseInviteStudent.setInvitedStudentEmail(invitedTeacher.getEmail());
+                courseInviteStudentDao.persistAbstract(courseInviteStudent);
+            }
+        }
+
+        for( Integer invitedTeacherID : invitedTeacherIDs )
+        {
+            BaseUser invitedTeacher = baseUserDao.findById(invitedTeacherID);
+            if(invitedTeacher != null )
+            {
+                seniorClassRoomDao.saveSeniorClassRoom(this.course.getId(),invitedTeacher.getId());
+            }
+        }
+
         this.setCourse_id(course.getId());
         return "json";
     }
@@ -319,5 +342,11 @@ public class MeetingAction extends BasicAction {
         this.pagination = pagination;
     }
 
+    public List<Integer> getInvitedTeacherIDs() {
+        return invitedTeacherIDs;
+    }
 
+    public void setInvitedTeacherIDs(List<Integer> invitedTeacherIDs) {
+        this.invitedTeacherIDs = invitedTeacherIDs;
+    }
 }

@@ -513,6 +513,17 @@ public class Course extends AbstractPersistence {
         return this.getClasses().size() > 1 && this.getClasses().get(classes.size() - 1).getFinishDate().before(Utils.getCurrentCalender());
     }
 
+    public List<CourseClass> getGameClasses() {
+        List<CourseClass> classList = new ArrayList<>();
+        if (this.getClasses() == null) return classList;
+        for (CourseClass c : this.getClasses()) {
+            if (c.getGameExist()) {
+                classList.add(c);
+            }
+        }
+        return classList;
+    }
+
     public Integer getCourseRecommendNum() {
         return this.getCourseRecommends().size();
     }
