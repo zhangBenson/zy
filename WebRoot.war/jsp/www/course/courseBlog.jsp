@@ -378,7 +378,7 @@ programming.
 </div>
 <script type="text/javascript">
     function openGame(gameId) {
-        window.open("http://games.gogowise.com/questionpublic.html?id=" + gameId);
+        window.open("http://games.gogowise.com/enterexamination.html?id=" + gameId);
     }
 
     function enterPlayerRoom(courseClassId) {
