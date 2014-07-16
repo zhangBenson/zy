@@ -29,8 +29,8 @@
         <div class="list">
             <h3 class="h3_title"><a
                     href="http://games.gogowise.com/VerificationUser.aspx?userid=<s:property value="#session.userID"/>"><s:property
-                    value="%{getText('org.onlineMeeting')}"/></a></h3>
-            <%--<ul>--%>
+                    value="%{getText('title.game')}"/></a></h3>
+        <%--<ul>--%>
             <%--&lt;%&ndash;<li><a href="myForcastClass.html"><s:property value="%{getText('usermenu.item.my.created.courses')}"/></a></li>&ndash;%&gt;--%>
             <%--&lt;%&ndash;<li><a href="myRegistration.html"><s:property value="%{getText('usermenu.item.my.reged.courses')}"/></a></li>&ndash;%&gt;--%>
 
