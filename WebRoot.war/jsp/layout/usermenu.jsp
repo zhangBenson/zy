@@ -27,19 +27,17 @@
         </div>
 
         <div class="list">
-            <h3 class="h3_title"><a
-                    href="http://games.gogowise.com/VerificationUser.aspx?userid=<s:property value="#session.userID"/>"
-                    target="_blank"><s:property
-                    value="%{getText('title.game')}"/></a></h3>
-        <%--<ul>--%>
-            <%--&lt;%&ndash;<li><a href="myForcastClass.html"><s:property value="%{getText('usermenu.item.my.created.courses')}"/></a></li>&ndash;%&gt;--%>
-            <%--&lt;%&ndash;<li><a href="myRegistration.html"><s:property value="%{getText('usermenu.item.my.reged.courses')}"/></a></li>&ndash;%&gt;--%>
+            <h3 class="h3_title"><s:property value="%{getText('title.game')}"/></h3>
+            <ul>
+                <%--<li><a href="myForcastClass.html"><s:property value="%{getText('usermenu.item.my.created.courses')}"/></a></li>--%>
+                <%--<li><a href="myRegistration.html"><s:property value="%{getText('usermenu.item.my.reged.courses')}"/></a></li>--%>
 
-            <%--<li><a href="initCreateMeeting.html"><s:property value="%{getText('org.onlineMeeting.newMeeting')}"/></a></li>--%>
-            <%--<li><a href="meetingHome.html"><s:property value="%{getText('org.onlineMeeting.meetingList')}"/></a></li>--%>
-            <%--&lt;%&ndash;<li><a href="createCourse.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a></li>&ndash;%&gt;--%>
-            <%--&lt;%&ndash;<li><a href="createCourseAllInOne.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a></li>&ndash;%&gt;--%>
-            <%--</ul>--%>
+                <li>
+                    <a href="http://games.gogowise.com/VerificationUser.aspx?userid=<s:property value="#session.userID"/>"
+                       target="_blank"><s:property value="%{getText('title.game.management')}"/></a></li>
+                <%--<li><a href="createCourse.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a></li>--%>
+                <%--<li><a href="createCourseAllInOne.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a></li>--%>
+            </ul>
         </div>
 
 
