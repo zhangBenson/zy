@@ -42,6 +42,11 @@ body{
     word-spacing:5pt;
 }
 
+.copyright{
+    color: grey;
+    font-size: 8px;
+}
+
 .container
 {
     padding-top: 10px;

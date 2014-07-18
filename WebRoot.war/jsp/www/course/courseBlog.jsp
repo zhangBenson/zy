@@ -375,7 +375,9 @@ programming.
 </div>
 
 </div>
+
 </div>
+<div class="container"><s:property value="%{getText('common.copyright')}" escape="false"/></div>
 <script type="text/javascript">
     function openGame(gameId) {
         window.open("http://games.gogowise.com/enterexamination.html?id=" + gameId);
