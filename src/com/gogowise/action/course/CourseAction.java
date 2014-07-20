@@ -1035,6 +1035,12 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
+    @Action(value = "noPermission", results={@Result(name=SUCCESS, type=Constants.RESULT_NAME_TILES,location = ".noPermission")})
+    public String noPermission()
+    {
+        return SUCCESS;
+    }
+
     //==============getter and setter==========
 
     public BaseUserDao getBaseUserDao() {

@@ -20,4 +20,6 @@ public interface CourseService extends ModelService {
     public void  saveQuestion(CourseMaterial courseMaterial, List<Question> questions);
 
     public void validateBeforePurchase(Course course, BaseUser user) throws ServiceException;
+
+    public boolean hasAccessToPrivateCourse(Integer userId, Integer courseId);
 }

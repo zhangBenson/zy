@@ -14,4 +14,7 @@ public interface OrgService extends ModelService {
 
 
     public Organization findMyOrg(Integer userId);
+
+    public boolean hasAccessToPrivateCourses(Integer userId, Integer orgId);
+
 }

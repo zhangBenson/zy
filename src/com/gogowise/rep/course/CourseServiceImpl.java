@@ -13,6 +13,7 @@ import com.gogowise.rep.course.vo.CourseSpecification;
 import com.gogowise.rep.finance.UserAccountInfoDao;
 import com.gogowise.rep.finance.enity.UserAccountInfo;
 import com.gogowise.rep.org.OrgService;
+import com.gogowise.rep.org.dao.OrganizationBaseUserDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.user.dao.BaseUserDao;
@@ -44,6 +45,8 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
     private CourseInviteStudentDao courseInviteStudentDao;
     @Autowired
     private SeniorClassRoomDao seniorClassRoomDao;
+    @Autowired
+    private OrganizationBaseUserDao organizationBaseUserDao;
 
     public void  saveQuestion(CourseMaterial courseMaterial, List<Question> questions) {
           for (Question question : questions)  {
@@ -165,5 +168,26 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
         return scr != null;
     }
 
+    /***判断一个用户是否有访问一个机构私有课程的权限**/
+    public boolean hasAccessToPrivateCourse(Integer userId, Integer courseId)
+    {
+        if(courseId == null) return false;
+
+        Course curCourse  = courseDao.findById(courseId);
+        if(curCourse == null ) return  false;
+
+        Organization curOrg = curCourse.getOrganization();
+        if(curOrg == null) return false;
+
+        boolean hasAccess = true;
+        //该课程是私有课程
+        if( !curCourse.getIsPublic() )
+        {
+            if( !orgService.hasAccessToPrivateCourses(userId, curOrg.getId()) )
+                hasAccess = false;
+        }
+
+        return  hasAccess;
+    }
 
 }

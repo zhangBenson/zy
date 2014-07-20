@@ -1,6 +1,10 @@
 package com.gogowise.common.filter;
 
 import com.gogowise.common.utils.Constants;
+import com.gogowise.common.utils.Utils;
+import com.gogowise.rep.course.CourseService;
+import com.gogowise.rep.course.dao.CourseDao;
+import com.gogowise.rep.org.OrgService;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.user.UserService;
 import com.gogowise.rep.user.dao.BaseUserDao;
@@ -23,6 +27,10 @@ public class OrgSecFilter implements Filter {
     private BaseUserDao baseUserDao;
     @Autowired
     private UserService userService;
+    @Autowired
+    private CourseService courseService;
+    @Autowired
+    private CourseDao   courseDao;
 
     public void destroy() {
     }
@@ -47,6 +55,39 @@ public class OrgSecFilter implements Filter {
             response.sendRedirect("easyLogon.html");
             return;
         }
+
+        //判断是否有权限访问该页面，private Course
+        boolean hasNoAccess = false;
+
+        if ( StringUtils.startsWithIgnoreCase(requestUrl, "/voaCourseBlog") ||
+             StringUtils.startsWithIgnoreCase(requestUrl, "/playerClass") )
+        {
+            Integer courseID = Integer.valueOf( request.getParameter("course.id") );
+
+            if( session.getAttribute(Constants.SESSION_USER_ID) == null ){
+                if( !courseDao.findById(courseID).getIsPublic() ){
+                    hasNoAccess = true;
+                }
+            }else{
+                Integer userID   = (Integer)session.getAttribute(Constants.SESSION_USER_ID);
+                if( !courseService.hasAccessToPrivateCourse(userID, courseID) ){
+                    hasNoAccess = true;
+                }
+            }
+        }
+
+        if( hasNoAccess == true )
+        {
+            if( session.getAttribute(Constants.SESSION_USER_ID) == null ){
+                response.sendRedirect("easyLogon.html?reDirectUrl="+request.getServletPath()+ "?" +  java.net.URLEncoder.encode(Utils.getEmptyString(request.getQueryString()),"utf-8"));
+            }
+            else {
+                response.sendRedirect("noPermission.html");
+            }
+            return;
+        }
+
+
 
         arg2.doFilter(arg0, arg1);
     }

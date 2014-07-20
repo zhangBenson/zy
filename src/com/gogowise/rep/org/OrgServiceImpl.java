@@ -2,6 +2,7 @@ package com.gogowise.rep.org;
 
 import java.util.List;
 
+import com.gogowise.rep.course.dao.CourseDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,8 @@ public class OrgServiceImpl extends ModelServiceImpl implements OrgService {
     private OrganizationDao organizationDao;
     @Autowired
     private OrganizationBaseUserDao organizationBaseUserDao;
+    @Autowired
+    private CourseDao courseDao;
 
     public Organization findMyOrg(Integer userId) {
         Organization ret = organizationDao.findByResId(userId);
@@ -58,6 +61,23 @@ public class OrgServiceImpl extends ModelServiceImpl implements OrgService {
         return false;
     }
 
+    /**结构页面orgblog判断一个用户是否有访问机构私有资源的权限**/
+    public boolean hasAccessToPrivateCourses(Integer userId, Integer orgId)
+    {
+        if(userId == null || orgId == null ) return false;
 
+        boolean hasAccess = false;
 
+        //判断是否是注册学生或者教师
+        OrganizationBaseUser temp = organizationBaseUserDao.findByOrgIdAndUserId(orgId, userId,RoleType.ROLE_TYPE_STUDENT);
+        if( temp == null )   temp = organizationBaseUserDao.findByOrgIdAndUserId(orgId, userId,RoleType.ROLE_TYPE_TEACHER);
+
+        if( temp != null ) hasAccess = true;
+
+        //判断是否是机构负责人
+        Organization tempOrg = organizationDao.findByResId(userId);
+        if( tempOrg!= null && tempOrg.getId().equals(orgId) ) hasAccess = true;
+
+        return hasAccess;
+    }
 }
