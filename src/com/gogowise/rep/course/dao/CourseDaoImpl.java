@@ -208,7 +208,16 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
         return this.find("select distinct  c from Course c   left join c.seniorClassRooms sc   where " + PUBLIC_CONFIRMED + " and c.organization.id = ?  and charges=0  group by c order by count(sc.id) desc", pagination, orgId);
     }
 
+    public List<Course> findCoursesByOrgWithAccess(Integer orgId, boolean isPublic,Pagination page) {
+        String hql = "";
 
+        if( isPublic )
+            hql = "select c from Course c  where " + PUBLIC_CONFIRMED + " and c.organization.id = ? order by c.id desc";
+        else
+            hql = "select c from Course c  where " + PRIVATE_CONFIRMED + " and c.organization.id = ? order by c.id desc";
+
+        return this.find(hql, page, orgId);
+    }
 
     public Course saveRepeatCourse(Calendar startTime, Course course, String teacherEmail) {
 

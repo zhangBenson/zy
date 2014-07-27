@@ -44,6 +44,8 @@ public interface CourseDao extends ModelDao<Course> {
 
     public List<Course> findMoocsByOrg(Integer orgId, Pagination pagination);
 
+    public List<Course> findCoursesByOrgWithAccess(Integer orgId, boolean isPublic,Pagination page);
+
     public Course saveRepeatCourse(Calendar startTime, Course course, String teacherEmail);
 
     public List<Course> findMyOrgCourseForSupervision(Integer Rid, Pagination pagination);

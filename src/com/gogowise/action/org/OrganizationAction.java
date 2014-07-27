@@ -75,6 +75,7 @@ public class OrganizationAction extends BasicAction {
     private String organizationName;
     private List<Course> latestCourse;
     private List<Course> moocs;
+    private List<Course> privateCourses;
     private Course course;
     private List<Course> hotCourses;
     private List<CourseEvaluation> courseEvaluations;
@@ -124,6 +125,16 @@ public class OrganizationAction extends BasicAction {
             this.org = organizationDao.findById(orgId);
         }
         orgId = org.getId();
+
+        //判断是否有权限看到private课程：只有注册学生和教师及机构负责人能够看到
+        Integer userID = this.getSessionUserId();
+        boolean hasAccessToPrivateCourse = orgService.hasAccessToPrivateCourses(userID,orgId);
+
+        if( hasAccessToPrivateCourse ){
+            privateCourses = courseDao.findCoursesByOrgWithAccess(orgId, false, pagination);
+        }else{
+            privateCourses = new ArrayList<Course>();
+        }
 
         latestCourse = courseDao.findLatestCourseByOrg(orgId, new Pagination(4));
         if (latestCourse != null && latestCourse.size() > 0)
@@ -964,5 +975,13 @@ public class OrganizationAction extends BasicAction {
 
     public void setOrganizationBaseUserDao(OrganizationBaseUserDao organizationBaseUserDao) {
         this.organizationBaseUserDao = organizationBaseUserDao;
+    }
+
+    public List<Course> getPrivateCourses() {
+        return privateCourses;
+    }
+
+    public void setPrivateCourses(List<Course> privateCourses) {
+        this.privateCourses = privateCourses;
     }
 }

@@ -20,26 +20,31 @@
     <br/>
 
     <div class="thickline"></div>
-    <h3 class="courseSubhead"><s:property value="%{getText('org.blog.exquiste.course')}"/></h3>
+    <h3 class="courseSubhead"><s:property value="%{getText('org.blog.internal.course')}"/></h3>
     <!--school curriculum-->
     <div id="schoolcurriculum">
         <div class="row">
-            <s:iterator value="hotCourses" status="idx"> <%--hotCourses--%>
+            <%--<s:iterator value="hotCourses" status="idx"> &lt;%&ndash;hotCourses&ndash;%&gt;--%>
+            <s:iterator value="privateCourses" status="idx"> <%--private Courses--%>
                 <s:if test="#idx.index < 6">
                     <div class="col-sm-4">
                         <a href="voaCourseBlog.html?course.id=<s:property value="id"/>"
                            title="<s:property value="name"/>">
-                            <div class="recommended"><img src="<s:property value="logoUrl"/>"
-                                                          alt=""/><br/><span><s:property value="name"/></span></div>
+                            <div class="recommended">
+                                <img src="<s:property value="logoUrl"/>"alt=""/><br/>
+                                <span><s:property value="name"/></span>
+                            </div>
                         </a>
                     </div>
                 </s:if>
             </s:iterator>
+            <s:if test="privateCourses.size() > 6">More</s:if>
         </div>
+
         <br/>
 
-        <p class="text-right"><a href="orgMoreCourse.html?org.id=<s:property value="org.id"/>"><s:property
-                value="%{getText('others.more')}"/></a></p>
+        <%--<p class="text-right"><a href="orgMoreCourse.html?org.id=<s:property value="org.id"/>"><s:property--%>
+                <%--value="%{getText('others.more')}"/></a></p>--%>
     </div>
     <br/>
 
