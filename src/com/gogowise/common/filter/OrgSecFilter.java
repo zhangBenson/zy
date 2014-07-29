@@ -3,6 +3,7 @@ package com.gogowise.common.filter;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.course.CourseService;
+import com.gogowise.rep.course.dao.ClassDao;
 import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.org.OrgService;
 import com.gogowise.rep.org.dao.OrganizationDao;
@@ -31,7 +32,8 @@ public class OrgSecFilter implements Filter {
     private CourseService courseService;
     @Autowired
     private CourseDao   courseDao;
-
+    @Autowired
+    private ClassDao classDao;
     public void destroy() {
     }
 
@@ -62,7 +64,17 @@ public class OrgSecFilter implements Filter {
         if ( StringUtils.startsWithIgnoreCase(requestUrl, "/voaCourseBlog") ||
              StringUtils.startsWithIgnoreCase(requestUrl, "/playerClass") )
         {
-            Integer courseID = Integer.valueOf( request.getParameter("course.id") );
+            Integer courseID = null;
+
+            if( StringUtils.startsWithIgnoreCase(requestUrl, "/playerClass") )
+            {
+                Integer courseClassID = Integer.valueOf( request.getParameter("courseClass.id") );
+                courseID = classDao.findById(courseClassID).getCourse().getId();
+            }
+            else
+            {
+                courseID = Integer.valueOf( request.getParameter("course.id") );
+            }
 
             if( session.getAttribute(Constants.SESSION_USER_ID) == null ){
                 if( !courseDao.findById(courseID).getIsPublic() ){
@@ -115,5 +127,13 @@ public class OrgSecFilter implements Filter {
 
     public void setBaseUserRoleTypeDao(BaseUserRoleTypeDao baseUserRoleTypeDao) {
         this.baseUserRoleTypeDao = baseUserRoleTypeDao;
+    }
+
+    public ClassDao getClassDao() {
+        return classDao;
+    }
+
+    public void setClassDao(ClassDao classDao) {
+        this.classDao = classDao;
     }
 }
