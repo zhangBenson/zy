@@ -76,8 +76,10 @@ public class OrgSecFilter implements Filter {
                 courseID = Integer.valueOf( request.getParameter("course.id") );
             }
 
+            Boolean isPublic = courseDao.findById(courseID).getIsPublic();
+
             if( session.getAttribute(Constants.SESSION_USER_ID) == null ){
-                if( !courseDao.findById(courseID).getIsPublic() ){
+                if( isPublic != null && !isPublic ){
                     hasNoAccess = true;
                 }
             }else{
