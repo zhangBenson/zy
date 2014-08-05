@@ -151,6 +151,10 @@
     <task:scheduler id="scheduler" pool-size="5"/>
     <task:annotation-driven executor="executor" scheduler="scheduler"/>
 
+    <!--============================Config================================-->
+    <bean id="configuration" class="com.gogowise.common.config.Configuration">
+        <property name="hostName" value="${hostName}"/>
+    </bean>
 
     <!--============================webservice================================-->
     <bean id="webTest" class="com.gogowise.common.ws.WebServiceSampleImpl">
