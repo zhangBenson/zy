@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 
 import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
@@ -493,15 +494,28 @@ public class Utils {
     }
 
     public static void compressToSmall(String path) {
-        //doCompress(path, 640, 480, 1, "_small", false);
         doCompress(path, 720, 540, 1, "_small", false);
     }
 
+    public static String getExceptionDetails(Throwable ex) {
+        try {
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            ex.printStackTrace(pw);
+            return "\r\n" + sw.toString() + "\r\n";
+        } catch (Exception e2) {
+            return "bad getExceptionDetails";
+        }
+    }
 
-    public static void main(String args[]) throws IOException {
-        String s = "/home/apache-tomcat-7.0.42/webapps/ROOT/./exe/question/batch.sh /home/apache-tomcat-7.0.42/webapps/ROOT/download/courseResource/1/QUESTION_1389712874522.doc /home/apache-tomcat-7.0.42/webapps/ROOT/./download/courseResource/1/question/13897128745221/question.xml /home/apache-tomcat-7.0.42/webapps/ROOT/./download/courseResource/1/question/13897128745221/img";
-        Runtime.getRuntime().exec(s);
+    public static String getFullUrl(HttpServletRequest httpRequest) {
 
+        return "http://" + httpRequest.getServerName()
+                + ":"
+                + httpRequest.getServerPort()
+                + httpRequest.getContextPath()
+                + httpRequest.getServletPath()
+                + "?" + (httpRequest.getQueryString());
     }
 
 }

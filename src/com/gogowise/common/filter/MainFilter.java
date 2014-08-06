@@ -1,6 +1,7 @@
 package com.gogowise.common.filter;
 
 import com.gogowise.common.utils.Constants;
+import com.gogowise.common.utils.EmailUtil;
 import com.gogowise.common.utils.Utils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -18,7 +19,8 @@ import java.util.List;
 @Component
 public class MainFilter implements Filter {
 
-//    private static Logger logger = LogManager.getLogger(MainFilter.class);
+    private static Logger logger = LogManager.getLogger(MainFilter.class.getName());
+    //    private static Logger logger = LogManager.getLogger(MainFilter.class);
     private static List<String> NEED_LOGIN = new ArrayList<String>();
 
 
@@ -100,41 +102,47 @@ public class MainFilter implements Filter {
 
     public void init(FilterConfig filterConfig) throws ServletException {
     }
-    private static Logger logger = LogManager.getLogger(MainFilter.class.getName());
+
     public void doFilter(ServletRequest arg0, ServletResponse arg1,
                          FilterChain arg2) throws IOException, ServletException {
-
         HttpServletRequest request = (HttpServletRequest) arg0;
         HttpServletResponse response = (HttpServletResponse) arg1;
         HttpSession session = request.getSession();
-        request.setCharacterEncoding( "UTF-8");
-        logger.info("---------------" + request.getServletPath() + "-----------------");
+        request.setCharacterEncoding("UTF-8");
 
         String requestUrl = request.getServletPath();
+        try {
 
-        if(org.apache.commons.lang.StringUtils.contains(requestUrl,"/video/") && session.getAttribute(Constants.SESSION_USER_ID) != null){
-            String fileName = requestUrl.substring(requestUrl.lastIndexOf("/"));
-            int beginIndex = fileName.indexOf('_');
-            int endIndex = fileName.lastIndexOf('_');
-            String perOnliveID = fileName.substring(beginIndex+1,endIndex);
 
-            Utils.notReplaceFileFromfms((Integer) session.getAttribute(Constants.SESSION_USER_ID), Integer.parseInt(perOnliveID));
+            if (org.apache.commons.lang.StringUtils.contains(requestUrl, "/video/") && session.getAttribute(Constants.SESSION_USER_ID) != null) {
+                String fileName = requestUrl.substring(requestUrl.lastIndexOf("/"));
+                int beginIndex = fileName.indexOf('_');
+                int endIndex = fileName.lastIndexOf('_');
+                String perOnliveID = fileName.substring(beginIndex + 1, endIndex);
 
-        }
-        for (String url : NEED_LOGIN) {
-            if (StringUtils.startsWithIgnoreCase(requestUrl, url) && session.getAttribute(Constants.SESSION_USER_ID) == null) {
-                response.sendRedirect("easyLogon.html?reDirectUrl="+request.getServletPath()+ "?" +  java.net.URLEncoder.encode(Utils.getEmptyString(request.getQueryString()),"utf-8"));
-                return;
+                Utils.notReplaceFileFromfms((Integer) session.getAttribute(Constants.SESSION_USER_ID), Integer.parseInt(perOnliveID));
+
             }
-        }
+            for (String url : NEED_LOGIN) {
+                if (StringUtils.startsWithIgnoreCase(requestUrl, url) && session.getAttribute(Constants.SESSION_USER_ID) == null) {
+                    response.sendRedirect("easyLogon.html?reDirectUrl=" + request.getServletPath() + "?" + java.net.URLEncoder.encode(Utils.getEmptyString(request.getQueryString()), "utf-8"));
+                    return;
+                }
+            }
 //        if ( StringUtils.startsWithIgnoreCase(requestUrl, "/higSec")
 //                && (session.getAttribute(Constants.HIG_SEC_USER_EMAIL) ==null ||!"zlhades@hotmail.com".equalsIgnoreCase((String) session.getAttribute(Constants.HIG_SEC_USER_EMAIL)) )) {
 //            response.sendRedirect("easyLogon.html");
 //            return;
 //        }
-        arg2.doFilter(arg0, arg1);
-    }
+            arg2.doFilter(arg0, arg1);
 
+
+        } catch (Throwable e) {
+            logger.error("error==:", e);
+            EmailUtil.sendMail("zlhades@hotmail.com", "webErrosInfo", Utils.getFullUrl(request) + "\t" + Utils.getExceptionDetails(e));
+            response.sendRedirect("/chucuola.htm");
+        }
+    }
 
 
 }

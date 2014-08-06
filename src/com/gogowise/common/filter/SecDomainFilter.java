@@ -19,8 +19,6 @@ import java.io.IOException;
 @Component
 public class SecDomainFilter implements Filter {
 
-    private Logger logger = LogManager.getLogger(this.getClass());
-
     private BaseUserDao baseUserDao;
 
     public void destroy() {

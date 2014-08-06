@@ -129,19 +129,13 @@
 
     <error-page>
         <error-code>500</error-code>
-        <location>/htm/chucuola.htm</location>
+        <location>/chucuola.htm</location>
     </error-page>
 
     <error-page>
         <error-code>404</error-code>
-        <location>/htm/chucuola.htm</location>
+        <location>/chucuola.htm</location>
     </error-page>
-
-    <error-page>
-        <exception-type>java.lang.Exception</exception-type>
-        <location>/htm/chucuola.htm</location>
-    </error-page>
-
 
     <!-- ===================================== JSP Config ===================================== -->
     <jsp-config>
