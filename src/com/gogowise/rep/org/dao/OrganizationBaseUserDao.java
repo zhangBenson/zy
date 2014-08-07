@@ -17,15 +17,17 @@ public interface OrganizationBaseUserDao extends ModelDao<OrganizationBaseUser> 
 
     OrganizationBaseUser findByOrgIdAndEmail(Integer orgId, String email);
 
-    public OrganizationBaseUser findByOrgIdAndEmailAndRoleType(Integer orgId, String email, Integer roleTyp);
+    OrganizationBaseUser findByOrgIdAndEmailAndRoleType(Integer orgId, String email, Integer roleTyp);
 
-    public OrganizationBaseUser findByEmailAndStatus(String email, Integer status);
+    OrganizationBaseUser findByEmailAndStatus(String email, Integer status);
 
-    public List<OrganizationBaseUser> findByIdAndStatus(Integer id, Short status, Integer roleTyp);
+    List<OrganizationBaseUser> findByIdAndStatus(Integer id, Short status, Integer roleTyp);
 
     List<BaseUser> findUsersByOrgIdAndRoleType(Integer orgId, Integer roleType, Pagination pagination);
 
     List<BaseUser> findLatestUsersByOrgIdAndRoleType(Integer orgId, Integer roleType, Pagination pagination);
 
-    OrganizationBaseUser findMyOrgByUserID(Integer userID, Integer roleType);
+    OrganizationBaseUser findMyOrgByUserIdAndRole(Integer userID, Integer roleType);
+
+    List<OrganizationBaseUser> findByUserAndOrg(Integer userID, Integer orgId);
 }

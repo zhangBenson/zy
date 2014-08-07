@@ -13,18 +13,14 @@ import com.gogowise.rep.course.vo.CourseSpecification;
 import com.gogowise.rep.finance.UserAccountInfoDao;
 import com.gogowise.rep.finance.enity.UserAccountInfo;
 import com.gogowise.rep.org.OrgService;
-import com.gogowise.rep.org.dao.OrganizationBaseUserDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
-import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Service("courseService")
 public class CourseServiceImpl extends ModelServiceImpl implements CourseService{
@@ -45,8 +41,6 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
     private CourseInviteStudentDao courseInviteStudentDao;
     @Autowired
     private SeniorClassRoomDao seniorClassRoomDao;
-    @Autowired
-    private OrganizationBaseUserDao organizationBaseUserDao;
 
     public void  saveQuestion(CourseMaterial courseMaterial, List<Question> questions) {
           for (Question question : questions)  {
@@ -91,10 +85,6 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
         }
         course.setConsumptionType(true);
 
-        //URL This time the course's logo url is upload/course/null
-        if (StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(), "upload/")) {
-            //course.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + specification.getOperatorId() + "/" + course.getLogoUrl());
-        }
         if (StringUtils.isBlank(course.getLogoUrl()) ) course.setLogoUrl(Constants.DEFAULT_COURSE_IMAGE);
 
 
@@ -168,26 +158,11 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
         return scr != null;
     }
 
-    /***判断一个用户是否有访问一个机构私有课程的权限**/
-    public boolean hasAccessToPrivateCourse(Integer userId, Integer courseId)
-    {
-        if(courseId == null) return false;
 
-        Course curCourse  = courseDao.findById(courseId);
-        if(curCourse == null ) return  false;
+    public boolean isDenyByPrivateCourse(Integer userId, Integer courseId) {
+        Course curCourse = courseDao.findById(courseId);
+        return !(curCourse.getIsPublic() || userId == null) && orgService.isMember(userId, curCourse.getOrganization().getId());
 
-        Organization curOrg = curCourse.getOrganization();
-        if(curOrg == null) return false;
-
-        boolean hasAccess = true;
-        //该课程是私有课程
-        if( !curCourse.getIsPublic() )
-        {
-            if( !orgService.hasAccessToPrivateCourses(userId, curOrg.getId()) )
-                hasAccess = false;
-        }
-
-        return  hasAccess;
     }
 
 }

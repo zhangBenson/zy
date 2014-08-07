@@ -50,12 +50,13 @@ public class Course extends AbstractPersistence {
 
     private Boolean isDeleted = false;
     private Integer studentAgeType = 0;
-    private Boolean isPublic = true;
 
+    @Column(columnDefinition = "tinyint(1) default 1")
+    private boolean isPublic = true;
 
     @OneToMany(mappedBy = "course")
     @OrderBy("date asc")
-    private List<CourseClass> classes = new ArrayList<CourseClass>();
+    private List<CourseClass> classes = new ArrayList<>();
 
     private Calendar publicationTime; //课程发布时间
 
@@ -78,10 +79,10 @@ public class Course extends AbstractPersistence {
     private Course fromCourse;
 
     @OneToMany(mappedBy = "course")
-    private List<CourseInviteStudent> courseInviteStudents = new ArrayList<CourseInviteStudent>();
+    private List<CourseInviteStudent> courseInviteStudents = new ArrayList<>();
 
     @OneToMany(mappedBy = "course")
-    private List<SeniorClassRoom> seniorClassRooms = new ArrayList<SeniorClassRoom>();
+    private List<SeniorClassRoom> seniorClassRooms = new ArrayList<>();
 
     @OneToMany(mappedBy = "course")
     private List<CourseReservation> courseReservations;
@@ -223,10 +224,8 @@ public class Course extends AbstractPersistence {
         //return classes;
         List<CourseClass> removeDeletedClass = new ArrayList<>();
 
-        for(CourseClass curClass : classes)
-        {
-            if( curClass.getIsDeleted() == null || curClass.getIsDeleted() == false )
-            {
+        for (CourseClass curClass : classes) {
+            if (curClass.getIsDeleted() == null || !curClass.getIsDeleted()) {
                 removeDeletedClass.add(curClass);
             }
         }
@@ -362,7 +361,7 @@ public class Course extends AbstractPersistence {
     }
 
     public List<CourseClass> getForcastClasses() {
-        List<CourseClass> curr = new ArrayList<CourseClass>();
+        List<CourseClass> curr = new ArrayList<>();
         for (CourseClass cc : this.getClasses()) {
             Calendar finishDate = (Calendar) cc.getDate().clone();
             finishDate.add(Calendar.MINUTE, cc.getDuration());
@@ -435,8 +434,7 @@ public class Course extends AbstractPersistence {
     }
 
     public Boolean getTeacherAccept() {
-        if (this.getTeacher() != null) return true;
-        return false;
+        return this.getTeacher() != null;
     }
 
     public List<CourseInviteStudent> getCourseInviteStudents() {
@@ -452,14 +450,7 @@ public class Course extends AbstractPersistence {
     }
 
     public Boolean getLimitOver() {
-        if (this.getTeachingNum() <= 3) {
-            if (this.getObservationNum() + this.getCourseInviteStudents().size() >= this.getTeachingNum()) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        return false;
+        return this.getTeachingNum() <= 3 && this.getObservationNum() + this.getCourseInviteStudents().size() >= this.getTeachingNum();
     }
 
     public String getTeacherEmail() {
@@ -592,11 +583,11 @@ public class Course extends AbstractPersistence {
         this.studentAgeType = studentAgeType;
     }
 
-    public Boolean getIsPublic() {
+    public boolean getIsPublic() {
         return isPublic;
     }
 
-    public void setIsPublic(Boolean aPublic) {
+    public void setIsPublic(boolean aPublic) {
         isPublic = aPublic;
     }
 }

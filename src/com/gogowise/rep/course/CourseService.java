@@ -10,16 +10,19 @@ import com.gogowise.rep.course.vo.CourseSpecification;
 import com.gogowise.rep.user.enity.BaseUser;
 
 import java.util.List;
-import java.util.Set;
 
 public interface CourseService extends ModelService {
 
     public void saveCourse(CourseSpecification specification);
+
     public Course findById(Integer id);
-    public List<Course>  findMaintenanceCourses(Integer userId , Pagination pagination);
-    public void  saveQuestion(CourseMaterial courseMaterial, List<Question> questions);
+
+    public List<Course> findMaintenanceCourses(Integer userId, Pagination pagination);
+
+    public void saveQuestion(CourseMaterial courseMaterial, List<Question> questions);
 
     public void validateBeforePurchase(Course course, BaseUser user) throws ServiceException;
 
-    public boolean hasAccessToPrivateCourse(Integer userId, Integer courseId);
+    public boolean isDenyByPrivateCourse(Integer userId, Integer courseId);
+
 }
