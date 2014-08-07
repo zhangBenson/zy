@@ -15,4 +15,15 @@ public class QuestionResultImpl extends ModelDaoImpl<QuestionResult> implements 
     public QuestionResult find(Integer userId, Integer questionId, Integer classId) {
         return this.findFist("From QuestionResult cm where cm.owner.id=?   and cm.question.id = ? and cm.courseClass.id = ? order by cm.id desc", userId, questionId, classId);
     }
+
+    public List<QuestionResult> findByClassAndUser(Integer courseClassId, Integer userID)
+    {
+        return this.find("From QuestionResult qr where qr.courseClass.id=?  and qr.owner.id = ? and qr.courseClass.isDeleted=false", courseClassId, userID);
+    }
+
+    public List<QuestionResult> findByCourseAndUser(Integer cId, Integer userID)
+    {
+        return this.find("From QuestionResult qr where qr.courseClass.course.id=?  and qr.owner.id = ? and qr.courseClass.isDeleted=false", cId, userID);
+    }
+
 }

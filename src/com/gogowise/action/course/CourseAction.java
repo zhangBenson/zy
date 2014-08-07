@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.gogowise.rep.course.dao.*;
+import com.gogowise.rep.course.enity.*;
 import com.gogowise.rep.org.OrgService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
@@ -32,27 +34,6 @@ import com.gogowise.common.utils.PdfUtil;
 import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.CourseService;
-import com.gogowise.rep.course.dao.ClassDao;
-import com.gogowise.rep.course.dao.ClassRoomDao;
-import com.gogowise.rep.course.dao.CourseCommentDao;
-import com.gogowise.rep.course.dao.CourseDao;
-import com.gogowise.rep.course.dao.CourseInviteStudentDao;
-import com.gogowise.rep.course.dao.CourseNewEventDao;
-import com.gogowise.rep.course.dao.CourseQuestionDao;
-import com.gogowise.rep.course.dao.CourseRecommendDao;
-import com.gogowise.rep.course.dao.CourseReservationDao;
-import com.gogowise.rep.course.dao.CourseResourceDao;
-import com.gogowise.rep.course.dao.SeniorClassRoomDao;
-import com.gogowise.rep.course.enity.Course;
-import com.gogowise.rep.course.enity.CourseClass;
-import com.gogowise.rep.course.enity.CourseComment;
-import com.gogowise.rep.course.enity.CourseInviteStudent;
-import com.gogowise.rep.course.enity.CourseNewEvent;
-import com.gogowise.rep.course.enity.CourseQuestion;
-import com.gogowise.rep.course.enity.CourseRecommend;
-import com.gogowise.rep.course.enity.CourseReservation;
-import com.gogowise.rep.course.enity.CourseResource;
-import com.gogowise.rep.course.enity.SeniorClassRoom;
 import com.gogowise.rep.course.vo.CourseSpecification;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
@@ -150,6 +131,14 @@ public class CourseAction extends BasicAction {
     private OrgService orgService;
 
     private Integer videoVersionId;
+
+    @Autowired
+    private QuestionResultDao questionResultDao;
+
+    private Integer answeredCorrect;
+    private Integer answeredCorrectRate;
+    private List<Question> questions;
+    private List<QuestionResult> questionResults;
 
     @Action(value = "courseCenter", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseCenter")})
     public String courseCenter() {
@@ -1041,6 +1030,43 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
+    @Action(value = "myCourseQuestionResult", results={@Result(name=SUCCESS, type = Constants.RESULT_NAME_TILES,location = ".myCourseQuestionResult")})
+    public String myCourseQuestionResult()
+    {
+        course = courseDao.findById(this.getCourse().getId());
+        classes = course.getClasses();
+        questionResults = questionResultDao.findByCourseAndUser(course.getId(),this.getSessionUserId());
+
+//        List<CourseMaterial> courseMaterials = courseMaterialDao.find(course.getId(), CourseMaterial.QUESTION);
+//        questions = questionDao.findByMaterialId(materialId);
+        //计算准确率
+        answeredCorrectRate = 0;
+        answeredCorrect = 0;
+        int allAnswered = questionResults.size();
+        for(QuestionResult questionResult : questionResults ){
+            if( questionResult.getIsCorrect() ){
+                answeredCorrect++;
+            }
+        }
+        if( allAnswered != 0 )  answeredCorrectRate = answeredCorrect * 100 / allAnswered;
+
+        return SUCCESS;
+    }
+
+    @Action(value = "myCoursesQuestionResult", results={@Result(name=SUCCESS, type = Constants.RESULT_NAME_TILES,location = ".myCoursesQuestionResult")})
+    public String myCoursesQuestionResult()
+    {
+        Integer userID = this.getSessionUserId();
+        courses = courseDao.findUserRegCourses(userID,null);
+
+        for(Course course:courses){
+            List<QuestionResult> temp = questionResultDao.findByCourseAndUser(course.getId(), userID);
+            questionResults.addAll(temp);
+        }
+
+        return SUCCESS;
+    }
+
     //==============getter and setter==========
 
     public BaseUserDao getBaseUserDao() {
@@ -1840,5 +1866,37 @@ public class CourseAction extends BasicAction {
     public void setVideoVersionId(Integer videoVersionId) {
 
         this.videoVersionId = videoVersionId;
+    }
+
+    public List<QuestionResult> getQuestionResults() {
+        return questionResults;
+    }
+
+    public void setQuestionResults(List<QuestionResult> questionResults) {
+        this.questionResults = questionResults;
+    }
+
+    public Integer getAnsweredCorrectRate() {
+        return answeredCorrectRate;
+    }
+
+    public void setAnsweredCorrectRate(Integer answeredCorrectRate) {
+        this.answeredCorrectRate = answeredCorrectRate;
+    }
+
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
+    }
+
+    public Integer getAnsweredCorrect() {
+        return answeredCorrect;
+    }
+
+    public void setAnsweredCorrect(Integer answeredCorrect) {
+        this.answeredCorrect = answeredCorrect;
     }
 }
