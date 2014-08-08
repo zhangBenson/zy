@@ -128,9 +128,9 @@ public class OrganizationAction extends BasicAction {
 
         //判断是否有权限看到private课程：只有注册学生和教师及机构负责人能够看到
         Integer userID = this.getSessionUserId();
-        boolean hasAccessToPrivateCourse = orgService.isMember(userID, orgId);
+        boolean idMember = userID != null && orgService.isMember(userID, orgId);
 
-        if( hasAccessToPrivateCourse ){
+        if (idMember) {
             privateCourses = courseDao.findCoursesByOrgWithAccess(orgId, false, pagination);
         }else{
             privateCourses = new ArrayList<>();
