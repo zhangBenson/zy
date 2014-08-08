@@ -106,8 +106,7 @@ public class OrganizationAction extends BasicAction {
     private UserService userService;
 
     @Action(value = "schoolCenter", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".schoolCenter")})
-    public String schoolCenter()
-    {
+    public String schoolCenter() {
         this.organizations = organizationDao.findLatestOrgs(pagination);
         return SUCCESS;
     }
@@ -126,13 +125,12 @@ public class OrganizationAction extends BasicAction {
         }
         orgId = org.getId();
 
-        //判断是否有权限看到private课程：只有注册学生和教师及机构负责人能够看到
         Integer userID = this.getSessionUserId();
         boolean idMember = userID != null && orgService.isMember(userID, orgId);
 
         if (idMember) {
             privateCourses = courseDao.findCoursesByOrgWithAccess(orgId, false, pagination);
-        }else{
+        } else {
             privateCourses = new ArrayList<>();
         }
 
@@ -375,8 +373,7 @@ public class OrganizationAction extends BasicAction {
 
         saveOrg.setResponsiblePerson(rer);
 
-        if( this.getHidFile1() != null && !this.getHidFile1().equalsIgnoreCase(saveOrg.getLogoUrl()) )
-        {
+        if (this.getHidFile1() != null && !this.getHidFile1().equalsIgnoreCase(saveOrg.getLogoUrl())) {
             if (StringUtils.isNotBlank(this.getHidFile1())) {
                 String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + this.getHidFile1());
                 String toPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + "/orgLogo/" + this.getHidFile1());
@@ -385,8 +382,7 @@ public class OrganizationAction extends BasicAction {
             }
         }
 
-        if( this.getHidFile2() != null && !this.getHidFile2().equalsIgnoreCase(saveOrg.getAdvUrl()) )
-        {
+        if (this.getHidFile2() != null && !this.getHidFile2().equalsIgnoreCase(saveOrg.getAdvUrl())) {
             if (StringUtils.isNotBlank(this.getHidFile2())) {
                 String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + this.getHidFile2());
                 String toPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + "/orgBuLic/" + this.getHidFile2());
