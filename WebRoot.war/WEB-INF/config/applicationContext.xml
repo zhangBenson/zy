@@ -114,7 +114,7 @@
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
-                <value>classpath*:Config.properties</value>
+                <value>/WEB-INF/config/Config.properties</value>
             </list>
         </property>
     </bean>

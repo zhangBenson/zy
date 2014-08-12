@@ -77,6 +77,8 @@
                     <a class="manage_course" <%--id="courseNewEvents<s:property value="#idx.index"/>" --%>
                        href="initAddCourseEvent.html?course.id=5"><s:property
                             value="%{getText('add.course.new.event.in')}"/></a>
+                    <a href="myCourseQuestionResult.html?course.id=<s:property value="id"/>"><s:property
+                            value="%{getText('course.courseQuestionResult')}"/></a>
                 </p>
             </div>
 
