@@ -4,6 +4,8 @@ import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.AbstractPersistence;
 import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.tag.dao.TagDao;
+import com.gogowise.rep.tag.enity.Tag;
 import com.gogowise.rep.user.enity.BaseUser;
 
 import javax.persistence.*;
@@ -94,6 +96,8 @@ public class Course extends AbstractPersistence {
     private List<CourseNewEvent> courseNewEvents;
     //============setter and getter
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Tag> tags;
 
     public Boolean getOpened() {
         return opened;
@@ -589,5 +593,13 @@ public class Course extends AbstractPersistence {
 
     public void setIsPublic(boolean aPublic) {
         isPublic = aPublic;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
     }
 }

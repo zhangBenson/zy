@@ -329,8 +329,9 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
 
         if (searchStr == null || searchStr.equals(""))
             return this.findHotCourses(pagination);
-        String hql = "select distinct c  From Course c left join  c.teachers teacher  where " + COURSE_CONFIRMED + " and " + PUBLIC_CONFIRMED + " and (c.name like ? or teacher.nickName like ?) order by c.id desc";
-        return this.find(hql, pagination, "%" + searchStr + "%", "%" + searchStr + "%");
+        //String hql = "select distinct c  From Course c left join  c.teachers teacher  where " + COURSE_CONFIRMED + " and " + PUBLIC_CONFIRMED + " and (c.name like ? or teacher.nickName like ?) order by c.id desc";
+        String hql = "select distinct c  From Course c left join  c.teachers teacher left join c.tags tag where " + COURSE_CONFIRMED + " and " + PUBLIC_CONFIRMED + " and (c.name like ? or teacher.nickName like ? or tag.name like ?) order by c.id desc";
+        return this.find(hql, pagination, "%" + searchStr + "%", "%" + searchStr + "%", "%" + searchStr + "%");
     }
 
     public List<Course> removeDeletedCourse(List<Course> courses) {
@@ -351,6 +352,11 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
         }
 
         return result;
+    }
+
+    public List<Course> findCoursesByTag(Integer tagId, Pagination pagination){
+        String hql = "select distinct c  From Course c left join  c.tags tag  where " + PUBLIC_CONFIRMED + " and tag.id=? order by c.publicationTime desc";
+        return this.find(hql,pagination,tagId);
     }
 
     //================getter and setter==========

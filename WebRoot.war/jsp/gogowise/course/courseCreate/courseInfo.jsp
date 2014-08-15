@@ -8,11 +8,20 @@
             <span class="course_name_input_msg tip_words">*</span>
 
         </li>
+
         <li>
             <s:property value="%{getText('course.access')}"/>：
             <s:radio name="course.isPublic" list="#{true:getText('course.public'),false:getText('course.private')}"
                     value="course.isPublic" cssStyle="margin-left: 10px;margin-right: 10px;"/>
         </li>
+
+        <li>
+            <span class="item"><s:property value="%{getText('course.info.courseTag')}"/></span>
+            <s:checkboxlist list="tags" listKey="id" listValue="name" name="tags"/>
+            <span class="course_name_input_msg tip_words">*</span>
+
+        </li>
+
         <li>
             <span class="item"><s:property value="%{getText('course.info.description')}"/></span>
             <span class="course_intro_input_msg tip_words">*</span> <br/>
