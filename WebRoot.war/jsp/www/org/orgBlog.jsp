@@ -428,26 +428,55 @@
             <div class="col-sm-4">
                 <button type="button" class="btn btn-primary btn-lg btn-block">Confirm Buy</button>
             </div>
-            <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <%-- xiaoyl <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">  xiaoyl     --%>
+                <form name="palypaForm" action="https://www.paypal.com/cgi-bin/webscr" target="_top" method="post" onsubmit="return validatePaypal();">       <%-- xiaoyl  add--   xiaoyl     --%>
                 <%--<input type="hidden" name="cmd" value="_s-xclick">--%>
                 <%--<input type="hidden" name="hosted_button_id" value="CPR764EY9Y6HS">--%>
                 <%--<input type="image" src="https://www.paypalobjects.com/en_GB/SG/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">--%>
                 <%--<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">--%>
                 <%--<input type="hidden" name="org.id" value="<s:property value="org.id" />">--%>
-                <input type="hidden" name="cmd" value="_xclick">
-                <input type="hidden" name="business" value="1072805997@qq.com">
-                <input type="hidden" name="item_name" value="Course">
-                <input type="hidden" name="item_number" value="2">
-                <input type="hidden" name="quantity" value="1">
-                <input type="hidden" name="amount" value="10.00">
-                <input type="hidden" name="currency_code" value="USD">
-                <input type="hidden" name="bn" value="IC_Sample">
-                <input type="hidden" name="no_shipping" value="1">
+                    <%-- xiaoyl   <input type="hidden" name="cmd" value="_xclick">
+                      <input type="hidden" name="business" value="zeng_zeng@gogowise.com">
+                      <input type="hidden" name="item_name" value="Course">
+                      <input type="hidden" name="item_number" value="2">
+                      <input type="hidden" name="quantity" value="1">
+                      <input type="hidden" name="amount" value="1.00">
+                      <input type="hidden" name="currency_code" value="USD">
+                      <input type="hidden" name="bn" value="IC_Sample">
+                      <input type="hidden" name="no_shipping" value="1">         xiaoyl     --%>
                 <%--<input type="hidden" name="custorm" value="sessionID">--%>
-                <input type="hidden" name="notify_url"
-                       value="http://test.gogowise.com/ipn.html?userID=<s:property value="%{#session.userID}"/>&orgID=<s:property value="org.id"/>">
-                <input type="hidden" name="return_url" value="http://test.gogowise.com/courseCenter.html">
-                <input type="hidden" name="cancel_url" value="http://test.gogowise.com/error.html">
+                    <%-- xiaoyl <input type="hidden" name="notify_url"
+                           value="http://test.gogowise.com/ipn.html?userID=<s:property value="%{#session.userID}"/>&orgID=<s:property value="org.id"/>">
+                    <input type="hidden" name="return_url" value="http://test.gogowise.com/courseCenter.html">
+                    <input type="hidden" name="cancel_url" value="http://test.gogowise.com/error.html">      xiaoyl     --%>
+
+
+
+                    <!--   -**********************xiaoyl  add-****************--------->
+
+
+                    <input type="hidden" name="cmd" value="_xclick">
+                    <!-- <input type="hidden" name="business" value="demoxiaowangzi-facilitator@hotmail.com">这里填写你的paypal账户email-->
+                    <input type="hidden" name="business" value="zeng_zeng@gogowise.com">
+                    <input type="hidden" name="item_name" value="Course"><!--这里填写客户订单的一些相关信息，当客户连到paypal网站付款的时候将看到这些信息-->
+                    <input type="hidden" name="amount" value="1.00" id="paypalAmount"><!--订单的总金额信息-->
+                    <input type="hidden" name="currency_code" value="USD"><!--订单总金额对应的货币类型 ,客户可以用其他币种来付款,比如这里订单币种是美元USD,客户可以用欧元EUR来付款,由paypal根据当前汇率自动实现币种之间的换算-->
+                    <input type="hidden" name="on0" value="customerId"><!-- 自定义的参数1 -->
+                    <input type="hidden" name="os0" value="stephen"><!-- 对应上面自定义参数1对应的值 -->
+                    <input type="hidden" name="on1" value="address"><!-- 自定义的参数2 -->
+                    <input type="hidden" name="os1" value="shanghai china"><!-- 对应上面自定义参数2对应的值 -->
+                    <!--  <input type="hidden" name="notify_url" value="${contextPath}/test/notifyurl.html">这里告诉paypal付款的通信url,即当客户付款后调用这个url通知系统-->
+                    <input type="hidden" name="notify_url"
+                           value="http://54.191.219.119/ipn.html?userID=<s:property value="%{#session.userID}"/>&orgID=<s:property value="org.id"/>">
+                    <input type="hidden" name="return" value="http://54.191.219.119/courseCenter.html">
+                    <!-- <input type="hidden" name="cancel_ return" value="http://54.191.219.119:80/error.html">     -->
+
+
+                   <!--   -*********************xiaoyl  add-*****************--------->
+
+
+
+
                 <input type="image" src="https://www.paypalobjects.com/en_GB/SG/i/btn/btn_buynowCC_LG.gif" name="submit"
                        alt="Make payments with payPal - it's fast,">
                 <img alt="" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
@@ -495,4 +524,24 @@
             return false;
         }
     }
+
+
+    function validatePaypal() {
+
+
+        var value=$("input[name='sale']:checked").val();
+
+
+        if (value == null || value == undefined || value == '') {
+            alert("请选择课程");
+            return false;
+        }
+
+
+
+       // $("#paypalAmount").val(value);
+
+        return true;
+    }
+
 </script>

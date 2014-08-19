@@ -97,19 +97,35 @@
     </div>
     <div style="text-align: center;">
         <div class="row">
-            <s:form action="purchaseCourse" method="POST" theme="css_xhtml" id="purchaseCourse_Form">
-                <s:hidden name="course.id"/>
+            <%-- <s:form action="purchaseCourse" method="POST" theme="css_xhtml" id="purchaseCourse_Form">   --%>
 
+                <s:form action=" https://www.paypal.com/cgi-bin/webscr" method="POST" theme="css_xhtml" id="purchaseCourse_Form">
+                <s:hidden name="course.id"/>
+                    <input type="hidden" name="cmd" value="_xclick">
+                    <input type="hidden" name="business" value="zeng_zeng@gogowise.com"><!--这里填写你的paypal账户email-->
+                    <input type="hidden" name="item_name" value="order information"><!--这里填写客户订单的一些相关信息，当客户连到paypal网站付款的时候将看到这些信息-->
+                    <input type="hidden" name="amount" value="1"><!--订单的总金额信息-->
+                    <input type="hidden" name="currency_code" value="USD"><!--订单总金额对应的货币类型 ,客户可以用其他币种来付款,比如这里订单币种是美元USD,客户可以用欧元EUR来付款,由paypal根据当前汇率自动实现币种之间的换算-->
+
+                    <input type="hidden" name="notify_url"
+                           value="http://54.191.219.119/ipn.html?userID=<s:property value="%{#session.userID}"/>&courseID=<s:property value="course.id"/>"><!--这里告诉paypal付款的通信url,即当客户付款后调用这个url通知系统-->
+                    <input type="hidden" name="return" value="http://54.191.219.119">
+
+                    <s:if test="errorMessageStatu==false">
                 <div class="col-sm-6">
                         <%--<input type="button" class="btn btn-primary btn-lg btn-block" value="" id="reservationconfirmed"/> --%>
-                    <button type="button" class="btn btn-primary btn-lg btn-block" value="" id="reservationconfirmed">
-                        <s:property value="%{getText('button.course.confirm.registration')}"/></button>
+
+                           <button type="button" class="btn btn-primary btn-lg btn-block" value="" id="reservationconfirmed">
+                                <s:property value="%{getText('button.course.confirm.Buy')}"/></button>
+
+
                 </div>
                 <div class="col-sm-6">
                         <%-- <button type="button" class="btn btn-danger btn-lg btn-block">Cancel</button> --%>
                     <input type="button" class="btn btn-danger btn-lg btn-block"
                            value="<s:property value="%{getText('button.cancel')}" />"/>
                 </div>
+                    </s:if>
             </s:form>
         </div>
 

@@ -59,6 +59,8 @@ public class CoursePurchaseAction extends BasicAction {
     @Autowired
     private CourseService courseService;
 
+    private boolean errorMessageStatu;
+
     @Action(value = "initCourseconfirm", results = { @Result(name = SUCCESS, type = "tiles", location = ".courseconfirm"), @Result(name = LOGIN, type = Constants.RESULT_NAME_TILES, location = ".identityConfirmation")
     //                    ,
     //                       @Result(name = "myCourseCenter",type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName", "myForcastClass", "course.id", "${course.id}"}),
@@ -70,6 +72,19 @@ public class CoursePurchaseAction extends BasicAction {
         if (this.getSessionUserId() == null) {
             return LOGIN;
         }
+
+        /****************add by xiaoyl*****************/
+        try {
+            courseService.validateBeforePurchase(courseDao.findById(this.course.getId()), baseUserDao.findById(getSessionUserId()));
+        } catch (ServiceException e) {
+            this.addActionErrorInfoWithKey(e.getMessage());
+            errorMessageStatu=true;
+        }
+
+        /****************add by xiaoyl*****************/
+
+
+
         user = baseUserDao.findById(this.getSessionUserId());
         userAccountInfo = userAccountInfoDao.findByUserId(this.getSessionUserId());
         this.setOperaType(Constants.OPERA_TYPE_FOR_COURSE_CREATION);
@@ -367,4 +382,11 @@ public class CoursePurchaseAction extends BasicAction {
         this.purchaseConfirmMsg = purchaseConfirmMsg;
     }
 
+    public boolean isErrorMessageStatu() {
+        return errorMessageStatu;
+    }
+
+    public void setErrorMessageStatu(boolean errorMessageStatu) {
+        this.errorMessageStatu = errorMessageStatu;
+    }
 }
