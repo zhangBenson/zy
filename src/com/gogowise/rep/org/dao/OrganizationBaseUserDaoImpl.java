@@ -16,18 +16,13 @@ public class OrganizationBaseUserDaoImpl extends ModelDaoImpl<OrganizationBaseUs
     }
 
     @Override
-    public List<OrganizationBaseUser> findOrgUsers(Integer orgId, Integer roleType,Pagination pagination) {
-        return this.find("From OrganizationBaseUser ot where ot.org.id = ? and ot.roleType=? order by ot.id desc",pagination,orgId,roleType);
-    }
-
-    public List<OrganizationBaseUser> findLatestUserByOrgId(Integer orgId,  Integer roleType, Pagination pagination) {
-        String hql = "select ot.teacher from OrganizationBaseUser ot where ot.org.id= ? and ot.roleType=? order by ot.createDate desc ";
-        return this.find(hql, pagination, orgId, pagination);
+    public List<OrganizationBaseUser> findOrgUsers(Integer orgId, Integer roleType, Pagination pagination) {
+        return this.find("From OrganizationBaseUser ot where ot.org.id = ? and ot.roleType=? order by ot.id desc", pagination, orgId, roleType);
     }
 
     @Override
-    public OrganizationBaseUser findByOrgIdAndUserId(Integer orgId, Integer userId,Integer roleType) {
-        return this.findFist("From OrganizationBaseUser ot where ot.org.id = ? and ot.user.id=? and ot.roleType=?", orgId, userId,roleType);
+    public OrganizationBaseUser findByOrgIdAndUserId(Integer orgId, Integer userId, Integer roleType) {
+        return this.findFist("From OrganizationBaseUser ot where ot.org.id = ? and ot.user.id=? and ot.roleType=?", orgId, userId, roleType);
     }
 
     @Override
@@ -52,17 +47,25 @@ public class OrganizationBaseUserDaoImpl extends ModelDaoImpl<OrganizationBaseUs
 
     @Override
     public List<BaseUser> findUsersByOrgIdAndRoleType(Integer orgId, Integer roleType, Pagination pagination) {
-        return find("select ot.user From OrganizationBaseUser ot where ot.org.id = ? and ot.roleType=?",pagination,orgId,roleType);
+        return find("select ot.user From OrganizationBaseUser ot where ot.org.id = ? and ot.roleType=?", pagination, orgId, roleType);
     }
 
     @Override
     public List<BaseUser> findLatestUsersByOrgIdAndRoleType(Integer orgId, Integer roleType, Pagination pagination) {
-        return find("select ot.user From OrganizationBaseUser ot where ot.org.id = ? and ot.roleType=? order by ot.createDate desc",pagination,orgId,roleType);
+        return find("select ot.user From OrganizationBaseUser ot where ot.org.id = ? and ot.roleType=? order by ot.createDate desc", pagination, orgId, roleType);
     }
 
     @Override
-    public OrganizationBaseUser findMyOrgByUserID(Integer userID, Integer roleType) {
+    public OrganizationBaseUser findMyOrgByUserIdAndRole(Integer userID, Integer roleType) {
         String hql = "From OrganizationBaseUser ot where ot.user.id = ? and ot.roleType=? order by ot.createDate desc";
         return this.findFist(hql, userID, roleType);
     }
+
+    @Override
+    public List<OrganizationBaseUser> findByUserAndOrg(Integer userID, Integer orgId) {
+        String hql = "From OrganizationBaseUser ot where ot.user.id = ? and  ot.org.id = ?";
+        return this.find(hql, userID, orgId);
+    }
+
+
 }

@@ -66,8 +66,20 @@
     </target>
 
 
-    <target name="copyConfigeuration">
-        <copy verbose="${verbose.value}" todir="${classes.home}">
+    <target name="renameMyConfigBaseOnNeed">
+        <available file="${web.home}/WEB-INF/config/myConfig.properties" property="myConfig.exist"/>
+        <antcall target="renameMyConfig"></antcall>
+    </target>
+
+    <target name="renameMyConfig" if="myConfig.exist">
+        <copy tofile="${web.home}/WEB-INF/config/Config.properties"
+              file="${web.home}/WEB-INF/config/myConfig.properties" overwrite="true"/>
+    </target>
+
+    <target name="copyConfigeuration" depends="renameMyConfigBaseOnNeed">
+
+
+    <copy verbose="${verbose.value}" todir="${classes.home}">
             <fileset dir="${web.home}/WEB-INF/config">
                 <include name="**/*"/>
             </fileset>

@@ -20,7 +20,7 @@
     <br/>
 
     <div class="thickline"></div>
-    <h3 class="courseSubhead"><s:property value="%{getText('org.blog.internal.course')}"/></h3>
+    <h3 class="courseSubhead"><s:property value="%{getText('org.blog.internal.courses')}"/></h3>
     <!--school curriculum-->
     <div id="schoolcurriculum">
         <div class="row">

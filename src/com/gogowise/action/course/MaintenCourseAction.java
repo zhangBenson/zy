@@ -11,6 +11,8 @@ import com.gogowise.rep.org.OrgService;
 import com.gogowise.rep.org.dao.OrganizationBaseUserDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.tag.dao.TagDao;
+import com.gogowise.rep.tag.enity.Tag;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.user.enity.RoleType;
@@ -59,6 +61,10 @@ public class MaintenCourseAction extends BasicAction {
     private List<CourseClass> classes = new ArrayList<>();
     private List<Integer> teacherIds = new ArrayList<>();
 
+    @Autowired
+    private TagDao tagDao;
+
+    private List<Tag> tags;
 
     @Action(value = "createCourseAllInOne", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".createCourseAllInOne"),
             @Result(name = "failed", type = Constants.RESULT_NAME_TILES, location = ".identityConfirmation")})
@@ -68,6 +74,7 @@ public class MaintenCourseAction extends BasicAction {
         students = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(), RoleType.ROLE_TYPE_STUDENT, null);
         if (course == null) course = new Course();
         course.setCharges(0D);
+        tags = tagDao.findAll();
         return SUCCESS;
     }
 
@@ -220,5 +227,13 @@ public class MaintenCourseAction extends BasicAction {
 
     public void setTeacherIds(List<Integer> teacherIds) {
         this.teacherIds = teacherIds;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
     }
 }

@@ -695,6 +695,11 @@
         <!--<put-attribute name="contentBody" value="/jsp/gogowise/course/courseBlog.jsp"/>-->
     </definition>
 
+    <definition name=".myCourseQuestionResult" extends=".wwwBodyCenter">
+        <put-attribute name="title" value="Question Result"/>
+        <put-attribute name="contentBody" value="/jsp/www/user/myCourseResult.jsp"/>
+        <!--<put-attribute name="contentBody" value="/jsp/gogowise/course/courseBlog.jsp"/>-->
+    </definition>
 
     <definition name=".purchaseError" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.course.confirm1"/>

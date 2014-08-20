@@ -57,7 +57,7 @@ public class OrganizationAction extends BasicAction {
     private OrganizationDao organizationDao;
     private OrganizationCommentDao organizationCommentDao;
     private BaseUserDao baseUserDao;
-    private List<OrgMaterial> orgMaterials = new ArrayList<OrgMaterial>();
+    private List<OrgMaterial> orgMaterials = new ArrayList<>();
     private OrgMaterial orgMaterial;
     private OrgMaterialDao orgMaterialDao;
 
@@ -106,8 +106,7 @@ public class OrganizationAction extends BasicAction {
     private UserService userService;
 
     @Action(value = "schoolCenter", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".schoolCenter")})
-    public String schoolCenter()
-    {
+    public String schoolCenter() {
         this.organizations = organizationDao.findLatestOrgs(pagination);
         return SUCCESS;
     }
@@ -126,14 +125,13 @@ public class OrganizationAction extends BasicAction {
         }
         orgId = org.getId();
 
-        //判断是否有权限看到private课程：只有注册学生和教师及机构负责人能够看到
         Integer userID = this.getSessionUserId();
-        boolean hasAccessToPrivateCourse = orgService.hasAccessToPrivateCourses(userID,orgId);
+        boolean idMember = userID != null && orgService.isMember(userID, orgId);
 
-        if( hasAccessToPrivateCourse ){
+        if (idMember) {
             privateCourses = courseDao.findCoursesByOrgWithAccess(orgId, false, pagination);
-        }else{
-            privateCourses = new ArrayList<Course>();
+        } else {
+            privateCourses = new ArrayList<>();
         }
 
         latestCourse = courseDao.findLatestCourseByOrg(orgId, new Pagination(4));
@@ -302,7 +300,7 @@ public class OrganizationAction extends BasicAction {
     }
 
     public void validateSaveThirdStepInfo() {
-        if (this.getOrg() != null || this.getOrg().getSchoolName() != null) {
+        if (this.getOrg() != null && this.getOrg().getSchoolName() != null) {
             Organization o = organizationDao.findOrganizationByOrganizationName(this.getOrg().getSchoolName());
             if (o != null && !o.getId().equals(this.getOrg().getId())) addFieldError("org.schoolName", "您填的组织名称已存在");
         }
@@ -375,8 +373,7 @@ public class OrganizationAction extends BasicAction {
 
         saveOrg.setResponsiblePerson(rer);
 
-        if( this.getHidFile1() != null && !this.getHidFile1().equalsIgnoreCase(saveOrg.getLogoUrl()) )
-        {
+        if (this.getHidFile1() != null && !this.getHidFile1().equalsIgnoreCase(saveOrg.getLogoUrl())) {
             if (StringUtils.isNotBlank(this.getHidFile1())) {
                 String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + this.getHidFile1());
                 String toPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + "/orgLogo/" + this.getHidFile1());
@@ -385,8 +382,7 @@ public class OrganizationAction extends BasicAction {
             }
         }
 
-        if( this.getHidFile2() != null && !this.getHidFile2().equalsIgnoreCase(saveOrg.getAdvUrl()) )
-        {
+        if (this.getHidFile2() != null && !this.getHidFile2().equalsIgnoreCase(saveOrg.getAdvUrl())) {
             if (StringUtils.isNotBlank(this.getHidFile2())) {
                 String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + this.getHidFile2());
                 String toPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + "/orgBuLic/" + this.getHidFile2());
@@ -543,7 +539,6 @@ public class OrganizationAction extends BasicAction {
             results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgAdminManage"),
                     @Result(name = ERROR, type = Constants.RESULT_NAME_TILES, location = ".noPermission")})
     public String orgAdminManage() {
-        BaseUser admin = baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.SESSION_USER_EMAIL));
         Integer userID = (Integer) ActionContext.getContext().getSession().get(Constants.SESSION_USER_ID);
         boolean havePermission = userService.havePermission(userID, "admin");
 
@@ -841,7 +836,7 @@ public class OrganizationAction extends BasicAction {
     public Integer getStudentsNumByOrgId(Integer orgId) {
         if (orgId == null || orgId < 0)
             return 0;
-        List<BaseUser> students = new ArrayList<BaseUser>();
+        List<BaseUser> students = new ArrayList<>();
         for (Course c : courseDao.findByOrg(orgId, null)) {
             for (SeniorClassRoom sc : c.getSeniorClassRooms()) {
                 Boolean exist = false;
@@ -861,7 +856,7 @@ public class OrganizationAction extends BasicAction {
     }
 
     public List<BaseUser> getStudents() {
-        List<BaseUser> students = new ArrayList<BaseUser>();
+        List<BaseUser> students = new ArrayList<>();
         for (Course c : courseDao.findByOrg(this.getOrg().getId(), null)) {
             for (SeniorClassRoom sc : c.getSeniorClassRooms()) {
                 Boolean exist = false;
@@ -941,8 +936,7 @@ public class OrganizationAction extends BasicAction {
         String orgDescription = org.getDescription();
         if (orgDescription == null || orgDescription.equals(""))
             return "";
-        String text = Jsoup.parse(orgDescription).text();
-        return text;
+        return Jsoup.parse(orgDescription).text();
     }
 
     public BaseUserRoleTypeDao getBaseUserRoleTypeDao() {

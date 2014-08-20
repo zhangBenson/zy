@@ -56,7 +56,7 @@ public class SaveCourseAction extends BasicAction {
     private CourseService courseService;
     private List<Integer> teacherIds;
 
-
+    private List<String> tagNames;
     @Action(value = "ajaxSaveCourse")
     public String ajaxSaveCourse() {
 
@@ -69,6 +69,9 @@ public class SaveCourseAction extends BasicAction {
         course.setStudentAgeType(this.getCourse().getStudentAgeType());
         course.setIsPublic( this.getCourse().getIsPublic() );
         courseDao.persist(course);
+
+        //TODO 设置course的标签Tag
+
 
         // copy jpg
         if (StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(), "upload/")) {
@@ -115,7 +118,6 @@ public class SaveCourseAction extends BasicAction {
                 }
             }
         }
-
         this.setCourse_id(course.getId());
         return "json";
     }
@@ -360,5 +362,13 @@ public class SaveCourseAction extends BasicAction {
 
     public void setCourseService(CourseService courseService) {
         this.courseService = courseService;
+    }
+
+    public List<String> getTagNames() {
+        return tagNames;
+    }
+
+    public void setTagNames(List<String> tagNames) {
+        this.tagNames = tagNames;
     }
 }

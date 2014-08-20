@@ -9,4 +9,7 @@ public interface QuestionResultDao extends ModelDao<QuestionResult> {
     public List<QuestionResult> findByQuestionAndClass(Integer questionId, Integer courseClassId);
 
     public QuestionResult find(Integer userId, Integer questionId, Integer classId);
+
+    public List<QuestionResult> findByClassAndUser(Integer courseClassId, Integer userID);
+    public List<QuestionResult> findByCourseAndUser(Integer cId, Integer userID);
 }

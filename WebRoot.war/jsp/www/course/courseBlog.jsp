@@ -303,7 +303,7 @@ programming.
 
             <div>&nbsp;</div>
             <h4 class="textOverSinglerow" style="margin-top: 8px;"><s:property
-                    value="%{getText('label.online.class.tutor.price')}"/>:&nbsp;$<s:property
+                    value="%{getText('label.online.class.tutor.price')}"/>:&nbsp;S$<s:property
                     value="course.charges"/></h4>
             <h4 class="textOverSinglerow"><s:property value="%{getText('course.code')}"/>:&nbsp;<s:property
                     value="course.id"/></h4>
