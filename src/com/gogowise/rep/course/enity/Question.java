@@ -21,6 +21,9 @@ public class Question extends AbstractPersistence {
     @ManyToOne
     private CourseMaterial courseMaterial;
 
+    private Integer answeredNum = 0;
+    private Integer answeredCorrectNum = 0;
+
     public String getDescription() {
         return description;
     }
@@ -52,5 +55,25 @@ public class Question extends AbstractPersistence {
         }
         return null;
 
+    }
+
+    public Integer getAnsweredNum() {
+        return answeredNum;
+    }
+
+    public void setAnsweredNum(Integer answeredNum) {
+        this.answeredNum = answeredNum;
+    }
+
+    public Integer getAnsweredCorrectNum() {
+        return answeredCorrectNum;
+    }
+
+    public void setAnsweredCorrectNum(Integer answeredCorrectNum) {
+        this.answeredCorrectNum = answeredCorrectNum;
+    }
+
+    public double getAnsweredAccurcy(){
+        return answeredNum == 0? 0: answeredCorrectNum*1.0/answeredNum;
     }
 }

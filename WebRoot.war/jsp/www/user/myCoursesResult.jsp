@@ -14,60 +14,8 @@
         })
     })
 </script>
-<style type="text/css">
-    .questionTitle
-    {
-        color:#6ab600;font-size: 24px;
-    }
-    .statistics
-    {
-        float:left;margin-left: 35px;font-size: 14px;color: #0776A0;
-    }
-    .percentage
-    {
-        font-size: 36px;float:left;color:#6ab600;position:relative;bottom:24px;left:50px;
-    }
-    .detailstext
-    {
-        font-size: 12px;float:left;color:#6ab600;position:relative;bottom:-24px;left:-15px;
-    }
-    .details
-    {
-        color: #F29530;
-    }
-    .questionDiv
-    {
-        margin-left: 150px;
-    }
-    .lessontext
-    {
-        font-size: 24px;font-family: Verdana, Geneva, sans-serif;color: #6ab600;
-    }
-    .questionstext{
-        margin-left: 10px;font-family: Verdana, Geneva, sans-serif;color: #00B266;
-    }
-    .option
-    {
-        margin-left: 10px;font-family: Verdana, Geneva, sans-serif;color: #6ab600;
-    }
-    .option span
-    {
-        margin-left: 20px;
-    }
-    .answeroption
-    {
-        margin-left: 30px;font-family: Verdana, Geneva, sans-serif;color: #6ab600;
-    }
-    .answerRight
-    {
-        font-size: 24px;color: #6ab600;
-    }
-    .answerWrong
-    {
-        font-size: 24px;color: red;
-    }
 
-</style>
+<link type="text/css" rel="stylesheet" href="/css/user/question_result.css"/>
 
 
 <div class="container">
