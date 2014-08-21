@@ -1,8 +1,8 @@
-package com.gogowise.rep.course;
+package com.gogowise.rep.finance;
 
 import com.gogowise.rep.ModelService;
-import com.gogowise.rep.course.enity.PaypalDetails;
-import com.gogowise.rep.course.vo.PaypalDetailsSpecification;
+import com.gogowise.rep.finance.enity.PaypalDetails;
+import com.gogowise.rep.finance.vo.PaypalDetailsSpecification;
 
 /**
  * Created with IntelliJ IDEA.

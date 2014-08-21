@@ -10,7 +10,7 @@ import com.gogowise.rep.course.dao.QuestionDao;
 import com.gogowise.rep.course.dao.SeniorClassRoomDao;
 import com.gogowise.rep.course.enity.*;
 import com.gogowise.rep.course.vo.CourseSpecification;
-import com.gogowise.rep.finance.UserAccountInfoDao;
+import com.gogowise.rep.finance.dao.UserAccountInfoDao;
 import com.gogowise.rep.finance.enity.UserAccountInfo;
 import com.gogowise.rep.org.OrgService;
 import com.gogowise.rep.org.dao.OrganizationDao;
@@ -23,7 +23,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service("courseService")
-public class CourseServiceImpl extends ModelServiceImpl implements CourseService{
+public class CourseServiceImpl extends ModelServiceImpl implements CourseService {
 
     @Autowired
     private OrgService orgService;
@@ -42,11 +42,11 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
     @Autowired
     private SeniorClassRoomDao seniorClassRoomDao;
 
-    public void  saveQuestion(CourseMaterial courseMaterial, List<Question> questions) {
-          for (Question question : questions)  {
-              question.setCourseMaterial(courseMaterial);
-              questionDao.persist(question);
-          }
+    public void saveQuestion(CourseMaterial courseMaterial, List<Question> questions) {
+        for (Question question : questions) {
+            question.setCourseMaterial(courseMaterial);
+            questionDao.persist(question);
+        }
 
     }
 
@@ -61,7 +61,8 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
         } else {
             course = courseDao.findById(course.getId());
             Course modifiedCourse = specification.getCourse();
-            if (specification.getCourse().getTeachingNum() != null) course.setTeachingNum(modifiedCourse.getTeachingNum() );
+            if (specification.getCourse().getTeachingNum() != null)
+                course.setTeachingNum(modifiedCourse.getTeachingNum());
             course.setName(modifiedCourse.getName());
             course.setDescription(modifiedCourse.getDescription());
             course.setStudentType(modifiedCourse.getStudentType());
@@ -85,7 +86,7 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
         }
         course.setConsumptionType(true);
 
-        if (StringUtils.isBlank(course.getLogoUrl()) ) course.setLogoUrl(Constants.DEFAULT_COURSE_IMAGE);
+        if (StringUtils.isBlank(course.getLogoUrl())) course.setLogoUrl(Constants.DEFAULT_COURSE_IMAGE);
 
 
         if (course.getFromCourse() == null)
@@ -99,9 +100,8 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
 
     @Override
     public List<Course> findMaintenanceCourses(Integer userId, Pagination pagination) {
-        return courseDao.findMaintenanceCourses(userId,pagination);
+        return courseDao.findMaintenanceCourses(userId, pagination);
     }
-
 
 
     public void validateBeforePurchase(Course course, BaseUser user) throws ServiceException {

@@ -1,7 +1,7 @@
 package com.gogowise.rep.course.dao;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.rep.course.enity.PaypalDetails;
+import com.gogowise.rep.finance.enity.PaypalDetails;
 import org.springframework.stereotype.Repository;
 
 /**

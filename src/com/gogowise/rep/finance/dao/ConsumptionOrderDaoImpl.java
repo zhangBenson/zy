@@ -1,4 +1,4 @@
-package com.gogowise.rep.finance;
+package com.gogowise.rep.finance.dao;
 
 import java.util.Calendar;
 import java.util.List;
@@ -27,7 +27,7 @@ public class ConsumptionOrderDaoImpl extends ModelDaoImpl<ConsumptionOrder>
     private BaseUserDao baseUserDao;
     private ConsumptionRecordDao consumptionRecordDao;
 
-    public void  recharge(BaseUser owner, Double price ) {
+    public void recharge(BaseUser owner, Double price) {
         ConsumptionOrder consumptionOrder = new ConsumptionOrder();
         consumptionOrder.setOrderId(Utils.getOrderId());
         consumptionOrder.setPayer(owner);
@@ -42,12 +42,12 @@ public class ConsumptionOrderDaoImpl extends ModelDaoImpl<ConsumptionOrder>
         consumptionRecordDao.createRecordForRecharge(consumptionOrder);
     }
 
-    public void  purchaseCourse(BaseUser owner, Course course ) {
+    public void purchaseCourse(BaseUser owner, Course course) {
         ConsumptionOrder consumptionOrder = new ConsumptionOrder();
         consumptionOrder.setCourse(course);
         consumptionOrder.setOrderId(Utils.getOrderId());
         consumptionOrder.setPayer(owner);
-        consumptionOrder.setPayee(course.getPayee() );
+        consumptionOrder.setPayee(course.getPayee());
         consumptionOrder.setPrice(course.getCharges());
         consumptionOrder.setCloseTime(getOrderCloseTimeForCoursePurchase(course));
         consumptionOrder.setState(ConsumptionOrder.ORDER_STATE__BALANCE_FREEZE); //购买课程设置为资金首先设置为冻结状态
@@ -57,7 +57,7 @@ public class ConsumptionOrderDaoImpl extends ModelDaoImpl<ConsumptionOrder>
         consumptionRecordDao.createRecordForPurchase(consumptionOrder);
     }
 
-    public void transfer(BaseUser payer, BaseUser payee,Double price,Integer transferType) {
+    public void transfer(BaseUser payer, BaseUser payee, Double price, Integer transferType) {
         ConsumptionOrder consumptionOrder = new ConsumptionOrder();
         consumptionOrder.setOrderId((Utils.getOrderId()));
         consumptionOrder.setPayer(payer);
@@ -66,10 +66,10 @@ public class ConsumptionOrderDaoImpl extends ModelDaoImpl<ConsumptionOrder>
         consumptionOrder.setCloseTime(Calendar.getInstance());
         consumptionOrder.setState(ConsumptionOrder.ORDER_STATE_CLOSE); //知币转汇直接设置订单状态为交易成功
         consumptionOrder.setType(ConsumptionOrder.ORDER_TYPE_TRANSFER);//设置交易类型为转汇类型
-        if(transferType.equals(Constants.TRANSFER_TYPE_OF_CHARGE_FOR_MCHANNEL)){
-           consumptionOrder.setRemarks("zhibi.remark.order.transfer.for.mchannel");
-        }else {
-           consumptionOrder.setRemarks("zhibi.remark.order.transfer");
+        if (transferType.equals(Constants.TRANSFER_TYPE_OF_CHARGE_FOR_MCHANNEL)) {
+            consumptionOrder.setRemarks("zhibi.remark.order.transfer.for.mchannel");
+        } else {
+            consumptionOrder.setRemarks("zhibi.remark.order.transfer");
         }
         this.persist(consumptionOrder);
         consumptionRecordDao.createRecordForTransfer(consumptionOrder);
@@ -83,24 +83,23 @@ public class ConsumptionOrderDaoImpl extends ModelDaoImpl<ConsumptionOrder>
 
     public List<ConsumptionOrder> findUnclosedOrderByCloseTime(Calendar closeTime) {
         String hql = "From ConsumptionOrder co where co.state = 1 and co.closeTime = ?";
-        return this.find(hql,null,closeTime);
+        return this.find(hql, null, closeTime);
     }
 
-    private Calendar getOrderCloseTimeForCoursePurchase(Course course){
-        if(course.getClasses().size() < 2 && course.getClasses().size() > 0){
-            Calendar closeTime = (Calendar)course.getClasses().get(0).getDate().clone();
-            closeTime.add(Calendar.HOUR_OF_DAY,24);
-           return closeTime;
+    private Calendar getOrderCloseTimeForCoursePurchase(Course course) {
+        if (course.getClasses().size() < 2 && course.getClasses().size() > 0) {
+            Calendar closeTime = (Calendar) course.getClasses().get(0).getDate().clone();
+            closeTime.add(Calendar.HOUR_OF_DAY, 24);
+            return closeTime;
         }
-        if(course.getClasses().size() >= 2){
-            Calendar closeTime = (Calendar)course.getClasses().get(1).getDate().clone();
-            closeTime.add(Calendar.HOUR_OF_DAY,24);
+        if (course.getClasses().size() >= 2) {
+            Calendar closeTime = (Calendar) course.getClasses().get(1).getDate().clone();
+            closeTime.add(Calendar.HOUR_OF_DAY, 24);
             return closeTime;
         }
         return Calendar.getInstance();
 
     }
-
 
 
     //    private ConsumptionRecordDao consumptionRecordDao;
