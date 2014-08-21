@@ -1,11 +1,8 @@
 package com.gogowise.rep.course.dao;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.course.enity.PaypalDetails;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,7 +13,7 @@ import java.util.List;
  */
 
 @Repository("paypalDao")
-public class PaypalDaoImpl  extends ModelDaoImpl<PaypalDetails> implements PaypalDao {
+public class PaypalDaoImpl extends ModelDaoImpl<PaypalDetails> implements PaypalDao {
 
     @Override
     public void savePaypalDetails(PaypalDetails paypalDetails) {
@@ -26,15 +23,8 @@ public class PaypalDaoImpl  extends ModelDaoImpl<PaypalDetails> implements Paypa
     @Override
     public PaypalDetails findByTxnId(String txnId) {
 
-        String hql = " select w from PaypalDetails  w  where w.txnId='"+txnId+"'";
-
-        List<PaypalDetails> list = this.find(hql);
-
-        if(list!=null && list.size()>0){
-            return list.get(0);
-        }else{
-            return null;
-        }
+        String hql = " select w from PaypalDetails  w  where w.txnId='" + txnId + "'";
+        return this.findFist(hql);
 
     }
 }
