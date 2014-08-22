@@ -596,7 +596,22 @@ public class Course extends AbstractPersistence {
     }
 
     public List<Tag> getTags() {
+        if(this.tags == null ) {
+            tags = new ArrayList<>();
+        }
         return tags;
+    }
+
+    public String getTagsAsStr() {
+        if(this.tags == null ) {
+            return null;
+        }
+        String temp = "";
+        for(Tag tag:tags){
+            temp = temp+tag.getName()+",";
+        }
+        if(temp.length() > 0  ) temp = temp.substring(0, temp.length()-1);
+        return temp;
     }
 
     public void setTags(List<Tag> tags) {

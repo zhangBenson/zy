@@ -32,7 +32,7 @@ programming.
         <h3 class="courseSubhead"><s:property value="%{getText('course.info')}"/></h3>
     </div>
     <div class="col-md-4" style="text-align: right;">
-        <h3><a herf="#"><img src="../../images/course/download.png" alt="" class="downloadIcon"></a></h3>
+        <h3><a herf="#"><img src="/images/course/download.png" alt="" class="downloadIcon"></a></h3>
     </div>
 </div>
 
@@ -311,6 +311,8 @@ programming.
                     value="course.organization.schoolName"/></h4>
             <h4 class="textOverSinglerow"><s:property value="%{getText('course.teaching.language')}"/>:&nbsp;<s:property
                     value="course.languageType"/></h4>
+            <h4 class="textOverSinglerow"><s:property value="%{getText('course.info.courseTag')}"/>:&nbsp;<s:property
+                    value="course.getTagsAsStr()"/></h4>
             <%--<s:if test="!course.courseFinished">--%>
             <%-- <a href="javascript:;" id="register_btn" class="act_btn register_btn"><s:property value="%{getText('label.course.register')}"/></a> --%>
             <button type="button" class="btn btn-primary btn-block" id="register_btn"><s:property

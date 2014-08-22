@@ -69,6 +69,7 @@
             $(this).parent().parent().hide();
             var name = $("input[type='text'][name='course.name']").val();
             var access = $("[name='course.isPublic']:checked").next().html();
+            var courseTags = getTag();
             var description =  $("textarea[name='course.description']").val();
             var studentType = $("#step2_studentAge_type").find("option:selected").text();
             var courseTeachingBook = $("input[type='text'][name='course.courseTeachingBook']").val();
@@ -83,6 +84,7 @@
 
             $("#store_name").html(name);
             $("#store_course_access").html(access);
+            $("#store_courseTag").html(courseTags);
             $("#store_description").html(description);
             $("#store_studentType").html(studentType);
             $("#store_courseTeachingBook").html(courseTeachingBook);

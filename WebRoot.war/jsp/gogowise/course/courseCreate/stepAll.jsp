@@ -3,6 +3,11 @@
 <%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
 
 <link href="css/course/stepAll.css" rel="stylesheet" type="text/css"/>
+<%--<script src="/js/course/jquery-1.10.2.min.js"></script>--%>
+<script src="/js/course/jquery-ui.min.js"></script>
+<script src="/js/course/tag.js" type="text/javascript" charset="utf-8"></script>
+<link href="/css/course/jquery.tagit.css" rel="stylesheet" type="text/css">
+<link href="/css/course/tagit.ui-zendesk.css" rel="stylesheet" type="text/css">
 
 <div class="mf_1">
     <ul class="sub_nav cf">
