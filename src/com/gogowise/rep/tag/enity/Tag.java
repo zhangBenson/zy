@@ -17,6 +17,15 @@ public class Tag extends AbstractPersistence {
     private String description;
     private Boolean isDeleted = false;
 
+    public Tag(){
+
+    }
+    public Tag(String name){
+        this.name = name;
+        this.description= "";
+        this.isDeleted = false;
+    }
+
     public String getName() {
         return name;
     }

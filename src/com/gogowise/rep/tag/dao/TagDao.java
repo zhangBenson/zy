@@ -15,5 +15,6 @@ import java.util.List;
 public interface TagDao extends ModelDao<Tag> {
 
     public Tag findByName(String name);
+    public List<Tag> findByNameLikely(String name);
     public List<Tag> findAll();
 }

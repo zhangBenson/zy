@@ -17,9 +17,14 @@ import java.util.List;
 public class TagDaoImpl extends ModelDaoImpl<Tag> implements TagDao
 {
     @Override
-    public Tag findByName(String name){
+    public List<Tag> findByNameLikely(String name){
         String hql = "From Tag t where t.name like ? ";
-        return  this.findFist(hql, "%" + name + "%");
+        return  this.find(hql, "%" + name + "%");
+    }
+
+    public Tag findByName(String name){
+        String hql = "From Tag t where t.name = ? ";
+        return  this.findFist(hql, name );
     }
 
     @Override

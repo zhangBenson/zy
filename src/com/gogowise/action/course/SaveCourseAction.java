@@ -12,6 +12,8 @@ import com.gogowise.rep.course.enity.CourseClass;
 import com.gogowise.rep.course.enity.CourseInviteStudent;
 import com.gogowise.rep.course.vo.CourseSpecification;
 import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.tag.dao.TagDao;
+import com.gogowise.rep.tag.enity.Tag;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import org.apache.commons.lang.StringUtils;
@@ -21,6 +23,7 @@ import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.apache.struts2.json.annotations.JSON;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -56,7 +59,17 @@ public class SaveCourseAction extends BasicAction {
     private CourseService courseService;
     private List<Integer> teacherIds;
 
-    private List<String> tagNames;
+    @Autowired
+    private TagDao tagDao;
+    private List<String> tags;  //用户输入的tag
+    private List<Tag> existTags; //数据库中已有的tag
+
+    @Action(value = "listTags")
+    public String listTags(){
+        existTags = tagDao.findAll();
+        return RESULT_JSON;
+    }
+
     @Action(value = "ajaxSaveCourse")
     public String ajaxSaveCourse() {
 
@@ -68,10 +81,21 @@ public class SaveCourseAction extends BasicAction {
 
         course.setStudentAgeType(this.getCourse().getStudentAgeType());
         course.setIsPublic( this.getCourse().getIsPublic() );
-        courseDao.persist(course);
+        //courseDao.persist(course);
 
         //TODO 设置course的标签Tag
-
+        for( String tagName : tags ){
+            Tag temp = tagDao.findByName(tagName);
+            if(  temp== null ){
+                Tag newTag = new Tag(tagName);
+                tagDao.persistAbstract(newTag);
+                course.getTags().add(newTag);
+            }
+            else{
+                course.getTags().add(temp);
+            }
+        }
+        courseDao.persist(course);
 
         // copy jpg
         if (StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(), "upload/")) {
@@ -164,6 +188,19 @@ public class SaveCourseAction extends BasicAction {
         _course.setCourseType(course.getCourseType());
         _course.setCharges(course.getCharges());
         _course.setStudentAgeType(this.getCourse().getStudentAgeType());
+
+        _course.getTags().clear();
+        for( String tagName : tags ){
+            Tag temp = tagDao.findByName(tagName);
+            if(  temp== null ){
+                Tag newTag = new Tag(tagName);
+                tagDao.persistAbstract(newTag);
+                _course.getTags().add(newTag);
+            }
+            else{
+                _course.getTags().add(temp);
+            }
+        }
 
         if (StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(), "/upload/course")) {
             String courseDir = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_COURSE_PATH);
@@ -364,11 +401,19 @@ public class SaveCourseAction extends BasicAction {
         this.courseService = courseService;
     }
 
-    public List<String> getTagNames() {
-        return tagNames;
+    public List<String> getTags() {
+        return tags;
     }
 
-    public void setTagNames(List<String> tagNames) {
-        this.tagNames = tagNames;
+    public void setTags(List<String> tags) {
+        this.tags = tags;
+    }
+
+    public List<Tag> getExistTags() {
+        return existTags;
+    }
+
+    public void setExistTags(List<Tag> existTags) {
+        this.existTags = existTags;
     }
 }
