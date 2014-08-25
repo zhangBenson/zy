@@ -177,6 +177,9 @@
                href="uploadCourseMaterial.html?course.id=<s:property value="id"/>"><s:property
                     value="%{getText('course.resource.upload')}"/></a>
                 <%--<a class="manage_course" id="" href="uploadCourseMaterial.html?course.id=<s:property value="id"/>">Upload Questions</a>--%>
+            <a href="questionResultForTeacher.html?course.id=<s:property value="id"/>"><s:property
+                            value="%{getText('course.courseQuestionResultTeacher')}"/></a>
+
         </p>
     </div>
 

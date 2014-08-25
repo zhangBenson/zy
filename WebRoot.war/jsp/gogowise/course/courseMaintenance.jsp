@@ -5,6 +5,10 @@
 
 <link href="css/course/stepAll.css" rel="stylesheet" type="text/css"/>
 <link href="css/course/course_maintenance.css" rel="stylesheet" type="text/css"/>
+<script src="/js/course/jquery-ui.min.js"></script>
+<script src="/js/course/tag.js" type="text/javascript" charset="utf-8"></script>
+<link href="/css/course/jquery.tagit.css" rel="stylesheet" type="text/css">
+<link href="/css/course/tagit.ui-zendesk.css" rel="stylesheet" type="text/css">
 
 <div class="create_cont fl">
 <div class="stepTip fl">

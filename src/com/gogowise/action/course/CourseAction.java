@@ -1053,16 +1053,29 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "myCoursesQuestionResult", results={@Result(name=SUCCESS, type = Constants.RESULT_NAME_TILES,location = ".myCoursesQuestionResult")})
-    public String myCoursesQuestionResult()
+    @Action(value = "questionResultForTeacher", results={@Result(name=SUCCESS, type = Constants.RESULT_NAME_TILES,location = "www.user.questionResultForTeacher")})
+    public String questionResultForTeacher()
     {
         Integer userID = this.getSessionUserId();
-        courses = courseDao.findUserRegCourses(userID,null);
+        course = courseDao.findById(this.getCourse().getId());
+        classes = course.getClasses();
 
-        for(Course course:courses){
-            List<QuestionResult> temp = questionResultDao.findByCourseAndUser(course.getId(), userID);
-            questionResults.addAll(temp);
+        questions       = questionResultDao.findQuestionsForCourse(course.getId(), null);
+        questionResults = questionResultDao.findByCourse(course.getId());
+
+        //计算总的正确率
+        answeredCorrect = 0;
+        answeredCorrectRate = 0;
+        int allAnswered = questionResults.size();
+
+        for(QuestionResult questionResult : questionResults ){
+            if( questionResult.getIsCorrect() ){
+                answeredCorrect++;
+
+            }
         }
+
+        if( allAnswered != 0 )  answeredCorrectRate = answeredCorrect * 100 / allAnswered;
 
         return SUCCESS;
     }

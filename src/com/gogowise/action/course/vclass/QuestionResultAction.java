@@ -1,6 +1,7 @@
 package com.gogowise.action.course.vclass;
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.common.utils.Constants;
 import com.gogowise.rep.course.dao.ClassDao;
 import com.gogowise.rep.course.dao.QuestionDao;
 import com.gogowise.rep.course.dao.QuestionResultDao;
@@ -11,6 +12,7 @@ import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -37,6 +39,8 @@ public class QuestionResultAction extends BasicAction {
     private Integer correctNumber;
     private Integer inCorrectNumber;
 
+    private List<Question> questions;
+    private List<QuestionResult> questionResults;
 
     @Action(value = "displayQuestionResult")
     public String displayCourseMaterialWithJson() {
@@ -75,9 +79,33 @@ public class QuestionResultAction extends BasicAction {
         questionResult.setOwner(owner);
         questionResult.setQuestion(question);
         questionResult.setCourseClass(classDao.findById(courseClassId));
+
+        //更改回答的次数情况
+        question.setAnsweredNum( question.getAnsweredNum() + 1 );
+        if( questionItem.getIsAnswer() ) {
+            question.setAnsweredCorrectNum( question.getAnsweredCorrectNum() + 1 );
+        }
+
         questionResultDao.persistAbstract(questionResult);
         return RESULT_JSON;
 
+    }
+
+    /**根据questionResult来更新question里面的answeredNum以及answeredCorrectNum字段***/
+    @Action(value = "initQuestionStaticsWithOldQuestionResult", results = {@Result(name=SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".index")})
+    public String initQuestionStaticsWithOldQuestionResult(){
+        questionResults = questionResultDao.findAll();
+
+        for(QuestionResult questionResult : questionResults){
+            Question question = questionResult.getQuestion();
+            question.setAnsweredNum( question.getAnsweredNum() + 1 );
+
+            if( questionResult.getIsCorrect() ){
+                question.setAnsweredCorrectNum( question.getAnsweredCorrectNum() + 1 );
+            }
+            questionDao.persist(question);
+        }
+        return SUCCESS;
     }
 
     public void setClassDao(ClassDao classDao) {

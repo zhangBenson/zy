@@ -1,5 +1,42 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+
+<script>
+    $(document).ready(function () {
+
+        var sampleTags = [];
+
+        $.getJSON("listTags.html",function(data){
+            $.each(data.existTags,function(key,info){
+                sampleTags.push( info["name"].toString() );
+            });
+        });
+
+        var s = $('.grayPanel').tagit({
+            availableTags: sampleTags
+        });
+
+        $("#btnTest").click(function(){
+            alert(getTag());
+        })
+    });
+</script>
+
+<style type="text/css">
+    .grayPanel
+    {
+        border-style:solid;border-color: #eee;border-width: 1px;
+        min-height: 80px;margin-top: 10px;
+        font-family: Verdana,'微软雅黑', Geneva, sans-serif;
+        font-size:12px;
+        width: 500px;
+    }
+    .grayPanel li{
+        border-bottom: none;
+        width: 50px;
+    }
+</style>
+
 <div class="pic_2">
     <ul class="content_courseInfo fl">
         <li>
@@ -17,8 +54,10 @@
 
         <li>
             <span class="item"><s:property value="%{getText('course.info.courseTag')}"/></span>
-            <s:checkboxlist list="tags" listKey="id" listValue="name" name="tags"/>
             <span class="course_name_input_msg tip_words">*</span>
+            <%--<s:checkboxlist list="tags" listKey="id" listValue="name" name="tags"/>--%>
+            <br/>
+            <ul class="grayPanel"></ul>
 
         </li>
 
@@ -115,6 +154,10 @@
                 <s:if test="course.isPublic != true"><s:property value="%{getText('course.private')}" /></s:if>
                 <s:else><s:property value="%{getText('course.public')}" /></s:else>
             </span>
+        </li>
+        <li>
+            <s:property value="%{getText('course.info.courseTag')}"/>：
+            <span class="orange_words" id="store_courseTag"><s:property value="course.getTagsAsStr()"/></span>
         </li>
         <li>
             <s:property value="%{getText('course.info.description')}"/>：
