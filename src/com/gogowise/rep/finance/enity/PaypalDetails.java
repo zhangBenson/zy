@@ -1,9 +1,8 @@
-package com.gogowise.rep.course.enity;
+package com.gogowise.rep.finance.enity;
 
 import com.gogowise.rep.AbstractPersistence;
 
 import javax.persistence.Entity;
-import java.util.Calendar;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,13 +19,13 @@ public class PaypalDetails extends AbstractPersistence {
 
     private String itemNumber;
 
-    private String paymentStatus ;
+    private String paymentStatus;
 
-    private String paymentAmount ;
+    private String paymentAmount;
 
     private String paymentCurrency;
 
-    private String txnId ;
+    private String txnId;
 
     private String receiverEmail;
 

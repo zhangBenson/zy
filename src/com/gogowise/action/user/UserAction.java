@@ -43,7 +43,7 @@ import com.gogowise.rep.course.enity.CourseInviteStudent;
 import com.gogowise.rep.course.enity.CourseRecommend;
 import com.gogowise.rep.course.enity.CourseReservation;
 import com.gogowise.rep.course.enity.SeniorClassRoom;
-import com.gogowise.rep.finance.UserAccountInfoDao;
+import com.gogowise.rep.finance.dao.UserAccountInfoDao;
 import com.gogowise.rep.finance.enity.UserAccountInfo;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
@@ -65,20 +65,20 @@ public class UserAction extends BasicAction {
 
     private BaseUserDao baseUserDao;
     private UserRelationshipDao userRelationshipDao;
-    private List<BaseUser> myFriends = new ArrayList<BaseUser>();
-    private Map<Integer, String> competitionSessions = new HashMap<Integer, String>();
-    private List<BaseUser> invitedFriends = new ArrayList<BaseUser>();
-    private List<String> invitedEmails = new ArrayList<String>();
-    private List<Boolean> checkBox = new ArrayList<Boolean>();
-    private List<String> friendEmails = new ArrayList<String>();
+    private List<BaseUser> myFriends = new ArrayList<>();
+    private Map<Integer, String> competitionSessions = new HashMap<>();
+    private List<BaseUser> invitedFriends = new ArrayList<>();
+    private List<String> invitedEmails = new ArrayList<>();
+    private List<Boolean> checkBox = new ArrayList<>();
+    private List<String> friendEmails = new ArrayList<>();
     private Integer sessionId;
-    private List<Integer> invitedUsers = new ArrayList<Integer>();
+    private List<Integer> invitedUsers = new ArrayList<>();
     private BaseUser user = new BaseUser();
     private String rePasswordCode;
     private String rePwd;
-    private List<File> uploads = new ArrayList<File>();
-    private List<String> uploadsFileNames = new ArrayList<String>();
-    private List<String> uploadsContentTypes = new ArrayList<String>();
+    private List<File> uploads = new ArrayList<>();
+    private List<String> uploadsFileNames = new ArrayList<>();
+    private List<String> uploadsContentTypes = new ArrayList<>();
     private String emailBoxUrl;
     private String activeCode; //激活码
     private String yzmCode;    //验证码
@@ -269,18 +269,13 @@ public class UserAction extends BasicAction {
         if (this.getCourse().getId() != null && this.getEmail() != null && !this.getCode().equals("")) {
             course = courseDao.findById(this.getCourse().getId());
             //if(MD5.endCode(course.getId().toString()+this.getEmail()+course.getPublicationTime().getTimeInMillis()).equals(this.getCode()))
-            if (true) {
-                // 只有在code比对正确的情况下才能正确接收和提出课程调整
-                BaseUser std = baseUserDao.findByEmail(this.getUser().getEmail());
-                course.setTeacher(std);
-                courseDao.persistAbstract(course);
-                if (accept == true) {
-                    return "emailSuccess";
-                } else {
-                    return "adjust";
-                }
-            } else {
-                return NONE;
+            // 只有在code比对正确的情况下才能正确接收和提出课程调整
+            BaseUser std = baseUserDao.findByEmail(this.getUser().getEmail());
+            course.setTeacher(std);
+            courseDao.persistAbstract(course);
+            if (accept == true) return "emailSuccess";
+            else {
+                return "adjust";
             }
         }
         if (this.getCourse().getId() != null && this.getEmail() != null && this.getCode().equals("")) {
@@ -299,7 +294,7 @@ public class UserAction extends BasicAction {
                     return "emailSuccess";
                 } else {
                     seniorClassRoomDao.persistAbstract(seniorClassRoom);
-                    if (accept == true) {
+                    if (accept) {
                         return "emailSuccess";
                     } else {
                         return "adjust";
@@ -592,16 +587,16 @@ public class UserAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value="studentLogin",
-            results={@Result(name=SUCCESS, type=Constants.RESULT_NAME_TILES, location=".studentLogin")}
+    @Action(value = "studentLogin",
+            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".studentLogin")}
     )
     public String studentLogin() {
         return SUCCESS;
     }
 
-    @Action(value="studentLoginProcess",
-            results={@Result(name=SUCCESS, type=Constants.RESULT_NAME_REDIRECT_ACTION, params={"actionName", "myfirstPage"}),
-                     @Result(name=INPUT, type=Constants.RESULT_NAME_TILES, location=".studentLogin")}
+    @Action(value = "studentLoginProcess",
+            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}),
+                    @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".studentLogin")}
     )
     public String studentLoginProcess() {
         BaseUser user = baseUserDao.findByEmail(this.getUser().getEmail());
@@ -642,7 +637,7 @@ public class UserAction extends BasicAction {
         if (userService.havePermission(user.getId(), RoleType.TEACHER)) {
             ActionContext.getContext().getSession().put(Constants.SESSION_USER_IS_TEACHER, true);
         }
-        
+
         //如果是学校负责人或老师
         if ((organizationDao.findByResId(user.getId()) != null) || (userService.havePermission(user.getId(), RoleType.TEACHER))) {
             user.setLastLoginDate(Calendar.getInstance());
@@ -957,8 +952,6 @@ public class UserAction extends BasicAction {
     public void setYzmCode(String yzmCode) {
         this.yzmCode = yzmCode;
     }
-
-
 
 
     public BaseUser getUser() {

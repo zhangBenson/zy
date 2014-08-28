@@ -1,4 +1,4 @@
-package com.gogowise.rep.finance;
+package com.gogowise.rep.finance.dao;
 
 import com.gogowise.rep.ModelDao;
 import com.gogowise.rep.finance.enity.ConsumptionOrder;
@@ -24,7 +24,7 @@ public interface ConsumptionRecordDao extends ModelDao<ConsumptionRecord> {
 
     public void createRecordForTransfer(ConsumptionOrder consumptionOrder);
 
-    public  List<ConsumptionRecord> findForOwner(Integer userId , Calendar start, Calendar end , Pagination pagination);
+    public List<ConsumptionRecord> findForOwner(Integer userId, Calendar start, Calendar end, Pagination pagination);
 
     public void updateRecordForPurchase(ConsumptionOrder consumptionOrder);
 

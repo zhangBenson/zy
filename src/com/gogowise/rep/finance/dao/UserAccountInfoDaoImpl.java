@@ -1,4 +1,4 @@
-package com.gogowise.rep.finance;
+package com.gogowise.rep.finance.dao;
 
 import com.gogowise.rep.ModelDaoImpl;
 import com.gogowise.rep.finance.enity.UserAccountInfo;
@@ -18,11 +18,12 @@ import java.util.List;
 public class UserAccountInfoDaoImpl extends ModelDaoImpl<UserAccountInfo> implements UserAccountInfoDao {
     private UserAccountInfoDao userAccountInfoDao;
     private BaseUserDao baseUserDao;
+
     public UserAccountInfo findByUserId(Integer id) {
-        List<UserAccountInfo> list =  this.find("select uc from UserAccountInfo uc where uc.user.id = ?", id);
-        if (list.size() > 0 )   return list.get(0);
-        UserAccountInfo userAccountInfo =  new UserAccountInfo();
-        userAccountInfo.setUser( baseUserDao.findById(id));
+        List<UserAccountInfo> list = this.find("select uc from UserAccountInfo uc where uc.user.id = ?", id);
+        if (list.size() > 0) return list.get(0);
+        UserAccountInfo userAccountInfo = new UserAccountInfo();
+        userAccountInfo.setUser(baseUserDao.findById(id));
         userAccountInfoDao.persistAbstract(userAccountInfo);
         return userAccountInfo;
     }

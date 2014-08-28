@@ -14,7 +14,7 @@ public class InitializingServiceBean {
     }
 
     public void setScheduler(ThreadPoolTaskScheduler scheduler) {
-        EmailUtil.scheduler =  scheduler;
+        EmailUtil.scheduler = scheduler;
         this.scheduler = scheduler;
 
     }
@@ -24,7 +24,6 @@ public class InitializingServiceBean {
     }
 
     public void setMatterDao(MatterDao matterDao) {
-        EmailUtil.matterDao=matterDao;
         this.matterDao = matterDao;
     }
 }

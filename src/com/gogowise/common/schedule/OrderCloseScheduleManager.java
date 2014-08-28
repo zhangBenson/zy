@@ -1,9 +1,8 @@
 package com.gogowise.common.schedule;
 
-import com.gogowise.rep.finance.ConsumptionOrderDao;
-import com.gogowise.rep.finance.ConsumptionRecordDao;
+import com.gogowise.rep.finance.dao.ConsumptionOrderDao;
+import com.gogowise.rep.finance.dao.ConsumptionRecordDao;
 import com.gogowise.rep.finance.enity.ConsumptionOrder;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.stereotype.Component;
 
@@ -14,31 +13,31 @@ import java.util.Set;
 
 @Component
 public class OrderCloseScheduleManager {
-    public static Set<Calendar> closeTime = new HashSet<Calendar>();
-    public static Set<Calendar> noticeEmailTime = new HashSet<Calendar>();
+    public static Set<Calendar> closeTime = new HashSet<>();
+    public static Set<Calendar> noticeEmailTime = new HashSet<>();
     private ConsumptionOrderDao consumptionOrderDao;
     private ConsumptionRecordDao consumptionRecordDao;
     private Calendar calendar = Calendar.getInstance();
     private ThreadPoolTaskScheduler scheduler;
 
     //    @Scheduled(cron = "0 0/30 * * * ?")
-    public void generateJob(){
+    public void generateJob() {
         List<ConsumptionOrder> consumptionOrders = consumptionOrderDao.findUnclosedOrder();
-        for(ConsumptionOrder co : consumptionOrders){
-            if(co.getCloseTime().after(Calendar.getInstance())){
+        for (ConsumptionOrder co : consumptionOrders) {
+            if (co.getCloseTime().after(Calendar.getInstance())) {
                 OrderCloseScheduleManager.closeTime.add(co.getCloseTime());
-            }else {
+            } else {
                 co.setState(ConsumptionOrder.ORDER_STATE_CLOSE);
                 consumptionOrderDao.persistAbstract(co);
                 consumptionRecordDao.updateRecordForPurchase(co);
             }
         }
-        for(Calendar calendar : closeTime){
-                NoticeOrderCloseJob job = new NoticeOrderCloseJob();
-                job.setConsumptionOrderDao(consumptionOrderDao);
-                job.setConsumptionRecordDao(consumptionRecordDao);
-                job.setCalendar(calendar);
-                scheduler.schedule(job,calendar.getTime());
+        for (Calendar calendar : closeTime) {
+            NoticeOrderCloseJob job = new NoticeOrderCloseJob();
+            job.setConsumptionOrderDao(consumptionOrderDao);
+            job.setConsumptionRecordDao(consumptionRecordDao);
+            job.setCalendar(calendar);
+            scheduler.schedule(job, calendar.getTime());
         }
 
 

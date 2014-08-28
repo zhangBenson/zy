@@ -1,11 +1,10 @@
-package com.gogowise.rep.course;
+package com.gogowise.rep.finance;
 
 import com.gogowise.rep.ModelServiceImpl;
 
-import com.gogowise.rep.ModelServiceImpl;
 import com.gogowise.rep.course.dao.PaypalDao;
-import com.gogowise.rep.course.enity.PaypalDetails;
-import com.gogowise.rep.course.vo.PaypalDetailsSpecification;
+import com.gogowise.rep.finance.enity.PaypalDetails;
+import com.gogowise.rep.finance.vo.PaypalDetailsSpecification;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +18,7 @@ import org.springframework.stereotype.Service;
  */
 
 @Service("paypalService")
-public class PaypalServiceImpl extends ModelServiceImpl implements PaypalService{
+public class PaypalServiceImpl extends ModelServiceImpl implements PaypalService {
 
 
     @Autowired
