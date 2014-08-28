@@ -32,4 +32,9 @@ public class ClassMembershipDaoImpl extends ModelDaoImpl<ClassMembership> implem
         String hql = "from ClassMembership cm where cm.courseClass.id=? and cm.user.id=?";
         return this.findFist(hql, classId, uId);
     }
+
+    public List<ClassMembership> findByUserIdAndCourseId(Integer uId,Integer cId){
+        String hql = "from ClassMembership cm where cm.courseClass.course.id=? and cm.user.id=?";
+        return this.find(hql, cId, uId);
+    }
 }

@@ -1,6 +1,7 @@
 package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.common.utils.Constants;
 import com.gogowise.rep.course.dao.*;
 import com.gogowise.rep.course.enity.*;
 import com.gogowise.rep.user.dao.BaseUserDao;
@@ -8,12 +9,14 @@ import com.gogowise.rep.user.enity.BaseUser;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -45,6 +48,9 @@ public class ClassRoomAction extends BasicAction {
     private String resultMessage;
     private ClassMembership classMembership;
     private ClassMembershipDao classMembershipDao;
+
+    @Autowired
+    private QuestionResultDao questionResultDao;
 
     @Action(value = "saveClassRoom")
     public void saveClassRoom() throws IOException {
@@ -94,11 +100,31 @@ public class ClassRoomAction extends BasicAction {
         out.close();
     }
 
+    /**
+     * 按照记录来初始化学生完成课程classes的情况
+     * @return
+     */
     @Action(value = "initClassMembershipInfoWithOld")
-    public String initClassMembershipInfoWithOld()
+    public void initClassMembershipInfoWithOld()
     {
+        List<QuestionResult> questionResults = questionResultDao.findAll();
+        for(QuestionResult questionResult: questionResults){
+            BaseUser user = questionResult.getOwner();
+            CourseClass classTemp = questionResult.getCourseClass();
 
-        return SUCCESS;
+            ClassMembership cm = classMembershipDao.findByUserAndClassId(user.getId(),classTemp.getId());
+
+            if(cm == null){
+                cm = new ClassMembership();
+                cm.setStatus(Constants.Class_User_Status_Finish);
+                cm.setUser(user);
+                cm.setCourseClass(classTemp);
+                classMembershipDao.persistAbstract(cm);
+            }else{
+                cm.setStatus(Constants.Class_User_Status_Finish);
+                classMembershipDao.persist(cm);
+            }
+        }
     }
 
 

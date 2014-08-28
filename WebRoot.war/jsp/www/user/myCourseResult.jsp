@@ -25,7 +25,7 @@
             <div>
                 <div class="questionTitle"><s:property value="course.name"/></div>
                 <div class="statistics">Total Episodes:<span><s:property value="course.classes.size()"/> </span></div>
-                <div class="statistics">Episodes finished: <span>XX</span></div>
+                <div class="statistics">Episodes finished: <span><s:property value="finishedClasses"/></span></div>
                 <div class="statistics">Total Question:<span><s:property value="questionResults.size()"/> </span></div>
                 <div class="statistics">Right Answer:<span><s:property value="answeredCorrect"/> </span></div>
             </div>

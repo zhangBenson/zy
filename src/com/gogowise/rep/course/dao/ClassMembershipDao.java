@@ -16,4 +16,5 @@ public interface ClassMembershipDao extends ModelDao<ClassMembership>
     public List<ClassMembership> findByUserId(Integer uId);
     public List<ClassMembership> findByClassId(Integer classId);
     public ClassMembership findByUserAndClassId(Integer uId,Integer classId);
+    public List<ClassMembership> findByUserIdAndCourseId(Integer uId,Integer cId);
 }

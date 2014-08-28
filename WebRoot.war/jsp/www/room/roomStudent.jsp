@@ -252,7 +252,6 @@ function setQuestionResult(result)
 
 function setStudentIn(){
     setStudentStatus(1);
-    alert("进入教室");
 }
 function setStudentEnd(){
     setStudentStatus(2);
