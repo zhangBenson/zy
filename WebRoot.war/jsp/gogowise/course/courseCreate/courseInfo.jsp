@@ -19,7 +19,14 @@
         $("#btnTest").click(function(){
             alert(getTag());
         })
+
+
+        <s:iterator value="tags">
+        $(".grayPanel").tagit("createTag", "<s:property value="name"/>" );
+        </s:iterator>
     });
+
+//    window.onload=setTags;
 </script>
 
 <style type="text/css">
@@ -54,7 +61,7 @@
 
         <li>
             <span class="item"><s:property value="%{getText('course.info.courseTag')}"/></span>
-            <span class="course_name_input_msg tip_words">*</span>
+            <span class="course_tag_input_msg tip_words">*</span>
             <%--<s:checkboxlist list="tags" listKey="id" listValue="name" name="tags"/>--%>
             <br/>
             <ul class="grayPanel"></ul>
@@ -193,4 +200,3 @@
            value="<s:property value="%{getText('onlive.message.update')}"/>"
            onclick="modifyStepMsg(this,2);"/>
 </div>
-

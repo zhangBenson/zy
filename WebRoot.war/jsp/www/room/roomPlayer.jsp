@@ -20,6 +20,8 @@ var currentMIC = null;
 var currentPencil = null;
 
 
+window.onload=setStudentIn;
+
 $(document).ready(function() {
     stundioWrapper = new iScroll('stundioWrapper');
     chatWrapper = new iScroll('chatWrapper');
@@ -250,6 +252,30 @@ function setQuestionResult(result)
         {
             //alert("success");
             getGirlOjbect().submitAnswer();
+        },
+        error:function(){
+            //alert("error....");
+        }
+    });
+}
+
+function setStudentIn(){
+    setStudentStatus(1);
+}
+function setStudentFinish(){
+    setStudentStatus(2);
+}
+
+function setStudentStatus(status)
+{
+    $.ajax({
+        type: 'POST',
+        url: "ajaxChangeUserStatusInClass.html",
+        data:{"status":status,"courseClass.id":<s:property value="courseClass.id"/>},
+        dataType:"json",
+        success: function(data)
+        {
+            //alert("success");
         },
         error:function(){
             //alert("error....");

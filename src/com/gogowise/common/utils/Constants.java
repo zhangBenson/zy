@@ -220,5 +220,8 @@ public class Constants {
     public static String MEETING_TYPE = "meeting";
 
 
+    public static Integer Class_User_Status_Default = 0;
+    public static Integer Class_User_Status_In = 1;
+    public static Integer Class_User_Status_Finish = 2;
 
 }

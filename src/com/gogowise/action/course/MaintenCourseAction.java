@@ -110,6 +110,7 @@ public class MaintenCourseAction extends BasicAction {
             teacherIds.add(existTeacher.getId());
         }
 
+        tags = course.getTags();
         //find the classes
         classes = classDao.findByCourseId( course.getId() );
 
