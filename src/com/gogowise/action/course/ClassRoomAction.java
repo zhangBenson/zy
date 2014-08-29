@@ -87,13 +87,13 @@ public class ClassRoomAction extends BasicAction {
                 record.setStatus(status);
                 classMembershipDao.persistAbstract(record);
             }else{
-                record.setStatus(status);
-                classMembershipDao.persist(record);
+                if(record.getStatus() < status){
+                    record.setStatus(status);
+                    classMembershipDao.persist(record);
+                }
             }
-
             resultMessage = "success";
         }
-
 
         PrintWriter out = ServletActionContext.getResponse().getWriter();
         out.print(resultMessage);
