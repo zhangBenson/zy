@@ -92,7 +92,7 @@ public class SaveCourseAction extends BasicAction {
                 course.getTags().add(newTag);
             }
             else{
-                course.getTags().add(temp);
+                if( !course.getTags().contains(temp) ) course.getTags().add(temp);
             }
         }
         courseDao.persist(course);
@@ -198,7 +198,7 @@ public class SaveCourseAction extends BasicAction {
                 _course.getTags().add(newTag);
             }
             else{
-                _course.getTags().add(temp);
+                if( !_course.getTags().contains(temp) )_course.getTags().add(temp);
             }
         }
 
