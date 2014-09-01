@@ -75,6 +75,11 @@
                                     value="teacher.nickName"/></a></li>
                             <li class="searchItemState"><s:property value="%{getText('label.student')}"/>:<s:property
                                     value="studentNum"/></li>
+                            <li class="searchItemState">
+                                <s:property value="%{getText('course.info.courseTag')}"/>:
+                                <s:if test="getTagsAsStr().length()!=0"><s:property value="getTagsAsStr()"/></s:if>
+                                <s:else>NULL</s:else>
+                            </li>
                             <s:if test="charges>0">
                                 <li class="searchItemStateBlue">&nbsp;S$&nbsp;<s:property value="charges"/>&nbsp;</li>
                             </s:if>
