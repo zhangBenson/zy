@@ -22,15 +22,42 @@
         });
     });
 
-    function getMoreCousre(pageNow) {
+    function getMoreCousre(pageNow, type) {
         var pageNext = pageNow + 1;
-        document.getElementById("link" + pageNow).style.display = "none";
-        $.post("getMoreCourse.html", {'pagination.pageNow': pageNext}, function (data) {
-            $("#courseList" + pageNext).html(data);
-            //$("#courseLists").append(data);
-        });
+
+        if(type == 1){
+            document.getElementById("foreignLink" + pageNow).style.display = "none";
+            $.post("getMoreCourse.html", {'forignPagination.pageNow': pageNext, 'type':type}, function (data) {
+                $("#foreignCourseList" + pageNext).html(data);
+            });
+        }
+        if(type == 2){
+            document.getElementById("zhongXueLink" + pageNow).style.display = "none";
+            $.post("getMoreCourse.html", {'zhongXuePagination.pageNow': pageNext, 'type':type}, function (data) {
+                $("#zhongXueCourseList" + pageNext).html(data);
+            });
+        }
+        if(type == 3){
+            document.getElementById("xiaoXueLink" + pageNow).style.display = "none";
+            $.post("getMoreCourse.html", {'xiaoXuePagination.pageNow': pageNext, 'type':type}, function (data) {
+                $("#xiaoXueCourseList" + pageNext).html(data);
+            });
+        }
+        if(type == 4){
+            document.getElementById("childLink" + pageNow).style.display = "none";
+            $.post("getMoreCourse.html", {'childPagination.pageNow': pageNext, 'type':type}, function (data) {
+                $("#childCourseList" + pageNext).html(data);
+            });
+        }
     }
 </script>
+
+<style>
+    .courselists{
+        margin-top: 20px;
+        clear: both;
+    }
+</style>
 
 <div class="container" >
 
@@ -43,15 +70,6 @@
         <%--<li><a href="<s:property value="posterLink4" />"><img src="../../images/index/pic4.jpg" class="bannerImg" /></a></li>--%>
     </ul>
 
-    <%--<s:form method="post" action="searchResult" theme="simple" validate="true">--%>
-
-    <%--<s:hidden name="searchType" value="1"/>--%>
-    <%--&lt;%&ndash;<input name="courseName" class="keyWords"/>&ndash;%&gt;--%>
-    <%--<s:textfield cssClass="keyWords" name="searchStr" />--%>
-    <%--<input type="hidden" name="searchTyp" value="1"/>--%>
-    <%--<input class="searchButton" type="submit" value="" />--%>
-    <%--&lt;%&ndash;<a class="searchButton" href="search.html"></a>&ndash;%&gt;--%>
-    <%--</s:form>--%>
     <s:form method="post" action="searchAnswer" theme="simple" validate="true">
         <%-- <s:hidden name="searchType" value="4"/> --%>
         <div class="row">
@@ -72,16 +90,168 @@
 <br/>
 
 <div class="container">
-    <div id="courselists">
+
+    <div class="courselists">
 
         <div class="pull-left"><img src="../../images/index/icon_new.png"/></div>
         <div class="pull-left">
-            <div class="courseSubhead"><s:property value="%{getText('usermenu.item.newestcourses')}"/></div>
+            <div class="courseSubhead"><s:property value="%{getText('label.index.foreign')}"/></div>
         </div>
         <div class="clearfix"></div>
 
-        <div style="width:1180px;" id="courseList<s:property value="pagination.pageNow"/>">
-            <s:iterator value="courses" status="status">
+        <div style="width:1180px;" id="foreignCourseList<s:property value="forignPagination.pageNow"/>">
+
+            <s:iterator value="forignCourses" status="status">
+                <s:if test="#status.index<10">
+                    <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"
+                       class="newLeft">
+                        <div class="coursePanel" style="width:550px;">
+                            <div class="coursePanelInfoLeft">
+                                <img class="coursePanelPortrait" src="<s:property value="logoUrl"/>"/>
+                            </div>
+
+                            <div class="coursePanelInfoRight">
+                                <p class="textOverSinglerow"><s:property value="name"/></p>
+
+                                <p class="textOverSinglerow"><s:property
+                                        value="%{getText('course.school')}"/>:&nbsp;<s:property
+                                        value="organization.schoolName"/></p>
+
+                                <p class="textOverSinglerow">
+                                    <s:property value="%{getText('courses.info.lecturer')}"/>:&nbsp;
+                                    <s:if test="teacher.userName != null"><s:property value="teacher.userName"/></s:if>
+                                    <s:else><s:property value="teacher.nickName"/></s:else>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                    <s:if test="#status.index%2==1"><br/></s:if>
+                </s:if>
+            </s:iterator>
+
+
+        </div>
+
+        <div id="foreignCourseList<s:property value="forignPagination.pageNow+1"/>"></div>
+        <s:if test="forignPagination.hasNext">
+            <a href="javascript:;" id="foreignLink<s:property value="forignPagination.pageNow"/>"
+               onclick="getMoreCousre(<s:property value="forignPagination.pageNow"/>, 1);">
+                <p class="text-right" style="margin-right: 0px;"><s:property value="%{getText('others.more')}"/></p>
+            </a>
+        </s:if>
+    </div>
+
+    <div class="courselists">
+
+        <div class="pull-left"><img src="../../images/index/icon_new.png"/></div>
+        <div class="pull-left">
+            <div class="courseSubhead"><s:property value="%{getText('label.index.zhongXue')}"/></div>
+        </div>
+        <div class="clearfix"></div>
+
+        <div style="width:1180px;" id="zhongXueCourseList<s:property value="zhongXuePagination.pageNow"/>">
+
+            <s:iterator value="zhongXueCourses" status="status">
+                <s:if test="#status.index<10">
+                    <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"
+                       class="newLeft">
+                        <div class="coursePanel" style="width:550px;">
+                            <div class="coursePanelInfoLeft">
+                                <img class="coursePanelPortrait" src="<s:property value="logoUrl"/>"/>
+                            </div>
+
+                            <div class="coursePanelInfoRight">
+                                <p class="textOverSinglerow"><s:property value="name"/></p>
+
+                                <p class="textOverSinglerow"><s:property
+                                        value="%{getText('course.school')}"/>:&nbsp;<s:property
+                                        value="organization.schoolName"/></p>
+
+                                <p class="textOverSinglerow">
+                                    <s:property value="%{getText('courses.info.lecturer')}"/>:&nbsp;
+                                    <s:if test="teacher.userName != null"><s:property value="teacher.userName"/></s:if>
+                                    <s:else><s:property value="teacher.nickName"/></s:else>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                    <s:if test="#status.index%2==1"><br/></s:if>
+                </s:if>
+            </s:iterator>
+
+        </div>
+
+        <div id="zhongXueCourseList<s:property value="zhongXuePagination.pageNow+1"/>"></div>
+        <s:if test="zhongXuePagination.hasNext">
+            <a href="javascript:;" id="zhongXueLink<s:property value="zhongXuePagination.pageNow"/>"
+               onclick="getMoreCousre(<s:property value="zhongXuePagination.pageNow"/>, 2);">
+                <p class="text-right" style="margin-right: 0px;"><s:property value="%{getText('others.more')}"/></p>
+            </a>
+        </s:if>
+    </div>
+
+    <div class="courselists">
+
+        <div class="pull-left"><img src="../../images/index/icon_new.png"/></div>
+        <div class="pull-left">
+            <div class="courseSubhead"><s:property value="%{getText('label.index.xiaoXue')}"/></div>
+        </div>
+        <div class="clearfix"></div>
+
+        <div style="width:1180px;" id="xiaoXueCourseList<s:property value="xiaoXuePagination.pageNow"/>">
+
+            <s:iterator value="xiaoXueCourses" status="status">
+                <s:if test="#status.index<10">
+                    <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"
+                       class="newLeft">
+                        <div class="coursePanel" style="width:550px;">
+                            <div class="coursePanelInfoLeft">
+                                <img class="coursePanelPortrait" src="<s:property value="logoUrl"/>"/>
+                            </div>
+
+                            <div class="coursePanelInfoRight">
+                                <p class="textOverSinglerow"><s:property value="name"/></p>
+
+                                <p class="textOverSinglerow"><s:property
+                                        value="%{getText('course.school')}"/>:&nbsp;<s:property
+                                        value="organization.schoolName"/></p>
+
+                                <p class="textOverSinglerow">
+                                    <s:property value="%{getText('courses.info.lecturer')}"/>:&nbsp;
+                                    <s:if test="teacher.userName != null"><s:property value="teacher.userName"/></s:if>
+                                    <s:else><s:property value="teacher.nickName"/></s:else>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                    <s:if test="#status.index%2==1"><br/></s:if>
+                </s:if>
+            </s:iterator>
+
+        </div>
+
+        <div id="xiaoXueCourseList<s:property value="xiaoXuePagination.pageNow+1"/>"></div>
+
+        <s:if test="xiaoXuePagination.hasNext">
+            <a href="javascript:;" id="xiaoXueLink<s:property value="xiaoXuePagination.pageNow"/>"
+               onclick="getMoreCousre(<s:property value="forignPagination.pageNow"/>, 3);">
+                <p class="text-right" style="margin-right: 0px;"><s:property value="%{getText('others.more')}"/></p>
+            </a>
+        </s:if>
+
+    </div>
+
+    <div class="courselists">
+
+        <div class="pull-left"><img src="../../images/index/icon_new.png"/></div>
+        <div class="pull-left">
+            <div class="courseSubhead"><s:property value="%{getText('label.index.child')}"/></div>
+        </div>
+        <div class="clearfix"></div>
+
+        <div style="width:1180px;" id="childCourseList<s:property value="childPagination.pageNow"/>">
+
+            <s:iterator value="childCourses" status="status">
                 <s:if test="#status.index<10">
                     <a href="voaCourseBlog.html?course.id=<s:property value="id"/>" title="<s:property value="name"/>"
                        class="newLeft">
@@ -110,14 +280,15 @@
             </s:iterator>
         </div>
 
-        <div id="courseList<s:property value="pagination.pageNow+1"/>"></div>
+        <div id="childCourseList<s:property value="childPagination.pageNow+1"/>"></div>
+        <s:if test="childPagination.hasNext">
+            <a href="javascript:;" id="childLink<s:property value="childPagination.pageNow"/>"
+               onclick="getMoreCousre(<s:property value="childPagination.pageNow"/>, 4);">
+                <p class="text-right" style="margin-right: 0px;"><s:property value="%{getText('others.more')}"/></p>
+            </a>
+        </s:if>
     </div>
-    <s:if test="pagination.hasNext">
-        <a href="javascript:;" id="link<s:property value="pagination.pageNow"/>"
-           onclick="getMoreCousre(<s:property value="pagination.pageNow"/>);">
-            <p class="text-right" style="margin-right: 0px;"><s:property value="%{getText('others.more')}"/></p>
-        </a>
-    </s:if>
+
 </div>
 
 <div class="container">

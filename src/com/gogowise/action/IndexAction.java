@@ -36,6 +36,17 @@ public class IndexAction extends BasicAction {
     private BaseUser baseUser;
     private List<Course> courses;
     private List<Course> moocCourses;
+
+    private Integer type;
+    private List<Course> forignCourses;
+    private Pagination forignPagination = new Pagination(4);
+    private List<Course> zhongXueCourses;
+    private Pagination zhongXuePagination = new Pagination(4);
+    private List<Course> xiaoXueCourses;
+    private Pagination xiaoXuePagination = new Pagination(4);
+    private List<Course> childCourses;
+    private Pagination childPagination = new Pagination(4);
+
     private Pagination pagination = new Pagination(3);
 
     private List<Organization> organizations = new ArrayList<>();
@@ -136,6 +147,13 @@ public class IndexAction extends BasicAction {
         //moocCourses = courseDao.findMoocCourses(pagination);
         organizations = organizationDao.findLatestOrgs(new Pagination(8));
         this.loadPoster();
+
+        pagination.setPageSize(4);
+        forignCourses = courseDao.findCoursesByTag(Constants.Course_Tag_Forign, forignPagination);
+        zhongXueCourses = courseDao.findCoursesByTag(Constants.Course_Tag_ZhongXue, zhongXuePagination);
+        xiaoXueCourses = courseDao.findCoursesByTag(Constants.Course_Tag_XiaoXue, xiaoXuePagination);
+        childCourses = courseDao.findCoursesByTag(Constants.Course_Tag_Child, childPagination);
+
         return SUCCESS;
     }
 
@@ -143,7 +161,19 @@ public class IndexAction extends BasicAction {
     public String getMoreCourse() {
 
         pagination.setPageSize(10);
-        courses = courseDao.findlatestCourses(pagination);
+
+        if( type == Constants.Course_Tag_Forign )
+            courses = courseDao.findCoursesByTag(Constants.Course_Tag_Forign, forignPagination);
+
+        if( type == Constants.Course_Tag_ZhongXue )
+            courses = courseDao.findCoursesByTag(Constants.Course_Tag_ZhongXue, zhongXuePagination);
+
+        if( type == Constants.Course_Tag_XiaoXue )
+            courses = courseDao.findCoursesByTag(Constants.Course_Tag_XiaoXue, xiaoXuePagination);
+
+        if( type == Constants.Course_Tag_Child )
+            courses = courseDao.findCoursesByTag(Constants.Course_Tag_Child, childPagination);
+
         moocCourses = courseDao.findMoocCourses(pagination);
         organizations = organizationDao.findLatestOrgs(new Pagination(8));
         return SUCCESS;
@@ -456,5 +486,77 @@ public class IndexAction extends BasicAction {
     public void setGenFileName(String genFileName) {
 
         this.genFileName = genFileName;
+    }
+
+    public List<Course> getForignCourses() {
+        return forignCourses;
+    }
+
+    public void setForignCourses(List<Course> forignCourses) {
+        this.forignCourses = forignCourses;
+    }
+
+    public List<Course> getZhongXueCourses() {
+        return zhongXueCourses;
+    }
+
+    public void setZhongXueCourses(List<Course> zhongXueCourses) {
+        this.zhongXueCourses = zhongXueCourses;
+    }
+
+    public List<Course> getXiaoXueCourses() {
+        return xiaoXueCourses;
+    }
+
+    public void setXiaoXueCourses(List<Course> xiaoXueCourses) {
+        this.xiaoXueCourses = xiaoXueCourses;
+    }
+
+    public List<Course> getChildCourses() {
+        return childCourses;
+    }
+
+    public void setChildCourses(List<Course> childCourses) {
+        this.childCourses = childCourses;
+    }
+
+    public Pagination getForignPagination() {
+        return forignPagination;
+    }
+
+    public void setForignPagination(Pagination forignPagination) {
+        this.forignPagination = forignPagination;
+    }
+
+    public Pagination getZhongXuePagination() {
+        return zhongXuePagination;
+    }
+
+    public void setZhongXuePagination(Pagination zhongXuePagination) {
+        this.zhongXuePagination = zhongXuePagination;
+    }
+
+    public Pagination getXiaoXuePagination() {
+        return xiaoXuePagination;
+    }
+
+    public void setXiaoXuePagination(Pagination xiaoXuePagination) {
+        this.xiaoXuePagination = xiaoXuePagination;
+    }
+
+    public Pagination getChildPagination() {
+        return childPagination;
+    }
+
+    public void setChildPagination(Pagination childPagination) {
+        this.childPagination = childPagination;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 }
