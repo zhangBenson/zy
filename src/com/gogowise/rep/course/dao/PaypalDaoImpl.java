@@ -4,6 +4,8 @@ import com.gogowise.rep.ModelDaoImpl;
 import com.gogowise.rep.finance.enity.PaypalDetails;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Administrator

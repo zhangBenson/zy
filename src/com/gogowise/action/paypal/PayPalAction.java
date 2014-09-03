@@ -4,16 +4,16 @@ import com.gogowise.action.BasicAction;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.EmailUtil;
 import com.gogowise.common.utils.PdfUtil;
-import com.gogowise.rep.course.PaypalService;
 import com.gogowise.rep.course.ShoppingCartService;
 import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.dao.SeniorClassRoomDao;
 import com.gogowise.rep.course.enity.CartItem;
 import com.gogowise.rep.course.enity.Course;
-import com.gogowise.rep.course.enity.PaypalDetails;
 import com.gogowise.rep.course.enity.ShoppingCart;
-import com.gogowise.rep.course.vo.PaypalDetailsSpecification;
-import com.gogowise.rep.finance.ConsumptionOrderDao;
+import com.gogowise.rep.finance.PaypalService;
+import com.gogowise.rep.finance.dao.ConsumptionOrderDao;
+import com.gogowise.rep.finance.enity.PaypalDetails;
+import com.gogowise.rep.finance.vo.PaypalDetailsSpecification;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.system.MatterDao;
@@ -31,6 +31,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.io.File;
@@ -44,7 +45,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Enumeration;
 import java.util.List;
-import javax.annotation.Resource;
 /**
  * Created with IntelliJ IDEA.
  * User: Ji JianHui

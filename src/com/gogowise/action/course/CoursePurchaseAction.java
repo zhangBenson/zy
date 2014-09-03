@@ -8,10 +8,10 @@ import com.gogowise.rep.course.dao.CourseInviteStudentDao;
 import com.gogowise.rep.course.dao.SeniorClassRoomDao;
 import com.gogowise.rep.course.enity.CourseInviteStudent;
 import com.gogowise.rep.course.enity.SeniorClassRoom;
-import com.gogowise.rep.finance.ConsumptionOrderDao;
+import com.gogowise.rep.finance.dao.ConsumptionOrderDao;
+import com.gogowise.rep.finance.dao.UserAccountInfoDao;
 import com.gogowise.rep.system.MatterDao;
 import com.gogowise.rep.user.dao.BaseUserDao;
-import com.gogowise.rep.finance.UserAccountInfoDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.system.enity.Matter;
@@ -134,7 +134,7 @@ public class CoursePurchaseAction extends BasicAction {
                 content = this.getText("course.pdf.content", new String[] { course.getTeacher().getNickName() });
                 EmailUtil.sendMail(course.getTeacher().getEmail(), tile, content, new String[] { "contract.pdf" }, new String[] { filePath });
             }
-            EmailUtil.sendMail(Constants.COURSE_CONFIRM_EMAIL, tile, content, new String[] { "contract.pdf" }, new String[] { filePath });
+            EmailUtil.sendMail(Constants.COURSE_CONFIRM_EMAIL, tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
         } catch (Exception e) {
             e.printStackTrace();
         }
