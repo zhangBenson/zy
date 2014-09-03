@@ -82,6 +82,9 @@ public class SaveCourseAction extends BasicAction {
         course.setStudentAgeType(this.getCourse().getStudentAgeType());
         course.setIsPublic( this.getCourse().getIsPublic() );
         //courseDao.persist(course);
+        course.setCameraManConfirmed(true);
+        course.setTeacherConfirmed(true);
+        course.setMasterConfirmed(true);
 
         //TODO 设置course的标签Tag
         for( String tagName : tags ){
@@ -143,6 +146,7 @@ public class SaveCourseAction extends BasicAction {
             }
         }
         this.setCourse_id(course.getId());
+        courseDao.persist(course);
         return "json";
     }
 
