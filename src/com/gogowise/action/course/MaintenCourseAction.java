@@ -74,7 +74,7 @@ public class MaintenCourseAction extends BasicAction {
         students = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(), RoleType.ROLE_TYPE_STUDENT, null);
         if (course == null) course = new Course();
         course.setCharges(0D);
-        tags = tagDao.findAll();
+        //tags = tagDao.findAll();
         return SUCCESS;
     }
 
@@ -110,6 +110,7 @@ public class MaintenCourseAction extends BasicAction {
             teacherIds.add(existTeacher.getId());
         }
 
+        tags = course.getTags();
         //find the classes
         classes = classDao.findByCourseId( course.getId() );
 

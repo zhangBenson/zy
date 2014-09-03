@@ -2,7 +2,7 @@ package com.gogowise.action.user;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.rep.user.dao.BaseUserDao;
-import com.gogowise.rep.finance.ConsumptionRecordDao;
+import com.gogowise.rep.finance.dao.ConsumptionRecordDao;
 import com.gogowise.rep.finance.enity.ConsumptionRecord;
 import com.gogowise.rep.Pagination;
 import com.gogowise.common.utils.Utils;
@@ -26,7 +26,7 @@ public class ConsumptionRecordsAction extends BasicAction {
     private static final long serialVersionUID = 8554180680341830332L;
     private ConsumptionRecordDao consumptionRecordDao;
     private BaseUserDao baseUserDao;
-    private List<ConsumptionRecord> records = new ArrayList<ConsumptionRecord>();
+    private List<ConsumptionRecord> records = new ArrayList<>();
     private Calendar beginDate;
     private Calendar endDate = Calendar.getInstance();
     private Pagination pagination = new Pagination(15);
@@ -40,7 +40,7 @@ public class ConsumptionRecordsAction extends BasicAction {
             results = {@Result(name = SUCCESS, type = "tiles", location = ".initConsumption")}
     )
     public String initConsumption() {
-        if (beginDate == null ) {
+        if (beginDate == null) {
             beginDate = Utils.getClientTodayCalendar();
             beginDate.add(Calendar.MONTH, -3);
             beginDate.getTime();

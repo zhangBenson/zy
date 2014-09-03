@@ -96,6 +96,14 @@ public class QuestionResultAction extends BasicAction {
     public String initQuestionStaticsWithOldQuestionResult(){
         questionResults = questionResultDao.findAll();
 
+        //为了防止重复运行时候导致的多次添加，将这个方法首先清空question的两个记录字段
+        questions = questionDao.findAll();
+        for(Question question:questions){
+            question.setAnsweredNum(0);
+            question.setAnsweredCorrectNum(0);
+            questionDao.persist(question);
+        }
+
         for(QuestionResult questionResult : questionResults){
             Question question = questionResult.getQuestion();
             question.setAnsweredNum( question.getAnsweredNum() + 1 );

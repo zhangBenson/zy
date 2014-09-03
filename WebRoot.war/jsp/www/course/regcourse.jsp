@@ -97,60 +97,60 @@
     </div>
     <div style="text-align: center;">
         <div class="row">
+            
+            <s:if test="course.charges!=0">
 
-<s:if test="course.charges!=0">
+                <s:if test="errorMessagePaypalStatu">
+                    <s:form action="purchaseCourse" method="POST" theme="css_xhtml" id="purchaseCourse_Form" >
+                        <s:hidden name="course.id"/>
 
-    <s:if test="errorMessagePaypalStatu">
-        <s:form action="purchaseCourse" method="POST" theme="css_xhtml" id="purchaseCourse_Form" >
-            <s:hidden name="course.id"/>
-
-            <div class="col-sm-6">
-                    <%--<input type="button" class="btn btn-primary btn-lg btn-block" value="" id="reservationconfirmed"/> --%>
-                <button type="button" class="btn btn-primary btn-lg btn-block" value="" id="reservationconfirmed">
-                    <s:property value="%{getText('button.course.confirm.registration')}"/></button>
-            </div>
-            <div class="col-sm-6">
-                    <%-- <button type="button" class="btn btn-danger btn-lg btn-block">Cancel</button> --%>
-                <input type="button" class="btn btn-danger btn-lg btn-block"
-                       value="<s:property value="%{getText('button.cancel')}" />"/>
-            </div>
-        </s:form>
-    </s:if>
-    <s:else>
-
-
-    <s:form action=" https://www.paypal.com/cgi-bin/webscr" method="POST" theme="css_xhtml" id="purchaseCourse_Form" onsubmit="return validatePaypal();">
-    <s:hidden name="course.id"/>
-        <s:hidden name="course.charges"/>
-    <input type="hidden" name="cmd" value="_xclick">
-    <input type="hidden" name="business" value="zeng_zeng@gogowise.com"><!--这里填写你的paypal账户email-->
-    <input type="hidden" name="item_name" value="order information"><!--这里填写客户订单的一些相关信息，当客户连到paypal网站付款的时候将看到这些信息-->
-    <input type="hidden" name="amount" value="1"><!--订单的总金额信息-->
-    <input type="hidden" name="currency_code" value="SGD"><!--订单总金额对应的货币类型 ,客户可以用其他币种来付款,比如这里订单币种是美元USD,客户可以用欧元EUR来付款,由paypal根据当前汇率自动实现币种之间的换算-->
-
-    <input type="hidden" name="notify_url"
-           value="http://175.9.116.203:8080/ipn.html?userID=<s:property value="%{#session.userID}"/>&courseID=<s:property value="course.id"/>"><!--这里告诉paypal付款的通信url,即当客户付款后调用这个url通知系统-->
-    <input type="hidden" name="return" value="http://175.9.116.203:8080/courseCenter.html?flag=paypalBack&courseID=<s:property value="course.id"/> ">
-
-    <s:if test="errorMessageStatu==false ">
-
-        <div class="col-sm-6">
-                <%--<input type="button" class="btn btn-primary btn-lg btn-block" value="" id="reservationconfirmed"/> --%>
-
-            <button type="button" class="btn btn-primary btn-lg btn-block" value="" id="reservationconfirmed">
-                <s:property value="%{getText('button.course.confirm.Buy')}"/></button>
+                        <div class="col-sm-6">
+                                <%--<input type="button" class="btn btn-primary btn-lg btn-block" value="" id="reservationconfirmed"/> --%>
+                            <button type="button" class="btn btn-primary btn-lg btn-block" value="" id="reservationconfirmed">
+                                <s:property value="%{getText('button.course.confirm.registration')}"/></button>
+                        </div>
+                        <div class="col-sm-6">
+                                <%-- <button type="button" class="btn btn-danger btn-lg btn-block">Cancel</button> --%>
+                            <input type="button" class="btn btn-danger btn-lg btn-block"
+                                   value="<s:property value="%{getText('button.cancel')}" />"/>
+                        </div>
+                    </s:form>
+                </s:if>
+                <s:else>
 
 
-        </div>
-        <div class="col-sm-6">
-                <%-- <button type="button" class="btn btn-danger btn-lg btn-block">Cancel</button> --%>
-            <input type="button" class="btn btn-danger btn-lg btn-block"
-                   value="<s:property value="%{getText('button.cancel')}" />"/>
-        </div>
-    </s:if>
-    </s:form>
-    </s:else>
-</s:if>
+                    <s:form action=" https://www.paypal.com/cgi-bin/webscr" method="POST" theme="css_xhtml" id="purchaseCourse_Form" onsubmit="return validatePaypal();">
+                        <s:hidden name="course.id"/>
+                        <s:hidden name="course.charges"/>
+                        <input type="hidden" name="cmd" value="_xclick">
+                        <input type="hidden" name="business" value="zeng_zeng@gogowise.com"><!--这里填写你的paypal账户email-->
+                        <input type="hidden" name="item_name" value="order information"><!--这里填写客户订单的一些相关信息，当客户连到paypal网站付款的时候将看到这些信息-->
+                        <input type="hidden" name="amount" value="1"><!--订单的总金额信息-->
+                        <input type="hidden" name="currency_code" value="SGD"><!--订单总金额对应的货币类型 ,客户可以用其他币种来付款,比如这里订单币种是美元USD,客户可以用欧元EUR来付款,由paypal根据当前汇率自动实现币种之间的换算-->
+
+                        <input type="hidden" name="notify_url"
+                               value="http://175.9.116.203:8080/ipn.html?userID=<s:property value="%{#session.userID}"/>&courseID=<s:property value="course.id"/>"><!--这里告诉paypal付款的通信url,即当客户付款后调用这个url通知系统-->
+                        <input type="hidden" name="return" value="http://175.9.116.203:8080/courseCenter.html?flag=paypalBack&courseID=<s:property value="course.id"/> ">
+
+                        <s:if test="errorMessageStatu==false ">
+
+                            <div class="col-sm-6">
+                                    <%--<input type="button" class="btn btn-primary btn-lg btn-block" value="" id="reservationconfirmed"/> --%>
+
+                                <button type="button" class="btn btn-primary btn-lg btn-block" value="" id="reservationconfirmed">
+                                    <s:property value="%{getText('button.course.confirm.Buy')}"/></button>
+
+
+                            </div>
+                            <div class="col-sm-6">
+                                    <%-- <button type="button" class="btn btn-danger btn-lg btn-block">Cancel</button> --%>
+                                <input type="button" class="btn btn-danger btn-lg btn-block"
+                                       value="<s:property value="%{getText('button.cancel')}" />"/>
+                            </div>
+                        </s:if>
+                    </s:form>
+                </s:else>
+            </s:if>
 
 
             <s:else>
@@ -196,13 +196,6 @@
             $("#purchaseCourse_Form").submit();
         });
 
-         $("#addIteam").click(function () {
-             alert("hello===>"+<s:property value="course.id"/>);
-             window.document.location.href="addShoppingCart.html?course.id=<s:property value="course.id"/>";
-         });
-
-
-
         <%--$("#reservationconfirmed").click(function(){--%>
         <%--var url = "courseconfirm.html";--%>
         <%--var zhibi = <s:property value="userAccountInfo.zhiBi"/> +'';--%>
@@ -227,27 +220,18 @@
 
         <%--});--%>
     })
-
-
     function validatePaypal() {
 
 
 
 
-       var value=$("#purchaseCourse_Form_course_charges").val();
+        var value=$("#purchaseCourse_Form_course_charges").val();
 
 
 
-         $("#paypalAmount").val(value);
+        $("#paypalAmount").val(value);
 
         return true;
     }
-
-
-
-
-
-
-
 </script>
 

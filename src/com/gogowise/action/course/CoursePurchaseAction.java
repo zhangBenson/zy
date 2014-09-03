@@ -63,6 +63,7 @@ public class CoursePurchaseAction extends BasicAction {
 
     private boolean errorMessagePaypalStatu;
 
+
     @Action(value = "initCourseconfirm", results = { @Result(name = SUCCESS, type = "tiles", location = ".courseconfirm"), @Result(name = LOGIN, type = Constants.RESULT_NAME_TILES, location = ".identityConfirmation")
     //                    ,
     //                       @Result(name = "myCourseCenter",type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName", "myForcastClass", "course.id", "${course.id}"}),
@@ -83,8 +84,7 @@ public class CoursePurchaseAction extends BasicAction {
                 this.addActionErrorInfoWithKey(e.getMessage());
                 errorMessageStatu = true;
             }
-       }
-
+        }
         /****************add by xiaoyl*****************/
 
 
@@ -143,12 +143,10 @@ public class CoursePurchaseAction extends BasicAction {
     public void validatePurchaseCourse() {
 
         try {
-           courseService.validateBeforePurchase(courseDao.findById(this.course.getId()), baseUserDao.findById(getSessionUserId()));
-
+            courseService.validateBeforePurchase(courseDao.findById(this.course.getId()), baseUserDao.findById(getSessionUserId()));
         } catch (ServiceException e) {
             this.addActionErrorInfoWithKey(e.getMessage());
             errorMessagePaypalStatu = true;
-
         }
    }
 
@@ -404,4 +402,5 @@ public class CoursePurchaseAction extends BasicAction {
     public void setErrorMessagePaypalStatu(boolean errorMessagePaypalStatu) {
         this.errorMessagePaypalStatu = errorMessagePaypalStatu;
     }
+    
 }

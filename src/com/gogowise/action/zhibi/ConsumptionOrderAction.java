@@ -2,9 +2,9 @@ package com.gogowise.action.zhibi;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.rep.user.dao.BaseUserDao;
-import com.gogowise.rep.finance.ConsumptionOrderDao;
-import com.gogowise.rep.finance.ConsumptionRecordDao;
-import com.gogowise.rep.finance.UserAccountInfoDao;
+import com.gogowise.rep.finance.dao.ConsumptionOrderDao;
+import com.gogowise.rep.finance.dao.ConsumptionRecordDao;
+import com.gogowise.rep.finance.dao.UserAccountInfoDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.finance.enity.ConsumptionOrder;
 import com.gogowise.rep.finance.enity.UserAccountInfo;
@@ -26,7 +26,7 @@ import org.springframework.stereotype.Controller;
 @Controller
 @Namespace(BasicAction.BASE_NAME_SPACE)
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
-public class ConsumptionOrderAction extends BasicAction{
+public class ConsumptionOrderAction extends BasicAction {
     private ConsumptionOrder consumptionOrder;
     private ConsumptionOrderDao consumptionOrderDao;
     private ConsumptionRecordDao consumptionRecordDao;
@@ -41,8 +41,8 @@ public class ConsumptionOrderAction extends BasicAction{
     private String confirmCode;  //系统生成的确认码
 
 
-    @Action(value = "orderConfirmForPurchase",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName","initConsumption"})})
-    public String orderConfirmForPurchase(){
+    @Action(value = "orderConfirmForPurchase", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "initConsumption"})})
+    public String orderConfirmForPurchase() {
         consumptionOrder = consumptionOrderDao.findById(this.getConsumptionOrder().getId());
         consumptionOrder.setState(ConsumptionOrder.ORDER_STATE_CLOSE);
         consumptionOrderDao.persistAbstract(consumptionOrder);
@@ -50,50 +50,48 @@ public class ConsumptionOrderAction extends BasicAction{
         return SUCCESS;
     }
 
-    @Action(value = "initTransfer",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".initTransfer")})
-    public String initTransfer(){
+    @Action(value = "initTransfer", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initTransfer")})
+    public String initTransfer() {
         return SUCCESS;
     }
 
-    @Action(value = "executeTransfer",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".initTransfer"),
-                                                   @Result(name = INPUT,type = Constants.RESULT_NAME_TILES,location = ".initTransfer")})
-    public String executeTransfer(){
+    @Action(value = "executeTransfer", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initTransfer"),
+            @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".initTransfer")})
+    public String executeTransfer() {
         BaseUser payer = baseUserDao.findById(this.getSessionUserId());
         BaseUser payee = baseUserDao.findByEmail(this.getReceiver().getEmail());
-        consumptionOrderDao.transfer(payer,payee,this.getTransferMoney(),Constants.TRANSFER_TYPE_OF_DEFAULT);
+        consumptionOrderDao.transfer(payer, payee, this.getTransferMoney(), Constants.TRANSFER_TYPE_OF_DEFAULT);
         return SUCCESS;
     }
 
-    public void validateExecuteTransfer(){
-         if(!this.getConfirmCode().equals(this.getCheckCode())){
-             addFieldError("checkCode","您的确认码输入错误");
-             return;
-         }
-         UserAccountInfo accountInfo = userAccountInfoDao.findByUserId(this.getSessionUserId());
-         if(accountInfo.getAvailableZhiBi() != null && accountInfo.getAvailableZhiBi() < this.getTransferMoney()){
-            addFieldError("transferMoney","您的知币余额不足");
+    public void validateExecuteTransfer() {
+        if (!this.getConfirmCode().equals(this.getCheckCode())) {
+            addFieldError("checkCode", "您的确认码输入错误");
+            return;
+        }
+        UserAccountInfo accountInfo = userAccountInfoDao.findByUserId(this.getSessionUserId());
+        if (accountInfo.getAvailableZhiBi() != null && accountInfo.getAvailableZhiBi() < this.getTransferMoney()) {
+            addFieldError("transferMoney", "您的知币余额不足");
             return;
         }
         BaseUser _receiver = baseUserDao.findByEmail(this.getReceiver().getEmail());
-        if(_receiver == null){
-            addFieldError("receiver.nickName","账号不存在");
-            return;
-        }else if(!_receiver.getNickName().equals(this.getReceiver().getNickName())){
-            addFieldError("receiver.nickName","您输入的账号和昵称不匹配");
-            return;
+        if (_receiver == null) {
+            addFieldError("receiver.nickName", "账号不存在");
+        } else if (!_receiver.getNickName().equals(this.getReceiver().getNickName())) {
+            addFieldError("receiver.nickName", "您输入的账号和昵称不匹配");
         }
 
     }
 
-    @Action(value = "myGGWAccount",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".myGGWAccount")})
-    public String myGGWAccount(){
+    @Action(value = "myGGWAccount", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".myGGWAccount")})
+    public String myGGWAccount() {
         userAccountInfo = userAccountInfoDao.findByUserId(this.getSessionUserId());
         return SUCCESS;
     }
 
 
-    @Action(value = "initRecharge",results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_TILES,location = ".initRecharge")})
-    public String initRecharge(){
+    @Action(value = "initRecharge", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initRecharge")})
+    public String initRecharge() {
         return SUCCESS;
     }
 

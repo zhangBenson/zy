@@ -13,5 +13,7 @@ public class QuestionDaoImpl extends ModelDaoImpl<Question> implements QuestionD
         return this.find("From Question cm where cm.courseMaterial.id=? order by cm.id desc", materialId);
     }
 
-
+    public List<Question> findAll(){
+        return this.find("From Question");
+    }
 }

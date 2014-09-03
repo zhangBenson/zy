@@ -89,8 +89,9 @@
                 <value>com.gogowise.rep.course.enity.QuestionItem</value>
                 <value>com.gogowise.rep.course.enity.QuestionResult</value>
                 <value>com.gogowise.rep.tag.enity.Tag</value>
+                <value>com.gogowise.rep.course.enity.ClassMembership</value>
 
-                <value> com.gogowise.rep.course.enity.PaypalDetails</value>
+                <value>com.gogowise.rep.finance.enity.PaypalDetails</value>
 
 
                 <value>com.gogowise.urlfetch.sk.ClassType</value>

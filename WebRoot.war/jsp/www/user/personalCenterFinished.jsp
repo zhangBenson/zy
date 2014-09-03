@@ -150,6 +150,8 @@
                                 <s:else>
                                     <p><s:property value="description"/></p>
                                 </s:else>
+                                <a href="myCourseQuestionResult.html?course.id=<s:property value="id"/>"><s:property
+                                        value="%{getText('course.courseQuestionResult')}"/></a>
                             </div>
                         </div>
 

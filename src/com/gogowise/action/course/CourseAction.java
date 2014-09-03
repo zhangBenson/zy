@@ -137,8 +137,13 @@ public class CourseAction extends BasicAction {
 
     private Integer answeredCorrect;
     private Integer answeredCorrectRate;
+    private Integer finishedClasses;
+
     private List<Question> questions;
     private List<QuestionResult> questionResults;
+
+    private List<ClassMembership> classMemberships;
+    private ClassMembershipDao classMembershipDao;
 
     @Action(value = "courseCenter", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseCenter")})
     public String courseCenter() {
@@ -1050,6 +1055,15 @@ public class CourseAction extends BasicAction {
         }
         if( allAnswered != 0 )  answeredCorrectRate = answeredCorrect * 100 / allAnswered;
 
+        //查找已经完成了多少
+        finishedClasses = 0;
+        classMemberships = classMembershipDao.findByUserIdAndCourseId(this.getSessionUserId(), course.getId());
+        for(ClassMembership record:classMemberships){
+            if(record.getStatus() == Constants.Class_User_Status_Finish){
+                finishedClasses++;
+            }
+        }
+
         return SUCCESS;
     }
 
@@ -1911,5 +1925,29 @@ public class CourseAction extends BasicAction {
 
     public void setAnsweredCorrect(Integer answeredCorrect) {
         this.answeredCorrect = answeredCorrect;
+    }
+
+    public List<ClassMembership> getClassMemberships() {
+        return classMemberships;
+    }
+
+    public void setClassMemberships(List<ClassMembership> classMemberships) {
+        this.classMemberships = classMemberships;
+    }
+
+    public ClassMembershipDao getClassMembershipDao() {
+        return classMembershipDao;
+    }
+
+    public void setClassMembershipDao(ClassMembershipDao classMembershipDao) {
+        this.classMembershipDao = classMembershipDao;
+    }
+
+    public Integer getFinishedClasses() {
+        return finishedClasses;
+    }
+
+    public void setFinishedClasses(Integer finishedClasses) {
+        this.finishedClasses = finishedClasses;
     }
 }

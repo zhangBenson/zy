@@ -250,6 +250,30 @@ function setQuestionResult(result)
     });
 }
 
+function setStudentIn(){
+    setStudentStatus(1);
+}
+function setStudentEnd(){
+    setStudentStatus(2);
+}
+
+function setStudentStatus(status)
+{
+    $.ajax({
+        type: 'POST',
+        url: "ajaxChangeUserStatusInClass.html",
+        data:{"status":status,"courseClass.id":<s:property value="courseClass.id"/>},
+        dataType:"json",
+        success: function(data)
+        {
+            //alert("success");
+        },
+        error:function(){
+            //alert("error....");
+        }
+    });
+}
+
 function giveMIC()
 {
     if(currentMIC != null)

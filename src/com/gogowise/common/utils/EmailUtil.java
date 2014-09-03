@@ -13,7 +13,7 @@ public final class EmailUtil {
     }
 
     public static ThreadPoolTaskScheduler scheduler;
-    public static MatterDao matterDao;
+//    public static MatterDao matterDao;
 
     public static void sendMail(final String emailAddr, final String mailTitle, final String mailContent, final String[] fileNames, final String[] filePaths) {
         EmailJob job = new EmailJob();

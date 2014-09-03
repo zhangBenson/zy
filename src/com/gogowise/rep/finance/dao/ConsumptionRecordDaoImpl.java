@@ -1,4 +1,4 @@
-package com.gogowise.rep.finance;
+package com.gogowise.rep.finance.dao;
 
 import com.gogowise.rep.ModelDaoImpl;
 import com.gogowise.rep.user.dao.BaseUserDao;
@@ -23,6 +23,7 @@ public class ConsumptionRecordDaoImpl extends ModelDaoImpl<ConsumptionRecord>
         this.chargePayer(consumptionOrder);
         this.receiverForPayee(consumptionOrder);
     }
+
     public void createRecordForPurchase(ConsumptionOrder consumptionOrder) {
         this.chargePayer(consumptionOrder);
         this.receiverForPayee(consumptionOrder);
@@ -56,7 +57,7 @@ public class ConsumptionRecordDaoImpl extends ModelDaoImpl<ConsumptionRecord>
             payeeAccount.setAvailableZhiBi(payeeAccount.getAvailableZhiBi() + consumptionOrder.getPrice());
             record.setAvailableBalance(payeeAccount.getAvailableZhiBi());
             record.setAvailableBalanceCharge(consumptionOrder.getPrice());
-        }else {
+        } else {
             record.setAvailableBalance(payeeAccount.getAvailableZhiBi());
             record.setAvailableBalanceCharge(0.0);
         }
@@ -85,12 +86,11 @@ public class ConsumptionRecordDaoImpl extends ModelDaoImpl<ConsumptionRecord>
         }
 
 
-
         if (this.isAvailableCharge(consumptionOrder)) { //可用余额处理
             payerAccount.setAvailableZhiBi(payerAccount.getAvailableZhiBi() - consumptionOrder.getPrice());  //扣除账户可用余额
             record.setAvailableBalance(payerAccount.getAvailableZhiBi());   //设置消费记录的可用余额
             record.setAvailableBalanceCharge(-consumptionOrder.getPrice());    //设置消费记录的可用余额的收支情况
-        }else {
+        } else {
             record.setAvailableBalance(payerAccount.getAvailableZhiBi());
             record.setAvailableBalanceCharge(0.0);
         }
@@ -104,24 +104,20 @@ public class ConsumptionRecordDaoImpl extends ModelDaoImpl<ConsumptionRecord>
     }
 
     private boolean isAvailableCharge(ConsumptionOrder consumptionOrder) {
-        if (ConsumptionOrder.ORDER_TYPE_RECHARGE.equals(consumptionOrder.getType()) || ConsumptionOrder.ORDER_TYPE_TRANSFER.equals(consumptionOrder.getType())) return true;
-        if (ConsumptionOrder.ORDER_STATE__BALANCE_FREEZE.equals(consumptionOrder.getState())) {
+        if (ConsumptionOrder.ORDER_TYPE_RECHARGE.equals(consumptionOrder.getType()) || ConsumptionOrder.ORDER_TYPE_TRANSFER.equals(consumptionOrder.getType()))
             return true;
-        }
-        return false;
+        return ConsumptionOrder.ORDER_STATE__BALANCE_FREEZE.equals(consumptionOrder.getState());
     }
 
     private boolean isCharge(ConsumptionOrder consumptionOrder) {
-        if (ConsumptionOrder.ORDER_TYPE_RECHARGE.equals(consumptionOrder.getType()) || ConsumptionOrder.ORDER_TYPE_TRANSFER.equals(consumptionOrder.getType())) return true;
-        if (ConsumptionOrder.ORDER_STATE_CLOSE.equals(consumptionOrder.getState())) {
+        if (ConsumptionOrder.ORDER_TYPE_RECHARGE.equals(consumptionOrder.getType()) || ConsumptionOrder.ORDER_TYPE_TRANSFER.equals(consumptionOrder.getType()))
             return true;
-        }
-        return false;
+        return ConsumptionOrder.ORDER_STATE_CLOSE.equals(consumptionOrder.getState());
     }
 
-    public  List<ConsumptionRecord> findForOwner(Integer userId , Calendar start, Calendar end , Pagination pagination) {
+    public List<ConsumptionRecord> findForOwner(Integer userId, Calendar start, Calendar end, Pagination pagination) {
         String sql = "select rc  From ConsumptionRecord rc where rc.owner.id = ? and rc.createTime between ? and ? order by rc.id asc ";
-        return this.find(sql, pagination, userId,start,end);
+        return this.find(sql, pagination, userId, start, end);
     }
 
 

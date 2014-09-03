@@ -186,6 +186,11 @@ public class Constants {
             "table, tr, td { border-collapse:collapse;}\n" +
             "</style>";
 
+    public static final Integer Course_Tag_Forign = 1;
+    public static final Integer Course_Tag_ZhongXue = 2;
+    public static final Integer Course_Tag_XiaoXue = 3;
+    public static final Integer Course_Tag_Child = 4;
+
     public static final String REG_CSS = "<style type=\"text/css\">\n#rvmDiv #logoDiv {background-image: url(http://www.gogowise.com/images/logo.jpg);background-repeat: no-repeat;height: 65px;margin-left: 45px;}\n#rvmDiv #rvmcontentDiv ul .welcomeTittle {margin-left: 30px;}\n#rvmDiv {float: left;width: 100%;font-family: \"微软雅黑\", \"宋体\", \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif;}\n#logoDiv {float: left;width: 100%;}\n#rvmcontentDiv {float: left;width: 100%;}\n#rvmDiv #rvmcontentDiv ul li {list-style-type: none;}\n#rvmDiv #rvmcontentDiv .orangeWords {color: rgb(255,155,55);}\n#rvmDiv #rvmcontentDiv ul .lastWords {margin-top: 50px;}\n</style>";
 
 
@@ -220,5 +225,8 @@ public class Constants {
     public static String MEETING_TYPE = "meeting";
 
 
+    public static Integer Class_User_Status_Default = 0;
+    public static Integer Class_User_Status_In = 1;
+    public static Integer Class_User_Status_Finish = 2;
 
 }

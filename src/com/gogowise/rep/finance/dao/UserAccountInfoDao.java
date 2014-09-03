@@ -1,4 +1,4 @@
-package com.gogowise.rep.finance;
+package com.gogowise.rep.finance.dao;
 
 import com.gogowise.rep.ModelDao;
 import com.gogowise.rep.finance.enity.UserAccountInfo;

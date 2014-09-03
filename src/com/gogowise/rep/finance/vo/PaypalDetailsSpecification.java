@@ -1,4 +1,4 @@
-package com.gogowise.rep.course.vo;
+package com.gogowise.rep.finance.vo;
 
 import java.io.Serializable;
 
@@ -15,13 +15,13 @@ public class PaypalDetailsSpecification implements Serializable {
 
     private String itemNumber;
 
-    private String paymentStatus ;
+    private String paymentStatus;
 
-    private String paymentAmount ;
+    private String paymentAmount;
 
     private String paymentCurrency;
 
-    private String txnId ;
+    private String txnId;
 
     private String receiverEmail;
 
