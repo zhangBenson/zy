@@ -161,8 +161,15 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
 
     public boolean isDenyByPrivateCourse(Integer userId, Integer courseId) {
         Course curCourse = courseDao.findById(courseId);
-        return !(curCourse.getIsPublic() || userId == null) && orgService.isMember(userId, curCourse.getOrganization().getId());
 
+        if( !curCourse.getIsPublic() )
+        {
+            if(userId == null) return true;
+
+            return !orgService.isMember(userId, curCourse.getOrganization().getId());
+        }
+        //return !(curCourse.getIsPublic() || userId == null) && orgService.isMember(userId, curCourse.getOrganization().getId());
+        return  false;
     }
 
 }

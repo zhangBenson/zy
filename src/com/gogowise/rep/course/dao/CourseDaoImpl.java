@@ -43,14 +43,14 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
 
     public List<Course> findUserCreatedCourses(Integer userID, Pagination pagination) {
 
-        String hql = "select distinct c from Course c left join c.organization org left join c.teachers teacher where " + getCourseConfirmedStr() + " and " + PUBLIC_CONFIRMED + " and (teacher.id=? or org.responsiblePerson.id=?) order by c.publicationTime desc ";
+        String hql = "select distinct c from Course c left join c.organization org left join c.teachers teacher where " + getCourseConfirmedStr() + " and " + COURSE_CONFIRMED + " and (teacher.id=? or org.responsiblePerson.id=?) order by c.publicationTime desc ";
 
         return this.find(hql, pagination, userID, userID);
     }
 
     public List<Course> findUserRegCourses(Integer userID, Pagination pagination) {
 
-        String hql = "select distinct c from Course c left join c.seniorClassRooms sc where " + getCourseConfirmedStr() + " and " + PUBLIC_CONFIRMED + " and sc.course.id = c.id and  (sc.student.id=?) order by c.publicationTime desc ";
+        String hql = "select distinct c from Course c left join c.seniorClassRooms sc where " + getCourseConfirmedStr() + " and " + COURSE_CONFIRMED + " and sc.course.id = c.id and  (sc.student.id=?) order by c.publicationTime desc ";
         return this.find(hql, pagination, userID);
     }
 
@@ -62,12 +62,12 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
 
     public List<Course> findFinishedCourseForUserCenter(Pagination page, Integer sid, int type) {
 
-        String hql = QUERY_MY_FORCAST_CLASS_Student + " and " + getFinisDateLessThanNow() + " and " + PUBLIC_CONFIRMED + "   group by c  order by MIN(cc.date) asc ";
+        String hql = QUERY_MY_FORCAST_CLASS_Student + " and " + getFinisDateLessThanNow() + " and " + COURSE_CONFIRMED + "   group by c  order by MIN(cc.date) asc ";
         if (type == RoleType.ROLE_TYPE_STUDENT) {
-            hql = QUERY_MY_FORCAST_CLASS_Student + " and " + getFinisDateLessThanNow() + " and " + PUBLIC_CONFIRMED + "   group by c  order by MIN(cc.date) asc ";
+            hql = QUERY_MY_FORCAST_CLASS_Student + " and " + getFinisDateLessThanNow() + " and " + COURSE_CONFIRMED + "   group by c  order by MIN(cc.date) asc ";
         }
         if (type == RoleType.ROLE_TYPE_TEACHER) {
-            hql = QUERY_MY_FORCAST_CLASS_Teacher + " and " + getFinisDateLessThanNow() + " and " + PUBLIC_CONFIRMED + "   group by c  order by MIN(cc.date) asc ";
+            hql = QUERY_MY_FORCAST_CLASS_Teacher + " and " + getFinisDateLessThanNow() + " and " + COURSE_CONFIRMED + "   group by c  order by MIN(cc.date) asc ";
         }
 
         Calendar now = Calendar.getInstance();
@@ -77,13 +77,13 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
 
     public List<Course> findMyCourseOfForcastClassForUserCenter(Pagination page, Integer sid, int type) {
 
-        String hql = QUERY_MY_FORCAST_CLASS + " and " + getFinisDateBiggerThanNow() + " and " + PUBLIC_CONFIRMED + "   group by c  order by MIN(cc.date) asc ";
+        String hql = QUERY_MY_FORCAST_CLASS + " and " + getFinisDateBiggerThanNow() + " and " + COURSE_CONFIRMED + "   group by c  order by MIN(cc.date) asc ";
 
         if (type == RoleType.ROLE_TYPE_TEACHER) {
-            hql = QUERY_MY_FORCAST_CLASS_Teacher + " and " + getFinisDateBiggerThanNow() + " and " + PUBLIC_CONFIRMED + "   group by c  order by MIN(cc.date) asc ";
+            hql = QUERY_MY_FORCAST_CLASS_Teacher + " and " + getFinisDateBiggerThanNow() + " and " + COURSE_CONFIRMED + "   group by c  order by MIN(cc.date) asc ";
         }
         if (type == RoleType.ROLE_TYPE_STUDENT) {
-            hql = QUERY_MY_FORCAST_CLASS_Student + " and " + getFinisDateBiggerThanNow() + " and " + PUBLIC_CONFIRMED + "   group by c  order by MIN(cc.date) asc ";
+            hql = QUERY_MY_FORCAST_CLASS_Student + " and " + getFinisDateBiggerThanNow() + " and " + COURSE_CONFIRMED + "   group by c  order by MIN(cc.date) asc ";
         }
 
         Calendar now = Calendar.getInstance();
@@ -146,12 +146,12 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
 
     public List<Course> findCourses2Teacher(Integer tid, Pagination pagination) {
 
-        return this.find("select distinct c From    Course c left join c.teachers teacher where " + PUBLIC_CONFIRMED + " and teacher.id=? and c.fromCourse.id = c.id order by c.startDate desc", pagination, tid);
+        return this.find("select distinct c From    Course c left join c.teachers teacher where " + COURSE_CONFIRMED + " and teacher.id=? and c.fromCourse.id = c.id order by c.startDate desc", pagination, tid);
     }
 
     public List<Course> findCourses2Student(Integer tid, Pagination pagination) {
 
-        return this.find("select c From Course c join  c.seniorClassRooms sc where " + PUBLIC_CONFIRMED + " and sc.student.id=? order by c.startDate desc", pagination, tid);
+        return this.find("select c From Course c join  c.seniorClassRooms sc where " + COURSE_CONFIRMED + " and sc.student.id=? order by c.startDate desc", pagination, tid);
     }
 
     public List<Course> findCourseRelateCourses(String courseName, Pagination pagination) {
