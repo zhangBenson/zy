@@ -17,4 +17,6 @@ public interface PaypalService extends ModelService {
 
     public PaypalDetails findByTxnId(String txnId);
 
+    public PaypalDetails findByCourseId(String courseId);
+
 }

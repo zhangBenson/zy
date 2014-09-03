@@ -31,6 +31,8 @@ public class PaypalDetailsSpecification implements Serializable {
 
     private String nickName;
 
+    private String courseId;
+
     public String getItemName() {
         return itemName;
     }
@@ -109,6 +111,15 @@ public class PaypalDetailsSpecification implements Serializable {
 
     public String getNickName() {
         return nickName;
+    }
+
+
+    public String getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
     }
 }
 

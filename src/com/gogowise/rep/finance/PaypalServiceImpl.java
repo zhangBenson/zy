@@ -39,4 +39,10 @@ public class PaypalServiceImpl extends ModelServiceImpl implements PaypalService
         return paypalDao.findByTxnId(txnId);
 
     }
+
+    public PaypalDetails findByCourseId(String courseId){
+        return paypalDao.findByCourseId(courseId);
+    }
+
+
 }

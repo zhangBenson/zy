@@ -27,4 +27,18 @@ public class PaypalDaoImpl extends ModelDaoImpl<PaypalDetails> implements Paypal
         return this.findFist(hql);
 
     }
+
+
+    public PaypalDetails findByCourseId(String courseId){
+        String hql = " select w from PaypalDetails  w  where w.courseId='"+courseId+"'";
+
+        List<PaypalDetails> list = this.find(hql);
+
+        if(list!=null && list.size()>0){
+            return list.get(0);
+        }else{
+            return null;
+        }
+    }
+
 }
