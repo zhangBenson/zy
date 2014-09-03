@@ -5,10 +5,13 @@ import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.EmailUtil;
 import com.gogowise.common.utils.PdfUtil;
 import com.gogowise.rep.course.PaypalService;
+import com.gogowise.rep.course.ShoppingCartService;
 import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.dao.SeniorClassRoomDao;
+import com.gogowise.rep.course.enity.CartItem;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.course.enity.PaypalDetails;
+import com.gogowise.rep.course.enity.ShoppingCart;
 import com.gogowise.rep.course.vo.PaypalDetailsSpecification;
 import com.gogowise.rep.finance.ConsumptionOrderDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
@@ -37,8 +40,10 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Enumeration;
+import java.util.List;
 import javax.annotation.Resource;
 /**
  * Created with IntelliJ IDEA.
@@ -98,6 +103,18 @@ public class PayPalAction extends BasicAction
 
 
     private String courseID;
+
+    private ShoppingCart shoppingCart;
+
+    private BaseUser user;
+
+    private Course course;
+
+
+
+    @Resource
+    private ShoppingCartService shoppingCartService;
+
 
 
     /*private Course course;
@@ -189,6 +206,8 @@ public class PayPalAction extends BasicAction
 
             String userID = request.getParameter("userID");
 
+            String courseID = request.getParameter("courseID");
+
             BaseUser user =null;
             if( res.equals("VERIFIED") )
             {
@@ -243,6 +262,9 @@ public class PayPalAction extends BasicAction
                         paypalDetailsSpecification.setNickName(user.getNickName());
                     }
 
+                    paypalDetailsSpecification.setCourseId(courseID);
+
+
 
 
 
@@ -254,7 +276,7 @@ public class PayPalAction extends BasicAction
 
                     // *********************************************添加课程**********************************************
 
-                    String courseID = request.getParameter("courseID");
+
                     Course course=null;
 
                     if(StringUtils.hasText(courseID)){
@@ -272,6 +294,8 @@ public class PayPalAction extends BasicAction
                     Matter matter = new Matter(Calendar.getInstance(), this.getSessionNickName() + (new SimpleDateFormat("yyyyddMMHHmmssms").format(Calendar.getInstance().getTime())), Matter.MATTER_COURSE_REGISTER, baseUserDao.findByEmail(this.getSessionUserEmail()), null, course.getTeacherEmail() == (null) ? course.getTeacher().getEmail() : course.getTeacherEmail(), course, false);
                     matterDao.persistAbstract(matter);
 
+
+
                     logger.info("paypal & course is Success!!!!!!!!!!!!!!!!!!!!!!!!!! ");
 
                 }
@@ -282,6 +306,7 @@ public class PayPalAction extends BasicAction
             else if( res.equals("INVALID") )
             {
                 //非法信息，可以将此记录到您的日志文件中以备调查
+
                 logger.error("paypal information save recond is INVALID.....");
             }
             else
@@ -329,6 +354,47 @@ public class PayPalAction extends BasicAction
             e.printStackTrace();
         }
     }
+
+
+    @Action(value = "addShoppingCart", results={@Result(name=SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params={} )} )
+    public String addShoppingCart()
+    {
+
+
+        if (this.getSessionUserId() == null) {
+            return LOGIN;
+        }
+
+        Integer id =course.getId();
+
+
+        shoppingCart = new ShoppingCart();
+
+        user = baseUserDao.findById(this.getSessionUserId());
+        shoppingCart.setUser(user);
+
+
+        List<CartItem> list =new ArrayList<CartItem>();
+
+        CartItem cartItem = new CartItem();
+
+        cartItem.setCount(new Integer("1"));
+
+        cartItem.setId(new Integer("1"));
+
+        cartItem.setCourse(course);
+
+
+        list.add(cartItem);
+
+        shoppingCart.getCartItems().addAll(list);
+
+
+        shoppingCartService.saveShoppingCar(shoppingCart);
+
+        return  SUCCESS;
+    }
+
 
 
     public String getPayStatus() {
@@ -466,5 +532,30 @@ public class PayPalAction extends BasicAction
 
     public void setCourseID(String courseID) {
         this.courseID = courseID;
+    }
+
+    public BaseUser getUser() {
+        return user;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public ShoppingCart getShoppingCart() {
+        return shoppingCart;
+    }
+
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public void setShoppingCart(ShoppingCart shoppingCart) {
+        this.shoppingCart = shoppingCart;
+    }
+
+    public void setUser(BaseUser user) {
+        this.user = user;
     }
 }

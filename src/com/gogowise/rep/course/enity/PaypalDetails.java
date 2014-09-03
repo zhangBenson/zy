@@ -36,6 +36,8 @@ public class PaypalDetails extends AbstractPersistence {
 
     private String nickName;
 
+    private String courseId;
+
 
     public String getItemName() {
         return itemName;
@@ -115,5 +117,13 @@ public class PaypalDetails extends AbstractPersistence {
 
     public void setNickName(String nickName) {
         this.nickName = nickName;
+    }
+
+    public String getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
     }
 }

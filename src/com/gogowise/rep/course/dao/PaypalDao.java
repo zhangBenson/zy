@@ -15,4 +15,6 @@ public interface PaypalDao extends ModelDao<PaypalDetails> {
     public void savePaypalDetails(PaypalDetails paypalDetails);
 
     public PaypalDetails findByTxnId(String txnId);
+
+    public PaypalDetails findByCourseId(String courseId);
 }
