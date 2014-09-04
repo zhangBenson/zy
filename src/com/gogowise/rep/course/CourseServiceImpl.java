@@ -111,12 +111,12 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
         Double cost;
         cost = course.getCharges();
         UserAccountInfo _userAccountInfo = userAccountInfoDao.findByUserId(user.getId());
-        if (course.getConsumptionType() && cost > _userAccountInfo.getZhiBi()) {
-            throw new ServiceException("msg.zhibi.not.enough");
-        }
-        if (!course.getConsumptionType() && cost > (_userAccountInfo.getZhiBi() + _userAccountInfo.getZhiQuan())) {
-            throw new ServiceException("msg.account.left.not.enough");
-        }
+//        if (course.getConsumptionType() && cost > _userAccountInfo.getZhiBi()) {
+//            throw new ServiceException("msg.zhibi.not.enough");
+//        }
+//        if (!course.getConsumptionType() && cost > (_userAccountInfo.getZhiBi() + _userAccountInfo.getZhiQuan())) {
+//            throw new ServiceException("msg.account.left.not.enough");
+//        }
         if (existInStudentInvitation(course, user.getEmail())) {
             throw new ServiceException("course.exist.in.studentInvitation"); //您是被邀请的用户，请在您的邮件中点击接受完成购买
         }
@@ -162,14 +162,13 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
     public boolean isDenyByPrivateCourse(Integer userId, Integer courseId) {
         Course curCourse = courseDao.findById(courseId);
 
-        if( !curCourse.getIsPublic() )
-        {
-            if(userId == null) return true;
+        if (!curCourse.getIsPublic()) {
+            if (userId == null) return true;
 
             return !orgService.isMember(userId, curCourse.getOrganization().getId());
         }
         //return !(curCourse.getIsPublic() || userId == null) && orgService.isMember(userId, curCourse.getOrganization().getId());
-        return  false;
+        return false;
     }
 
 }
