@@ -402,5 +402,9 @@ public class CoursePurchaseAction extends BasicAction {
     public void setErrorMessagePaypalStatu(boolean errorMessagePaypalStatu) {
         this.errorMessagePaypalStatu = errorMessagePaypalStatu;
     }
-    
+
+    public String getHost() {
+        return getBasePath();
+    }
+
 }

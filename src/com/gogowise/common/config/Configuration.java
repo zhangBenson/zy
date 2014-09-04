@@ -10,6 +10,7 @@ public class Configuration {
     }
 
     public void setHostName(String hostName) {
+        ConfigConstants.SITE_NAME = hostName;
         this.hostName = hostName;
     }
 }

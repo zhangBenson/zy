@@ -1,5 +1,6 @@
 package com.gogowise.action;
 
+import com.gogowise.common.config.ConfigConstants;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.Pagination;
@@ -71,7 +72,9 @@ public class BasicAction extends ActionSupport {
         if (HOST_URL_APP != null) {
             return HOST_URL_APP;
         }
-        if (ActionContext.getContext() == null) {
+        if (ConfigConstants.SITE_NAME != null) {
+            return HOST_URL_APP = "http://" + ConfigConstants.SITE_NAME;
+        } else if (ActionContext.getContext() == null) {
             return "http://www.gogowise.com";
         }
         ActionContext ctx = ActionContext.getContext();
