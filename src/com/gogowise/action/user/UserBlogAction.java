@@ -79,7 +79,7 @@ public class UserBlogAction extends BasicAction {
             if (baseUser != null) userOrganization = baseUser.getOrg();
         }
 
-        comments = commentsDao.findByCommentTo(user.getId(), new Pagination(10));
+        comments = commentsDao.findByCommentTo(userId, new Pagination(10));
         this.setCommentsNum(comments.size());
         this.browsedCourses = browsedCourseDao.findByUserId(userId);
         return SUCCESS;
