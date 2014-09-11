@@ -2,6 +2,7 @@ package com.gogowise.action;
 
 import com.gogowise.common.config.ConfigConstants;
 import com.gogowise.common.utils.Constants;
+import com.gogowise.common.utils.DESPlus;
 import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.user.enity.BaseUser;
@@ -122,4 +123,7 @@ public class BasicAction extends ActionSupport {
         this.addActionError(this.getText(messageKey));
     }
 
+    public String getSecUid() {
+        return DESPlus.encode(this.getSessionUserId() + "");
+    }
 }

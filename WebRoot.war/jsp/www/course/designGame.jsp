@@ -175,7 +175,8 @@
 //           window.location.href = "one2manySession.html?courseClass.id="+cid;
 //            window.location.href = "lecturerClass.html?courseClass.id=" + cid;
 //        }
-        window.open('http://games.gogowise.com/SelectExamination.html?userId=' + <s:property value="%{#session.userID}"/> +'&classId=' + cid);
+        <%--window.open('http://games.gogowise.com/SelectExamination.html?userId=' + <s:property value="%{#session.userID}"/> +'&classId=' + cid);--%>
+        window.open('http://games.gogowise.com/SelectExamination.html?userId=<s:property value="secUid"/>' + '&classId=' + cid);
 
     }
 

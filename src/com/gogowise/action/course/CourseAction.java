@@ -749,14 +749,6 @@ public class CourseAction extends BasicAction {
     }
 
 
-    @Action(value = "designGame", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = "www.course.designGame")})
-    public String designGame() {
-        course = courseDao.findById(this.getCourse().getId());
-        classes = classDao.findByCourseId(course.getId());
-        return SUCCESS;
-    }
-
-
     @Action(value = "myRegistration", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".myRegistration")})
     //     @Action(value = "myForcastClass", results = {@Result(name = SUCCESS, location = "/jsp/gogowise/course/myForcastClass.css")})
     public String myRegister() {
@@ -1029,18 +1021,16 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "noPermission", results={@Result(name=SUCCESS, type=Constants.RESULT_NAME_TILES,location = ".noPermission")})
-    public String noPermission()
-    {
+    @Action(value = "noPermission", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".noPermission")})
+    public String noPermission() {
         return SUCCESS;
     }
 
-    @Action(value = "myCourseQuestionResult", results={@Result(name=SUCCESS, type = Constants.RESULT_NAME_TILES,location = ".myCourseQuestionResult")})
-    public String myCourseQuestionResult()
-    {
+    @Action(value = "myCourseQuestionResult", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".myCourseQuestionResult")})
+    public String myCourseQuestionResult() {
         course = courseDao.findById(this.getCourse().getId());
         classes = course.getClasses();
-        questionResults = questionResultDao.findByCourseAndUser(course.getId(),this.getSessionUserId());
+        questionResults = questionResultDao.findByCourseAndUser(course.getId(), this.getSessionUserId());
 
 //        List<CourseMaterial> courseMaterials = courseMaterialDao.find(course.getId(), CourseMaterial.QUESTION);
 //        questions = questionDao.findByMaterialId(materialId);
@@ -1048,18 +1038,18 @@ public class CourseAction extends BasicAction {
         answeredCorrectRate = 0;
         answeredCorrect = 0;
         int allAnswered = questionResults.size();
-        for(QuestionResult questionResult : questionResults ){
-            if( questionResult.getIsCorrect() ){
+        for (QuestionResult questionResult : questionResults) {
+            if (questionResult.getIsCorrect()) {
                 answeredCorrect++;
             }
         }
-        if( allAnswered != 0 )  answeredCorrectRate = answeredCorrect * 100 / allAnswered;
+        if (allAnswered != 0) answeredCorrectRate = answeredCorrect * 100 / allAnswered;
 
         //查找已经完成了多少
         finishedClasses = 0;
         classMemberships = classMembershipDao.findByUserIdAndCourseId(this.getSessionUserId(), course.getId());
-        for(ClassMembership record:classMemberships){
-            if(record.getStatus() == Constants.Class_User_Status_Finish){
+        for (ClassMembership record : classMemberships) {
+            if (record.getStatus() == Constants.Class_User_Status_Finish) {
                 finishedClasses++;
             }
         }
@@ -1067,14 +1057,13 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "questionResultForTeacher", results={@Result(name=SUCCESS, type = Constants.RESULT_NAME_TILES,location = "www.user.questionResultForTeacher")})
-    public String questionResultForTeacher()
-    {
+    @Action(value = "questionResultForTeacher", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = "www.user.questionResultForTeacher")})
+    public String questionResultForTeacher() {
         Integer userID = this.getSessionUserId();
         course = courseDao.findById(this.getCourse().getId());
         classes = course.getClasses();
 
-        questions       = questionResultDao.findQuestionsForCourse(course.getId(), null);
+        questions = questionResultDao.findQuestionsForCourse(course.getId(), null);
         questionResults = questionResultDao.findByCourse(course.getId());
 
         //计算总的正确率
@@ -1082,14 +1071,14 @@ public class CourseAction extends BasicAction {
         answeredCorrectRate = 0;
         int allAnswered = questionResults.size();
 
-        for(QuestionResult questionResult : questionResults ){
-            if( questionResult.getIsCorrect() ){
+        for (QuestionResult questionResult : questionResults) {
+            if (questionResult.getIsCorrect()) {
                 answeredCorrect++;
 
             }
         }
 
-        if( allAnswered != 0 )  answeredCorrectRate = answeredCorrect * 100 / allAnswered;
+        if (allAnswered != 0) answeredCorrectRate = answeredCorrect * 100 / allAnswered;
 
         return SUCCESS;
     }
