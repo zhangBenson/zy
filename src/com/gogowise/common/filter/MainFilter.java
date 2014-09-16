@@ -109,6 +109,7 @@ public class MainFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) arg1;
         HttpSession session = request.getSession();
         request.setCharacterEncoding("UTF-8");
+        logger.info("-----" + Utils.getFullUrl(request) + "----");
 
         String requestUrl = request.getServletPath();
         try {

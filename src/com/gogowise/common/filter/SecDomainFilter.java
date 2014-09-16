@@ -1,6 +1,7 @@
 package com.gogowise.common.filter;
 
 import com.gogowise.common.utils.Constants;
+import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.user.dao.BaseUserDao;
@@ -19,6 +20,7 @@ import java.io.IOException;
 @Component
 public class SecDomainFilter implements Filter {
 
+    private static Logger logger = LogManager.getLogger(MainFilter.class.getName());
     private BaseUserDao baseUserDao;
 
     public void destroy() {
@@ -49,10 +51,14 @@ public class SecDomainFilter implements Filter {
         } else if (requestUrl.equalsIgnoreCase("/index.html") && secDomainString.length() >= Constants.MIN_SECDOMAIN_LENGTH) {
             response.sendRedirect("http://" + Constants.WHICH_SITE_CAN＿HAVE＿SECDOMAIN);
         } else if (requestUrl.equalsIgnoreCase("/orgBlog.html") && request.getParameter("org.id") != null && (secDomainString.length() >= Constants.MIN_SECDOMAIN_LENGTH || Constants.WHICH_SITE_CAN＿HAVE＿SECDOMAIN.equalsIgnoreCase(request.getServerName()))) {
-            Integer orgId = Integer.parseInt(request.getParameter("org.id"));
-            Organization organization = organizationDao.findById(orgId);
-            if (organization != null && StringUtils.isNotBlank(organization.getSecDomain())) {
-                response.sendRedirect("http://" + organization.getSecDomain() + ".gogowise.com");
+            try {
+                Integer orgId = Integer.parseInt(request.getParameter("org.id"));
+                Organization organization = organizationDao.findById(orgId);
+                if (organization != null && StringUtils.isNotBlank(organization.getSecDomain())) {
+                    response.sendRedirect("http://" + organization.getSecDomain() + ".gogowise.com");
+                }
+            } catch (NumberFormatException e) {
+                logger.error("-erro for secDomain" + Utils.getFullUrl(request) + "paramter:" + request.getParameter("org.id"));
             }
         } else if ("org".equalsIgnoreCase(secDomainString) && StringUtils.endsWith(requestUrl, Constants.WELCOME_PAGE)) {
             String disPatcherUrl = "/teacherLogin.html";
@@ -72,7 +78,7 @@ public class SecDomainFilter implements Filter {
         for (int i = domainParts.length - 1; i >= 0; i--) {
             if ("gogowise".equals(domainParts[i])) {
                 if (i == 0) {
-                    return null;
+                    return "";
                 } else {
                     return domainParts[i - 1];
                 }

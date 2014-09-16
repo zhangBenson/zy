@@ -515,7 +515,7 @@ public class Utils {
                 + httpRequest.getServerPort()
                 + httpRequest.getContextPath()
                 + httpRequest.getServletPath()
-                + "?" + (httpRequest.getQueryString());
+                + "?" + (httpRequest.getQueryString() == null ? "" : httpRequest.getQueryString());
     }
 
 }
