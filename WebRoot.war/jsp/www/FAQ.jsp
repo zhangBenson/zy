@@ -366,7 +366,10 @@
             </a>
         </div>
         <div class="FAQname">
-            <a href="#title_teachers2">2.How do I start a class?</a>
+            <a href="#title_teachers6">2.How do Create a course and make the course videos?</a>
+        </div>
+        <div class="FAQname">
+            <a href="#title_teachers2">2.1 How do I start a class?</a>
         </div>
         <div class="FAQname">
             <a href="#title_teachers5">3.I have some videos made by ourselves and I want to share them with my students. What shall I do?</a>
@@ -392,6 +395,61 @@
 							<span class="glyphicon glyphicon-circle-arrow-up" style="font-size: 20px;color:#6ab600;margin-right: 10px;"></span>
 							<a href="#FAQtitle" style="color:#6ab600;">Goto Top</a>
 						</span>
+    </div>
+
+    <div class="imaginaryline"></div>
+
+    <div class="FAQcontent">
+        <div class="FAQItem">
+
+            <span class="glyphicon glyphicon-chevron-right icon1"></span>
+            <span class="FAQname" id="title_teachers6">How to Create a course and make the course videos?</span>
+
+            <h4 class="courseBody">
+                1: The First step is to login and goto the organization Center
+                <br/>
+                <img src="images/FAQimg/createCourse-login.png" alt="" style="border-radius: 8px;margin-top: 10px;margin-bottom: 10px;width: 800px;">
+            </h4>
+
+            <h4 class="courseBody">
+                2: When you are in the organization center presss the create button to go to creation initial page.
+                <br/>
+                <img src="images/FAQimg/createcourse.jpg" alt="" style="border-radius: 8px;margin-top: 10px;margin-bottom: 10px;width: 700px;height: 300px;">
+            </h4>
+
+            <h4 class="courseBody">
+                3: In the course creation page, you can input the basic information of the course
+                <br/>
+                <img src="images/FAQimg/createCourse-info.jpg" alt="" style="border-radius: 8px;margin-top: 10px;margin-bottom: 10px;width: 800px;">
+            </h4>
+
+            <h4 class="courseBody">
+                4: After input the basic course info , you should add the classes of this course. <span style="color: #ff0000"> At this time the course has been created.</span>
+                <br/>
+                <img src="images/FAQimg/createCourse-classinfo.jpg" alt="" style="border-radius: 8px;margin-top: 10px;margin-bottom: 10px;width: 800px;">
+            </h4>
+
+            <h4 class="courseBody">
+                5: After creation of the course, if you want to have the class,you can have two ways. The first is in the myCreatedCourse>Make Course Videos.
+                <br/>
+                <img src="images/FAQimg/createCourse-makeVideos.png" alt="" style="border-radius: 8px;margin-top: 10px;margin-bottom: 10px;width: 800px;">
+
+                the second way, you can look at this--------- <a href="#title_teachers2">2.1 How do I start a class?</a>
+            </h4>
+
+            <h4 class="courseBody">
+                6: In the course make videos page, you can choose any class you want to make a video for the student.
+                <br/>
+                <img src="images/FAQimg/createCourse-makeVideos.jpg" alt="" style="border-radius: 8px;margin-top: 10px;margin-bottom: 10px;width: 800px;">
+            </h4>
+
+        </div>
+
+        <span style="font-size: 14px;color:#6ab600">
+            <span class="glyphicon glyphicon-circle-arrow-up" style="font-size: 20px;color:#6ab600;margin-right: 10px;"></span>
+            <a href="#FAQtitle" style="color:#6ab600;">Goto Top</a>
+        </span>
+
     </div>
 
     <div class="imaginaryline"></div>
