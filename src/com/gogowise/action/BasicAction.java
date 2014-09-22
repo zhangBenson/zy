@@ -15,6 +15,7 @@ import org.apache.struts2.ServletActionContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Locale;
 
 public class BasicAction extends ActionSupport {
     //    public static final String BASIC_PACKAGE = "basic-package";
@@ -125,5 +126,16 @@ public class BasicAction extends ActionSupport {
 
     public String getSecUid() {
         return DESPlus.encode(this.getSessionUserId() + "");
+    }
+
+    /**
+     * TODO　remove when done I18N
+     */
+    @Deprecated
+    public void setToEn() {
+        ActionContext.getContext().getSession().put("WW_TRANS_I18N_LOCALE", new Locale("en", "US"));
+        ActionContext.getContext().getSession().put("request_locale", new Locale("en", "US"));
+        ActionContext.getContext().getSession().put("request_only_locale", new Locale("en", "US"));
+        ActionContext.getContext().setLocale(new Locale("en", "US"));
     }
 }
