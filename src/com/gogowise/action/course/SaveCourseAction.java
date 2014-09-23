@@ -44,7 +44,6 @@ public class SaveCourseAction extends BasicAction {
     private OrganizationDao organizationDao;
     private ClassDao classDao;
     private CourseDao courseDao;
-    private CourseInviteStudentDao courseInviteStudentDao;
 
     private List<CourseClass> classes = new ArrayList<CourseClass>();
     private List<Integer> durations = new ArrayList<Integer>();    //持续时间
@@ -126,23 +125,9 @@ public class SaveCourseAction extends BasicAction {
             }
         }
 
-
-        courseInviteStudents = courseInviteStudentDao.findByCourseId(this.getCourse().getId());   //this step is used to delete the students if it was saved before
-        if (courseInviteStudents.size() != 0) {
-            for (int i = 0; i < courseInviteStudents.size(); i++) {
-                courseInviteStudentDao.delete(courseInviteStudents.get(i));
-            }
-        }
-
         for (String email : emails) {
             if (StringUtils.isNotBlank(email)) {
-                CourseInviteStudent curr = courseInviteStudentDao.findByCourseAndEmail(this.getCourse().getId(), email);
-                if (curr == null) {
-                    CourseInviteStudent courseInviteStudent = new CourseInviteStudent();
-                    courseInviteStudent.setCourse(this.getCourse());
-                    courseInviteStudent.setInvitedStudentEmail(email);
-                    courseInviteStudentDao.persistAbstract(courseInviteStudent);
-                }
+                courseService.saveInvitation(email, this.getCourse().getId());
             }
         }
         this.setCourse_id(course.getId());
@@ -352,15 +337,6 @@ public class SaveCourseAction extends BasicAction {
 
     public void setRepeatTimes(Integer repeatTimes) {
         this.repeatTimes = repeatTimes;
-    }
-
-    @JSON(serialize = false)
-    public CourseInviteStudentDao getCourseInviteStudentDao() {
-        return courseInviteStudentDao;
-    }
-
-    public void setCourseInviteStudentDao(CourseInviteStudentDao courseInviteStudentDao) {
-        this.courseInviteStudentDao = courseInviteStudentDao;
     }
 
     @JSON(serialize = false)

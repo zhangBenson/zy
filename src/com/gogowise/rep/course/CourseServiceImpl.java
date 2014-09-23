@@ -171,4 +171,19 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
         return false;
     }
 
+    public void saveInvitation(String email, Integer courseId) {
+        CourseInviteStudent courseInviteStudent = courseInviteStudentDao.findByCourseAndEmail(courseId, email);
+        BaseUser student = baseUserDao.findByEmail(email);
+        if (courseInviteStudent == null) {
+            courseInviteStudent = new CourseInviteStudent();
+            courseInviteStudent.setCourse(this.courseDao.findById(courseId));
+            courseInviteStudent.setInvitedStudentEmail(email);
+        }
+        if (student != null && !Boolean.TRUE.equals(courseInviteStudent.getAcceptInvite())) {
+            courseInviteStudent.setAcceptInvite(true);
+            courseInviteStudent.setStudent(student);
+        }
+        courseInviteStudentDao.persistAbstract(courseInviteStudent);
+    }
+
 }
