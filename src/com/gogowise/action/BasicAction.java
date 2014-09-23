@@ -125,7 +125,8 @@ public class BasicAction extends ActionSupport {
     }
 
     public String getSecUid() {
-        return DESPlus.encode(this.getSessionUserId() + "");
+//        return DESPlus.encode(this.getSessionUserId() + "");//TODO comments this for GMAE not done yet.
+        return this.getSessionUserId() + "";
     }
 
     /**
