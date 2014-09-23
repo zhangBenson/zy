@@ -383,10 +383,6 @@ public class CourseAction extends BasicAction {
         this.getCourse().setCameraManConfirmed(true);
         this.getCourse().setTotalHours(this.getCourse().getClasses().size());
         this.getCourse().setPublicationTime(Utils.getCurrentCalender());
-        if (course.getTeacher() != null) {
-            course.getTeacher().setTeacher(true);// every user who create a course will become a teacher  automatically
-            baseUserDao.persistAbstract(course.getTeacher());
-        }
         courseDao.persistAbstract(course);
         DateFormat dateFormat = new SimpleDateFormat(this.getText("dateformat.forclass"));
         courseInviteStudents = courseInviteStudentDao.findByCourseId(this.getCourse().getId());
@@ -533,8 +529,6 @@ public class CourseAction extends BasicAction {
             } else if (accept.equals(true) && this.getTeacher().equals(true)) { // teacher's email accept handle
                 course.setTeacher(user);
                 courseDao.persistAbstract(course);
-                user.setTeacher(true);
-                baseUserDao.persist(user);
                 return SUCCESS;
             } else { //email reject handle
                 return "inviteReject";

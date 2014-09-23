@@ -38,7 +38,6 @@ public class BaseUser extends AbstractPersistence {
     private String selfDescription;
     private String language;
     private Integer fansNum = 0;  //被关注的人数
-    private Boolean isTeacher = false;
     private Long onliveTimes; //即时直播的次数
     private Boolean userFocused = false; //用于直播中心判断用户是否被当前用户关注 ,临时变量
 
@@ -293,7 +292,7 @@ public class BaseUser extends AbstractPersistence {
         if (language != null)
             return language;
         else
-            return  "zh";
+            return "zh";
     }
 
     public void setLanguage(String language) {
@@ -301,20 +300,12 @@ public class BaseUser extends AbstractPersistence {
     }
 
     public Integer getFansNum() {
-        if(this.fansNum == null) return 0;
+        if (this.fansNum == null) return 0;
         return fansNum;
     }
 
     public void setFansNum(Integer fansNum) {
         this.fansNum = fansNum;
-    }
-
-    public Boolean getTeacher() {
-        return isTeacher;
-    }
-
-    public void setTeacher(Boolean teacher) {
-        isTeacher = teacher;
     }
 
     public Long getOnliveTimes() {
