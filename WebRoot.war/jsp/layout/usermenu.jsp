@@ -32,9 +32,9 @@
                 <%--<li><a href="myForcastClass.html"><s:property value="%{getText('usermenu.item.my.created.courses')}"/></a></li>--%>
                 <%--<li><a href="myRegistration.html"><s:property value="%{getText('usermenu.item.my.reged.courses')}"/></a></li>--%>
 
-                <li>
-                    <a href="http://games.gogowise.com/VerificationUser.aspx?userid=<s:property value="#session.userID"/>"
-                       target="_blank"><s:property value="%{getText('title.game.management')}"/></a></li>
+                    <li>
+                        <a href="http://games.gogowise.com/VerificationUser.aspx?userid=<s:property value="secUid"/>"
+                           target="_blank"><s:property value="%{getText('title.game.management')}"/></a></li>
                 <%--<li><a href="createCourse.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a></li>--%>
                 <%--<li><a href="createCourseAllInOne.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a></li>--%>
             </ul>

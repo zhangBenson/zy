@@ -2,6 +2,7 @@ package com.gogowise.action;
 
 import com.gogowise.common.config.ConfigConstants;
 import com.gogowise.common.utils.Constants;
+import com.gogowise.common.utils.DESPlus;
 import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.user.enity.BaseUser;
@@ -14,6 +15,7 @@ import org.apache.struts2.ServletActionContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Locale;
 
 public class BasicAction extends ActionSupport {
     //    public static final String BASIC_PACKAGE = "basic-package";
@@ -122,4 +124,19 @@ public class BasicAction extends ActionSupport {
         this.addActionError(this.getText(messageKey));
     }
 
+    public String getSecUid() {
+//        return DESPlus.encode(this.getSessionUserId() + "");//TODO comments this for GMAE not done yet.
+        return this.getSessionUserId() + "";
+    }
+
+    /**
+     * TODO　remove when done I18N
+     */
+    @Deprecated
+    public void setToEn() {
+        ActionContext.getContext().getSession().put("WW_TRANS_I18N_LOCALE", new Locale("en", "US"));
+        ActionContext.getContext().getSession().put("request_locale", new Locale("en", "US"));
+        ActionContext.getContext().getSession().put("request_only_locale", new Locale("en", "US"));
+        ActionContext.getContext().setLocale(new Locale("en", "US"));
+    }
 }

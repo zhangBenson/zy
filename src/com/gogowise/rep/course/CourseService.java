@@ -25,4 +25,6 @@ public interface CourseService extends ModelService {
 
     public boolean isDenyByPrivateCourse(Integer userId, Integer courseId);
 
+    public void saveInvitation(String email, Integer courseId);
+
 }

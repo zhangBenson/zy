@@ -21,7 +21,7 @@ public class CourseInviteStudent extends AbstractPersistence {
     @OneToOne
     private BaseUser student;
     private String invitedStudentEmail;
-    private Boolean acceptInvite = false;
+    private Boolean acceptInvite;
 
     public String getInvitedStudentEmail() {
         return invitedStudentEmail;
