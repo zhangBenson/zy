@@ -33,6 +33,8 @@
 
     <p><a href="javascript:showError();"> show details</a></p>
 
+</div>
+<div>
     <p style="display: none" id="eMessage">${errorMsg} </p>
 </div>
 <!--end content-->
