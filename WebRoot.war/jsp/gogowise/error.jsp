@@ -30,9 +30,16 @@
 
     <p><a href="index.html"><s:property value="%{getText('error.back.index')}"/></a></p>
     <p><a href="javascript:window.history.go(-1);"><s:property value="%{getText('error.back.previous')}"/></a></p>
+
+    <p><a href="javascript:showError();"> show details</a></p>
+
+    <p style="display: none" id="eMessage">${errorMsg} </p>
 </div>
 <!--end content-->
 <script type="text/javascript">
+    function showError() {
+        document.getElementById('eMessage').style.display = 'block';
+    }
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-27089053-1']);
     _gaq.push(['_setDomainName', 'gogowise.com']);

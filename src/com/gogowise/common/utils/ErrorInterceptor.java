@@ -1,22 +1,23 @@
 package com.gogowise.common.utils;
 
+import com.gogowise.action.BasicAction;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.Interceptor;
 import com.opensymphony.xwork2.util.logging.Logger;
 import com.opensymphony.xwork2.util.logging.LoggerFactory;
 import org.apache.struts2.StrutsStatics;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-/**
- * ErrorInterceptor
- *
- * @author 苑永志
- * @version 1.0
- * @since 2013年12月31日 17:19
- */
+@Component
 public class ErrorInterceptor implements Interceptor {
-    private static Logger logger = LoggerFactory.getLogger(ErrorInterceptor.class);
+    private static final Logger logger = LoggerFactory.getLogger(ErrorInterceptor.class);
+    @Autowired
+    private SessionFactory sessionFactory;
 
     @Override
     public void destroy() {
@@ -31,36 +32,23 @@ public class ErrorInterceptor implements Interceptor {
     @Override
     public String intercept(ActionInvocation invocation) throws Exception {
         try {
-            // 运行被拦截的Action,期间如果发生异常会被catch住
             return invocation.invoke();
         } catch (Exception e) {
-            /**
-             * 处理异常
-             */
-            String errorMsg = "出现错误信息，请查看日志！";
-            //通过instanceof判断到底是什么异常类型
-            if (e instanceof RuntimeException) {
-                //未知的运行时异常
-                RuntimeException re = (RuntimeException) e;
-                //re.printStackTrace();
-                errorMsg = re.getMessage();
+            try {
+                sessionFactory.getCurrentSession().getTransaction().rollback();
+            } catch (Exception ex) {
+                logger.error("roll back failed");
             }
-
-            //把自定义错误信息
+            HttpServletResponse response = (HttpServletResponse) invocation
+                    .getInvocationContext().get(StrutsStatics.HTTP_RESPONSE);
             HttpServletRequest request = (HttpServletRequest) invocation
                     .getInvocationContext().get(StrutsStatics.HTTP_REQUEST);
-
-            /**
-             * 发送错误消息到页面
-             */
-            request.setAttribute("errorMsg", errorMsg);
-
-            /**
-             * 记录日志
-             */
-            logger.error(errorMsg,e);
-
-            return "common_error";
+            String detailError = Utils.getFullUrl(request) + "\t" + Utils.getExceptionDetails(e);
+            request.setAttribute("errorMsg", detailError);
+            logger.error("error==:" + Utils.getFullUrl(request), e);
+            EmailUtil.sendMail("zlhades@hotmail.com", "webErrosInfo", detailError);
+//            response.sendRedirect("/chucuola.htm");
+            return BasicAction.COMMON_ERROR;
         }
     }
 }
