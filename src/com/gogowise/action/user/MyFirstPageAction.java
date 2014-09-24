@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.gogowise.rep.org.OrgService;
+import com.gogowise.rep.user.UserService;
 import com.gogowise.rep.user.enity.RoleType;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -59,7 +60,8 @@ public class MyFirstPageAction extends BasicAction {
 
     @Autowired
     private OrgService orgService;
-
+    @Autowired
+    private UserService userService;
 
     @Action(value = "personalCenter",
             results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".studentCenter")}
@@ -88,10 +90,15 @@ public class MyFirstPageAction extends BasicAction {
 
 
     @Action(value = "myfirstPage",
-            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".myGoGoWise")}
+            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".myGoGoWise"),
+                    @Result(name = "studentCenter", type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "personalCenter"})}
     )
     public String showUserCenter() {
 //        ActionContext.getContext().getSession().put("WW_TRANS_I18N_LOCALE", Locale.US);
+        if (!(userService.havePermission(this.getSessionUserId(), RoleType.TEACHER) || userService.havePermission(this.getSessionUserId(), RoleType.ORG_CREATOR))) {
+            return "studentCenter";
+        }
+
         finishedCourse = courseDao.findFinishedCourseForUserCenter(new Pagination(3), this.getSessionUserId(), RoleType.ROLE_TYPE_TEACHER);
         //latestCourse = courseDao.findMyCourseOfForcastClassForUserCenter(new Pagination(3),this.getSessionUserId());
         latestCourse = courseDao.findMyCourseOfForcastClassForUserCenter(new Pagination(3), this.getSessionUserId(), RoleType.ROLE_TYPE_TEACHER);
