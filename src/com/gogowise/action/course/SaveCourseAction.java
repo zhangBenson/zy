@@ -140,7 +140,16 @@ public class SaveCourseAction extends BasicAction {
     public String selfSaveClass() {
         course = courseDao.findById(this.getCourse().getId());
         classDao.saveClass(classInfo, course, durations.get(0));
+
         classes = classDao.findByCourseId(course.getId());
+
+        for(int i = 0; i < classes.size(); i++ ){
+            CourseClass curClass = classes.get(i);
+            if( curClass.getName()== null || curClass.getName().length() == 0 ){
+                curClass.setName(this.getText("lable.class.no1") + (i+1) + this.getText("lable.class.no2"));
+                classDao.persistAbstract(curClass);
+            }
+        }
         return SUCCESS;
     }
 
