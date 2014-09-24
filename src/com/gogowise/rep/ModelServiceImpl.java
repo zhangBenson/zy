@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 @Service("modelService")
 public class ModelServiceImpl implements ModelService {
-    protected Logger logger = LogManager.getLogger(this.getClass());
     private ModelDao modelDao;
 
     public void setModelDao(ModelDao modelDao) {
