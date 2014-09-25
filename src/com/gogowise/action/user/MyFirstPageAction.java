@@ -95,7 +95,7 @@ public class MyFirstPageAction extends BasicAction {
     )
     public String showUserCenter() {
 //        ActionContext.getContext().getSession().put("WW_TRANS_I18N_LOCALE", Locale.US);
-        if (!(userService.havePermission(this.getSessionUserId(), RoleType.TEACHER))) {
+        if (!userService.havePermission(this.getSessionUserId(), RoleType.TEACHER)) {
             return "studentCenter";
         }
 

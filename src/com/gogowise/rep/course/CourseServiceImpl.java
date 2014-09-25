@@ -14,8 +14,10 @@ import com.gogowise.rep.finance.dao.UserAccountInfoDao;
 import com.gogowise.rep.finance.enity.UserAccountInfo;
 import com.gogowise.rep.org.OrgService;
 import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.user.UserService;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
+import com.gogowise.rep.user.enity.RoleType;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,7 @@ import java.util.List;
 @Service("courseService")
 public class CourseServiceImpl extends ModelServiceImpl implements CourseService {
 
+    public static final String NO_PERMISSION = "no permission";
     @Autowired
     private OrgService orgService;
     @Autowired
@@ -41,6 +44,8 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
     private CourseInviteStudentDao courseInviteStudentDao;
     @Autowired
     private SeniorClassRoomDao seniorClassRoomDao;
+    @Autowired
+    private UserService userService;
 
     public void saveQuestion(CourseMaterial courseMaterial, List<Question> questions) {
         for (Question question : questions) {
@@ -186,4 +191,18 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
         courseInviteStudentDao.persistAbstract(courseInviteStudent);
     }
 
+    public void delete(Integer id, Integer userId) throws ServiceException {
+        if (id == null)
+            return;
+        Course deleteCourse = courseDao.findById(userId);
+        if (!userService.havePermission(userId, RoleType.ADMIN) && !orgService.isResponsiblePerson(userId, deleteCourse.getOrganization().getId())) {
+            throw new ServiceException(NO_PERMISSION);
+        }
+
+        Course course = courseDao.findById(id);
+        if (course != null) {
+            course.setIsDeleted(true);
+            courseDao.persistAbstract(course);
+        }
+    }
 }

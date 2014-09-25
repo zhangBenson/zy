@@ -14,4 +14,6 @@ public interface OrgService extends ModelService {
 
     public boolean isMember(Integer userId, Integer orgId);
 
+    public boolean isResponsiblePerson(Integer userId, Integer orgId);
+
 }

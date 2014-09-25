@@ -57,9 +57,12 @@ public class OrgServiceImpl extends ModelServiceImpl implements OrgService {
     }
 
     public boolean isMember(Integer userId, Integer orgId) {
-
         List<OrganizationBaseUser> organizationBaseUser = organizationBaseUserDao.findByUserAndOrg(userId, orgId);
         return organizationBaseUser.size() != 0 || userId.equals(organizationDao.findById(orgId).getResponsiblePerson().getId());
+    }
 
+    public boolean isResponsiblePerson(Integer userId, Integer orgId) {
+        Organization organization = organizationDao.findByResId(userId);
+        return organization != null && orgId.equals(organization.getResponsiblePerson());
     }
 }

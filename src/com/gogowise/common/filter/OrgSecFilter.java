@@ -7,6 +7,8 @@ import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.user.UserService;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -21,7 +23,7 @@ import java.io.IOException;
 @Component
 public class OrgSecFilter implements Filter {
 
-
+    private static Logger logger = LogManager.getLogger(OrgSecFilter.class);
     private BaseUserDao baseUserDao;
     @Autowired
     private UserService userService;
@@ -54,20 +56,25 @@ public class OrgSecFilter implements Filter {
             return;
         }
 
-        if (StringUtils.startsWithIgnoreCase(requestUrl, "/voaCourseBlog") ||
-                StringUtils.startsWithIgnoreCase(requestUrl, "/playerClass")) {
-            Integer userID = session.getAttribute(Constants.SESSION_USER_ID) == null ? null : (Integer) session.getAttribute(Constants.SESSION_USER_ID);
-            Integer courseID;
-            if (StringUtils.startsWithIgnoreCase(requestUrl, "/playerClass")) {
-                Integer courseClassID = Integer.valueOf(request.getParameter("courseClass.id"));
-                courseID = classDao.findById(courseClassID).getCourse().getId();
-            } else {
-                courseID = Integer.valueOf(request.getParameter("course.id"));
-            }
+        try {
+            if (StringUtils.startsWithIgnoreCase(requestUrl, "/voaCourseBlog") ||
+                    StringUtils.startsWithIgnoreCase(requestUrl, "/playerClass")) {
+                Integer userID = session.getAttribute(Constants.SESSION_USER_ID) == null ? null : (Integer) session.getAttribute(Constants.SESSION_USER_ID);
+                Integer courseID;
+                if (StringUtils.startsWithIgnoreCase(requestUrl, "/playerClass")) {
+                    Integer courseClassID = Integer.valueOf(request.getParameter("courseClass.id"));
+                    courseID = classDao.findById(courseClassID).getCourse().getId();
+                } else {
+                    courseID = Integer.valueOf(request.getParameter("course.id"));
+                }
 
-            if (courseID != null && courseService.isDenyByPrivateCourse(userID, courseID)) {
-                response.sendRedirect("noPermission.html");
+                if (courseID != null && courseService.isDenyByPrivateCourse(userID, courseID)) {
+                    response.sendRedirect("noPermission.html");
+                }
+
             }
+        } catch (NumberFormatException e) {
+            logger.error("number format issue");
         }
 
         arg2.doFilter(arg0, arg1);
