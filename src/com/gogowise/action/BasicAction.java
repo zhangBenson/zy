@@ -28,6 +28,8 @@ public class BasicAction extends ActionSupport {
     public static final String PERSONAL_CENTER = "personalCenter";
     public static final String COMMON_ERROR = "common_error";
 
+    private String errorMsg;
+
     private Pagination pagination = new Pagination();
 
     protected Logger logger = LogManager.getLogger(this.getClass().getName());
@@ -138,5 +140,13 @@ public class BasicAction extends ActionSupport {
         ActionContext.getContext().getSession().put("request_locale", new Locale("en", "US"));
         ActionContext.getContext().getSession().put("request_only_locale", new Locale("en", "US"));
         ActionContext.getContext().setLocale(new Locale("en", "US"));
+    }
+
+    public String getErrorMsg() {
+        return errorMsg;
+    }
+
+    public void setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
     }
 }

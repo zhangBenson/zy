@@ -1,16 +1,5 @@
 package com.gogowise.action.search;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.struts2.convention.annotation.Action;
-import org.apache.struts2.convention.annotation.Namespace;
-import org.apache.struts2.convention.annotation.Result;
-import org.jsoup.Jsoup;
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Controller;
-
 import com.gogowise.action.BasicAction;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.rep.Pagination;
@@ -22,7 +11,16 @@ import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.Result;
+import org.jsoup.Jsoup;
+import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -36,7 +34,7 @@ import com.gogowise.rep.user.enity.BaseUser;
 @Controller
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 @Namespace(BasicAction.BASE_NAME_SPACE)
-public class SearchAction extends BasicAction{
+public class SearchAction extends BasicAction {
     private CourseDao courseDao;
     private OrganizationDao organizationDao;
     private BaseUserDao baseUserDao;
@@ -50,7 +48,7 @@ public class SearchAction extends BasicAction{
     private List<BaseUser> hottestBloggers;
 
     private Integer searchType;
-    private  Integer hotType;
+    private Integer hotType;
     private String searchStr;
     private Pagination pagination = new Pagination(4);
 
@@ -60,40 +58,17 @@ public class SearchAction extends BasicAction{
         return SUCCESS;
     }
 
-    @Action(value = "searchSchool",results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".searchSchool")})
-    public String searchSchool() throws Exception{
+    @Action(value = "searchSchool", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".searchSchool")})
+    public String searchSchool() throws Exception {
         pagination.setPageSize(5);
         organizations = organizationDao.searchOrgs(searchStr, pagination);
         return SUCCESS;
     }
 
-    @Action(value = "searchAnswer",results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".searchAnswer")})
-    public String searchAnswer() throws Exception{
+    @Action(value = "searchAnswer", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".searchAnswer")})
+    public String searchAnswer() throws Exception {
         pagination.setPageSize(5);
-        courses = courseDao.searchCourses(searchStr ,pagination);
-        return SUCCESS;
-    }
-
-
-    @Action(value = "teacherHotList",results = {@Result(name=SUCCESS,type=Constants.RESULT_NAME_TILES,location = ".teacherHotList")})
-    public String listHottestTeachers(){
-        this.setHotType(Constants.HOT_TYPE_TEACHER);
-        pagination.setPageSize(10);
-        baseUsers = baseUserDao.findHottestTeacher(pagination);
-        hottestBloggers = baseUserDao.findByFansNum(new Pagination(3));
-
-        hottestCourses = courseDao.findHotCourses(new Pagination(4));
-        return SUCCESS;
-    }
-
-    @Action(value = "bloggerHotList",results = {@Result(name=SUCCESS,type=Constants.RESULT_NAME_TILES,location = ".bloggerHotList")})
-    public String listHottestBloggers(){
-        this.setHotType(Constants.HOT_TYPE_BLOGGER);
-        pagination.setPageSize(10);
-        baseUsers = baseUserDao.findByFansNum(pagination);
-        hottestBloggers = baseUserDao.findHottestTeacher(new Pagination(3));
-
-        hottestCourses = courseDao.findHotCourses(new Pagination(4));
+        courses = courseDao.searchCourses(searchStr, pagination);
         return SUCCESS;
     }
 
@@ -204,32 +179,33 @@ public class SearchAction extends BasicAction{
         this.hotType = hotType;
     }
 
-    public Integer getStudentsNumByOrgId (Integer orgId) {
+    public Integer getStudentsNumByOrgId(Integer orgId) {
         if (orgId == null || orgId < 0)
             return 0;
         List<BaseUser> students = new ArrayList<BaseUser>();
-        for(Course c : courseDao.findByOrg(orgId, null)){
-            for(SeniorClassRoom sc : c.getSeniorClassRooms()){
+        for (Course c : courseDao.findByOrg(orgId, null)) {
+            for (SeniorClassRoom sc : c.getSeniorClassRooms()) {
                 Boolean exist = false;
-                for (BaseUser user : students){
-                    if(user.getId().equals(sc.getStudent().getId())) exist = true;
+                for (BaseUser user : students) {
+                    if (user.getId().equals(sc.getStudent().getId())) exist = true;
                 }
-                if(!exist){
+                if (!exist) {
                     students.add(sc.getStudent());
                 }
             }
         }
         return students.size();
     }
-    public OrganizationCommentDao getOrganizationCommentDao () {
+
+    public OrganizationCommentDao getOrganizationCommentDao() {
         return this.organizationCommentDao;
     }
 
-    public void setOrganizationCommentDao (OrganizationCommentDao organizationCommentDao) {
+    public void setOrganizationCommentDao(OrganizationCommentDao organizationCommentDao) {
         this.organizationCommentDao = organizationCommentDao;
     }
 
-    public  String parseSchoolDescription (Integer orgId) {
+    public String parseSchoolDescription(Integer orgId) {
         Organization org = organizationDao.findById(orgId);
         String orgDescription = org.getDescription();
         if (orgDescription == null || orgDescription.equals(""))

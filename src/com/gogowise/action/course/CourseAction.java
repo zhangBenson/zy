@@ -13,9 +13,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.gogowise.rep.ServiceException;
 import com.gogowise.rep.course.dao.*;
 import com.gogowise.rep.course.enity.*;
 import com.gogowise.rep.org.OrgService;
+import com.gogowise.rep.user.enity.RoleType;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
@@ -150,37 +152,6 @@ public class CourseAction extends BasicAction {
 
         centerCourses = courseDao.findlatestCourses(pagination);
 
-        return SUCCESS;
-    }
-
-    @Action(value = "courseHotList", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseHotList")})
-    public String showHotCourses() {
-
-        pagination.setPageSize(5);
-        hotCourses = courseDao.findHotCourses(pagination); //最热课程
-        hottestTeacher = baseUserDao.findHottestTeacher(new Pagination(3));
-        courses = courseDao.findLatest4Course(new Pagination(4)); //最新课程
-        return SUCCESS;
-    }
-
-    @Action(value = "courseNewList", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseNewList")})
-    public String showNewCourseList() {
-
-        pagination.setPageSize(5);
-        hotCourses = courseDao.findlatestCourses(pagination); //最新课程
-        //hotCourses = courseDao.findHotCourses(pagination);    //最热课程
-        hottestTeacher = baseUserDao.findHottestTeacher(new Pagination(3));
-        courses = courseDao.findLatest4Course(new Pagination(4)); //最新课程
-
-        //
-        //        coursesOnline = courseDao.findCourseOnline(new Pagination(3));
-        //        coursesInTypes = courseDao.findCoursesInTypes(Constants.DEFAULT_COURSE_TYPE_OF_LANGUAGE, new Pagination(20));
-        //
-        //
-        //        organizations = organizationDao.findLatestOrgs(new Pagination(4));
-        //        coursesForAds = courseDao.findLatest4Course(new Pagination(3));
-        //        goGoWiseAnnounces = goGoWiseAnnounceDao.findLatestAnnounce(new Pagination(10));
-        //        courseNewEvents = courseNewEventDao.findLatestTenEvents(new Pagination(10));  //课程新鲜事
         return SUCCESS;
     }
 
@@ -668,48 +639,32 @@ public class CourseAction extends BasicAction {
     public String courseAdminManage() {
 
         Integer userID = (Integer) ActionContext.getContext().getSession().get(Constants.SESSION_USER_ID);
-        boolean havePermission = userService.havePermission(userID, "admin");
 
-        if (!havePermission)
+        if (!userService.havePermission(userID, RoleType.ADMIN))
             return ERROR;
 
         courses = this.courseDao.findlatestCoursesForAdmin(pagination);
         return SUCCESS;
     }
 
-    @Action(value = "removeCourseConfirm", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "courseAdminManage"}), @Result(name = "redirect", type = "redirect", location = "${redirectURL}")})
+    @Action(value = "removeCourseConfirm", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "courseAdminManage"}), @Result(name = Constants.RESULT_NAME_REDIRECT, type = Constants.RESULT_NAME_REDIRECT, location = "${redirectURL}")})
     public String removeCourseConfirm() {
 
-        if (this.getCourse().getId() != null) {
-            Course course = courseDao.findById(this.getCourse().getId());
-
-            if (course != null) {
-                course.setIsDeleted(true);
-                courseDao.persistAbstract(course);
-            }
+        try {
+            courseService.delete(this.getCourse().getId(), this.getSessionUserId());
+        } catch (ServiceException e) {
+            return COMMON_ERROR;
         }
-
         if (StringUtils.isNotBlank(this.getRedirectURL())) {
-            return "redirect";
+            return Constants.RESULT_NAME_REDIRECT;
         }
-
         return SUCCESS;
     }
 
-
-    public String living() {
-
-        this.getPagination().setPageSize(9);
-        courses = courseDao.findCourseOnline(pagination);
-        this.setOperaType(Constants.OPERA_TYPE_FOR_LIVING_COURSE);
-        return SUCCESS;
-    }
 
     @Action(value = "myForcastClass", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".myForcastClass")})
     //     @Action(value = "myForcastClass", results = {@Result(name = SUCCESS, location = "/jsp/gogowise/course/myForcastClass.css")})
     public String myForcast() {
-
-        //   courses = courseDao.findMyCourseOfForcastClass(pagination, this.getSessionUserId());
         courses = courseDao.findUserCreatedCourses(this.getSessionUserId(), pagination);
         return SUCCESS;
     }
@@ -767,6 +722,10 @@ public class CourseAction extends BasicAction {
             return SUCCESS;
         }*/
         course = courseDao.findById(this.getCourse().getId());
+        if (course == null) {
+            this.setErrorMsg("course not exist");
+            return COMMON_ERROR;
+        }
 
         Pagination page = new Pagination(Constants.DEFAULT_PAGE_OF_COMMENTS_INCREASED_SIZE);
         courseComments = courseCommentDao.findByCourseId(page, course.getId());

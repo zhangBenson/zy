@@ -544,25 +544,6 @@
         <put-attribute name="right" value="/jsp/gogowise/listClasses.jsp"/>
     </definition>
 
-
-    <!-- <
-    <definition name=".courseSquaret" extends=".bodyCenter">
-        <put-attribute name="title" value="title.gogowise.course.center"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/course/courseSquare.jsp"/>
-    </definition>
-    >-->
-    <definition name=".courseHotList" extends=".listCenter">
-        <put-attribute name="title" value="title.gogowise.hottest.course"/>
-        <put-attribute name="contentLeft" value="/jsp/gogowise/course/list/courseHotList.jsp"/>
-        <put-attribute name="contentRight" value="/jsp/gogowise/course/list/courseListRight.jsp"/>
-    </definition>
-    <definition name=".courseNewList" extends=".listCenter">
-        <put-attribute name="title" value="title.gogowise.newest.course"/>
-        <put-attribute name="contentLeft" value="/jsp/gogowise/course/list/courseNewList.jsp"/>
-        <put-attribute name="contentRight" value="/jsp/gogowise/course/list/courseNewListRight.jsp"/>
-    </definition>
-
-
     <definition name=".myForcastClass" extends=".userCenter">
         <put-attribute name="title" value="title.my.course"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/course/myForcastClass.jsp"/>
@@ -1012,16 +993,6 @@
         <put-attribute name="title" value="title.gogowise.search.result"/>
         <put-attribute name="contentLeft" value="/jsp/gogowise/search/searchMemberList.jsp"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/search/searchRight.jsp"/>
-    </definition>
-    <definition name=".teacherHotList" extends=".listCenter">
-        <put-attribute name="title" value="title.hot.teacher"/>
-        <put-attribute name="contentLeft" value="/jsp/gogowise/user/userHotList.jsp"/>
-        <put-attribute name="contentRight" value="/jsp/gogowise/user/userHotListRight.jsp"/>
-    </definition>
-    <definition name=".bloggerHotList" extends=".listCenter">
-        <put-attribute name="title" value="title.hot.blogger"/>
-        <put-attribute name="contentLeft" value="/jsp/gogowise/user/userHotList.jsp"/>
-        <put-attribute name="contentRight" value="/jsp/gogowise/user/userHotListRight.jsp"/>
     </definition>
     <definition name=".searchOrgList" extends=".searchCenter">
         <put-attribute name="title" value="title.gogowise.search.result"/>

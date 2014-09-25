@@ -20,20 +20,20 @@ import java.util.List;
 public class BaseUserDaoImpl extends ModelDaoImpl<BaseUser> implements BaseUserDao {
 
     public BaseUser logon(String email, String password) {
-        Criteria c=    this.createCriteria(BaseUser.class).add(Restrictions.eq("email", email))
+        Criteria c = this.createCriteria(BaseUser.class).add(Restrictions.eq("email", email))
                 .add(Restrictions.eq("password", password));
         List<BaseUser> bus = c.list();
-        if(bus.size() ==0) return null;
+        if (bus.size() == 0) return null;
         return bus.get(0);
     }
 
     public BaseUser findByEmail(String email) {
-        return findFist("From BaseUser u where u.email=?",email);
+        return findFist("From BaseUser u where u.email=?", email);
     }
 
-    public List<BaseUser> findHotTeacher( Pagination pagination) {
+    public List<BaseUser> findHotTeacher(Pagination pagination) {
         String hql = "select distinct ce.course.teacher from  CourseEvaluation ce   group by ce.course.teacher  order by count(ce.id) desc ";
-        return  this.find(hql, pagination);
+        return this.find(hql, pagination);
     }
 
     public BaseUser findByNickName(String nickName) {
@@ -46,17 +46,12 @@ public class BaseUserDaoImpl extends ModelDaoImpl<BaseUser> implements BaseUserD
 
     public List<BaseUser> findByFansNum(Pagination pagination) {
         String hql = "From BaseUser u order by u.fansNum desc";
-        return this.find(hql,pagination);
-    }
-
-    public List<BaseUser> findHottestTeacher(Pagination pagination) {
-        String hql = "From BaseUser u where u.isTeacher=true  order by u.fansNum desc";
-        return this.find(hql,pagination);
+        return this.find(hql, pagination);
     }
 
     public List<BaseUser> searchUsers(String searchStr, Pagination pagination) {
-        if(searchStr == null || searchStr.equals("")) return this.findByFansNum(pagination);
+        if (searchStr == null || searchStr.equals("")) return this.findByFansNum(pagination);
         String hql = "From BaseUser u where u.nickName like ? order by u.fansNum desc";
-        return this.find(hql,pagination,"%"+searchStr+"%");
+        return this.find(hql, pagination, "%" + searchStr + "%");
     }
 }

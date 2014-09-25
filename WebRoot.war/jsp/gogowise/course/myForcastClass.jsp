@@ -179,11 +179,15 @@
                 <%--<a class="manage_course" id="" href="uploadCourseMaterial.html?course.id=<s:property value="id"/>">Upload Questions</a>--%>
             <a href="questionResultForTeacher.html?course.id=<s:property value="id"/>"><s:property
                             value="%{getText('course.courseQuestionResultTeacher')}"/></a>
+                    <s:if test="organization!= null && organization.responsiblePerson.id ==  #session.userID">
+                        <a href="#" onclick="confirmRemoveCourse('<s:property value="id"/>', '<s:property
+                                value="name"/>')"><s:property value="%{getText('title.delete')}"/></a>
+                    </s:if>
 
         </p>
-    </div>
 
-    <div class="classintro">
+        <div class="classintro"></div>
+
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <s:iterator value="forcastClasses">
                 <tr>
@@ -200,50 +204,6 @@
         </table>
     </div>
 
-        <%--<div class="allClassesInfo">--%>
-        <%--&lt;%&ndash;<link href="/css/course/gogowise.css" rel="stylesheet" type="text/css"/>&ndash;%&gt;--%>
-        <%--&lt;%&ndash;<link rel="stylesheet" href="/css/course/bootstrap.min.css">&ndash;%&gt;--%>
-        <%--<table width="100%" border="0" cellspacing="0" cellpadding="0">--%>
-        <%--<s:iterator value="classes" status="status">--%>
-        <%--<s:if test="#status.index<6">--%>
-        <%--<s:if test="#status.index % 2 == 0"><div class="row"></s:if>--%>
-
-        <%--<div class="col-sm-4" >--%>
-        <%--<div class="pull-left">--%>
-        <%--<s:if test="record">--%>
-        <%--<div class="lessonGreen" onclick="enterPlayerRoom(<s:property value="id"/>)" style="cursor:pointer;">--%>
-        <%--</s:if>--%>
-        <%--<s:else>--%>
-        <%--<div class="lessonOrange">--%>
-        <%--</s:else>--%>
-        <%--<span><s:property value="#status.index+1"/></span><div>Lesson</div>--%>
-        <%--</div>--%>
-        <%--</div>--%>
-
-        <%--<div class="pull-left">--%>
-        <%--<div class="lessonName"><s:property value="nickName"/></div>--%>
-        <%--<div class="lessonTime"><s:date name="date" format="%{getText('dateformat.forclass')}"/></div>--%>
-        <%--</div>--%>
-        <%--<div class="pull-left2">--%>
-        <%--<div class="makeVideo">--%>
-        <%--<a href="javascript:getVideoUrl('<s:property value="id"/>','<s:property value="teachingNum"/>');">--%>
-        <%--Make Video--%>
-        <%--</a></div>--%>
-        <%--<s:if test="record">--%>
-        <%--<div class="viewVideo"><a href="javascript:enterPlayerRoom('<s:property value="id"/>');">View Video</a></div>--%>
-        <%--</s:if>--%>
-        <%--</div>--%>
-        <%--</div>--%>
-
-        <%--<s:if test="#status.index % 2 == 1||#status.last"></div><div style="clear: both;height: 10px;"></div></s:if>--%>
-        <%--</s:if>--%>
-        <%--</s:iterator>--%>
-        <%--</table>--%>
-        <%--</div>--%>
-        <%--</div>--%>
-
-
-        <%-- 推荐Div --%>
     <div style="display: none;">
 
         <div id="recommdatepanel<s:property value="#idx.index"/>" style="font-size: 16px;color:#666;">
@@ -297,6 +257,10 @@
     </tiles:insertTemplate>
 
 </div>
+<s:form id="removeCourseConfirm" action="removeCourseConfirm">
+    <s:hidden name="course.id" id="courseIDRemove"/>
+    <s:hidden name="redirectURL" id="redirectURL"/>
+</s:form>
 
 <script type="text/javascript">
     var friendEmail = "<s:text name='label.email.friend'/>";
@@ -371,4 +335,12 @@
         }
     }
 
+    function confirmRemoveCourse(id, name) {
+        if (confirm('<s:property  value="%{getText('article.course.delete.alert.part1')}"/> ' + name + ' ' + '<s:property  value="%{getText('article.course.delete.alert.part2')}"/> ')) {
+            var redirectURL = "myForcastClass.html?pagination.pageNow=<s:property value="pagination.pageNow"/>";
+            document.getElementById("courseIDRemove").value = id;
+            document.getElementById("redirectURL").value = redirectURL;
+            document.getElementById("removeCourseConfirm").submit();
+        }
+    }
 </script>
