@@ -48,16 +48,10 @@
 
     <!-- ==================== Copy Files =========================== -->
 
-    <target name="all" depends="native">
+    <target name="all" depends="copyConfigeuration">
     </target>
 
-    <target name="native" depends="copyConfigeuration">
-        <native2ascii encoding="UTF-8" src="${web.home}/WEB-INF/properties" dest="${classes.home}"
-                      includes="**/*.properties"/>
-    </target>
-
-
-    <target name="copyAllFiles" depends="native">
+    <target name="copyAllFiles" depends="copyConfigeuration">
         <copy verbose="${verbose.value}" todir="${deploy.home}">
             <fileset dir="${web.home}">
                 <include name="**/*"/>
@@ -66,20 +60,15 @@
     </target>
 
 
-    <target name="renameMyConfigBaseOnNeed">
-        <available file="${web.home}/WEB-INF/config/myConfig.properties" property="myConfig.exist"/>
-        <antcall target="renameMyConfig"></antcall>
-    </target>
-
     <target name="renameMyConfig" if="myConfig.exist">
-        <copy tofile="${web.home}/WEB-INF/config/Config.properties"
+        <copy verbose="${verbose.value}" tofile="${web.home}/WEB-INF/classes/Config.properties"
               file="${web.home}/WEB-INF/config/myConfig.properties" overwrite="true"/>
     </target>
 
-    <target name="copyConfigeuration" depends="renameMyConfigBaseOnNeed">
+    <target name="copyConfigeuration" >
 
 
-    <copy verbose="${verbose.value}" todir="${classes.home}">
+        <copy verbose="${verbose.value}" todir="${classes.home}">
             <fileset dir="${web.home}/WEB-INF/config">
                 <include name="**/*"/>
             </fileset>
@@ -90,10 +79,13 @@
                 <include name="**/*"/>
             </fileset>
         </copy>
-
+        <native2ascii encoding="UTF-8" src="${web.home}/WEB-INF/properties" dest="${classes.home}"
+                      includes="**/*.properties"/>
+        <available file="${web.home}/WEB-INF/config/myConfig.properties" property="myConfig.exist"/>
+        <antcall target="renameMyConfig"></antcall>
     </target>
 
-    <target name="copyAllFilesAndDeploy" depends="copyAllFiles,native">
+    <target name="copyAllFilesAndDeploy" depends="copyAllFiles,copyConfigeuration">
         <touch file="${deploy.home}/WEB-INF/web.xml"/>
         <rename src="${deploy.home}/../beta.war.deployed" dest="${deploy.home}/../beta.war.dodeploy"/>
     </target>
