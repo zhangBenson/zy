@@ -15,6 +15,7 @@
 <script src="/js/room/icheck.min.js"></script>
 <script src="/js/room/Chart.min.js"></script>
 <script src="/js/room/ajaxfileupload.js"></script>
+<script src="/js/jquery-ui-1.10.4.custom.min.js"></script>
 
 <script type='text/javascript' src='js/uploadify/jquery.uploadify.v2.1.4.js'></script>
 <script type='text/javascript' src='js/uploadify/swfobject.js'></script>
@@ -27,6 +28,26 @@ var currentMIC = null;
 var currentPencil = null;
 
 $(document).ready(function() {
+
+
+    $("#btncontrolmenu").click(function(){
+        $("#panelcontent").slideToggle(400);
+    });
+
+    setTimeout(function(){
+        if($('#detailfooters').length > 0)
+        {
+
+            $("#studentpanle").insertAfter("#detailfooters");
+            $("#studentpanle").show(200);
+        }
+        else
+        {
+            alert("mude ");
+        }
+    },900);
+
+    $("#studentpanle").draggable({cancel:".dragcancel"});
 
     stundioWrapper = new iScroll('stundioWrapper');
     chatWrapper = new iScroll('chatWrapper');
@@ -47,7 +68,7 @@ $(document).ready(function() {
     //绑定单击
     $("#studionList li a").bind("click",function(event){
         var id = $(this).parent().find("span").text();
-        showControlBar(id,event.pageX,event.pageY);
+        showControlBar(id,300,-5);
     });
 
     // $(".fileList li a").bind("click",function(event){
@@ -1197,215 +1218,104 @@ function ShowMessage(name,imgpath,content,bit)
         <li class="classstatusbar">Class Name:<s:property value="courseClass.name"/><s:property value="courseClass.nickName"/></li>
     </ul>
 </div>
-
-<div class="pull-left">
-    <div class="classVedioPanel" >
-        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="720" height="560" name="Girl" id="Girl" wmode="transparent">
-            <param name="movie" value="flash/Teacher_1.swf" />
+<div >
+    <div class="classVedioPanel" style="background-color: #000;">
+        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="1130" height="560" name="Girl" id="Girl" wmode="transparent">
+            <param name="movie" value="flash/Teacher_2.swf" />
             <param name="quality" value="high" />
             <param name="wmode" value="transparent" />
             <param name="allowFullScreen" value="true" />
-            <embed src="flash/Teacher_1.swf" allowFullScreen="true" width="720" height="560" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" wmode="transparent" name="Girl" id="GirlEmbed"></embed>
+            <embed src="flash/Teacher_2.swf" allowFullScreen="true" width="1130" height="560" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" wmode="transparent" name="Girl" id="GirlEmbed"></embed>
         </object>
     </div>
 </div>
 
-<div class="pull-left">
+    <div id="studentpanle" style="float: left;display: none;position:relative;top: -744px;left:865px;">
+        <div style="cursor: move;width: 280px;float: left;height: 30px;"></div><button class="btn btn-warning btn-xs" id="btncontrolmenu" style="width: 100px;">Panel</button>
+        <div class="classBasePanel" id="panelcontent">
+            <div id="studiowindow">
+                <div class="classPanleHead">
+                    <div class="classPanleTitle">Student List</div>
+                </div>
+                <div class="classPanleBody dragcancel">
 
-    <div class="classBasePanel">
-        <div id="studiowindow">
-            <div class="classPanleHead">
-                <div class="classPanleTitle">Student List</div>
-            </div>
-            <div class="classPanleBody">
+                    <div id="btnControlBar" style="display: none;z-index: 1">
+                        <div class="btn-group btn-group-sm" role="toolbar">
+                            <button type="button" class="btn btn-success" id="btnSetMic">
+                                <span class="glyphicon glyphicon-headphones" style="margin-right: 10px;"></span>
+                                GIVEMIC
+                            </button>
+                            <button type="button" class="btn btn-success" id="btnGetMic">
 
-                <div id="btnControlBar" style="display: none;z-index: 1">
-                    <div class="btn-group btn-group-sm" role="toolbar">
-                        <button type="button" class="btn btn-success" id="btnSetMic">
-                            <span class="glyphicon glyphicon-headphones" style="margin-right: 10px;"></span>
-                            GIVEMIC
-                        </button>
-                        <button type="button" class="btn btn-success" id="btnGetMic">
+                                <span class="glyphicon glyphicon-ban-circle" style="margin-right: 10px;"></span>
+                                TAKEMIC
+                            </button>
+                            <button type="button" class="btn btn-success" id="btnSetPencil">
+                                <span class="glyphicon glyphicon-pencil" style="margin-right: 10px;"></span>
+                                GIVEPENCIL
+                            </button>
+                            <button type="button" class="btn btn-success" id="btnGetPencil">
+                                <span class="glyphicon glyphicon-ban-circle" style="margin-right: 10px;"></span>
+                                TAKEPENCIL
+                            </button>
+                            <button type="button" class="btn btn-success" id="btnKickuser">
+                                <span class="glyphicon glyphicon-exclamation-sign" style="margin-right: 10px;"></span>
+                                KICKAWAY
+                            </button>
+                            <button type="button" class="btn btn-success" id="btnCloseBar">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </div>
 
-                            <span class="glyphicon glyphicon-ban-circle" style="margin-right: 10px;"></span>
-                            TAKEMIC
-                        </button>
-                        <button type="button" class="btn btn-success" id="btnSetPencil">
-                            <span class="glyphicon glyphicon-pencil" style="margin-right: 10px;"></span>
-                            GIVEPENCIL
-                        </button>
-                        <button type="button" class="btn btn-success" id="btnGetPencil">
-                            <span class="glyphicon glyphicon-ban-circle" style="margin-right: 10px;"></span>
-                            TAKEPENCIL
-                        </button>
-                        <button type="button" class="btn btn-success" id="btnKickuser">
-                            <span class="glyphicon glyphicon-exclamation-sign" style="margin-right: 10px;"></span>
-                            KICKAWAY
-                        </button>
-                        <button type="button" class="btn btn-success" id="btnCloseBar">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </button>
+                        <span class="userId"></span>
                     </div>
 
-                    <span class="userId"></span>
+                    <div id="stundioWrapper" style="width: 100%; height: 195px; overflow: auto;">
+                        <ul>
+                            <li>
+                                <ul id="studionList">
+
+                                </ul>
+                                <div class="clearfix"></div>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <br/>
+            <div id="chatWindow">
+
+                <div class="classPanleHead">
+                    <div class="classPanleTitle">Chat</div>
                 </div>
 
-                <div id="stundioWrapper" style="width: 100%; height: 195px; overflow: auto;">
-                    <ul>
-                        <li>
-                            <ul id="studionList">
-                                <!-- <li class="ui-state-default">
-                                    <a href="#">
-                                        <div class="studioPortraitPanel">
-                                            <img src="gogowisestyle/image/bportrait7.jpg" alt="">
-                                            <p class="t">name</p>
-                                        </div>
-                                    </a>
-                                    <span class="userId">u1</span>
-                                </li>
-                                <li class="ui-state-default">
-                                    <a href="#">
-                                        <div class="studioPortraitPanel">
-                                            <img src="gogowisestyle/image/bportrait6.jpg" alt="">
-                                            <p>name</p>
-                                        </div>
-                                    </a>
-                                    <span class="userId">u2</span>
-                                </li>
-                                <li class="ui-state-default">
-                                    <a href="#">
-                                        <div class="studioPortraitPanel">
-                                            <img src="gogowisestyle/image/bportrait1.jpg" alt="">
-                                            <p>Name</p>
-                                        </div>
-                                    </a>
-                                    <span class="userId">u3</span>
-                                </li>
-                                <li class="ui-state-default">
-                                    <a href="#">
-                                        <div class="studioPortraitPanel">
-                                            <img src="gogowisestyle/image/bportrait5.jpg" alt="">
-                                            <p>Name</p>
-                                        </div>
-                                    </a>
-                                    <span class="userId">u4</span>
-                                </li>
-                                <li class="ui-state-default">
-                                    <a href="#">
-                                        <div class="studioPortraitPanel">
-                                            <img src="gogowisestyle/image/portrait1.jpg" alt="">
-                                            <p>Name</p>
-                                        </div>
-                                    </a>
-                                    <span class="userId">u5</span>
-                                </li>
-                                <li class="ui-state-default">
-                                    <a href="#">
-                                        <div class="studioPortraitPanel">
-                                            <img src="gogowisestyle/image/portrait2.jpg" alt="">
-                                            <p>Name</p>
-                                        </div>
-                                    </a>
-                                    <span class="userId">u6</span>
-                                </li>
-                                <li class="ui-state-default">
-                                    <a href="#">
-                                        <div class="studioPortraitPanel">
-                                            <img src="gogowisestyle/image/portrait3.jpg" alt="">
-                                            <p>Name</p>
-                                        </div>
-                                    </a>
-                                    <span class="userId">u7</span>
-                                </li>
-                                <li class="ui-state-default">
-                                    <a href="#">
-                                        <div class="studioPortraitPanel">
-                                            <img src="gogowisestyle/image/portrait4.jpg" alt="">
-                                            <p>Name</p>
-                                        </div>
-                                    </a>
-                                    <span class="userId">u8</span>
-                                </li>
-                                <li class="ui-state-default">
-                                    <a href="#">
-                                        <div class="studioPortraitPanel">
-                                            <img src="gogowisestyle/image/portrait4.jpg" alt="">
-                                            <p>Name</p>
-                                        </div>
-                                    </a>
-                                    <span class="userId">u9</span>
-                                </li> -->
-
-                            </ul>
-                            <div class="clearfix"></div>
-                        </li>
-
-                    </ul>
-                </div>
-
-            </div>
-        </div>
-        <br/>
-        <div id="chatWindow">
-
-            <div class="classPanleHead">
-                <div class="classPanleTitle">Chat</div>
-            </div>
-
-            <div class="classPanleBody">
-                <div id="chatWrapper" style="width: 100%; height: 235px; overflow: auto;">
-                    <ul>
-                        <li>
-                            <div id="charList">
-                                <!--left message-->
-                                <!-- <div  class="chatMessage">
-                                    <div class="pull-left" style="width:70px;">
-                                        <img class="chatPortraitImg" src="gogowisestyle/image/portrait2.jpg"  />
-                                        <div class="chatPortraitTitle">Name</div>
-                                    </div>
-                                    <div style="width: 290px;" class="pull-left">
-                                        <div class="chatContent">
-                                            I liked it becaug. hahaI liked it becaug. hahaI likedI liked it becaug. hahaI liked it becaug. hahaI liked it becaug. I liked it becaug. hahaI liked it becaug. hahaI liked it becaug.
-                                        </div>
-                                    </div>
+                <div class="classPanleBody dragcancel">
+                    <div id="chatWrapper" style="width: 100%; height: 235px; overflow: auto;">
+                        <ul>
+                            <li>
+                                <div id="charList">
 
                                 </div>
+                                <div class="clearfix"></div>
+                            </li>
+                        </ul>
+                    </div>
 
-                                <div class="clearfix"></div> -->
+                    <div class="splitLineGray"></div>
 
-                                <!--right message-->
-                                <!-- <div  class="chatMessage">
-                                    <div class="pull-right" style="width:70px;">
-                                        <img class="chatPortraitImg" src="gogowisestyle/image/portrait2.jpg"  />
-                                        <div class="chatPortraitTitle">Name</div>
-                                    </div>
-                                    <div style="width: 290px;" class="pull-right">
-                                        <div class="chatContent">
-                                            I liked it becaug. hahaI liked it becaug. hahaI liked it becaug.
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="clearfix"></div> -->
-
-                            </div>
-                            <div class="clearfix"></div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="splitLineGray"></div>
-
-                <div class="input-group" style="padding: 7px;">
-                    <input type="text" class="form-control" id="txtContent">
-					<span class="input-group-btn">
-						<button class="btn btn-default" type="button" id="btnSendMsg">Send</button>
-					</span>
+                    <div class="input-group" style="padding: 7px;">
+                        <input type="text" class="form-control" id="txtContent">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" id="btnSendMsg">Send</button>
+                    </span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
 </div>
 
 <%--<div id="detailfooters"></div>--%>
@@ -1701,6 +1611,7 @@ function ShowMessage(name,imgpath,content,bit)
     </div>
     <!-- /.modal-dialog -->
 </div>
+
 
 
 <script type="text/javascript">

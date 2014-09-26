@@ -192,17 +192,16 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
     }
 
     public void delete(Integer id, Integer userId) throws ServiceException {
-        if (id == null)
-            return;
+
         Course deleteCourse = courseDao.findById(userId);
+        if (deleteCourse == null)
+            return;
+
         if (!userService.havePermission(userId, RoleType.ADMIN) && !orgService.isResponsiblePerson(userId, deleteCourse.getOrganization().getId())) {
             throw new ServiceException(NO_PERMISSION);
         }
 
-        Course course = courseDao.findById(id);
-        if (course != null) {
-            course.setIsDeleted(true);
-            courseDao.persistAbstract(course);
-        }
+        deleteCourse.setIsDeleted(true);
+        courseDao.persistAbstract(deleteCourse);
     }
 }
