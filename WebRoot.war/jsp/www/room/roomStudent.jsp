@@ -12,6 +12,7 @@
 <script src="js/room/messenger.min.js"></script>
 <script src="js/room/icheck.min.js"></script>
 <script src="js/room/Chart.min.js"></script>
+<script src="/js/jquery-ui-1.10.4.custom.min.js"></script>
 
 <script type="text/javascript">
 var stundioWrapper;
@@ -21,6 +22,26 @@ var currentPencil = null;
 
 
 $(document).ready(function() {
+
+    $("#btncontrolmenu").click(function(){
+        $("#panelcontent").slideToggle(400);
+    });
+
+    setTimeout(function(){
+        if($('#detailfooters').length > 0)
+        {
+
+            $("#studentpanle").insertAfter("#detailfooters");
+            $("#studentpanle").show(200);
+        }
+        else
+        {
+            alert("mude ");
+        }
+    },900);
+
+    $("#studentpanle").draggable({cancel:".dragcancel"});
+
     stundioWrapper = new iScroll('stundioWrapper');
     chatWrapper = new iScroll('chatWrapper');
 
@@ -688,8 +709,8 @@ function ShowMessage(name,imgpath,content,bit)
     </ul>
 </div>
 
-<div class="pull-left">
-    <div class="classVedioPanel" >
+<div >
+    <div class="classVedioPanel" style="background-color: #000;">
         <!-- <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="720" height="560" id="Teacher_1">
         <param name="movie" value="Teacher_1.swf" />
         <param name="quality" value="high" />
@@ -709,24 +730,24 @@ function ShowMessage(name,imgpath,content,bit)
     <!--<![endif]-->
         <!-- </object>
         -->
-        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="720" height="560" name="Girl" id="Girl" wmode="transparent">
-            <param name="movie" value="flash/Student_1.swf" />
+        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="1130" height="560" name="Girl" id="Girl" wmode="transparent">
+            <param name="movie" value="flash/Student_2.swf" />
             <param name="quality" value="high" />
             <param name="wmode" value="transparent" />
             <param name="allowFullScreen" value="true" />
-            <embed src="flash/Student_1.swf" allowFullScreen="true" width="720" height="560" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" wmode="transparent" name="Girl" id="GirlEmbed"></embed>
+            <embed src="flash/Student_2.swf" allowFullScreen="true" width="1130" height="560" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" wmode="transparent" name="Girl" id="GirlEmbed"></embed>
         </object>
     </div>
 </div>
 
-<div class="pull-left">
-
-    <div class="classBasePanel">
+<div id="studentpanle" style="float: left;display: none;position:relative;top: -744px;left:865px;">
+    <div style="cursor: move;width: 280px;float: left;height: 30px;"></div><button class="btn btn-warning btn-xs" id="btncontrolmenu" style="width: 100px;">Panel</button>
+    <div class="classBasePanel" id="panelcontent">
         <div id="studiowindow">
             <div class="classPanleHead">
                 <div class="classPanleTitle">Student List</div>
             </div>
-            <div class="classPanleBody">
+            <div class="classPanleBody dragcancel" >
 
                 <div id="btnControlBar" style="display: none;z-index: 1">
                     <div class="btn-group btn-group-sm" role="toolbar">
@@ -861,7 +882,7 @@ function ShowMessage(name,imgpath,content,bit)
                 <div class="classPanleTitle">Chat</div>
             </div>
 
-            <div class="classPanleBody">
+            <div class="classPanleBody dragcancel">
                 <div id="chatWrapper" style="width: 100%; height: 235px; overflow: auto;">
                     <ul>
                         <li>
