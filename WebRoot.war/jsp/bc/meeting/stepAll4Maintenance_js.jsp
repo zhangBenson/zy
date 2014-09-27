@@ -407,13 +407,6 @@ function checkStudentMail(obj) {
             return false;
         }
         </s:if>
-        <s:else>
-        var teacherEmail = $("#course_teacherEmail").val().replace(/(^\s*)|(\s*$)/g, "");
-        if (emailContent == teacherEmail) {
-            $(".invite_student_input_msg").html(warn_email_teacher_student_same);
-            return false;
-        }
-        </s:else>
         $(obj).attr('value', emailContent);
         $(".invite_student_input_msg").html("");
         return true;
