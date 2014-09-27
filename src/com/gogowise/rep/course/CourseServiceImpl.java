@@ -193,7 +193,7 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
 
     public void delete(Integer id, Integer userId) throws ServiceException {
 
-        Course deleteCourse = courseDao.findById(userId);
+        Course deleteCourse = courseDao.findById(id);
         if (deleteCourse == null)
             return;
         System.out.println(userService.havePermission(userId, RoleType.ADMIN) + "==co==" + orgService.isResponsiblePerson(userId, deleteCourse.getOrganization().getId()));
