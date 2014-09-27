@@ -3,6 +3,7 @@ package com.gogowise.common.filter;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.rep.course.CourseService;
 import com.gogowise.rep.course.dao.ClassDao;
+import com.gogowise.rep.course.enity.CourseClass;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.user.UserService;
 import com.gogowise.rep.user.dao.BaseUserDao;
@@ -60,10 +61,12 @@ public class OrgSecFilter implements Filter {
             if (StringUtils.startsWithIgnoreCase(requestUrl, "/voaCourseBlog") ||
                     StringUtils.startsWithIgnoreCase(requestUrl, "/playerClass")) {
                 Integer userID = session.getAttribute(Constants.SESSION_USER_ID) == null ? null : (Integer) session.getAttribute(Constants.SESSION_USER_ID);
-                Integer courseID;
+                Integer courseID = null;
                 if (StringUtils.startsWithIgnoreCase(requestUrl, "/playerClass")) {
                     Integer courseClassID = Integer.valueOf(request.getParameter("courseClass.id"));
-                    courseID = classDao.findById(courseClassID).getCourse().getId();
+                    CourseClass courseClass = classDao.findById(courseClassID);
+                    if (courseClass != null)
+                        courseID = courseClass.getCourse().getId();
                 } else {
                     courseID = Integer.valueOf(request.getParameter("course.id"));
                 }
