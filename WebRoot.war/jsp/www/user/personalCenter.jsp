@@ -134,7 +134,9 @@
                         </ul>
 
                         <div class="media">
-                            <a class="pull-left" href="voaCourseBlog.html?course.id=<s:property value="id"/>"
+                            <a class="pull-left"
+                               href="javascript:getVideoUrl('<s:property value="classOnTheCorner.id"/>','<s:property value="teachingNum"/>');"
+                                <%--href="voaCourseBlog.html?course.id=<s:property value="id"/>"--%>
                                title="<s:property value="name"/>">
                                 <div class="mycourseImg "><img src="<s:property value="logoUrl" />" class="media-object"
                                                                alt=""></div>
@@ -375,8 +377,7 @@
 
                                 <div class="media">
                                     <a class="pull-left"
-                                       href="javascript:getVideoUrl('<s:property value="classOnTheCorner.id"/>','<s:property value="teachingNum"/>');"
-                                        <%--href="voaCourseBlog.html?course.id=<s:property value="id" />"--%>
+                                       href="voaCourseBlog.html?course.id=<s:property value="id" />"
                                        title="<s:property value="name"/>">
                                         <div class="mycourseImg ">
                                             <img src="<s:property value="logoUrl" />"/>
