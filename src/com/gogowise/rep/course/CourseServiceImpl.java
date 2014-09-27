@@ -196,8 +196,6 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
         Course deleteCourse = courseDao.findById(id);
         if (deleteCourse == null)
             return;
-        System.out.println(userService.havePermission(userId, RoleType.ADMIN) + "==co==" + orgService.isResponsiblePerson(userId, deleteCourse.getOrganization().getId()));
-        System.out.println(id + "==co1==" + userId);
         if (!userService.havePermission(userId, RoleType.ADMIN) && !orgService.isResponsiblePerson(userId, deleteCourse.getOrganization().getId())) {
             throw new ServiceException(NO_PERMISSION);
         }

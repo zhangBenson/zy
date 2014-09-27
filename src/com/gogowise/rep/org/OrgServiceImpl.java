@@ -63,6 +63,6 @@ public class OrgServiceImpl extends ModelServiceImpl implements OrgService {
 
     public boolean isResponsiblePerson(Integer userId, Integer orgId) {
         Organization organization = organizationDao.findByResId(userId);
-        return organization != null && orgId.equals(organization.getResponsiblePerson().getId());
+        return organization != null && orgId.equals(organization.getId());
     }
 }
