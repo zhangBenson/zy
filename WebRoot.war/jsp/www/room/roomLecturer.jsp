@@ -1221,11 +1221,13 @@ function ShowMessage(name,imgpath,content,bit)
 <div >
     <div class="classVedioPanel" style="background-color: #000;">
         <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="1130" height="560" name="Girl" id="Girl" wmode="transparent">
-            <param name="movie" value="flash/Teacher_2.swf" />
+            <param name="movie" value="flash/Teacher_1.swf"/>
             <param name="quality" value="high" />
             <param name="wmode" value="transparent" />
             <param name="allowFullScreen" value="true" />
-            <embed src="flash/Teacher_2.swf" allowFullScreen="true" width="1130" height="560" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" wmode="transparent" name="Girl" id="GirlEmbed"></embed>
+            <embed src="flash/Teacher_1.swf" allowFullScreen="true" width="1130" height="560" quality="high"
+                   pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"
+                   wmode="transparent" name="Girl" id="GirlEmbed"></embed>
         </object>
     </div>
 </div>
