@@ -140,13 +140,13 @@
 
                     <execution>
                         <id>ant-build</id>
-                        <phase>initialize</phase>
+                        <phase>deploy</phase>
                         <goals>
                             <goal>run</goal>
                         </goals>
                         <configuration>
                             <tasks>
-                                <ant antfile="build.xml" target="beforeBuild"/>
+                                <ant antfile="build.xml" target="copyAllFilesAndDeploy"/>
                             </tasks>
                         </configuration>
                     </execution>
