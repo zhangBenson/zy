@@ -3,8 +3,8 @@
     <!-- ===================== Property Definitions =========================== -->
 
     <!-- ===================== Need you config youself ===================== -->
-    <!--<property name="tomcat.home" value="/home/zz/apache-tomcat-7.0.55"/>-->
-    <property name="tomcat.home" value="D:\dev\apache-tomcat-7.0.21"/>
+    <property name="tomcat.home" value="/home/zz/apache-tomcat-7.0.55"/>
+    <!--<property name="tomcat.home" value="D:\dev\apache-tomcat-7.0.21"/>-->
     <!--<property name="tomcat.home" value="D:\dev\apache-tomcat-7.0.21"/>-->
     <!--<property name="tomcat.home" value="D:\dev\apache-tomcat-7.0.21"/>-->
 
