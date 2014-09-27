@@ -146,7 +146,7 @@
                         </goals>
                         <configuration>
                             <tasks>
-                                <ant antfile="build.xml" target="copyAllFilesAndDeploy"/>
+                                <ant antfile="build.xml" target="copyAllFiles"/>
                             </tasks>
                         </configuration>
                     </execution>
