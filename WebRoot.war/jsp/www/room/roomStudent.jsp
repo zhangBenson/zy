@@ -20,6 +20,11 @@ var chatWrapper;
 var currentMIC = null;
 var currentPencil = null;
 
+function ShowPanel()
+{
+    if($("#studentpanle").is(":hidden"))
+        $("#studentpanle").show(200);
+}
 
 $(document).ready(function() {
 
@@ -32,7 +37,7 @@ $(document).ready(function() {
         {
 
             $("#studentpanle").insertAfter("#detailfooters");
-            $("#studentpanle").show(200);
+            //$("#studentpanle").show(200);
         }
         else
         {
