@@ -228,11 +228,6 @@ function checkStudentMail(obj) {
         }
         </s:if>
         <s:else>
-//        var teacherEmail = $("#course_teacherEmail").val().replace(/(^\s*)|(\s*$)/g, "");
-//        if (emailContent == teacherEmail) {
-//            $(".invite_student_input_msg").html(warn_email_teacher_student_same);
-//            return false;
-//        }
         </s:else>
         $(obj).attr('value', emailContent);
         $(".invite_student_input_msg").html(right_div);
@@ -526,12 +521,6 @@ function checkRepeatStudentMail(obj) {
         if (courseType == 0) {         //if the course is a personal internet course
             if (emailContent == mySessionEmail) {
                 $(".invite_student_input_msg").html(warn_email_can_not_be_yourself);
-                return false;
-            }
-        } else {
-            var teacherEmail = $("#course_teacherEmail").val().replace(/(^\s*)|(\s*$)/g, "");
-            if (emailContent == teacherEmail) {
-                $(".invite_student_input_msg").html(warn_email_teacher_student_same);
                 return false;
             }
         }
