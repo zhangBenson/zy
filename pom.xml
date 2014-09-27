@@ -140,7 +140,7 @@
 
                     <execution>
                         <id>ant-build</id>
-                        <phase>deploy</phase>
+                        <phase>install</phase>
                         <goals>
                             <goal>run</goal>
                         </goals>
