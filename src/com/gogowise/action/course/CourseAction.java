@@ -470,33 +470,11 @@ public class CourseAction extends BasicAction {
             if (accept.equals(true) && this.getTeacher().equals(false)) { // students' email accept handle
                 CourseInviteStudent courseInviteStudent = courseInviteStudentDao.findByCourseAndEmail(this.getCourse().getId(), this.getUser().getEmail());
                 if (courseInviteStudent != null) {
-                    courseInviteStudent.setStudent(user);
-                    courseInviteStudent.setAcceptInvite(true);
-                    courseInviteStudentDao.persistAbstract(courseInviteStudent);
-                    SeniorClassRoom sc = seniorClassRoomDao.findClassRoomByCourseAndStudent(course.getId(), user.getId());
-                    if (sc != null) {
-                        return SUCCESS;
-                    }
-                    SeniorClassRoom seniorClassRoom = new SeniorClassRoom();
-                    seniorClassRoom.setCourse(courseDao.findById(this.getCourse().getId()));
-                    seniorClassRoom.setStudent(user);
-                    seniorClassRoomDao.persistAbstract(seniorClassRoom);
-
-                    //=============================给老师和学生发送的课程预定协议===========================================
-                    String filePath = "d:/contract/" + course.getName() + ".pdf";
-                    String tile = this.getText("course.pdf.title", new String[]{user.getNickName(), course.getName()});
-                    String content = this.getText("course.pdf.content");
-                    PdfUtil.createCourseContract(filePath, courseDao.findById(course.getId()), user);
-                    EmailUtil.sendMail(user.getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
-                    if (course.getOrganization() != null) {
-                        EmailUtil.sendMail(course.getOrganization().getResponsiblePerson().getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
-                    } else {
-                        EmailUtil.sendMail(course.getTeacher().getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
-                    }
-                    EmailUtil.sendMail(Constants.COURSE_CONFIRM_EMAIL, tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
+                    confirmInvitation(this.getUser().getEmail(), this.getCourse().getId());
                     return SUCCESS;
+                } else {
+                    return NONE;
                 }
-                return NONE;
             } else if (accept.equals(true) && this.getTeacher().equals(true)) { // teacher's email accept handle
                 course.setTeacher(user);
                 courseDao.persistAbstract(course);
@@ -506,6 +484,26 @@ public class CourseAction extends BasicAction {
             }
         }
         return SUCCESS;
+    }
+
+    private void confirmInvitation(String email, Integer courseId) throws Exception {
+        courseService.saveInvitation(email, courseId);
+        sendEmailAfterConfirm();
+    }
+
+    private void sendEmailAfterConfirm() throws Exception {
+//        String filePath = "d:/contract/" + course.getName() + ".pdf";
+        String filePath = Constants.DOWNLOAD_CONTRACT + course.getId() + "/" + course.getName() + ".pdf";
+        String tile = this.getText("course.pdf.title", new String[]{user.getNickName(), course.getName()});
+        String content = this.getText("course.pdf.content");
+        PdfUtil.createCourseContract(filePath, courseDao.findById(course.getId()), user);
+        EmailUtil.sendMail(user.getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
+        if (course.getOrganization() != null) {
+            EmailUtil.sendMail(course.getOrganization().getResponsiblePerson().getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
+        } else {
+            EmailUtil.sendMail(course.getTeacher().getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
+        }
+        EmailUtil.sendMail(Constants.COURSE_CONFIRM_EMAIL, tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
     }
 
     @Action(value = "modifyCourseStep2", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".modifyCourseStep3")})

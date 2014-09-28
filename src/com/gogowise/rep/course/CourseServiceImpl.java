@@ -187,8 +187,20 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
         if (student != null && !Boolean.TRUE.equals(courseInviteStudent.getAcceptInvite())) {
             courseInviteStudent.setAcceptInvite(true);
             courseInviteStudent.setStudent(student);
+            this.saveClassRoom(courseId, student.getId());
         }
         courseInviteStudentDao.persistAbstract(courseInviteStudent);
+    }
+
+    public void saveClassRoom(Integer courseId, Integer userId) {
+        SeniorClassRoom sc = seniorClassRoomDao.findClassRoomByCourseAndStudent(courseId, userId);
+        if (sc != null) {
+            return;
+        }
+        SeniorClassRoom seniorClassRoom = new SeniorClassRoom();
+        seniorClassRoom.setCourse(courseDao.findById(courseId));
+        seniorClassRoom.setStudent(baseUserDao.findById(userId));
+        seniorClassRoomDao.persistAbstract(seniorClassRoom);
     }
 
     public void delete(Integer id, Integer userId) throws ServiceException {
