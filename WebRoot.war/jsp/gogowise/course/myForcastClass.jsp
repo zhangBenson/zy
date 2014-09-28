@@ -185,11 +185,11 @@
                     </s:if>
 
         </p>
+    </div>
 
-        <div class="classintro"></div>
-
+    <div class="classintro">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
-            <s:iterator value="forcastClasses">
+        <s:iterator value="forcastClasses">
                 <tr>
                     <td class="td1"><s:property value="name"/></td>
                     <td><b><s:property value="nickName"/></b></td>
