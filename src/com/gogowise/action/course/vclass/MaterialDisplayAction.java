@@ -1,9 +1,7 @@
 package com.gogowise.action.course.vclass;
 
-import com.gogowise.action.BasicAction;
-import com.gogowise.common.utils.Utils;
-import com.gogowise.rep.course.dao.CourseMaterialDao;
-import com.gogowise.rep.course.enity.CourseMaterial;
+import java.lang.reflect.InvocationTargetException;
+
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -12,8 +10,10 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.gogowise.action.BasicAction;
+import com.gogowise.common.utils.Utils;
+import com.gogowise.rep.course.dao.CourseMaterialDao;
+import com.gogowise.rep.course.enity.CourseMaterial;
 
 
 @Controller
@@ -35,7 +35,7 @@ public class MaterialDisplayAction extends BasicAction {
     private MaterialVo voInfo = new MaterialVo();
 
     @Action(value = "material")
-    public String material() {
+    public String material() throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
         CourseMaterial courseMaterial = courseMaterialDao.findById(materialId);
         Utils.doCopy(voInfo, courseMaterial);
         return RESULT_JSON;

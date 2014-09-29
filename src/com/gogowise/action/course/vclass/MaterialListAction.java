@@ -12,6 +12,7 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,13 +38,13 @@ public class MaterialListAction extends BasicAction {
     private MaterialVo voInfo ;
 
     @Action(value = "listMaterial")
-    public String listMaterial() {
+    public String listMaterial() throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
         List<CourseMaterial> courseMaterials = courseMaterialDao.find(courseId, typeId);
         vos = translate(courseMaterials);
         return RESULT_JSON;
     }
 
-    private List<MaterialVo> translate(List<CourseMaterial> courseMaterials) {
+    private List<MaterialVo> translate(List<CourseMaterial> courseMaterials) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
         List<MaterialVo> ret = new ArrayList<>();
         for (CourseMaterial courseMaterial : courseMaterials) {
             MaterialVo vo = new MaterialVo();
