@@ -43,6 +43,8 @@ import java.util.List;
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 @Results({@Result(name = "json", type = "json")})
 public class SaveCourseAction extends BasicAction {
+    private DateFormat dateFormat = new SimpleDateFormat(this.getText("dateformat.forclass"));
+
     private Course course;
     private CourseClass classInfo;
     private BaseUserDao baseUserDao;
@@ -78,7 +80,7 @@ public class SaveCourseAction extends BasicAction {
     private SeniorClassRoomDao seniorClassRoomDao;
 
     @Action(value = "listTags")
-    public String listTags(){
+    public String listTags() {
         existTags = tagDao.findAll();
         return RESULT_JSON;
     }
@@ -93,22 +95,21 @@ public class SaveCourseAction extends BasicAction {
         course = courseService.findById(course.getId());
 
         course.setStudentAgeType(this.getCourse().getStudentAgeType());
-        course.setIsPublic( this.getCourse().getIsPublic() );
+        course.setIsPublic(this.getCourse().getIsPublic());
         //courseDao.persist(course);
         course.setCameraManConfirmed(true);
         course.setTeacherConfirmed(true);
         course.setMasterConfirmed(true);
 
         //TODO 设置course的标签Tag
-        for( String tagName : tags ){
+        for (String tagName : tags) {
             Tag temp = tagDao.findByName(tagName);
-            if(  temp== null ){
+            if (temp == null) {
                 Tag newTag = new Tag(tagName);
                 tagDao.persistAbstract(newTag);
                 course.getTags().add(newTag);
-            }
-            else{
-                if( !course.getTags().contains(temp) ) course.getTags().add(temp);
+            } else {
+                if (!course.getTags().contains(temp)) course.getTags().add(temp);
             }
         }
         courseDao.persist(course);
@@ -127,8 +128,8 @@ public class SaveCourseAction extends BasicAction {
         }
 
         //change teacher
-        if(teacherIds != null && teacherIds.size()>0){
-            if(course.getTeachers()!=null){
+        if (teacherIds != null && teacherIds.size() > 0) {
+            if (course.getTeachers() != null) {
                 course.getTeachers().clear();
             }
             for (Integer tId : teacherIds) {
@@ -157,10 +158,10 @@ public class SaveCourseAction extends BasicAction {
 
         classes = classDao.findByCourseId(course.getId());
 
-        for(int i = 0; i < classes.size(); i++ ){
+        for (int i = 0; i < classes.size(); i++) {
             CourseClass curClass = classes.get(i);
-            if( curClass.getName()== null || curClass.getName().length() == 0 ){
-                curClass.setName(this.getText("lable.class.no1") + (i+1) + this.getText("lable.class.no2"));
+            if (curClass.getName() == null || curClass.getName().length() == 0) {
+                curClass.setName(this.getText("lable.class.no1") + (i + 1) + this.getText("lable.class.no2"));
                 classDao.persistAbstract(curClass);
             }
         }
@@ -202,15 +203,14 @@ public class SaveCourseAction extends BasicAction {
         _course.setStudentAgeType(this.getCourse().getStudentAgeType());
 
         _course.getTags().clear();
-        for( String tagName : tags ){
+        for (String tagName : tags) {
             Tag temp = tagDao.findByName(tagName);
-            if(  temp== null ){
+            if (temp == null) {
                 Tag newTag = new Tag(tagName);
                 tagDao.persistAbstract(newTag);
                 _course.getTags().add(newTag);
-            }
-            else{
-                if( !_course.getTags().contains(temp) )_course.getTags().add(temp);
+            } else {
+                if (!_course.getTags().contains(temp)) _course.getTags().add(temp);
             }
         }
 
@@ -247,6 +247,7 @@ public class SaveCourseAction extends BasicAction {
         for (String email : emails) {
             if (StringUtils.isNotBlank(email)) {
                 courseService.saveInvitation(email, this.getCourse().getId());
+                this.sendNoticeToStudent(courseInviteStudentDao.findByCourseAndEmail(this.getCourse().getId(), email));
             }
         }
         courseDao.persistAbstract(_course);
@@ -342,19 +343,13 @@ public class SaveCourseAction extends BasicAction {
         Calendar courseStartTime = Calendar.getInstance();
         courseStartTime.setTime(course.getStartDate().getTime());
 
-        DateFormat dateFormat = new SimpleDateFormat(this.getText("dateformat.forclass"));
-        StringBuilder classesInfo = new StringBuilder();
-        for (CourseClass cc : course.getClasses()) {
-            Calendar classStartTime = Calendar.getInstance();
-            classStartTime.setTime(cc.getDate().getTime());
-            classesInfo = classesInfo.append("<tr><td>").append(cc.getName()).append("</td><td>").append(Utils.getEmptyString(cc.getNickName())).append("</td><td>").append(dateFormat.format(Utils.changeBaseOnTimeZone4Action(classStartTime).getTime())).append("</td><td>").append(cc.getDuration()).append("</td><td>").append(this.getText("label.day.of.week." + classStartTime.get(Calendar.DAY_OF_WEEK))).append("</td></tr>");
-        }
+
+        String classesInfo = getClassInfoString(course);
         if (course.getOrganization() != null) {
             String serialNo = this.getSessionNickName() + (new SimpleDateFormat("yyyyddMMHHmmssms").format(Calendar.getInstance().getTime()));
             Matter matter = new Matter(Calendar.getInstance(), serialNo, Matter.MATTER_COURSE_TEACHER, baseUserDao.findByEmail(this.getSessionUserEmail()), null, course.getTeacherEmail(), course, false);
             matterDao.persistAbstract(matter);
 
-            String css = "<style type=\"text/css\">\n" + "#rvmDiv #logoDiv {background-image: url(http://www.gogowise.com/images/logo.jpg);background-repeat: no-repeat;height: 65px;margin-left: 45px;}\n" + "#rvmDiv #rvmcontentDiv ul .welcomeTittle {margin-left: 30px;}\n" + "#rvmDiv {float: left;width: 100%;font-family: \"微软雅黑\", \"宋体\", \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif;}\n" + "#logoDiv {float: left;width: 100%;}\n" + "#rvmcontentDiv {float: left;width: 100%;}\n" + "#rvmDiv #rvmcontentDiv ul li {list-style-type: none;}\n" + "#rvmDiv #rvmcontentDiv .orangeWords {color: rgb(255,155,55);}\n" + "#rvmDiv #rvmcontentDiv ul .lastWords {margin-top: 50px;}\n" + "table,tr,td{border-collapse:collapse;border-top-width: 1px;border-right-width: 1px;border-bottom-width: 1px;border-left-width: 1px;\n" + "border-right-color:#09F;border-bottom-color: #09F;border-left-color: #09F;}\n" + "tr.odd{background-color:#CEFFFF;}\n" + "</style>";
             //=====================================  课程发布时，组织发送邮件给老师   =====================
 
             String tile = this.getText("org.invite.teacher.email.title", new String[]{course.getOrganization().getSchoolName()});
@@ -362,18 +357,12 @@ public class SaveCourseAction extends BasicAction {
             String acceptArrange = getBasePath() + "/emailHandleForCourseCreation.html?course.id=" + course.getId() + "&accept=true&teacher=true&user.email=" + course.getTeacherEmail();
             String rejectArrange = getBasePath() + "/emailHandleForCourseCreation.html?course.id=" + course.getId() + "&accept=false&teacher=true&user.email=" + course.getTeacherEmail();
             String[] args = {course.getTeacherEmail(), course.getOrganization().getSchoolName(), course.getName(), course.getDescription(), dateFormat.format(Utils.changeBaseOnTimeZone4Action(courseStartTime).getTime()), course.getTotalHours().toString(), classesInfo.toString(), acceptArrange, rejectArrange, acceptArrange, rejectArrange, this.getCourse().getTeacherEmail()};
-            EmailUtil.sendMail(course.getTeacherEmail(), tile, css + this.getText("org.invite.teacher.email.content", args), "text/html;charset=utf-8");
+            EmailUtil.sendMail(course.getTeacherEmail(), tile, Constants.INVITATION_EMAIL_CSS + this.getText("org.invite.teacher.email.content", args), "text/html;charset=utf-8");
 
             //=====================================  课程发布时，组织发送邮件给学生   =====================
 
             for (CourseInviteStudent courseInviteStudent : courseInviteStudents) {
-                String tile2 = this.getText("org.invite.student.email.title", new String[]{course.getName()});
-                String acceptArrange2student = getBasePath() + "/emailHandleForCourseCreation.html?course.id=" + course.getId() + "&accept=true&teacher=false&user.email=" + courseInviteStudent.getInvitedStudentEmail();
-                String rejectArrange2student = getBasePath() + "/emailHandleForCourseCreation.html?course.id=" + course.getId() + "&accept=false&teacher=false&user.email=" + courseInviteStudent.getInvitedStudentEmail();
-                String[] args2student = {courseInviteStudent.getInvitedStudentEmail(), course.getOrganization().getSchoolName(), course.getName(), course.getDescription(), dateFormat.format(courseStartTime.getTime()), course.getTotalHours().toString(), classesInfo.toString(), acceptArrange2student, rejectArrange2student, acceptArrange2student, rejectArrange2student, courseInviteStudent.getInvitedStudentEmail()};
-                EmailUtil.sendMail(courseInviteStudent.getInvitedStudentEmail(), tile2, css + this.getText("org.invite.student.email.content", args2student), "text/html;charset=utf-8");
-                matter = new Matter(Calendar.getInstance(), serialNo, Matter.MATTER_COURSE_STUDENT, baseUserDao.findByEmail(this.getSessionUserEmail()), null, courseInviteStudent.getInvitedStudentEmail(), course, false);
-                matterDao.persistAbstract(matter);
+                sendNoticeToStudent(courseInviteStudent);
             }
 
         } else {
@@ -387,25 +376,33 @@ public class SaveCourseAction extends BasicAction {
                 matterDao.persistAbstract(matter);
             }
         }
-        //        if (this.getCourse().getTeachingNum() == 4) {  //if the course is a normal big class,so we'll send an advertisement email to the course creator for him to resend
-        //            String courseCreatorEmail = this.getSessionNickName();
-        //            String href = getBasePath() + "/initBigCourseAdvertiseEmail.html?course.id=" + course.getId();
-        //            String advertiseTitle = this.getText("big.course.advertisement.email.title", new String[]{courseCreatorEmail, course.getName()});
-        //            String advertiseContent = Constants.BIG_COURSE_ADVERTISE_EMAIL_CSS + this.getText("big.course.advertisement.email.content", new String[]{
-        //                    this.getSessionNickName(),
-        //                    course.getName(),
-        //                    Utils.getEmptyString(course.getDescription()),
-        //                    dateFormat.format(courseStartTime.getTime()),
-        //                    course.getTotalHours().toString(),
-        //                    classesInfo.toString(),
-        //                    href, href
-        //            });
-        //            EmailUtil.sendMail(this.getSessionUserEmail(), advertiseTitle, advertiseContent, "text/html;charset=utf-8");
-        //        }
+
         if (course.getOrganization() != null) {
             return "orgSUCCESS";
         }
         return SUCCESS;
+    }
+
+    private String getClassInfoString(Course courseInfo) {
+        StringBuilder classesInfo = new StringBuilder();
+        for (CourseClass cc : courseInfo.getClasses()) {
+            Calendar classStartTime = Calendar.getInstance();
+            classStartTime.setTime(cc.getDate().getTime());
+            classesInfo = classesInfo.append("<tr><td>").append(cc.getName()).append("</td><td>").append(Utils.getEmptyString(cc.getNickName())).append("</td><td>").append(dateFormat.format(Utils.changeBaseOnTimeZone4Action(classStartTime).getTime())).append("</td><td>").append(cc.getDuration()).append("</td><td>").append(this.getText("label.day.of.week." + classStartTime.get(Calendar.DAY_OF_WEEK))).append("</td></tr>");
+        }
+        return classesInfo.toString();
+    }
+
+    private void sendNoticeToStudent(CourseInviteStudent courseInviteStudent) {
+        Course courseInfo = courseInviteStudent.getCourse();
+        String serialNo = this.getSessionNickName() + (new SimpleDateFormat("yyyyddMMHHmmssms").format(Calendar.getInstance().getTime()));
+        String tile2 = this.getText("org.invite.student.email.title", new String[]{courseInfo.getName()});
+        String acceptArrange2student = getBasePath() + "/emailHandleForCourseCreation.html?course.id=" + courseInfo.getId() + "&accept=true&teacher=false&user.email=" + courseInviteStudent.getInvitedStudentEmail();
+        String rejectArrange2student = getBasePath() + "/emailHandleForCourseCreation.html?course.id=" + courseInfo.getId() + "&accept=false&teacher=false&user.email=" + courseInviteStudent.getInvitedStudentEmail();
+        String[] args2student = {courseInviteStudent.getInvitedStudentEmail(), courseInfo.getOrganization().getSchoolName(), courseInfo.getName(), courseInfo.getDescription(), dateFormat.format(courseInfo.getStartDate().getTime()), courseInfo.getTotalHours().toString(), getClassInfoString(courseInfo), acceptArrange2student, rejectArrange2student, acceptArrange2student, rejectArrange2student, courseInviteStudent.getInvitedStudentEmail()};
+        EmailUtil.sendMail(courseInviteStudent.getInvitedStudentEmail(), tile2, Constants.INVITATION_EMAIL_CSS + this.getText("org.invite.student.email.content", args2student), "text/html;charset=utf-8");
+        Matter matter = new Matter(Calendar.getInstance(), serialNo, Matter.MATTER_COURSE_STUDENT, baseUserDao.findByEmail(this.getSessionUserEmail()), null, courseInviteStudent.getInvitedStudentEmail(), courseInfo, false);
+        matterDao.persistAbstract(matter);
     }
 
     @JSON(serialize = false)
@@ -421,15 +418,15 @@ public class SaveCourseAction extends BasicAction {
     public CourseClass getClassInfo() {
 
         return classInfo;
-   }
+    }
 
     public void setClassInfo(CourseClass classInfo) {
 
         this.classInfo = classInfo;
-   }
+    }
 
 
-   @JSON(serialize = false)
+    @JSON(serialize = false)
     public BaseUserDao getBaseUserDao() {
         return baseUserDao;
     }
