@@ -65,6 +65,7 @@ public class SaveCourseAction extends BasicAction {
     private CourseService courseService;
     private List<Integer> teacherIds;
     private Boolean accept = false;
+    private Integer id;
 
     @Autowired
     private TagDao tagDao;
@@ -328,6 +329,30 @@ public class SaveCourseAction extends BasicAction {
         EmailUtil.sendMail(Constants.COURSE_CONFIRM_EMAIL, tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
     }
 
+    @Action(value = "deleteInvitation")
+    public String deleteInvitation() {
+        CourseInviteStudent courseInviteStudent = courseInviteStudentDao.findById(id);
+        if (hasPermission(courseInviteStudent)) {
+            return COMMON_ERROR;
+        }
+        courseInviteStudentDao.delete(courseInviteStudent);
+        return RESULT_JSON;
+    }
+
+    private boolean hasPermission(CourseInviteStudent courseInviteStudent) {
+        return courseInviteStudent == null || (!this.getSessionUserId().equals(courseInviteStudent.getCourse().getOrganization().getResponsiblePerson().getId()) && !this.getSessionUserId().equals(courseInviteStudent.getCourse().getTeacher().getId()));
+    }
+
+    @Action(value = "resendInvitation")
+    public String resendInvitation() {
+        CourseInviteStudent courseInviteStudent = courseInviteStudentDao.findById(id);
+        if (hasPermission(courseInviteStudent)) {
+            return COMMON_ERROR;
+        }
+        this.sendNoticeToStudent(courseInviteStudent);
+        return RESULT_JSON;
+    }
+
     @Action(value = "courseGet2public", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}), @Result(name = "orgSUCCESS", type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myForcastClass", "course.id", "${course.id}"})})
     public String go2public() {
 
@@ -360,7 +385,6 @@ public class SaveCourseAction extends BasicAction {
             EmailUtil.sendMail(course.getTeacherEmail(), tile, Constants.INVITATION_EMAIL_CSS + this.getText("org.invite.teacher.email.content", args), "text/html;charset=utf-8");
 
             //=====================================  课程发布时，组织发送邮件给学生   =====================
-
             for (CourseInviteStudent courseInviteStudent : courseInviteStudents) {
                 sendNoticeToStudent(courseInviteStudent);
             }
@@ -603,5 +627,13 @@ public class SaveCourseAction extends BasicAction {
 
     public void setUser(BaseUser user) {
         this.user = user;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
