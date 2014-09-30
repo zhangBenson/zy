@@ -350,6 +350,8 @@ public class SaveCourseAction extends BasicAction {
             return COMMON_ERROR;
         }
         this.sendNoticeToStudent(courseInviteStudent);
+        courseInviteStudent.setAcceptInvite(null);
+        courseInviteStudentDao.persistAbstract(courseInviteStudent);
         return RESULT_JSON;
     }
 

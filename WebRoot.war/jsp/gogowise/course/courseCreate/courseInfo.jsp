@@ -134,25 +134,31 @@
             <a class="add_student_btn"><s:property value="%{getText('course.add.student')}"/></a> &nbsp;&nbsp;&nbsp;
             <span class="invite_student_input_msg tip_words"></span>
             <table>
-                <s:iterator value="course.courseInviteStudents">
-                    <tr>
-                        <td>
-                            <s:property value="invitedStudentEmail"/>
+                <s:iterator value="course.courseInviteStudents" status="idx">
+                    <tr id="invite<s:property value="id"/>">
+                        <td width="150px" name="emails" value="<s:property value="invitedStudentEmail"/>">
+                        <s:property value="invitedStudentEmail"/>
                         </td>
-                        <td>
+                        <td width="80px" id="inviteStatus<s:property value="id"/>">
                             <s:if test="false == acceptInvite">
                                 <s:text name='title.user.invite.status.refused'/>
-                                <%--<a href="javascript:;" onclick="reInvite(this);"><s:property--%>
-                                <%--value="%{getText(title.org.user.reinvite)}"/></a>&nbsp;--%>
-                                <%--<a href="javascript:;"--%>
-                                <%--onclick="deleteInvite(this,  <s:property value="id"/>);"><s:text name="title.delete"/></a>--%>
                             </s:if>
                             <s:if test="acceptInvite">
                                 <s:text name='title.user.invite.status.confirmed'/>
                             </s:if>
                             <s:if test="acceptInvite == null">
-                                <s:text name='title.user.invite.status.confirmed'/>
+                                <s:text name='title.user.invite.status.unconfirmed'/>
                             </s:if>
+                        </td>
+                        <td width="200px">
+                            <s:if test="acceptInvite">
+                            </s:if>
+                            <s:else>
+                                <a href="javascript:;" onclick="reInvite(
+                                    <s:property value="id"/> );"><s:text name="title.user.invite.user.reinvite"/></a>&nbsp;
+                                <a href="javascript:;" onclick="deleteInvite( <s:property value="id"/>);"><s:text
+                                        name="title.delete"/></a>
+                            </s:else>
                         </td>
                     </tr>
                 </s:iterator>
@@ -212,9 +218,44 @@
         <li><s:property value="%{getText('label.forcast.lecturer')}"/>：<span class="orange_words"
                                                                              id="store_teacherEmail"><s:property
                 value="course.teacher.nickName"/></span></li>
-        <li><s:property value="%{getText('course.student.appointed')}"/>：<span class="orange_words"
-                                                                               id="store_emails"><s:property
-                value="course.courseTeachingBook"/></span></li>
+        <li><s:property value="%{getText('course.student.appointed')}"/>：
+            <span class="orange_words" id="store_emails">
+
+            </span>
+        </li>
+        <li>
+            <table>
+                <s:iterator value="course.courseInviteStudents" status="idx">
+                    <tr id="invite<s:property value="id"/>">
+                        <td width="150px" name="emails" value="<s:property value="invitedStudentEmail"/>">
+                            <s:property value="invitedStudentEmail"/>
+                        </td>
+                        <td width="80px" id="inviteStatus<s:property value="id"/>">
+                            <s:if test="false == acceptInvite">
+                                <s:text name='title.user.invite.status.refused'/>
+                            </s:if>
+                            <s:if test="acceptInvite">
+                                <s:text name='title.user.invite.status.confirmed'/>
+                            </s:if>
+                            <s:if test="acceptInvite == null">
+                                <s:text name='title.user.invite.status.unconfirmed'/>
+                            </s:if>
+                        </td>
+                        <td width="200px">
+                            <s:if test="acceptInvite">
+                            </s:if>
+                            <s:else>
+                                <a href="javascript:;" onclick="reInvite(
+                                    <s:property value="id"/> );"><s:text name="title.user.invite.user.reinvite"/></a>&nbsp;
+                                <a href="javascript:;" onclick="deleteInvite( <s:property value="id"/>);"><s:text
+                                        name="title.delete"/></a>
+                            </s:else>
+                        </td>
+                    </tr>
+                </s:iterator>
+            </table>
+        </li>
+
     </ul>
     <div class="obv_logo"><s:property value="%{getText('label.online.class.logo')}"/><br/><img
             id="obv_course_logo" src="<s:property value="course.logoUrl"/>"/></div>
@@ -223,3 +264,18 @@
            value="<s:property value="%{getText('onlive.message.update')}"/>"
            onclick="modifyStepMsg(this,2);"/>
 </div>
+<script type="text/javascript">
+    function reInvite(id) {
+        $.post("resendInvitation.html", {'id': id}, changeToPending);
+        function changeToPending() {
+            $("#inviteStatus" + id)[0].innerHTML = '<s:text name='title.user.invite.status.unconfirmed'/>';
+        }
+    }
+
+    function deleteInvite(id) {
+        $.post("deleteInvitation.html", {'id': id}, removeInviteCell);
+        function removeInviteCell() {
+            $("#invite" + id)[0].style.display = 'none';
+        }
+    }
+</script>

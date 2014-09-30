@@ -77,7 +77,7 @@ $(function () {
         var startDate = $("input[type='text'][name='course.startDate']").val();
         var charges = $("input[type='text'][name='course.charges']").val();
         var teacherEmail = $("input[type='text'][name='course.teacherEmail']").val();
-        var emails = $("input[type='text'][name='emails']");
+        var emails = $("[name='emails']");
         var courseLogo = $("#show_log_preview").attr("src");
         var invitedEamils = "";
 
@@ -95,6 +95,8 @@ $(function () {
         for (var i = 0; i < emails.length; i++) {
             if ($(emails[i]).val())
                 invitedEamils += ("[" + $(emails[i]).val() + "]  ");
+            else if (emails[i].innerHTML)
+                invitedEamils += ("[" + emails[i].innerHTML + "]  ");
         }
         $("#store_emails").html(invitedEamils);
         $(this).parent().parent().next().show();
