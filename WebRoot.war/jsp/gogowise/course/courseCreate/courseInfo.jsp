@@ -133,7 +133,30 @@
             <s:property value="%{getText('course.student.appointed')}"/>
             <a class="add_student_btn"><s:property value="%{getText('course.add.student')}"/></a> &nbsp;&nbsp;&nbsp;
             <span class="invite_student_input_msg tip_words"></span>
-
+            <table>
+                <s:iterator value="course.courseInviteStudents">
+                    <tr>
+                        <td>
+                            <s:property value="invitedStudentEmail"/>
+                        </td>
+                        <td>
+                            <s:if test="false == acceptInvite">
+                                <s:text name='title.user.invite.status.refused'/>
+                                <%--<a href="javascript:;" onclick="reInvite(this);"><s:property--%>
+                                <%--value="%{getText(title.org.user.reinvite)}"/></a>&nbsp;--%>
+                                <%--<a href="javascript:;"--%>
+                                <%--onclick="deleteInvite(this,  <s:property value="id"/>);"><s:text name="title.delete"/></a>--%>
+                            </s:if>
+                            <s:if test="acceptInvite">
+                                <s:text name='title.user.invite.status.confirmed'/>
+                            </s:if>
+                            <s:if test="acceptInvite == null">
+                                <s:text name='title.user.invite.status.confirmed'/>
+                            </s:if>
+                        </td>
+                    </tr>
+                </s:iterator>
+            </table>
             <div class="option_content" id="invitedStudents">
                 <input class="long_text_field_for_student"
                        placeholder="<s:property value="%{getText('org.course.student.email')}"/>"

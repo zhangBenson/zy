@@ -34,22 +34,22 @@
                             <td><s:property value="user.sexy?getText('male'):getText('female')"/></td>
                             <td>
                                 <s:if test="userStatus==1">
-                                    <s:property value="%{getText('user.status.unconfirmed')}"/>
+                                    <s:property value="%{getText(titile.user.invite.status.unconfirmed)}"/>
                                 </s:if>
                                 <s:elseif test="userStatus==3">
-                                    <s:property value="%{getText('user.status.confirmed')}"/>
+                                    <s:property value="%{getText(title.user.status.confirmed)}"/>
                                 </s:elseif>
                                 <s:elseif test="userStatus==4">
-                                    <s:property value="%{getText('user.status.disabled')}"/>
+                                    <s:property value="%{getText(title.user.status.disabled)}"/>
                                 </s:elseif>
                                 <s:else>
-                                    <s:property value="%{getText('user.status.refused')}"/>
+                                    <s:property value="%{getText(title.user.status.refused)}"/>
                                 </s:else>
                             </td>
                             <td>
                                 <s:if test="userStatus in {1,2}">
                                     <a href="javascript:;" onclick="reInviteUser(this);"><s:property
-                                            value="%{getText('org.user.reinvite')}"/></a>&nbsp;
+                                            value="%{getText(title.org.user.reinvite)}"/></a>&nbsp;
                                     <a href="javascript:;"
                                        onclick="deleteUser(this,  <s:property value="id"/>);"><s:property
                                             value="%{getText('course.class.delete')}"/></a>
@@ -143,12 +143,12 @@
     var org_user_reinvite_fail_tip = "<s:text name='org.user.reinvite.fail.tip'/>";
     var org_user_tip_not_responser = "<s:text name='org.user.tip.not.responser'/>";
 
-    var user_status_unconfirmed = "<s:text name='user.status.unconfirmed'/>";
-    var user_status_confirmed = "<s:text name='user.status.confirmed'/>";
-    var user_status_disabled = "<s:text name='user.status.disabled'/>";
-    var user_status_refused = "<s:text name='user.status.refused'/>";
+    var user_status_unconfirmed = "<s:text name='title.user.invite.status.unconfirmed'/>";
+    var user_status_confirmed = "<s:text name='title.user.invite.status.confirmed'/>";
+    var user_status_disabled = "<s:text name='title.user.invite.status.disabled'/>";
+    var user_status_refused = "<s:text name='title.user.invite.status.refused'/>";
 
-    var org_user_reinvite = "<s:text name='org.user.reinvite'/>";
+    var org_user_reinvite = "<s:text name='title.user.invite.user.reinvite'/>";
     var org_user_disable = "<s:text name='org.user.disable'/>";
     var org_user_enable = "<s:text name='org.user.enable'/>";
     var org_user_delete = "<s:text name='course.class.delete'/>";
