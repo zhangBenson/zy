@@ -41,13 +41,13 @@
                 <script type="text/javascript">
                     $(document).ready(function () {
                         $("#timeLeft<s:property value="#idx.index"/>").countdown({
-                            date: '<s:date name="classOnTheCorner.date" format="%{getText('date.formate.firstpage.course.startdate')}" />',
+                            date: '<s:date name="classOnTheCorner.date" format="%{getText('date.formate.firstpage.course.startdate')}"/>',
                             onChange: function (event, timer) {
                             },
                             onComplete: function (event) {
                                 $(this).html("<s:text name='course.in.progress'/>");
                             },
-                            htmlTemplate: "<span><b>%{d}</b><s:property value="%{getText('course.time.day')}" /><b> %{h}</b><s:property value="%{getText('course.time.hour')}" /><b>%{m}</b><s:property value="%{getText('course.time.minute')}" /><b>%{s}</b><s:property value="%{getText('course.tine.second')}" /></span>",
+                            htmlTemplate: "<span><b>%{d}</b><s:property value="%{getText('course.time.day')}"/><b> %{h}</b><s:property value="%{getText('course.time.hour')}"/><b>%{m}</b><s:property value="%{getText('course.time.minute')}"/><b>%{s}</b><s:property value="%{getText('course.tine.second')}"/></span>",
                             leadingZero: true,
                             direction: "down"
                         });

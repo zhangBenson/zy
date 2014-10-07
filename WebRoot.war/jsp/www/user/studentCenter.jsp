@@ -224,13 +224,13 @@
                                 </div>
                                 <script type="text/javascript">
                                     $("#timeLeft<s:property value="#idx.index"/>").countdown({
-                                        date: '<s:date name="classOnTheCorner.date" format="%{getText('date.formate.firstpage.course.startdate')}" />',
+                                        date: '<s:date name="classOnTheCorner.date" format="%{getText('date.formate.firstpage.course.startdate')}"/>',
                                         onChange: function (event, timer) {
                                         },
                                         onComplete: function (event) {
                                             $(this).html("<s:text name='course.in.progress'/>");
                                         },
-                                        htmlTemplate: "<span><b>%{d}</b><s:property value="%{getText('course.time.day')}" /><b> %{h}</b><s:property value="%{getText('course.time.hour')}" /><b>%{m}</b><s:property value="%{getText('course.time.minute')}" /><b>%{s}</b><s:property value="%{getText('course.tine.second')}" /></span>",
+                                        htmlTemplate: "<span><b>%{d}</b><s:property value="%{getText('course.time.day')}"/><b> %{h}</b><s:property value="%{getText('course.time.hour')}"/><b>%{m}</b><s:property value="%{getText('course.time.minute')}"/><b>%{s}</b><s:property value="%{getText('course.tine.second')}"/></span>",
                                         leadingZero: true,
                                         direction: "down"
                                     });
@@ -372,7 +372,7 @@
                     <s:property value="%{getText('course.today')}"/>
                     <div class="thickline"></div>
                     <s:if test="todayCourse">
-                        <a href="openClassSession.html?courseClass.id=<s:property value='todayCourse.classOnTheCorner.id' />" title="<s:property value="%{getText('button.start.class')}" />"><img class="centerIcon" style="width:56px;height:56px;" src="<s:property value='todayCourse.logoUrl' />"/></a>
+                        <a href="openClassSession.html?courseClass.id=<s:property value='todayCourse.classOnTheCorner.id' />" title="<s:property value="%{getText('button.start.class')}"/>"><img class="centerIcon" style="width:56px;height:56px;" src="<s:property value='todayCourse.logoUrl' />"/></a>
                         <a class="title" href="voaCourseBlog.html?course.id=<s:property value='todayCours.id' />" title="<s:property value='todayCourse.name' />"><s:property value='todayCourse.name' /></a>
                         <br/>
                         <span><s:date name="todayCourse.classOnTheCorner.date" format="%{getText('dateformat.forclass')}"/></span>
@@ -540,13 +540,13 @@
                                                 id="timeLeft<s:property value="#idx.index"/>"></b></div>
                                         <script type="text/javascript">
                                             $("#timeLeft<s:property value="#idx.index"/>").countdown({
-                                                date: '<s:date name="classOnTheCorner.date" format="%{getText('date.formate.firstpage.course.startdate')}" />',
+                                                date: '<s:date name="classOnTheCorner.date" format="%{getText('date.formate.firstpage.course.startdate')}"/>',
                                                 onChange: function (event, timer) {
                                                 },
                                                 onComplete: function (event) {
                                                     $(this).html("<s:text name='course.in.progress'/>");
                                                 },
-                                                htmlTemplate: "<span>%{d}<s:property value="%{getText('course.time.day')}" /> %{h}<s:property value="%{getText('course.time.hour')}" />%{m}<s:property value="%{getText('course.time.minute')}" />%{s}<s:property value="%{getText('course.tine.second')}" /></span>",
+                                                htmlTemplate: "<span>%{d}<s:property value="%{getText('course.time.day')}"/> %{h}<s:property value="%{getText('course.time.hour')}"/>%{m}<s:property value="%{getText('course.time.minute')}"/>%{s}<s:property value="%{getText('course.tine.second')}"/></span>",
                                                 leadingZero: true,
                                                 direction: "down"
                                             });

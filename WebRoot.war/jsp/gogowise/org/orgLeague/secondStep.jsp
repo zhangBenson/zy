@@ -35,7 +35,7 @@
                     <div class="option_tittle"><s:property value="%{getText('orgleague.info.birth')}"/></div>
                     <p id="secondStepBirthdayWarn" class="input_msg"></p>
                     <input type="hidden"
-                           value="<s:date name="responser.birthDay" format="%{getText('global.display.date')}" /> "
+                           value="<s:date name="responser.birthDay" format="%{getText('global.display.date')}"/> "
                            id="hidValueBrd">
                     <script type="text/javascript">
                         $(document).ready(function () {

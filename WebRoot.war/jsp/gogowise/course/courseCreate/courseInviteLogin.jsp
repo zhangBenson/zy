@@ -123,7 +123,7 @@
                 </p>
 
                 <p class="nextButton"><input type="submit" name="button" id="btn1" onclick="return checkForm();"
-                                             value="<s:property value="%{getText('button.next')}" />"/> <a
+                                             value="<s:property value="%{getText('button.next')}"/>"/> <a
                         href="initRepassword.html"><span><s:property value="%{getText('link.forget.pwd')}"/>？</span></a>
                 </p>
             </div>

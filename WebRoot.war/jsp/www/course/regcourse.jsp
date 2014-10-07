@@ -112,7 +112,7 @@
                         <div class="col-sm-6">
                                 <%-- <button type="button" class="btn btn-danger btn-lg btn-block">Cancel</button> --%>
                             <input type="button" class="btn btn-danger btn-lg btn-block"
-                                   value="<s:property value="%{getText('button.cancel')}" />"/>
+                                   value="<s:property value="%{getText('button.cancel')}"/>"/>
                         </div>
                     </s:form>
                 </s:if>
@@ -146,7 +146,7 @@
                             <div class="col-sm-6">
                                     <%-- <button type="button" class="btn btn-danger btn-lg btn-block">Cancel</button> --%>
                                 <input type="button" class="btn btn-danger btn-lg btn-block"
-                                       value="<s:property value="%{getText('button.cancel')}" />"/>
+                                       value="<s:property value="%{getText('button.cancel')}"/>"/>
                             </div>
                         </s:if>
                     </s:form>
@@ -166,7 +166,7 @@
                     <div class="col-sm-6">
                             <%-- <button type="button" class="btn btn-danger btn-lg btn-block">Cancel</button> --%>
                         <input type="button" class="btn btn-danger btn-lg btn-block" id="addIteam"
-                               value="<s:property value="%{getText('button.cancel')}" />"/>
+                               value="<s:property value="%{getText('button.cancel')}"/>"/>
                     </div>
                 </s:form>
 

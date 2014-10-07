@@ -4,7 +4,7 @@
 
 <table id="message_table">
     <tr class="tr_x"><td colspan="3" class="td_0"><s:property value="%{getText('title.matters.courseRelated')}"/></td></tr>
-    <tr><td class="td_1">&nbsp;</td><td colspan="2" class="td_3"><a href="#" onclick="deleteAllRow();"><s:property value="%{getText('title.matters.markAllAsRead')}" /></a></td></tr>
+    <tr><td class="td_1">&nbsp;</td><td colspan="2" class="td_3"><a href="#" onclick="deleteAllRow();"><s:property value="%{getText('title.matters.markAllAsRead')}"/></a></td></tr>
     <s:iterator value="courseReservationMatters" status="idx">
     <tr>
         <td class="td_1"><s:property value="%{getText('title.matters.course.reserve',{fromUser.nickName})}"/><a href="matterHandler.html?matter.id=<s:property value="id"/>&course.id=<s:property value="course.id"/>&matter.type=1" target="_blank" onclick="deleteThisRow(this);"><s:property value="course.name"/></a></td>
@@ -29,7 +29,7 @@
     </s:iterator>
 
 
-    <tr class="tr_x"><td colspan="3" class="td_0"><s:property value="%{getText('title.matters.messages')}" /></td></tr>
+    <tr class="tr_x"><td colspan="3" class="td_0"><s:property value="%{getText('title.matters.messages')}"/></td></tr>
     <s:iterator value="CourseMessageMatters" status="idx">
      <tr>
         <td class="td_1"><s:property value="%{getText('title.matters.course.leave.message',{fromUser.nickName})}"/><a href="matterHandler.html?matter.id=<s:property value="id"/>&course.id=<s:property value="course.id"/>&matter.type=<s:property value="type"/>" target="_blank" onclick="deleteThisRow(this);"><s:property value="course.name"/></a></td>
@@ -48,7 +48,7 @@
     </s:iterator>--%>
 
 
-    <tr class="tr_x"><td colspan="3" class="td_0"><s:property value="%{getText('title.matters.invitations')}" /></td></tr>
+    <tr class="tr_x"><td colspan="3" class="td_0"><s:property value="%{getText('title.matters.invitations')}"/></td></tr>
       <%--<s:iterator value="orgMeetingHostManMatters" status="idx">
      <tr>
         <td class="td_1"><s:property value="fromUser.nickName"/>&nbsp;邀请您主持<a href="matterHandler.html?matter.id=<s:property value="id"/>&orgMeeting.id=<s:property value="orgMeeting.id"/>&matter.type=<s:property value="type"/>&matter.email=<s:property value="email"/>&user.email=<s:property value="toEmail"/>" target="_blank" onclick="deleteThisRow(this);"><s:property value="orgMeeting.organization.schoolName"/></a>会议</td>

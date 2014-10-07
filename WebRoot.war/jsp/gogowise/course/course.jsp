@@ -194,7 +194,7 @@ programming.
                                title="<s:property value="name"/>"><img src="<s:property value="logoUrl"/>" alt=""></a>
                         </li>
                         <span><s:property value="name"/></span>
-                            <%-- <li class="li_turn"><a href="javascript:;" class="turn_left" title="<s:property value="%{getText('pagination.last.page')}" />"></a><a href="javascript:;"class="turn_right" title="<s:property value="%{getText('pagination.next.page')}" />"></a>
+                            <%-- <li class="li_turn"><a href="javascript:;" class="turn_left" title="<s:property value="%{getText('pagination.last.page')}"/>"></a><a href="javascript:;"class="turn_right" title="<s:property value="%{getText('pagination.next.page')}"/>"></a>
                             </li> --%>
                     </ul>
                 </div>

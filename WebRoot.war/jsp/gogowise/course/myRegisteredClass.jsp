@@ -181,7 +181,7 @@
                                 <td></td>
                                 <td><input class="recommdate_submit" type="button"
                                            onclick="checkCourseRecommend(<s:property value="#idx.index"/>);"
-                                           value="<s:property value="%{getText('button.submit')}" />"/>&nbsp;&nbsp;<span
+                                           value="<s:property value="%{getText('button.submit')}"/>"/>&nbsp;&nbsp;<span
                                         class="recommdate_close recommdatebtn" onclick="$.fancybox.close();"><s:property
                                         value="%{getText('button.close')}"/></span>&nbsp;&nbsp;
                                     <div id="recommend_message<s:property value="#idx.index"/>"></div>

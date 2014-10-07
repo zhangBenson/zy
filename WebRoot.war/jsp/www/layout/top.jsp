@@ -78,7 +78,7 @@
                                 <%--</s:if>--%>
                                 <%--<s:else>--%>
 
-                                <%--<li><a href="setting.html"><span></span><s:property value="%{getText('account.item.accountsettings')}" /></a></li>--%>
+                                <%--<li><a href="setting.html"><span></span><s:property value="%{getText('account.item.accountsettings')}"/></a></li>--%>
                                 <%--</s:else>--%>
 
                             <li class="divider"></li>

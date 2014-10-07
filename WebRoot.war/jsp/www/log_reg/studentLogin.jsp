@@ -12,7 +12,7 @@
         <span class="errorinfo"><s:property value="actionErrors[0]"/></span>
         <s:form validate="true" theme="css_xhtml" cssClass="form-horizontal"  method="POST" action="studentLoginProcess">
             <div class="form-group">
-                <label class="col-sm-2 control-label"> <s:property value="%{getText('email')}" /></label>
+                <label class="col-sm-2 control-label"> <s:property value="%{getText('email')}"/></label>
                 <div class="col-sm-10">
                     <span class="errorinfo" id="yzemail"></span>
                     <s:textfield name="user.email" id="logonemail" cssClass="form-control" placeholder="Email"/>
@@ -31,14 +31,14 @@
                     <div class="checkbox">
                         <label>
                                 <%-- <input type="checkbox"><s:property value="%{getText('label.log.in.remember.me.info')}"/></label> --%>
-                            <a href="initRepassword.html" style="float: right;"><span><s:property value="%{getText('link.forget.pwd')}" />？</span></a>
+                            <a href="initRepassword.html" style="float: right;"><span><s:property value="%{getText('link.forget.pwd')}"/>？</span></a>
                     </div>
 
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <input class = "btn btn-success  btn-lg btn-block" type="submit" name="button" id="btn1" onclick="return checkForm();" value="<s:property value="%{getText('button.log.in')}" />"/>
+                    <input class = "btn btn-success  btn-lg btn-block" type="submit" name="button" id="btn1" onclick="return checkForm();" value="<s:property value="%{getText('button.log.in')}"/>"/>
                 </div>
             </div>
         </s:form>

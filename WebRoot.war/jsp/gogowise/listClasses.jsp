@@ -320,11 +320,11 @@
 
 <div id="rightcontent">
     <%--<ul id="tabtitle">--%>
-    <%--<li><a href="livingClass.html"><s:property value="%{getText('online.class.avigation.realtime.course')}" /></a></li>--%>
-    <%--<li><a href="myForcastClass.html"><s:property value="%{getText('online.class.avigation.mycourse')}" /></a></li>--%>
-    <%--<li id="now"><s:property value="%{getText('online.class.avigation.newest.course')}" /></li>--%>
-    <%--<li><a href="createCourse.html"><s:property value="%{getText('online.class.avigation.open.course')}" /></a></li>--%>
-    <%--<li><a href="ageClass.html"><s:property value="%{getText('online.class.avigation.course.video')}" /></a></li>--%>
+    <%--<li><a href="livingClass.html"><s:property value="%{getText('online.class.avigation.realtime.course')}"/></a></li>--%>
+    <%--<li><a href="myForcastClass.html"><s:property value="%{getText('online.class.avigation.mycourse')}"/></a></li>--%>
+    <%--<li id="now"><s:property value="%{getText('online.class.avigation.newest.course')}"/></li>--%>
+    <%--<li><a href="createCourse.html"><s:property value="%{getText('online.class.avigation.open.course')}"/></a></li>--%>
+    <%--<li><a href="ageClass.html"><s:property value="%{getText('online.class.avigation.course.video')}"/></a></li>--%>
     <%--</ul>--%>
     <div id="html_1">
 
@@ -381,14 +381,14 @@
                 </h6>
 
                 <div class="courseinfo">
-                        <%--<p><s:property value="%{getText('label.forcast.lecturer')}" />：<b><a href="#"><s:property value="teacher.userName"/></a></b></p>--%>
+                        <%--<p><s:property value="%{getText('label.forcast.lecturer')}"/>：<b><a href="#"><s:property value="teacher.userName"/></a></b></p>--%>
                     <p><s:property value="%{getText('label.forcast.lecturer')}"/>：<b><s:a action="userBlog"><s:param
                             name="user.id" value="teacher.id"/><s:property value="teacher.nickName"/></s:a></b></p>
-                        <%--<p><s:property value="%{getText('label.online.class.org.name')}" />：<b><a href="#"><s:property value="organization.schoolName"/></a></b></p>--%>
+                        <%--<p><s:property value="%{getText('label.online.class.org.name')}"/>：<b><a href="#"><s:property value="organization.schoolName"/></a></b></p>--%>
                     <p><s:property value="%{getText('label.online.class.org.name')}"/>：<b><s:a action="orgBlog"><s:param
                             name="org.id" value="organization.id"/><s:property
                             value="organization.schoolName"/></s:a></b></p>
-                        <%--<p><s:property value="%{getText('label.forcast.producer')}" />：<b><a href="#"><s:property value="cameraMan.userName"/></a></b></p>--%>
+                        <%--<p><s:property value="%{getText('label.forcast.producer')}"/>：<b><a href="#"><s:property value="cameraMan.userName"/></a></b></p>--%>
                     <p><s:property value="%{getText('label.forcast.producer')}"/>：<b><s:a action="userBlog"><s:param
                             name="user.id" value="teacher.id"/><s:property value="cameraMan.nickName"/></s:a></b></p>
                 </div>

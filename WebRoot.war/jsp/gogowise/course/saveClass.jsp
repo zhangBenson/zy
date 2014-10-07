@@ -307,7 +307,7 @@
     <tr class="odd">
         <th scope="col" abbr="Home"><s:property value="%{getText('lable.course.no')}"/></th>
         <th scope="col" abbr="Home"><s:property value="%{getText('lable.course.nickname')}"/></th>
-        <%--<th scope="col" abbr="Home Plus"><s:property value="%{getText('lable.course.date')}" /></th>--%>
+        <%--<th scope="col" abbr="Home Plus"><s:property value="%{getText('lable.course.date')}"/></th>--%>
         <th scope="col" abbr="Business"><s:property value="%{getText('lable.course.starttime')}"/></th>
         <th scope="col" abbr="Business Plus"><s:property value="%{getText('lable.course.endtime')}"/></th>
         <th scope="col" abbr="Business Plus">&nbsp;</th>
@@ -322,7 +322,7 @@
             <td id="nickName<s:property value="id"/>"><s:property value="nickName"/></td>
             <td id="startDate<s:property value="id"/>"><s:date name="date"
                                                                format="%{getText('global.display.hour.minute')}"/></td>
-                <%--<td id="startDate<s:property value="id"/>"><s:date name="date" format="%{getText('global.display.hour.minute1')}" /></td>--%>
+                <%--<td id="startDate<s:property value="id"/>"><s:date name="date" format="%{getText('global.display.hour.minute1')}"/></td>--%>
                 <%--<td id="startDate<s:property value="id"/>"><s:text name="date" ><s:param name="date" value="" ></s:param></s:text></td>--%>
                 <%--<td id="finishDate<s:property value="id"/>"><s:text name="finishDate" ><s:param name="finishDate" value="" ></s:param></s:text></td>--%>
             <td id="finishDate<s:property value="id"/>"><s:date name="finishDate"
@@ -387,7 +387,7 @@
 		</span>
                 </li>
                     <%--<li id="li_3" >--%>
-                    <%--<label class="description" for="element_3"><s:property value="%{getText('lable.course.starttime')}" /> </label>--%>
+                    <%--<label class="description" for="element_3"><s:property value="%{getText('lable.course.starttime')}"/> </label>--%>
                     <%--<span>--%>
                     <%--<s:select  list="{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23}"--%>
                     <%--name="courseClass.startTimeHour" id="sth" theme="simple" value="" headerKey="0" headerValue="--"/>--%>
@@ -416,7 +416,7 @@
                 </li>
                 <li class="buttons">
                     <input type="submit" name="button1" id="button1" class="button"
-                           value="<s:property value="%{getText('button.save')}" />"/>
+                           value="<s:property value="%{getText('button.save')}"/>"/>
                 </li>
                 <span class="info"></span>
             </ul>

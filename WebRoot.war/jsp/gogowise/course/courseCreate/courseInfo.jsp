@@ -158,8 +158,8 @@
         <li>
             <s:property value="%{getText('course.access')}"/>：
             <span class="orange_words" id="store_course_access">
-                <s:if test="course.isPublic != true"><s:property value="%{getText('course.private')}" /></s:if>
-                <s:else><s:property value="%{getText('course.public')}" /></s:else>
+                <s:if test="course.isPublic != true"><s:property value="%{getText('course.private')}"/></s:if>
+                <s:else><s:property value="%{getText('course.public')}"/></s:else>
             </span>
         </li>
         <li>

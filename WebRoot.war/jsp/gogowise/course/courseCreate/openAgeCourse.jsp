@@ -370,16 +370,16 @@
                 </h6>
 
                 <div class="courseinfo shortCourseInfo">
-                        <%--<p><s:property value="%{getText('label.forcast.lecturer')}" />：<b><a href="#"><s:property value="teacher.userName"/></a></b></p>--%>
+                        <%--<p><s:property value="%{getText('label.forcast.lecturer')}"/>：<b><a href="#"><s:property value="teacher.userName"/></a></b></p>--%>
                     <p><s:property value="%{getText('label.forcast.lecturer')}"/>：<b><s:a action="userBlog"><s:param
                             name="user.id" value="teacher.id"/><s:property value="teacher.nickName"/></s:a></b></p>
-                        <%--<p><s:property value="%{getText('label.online.class.org.name')}" />：<b><a href="#"><s:property value="organization.schoolName"/></a></b></p>--%>
+                        <%--<p><s:property value="%{getText('label.online.class.org.name')}"/>：<b><a href="#"><s:property value="organization.schoolName"/></a></b></p>--%>
                     <s:if test="personalTeacher==null">
                         <p><s:property value="%{getText('label.online.class.org.name')}"/>：<b><s:a
                                 action="orgBlog"><s:param name="org.id" value="organization.id"/><s:property
                                 value="organization.schoolName"/></s:a></b></p>
                     </s:if>
-                        <%--<p><s:property value="%{getText('label.forcast.producer')}" />：<b><a href="#"><s:property value="cameraMan.userName"/></a></b></p>--%>
+                        <%--<p><s:property value="%{getText('label.forcast.producer')}"/>：<b><a href="#"><s:property value="cameraMan.userName"/></a></b></p>--%>
                     <p><s:property value="%{getText('label.forcast.producer')}"/>：<b><s:a action="userBlog"><s:param
                             name="user.id" value="teacher.id"/><s:property value="cameraMan.nickName"/></s:a></b></p>
                 </div>
@@ -416,9 +416,9 @@
                         <%--　 <tr>--%>
                         <%--<td class="td1"><s:property value="name"/></td>--%>
                         <%--<td><b><s:property value="nickName"/></b></td>--%>
-                        <%--<td><s:property value="%{getText('lable.course.starttime')}" />：<b><s:date name="date" format="%{getText('dateformat.forclass')}"/></b></td>--%>
-                        <%--<td><s:property value="%{getText('lable.course.endtime')}" />：<b><s:date name="finishDate" format="%{getText('dateformat.forclass')}"/></b></td>--%>
-                        <%--<td><b><s:if test="finished"><span><s:property value="%{getText('label.ended')}" /></span></s:if></b></td></tr></s:iterator>--%>
+                        <%--<td><s:property value="%{getText('lable.course.starttime')}"/>：<b><s:date name="date" format="%{getText('dateformat.forclass')}"/></b></td>--%>
+                        <%--<td><s:property value="%{getText('lable.course.endtime')}"/>：<b><s:date name="finishDate" format="%{getText('dateformat.forclass')}"/></b></td>--%>
+                        <%--<td><b><s:if test="finished"><span><s:property value="%{getText('label.ended')}"/></span></s:if></b></td></tr></s:iterator>--%>
                         <%--</table>--%>
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <s:iterator value="classes">

@@ -758,7 +758,7 @@ h6 .seeallclass {
                 <td width="188px" align="left">
                     <input type="text" class="Wdatepicker inputField" id="courseStartDateCalenderValue"
                            name="searchConditions[2].calendarValue"
-                           value="<s:date name='searchConditions.{calendarValue}[2]' format="%{getText('global.display.date')}" />"
+                           value="<s:date name='searchConditions.{calendarValue}[2]' format="%{getText('global.display.date')}"/>"
                            size="13"/>
                 </td>
             </tr>

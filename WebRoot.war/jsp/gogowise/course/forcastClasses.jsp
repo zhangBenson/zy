@@ -412,9 +412,9 @@
                         <%--　 <tr>--%>
                         <%--<td class="td1"><s:property value="name"/></td>--%>
                         <%--<td><b><s:property value="nickName"/></b></td>--%>
-                        <%--<td><s:property value="%{getText('lable.course.starttime')}" />：<b><s:date name="date" format="%{getText('dateformat.forclass')}"/></b></td>--%>
-                        <%--<td><s:property value="%{getText('lable.course.endtime')}" />：<b><s:date name="finishDate" format="%{getText('dateformat.forclass')}"/></b></td>--%>
-                        <%--<td><b><s:if test="finished"><span><s:property value="%{getText('label.ended')}" /></span></s:if></b></td></tr></s:iterator>--%>
+                        <%--<td><s:property value="%{getText('lable.course.starttime')}"/>：<b><s:date name="date" format="%{getText('dateformat.forclass')}"/></b></td>--%>
+                        <%--<td><s:property value="%{getText('lable.course.endtime')}"/>：<b><s:date name="finishDate" format="%{getText('dateformat.forclass')}"/></b></td>--%>
+                        <%--<td><b><s:if test="finished"><span><s:property value="%{getText('label.ended')}"/></span></s:if></b></td></tr></s:iterator>--%>
                         <%--</table>--%>
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <s:iterator value="classes">

@@ -114,7 +114,7 @@
             <script type="text/javascript">
                 $(document).ready(function () {
                     $("#timeLeftForBook<s:property value="#idx.index"/>").countdown({
-                        date: '<s:date name="classOnTheCorner.date" format="%{getText('date.formate.firstpage.course.startdate')}" />',
+                        date: '<s:date name="classOnTheCorner.date" format="%{getText('date.formate.firstpage.course.startdate')}"/>',
                         onChange: function (event, timer) {
                         },
                         onComplete: function (event) {
@@ -340,13 +340,13 @@
     <div class="ubd_3_2">
         <h4><s:property value="%{getText('label.course.materials')}"/></h4>
         <ul>
-            <li class="li_1" title="<s:property value="%{getText('blog.videos')}" />">
+            <li class="li_1" title="<s:property value="%{getText('blog.videos')}"/>">
                 <a href="" id="xxx1"></a>
             </li>
-            <li class="li_2" title="<s:property value="%{getText('blog.documents')}" />">
+            <li class="li_2" title="<s:property value="%{getText('blog.documents')}"/>">
                 <a href="" id="xxx2"></a>
             </li>
-            <li class="li_3" title="<s:property value="%{getText('course.selection.others')}" />">
+            <li class="li_3" title="<s:property value="%{getText('course.selection.others')}"/>">
                 <a href="" id="xxx3"></a>
             </li>
         </ul>

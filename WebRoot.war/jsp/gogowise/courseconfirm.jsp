@@ -351,7 +351,7 @@
                 <div class="topbtn">
                     <input type="button" class="btn1 reservationconfirmed" value="" id="reservationconfirmed"/>
                     <input type="button" class="btn1 cancel"
-                           value="<s:property value="%{getText('button.cancel')}" />"/>
+                           value="<s:property value="%{getText('button.cancel')}"/>"/>
                 </div>
             </s:form>
             <div id="panelinfo">

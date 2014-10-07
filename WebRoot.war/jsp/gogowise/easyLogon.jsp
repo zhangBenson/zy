@@ -160,7 +160,7 @@
 
             <p>
                 <input type="submit" name="button" id="btn1" onclick="return checkForm();"
-                       value="<s:property value="%{getText('button.log.in')}" />"/> <a
+                       value="<s:property value="%{getText('button.log.in')}"/>"/> <a
                     href="initRepassword.html"><span><s:property value="%{getText('link.forget.pwd')}"/>？</span></a>
             </p>
         </div>

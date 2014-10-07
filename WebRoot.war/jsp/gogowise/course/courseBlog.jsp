@@ -185,7 +185,7 @@
                     <tr>
                         <td></td>
                         <td><input class="recommdate_submit" type="button" onclick="checkCourseRecommend();"
-                                   value="<s:property value="%{getText('button.submit')}" />"/>&nbsp;&nbsp;<span
+                                   value="<s:property value="%{getText('button.submit')}"/>"/>&nbsp;&nbsp;<span
                                 class="recommdate_close recommdatebtn"><s:property
                                 value="%{getText('button.close')}"/></span>&nbsp;&nbsp;<span
                                 id="recommend_message"></span></td>
@@ -280,9 +280,9 @@
             </s:iterator>
             <s:if test="course.studentNum > 14">
                 <li class="li_turn"><a href="javascript:;" class="turn_left"
-                                       title="<s:property value="%{getText('pagination.last.page')}" />"></a><a
+                                       title="<s:property value="%{getText('pagination.last.page')}"/>"></a><a
                         href="javascript:;" class="turn_right"
-                        title="<s:property value="%{getText('pagination.next.page')}" />"></a></li>
+                        title="<s:property value="%{getText('pagination.next.page')}"/>"></a></li>
             </s:if>
         </ul>
     </div>
@@ -428,9 +428,9 @@
                        title="<s:property value="name"/>"><img src="<s:property value="logoUrl"/>"/></a></li>
             </s:iterator>
             <li class="li_turn"><a href="javascript:;" class="turn_left"
-                                   title="<s:property value="%{getText('pagination.last.page')}" />"></a><a
+                                   title="<s:property value="%{getText('pagination.last.page')}"/>"></a><a
                     href="javascript:;" class="turn_right"
-                    title="<s:property value="%{getText('pagination.next.page')}" />"></a></li>
+                    title="<s:property value="%{getText('pagination.next.page')}"/>"></a></li>
         </ul>
     </div>
     <div class="lcr_1">
@@ -441,9 +441,9 @@
                        title="<s:property value="name"/>"><img src="<s:property value="logoUrl"/>"/></a></li>
             </s:iterator>
             <li class="li_turn"><a href="javascript:;" class="turn_left"
-                                   title="<s:property value="%{getText('pagination.last.page')}" />"></a><a
+                                   title="<s:property value="%{getText('pagination.last.page')}"/>"></a><a
                     href="javascript:;" class="turn_right"
-                    title="<s:property value="%{getText('pagination.next.page')}" />"></a></li>
+                    title="<s:property value="%{getText('pagination.next.page')}"/>"></a></li>
         </ul>
     </div>
     <div class="lcr_news">

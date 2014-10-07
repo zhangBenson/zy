@@ -62,7 +62,7 @@
                         <div class="col-sm-offset-2 col-sm-10">
                             <input class="btn btn-success  btn-lg btn-block" type="submit" name="button" id="btn1"
                                    onclick="return checkForm();"
-                                   value="<s:property value="%{getText('button.log.in')}" />"/>
+                                   value="<s:property value="%{getText('button.log.in')}"/>"/>
                         </div>
                     </div>
                 </s:form>

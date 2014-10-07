@@ -32,7 +32,7 @@
         <s:if test="roleType==1">
         $(document).ready(function () {
             $(document).countdown({
-                date: '<s:date name="interview.startTime" format="%{getText('date.formate.firstpage.course.startdate')}" />',
+                date: '<s:date name="interview.startTime" format="%{getText('date.formate.firstpage.course.startdate')}"/>',
                 onChange: function (event, timer) {
                 },
                 onComplete: function (event) {

@@ -39,7 +39,7 @@
                 <div class="forget">
                     <a href="initRepassword.html"><s:property value="%{getText('link.forget.pwd')}"/>？</a>
                 </div>
-                <input type="submit" class="subBtn" value="<s:property value="%{getText('button.log.in')}" />"/>
+                <input type="submit" class="subBtn" value="<s:property value="%{getText('button.log.in')}"/>"/>
             </div>
 
         </s:form>

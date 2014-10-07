@@ -264,7 +264,7 @@ programming.
             <s:form theme="css_xhtml" name="commentsForm" method="post" id="commentForm">
                 <textarea id="message_textarea" class="form-control" rows="3"></textarea>
                 <br/>
-                <%--<a href="javascript:;" class="btn btn-primary btn-lg btn-block" id="message_submit_btn" ><s:property value="%{getText('blog.comments.submit')}" /></a>--%>
+                <%--<a href="javascript:;" class="btn btn-primary btn-lg btn-block" id="message_submit_btn" ><s:property value="%{getText('blog.comments.submit')}"/></a>--%>
                 <a href="javascript:;" class="btn btn-primary btn-lg btn-block" id="message_submit_btn"><s:property
                         value="%{getText('blog.comments.submit')}"/></a>
             </s:form>

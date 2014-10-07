@@ -184,9 +184,9 @@
     <div class="ubd_3_3">
         <h4>组织数据</h4>
         <ul>
-            <li class="li_1" title="<s:property value="%{getText('blog.videos')}" />"></li>
-            <li class="li_2" title="<s:property value="%{getText('blog.documents')}" />"></li>
-            <li class="li_3" title="<s:property value="%{getText('course.selection.others')}" />"></li>
+            <li class="li_1" title="<s:property value="%{getText('blog.videos')}"/>"></li>
+            <li class="li_2" title="<s:property value="%{getText('blog.documents')}"/>"></li>
+            <li class="li_3" title="<s:property value="%{getText('course.selection.others')}"/>"></li>
         </ul>
     </div>
 </div>

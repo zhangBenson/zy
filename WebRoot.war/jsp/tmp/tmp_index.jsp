@@ -486,7 +486,7 @@ textarea, input {
                         <td>
                             <div class="nickname">
                                 <input name="user.email" id="nickname"
-                                       placeholder="<s:property value="%{getText('msg.email')}" />" type="text"/><br/>
+                                       placeholder="<s:property value="%{getText('msg.email')}"/>" type="text"/><br/>
                                 <span class="emailTip"></span>
                             </div>
                         </td>
@@ -495,7 +495,7 @@ textarea, input {
                         <td>
                             <div class="password">
                                 <input name="user.password" id="password"
-                                       placeholder="<s:property value="%{getText('msg.pwd')}" />" type="password"/>
+                                       placeholder="<s:property value="%{getText('msg.pwd')}"/>" type="password"/>
                                 <br/>
                                 <span class="pwdTip"></span>
                             </div>
@@ -542,16 +542,16 @@ textarea, input {
                                     var startTime = new Date("<s:date name="classOnTheCorner.date" format="%{getText('dateformat.forclass')}"/>".replace(/-/g, '/'));
                                     var now = new Date();
                                     if (startTime < now) {
-                                        $("#course_time_<s:property value="#idx.index"/>").html("<s:property value="%{getText('course.online.in.progress')}" />");
+                                        $("#course_time_<s:property value="#idx.index"/>").html("<s:property value="%{getText('course.online.in.progress')}"/>");
                                     } else if ((startTime - now) / 1000 < 3600) {
                                         $("#second_counter<s:property value="#idx.index"/>").countdown({
-                                            date: '<s:date name="classOnTheCorner.date" format="%{getText('date.formate.firstpage.course.startdate')}" />',
+                                            date: '<s:date name="classOnTheCorner.date" format="%{getText('date.formate.firstpage.course.startdate')}"/>',
                                             onChange: function (event, timer) {
                                             },
                                             onComplete: function (event) {
                                                 $(this).html("<s:text name='course.in.progress'/>");
                                             },
-                                            htmlTemplate: "<span><b>%{m}</b><s:property value="%{getText('course.time.minute')}" /><b>%{s}</b><s:property value="%{getText('course.tine.second')}" /></span>",
+                                            htmlTemplate: "<span><b>%{m}</b><s:property value="%{getText('course.time.minute')}"/><b>%{s}</b><s:property value="%{getText('course.tine.second')}"/></span>",
                                             leadingZero: true,
                                             direction: "down"
                                         });
@@ -586,16 +586,16 @@ textarea, input {
                                     var startTime = new Date("<s:date name="firstFutureTerm.startTime" format="%{getText('dateformat.forclass')}"/>".replace(/-/g, '/'));
                                     var now = new Date();
                                     if (startTime < now) {
-                                        $("#show_time_<s:property value="#idx.index"/>").html("<s:property value="%{getText('show.online.in.progress')}" />");
+                                        $("#show_time_<s:property value="#idx.index"/>").html("<s:property value="%{getText('show.online.in.progress')}"/>");
                                     } else if ((startTime - now) / 1000 < 3600) {
                                         $("#second_counter<s:property value="#idx.index"/>").countdown({
-                                            date: '<s:date name="firstFutureTerm.startTime" format="%{getText('date.formate.firstpage.course.startdate')}" />',
+                                            date: '<s:date name="firstFutureTerm.startTime" format="%{getText('date.formate.firstpage.course.startdate')}"/>',
                                             onChange: function (event, timer) {
                                             },
                                             onComplete: function (event) {
                                                 $(this).html("<s:text name='show.online.in.progress'/>");
                                             },
-                                            htmlTemplate: "<span><b>%{m}</b><s:property value="%{getText('course.time.minute')}" /><b>%{s}</b><s:property value="%{getText('course.tine.second')}" /></span>",
+                                            htmlTemplate: "<span><b>%{m}</b><s:property value="%{getText('course.time.minute')}"/><b>%{s}</b><s:property value="%{getText('course.tine.second')}"/></span>",
                                             leadingZero: true,
                                             direction: "down"
                                         });

@@ -109,7 +109,7 @@
             <br/>
 
             <p><input type="submit" name="button" id="btn1" onclick="return checkForm();"
-                      value="<s:property value="%{getText('Login')}" />"/> <a
+                      value="<s:property value="%{getText('Login')}"/>"/> <a
                     href="initRepassword.html"><span><s:property value="%{getText('link.forget.pwd')}"/>？</span></a>
             </p>
         </div>

@@ -51,14 +51,14 @@
                             id="timeLeft<s:property value="#idx.index"/>"></b></strong>
                     <script type="text/javascript">
                         $("#timeLeft<s:property value="#idx.index"/>").countdown({
-                            date: '<s:date name="classOnTheCorner.date" format="%{getText('date.formate.firstpage.course.startdate')}" />',
+                            date: '<s:date name="classOnTheCorner.date" format="%{getText('date.formate.firstpage.course.startdate')}"/>',
                             onChange: function (event, timer) {
                             },
                             onComplete: function (event) {
                                 $("#timer").html("");
                                 $(this).html("<s:text name='course.in.progress'/>");
                             },
-                            htmlTemplate: "<span><b>%{d}</b><s:property value="%{getText('course.time.day')}" /><b> %{h}</b><s:property value="%{getText('course.time.hour')}" /><b>%{m}</b><s:property value="%{getText('course.time.minute')}" /><b>%{s}</b><s:property value="%{getText('course.tine.second')}" /></span>",
+                            htmlTemplate: "<span><b>%{d}</b><s:property value="%{getText('course.time.day')}"/><b> %{h}</b><s:property value="%{getText('course.time.hour')}"/><b>%{m}</b><s:property value="%{getText('course.time.minute')}"/><b>%{s}</b><s:property value="%{getText('course.tine.second')}"/></span>",
                             leadingZero: true,
                             direction: "down"
                         });
@@ -107,13 +107,13 @@
                             id="showTimeleft<s:property value="#idx.index"/>"></b></strong>
                     <script type="text/javascript">
                         $("#showTimeleft<s:property value="#idx.index"/>").countdown({
-                            date: '<s:date name="firstFutureTerm.startTime" format="%{getText('date.formate.firstpage.course.startdate')}" />',
+                            date: '<s:date name="firstFutureTerm.startTime" format="%{getText('date.formate.firstpage.course.startdate')}"/>',
                             onChange: function (event, timer) {
                             },
                             onComplete: function (event) {
                                 $(this).html("<s:text name='live.term.is.on.living'/>");
                             },
-                            htmlTemplate: "<span><b>%{d}</b><s:property value="%{getText('course.time.day')}" /><b> %{h}</b><s:property value="%{getText('course.time.hour')}" /><b>%{m}</b><s:property value="%{getText('course.time.minute')}" /><b>%{s}</b><s:property value="%{getText('course.tine.second')}" /></span>",
+                            htmlTemplate: "<span><b>%{d}</b><s:property value="%{getText('course.time.day')}"/><b> %{h}</b><s:property value="%{getText('course.time.hour')}"/><b>%{m}</b><s:property value="%{getText('course.time.minute')}"/><b>%{s}</b><s:property value="%{getText('course.tine.second')}"/></span>",
                             leadingZero: true,
                             direction: "down"
                         });
@@ -149,12 +149,12 @@
 <%--<strong><s:property value="%{getText('myfirst.page.onlive.left.time')}"/>&nbsp;<b id="liveChannelTimeLeft<s:property value="#idx.index"/>"></b></strong>--%>
 <%--<script type="text/javascript">--%>
 <%--$("#liveChannelTimeLeft<s:property value="#idx.index"/>").countdown({--%>
-<%--date:'<s:date name="theLatestChannelTerms.startTime" format="%{getText('date.formate.firstpage.course.startdate')}" />',--%>
+<%--date:'<s:date name="theLatestChannelTerms.startTime" format="%{getText('date.formate.firstpage.course.startdate')}"/>',--%>
 <%--onChange:function (event, timer) {},--%>
 <%--onComplete:function (event) {--%>
 <%--$(this).html("<s:text name='live.term.is.on.living'/>");--%>
 <%--},--%>
-<%--htmlTemplate: "<span><b>%{d}</b><s:property value="%{getText('course.time.day')}" /><b> %{h}</b><s:property value="%{getText('course.time.hour')}" /><b>%{m}</b><s:property value="%{getText('course.time.minute')}" /><b>%{s}</b><s:property value="%{getText('course.tine.second')}" /></span>",--%>
+<%--htmlTemplate: "<span><b>%{d}</b><s:property value="%{getText('course.time.day')}"/><b> %{h}</b><s:property value="%{getText('course.time.hour')}"/><b>%{m}</b><s:property value="%{getText('course.time.minute')}"/><b>%{s}</b><s:property value="%{getText('course.tine.second')}"/></span>",--%>
 <%--leadingZero:true,--%>
 <%--direction:"down"--%>
 <%--});--%>
@@ -219,13 +219,13 @@
                             id="interviewTimeLeft<s:property value="#idx.index"/>"></b></strong>
                     <script type="text/javascript">
                         $("#interviewTimeLeft<s:property value="#idx.index"/>").countdown({
-                            date: '<s:date name="startTime" format="%{getText('date.formate.firstpage.course.startdate')}" />',
+                            date: '<s:date name="startTime" format="%{getText('date.formate.firstpage.course.startdate')}"/>',
                             onChange: function (event, timer) {
                             },
                             onComplete: function (event) {
                                 $(this).html("<s:text name='interview.in.progress'/>");
                             },
-                            htmlTemplate: "<span><b>%{d}</b><s:property value="%{getText('course.time.day')}" /><b> %{h}</b><s:property value="%{getText('course.time.hour')}" /><b>%{m}</b><s:property value="%{getText('course.time.minute')}" /><b>%{s}</b><s:property value="%{getText('course.tine.second')}" /></span>",
+                            htmlTemplate: "<span><b>%{d}</b><s:property value="%{getText('course.time.day')}"/><b> %{h}</b><s:property value="%{getText('course.time.hour')}"/><b>%{m}</b><s:property value="%{getText('course.time.minute')}"/><b>%{s}</b><s:property value="%{getText('course.tine.second')}"/></span>",
                             leadingZero: true,
                             direction: "down"
                         });
@@ -294,13 +294,13 @@
                             id="meetingTimeLeft<s:property value="#idx.index"/>"></b></strong>
                     <script type="text/javascript">
                         $("#meetingTimeLeft<s:property value="#idx.index"/>").countdown({
-                            date: '<s:date name="startTime" format="%{getText('date.formate.firstpage.course.startdate')}" />',
+                            date: '<s:date name="startTime" format="%{getText('date.formate.firstpage.course.startdate')}"/>',
                             onChange: function (event, timer) {
                             },
                             onComplete: function (event) {
                                 $(this).html("<s:text name='meeting.in.progress'/>");
                             },
-                            htmlTemplate: "<span><b>%{d}</b><s:property value="%{getText('course.time.day')}" /><b> %{h}</b><s:property value="%{getText('course.time.hour')}" /><b>%{m}</b><s:property value="%{getText('course.time.minute')}" /><b>%{s}</b><s:property value="%{getText('course.tine.second')}" /></span>",
+                            htmlTemplate: "<span><b>%{d}</b><s:property value="%{getText('course.time.day')}"/><b> %{h}</b><s:property value="%{getText('course.time.hour')}"/><b>%{m}</b><s:property value="%{getText('course.time.minute')}"/><b>%{s}</b><s:property value="%{getText('course.tine.second')}"/></span>",
                             leadingZero: true,
                             direction: "down"
                         });
@@ -412,7 +412,7 @@
                     <p class="rt_detail fl">
                         <a class="img"
                            href="openClassSession.html?courseClass.id=<s:property value='todayCourse.classOnTheCorner.id' />"
-                           title="<s:property value="%{getText('button.start.class')}" />"><img
+                           title="<s:property value="%{getText('button.start.class')}"/>"><img
                                 src="<s:property value='todayCourse.logoUrl' />"/></a>
                         <a class="title" href="voaCourseBlog.html?course.id=<s:property value='todayCours.id' />"
                            title="<s:property value='todayCourse.name' />"><s:property value='todayCourse.name'/></a>

@@ -139,7 +139,7 @@
                     <%--</div>--%>
 
                 <p class="nextButton"><input type="submit" name="button" id="btn1" onclick="return checkForm();"
-                                             value="<s:property value="%{getText('button.next')}" />"/>
+                                             value="<s:property value="%{getText('button.next')}"/>"/>
                 </p>
             </div>
         </div>
