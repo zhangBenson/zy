@@ -14,11 +14,11 @@
                     <div class="coursePanelInfoRight">
                         <p class="textOverSinglerow"><s:property value="name"/></p>
 
-                        <p class="textOverSinglerow"><s:property value="%{getText('course.school')}"/>:&nbsp;<s:property
+                        <p class="textOverSinglerow"><s:text name="course.school"/>:&nbsp;<s:property
                                 value="organization.schoolName"/></p>
 
                         <p class="textOverSinglerow">
-                            <s:property value="%{getText('courses.info.lecturer')}"/>:&nbsp;
+                            <s:text name="courses.info.lecturer"/>:&nbsp;
                             <s:if test="teacher.userName != null"><s:property value="teacher.userName"/></s:if>
                             <s:else><s:property value="teacher.nickName"/></s:else>
                         </p>
@@ -33,6 +33,6 @@
 <s:if test="pagination.hasNext">
     <a href="javascript:;" id="link<s:property value="pagination.pageNow"/>"
        onclick="getMoreCousre(<s:property value="pagination.pageNow"/>);">
-        <p class="text-right"><s:property value="%{getText('others.more')}"/></p>
+        <p class="text-right"><s:text name="others.more"/></p>
     </a>
 </s:if>

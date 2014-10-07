@@ -10,14 +10,14 @@
             <li class="help_answer">
                 <div class="pic_1"></div>
                 <div class="pic_2">
-                    <p><s:property value="%{getText('faq1.1')}"/><br/><br/>
+                    <p><s:text name="faq1.1"/><br/><br/>
                         <img width="552" height="310" src="images/helpCenter/helpCenter_clip_image002.jpg"/><br/><br/>
-                        <s:property value="%{getText('faq1.2')}"/><br/><br/>
+                        <s:text name="faq1.2"/><br/><br/>
                         <img width="334" height="209" src="images/helpCenter/helpCenter_clip_image003.jpg"/> <br/><br/>
-                        <s:property value="%{getText('faq1.3')}"/>
+                        <s:text name="faq1.3"/>
                     </p>
 
-                    <p><s:property value="%{getText('faq1.4')}"/></p>
+                    <p><s:text name="faq1.4"/></p>
                 </div>
                 <div class="pic_3"></div>
             </li>
@@ -27,11 +27,11 @@
                 <div class="pic_1"></div>
                 <div class="pic_2">
                     <p>
-                        <s:property value="%{getText('faq2.1')}"/><br/><br/>
+                        <s:text name="faq2.1"/><br/><br/>
                         <img width="552" height="310" src="images/helpCenter/helpCenter_clip_image002.jpg"/><br/><br/>
-                        <s:property value="%{getText('faq2.2')}"/><br/><br/>
+                        <s:text name="faq2.2"/><br/><br/>
                         <img src="images/helpCenter/q2_1.jpg" alt="q2_1" width="558" height="313"/><br/><br/>
-                        <s:property value="%{getText('faq2.3')}"/><br/><br/>
+                        <s:text name="faq2.3"/><br/><br/>
                         <img src="images/helpCenter/q2_2.jpg" alt="q2_2" width="558" height="423"/><br/><br/>
                     </p>
                 </div>
@@ -43,9 +43,9 @@
                 <div class="pic_1"></div>
                 <div class="pic_2">
                     <ul>
-                        <li><s:property value="%{getText('faq3.1')}"/><br/><br/></li>
-                        <li><s:property value="%{getText('faq3.2')}"/><br/><br/></li>
-                        <li><s:property value="%{getText('faq3.3')}"/><br/></li>
+                        <li><s:text name="faq3.1"/><br/><br/></li>
+                        <li><s:text name="faq3.2"/><br/><br/></li>
+                        <li><s:text name="faq3.3"/><br/></li>
                     </ul>
                 </div>
                 <div class="pic_3"></div>
@@ -56,9 +56,9 @@
                 <div class="pic_1"></div>
                 <div class="pic_2">
                     <ul>
-                        <li><s:property value="%{getText('faq4.1')}"/><br/><br/></li>
-                        <li><s:property value="%{getText('faq4.2')}"/><br/><br/></li>
-                        <li><s:property value="%{getText('faq4.3')}"/><br/><br/>
+                        <li><s:text name="faq4.1"/><br/><br/></li>
+                        <li><s:text name="faq4.2"/><br/><br/></li>
+                        <li><s:text name="faq4.3"/><br/><br/>
                         </li>
                     </ul>
                 </div>
@@ -83,9 +83,9 @@
                 <div class="pic_1"></div>
                 <div class="pic_2">
                     <ul>
-                        <li><s:property value="%{getText('faq5.1')}"/><br/><br/></li>
-                        <li><s:property value="%{getText('faq5.2')}"/><br/><br/></li>
-                        <li><s:property value="%{getText('faq5.3')}"/><br/><br/>
+                        <li><s:text name="faq5.1"/><br/><br/></li>
+                        <li><s:text name="faq5.2"/><br/><br/></li>
+                        <li><s:text name="faq5.3"/><br/><br/>
                         </li>
                     </ul>
                 </div>

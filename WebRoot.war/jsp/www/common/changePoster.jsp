@@ -201,7 +201,7 @@
                     <img id="show_log_preview1"/>
 
                     <div class="file_upload">
-                            <%--<input type="button" class="submit_btn" id="change_portrait" value="<s:property value="%{getText('onlive.message.update')}"/>" href="posterImageProcess.html" />--%>
+                            <%--<input type="button" class="submit_btn" id="change_portrait" value="<s:text name="onlive.message.update"/>" href="posterImageProcess.html" />--%>
                         <div class="file_upload"><input type="file" name="fileupload" id="fileupload1"/></div>
                     </div>
                     <p id="warning1" class="input_msg"></P>
@@ -225,7 +225,7 @@
                     <img id="show_log_preview2"/>
 
                     <div class="file_upload">
-                            <%--<input type="button" class="submit_btn" id="change_portrait" value="<s:property value="%{getText('onlive.message.update')}"/>" href="posterImageProcess.html" />--%>
+                            <%--<input type="button" class="submit_btn" id="change_portrait" value="<s:text name="onlive.message.update"/>" href="posterImageProcess.html" />--%>
                         <div class="file_upload"><input type="file" name="fileupload" id="fileupload2"/></div>
                     </div>
                     <p id="warning2" class="input_msg"></P>
@@ -250,7 +250,7 @@
                     <img id="show_log_preview3"/>
 
                     <div class="file_upload">
-                            <%--<input type="button" class="submit_btn" id="change_portrait" value="<s:property value="%{getText('onlive.message.update')}"/>" href="posterImageProcess.html" />--%>
+                            <%--<input type="button" class="submit_btn" id="change_portrait" value="<s:text name="onlive.message.update"/>" href="posterImageProcess.html" />--%>
                         <div class="file_upload"><input type="file" name="fileupload" id="fileupload3"/></div>
                     </div>
                     <p id="warning3" class="input_msg"></P>
@@ -275,7 +275,7 @@
                     <img id="show_log_preview4"/>
 
                     <div class="file_upload">
-                            <%--<input type="button" class="submit_btn" id="change_portrait" value="<s:property value="%{getText('onlive.message.update')}"/>" href="posterImageProcess.html" />--%>
+                            <%--<input type="button" class="submit_btn" id="change_portrait" value="<s:text name="onlive.message.update"/>" href="posterImageProcess.html" />--%>
                         <div class="file_upload"><input type="file" name="fileupload" id="fileupload4"/></div>
                     </div>
                     <p id="warning4" class="input_msg"></P>

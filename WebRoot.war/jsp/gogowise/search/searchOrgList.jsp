@@ -9,7 +9,7 @@
     <s:hidden name="searchStr"/>
     <div class="listUp">
         <s:hidden value="%{#session.userID}" id="hidSessionId"/>
-        <h3 class="h3_title"><s:property value="%{getText('search.header.organization')}"/></h3>
+        <h3 class="h3_title"><s:text name="search.header.organization"/></h3>
 
             <%-- 这是组织列表 --%>
         <div class="memeberWrap orgInfo fl">
@@ -25,7 +25,7 @@
                            title="<s:property value="schoolName"/>"><s:property value="schoolName"/></a>
                         <span><%--7老师&nbsp;&nbsp;5课程&nbsp;&nbsp;--%>
                             <s:property value="fansNum"/>
-                            <s:property value="%{getText('user.add.focus')}"/></span>
+                            <s:text name="user.add.focus"/></span>
                         <span><s:property value="description"/></span>
                     </div>
                     <div class="Info3 fr">

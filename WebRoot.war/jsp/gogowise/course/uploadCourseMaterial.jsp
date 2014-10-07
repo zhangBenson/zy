@@ -9,14 +9,14 @@
 
 <div id="tabtag_4con">
 
-    <h3><s:property value="%{getText('course.resource.list')}"/></h3>
+    <h3><s:text name="course.resource.list"/></h3>
     <table>
         <tr>
-            <td width="100px;"><s:property value="%{getText('course.resource.title')}"/></td>
-            <td width="70px;"><s:property value="%{getText('course.resource.type')}"/></td>
-            <td width="150px;"><s:property value="%{getText('course.resource.date')}"/></td>
-            <%--<td width="70px;"><s:property value="%{getText('course.resource.size')}"/></td>--%>
-            <td width="240px;"><s:property value="%{getText('course.resource.desc')}"/></td>
+            <td width="100px;"><s:text name="course.resource.title"/></td>
+            <td width="70px;"><s:text name="course.resource.type"/></td>
+            <td width="150px;"><s:text name="course.resource.date"/></td>
+            <%--<td width="70px;"><s:text name="course.resource.size"/></td>--%>
+            <td width="240px;"><s:text name="course.resource.desc"/></td>
             <td width="100px;"></td>
         </tr>
         <s:iterator value="courseMaterials">
@@ -24,19 +24,19 @@
                 <td><s:property value="sourceTitle"/></td>
                 <td>
                     <s:if test="type == 1">
-                        <s:property value="%{getText('course.material.type.1')}"/>
+                        <s:text name="course.material.type.1"/>
                     </s:if>
                     <s:elseif test="type == 2">
-                        <s:property value="%{getText('course.material.type.2')}"/>
+                        <s:text name="course.material.type.2"/>
                     </s:elseif>
                     <s:elseif test="type == 3">
-                        <s:property value="%{getText('course.material.type.3')}"/>
+                        <s:text name="course.material.type.3"/>
                     </s:elseif>
                     <s:elseif test="type == 4">
-                        <s:property value="%{getText('course.material.type.4')}"/>
+                        <s:text name="course.material.type.4"/>
                     </s:elseif>
                     <s:else>
-                        <s:property value="%{getText('course.material.type.0')}"/>
+                        <s:text name="course.material.type.0"/>
                     </s:else>
                 </td>
                 <td><s:date name="uploadTime" format="%{getText('dateformat.forclass')}"/></td>
@@ -62,10 +62,10 @@
         </s:iterator>
     </table>
 
-    <h3><s:property value="%{getText('course.resource.upload.resource')}"/></h3>
+    <h3><s:text name="course.resource.upload.resource"/></h3>
     <table>
         <tr>
-            <td><s:property value="%{getText('course.resource.path')}"/></td>
+            <td><s:text name="course.resource.path"/></td>
             <td>
                 <div style="float: left;"><input type="file" name="fileupload" value="浏览" id="cm_upload_input"/></div>
                 <span class="errorMessage" style="float: left;" id="cm_upload"></span>
@@ -76,12 +76,12 @@
             <input type="hidden" name="courseMaterial.fullSize" id="cm_size"/>
             <input type="hidden" name="courseMaterial.fullPath" id="cm_path"/>
             <tr>
-                <td><s:property value="%{getText('course.resource.title')}"/></td>
+                <td><s:text name="course.resource.title"/></td>
                 <td><input type="text" name="courseMaterial.sourceTitle"/><span class="errorMessage"
                                                                                 id="cm_title"></span></td>
             </tr>
             <tr>
-                <td><s:property value="%{getText('course.resource.type')}"/></td>
+                <td><s:text name="course.resource.type"/></td>
                 <td>
                     <s:select
                             list="#{'1':getText('course.material.type.1'),'2':getText('course.material.type.2'),'3':getText('course.material.type.3'),'4':getText('course.material.type.4'),'0':getText('course.material.type.0')}"
@@ -91,9 +91,9 @@
                 </td>
             </tr>
             <tr>
-                <td><s:property value="%{getText('course.resource.desc')}"/></td>
+                <td><s:text name="course.resource.desc"/></td>
                 <td><textarea name="courseMaterial.description" onkeyup="changeWordNumber(this,$('#cm_desc'),250);"
-                              placeholder="<s:property value="%{getText('course.resource.fill.desc')}"/>"></textarea><span
+                              placeholder="<s:text name="course.resource.fill.desc"/>"></textarea><span
                         class="errorMessage" id="cm_desc"></span></td>
             </tr>
             <tr>

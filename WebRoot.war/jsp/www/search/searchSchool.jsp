@@ -18,7 +18,7 @@
                         <div class="input-group-btn">
                             <button type="submit" class="btn btn-default btn-lg">
                                 <span class="glyphicon glyphicon-search"></span>
-                                <s:property value="%{getText('menu.item.search')}"/>
+                                <s:text name="menu.item.search"/>
                             </button>
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                             value="%{getText('label.school.comments')}"/>(<s:property
                             value="organizationCommentDao.findOrgCommentByOrgId(id, null).size()"/>)</a></p>
                         <%-- <div style="float: right">
-                            <div style="float:left"><a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="nickName"/>"><s:property value="%{getText('label.school.comments')}"/>(<s:property value="organizationCommentDao.findOrgCommentByOrgId(id, null).size()"/>)</a> | </div>
+                            <div style="float:left"><a href="orgBlog.html?org.id=<s:property value="id"/>" title="<s:property value="nickName"/>"><s:text name="label.school.comments"/>(<s:property value="organizationCommentDao.findOrgCommentByOrgId(id, null).size()"/>)</a> | </div>
                             <div style="float:left" id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
                                 <a class="bds_fbook facebook" title="Facebook"></a>
                                 <a class="bds_twi twitter" title="Twitter"></a>
@@ -130,7 +130,7 @@
     <s:else>
         <div class="schoolRow" style="text-align: center;">
             <div class="row">
-                <strong><s:property value="%{getText('search.organization.no.result.message')}"/></strong>
+                <strong><s:text name="search.organization.no.result.message"/></strong>
             </div>
         </div>
     </s:else>

@@ -15,33 +15,33 @@
 <div id="orgLeagueDiv">
     <div id="orgCenterDiv">
         <div class="secondTipHead">
-            <span><s:property value="%{getText('org.info.required')}"/></span></div>
+            <span><s:text name="org.info.required"/></span></div>
         <s:form action="saveThirdStep" theme="simple" id="responserForm" enctype="multipart/form-data" validate="true"
                 method="post">
             <s:hidden name="responser.id"/>
             <s:hidden name="org.id"/>
             <ul class="principalMsg">
                 <li class="quick_long_li">
-                    <div class="option_tittle"><s:property value="%{getText('name.of.person.in.change')}"/></div>
+                    <div class="option_tittle"><s:text name="name.of.person.in.change"/></div>
                     <p id="secondStepNameWarn" class="input_msg"></P>
 
                     <div class="input_content"><s:textfield cssClass="inputName" id="secondStepName"
                                                             name="org.responsiblePerson.userName"/></div>
                 </li>
                 <li class="quick_long_li">
-                    <div class="option_tittle"><s:property value="%{getText('orgleague.info.orgName')}"/></div>
+                    <div class="option_tittle"><s:text name="orgleague.info.orgName"/></div>
                     <p id="orgNameWarn" style="color: red; display: inline;"></p>
                     <s:textfield id="thirdStepName" name="org.schoolName" cssClass="inputName"/>
                 </li>
                 <li class="quick_long_li">
-                    <div class="option_tittle"><s:property value="%{getText('orgleague.info.contact')}"/></div>
+                    <div class="option_tittle"><s:text name="orgleague.info.contact"/></div>
                     <p id="secondStepContactWarn" class="input_msg"></P>
 
                     <div class="input_content"><s:textfield id="secondStepContact" cssClass="inputTel"
                                                             name="org.responsiblePerson.telphone"/></div>
                 </li>
                 <li class="quick_long_li">
-                    <div class="option_tittle"><s:property value="%{getText('orgleague.info.orgLogo')}"/></div>
+                    <div class="option_tittle"><s:text name="orgleague.info.orgLogo"/></div>
                         <%--<s:file name="upload"/>--%>
                     <div class="file_upload"><s:file name="fileupload" id="fileupload1"/></div>
                     <div class="file_upload_msg1 input_msg"></div>
@@ -49,7 +49,7 @@
                     <div id="fileQueue"></div>
                 </li>
                 <li class="quick_long_li">
-                    <div class="option_tittle"><s:property value="%{getText('orgleague.info.cetification')}"/></div>
+                    <div class="option_tittle"><s:text name="orgleague.info.cetification"/></div>
                         <%--<s:file name="upload1"/>--%>
                     <div class="file_upload"><s:file name="fileupload2" id="fileupload2"/></div>
                     <div class="file_upload_msg2 input_msg"></div>
@@ -67,10 +67,10 @@
             </a>
         </div>
         <ul class="orgStep">
-            <li><s:property value="%{getText('org.warmtip')}"/></li>
-            <%--<li><s:property value="%{getText('orgleague.identity.confirm')}"/></li>--%>
-            <li class="third"><s:property value="%{getText('orgleague.info.fill')}"/></li>
-            <li><s:property value="%{getText('orgleague.info.submit')}"/></li>
+            <li><s:text name="org.warmtip"/></li>
+            <%--<li><s:text name="orgleague.identity.confirm"/></li>--%>
+            <li class="third"><s:text name="orgleague.info.fill"/></li>
+            <li><s:text name="orgleague.info.submit"/></li>
         </ul>
     </div>
 </div>

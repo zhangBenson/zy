@@ -132,18 +132,18 @@
                     <s:textfield name="org.schoolName" cssClass="text" readonly="true"/>
                 </p>
 
-                <p class="inputTips"><s:property value="%{getText('msg.email')}"/><span class="errorinfo"
+                <p class="inputTips"><s:text name="msg.email"/><span class="errorinfo"
                                                                                         id="yzemail">*</span>
                     <s:textfield name="user.email" cssClass="text" readonly="true"/>
                 </p>
 
-                <p id="addnext" class="inputTips"><s:property value="%{getText('msg.pwd')}"/><span class="errorinfo"
+                <p id="addnext" class="inputTips"><s:text name="msg.pwd"/><span class="errorinfo"
                                                                                                    id="yzpwd">*<s:property
                         value="identityConfirmMsg"/></span><br/>
                     <s:password name="user.password" id="pwd" value="" cssClass="text"/>
                 </p>
 
-                <p class="inputTips"><s:property value="%{getText('identity.password.confirm')}"/><span
+                <p class="inputTips"><s:text name="identity.password.confirm"/><span
                         class="errorinfo" id="yzrepwd">*</span><br/>
                     <s:password name="duplicate" id="repwd" value="" cssClass="text"/>
                 </p>
@@ -155,7 +155,7 @@
             </div>
             <p class="nextButton">
                 <input type="submit" name="button" id="btn1" onclick="return checkForm();"
-                       value="<s:property value="%{getText('button.next')}"/>"/>
+                       value="<s:text name="button.next"/>"/>
             </p>
 
         </div>

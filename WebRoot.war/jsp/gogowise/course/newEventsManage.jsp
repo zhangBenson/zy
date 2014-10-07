@@ -7,9 +7,9 @@
     <div class="fl">
 
         <p class="bnav">
-            <a href="myForcastClass.html"><s:property value="%{getText('usermenu.item.my.created.courses')}"/></a>
+            <a href="myForcastClass.html"><s:text name="usermenu.item.my.created.courses"/></a>
             <i>&gt;</i>
-            <s:property value="%{getText('event.manage.management')}"/>
+            <s:text name="event.manage.management"/>
         </p>
     </div>
 </div>
@@ -17,8 +17,8 @@
 <div class="info_class">
     <table>
         <tr>
-            <td class="htitle"><s:property value="%{getText('event.manage.title')}"/></td>
-            <td class="htitle"><s:property value="%{getText('event.manage.publish.time')}"/></td>
+            <td class="htitle"><s:text name="event.manage.title"/></td>
+            <td class="htitle"><s:text name="event.manage.publish.time"/></td>
             <td class="htitle"></td>
             <td class="htitle"></td>
         </tr>
@@ -30,7 +30,7 @@
                 <td><a href="initEditCourseNewEvent.html?courseNewEvent.id=<s:property value="id"/>"><s:property
                         value="%{getText('event.manage.edit')}"/></a></td>
                 <td><a href="javascript:;" onclick="deleteNewEvent('newEvents<s:property value="id"/>',<s:property
-                        value="id"/>);"><s:property value="%{getText('event.manage.delete')}"/></a></td>
+                        value="id"/>);"><s:text name="event.manage.delete"/></a></td>
             </tr>
         </s:iterator>
         </tbody>
@@ -43,7 +43,7 @@
 
 <script type="text/javascript">
     function deleteNewEvent(lineID, eventID) {
-        var hasAccepted = confirm("<s:property value="%{getText('event.manage.sure.to.delete')}"/>?");
+        var hasAccepted = confirm("<s:text name="event.manage.sure.to.delete"/>?");
         if (hasAccepted) {
             $.post("deleteCourseNewEvent.html", {'courseNewEvent.id': eventID})
             $("#" + lineID).remove();

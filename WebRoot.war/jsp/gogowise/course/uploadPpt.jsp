@@ -10,10 +10,10 @@
 <div id="tabtag_4con">
 
 
-    <h3><s:property value="%{getText('course.resource.upload.resource')}"/></h3>
+    <h3><s:text name="course.resource.upload.resource"/></h3>
     <table>
         <tr>
-            <td><s:property value="%{getText('course.resource.path')}"/></td>
+            <td><s:text name="course.resource.path"/></td>
             <td>
                 <div style="float: left;"><input type="file" name="fileupload" value="浏览" id="cm_upload_input"/></div>
                 <span class="errorMessage" style="float: left;" id="cm_upload"></span>
@@ -26,12 +26,12 @@
             <input type="hidden" name="courseMaterial.path" id="cm_pathInfo"/>
             <input type="hidden" name="courseMaterial.totalPages" id="cm_totalPages"/>
             <tr>
-                <td><s:property value="%{getText('course.resource.title')}"/></td>
+                <td><s:text name="course.resource.title"/></td>
                 <td><input type="text" name="courseMaterial.sourceTitle"/><span class="errorMessage"
                                                                                 id="cm_title"></span></td>
             </tr>
             <tr>
-                <td><s:property value="%{getText('course.resource.type')}"/></td>
+                <td><s:text name="course.resource.type"/></td>
                 <td>
                     <s:select
                             list="#{'1':getText('course.material.type.1'),'2':getText('course.material.type.2'),'3':getText('course.material.type.3')}"
@@ -41,9 +41,9 @@
                 </td>
             </tr>
             <tr>
-                <td><s:property value="%{getText('course.resource.desc')}"/></td>
+                <td><s:text name="course.resource.desc"/></td>
                 <td><textarea name="courseMaterial.description" onkeyup="changeWordNumber(this,$('#cm_desc'),250);"
-                              placeholder="<s:property value="%{getText('course.resource.fill.desc')}"/>"></textarea><span
+                              placeholder="<s:text name="course.resource.fill.desc"/>"></textarea><span
                         class="errorMessage" id="cm_desc"></span></td>
             </tr>
             <tr>

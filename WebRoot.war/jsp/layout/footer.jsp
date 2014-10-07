@@ -5,24 +5,24 @@
 <div id="footer">
     <p class="p_0">
         <a href="index.html"></a>
-        <span><s:property value="%{getText('share.happy.share.knowlege')}"/></span>
+        <span><s:text name="share.happy.share.knowlege"/></span>
     </p>
 
     <p class="p_1">
-        <a href="index.html"><s:property value="%{getText('menu.item.index')}"/></a> |
-        <a href="aboutUs.html"><s:property value="%{getText('link.about.us')}"/></a> |
-        <a href="aboutUs.html"><s:property value="%{getText('link.contact.us')}"/></a> |
-        <a href="aboutUs.html"><s:property value="%{getText('link.legal.dept')}"/></a> |
-        <a href="courseSelection.html"><s:property value="%{getText('link.online.search')}"/></a> <br/>
+        <a href="index.html"><s:text name="menu.item.index"/></a> |
+        <a href="aboutUs.html"><s:text name="link.about.us"/></a> |
+        <a href="aboutUs.html"><s:text name="link.contact.us"/></a> |
+        <a href="aboutUs.html"><s:text name="link.legal.dept"/></a> |
+        <a href="courseSelection.html"><s:text name="link.online.search"/></a> <br/>
 
-        <%--<s:property value="%{getText('text.rights.reserved')}"/> |--%>
-        <s:property value="%{getText('text.service.email')}"/>&nbsp;&nbsp;&nbsp;
-        <s:property value="%{getText('text.copyright')}"/>
+        <%--<s:text name="text.rights.reserved"/> |--%>
+        <s:text name="text.service.email"/>&nbsp;&nbsp;&nbsp;
+        <s:text name="text.copyright"/>
     </p>
 
 </div>
 <div style="display: none;">
     <div id="fancybox" style="float:left;">
-        <s:property value="%{getText('frame.operation.success')}"/>
+        <s:text name="frame.operation.success"/>
     </div>
 </div>

@@ -7,7 +7,7 @@
     <s:hidden name="searchStr"/>
 
     <div class="listDown fl">
-        <h3 class="h3_title"><s:property value="%{getText('search.header.live')}"/></h3>
+        <h3 class="h3_title"><s:text name="search.header.live"/></h3>
 
             <%-- 这是直播栏目循环的Div --%>
 
@@ -40,7 +40,7 @@
                             <span><span class="orange_words"> <s:property value="fansNum"/>&nbsp;</span><s:property
                                     value="%{getText('course.blog.purchase.num')}"/></span>&nbsp;&nbsp;|&nbsp;&nbsp;
                                 <%--<span><span class="orange_words"> 247&nbsp;</span>推荐</span> &nbsp;&nbsp;|&nbsp;&nbsp;--%>
-                            <span><s:property value="%{getText('course.blog.total.terms')}"/><span class="orange_words"> <s:property
+                            <span><s:text name="course.blog.total.terms"/><span class="orange_words"> <s:property
                                     value="totalTermsNum"/>&nbsp;</span><s:property
                                     value="%{getText('course.blog.total.terms.tail')}"/></span>
                         </p>

@@ -6,10 +6,10 @@
 
 <div id="header">
     <h1>
-        <a href="index.html" target="_blank" title="<s:property value="%{getText('title.gogowise')}"/>"></a>
+        <a href="index.html" target="_blank" title="<s:text name="title.gogowise"/>"></a>
     </h1>
 
-    <p class="words"><s:property value="%{getText('share.happy.share.knowlege')}"/></p>
+    <p class="words"><s:text name="share.happy.share.knowlege"/></p>
 
     <s:set name="SESSION_LOCALE" value="#session['WW_TRANS_I18N_LOCALE']"/>
     <s:bean id="locales" name="com.gogowise.action.user.Locales">
@@ -22,7 +22,7 @@
             <a href="userBlog.html?user.id=<s:property value="#session.userID"/>" target="_blank"
                class="nick"><s:property value="#session.nickName"/></a>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="myfirstPage.html" target="_blank"><s:property value="%{getText('usermenu.item.myhomepage')}"/></a>
+            <a href="myfirstPage.html" target="_blank"><s:text name="usermenu.item.myhomepage"/></a>
             &nbsp;&nbsp;<strong>|</strong>&nbsp;&nbsp;
             <a href="initUpdate.html" target="_blank"><s:property
                     value="%{getText('account.item.accountsettings')}"/></a>
@@ -30,14 +30,14 @@
             <a href="myGGWAccount.html" target="_blank"><s:property
                     value="%{getText('usermenu.item.zhibi.myAccount')}"/></a>
             &nbsp;&nbsp;<strong>|</strong>&nbsp;&nbsp;
-            <a href="exitSystem.html"><s:property value="%{getText('href.logout')}"/></a>
+            <a href="exitSystem.html"><s:text name="href.logout"/></a>
         </p>
     </s:if>
     <s:else>
         <p class="handle">
-            <a href="login.html" id="login_btn"><s:property value="%{getText('Login')}"/></a>
+            <a href="login.html" id="login_btn"><s:text name="Login"/></a>
             &nbsp;&nbsp;<strong>|</strong>&nbsp;&nbsp;
-            <a href="initReg.html" target="_blank"><s:property value="%{getText('user.info.identity.finish.reg')}"/></a>
+            <a href="initReg.html" target="_blank"><s:text name="user.info.identity.finish.reg"/></a>
         </p>
     </s:else>
 

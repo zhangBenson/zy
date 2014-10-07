@@ -5,12 +5,12 @@
 <div class="rightItem1">
     <s:hidden value="%{#session.userID}" id="hidSessionId"/>
     <s:if test="hotType == 2">
-        <h3 class="h3_title"><s:property value="%{getText('teacher.hottest')}"/></h3>
-        <a class="other_more" href="teacherHotList.html"><s:property value="%{getText('others.more')}"/></a>
+        <h3 class="h3_title"><s:text name="teacher.hottest"/></h3>
+        <a class="other_more" href="teacherHotList.html"><s:text name="others.more"/></a>
     </s:if>
     <s:elseif test="hotType == 1">
-        <h3 class="h3_title"><s:property value="%{getText('most.hottest.bloger')}"/></h3>
-        <a class="other_more" href="bloggerHotList.html"><s:property value="%{getText('others.more')}"/></a>
+        <h3 class="h3_title"><s:text name="most.hottest.bloger"/></h3>
+        <a class="other_more" href="bloggerHotList.html"><s:text name="others.more"/></a>
     </s:elseif>
     <s:iterator value="hottestBloggers">
         <div class="onePerson fl">
@@ -46,8 +46,8 @@
 </div>
 
 <div class="rightTerm2 fl">
-    <h3 class="h3_title"><s:property value="%{getText('course.hottest')}"/></h3>
-    <a class="other_more" href="courseHotList.html"><s:property value="%{getText('others.more')}"/></a>
+    <h3 class="h3_title"><s:text name="course.hottest"/></h3>
+    <a class="other_more" href="courseHotList.html"><s:text name="others.more"/></a>
     <ul>
         <s:iterator value="hottestCourses">
             <li>

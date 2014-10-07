@@ -32,7 +32,7 @@
         <div class="col-md-7" style="width:670px;">
             <ul class="nav nav-pills">
                 <li>
-                    <%--<a href="index.html" class="navlink"><s:property value="%{getText('menu.item.index')}"/></a>--%>
+                    <%--<a href="index.html" class="navlink"><s:text name="menu.item.index"/></a>--%>
                     <a href="aboutUs.html" class="navlink">About Us</a>
                 </li>
                 <li>
@@ -67,7 +67,7 @@
                         <ul class="dropdown-menu" role="menu">
 
                             <s:if test="#session.isTeacher">
-                                <li><a href="myfirstPage.html"><s:property value="%{getText('label.orgcenter')}"/> </a>
+                                <li><a href="myfirstPage.html"><s:text name="label.orgcenter"/> </a>
                                 </li>
                             </s:if>
                             <li><a href="personalCenter.html"><s:property
@@ -78,7 +78,7 @@
                                 <%--</s:if>--%>
                                 <%--<s:else>--%>
 
-                                <%--<li><a href="setting.html"><span></span><s:property value="%{getText('account.item.accountsettings')}"/></a></li>--%>
+                                <%--<li><a href="setting.html"><span></span><s:text name="account.item.accountsettings"/></a></li>--%>
                                 <%--</s:else>--%>
 
                             <li class="divider"></li>
@@ -100,7 +100,7 @@
                                     value="%{getText('user.info.identity.finish.reg')}"/></a>
                         </li>
                         <li>
-                            <a href="#" id="btnLogin"><s:property value="%{getText('Login')}"/></a>
+                            <a href="#" id="btnLogin"><s:text name="Login"/></a>
                         </li>
                     </ul>
                 </s:else>

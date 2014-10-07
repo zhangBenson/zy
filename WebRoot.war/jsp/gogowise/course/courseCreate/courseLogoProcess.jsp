@@ -185,7 +185,7 @@
 <body>
 <div class="image_manipulate_container" id="image_manipulate_container">
     <div class="image_manipulate_inner_div">
-        <div class="tittle"><s:property value="%{getText('title.head.setting')}"/></div>
+        <div class="tittle"><s:text name="title.head.setting"/></div>
         <div class="fileload">
             <input type="file" name="fileupload" id="userPortrait_fileField"/>&nbsp;&nbsp;&nbsp;&nbsp;<span
                 class="upload_warn"></span>
@@ -195,19 +195,19 @@
         </div>
         <div class="large_image">
             <div class="large_image_tip_words">
-                <span class="words_1"><s:property value="%{getText('message.select.pic')}"/></span><br/><br/>
-                <span class="words_2"><s:property value="%{getText('message.pic.rule')}"/></span>
+                <span class="words_1"><s:text name="message.select.pic"/></span><br/><br/>
+                <span class="words_2"><s:text name="message.pic.rule"/></span>
             </div>
             <div class="large_image_inner"><img id="target" src=""/></div>
         </div>
         <div class="image_split"></div>
-        <div class="dynamic_image_tittle"><s:property value="%{getText('label.head.preview')}"/></div>
+        <div class="dynamic_image_tittle"><s:text name="label.head.preview"/></div>
         <div class="dynamic_image">
             <div class="dynamic_image_inner"><img id="preview" src=""/></div>
         </div>
         <div class="portrait_submit">
-            <input class="submit_btn" type="submit" value="<s:property value="%{getText('button.submit')}"/>"/>
-            <input class="cancel_btn" type="button" value="<s:property value="%{getText('button.cancel')}"/>"/>
+            <input class="submit_btn" type="submit" value="<s:text name="button.submit"/>"/>
+            <input class="cancel_btn" type="button" value="<s:text name="button.cancel"/>"/>
         </div>
     </div>
 </div>

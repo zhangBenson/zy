@@ -13,7 +13,7 @@
                     <div class="input-group-btn">
                         <button type="submit" class="btn btn-default btn-lg">
                             <span class="glyphicon glyphicon-search"></span>
-                            <s:property value="%{getText('menu.item.search')}"/>
+                            <s:text name="menu.item.search"/>
                         </button>
                     </div>
                 </div>
@@ -47,17 +47,17 @@
                 </h4>
                 <div class="text-right">
                     <ul class="list-inline">
-                        <li class="searchItemState"><s:property value="%{getText('course.school')}"/>:<a
+                        <li class="searchItemState"><s:text name="course.school"/>:<a
                                 href="orgBlog.html?org.id=<s:property value="organization.id"/>"
                                 title="<s:property value="organization.nickName"/>"><s:property
                                 value="organization.schoolName"/></a></li>
-                        <li class="searchItemState"><s:property value="%{getText('courses.info.lecturer')}"/>:<a
+                        <li class="searchItemState"><s:text name="courses.info.lecturer"/>:<a
                                 href="userBlog.html?user.id=<s:property value="teacher.id"/>"
                                 title="<s:property value="teacher.nickName"/>"><s:property
                                 value="teacher.nickName"/></a></li>
-                        <li class="searchItemState"><s:property value="%{getText('label.student')}"/>:<s:property
+                        <li class="searchItemState"><s:text name="label.student"/>:<s:property
                                 value="studentNum"/></li>
-                        <li class="searchItemStateBlue"><s:property value="%{getText('usermenu.item.mooc')}"/></li>
+                        <li class="searchItemStateBlue"><s:text name="usermenu.item.mooc"/></li>
                     </ul>
                 </div>
                 <div class="clearfix"></div>
@@ -69,7 +69,7 @@
     </s:if>
     <s:else>
         <div class="searchCourseItem" style="text-align: center;">
-            <strong><s:property value="%{getText('search.course.no.result.message')}"/></strong>
+            <strong><s:text name="search.course.no.result.message"/></strong>
         </div>
     </s:else>
 </div>

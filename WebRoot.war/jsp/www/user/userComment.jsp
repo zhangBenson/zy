@@ -17,14 +17,14 @@
                     <p class="text-right"><s:date name="createDate" format="%{getText('global.display.datetime')}"/></p>
 
                         <%-- <s:if test="user.id == #session.userID && owner.id != #session.userID">
-                            <span class="span_3"><a onclick="replyToComment('<s:property value="owner.nickName"/>')" href="#message_area_tip"><s:property value="%{getText('blog.comments.reply')}"/></a></span>
-                            <span class="span_3"><a onclick="deleteThisComment(this,<s:property value="id"/>)" href="#message_area_tip"><s:property value="%{getText('blog.comments.delete')}"/></a></span>
+                            <span class="span_3"><a onclick="replyToComment('<s:property value="owner.nickName"/>')" href="#message_area_tip"><s:text name="blog.comments.reply"/></a></span>
+                            <span class="span_3"><a onclick="deleteThisComment(this,<s:property value="id"/>)" href="#message_area_tip"><s:text name="blog.comments.delete"/></a></span>
                         </s:if>
                         <s:elseif test="user.id != #session.userID && owner.id != #session.userID">
-                            <span class="span_3"><a onclick="replyToComment('<s:property value="owner.nickName"/>')" href="#message_area_tip"><s:property value="%{getText('blog.comments.reply')}"/></a></span>
+                            <span class="span_3"><a onclick="replyToComment('<s:property value="owner.nickName"/>')" href="#message_area_tip"><s:text name="blog.comments.reply"/></a></span>
                         </s:elseif>
                         <s:else>
-                            <span class="span_3"><a onclick="deleteThisComment(this,<s:property value="id"/>)" href="#message_area_tip"><s:property value="%{getText('blog.comments.delete')}"/></a></span>
+                            <span class="span_3"><a onclick="deleteThisComment(this,<s:property value="id"/>)" href="#message_area_tip"><s:text name="blog.comments.delete"/></a></span>
                         </s:else>  --%>
                 </div>
                 <div class="clearfix"></div>

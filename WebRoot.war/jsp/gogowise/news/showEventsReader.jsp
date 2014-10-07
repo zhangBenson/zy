@@ -12,8 +12,8 @@
 <div class="dfz-nav fl">
     <div class="fl">
         <p class="bnav">
-            <a href="javascript:;"><s:property value="%{getText('gogowise.news')}"/></a><i>&gt;</i>
-            <a href="javascript:;"><s:property value="%{getText('show.square.new.events')}"/></a><i>&gt;</i><s:property
+            <a href="javascript:;"><s:text name="gogowise.news"/></a><i>&gt;</i>
+            <a href="javascript:;"><s:text name="show.square.new.events"/></a><i>&gt;</i><s:property
                 value="%{getText('gogowise.news.content')}"/>
         </p>
     </div>
@@ -50,7 +50,7 @@
                 <a class="bds_renren">人人网</a>
                 <a class="bds_fbook">Facebook</a>
                 <a class="bds_twi">Twitter</a>
-                <span class="bds_more"><s:property value="%{getText('others.more')}"/></span>
+                <span class="bds_more"><s:text name="others.more"/></span>
             </div>
             <script type="text/javascript" id="bdshare_js" data="type=tools"></script>
             <script type="text/javascript" id="bdshell_js"></script>

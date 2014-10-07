@@ -6,28 +6,28 @@
 
 <div id="header">
     <h1>
-        <a href="index.html" target="_blank" title="<s:property value="%{getText('title.gogowise')}"/>"></a>
+        <a href="index.html" target="_blank" title="<s:text name="title.gogowise"/>"></a>
     </h1>
 
-    <p class="words"><s:property value="%{getText('share.happy.share.knowlege')}"/></p>
+    <p class="words"><s:text name="share.happy.share.knowlege"/></p>
 
     <div class="searchWrap">
         <form action="liveListOnMap.html" method="post">
             <input type="text" class="text" id="liveSearchInput" name="searchStr"
-                   placeholder="<s:property value="%{getText('map.head.param1')}"/>"/>
+                   placeholder="<s:text name="map.head.param1"/>"/>
             <input type="submit" class="btn" id="liveSearchBtn"
-                   value="<s:property value="%{getText('map.head.param2')}"/>"/>
+                   value="<s:text name="map.head.param2"/>"/>
         </form>
     </div>
 
     <s:if test="#session.email !=null">
         <p class="handle">
-            <a href="index.html"><s:property value="%{getText('menu.item.index')}"/></a>
+            <a href="index.html"><s:text name="menu.item.index"/></a>
             &nbsp;<strong>|</strong>&nbsp;
             <a href="userBlog.html?user.id=<s:property value="#session.userID"/>" target="_blank"
                class="nick"><s:property value="#session.nickName"/></a>
             &nbsp;&nbsp;
-            <a href="myfirstPage.html" target="_blank"><s:property value="%{getText('usermenu.item.myhomepage')}"/></a>
+            <a href="myfirstPage.html" target="_blank"><s:text name="usermenu.item.myhomepage"/></a>
             &nbsp;<strong>|</strong>&nbsp;
             <a href="initUpdate.html" target="_blank"><s:property
                     value="%{getText('account.item.accountsettings')}"/></a>
@@ -35,16 +35,16 @@
             <a href="myGGWAccount.html" target="_blank"><s:property
                     value="%{getText('usermenu.item.zhibi.myAccount')}"/></a>
             &nbsp;<strong>|</strong>&nbsp;
-            <a href="exitSystem.html"><s:property value="%{getText('href.logout')}"/></a>
+            <a href="exitSystem.html"><s:text name="href.logout"/></a>
         </p>
     </s:if>
     <s:else>
         <p class="handle">
-            <a href="index.html"><s:property value="%{getText('menu.item.index')}"/></a>
+            <a href="index.html"><s:text name="menu.item.index"/></a>
             &nbsp;<strong>|</strong>&nbsp;
-            <a href="login.html" id="login_btn"><s:property value="%{getText('Login')}"/></a>
+            <a href="login.html" id="login_btn"><s:text name="Login"/></a>
             &nbsp;<strong>|</strong>&nbsp;
-            <a href="initReg.html" target="_blank"><s:property value="%{getText('user.info.identity.finish.reg')}"/></a>
+            <a href="initReg.html" target="_blank"><s:text name="user.info.identity.finish.reg"/></a>
         </p>
     </s:else>
 

@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
-<span class="title"><s:property value="%{getText('my.firstpage.users.i.followed')}"/></span>
+<span class="title"><s:text name="my.firstpage.users.i.followed"/></span>
 <s:if test="userFansNum > 6 && !numOverFlow">
     <span class="more"><a href="javascript:;" onclick="getMoreConcernUserFans();"><s:property
             value="%{getText('others.more')}"/></a></span>
@@ -17,7 +17,7 @@
             <s:if test="userLiving">
                 <a class="live_tip"
                    href="watchPersonalOnlive.html?personalOnlive.id=<s:property value="personalOnliveID"/>"
-                   title="<s:property value="%{getText('click.to.watch')}"/>"><s:property
+                   title="<s:text name="click.to.watch"/>"><s:property
                         value="%{getText('video.is.living')}"/></a>
             </s:if>
         </li>

@@ -323,25 +323,25 @@
                 </h6>
 
                 <div class="courseinfo">
-                    <p><s:property value="%{getText('label.forcast.lecturer')}"/>：<b><s:a action="userBlog"><s:param
+                    <p><s:text name="label.forcast.lecturer"/>：<b><s:a action="userBlog"><s:param
                             name="user.id" value="teacher.id"/><s:property value="teacher.nickName"/></s:a></b></p>
                     <s:if test="personalTeacher==null">
-                        <p><s:property value="%{getText('label.online.class.org.name')}"/>：<b><s:a
+                        <p><s:text name="label.online.class.org.name"/>：<b><s:a
                                 action="orgBlog"><s:param name="org.id" value="organization.id"/><s:property
                                 value="organization.schoolName"/></s:a></b></p>
                     </s:if>
-                    <p><s:property value="%{getText('label.forcast.enrollment')}"/>：<b><s:property
-                            value="observationNum"/></b> <s:property value="%{getText('label.forcast.person')}"/></p>
+                    <p><s:text name="label.forcast.enrollment"/>：<b><s:property
+                            value="observationNum"/></b> <s:text name="label.forcast.person"/></p>
                 </div>
                 <div class="courseinfo">
-                    <p><s:property value="%{getText('label.course.fee')}"/>：<b><s:property value="charges"/>
+                    <p><s:text name="label.course.fee"/>：<b><s:property value="charges"/>
                         &nbsp;<s:property value="%{getText('label.zhibi.'+consumptionType)}"/></b></p>
 
-                    <p><s:property value="%{getText('label.online.class.totalperods')}"/>：<b><s:property
-                            value="totalHours"/>&nbsp;<s:property value="%{getText('label.online.class.perods')}"/></b>
+                    <p><s:text name="label.online.class.totalperods"/>：<b><s:property
+                            value="totalHours"/>&nbsp;<s:text name="label.online.class.perods"/></b>
                     </p>
 
-                    <p><s:property value="%{getText('label.online.class.startdate')}"/>：<b><s:date name="startDate"
+                    <p><s:text name="label.online.class.startdate"/>：<b><s:date name="startDate"
                                                                                                    format="%{getText('dateformat')}"/></b>
                     </p>
                 </div>

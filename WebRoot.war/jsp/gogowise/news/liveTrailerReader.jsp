@@ -14,8 +14,8 @@
     <div class="fl">
         <%--<h2 class="sinalogo-nav logo-1192"><a href="http://hunan.sina.com.cn/" target="_blank">新浪湖南</a></h2>--%>
         <p class="bnav">
-            <a href="javascript:;"><s:property value="%{getText('gogowise.news')}"/></a><i>&gt;</i>
-            <a href="javascript:;"><s:property value="%{getText('gogowise.live.trailer')}"/></a><i>&gt;</i><s:property
+            <a href="javascript:;"><s:text name="gogowise.news"/></a><i>&gt;</i>
+            <a href="javascript:;"><s:text name="gogowise.live.trailer"/></a><i>&gt;</i><s:property
                 value="%{getText('gogowise.news.content')}"/>
         </p>
     </div>
@@ -35,11 +35,11 @@
                 <s:if test="personalOnlive != null">
                     <a class="watch"
                        href="watchPersonalOnlive.html?personalOnlive.id=<s:property value="personalOnlive.id"/>"
-                       target="_blank"><s:property value="%{getText('watch.the.live.term')}"/></a>
+                       target="_blank"><s:text name="watch.the.live.term"/></a>
                 </s:if>
                 <s:else>
                     <a class="watch" href="userBlog.html?user.id=<s:property value="liveTrailer.owner.id"/>"
-                       target="_blank"><s:property value="%{getText('enter.into.user.blog')}"/></a>
+                       target="_blank"><s:text name="enter.into.user.blog"/></a>
                 </s:else>
             </span>
         </div>
@@ -58,7 +58,7 @@
                 <a class="bds_renren">人人网</a>
                 <a class="bds_fbook">Facebook</a>
                 <a class="bds_twi">Twitter</a>
-                <span class="bds_more"><s:property value="%{getText('others.more')}"/></span>
+                <span class="bds_more"><s:text name="others.more"/></span>
             </div>
             <script type="text/javascript" id="bdshare_js" data="type=tools"></script>
             <script type="text/javascript" id="bdshell_js"></script>

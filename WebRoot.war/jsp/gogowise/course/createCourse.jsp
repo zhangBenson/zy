@@ -73,9 +73,9 @@
 
                     <s:form action="initCourse" method="POST" id="form_278125">
                         <div class="form_description">
-                            <h2><s:property value="%{getText('label.class.oline')}"/></h2>
+                            <h2><s:text name="label.class.oline"/></h2>
 
-                            <p><s:property value="%{getText('text.easy.study')}"/></p>
+                            <p><s:text name="text.easy.study"/></p>
                         </div>
                         <ul>
                             <li id="li_1">
@@ -87,11 +87,11 @@
                            value="%{getText('label.org.principal')}"/></label>
                    <input id="element_1_2" name="identity" class="element radio" type="radio" value="2"
                           checked="checked"/>
-                   <label class="choice" for="element_1_2"><s:property value="%{getText('label.org.teacher')}"/></label>
+                   <label class="choice" for="element_1_2"><s:text name="label.org.teacher"/></label>
                    <input id="element_1_3" name="identity" class="element radio" type="radio" value="3"/>
-                   <label class="choice" for="element_1_3"><s:property value="%{getText('label.cameraman')}"/></label>
+                   <label class="choice" for="element_1_3"><s:text name="label.cameraman"/></label>
                    <input id="element_1_4" name="identity" class="element radio" type="radio" value="4"/>
-                   <label class="choice" for="element_1_4"><s:property value="%{getText('label.org.tutor')}"/></label>
+                   <label class="choice" for="element_1_4"><s:text name="label.org.tutor"/></label>
 		      </span>
                             </li>
                             <li class="buttons">
@@ -102,7 +102,7 @@
                     </s:form>
                 </div>
                 <div id="footer">
-                    <s:property value="%{getText('text.backto')}"/> <a href="http://www.gogowise.com"><s:property
+                    <s:text name="text.backto"/> <a href="http://www.gogowise.com"><s:property
                         value="%{getText('menu.item.index')}"/></a>
                 </div>
             </div>

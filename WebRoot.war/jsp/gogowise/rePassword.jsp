@@ -88,14 +88,14 @@
 <s:form action="findEmailUser" theme="css_xhtml" validate="true" method="post" id="form">
     <div id="mainRe">
     <hr/>
-    <div id="get_back_pwd"><span><s:property value="%{getText('label.get.back.password')}"/></span></div>
+    <div id="get_back_pwd"><span><s:text name="label.get.back.password"/></span></div>
     <div id="center">
         <table width="400" cellpadding="0" cellspacing="0">
             <tr>
-                <td colspan="2"><h1><s:property value="%{getText('label.insert.email')}"/></h1></td>
+                <td colspan="2"><h1><s:text name="label.insert.email"/></h1></td>
             </tr>
             <tr class="con">
-                <td class="tdleft"><s:property value="%{getText('email')}"/>：</td>
+                <td class="tdleft"><s:text name="email"/>：</td>
                 <td>
                     <label>
                         <s:textfield name="user.email" id="textfield"/>
@@ -103,7 +103,7 @@
             </tr>
 
             <tr>
-                <td colspan="2"><h1><s:property value="%{getText('label.insert.valid.code')}"/></h1></td>
+                <td colspan="2"><h1><s:text name="label.insert.valid.code"/></h1></td>
             </tr>
             <tr class="con">
                 <td>&nbsp;</td>
@@ -112,7 +112,7 @@
                                                             width="120px" height="44px"/></a></td>
             </tr>
             <tr class="con">
-                <td class="tdleft"><s:property value="%{getText('label.valid.code')}"/>：</td>
+                <td class="tdleft"><s:text name="label.valid.code"/>：</td>
                 <td><s:textfield name="yzmCode" id="textfield2"/></td>
             </tr>
             <tr>

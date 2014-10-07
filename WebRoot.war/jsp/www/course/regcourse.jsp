@@ -10,27 +10,27 @@
         <img src="<s:property value="course.logoUrl" />" class="courseInfoImg"/>
     </a>
     <ul class="list-inline">
-        <li class="searchItemState"><s:property value="%{getText('course.school')}"/>:<a
+        <li class="searchItemState"><s:text name="course.school"/>:<a
                 href="orgBlog.html?org.id=<s:property value="course.organization.id"/>"
                 title="<s:property value="course.organization.nickName"/>"><s:property
                 value="course.organization.schoolName"/></a></li>
-        <li class="searchItemState"><s:property value="%{getText('courses.info.lecturer')}"/>:<a
+        <li class="searchItemState"><s:text name="courses.info.lecturer"/>:<a
                 href="userBlog.html?user.id=<s:property value="course.teacher.id"/>"
                 title="<s:property value="course.teacher.nickName"/>"><s:property value="course.teacher.nickName"/></a>
         </li>
-        <li class="searchItemState"><s:property value="%{getText('label.forcast.enrollment')}"/>:<s:property
+        <li class="searchItemState"><s:text name="label.forcast.enrollment"/>:<s:property
                 value="course.observationNum"/></li>
-        <li class="searchItemState"><s:property value="%{getText('lable.course.date')}"/>:<s:date
+        <li class="searchItemState"><s:text name="lable.course.date"/>:<s:date
                 name="course.startDate" format="%{getText('dateformat')}"/></li>
-        <li class="searchItemState"><s:property value="%{getText('label.online.class.totalperods')}"/>:<s:property
-                value="course.totalHours"/>&nbsp;<s:property value="%{getText('label.online.class.perods')}"/></li>
-        <li class="searchItemState"><s:property value="%{getText('label.course.fee')}"/>:
+        <li class="searchItemState"><s:text name="label.online.class.totalperods"/>:<s:property
+                value="course.totalHours"/>&nbsp;<s:text name="label.online.class.perods"/></li>
+        <li class="searchItemState"><s:text name="label.course.fee"/>:
             <s:property value="course.charges"/>
             <s:if test="course.consumptionType">
-                <s:property value="%{getText('label.zhibi.true')}"/>
+                <s:text name="label.zhibi.true"/>
             </s:if>
             <s:else>
-                <s:property value="%{getText('label.course.zhiquan')}"/>
+                <s:text name="label.course.zhiquan"/>
             </s:else>
     </ul>
     <h4 class="courseBody">
@@ -50,9 +50,9 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th><s:property value="%{getText('lable.course.nickname')}"/></th>
-                <th><s:property value="%{getText('lable.course.starttime')}"/></th>
-                <th><s:property value="%{getText('label.lastingtime')}"/></th>
+                <th><s:text name="lable.course.nickname"/></th>
+                <th><s:text name="lable.course.starttime"/></th>
+                <th><s:text name="label.lastingtime"/></th>
             </tr>
             </thead>
             <tbody>
@@ -107,12 +107,12 @@
                         <div class="col-sm-6">
                                 <%--<input type="button" class="btn btn-primary btn-lg btn-block" value="" id="reservationconfirmed"/> --%>
                             <button type="button" class="btn btn-primary btn-lg btn-block" value="" id="reservationconfirmed">
-                                <s:property value="%{getText('button.course.confirm.registration')}"/></button>
+                                <s:text name="button.course.confirm.registration"/></button>
                         </div>
                         <div class="col-sm-6">
                                 <%-- <button type="button" class="btn btn-danger btn-lg btn-block">Cancel</button> --%>
                             <input type="button" class="btn btn-danger btn-lg btn-block"
-                                   value="<s:property value="%{getText('button.cancel')}"/>"/>
+                                   value="<s:text name="button.cancel"/>"/>
                         </div>
                     </s:form>
                 </s:if>
@@ -139,14 +139,14 @@
                                     <%--<input type="button" class="btn btn-primary btn-lg btn-block" value="" id="reservationconfirmed"/> --%>
 
                                 <button type="button" class="btn btn-primary btn-lg btn-block" value="" id="reservationconfirmed">
-                                    <s:property value="%{getText('button.course.confirm.Buy')}"/></button>
+                                    <s:text name="button.course.confirm.Buy"/></button>
 
 
                             </div>
                             <div class="col-sm-6">
                                     <%-- <button type="button" class="btn btn-danger btn-lg btn-block">Cancel</button> --%>
                                 <input type="button" class="btn btn-danger btn-lg btn-block"
-                                       value="<s:property value="%{getText('button.cancel')}"/>"/>
+                                       value="<s:text name="button.cancel"/>"/>
                             </div>
                         </s:if>
                     </s:form>
@@ -161,12 +161,12 @@
                     <div class="col-sm-6">
                             <%--<input type="button" class="btn btn-primary btn-lg btn-block" value="" id="reservationconfirmed"/> --%>
                         <button type="button" class="btn btn-primary btn-lg btn-block" value="" id="reservationconfirmed">
-                            <s:property value="%{getText('button.course.confirm.registration')}"/></button>
+                            <s:text name="button.course.confirm.registration"/></button>
                     </div>
                     <div class="col-sm-6">
                             <%-- <button type="button" class="btn btn-danger btn-lg btn-block">Cancel</button> --%>
                         <input type="button" class="btn btn-danger btn-lg btn-block" id="addIteam"
-                               value="<s:property value="%{getText('button.cancel')}"/>"/>
+                               value="<s:text name="button.cancel"/>"/>
                     </div>
                 </s:form>
 

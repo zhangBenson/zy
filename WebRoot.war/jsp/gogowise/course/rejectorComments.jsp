@@ -46,7 +46,7 @@
         <div id="rejecthead"></div>
         <div id="rejectcon">
             <div id="text">
-                <p><s:property value="%{getText('text.reason.rejection')}"/>：</p>
+                <p><s:text name="text.reason.rejection"/>：</p>
 
                 <p>
                     <s:textarea name="comments" cols="35" rows="3" id="textarea"/>

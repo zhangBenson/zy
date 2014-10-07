@@ -21,7 +21,7 @@
         </ul>
     </div>
     <div class="udb_1_4">
-        <a href="javascript:;" id="focus_btn" onclick=";"><s:property value="%{getText('onlive.focus.on')}"/></a>
+        <a href="javascript:;" id="focus_btn" onclick=";"><s:text name="onlive.focus.on"/></a>
     </div>
 </div>
 
@@ -184,9 +184,9 @@
     <div class="ubd_3_3">
         <h4>组织数据</h4>
         <ul>
-            <li class="li_1" title="<s:property value="%{getText('blog.videos')}"/>"></li>
-            <li class="li_2" title="<s:property value="%{getText('blog.documents')}"/>"></li>
-            <li class="li_3" title="<s:property value="%{getText('course.selection.others')}"/>"></li>
+            <li class="li_1" title="<s:text name="blog.videos"/>"></li>
+            <li class="li_2" title="<s:text name="blog.documents"/>"></li>
+            <li class="li_3" title="<s:text name="course.selection.others"/>"></li>
         </ul>
     </div>
 </div>

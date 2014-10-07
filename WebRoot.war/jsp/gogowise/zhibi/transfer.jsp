@@ -6,19 +6,19 @@
 <div class="mf_1">
     <ul class="sub_nav cf">
         <li class="">
-            <a href="myGGWAccount.html"><s:property value="%{getText('usermenu.item.zhibi.myAccount')}"/></a>
+            <a href="myGGWAccount.html"><s:text name="usermenu.item.zhibi.myAccount"/></a>
         </li>
         <li class="">
-            <a href="#"><s:property value="%{getText('usermenu.item.zhibi.fulfilment')}"/></a>
+            <a href="#"><s:text name="usermenu.item.zhibi.fulfilment"/></a>
         </li>
         <li class="stand_out">
-            <a href="initTransfer.html"><s:property value="%{getText('usermenu.item.zhibi.change')}"/></a>
+            <a href="initTransfer.html"><s:text name="usermenu.item.zhibi.change"/></a>
         </li>
         <li class="">
-            <a href="initConsumption.html"><s:property value="%{getText('usermenu.item.zhibi.query')}"/></a>
+            <a href="initConsumption.html"><s:text name="usermenu.item.zhibi.query"/></a>
         </li>
         <li class="">
-            <a href="javascript:;"><s:property value="%{getText('usermenu.item.zhibi.to.cash')}"/></a>
+            <a href="javascript:;"><s:text name="usermenu.item.zhibi.to.cash"/></a>
         </li>
     </ul>
 </div>
@@ -26,15 +26,15 @@
 <div class="container">
     <s:form id="transfer_form" action="executeTransfer" validate="true" theme="css_xhtml" method="post">
         <div class="block">
-            <h3><s:property value="%{getText('gogowise.zhibi.transfer.step1')}"/></h3>
+            <h3><s:text name="gogowise.zhibi.transfer.step1"/></h3>
             <table>
                 <tr>
-                    <td><s:property value="%{getText('gogowise.zhibi.transfer.receiver')}"/></td>
+                    <td><s:text name="gogowise.zhibi.transfer.receiver"/></td>
                     <td><s:textfield name="receiver.nickName" id="toName"/></td>
-                    <td><s:property value="%{getText('gogowise.zhibi.transfer.receiver.nickName')}"/></td>
+                    <td><s:text name="gogowise.zhibi.transfer.receiver.nickName"/></td>
                 </tr>
                 <tr>
-                    <td><s:property value="%{getText('gogowise.zhibi.transfer.account')}"/></td>
+                    <td><s:text name="gogowise.zhibi.transfer.account"/></td>
                     <td><s:textfield name="receiver.email" id="toEmail"/></td>
                     <td><s:property
                             value="%{getText('gogowise.zhibi.transfer.receiver.email')}"/>&nbsp;&nbsp;&nbsp;<span
@@ -43,46 +43,46 @@
             </table>
         </div>
         <div class="block">
-            <h3><s:property value="%{getText('gogowise.zhibi.transfer.step2')}"/></h3>
+            <h3><s:text name="gogowise.zhibi.transfer.step2"/></h3>
             <table>
                 <tr>
-                    <td><s:property value="%{getText('gogowise.zhibi.transfer.zhibi.type')}"/></td>
-                    <td><s:property value="%{getText('label.zhibi.true')}"/></td>
+                    <td><s:text name="gogowise.zhibi.transfer.zhibi.type"/></td>
+                    <td><s:text name="label.zhibi.true"/></td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td><s:property value="%{getText('gogowise.zhibi.transfer.total')}"/></td>
+                    <td><s:text name="gogowise.zhibi.transfer.total"/></td>
                     <td><s:textfield name="transferMoney" id="transferMoney"/></td>
-                    <td><s:property value="%{getText('label.zhibi.true')}"/>&nbsp;&nbsp;&nbsp;<span class="tip_words"
+                    <td><s:text name="label.zhibi.true"/>&nbsp;&nbsp;&nbsp;<span class="tip_words"
                                                                                                     id="transferMoney_tip"></span>
                     </td>
                 </tr>
                 <tr>
-                    <td><s:property value="%{getText('gogowise.zhibi.transfer.message')}"/></td>
+                    <td><s:text name="gogowise.zhibi.transfer.message"/></td>
                     <td><s:textfield name="transferMessage"/></td>
-                    <td><s:property value="%{getText('gogowise.zhibi.transfer.tips')}"/></td>
+                    <td><s:text name="gogowise.zhibi.transfer.tips"/></td>
                 </tr>
             </table>
         </div>
         <div class="block">
-            <h3><s:property value="%{getText('gogowise.zhibi.transfer.step3')}"/></h3>
+            <h3><s:text name="gogowise.zhibi.transfer.step3"/></h3>
             <table>
                 <tr>
-                    <td><s:property value="%{getText('gogowise.zhibi.transfer.payer.account')}"/></td>
+                    <td><s:text name="gogowise.zhibi.transfer.payer.account"/></td>
                     <td><s:property value="#session.email"/></td>
                     <td></td>
                 </tr>
             </table>
         </div>
         <div class="block">
-            <h3><s:property value="%{getText('gogowise.zhibi.transfer.step4')}"/></h3>
+            <h3><s:text name="gogowise.zhibi.transfer.step4"/></h3>
             <table>
                 <s:hidden name="confirmCode" id="transfer_confirmCode"/>
                 <tr>
-                    <td><s:property value="%{getText('gogowise.zhibi.transfer.confirmCode')}"/></td>
+                    <td><s:text name="gogowise.zhibi.transfer.confirmCode"/></td>
                     <td><s:textfield name="checkCode" id="confirmCode"/></td>
                     <td><input type="button"
-                               value="<s:property value="%{getText('gogowise.zhibi.transfer.achieve.confirmCode')}"/>"
+                               value="<s:text name="gogowise.zhibi.transfer.achieve.confirmCode"/>"
                                onclick="getConfirmCode();"/>&nbsp;&nbsp;&nbsp;<span class="tip_words"
                                                                                     id="confirmCode_tip"></span></td>
                 </tr>
@@ -90,7 +90,7 @@
         </div>
         <div class="confirm">
             <input type="submit" onclick="return checkTransferForm();"
-                   value="<s:property value="%{getText('confirm.to.transfer')}"/>"/>
+                   value="<s:text name="confirm.to.transfer"/>"/>
         </div>
     </s:form>
 </div>

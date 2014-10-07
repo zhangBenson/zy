@@ -161,9 +161,9 @@
     <s:hidden name="reDirectUrl" id="reDirectUrl"/>
     <div id="register">
         <div id="regleft">
-                <%--<div id="regtitle"><s:property value="%{getText('CreateUser')}"/></div>--%>
-            <div id="regtitle2"><s:property value="%{getText('CreateUser')}"/></div>
-            <div id="links"><s:property value="%{getText('Registed')}"/><a href="#" onclick="goToLogon()"><s:property
+                <%--<div id="regtitle"><s:text name="CreateUser"/></div>--%>
+            <div id="regtitle2"><s:text name="CreateUser"/></div>
+            <div id="links"><s:text name="Registed"/><a href="#" onclick="goToLogon()"><s:property
                     value="%{getText('Login')}"/></a></div>
         </div>
         <div id="regright">
@@ -171,14 +171,14 @@
 
                 <p class="inputTips">
 
-                <div class="option_tittle"><s:property value="%{getText('email')}"/></div>
+                <div class="option_tittle"><s:text name="email"/></div>
                 <span class="errorinfo" id="yzemail">*</span><br/>
                 <s:textfield name="user.email" id="email" cssClass="text"/>
                 </p>
 
                 <p class="inputTips">
 
-                <div class="option_tittle"><s:property value="%{getText('password')}"/></div>
+                <div class="option_tittle"><s:text name="password"/></div>
                 <span class="errorinfo" id="yzpwd">*</span>
                 <s:password name="user.password" id="pwd" type="password" cssClass="text"/>
                 </p>
@@ -186,14 +186,14 @@
 
                 <p class="inputTips">
 
-                <div class="option_tittle"><s:property value="%{getText('psdagain')}"/></div>
+                <div class="option_tittle"><s:text name="psdagain"/></div>
                 <span class="errorinfo" id="yzrepwd">*</span>
                 <s:password name="duplicate" id="repwd" cssClass="text"/>
                 </p>
 
                 <p class="inputTips">
 
-                <div class="option_tittle"><s:property value="%{getText('menber.reg.nickName')}"/></div>
+                <div class="option_tittle"><s:text name="menber.reg.nickName"/></div>
                 <span class="errorinfo" id="yzNickName">*</span><br/>
                 <s:textfield name="user.nickName" id="nickName" cssClass="text"/>
                 </p>
@@ -209,7 +209,7 @@
                 </p>
 
                 <p class="nextButton"><input type="submit" name="button" id="btn1" onclick="return checkForm();"
-                                             value="<s:property value="%{getText('createButton')}"/>"/>
+                                             value="<s:text name="createButton"/>"/>
                 </p>
             </div>
         </div>

@@ -6,7 +6,7 @@
 
 
 <div class="live_title fl">
-    <h3 class="h3_title"><s:property value="%{getText('my.firstpage.users.i.followed')}"/></h3>
+    <h3 class="h3_title"><s:text name="my.firstpage.users.i.followed"/></h3>
     <%--<p>--%>
     <%--<a href="javascript:;">按开始时间排序</a>--%>
     <%--<a href="javascript:;">按会员名排序</a>--%>
@@ -28,13 +28,13 @@
             <p class="title">
                 <a class="title" href="userBlog.html?user.id=<s:property value="user.id"/>"><s:property
                         value="user.nickName"/></a>
-                    <%--<a class="watch orange_words" href="javascript:;"><s:property value="%{getText('user.add.focus')}"/></a>--%>
+                    <%--<a class="watch orange_words" href="javascript:;"><s:text name="user.add.focus"/></a>--%>
             </p>
 
             <p class="info">
                 <span><%--7课程&nbsp;&nbsp;5个人秀&nbsp;&nbsp;4直播&nbsp;&nbsp;--%>
                     <s:property value="user.fansNum"/>
-                    <s:property value="%{getText('onlive.fensi')}"/></span>
+                    <s:text name="onlive.fensi"/></span>
             </p>
 
             <p>
@@ -42,7 +42,7 @@
                     <s:property value="user.selfDescription"/>
                 </s:if>
                 <s:else>
-                    <s:property value="%{getText('user.without.self.desc')}"/>
+                    <s:text name="user.without.self.desc"/>
                 </s:else>
             </p>
         </div>

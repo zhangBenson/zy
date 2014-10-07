@@ -38,7 +38,7 @@
         <div id="text">
             <p>&nbsp;</p>
 
-            <p><s:property value="%{getText('text.save.course.error')}"/></p>
+            <p><s:text name="text.save.course.error"/></p>
         </div>
     </div>
 </div>

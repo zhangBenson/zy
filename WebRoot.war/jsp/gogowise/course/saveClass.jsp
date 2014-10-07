@@ -298,18 +298,18 @@
 
 
 <h1><a>GoGoWise</a></h1>
-<h4 align="center"><s:property value="%{getText('label.online.class.coursename')}"/><s:property
+<h4 align="center"><s:text name="label.online.class.coursename"/><s:property
         value="course.name"/></h4>
 
-<h2><s:property value="%{getText('label.created.course')}"/></h2>
+<h2><s:text name="label.created.course"/></h2>
 <table class="list1">
     <thead>
     <tr class="odd">
-        <th scope="col" abbr="Home"><s:property value="%{getText('lable.course.no')}"/></th>
-        <th scope="col" abbr="Home"><s:property value="%{getText('lable.course.nickname')}"/></th>
-        <%--<th scope="col" abbr="Home Plus"><s:property value="%{getText('lable.course.date')}"/></th>--%>
-        <th scope="col" abbr="Business"><s:property value="%{getText('lable.course.starttime')}"/></th>
-        <th scope="col" abbr="Business Plus"><s:property value="%{getText('lable.course.endtime')}"/></th>
+        <th scope="col" abbr="Home"><s:text name="lable.course.no"/></th>
+        <th scope="col" abbr="Home"><s:text name="lable.course.nickname"/></th>
+        <%--<th scope="col" abbr="Home Plus"><s:text name="lable.course.date"/></th>--%>
+        <th scope="col" abbr="Business"><s:text name="lable.course.starttime"/></th>
+        <th scope="col" abbr="Business Plus"><s:text name="lable.course.endtime"/></th>
         <th scope="col" abbr="Business Plus">&nbsp;</th>
         <th scope="col" abbr="Business Plus">&nbsp;</th>
     </tr>
@@ -387,7 +387,7 @@
 		</span>
                 </li>
                     <%--<li id="li_3" >--%>
-                    <%--<label class="description" for="element_3"><s:property value="%{getText('lable.course.starttime')}"/> </label>--%>
+                    <%--<label class="description" for="element_3"><s:text name="lable.course.starttime"/> </label>--%>
                     <%--<span>--%>
                     <%--<s:select  list="{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23}"--%>
                     <%--name="courseClass.startTimeHour" id="sth" theme="simple" value="" headerKey="0" headerValue="--"/>--%>
@@ -416,7 +416,7 @@
                 </li>
                 <li class="buttons">
                     <input type="submit" name="button1" id="button1" class="button"
-                           value="<s:property value="%{getText('button.save')}"/>"/>
+                           value="<s:text name="button.save"/>"/>
                 </li>
                 <span class="info"></span>
             </ul>
@@ -519,7 +519,7 @@
         </div>
     </s:form>
     <div id="footer">
-        <s:property value="%{getText('text.backto')}"/><a href="coursePart.html"><s:property
+        <s:text name="text.backto"/><a href="coursePart.html"><s:property
             value="%{getText('menu.item.studyonline')}"/></a>
     </div>
 </div>

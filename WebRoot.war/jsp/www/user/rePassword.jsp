@@ -26,7 +26,7 @@
             <div class="basePanelTextLeft">
                 <h1 class="courseSubject">Forget Password</h1>
 
-                <h1 class="courseSynopsis"><s:property value="%{getText('label.get.back.password')}"/></h1>
+                <h1 class="courseSynopsis"><s:text name="label.get.back.password"/></h1>
 
                 <%--<form class="form-horizontal" role="form" method="post" id="repassword_form">--%>
                 <s:form cssClass="form-horizontal" action="findEmailUser" theme="css_xhtml" validate="true"

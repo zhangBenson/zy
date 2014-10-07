@@ -15,7 +15,7 @@
                     <s:param name="pagination.pageNow" value="pagination.pageNow-1"></s:param>
                 </s:url>
                 <s:a href="#" cssClass="page_pre" onclick="postFormPrePag(this)"
-                     title="%{getText('pagination.last.page')}"><s:property value="%{getText('pagination.last.page')}"/><s:property
+                     title="%{getText('pagination.last.page')}"><s:text name="pagination.last.page"/><s:property
                         value="actionName"/></s:a>
             </s:if>
 
@@ -52,7 +52,7 @@
                     <s:param name="pagination.pageNow" value="pagination.pageNow+1"></s:param>
                 </s:url>
                 <s:a href="#" onclick="postFormNextPag()" cssClass="page_next"
-                     title="%{getText('pagination.next.page')}"><s:property value="%{getText('pagination.next.page')}"/></s:a>
+                     title="%{getText('pagination.next.page')}"><s:text name="pagination.next.page"/></s:a>
             </s:if>
         </td>
     </tr>

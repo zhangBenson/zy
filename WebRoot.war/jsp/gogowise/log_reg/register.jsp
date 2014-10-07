@@ -8,11 +8,11 @@
     <%--<a href="index.html">--%>
     <%--<img src="images/gogowise_logo_big_darkblue_error.png"/>--%>
     <%--</a>--%>
-    <%--<span><s:property value="%{getText('share.happy.share.knowlege')}"/></span>--%>
+    <%--<span><s:text name="share.happy.share.knowlege"/></span>--%>
     <%--</div>--%>
     <div class="lr_left fl">
-        <a href="easyLogon.html"><s:property value="%{getText('button.log.in')}"/></a> <br/>
-        <a href="javascript:;" class="stand_out"><s:property value="%{getText('user.info.identity.finish.reg')}"/></a>
+        <a href="easyLogon.html"><s:text name="button.log.in"/></a> <br/>
+        <a href="javascript:;" class="stand_out"><s:text name="user.info.identity.finish.reg"/></a>
     </div>
     <div class="lr_right lr_right_reg fr">
         <s:form validate="true" theme="css_xhtml" method="POST" action="reg">
@@ -22,7 +22,7 @@
             <s:hidden name="confirmForOrg"/>
 
             <div class="item_wrap item_wrap_reg">
-                <div class="option_title_reg"><s:property value="%{getText('email')}"/></div>
+                <div class="option_title_reg"><s:text name="email"/></div>
                 &nbsp;&nbsp;
                 <span id="log_email_tip" class="tip_words">*</span>
                 <s:textfield cssClass="textfield" name="user.email"/>
@@ -31,7 +31,7 @@
 
 
             <div class="item_wrap item_wrap_reg">
-                <div class="option_title_reg"><s:property value="%{getText('password')}"/></div>
+                <div class="option_title_reg"><s:text name="password"/></div>
                 &nbsp;&nbsp;
                 <span id="log_pwd_tip" class="tip_words">*</span>
                 <s:password cssClass="textfield" name="user.password"/>
@@ -39,7 +39,7 @@
             </div>
 
             <div class="item_wrap item_wrap_reg">
-                <div class="option_title_reg"><s:property value="%{getText('psdagain')}"/></div>
+                <div class="option_title_reg"><s:text name="psdagain"/></div>
                 &nbsp;&nbsp;
                 <span id="log_repwd_tip" class="tip_words">*</span>
                 <s:password cssClass="textfield" name="duplicate"/>
@@ -47,7 +47,7 @@
             </div>
 
             <div class="item_wrap item_wrap_reg">
-                <div class="option_title_reg"><s:property value="%{getText('menber.reg.nickName')}"/></div>
+                <div class="option_title_reg"><s:text name="menber.reg.nickName"/></div>
                 &nbsp;&nbsp;
                 <span id="log_nickName_tip" class="tip_words">*</span>
                 <s:textfield cssClass="textfield" name="user.nickName"/>
@@ -59,10 +59,10 @@
                     <span id="yxcheckbox" class="tip_words"></span> <br/>
                     <input name="checkbox" type="checkbox" value="checked" id="checkbox"/>
                     <a href="<%=request.getContextPath()%>/jsp/gogowise/Clause.htm" class="boxy"
-                       id="reg_clause"><s:property value="%{getText('read')}"/></a>
+                       id="reg_clause"><s:text name="read"/></a>
                 </div>
                 <input type="submit" class="subBtn" onclick="return checkRegForm();"
-                       value="<s:property value="%{getText('createButton')}"/>"/>
+                       value="<s:text name="createButton"/>"/>
             </div>
 
         </s:form>

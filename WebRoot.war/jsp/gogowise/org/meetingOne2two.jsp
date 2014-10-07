@@ -34,13 +34,13 @@
 
     <div class="titleWrapper">
         <h2>
-            <s:property value="%{getText('org.matters.video.meeting')}"/>(<a
+            <s:text name="org.matters.video.meeting"/>(<a
                 href="orgBlog.html?org.id=<s:property value="orgMeeting.organization.id"/>" target="_blank"><s:property
                 value="orgMeeting.organization.schoolName"/></a>)
         </h2>
 
         <h3>
-            <s:property value="%{getText('org.meeting.virtual.host')}"/>:&nbsp;
+            <s:text name="org.meeting.virtual.host"/>:&nbsp;
             <a href="userBlog.html?user.id=<s:property value="orgMeeting.hostMan.id"/>" target="_blank"><s:property
                     value="orgMeeting.hostMan.nickName"/></a>
         </h3>

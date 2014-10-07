@@ -9,7 +9,7 @@
     <s:hidden name="searchStr"/>
 
     <div class="listDown fl">
-        <h3 class="h3_title"><s:property value="%{getText('search.header.course')}"/></h3>
+        <h3 class="h3_title"><s:text name="search.header.course"/></h3>
 
             <%-- 这是课程循环的Div  --%>
         <div class="listView fl">
@@ -54,7 +54,7 @@
                             <span><span class="orange_words"> <s:property
                                     value="courseRecommendNum"/>&nbsp;</span><s:property
                                     value="%{getText('course.blog.recommend.num')}"/></span> &nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span><s:property value="%{getText('course.blog.total.terms')}"/><span class="orange_words"> <s:property
+                            <span><s:text name="course.blog.total.terms"/><span class="orange_words"> <s:property
                                     value="courseTermsNum"/>&nbsp;</span><s:property
                                     value="%{getText('course.blog.total.terms.tail')}"/></span>
                         </p>

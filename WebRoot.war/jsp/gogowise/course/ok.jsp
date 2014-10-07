@@ -11,7 +11,7 @@
 <head><title>Simple jsp page</title></head>
 <body>
 
-<h1><s:property value="%{getText('text.course.created')}"/></h1>
+<h1><s:text name="text.course.created"/></h1>
 
 </body>
 </html>

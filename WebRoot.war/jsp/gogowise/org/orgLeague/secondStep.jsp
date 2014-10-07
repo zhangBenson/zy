@@ -14,25 +14,25 @@
 <div id="orgLeagueDiv">
     <div id="orgCenterDiv">
         <div class="secondTipHead">
-            <span><s:property value="%{getText('orgleague.info.validate')}"/></span></div>
+            <span><s:text name="orgleague.info.validate"/></span></div>
         <s:form action="saveSecStep" theme="simple" id="responserForm" enctype="multipart/form-data" validate="true"
                 method="post">
             <s:hidden name="responser.id"/>
             <ul class="principalMsg">
                 <li class="short_li">
-                    <div class="option_tittle"><s:property value="%{getText('orgleague.info.name')}"/></div>
+                    <div class="option_tittle"><s:text name="orgleague.info.name"/></div>
                     <p id="secondStepNameWarn" class="input_msg"></P>
 
                     <div class="input_content"><s:textfield cssClass="inputName" id="secondStepName"
                                                             name="responser.userName"/></div>
                 </li>
                 <li class="short_li">
-                    <div class="option_tittle"><s:property value="%{getText('orgleague.info.sex')}"/></div>
+                    <div class="option_tittle"><s:text name="orgleague.info.sex"/></div>
                     <div class="input_content"><s:radio name="responser.sexy" id="secondStepRadio"
                                                         list="#{true:getText('lable.sex.true'),false:getText('lable.sex.false')}"/></div>
                 </li>
                 <li class="short_li">
-                    <div class="option_tittle"><s:property value="%{getText('orgleague.info.birth')}"/></div>
+                    <div class="option_tittle"><s:text name="orgleague.info.birth"/></div>
                     <p id="secondStepBirthdayWarn" class="input_msg"></p>
                     <input type="hidden"
                            value="<s:date name="responser.birthDay" format="%{getText('global.display.date')}"/> "
@@ -47,21 +47,21 @@
                                                             value="%{getText('global.datetime',{responser.birthDay})}"/></div>
                 </li>
                 <li class="short_li">
-                    <div class="option_tittle"><s:property value="%{getText('orgleague.info.contact')}"/></div>
+                    <div class="option_tittle"><s:text name="orgleague.info.contact"/></div>
                     <p id="secondStepContactWarn" class="input_msg"></P>
 
                     <div class="input_content"><s:textfield id="secondStepContact" cssClass="inputTel"
                                                             name="responser.telphone"/></div>
                 </li>
                 <li class="long_li">
-                    <div class="option_tittle"><s:property value="%{getText('orgleague.info.id')}"/></div>
+                    <div class="option_tittle"><s:text name="orgleague.info.id"/></div>
                     <p id="secondStepIDWarn" class="input_msg"></P>
 
                     <div class="input_content"><s:textfield id="secondStepID" cssClass="inputName"
                                                             name="responser.cardId"/></div>
                 </li>
                 <li class="long_li">
-                    <div class="option_tittle"><s:property value="%{getText('orgleague.info.id.card')}"/></div>
+                    <div class="option_tittle"><s:text name="orgleague.info.id.card"/></div>
                     <div class="file_upload"><input type="file" name="fileupload" id="fileupload"/></div>
                     <p id="secondStepFileWarn" class="input_msg"></P>
                     <s:hidden name="idCardUrl" id="idCardUrl"/>
@@ -80,10 +80,10 @@
         </div>
 
         <ul class="orgStep">
-            <li><s:property value="%{getText('org.warmtip')}"/></li>
-            <li class=""><s:property value="%{getText('orgleague.identity.confirm')}"/></li>
-            <li><s:property value="%{getText('orgleague.info.fill')}"/></li>
-            <li><s:property value="%{getText('orgleague.info.submit')}"/></li>
+            <li><s:text name="org.warmtip"/></li>
+            <li class=""><s:text name="orgleague.identity.confirm"/></li>
+            <li><s:text name="orgleague.info.fill"/></li>
+            <li><s:text name="orgleague.info.submit"/></li>
         </ul>
     </div>
 </div>

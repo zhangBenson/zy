@@ -30,22 +30,22 @@
     <body>
         <div class="container">
             <h3 class="log_head">
-                <span><s:property value="%{getText('button.log.in')}"/></span>
+                <span><s:text name="button.log.in"/></span>
                 <a href="javascript:;" onclick="parent.window.location.href='index.html';"></a>
             </h3>
             <form id="user_login_form">
                 <div class="log_center">
-                    <label for="user_email"><s:property value="%{getText('msg.email')}"/></label><span id="login_tip"></span>
+                    <label for="user_email"><s:text name="msg.email"/></label><span id="login_tip"></span>
                     <input type="text"  id="user_email" class="text_field" name="user.email"/>
-                    <label for="user_pwd"><s:property value="%{getText('msg.pwd')}"/></label><span id="pws_tip"></span>
+                    <label for="user_pwd"><s:text name="msg.pwd"/></label><span id="pws_tip"></span>
                     <input type="password" id="user_pwd" class="text_field" name="user.password"/>
-                    <input type="button" class="log_btn" value="<s:property value="%{getText('Login')}"/>"/>
-                    <a href="javascript:;" onclick="parent.window.location.href='initRepassword.html';"><s:property value="%{getText('link.forget.pwd')}"/>？</a>
+                    <input type="button" class="log_btn" value="<s:text name="Login"/>"/>
+                    <a href="javascript:;" onclick="parent.window.location.href='initRepassword.html';"><s:text name="link.forget.pwd"/>？</a>
                 </div>
             </form>
-            <div class="log_tip"><s:property value="%{getText('user.do.not.have.gogowise.account')}"/>
+            <div class="log_tip"><s:text name="user.do.not.have.gogowise.account"/>
                 <a href="javascript:;" onclick="parent.window.location.href='initReg.html';">
-                    <s:property value="%{getText('createButton')}"/>！</a></div>
+                    <s:text name="createButton"/>！</a></div>
         </div>
         <script type="text/javascript">
             $(".log_btn").click(function(){

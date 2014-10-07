@@ -120,41 +120,41 @@
     <s:hidden name="course.id"/>
     <div id="register">
         <div id="regleft">
-            <div id="regtitle"><s:property value="%{getText('course.creation')}"/></div>
-            <div id="regtitle2"><s:property value="%{getText('identity.confirm')}"/></div>
+            <div id="regtitle"><s:text name="course.creation"/></div>
+            <div id="regtitle2"><s:text name="identity.confirm"/></div>
             <div id="links">
-                <s:property value="%{getText('user.info.identity.confirm.first')}"/><a class="linksClick" href="####"
+                <s:text name="user.info.identity.confirm.first"/><a class="linksClick" href="####"
                                                                                        onclick="addRepswAndnickName();">
                 <s:property  value="%{getText('here')}"/></a>
-                <s:property value="%{getText('user.info.identity.finish.reg')}"/>
+                <s:text name="user.info.identity.finish.reg"/>
             </div>
         </div>
         <div id="regright">
             <div id="regrightCont">
-                <p class="inputTips"><s:property value="%{getText('email')}"/><span class="errorinfo"
+                <p class="inputTips"><s:text name="email"/><span class="errorinfo"
                                                                                     id="yzemail">*</span>
           <span id="emailNotExist" style="display: none;">
-               <img src="images/courseImages/error.gif"/><s:property value="%{getText('identity.not.exist.click')}"/><a
+               <img src="images/courseImages/error.gif"/><s:text name="identity.not.exist.click"/><a
                   href="####" onclick="addRepswAndnickName();" style="color:#ff0000;">
-              <s:property value="%{getText('here')}"/></a>
-              <s:property value="%{getText('identity.finish.regist')}"/>
+              <s:text name="here"/></a>
+              <s:text name="identity.finish.regist"/>
           </span>
                     <s:textfield name="user.email" id="email" type="password" cssClass="text"/>
                 </p>
 
-                <p id="addnext" class="inputTips"><s:property value="%{getText('password')}"/><span class="errorinfo"
+                <p id="addnext" class="inputTips"><s:text name="password"/><span class="errorinfo"
                                                                                                     id="yzpwd">*<s:property
                         value="identityConfirmMsg"/></span><br/>
                     <s:password name="user.password" id="pwd" cssClass="text"/>
                 </p>
 
                 <div id="addMsg" style="display:none;">
-                    <p class="inputTips"><s:property value="%{getText('psdagain')}"/><span class="errorinfo"
+                    <p class="inputTips"><s:text name="psdagain"/><span class="errorinfo"
                                                                                            id="yzrepwd">*</span><br/>
                         <s:password name="duplicate" id="repwd" cssClass="text"/>
                     </p>
 
-                    <p class="inputTips"><s:property value="%{getText('menber.reg.nickName')}"/><span class="errorinfo"
+                    <p class="inputTips"><s:text name="menber.reg.nickName"/><span class="errorinfo"
                                                                                                       id="yznickName">*</span><br/>
                         <s:textfield name="user.nickName" id="nickName" cssClass="text"/>
                     </p>
@@ -165,7 +165,7 @@
                 </div>
 
                 <p class="nextButton"><input type="submit" name="button" id="btn1" onclick="return checkForm();"
-                                             value="<s:property value="%{getText('button.next')}"/>"/> <a
+                                             value="<s:text name="button.next"/>"/> <a
                         href="initRepassword.html"><span id="forgotPwd" style="display:inline;">忘记密码？</span></a>
                 </p>
             </div>

@@ -66,14 +66,14 @@
                     <div class="appnitro">
 
                         <div class="form_description">
-                            <h2><s:property value="%{getText('label.class.oline')}"/></h2>
+                            <h2><s:text name="label.class.oline"/></h2>
 
-                            <p><s:property value="%{getText('text.easy.study')}"/></p>
+                            <p><s:text name="text.easy.study"/></p>
                         </div>
 
                         <ul>
                             <s:if test="identity == 1">
-                                <h3><s:property value="%{getText('label.online.class.lecturer.info')}"/></h3>
+                                <h3><s:text name="label.online.class.lecturer.info"/></h3>
                                 <li id="li_1">
                                     <label class="description" for="element_1"><s:property
                                             value="%{getText('label.online.class.org.name')}"/><span
@@ -106,7 +106,7 @@
                             </s:if>
 
                             <s:if test="identity == 2">
-                                <h3><s:property value="%{getText('label.online.class.lecturer.info')}"/></h3>
+                                <h3><s:text name="label.online.class.lecturer.info"/></h3>
                                 <li id="li_3">
                                     <label class="description" for="element_3"><s:property
                                             value="%{getText('label.online.class.org.name')}"/><span
@@ -128,7 +128,7 @@
                             </s:if>
 
                             <s:if test="identity == 3">
-                                <h3><s:property value="%{getText('label.online.class.lecturer.info')}"/></h3>
+                                <h3><s:text name="label.online.class.lecturer.info"/></h3>
                                 <li id="li_3">
                                     <label class="description" for="element_3"><s:property
                                             value="%{getText('label.online.class.org.name')}"/><span
@@ -151,7 +151,7 @@
                             </s:if>
 
 
-                            <h3><s:property value="%{getText('label.online.class.type')}"/></h3>
+                            <h3><s:text name="label.online.class.type"/></h3>
 
                             <s:if test="identity != 4">
                                 <li id="li_44">
@@ -185,7 +185,7 @@
                                         <input name="course.charges" class="element text medium" type="text"
                                                maxlength="255" value=""/>
                                         <label><input type="radio" name="course.consumptionType" value="true"
-                                                      checked="checked"/><s:property value="%{getText('label.zhibi')}"/></label>
+                                                      checked="checked"/><s:text name="label.zhibi"/></label>
                                         <label><input type="radio" name="course.consumptionType"
                                                       value="false"/><s:property
                                                 value="%{getText('label.course.zhiquan')}"/></label>
@@ -217,7 +217,7 @@
                                 <div>
                                     <s:textfield name="course.totalHours" required="true" cssClass="element text"
                                                  size="4" maxlength="4"/>
-                                    <s:property value="%{getText('label.online.class.perods')}"/></div>
+                                    <s:text name="label.online.class.perods"/></div>
                             </li>
                             <li id="li_7">
 
@@ -263,7 +263,7 @@
 
                     </div>
                     <div id="footer">
-                        <s:property value="%{getText('text.backto')}"/> <a href="http://www.gogowise.com"><s:property
+                        <s:text name="text.backto"/> <a href="http://www.gogowise.com"><s:property
                             value="%{getText('menu.item.index')}"/></a>
                     </div>
                 </div>

@@ -51,10 +51,10 @@
 <div id="tabtag2" class="tabtag">
     <ul class="tabtag_ul">
         <div class="left_bottom"></div>
-        <li id="tabtag_1" class="cur"><s:property value="%{getText('org.info.update.orgResInfo')}"/></li>
-        <li id="tabtag_2"><s:property value="%{getText('org.info.update.orgInfo')}"/></li>
-        <li id="tabtag_3"><s:property value="%{getText('org.info.update.orgContact')}"/></li>
-        <li id="tabtag_4"><s:property value="%{getText('org.info.update.material')}"/></li>
+        <li id="tabtag_1" class="cur"><s:text name="org.info.update.orgResInfo"/></li>
+        <li id="tabtag_2"><s:text name="org.info.update.orgInfo"/></li>
+        <li id="tabtag_3"><s:text name="org.info.update.orgContact"/></li>
+        <li id="tabtag_4"><s:text name="org.info.update.material"/></li>
         <div class="right_bottom"></div>
     </ul>
 </div>
@@ -76,7 +76,7 @@
                 </div>
             </li>
             <li>
-                <div class="option_tittle"></span><s:property value="%{getText('orgInfoUpdate.param3')}"/></div>
+                <div class="option_tittle"></span><s:text name="orgInfoUpdate.param3"/></div>
                 <div class="input_content">
                         <%--<input name="responser.sexy" id="secondStepRadiotrue" type="radio" value="true">--%>
                         <%--<label for="secondStepRadiotrue">男</label>--%>
@@ -87,7 +87,7 @@
                 </div>
             </li>
             <li>
-                <p class="option_tittle"><s:property value="%{getText('orgInfoUpdate.param6')}"/></p>
+                <p class="option_tittle"><s:text name="orgInfoUpdate.param6"/></p>
 
                 <p id="secondStepBirthdayWarn" class="input_msg"></p>
 
@@ -122,7 +122,7 @@
                 </div>
             </li>
                 <%--<li>
-                    <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param9')}"/></p><p id="fileupload1_FileWarn" class="input_msg"></p><br/>
+                    <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:text name="orgInfoUpdate.param9"/></p><p id="fileupload1_FileWarn" class="input_msg"></p><br/>
                     <div class="input_content">
                         <p class="img_div"><img  id="file1_preview_img" src="<s:property value="responser.idCardUrl"/>" width="120px" height="90px" onerror="javascript:this.src='images/nopic.jpg'"/></p>
                         <p class="file_upload">
@@ -134,7 +134,7 @@
             <li class="commit_modfication1">
                 <span id="submit_msg1" class="_submit_msg"></span>
                 <span><input type="button" class="submit_btn"
-                             value="<s:property value="%{getText('orgInfoUpdate.param10')}"/>"/></span>
+                             value="<s:text name="orgInfoUpdate.param10"/>"/></span>
             </li>
         </ul>
     </s:form>
@@ -156,7 +156,7 @@
                 </div>
             </li>
             <li class="long_li" style="height:200px;">
-                    <%--<p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param12')}"/></p>--%>
+                    <%--<p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:text name="orgInfoUpdate.param12"/></p>--%>
                 <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property
                         value="%{getText('orgInfoUpdate.param12')}"/></p>
                 <s:textarea name="org.description" cols="80" id="thirdStepOrgShuoming" cssClass="descArea" rows="15"/>
@@ -194,7 +194,7 @@
                 </div>
             </li>
             <li class="orgScale">
-                <div class="option_tittle"><s:property value="%{getText('orgInfoUpdate.param16')}"/></div>
+                <div class="option_tittle"><s:text name="orgInfoUpdate.param16"/></div>
                 <div class="input_content" style="width: 460px;">
                     <div id="wwgrp_orgForm_org_memberSize" class="wwgrp">
                         <div id="wwctrl_orgForm_org_memberSize" class="wwctrl">
@@ -206,7 +206,7 @@
                 </div>
             </li>
             <li>
-                <div class="option_tittle"><s:property value="%{getText('orgInfoUpdate.param17')}"/></div>
+                <div class="option_tittle"><s:text name="orgInfoUpdate.param17"/></div>
                 <div id="wwgrp_orgForm_org_multipleOrg" class="wwgrp input_content">
                     <div id="wwctrl_orgForm_org_multipleOrg" class="wwctrl">
                         <s:radio
@@ -229,7 +229,7 @@
 
                     <div class="file_upload">
                         <input type="button" class="submit_btn" id="fileupload2"
-                               value="<s:property value="%{getText('onlive.message.update')}"/>"
+                               value="<s:text name="onlive.message.update"/>"
                                href="orgLogoProcess.html"/>
                     </div>
                     <p id="secondStepFileWarn" class="input_msg"></p>
@@ -254,7 +254,7 @@
             <li class="commit_modfication2">
                 <span id="submit_msg2" class="_submit_msg"></span>
                 <span><input type="button" class="submit_btn"
-                             value="<s:property value="%{getText('orgInfoUpdate.param10')}"/>"/></span>
+                             value="<s:text name="orgInfoUpdate.param10"/>"/></span>
             </li>
 
         </ul>
@@ -319,32 +319,32 @@
             <li class="commit_modfication3">
                 <span id="submit_msg3" class="_submit_msg"></span>
                 <span><input type="button" class="submit_btn"
-                             value="<s:property value="%{getText('orgInfoUpdate.param10')}"/>"/></span>
+                             value="<s:text name="orgInfoUpdate.param10"/>"/></span>
             </li>
         </ul>
     </s:form>
 </div>
 <div id="tabtag_4con" style="display:none;">
-    <h3><s:property value="%{getText('orgInfoUpdate.param25')}"/></h3>
+    <h3><s:text name="orgInfoUpdate.param25"/></h3>
     <s:form action="saveOrgAdvertiseFile" method="POST" enctype="multipart/form-data">
         <ul>
-            <li><span class="tip_words"><s:property value="%{getText('orgInfoUpdate.param26')}"/></span><input
+            <li><span class="tip_words"><s:text name="orgInfoUpdate.param26"/></span><input
                     type="file" name="upload"/></li>
-            <li><span class="tip_words"><s:property value="%{getText('orgInfoUpdate.param27')}"/></span><textarea
+            <li><span class="tip_words"><s:text name="orgInfoUpdate.param27"/></span><textarea
                     name="orgMaterial.description"
-                    placeholder="<s:property value="%{getText('orgInfoUpdate.param26.2')}"/>"></textarea></li>
+                    placeholder="<s:text name="orgInfoUpdate.param26.2"/>"></textarea></li>
             <li><s:submit cssClass="submit_material_btn" value="%{getText('orgInfoUpdate.param27.1')}"/></li>
         </ul>
     </s:form>
-    <h3><s:property value="%{getText('orgInfoUpdate.param28')}"/></h3>
+    <h3><s:text name="orgInfoUpdate.param28"/></h3>
     <table>
         <tr>
-            <td width="100px;"><s:property value="%{getText('orgInfoUpdate.param29')}"/></td>
-            <td width="100px;"><s:property value="%{getText('orgInfoUpdate.param30')}"/></td>
-            <td width="150px;"><s:property value="%{getText('orgInfoUpdate.param31')}"/></td>
-            <td width="100px;"><s:property value="%{getText('orgInfoUpdate.param32')}"/></td>
-            <td width="200px;"><s:property value="%{getText('orgInfoUpdate.param33')}"/></td>
-            <td width="100px;"><s:property value="%{getText('orgInfoUpdate.param34')}"/></td>
+            <td width="100px;"><s:text name="orgInfoUpdate.param29"/></td>
+            <td width="100px;"><s:text name="orgInfoUpdate.param30"/></td>
+            <td width="150px;"><s:text name="orgInfoUpdate.param31"/></td>
+            <td width="100px;"><s:text name="orgInfoUpdate.param32"/></td>
+            <td width="200px;"><s:text name="orgInfoUpdate.param33"/></td>
+            <td width="100px;"><s:text name="orgInfoUpdate.param34"/></td>
         </tr>
         <s:iterator value="orgMaterials">
             <tr>

@@ -55,7 +55,7 @@
                 <br/>
             </div>
             <div class="thickline"></div>
-            <h4><s:property value="%{getText('blog.message.board')}"/></h4>
+            <h4><s:text name="blog.message.board"/></h4>
 
             <div id="message_list_ul">
                 <s:iterator value="comments" status="idx">
@@ -77,14 +77,14 @@
                                                                   format="%{getText('global.display.datetime')}"/></p>
 
                                         <%-- <s:if test="user.id == #session.userID && owner.id != #session.userID">
-                                            <span class="span_3"><a onclick="replyToComment('<s:property value="owner.nickName"/>')" href="#message_area_tip"><s:property value="%{getText('blog.comments.reply')}"/></a></span>
-                                            <span class="span_3"><a onclick="deleteThisComment(this,<s:property value="id"/>)" href="#message_area_tip"><s:property value="%{getText('blog.comments.delete')}"/></a></span>
+                                            <span class="span_3"><a onclick="replyToComment('<s:property value="owner.nickName"/>')" href="#message_area_tip"><s:text name="blog.comments.reply"/></a></span>
+                                            <span class="span_3"><a onclick="deleteThisComment(this,<s:property value="id"/>)" href="#message_area_tip"><s:text name="blog.comments.delete"/></a></span>
                                         </s:if>
                                         <s:elseif test="user.id != #session.userID && owner.id != #session.userID">
-                                            <span class="span_3"><a onclick="replyToComment('<s:property value="owner.nickName"/>')" href="#message_area_tip"><s:property value="%{getText('blog.comments.reply')}"/></a></span>
+                                            <span class="span_3"><a onclick="replyToComment('<s:property value="owner.nickName"/>')" href="#message_area_tip"><s:text name="blog.comments.reply"/></a></span>
                                         </s:elseif>
                                         <s:else>
-                                            <span class="span_3"><a onclick="deleteThisComment(this,<s:property value="id"/>)" href="#message_area_tip"><s:property value="%{getText('blog.comments.delete')}"/></a></span>
+                                            <span class="span_3"><a onclick="deleteThisComment(this,<s:property value="id"/>)" href="#message_area_tip"><s:text name="blog.comments.delete"/></a></span>
                                         </s:else> --%>
                                 </div>
                                 <div class="clearfix"></div>
@@ -103,7 +103,7 @@
                     <textarea id="message_textarea" class="form-control" rows="3"></textarea>
                     <br/>
                     <input type="button" class="btn btn-primary btn-lg btn-block" id="message_submit_btn"
-                           value="<s:property value="%{getText('blog.comments.submit')}"/>"/>
+                           value="<s:text name="blog.comments.submit"/>"/>
                 </s:form>
             </div>
 

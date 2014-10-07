@@ -27,10 +27,10 @@
             programming.
             </h5>--%>
 
-            <%-- <h5 class ="courseSynopsis"><s:property value="%{getText('course.info')}"/></h5> --%>
+            <%-- <h5 class ="courseSynopsis"><s:text name="course.info"/></h5> --%>
             <div class="row">
                 <div class="col-md-8">
-                    <h3 class="courseSubhead"><s:property value="%{getText('course.info')}"/></h3>
+                    <h3 class="courseSubhead"><s:text name="course.info"/></h3>
                 </div>
             </div>
 
@@ -41,7 +41,7 @@
             </div>
 
             <div class="thickline"></div>
-            <h3 style="color: #6ab600"><s:property value="%{getText('makeVideo.tips')}"/></h3>
+            <h3 style="color: #6ab600"><s:text name="makeVideo.tips"/></h3>
             <h4 class="courseBody">
                 <span style="color: red; font-weight:bold"><s:property
                         value="%{getText('makeVideo.redHead')}"/></span><s:property
@@ -54,7 +54,7 @@
 
             <div class="thickline"></div>
 
-            <h3 class="courseSubhead"><s:property value="%{getText('online.class.avigation.course.video')}"/></h3>
+            <h3 class="courseSubhead"><s:text name="online.class.avigation.course.video"/></h3>
 
             <%-- Course Videos--%>
             <div id="videoList">
@@ -132,7 +132,7 @@
                         <p class="text-right">
                             <button id="moreClass" style="cursor:hand; border: 1px dotted;background-color: #ffffff;"
                                     onClick="showdiv('hiddenVideoList')">
-                                <s:property value="%{getText('others.more')}"/>
+                                <s:text name="others.more"/>
                             </button>
                         </p>
                     </s:if>

@@ -5,7 +5,7 @@
 
 <div id="header">
     <s:a action="index" cssClass="logoImg"></s:a>
-    <p class="words"><s:property value="%{getText('share.happy.share.knowlege')}"/></p>
+    <p class="words"><s:text name="share.happy.share.knowlege"/></p>
     <%-- 海林注意，如果是中文版，中文版三个字有下划线style="text-decoration:underline;"，如果是英文版给对English加上相应的CSS设置 --%>
     <!--p class="lan_select">
         <a href="javascript:;" style="text-decoration:underline;">中文版</a> / <a href="javascript:;">English</a>
@@ -21,7 +21,7 @@
     <form action="<s:url/>" id="langForm">
         <p class="lan_select">
             <%--   <s:text name="选择语言" />--%>
-            <s:property value="%{getText('header.select.language')}"/>
+            <s:text name="header.select.language"/>
             <s:select label="Language" list="#locales.locales" listKey="value"
                       listValue="key"
                       value="#SESSION_LOCALE == null ? locale : #SESSION_LOCALE"
@@ -31,12 +31,12 @@
     </form>
 
     <p class="help">
-        <a href="helpCenter.html" target="_blank"><s:property value="%{getText('system.normal.problem')}"/></a> /
+        <a href="helpCenter.html" target="_blank"><s:text name="system.normal.problem"/></a> /
         <%--<a href="javascript:;">站点地图</a> /--%>
-        <a href="aboutUs.html"><s:property value="%{getText('link.contact.us')}"/></a>
+        <a href="aboutUs.html"><s:text name="link.contact.us"/></a>
     </p>
 
-    <p class="tel"><s:property value="%{getText('system.contact.tel')}"/><span>4000-211-123</span> <s:property
+    <p class="tel"><s:text name="system.contact.tel"/><span>4000-211-123</span> <s:property
             value="#session.HIG_SEC_USER_EMAIL"/></p>
 
 </div>

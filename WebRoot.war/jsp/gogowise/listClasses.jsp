@@ -320,11 +320,11 @@
 
 <div id="rightcontent">
     <%--<ul id="tabtitle">--%>
-    <%--<li><a href="livingClass.html"><s:property value="%{getText('online.class.avigation.realtime.course')}"/></a></li>--%>
-    <%--<li><a href="myForcastClass.html"><s:property value="%{getText('online.class.avigation.mycourse')}"/></a></li>--%>
-    <%--<li id="now"><s:property value="%{getText('online.class.avigation.newest.course')}"/></li>--%>
-    <%--<li><a href="createCourse.html"><s:property value="%{getText('online.class.avigation.open.course')}"/></a></li>--%>
-    <%--<li><a href="ageClass.html"><s:property value="%{getText('online.class.avigation.course.video')}"/></a></li>--%>
+    <%--<li><a href="livingClass.html"><s:text name="online.class.avigation.realtime.course"/></a></li>--%>
+    <%--<li><a href="myForcastClass.html"><s:text name="online.class.avigation.mycourse"/></a></li>--%>
+    <%--<li id="now"><s:text name="online.class.avigation.newest.course"/></li>--%>
+    <%--<li><a href="createCourse.html"><s:text name="online.class.avigation.open.course"/></a></li>--%>
+    <%--<li><a href="ageClass.html"><s:text name="online.class.avigation.course.video"/></a></li>--%>
     <%--</ul>--%>
     <div id="html_1">
 
@@ -369,7 +369,7 @@
                     </s:else>
 
                     <span id="rate_t_<s:property value="#idx.index"/>" class="type2"><span
-                            class="seeallclass">[<s:property value="%{getText('span.all.course')}"/>]</span></span>
+                            class="seeallclass">[<s:text name="span.all.course"/>]</span></span>
               <span class="seeall">
                    <%--<a onclick="saveReservation(<s:property value="#idx.index"/> ,<s:property value="id"/> );">--%>
                     <s:a action="voaCourseBlog"><s:param name="course.id" value="id"/>
@@ -381,34 +381,34 @@
                 </h6>
 
                 <div class="courseinfo">
-                        <%--<p><s:property value="%{getText('label.forcast.lecturer')}"/>：<b><a href="#"><s:property value="teacher.userName"/></a></b></p>--%>
-                    <p><s:property value="%{getText('label.forcast.lecturer')}"/>：<b><s:a action="userBlog"><s:param
+                        <%--<p><s:text name="label.forcast.lecturer"/>：<b><a href="#"><s:property value="teacher.userName"/></a></b></p>--%>
+                    <p><s:text name="label.forcast.lecturer"/>：<b><s:a action="userBlog"><s:param
                             name="user.id" value="teacher.id"/><s:property value="teacher.nickName"/></s:a></b></p>
-                        <%--<p><s:property value="%{getText('label.online.class.org.name')}"/>：<b><a href="#"><s:property value="organization.schoolName"/></a></b></p>--%>
-                    <p><s:property value="%{getText('label.online.class.org.name')}"/>：<b><s:a action="orgBlog"><s:param
+                        <%--<p><s:text name="label.online.class.org.name"/>：<b><a href="#"><s:property value="organization.schoolName"/></a></b></p>--%>
+                    <p><s:text name="label.online.class.org.name"/>：<b><s:a action="orgBlog"><s:param
                             name="org.id" value="organization.id"/><s:property
                             value="organization.schoolName"/></s:a></b></p>
-                        <%--<p><s:property value="%{getText('label.forcast.producer')}"/>：<b><a href="#"><s:property value="cameraMan.userName"/></a></b></p>--%>
-                    <p><s:property value="%{getText('label.forcast.producer')}"/>：<b><s:a action="userBlog"><s:param
+                        <%--<p><s:text name="label.forcast.producer"/>：<b><a href="#"><s:property value="cameraMan.userName"/></a></b></p>--%>
+                    <p><s:text name="label.forcast.producer"/>：<b><s:a action="userBlog"><s:param
                             name="user.id" value="teacher.id"/><s:property value="cameraMan.nickName"/></s:a></b></p>
                 </div>
                 <div class="courseinfo">
-                    <p><s:property value="%{getText('label.course.fee')}"/>：<b>1000&nbsp;<s:property
+                    <p><s:text name="label.course.fee"/>：<b>1000&nbsp;<s:property
                             value="%{getText('label.zhibi')}"/></b></p>
 
-                    <p><s:property value="%{getText('label.online.class.totalperods')}"/>：<b><s:property
-                            value="totalHours"/>&nbsp;<s:property value="%{getText('label.online.class.perods')}"/></b>
+                    <p><s:text name="label.online.class.totalperods"/>：<b><s:property
+                            value="totalHours"/>&nbsp;<s:text name="label.online.class.perods"/></b>
                     </p>
 
-                    <p><s:property value="%{getText('label.online.class.startdate')}"/>：<b><s:property
+                    <p><s:text name="label.online.class.startdate"/>：<b><s:property
                             value="startDate"/></b></p>
                 </div>
                 <div class="courseinfo">
-                    <p><s:property value="%{getText('label.forcast.enrollment')}"/>：<b><s:property
-                            value="observationNum"/></b> <s:property value="%{getText('label.forcast.person')}"/></p>
+                    <p><s:text name="label.forcast.enrollment"/>：<b><s:property
+                            value="observationNum"/></b> <s:text name="label.forcast.person"/></p>
 
-                    <p><s:property value="%{getText('label.forcast.subscriber')}"/>：<b><s:property
-                            value="buyAgesNum"/></b> <s:property value="%{getText('label.forcast.person')}"/></p>
+                    <p><s:text name="label.forcast.subscriber"/>：<b><s:property
+                            value="buyAgesNum"/></b> <s:text name="label.forcast.person"/></p>
                 </div>
                 <div class="courseintro"><strong><s:property
                         value="%{getText('label.online.class.introduction')}"/>：</strong><s:property
@@ -420,10 +420,10 @@
                             <tr>
                                 <td class="td1"><s:property value="name"/></td>
                                 <td><b><s:property value="nickName"/></b></td>
-                                <td><s:property value="%{getText('lable.course.starttime')}"/>：<b><s:property
+                                <td><s:text name="lable.course.starttime"/>：<b><s:property
                                         value="date"/>&nbsp; <s:property value="startTimeHour"/> : <s:property
                                         value="startTimeMinite"/></b></td>
-                                <td><s:property value="%{getText('lable.course.endtime')}"/>：<b><s:property
+                                <td><s:text name="lable.course.endtime"/>：<b><s:property
                                         value="date"/>&nbsp; <s:property value="endTimeHour"/> : <s:property
                                         value="endTimeMinite"/></b></td>
                                 <td><b><s:if test="finished"><span><s:property

@@ -134,8 +134,8 @@
     <s:hidden name="reDirectUrl" id="reDirectUrl"/>
     <div id="register">
         <div id="regleft">
-            <div id="regtitle"><s:property value="%{getText('member.login.label')}"/></div>
-            <div id="regtitle2"><s:property value="%{getText('member.login.center')}"/></div>
+            <div id="regtitle"><s:text name="member.login.label"/></div>
+            <div id="regtitle2"><s:text name="member.login.center"/></div>
 
             <div id="links">
                 <br/>
@@ -147,21 +147,21 @@
         </div>
         <div id="regright">
             <p class="addnext">
-                <s:property value="%{getText('email')}"/>&nbsp;&nbsp;<span class="errorinfo" id="yzemail">*</span>
+                <s:text name="email"/>&nbsp;&nbsp;<span class="errorinfo" id="yzemail">*</span>
                 <s:textfield name="user.email" id="email" cssClass="text"/>
             </p>
             <br/>
 
             <p class="addnext">
-                <s:property value="%{getText('password')}"/>&nbsp;&nbsp;<span class="errorinfo" id="yzpwd">*<s:property
+                <s:text name="password"/>&nbsp;&nbsp;<span class="errorinfo" id="yzpwd">*<s:property
                     value="identityConfirmMsg"/></span>
                 <s:password name="user.password" id="pwd" cssClass="text"/>
             </p>
 
             <p>
                 <input type="submit" name="button" id="btn1" onclick="return checkForm();"
-                       value="<s:property value="%{getText('button.log.in')}"/>"/> <a
-                    href="initRepassword.html"><span><s:property value="%{getText('link.forget.pwd')}"/>？</span></a>
+                       value="<s:text name="button.log.in"/>"/> <a
+                    href="initRepassword.html"><span><s:text name="link.forget.pwd"/>？</span></a>
             </p>
         </div>
     </div>

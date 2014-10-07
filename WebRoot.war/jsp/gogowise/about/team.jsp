@@ -5,15 +5,15 @@
 
 <div class="auright">
     <div class="rtHead">
-        <h3><s:property value="%{getText('nav.team.info')}"/></h3>
+        <h3><s:text name="nav.team.info"/></h3>
 
         <div class="cascade">
-            <span><s:property value="%{getText('nav.current.pos')}"/>：</span>
-            <a href="index.html"><s:property value="%{getText('label.homepage')}"/></a>
+            <span><s:text name="nav.current.pos"/>：</span>
+            <a href="index.html"><s:text name="label.homepage"/></a>
             <span> > </span>
-            <span><s:property value="%{getText('link.about.us')}"/></span>
+            <span><s:text name="link.about.us"/></span>
             <span> > </span>
-            <span><s:property value="%{getText('nav.team.info')}"/></span>
+            <span><s:text name="nav.team.info"/></span>
         </div>
     </div>
 

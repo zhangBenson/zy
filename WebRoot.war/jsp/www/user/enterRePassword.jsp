@@ -106,9 +106,9 @@
         <div class="col-sm-3"></div>
         <div class="col-sm-6" style="">
             <div class="basePanelTextLeft">
-                <h1 class="courseSubject"><s:property value="%{getText('label.get.back.password')}"/></h1>
+                <h1 class="courseSubject"><s:text name="label.get.back.password"/></h1>
 
-                <h1 class="courseSynopsis"><s:property value="%{getText('message.protect.safety')}"/></h1>
+                <h1 class="courseSynopsis"><s:text name="message.protect.safety"/></h1>
 
                 <s:form action="yzRePasswordCode" id="form" method="POST" theme="css_xhtml" validate="true"
                         cssClass="form-horizontal">

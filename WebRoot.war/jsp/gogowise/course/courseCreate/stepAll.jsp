@@ -12,19 +12,19 @@
 <div class="mf_1">
     <ul class="sub_nav cf">
         <li class="">
-            <a href="myForcastClass.html"><s:property value="%{getText('usermenu.item.my.created.courses')}"/></a>
+            <a href="myForcastClass.html"><s:text name="usermenu.item.my.created.courses"/></a>
         </li>
         <li class="">
-            <a href="myRegistration.html"><s:property value="%{getText('usermenu.item.my.reged.courses')}"/></a>
+            <a href="myRegistration.html"><s:text name="usermenu.item.my.reged.courses"/></a>
         </li>
         <li class="stand_out">
-            <a href="javascript:;"><s:property value="%{getText('usermenu.item.createcourse')}"/></a>
+            <a href="javascript:;"><s:text name="usermenu.item.createcourse"/></a>
         </li>
     </ul>
 </div>
 <div class="create_cont fl">
 <div class="stepTip fl">
-    <s:property value="%{getText('msg.intr')}"/>
+    <s:text name="msg.intr"/>
 </div>
 
 
@@ -37,7 +37,7 @@
         <%-- 直接就是1对多的大班 --%>
         <input type="hidden" name="course.teachingNum" value="4"/>
 
-        <h3 alt="2"><span class="num">1</span><s:property value="%{getText('titie.info.course')}"/></h3>
+        <h3 alt="2"><span class="num">1</span><s:text name="titie.info.course"/></h3>
 
         <div class="stepCont" style="display: block;">
             <div class="pic_1"></div>
@@ -52,7 +52,7 @@
 </div>
 
 <div class="stepWrap fl">
-    <h3 alt="3"><span class="num">2</span><s:property value="%{getText('title.info.class')}"/></h3>
+    <h3 alt="3"><span class="num">2</span><s:text name="title.info.class"/></h3>
 
     <div class="stepCont">
         <div class="pic_1"></div>
@@ -64,7 +64,7 @@
 
 <div class="content_clause">
     <input name="checkbox" type="checkbox" id="clauseCheckbox"/>
-    <label for="clauseCheckbox"><s:property value="%{getText('course.creation.document.accept')}"/></label>
+    <label for="clauseCheckbox"><s:text name="course.creation.document.accept"/></label>
     <a href="createCourseClause.html" id="course_creation_clause"><s:property
             value="%{getText('course.creation.document.rule')}"/></a><br/>
     <span id="checkboxMsg" class="tip_words"></span>
@@ -72,7 +72,7 @@
 
 <div class="create_confirm">
     <input type="button" id="submit_btn_large" class="submit_btn_large" onclick="publishCourse();"
-           value="<s:property value="%{getText('org.course.creation')}"/>"/>
+           value="<s:text name="org.course.creation"/>"/>
 </div>
 
 </div>

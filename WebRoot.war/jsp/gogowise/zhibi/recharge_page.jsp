@@ -6,19 +6,19 @@
 <div class="mf_1">
     <ul class="sub_nav cf">
         <li class="">
-            <a href="myGGWAccount.html"><s:property value="%{getText('usermenu.item.zhibi.myAccount')}"/></a>
+            <a href="myGGWAccount.html"><s:text name="usermenu.item.zhibi.myAccount"/></a>
         </li>
         <li class="stand_out">
-            <a href="#"><s:property value="%{getText('usermenu.item.zhibi.fulfilment')}"/></a>
+            <a href="#"><s:text name="usermenu.item.zhibi.fulfilment"/></a>
         </li>
         <li class="">
-            <a href="initTransfer.html"><s:property value="%{getText('usermenu.item.zhibi.change')}"/></a>
+            <a href="initTransfer.html"><s:text name="usermenu.item.zhibi.change"/></a>
         </li>
         <li class="">
-            <a href="initConsumption.html"><s:property value="%{getText('usermenu.item.zhibi.query')}"/></a>
+            <a href="initConsumption.html"><s:text name="usermenu.item.zhibi.query"/></a>
         </li>
         <li class="">
-            <a href="javascript:;"><s:property value="%{getText('usermenu.item.zhibi.to.cash')}"/></a>
+            <a href="javascript:;"><s:text name="usermenu.item.zhibi.to.cash"/></a>
         </li>
     </ul>
 </div>

@@ -5,7 +5,7 @@
 <div class="container">
     <div class="thinline"></div>
     <br/>
-    <h3 class="courseSubhead"><span><s:property value="org.schoolName" /> </span>-<span><s:property value="%{getText('label.more.courses')}"/></span></h3>
+    <h3 class="courseSubhead"><span><s:property value="org.schoolName" /> </span>-<span><s:text name="label.more.courses"/></span></h3>
     <div class="thick70"></div>
     <div class="row">
         <s:iterator value="latestCourse" status="status">

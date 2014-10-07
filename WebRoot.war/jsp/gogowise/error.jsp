@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title><s:property value="%{getText('error.title')}"/></title>
+    <title><s:text name="error.title"/></title>
 
     <link type="text/css" rel="stylesheet" href="css/chucuola.css">
 
@@ -15,21 +15,21 @@
 <div id="header">
     <div id="header_wrap">
         <h1>
-            <a href="index.html" title="<s:property value="%{getText('title.gogowise')}"/>"></a>
+            <a href="index.html" title="<s:text name="title.gogowise"/>"></a>
         </h1>
     </div>
 </div>
 <div id="content">
     <div class="error_img"></div>
     <h3>
-        <s:property value="%{getText('error.info.end.user')}"/>
+        <s:text name="error.info.end.user"/>
     </h3>
     <h4>
         <s:actionerror></s:actionerror>
     </h4>
 
-    <p><a href="index.html"><s:property value="%{getText('error.back.index')}"/></a></p>
-    <p><a href="javascript:window.history.go(-1);"><s:property value="%{getText('error.back.previous')}"/></a></p>
+    <p><a href="index.html"><s:text name="error.back.index"/></a></p>
+    <p><a href="javascript:window.history.go(-1);"><s:text name="error.back.previous"/></a></p>
 
     <p><a href="javascript:showError();"> show details</a></p>
 

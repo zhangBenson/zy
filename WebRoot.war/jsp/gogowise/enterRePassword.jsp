@@ -96,20 +96,20 @@
     <s:hidden name="user.email"/>
     <div id="mainEnter">
         <hr/>
-        <div id="get_back_pwd"><span><s:property value="%{getText('label.get.back.password')}"/></span></div>
+        <div id="get_back_pwd"><span><s:text name="label.get.back.password"/></span></div>
         <div id="center">
             <table width="400" cellpadding="0" cellspacing="0">
                 <tr>
                     <td class="tdleft"><h1><img src="images/safe.gif" width="17" height="19"/><s:property
                             value="%{getText('label.safety.valid')}"/></h1></td>
-                    <td><span id="question"><a href="#"><s:property value="%{getText('link.feed.back')}"/></a></span>
+                    <td><span id="question"><a href="#"><s:text name="link.feed.back"/></a></span>
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2"><s:property value="%{getText('message.protect.safety')}"/></td>
+                    <td colspan="2"><s:text name="message.protect.safety"/></td>
                 </tr>
                 <tr class="con">
-                    <td class="tdleft"><s:property value="%{getText('email')}"/></td>
+                    <td class="tdleft"><s:text name="email"/></td>
                     <td>
                         <label>
                             <s:textfield type="text" name="user.email" id="textfield" disabled="true"/>
@@ -121,7 +121,7 @@
                             value="%{getText('button.send.valid.code')}"/></a></td>
                 </tr>
                 <tr class="con">
-                    <td class="tdleft"><s:property value="%{getText('label.valid.code')}"/>：</td>
+                    <td class="tdleft"><s:text name="label.valid.code"/>：</td>
                     <td><s:textfield name="rePasswordCode" id="textfield2"/></td>
                 </tr>
                 <tr>

@@ -28,7 +28,7 @@
                         <div class="input-group-btn">
                             <button type="submit" class="btn btn-default btn-lg">
                                 <span class="glyphicon glyphicon-search"></span>
-                                <s:property value="%{getText('menu.item.search')}"/>
+                                <s:text name="menu.item.search"/>
                             </button>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                     </div>
                     <p class="text-right"><a href="orgBlog.html?org.id=<s:property value="id"/>"
                                              title="<s:property value="nickName"/>">
-                        <s:property value="%{getText('label.school.comments')}"/>(<s:property
+                        <s:text name="label.school.comments"/>(<s:property
                             value="organizationCommentDao.findOrgCommentByOrgId(id, null).size()"/>)
                     </a></p>
                 </div>
@@ -106,7 +106,7 @@
     <s:else>
         <div class="schoolRow" style="text-align: center;">
             <div class="row">
-                <strong><s:property value="%{getText('school.center.page.no.schools.message')}"/></strong>
+                <strong><s:text name="school.center.page.no.schools.message"/></strong>
             </div>
         </div>
     </s:else>

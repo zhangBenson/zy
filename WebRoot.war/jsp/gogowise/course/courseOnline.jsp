@@ -36,7 +36,7 @@
                 </table>
             </div>
             <div class="course_time_left">
-                <s:property value="%{getText('courses.time.left')}"/>：<span class="orangeWords"
+                <s:text name="courses.time.left"/>：<span class="orangeWords"
                                                                             id="timeLeft<s:property value="#idx.index"/>"></span>
                 <script type="text/javascript">
                     $(document).ready(function () {
@@ -57,7 +57,7 @@
             <div class="course_manipulate">
                 <s:a action="startSupervision" cssClass="course_supervise_btn"><s:param name="courseClass.id"
                                                                                         value="classOnTheCorner.id"/>开始试听</s:a>
-                <div class="see_all_classes">[<s:property value="%{getText('span.all.course')}"/>]</div>
+                <div class="see_all_classes">[<s:text name="span.all.course"/>]</div>
             </div>
         </div>
         <div class="classintro classintro<s:property value='#id.index'/>">
@@ -72,13 +72,13 @@
                         <span class="orangeWords"><s:property value="nickName"/></span>
                     </td>
                     <td>
-                        <s:property value="%{getText('lable.course.starttime')}"/>：
+                        <s:text name="lable.course.starttime"/>：
                         <%--<b><s:date name="date" format="%{getText('dateformat.forclass')}"/></b>--%>
                         <span class="orangeWords"><s:date name="date"
                                                           format="%{getText('dateformat.forclass')}"/></span>
                     </td>
                     <td>
-                        <s:property value="%{getText('lable.course.endtime')}"/>：
+                        <s:text name="lable.course.endtime"/>：
                         <%--<b><s:date name="finishDate" format="%{getText('dateformat.forclass')}"/></b>--%>
                         <span class="orangeWords"><s:date name="finishDate"
                                                           format="%{getText('dateformat.forclass')}"/></span>

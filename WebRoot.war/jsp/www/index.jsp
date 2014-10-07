@@ -62,7 +62,7 @@
             <div class="col-sm-4">
                 <button type="submit" class="btn btn-default btn-lg">
                     <span class="glyphicon glyphicon-search"></span>
-                    <s:property value="%{getText('menu.item.search')}"/>
+                    <s:text name="menu.item.search"/>
                 </button>
             </div>
         </div>
@@ -76,7 +76,7 @@
 
         <div class="pull-left"><img src="../../images/index/icon_new.png"/></div>
         <div class="pull-left">
-            <div class="courseSubhead"><s:property value="%{getText('usermenu.item.newestcourses')}"/></div>
+            <div class="courseSubhead"><s:text name="usermenu.item.newestcourses"/></div>
         </div>
         <div class="clearfix"></div>
 
@@ -98,7 +98,7 @@
                                         value="organization.schoolName"/></p>
 
                                 <p class="textOverSinglerow">
-                                    <s:property value="%{getText('courses.info.lecturer')}"/>:&nbsp;
+                                    <s:text name="courses.info.lecturer"/>:&nbsp;
                                     <s:if test="teacher.userName != null"><s:property value="teacher.userName"/></s:if>
                                     <s:else><s:property value="teacher.nickName"/></s:else>
                                 </p>
@@ -115,7 +115,7 @@
     <s:if test="pagination.hasNext">
         <a href="javascript:;" id="link<s:property value="pagination.pageNow"/>"
            onclick="getMoreCousre(<s:property value="pagination.pageNow"/>);">
-            <p class="text-right" style="margin-right: 0px;"><s:property value="%{getText('others.more')}"/></p>
+            <p class="text-right" style="margin-right: 0px;"><s:text name="others.more"/></p>
         </a>
     </s:if>
 </div>
@@ -126,7 +126,7 @@
         <img src="images/org/icon_organizations.png"/>
     </div>
     <div class="pull-left">
-        <div class="courseSubhead"><s:property value="%{getText('label.index.schools')}"/></div>
+        <div class="courseSubhead"><s:text name="label.index.schools"/></div>
     </div>
     <div class="clearfix"></div>
 

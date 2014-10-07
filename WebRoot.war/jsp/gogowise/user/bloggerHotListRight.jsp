@@ -10,7 +10,7 @@
     <s:hidden name="searchStr"/>
     <div class="listUp">
         <s:hidden value="%{#session.userID}" id="hidSessionId"/>
-        <h3 class="h3_title"><s:property value="%{getText('search.header.member')}"/></h3>
+        <h3 class="h3_title"><s:text name="search.header.member"/></h3>
 
             <%-- 这是会员列表3个 --%>
         <div class="memeberWrap fl">

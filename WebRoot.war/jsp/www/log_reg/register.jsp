@@ -25,14 +25,14 @@
     <div class="row">
         <div class="col-sm-5">
             <div class="basePanelTextLeft">
-                <h1 class="courseSubject"><s:property value="%{getText('button.log.in')}"/></h1>
+                <h1 class="courseSubject"><s:text name="button.log.in"/></h1>
 
-                <h1 class="courseSynopsis"><s:property value="%{getText('label.log.in.info')}"/></h1>
+                <h1 class="courseSynopsis"><s:text name="label.log.in.info"/></h1>
 
                 <s:form validate="true" theme="css_xhtml" cssClass="form-horizontal" method="POST" action="logon">
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label"> <s:property value="%{getText('email')}"/></label>
+                        <label class="col-sm-2 control-label"> <s:text name="email"/></label>
 
                         <div class="col-sm-10">
                             <span class="errorinfo" id="yzemail"></span>
@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label"> <s:property value="%{getText('password')}"/></label>
+                        <label class="col-sm-2 control-label"> <s:text name="password"/></label>
 
                         <div class="col-sm-10">
                             <span class="errorinfo" id="yzpwd"><s:property value="identityConfirmMsg"/></span>
@@ -51,7 +51,7 @@
                         <div class="col-sm-offset-2 col-sm-10">
                             <div class="checkbox">
                                 <label>
-                                        <%-- <input type="checkbox"><s:property value="%{getText('label.log.in.remember.me.info')}"/></label> --%>
+                                        <%-- <input type="checkbox"><s:text name="label.log.in.remember.me.info"/></label> --%>
                                     <a href="initRepassword.html" style="float: right;"><span><s:property
                                             value="%{getText('link.forget.pwd')}"/>？</span></a>
                             </div>
@@ -62,7 +62,7 @@
                         <div class="col-sm-offset-2 col-sm-10">
                             <input class="btn btn-success  btn-lg btn-block" type="submit" name="button" id="btn1"
                                    onclick="return checkForm();"
-                                   value="<s:property value="%{getText('button.log.in')}"/>"/>
+                                   value="<s:text name="button.log.in"/>"/>
                         </div>
                     </div>
                 </s:form>
@@ -70,9 +70,9 @@
         </div>
         <div class="col-sm-6">
             <div class="basePanelTextLeft">
-                <h1 class="courseSubject"><s:property value="%{getText('user.info.identity.confirm.no.account')}"/></h1>
+                <h1 class="courseSubject"><s:text name="user.info.identity.confirm.no.account"/></h1>
 
-                <h1 class="courseSynopsis"><s:property value="%{getText('label.login.no.account.info')}"/></h1>
+                <h1 class="courseSynopsis"><s:text name="label.login.no.account.info"/></h1>
                 <s:form validate="true" theme="css_xhtml" method="POST" action="reg">
                     <s:hidden name="reDirectUrl" id="reDirectUrl"/>
                     <s:hidden name="org.id"/>
@@ -80,26 +80,26 @@
                     <s:hidden name="confirmForOrg"/>
 
                     <div class="form-group">
-                        <label><s:property value="%{getText('email')}"/></label>
+                        <label><s:text name="email"/></label>
                         <span id="log_email_tip" class="errorinfo">*</span>
 
                         <s:textfield cssClass="form-control" name="user.email" id="registeremail"
                                      placeholder="Enter Email"/>
                     </div>
                     <div class="form-group">
-                        <label><s:property value="%{getText('password')}"/></label>
+                        <label><s:text name="password"/></label>
                         <span id="log_pwd_tip" class="errorinfo">*</span>
                         <s:password cssClass="form-control" name="user.password" id="registerpwd"
                                     placeholder="Password"/>
                     </div>
                     <div class="form-group">
-                        <label><s:property value="%{getText('psdagain')}"/></label>
+                        <label><s:text name="psdagain"/></label>
                         <span id="log_repwd_tip" class="errorinfo">*</span>
 
                         <s:password cssClass="form-control" name="duplicate" placeholder="Password"/>
                     </div>
                     <div class="form-group">
-                        <label><s:property value="%{getText('menber.reg.nickName')}"/></label>
+                        <label><s:text name="menber.reg.nickName"/></label>
                         <span id="log_nickName_tip" class="errorinfo">*</span>
 
                         <s:textfield cssClass="form-control" name="user.nickName" placeholder="Nick Name"/>
@@ -110,9 +110,9 @@
                                 <div class="clause">
                                     <span id="yxcheckbox" class="tip_words"></span> <br/>
                                     <input name="checkbox" type="checkbox" value="checked" id="checkbox"/>
-                                    <a href="<%=request.getContextPath()%>/jsp/gogowise/Clause.htm" class="boxy" id="reg_clause"><s:property value="%{getText('read')}"/></a>
+                                    <a href="<%=request.getContextPath()%>/jsp/gogowise/Clause.htm" class="boxy" id="reg_clause"><s:text name="read"/></a>
                                 </div>
-                                <input type="submit" class="subBtn" onclick="return checkRegForm();" value="<s:property value="%{getText('createButton')}"/>" />
+                                <input type="submit" class="subBtn" onclick="return checkRegForm();" value="<s:text name="createButton"/>" />
                             </div> --%>
 
                         <div class="col-sm-offset-2 col-sm-10">
@@ -120,12 +120,12 @@
                                 <label>
                                     <span id="yxcheckbox" class="tip_words"></span> <br/>
                                         <%--<input name="checkbox" type="checkbox" value="checked" id="checkbox"/>
-                                        <a href="<%=request.getContextPath()%>/jsp/gogowise/Clause.htm" class="boxy" id="reg_clause"><s:property value="%{getText('read')}"/></a>--%>
+                                        <a href="<%=request.getContextPath()%>/jsp/gogowise/Clause.htm" class="boxy" id="reg_clause"><s:text name="read"/></a>--%>
                                     <input name="checkbox" type="checkbox" value="checked" id="checkbox"><a href="#"
                                                                                                             id="btnclauses"><s:property
                                         value="%{getText('read')}"/></a>
                                 </label>
-                                    <%--<a href="#" id="btnclauses"><s:property value="%{getText('label.login.clause.msg')}"/></a> --%>
+                                    <%--<a href="#" id="btnclauses"><s:text name="label.login.clause.msg"/></a> --%>
                             </div>
                         </div>
                     </div>
@@ -134,7 +134,7 @@
                                 <%-- <button type="submit" class="btn btn-primary btn-lg btn-block">Sign me up!</button> --%>
                             <input type="submit" class="btn btn-primary btn-lg btn-block"
                                    onclick="return checkRegForm();"
-                                   value="<s:property value="%{getText('createButton')}"/>"/>
+                                   value="<s:text name="createButton"/>"/>
                         </div>
                     </div>
                 </s:form>

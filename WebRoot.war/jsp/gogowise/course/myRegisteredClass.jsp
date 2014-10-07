@@ -10,13 +10,13 @@
 <div class="mf_1">
     <ul class="sub_nav cf">
         <li>
-            <a href="myForcastClass.html"><s:property value="%{getText('usermenu.item.my.created.courses')}"/></a>
+            <a href="myForcastClass.html"><s:text name="usermenu.item.my.created.courses"/></a>
         </li>
         <li class="stand_out">
-            <a href="javascript:;"><s:property value="%{getText('usermenu.item.my.reged.courses')}"/></a>
+            <a href="javascript:;"><s:text name="usermenu.item.my.reged.courses"/></a>
         </li>
         <%--<li class="">
-            <a href="createCourseAllInOne.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a>
+            <a href="createCourseAllInOne.html"><s:text name="usermenu.item.createcourse"/></a>
         </li>--%>
     </ul>
 </div>
@@ -32,7 +32,7 @@
                 <h4><a href="voaCourseBlog.html?course.id=<s:property value="id"/>"
                        title="<s:property value="name"/>"><s:property value="name"/></a></h4>
 
-                <p class="teacher"><s:property value="%{getText('label.forcast.lecturer')}"/>：<a
+                <p class="teacher"><s:text name="label.forcast.lecturer"/>：<a
                         href="userBlog.html?user.id=<s:property value='teacher.id'/>"
                         title="<s:property value='teacher.nickName'/>"><s:property value='teacher.nickName'/></a></p>
 
@@ -40,27 +40,27 @@
 
                 <p class="maintenance">
                     <s:if test="personalTeacher!=null">
-                        <s:if test="teachingNum==1"><s:property value="%{getText('label.tutor.1to1')}"/></s:if>
-                        <s:if test="teachingNum==2"><s:property value="%{getText('label.tutor.1to2')}"/></s:if>
-                        <s:if test="teachingNum==3"><s:property value="%{getText('label.tutor.1to3')}"/></s:if>
-                        <s:if test="teachingNum==4"><s:property value="%{getText('label.tutor.1to4')}"/></s:if>
+                        <s:if test="teachingNum==1"><s:text name="label.tutor.1to1"/></s:if>
+                        <s:if test="teachingNum==2"><s:text name="label.tutor.1to2"/></s:if>
+                        <s:if test="teachingNum==3"><s:text name="label.tutor.1to3"/></s:if>
+                        <s:if test="teachingNum==4"><s:text name="label.tutor.1to4"/></s:if>
                     </s:if>
                     <s:else>
-                        <s:if test="opened"><s:property value="%{getText('label.online.class.public')}"/></s:if>
+                        <s:if test="opened"><s:text name="label.online.class.public"/></s:if>
                         <s:else>
-                            <s:if test="teachingNum==1"><s:property value="%{getText('label.tutor.1to1')}"/></s:if>
-                            <s:if test="teachingNum==2"><s:property value="%{getText('label.tutor.1to2')}"/></s:if>
-                            <s:if test="teachingNum==3"><s:property value="%{getText('label.tutor.1to4')}"/></s:if>
+                            <s:if test="teachingNum==1"><s:text name="label.tutor.1to1"/></s:if>
+                            <s:if test="teachingNum==2"><s:text name="label.tutor.1to2"/></s:if>
+                            <s:if test="teachingNum==3"><s:text name="label.tutor.1to4"/></s:if>
                         </s:else>
                     </s:else>
                     <strong>•</strong>
-                    <a class="upcoming_class" href="javascript:;">[<s:property value="%{getText('span.ready.course')}"/>]</a>
+                    <a class="upcoming_class" href="javascript:;">[<s:text name="span.ready.course"/>]</a>
                     <strong>•</strong>
                     <s:property value="charges"/>&nbsp;<s:property value="%{getText('label.zhibi.'+consumptionType)}"/>
                     <strong>•</strong>
-                    <s:property value="totalHours"/>&nbsp;<s:property value="%{getText('label.online.class.perods')}"/>
+                    <s:property value="totalHours"/>&nbsp;<s:text name="label.online.class.perods"/>
                     <strong>•</strong>
-                    <s:property value="courseStudentsNum"/><s:property value="%{getText('course.blog.purchase.num')}"/>
+                    <s:property value="courseStudentsNum"/><s:text name="course.blog.purchase.num"/>
                 </p>
 
                 <p class="details cf">
@@ -73,7 +73,7 @@
                     <a class="manage_course" id="courseRecommend<s:property value="#idx.index"/>"
                        href="#recommdatepanel<s:property value="#idx.index"/>"><s:property
                             value="%{getText('label.recommend.course')}"/></a>
-                        <%--<a class="manage_course" id="courseNewEvents<s:property value="#idx.index"/>"  href="#course_newEvent<s:property value="#idx.index"/>"><s:property value="%{getText('add.course.new.event.in')}"/></a>--%>
+                        <%--<a class="manage_course" id="courseNewEvents<s:property value="#idx.index"/>"  href="#course_newEvent<s:property value="#idx.index"/>"><s:text name="add.course.new.event.in"/></a>--%>
                     <a class="manage_course" <%--id="courseNewEvents<s:property value="#idx.index"/>" --%>
                        href="initAddCourseEvent.html?course.id=5"><s:property
                             value="%{getText('add.course.new.event.in')}"/></a>
@@ -88,10 +88,10 @@
                         <tr>
                             <td class="td1"><s:property value="name"/></td>
                             <td><b><s:property value="nickName"/></b></td>
-                            <td><s:property value="%{getText('lable.course.starttime')}"/>：<b><s:date name="date"
+                            <td><s:text name="lable.course.starttime"/>：<b><s:date name="date"
                                                                                                       format="%{getText('dateformat.forclass')}"/></b>
                             </td>
-                            <td><s:property value="%{getText('lable.course.endtime')}"/>：<b><s:date name="finishDate"
+                            <td><s:text name="lable.course.endtime"/>：<b><s:date name="finishDate"
                                                                                                     format="%{getText('dateformat.forclass')}"/></b>
                             </td>
                         </tr>
@@ -107,13 +107,13 @@
                     <li>
                         <div class="highlight">
                             <div class="area">
-                                <p><s:property value="%{getText('new.events.title')}"/> &nbsp; &nbsp; &nbsp;<span
+                                <p><s:text name="new.events.title"/> &nbsp; &nbsp; &nbsp;<span
                                         style="color:red;" id="form_msg<s:property value="#idx.index"/>"></span></p>
                                 <input type="text" css="highlight_file" name="courseNewEvent.title"
                                        id="courseNewEvent_title<s:property value="#idx.index"/>"/>
                             </div>
                             <div class="area">
-                                <p><s:property value="%{getText('new.events.logoUrl')}"/></p>
+                                <p><s:text name="new.events.logoUrl"/></p>
                                     <%--<input type="file" css="highlight_file" name="" id="courseNewEvent_logUrl"/>--%>
                                 <div>
                                     <span class="tip_message" id="logo_tip<s:property value="#idx.index"/>"></span>
@@ -126,7 +126,7 @@
                                        name="courseNewEvent.logoUrl"/>
                             </div>
                             <div class="area">
-                                <p><s:property value="%{getText('term.info.update.right.there')}"/><span
+                                <p><s:text name="term.info.update.right.there"/><span
                                         class="live_term_highlight_tip"></span></p>
                                 <textarea name="courseNewEvent.content"
                                           id="courseNewEvent_content<s:property value="#idx.index"/>"></textarea>
@@ -181,7 +181,7 @@
                                 <td></td>
                                 <td><input class="recommdate_submit" type="button"
                                            onclick="checkCourseRecommend(<s:property value="#idx.index"/>);"
-                                           value="<s:property value="%{getText('button.submit')}"/>"/>&nbsp;&nbsp;<span
+                                           value="<s:text name="button.submit"/>"/>&nbsp;&nbsp;<span
                                         class="recommdate_close recommdatebtn" onclick="$.fancybox.close();"><s:property
                                         value="%{getText('button.close')}"/></span>&nbsp;&nbsp;
                                     <div id="recommend_message<s:property value="#idx.index"/>"></div>

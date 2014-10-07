@@ -26,20 +26,20 @@
         <div id="orgCenterDiv"
              style="background-image: url(images/orgLeague/contentbg2.gif);background-repeat: no-repeat; height: 525px;">
 
-            <p class="thirdHead"><s:property value="%{getText('orgleague.info.provide')}"/></p>
+            <p class="thirdHead"><s:text name="orgleague.info.provide"/></p>
 
             <div class="thirdLeft">
                 <ul>
-                    <li class="headTittle"><s:property value="%{getText('orgleague.info.orgInfo')}"/></li>
+                    <li class="headTittle"><s:text name="orgleague.info.orgInfo"/></li>
                     <li>
                         <div class="nameBF">
-                            <div class="option_tittle"><s:property value="%{getText('orgleague.info.orgName')}"/></div>
+                            <div class="option_tittle"><s:text name="orgleague.info.orgName"/></div>
                             <p id="orgNameWarn" style="color: red; display: inline;"></p></div>
                         <s:textfield id="thirdStepName" name="org.schoolName" cssClass="orgName"/>
                     </li>
                     <li class="orgShuoming">
                         <div class="nameBF">
-                            <div class="option_tittle"><s:property value="%{getText('orgleague.info.orgIntro')}"/></div>
+                            <div class="option_tittle"><s:text name="orgleague.info.orgIntro"/></div>
                             <p id="orgShuomingWarn" style="color: red; display: inline;"></p></div>
                         <s:textarea id="thirdStepOrgShuoming" name="org.description" cssClass="descArea"/>
                     </li>
@@ -59,19 +59,19 @@
                     </li>
                     <li class="orgScale">
                         <div class="nameBF">
-                            <div class="option_tittle"><s:property value="%{getText('orgleague.info.orgSize')}"/></div>
+                            <div class="option_tittle"><s:text name="orgleague.info.orgSize"/></div>
                             <div style="width: 290px"><s:radio name="org.memberSize"
                                                                list="#{0:getText('orgleague.info.size1'),1:getText('orgleague.info.size2'),2:getText('orgleague.info.size3'),3:getText('orgleague.info.size4'),4:getText('orgleague.info.size5'),5:getText('orgleague.info.size6')}"/></div>
                     </li>
                     <li>
                         <div class="nameBF">
-                            <div class="option_tittle"><s:property value="%{getText('orgleague.info.chain')}"/></div>
+                            <div class="option_tittle"><s:text name="orgleague.info.chain"/></div>
                                 <s:radio name="org.multipleOrg"
                                          list="#{true:getText('lable.yesno.true'),false:getText('lable.yesno.false')}"/>
                     </li>
                     <li class="fileUploadDiv">
                         <div class="photoTitle">
-                            <div class="option_tittle"><s:property value="%{getText('orgleague.info.orgLogo')}"/></div>
+                            <div class="option_tittle"><s:text name="orgleague.info.orgLogo"/></div>
                                 <%--<s:file name="upload"/>--%>
                             <div class="file_upload"><s:file name="fileupload" id="fileupload1"/></div>
                             <div class="file_upload_msg1 input_msg"></div>
@@ -92,7 +92,7 @@
             </div>
             <div class="thirdRight">
                 <ul>
-                    <li class="headTittle"><s:property value="%{getText('orgleague.info.contactMethod')}"/></li>
+                    <li class="headTittle"><s:text name="orgleague.info.contactMethod"/></li>
                     <li>
                         <div class="nameBF">
                             <div class="option_tittle"><s:property
@@ -103,25 +103,25 @@
                     </li>
                     <li>
                         <div class="nameBF">
-                            <div class="option_tittle"><s:property value="%{getText('orgleague.info.fixedTel')}"/></div>
+                            <div class="option_tittle"><s:text name="orgleague.info.fixedTel"/></div>
                             <p id="thirdStepfixedTelWarn" style="color: red;display:inline;"></p></div>
                         <s:textfield id="thirdStepfixedTel" name="org.telPhone" cssClass="secondTel thirdRightInput"/>
                     </li>
                     <li>
                         <div class="nameBF">
-                            <div class="option_tittle"><s:property value="%{getText('orgleague.info.mobile')}"/></div>
+                            <div class="option_tittle"><s:text name="orgleague.info.mobile"/></div>
                             <p id="thirdStepMobileWarn" style="color: red;display:inline;"></p></div>
                         <s:textfield id="thirdStepMobile" name="org.cellPhone" cssClass="thirdRightInput"/>
                     </li>
                     <li>
                         <div class="nameBF">
-                            <div class="option_tittle"><s:property value="%{getText('orgleague.info.address')}"/></div>
+                            <div class="option_tittle"><s:text name="orgleague.info.address"/></div>
                             <p id="thirdStepAddressWarn" style="color: red;display:inline;"></p></div>
                         <s:textfield id="thirdStepAddress" name="org.businessAddress" cssClass="thirdRightInput"/>
                     </li>
                     <li>
                         <div class="nameBF">
-                            <div class="option_tittle"><s:property value="%{getText('orgleague.info.postCode')}"/></div>
+                            <div class="option_tittle"><s:text name="orgleague.info.postCode"/></div>
                             <p id="thirdStepPostCodeWarn" style="color: red;display:inline;"></p></div>
                         <s:textfield id="thirdStepPostCode" name="org.zipCode" cssClass="thirdRightInput"/>
                     </li>
@@ -139,10 +139,10 @@
                 </a>
             </div>
             <ul class="orgStep" style="top:510px;">
-                <li><s:property value="%{getText('org.warmtip')}"/></li>
-                <li><s:property value="%{getText('orgleague.identity.confirm')}"/></li>
-                <li class="third"><s:property value="%{getText('orgleague.info.fill')}"/></li>
-                <li><s:property value="%{getText('orgleague.info.submit')}"/></li>
+                <li><s:text name="org.warmtip"/></li>
+                <li><s:text name="orgleague.identity.confirm"/></li>
+                <li class="third"><s:text name="orgleague.info.fill"/></li>
+                <li><s:text name="orgleague.info.submit"/></li>
             </ul>
         </div>
     </div>

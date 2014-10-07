@@ -31,9 +31,9 @@
 </style>
 
 <div id="orgLeagueDiv">
-    <div id="tipImgDiv"><span><s:property value="%{getText('org.warmtip')}"/></span></div>
+    <div id="tipImgDiv"><span><s:text name="org.warmtip"/></span></div>
     <div id="orgCenterDiv">
-        <div class="tiphead"><span>&nbsp;&nbsp;<s:property value="%{getText('org.course.sayhello')}"/></span><s:property
+        <div class="tiphead"><span>&nbsp;&nbsp;<s:text name="org.course.sayhello"/></span><s:property
                 value="%{getText('org.course.notprincipal')}"/>：
         </div>
         <div class="courseCreation">
@@ -41,27 +41,27 @@
                 <div class="bgImg"></div>
             </a>
 
-            <p class="buttonTip"><s:property value="%{getText('org.course.selfID')}"/>！</p>
+            <p class="buttonTip"><s:text name="org.course.selfID"/>！</p>
         </div>
         <div class="orgLeague">
             <a href="initOrgLeague.html">
                 <div class="bgImg"></div>
             </a>
 
-            <p class="buttonTip"><s:property value="%{getText('org.course.join')}"/>！</p>
+            <p class="buttonTip"><s:text name="org.course.join"/>！</p>
         </div>
         <div class="simulateOrgCourseCreation">
             <a href="createCourse.html?courseType=2">
                 <div class="bgImg"></div>
             </a>
 
-            <p class="buttonTip"><s:property value="%{getText('org.course.demo')}"/>！</p>
+            <p class="buttonTip"><s:text name="org.course.demo"/>！</p>
         </div>
         <ul class="orgStep">
             <li></li>
-            <li><s:property value="%{getText('orgleague.identity.confirm')}"/></li>
-            <li class="warmTip"><s:property value="%{getText('org.warmtip')}"/></li>
-            <li><s:property value="%{getText('org.course.creation')}"/>/<s:property
+            <li><s:text name="orgleague.identity.confirm"/></li>
+            <li class="warmTip"><s:text name="org.warmtip"/></li>
+            <li><s:text name="org.course.creation"/>/<s:property
                     value="%{getText('org.course.league')}"/>/<s:property
                     value="%{getText('org.course.simulate')}"/></li>
         </ul>

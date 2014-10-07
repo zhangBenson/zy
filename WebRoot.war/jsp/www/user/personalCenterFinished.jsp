@@ -44,10 +44,10 @@
 
             <s:if test="matterCount != 0">
                 <div id="matters_more"
-                     title="<s:property value="matterCount"/><s:property value="%{getText('my.firstpage.new.matter.num')}"/>">
+                     title="<s:property value="matterCount"/><s:text name="my.firstpage.new.matter.num"/>">
 
                     <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal1">
-                        <s:property value="%{getText('others.more')}"/>
+                        <s:text name="others.more"/>
                     </button>
 
                 </div>
@@ -55,7 +55,7 @@
 
         </div>
 
-        <h3 class="courseSubhead"><s:property value="%{getText('title.newest.notifications')}"/></h3>
+        <h3 class="courseSubhead"><s:text name="title.newest.notifications"/></h3>
 
         <div class="thickline"></div>
 
@@ -63,7 +63,7 @@
             <a href="#">
                 <img src="images/user/icon_mail.png" class="centerIcon"/>
 
-                <div class="messageGreen1"><s:property value="%{getText('label.course.message')}"/></div>
+                <div class="messageGreen1"><s:text name="label.course.message"/></div>
             </a>
         </div>
 
@@ -71,7 +71,7 @@
             <a href="#">
                 <img src="images/user/icon_mail.png" class="centerIcon"/>
 
-                <div class="messageGreen2"><s:property value="%{getText('label.comment.message')}"/></div>
+                <div class="messageGreen2"><s:text name="label.comment.message"/></div>
             </a>
         </div>
 
@@ -79,7 +79,7 @@
             <a href="#">
                 <img src="images/user/icon_mail.png" class="centerIcon"/>
 
-                <div class="messageGreen3"><s:property value="%{getText('label.invitation.message')}"/></div>
+                <div class="messageGreen3"><s:text name="label.invitation.message"/></div>
             </a>
         </div>
 
@@ -120,7 +120,7 @@
 
 
                             <li>
-                                <s:property value="%{getText('courses.info.lecturer')}"/>:
+                                <s:text name="courses.info.lecturer"/>:
                                 <s:a action="userBlog"><s:param name="user.id" value="teacher.id"/><s:property
                                         value="teacher.nickName"/></s:a>
                             </li>
@@ -184,10 +184,10 @@
                     <ul class="list-inline"
                         style="background-color: #6ab600;color: #fff;border-radius: 4px; padding-top: 3px;padding-bottom: 3px;">
                         <div>
-                            <s:property value="%{getText('personalcenter.no.course.message.head')}"/>
+                            <s:text name="personalcenter.no.course.message.head"/>
                             <a href="courseCenter.html"><strong> <s:property
                                     value="%{getText('frame.course.center')}"/> </strong></a>
-                            <s:property value="%{getText('personalcenter.no.course.message.tail')}"/>
+                            <s:text name="personalcenter.no.course.message.tail"/>
                         </div>
                     </ul>
                 </s:else>
@@ -202,7 +202,7 @@
     </p>
 
     <div class="basePanelTextLeft">
-        <h3 class="courseSubhead"><s:property value="%{getText('recommend.school')}"/></h3>
+        <h3 class="courseSubhead"><s:text name="recommend.school"/></h3>
 
         <div class="thickline"></div>
 
@@ -230,11 +230,11 @@
             </s:iterator>
         </div>
 
-        <a href="schoolCenter.html"><p class="text-right"><s:property value="%{getText('others.more')}"/></p></a>
+        <a href="schoolCenter.html"><p class="text-right"><s:text name="others.more"/></p></a>
     </div>
 
     <div class="basePanelTextLeft">
-        <h3 class="courseSubhead"><s:property value="%{getText('recommend.course')}"/></h3>
+        <h3 class="courseSubhead"><s:text name="recommend.course"/></h3>
 
         <div class="thickline"></div>
 
@@ -265,7 +265,7 @@
 
         </div>
 
-        <a href="courseCenter.html"><p class="text-right"><s:property value="%{getText('others.more')}"/></p></a>
+        <a href="courseCenter.html"><p class="text-right"><s:text name="others.more"/></p></a>
 
     </div>
 
@@ -290,17 +290,17 @@
                 <div>
                     <img src="images/user/icon_mail.png" class="centerIcon">
 
-                    <div class="messageGreen1"><s:property value="%{getText('label.course.message')}"/></div>
+                    <div class="messageGreen1"><s:text name="label.course.message"/></div>
                 </div>
                 <div>
                     <img src="images/user/icon_mail.png" class="centerIcon"/>
 
-                    <div class="messageGreen2"><s:property value="%{getText('label.comment.message')}"/></div>
+                    <div class="messageGreen2"><s:text name="label.comment.message"/></div>
                 </div>
                 <div>
                     <img src="images/user/icon_mail.png" class="centerIcon"/>
 
-                    <div class="messageGreen3"><s:property value="%{getText('label.invitation.message')}"/></div>
+                    <div class="messageGreen3"><s:text name="label.invitation.message"/></div>
                 </div>
                 <div>
                     <img src="images/user/icon_mail.png" class="centerIcon"/>
@@ -344,12 +344,12 @@
                                     style="background-color: #6ab600;color: #fff;border-radius: 4px; padding-top: 3px;padding-bottom: 3px;">
                                     <li><a href="javascript:;"><s:property
                                             value="%{getText('class.count',{classOneTheCornerSequence})}"/></a></li>
-                                    <li><s:property value="%{getText('courses.info.lecturer')}"/>:<s:a
+                                    <li><s:text name="courses.info.lecturer"/>:<s:a
                                             action="userBlog"><s:param name="user.id" value="teacher.id"/><s:property
                                             value="teacher.nickName"/></s:a></li>
 
                                     <li>
-                                        <div style="width: 175px;"><s:property value="%{getText('courses.time.left')}"/>&nbsp;<b
+                                        <div style="width: 175px;"><s:text name="courses.time.left"/>&nbsp;<b
                                                 id="timeLeft<s:property value="#idx.index"/>"></b></div>
                                         <script type="text/javascript">
                                             $("#timeLeft<s:property value="#idx.index"/>").countdown({

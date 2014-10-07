@@ -7,19 +7,19 @@
 <div class="mf_1">
     <ul class="sub_nav cf">
         <li class="">
-            <a href="myGGWAccount.html"><s:property value="%{getText('usermenu.item.zhibi.myAccount')}"/></a>
+            <a href="myGGWAccount.html"><s:text name="usermenu.item.zhibi.myAccount"/></a>
         </li>
         <li class="">
-            <a href="#"><s:property value="%{getText('usermenu.item.zhibi.fulfilment')}"/></a>
+            <a href="#"><s:text name="usermenu.item.zhibi.fulfilment"/></a>
         </li>
         <li class="">
-            <a href="initTransfer.html"><s:property value="%{getText('usermenu.item.zhibi.change')}"/></a>
+            <a href="initTransfer.html"><s:text name="usermenu.item.zhibi.change"/></a>
         </li>
         <li class="stand_out">
-            <a href="initConsumption.html"><s:property value="%{getText('usermenu.item.zhibi.query')}"/></a>
+            <a href="initConsumption.html"><s:text name="usermenu.item.zhibi.query"/></a>
         </li>
         <li class="">
-            <a href="javascript:;"><s:property value="%{getText('usermenu.item.zhibi.to.cash')}"/></a>
+            <a href="javascript:;"><s:text name="usermenu.item.zhibi.to.cash"/></a>
         </li>
     </ul>
 </div>
@@ -38,13 +38,13 @@
         <div id="mainss">
             <table>
                 <tr>
-                    <td class="tdleft"><s:property value="%{getText('consumption.order.time')}"/></td>
-                    <td class="tdleft"><s:property value="%{getText('consumption.order.id')}"/></td>
-                    <td class="tdleft"><s:property value="%{getText('consumption.order.details')}"/></td>
-                    <td class="tdleft"><s:property value="%{getText('gogowise.zhibi.available.left')}"/></td>
-                    <td class="tdleft"><s:property value="%{getText('consumption.order.curr.left.details')}"/></td>
-                    <td class="tdleft"><s:property value="%{getText('consumption.order.curr.left')}"/></td>
-                    <td class="tdleft"><s:property value="%{getText('consumption.order.use.description')}"/></td>
+                    <td class="tdleft"><s:text name="consumption.order.time"/></td>
+                    <td class="tdleft"><s:text name="consumption.order.id"/></td>
+                    <td class="tdleft"><s:text name="consumption.order.details"/></td>
+                    <td class="tdleft"><s:text name="gogowise.zhibi.available.left"/></td>
+                    <td class="tdleft"><s:text name="consumption.order.curr.left.details"/></td>
+                    <td class="tdleft"><s:text name="consumption.order.curr.left"/></td>
+                    <td class="tdleft"><s:text name="consumption.order.use.description"/></td>
                     <td class="tdleft"></td>
                 </tr>
 

@@ -21,15 +21,15 @@
     </div>
     <div class="lcu_3">
         <ul>
-            <li><s:property value="%{getText('show.bid.price')}"/>：<s:if test="course.charges == 0"><span
-                    class="orWord"><s:property value="%{getText('course.without.charges')}"/></span></s:if><s:else><span
+            <li><s:text name="show.bid.price"/>：<s:if test="course.charges == 0"><span
+                    class="orWord"><s:text name="course.without.charges"/></span></s:if><s:else><span
                     class="orWord"><s:property value="course.charges"/></span><s:property
                     value="%{getText('course.consumptionType.true')}"/></s:else> &nbsp;&nbsp;
                 <%--|&nbsp;&nbsp;优惠价格：<span class="orWord_large">20</span>&nbsp;知币&nbsp;&nbsp;--%>
-                |&nbsp;&nbsp;<s:property value="%{getText('course.blog.total.terms')}"/>&nbsp;&nbsp;<span
+                |&nbsp;&nbsp;<s:text name="course.blog.total.terms"/>&nbsp;&nbsp;<span
                         class="orWord"><s:property value="courseTermsNum"/></span>&nbsp;&nbsp;<s:property
                         value="%{getText('course.blog.total.terms.tail')}"/></li>
-            <li><s:property value="%{getText('course.blog.zonghe.evaluation')}"/>：<span class="type2????"></span><span
+            <li><s:text name="course.blog.zonghe.evaluation"/>：<span class="type2????"></span><span
                     id="rate_00"><span class="orWord"><s:property value="course.synthetical"/></span></span><s:property
                     value="%{getText('user.evaluate.grade')}"/>&nbsp;&nbsp;|&nbsp;&nbsp;<span class="orWord"><s:property
                     value="courseCommentsNum"/></span>&nbsp;&nbsp;<s:property
@@ -48,15 +48,15 @@
                             value="%{getText('label.course.register')}"/></a>
                 </s:if>
                 <a href="#reservepanel" id="reserve_btn" class="act_btn reserve_btn"
-                   title="<s:property value="%{getText('button.booking.our.course')}"/>"><s:property
+                   title="<s:text name="button.booking.our.course"/>"><s:property
                         value="%{getText('label.course.purchase.new.course')}"/></a>
                 <a href="#recommdatepanel" id="recommend_btn" class="act_btn recommend_btn"
-                   title="<s:property value="%{getText('button.recommend.our.course')}"/>"><s:property
+                   title="<s:text name="button.recommend.our.course"/>"><s:property
                         value="%{getText('label.course.recommend.to.friend')}"/></a>
             </li>
             <div class="save_pop">
-                <div class="save save_done"><s:property value="%{getText('message.change.pwd.success')}"/></div>
-                <div class="save save_fail"><s:property value="%{getText('message.old.pwd.error')}"/></div>
+                <div class="save save_done"><s:text name="message.change.pwd.success"/></div>
+                <div class="save save_fail"><s:text name="message.old.pwd.error"/></div>
             </div>
         </ul>
     </div>
@@ -71,7 +71,7 @@
             <a class="bds_renren">人人网</a>
             <a class="bds_fbook">Facebook</a>
             <a class="bds_twi">Twitter</a><br/>
-            <span class="bds_more"><s:property value="%{getText('others.more')}"/></span>
+            <span class="bds_more"><s:text name="others.more"/></span>
         </div>
         <script type="text/javascript" id="bdshare_js" data="type=tools"></script>
         <script type="text/javascript" id="bdshell_js"></script>
@@ -134,17 +134,17 @@
                                              onfocus="WdatePicker({lang:'%{getText('language')}',startDate:'%y-%M-01 00:00:00',dateFmt:'%{getText('dateformat.forclass')}',alwaysUseStartDate:true})"/></td>
                         </tr>
                         <tr>
-                            <td align="right" valign="top"><s:property value="%{getText('button.message')}"/>&nbsp;</td>
+                            <td align="right" valign="top"><s:text name="button.message"/>&nbsp;</td>
                             <td colspan="3"><textarea name="courseReservation.comments" class="reserve_area"
-                                                      placeholder="<s:property value="%{getText('message.no.special.req')}"/>"></textarea>
+                                                      placeholder="<s:text name="message.no.special.req"/>"></textarea>
                             </td>
                         </tr>
                         <tr>
                             <td></td>
                             <td colspan="3"><input type="button" class="reserve_submit"
-                                                   value="<s:property value="%{getText('button.book.course')}"/>"
+                                                   value="<s:text name="button.book.course"/>"
                                                    onclick="checkCourseReservation();"/>&nbsp;&nbsp;<span
-                                    class="reserve_close"><s:property value="%{getText('button.close')}"/></span>&nbsp;&nbsp;<span
+                                    class="reserve_close"><s:text name="button.close"/></span>&nbsp;&nbsp;<span
                                     id="reservation_message"></span></td>
                         </tr>
                     </table>
@@ -167,7 +167,7 @@
                 <table>
                     <tr>
                         <td></td>
-                        <td class="add_friend_email"><s:property value="%{getText('button.add.email.friend')}"/></td>
+                        <td class="add_friend_email"><s:text name="button.add.email.friend"/></td>
                     </tr>
                     <tr>
                         <td width="80px" align="right" valign="top"><s:property
@@ -177,7 +177,7 @@
                                      onblur="checkEmail(this);"/></tr>
                     <tbody class="added_line"></tbody>
                     <tr>
-                        <td align="right" valign="top"><s:property value="%{getText('button.message')}"/>&nbsp;</td>
+                        <td align="right" valign="top"><s:text name="button.message"/>&nbsp;</td>
                         <td><s:textarea cssClass="recommdate_message"
                                         placeholder="%{getText('message.course.wonderful')}"
                                         name="comments"></s:textarea></td>
@@ -185,7 +185,7 @@
                     <tr>
                         <td></td>
                         <td><input class="recommdate_submit" type="button" onclick="checkCourseRecommend();"
-                                   value="<s:property value="%{getText('button.submit')}"/>"/>&nbsp;&nbsp;<span
+                                   value="<s:text name="button.submit"/>"/>&nbsp;&nbsp;<span
                                 class="recommdate_close recommdatebtn"><s:property
                                 value="%{getText('button.close')}"/></span>&nbsp;&nbsp;<span
                                 id="recommend_message"></span></td>
@@ -201,16 +201,16 @@
     <s:hidden value="%{#session.userID}" id="hidSessionId"/>
     <div class="lcl_1"></div>
     <div class="lcl_2">
-        <h4><s:property value="%{getText('course.info')}"/></h4>
+        <h4><s:text name="course.info"/></h4>
 
         <div class="info">
-            <h5><s:property value="%{getText('course.info.description')}"/></h5>
+            <h5><s:text name="course.info.description"/></h5>
 
             <p class="desc"><s:property value="course.description"/></p>
-            <h5><s:property value="%{getText('course.create.info')}"/></h5>
+            <h5><s:text name="course.create.info"/></h5>
             <table class="tup">
                 <tr>
-                    <td class="title"><s:property value="%{getText('course.maintenance.coursestyle')}"/></td>
+                    <td class="title"><s:text name="course.maintenance.coursestyle"/></td>
                     <td>
                         <s:if test="course.organization==null">
                             <s:property value="%{getText('label.tutor.1to'+course.teachingNum)}"/>
@@ -220,33 +220,33 @@
                         </s:else></td>
                 </tr>
                 <tr>
-                    <td class="title"><s:property value="%{getText('show.total.terms')}"/></td>
+                    <td class="title"><s:text name="show.total.terms"/></td>
                     <td><s:property value="courseTermsNum"/></td>
                 </tr>
                 <tr>
-                    <td class="title"><s:property value="%{getText('course.this.classes.duration')}"/></td>
+                    <td class="title"><s:text name="course.this.classes.duration"/></td>
                     <td><s:property value="course.classesNum"/></td>
                 </tr>
                 <tr>
-                    <td class="title"><s:property value="%{getText('course.start.time')}"/></td>
+                    <td class="title"><s:text name="course.start.time"/></td>
                     <td><s:date name="course.startDate" format="%{getText('dateformat')}"/></td>
                 </tr>
             </table>
             <s:if test="course.studentType != null || course.studentType !=''">
-                <h5><s:property value="%{getText('course.info.of.student.type')}"/></h5>
+                <h5><s:text name="course.info.of.student.type"/></h5>
 
                 <p class="book_recommended">
                     <s:property value="course.studentType"/>
                 </p>
             </s:if>
-            <h5><s:property value="%{getText('course.total.detail.info')}"/></h5>
+            <h5><s:text name="course.total.detail.info"/></h5>
             <table class="tdown">
                 <tr>
-                    <td><s:property value="%{getText('lable.course.no')}"/></td>
-                    <td><s:property value="%{getText('lable.course.nickname')}"/></td>
-                    <td><s:property value="%{getText('lable.course.starttime')}"/></td>
-                    <td><s:property value="%{getText('label.lastingtime')}"/></td>
-                    <td><s:property value="%{getText('course.class.at.weekdays')}"/></td>
+                    <td><s:text name="lable.course.no"/></td>
+                    <td><s:text name="lable.course.nickname"/></td>
+                    <td><s:text name="lable.course.starttime"/></td>
+                    <td><s:text name="label.lastingtime"/></td>
+                    <td><s:text name="course.class.at.weekdays"/></td>
                 </tr>
                 <s:iterator value="course.classes">
                     <tr>
@@ -259,7 +259,7 @@
                 </s:iterator>
             </table>
             <s:if test="course.courseTeachingBook != null || course.courseTeachingBook !=''">
-                <h5><s:property value="%{getText('course.info.of.teaching.book')}"/></h5>
+                <h5><s:text name="course.info.of.teaching.book"/></h5>
 
                 <p class="book_recommended">
                         <%--<a href="http://product.china-pub.com/3662181" target="_blank" title="点击查看书籍详细信息">《Erlang/OTP并发编程实战(首部OTP开发部署实战指南)》</a>&nbsp;&nbsp;&nbsp;&nbsp;--%>
@@ -271,7 +271,7 @@
     </div>
     <div class="lcl_3"></div>
     <div class="lcl_5">
-        <h4><s:property value="%{getText('students.of.this.course')}"/></h4>
+        <h4><s:text name="students.of.this.course"/></h4>
         <ul>
             <s:iterator value="course.seniorClassRooms">
                 <li><a href="userBlog.html?user.id=<s:property value="student.id"/>"
@@ -280,14 +280,14 @@
             </s:iterator>
             <s:if test="course.studentNum > 14">
                 <li class="li_turn"><a href="javascript:;" class="turn_left"
-                                       title="<s:property value="%{getText('pagination.last.page')}"/>"></a><a
+                                       title="<s:text name="pagination.last.page"/>"></a><a
                         href="javascript:;" class="turn_right"
-                        title="<s:property value="%{getText('pagination.next.page')}"/>"></a></li>
+                        title="<s:text name="pagination.next.page"/>"></a></li>
             </s:if>
         </ul>
     </div>
     <div class="lcl_6">
-        <h4><s:property value="%{getText('blog.message.board')}"/></h4>
+        <h4><s:text name="blog.message.board"/></h4>
 
         <p id="message_area_tip"></p>
         <s:form theme="css_xhtml" name="commentsForm" method="post" id="commentForm">
@@ -367,7 +367,7 @@
     <%-- 如果课程的老师存在 则有，不存在则这一块没有 --%>
     <s:if test="course.teacher != null">
         <div class="lcr_2">
-            <h5><s:property value="%{getText('label.forcast.lecturer')}"/></h5>
+            <h5><s:text name="label.forcast.lecturer"/></h5>
 
             <p class="pl">
                 <a href="userBlog.html?user.id=<s:property value="course.teacher.id"/>"
@@ -398,7 +398,7 @@
     <%-- 授课老师和开课组织这两个Div根据情况只选择一个 --%>
     <s:if test="course.organization != null">
         <div class="lcr_3">
-            <h5><s:property value="%{getText('creation.course.organization')}"/></h5>
+            <h5><s:text name="creation.course.organization"/></h5>
 
             <p class="pl">
                 <a href="orgBlog.html?org.id=<s:property value="course.organization.id"/>"
@@ -409,7 +409,7 @@
                         value="course.organization.nickName"/></a>
                     <span class="under">
                         <%--<span class="orWord">5</span>学生&nbsp;|&nbsp;--%>
-                        <span class="orWord">5</span><s:property value="%{getText('label.teacher')}"/>&nbsp;|&nbsp;<span
+                        <span class="orWord">5</span><s:text name="label.teacher"/>&nbsp;|&nbsp;<span
                             class="orWord"><s:property value="orgCourseNum"/></span><s:property
                             value="%{getText('course.invite.student.email.content.course')}"/></span>
                     <%--<a href="javascript:;" class="focus">关注</a>--%>
@@ -421,33 +421,33 @@
         </div>
     </s:if>
     <div class="lcr_1">
-        <h5><s:property value="%{getText('org.or.teacher.another.courses')}"/></h5>
+        <h5><s:text name="org.or.teacher.another.courses"/></h5>
         <ul>
             <s:iterator value="courses2teacher">
                 <li><a href="voaCourseBlog.html?course.id=<s:property value="id"/>"
                        title="<s:property value="name"/>"><img src="<s:property value="logoUrl"/>"/></a></li>
             </s:iterator>
             <li class="li_turn"><a href="javascript:;" class="turn_left"
-                                   title="<s:property value="%{getText('pagination.last.page')}"/>"></a><a
+                                   title="<s:text name="pagination.last.page"/>"></a><a
                     href="javascript:;" class="turn_right"
-                    title="<s:property value="%{getText('pagination.next.page')}"/>"></a></li>
+                    title="<s:text name="pagination.next.page"/>"></a></li>
         </ul>
     </div>
     <div class="lcr_1">
-        <h5><s:property value="%{getText('course.hottest')}"/></h5>
+        <h5><s:text name="course.hottest"/></h5>
         <ul>
             <s:iterator value="courses2teacher">
                 <li><a href="voaCourseBlog.html?course.id=<s:property value="id"/>"
                        title="<s:property value="name"/>"><img src="<s:property value="logoUrl"/>"/></a></li>
             </s:iterator>
             <li class="li_turn"><a href="javascript:;" class="turn_left"
-                                   title="<s:property value="%{getText('pagination.last.page')}"/>"></a><a
+                                   title="<s:text name="pagination.last.page"/>"></a><a
                     href="javascript:;" class="turn_right"
-                    title="<s:property value="%{getText('pagination.next.page')}"/>"></a></li>
+                    title="<s:text name="pagination.next.page"/>"></a></li>
         </ul>
     </div>
     <div class="lcr_news">
-        <h5><s:property value="%{getText('courses.new.events')}"/></h5>
+        <h5><s:text name="courses.new.events"/></h5>
         <ul class="list03 fblue">
             <s:iterator value="courseNewEvents">
                 <li><a href="courseEventRead.html?courseNewEvent.id=<s:property value="id"/>"
@@ -456,7 +456,7 @@
         </ul>
     </div>
     <div class="lcr_news">
-        <h5><s:property value="%{getText('label.course.materials')}"/></h5>
+        <h5><s:text name="label.course.materials"/></h5>
         <ul class="list03 fblue">
             <%--<li><a href="javascript:;" target="_blank" title="怎么创建新的课程？" target="_blank">&gt;&nbsp;&nbsp;怎么创建新的课程？</a></li>--%>
             <%--<li><a href="javascript:;" target="_blank" title="德总统因不忍安保改造扰邻决定携女友搬家">&gt;&nbsp;&nbsp;德总统因不忍安保改造扰邻决定携女友搬</a></li>--%>
@@ -471,17 +471,17 @@
     </div>
 
     <div class="lcr_4">
-        <h5><s:property value="%{getText('course.total.evalations.grade')}"/></h5>
+        <h5><s:text name="course.total.evalations.grade"/></h5>
         <table>
             <tr>
-                <td colspan="2"><s:property value="%{getText('course.total.evalations.grade.average')}"/>：<span
+                <td colspan="2"><s:text name="course.total.evalations.grade.average"/>：<span
                         class="orWord">4.1</span> <s:property
                         value="%{getText('user.evaluate.grade')}"/>&nbsp;&nbsp;<s:property
                         value="%{getText('course.total.evalations.grade.highest')}"/>：<span
                         class="orWord">5.0</span><s:property
                         value="%{getText('user.evaluate.grade')}"/>&nbsp;&nbsp;<s:property
                         value="%{getText('course.total.evalations.grade.lowest')}"/>：<span
-                        class="orWord">3.0</span><s:property value="%{getText('user.evaluate.grade')}"/>&nbsp;&nbsp;
+                        class="orWord">3.0</span><s:text name="user.evaluate.grade"/>&nbsp;&nbsp;
                 </td>
             </tr>
             <tr>
@@ -492,8 +492,8 @@
             </tr>
         </table>
         <div class="save_pop">
-            <div class="save save_done"><s:property value="%{getText('message.change.pwd.success')}"/></div>
-            <div class="save save_fail"><s:property value="%{getText('message.old.pwd.error')}"/></div>
+            <div class="save save_done"><s:text name="message.change.pwd.success"/></div>
+            <div class="save save_fail"><s:text name="message.old.pwd.error"/></div>
         </div>
     </div>
 </div>

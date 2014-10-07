@@ -20,7 +20,7 @@
     <br/>
 
     <div class="thickline"></div>
-    <h3 class="courseSubhead"><s:property value="%{getText('org.blog.internal.courses')}"/></h3>
+    <h3 class="courseSubhead"><s:text name="org.blog.internal.courses"/></h3>
     <!--school curriculum-->
     <div id="schoolcurriculum">
         <div class="row">
@@ -50,7 +50,7 @@
 
     <div id="Mooc">
         <div class="thickline"></div>
-        <h3 class="courseSubhead"><s:property value="%{getText('usermenu.item.mooc')}"/></h3> <%--Mooc--%>
+        <h3 class="courseSubhead"><s:text name="usermenu.item.mooc"/></h3> <%--Mooc--%>
         <div id="Mooccurriculum">
             <div class="row">
                 <s:iterator value="moocs" status="idx">
@@ -82,7 +82,7 @@
     <div id="Forums">
 
         <div class="thickline"></div>
-        <h3 class="courseSubhead"><s:property value="%{getText('blog.message.board')}"/></h3>
+        <h3 class="courseSubhead"><s:text name="blog.message.board"/></h3>
 
 
         <div id="message_list_ul">
@@ -184,7 +184,7 @@
 <br/>
 <!-- Lecturers -->
 <div class="gogopanelHead">
-    <div class="gogopanelTitle"><s:property value="%{getText('course.lecturers')}"/></div>
+    <div class="gogopanelTitle"><s:text name="course.lecturers"/></div>
 </div>
 <div class="gogopanelBody">
     <div class="gogopanelBodyText">
@@ -216,7 +216,7 @@
         <a href="#">
             <div class="text-right">
                 <a href="orgMoreTeacher.html?org.id=<s:property value="org.id"/>">
-                    <s:property value="%{getText('label.org.lecturer.see.all')}"/>
+                    <s:text name="label.org.lecturer.see.all"/>
                 </a>
             </div>
         </a>
@@ -226,54 +226,54 @@
 <br/>
 
 <div class="gogopanelHead">
-    <div class="gogopanelTitle"><s:property value="%{getText('label.course.class.room')}"/></div>
+    <div class="gogopanelTitle"><s:text name="label.course.class.room"/></div>
 </div>
 <div class="gogopanelBody">
     <div class="gogopanelBodyText">
         <s:if test="course.FinshedClassNum < course.ClassesNum">
             <s:iterator value="course.ForcastClasses" begin="0" end="0" status="idx">
-                <div><s:property value="%{getText('lable.course.nickname')}"/>: <s:property value="nickName"/></div>
+                <div><s:text name="lable.course.nickname"/>: <s:property value="nickName"/></div>
                 <p></p>
 
-                <div><s:property value="%{getText('lable.course.no')}"/>:
-                    <s:property value="%{getText('lable.class.no1')}"/>
+                <div><s:text name="lable.course.no"/>:
+                    <s:text name="lable.class.no1"/>
                     <s:property value="course.FinshedClassNum+1"/>
-                    <s:property value="%{getText('lable.class.no2')}"/>
+                    <s:text name="lable.class.no2"/>
                 </div>
                 <p></p>
 
-                <div><s:property value="%{getText('lable.course.starttime')}"/>:<s:date name="date"
+                <div><s:text name="lable.course.starttime"/>:<s:date name="date"
                                                                                         format="%{getText('dateformat.forclass')}"/></div>
                 <p></p>
 
-                <div><s:property value="%{getText('courses.info.lecturer')}"/>: <s:property
+                <div><s:text name="courses.info.lecturer"/>: <s:property
                         value="course.teacher.nickName"/></div>
                 <p></p>
 
-                <div><s:property value="%{getText('word.audience')}"/>:</div>
+                <div><s:text name="word.audience"/>:</div>
                 <br/>
             </s:iterator>
         </s:if>
         <s:else>
             <s:iterator value="course.classes" begin="course.ClassesNum-1" end="course.ClassesNum -1" status="idx">
-                <div><s:property value="%{getText('lable.course.nickname')}"/>: <s:property value="nickName"/></div>
+                <div><s:text name="lable.course.nickname"/>: <s:property value="nickName"/></div>
                 <p></p>
 
-                <div><s:property value="%{getText('lable.course.no')}"/>:
-                    <s:property value="%{getText('lable.class.no1')}"/><s:property
-                            value="course.ClassesNum"/><s:property value="%{getText('lable.class.no2')}"/>
+                <div><s:text name="lable.course.no"/>:
+                    <s:text name="lable.class.no1"/><s:property
+                            value="course.ClassesNum"/><s:text name="lable.class.no2"/>
                 </div>
                 <p></p>
 
-                <div><s:property value="%{getText('lable.course.starttime')}"/>:<s:date name="date"
+                <div><s:text name="lable.course.starttime"/>:<s:date name="date"
                                                                                         format="%{getText('dateformat.forclass')}"/></div>
                 <p></p>
 
-                <div><s:property value="%{getText('courses.info.lecturer')}"/>: <s:property
+                <div><s:text name="courses.info.lecturer"/>: <s:property
                         value="course.teacher.nickName"/></div>
                 <p></p>
 
-                <div><s:property value="%{getText('word.audience')}"/>:</div>
+                <div><s:text name="word.audience"/>:</div>
                 <br/>
             </s:iterator>
         </s:else>
@@ -286,13 +286,13 @@
 <br/>
 <!--Panel 3-->
 <%--<div class="gogopanelHead">
-    <div class="gogopanelTitle"><s:property value="%{getText('label.course.discussion.room')}"/></div>
+    <div class="gogopanelTitle"><s:text name="label.course.discussion.room"/></div>
 </div>
 <div class="gogopanelBody">
     <div class="gogopanelBodyText">
-        <div><s:property value="%{getText('label.discussion.room.start.time')}"/>:</div>
+        <div><s:text name="label.discussion.room.start.time"/>:</div>
         <p></p>
-        <div><s:property value="%{getText('label.discussion.room.duration')}"/>:</div>
+        <div><s:text name="label.discussion.room.duration"/>:</div>
         <p></p>
 
         <div id="DisUserArea" style="text-align: center;">
@@ -373,7 +373,7 @@
     </div>
 </div>--%>
 <%--<br/>
-<button type="button" class="btn btn-primary btn-block"><s:property value="%{getText('button.classroom.enter')}"/></button>
+<button type="button" class="btn btn-primary btn-block"><s:text name="button.classroom.enter"/></button>
 </div>
 </div>    --%>
 <br/>

@@ -207,8 +207,8 @@
         <%-- 大图片裁切 --%>
         <div class="large_image">
             <div class="large_image_tip_words">
-                <span class="words_1"><s:property value="%{getText('message.select.pic')}"/></span><br/><br/>
-                <span class="words_2"><s:property value="%{getText('message.pic.rule')}"/></span>
+                <span class="words_1"><s:text name="message.select.pic"/></span><br/><br/>
+                <span class="words_2"><s:text name="message.pic.rule"/></span>
             </div>
             <div class="large_image_inner"><img id="target" src=""/></div>
         </div>
@@ -224,8 +224,8 @@
 
         <%-- 提交及取消 --%>
         <div class="portrait_submit">
-            <input class="submit_btn" type="submit" value="<s:property value="%{getText('button.submit')}"/>"/>
-            <input class="cancel_btn" type="button" value="<s:property value="%{getText('button.cancel')}"/>"/>
+            <input class="submit_btn" type="submit" value="<s:text name="button.submit"/>"/>
+            <input class="cancel_btn" type="button" value="<s:text name="button.cancel"/>"/>
         </div>
     </div>
 </div>

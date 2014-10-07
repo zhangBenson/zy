@@ -3,7 +3,7 @@
 
 <div class="rightItem1">
     <s:hidden value="%{#session.userID}" id="hidSessionId"/>
-    <h3 class="h3_title"><s:property value="%{getText('teacher.hottest')}"/></h3>
+    <h3 class="h3_title"><s:text name="teacher.hottest"/></h3>
     <s:iterator value="hotTeacher">
         <div class="onePerson fl">
             <p class="personLeft fl">
@@ -38,7 +38,7 @@
 </div>
 
 <div class="rightTerm2 fl">
-    <h3 class="h3_title"><s:property value="%{getText('course.hottest')}"/></h3>
+    <h3 class="h3_title"><s:text name="course.hottest"/></h3>
     <ul>
         <s:iterator value="hotCourse">
             <li>

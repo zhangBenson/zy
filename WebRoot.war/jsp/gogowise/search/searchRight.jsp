@@ -4,8 +4,8 @@
 <link type="text/css" href="css/search/searchRight.css" rel="stylesheet"/>
 
 <div class="rightItem1">
-    <h3 class="h3_title"><s:property value="%{getText('teacher.hottest')}"/></h3>
-    <a class="other_more" href="teacherHotList.html"><s:property value="%{getText('others.more')}"/></a>
+    <h3 class="h3_title"><s:text name="teacher.hottest"/></h3>
+    <a class="other_more" href="teacherHotList.html"><s:text name="others.more"/></a>
 
     <s:iterator value="hottestTeachers">
         <div class="onePerson fl">
@@ -18,15 +18,15 @@
             <p class="personMid fl">
                 <a class="title" href="userBlog.html?user.id=<s:property value="id"/>"
                    title="<s:property value="nickName"/>"><s:property value="nickName"/></a>
-                    <%--<span class="sheet"><span class="orange_words"><s:property value="fansNum"/>&nbsp;</span><s:property value="%{getText('user.add.focus')}"/>&nbsp;&nbsp;&nbsp;&lt;%&ndash;<span class="orange_words">70&nbsp;</span>课程&ndash;%&gt;</span>--%>
+                    <%--<span class="sheet"><span class="orange_words"><s:property value="fansNum"/>&nbsp;</span><s:text name="user.add.focus"/>&nbsp;&nbsp;&nbsp;&lt;%&ndash;<span class="orange_words">70&nbsp;</span>课程&ndash;%&gt;</span>--%>
                     <%--<span><s:property value="selfDescription"/></span>--%>
             </p>
                 <%--<p class="personRight fl">--%>
                 <%--<s:if test="!userFocused">--%>
-                <%--<a class="orange_words" href="javascript:;" onclick="becomeFans(this,<s:property value="id"/>);"><s:property value="%{getText('user.add.focus')}"/></a>--%>
+                <%--<a class="orange_words" href="javascript:;" onclick="becomeFans(this,<s:property value="id"/>);"><s:text name="user.add.focus"/></a>--%>
                 <%--</s:if>--%>
                 <%--<s:else>--%>
-                <%--<a class="orange_words" href="javascript:;" onclick="becomeFans(this,<s:property value="id"/>);"><s:property value="%{getText('user.add.focused')}"/></a>--%>
+                <%--<a class="orange_words" href="javascript:;" onclick="becomeFans(this,<s:property value="id"/>);"><s:text name="user.add.focused"/></a>--%>
                 <%--</s:else>--%>
                 <%--</p>--%>
         </div>
@@ -34,8 +34,8 @@
 </div>
 
 <div class="rightTerm2 fl">
-    <h3 class="h3_title"><s:property value="%{getText('course.hottest')}"/></h3>
-    <a class="other_more" href="courseHotList.html"><s:property value="%{getText('others.more')}"/></a>
+    <h3 class="h3_title"><s:text name="course.hottest"/></h3>
+    <a class="other_more" href="courseHotList.html"><s:text name="others.more"/></a>
     <ul>
         <s:iterator value="hottestCourses">
             <li>

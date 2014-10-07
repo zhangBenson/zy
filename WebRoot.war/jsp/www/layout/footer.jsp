@@ -12,8 +12,8 @@
                 <%--<div class ="footersSiteInfo">Service email:gogowise@gogowise.com    Copyright 1997 - 2012 All Rights Reserved, ready for record</div>
                 --%>
                 <div class="footersSiteInfo">
-                    <s:property value="%{getText('text.service.email')}"/>&nbsp;&nbsp;&nbsp;
-                    <s:property value="%{getText('text.copyright')}"/>
+                    <s:text name="text.service.email"/>&nbsp;&nbsp;&nbsp;
+                    <s:text name="text.copyright"/>
                 </div>
 
                 <%--<div class="footersLink">|  Home |  COURSES  |  SCHOOLS  |</div> --%>

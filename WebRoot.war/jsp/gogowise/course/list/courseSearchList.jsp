@@ -5,7 +5,7 @@
 
 
 <div class="live_title fl">
-    <h3 class="h3_title"><s:property value="%{getText('usermenu.item.newestcourses')}"/></h3>
+    <h3 class="h3_title"><s:text name="usermenu.item.newestcourses"/></h3>
     <%--<p>--%>
     <%--<a href="javascript:;">按开始时间排序</a>--%>
     <%--<a href="javascript:;">按会员名排序</a>--%>
@@ -27,7 +27,7 @@
             <p class="title">
                 <a class="title" href="voaCourseBlog.html?course.id=<s:property value="id"/>"><s:property
                         value="name"/></a>
-                    <%--<a class="watch orange_words" href="voaCourseBlog.html?course.id=<s:property value="id"/>"><s:property value="%{getText('gogowise.things.details')}"/></a>--%>
+                    <%--<a class="watch orange_words" href="voaCourseBlog.html?course.id=<s:property value="id"/>"><s:text name="gogowise.things.details"/></a>--%>
             </p>
 
             <p class="info">

@@ -15,9 +15,9 @@
     <div id="form_container">
         <h1><a>GoGoWise</a></h1>
 
-        <div id="aftermail"><s:property value="%{getText('text.qqq.4.support')}"/></div>
+        <div id="aftermail"><s:text name="text.qqq.4.support"/></div>
         <div id="footer" style="font-size:14px; color:#666;">
-            <s:property value="%{getText('text.backto')}"/> <a href="http://www.gogowise.com"
+            <s:text name="text.backto"/> <a href="http://www.gogowise.com"
                                                                style="color:#333;"><s:property
                 value="%{getText('menu.item.index')}"/></a>
         </div>

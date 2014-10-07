@@ -115,7 +115,7 @@
 
     <div id="mainRe">
         <hr/>
-        <div id="get_back_pwd"><span><s:property value="%{getText('label.get.back.password')}"/></span></div>
+        <div id="get_back_pwd"><span><s:text name="label.get.back.password"/></span></div>
         <div id="center">
             <table width="420" cellpadding="0" cellspacing="0">
                     <%--<tr>--%>
@@ -124,18 +124,18 @@
                 <tr>
                     <td colspan="2" id="info"><img src="images/change.gif" width="25" height="25"/><s:property
                             value="%{getText('label.setting.new.password')}"/><br/>
-                        <s:property value="%{getText('message.insert.new.password')}"/>
+                        <s:text name="message.insert.new.password"/>
                     </td>
                 </tr>
                 <tr class="con" height="30px">
-                    <td class="tdleft"><s:property value="%{getText('label.new.password')}"/>：</td>
+                    <td class="tdleft"><s:text name="label.new.password"/>：</td>
                     <td class="tdright">
                         <label>
                             <s:password type="text" name="user.password" id="textfield"/>
                         </label><span class="errorinfo">*</span></td>
                 </tr>
                 <tr class="con" height="30px">
-                    <td class="tdleft"><s:property value="%{getText('label.new.password.confirm')}"/>：</td>
+                    <td class="tdleft"><s:text name="label.new.password.confirm"/>：</td>
                     <td class="tdright"><s:password type="text" name="rePwd" id="textfield2"/><span
                             class="errorinfo">*</span></td>
                 </tr>

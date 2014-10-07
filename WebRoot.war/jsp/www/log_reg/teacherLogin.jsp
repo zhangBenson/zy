@@ -7,19 +7,19 @@
 
 <div style="text-align: center; width: 30%; margin-left: 30%; margin-bottom: 5%; margin-top: 1%;">
     <div class="basePanelTextLeft">
-        <h1 class = "courseSubject"><s:property value="%{getText('button.log.in.teacher')}"/></h1>
-        <h1 class = "courseSynopsis"><s:property value="%{getText('label.log.in.info')}"/></h1>
+        <h1 class = "courseSubject"><s:text name="button.log.in.teacher"/></h1>
+        <h1 class = "courseSynopsis"><s:text name="label.log.in.info"/></h1>
         <span class="errorinfo"><s:property value="actionErrors[0]"/></span>
         <s:form validate="true" theme="css_xhtml" cssClass="form-horizontal"  method="POST" action="teacherLoginProcess">
             <div class="form-group">
-                <label class="col-sm-2 control-label"> <s:property value="%{getText('email')}"/></label>
+                <label class="col-sm-2 control-label"> <s:text name="email"/></label>
                 <div class="col-sm-10">
                     <span class="errorinfo" id="yzemail"></span>
                     <s:textfield name="user.email" id="logonemail" cssClass="form-control" placeholder="Email"/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label"> <s:property value="%{getText('password')}"/></label>
+                <label class="col-sm-2 control-label"> <s:text name="password"/></label>
 
                 <div class="col-sm-10">
                     <span class="errorinfo" id="yzpwd"><s:property value="identityConfirmMsg"/></span>
@@ -30,15 +30,15 @@
                 <div class="col-sm-offset-2 col-sm-10">
                     <div class="checkbox">
                         <label>
-                            <%-- <input type="checkbox"><s:property value="%{getText('label.log.in.remember.me.info')}"/></label> --%>
-                            <a href="initRepassword.html" style="float: right;"><span><s:property value="%{getText('link.forget.pwd')}"/>？</span></a>
+                            <%-- <input type="checkbox"><s:text name="label.log.in.remember.me.info"/></label> --%>
+                            <a href="initRepassword.html" style="float: right;"><span><s:text name="link.forget.pwd"/>？</span></a>
                     </div>
 
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <input class = "btn btn-success  btn-lg btn-block" type="submit" name="button" id="btn1" onclick="return checkForm();" value="<s:property value="%{getText('button.log.in')}"/>"/>
+                    <input class = "btn btn-success  btn-lg btn-block" type="submit" name="button" id="btn1" onclick="return checkForm();" value="<s:text name="button.log.in"/>"/>
                 </div>
             </div>
         </s:form>

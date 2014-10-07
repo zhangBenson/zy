@@ -22,12 +22,12 @@
                 <div class="Info2 fl">
                     <a class="a_title" href="userBlog.html?user.id=<s:property value="id"/>"
                        title="<s:property value="nickName"/>"><s:property value="nickName"/></a>
-                        <%--<span><s:property value="fansNum"/><s:property value="%{getText('user.add.focus')}"/></span>--%>
+                        <%--<span><s:property value="fansNum"/><s:text name="user.add.focus"/></span>--%>
                         <%--<s:if test="!userFocused">--%>
-                        <%--<a class="a_focus" href="javascript:;" onclick="becomeFans(this,<s:property value="id"/>);"><s:property value="%{getText('user.add.focus')}"/></a>--%>
+                        <%--<a class="a_focus" href="javascript:;" onclick="becomeFans(this,<s:property value="id"/>);"><s:text name="user.add.focus"/></a>--%>
                         <%--</s:if>--%>
                         <%--<s:else>--%>
-                        <%--<a class="a_focus" href="javascript:;" onclick="becomeFans(this,<s:property value="id"/>);"><s:property value="%{getText('user.add.focused')}"/></a>--%>
+                        <%--<a class="a_focus" href="javascript:;" onclick="becomeFans(this,<s:property value="id"/>);"><s:text name="user.add.focused"/></a>--%>
                         <%--</s:else>--%>
                 </div>
             </div>
@@ -46,12 +46,12 @@
                 <div class="Info2 fl">
                     <a class="a_title" href="orgBlog.html?org.id=<s:property value="id"/>"
                        title="<s:property value="schoolName"/>"><s:property value="schoolName"/></a>
-                        <%--<span><s:property value="fansNum"/><s:property value="%{getText('user.add.focus')}"/></span>--%>
+                        <%--<span><s:property value="fansNum"/><s:text name="user.add.focus"/></span>--%>
                         <%--<s:if test="!userFocused">--%>
-                        <%--<a class="a_focus" href="javascript:;" onclick="becomeOrgFans(this,<s:property value="id"/>);"><s:property value="%{getText('user.add.focus')}"/></a>--%>
+                        <%--<a class="a_focus" href="javascript:;" onclick="becomeOrgFans(this,<s:property value="id"/>);"><s:text name="user.add.focus"/></a>--%>
                         <%--</s:if>--%>
                         <%--<s:else>--%>
-                        <%--<a class="a_focus" href="javascript:;" onclick="becomeOrgFans(this,<s:property value="id"/>);"><s:property value="%{getText('user.add.focused')}"/></a>--%>
+                        <%--<a class="a_focus" href="javascript:;" onclick="becomeOrgFans(this,<s:property value="id"/>);"><s:text name="user.add.focused"/></a>--%>
                         <%--</s:else>--%>
                 </div>
             </div>
@@ -101,7 +101,7 @@
                             value="%{getText('course.blog.purchase.num')}"/></span>&nbsp;&nbsp;|&nbsp;&nbsp;
                     <span><span class="orange_words"> <s:property value="courseRecommendNum"/>&nbsp;</span><s:property
                             value="%{getText('course.blog.recommend.num')}"/></span> &nbsp;&nbsp;|&nbsp;&nbsp;
-                    <span><s:property value="%{getText('course.blog.total.terms')}"/><span
+                    <span><s:text name="course.blog.total.terms"/><span
                             class="orange_words"> <s:property value="courseTermsNum"/>&nbsp;</span><s:property
                             value="%{getText('course.blog.total.terms.tail')}"/></span>
                 </p>

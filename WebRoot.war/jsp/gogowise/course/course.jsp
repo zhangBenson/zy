@@ -15,10 +15,10 @@
 programming.
 </h5>--%>
 
-<%-- <h5 class ="courseSynopsis"><s:property value="%{getText('course.info')}"/></h5> --%>
+<%-- <h5 class ="courseSynopsis"><s:text name="course.info"/></h5> --%>
 <div class="row">
     <div class="col-md-8">
-        <h3 class="courseSubhead"><s:property value="%{getText('course.info')}"/></h3>
+        <h3 class="courseSubhead"><s:text name="course.info"/></h3>
     </div>
     <div class="col-md-4" style="text-align: right;">
         <h3>
@@ -92,17 +92,17 @@ programming.
                         <s:property value="content"/>
                     </div>
                         <%--<s:if test="course.teacher.id == #session.userID && commenter.id != #session.userID">
-                            <a class="span2" href="####" onclick="replyToComment('<s:property value="commenter.nickName"/>',<s:property value="commenter.id"/>)"><s:property value="%{getText('blog.comments.reply')}"/></a>
-                            <a class="span2" href="####" onclick="deleteThisComment(this,<s:property value="id"/>)"><s:property value="%{getText('blog.comments.delete')}"/></a>
+                            <a class="span2" href="####" onclick="replyToComment('<s:property value="commenter.nickName"/>',<s:property value="commenter.id"/>)"><s:text name="blog.comments.reply"/></a>
+                            <a class="span2" href="####" onclick="deleteThisComment(this,<s:property value="id"/>)"><s:text name="blog.comments.delete"/></a>
                         </s:if>
                         <s:elseif test="course.teacher.id != #session.userID && commenter.id != #session.userID">
-                            <a class="span2" href="####" onclick="replyToComment('<s:property value="commenter.nickName"/>',<s:property value="commenter.id"/>)"><s:property value="%{getText('blog.comments.reply')}"/></a>
+                            <a class="span2" href="####" onclick="replyToComment('<s:property value="commenter.nickName"/>',<s:property value="commenter.id"/>)"><s:text name="blog.comments.reply"/></a>
                         </s:elseif>
                         <s:elseif test=" #session.userID == null">
-                            <a class="span2" href="####" onclick="replyToComment('<s:property value="commenter.nickName"/>',<s:property value="commenter.id"/>)"><s:property value="%{getText('blog.comments.reply')}"/></a>
+                            <a class="span2" href="####" onclick="replyToComment('<s:property value="commenter.nickName"/>',<s:property value="commenter.id"/>)"><s:text name="blog.comments.reply"/></a>
                         </s:elseif>
                         <s:else>
-                            <a class="span2" href="####" onclick="deleteThisComment(this,<s:property value="id"/>)"><s:property value="%{getText('blog.comments.delete')}"/></a>
+                            <a class="span2" href="####" onclick="deleteThisComment(this,<s:property value="id"/>)"><s:text name="blog.comments.delete"/></a>
                         </s:else>
                         --%>
                     <div class="forumContentDate">
@@ -121,10 +121,10 @@ programming.
     <%--
     <s:if test="commentsNum != 0">
            <s:if test="!commentsNumOverflow">
-               <a href="javascript:;" class="more_or_close" onclick="getMoreComments();"><s:property value="%{getText('blog.comments.more.result')}"/>&gt;&gt;</a>
+               <a href="javascript:;" class="more_or_close" onclick="getMoreComments();"><s:text name="blog.comments.more.result"/>&gt;&gt;</a>
            </s:if>
            <s:elseif test="commentsNumOverflow && commentsNum>=10">
-               <a href="javascript:;" class="more_or_close" onclick="rollBack();">&lt;&lt;<s:property value="%{getText('blog.comments.rollBack')}"/></a>
+               <a href="javascript:;" class="more_or_close" onclick="rollBack();">&lt;&lt;<s:text name="blog.comments.rollBack"/></a>
            </s:elseif>
     </s:if>
      <script type="text/javascript">
@@ -181,7 +181,7 @@ programming.
 
 
     <%-- Recommend courses --%>
-    <div class="courseSubhead"><s:property value="%{getText('recommend.course')}"/></div>
+    <div class="courseSubhead"><s:text name="recommend.course"/></div>
     <br/>
 
     <div class="row">
@@ -292,9 +292,9 @@ programming.
                     <p></p>
 
                     <div>numbers:
-                        <s:property value="%{getText('lable.class.no1')}"/>
+                        <s:text name="lable.class.no1"/>
                         <s:property value="course.FinshedClassNum+1"/>
-                        <s:property value="%{getText('lable.class.no2')}"/>
+                        <s:text name="lable.class.no2"/>
                     </div>
                     <p></p>
 

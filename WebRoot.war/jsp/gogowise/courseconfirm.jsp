@@ -260,8 +260,8 @@
             <img src="images/courseconfirm/courseframetop.gif"/>
 
             <div class="tipsinfo">
-                <p><s:property value="%{getText('text.warn.tips')}"/></p>
-                <h6><s:property value="%{getText('label.clourse.selected')}"/>：<s:property value="course.name"/> </br><b
+                <p><s:text name="text.warn.tips"/></p>
+                <h6><s:text name="label.clourse.selected"/>：<s:property value="course.name"/> </br><b
                         style="color:red;" id="msg"><s:property value="purchaseMsg"/></b></h6>
             </div>
             <div id="courseinfoshow">
@@ -274,15 +274,15 @@
                 </div>
                 <div class="courseinfo">
                     <s:if test="course.organization == null">
-                        <p><s:property value="%{getText('label.forcast.lecturer')}"/>：<b><a href="#"><s:property
+                        <p><s:text name="label.forcast.lecturer"/>：<b><a href="#"><s:property
                                 value="course.teacher.nickName"/></a></b></p>
                     </s:if>
-                    <p><s:property value="%{getText('lable.course.date')}"/>：<b><s:date name="course.startDate"
+                    <p><s:text name="lable.course.date"/>：<b><s:date name="course.startDate"
                                                                                         format="%{getText('dateformat')}"/></b>
                     </p>
                 </div>
                 <div class="courseinfo">
-                    <p><s:property value="%{getText('label.course.fee')}"/>：<b><s:if
+                    <p><s:text name="label.course.fee"/>：<b><s:if
                             test="%{course.personalTeacher == null}"><s:property value="%{4 * course.classes.size}"/>
                         <s:if test="course.consumptionType"><s:property
                                 value="%{getText('label.zhibi.true')}"/></s:if><s:else><s:property
@@ -291,15 +291,15 @@
                             value="%{getText('label.zhibi.true')}"/> </s:if><s:else><s:property
                             value="%{getText('label.course.zhiquan')}"/></s:else></s:else></b></p>
 
-                    <p><s:property value="%{getText('label.online.class.totalperods')}"/>：<b><s:property
+                    <p><s:text name="label.online.class.totalperods"/>：<b><s:property
                             value="course.totalHours"/>&nbsp;<s:property
                             value="%{getText('label.online.class.perods')}"/></b></p>
                 </div>
                 <div class="courseinfo">
-                    <p><s:property value="%{getText('label.forcast.enrollment')}"/>：<b><s:property
+                    <p><s:text name="label.forcast.enrollment"/>：<b><s:property
                             value="course.observationNum"/></b>人</p>
 
-                    <p><s:property value="%{getText('label.forcast.subscriber')}"/>：<b><s:property
+                    <p><s:text name="label.forcast.subscriber"/>：<b><s:property
                             value="course.buyAgesNum"/></b>人</p>
                 </div>
                 <div class="courseintro"><strong><s:property
@@ -308,13 +308,13 @@
             </div>
 
             <div class="info_class">
-                <h3><s:property value="%{getText('course.classes.info')}"/></h3>
+                <h3><s:text name="course.classes.info"/></h3>
                 <table>
                     <tr>
-                        <td class="htitle"><s:property value="%{getText('lable.course.no')}"/></td>
-                        <td class="htitle"><s:property value="%{getText('lable.course.nickname')}"/></td>
-                        <td class="htitle"><s:property value="%{getText('lable.course.starttime')}"/></td>
-                        <td class="htitle"><s:property value="%{getText('label.lastingtime')}"/></td>
+                        <td class="htitle"><s:text name="lable.course.no"/></td>
+                        <td class="htitle"><s:text name="lable.course.nickname"/></td>
+                        <td class="htitle"><s:text name="lable.course.starttime"/></td>
+                        <td class="htitle"><s:text name="label.lastingtime"/></td>
                     </tr>
                     <tbody>
                     <s:iterator value="course.classes">
@@ -329,20 +329,20 @@
                 </table>
             </div>
 
-            <p class="p1"><s:property value="%{getText('label.zhibi.left')}"/>：<b><s:property
+            <p class="p1"><s:text name="label.zhibi.left"/>：<b><s:property
                     value="userAccountInfo.zhiBi"/></b></p>
 
-            <p class="p1"><s:property value="%{getText('label.zhiquan.left')}"/>：<b><s:property
+            <p class="p1"><s:text name="label.zhiquan.left"/>：<b><s:property
                     value="userAccountInfo.zhiQuan"/></b></p>
 
-            <p class="tipsinfo highlight"><s:property value="%{getText('label.fee.for.this')}"/>：
+            <p class="tipsinfo highlight"><s:text name="label.fee.for.this"/>：
                 <b>
                     <s:property value="course.charges"/>
                     <s:if test="course.consumptionType">
-                        <s:property value="%{getText('label.zhibi.true')}"/>
+                        <s:text name="label.zhibi.true"/>
                     </s:if>
                     <s:else>
-                        <s:property value="%{getText('label.course.zhiquan')}"/>
+                        <s:text name="label.course.zhiquan"/>
                     </s:else>
                 </b>
             </p>
@@ -351,26 +351,26 @@
                 <div class="topbtn">
                     <input type="button" class="btn1 reservationconfirmed" value="" id="reservationconfirmed"/>
                     <input type="button" class="btn1 cancel"
-                           value="<s:property value="%{getText('button.cancel')}"/>"/>
+                           value="<s:text name="button.cancel"/>"/>
                 </div>
             </s:form>
             <div id="panelinfo">
                 <div class="tipsinfo succeed"><img src="/images/courseconfirm/succeed.gif" width="28" height="28"/>
-                    <strong>&nbsp;&nbsp;<s:property value="%{getText('label.registration.successful')}"/></strong></div>
-                <p class="p1"><s:property value="%{getText('label.account.info')}"/>：</p>
+                    <strong>&nbsp;&nbsp;<s:text name="label.registration.successful"/></strong></div>
+                <p class="p1"><s:text name="label.account.info"/>：</p>
 
-                <p class="p1"><s:property value="%{getText('label.zhibi.true')}"/>:<b id="zhibi"><s:property
+                <p class="p1"><s:text name="label.zhibi.true"/>:<b id="zhibi"><s:property
                         value="userAccountInfo.zhiBi"/></b></p>
 
-                <p class="p1"><s:property value="%{getText('label.course.zhiquan')}"/>：<b id="zhiquan"><s:property
+                <p class="p1"><s:text name="label.course.zhiquan"/>：<b id="zhiquan"><s:property
                         value="userAccountInfo.zhiQuan"/></b></p>
 
-                <p class="p1"><s:property value="%{getText('text.question')}"/></p>
+                <p class="p1"><s:text name="text.question"/></p>
 
-                <div id="redirectto"><strong id="time">10</strong><s:property value="%{getText('label.turn')}"/>
+                <div id="redirectto"><strong id="time">10</strong><s:text name="label.turn"/>
                     <a href="forcastClass.html" id="tiaozhuan"><b><s:property
                             value="%{getText('online.class.avigation.mycourse')}"/></b></a>
-                    <s:property value="%{getText('label.page')}"/>
+                    <s:text name="label.page"/>
                 </div>
             </div>
             <img src="images/courseconfirm/courseframebottom.gif" class="frame1bottom"/>

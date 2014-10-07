@@ -51,14 +51,14 @@
 
 
     <div id="passsucessmain">
-        <div id="get_back_pwd"><span><s:property value="%{getText('label.get.back.password')}"/></span></div>
+        <div id="get_back_pwd"><span><s:text name="label.get.back.password"/></span></div>
         <hr/>
         <div id="centers">
-            <img src="images/succeed.gif" width="30"/><s:property value="%{getText('messge.change.success1')}"/><a
-                href="easyLogon.html"><s:property value="%{getText('Login')}"/></a>
-            <s:property value="%{getText('messge.change.success2')}"/>
-            <a href="index.html"><s:property value="%{getText('menu.item.index')}"/>
-                <s:property value="%{getText('messge.change.success3')}"/></a>
+            <img src="images/succeed.gif" width="30"/><s:text name="messge.change.success1"/><a
+                href="easyLogon.html"><s:text name="Login"/></a>
+            <s:text name="messge.change.success2"/>
+            <a href="index.html"><s:text name="menu.item.index"/>
+                <s:text name="messge.change.success3"/></a>
         </div>
     </div>
 

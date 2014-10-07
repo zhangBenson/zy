@@ -5,26 +5,26 @@
 <link href="css/orgInterview.css" rel="stylesheet" type="text/css"/>
 
 <div class="interviewContainer">
-    <div class="interviewTittle"><s:property value="%{getText('online.interview.center')}"/></div>
+    <div class="interviewTittle"><s:text name="online.interview.center"/></div>
     <s:form action="saveInterview" validate="true" theme="simple" method="POST">
         <div class="interviewDetail">
             <ul>
                 <li>
-                    <div class="option_tittle"><s:property value="%{getText('select.org')}"/></div>
+                    <div class="option_tittle"><s:text name="select.org"/></div>
                     <br/>
 
                     <p class="option_content"><s:select name="interview.organization.id" list="orgs" listKey="key"
                                                         cssClass="interview_input" listValue="value"/></p></li>
                 <li>
-                    <div class="option_tittle"><s:property value="%{getText('interview.email')}"/></div>
+                    <div class="option_tittle"><s:text name="interview.email"/></div>
                     <span class="interviewer_input_msg input_msg"></span><br/>
 
                     <p class="option_content"><input name="interview.interviewerEmail" type="text"
                                                      class="interview_input interviewer_input"/></p>
                 </li>
                 <li>
-                    <div class="option_tittle"><s:property value="%{getText('candidature.email')}"/></div>
-                    <div class="interviewer_add"><s:property value="%{getText('interview.add')}"/></div>
+                    <div class="option_tittle"><s:text name="candidature.email"/></div>
+                    <div class="interviewer_add"><s:text name="interview.add"/></div>
                     <span class="interviewee_input_msg input_msg"></span>
                     <table class="option_content">
                         <tr>
@@ -35,7 +35,7 @@
                     </table>
                 </li>
                 <li>
-                    <div class="option_tittle"><s:property value="%{getText('interview.des')}"/></div>
+                    <div class="option_tittle"><s:text name="interview.des"/></div>
                     <span class="interview_textarea_msg input_msg"></span>
 
                     <div class="interview_content_wordsLeft"></div>
@@ -45,7 +45,7 @@
                     </p>
                 </li>
                 <li>
-                    <div class="option_tittle"><s:property value="%{getText('interview.time')}"/></div>
+                    <div class="option_tittle"><s:text name="interview.time"/></div>
                     <span class="interviewTime_input_msg input_msg"></span><br/>
 
                     <p class="option_content"><s:textfield id="" name="interview.startTime" readonly="true"
@@ -54,7 +54,7 @@
                 </li>
                 <li>
                     <input type="submit" onclick="return checkForm();" class="interview_submit"
-                           value="<s:property value="%{getText('interview.publish')}"/>"/>
+                           value="<s:text name="interview.publish"/>"/>
                 </li>
             </ul>
         </div>

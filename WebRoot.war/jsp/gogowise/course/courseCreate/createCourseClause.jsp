@@ -44,15 +44,15 @@
 <body>
 <div id="main">
     <ol>
-        <li><h4 class="centerTittle"><s:property value="%{getText('course.creation.low.rule')}"/></h4>
+        <li><h4 class="centerTittle"><s:text name="course.creation.low.rule"/></h4>
 
-            <p><s:property value="%{getText('course.creation.low.rule.content')}"/></p></li>
-        <li><h4 class="centerTittle"><s:property value="%{getText('course.creation.charges.rule')}"/></h4>
+            <p><s:text name="course.creation.low.rule.content"/></p></li>
+        <li><h4 class="centerTittle"><s:text name="course.creation.charges.rule"/></h4>
 
-            <p>a) <s:property value="%{getText('course.creation.charges.rule.content.a')}"/><br/>
-                b)<s:property value="%{getText('course.creation.charges.rule.content.b')}"/></p></li>
-        <li><h4><s:property value="%{getText('course.creation.is.not.perfect')}"/></h4>
-            <h4><s:property value="%{getText('course.creation.rule.tail')}"/></h4>
+            <p>a) <s:text name="course.creation.charges.rule.content.a"/><br/>
+                b)<s:text name="course.creation.charges.rule.content.b"/></p></li>
+        <li><h4><s:text name="course.creation.is.not.perfect"/></h4>
+            <h4><s:text name="course.creation.rule.tail"/></h4>
         </li>
     </ol>
 </div>

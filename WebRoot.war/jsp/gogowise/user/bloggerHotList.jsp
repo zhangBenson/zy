@@ -10,7 +10,7 @@
     <s:hidden name="searchStr"/>
     <div class="listUp">
         <s:hidden value="%{#session.userID}" id="hidSessionId"/>
-        <h3 class="h3_title"><s:property value="%{getText('search.header.member')}"/></h3>
+        <h3 class="h3_title"><s:text name="search.header.member"/></h3>
 
             <%-- 这是会员列表3个 --%>
         <div class="memeberWrap fl">
@@ -25,7 +25,7 @@
                            title="<s:property value="nickName"/>"><s:property value="nickName"/></a> <br/>
                         <span><%--7课程&nbsp;&nbsp;5个人秀&nbsp;&nbsp;4直播&nbsp;&nbsp;--%>
                             <s:property value="fansNum"/>
-                            <s:property value="%{getText('user.add.focus')}"/></span> <br/>
+                            <s:text name="user.add.focus"/></span> <br/>
                         <span><s:property value="selfDescription"/></span>
                     </div>
                     <div class="Info3 fr">

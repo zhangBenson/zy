@@ -6,23 +6,23 @@
 
 <div class="org_authorization_container">
     <div class="auth_upper">
-        <h3><s:property value="%{getText('org.student.management')}"/></h3>
+        <h3><s:text name="org.student.management"/></h3>
         <br/>
 
-        <p><s:property value="%{getText('org.student.regret')}"/></p>
+        <p><s:text name="org.student.regret"/></p>
     </div>
     <div class="auth_left">
         <div class="auth_left_1">
             <div class="auth_list">
                 <table width="760">
                     <tr>
-                        <td><s:property value="%{getText('email')}"/></td>
-                        <td><s:property value="%{getText('menber.reg.nickName')}"/></td>
-                        <td><s:property value="%{getText('label.realname')}"/></td>
-                        <td><s:property value="%{getText('orgleague.info.mobile')}"/></td>
-                        <td><s:property value="%{getText('sex')}"/></td>
-                        <td><s:property value="%{getText('label.status')}"/></td>
-                        <td><s:property value="%{getText('label.operation')}"/></td>
+                        <td><s:text name="email"/></td>
+                        <td><s:text name="menber.reg.nickName"/></td>
+                        <td><s:text name="label.realname"/></td>
+                        <td><s:text name="orgleague.info.mobile"/></td>
+                        <td><s:text name="sex"/></td>
+                        <td><s:text name="label.status"/></td>
+                        <td><s:text name="label.operation"/></td>
                     </tr>
 
                     <s:iterator value="orgUsers">
@@ -81,7 +81,7 @@
             <div class="auth_left_2">
                 <div class="addlist">
                     <div>
-                        <span class="_add_btn" id="add_one_btn"><s:property value="%{getText('interview.add')}"/></span>&nbsp;<span><s:property
+                        <span class="_add_btn" id="add_one_btn"><s:text name="interview.add"/></span>&nbsp;<span><s:property
                             value="%{getText('org.student.one')}"/></span>
                         <span class="_add_btn" id="add_more_btn"><s:property
                                 value="%{getText('interview.add')}"/>&nbsp;</span>
@@ -92,7 +92,7 @@
                     </div>
                     <table>
                         <tr class="tittle">
-                            <td><span class="option_tittle"><s:property value="%{getText('email')}"/></span><span
+                            <td><span class="option_tittle"><s:text name="email"/></span><span
                                     class="authorization_input_msg input_msg"></span></td>
                             <td><span class="option_tittle"><s:property
                                     value="%{getText('label.realname')}"/></span><span

@@ -23,7 +23,7 @@
 
 <div class="mfp_left fl">
 <div>
-    <%--<a class="submit_btn_large" href="openUserChannelResult.html"><s:property value="%{getText('contentLeft.param1')}"/></a>--%>
+    <%--<a class="submit_btn_large" href="openUserChannelResult.html"><s:text name="contentLeft.param1"/></a>--%>
     <s:if test="#session.user_own_org != null">
         <a class="submit_btn_large" href="createCourseAllInOne.html"><s:property
                 value="%{getText('course.create')}"/></a>
@@ -31,7 +31,7 @@
 </div>
 <s:if test="existLatestCourse">
     <div class="usItem_wrap fl">
-        <h3 class="h3_title"><s:property value="%{getText('course.upcoming')}"/></h3>
+        <h3 class="h3_title"><s:text name="course.upcoming"/></h3>
         <s:iterator value="latestCourse" status="idx">
             <div class="usItem_cont fl">
                 <div class="logo_wrap fl"><a href="voaCourseBlog.html?course.id=<s:property value="id" />"
@@ -42,12 +42,12 @@
                        title="<s:property value="name"/>"><s:property value="name"/></a>
 
                     <p>
-                        <s:property value="%{getText('courses.info.lecturer')}"/>：<s:a action="userBlog"><s:param
+                        <s:text name="courses.info.lecturer"/>：<s:a action="userBlog"><s:param
                             name="user.id" value="teacher.id"/><s:property value="teacher.nickName"/></s:a>
                         &nbsp;&nbsp;&nbsp;&nbsp;<s:date name="classOnTheCorner.date"
                                                         format="%{getText('dateformat.forclass')}"/>
                     </p>
-                    <strong><span id="timer"><s:property value="%{getText('courses.time.left')}"/></span>&nbsp;<b
+                    <strong><span id="timer"><s:text name="courses.time.left"/></span>&nbsp;<b
                             id="timeLeft<s:property value="#idx.index"/>"></b></strong>
                     <script type="text/javascript">
                         $("#timeLeft<s:property value="#idx.index"/>").countdown({
@@ -87,7 +87,7 @@
 
 <s:if test="existShow">
     <div class="usItem_wrap fl">
-        <h3 class="h3_title"><s:property value="%{getText('myfirst.page.coming.show')}"/></h3>
+        <h3 class="h3_title"><s:text name="myfirst.page.coming.show"/></h3>
         <s:iterator value="myShows" status="idx">
             <div class="usItem_cont fl">
                 <div class="logo_wrap fl"><a href="showBlog.html?myShow.id=<s:property value="id" />"
@@ -98,12 +98,12 @@
                        title="<s:property value="name"/>"><s:property value="name"/></a>
 
                     <p>
-                        <s:property value="%{getText('myfirst.page.show.host.name')}"/>：<s:a action="userBlog"><s:param
+                        <s:text name="myfirst.page.show.host.name"/>：<s:a action="userBlog"><s:param
                             name="user.id" value="owner.id"/><s:property value="owner.nickName"/></s:a>
                         &nbsp;&nbsp;&nbsp;&nbsp;<s:date name="firstFutureTerm.startTime"
                                                         format="%{getText('dateformat.forclass')}"/>
                     </p>
-                    <strong><s:property value="%{getText('myfirst.page.show.letf.time')}"/>&nbsp;<b
+                    <strong><s:text name="myfirst.page.show.letf.time"/>&nbsp;<b
                             id="showTimeleft<s:property value="#idx.index"/>"></b></strong>
                     <script type="text/javascript">
                         $("#showTimeleft<s:property value="#idx.index"/>").countdown({
@@ -138,7 +138,7 @@
 
 <s:if test="existInterview">
     <div class="usItem_wrap fl">
-        <h3 class="h3_title"><s:property value="%{getText('interview.upcoming')}"/></h3>
+        <h3 class="h3_title"><s:text name="interview.upcoming"/></h3>
         <s:iterator value="interviews" status="idx">
             <div class="usItem_cont fl">
                 <div class="logo_wrap fl"><a href="orgBlog.html?org.id=<s:property value="organization.id"/>"
@@ -150,11 +150,11 @@
                             value="organization.schoolName"/></a>
 
                     <p>
-                        <s:property value="%{getText('onlive.host.name')}"/>：<s:a action="userBlog"><s:param
+                        <s:text name="onlive.host.name"/>：<s:a action="userBlog"><s:param
                             name="user.id" value="interviewer.id"/><s:property value="interviewer.nickName"/></s:a>
                         &nbsp;&nbsp;&nbsp;&nbsp;<s:date name="startTime" format="%{getText('dateformat.forclass')}"/>
                     </p>
-                    <strong><s:property value="%{getText('courses.time.left')}"/>&nbsp;<b
+                    <strong><s:text name="courses.time.left"/>&nbsp;<b
                             id="interviewTimeLeft<s:property value="#idx.index"/>"></b></strong>
                     <script type="text/javascript">
                         $("#interviewTimeLeft<s:property value="#idx.index"/>").countdown({
@@ -171,7 +171,7 @@
                     </script>
                 </div>
                 <div class="handle fr">
-                    <a class="a_1" href="javascript:;"><s:property value="%{getText('link.check.interview')}"/></a>
+                    <a class="a_1" href="javascript:;"><s:text name="link.check.interview"/></a>
                     <a class="a_2" href="interviewVideo.html?interview.id=<s:property value="id"/>"><s:property
                             value="%{getText('button.start.interview')}"/></a>
 
@@ -180,15 +180,15 @@
                             <tr>
                                 <td colspan="3" width="370px;"><s:property
                                         value="%{getText('label.candidature')}"/>：<span class="orangeWords"><s:property
-                                        value="intervieweeNum"/></span><s:property value="%{getText('label.person')}"/>，<s:property
+                                        value="intervieweeNum"/></span><s:text name="label.person"/>，<s:property
                                         value="%{getText('label.is.confirm')}"/>：<span class="orangeWords"><s:property
                                         value="intervieweeRealNum"/></span><s:property
                                         value="%{getText('label.person')}"/></td>
                             </tr>
                             <tr>
-                                <td width="145px"><s:property value="%{getText('msg.email')}"/></td>
-                                <td width="135px"><s:property value="%{getText('menber.reg.nickName')}"/></td>
-                                <td width="70px"><s:property value="%{getText('label.status')}"/></td>
+                                <td width="145px"><s:text name="msg.email"/></td>
+                                <td width="135px"><s:text name="menber.reg.nickName"/></td>
+                                <td width="70px"><s:text name="label.status"/></td>
                             </tr>
                             <s:iterator value="interviewAppointers">
                                 <tr>
@@ -213,7 +213,7 @@
 
 <s:if test="existMeeting">
     <div class="usItem_wrap fl">
-        <h3 class="h3_title"><s:property value="%{getText('org.meeting.upcoming')}"/></h3>
+        <h3 class="h3_title"><s:text name="org.meeting.upcoming"/></h3>
         <s:iterator value="orgMeetings" status="idx">
             <div class="usItem_cont fl">
                 <div class="logo_wrap fl"><a href="orgBlog.html?org.id=<s:property value="organization.id"/>"
@@ -225,11 +225,11 @@
                             value="organization.schoolName"/></a>
 
                     <p>
-                        <s:property value="%{getText('onlive.host.name')}"/>：<s:a action="userBlog"><s:param
+                        <s:text name="onlive.host.name"/>：<s:a action="userBlog"><s:param
                             name="user.id" value="hostMan.id"/><s:property value="hostMan.nickName"/></s:a>
                         &nbsp;&nbsp;&nbsp;&nbsp;<s:date name="startTime" format="%{getText('dateformat.forclass')}"/>
                     </p>
-                    <strong><s:property value="%{getText('courses.time.left')}"/>&nbsp;<b
+                    <strong><s:text name="courses.time.left"/>&nbsp;<b
                             id="meetingTimeLeft<s:property value="#idx.index"/>"></b></strong>
                     <script type="text/javascript">
                         $("#meetingTimeLeft<s:property value="#idx.index"/>").countdown({
@@ -246,7 +246,7 @@
                     </script>
                 </div>
                 <div class="handle fr">
-                    <a class="a_1" href="javascript:;"><s:property value="%{getText('org.meeting.member')}"/></a>
+                    <a class="a_1" href="javascript:;"><s:text name="org.meeting.member"/></a>
                     <a class="a_2" href="startMeeting.html?orgMeeting.id=<s:property value="id"/>"><s:property
                             value="%{getText('org.meeting.startTime')}"/></a>
 
@@ -262,9 +262,9 @@
                                         value="%{getText('label.person')}"/></td>
                             </tr>
                             <tr>
-                                <td width="145px"><s:property value="%{getText('msg.email')}"/></td>
-                                <td width="135px"><s:property value="%{getText('menber.reg.nickName')}"/></td>
-                                <td width="70px"><s:property value="%{getText('label.status')}"/></td>
+                                <td width="145px"><s:text name="msg.email"/></td>
+                                <td width="135px"><s:text name="menber.reg.nickName"/></td>
+                                <td width="70px"><s:text name="label.status"/></td>
                             </tr>
                             <s:iterator value="orgMeetingMembers">
                                 <tr>
@@ -288,7 +288,7 @@
 </s:if>
 
 <div class="usItem2_wrap fl">
-    <h3 class="h3_title"><s:property value="%{getText('usermenu.item.newestcourses')}"/></h3>
+    <h3 class="h3_title"><s:text name="usermenu.item.newestcourses"/></h3>
     <ul>
         <s:iterator value="hotCourse">
             <li>
@@ -302,7 +302,7 @@
 </div>
 
 <div class="usItem2_wrap fl">
-    <h3 class="h3_title"><s:property value="%{getText('course.interested')}"/></h3>
+    <h3 class="h3_title"><s:text name="course.interested"/></h3>
     <ul>
         <s:iterator value="userLikeCourse">
             <li>
@@ -319,16 +319,16 @@
 
 <div class="mfp_right fl">
     <div class="rtItem1 fl">
-        <h3 class="h3_title"><s:property value="%{getText('title.newest.notifications')}"/></h3>
+        <h3 class="h3_title"><s:text name="title.newest.notifications"/></h3>
         <s:if test="matterCount != 0">
             <div class="message_tip" id="message_tip_elipse"
-                 title="<s:property value="matterCount"/><s:property value="%{getText('my.firstpage.new.matter.num')}"/>">
+                 title="<s:property value="matterCount"/><s:text name="my.firstpage.new.matter.num"/>">
                 <s:property value="matterCount"/></div>
             <div id="message_box" class="message_box"></div>
         </s:if>
         <ul>
             <li>
-                <a class="fl daynew"><s:property value="%{getText('course.yesterday')}"/></a>
+                <a class="fl daynew"><s:text name="course.yesterday"/></a>
                 <s:if test="yesterdayCourse">
                     <p class="rt_detail fl">
                         <a class="img" href="voaCourseBlog.html?course.id=<s:property value='yesterdayCourse.id' />"
@@ -342,16 +342,16 @@
                     </p>
                 </s:if>
                 <s:else>
-                    <p class="no_course"><s:property value="%{getText('msg.nocourse')}"/></p>
+                    <p class="no_course"><s:text name="msg.nocourse"/></p>
                 </s:else>
             </li>
             <li>
-                <a class="fl daynew"><s:property value="%{getText('course.today')}"/></a>
+                <a class="fl daynew"><s:text name="course.today"/></a>
                 <s:if test="todayCourse">
                     <p class="rt_detail fl">
                         <a class="img"
                            href="openClassSession.html?courseClass.id=<s:property value='todayCourse.classOnTheCorner.id' />"
-                           title="<s:property value="%{getText('button.start.class')}"/>"><img
+                           title="<s:text name="button.start.class"/>"><img
                                 src="<s:property value='todayCourse.logoUrl' />"/></a>
                         <a class="title" href="voaCourseBlog.html?course.id=<s:property value='todayCours.id' />"
                            title="<s:property value='todayCourse.name' />"><s:property value='todayCourse.name'/></a>
@@ -360,11 +360,11 @@
                     </p>
                 </s:if>
                 <s:else>
-                    <p class="no_course"><s:property value="%{getText('msg.nocourse')}"/></p>
+                    <p class="no_course"><s:text name="msg.nocourse"/></p>
                 </s:else>
             </li>
             <li>
-                <a class="fl daynew"><s:property value="%{getText('course.tomorrow')}"/></a>
+                <a class="fl daynew"><s:text name="course.tomorrow"/></a>
                 <s:if test="tomorrowCourse">
                     <p class="rt_detail fl">
                         <a class="img" href="voaCourseBlog.html?course.id=<s:property value='tomorrowCourse.id' />"
@@ -378,14 +378,14 @@
                     </p>
                 </s:if>
                 <s:else>
-                    <p class="no_course"><s:property value="%{getText('msg.nocourse')}"/></p>
+                    <p class="no_course"><s:text name="msg.nocourse"/></p>
                 </s:else>
             </li>
         </ul>
     </div>
 
     <div class="rtItem2 fl">
-        <h3 class="h3_title"><s:property value="%{getText('title.courses.browsed')}"/></h3>
+        <h3 class="h3_title"><s:text name="title.courses.browsed"/></h3>
         <ul>
             <s:iterator value="browsedCourses">
                 <li>
@@ -400,7 +400,7 @@
 
     <s:if test="existUserFanses">
         <li class="rtItem3 fl" id="userFans_data">
-            <h3 class="h3_title"><s:property value="%{getText('my.firstpage.users.i.followed')}"/></h3>
+            <h3 class="h3_title"><s:text name="my.firstpage.users.i.followed"/></h3>
                 <%--<s:property value="userFansNum"/>--%>
                 <%--<s:if test="currentPageSize >= 6">--%>
             <span class="more"><a href="followedUserList.html"><s:property
@@ -417,7 +417,7 @@
                         <s:if test="userLiving">
                             <a class="live_tip"
                                href="watchPersonalOnlive.html?personalOnlive.id=<s:property value="personalOnliveID"/>"
-                               title="<s:property value="%{getText('click.to.watch')}"/>"><s:property
+                               title="<s:text name="click.to.watch"/>"><s:property
                                     value="%{getText('video.is.living')}"/></a>
                         </s:if>
                     </li>

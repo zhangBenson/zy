@@ -103,28 +103,28 @@
 
     <div id="register">
         <div id="regleft">
-            <div id="regtitle"><s:property value="%{getText('course.creation')}"/></div>
-            <div id="regtitle2"><s:property value="%{getText('identity.confirm')}"/></div>
+            <div id="regtitle"><s:text name="course.creation"/></div>
+            <div id="regtitle2"><s:text name="identity.confirm"/></div>
 
             <div id="links"></div>
         </div>
         <div id="regright">
             <div id="regrightCont">
-                <p class="inputTips"><s:property value="%{getText('email')}"/><span class="errorinfo"
+                <p class="inputTips"><s:text name="email"/><span class="errorinfo"
                                                                                     id="yzemail">*</span><br/><br/>
                     <input type="text" name="user.email" value="<s:property value="email"/>" id="email" class="text"
                            readonly="true"/>
                 </p>
 
-                <p id="addnext" class="inputTips"><s:property value="%{getText('password')}"/><span class="errorinfo"
+                <p id="addnext" class="inputTips"><s:text name="password"/><span class="errorinfo"
                                                                                                     id="yzpwd">*<s:property
                         value="identityConfirmMsg"/></span><br/>
                     <s:password name="user.password" id="pwd" cssClass="text"/>
                 </p>
 
                 <p class="nextButton"><input type="submit" name="button" id="btn1" onclick="return checkForm();"
-                                             value="<s:property value="%{getText('button.next')}"/>"/> <a
-                        href="initRepassword.html"><span><s:property value="%{getText('link.forget.pwd')}"/>？</span></a>
+                                             value="<s:text name="button.next"/>"/> <a
+                        href="initRepassword.html"><span><s:text name="link.forget.pwd"/>？</span></a>
                 </p>
             </div>
         </div>

@@ -174,26 +174,26 @@
 </script>
 
 <div class="interviewContainer">
-    <div class="interviewTittle"><s:property value="%{getText('label.meeting.center')}"/></div>
+    <div class="interviewTittle"><s:text name="label.meeting.center"/></div>
     <s:form action="saveOrgMeeting" validate="true" theme="simple" method="POST">
         <div class="interviewDetail">
             <ul>
                 <li>
-                    <div class="option_tittle"><s:property value="%{getText('select.org')}"/></div>
+                    <div class="option_tittle"><s:text name="select.org"/></div>
                     <br/>
 
                     <p class="option_content"><s:select name="orgMeeting.organization.id" list="orgs" listKey="key"
                                                         cssClass="interview_input" listValue="value"/></p></li>
                 <li>
-                    <div class="option_tittle"><s:property value="%{getText('label.meeting.host.email')}"/></div>
+                    <div class="option_tittle"><s:text name="label.meeting.host.email"/></div>
                     <span class="interviewer_input_msg input_msg"></span><br/>
 
                     <p class="option_content"><input name="orgMeeting.hostManEmail" type="text"
                                                      class="interview_input interviewer_input"/></p>
                 </li>
                 <li>
-                    <div class="option_tittle"><s:property value="%{getText('label.meeting.attendee.email')}"/></div>
-                    <div class="interviewer_add"><s:property value="%{getText('interview.add')}"/></div>
+                    <div class="option_tittle"><s:text name="label.meeting.attendee.email"/></div>
+                    <div class="interviewer_add"><s:text name="interview.add"/></div>
                     <span class="interviewee_input_msg input_msg"></span>
 
                     <p class="option_content">
@@ -207,7 +207,7 @@
                     </p>
                 </li>
                 <li>
-                    <div class="option_tittle"><s:property value="%{getText('label.meeting.description')}"/></div>
+                    <div class="option_tittle"><s:text name="label.meeting.description"/></div>
                     <span class="interview_textarea_msg input_msg"></span>
 
                     <div class="interview_content_wordsLeft"></div>
@@ -217,7 +217,7 @@
                     </p>
                 </li>
                 <li>
-                    <div class="option_tittle"><s:property value="%{getText('label.meeting.time')}"/></div>
+                    <div class="option_tittle"><s:text name="label.meeting.time"/></div>
                     <span class="interviewTime_input_msg input_msg"></span><br/>
 
                     <p class="option_content"><s:textfield id="" name="orgMeeting.startTime" readonly="true"
@@ -226,7 +226,7 @@
                 </li>
                 <li>
                     <input type="submit" onclick="return checkForm();" class="interview_submit"
-                           value="<s:property value="%{getText('button.publish.meeting')}"/>"/>
+                           value="<s:text name="button.publish.meeting"/>"/>
                 </li>
             </ul>
         </div>

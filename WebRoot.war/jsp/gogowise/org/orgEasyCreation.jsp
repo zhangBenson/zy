@@ -96,7 +96,7 @@
 
                     <div class="file_upload">
                         <input type="button" class="submit_btn" id="change_portrait"
-                               value="<s:property value="%{getText('onlive.message.update')}"/>"
+                               value="<s:text name="onlive.message.update"/>"
                                href="orgLogoProcess.html"/>
                     </div>
                     <p id="secondStepFileWarn" class="input_msg"></p>

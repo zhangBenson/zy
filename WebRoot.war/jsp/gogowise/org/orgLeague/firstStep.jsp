@@ -13,23 +13,23 @@
                 window.history.back();
             }
 
-        }, {title: '<s:property value="%{getText('org.warmtip')}"/>'});
+        }, {title: '<s:text name="org.warmtip"/>'});
     </script>
 </s:if>
 
 
 <div id="orgLeagueDiv">
-    <div id="tipImgDiv"><span><s:property value="%{getText('org.warmtip')}"/></span></div>
+    <div id="tipImgDiv"><span><s:text name="org.warmtip"/></span></div>
     <div id="orgCenterDiv">
-        <div class="tiphead"><span><s:property value="%{getText('org.sayhello')}"/></span><s:property
+        <div class="tiphead"><span><s:text name="org.sayhello"/></span><s:property
                 value="%{getText('orgleague.need')}"/></div>
         <ul class="attentionList">
-            <li>1、 <s:property value="%{getText('orgleague.one')}"/>；</li>
-            <%--<li>2、	<s:property value="%{getText('orgleague.two')}"/>；</li>--%>
+            <li>1、 <s:text name="orgleague.one"/>；</li>
+            <%--<li>2、	<s:text name="orgleague.two"/>；</li>--%>
             <li>&nbsp;</li>
-            <li>2、 <s:property value="%{getText('orgleague.three')}"/>；</li>
-            <%--<li>4、	<s:property value="%{getText('orgleague.four')}"/>；</li>--%>
-            <%--<li>5、	<s:property value="%{getText('orgleague.five')}"/>。</li>--%>
+            <li>2、 <s:text name="orgleague.three"/>；</li>
+            <%--<li>4、	<s:text name="orgleague.four"/>；</li>--%>
+            <%--<li>5、	<s:text name="orgleague.five"/>。</li>--%>
         </ul>
         <div class="ifReady">
             <form action="" method="post">
@@ -46,10 +46,10 @@
             </form>
         </div>
         <ul class="orgStep">
-            <li class="first"><s:property value="%{getText('org.warmtip')}"/></li>
-            <%--<li><s:property value="%{getText('orgleague.identity.confirm')}"/></li>--%>
-            <li><s:property value="%{getText('orgleague.info.fill')}"/></li>
-            <li><s:property value="%{getText('orgleague.info.submit')}"/></li>
+            <li class="first"><s:text name="org.warmtip"/></li>
+            <%--<li><s:text name="orgleague.identity.confirm"/></li>--%>
+            <li><s:text name="orgleague.info.fill"/></li>
+            <li><s:text name="orgleague.info.submit"/></li>
         </ul>
     </div>
 </div>

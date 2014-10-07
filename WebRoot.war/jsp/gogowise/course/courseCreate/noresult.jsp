@@ -3,6 +3,6 @@
 <html>
 <head><title>GoGoWise Error</title></head>
 <body>
-<h1><s:property value="%{getText('course.without.repeat.course')}"/></h1>
+<h1><s:text name="course.without.repeat.course"/></h1>
 </body>
 </html>

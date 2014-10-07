@@ -4,58 +4,58 @@
 
 <div class="menu">
     <div class="portrait">
-        <a class="por" href="userBlog.html?user.id=<s:property value="#session.userID"/>" title="<s:property value="%{getText('user.header.enter.my.blog')}"/>"><img id="usermenu_user_img" src="<s:property value="#session.userLogoUrl"/>" alt="<s:property value="#session.nickName"/>" /></a>
+        <a class="por" href="userBlog.html?user.id=<s:property value="#session.userID"/>" title="<s:text name="user.header.enter.my.blog"/>"><img id="usermenu_user_img" src="<s:property value="#session.userLogoUrl"/>" alt="<s:property value="#session.nickName"/>" /></a>
         <a class="nick" href="userBlog.html?user.id=<s:property value="#session.userID"/>" title="<s:property value="#session.nickName"/>"><s:property value="#session.nickName"/></a>
         <span class="num"><s:property value="#session.userFansNum"/>&nbsp;
-            <s:property value="%{getText('user.add.focus')}"/><br/>0&nbsp;
-            <s:property value="%{getText('course.consumptionType.true')}"/></span>
+            <s:text name="user.add.focus"/><br/>0&nbsp;
+            <s:text name="course.consumptionType.true"/></span>
     </div>
     <div class="sidebar">
 
         <div class="start_monitor">
-            <%--<a class="submit_btn_large" href="openUserChannelResult.html"><s:property value="%{getText('contentLeft.param1')}"/></a>--%>
-            <a class="submit_btn_large" href="myfirstPage.html"><s:property value="%{getText('contentLeft.param1')}"/></a>
+            <%--<a class="submit_btn_large" href="openUserChannelResult.html"><s:text name="contentLeft.param1"/></a>--%>
+            <a class="submit_btn_large" href="myfirstPage.html"><s:text name="contentLeft.param1"/></a>
         </div>
 
         <div class="list">
-            <h3 class="h3_title"><s:property value="%{getText('usermenu.item.mycourses')}"/></h3>
+            <h3 class="h3_title"><s:text name="usermenu.item.mycourses"/></h3>
             <ul>
-                <li><a href="myForcastClass.html"><s:property value="%{getText('usermenu.item.my.created.courses')}"/></a></li>
-                <li><a href="myRegistration.html"><s:property value="%{getText('usermenu.item.my.reged.courses')}"/></a></li>
+                <li><a href="myForcastClass.html"><s:text name="usermenu.item.my.created.courses"/></a></li>
+                <li><a href="myRegistration.html"><s:text name="usermenu.item.my.reged.courses"/></a></li>
 
-            <%--<li><a href="createCourse.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a></li>--%>
-                <%--<li><a href="createCourseAllInOne.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a></li>--%>
+            <%--<li><a href="createCourse.html"><s:text name="usermenu.item.createcourse"/></a></li>--%>
+                <%--<li><a href="createCourseAllInOne.html"><s:text name="usermenu.item.createcourse"/></a></li>--%>
             </ul>
         </div>
 
         <div class="list">
-            <h3 class="h3_title"><s:property value="%{getText('title.game')}"/></h3>
+            <h3 class="h3_title"><s:text name="title.game"/></h3>
             <ul>
-                <%--<li><a href="myForcastClass.html"><s:property value="%{getText('usermenu.item.my.created.courses')}"/></a></li>--%>
-                <%--<li><a href="myRegistration.html"><s:property value="%{getText('usermenu.item.my.reged.courses')}"/></a></li>--%>
+                <%--<li><a href="myForcastClass.html"><s:text name="usermenu.item.my.created.courses"/></a></li>--%>
+                <%--<li><a href="myRegistration.html"><s:text name="usermenu.item.my.reged.courses"/></a></li>--%>
 
                     <li>
                         <a href="http://games.gogowise.com/VerificationUser.aspx?userid=<s:property value="secUid"/>"
-                           target="_blank"><s:property value="%{getText('title.game.management')}"/></a></li>
-                <%--<li><a href="createCourse.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a></li>--%>
-                <%--<li><a href="createCourseAllInOne.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a></li>--%>
+                           target="_blank"><s:text name="title.game.management"/></a></li>
+                <%--<li><a href="createCourse.html"><s:text name="usermenu.item.createcourse"/></a></li>--%>
+                <%--<li><a href="createCourseAllInOne.html"><s:text name="usermenu.item.createcourse"/></a></li>--%>
             </ul>
         </div>
 
 
         <s:if test="#session.user_own_org != null">
             <div class="list">
-                <h3 class="h3_title"><s:property value="%{getText('usermenu.item.organizationmatters')}"/></h3>
+                <h3 class="h3_title"><s:text name="usermenu.item.organizationmatters"/></h3>
                 <ul>
 
                     <%--<li><a href="manageStudents.html">Student Management</a></li>--%>
-                    <li><a href="manageOrgUsers.html?roleType=6"><s:property value="%{getText('label.org.studentManagement')}"/></a></li>
-                    <li><a href="manageOrgUsers.html?roleType=5"><s:property value="%{getText('label.org.teacherManagement')}"/></a></li>
-                    <li><a href="createCourseAllInOne.html"><s:property value="%{getText('usermenu.item.createcourse')}"/></a></li>
-                    <%--<li><a href="courseSupervise.html"><s:property value="%{getText('org.matters.course.supervisions')}"/></a></li>
-                    <li><a href="orgInterview.html"><s:property value="%{getText('online.interview')}"/></a></li>
-                    <li><a href="initOrgMeeting.html"><s:property value="%{getText('org.matters.video.meeting')}"/></a></li>--%>
-                    <li><a href="orgInfoUpdate.html"><s:property value="%{getText('org.information.setting')}"/></a></li>
+                    <li><a href="manageOrgUsers.html?roleType=6"><s:text name="label.org.studentManagement"/></a></li>
+                    <li><a href="manageOrgUsers.html?roleType=5"><s:text name="label.org.teacherManagement"/></a></li>
+                    <li><a href="createCourseAllInOne.html"><s:text name="usermenu.item.createcourse"/></a></li>
+                    <%--<li><a href="courseSupervise.html"><s:text name="org.matters.course.supervisions"/></a></li>
+                    <li><a href="orgInterview.html"><s:text name="online.interview"/></a></li>
+                    <li><a href="initOrgMeeting.html"><s:text name="org.matters.video.meeting"/></a></li>--%>
+                    <li><a href="orgInfoUpdate.html"><s:text name="org.information.setting"/></a></li>
                 </ul>
             </div>
         </s:if>
@@ -64,10 +64,10 @@
 
 
         <div class="list">
-            <h3 class="h3_title"><s:property value="%{getText('usermenu.item.user.info.setting')}"/></h3>
+            <h3 class="h3_title"><s:text name="usermenu.item.user.info.setting"/></h3>
             <ul>
-                <li><a href="setting.html"><s:property value="%{getText('table.base.info')}"/></a></li>
-                <li><a href="myGGWAccount.html"><s:property value="%{getText('usermenu.item.user.account')}"/></a></li>
+                <li><a href="setting.html"><s:text name="table.base.info"/></a></li>
+                <li><a href="myGGWAccount.html"><s:text name="usermenu.item.user.account"/></a></li>
             </ul>
         </div>
     </div>

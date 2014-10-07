@@ -5,31 +5,31 @@
 
 <div id="solutionWrap">
     <div id="contentUp">
-        <p class="TextSet"><s:property value="%{getText('introduction.param1')}"/>
+        <p class="TextSet"><s:text name="introduction.param1"/>
         </p>
 
-        <p class="TextSet"><s:property value="%{getText('introduction.param2')}"/>
+        <p class="TextSet"><s:text name="introduction.param2"/>
         </p>
     </div>
 
     <div id="contentLeft">
-        <p><a class="TextSet2" href="#MySupervisingRoom"><s:property value="%{getText('contentLeft.param1')}"/></a></p>
+        <p><a class="TextSet2" href="#MySupervisingRoom"><s:text name="contentLeft.param1"/></a></p>
 
         <ul>
-            <li><a class="TextSet21" href="#homeUse"><s:property value="%{getText('contentLeft.param4')}"/></a></li>
-            <li><a class="TextSet21" href="#companyUse"><s:property value="%{getText('contentLeft.param5')}"/></a></li>
+            <li><a class="TextSet21" href="#homeUse"><s:text name="contentLeft.param4"/></a></li>
+            <li><a class="TextSet21" href="#companyUse"><s:text name="contentLeft.param5"/></a></li>
         </ul>
         <div id="StartUse" class="StartUseIt"><a class="begin_live1 act_btn1"
                                                  href="openUserChannelResult.html"><s:property
                 value="%{getText('contentLeft.param9')}"/></a></div>
 
-        <%--<p><a class="TextSet2" href="#PublicMultipointLive"><s:property value="%{getText('contentLeft.param2')}"/></a></p>--%>
+        <%--<p><a class="TextSet2" href="#PublicMultipointLive"><s:text name="contentLeft.param2"/></a></p>--%>
         <%--<ul>--%>
-        <%--<li><a class="TextSet21" href="#schoolTeachUse"><s:property value="%{getText('contentLeft.param6')}"/></a></li>--%>
-        <%--<li><a class="TextSet21" href="#schoolActivityUse"><s:property value="%{getText('contentLeft.param7')}"/></a></li>--%>
-        <%--<li><a class="TextSet21" href="#amuseUse"><s:property value="%{getText('contentLeft.param8')}"/></a></li>--%>
+        <%--<li><a class="TextSet21" href="#schoolTeachUse"><s:text name="contentLeft.param6"/></a></li>--%>
+        <%--<li><a class="TextSet21" href="#schoolActivityUse"><s:text name="contentLeft.param7"/></a></li>--%>
+        <%--<li><a class="TextSet21" href="#amuseUse"><s:text name="contentLeft.param8"/></a></li>--%>
         <%--</ul>--%>
-        <%--<div  class="StartUseIt"><a class="begin_live1 act_btn1" href="openUserChannelResult.html"><s:property value="%{getText('contentLeft.param9')}"/></a></div>--%>
+        <%--<div  class="StartUseIt"><a class="begin_live1 act_btn1" href="openUserChannelResult.html"><s:text name="contentLeft.param9"/></a></div>--%>
     </div>
 
     <div id="contentRight">
@@ -105,17 +105,17 @@
         <%--</div>--%>
         <%--</div>--%>
         <div id="OperationalPolicy">
-            <p class="TextSet5"><s:property value="%{getText('OperationalPolicy.TextSet5.param1')}"/></p>
+            <p class="TextSet5"><s:text name="OperationalPolicy.TextSet5.param1"/></p>
 
-            <p class="TextSet3"><s:property value="%{getText('OperationalPolicy.TextSet3.param1')}"/></p>
+            <p class="TextSet3"><s:text name="OperationalPolicy.TextSet3.param1"/></p>
             <table id="table" cellspacing="0" cellpadding="0">
                 <tr>
-                    <th><s:property value="%{getText('OperationalPolicy.table.param0')}"/>1</th>
-                    <td align=left>9.8<s:property value="%{getText('OperationalPolicy.table.param1')}"/></td>
+                    <th><s:text name="OperationalPolicy.table.param0"/>1</th>
+                    <td align=left>9.8<s:text name="OperationalPolicy.table.param1"/></td>
                 </tr>
                 <tr>
-                    <th><s:property value="%{getText('OperationalPolicy.table.param0')}"/>2</th>
-                    <td align=left>98<s:property value="%{getText('OperationalPolicy.table.param2')}"/></td>
+                    <th><s:text name="OperationalPolicy.table.param0"/>2</th>
+                    <td align=left>98<s:text name="OperationalPolicy.table.param2"/></td>
                 </tr>
 
             </table>

@@ -67,14 +67,14 @@
     <s:hidden name="org.id"/>
     <div id="orgLeagueDiv">
         <div id="orgCenterDiv">
-            <p class="forthhead"><s:property value="%{getText('orgleague.info.pleaseCofirm')}"/></p>
+            <p class="forthhead"><s:text name="orgleague.info.pleaseCofirm"/></p>
 
             <div class="fourthLeft">
                 <ul>
                     <li class="leftAndRightHead headTittle"><s:property
                             value="%{getText('orgleague.info.orgInfo')}"/></li>
                     <li class="leftAndRightHead">
-                        <s:property value="%{getText('orgleague.info.orgName')}"/>：<br/><s:property
+                        <s:text name="orgleague.info.orgName"/>：<br/><s:property
                             value="org.schoolName"/></li>
                     <li class="leftAndRightHead"><s:property
                             value="%{getText('orgleague.info.orgIntro')}"/>：<br/><s:property value="org.description"/>
@@ -85,10 +85,10 @@
                     <li class="leftAndRightHead"><s:property
                             value="%{getText('orgleague.info.accountNo')}"/>：<br/><s:property
                             value="org.depositBankAccount"/></li>
-                    <li class="leftAndRightHead"><s:property value="%{getText('orgleague.info.orgSize')}"/>：<s:property
+                    <li class="leftAndRightHead"><s:text name="orgleague.info.orgSize"/>：<s:property
                             value="%{getText('org.label.membersize.'+org.memberSize)}"/></li>
                     <li class="leftAndRightHead">
-                        <div class="imgWords"><s:property value="%{getText('orgleague.info.orgLogo')}"/>：<br/><img
+                        <div class="imgWords"><s:text name="orgleague.info.orgLogo"/>：<br/><img
                                 src="<s:property value="org.logoUrl"/> " width="111" height="89"
                                 onerror="javascript:this.src='images/nopic.jpg'"></div>
                             <%--<img src="images/orgLeague/testImg.png" width="111" height="89" alt="组织Logo" />--%>
@@ -109,7 +109,7 @@
                             value="%{getText('orgleague.info.address')}"/>:<br/><s:property
                             value="org.businessAddress"/></li>
                     <li class="leftAndRightHead">
-                        <div class="imgWords"><s:property value="%{getText('orgleague.info.cetification')}"/>：<br/><img
+                        <div class="imgWords"><s:text name="orgleague.info.cetification"/>：<br/><img
                                 src="<s:property value="org.businessLicenseUrl"/> " width="111" height="89"
                                 onerror="javascript:this.src='images/nopic.jpg'"></div>
 
@@ -120,15 +120,15 @@
                 <ul>
                     <li class="leftAndRightHead headTittle"><s:property
                             value="%{getText('orgleague.info.personInCharge')}"/></li>
-                    <li class="leftAndRightHead"><s:property value="%{getText('orgleague.info.name')}"/>：<s:property
+                    <li class="leftAndRightHead"><s:text name="orgleague.info.name"/>：<s:property
                             value="org.responsiblePerson.userName"/></li>
-                    <li class="leftAndRightHead"><s:property value="%{getText('orgleague.info.birth')}"/>：<s:date
+                    <li class="leftAndRightHead"><s:text name="orgleague.info.birth"/>：<s:date
                             name="org.responsiblePerson.birthDay"
                             format="%{getText('global.display.date')}"/></li>
-                    <li class="leftAndRightHead"><s:property value="%{getText('orgleague.info.id')}"/>：<s:property
+                    <li class="leftAndRightHead"><s:text name="orgleague.info.id"/>：<s:property
                             value="org.responsiblePerson.cardId"/></li>
                     <li class="leftAndRightHead">
-                        <div class="imgWords"><s:property value="%{getText('orgleague.info.id.card')}"/>：<br/><img
+                        <div class="imgWords"><s:text name="orgleague.info.id.card"/>：<br/><img
                                 src="<s:property value="org.responsiblePerson.idCardUrl"/> " width="162" height="108"
                                 onerror="javascript:this.src='images/nopic.jpg'"></div>
 
@@ -140,7 +140,7 @@
         <span class="beforeBN"><input name="" id="clauseCheck" type="checkbox" value=""/>
         <a href="<%=request.getContextPath()%>/jsp/gogowise/org/orgLeague/orgLeagueClause.html" class="boxy"><s:property
                 value="%{getText('orgleague.info.accept')}"/></a><br/>
-        <span class="clauseCheckTip"><s:property value="%{getText('orgleague.info.acceptClause')}"/></span></span>
+        <span class="clauseCheckTip"><s:text name="orgleague.info.acceptClause"/></span></span>
 
 
                 <div class="nextAndBack">
@@ -155,7 +155,7 @@
                     </s:if>
                     <s:if test="confirmCode != null">
                         <div style="height: 37px;width: 420px;float: right;display: block;margin-left: 400px;">
-                            <s:property value="%{getText('orgleague.info.userMail')}"/>： <font color="red"><s:property
+                            <s:text name="orgleague.info.userMail"/>： <font color="red"><s:property
                                 value="org.responsiblePerson.email"/></font><s:property
                                 value="%{getText('orgleague.info.isConfirmed')}"/> :
                             <font color="red"><s:property
@@ -170,10 +170,10 @@
                     <%--</form>--%>
             </div>
             <ul class="orgStep">
-                <li><s:property value="%{getText('org.warmtip')}"/></li>
-                <li><s:property value="%{getText('orgleague.identity.confirm')}"/></li>
-                <li><s:property value="%{getText('orgleague.info.fill')}"/></li>
-                <li class="fourth"><s:property value="%{getText('orgleague.info.submit')}"/></li>
+                <li><s:text name="org.warmtip"/></li>
+                <li><s:text name="orgleague.identity.confirm"/></li>
+                <li><s:text name="orgleague.info.fill"/></li>
+                <li class="fourth"><s:text name="orgleague.info.submit"/></li>
             </ul>
         </div>
     </div>

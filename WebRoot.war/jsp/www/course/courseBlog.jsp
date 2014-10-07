@@ -26,10 +26,10 @@
 programming.
 </h5>--%>
 
-<%-- <h5 class ="courseSynopsis"><s:property value="%{getText('course.info')}"/></h5> --%>
+<%-- <h5 class ="courseSynopsis"><s:text name="course.info"/></h5> --%>
 <div class="row">
     <div class="col-md-8">
-        <h3 class="courseSubhead"><s:property value="%{getText('course.info')}"/></h3>
+        <h3 class="courseSubhead"><s:text name="course.info"/></h3>
     </div>
     <div class="col-md-4" style="text-align: right;">
         <h3><a herf="#"><img src="/images/course/download.png" alt="" class="downloadIcon"></a></h3>
@@ -44,7 +44,7 @@ programming.
 
 <div class="thickline"></div>
 
-<h3 class="courseSubhead"><s:property value="%{getText('online.class.avigation.course.video')}"/></h3>
+<h3 class="courseSubhead"><s:text name="online.class.avigation.course.video"/></h3>
 
 <%-- Course Videos--%>
 <div id="videoList">
@@ -116,7 +116,7 @@ programming.
     <p class="text-right">
         <button id="moreClass" style="cursor:hand; border: 1px dotted;background-color: #ffffff;"
                 onClick="showdiv('hiddenVideoList')">
-            <s:property value="%{getText('others.more')}"/>
+            <s:text name="others.more"/>
         </button>
     </p>
 </s:if>
@@ -126,7 +126,7 @@ programming.
 <s:if test="course.gameClasses.size()>0">
 <div class="thickline"></div>
 
-<h3 class="courseSubhead"><s:property value="%{getText('design.game.title')}"/></h3>
+<h3 class="courseSubhead"><s:text name="design.game.title"/></h3>
 
     <%-- Course Videos--%>
 <div id="videoList">
@@ -202,7 +202,7 @@ programming.
             <p class="text-right">
                 <button id="moreClass" style="cursor:hand; border: 1px dotted;background-color: #ffffff;"
                         onClick="showdiv('hiddenGameList')">
-                    <s:property value="%{getText('others.more')}"/>
+                    <s:text name="others.more"/>
                 </button>
             </p>
         </s:if>
@@ -213,7 +213,7 @@ programming.
 
         <%-- Forum --%>
         <div class="thickline"></div>
-        <div class="courseSubhead"><s:property value="%{getText('blog.message.board')}"/><%--Forum--%></div>
+        <div class="courseSubhead"><s:text name="blog.message.board"/><%--Forum--%></div>
         <br/>
 
 
@@ -264,7 +264,7 @@ programming.
             <s:form theme="css_xhtml" name="commentsForm" method="post" id="commentForm">
                 <textarea id="message_textarea" class="form-control" rows="3"></textarea>
                 <br/>
-                <%--<a href="javascript:;" class="btn btn-primary btn-lg btn-block" id="message_submit_btn" ><s:property value="%{getText('blog.comments.submit')}"/></a>--%>
+                <%--<a href="javascript:;" class="btn btn-primary btn-lg btn-block" id="message_submit_btn" ><s:text name="blog.comments.submit"/></a>--%>
                 <a href="javascript:;" class="btn btn-primary btn-lg btn-block" id="message_submit_btn"><s:property
                         value="%{getText('blog.comments.submit')}"/></a>
             </s:form>
@@ -275,7 +275,7 @@ programming.
         <div class="thickline"></div>
 
         <%-- Recommend courses --%>
-        <div class="courseSubhead"><s:property value="%{getText('recommend.course')}"/></div>
+        <div class="courseSubhead"><s:text name="recommend.course"/></div>
         <br/>
 
         <div class="row">
@@ -287,7 +287,7 @@ programming.
                     </a>
                 </div>
             </s:iterator>
-            <%--<p class="text-right"><a href="#"><s:property value="%{getText('others.more')}"/></a></p>--%>
+            <%--<p class="text-right"><a href="#"><s:text name="others.more"/></a></p>--%>
         </div>
     </div>
 </div>
@@ -305,22 +305,22 @@ programming.
             <h4 class="textOverSinglerow" style="margin-top: 8px;"><s:property
                     value="%{getText('label.online.class.tutor.price')}"/>:&nbsp;S$<s:property
                     value="course.charges"/></h4>
-            <h4 class="textOverSinglerow"><s:property value="%{getText('course.code')}"/>:&nbsp;<s:property
+            <h4 class="textOverSinglerow"><s:text name="course.code"/>:&nbsp;<s:property
                     value="course.id"/></h4>
-            <h4 class="textOverSinglerow"><s:property value="%{getText('course.school')}"/>:&nbsp;<s:property
+            <h4 class="textOverSinglerow"><s:text name="course.school"/>:&nbsp;<s:property
                     value="course.organization.schoolName"/></h4>
-            <h4 class="textOverSinglerow"><s:property value="%{getText('course.teaching.language')}"/>:&nbsp;<s:property
+            <h4 class="textOverSinglerow"><s:text name="course.teaching.language"/>:&nbsp;<s:property
                     value="course.languageType"/></h4>
-            <h4 class="textOverSinglerow"><s:property value="%{getText('course.info.courseTag')}"/>:&nbsp;<s:property
+            <h4 class="textOverSinglerow"><s:text name="course.info.courseTag"/>:&nbsp;<s:property
                     value="course.getTagsAsStr()"/></h4>
             <%--<s:if test="!course.courseFinished">--%>
-            <%-- <a href="javascript:;" id="register_btn" class="act_btn register_btn"><s:property value="%{getText('label.course.register')}"/></a> --%>
+            <%-- <a href="javascript:;" id="register_btn" class="act_btn register_btn"><s:text name="label.course.register"/></a> --%>
             <button type="button" class="btn btn-primary btn-block" id="register_btn"><s:property
                     value="%{getText('user.info.identity.finish.reg')}"/> <s:property value="course.name"/></button>
             <%--</s:if>--%>
             <%--<s:else>--%>
             <%--<button type="button" value="disable" disabled="disabled" class="btn btn-primary btn-block" id = "register_btn">--%>
-            <%--<s:property value="%{getText('button.course.regist')}"/>--%>
+            <%--<s:text name="button.course.regist"/>--%>
             <%--</button>--%>
             <%--</s:else>--%>
 
@@ -328,7 +328,7 @@ programming.
 
         <!-- Panel 1 -->
         <div class="gogopanelHead">
-            <div class="gogopanelTitle"><s:property value="%{getText('course.lecturers')}"/><%--Lecturers--%></div>
+            <div class="gogopanelTitle"><s:text name="course.lecturers"/><%--Lecturers--%></div>
         </div>
 
         <div class="gogopanelBody">
@@ -368,7 +368,7 @@ programming.
         <!--view all file -->
         <div class="basePanel">
             <button type="button" class="btn btn-primary btn-block">
-                <s:property value="%{getText('course.resource.view')}"/><%--View All File--%>
+                <s:text name="course.resource.view"/><%--View All File--%>
             </button>
         </div>
     </div>

@@ -4,7 +4,7 @@
 
 <div class="rightItem1">
     <s:hidden value="%{#session.userID}" id="hidSessionId"/>
-    <h3 class="h3_title"><s:property value="%{getText('most.hottest.bloger')}"/></h3>
+    <h3 class="h3_title"><s:text name="most.hottest.bloger"/></h3>
     <s:iterator value="hottestBlogers">
         <div class="onePerson fl">
             <p class="personLeft fl">
@@ -38,7 +38,7 @@
 </div>
 
 <div class="rightTerm2 fl">
-    <h3 class="h3_title"><s:property value="%{getText('usermenu.item.newestcourses')}"/></h3>
+    <h3 class="h3_title"><s:text name="usermenu.item.newestcourses"/></h3>
     <ul>
         <s:iterator value="hotCourse">
             <li>

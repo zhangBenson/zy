@@ -45,7 +45,7 @@
         </s:if>
 
     </script>
-    <h2 style="color:#cc6600;"><s:property value="%{getText('label.interview.online.content')}"/>：<s:property
+    <h2 style="color:#cc6600;"><s:text name="label.interview.online.content"/>：<s:property
             value="interview.organization.schoolName"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <s:property
             value="%{getText('label.interviewer')}"/>：<s:property value="interview.interviewer.nickName"/></h2>
 

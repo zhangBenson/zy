@@ -30,7 +30,7 @@
     </div>
     <div class="classify sc_d">
         <h3 class="h3_title">
-            <s:property value="%{getText('course.square.course.zhanshi')}"/>
+            <s:text name="course.square.course.zhanshi"/>
             <div class="lead_img"></div>
         </h3>
         <ul class="switch">
@@ -73,7 +73,7 @@
     </div>
     <div class="highlight">
         <h3 class="h3_title">
-            <s:property value="%{getText('gogowise.announce')}"/>
+            <s:text name="gogowise.announce"/>
         </h3>
         <ul>
             <s:iterator value="goGoWiseAnnounces">
@@ -91,9 +91,9 @@
     <s:if test="existCourse">
         <div class="new_course">
             <h3 class="h3_title">
-                <s:property value="%{getText('online.class.avigation.newest.course')}"/>
+                <s:text name="online.class.avigation.newest.course"/>
             </h3>
-            <a class="other_more" href="courseNewList.html"><s:property value="%{getText('others.more')}"/></a>
+            <a class="other_more" href="courseNewList.html"><s:text name="others.more"/></a>
 
             <div class="cont">
                 <ul>
@@ -123,10 +123,10 @@
     </s:if>
     <div class="hot_course sc_d" id="hot_location">
         <h3 class="h3_title">
-            <s:property value="%{getText('course.hottest')}"/>
+            <s:text name="course.hottest"/>
             <div class="lead_img"></div>
         </h3>
-        <a class="other_more" href="courseHotList.html"><s:property value="%{getText('others.more')}"/></a>
+        <a class="other_more" href="courseHotList.html"><s:text name="others.more"/></a>
 
         <div class="cont">
             <ul>
@@ -153,7 +153,7 @@
 
     <div class="highlight">
         <h3 class="h3_title">
-            <s:property value="%{getText('course.square.of.new.events')}"/>
+            <s:text name="course.square.of.new.events"/>
         </h3>
         <ul>
             <s:iterator value="courseNewEvents">
@@ -180,9 +180,9 @@
     <div style="float:left;width:756px;">
         <div class="hot_teacher sc_d">
             <h3 class="h3_title">
-                <s:property value="%{getText('teacher.hottest')}"/>
+                <s:text name="teacher.hottest"/>
             </h3>
-            <a class="other_more" href="teacherHotList.html"><s:property value="%{getText('others.more')}"/></a>
+            <a class="other_more" href="teacherHotList.html"><s:text name="others.more"/></a>
 
             <div class="cont">
                 <ul>
@@ -212,7 +212,7 @@
 
         <div class="new_org sc_d">
             <h3 class="h3_title">
-                <s:property value="%{getText('course.square.of.new.orgs')}"/>
+                <s:text name="course.square.of.new.orgs"/>
                 <div class="lead_img"></div>
             </h3>
             <div class="cont">
@@ -223,7 +223,7 @@
                                title="<s:property value="schoolName"/>"><img src="<s:property value="logoUrl"/>"/></a>
 
                             <div class="date_reserve">
-                                <span class="date"><s:property value="%{getText('course.square.of.new.orgs.addTime')}"/>：<s:date
+                                <span class="date"><s:text name="course.square.of.new.orgs.addTime"/>：<s:date
                                         name="createDate" format="%{getText('dateformat')}"/></span>
                             </div>
                             <div class="tc">
@@ -239,7 +239,7 @@
     </div>
     <div class="ads sc_f">
         <%--<h3 class="h3_title">--%>
-        <%--<s:property value="%{getText('system.advertisement')}"/>--%>
+        <%--<s:text name="system.advertisement"/>--%>
         <%--<div class="lead_img"></div>--%>
         <%--</h3>--%>
         <div class="cont">

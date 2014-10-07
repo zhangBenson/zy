@@ -6,19 +6,19 @@
 
 <div class="searchWrap">
     <div class="searchType">
-        <a id="searchType1" href="javascript:startSearch(1);"><s:property value="%{getText('search.header.all')}"/></a>
-        <a id="searchType2" href="javascript:startSearch(2);"><s:property value="%{getText('search.header.member')}"/></a>
-        <a id="searchType3" href="javascript:startSearch(3);"><s:property value="%{getText('search.header.organization')}"/></a>
-        <a id="searchType4" href="javascript:startSearch(4);"><s:property value="%{getText('search.header.course')}"/></a>
-        <%--<a id="searchType5" href="javascript:startSearch(5);"><s:property value="%{getText('search.header.show')}"/></a>--%>
-        <%--<a id="searchType6" href="javascript:startSearch(6);"><s:property value="%{getText('search.header.live')}"/></a>--%>
+        <a id="searchType1" href="javascript:startSearch(1);"><s:text name="search.header.all"/></a>
+        <a id="searchType2" href="javascript:startSearch(2);"><s:text name="search.header.member"/></a>
+        <a id="searchType3" href="javascript:startSearch(3);"><s:text name="search.header.organization"/></a>
+        <a id="searchType4" href="javascript:startSearch(4);"><s:text name="search.header.course"/></a>
+        <%--<a id="searchType5" href="javascript:startSearch(5);"><s:text name="search.header.show"/></a>--%>
+        <%--<a id="searchType6" href="javascript:startSearch(6);"><s:text name="search.header.live"/></a>--%>
     </div>
 
     <div class="searchInput">
         <form action="searchResult.html" method="POST" id="main_search_form">
             <s:hidden name="searchType" id="searchType_msg"/>
             <s:textfield cssClass="input1" id="searchStr_id" name="searchStr"/>
-            <input type="submit" class="input2" value="<s:property value="%{getText('menu.item.search')}"/>"></a>
+            <input type="submit" class="input2" value="<s:text name="menu.item.search"/>"></a>
         </form>
     </div>
 </div>

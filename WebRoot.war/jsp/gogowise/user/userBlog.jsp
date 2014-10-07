@@ -18,9 +18,9 @@
     </div>
     <div class="ubd_1_3">
         <ul>
-            <li><s:property value="userCoursesNum"/><s:property value="%{getText('search.header.course')}"/></li>
-            <li><s:property value="userCoursesStudentNum"/><s:property value="%{getText('label.student')}"/></li>
-            <li><s:property value="userFansNum"/><s:property value="%{getText('onlive.fensi')}"/></li>
+            <li><s:property value="userCoursesNum"/><s:text name="search.header.course"/></li>
+            <li><s:property value="userCoursesStudentNum"/><s:text name="label.student"/></li>
+            <li><s:property value="userFansNum"/><s:text name="onlive.fensi"/></li>
         </ul>
     </div>
     <div class="udb_1_4" id="focus_center">
@@ -96,7 +96,7 @@
 
 <div class="ubd_2_1">
     <h4><s:property value="%{getText('user.created.courses',{user.nickName})}"/></h4>
-    <a class="a_all" href="#">(<s:property value="%{getText('search.header.all')}"/><s:property
+    <a class="a_all" href="#">(<s:text name="search.header.all"/><s:property
             value="coursesAsTeacherNum"/>)</a>
     <ul>
         <s:iterator value="coursesAsTeacher" status="idx">
@@ -107,7 +107,7 @@
                     <li class="li_2"><s:a action="voaCourseBlog"><s:param name="course.id" value="id"/><s:property
                             value="name"/></s:a></li>
                     <li class="li_3 introduction<s:property value='#idx.index'/>"><s:property value="description"/></li>
-                    <li class="li_4"><s:property value="%{getText('blog.time.left')}"/>&nbsp;&nbsp;<strong
+                    <li class="li_4"><s:text name="blog.time.left"/>&nbsp;&nbsp;<strong
                             id="timeLeftForBook<s:property value="#idx.index"/>"></strong></li>
                 </ul>
             </li>
@@ -133,7 +133,7 @@
 </div>
 <div class="ubd_2_2">
     <h4><s:property value="%{getText('user.reged.courses',{user.nickName})}"/></h4>
-    <a class="a_all" href="#">(<s:property value="%{getText('search.header.all')}"/><s:property
+    <a class="a_all" href="#">(<s:text name="search.header.all"/><s:property
             value="coursesAsStudentNum"/>)</a>
     <ul class="ul_out">
         <s:iterator value="coursesAsStudent">
@@ -152,7 +152,7 @@
 <s:if test="existShows">
     <div class="ubd_2_2">
         <h4><s:property value="%{getText('user.created.shows',{user.nickName})}"/></h4>
-        <a class="a_all" href="#">(<s:property value="%{getText('search.header.all')}"/><s:property value="myShowsNum"/>)</a>
+        <a class="a_all" href="#">(<s:text name="search.header.all"/><s:property value="myShowsNum"/>)</a>
         <ul>
             <s:iterator value="myShows">
                 <li class="course">
@@ -170,7 +170,7 @@
 
 <div class="ubd_2_2">
     <h4><s:property value="%{getText('user.course.browsed',{user.nickName})}"/></h4>
-    <a class="a_all" href="#">(<s:property value="%{getText('search.header.all')}"/><s:property
+    <a class="a_all" href="#">(<s:text name="search.header.all"/><s:property
             value="browsedCoursesNum"/>)</a>
     <ul>
         <s:iterator value="browsedCourses">
@@ -190,14 +190,14 @@
     <h4><s:property value="%{getText('user.onlive.history',{user.nickName})}"/></h4>
     <table cellpadding="0" cellspacing="0">
         <tr>
-            <th width="90px"><s:property value="%{getText('onlive.virtual.room.head.title')}"/></th>
-            <th><s:property value="%{getText('course.start.time')}"/></th>
-            <th><s:property value="%{getText('lable.course.endtime')}"/></th>
-            <th><s:property value="%{getText('user.onlive.duration')}"/></th>
-            <th><s:property value="%{getText('user.onlive.history.online.reged.fens')}"/></th>
-            <th><s:property value="%{getText('user.onlive.history.online.fens')}"/></th>
-            <th><s:property value="%{getText('user.onlive.click.num')}"/></th>
-            <th><s:property value="%{getText('live.map.address')}"/></th>
+            <th width="90px"><s:text name="onlive.virtual.room.head.title"/></th>
+            <th><s:text name="course.start.time"/></th>
+            <th><s:text name="lable.course.endtime"/></th>
+            <th><s:text name="user.onlive.duration"/></th>
+            <th><s:text name="user.onlive.history.online.reged.fens"/></th>
+            <th><s:text name="user.onlive.history.online.fens"/></th>
+            <th><s:text name="user.onlive.click.num"/></th>
+            <th><s:text name="live.map.address"/></th>
         </tr>
         <s:iterator value="personalOnlives">
             <tr>
@@ -219,7 +219,7 @@
     </tiles:insertTemplate>
 </div>
 <div class="ubd_2_3">
-    <h4><s:property value="%{getText('blog.message.board')}"/></h4>
+    <h4><s:text name="blog.message.board"/></h4>
 
     <p id="message_area_tip"></p>
 
@@ -229,7 +229,7 @@
             <s:hidden name="user.id"/>
             <textarea id="message_textarea"></textarea>
             <input type="button" id="message_submit_btn"
-                   value="<s:property value="%{getText('blog.comments.submit')}"/>"/>
+                   value="<s:text name="blog.comments.submit"/>"/>
         </s:form>
     </div>
     <div class="ubd_2_3_list">
@@ -319,9 +319,9 @@
                 </li>
             </s:iterator>
             <li class="li_turn"><a href="javascript:;" class="turn_left"
-                                   title="<s:property value="%{getText('pagination.last.page')}"/>"></a><a
+                                   title="<s:text name="pagination.last.page"/>"></a><a
                     href="javascript:;" class="turn_right"
-                    title="<s:property value="%{getText('pagination.next.page')}"/>"></a></li>
+                    title="<s:text name="pagination.next.page"/>"></a></li>
         </ul>
     </div>
     <div class="ubd_3_1">
@@ -332,21 +332,21 @@
                         src="<s:property value="fan.pic"/>" title="<s:property value="fan.nickName"/>"/></a></li>
             </s:iterator>
             <li class="li_turn"><a href="javascript:;" class="turn_left"
-                                   title="<s:property value="%{getText('pagination.last.page')}"/>"></a><a
+                                   title="<s:text name="pagination.last.page"/>"></a><a
                     href="javascript:;" class="turn_right"
-                    title="<s:property value="%{getText('pagination.next.page')}"/>"></a></li>
+                    title="<s:text name="pagination.next.page"/>"></a></li>
         </ul>
     </div>
     <div class="ubd_3_2">
-        <h4><s:property value="%{getText('label.course.materials')}"/></h4>
+        <h4><s:text name="label.course.materials"/></h4>
         <ul>
-            <li class="li_1" title="<s:property value="%{getText('blog.videos')}"/>">
+            <li class="li_1" title="<s:text name="blog.videos"/>">
                 <a href="" id="xxx1"></a>
             </li>
-            <li class="li_2" title="<s:property value="%{getText('blog.documents')}"/>">
+            <li class="li_2" title="<s:text name="blog.documents"/>">
                 <a href="" id="xxx2"></a>
             </li>
-            <li class="li_3" title="<s:property value="%{getText('course.selection.others')}"/>">
+            <li class="li_3" title="<s:text name="course.selection.others"/>">
                 <a href="" id="xxx3"></a>
             </li>
         </ul>

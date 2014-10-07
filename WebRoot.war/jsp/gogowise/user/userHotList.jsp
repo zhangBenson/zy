@@ -11,10 +11,10 @@
         <s:hidden value="%{#session.userID}" id="hidSessionId"/>
         <h3 class="h3_title">
             <s:if test="hotType == 1">
-                <s:property value="%{getText('teacher.hottest')}"/>
+                <s:text name="teacher.hottest"/>
             </s:if>
             <s:elseif test="hotType == 2">
-                <s:property value="%{getText('most.hottest.bloger')}"/>
+                <s:text name="most.hottest.bloger"/>
             </s:elseif>
         </h3>
 

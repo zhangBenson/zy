@@ -36,7 +36,7 @@
         }
     </script>
 
-    <h2 style="color:#cc6600;"><s:property value="%{getText('label.online.class.coursename')}"/>：<s:property
+    <h2 style="color:#cc6600;"><s:text name="label.online.class.coursename"/>：<s:property
             value="courseClass.course.name"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <s:property
             value="%{getText('label.forcast.lecturer')}"/>：<s:property
             value="courseClass.course.teacher.nickName"/></h2>
