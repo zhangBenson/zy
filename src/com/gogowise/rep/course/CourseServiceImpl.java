@@ -11,7 +11,6 @@ import com.gogowise.rep.course.dao.SeniorClassRoomDao;
 import com.gogowise.rep.course.enity.*;
 import com.gogowise.rep.course.vo.CourseSpecification;
 import com.gogowise.rep.finance.dao.UserAccountInfoDao;
-import com.gogowise.rep.finance.enity.UserAccountInfo;
 import com.gogowise.rep.org.OrgService;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.user.UserService;
@@ -38,8 +37,6 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
     private OrganizationDao organizationDao;
     @Autowired
     private QuestionDao questionDao;
-    @Autowired
-    private UserAccountInfoDao userAccountInfoDao;
     @Autowired
     private CourseInviteStudentDao courseInviteStudentDao;
     @Autowired
@@ -79,8 +76,8 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
 
         // Teacher
         if (Constants.COURSE_TYPE_ORG.equals(specification.getCourseType())) {
-            for (Integer teacherId : specification.getTeachersId()) {
-                BaseUser teacherInfo = baseUserDao.findById(teacherId);
+            for (String teacherId : specification.getTeachersId()) {
+                BaseUser teacherInfo = baseUserDao.findByEmail(teacherId);
                 course.addTeacher(teacherInfo);
             }
         } else if (Constants.COURSE_TYPE_VORG.equals(specification.getCourseType())) {
@@ -111,17 +108,8 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
 
     public void validateBeforePurchase(Course course, BaseUser user) throws ServiceException {
 
-        //        course = courseDao.findById(this.course.getId());
-        //        user = baseUserDao.findById(getSessionUserId());
-        Double cost;
-        cost = course.getCharges();
-        UserAccountInfo _userAccountInfo = userAccountInfoDao.findByUserId(user.getId());
-//        if (course.getConsumptionType() && cost > _userAccountInfo.getZhiBi()) {
-//            throw new ServiceException("msg.zhibi.not.enough");
-//        }
-//        if (!course.getConsumptionType() && cost > (_userAccountInfo.getZhiBi() + _userAccountInfo.getZhiQuan())) {
-//            throw new ServiceException("msg.account.left.not.enough");
-//        }
+
+
         if (existInStudentInvitation(course, user.getEmail())) {
             throw new ServiceException("course.exist.in.studentInvitation"); //您是被邀请的用户，请在您的邮件中点击接受完成购买
         }
@@ -168,9 +156,7 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
         Course curCourse = courseDao.findById(courseId);
 
         if (curCourse != null && !curCourse.getIsPublic()) {
-            if (userId == null) return true;
-
-            return !orgService.isMember(userId, curCourse.getOrganization().getId());
+            return userId == null || !orgService.isMember(userId, curCourse.getOrganization().getId());
         }
         //return !(curCourse.getIsPublic() || userId == null) && orgService.isMember(userId, curCourse.getOrganization().getId());
         return false;

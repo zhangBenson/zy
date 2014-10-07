@@ -52,18 +52,18 @@ public class SaveCourseAction extends BasicAction {
     private ClassDao classDao;
     private CourseDao courseDao;
 
-    private List<CourseClass> classes = new ArrayList<CourseClass>();
-    private List<Integer> durations = new ArrayList<Integer>();    //持续时间
+    private List<CourseClass> classes = new ArrayList<>();
+    private List<Integer> durations = new ArrayList<>();    //持续时间
     private Integer courseType = 0;
     private Integer course_id;
 
-    private List<String> emails = new ArrayList<String>();
-    private List<CourseInviteStudent> courseInviteStudents = new ArrayList<CourseInviteStudent>();
-    private List<Calendar> startTimes = new ArrayList<Calendar>();
-    private List<Integer> classDate = new ArrayList<Integer>();     //周几
+    private List<String> emails = new ArrayList<>();
+    private List<CourseInviteStudent> courseInviteStudents = new ArrayList<>();
+    private List<Calendar> startTimes = new ArrayList<>();
+    private List<Integer> classDate = new ArrayList<>();     //周几
     private Integer repeatTimes;                                   //重复次数
     private CourseService courseService;
-    private List<Integer> teacherIds;
+    private List<String> teacherIds;
     private Boolean accept = false;
     private Integer id;
 
@@ -133,8 +133,8 @@ public class SaveCourseAction extends BasicAction {
             if (course.getTeachers() != null) {
                 course.getTeachers().clear();
             }
-            for (Integer tId : teacherIds) {
-                BaseUser teacher = baseUserDao.findById(tId);
+            for (String tId : teacherIds) {
+                BaseUser teacher = baseUserDao.findByEmail(tId);
                 if (teacher != null) {
                     course.addTeacher(teacher);
                 }
@@ -237,8 +237,8 @@ public class SaveCourseAction extends BasicAction {
                 _course.getTeachers().clear();
             }
 
-            for (Integer teacherId : teacherIds) {
-                BaseUser teacher = baseUserDao.findById(teacherId);
+            for (String teacherId : teacherIds) {
+                BaseUser teacher = baseUserDao.findByEmail(teacherId);
                 if (teacher != null) {
                     _course.addTeacher(teacher);
                 }
@@ -383,7 +383,7 @@ public class SaveCourseAction extends BasicAction {
 
             String acceptArrange = getBasePath() + "/emailHandleForCourseCreation.html?course.id=" + course.getId() + "&accept=true&teacher=true&user.email=" + course.getTeacherEmail();
             String rejectArrange = getBasePath() + "/emailHandleForCourseCreation.html?course.id=" + course.getId() + "&accept=false&teacher=true&user.email=" + course.getTeacherEmail();
-            String[] args = {course.getTeacherEmail(), course.getOrganization().getSchoolName(), course.getName(), course.getDescription(), dateFormat.format(Utils.changeBaseOnTimeZone4Action(courseStartTime).getTime()), course.getTotalHours().toString(), classesInfo.toString(), acceptArrange, rejectArrange, acceptArrange, rejectArrange, this.getCourse().getTeacherEmail()};
+            String[] args = {course.getTeacherEmail(), course.getOrganization().getSchoolName(), course.getName(), course.getDescription(), dateFormat.format(Utils.changeBaseOnTimeZone4Action(courseStartTime).getTime()), course.getTotalHours().toString(), classesInfo, acceptArrange, rejectArrange, acceptArrange, rejectArrange, this.getCourse().getTeacherEmail()};
             EmailUtil.sendMail(course.getTeacherEmail(), tile, Constants.INVITATION_EMAIL_CSS + this.getText("org.invite.teacher.email.content", args), "text/html;charset=utf-8");
 
             //=====================================  课程发布时，组织发送邮件给学生   =====================
@@ -555,9 +555,9 @@ public class SaveCourseAction extends BasicAction {
 
     @JSON(serialize = false)
     public List<String> getEmails() {
-        List<String> realEmails = new ArrayList<String>();
+        List<String> realEmails = new ArrayList<>();
         for (String email : emails) {
-            if (email != "") realEmails.add(email);
+            if (!"".equals(email)) realEmails.add(email);
         }
         return realEmails;
     }
@@ -574,11 +574,11 @@ public class SaveCourseAction extends BasicAction {
         this.course_id = course_id;
     }
 
-    public List<Integer> getTeacherIds() {
+    public List<String> getTeacherIds() {
         return teacherIds;
     }
 
-    public void setTeacherIds(List<Integer> teacherIds) {
+    public void setTeacherIds(List<String> teacherIds) {
         this.teacherIds = teacherIds;
     }
 

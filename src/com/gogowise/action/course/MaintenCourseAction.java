@@ -59,7 +59,7 @@ public class MaintenCourseAction extends BasicAction {
 
     private ClassDao classDao;
     private List<CourseClass> classes = new ArrayList<>();
-    private List<Integer> teacherIds = new ArrayList<>();
+    private List<String> teacherIds = new ArrayList<>();
 
     @Autowired
     private TagDao tagDao;
@@ -107,7 +107,7 @@ public class MaintenCourseAction extends BasicAction {
         }
 
         for (BaseUser existTeacher : course.getTeachers()) {
-            teacherIds.add(existTeacher.getId());
+            teacherIds.add(existTeacher.getEmail());
         }
 
         tags = course.getTags();
@@ -222,11 +222,11 @@ public class MaintenCourseAction extends BasicAction {
         this.classes = classes;
     }
 
-    public List<Integer> getTeacherIds() {
+    public List<String> getTeacherIds() {
         return teacherIds;
     }
 
-    public void setTeacherIds(List<Integer> teacherIds) {
+    public void setTeacherIds(List<String> teacherIds) {
         this.teacherIds = teacherIds;
     }
 

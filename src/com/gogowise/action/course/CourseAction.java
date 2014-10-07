@@ -1,23 +1,27 @@
 package com.gogowise.action.course;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
+import com.gogowise.action.BasicAction;
+import com.gogowise.action.valueobject.ResultData;
+import com.gogowise.common.utils.Constants;
+import com.gogowise.common.utils.EmailUtil;
+import com.gogowise.common.utils.MD5;
+import com.gogowise.common.utils.Utils;
+import com.gogowise.rep.Pagination;
 import com.gogowise.rep.ServiceException;
+import com.gogowise.rep.course.CourseService;
 import com.gogowise.rep.course.dao.*;
 import com.gogowise.rep.course.enity.*;
 import com.gogowise.rep.org.OrgService;
+import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.system.MatterDao;
+import com.gogowise.rep.system.enity.Matter;
+import com.gogowise.rep.user.UserService;
+import com.gogowise.rep.user.dao.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
+import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.user.enity.RoleType;
+import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
@@ -28,25 +32,11 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import com.gogowise.action.BasicAction;
-import com.gogowise.common.utils.Constants;
-import com.gogowise.common.utils.EmailUtil;
-import com.gogowise.common.utils.MD5;
-import com.gogowise.common.utils.PdfUtil;
-import com.gogowise.common.utils.Utils;
-import com.gogowise.rep.Pagination;
-import com.gogowise.rep.course.CourseService;
-import com.gogowise.rep.course.vo.CourseSpecification;
-import com.gogowise.rep.org.dao.OrganizationDao;
-import com.gogowise.rep.org.enity.Organization;
-import com.gogowise.rep.system.MatterDao;
-import com.gogowise.rep.system.enity.Matter;
-import com.gogowise.rep.user.UserService;
-import com.gogowise.rep.user.dao.BaseUserDao;
-import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
-import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.action.valueobject.ResultData;
-import com.opensymphony.xwork2.ActionContext;
+import java.io.File;
+import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Controller
 @Namespace(BasicAction.BASE_NAME_SPACE)
@@ -117,7 +107,6 @@ public class CourseAction extends BasicAction {
     private List<Organization> organizations = new ArrayList<>();
     private Set<BaseUser> teachers = new HashSet<>();
     private CourseService courseService;
-    private List<Integer> teacherIds;
 
     private Integer coursePageShowType; // 0: A-D, 1: E-H, 2: I-L, 3: M-P, 4:Q-T, 5: U-Z, 6: Other 7: Show all
     private List<Course> centerCourses;
@@ -257,64 +246,6 @@ public class CourseAction extends BasicAction {
                 orgs.put(orgTmp.getId(), orgTmp.getSchoolName());
         }
         return SUCCESS;
-    }
-
-    @Action(value = "saveCourse", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initStep3"), @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".initStep2")})
-    public String saveCourse() {
-
-        if (this.getIdentity() != null) {
-            course.setTeachingNum(this.getIdentity());
-        }
-
-        // Save course
-        CourseSpecification specification = CourseSpecification.create(course, this.getSessionUserId(), this.getCourseType(), this.getTeacherIds());
-        courseService.saveCourse(specification);
-
-        course = courseService.findById(course.getId());
-
-        //        // copy jpg
-        //        if(StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(),"upload/")){
-        //            Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
-        //        }
-
-        // copy jpg
-        if (StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(), "upload/")) {
-            //Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
-            String courseDir = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_COURSE_PATH);
-            courseDir = courseDir + File.separator + course.getId();
-
-            File temp = new File(courseDir);
-            if (!temp.exists())
-                temp.mkdirs();
-
-            Utils.notReplaceFileFromTmpModified(temp.getAbsolutePath(), course.getLogoUrl());
-            course.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + course.getId() + "/" + course.getLogoUrl());
-        }
-
-        // Courser invitation;
-        courseInviteStudents = courseInviteStudentDao.findByCourseId(this.getCourse().getId());
-        if (courseInviteStudents.size() != 0) {
-            for (CourseInviteStudent courseInviteStudent : courseInviteStudents) {
-                courseInviteStudentDao.delete(courseInviteStudent);
-            }
-        }
-
-        for (String email : emails) {
-            if (StringUtils.isNotBlank(email)) {
-                CourseInviteStudent curr = courseInviteStudentDao.findByCourseAndEmail(this.getCourse().getId(), email);
-                if (curr == null) {
-                    CourseInviteStudent courseInviteStudent = new CourseInviteStudent();
-                    courseInviteStudent.setCourse(this.getCourse());
-                    courseInviteStudent.setInvitedStudentEmail(email);
-                    courseInviteStudentDao.persistAbstract(courseInviteStudent);
-                }
-            }
-        }
-        return SUCCESS;
-    }
-
-    public void validateSaveCourse() {
-
     }
 
     @Action(value = "initCourseInfoModify", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initMaintenanceInfo")})
@@ -777,7 +708,7 @@ public class CourseAction extends BasicAction {
         finishedClasses = 0;
         classMemberships = classMembershipDao.findByUserIdAndCourseId(this.getSessionUserId(), course.getId());
         for (ClassMembership record : classMemberships) {
-            if (record.getStatus() == Constants.Class_User_Status_Finish) {
+            if (record.getStatus().equals(Constants.Class_User_Status_Finish)) {
                 finishedClasses++;
             }
         }
@@ -787,7 +718,6 @@ public class CourseAction extends BasicAction {
 
     @Action(value = "questionResultForTeacher", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = "www.user.questionResultForTeacher")})
     public String questionResultForTeacher() {
-        Integer userID = this.getSessionUserId();
         course = courseDao.findById(this.getCourse().getId());
         classes = course.getClasses();
 
@@ -1523,15 +1453,6 @@ public class CourseAction extends BasicAction {
         this.teachers = teachers;
     }
 
-    public List<Integer> getTeacherIds() {
-
-        return teacherIds;
-    }
-
-    public void setTeacherIds(List<Integer> teacherIds) {
-
-        this.teacherIds = teacherIds;
-    }
 
     public Integer getCoursePageShowType() {
 

@@ -78,7 +78,6 @@ $(function () {
         var teacherEmail = $("[name='teacherIds']:checked").next().html();
         var emails = $("input[type='text'][name='emails']");
         var courseLogo = $("#show_log_preview").attr("src");
-        var invitedEamils = "";
 
         $("#store_name").html(name);
         $("#store_course_access").html(access);
@@ -91,11 +90,7 @@ $(function () {
         $("#store_charges").html(charges + "&nbsp;<s:text name="label.zhibi.true"/>");
         $("#obv_course_logo").attr("src", courseLogo);
         $("#store_teacherEmail").html(teacherEmail);
-        for (var i = 0; i < emails.length; i++) {
-            if ($(emails[i]).val())
-                invitedEamils += ("[" + $(emails[i]).val() + "]  ");
-        }
-        $("#store_emails").html(invitedEamils);
+
         $(this).parent().parent().next().show();
     });
 
@@ -341,14 +336,6 @@ $(function () {
 
     });
 
-    $(".add_student_btn").click(function () {
-//            if (maxStudentCount < 4 && count >= maxStudentCount) {
-//                 $(".invite_student_input_msg").html(warn_student_number_overflow+maxStudentCount);
-//                 return;
-//            }
-        $("#invitedStudents").append("<input class='long_text_field_for_student' onblur='checkStudentMail(this);' name='emails' type='text' /><span class='del_student_btn' onclick='remove_student(this);'>" + deleteEmail + "</span><br/>");
-//            count ++;
-    });
     $(".del_student_btn").click(function () {
         $(".invite_student_input_msg").html("");
         $(this).prev().remove();
@@ -386,61 +373,8 @@ function changeWordNumInHTML(obj) {
     changeWordNumber(obj, $("#class_nickname_msg"), 40);
 }
 
-function checkStudentMail(obj) {
-    $(".invite_student_input_msg").html("");
-    var email = $(obj).val();
-    var emailContent = email.replace(/(^\s*)|(\s*$)/g, "");
-    var mySessionEmail = "<s:property value="#session.email"/>";
-    var pattern = /^(?:[a-z\d]+[_\-\+\.]?)*[a-z\d]+@(?:([a-z\d]+\-?)*[a-z\d]+\.)+([a-z]{2,})+$/i;
-    if (emailContent.length != 0) {
-        if (!pattern.test(emailContent)) {
-            $(".invite_student_input_msg").html(warn_email_format_wrong);
-            return false;
-        }
-        <s:if test="courseType != 1 && courseType != 2">         //if the course is a personal internet course
-        if (emailContent == mySessionEmail) {
-            $(".invite_student_input_msg").html(warn_email_can_not_be_yourself);
-            return false;
-        }
-        </s:if>
-        <s:else>
-        var teacherEmail = $("[name='teacherIds']:checked").next().attr("tag");
-        if (emailContent == teacherEmail) {
-            $(".invite_student_input_msg").html(warn_email_teacher_student_same);
-            return false;
-        }
-        </s:else>
-        $(obj).attr('value', emailContent);
-        $(".invite_student_input_msg").html("");
-        return true;
-    }
-    return true;
-}
-function checkStudentEmails() {
-    var flag = true;
-    var emails = $(".long_text_field_for_student");
-    for (var i = 0; i < emails.length; i++) {
-        flag = flag && checkStudentMail(emails[i]);
-    }
-    return flag;
-}
-function checkTeacherMail(obj) {
-    var email = $(obj).val().replace(/(^\s*)|(\s*$)/g, "");
-    var pattern = /^(?:[a-z\d]+[_\-\+\.]?)*[a-z\d]+@(?:([a-z\d]+\-?)*[a-z\d]+\.)+([a-z]{2,})+$/i;
-    if (email.length == 0) {
-        $(".invite_teacher_input_msg").html(warn_email_empty);
-        return false;
-    } else if (email.length != 0) {
-        if (!pattern.test(email)) {
-            $(".invite_teacher_input_msg").html(warn_email_format_wrong);
-            return false;
-        } else {
-            $(obj).attr('value', email);
-            $(".invite_teacher_input_msg").html("^_^");
-            return true;
-        }
-    }
-}
+
+
 function dateComparator(Obj) {     //the current time  bigger than startTime which without H:m:s  return true
     var startTime = new Date($(Obj).val().replace(/-/g, "/"));
     var currTime = new Date();
@@ -449,16 +383,6 @@ function dateComparator(Obj) {     //the current time  bigger than startTime whi
         return false;
     }
     return true
-}
-function remove_student(del_btn) {
-    $(del_btn).prev().remove();
-    $(del_btn).next().remove();
-    $(del_btn).remove();
-    count--;
-    if (count <= maxStudentCount) {
-        $(".invite_student_input_msg").html("");
-        $("#step2_store_msg").html("");
-    }
 }
 
 

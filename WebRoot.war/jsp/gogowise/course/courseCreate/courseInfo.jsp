@@ -125,7 +125,7 @@
         <s:if test="courseType == 1 || courseType == 2">
             <li>
                 <span class="item"><s:property value="%{getText('label.forcast.lecturer')}"/></span>
-                <s:radio list="teachers" listKey="id" listValue="nickName" name="teacherIds" value="course.teacher.id"/>
+                <s:radio list="teachers" listKey="email" listValue="nickName" name="teacherIds" value="course.teacher.email"/>
                 <span class="invite_teacher_input_msg tip_words">*</span>
             </li>
         </s:if>
@@ -219,9 +219,6 @@
                                                                              id="store_teacherEmail"><s:property
                 value="course.teacher.nickName"/></span></li>
         <li><s:property value="%{getText('course.student.appointed')}"/>：
-            <span class="orange_words" id="store_emails">
-
-            </span>
         </li>
         <li>
             <table>
@@ -264,18 +261,4 @@
            value="<s:property value="%{getText('onlive.message.update')}"/>"
            onclick="modifyStepMsg(this,2);"/>
 </div>
-<script type="text/javascript">
-    function reInvite(id) {
-        $.post("resendInvitation.html", {'id': id}, changeToPending);
-        function changeToPending() {
-            $("#inviteStatus" + id)[0].innerHTML = '<s:text name='title.user.invite.status.unconfirmed'/>';
-        }
-    }
-
-    function deleteInvite(id) {
-        $.post("deleteInvitation.html", {'id': id}, removeInviteCell);
-        function removeInviteCell() {
-            $("#invite" + id)[0].style.display = 'none';
-        }
-    }
-</script>
+<%@ include file="/jsp/gogowise/course/courseCreate/courseInfo_js.jsp" %>

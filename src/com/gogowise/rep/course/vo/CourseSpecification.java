@@ -15,7 +15,7 @@ public class CourseSpecification {
     private Integer operatorId;
     private Course course;
     private Integer courseType;
-    private List<Integer> teachersId;
+    private List<String> teachersId;
 
     public Integer getOperatorId() {
         return operatorId;
@@ -29,11 +29,11 @@ public class CourseSpecification {
         return courseType;
     }
 
-    public List<Integer> getTeachersId() {
+    public List<String> getTeachersId() {
         return teachersId;
     }
 
-    public static CourseSpecification create(Course course,Integer operatorId, Integer courseType, List<Integer> teachersId) {
+    public static CourseSpecification create(Course course,Integer operatorId, Integer courseType, List<String> teachersId) {
         CourseSpecification specification = new CourseSpecification();
         specification.operatorId = operatorId;
         specification.course = course;
