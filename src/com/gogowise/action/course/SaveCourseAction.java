@@ -1,6 +1,7 @@
 package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.action.course.vo.InvitationVO;
 import com.gogowise.common.utils.*;
 import com.gogowise.rep.ModelDao;
 import com.gogowise.rep.course.CourseService;
@@ -66,6 +67,7 @@ public class SaveCourseAction extends BasicAction {
     private List<String> teacherIds;
     private Boolean accept = false;
     private Integer id;
+    private List<InvitationVO> invitationVOs;
 
     @Autowired
     private TagDao tagDao;
@@ -89,7 +91,9 @@ public class SaveCourseAction extends BasicAction {
     @Action(value = "ajaxSaveCourse")
     public String ajaxSaveCourse() {
 
+
         // Save course
+        String changedLogUrl =course.getLogoUrl() ;
         CourseSpecification specification = CourseSpecification.create(course, this.getSessionUserId(), this.getCourseType(), this.getTeacherIds());
         courseService.saveCourse(specification);
 
@@ -116,7 +120,7 @@ public class SaveCourseAction extends BasicAction {
         courseDao.persist(course);
 
         // copy jpg
-        if (StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(), "upload/")) {
+        if (StringUtils.isNotBlank(changedLogUrl) && !StringUtils.contains(changedLogUrl, "upload/course")) {
             //Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
             String courseDir = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_COURSE_PATH);
             courseDir = courseDir + File.separator + course.getId();
@@ -124,8 +128,8 @@ public class SaveCourseAction extends BasicAction {
             File temp = new File(courseDir);
             if (!temp.exists()) temp.mkdirs();
 
-            Utils.notReplaceFileFromTmpModified(temp.getAbsolutePath(), course.getLogoUrl());
-            course.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + course.getId() + "/" + course.getLogoUrl());
+            Utils.notReplaceFileFromTmpModified(temp.getAbsolutePath(), changedLogUrl);
+            course.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + course.getId() + "/" + changedLogUrl);
         }
 
         //change teacher
@@ -253,6 +257,18 @@ public class SaveCourseAction extends BasicAction {
         }
         courseDao.persistAbstract(_course);
 
+    }
+
+    @Action(value = "getStudentInvitation")
+    public String getStudentInvitation() {
+        courseInviteStudents = courseInviteStudentDao.findByCourseId(course_id);
+        invitationVOs = new ArrayList<>();
+        for (CourseInviteStudent inviteStudent : courseInviteStudents) {
+            InvitationVO vo = new InvitationVO();
+            vo.copy(inviteStudent);
+            invitationVOs.add(vo);
+        }
+        return RESULT_JSON;
     }
 
 
@@ -637,5 +653,9 @@ public class SaveCourseAction extends BasicAction {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public List<InvitationVO> getInvitationVOs() {
+        return invitationVOs;
     }
 }

@@ -73,7 +73,7 @@ public class QuestionResultAction extends BasicAction {
             }
         }
         if (questionItem == null) {
-            logger.error("question item is null");
+            LOGGER.error("question item is null");
             return RESULT_JSON;
         }
         questionResult.setOwner(owner);

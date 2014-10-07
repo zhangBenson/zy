@@ -2,7 +2,6 @@ package com.gogowise.action;
 
 import com.gogowise.common.config.ConfigConstants;
 import com.gogowise.common.utils.Constants;
-import com.gogowise.common.utils.DESPlus;
 import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.user.enity.BaseUser;
@@ -32,7 +31,7 @@ public class BasicAction extends ActionSupport {
 
     private Pagination pagination = new Pagination();
 
-    protected Logger logger = LogManager.getLogger(this.getClass().getName());
+    protected static Logger LOGGER = LogManager.getLogger(BasicAction.class);
 
     public String getRealPathForBaseDir() {
 
@@ -50,7 +49,7 @@ public class BasicAction extends ActionSupport {
         try {
             response.sendRedirect("easyLogon.html?reDirectUrl=" + request.getServletPath() + "?" + java.net.URLEncoder.encode(Utils.getEmptyString(request.getQueryString()), "utf-8"));
         } catch (IOException e) {
-            logger.error("error in redirectToLogin : ", e);
+            LOGGER.error("error in redirectToLogin : ", e);
         }
     }
 

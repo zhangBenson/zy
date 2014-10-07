@@ -204,7 +204,7 @@ public class CourseAction extends BasicAction {
 
             rd.setResult(200);
         } catch (Exception e) {
-            logger.error("Set class record failure", e);
+            LOGGER.error("Set class record failure", e);
             rd.setResult(500);
         }
         return SUCCESS;

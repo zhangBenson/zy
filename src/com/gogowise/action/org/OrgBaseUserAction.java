@@ -65,7 +65,7 @@ public class OrgBaseUserAction extends BasicAction {
 
         Organization org = this.organizationDao.findByResId(this.getSessionUserId());
         this.orgUsers = organizationBaseUserDao.findOrgUsers(org.getId(), roleType, this.getPagination());
-        if (roleType == RoleType.ROLE_TYPE_TEACHER) {
+        if (RoleType.ROLE_TYPE_TEACHER.equals(roleType)) {
             return RoleType.TEACHER;
         }
         return RoleType.STUDENT;
@@ -121,7 +121,7 @@ public class OrgBaseUserAction extends BasicAction {
             return COMMON_ERROR;
         }
 
-        if (isT && orgService.confirmedOtherOrg(orgUser.getId(), orgUser.getOrg().getId())) {
+        if (isT && exist!= null&& orgService.confirmedOtherOrg(orgUser.getId(), orgUser.getOrg().getId())) {
             addActionError(this.getText("org.apply.teacher.confirm.error"));
             exist.setUserStatus(OrganizationBaseUser.USER_STATUS_UNACCEPTED);
             organizationBaseUserDao.persistAbstract(exist);
@@ -157,7 +157,7 @@ public class OrgBaseUserAction extends BasicAction {
     @Action(value = "deleteUser", results = { @Result(name = SUCCESS, type = "json") })
     public String deleteUser() {
 
-        ResultData<String> rd = new ResultData<String>();
+        ResultData<String> rd = new ResultData<>();
         ActionContext.getContext().getValueStack().push(rd);
         try {
 
@@ -167,7 +167,7 @@ public class OrgBaseUserAction extends BasicAction {
         } catch (Exception e) {
             rd.setResult(500);
             rd.setMessage("Delete Failure:" + e.getMessage());
-            logger.error("Delete Failure", e);
+            LOGGER.error("Delete Failure", e);
         }
         return SUCCESS;
     }
@@ -175,7 +175,7 @@ public class OrgBaseUserAction extends BasicAction {
     @Action(value = "reInviteUser", results = { @Result(name = SUCCESS, type = "json") })
     public String reInviteUser() {
 
-        ResultData<String> rd = new ResultData<String>();
+        ResultData<String> rd = new ResultData<>();
         ActionContext.getContext().getValueStack().push(rd);
         try {
             String email = user.getEmail();
@@ -188,7 +188,7 @@ public class OrgBaseUserAction extends BasicAction {
         } catch (Exception e) {
             rd.setResult(500);
             rd.setMessage("ReInvite Failure:" + e.getMessage());
-            logger.error("ReInvite Failure", e);
+            LOGGER.error("ReInvite Failure", e);
         }
         return SUCCESS;
     }

@@ -133,36 +133,7 @@
             <s:property value="%{getText('course.student.appointed')}"/>
             <a class="add_student_btn"><s:property value="%{getText('course.add.student')}"/></a> &nbsp;&nbsp;&nbsp;
             <span class="invite_student_input_msg tip_words"></span>
-            <table>
-                <s:iterator value="course.courseInviteStudents" status="idx">
-                    <tr id="invite<s:property value="id"/>">
-                        <td width="150px" name="emails" value="<s:property value="invitedStudentEmail"/>">
-                        <s:property value="invitedStudentEmail"/>
-                        </td>
-                        <td width="80px" id="inviteStatus<s:property value="id"/>">
-                            <s:if test="false == acceptInvite">
-                                <s:text name='title.user.invite.status.refused'/>
-                            </s:if>
-                            <s:if test="acceptInvite">
-                                <s:text name='title.user.invite.status.confirmed'/>
-                            </s:if>
-                            <s:if test="acceptInvite == null">
-                                <s:text name='title.user.invite.status.unconfirmed'/>
-                            </s:if>
-                        </td>
-                        <td width="200px">
-                            <s:if test="acceptInvite">
-                            </s:if>
-                            <s:else>
-                                <a href="javascript:;" onclick="reInvite(
-                                    <s:property value="id"/> );"><s:text name="title.user.invite.user.reinvite"/></a>&nbsp;
-                                <a href="javascript:;" onclick="deleteInvite( <s:property value="id"/>);"><s:text
-                                        name="title.delete"/></a>
-                            </s:else>
-                        </td>
-                    </tr>
-                </s:iterator>
-            </table>
+            <table id="invitationListModify"></table>
             <div class="option_content" id="invitedStudents">
                 <input class="long_text_field_for_student"
                        placeholder="<s:property value="%{getText('org.course.student.email')}"/>"
@@ -221,36 +192,7 @@
         <li><s:property value="%{getText('course.student.appointed')}"/>：
         </li>
         <li>
-            <table>
-                <s:iterator value="course.courseInviteStudents" status="idx">
-                    <tr id="invite<s:property value="id"/>">
-                        <td width="150px" name="emails" value="<s:property value="invitedStudentEmail"/>">
-                            <s:property value="invitedStudentEmail"/>
-                        </td>
-                        <td width="80px" id="inviteStatus<s:property value="id"/>">
-                            <s:if test="false == acceptInvite">
-                                <s:text name='title.user.invite.status.refused'/>
-                            </s:if>
-                            <s:if test="acceptInvite">
-                                <s:text name='title.user.invite.status.confirmed'/>
-                            </s:if>
-                            <s:if test="acceptInvite == null">
-                                <s:text name='title.user.invite.status.unconfirmed'/>
-                            </s:if>
-                        </td>
-                        <td width="200px">
-                            <s:if test="acceptInvite">
-                            </s:if>
-                            <s:else>
-                                <a href="javascript:;" onclick="reInvite(
-                                    <s:property value="id"/> );"><s:text name="title.user.invite.user.reinvite"/></a>&nbsp;
-                                <a href="javascript:;" onclick="deleteInvite( <s:property value="id"/>);"><s:text
-                                        name="title.delete"/></a>
-                            </s:else>
-                        </td>
-                    </tr>
-                </s:iterator>
-            </table>
+            <table id="invitationList"></table>
         </li>
 
     </ul>

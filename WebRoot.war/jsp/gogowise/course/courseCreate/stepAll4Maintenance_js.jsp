@@ -59,46 +59,6 @@ $(function () {
     });
 
 
-    $("#step2_store").click(function () {
-        if (!yzSaveCourseForm()) return;
-        var course_info = $("#course_main_info_form").serialize();
-        $.post("ajaxSaveCourse.html", course_info, function (data) {
-            $("#course_id").attr('value', data.course_id);
-            $("#self_class_courseID").attr('value', data.course_id);
-            $("#auto_class_courseID").attr('value', data.course_id);
-        })
-        step2Stored = true;
-
-        $(this).parent().parent().hide();
-        var name = $("input[type='text'][name='course.name']").val();
-        var access = $("[name='course.isPublic']:checked").next().html();
-        var courseTags = getTag();
-        var description = $("textarea[name='course.description']").val();
-        //var studentAgeTypeVal = $("select[name='course.studentAgeType']").val();
-        var studentAgeType = $("#step2_studentAge_type").find("option:selected").text();
-//            var courseTeachingBook = $("input[type='text'][name='course.courseTeachingBook']").val();
-        var courseTypeVal = $("select[name='course.courseType']").val();
-        var courseType = $("option[value='" + courseTypeVal + "']").text();
-        var startDate = $("input[type='text'][name='course.startDate']").val();
-        var charges = $("input[type='text'][name='course.charges']").val();
-        var teacherEmail = $("[name='teacherIds']:checked").next().html();
-        var emails = $("input[type='text'][name='emails']");
-        var courseLogo = $("#show_log_preview").attr("src");
-
-        $("#store_name").html(name);
-        $("#store_course_access").html(access);
-        $("#store_courseTag").html(courseTags);
-        $("#store_description").html(description);
-        $("#store_studentType").html(studentAgeType);
-//            $("#store_courseTeachingBook").html(courseTeachingBook);
-        $("#store_courseType").html(courseType);
-        $("#store_startDate").html(startDate);
-        $("#store_charges").html(charges + "&nbsp;<s:text name="label.zhibi.true"/>");
-        $("#obv_course_logo").attr("src", courseLogo);
-        $("#store_teacherEmail").html(teacherEmail);
-
-        $(this).parent().parent().next().show();
-    });
 
     $("#step3_self_store").click(function () {
 

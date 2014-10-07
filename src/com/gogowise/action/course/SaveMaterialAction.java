@@ -137,7 +137,7 @@ public class SaveMaterialAction extends BasicAction {
                 convertQuestion(nowTimeStr, dstPath);
             }
         } catch (Throwable e) {
-            logger.error("Cannot covert ", e);
+            LOGGER.error("Cannot covert ", e);
         }
     }
 
@@ -159,7 +159,7 @@ public class SaveMaterialAction extends BasicAction {
         Utils.pptConvert(this.getRealPathForBaseDir() + dstPath, dstPdfDir, pdfName, dstDir);
         File desDirInfo = new File(dstDir);
         courseMaterial.setTotalPages(desDirInfo.listFiles().length - 1);
-        logger.info("==================PPT files==============" + desDirInfo.listFiles().length);
+        LOGGER.info("==================PPT files==============" + desDirInfo.listFiles().length);
     }
 
     @Action(value = "uploadMaterialWithJson")
@@ -171,7 +171,7 @@ public class SaveMaterialAction extends BasicAction {
         String nowTimeStr = Calendar.getInstance().getTimeInMillis() + "";
 
 
-        String extName = "";
+        String extName;
         String updatedFileNameOnly = "";
         String dstPath = "";
         setCourseOrClassInMaterial();

@@ -36,9 +36,9 @@ public class Utils {
         TIME_ZONE_MAP.put("JP",+9) ;
     }
 
-    public static void doCopy(Object u1, Object u2) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+    public static void doCopy(Object dest, Object orig) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
 
-        PropertyUtils.copyProperties(u1, u2);
+        PropertyUtils.copyProperties(dest, orig);
     }
 
     public static Date getToday() {

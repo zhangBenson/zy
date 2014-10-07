@@ -10,7 +10,6 @@ import com.gogowise.rep.course.dao.QuestionDao;
 import com.gogowise.rep.course.dao.SeniorClassRoomDao;
 import com.gogowise.rep.course.enity.*;
 import com.gogowise.rep.course.vo.CourseSpecification;
-import com.gogowise.rep.finance.dao.UserAccountInfoDao;
 import com.gogowise.rep.org.OrgService;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.user.UserService;
@@ -89,7 +88,6 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
         course.setConsumptionType(true);
 
         if (StringUtils.isBlank(course.getLogoUrl())) course.setLogoUrl(Constants.DEFAULT_COURSE_IMAGE);
-
 
         if (course.getFromCourse() == null)
             course.setFromCourse(course);   // mark the course where from. Default is current.
