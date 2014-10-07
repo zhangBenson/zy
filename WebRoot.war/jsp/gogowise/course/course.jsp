@@ -181,7 +181,6 @@ programming.
 
 
     <%-- Recommend courses --%>
-    <%--<s:property value="%{getText('recommend.course')}">--%>
     <div class="courseSubhead"><s:property value="%{getText('recommend.course')}"/></div>
     <br/>
 
@@ -194,7 +193,7 @@ programming.
                                title="<s:property value="name"/>"><img src="<s:property value="logoUrl"/>" alt=""></a>
                         </li>
                         <span><s:property value="name"/></span>
-                 
+
                     </ul>
                 </div>
             </div>

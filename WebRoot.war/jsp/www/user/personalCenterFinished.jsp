@@ -118,7 +118,6 @@
                         <ul class="list-inline"
                             style="background-color: #6ab600;color: #fff;border-radius: 4px; padding-top: 3px;padding-bottom: 3px;">
 
-                                <%--<li><s:property value="%{getText('class.count',{classOneTheCornerSequence})}"/></li>--%>
 
                             <li>
                                 <s:property value="%{getText('courses.info.lecturer')}"/>:

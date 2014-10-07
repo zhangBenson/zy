@@ -27,7 +27,6 @@
             <div class="thickline"></div>
             <h3 class="courseSubhead"><s:property
                     value="%{getText('user.responsible.course')}"/><%--Responsible Course--%></h3>
-            <%--<h3 class="courseSubhead"><s:property value="%{getText('user.created.courses',{user.nickName})}"/></h3>--%>
             <div id="schoolcurriculum">
 
                 <s:iterator value="coursesAsTeacher" status="status">
