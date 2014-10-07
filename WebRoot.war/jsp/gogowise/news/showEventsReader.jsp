@@ -124,28 +124,7 @@
             </ul>
         </div>
 
-        <%--<div class="sdiv sdivt3">--%>
-        <%--<h3 class="stit"><strong><a target="_blank" href="http://hunan.sina.com.cn/news/"><s:property value="%{getText('live.square.new.events')}"/></a></strong></h3>--%>
-        <%--<ul class="everyday-list">--%>
-        <%--<s:iterator value="liveChannelNewEvents">--%>
-        <%--<li><a href="liveChannelEventRead.html?liveChannelNewEvent.id=<s:property value="id"/>" class="liveChannel_newEvents"><s:property value="title"/></a></li>--%>
-        <%--</s:iterator>--%>
-        <%--</ul>--%>
-        <%--</div>--%>
 
-        <%--<div class="sdiv vedio-recom clear">--%>
-        <%--<h3 class="stit"><strong><a href="javascript:;"><s:property value="%{getText('news.center.recommend.video')}"/></a></strong><span><a href="javascript:;" class="grey"><s:property value="%{getText('others.more')}"/>&gt;&gt;</a></span></h3>--%>
-        <%--<ul class="recom-list clear">--%>
-        <%--<s:iterator value="liveChannels">--%>
-        <%--<li>--%>
-        <%--<a href="liveTermBlog.html?channelTerms.id=<s:property value="lastOwnRecordTerm.id"/>" title="<s:property value="lastOwnRecordTerm.subTitle"/>"><img src="<s:property value="lastOwnRecordTerm.logoUrl"/>" alt="<s:property value="lastOwnRecordTerm.subTitle"/> "></a>--%>
-        <%--&lt;%&ndash;<i>03:02</i>&ndash;%&gt;--%>
-        <%--<p style="height:21px;overflow:hidden;"><a href="liveTermBlog.html?channelTerms.id=<s:property value="lastOwnRecordTerm.id"/>" title="<s:property value="lastOwnRecordTerm.subTitle"/> "><s:property value="lastOwnRecordTerm.subTitle"/> </a></p>--%>
-        <%--<p class="cnum"><em class="icon iplay"><s:property value="totalInviteNum"/></em></p>--%>
-        <%--</li>--%>
-        <%--</s:iterator>--%>
-        <%--</ul>--%>
-        <%--</div>--%>
 
         <div class="sdiv">
             <h3 class="stit"><strong><a href="javascript:;"><s:property

@@ -127,8 +127,9 @@
             <div id="regtitle2"><s:property value="%{getText('identity.confirm')}"/></div>
             <div id="links">
                 <s:property value="%{getText('user.info.identity.confirm.first')}"/><a class="linksClick" href="####"
-                                                                                       onclick="addRepswAndnickName();"><s:property
-                    value="%{getText('here')}"/></a><s:property value="%{getText('user.info.identity.finish.reg')}"/>
+                                                                                       onclick="addRepswAndnickName();">
+                <s:property value="%{getText('here')}"/></a>
+                <s:property value="%{getText('user.info.identity.finish.reg')}"/>
             </div>
         </div>
         <div id="regright">
@@ -137,8 +138,9 @@
                                                                                         id="yzemail">*</span>
           <span id="emailNotExist" style="display: none;">
               <s:property value="%{getText('identity.is.not.exist')}"/><a href="####" onclick="addRepswAndnickName();"
-                                                                          style="color:#ff0000;font-size: 14px;"><s:property
-                  value="%{getText('link.here')}"/></a><s:property value="%{getText('message.to.complete')}"/>
+                                                                          style="color:#ff0000;font-size: 14px;">
+              <s:property  value="%{getText('link.here')}"/></a>
+              <s:property value="%{getText('message.to.complete')}"/>
           </span>
                     <s:textfield name="user.email" id="email" type="password" cssClass="text"/>
                 </p>

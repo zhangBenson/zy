@@ -47,7 +47,7 @@
                             onComplete: function (event) {
                                 $(this).html("<s:text name='course.in.progress'/>");
                             },
-                            htmlTemplate: "<span><b>%{d}</b><s:property value="%{getText('course.time.day')}"/><b> %{h}</b><s:property value="%{getText('course.time.hour')}"/><b>%{m}</b><s:property value="%{getText('course.time.minute')}"/><b>%{s}</b><s:property value="%{getText('course.tine.second')}"/></span>",
+                            htmlTemplate: "<span><b>%{d}</b><s:text name="course.time.day"/><b> %{h}</b><s:text name="course.time.hour"/><b>%{m}</b><s:text name="course.time.minute"/><b>%{s}</b><s:text name="course.tine.second"/></span>",
                             leadingZero: true,
                             direction: "down"
                         });

@@ -58,7 +58,7 @@
                                 $("#timer").html("");
                                 $(this).html("<s:text name='course.in.progress'/>");
                             },
-                            htmlTemplate: "<span><b>%{d}</b><s:property value="%{getText('course.time.day')}"/><b> %{h}</b><s:property value="%{getText('course.time.hour')}"/><b>%{m}</b><s:property value="%{getText('course.time.minute')}"/><b>%{s}</b><s:property value="%{getText('course.tine.second')}"/></span>",
+                            htmlTemplate: "<span><b>%{d}</b><s:text name="course.time.day"/><b> %{h}</b><s:text name="course.time.hour"/><b>%{m}</b><s:text name="course.time.minute"/><b>%{s}</b><s:text name="course.tine.second"/></span>",
                             leadingZero: true,
                             direction: "down"
                         });
@@ -113,7 +113,7 @@
                             onComplete: function (event) {
                                 $(this).html("<s:text name='live.term.is.on.living'/>");
                             },
-                            htmlTemplate: "<span><b>%{d}</b><s:property value="%{getText('course.time.day')}"/><b> %{h}</b><s:property value="%{getText('course.time.hour')}"/><b>%{m}</b><s:property value="%{getText('course.time.minute')}"/><b>%{s}</b><s:property value="%{getText('course.tine.second')}"/></span>",
+                            htmlTemplate: "<span><b>%{d}</b><s:text name="course.time.day"/><b> %{h}</b><s:text name="course.time.hour"/><b>%{m}</b><s:text name="course.time.minute"/><b>%{s}</b><s:text name="course.tine.second"/></span>",
                             leadingZero: true,
                             direction: "down"
                         });
@@ -134,68 +134,7 @@
     </div>
 </s:if>
 
-<%--<s:if test="existLiveChannel">--%>
-<%--<div class="usItem_wrap fl">--%>
-<%--<h3 class="h3_title"><s:property value="%{getText('the.onlive.on.the.corner')}"/></h3>--%>
-<%--<s:iterator value="liveChannels" status="idx">--%>
-<%--<div class="usItem_cont fl">--%>
-<%--<div class="logo_wrap fl"><a href="liveTermBlog.html?channelTerms.id=<s:property value="theLatestChannelTerms.id"/>" title="<s:property value="name"/>"><img src="<s:property value="logoUrl" />"/></a></div>--%>
-<%--<div class="detail fl">--%>
-<%--<a class="h_title" href="liveTermBlog.html?channelTerms.id=<s:property value="theLatestChannelTerms.id"/>" title="<s:property value="name"/>"><s:property value="name"/></a>--%>
-<%--<p>--%>
-<%--<s:property value="%{getText('onlive.host.name')}"/>：<s:a action="userBlog"><s:param name="user.id"  value="theLatestChannelTerms.host.id"/><s:property value="theLatestChannelTerms.host.nickName"/></s:a>--%>
-<%--&nbsp;&nbsp;&nbsp;&nbsp;<s:date name="theLatestChannelTerms.startTime" format="%{getText('dateformat.forclass')}"/>--%>
-<%--</p>--%>
-<%--<strong><s:property value="%{getText('myfirst.page.onlive.left.time')}"/>&nbsp;<b id="liveChannelTimeLeft<s:property value="#idx.index"/>"></b></strong>--%>
-<%--<script type="text/javascript">--%>
-<%--$("#liveChannelTimeLeft<s:property value="#idx.index"/>").countdown({--%>
-<%--date:'<s:date name="theLatestChannelTerms.startTime" format="%{getText('date.formate.firstpage.course.startdate')}"/>',--%>
-<%--onChange:function (event, timer) {},--%>
-<%--onComplete:function (event) {--%>
-<%--$(this).html("<s:text name='live.term.is.on.living'/>");--%>
-<%--},--%>
-<%--htmlTemplate: "<span><b>%{d}</b><s:property value="%{getText('course.time.day')}"/><b> %{h}</b><s:property value="%{getText('course.time.hour')}"/><b>%{m}</b><s:property value="%{getText('course.time.minute')}"/><b>%{s}</b><s:property value="%{getText('course.tine.second')}"/></span>",--%>
-<%--leadingZero:true,--%>
-<%--direction:"down"--%>
-<%--});--%>
-<%--</script>--%>
-<%--</div>--%>
-<%--<div class="handle fr">--%>
-<%--<a class="a_1" href="javascript:;"><s:property value="%{getText('the.onlive.contestants')}"/></a>--%>
-<%--<a class="a_2" href="startOnLive.html?channelTerms.id=<s:property value="theLatestChannelTerms.id"/>" >--%>
-<%--<s:if test="userType == 0">--%>
-<%--<s:property value="%{getText('the.onlive.start.watch')}"/>--%>
-<%--</s:if>--%>
-<%--<s:else>--%>
-<%--<s:property value="%{getText('frame.index.start.onlive')}"/>--%>
-<%--</s:else>--%>
-<%--</a>--%>
-<%--<div class="candidate">--%>
-<%--<table class="interviewees_list" cellpadding="0" cellspacing="0">--%>
-<%--<tr><td colspan="3" width="370px;">--%>
-<%--<s:property value="%{getText('channel.term.contetant')}"/>：<span class="orangeWords"><s:property value="theLatestChannelTerms.contestantsNum"/></span><s:property value="%{getText('label.person')}"/>，<s:property value="%{getText('label.is.confirm')}"/>：<span class="orangeWords"><s:property value="theLatestChannelTerms.acceptContestantsNum"/></span><s:property value="%{getText('label.person')}"/>--%>
-<%--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--%>
-<%--<s:property value="%{getText('channel.term.guest')}"/>：<span class="orangeWords"><s:property value="theLatestChannelTerms.guestsNum"/></span><s:property value="%{getText('label.person')}"/>，<s:property value="%{getText('label.is.confirm')}"/>：<span class="orangeWords"><s:property value="theLatestChannelTerms.acceptGuestsNum"/></span><s:property value="%{getText('label.person')}"/>--%>
-<%--</td>--%>
-<%--</tr>--%>
-<%--<tr><td width="145px"><s:property value="%{getText('msg.email')}"/></td>--%>
-<%--<td width="135px"><s:property value="%{getText('menber.reg.nickName')}"/></td>--%>
-<%--<td width="70px"><s:property value="%{getText('label.status')}"/></td></tr>--%>
-<%--<s:iterator value="theLatestChannelTerms.memberOfLiveChannels">--%>
-<%--<tr><td width="145px"><span class="orangeWords"><s:property value="memberEmail"/></span></td>--%>
-<%--<td width="135px"><span class="orangeWords"><s:property value="member.nickName"/></span></td>--%>
-<%--<td width="70px"><span class="orangeWords"><s:property value="%{getText('label.interviewee.accept.'+acceptInvite)}"/></span></td></tr>--%>
-<%--</s:iterator>--%>
-<%--</table>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--<div class="desc fl">--%>
-<%--<p><s:property value="description"/></p>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--</s:iterator>--%>
-<%--</div>--%>
-<%--</s:if>--%>
+
 
 <s:if test="existInterview">
     <div class="usItem_wrap fl">
@@ -225,7 +164,7 @@
                             onComplete: function (event) {
                                 $(this).html("<s:text name='interview.in.progress'/>");
                             },
-                            htmlTemplate: "<span><b>%{d}</b><s:property value="%{getText('course.time.day')}"/><b> %{h}</b><s:property value="%{getText('course.time.hour')}"/><b>%{m}</b><s:property value="%{getText('course.time.minute')}"/><b>%{s}</b><s:property value="%{getText('course.tine.second')}"/></span>",
+                            htmlTemplate: "<span><b>%{d}</b><s:text name="course.time.day"/><b> %{h}</b><s:text name="course.time.hour"/><b>%{m}</b><s:text name="course.time.minute"/><b>%{s}</b><s:text name="course.tine.second"/></span>",
                             leadingZero: true,
                             direction: "down"
                         });
@@ -300,7 +239,7 @@
                             onComplete: function (event) {
                                 $(this).html("<s:text name='meeting.in.progress'/>");
                             },
-                            htmlTemplate: "<span><b>%{d}</b><s:property value="%{getText('course.time.day')}"/><b> %{h}</b><s:property value="%{getText('course.time.hour')}"/><b>%{m}</b><s:property value="%{getText('course.time.minute')}"/><b>%{s}</b><s:property value="%{getText('course.tine.second')}"/></span>",
+                            htmlTemplate: "<span><b>%{d}</b><s:text name="course.time.day"/><b> %{h}</b><s:text name="course.time.hour"/><b>%{m}</b<s:text name="course.time.minute"/><b>%{s}</b><s:text name="course.tine.second"/></span>",
                             leadingZero: true,
                             direction: "down"
                         });

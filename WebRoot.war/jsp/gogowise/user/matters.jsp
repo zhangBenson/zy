@@ -7,7 +7,8 @@
     <tr><td class="td_1">&nbsp;</td><td colspan="2" class="td_3"><a href="#" onclick="deleteAllRow();"><s:property value="%{getText('title.matters.markAllAsRead')}"/></a></td></tr>
     <s:iterator value="courseReservationMatters" status="idx">
     <tr>
-        <td class="td_1"><s:property value="%{getText('title.matters.course.reserve',{fromUser.nickName})}"/><a href="matterHandler.html?matter.id=<s:property value="id"/>&course.id=<s:property value="course.id"/>&matter.type=1" target="_blank" onclick="deleteThisRow(this);"><s:property value="course.name"/></a></td>
+        <td class="td_1"><s:property value="%{getText('title.matters.course.reserve',{fromUser.nickName})}"/>
+            <a href="matterHandler.html?matter.id=<s:property value="id"/>&course.id=<s:property value="course.id"/>&matter.type=1" target="_blank" onclick="deleteThisRow(this);"><s:property value="course.name"/></a></td>
         <td class="td_2"><a href="#" onclick="deleteThatRow(this,'<s:property value="id"/>');"><s:property value="%{getText('title.matters.confim')}"/></a></td>
         <td class="td_2"><a href="#" onclick="deleteThatRow(this,'<s:property value="id"/>');"><s:property value="%{getText('title.matters.ignore')}"/></a></td>
     </tr>
@@ -15,14 +16,16 @@
 
     <s:iterator value="courseRegisterMatters" status="idx">
     <tr>
-        <td class="td_1"><s:property value="%{getText('title.matters.course.register',{fromUser.nickName})}"/><a href="matterHandler.html?matter.id=<s:property value="id"/>&course.id=<s:property value="course.id"/>&matter.type=<s:property value="type"/>" target="_blank" onclick="deleteThisRow(this);"><s:property value="course.name"/></a></td>
+        <td class="td_1"><s:property value="%{getText('title.matters.course.register',{fromUser.nickName})}"/>
+            <a href="matterHandler.html?matter.id=<s:property value="id"/>&course.id=<s:property value="course.id"/>&matter.type=<s:property value="type"/>" target="_blank" onclick="deleteThisRow(this);"><s:property value="course.name"/></a></td>
         <td class="td_2"><a href="matterHandler.html?matter.id=<s:property value="id"/>&course.id=<s:property value="course.id"/>&matter.type=<s:property value="type"/>" target="_blank" onclick="deleteThisRow(this);"><s:property value="%{getText('title.matters.confim')}"/></a></td>
         <td class="td_2"><a href="#" onclick="deleteThatRow(this,'<s:property value="id"/>');"><s:property value="%{getText('title.matters.ignore')}"/></a></td>
     </tr>
     </s:iterator>
     <s:iterator value="courseResourceMatters" status="idx">
     <tr>
-        <td class="td_1"><s:property value="%{getText('title.matters.course.upload',{fromUser.nickName})}"/><a href="matterHandler.html?matter.id=<s:property value="id"/>&course.id=<s:property value="course.id"/>&matter.type=<s:property value="type"/>" target="_blank" onclick="deleteThisRow(this);"><s:property value="course.name"/></a></td>
+        <td class="td_1"><s:property value="%{getText('title.matters.course.upload',{fromUser.nickName})}"/>
+            <a href="matterHandler.html?matter.id=<s:property value="id"/>&course.id=<s:property value="course.id"/>&matter.type=<s:property value="type"/>" target="_blank" onclick="deleteThisRow(this);"><s:property value="course.name"/></a></td>
         <td class="td_2"><a href="matterHandler.html?matter.id=<s:property value="id"/>&course.id=<s:property value="course.id"/>&matter.type=<s:property value="type"/>" target="_blank" onclick="deleteThisRow(this);">去下载</a></td>
         <td class="td_2"><a href="#" onclick="deleteThatRow(this,'<s:property value="id"/>');"><s:property value="%{getText('title.matters.ignore')}"/></a></td>
     </tr>
@@ -32,7 +35,8 @@
     <tr class="tr_x"><td colspan="3" class="td_0"><s:property value="%{getText('title.matters.messages')}"/></td></tr>
     <s:iterator value="CourseMessageMatters" status="idx">
      <tr>
-        <td class="td_1"><s:property value="%{getText('title.matters.course.leave.message',{fromUser.nickName})}"/><a href="matterHandler.html?matter.id=<s:property value="id"/>&course.id=<s:property value="course.id"/>&matter.type=<s:property value="type"/>" target="_blank" onclick="deleteThisRow(this);"><s:property value="course.name"/></a></td>
+        <td class="td_1"><s:property value="%{getText('title.matters.course.leave.message',{fromUser.nickName})}"/>
+            <a href="matterHandler.html?matter.id=<s:property value="id"/>&course.id=<s:property value="course.id"/>&matter.type=<s:property value="type"/>" target="_blank" onclick="deleteThisRow(this);"><s:property value="course.name"/></a></td>
         <td class="td_2"><a href="matterHandler.html?matter.id=<s:property value="id"/>&course.id=<s:property value="course.id"/>&matter.type=<s:property value="type"/>" target="_blank" onclick="deleteThisRow(this);">回复</a></td>
         <td class="td_2"><a href="#" onclick="deleteThatRow(this,'<s:property value="id"/>');"><s:property value="%{getText('title.matters.ignore')}"/></a></td>
     </tr>
@@ -68,20 +72,25 @@
     <s:iterator value="courseTeacherMatters" status="idx">
     <tr>
         <%--<td class="td_1"><s:property value="course.organization.schoolName"/>指定您为<s:property value="course.name"/>课程的老师，具体信息请查看邮件</td>--%>
-        <td class="td_1"><s:property value="%{getText('title.matters.appointTeacher')}"/>&nbsp;<s:property value="course.name"/><s:property value="%{getText('title.matters.appointTeacherBy')}"/><s:property value="course.organization.schoolName"/></td>
+        <td class="td_1"><s:property value="%{getText('title.matters.appointTeacher')}"/>&nbsp;
+            <s:property value="course.name"/>
+            <s:property value="%{getText('title.matters.appointTeacherBy')}"/>
+            <s:property value="course.organization.schoolName"/></td>
         <td class="td_2"><a href="#" onclick="deleteThatRow(this,'<s:property value="id"/>');"><s:property value="%{getText('title.matters.confim')}"/></a></td>
     </tr>
     </s:iterator>
     <s:iterator value="courseStudentMatters" status="idx">
     <tr>
-        <td class="td_1"><s:property value="%{getText('title.matters.course.invite',{course.organization.schoolName})}"/>&nbsp;<s:property value="course.name"/></td>
+        <td class="td_1"><s:property value="%{getText('title.matters.course.invite',{course.organization.schoolName})}"/>&nbsp;
+            <s:property value="course.name"/></td>
         <td class="td_2"><a href="#" onclick="deleteThatRow(this,'<s:property value="id"/>');"><s:property value="%{getText('title.matters.confim')}"/></a></td>
     </tr>
     </s:iterator>
 
     <s:iterator value="courseStudentNoOrgMatters" status="idx">
     <tr>
-        <td class="td_1"><s:property value="%{getText('title.matters.course.invite',{fromUser.nickName})}"/>&nbsp;<s:property value="course.name"/></td>
+        <td class="td_1"><s:property value="%{getText('title.matters.course.invite',{fromUser.nickName})}"/>&nbsp;
+            <s:property value="course.name"/></td>
         <td class="td_2"><a href="#" onclick="deleteThatRow(this,'<s:property value="id"/>');"><s:property value="%{getText('title.matters.confim')}"/></a></td>
     </tr>
     </s:iterator>

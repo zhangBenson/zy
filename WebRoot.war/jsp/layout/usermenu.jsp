@@ -6,7 +6,9 @@
     <div class="portrait">
         <a class="por" href="userBlog.html?user.id=<s:property value="#session.userID"/>" title="<s:property value="%{getText('user.header.enter.my.blog')}"/>"><img id="usermenu_user_img" src="<s:property value="#session.userLogoUrl"/>" alt="<s:property value="#session.nickName"/>" /></a>
         <a class="nick" href="userBlog.html?user.id=<s:property value="#session.userID"/>" title="<s:property value="#session.nickName"/>"><s:property value="#session.nickName"/></a>
-        <span class="num"><s:property value="#session.userFansNum"/>&nbsp;<s:property value="%{getText('user.add.focus')}"/><br/>0&nbsp;<s:property value="%{getText('course.consumptionType.true')}"/></span>
+        <span class="num"><s:property value="#session.userFansNum"/>&nbsp;
+            <s:property value="%{getText('user.add.focus')}"/><br/>0&nbsp;
+            <s:property value="%{getText('course.consumptionType.true')}"/></span>
     </div>
     <div class="sidebar">
 

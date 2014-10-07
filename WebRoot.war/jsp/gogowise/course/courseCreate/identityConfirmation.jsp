@@ -124,8 +124,9 @@
             <div id="regtitle2"><s:property value="%{getText('identity.confirm')}"/></div>
             <div id="links">
                 <s:property value="%{getText('user.info.identity.confirm.first')}"/><a class="linksClick" href="####"
-                                                                                       onclick="addRepswAndnickName();"><s:property
-                    value="%{getText('here')}"/></a><s:property value="%{getText('user.info.identity.finish.reg')}"/>
+                                                                                       onclick="addRepswAndnickName();">
+                <s:property  value="%{getText('here')}"/></a>
+                <s:property value="%{getText('user.info.identity.finish.reg')}"/>
             </div>
         </div>
         <div id="regright">
@@ -134,8 +135,9 @@
                                                                                     id="yzemail">*</span>
           <span id="emailNotExist" style="display: none;">
                <img src="images/courseImages/error.gif"/><s:property value="%{getText('identity.not.exist.click')}"/><a
-                  href="####" onclick="addRepswAndnickName();" style="color:#ff0000;"><s:property
-                  value="%{getText('here')}"/></a><s:property value="%{getText('identity.finish.regist')}"/>
+                  href="####" onclick="addRepswAndnickName();" style="color:#ff0000;">
+              <s:property value="%{getText('here')}"/></a>
+              <s:property value="%{getText('identity.finish.regist')}"/>
           </span>
                     <s:textfield name="user.email" id="email" type="password" cssClass="text"/>
                 </p>

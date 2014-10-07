@@ -131,8 +131,9 @@
             <div id="regtitle2"><s:property value="%{getText('label.id.confirm')}"/></div>
             <div id="links">
                 <s:property value="%{getText('user.info.identity.confirm.first')}"/> <a class="linksClick" href="####"
-                                                                                        onclick="addRepswAndnickName();"><s:property
-                    value="%{getText('here')}"/></a> <s:property value="%{getText('user.info.identity.finish.reg')}"/>
+                                                                                        onclick="addRepswAndnickName();">
+                <s:property value="%{getText('here')}"/></a>
+                <s:property value="%{getText('user.info.identity.finish.reg')}"/>
             </div>
         </div>
         <div id="regright">
@@ -141,8 +142,9 @@
                                                                                         id="yzemail">*</span>
           <span id="emailNotExist" style="display: none;">
                <img src="images/courseImages/error.gif"/><s:property value="%{getText('msg.account.not.exist')}"/> <a
-                  href="####" onclick="addRepswAndnickName();" style="color:#ff0000;"><s:property
-                  value="%{getText('link.here')}"/></a> <s:property value="%{getText('msg.complete.ref.interview')}"/>
+                  href="####" onclick="addRepswAndnickName();" style="color:#ff0000;">
+              <s:property value="%{getText('link.here')}"/></a>
+              <s:property value="%{getText('msg.complete.ref.interview')}"/>
           </span>
                     <s:textfield name="user.email" id="email" type="password" cssClass="text"/>
                 </p>

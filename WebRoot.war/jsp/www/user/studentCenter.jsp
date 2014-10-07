@@ -230,7 +230,7 @@
                                         onComplete: function (event) {
                                             $(this).html("<s:text name='course.in.progress'/>");
                                         },
-                                        htmlTemplate: "<span><b>%{d}</b><s:property value="%{getText('course.time.day')}"/><b> %{h}</b><s:property value="%{getText('course.time.hour')}"/><b>%{m}</b><s:property value="%{getText('course.time.minute')}"/><b>%{s}</b><s:property value="%{getText('course.tine.second')}"/></span>",
+                                        htmlTemplate: "<span><b>%{d}</b><s:text name="course.time.day"/><b> %{h}</b><s:text name="course.time.hour"/><b>%{m}</b><s:text name="course.time.minute"/><b>%{s}</b><s:text name="course.tine.second"/></span>",
                                         leadingZero: true,
                                         direction: "down"
                                     });
@@ -546,7 +546,7 @@
                                                 onComplete: function (event) {
                                                     $(this).html("<s:text name='course.in.progress'/>");
                                                 },
-                                                htmlTemplate: "<span>%{d}<s:property value="%{getText('course.time.day')}"/> %{h}<s:property value="%{getText('course.time.hour')}"/>%{m}<s:property value="%{getText('course.time.minute')}"/>%{s}<s:property value="%{getText('course.tine.second')}"/></span>",
+                                                htmlTemplate: "<span>%{d}<s:text name="course.time.day"/> %{h}<s:text name="course.time.hour"/>%{m}<s:text name="course.time.minute"/>%{s}<s:text name="course.tine.second"/></span>",
                                                 leadingZero: true,
                                                 direction: "down"
                                             });

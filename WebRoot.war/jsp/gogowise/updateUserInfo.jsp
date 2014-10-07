@@ -19,7 +19,8 @@
             <form action="updateUserInfo.html"  method="post" class="userinfo_form">
             <s:hidden name="user.lockedOut"/>
             <input type="hidden" id="picHidden" name="user.pic" value="<s:property value="user.pic" />" />
-            <div class="userinfo_tittle"><span><s:property value="%{getText('label.account.setting')}"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_change_userinfo"><s:property value="%{getText('link.click.to.change')}"/></span></div>
+            <div class="userinfo_tittle"><span><s:property value="%{getText('label.account.setting')}"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_change_userinfo">
+                <s:property value="%{getText('link.click.to.change')}"/></span></div>
             <div class="userinfo_detail">
                 <div class="userinfo_basic">
                     <div class="basic_left">
@@ -67,11 +68,14 @@
                             <span class="_self_description "><s:property value="user.selfDescription"/></span>
                         </li>
                         <li><span class="option_tittle"><s:property value="%{getText('label.account.left')}"/>：</span>
-                            <s:property value="%{getText('label.zhibi.true')}"/>：<s:property value="userAccountInfo.zhiBi"/>&nbsp;&nbsp;&nbsp;<s:property value="%{getText('label.zhibi.false')}"/>：<s:property value="userAccountInfo.zhiQuan"/>
+                            <s:property value="%{getText('label.zhibi.true')}"/>：<s:property value="userAccountInfo.zhiBi"/>&nbsp;&nbsp;&nbsp;
+                            <s:property value="%{getText('label.zhibi.false')}"/>：
+                            <s:property value="userAccountInfo.zhiQuan"/>
                         </li>
                         <li>
                             <table class="account_table">
-                                <tr><td colspan="2"><span class="option_tittle"><s:property value="%{getText('label.account.info1')}"/><span class="accountTip"><s:property value="%{getText('messege.account.bank')}"/></span></span></td> </tr>
+                                <tr><td colspan="2"><span class="option_tittle"><s:property value="%{getText('label.account.info1')}"/>
+                                    <span class="accountTip"><s:property value="%{getText('messege.account.bank')}"/></span></span></td> </tr>
                                 <tr>
                                     <td class="td_tittle"><s:property value="%{getText('label.bank.name')}"/>：</td>
                                     <td><span class="_bankName"><s:property value="userAccountInfo.bankName"/></span></td>
@@ -88,7 +92,8 @@
                         </li>
                         <li><span class="option_tittle"><s:property value="%{getText('label.reg.time')}"/>：</span>
                             <s:date name="user.regDate" format="%{getText('global.display.date')}"/></li>
-                        <li><span class="option_tittle"><s:property value="%{getText('label.last.log.time')}"/>：</span><s:date name="user.lastLoginDate" format="%{getText('global.display.date')}"/>
+                        <li><span class="option_tittle"><s:property value="%{getText('label.last.log.time')}"/>：</span>
+                            <s:date name="user.lastLoginDate" format="%{getText('global.display.date')}"/>
                         </li>
                     </ul>
                 </div>

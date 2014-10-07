@@ -55,9 +55,10 @@
         <hr/>
         <div id="centers">
             <img src="images/succeed.gif" width="30"/><s:property value="%{getText('messge.change.success1')}"/><a
-                href="easyLogon.html"><s:property value="%{getText('Login')}"/></a><s:property
-                value="%{getText('messge.change.success2')}"/><a href="index.html"><s:property
-                value="%{getText('menu.item.index')}"/><s:property value="%{getText('messge.change.success3')}"/></a>
+                href="easyLogon.html"><s:property value="%{getText('Login')}"/></a>
+            <s:property value="%{getText('messge.change.success2')}"/>
+            <a href="index.html"><s:property value="%{getText('menu.item.index')}"/>
+                <s:property value="%{getText('messge.change.success3')}"/></a>
         </div>
     </div>
 

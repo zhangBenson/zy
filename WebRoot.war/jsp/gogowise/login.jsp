@@ -43,7 +43,9 @@
                     <a href="javascript:;" onclick="parent.window.location.href='initRepassword.html';"><s:property value="%{getText('link.forget.pwd')}"/>？</a>
                 </div>
             </form>
-            <div class="log_tip"><s:property value="%{getText('user.do.not.have.gogowise.account')}"/><a href="javascript:;" onclick="parent.window.location.href='initReg.html';"><s:property value="%{getText('createButton')}"/>！</a></div>
+            <div class="log_tip"><s:property value="%{getText('user.do.not.have.gogowise.account')}"/>
+                <a href="javascript:;" onclick="parent.window.location.href='initReg.html';">
+                    <s:property value="%{getText('createButton')}"/>！</a></div>
         </div>
         <script type="text/javascript">
             $(".log_btn").click(function(){

@@ -134,8 +134,9 @@
                                                                                         id="yzemail">*</span>
           <span id="emailNotExist" style="display: none;">
               <s:property value="%{getText('identity.is.not.exist')}"/><a href="####" onclick="addRepswAndnickName();"
-                                                                          style="color:#ff0000;"><s:property
-                  value="%{getText('link.here')}"/></a><s:property value="%{getText('message.to.complete')}"/>
+                                                                          style="color:#ff0000;">
+              <s:property value="%{getText('link.here')}"/></a>
+              <s:property value="%{getText('message.to.complete')}"/>
           </span>
                     <s:textfield name="user.email" id="email" type="password" cssClass="text"/>
                 </p>
