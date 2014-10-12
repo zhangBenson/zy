@@ -84,8 +84,7 @@
                                 <li class="searchItemStateBlue">&nbsp;S$&nbsp;<s:property value="charges"/>&nbsp;</li>
                             </s:if>
                             <s:else>
-                                <li class="searchItemStateBlue"><s:property
-                                        value="%{getText('usermenu.item.mooc')}"/></li>
+                                <li class="searchItemStateBlue"><s:text name="usermenu.item.mooc"/></li>
                             </s:else>
 
                         </ul>

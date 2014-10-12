@@ -71,27 +71,7 @@
         <put-attribute name="contentBody" value="/jsp/gogowise/solution/multiVideoSolution.jsp"/>
     </definition>
 
-    <!-- Map related tiles -->
-    <definition name=".LiveMap" extends=".bodyCenter">
-        <put-attribute name="title" value="title.googlemap.LiveMap"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/googlemap/LiveMap.jsp"/>
-    </definition>
-    <definition name=".liveBMap" extends=".bodyCenter">
-        <put-attribute name="title" value="title.googlemap.liveBMap"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/googlemap/liveBMap.jsp"/>
-    </definition>
-    <definition name=".liveBMap2" extends=".mapCenter">
-        <put-attribute name="title" value="title.googlemap.liveBMap"/>
-        <put-attribute name="mapBody" value="/jsp/gogowise/googlemap/liveBMap2.jsp"/>
-    </definition>
-    <definition name=".liveOnMap" extends=".mapCenter">
-        <put-attribute name="title" value="title.googlemap.liveBMap"/>
-        <put-attribute name="mapBody" value="/jsp/gogowise/googlemap/liveOnMap.jsp"/>
-    </definition>
-    <definition name=".liveListOnMap" extends=".mapCenter">
-        <put-attribute name="title" value="title.googlemap.liveBMap"/>
-        <put-attribute name="mapBody" value="/jsp/gogowise/googlemap/liveListOnMap.jsp"/>
-    </definition>
+
 
     <definition name=".initReg" extends=".bodyCenter">
         <put-attribute name="title" value="title.reg"/>
@@ -143,9 +123,7 @@
         <put-attribute name="right" value="/jsp/gogowise/signup.jsp"/>
     </definition>
 
-    <definition name=".blog" extends=".basic">
-        <put-attribute name="right" value="/jsp/gogowise/blog.jsp"/>
-    </definition>
+
 
     <definition name=".competition" extends=".basic">
         <put-attribute name="right" value="/jsp/gogowise/createCompition.jsp"/>
@@ -178,9 +156,6 @@
     <definition name=".partyMessage" template="/jsp/gogowise/partyMessage.jsp">
     </definition>
 
-    <definition name=".listSingUp" extends=".basic">
-        <put-attribute name="right" value="/jsp/gogowise/listSingUp.jsp"/>
-    </definition>
 
     <definition name=".logon" extends=".bodyCenter">
         <put-attribute name="title" value="title.quick.login"/>
@@ -287,9 +262,7 @@
         <put-attribute name="contentLeft" value="/jsp/gogowise/user/followedUserList.jsp"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/user/followedUserListRight.jsp"/>
     </definition>
-    <definition name=".myCompetitionSession" extends=".userCenter">
-        <put-attribute name="contentRight" value="/jsp/gogowise/mySessions.jsp"/>
-    </definition>
+
     <definition name=".personalInfoPhase" extends=".userCenter">
         <put-attribute name="contentRight" value="/jsp/gogowise/personalinfo.jsp"/>
     </definition>
@@ -477,10 +450,7 @@
         <put-attribute name="title" value="title.age.course"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/course/ageClass.jsp"/>
     </definition>
-    <definition name=".livingClass" extends=".userCenter">
-        <put-attribute name="title" value="title.living.course"/>
-        <put-attribute name="contentRight" value="/jsp/gogowise/course/livingClass.jsp"/>
-    </definition>
+
 
     <definition name=".listClass" extends=".basic">
         <put-attribute name="right" value="/jsp/gogowise/listClasses.jsp"/>
@@ -735,13 +705,6 @@
         <put-attribute name="title" value="title.online.interview"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/org/orgInfoUpdate.jsp"/>
     </definition>
-
-    <!-- org course supervise -->
-    <definition name=".courseSupervise" extends=".userCenter">
-        <put-attribute name="title" value="title.online.interview"/>
-        <put-attribute name="contentRight" value="/jsp/gogowise/org/courseSupervise.jsp"/>
-    </definition>
-
     <definition name=".initOrgMeeting" extends=".userCenter">
         <put-attribute name="title" value="org.meeting.page.title"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/org/orgMeeting.jsp"/>
