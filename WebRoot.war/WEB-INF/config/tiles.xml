@@ -59,13 +59,6 @@
         <put-attribute name="mapHeader" value="/jsp/layout/mapHeader.jsp"/>
     </definition>
 
-
-    <definition name=".wwwBodyCenter" template="/jsp/www/layout/layout.jsp">
-        <put-attribute name="top" value="/jsp/www/layout/top.jsp"/>
-        <put-attribute name="footer" value="/jsp/www/layout/footer.jsp"/>
-    </definition>
-
-
     <definition name=".multiVideoSolution" extends=".bodyCenter">
         <put-attribute name="title" value="title.multi.video.solution"/>
         <put-attribute name="contentBody" value="/jsp/gogowise/solution/multiVideoSolution.jsp"/>
@@ -553,10 +546,6 @@
         <!--<put-attribute name="contentBody" value="/jsp/gogowise/course/courseBlog.jsp"/>-->
     </definition>
 
-    <definition name=".orgBlog" extends=".wwwBodyCenter">
-        <put-attribute name="title" value="title.org.blog"/>
-        <put-attribute name="contentBody" value="/jsp/www/org/orgBlog.jsp"/>
-    </definition>
 
     <definition name=".orgMoreTeacher" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.org.blog"/>
@@ -940,6 +929,21 @@
         <put-attribute name="contentBody" value="/jsp/www/FAQ.jsp"/>
     </definition>
 
+
+    <definition name=".wwwBodyCenter" template="/jsp/www/layout/layout.jsp">
+        <put-attribute name="top" value="/jsp/www/layout/top.jsp"/>
+        <put-attribute name="footer" value="/jsp/www/layout/footer.jsp"/>
+    </definition>
+
+    <definition name=".orgBodyTemplate" template="/jsp/www/layout/layout.jsp">
+        <put-attribute name="top" value="/jsp/www/layout/orgTop.jsp"/>
+        <put-attribute name="footer" value="/jsp/www/layout/footer.jsp"/>
+    </definition>
+
+    <definition name=".orgBlog" extends=".orgBodyTemplate">
+        <put-attribute name="title" value="title.org.blog"/>
+        <put-attribute name="contentBody" value="/jsp/www/org/orgBlog.jsp"/>
+    </definition>
 
     <!-- new tiles -->
     <definition name="wwwTemplate" template="/jsp/www/layout/layout.jsp">
