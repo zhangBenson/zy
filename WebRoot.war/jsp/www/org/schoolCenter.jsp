@@ -58,9 +58,9 @@
                         <div class="pull-right">
                             <p class="text-left">
                             <ul class="list-inline">
-                                <li class="searchItemState"><s:property value="%{getText('label.student')}"/>:<s:property value="getStudentsNumByOrgId(id)"/></li>
-                                <li class="searchItemState"><s:property value="%{getText('search.header.course')}"/>:<s:property value="courseDao.findByOrg(id,null).size()"/></li>
-                                <li class="searchItemState"><s:property value="%{getText('course.lecturer')}"/>:<s:property value="organizationTeachers.size()"/></li>
+                                <li class="searchItemState"><s:text name="label.student"/>:<s:property value="getStudentsNumByOrgId(id)"/></li>
+                                <li class="searchItemState"><s:text name="search.header.course"/>:<s:property value="courseDao.findByOrg(id,null).size()"/></li>
+                                <li class="searchItemState"><s:text name="course.lecturer"/>:<s:property value="organizationTeachers.size()"/></li>
                             </ul>
                             </p>
                         </div>

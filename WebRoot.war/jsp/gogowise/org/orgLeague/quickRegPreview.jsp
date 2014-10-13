@@ -98,7 +98,7 @@
             <div class="backAndNext">
                     <%--<form action="" method="post">--%>
         <span class="beforeBN"><input name="" id="clauseCheck" type="checkbox" value=""/>
-        <a href="<%=request.getContextPath()%>/jsp/gogowise/org/orgLeague/orgLeagueClause.html" class="boxy"><s:property value="%{getText('orgleague.info.accept')}"/></a><br/>
+        <a href="<%=request.getContextPath()%>/jsp/gogowise/org/orgLeague/orgLeagueClause.html" class="boxy"><s:text name="orgleague.info.accept"/></a><br/>
         <span class="clauseCheckTip"><s:text name="orgleague.info.acceptClause"/></span></span>
 
 

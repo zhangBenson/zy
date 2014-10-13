@@ -157,12 +157,12 @@
                     </p>
 
                     <p class="inputTips"><input name="checkbox" type="checkbox" value="checked" id="checkbox"/>
-                        <a href="<%=request.getContextPath()%>/jsp/gogowise/Clause.htm" class="boxy"><s:property value="%{getText('read')}"/></a></p>
+                        <a href="<%=request.getContextPath()%>/jsp/gogowise/Clause.htm" class="boxy"><s:text name="read"/></a></p>
                 </div>
 
                 <p class="nextButton"><input type="submit" name="button" id="btn1" onclick="return checkForm();"
                                              value="<s:text name="button.log.in"/>"/> <a
-                        href="initRepassword.html"><span id="forgotPwd" style="display:inline;"><s:property value="%{getText('link.forget.pwd')}"/>？</span></a>
+                        href="initRepassword.html"><span id="forgotPwd" style="display:inline;"><s:text name="link.forget.pwd"/>？</span></a>
                 </p>
             </div>
         </div>

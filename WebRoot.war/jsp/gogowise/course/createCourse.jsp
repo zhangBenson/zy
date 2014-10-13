@@ -79,10 +79,10 @@
                         </div>
                         <ul>
                             <li id="li_1">
-                                <label class="description"><s:property value="%{getText('label.chose.identity')}"/></label>
+                                <label class="description"><s:text name="label.chose.identity"/></label>
 		      <span>
 			       <input id="element_1_1" name="identity" class="element radio" type="radio" value="1"/>
-                   <label class="choice" for="element_1_1"><s:property value="%{getText('label.org.principal')}"/></label>
+                   <label class="choice" for="element_1_1"><s:text name="label.org.principal"/></label>
                    <input id="element_1_2" name="identity" class="element radio" type="radio" value="2"
                           checked="checked"/>
                    <label class="choice" for="element_1_2"><s:text name="label.org.teacher"/></label>
@@ -100,7 +100,7 @@
                     </s:form>
                 </div>
                 <div id="footer">
-                    <s:text name="text.backto"/> <a href="http://www.gogowise.com"><s:property value="%{getText('menu.item.index')}"/></a>
+                    <s:text name="text.backto"/> <a href="http://www.gogowise.com"><s:text name="menu.item.index"/></a>
                 </div>
             </div>
             <img id="bottom" src="images/form/bottom.png" alt="">

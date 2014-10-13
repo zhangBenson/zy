@@ -354,7 +354,7 @@ h6 .seeallclass {
                         <b style="font-size:12px; color: #cc6600; margin-left: 15px; "><s:property value="%{getText('label.tutor.1to'+teachingNum)}"/></b>
                     </s:if>
                     <s:else>
-                        <s:if test="opened"><b style="font-size:12px; color: #cc6600; margin-left: 15px; "><s:property value="%{getText('label.online.class.public')}"/></b></s:if>
+                        <s:if test="opened"><b style="font-size:12px; color: #cc6600; margin-left: 15px; "><s:text name="label.online.class.public"/></b></s:if>
                         <s:else>
                             <b style="font-size:12px; color: #cc6600; margin-left: 15px; "><s:property value="%{getText('label.no.public.1to'+teachingNum)}"/></b>
                         </s:else>
@@ -395,7 +395,7 @@ h6 .seeallclass {
                                                                                 format="%{getText('dateformat')}"/></b>
                     </p>
                 </div>
-                <div class="courseintro"><strong><s:property value="%{getText('label.online.class.introduction')}"/>：</strong><span
+                <div class="courseintro"><strong><s:text name="label.online.class.introduction"/>：</strong><span
                         id="descriptionMsg<s:property value="#idx.index"/>"><s:property value="description"/></span>
                 </div>
                 <div class="classintro">

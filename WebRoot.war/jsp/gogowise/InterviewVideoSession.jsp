@@ -45,7 +45,7 @@
         </s:if>
 
     </script>
-    <h2 style="color:#cc6600;"><s:text name="label.interview.online.content"/>：<s:property value="interview.organization.schoolName"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <s:property value="%{getText('label.interviewer')}"/>：<s:property value="interview.interviewer.nickName"/></h2>
+    <h2 style="color:#cc6600;"><s:text name="label.interview.online.content"/>：<s:property value="interview.organization.schoolName"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <s:text name="label.interviewer"/>：<s:property value="interview.interviewer.nickName"/></h2>
 
     <div style="background-color:#EAEAEA; position: relative; z-index:1;">
         <iframe scrolling=no frameborder="0" src="partyMessage.html" id="messages" name="messages"

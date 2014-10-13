@@ -50,11 +50,11 @@
                                 <s:if test="userStatus == 1">
                                     <a href="javascript:;" onclick="reInviteUser(this);"><s:property value="%{getText(title.org.user.reinvite)}"/></a>&nbsp;
                                     <a href="javascript:;"
-                                       onclick="deleteUser(this,  <s:property value="id"/>);"><s:property value="%{getText('course.class.delete')}"/></a>
+                                       onclick="deleteUser(this,  <s:property value="id"/>);"><s:text name="course.class.delete"/></a>
                                 </s:if>
                                 <s:elseif test="userStatus==3">
                                     <a href="javascript:;"
-                                       onclick="deleteUser(this, <s:property value="id"/>);"><s:property value="%{getText('course.class.delete')}"/></a>
+                                       onclick="deleteUser(this, <s:property value="id"/>);"><s:text name="course.class.delete"/></a>
                                 </s:elseif>
                             </td>
                         </tr>
@@ -78,17 +78,17 @@
             <div class="auth_left_2">
                 <div class="addlist">
                     <div>
-                        <span class="_add_btn" id="add_one_btn"><s:text name="interview.add"/></span>&nbsp;<span><s:property value="%{getText('org.student.one')}"/></span>
-                        <span class="_add_btn" id="add_more_btn"><s:property value="%{getText('interview.add')}"/>&nbsp;</span>
+                        <span class="_add_btn" id="add_one_btn"><s:text name="interview.add"/></span>&nbsp;<span><s:text name="org.student.one"/></span>
+                        <span class="_add_btn" id="add_more_btn"><s:text name="interview.add"/>&nbsp;</span>
                         <input type="text" id="more_user_input"
-                               style="width:50px;height:26px;margin-left:5px;"/>&nbsp;<s:property value="%{getText('org.student.unit')}"/>&nbsp;
+                               style="width:50px;height:26px;margin-left:5px;"/>&nbsp;<s:text name="org.student.unit"/>&nbsp;
                         <span id="more_user_input_msg" style="color:red;"></span>
                     </div>
                     <table>
                         <tr class="tittle">
                             <td><span class="option_tittle"><s:text name="email"/></span><span
                                     class="authorization_input_msg input_msg"></span></td>
-                            <td><span class="option_tittle"><s:property value="%{getText('label.realname')}"/></span><span
+                            <td><span class="option_tittle"><s:text name="label.realname"/></span><span
                                     class="authorization_realName_input_msg input_msg"></span></td>
                             <td></td>
                         </tr>

@@ -20,8 +20,8 @@
     <p class="desc"><span class="big"><s:property value="%{getText('index.not.need.install.soft')}"/></span><br/><br/><s:property value="%{getText('index.first.page.intro')}"/></p>
 
     <p class="handle">
-        <a class="handle_1" href="createCourseAllInOne.html"><s:property value="%{getText('course.square.be.teacher')}"/></a>
-        <a class="handle_2" href="courseSelection.html"><s:property value="%{getText('course.square.be.student')}"/></a>
+        <a class="handle_1" href="createCourseAllInOne.html"><s:text name="course.square.be.teacher"/></a>
+        <a class="handle_2" href="courseSelection.html"><s:text name="course.square.be.student"/></a>
     </p>
 </div>
 <div class="classify sc_d">
@@ -30,27 +30,27 @@
         <div class="lead_img"></div>
     </h3>
     <ul class="switch">
-        <li class="stand_out" onclick="getCoursesDivideByType(0,this);"><s:property value="%{getText('search.header.all')}"/></li>
-        <li onclick="getCoursesDivideByType(1,this);"><s:property value="%{getText('course.square.course.type.language')}"/></li>
-        <li onclick="getCoursesDivideByType(2,this);"><s:property value="%{getText('course.square.course.type.trip')}"/></li>
-        <li onclick="getCoursesDivideByType(3,this);"><s:property value="%{getText('course.square.course.type.carreer')}"/></li>
-        <li onclick="getCoursesDivideByType(4,this);"><s:property value="%{getText('course.square.course.type.science')}"/></li>
-        <li onclick="getCoursesDivideByType(5,this);"><s:property value="%{getText('course.square.course.type.abroad')}"/></li>
-        <li onclick="getCoursesDivideByType(6,this);"><s:property value="%{getText('course.square.course.type.sociaty')}"/></li>
+        <li class="stand_out" onclick="getCoursesDivideByType(0,this);"><s:text name="search.header.all"/></li>
+        <li onclick="getCoursesDivideByType(1,this);"><s:text name="course.square.course.type.language"/></li>
+        <li onclick="getCoursesDivideByType(2,this);"><s:text name="course.square.course.type.trip"/></li>
+        <li onclick="getCoursesDivideByType(3,this);"><s:text name="course.square.course.type.carreer"/></li>
+        <li onclick="getCoursesDivideByType(4,this);"><s:text name="course.square.course.type.science"/></li>
+        <li onclick="getCoursesDivideByType(5,this);"><s:text name="course.square.course.type.abroad"/></li>
+        <li onclick="getCoursesDivideByType(6,this);"><s:text name="course.square.course.type.sociaty"/></li>
     </ul>
     <div class="class" id="courseInTypes">
         <ul class="left">
             <s:iterator value="coursesInTypesLeft">
-                <li><a href="voaCourseBlog.html?course.id=<s:property value="id"/>" class="courseInTypes_name_size"><s:property value="name"/></a><span class="price"><s:property value="charges"/><s:property value="%{getText('label.zhibi.true')}"/></span><span class="date"><s:date name="startDate"
-                                                                                                                                                                                                                                                                                         format="%{getText('dateformat')}"/></span>
+                <li><a href="voaCourseBlog.html?course.id=<s:property value="id"/>" class="courseInTypes_name_size"><s:property value="name"/></a><span class="price"><s:property value="charges"/><s:text name="label.zhibi.true"/></span><span class="date"><s:date name="startDate"
+                                                                                                                                                                                                                                                                      format="%{getText('dateformat')}"/></span>
                 </li>
             </s:iterator>
         </ul>
         <div class="split"></div>
         <ul class="right">
             <s:iterator value="coursesInTypesRight">
-                <li><a href="voaCourseBlog.html?course.id=<s:property value="id"/>" class="courseInTypes_name_size"><s:property value="name"/></a><span class="price"><s:property value="charges"/><s:property value="%{getText('label.zhibi.true')}"/></span><span class="date"><s:date name="startDate"
-                                                                                                                                                                                                                                                                                         format="%{getText('dateformat')}"/></span>
+                <li><a href="voaCourseBlog.html?course.id=<s:property value="id"/>" class="courseInTypes_name_size"><s:property value="name"/></a><span class="price"><s:property value="charges"/><s:text name="label.zhibi.true"/></span><span class="date"><s:date name="startDate"
+                                                                                                                                                                                                                                                                      format="%{getText('dateformat')}"/></span>
                 </li>
             </s:iterator>
         </ul>
@@ -89,7 +89,7 @@
                         <div class="date_reserve">
                                 <span class="date"><s:date name="classOnTheCorner.date"
                                                            format="%{getText('dateformat.forclass')}"/></span>
-                            <a href="initCourseconfirm.html?course.id=<s:property value="course.id"/>"><s:property value="%{getText('user.info.identity.finish.reg')}"/></a>
+                            <a href="initCourseconfirm.html?course.id=<s:property value="course.id"/>"><s:text name="user.info.identity.finish.reg"/></a>
                         </div>
                         <div class="tc">
                             <a class="title" href="voaCourseBlog.html?course.id=<s:property value="id"/>"
@@ -177,13 +177,13 @@
                            title="<s:property value="nickName"/>"><s:property value="nickName"/></a>
                         <s:if test="!userFocused">
                             <a class="follow" href="javascript:;"
-                               onclick="becomeFans(this,<s:property value="id"/>);"><s:property value="%{getText('user.add.focus')}"/></a>
+                               onclick="becomeFans(this,<s:property value="id"/>);"><s:text name="user.add.focus"/></a>
                         </s:if>
                         <s:else>
                             <a class="follow" href="javascript:;"
-                               onclick="becomeFans(this,<s:property value="id"/>);"><s:property value="%{getText('user.add.focused')}"/></a>
+                               onclick="becomeFans(this,<s:property value="id"/>);"><s:text name="user.add.focused"/></a>
                         </s:else>
-                        <span><s:property value="fansNum"/><s:property value="%{getText('the.num.of.focus.on.live.channel')}"/></span>
+                        <span><s:property value="fansNum"/><s:text name="the.num.of.focus.on.live.channel"/></span>
                     </li>
                 </s:iterator>
             </ul>

@@ -68,13 +68,13 @@
                 </p>
 
                 <p class="time">
-                    <a class="manage_course" href="javascript:;"><s:property value="%{getText('course.cancel.reg')}"/></a>
+                    <a class="manage_course" href="javascript:;"><s:text name="course.cancel.reg"/></a>
                     <a class="manage_course" id="courseRecommend<s:property value="#idx.index"/>"
-                       href="#recommdatepanel<s:property value="#idx.index"/>"><s:property value="%{getText('label.recommend.course')}"/></a>
+                       href="#recommdatepanel<s:property value="#idx.index"/>"><s:text name="label.recommend.course"/></a>
                         <%--<a class="manage_course" id="courseNewEvents<s:property value="#idx.index"/>"  href="#course_newEvent<s:property value="#idx.index"/>"><s:text name="add.course.new.event.in"/></a>--%>
                     <a class="manage_course" <%--id="courseNewEvents<s:property value="#idx.index"/>" --%>
-                       href="initAddCourseEvent.html?course.id=5"><s:property value="%{getText('add.course.new.event.in')}"/></a>
-                    <a href="myCourseQuestionResult.html?course.id=<s:property value="id"/>"><s:property value="%{getText('course.courseQuestionResult')}"/></a>
+                       href="initAddCourseEvent.html?course.id=5"><s:text name="add.course.new.event.in"/></a>
+                    <a href="myCourseQuestionResult.html?course.id=<s:property value="id"/>"><s:text name="course.courseQuestionResult"/></a>
                 </p>
             </div>
 
@@ -129,8 +129,8 @@
                             </div>
                             <div class="handle">
                                 <a href="#fancybox" class="submit"
-                                   onclick="submitCourseNewEvent(<s:property value="#idx.index"/>);"><s:property value="%{getText('term.info.save')}"/></a>
-                                <a href="javascript:;" class="cancel"><s:property value="%{getText('term.info.reset')}"/></a>
+                                   onclick="submitCourseNewEvent(<s:property value="#idx.index"/>);"><s:text name="term.info.save"/></a>
+                                <a href="javascript:;" class="cancel"><s:text name="term.info.reset"/></a>
                             </div>
                         </div>
                     </li>
@@ -154,16 +154,16 @@
                             <tr>
                                 <td></td>
                                 <td class="add_friend_email"
-                                    onclick="addFriendEmail(<s:property value="#idx.index"/>);"><s:property value="%{getText('button.add.email.friend')}"/></td>
+                                    onclick="addFriendEmail(<s:property value="#idx.index"/>);"><s:text name="button.add.email.friend"/></td>
                             </tr>
                             <tr>
-                                <td width="80px" align="right" valign="top"><s:property value="%{getText('label.email.friend')}"/>&nbsp;</td>
+                                <td width="80px" align="right" valign="top"><s:text name="label.email.friend"/>&nbsp;</td>
                                 <td><input class="recommdate_email" value="" type="text" name="emails"
                                            onblur="checkEmail(this,<s:property value="#idx.index"/>);"/>
                             </tr>
                             <tbody class="added_line" id="added_line<s:property value="#idx.index"/>"></tbody>
                             <tr>
-                                <td align="right" valign="top"><s:property value="%{getText('button.message')}"/>&nbsp;</td>
+                                <td align="right" valign="top"><s:text name="button.message"/>&nbsp;</td>
                                 <td><s:textarea cssClass="recommdate_message"
                                                 placeholder="%{getText('message.course.wonderful')}"
                                                 name="comments"></s:textarea></td>
@@ -173,7 +173,7 @@
                                 <td><input class="recommdate_submit" type="button"
                                            onclick="checkCourseRecommend(<s:property value="#idx.index"/>);"
                                            value="<s:text name="button.submit"/>"/>&nbsp;&nbsp;<span
-                                        class="recommdate_close recommdatebtn" onclick="$.fancybox.close();"><s:property value="%{getText('button.close')}"/></span>&nbsp;&nbsp;
+                                        class="recommdate_close recommdatebtn" onclick="$.fancybox.close();"><s:text name="button.close"/></span>&nbsp;&nbsp;
                                     <div id="recommend_message<s:property value="#idx.index"/>"></div>
                                 </td>
                             </tr>

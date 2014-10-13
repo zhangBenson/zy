@@ -13,7 +13,7 @@
         <%--<h2 class="sinalogo-nav logo-1192"><a href="http://hunan.sina.com.cn/" target="_blank">新浪湖南</a></h2>--%>
         <p class="bnav">
             <a href="javascript:;"><s:text name="gogowise.news"/></a><i>&gt;</i>
-            <a href="javascript:;"><s:text name="gogowise.announce"/></a><i>&gt;</i><s:property value="%{getText('gogowise.news.content')}"/>
+            <a href="javascript:;"><s:text name="gogowise.announce"/></a><i>&gt;</i><s:text name="gogowise.news.content"/>
         </p>
     </div>
 </div>
@@ -41,7 +41,7 @@
 
         <div class="list_share fl">
             <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare" data="">
-                <span style="float:left;line-height: 30px;margin-left: 10px;"><s:property value="%{getText('label.shared.with')}"/>：</span>
+                <span style="float:left;line-height: 30px;margin-left: 10px;"><s:text name="label.shared.with"/>：</span>
                 <a class="bds_qzone">QQ空间</a>
                 <a class="bds_tsina">新浪微博</a>
                 <a class="bds_tqq">腾讯微博</a>
@@ -79,7 +79,7 @@
     <div class="side fr">
 
         <div class="sdiv sdivt3">
-            <h3 class="stit"><strong><a target="_blank" href="javascript:;"><s:property value="%{getText('gogowise.announce')}"/></a></strong></h3>
+            <h3 class="stit"><strong><a target="_blank" href="javascript:;"><s:text name="gogowise.announce"/></a></strong></h3>
             <ul class="everyday-list">
                 <s:iterator value="goGoWiseAnnounces">
                     <li><a href="announceRead.html?goGoWiseAnnounce.id=<s:property value="id"/>"
@@ -89,7 +89,7 @@
         </div>
 
         <div class="sdiv sdivt3">
-            <h3 class="stit"><strong><a target="_blank" href="javascript:;"><s:property value="%{getText('gogowise.live.trailer')}"/></a></strong></h3>
+            <h3 class="stit"><strong><a target="_blank" href="javascript:;"><s:text name="gogowise.live.trailer"/></a></strong></h3>
             <ul class="everyday-list">
                 <s:iterator value="liveTrailers">
                     <li><a href="liveTrailerRead.html?liveTrailer.id=<s:property value="id"/>"
@@ -99,7 +99,7 @@
         </div>
 
         <div class="sdiv sdivt3">
-            <h3 class="stit"><strong><a target="_blank" href="javascript:;"><s:property value="%{getText('course.square.of.new.events')}"/></a></strong></h3>
+            <h3 class="stit"><strong><a target="_blank" href="javascript:;"><s:text name="course.square.of.new.events"/></a></strong></h3>
             <ul class="everyday-list">
                 <s:iterator value="courseNewEvents">
                     <li><a href="courseEventRead.html?courseNewEvent.id=<s:property value="id"/>"
@@ -109,7 +109,7 @@
         </div>
 
         <div class="sdiv sdivt3">
-            <h3 class="stit"><strong><a target="_blank" href="javascript:;"><s:property value="%{getText('show.square.new.events')}"/></a></strong></h3>
+            <h3 class="stit"><strong><a target="_blank" href="javascript:;"><s:text name="show.square.new.events"/></a></strong></h3>
             <ul class="everyday-list">
                 <s:iterator value="showNewEvents">
                     <li><a href="showEventRead.html?showNewEvent.id=<s:property value="id"/>"
@@ -121,8 +121,8 @@
 
 
         <div class="sdiv">
-            <h3 class="stit"><strong><a href="javascript:;"><s:property value="%{getText('news.center.course.recommend')}"/></a></strong><span><a href="javascript:;"
-                                                                                                                                                  class="grey"><s:property value="%{getText('others.more')}"/>&gt;&gt;</a></span></h3>
+            <h3 class="stit"><strong><a href="javascript:;"><s:text name="news.center.course.recommend"/></a></strong><span><a href="javascript:;"
+                                                                                                                               class="grey"><s:text name="others.more"/>&gt;&gt;</a></span></h3>
             <ul class="recom-list clear">
                 <s:iterator value="courses">
                     <li>

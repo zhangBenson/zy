@@ -25,7 +25,7 @@
     </div>
     <div class="udb_1_4" id="focus_center">
         <%--<s:if test="!focused">--%>
-        <a href="javascript:;" id="focus_btn" onclick="addFocus(<s:property value="user.id"/>);"><s:property value="%{getText('onlive.focus.on')}"/></a>
+        <a href="javascript:;" id="focus_btn" onclick="addFocus(<s:property value="user.id"/>);"><s:text name="onlive.focus.on"/></a>
         <%--</s:if>--%>
     </div>
 </div>
@@ -240,17 +240,17 @@
                                                          format="%{getText('global.display.datetime')}"/></span>
                             <s:if test="user.id == #session.userID && owner.id != #session.userID">
                                 <span class="span_3"><a onclick="replyToComment('<s:property value="owner.nickName"/>')"
-                                                        href="#message_area_tip"><s:property value="%{getText('blog.comments.reply')}"/></a></span>
+                                                        href="#message_area_tip"><s:text name="blog.comments.reply"/></a></span>
                                 <span class="span_3"><a onclick="deleteThisComment(this,<s:property value="id"/>)"
-                                                        href="#message_area_tip"><s:property value="%{getText('blog.comments.delete')}"/></a></span>
+                                                        href="#message_area_tip"><s:text name="blog.comments.delete"/></a></span>
                             </s:if>
                             <s:elseif test="user.id != #session.userID && owner.id != #session.userID">
                                 <span class="span_3"><a onclick="replyToComment('<s:property value="owner.nickName"/>')"
-                                                        href="#message_area_tip"><s:property value="%{getText('blog.comments.reply')}"/></a></span>
+                                                        href="#message_area_tip"><s:text name="blog.comments.reply"/></a></span>
                             </s:elseif>
                             <s:else>
                                 <span class="span_3"><a onclick="deleteThisComment(this,<s:property value="id"/>)"
-                                                        href="#message_area_tip"><s:property value="%{getText('blog.comments.delete')}"/></a></span>
+                                                        href="#message_area_tip"><s:text name="blog.comments.delete"/></a></span>
                             </s:else>
                         </li>
                     </ul>
@@ -259,10 +259,10 @@
             <li class="li_out">
                 <s:if test="commentsNum != 0">
                     <s:if test="!commentsNumOverflow">
-                        <a class="more_or_close" onclick="getMoreComments();" href="#message_area_tip"><s:property value="%{getText('blog.comments.more.result')}"/>&gt;&gt;</a>
+                        <a class="more_or_close" onclick="getMoreComments();" href="#message_area_tip"><s:text name="blog.comments.more.result"/>&gt;&gt;</a>
                     </s:if>
                     <s:else>
-                        <a class="more_or_close" onclick="rollBack();" href="#message_area_tip">&lt;&lt;<s:property value="%{getText('blog.comments.rollBack')}"/></a>
+                        <a class="more_or_close" onclick="rollBack();" href="#message_area_tip">&lt;&lt;<s:text name="blog.comments.rollBack"/></a>
                     </s:else>
                 </s:if>
             </li>

@@ -163,7 +163,7 @@
         <div id="regleft">
                 <%--<div id="regtitle"><s:text name="CreateUser"/></div>--%>
             <div id="regtitle2"><s:text name="CreateUser"/></div>
-            <div id="links"><s:text name="Registed"/><a href="#" onclick="goToLogon()"><s:property value="%{getText('Login')}"/></a></div>
+            <div id="links"><s:text name="Registed"/><a href="#" onclick="goToLogon()"><s:text name="Login"/></a></div>
         </div>
         <div id="regright">
             <div id="regrightCont">
@@ -201,7 +201,7 @@
 
                 <div class="option_tittle">
                     <input name="checkbox" type="checkbox" value="checked" id="checkbox"/>
-                    <a href="<%=request.getContextPath()%>/jsp/gogowise/Clause.htm" class="boxy"><s:property value="%{getText('read')}"/></a>
+                    <a href="<%=request.getContextPath()%>/jsp/gogowise/Clause.htm" class="boxy"><s:text name="read"/></a>
                 </div>
                 <span class="errorinfo" id="yxcheckbox">&nbsp;</span>
                 </p>

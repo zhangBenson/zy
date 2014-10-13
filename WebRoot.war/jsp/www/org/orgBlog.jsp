@@ -69,7 +69,7 @@
 
             <p class="text-right">
                 <s:if test="moocs.size()>5">
-                    <a href="orgMoreMooc.html?org.id=<s:property value="org.id"/>"><s:property value="%{getText('others.more')}"/></a>
+                    <a href="orgMoreMooc.html?org.id=<s:property value="org.id"/>"><s:text name="others.more"/></a>
                 </s:if>
             </p>
         </div>
@@ -118,7 +118,7 @@
             <s:form theme="css_xhtml" name="commentsForm" method="post" validate="true">
                 <textarea id="message_textarea" class="form-control" rows="3"></textarea>
                 <br/>
-                <a href="javascript:;" class="btn btn-primary btn-lg btn-block" id="message_submit_btn"><s:property value="%{getText('blog.comments.submit')}"/></a>
+                <a href="javascript:;" class="btn btn-primary btn-lg btn-block" id="message_submit_btn"><s:text name="blog.comments.submit"/></a>
             </s:form>
         </div>
     </div>
@@ -272,7 +272,7 @@
             </s:iterator>
         </s:else>
 
-        <button type="button" class="btn btn-primary btn-block"><s:property value="%{getText('button.enter')}"/></button>
+        <button type="button" class="btn btn-primary btn-block"><s:text name="button.enter"/></button>
     </div>
 </div>
 

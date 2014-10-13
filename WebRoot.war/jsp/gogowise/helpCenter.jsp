@@ -5,7 +5,7 @@
 <div class="content_container">
     <div class="content_body">
         <ul>
-            <li class="help_question" onclick="showAnswer(this);"><span class="num">1</span><s:property value="%{getText('faq1')}"/></li>
+            <li class="help_question" onclick="showAnswer(this);"><span class="num">1</span><s:text name="faq1"/></li>
             <li class="help_answer">
                 <div class="pic_1"></div>
                 <div class="pic_2">
@@ -20,7 +20,7 @@
                 </div>
                 <div class="pic_3"></div>
             </li>
-            <li class="help_question" onclick="showAnswer(this);"><span class="num">2</span><s:property value="%{getText('faq2')}"/></li>
+            <li class="help_question" onclick="showAnswer(this);"><span class="num">2</span><s:text name="faq2"/></li>
             <li class="help_answer">
                 <div class="pic_1"></div>
                 <div class="pic_2">
@@ -35,7 +35,7 @@
                 </div>
                 <div class="pic_3"></div>
             </li>
-            <li class="help_question" onclick="showAnswer(this);"><span class="num">3</span><s:property value="%{getText('faq3')}"/></li>
+            <li class="help_question" onclick="showAnswer(this);"><span class="num">3</span><s:text name="faq3"/></li>
             <li class="help_answer">
                 <div class="pic_1"></div>
                 <div class="pic_2">
@@ -47,7 +47,7 @@
                 </div>
                 <div class="pic_3"></div>
             </li>
-            <li class="help_question" onclick="showAnswer(this);"><span class="num">4</span><s:property value="%{getText('faq4')}"/></li>
+            <li class="help_question" onclick="showAnswer(this);"><span class="num">4</span><s:text name="faq4"/></li>
             <li class="help_answer">
                 <div class="pic_1"></div>
                 <div class="pic_2">
@@ -73,7 +73,7 @@
             <%--</div>--%>
             <%--<div class="pic_3"></div>--%>
             <%--</li>--%>
-            <li class="help_question" onclick="showAnswer(this);"><span class="num">5</span><s:property value="%{getText('faq5')}"/></li>
+            <li class="help_question" onclick="showAnswer(this);"><span class="num">5</span><s:text name="faq5"/></li>
             <li class="help_answer">
                 <div class="pic_1"></div>
                 <div class="pic_2">

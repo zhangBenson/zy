@@ -139,8 +139,8 @@
 
             <div id="links">
                 <br/>
-                <span class="no_account"><s:property value="%{getText('user.info.identity.confirm.no.account')}"/></span>
-                <span id="links1" class="linksClick" onclick="goToReg();"><s:property value="%{getText('user.info.identity.confirm.register.now')}"/></span>
+                <span class="no_account"><s:text name="user.info.identity.confirm.no.account"/></span>
+                <span id="links1" class="linksClick" onclick="goToReg();"><s:text name="user.info.identity.confirm.register.now"/></span>
             </div>
         </div>
         <div id="regright">

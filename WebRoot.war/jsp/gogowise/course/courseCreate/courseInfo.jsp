@@ -111,7 +111,7 @@
             <span class="item"><s:text name="label.online.class.tutor.price"/></span>
             <s:hidden name="course.consumptionType" value="true"/>
             <s:textfield cssClass="short_text_field" id="course_charges" name="course.charges"
-                         type="text" readonly="false"/>&nbsp;<s:property value="%{getText('label.zhibi.true')}"/>
+                         type="text" readonly="false"/>&nbsp;<s:text name="label.zhibi.true"/>
             <span class="course_charges_msg tip_words">*</span>
         </li>
         <li>

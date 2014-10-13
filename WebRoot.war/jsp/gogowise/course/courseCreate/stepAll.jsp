@@ -64,7 +64,7 @@
     <div class="content_clause">
         <input name="checkbox" type="checkbox" id="clauseCheckbox"/>
         <label for="clauseCheckbox"><s:text name="course.creation.document.accept"/></label>
-        <a href="createCourseClause.html" id="course_creation_clause"><s:property value="%{getText('course.creation.document.rule')}"/></a><br/>
+        <a href="createCourseClause.html" id="course_creation_clause"><s:text name="course.creation.document.rule"/></a><br/>
         <span id="checkboxMsg" class="tip_words"></span>
     </div>
 

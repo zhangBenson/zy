@@ -45,13 +45,13 @@
                     </li>
                     <li>
                         <div class="nameBF">
-                            <div class="option_tittle"><s:property value="%{getText('orgleague.info.accountName')}"/></div>
+                            <div class="option_tittle"><s:text name="orgleague.info.accountName"/></div>
                             <p id="accountNameWarn" style="color: red; display: inline;"></p></div>
                         <s:textfield id="thirdStepAccount" name="org.depositName" cssClass="inputField"/>
                     </li>
                     <li>
                         <div class="nameBF">
-                            <div class="option_tittle"><s:property value="%{getText('orgleague.info.accountNo')}"/></div>
+                            <div class="option_tittle"><s:text name="orgleague.info.accountNo"/></div>
                             <p id="accountNoWarn" style="color: red; display: inline;"></p></div>
                         <s:textfield id="thirdStepAccountNo" cssClass="inputField" name="org.depositBankAccount"/>
                     </li>
@@ -78,7 +78,7 @@
                     </li>
                     <li class="fileUploadDiv">
                         <div class="photoTitle">
-                            <div class="option_tittle"><s:property value="%{getText('orgleague.info.cetification')}"/></div>
+                            <div class="option_tittle"><s:text name="orgleague.info.cetification"/></div>
                                 <%--<s:file name="upload1"/>--%>
                             <div class="file_upload"><s:file name="fileupload2" id="fileupload2"/></div>
                             <div class="file_upload_msg2 input_msg"></div>
@@ -92,7 +92,7 @@
                     <li class="headTittle"><s:text name="orgleague.info.contactMethod"/></li>
                     <li>
                         <div class="nameBF">
-                            <div class="option_tittle"><s:property value="%{getText('orgleague.info.officerName')}"/></div>
+                            <div class="option_tittle"><s:text name="orgleague.info.officerName"/></div>
                             <p id="thirdStepOfficerNameWarn" style="color: red;display:inline;"></p></div>
                         <s:textfield id="thirdStepOfficerName" name="org.contactName"
                                      cssClass="contactName thirdRightInput"/>

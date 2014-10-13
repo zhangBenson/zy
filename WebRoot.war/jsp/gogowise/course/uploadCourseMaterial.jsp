@@ -53,8 +53,8 @@
                     <%--</td>--%>
                 <td><s:property value="description"/></td>
                 <td>
-                    <a href="<s:property value="fullPath"/>" target="_blank"><s:property value="%{getText('course.resource.download')}"/></a> &nbsp;&nbsp;&nbsp;
-                    <a href="javascript:;" onclick="deleteMaterial(this,<s:property value="id"/>);"><s:property value="%{getText('course.resource.del')}"/></a>
+                    <a href="<s:property value="fullPath"/>" target="_blank"><s:text name="course.resource.download"/></a> &nbsp;&nbsp;&nbsp;
+                    <a href="javascript:;" onclick="deleteMaterial(this,<s:property value="id"/>);"><s:text name="course.resource.del"/></a>
                 </td>
             </tr>
         </s:iterator>

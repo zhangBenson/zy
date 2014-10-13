@@ -284,14 +284,14 @@ img.frame1bottom {
                             test="%{course.personalTeacher == null}"><s:property value="%{4 * course.classes.size}"/>
                         <s:if test="course.consumptionType"><s:property value="%{getText('label.zhibi.true')}"/></s:if><s:else><s:property value="%{getText('label.course.zhiquan')}"/></s:else></s:if><s:else><s:property value="course.charges"/><s:if test="course.consumptionType"><s:property value="%{getText('label.zhibi.true')}"/> </s:if><s:else><s:property value="%{getText('label.course.zhiquan')}"/></s:else></s:else></b></p>
 
-                    <p><s:text name="label.online.class.totalperods"/>：<b><s:property value="course.totalHours"/>&nbsp;<s:property value="%{getText('label.online.class.perods')}"/></b></p>
+                    <p><s:text name="label.online.class.totalperods"/>：<b><s:property value="course.totalHours"/>&nbsp;<s:text name="label.online.class.perods"/></b></p>
                 </div>
                 <div class="courseinfo">
                     <p><s:text name="label.forcast.enrollment"/>：<b><s:property value="course.observationNum"/></b>人</p>
 
                     <p><s:text name="label.forcast.subscriber"/>：<b><s:property value="course.buyAgesNum"/></b>人</p>
                 </div>
-                <div class="courseintro"><strong><s:property value="%{getText('label.online.class.introduction')}"/>：</strong><s:property value="course.description"/></div>
+                <div class="courseintro"><strong><s:text name="label.online.class.introduction"/>：</strong><s:property value="course.description"/></div>
             </div>
 
             <div class="info_class">
@@ -351,7 +351,7 @@ img.frame1bottom {
                 <p class="p1"><s:text name="text.question"/></p>
 
                 <div id="redirectto"><strong id="time">10</strong><s:text name="label.turn"/>
-                    <a href="forcastClass.html" id="tiaozhuan"><b><s:property value="%{getText('online.class.avigation.mycourse')}"/></b></a>
+                    <a href="forcastClass.html" id="tiaozhuan"><b><s:text name="online.class.avigation.mycourse"/></b></a>
                     <s:text name="label.page"/>
                 </div>
             </div>

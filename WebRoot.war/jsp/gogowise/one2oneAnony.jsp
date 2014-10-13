@@ -36,7 +36,7 @@
         }
     </script>
 
-    <h2 style="color:#cc6600;"><s:text name="label.online.class.coursename"/>：<s:property value="courseClass.course.name"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <s:property value="%{getText('label.forcast.lecturer')}"/>：<s:property value="courseClass.course.teacher.nickName"/></h2>
+    <h2 style="color:#cc6600;"><s:text name="label.online.class.coursename"/>：<s:property value="courseClass.course.name"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <s:text name="label.forcast.lecturer"/>：<s:property value="courseClass.course.teacher.nickName"/></h2>
 
     <div style="background-color:#EAEAEA; position: relative; z-index:1;">
         <iframe scrolling=no frameborder="0" src="partyMessage.html" id="messages" name="messages"

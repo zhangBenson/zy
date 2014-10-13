@@ -94,7 +94,7 @@
 
                 <p class="list-group-item-text"><s:text name="courses.info.lecturer"/>:Name</p>
             </a>
-            <button type="button" class="btn btn-primary btn-xs btn-block"><s:property value="%{getText('personalcenter.hall.view.school.video')}"/><%--View School Video--%></button>
+            <button type="button" class="btn btn-primary btn-xs btn-block"><s:text name="personalcenter.hall.view.school.video"/><%--View School Video--%></button>
             <div id="page">
                 <ul class="pagination">
                     <li>
@@ -163,7 +163,7 @@
             </a>
 
         </div>
-        <button type="button" class="btn btn-success btn-lg btn-block"><s:property value="%{getText('button.enter')}"/><%--Booking--%></button>
+        <button type="button" class="btn btn-success btn-lg btn-block"><s:text name="button.enter"/><%--Booking--%></button>
         <div id="page1">
             <ul class="pagination">
                 <li>
@@ -270,7 +270,7 @@
                         </div>
                     </div>
                     <a class="btn btn-success btn-lg btn-block"
-                       href="javascript:getVideoUrl('<s:property value="classOnTheCorner.id"/>','<s:property value="teachingNum"/>');"><s:property value="%{getText('button.start.class')}"/></a>
+                       href="javascript:getVideoUrl('<s:property value="classOnTheCorner.id"/>','<s:property value="teachingNum"/>');"><s:text name="button.start.class"/></a>
                 </s:if>
             </s:iterator>
         </s:if>
@@ -466,7 +466,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel1"><s:property value="%{getText('title.newest.notifications')}"/></h4>
+                <h4 class="modal-title" id="myModalLabel1"><s:text name="title.newest.notifications"/></h4>
             </div>
             <div class="modal-body">
                 <div>
@@ -499,7 +499,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal"><s:property value="%{getText('button.ok')}"/></button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal"><s:text name="button.ok"/></button>
             </div>
         </div>
     </div>
@@ -511,7 +511,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel"><s:property value="%{getText('usermenu.item.mycourses')}"/></h4>
+                <h4 class="modal-title" id="myModalLabel"><s:text name="usermenu.item.mycourses"/></h4>
             </div>
             <div class="modal-body">
                 <div class="courseItem">
@@ -573,7 +573,7 @@
                                     </div>
                                 </div>
                                 <a class="btn btn-success btn-xs btn-block"
-                                   href="javascript:getVideoUrl('<s:property value="classOnTheCorner.id"/>','<s:property value="teachingNum"/>');"><s:property value="%{getText('button.start.class')}"/></a>
+                                   href="javascript:getVideoUrl('<s:property value="classOnTheCorner.id"/>','<s:property value="teachingNum"/>');"><s:text name="button.start.class"/></a>
                                 <%-- <button type="button" class="btn btn-success btn-xs btn-block">View Course</button> --%>
                             </s:if>
                         </s:iterator>
@@ -584,7 +584,7 @@
                 </s:if>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal"><s:property value="%{getText('button.ok')}"/></button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal"><s:text name="button.ok"/></button>
             </div>
         </div>
     </div>

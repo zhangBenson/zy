@@ -25,7 +25,7 @@
             </div>
 
             <div class="thickline"></div>
-            <h3 class="courseSubhead"><s:property value="%{getText('user.responsible.course')}"/><%--Responsible Course--%></h3>
+            <h3 class="courseSubhead"><s:text name="user.responsible.course"/><%--Responsible Course--%></h3>
 
             <div id="schoolcurriculum">
 

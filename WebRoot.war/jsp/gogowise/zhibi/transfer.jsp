@@ -36,7 +36,7 @@
                 <tr>
                     <td><s:text name="gogowise.zhibi.transfer.account"/></td>
                     <td><s:textfield name="receiver.email" id="toEmail"/></td>
-                    <td><s:property value="%{getText('gogowise.zhibi.transfer.receiver.email')}"/>&nbsp;&nbsp;&nbsp;<span
+                    <td><s:text name="gogowise.zhibi.transfer.receiver.email"/>&nbsp;&nbsp;&nbsp;<span
                             class="tip_words" id="toEmail_tip"></span></td>
                 </tr>
             </table>

@@ -330,24 +330,24 @@ h6 .seeallclass {
                 <h6><s:property value="name"/>
                     <s:if test="personalTeacher!=null">
                         <s:if test="teachingNum==1"><b
-                                style="font-size:12px; color: #cc6600; margin-left: 15px; "><s:property value="%{getText('label.tutor.1to1')}"/></b></s:if>
+                                style="font-size:12px; color: #cc6600; margin-left: 15px; "><s:text name="label.tutor.1to1"/></b></s:if>
                         <s:if test="teachingNum==2"><b
-                                style="font-size:12px; color: #cc6600; margin-left: 15px; "><s:property value="%{getText('label.tutor.1to2')}"/></b></s:if>
+                                style="font-size:12px; color: #cc6600; margin-left: 15px; "><s:text name="label.tutor.1to2"/></b></s:if>
                         <s:if test="teachingNum==3"><b
-                                style="font-size:12px; color: #cc6600; margin-left: 15px; "><s:property value="%{getText('label.tutor.1to3')}"/></b></s:if>
+                                style="font-size:12px; color: #cc6600; margin-left: 15px; "><s:text name="label.tutor.1to3"/></b></s:if>
                         <s:if test="teachingNum==4"><b
-                                style="font-size:12px; color: #cc6600; margin-left: 15px; "><s:property value="%{getText('label.tutor.1tomany')}"/></b></s:if>
+                                style="font-size:12px; color: #cc6600; margin-left: 15px; "><s:text name="label.tutor.1tomany"/></b></s:if>
                     </s:if>
 
                     <s:else>
-                        <s:if test="opened"><b style="font-size:12px; color: #cc6600; margin-left: 15px; "><s:property value="%{getText('label.online.class.public')}"/></b></s:if>
+                        <s:if test="opened"><b style="font-size:12px; color: #cc6600; margin-left: 15px; "><s:text name="label.online.class.public"/></b></s:if>
                         <s:else>
                             <s:if test="teachingNum==1"><b
-                                    style="font-size:12px; color: #cc6600; margin-left: 15px; "><s:property value="%{getText('label.no.public.1to1')}"/></b></s:if>
+                                    style="font-size:12px; color: #cc6600; margin-left: 15px; "><s:text name="label.no.public.1to1"/></b></s:if>
                             <s:if test="teachingNum==2"><b
-                                    style="font-size:12px; color: #cc6600; margin-left: 15px; "><s:property value="%{getText('label.no.public.1to2')}"/></b></s:if>
+                                    style="font-size:12px; color: #cc6600; margin-left: 15px; "><s:text name="label.no.public.1to2"/></b></s:if>
                             <s:if test="teachingNum==3"><b
-                                    style="font-size:12px; color: #cc6600; margin-left: 15px; "><s:property value="%{getText('label.no.public.1tomany')}"/></b></s:if>
+                                    style="font-size:12px; color: #cc6600; margin-left: 15px; "><s:text name="label.no.public.1tomany"/></b></s:if>
                         </s:else>
                     </s:else>
 
@@ -392,7 +392,7 @@ h6 .seeallclass {
 
                     <p><s:text name="course.invite.student.num"/>：<b><s:property value="inviteStudentNum"/></b> <s:text name="label.forcast.person"/></p>
                 </div>
-                <div class="courseintro"><strong><s:property value="%{getText('label.online.class.introduction')}"/>：</strong><span
+                <div class="courseintro"><strong><s:text name="label.online.class.introduction"/>：</strong><span
                         id="descriptionMsg<s:property value="#idx.index"/>"><s:property value="description"/></span>
                 </div>
                 <div class="classintro">

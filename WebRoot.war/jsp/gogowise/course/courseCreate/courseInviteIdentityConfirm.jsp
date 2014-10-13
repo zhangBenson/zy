@@ -132,7 +132,7 @@
                 </p>
 
                 <p class="inputTips"><input name="checkbox" type="checkbox" value="checked" id="checkbox"/>
-                    <a href="<%=request.getContextPath()%>/jsp/gogowise/Clause.htm" class="boxy"><s:property value="%{getText('course.creation.document.rule')}"/></a>
+                    <a href="<%=request.getContextPath()%>/jsp/gogowise/Clause.htm" class="boxy"><s:text name="course.creation.document.rule"/></a>
                 </p>
                     <%--</div>--%>
 

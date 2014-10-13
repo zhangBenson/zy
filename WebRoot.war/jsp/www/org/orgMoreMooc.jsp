@@ -10,7 +10,7 @@
         <div class="thinline"></div>
         <br/>
 
-        <h3 class="courseSubhead"><span><s:property value="org.schoolName"/> </span>-<span><s:property value="%{getText('label.more.courses')}"/></span></h3>
+        <h3 class="courseSubhead"><span><s:property value="org.schoolName"/> </span>-<span><s:text name="label.more.courses"/></span></h3>
         <br/>
 
         <div class="row">

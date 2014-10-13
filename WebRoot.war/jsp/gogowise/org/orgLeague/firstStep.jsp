@@ -21,7 +21,7 @@
 <div id="orgLeagueDiv">
     <div id="tipImgDiv"><span><s:text name="org.warmtip"/></span></div>
     <div id="orgCenterDiv">
-        <div class="tiphead"><span><s:text name="org.sayhello"/></span><s:property value="%{getText('orgleague.need')}"/></div>
+        <div class="tiphead"><span><s:text name="org.sayhello"/></span><s:text name="orgleague.need"/></div>
         <ul class="attentionList">
             <li>1、 <s:text name="orgleague.one"/>；</li>
             <%--<li>2、	<s:text name="orgleague.two"/>；</li>--%>
@@ -32,12 +32,12 @@
         </ul>
         <div class="ifReady">
             <form action="" method="post">
-                <span class="wenhao">？&nbsp;</span><span class="beforeWord"><s:property value="%{getText('orgleague.ifReady')}"/></span>
+                <span class="wenhao">？&nbsp;</span><span class="beforeWord"><s:text name="orgleague.ifReady"/></span>
                 <a href="initThirdStep.html">
-                    <div class="ifReadyYes"><span class="yesword"><s:property value="%{getText('lable.yesno.true')}"/></span></div>
+                    <div class="ifReadyYes"><span class="yesword"><s:text name="lable.yesno.true"/></span></div>
                 </a>
                 <a href="index.html">
-                    <div class="ifReadyNo"><span class="noword"><s:property value="%{getText('lable.yesno.false')}"/></span></div>
+                    <div class="ifReadyNo"><span class="noword"><s:text name="lable.yesno.false"/></span></div>
                 </a>
             </form>
         </div>

@@ -27,7 +27,7 @@
             <tr id="newEvents<s:property value="id"/>">
                 <td><s:property value="title"/></td>
                 <td><s:date name="createTime" format="%{getText('dateformat.forclass')}"/></td>
-                <td><a href="initEditCourseNewEvent.html?courseNewEvent.id=<s:property value="id"/>"><s:property value="%{getText('event.manage.edit')}"/></a></td>
+                <td><a href="initEditCourseNewEvent.html?courseNewEvent.id=<s:property value="id"/>"><s:text name="event.manage.edit"/></a></td>
                 <td><a href="javascript:;" onclick="deleteNewEvent('newEvents<s:property value="id"/>',<s:property value="id"/>);"><s:text name="event.manage.delete"/></a></td>
             </tr>
         </s:iterator>

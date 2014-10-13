@@ -68,12 +68,12 @@
                                             <s:else><s:property value="#session.email"/> </s:else>
                                         </span>
                                     </li>--%>
-                                <li class="setting bg" style="text-align: center;"><a href="myfirstPage.html"><s:property value="%{getText('label.orgcenter')}"/></a></li>
-                                <li class="setting bg" style="text-align: center;"><a href="personalCenter.html"><s:property value="%{getText('label.personalcenter')}"/></a></li>
+                                <li class="setting bg" style="text-align: center;"><a href="myfirstPage.html"><s:text name="label.orgcenter"/></a></li>
+                                <li class="setting bg" style="text-align: center;"><a href="personalCenter.html"><s:text name="label.personalcenter"/></a></li>
 
-                                <li class="setting bg"><a href="initUpdate.html"><span></span><s:property value="%{getText('account.item.accountsettings')}"/></a></li>
+                                <li class="setting bg"><a href="initUpdate.html"><span></span><s:text name="account.item.accountsettings"/></a></li>
 
-                                <li class="exit bg"><a href="exitSystem.html"><span></span><s:property value="%{getText('href.logout')}"/></a></li>
+                                <li class="exit bg"><a href="exitSystem.html"><span></span><s:text name="href.logout"/></a></li>
                             </ul>
                         </li>
                     </ul>
@@ -81,7 +81,7 @@
             </s:if>
             <s:else>
                 <div class="handle">
-                    <a href="login.html" id="login_btn"><s:property value="%{getText('Login')}"/></a>&nbsp;&nbsp;<strong>|</strong>&nbsp;&nbsp;<a
+                    <a href="login.html" id="login_btn"><s:text name="Login"/></a>&nbsp;&nbsp;<strong>|</strong>&nbsp;&nbsp;<a
                         href="initReg.html"><s:text name="user.info.identity.finish.reg"/></a>
                 </div>
             </s:else>

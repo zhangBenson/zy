@@ -33,7 +33,7 @@
 <div id="orgLeagueDiv">
     <div id="tipImgDiv"><span><s:text name="org.warmtip"/></span></div>
     <div id="orgCenterDiv">
-        <div class="tiphead"><span>&nbsp;&nbsp;<s:text name="org.course.sayhello"/></span><s:property value="%{getText('org.course.notprincipal')}"/>：
+        <div class="tiphead"><span>&nbsp;&nbsp;<s:text name="org.course.sayhello"/></span><s:text name="org.course.notprincipal"/>：
         </div>
         <div class="courseCreation">
             <a href="createCourse.html?courseType=1">

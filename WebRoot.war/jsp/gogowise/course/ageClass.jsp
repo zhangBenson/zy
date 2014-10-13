@@ -342,7 +342,7 @@ h6 .seeallclass {
                                                                                 format="%{getText('dateformat')}"/></b>
                     </p>
                 </div>
-                <div class="courseintro"><strong><s:property value="%{getText('label.online.class.introduction')}"/>：</strong><span
+                <div class="courseintro"><strong><s:text name="label.online.class.introduction"/>：</strong><span
                         id="descriptionMsg<s:property value="#idx.index"/>"><s:property value="description"/></span>
                 </div>
                 <img src="images/blogindex/courseframebottom.gif" class="frame1bottom"/>

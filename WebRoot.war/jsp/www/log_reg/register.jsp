@@ -52,7 +52,7 @@
                             <div class="checkbox">
                                 <label>
                                         <%-- <input type="checkbox"><s:text name="label.log.in.remember.me.info"/></label> --%>
-                                    <a href="initRepassword.html" style="float: right;"><span><s:property value="%{getText('link.forget.pwd')}"/>？</span></a>
+                                    <a href="initRepassword.html" style="float: right;"><span><s:text name="link.forget.pwd"/>？</span></a>
                             </div>
 
                         </div>
@@ -121,7 +121,7 @@
                                         <%--<input name="checkbox" type="checkbox" value="checked" id="checkbox"/>
                                         <a href="<%=request.getContextPath()%>/jsp/gogowise/Clause.htm" class="boxy" id="reg_clause"><s:text name="read"/></a>--%>
                                     <input name="checkbox" type="checkbox" value="checked" id="checkbox"><a href="#"
-                                                                                                            id="btnclauses"><s:property value="%{getText('read')}"/></a>
+                                                                                                            id="btnclauses"><s:text name="read"/></a>
                                 </label>
                                     <%--<a href="#" id="btnclauses"><s:text name="label.login.clause.msg"/></a> --%>
                             </div>

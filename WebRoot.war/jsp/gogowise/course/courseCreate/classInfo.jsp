@@ -3,7 +3,7 @@
 <div class="pic_2 after_store_class">
     <div class="content_inner fl">
         <ul class="system_ul_list">
-            <li id="self_click_li" class="stand_out"><s:property value="%{getText('label.one.by.one.ctreate')}"/></li>
+            <li id="self_click_li" class="stand_out"><s:text name="label.one.by.one.ctreate"/></li>
             <li id="auto_click_li" class="wait"><s:text name="label.auto.scheduing"/></li>
         </ul>
 
@@ -14,7 +14,7 @@
             <table cellpadding="0" cellspacing="0">
                 <tr>
                     <th class="htitle"><s:text name="lable.course.no"/></th>
-                    <th class="htitle" width="160px"><s:property value="%{getText('lable.course.nickname')}"/></th>
+                    <th class="htitle" width="160px"><s:text name="lable.course.nickname"/></th>
                     <th class="htitle"><s:text name="lable.course.starttime"/></th>
                     <th class="htitle"><s:text name="label.lastingtime"/></th>
                     <th class="htitle">&nbsp;</th>
@@ -30,11 +30,11 @@
                         <td id="course_duration<s:property value="id"/>"><s:property value="duration"/></td>
                         <td>
                             <a class="class_btn edit_class_btn" id="course_edit<s:property value="id"/>"
-                               onclick="editSpecifiedClass(<s:property value="id"/>);"><s:property value="%{getText('course.class.edit')}"/></a>
+                               onclick="editSpecifiedClass(<s:property value="id"/>);"><s:text name="course.class.edit"/></a>
                         </td>
                         <td>
                             <a class="class_btn"
-                               onclick="deleteAddedClass('classes<s:property value="id"/>',<s:property value="id"/>);"><s:property value="%{getText('course.class.delete')}"/></a>
+                               onclick="deleteAddedClass('classes<s:property value="id"/>',<s:property value="id"/>);"><s:text name="course.class.delete"/></a>
                         </td>
                     </tr>
                 </s:iterator>
@@ -63,13 +63,13 @@
                     <li class="short_li">
                         <span class="item"><s:text name="label.lastingtime"/></span>
                         <select name="durations" class="long_select" id="class_durations_input">
-                            <option value=60 selected="selected">60<s:property value="%{getText('label.minute')}"/></option>
-                            <option value=55>55<s:property value="%{getText('label.minute')}"/></option>
-                            <option value=50>50<s:property value="%{getText('label.minute')}"/></option>
-                            <option value=45>45<s:property value="%{getText('label.minute')}"/></option>
-                            <option value=40>40<s:property value="%{getText('label.minute')}"/></option>
-                            <option value=35>35<s:property value="%{getText('label.minute')}"/></option>
-                            <option value=30>30<s:property value="%{getText('label.minute')}"/></option>
+                            <option value=60 selected="selected">60<s:text name="label.minute"/></option>
+                            <option value=55>55<s:text name="label.minute"/></option>
+                            <option value=50>50<s:text name="label.minute"/></option>
+                            <option value=45>45<s:text name="label.minute"/></option>
+                            <option value=40>40<s:text name="label.minute"/></option>
+                            <option value=35>35<s:text name="label.minute"/></option>
+                            <option value=30>30<s:text name="label.minute"/></option>
                         </select>
                     </li>
                 </ul>
@@ -88,7 +88,7 @@
                     <li class="long_li">
                         <table id="add_class_table">
                             <tr>
-                                <td><span class="item"><s:property value="%{getText('lable.course.starttime')}"/></span><span
+                                <td><span class="item"><s:text name="lable.course.starttime"/></span><span
                                         class="tip_words" id="form2_start_time_msg"></span></td>
                                 <td><s:text name="label.lastingtime"/></td>
                                 <td>&nbsp;</td>
@@ -99,7 +99,7 @@
                                                                  readonly="true"
                                                                  cssClass="WTime short_text_field"/></td>
                                 <td><select name="durations" class="long_select">
-                                    <option value=60>60<s:property value="%{getText('label.minute')}"/></option>
+                                    <option value=60>60<s:text name="label.minute"/></option>
                                     <option value=55>55<s:text name="label.minute"/></option>
                                     <option value=50>50<s:text name="label.minute"/></option>
                                     <option value=45>45<s:text name="label.minute"/></option>
@@ -107,7 +107,7 @@
                                     <option value=35>35<s:text name="label.minute"/></option>
                                     <option value=30>30<s:text name="label.minute"/></option>
                                 </select></td>
-                                <td class="add_class_btn class_btn"><s:property value="%{getText('interview.add')}"/></td>
+                                <td class="add_class_btn class_btn"><s:text name="interview.add"/></td>
                             </tr>
                         </table>
                     </li>

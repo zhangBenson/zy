@@ -20,7 +20,7 @@
             <li><a class="TextSet21" href="#companyUse"><s:text name="contentLeft.param5"/></a></li>
         </ul>
         <div id="StartUse" class="StartUseIt"><a class="begin_live1 act_btn1"
-                                                 href="openUserChannelResult.html"><s:property value="%{getText('contentLeft.param9')}"/></a></div>
+                                                 href="openUserChannelResult.html"><s:text name="contentLeft.param9"/></a></div>
 
         <%--<p><a class="TextSet2" href="#PublicMultipointLive"><s:text name="contentLeft.param2"/></a></p>--%>
         <%--<ul>--%>
@@ -34,29 +34,29 @@
     <div id="contentRight">
         <div id="privateApply">
             <div id="privateApplyHeader" class="ApplyHeader">
-                <div id="MySupervisingRoom" class="ApplyHeaderLeft"><s:property value="%{getText('contentRight.privateApply.ApplyHeader.param1')}"/></div>
+                <div id="MySupervisingRoom" class="ApplyHeaderLeft"><s:text name="contentRight.privateApply.ApplyHeader.param1"/></div>
 
                 <div class="ApplyHeaderCenter"></div>
             </div>
 
             <div id="homeUse" class="insideHeader">
                 <div class="insideTitle">
-                    <div class="headerUseUpLeft">1.<s:property value="%{getText('contentRight.privateApply.homeUse.headerUseUpLeft.param1')}"/></div>
+                    <div class="headerUseUpLeft">1.<s:text name="contentRight.privateApply.homeUse.headerUseUpLeft.param1"/></div>
                 </div>
 
                 <div class="png1"><img src="images/solution/homeMonitoring.png" alt="title.solution.home.image"></div>
-                <div class="TextSet3"><s:property value="%{getText('contentRight.privateApply.homeUse.TextSet3.param1')}"/></div>
+                <div class="TextSet3"><s:text name="contentRight.privateApply.homeUse.TextSet3.param1"/></div>
 
             </div>
             <div id="companyUse">
                 <div class="insideTitle">
-                    <div class="headerUseUpLeft">2.<s:property value="%{getText('contentRight.privateApply.companyUse.headerUseUpLeft.param2')}"/></div>
+                    <div class="headerUseUpLeft">2.<s:text name="contentRight.privateApply.companyUse.headerUseUpLeft.param2"/></div>
                 </div>
 
                 <div class="png1"><img src="images/solution/companyMonitoring.png" alt="title.solution.company.image">
                 </div>
-                <div class="TextSet3"><s:property value="%{getText('contentRight.privateApply.companyUse.TextSet3.param2')}"/></div>
-                <div class="TextSet4"><s:property value="%{getText('contentRight.privateApply.companyUse.TextSet4.param1')}"/>
+                <div class="TextSet3"><s:text name="contentRight.privateApply.companyUse.TextSet3.param2"/></div>
+                <div class="TextSet4"><s:text name="contentRight.privateApply.companyUse.TextSet4.param1"/>
 
                 </div>
             </div>

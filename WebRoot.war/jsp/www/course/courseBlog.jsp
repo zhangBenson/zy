@@ -246,10 +246,10 @@ programming.
             <s:if test="commentsNum != 0">
                 <p class="text-right">
                     <s:if test="commentsNumOverflow">
-                        <a href="javascript:;" class="more_or_close" onclick="getMoreComments();"><s:property value="%{getText('blog.comments.more.result')}"/>&nbsp;&nbsp;&gt;&gt;</a>
+                        <a href="javascript:;" class="more_or_close" onclick="getMoreComments();"><s:text name="blog.comments.more.result"/>&nbsp;&nbsp;&gt;&gt;</a>
                     </s:if>
                     <s:if test="commentsNum>5">
-                        &nbsp;|&nbsp;<a href="javascript:;" class="more_or_close" onclick="rollBack();">&lt;&lt;&nbsp;&nbsp;<s:property value="%{getText('blog.comments.rollBack')}"/></a>
+                        &nbsp;|&nbsp;<a href="javascript:;" class="more_or_close" onclick="rollBack();">&lt;&lt;&nbsp;&nbsp;<s:text name="blog.comments.rollBack"/></a>
                     </s:if>
                 </p>
             </s:if>
@@ -263,7 +263,7 @@ programming.
                 <textarea id="message_textarea" class="form-control" rows="3"></textarea>
                 <br/>
                 <%--<a href="javascript:;" class="btn btn-primary btn-lg btn-block" id="message_submit_btn" ><s:text name="blog.comments.submit"/></a>--%>
-                <a href="javascript:;" class="btn btn-primary btn-lg btn-block" id="message_submit_btn"><s:property value="%{getText('blog.comments.submit')}"/></a>
+                <a href="javascript:;" class="btn btn-primary btn-lg btn-block" id="message_submit_btn"><s:text name="blog.comments.submit"/></a>
             </s:form>
         </div>
 
@@ -298,14 +298,14 @@ programming.
                 <img class="schoolPortrait" src="<s:property value="course.organization.logoUrl"/>"/></a>
 
             <div>&nbsp;</div>
-            <h4 class="textOverSinglerow" style="margin-top: 8px;"><s:property value="%{getText('label.online.class.tutor.price')}"/>:&nbsp;S$<s:property value="course.charges"/></h4>
+            <h4 class="textOverSinglerow" style="margin-top: 8px;"><s:text name="label.online.class.tutor.price"/>:&nbsp;S$<s:property value="course.charges"/></h4>
             <h4 class="textOverSinglerow"><s:text name="course.code"/>:&nbsp;<s:property value="course.id"/></h4>
             <h4 class="textOverSinglerow"><s:text name="course.school"/>:&nbsp;<s:property value="course.organization.schoolName"/></h4>
             <h4 class="textOverSinglerow"><s:text name="course.teaching.language"/>:&nbsp;<s:property value="course.languageType"/></h4>
             <h4 class="textOverSinglerow"><s:text name="course.info.courseTag"/>:&nbsp;<s:property value="course.getTagsAsStr()"/></h4>
             <%--<s:if test="!course.courseFinished">--%>
             <%-- <a href="javascript:;" id="register_btn" class="act_btn register_btn"><s:text name="label.course.register"/></a> --%>
-            <button type="button" class="btn btn-primary btn-block" id="register_btn"><s:property value="%{getText('user.info.identity.finish.reg')}"/> <s:property value="course.name"/></button>
+            <button type="button" class="btn btn-primary btn-block" id="register_btn"><s:text name="user.info.identity.finish.reg"/> <s:property value="course.name"/></button>
             <%--</s:if>--%>
             <%--<s:else>--%>
             <%--<button type="button" value="disable" disabled="disabled" class="btn btn-primary btn-block" id = "register_btn">--%>

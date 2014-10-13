@@ -35,13 +35,13 @@
                 <span><span class="orange_words"><s:date name="startDate"
                                                          format="%{getText('dateformat')}"/></span></span>&nbsp;&nbsp;|&nbsp;&nbsp;
             <span>
-                <s:if test="charges == 0"><span class="orange_words"><s:property value="%{getText('course.without.charges')}"/></span></s:if><s:else><span
-                    class="orange_words"><s:property value="charges"/></span><s:property value="%{getText('course.consumptionType.true')}"/></s:else>
+                <s:if test="charges == 0"><span class="orange_words"><s:text name="course.without.charges"/></span></s:if><s:else><span
+                    class="orange_words"><s:property value="charges"/></span><s:text name="course.consumptionType.true"/></s:else>
                 <%--<span class="orange_words"> 课程免费</span>--%>
             </span>&nbsp;&nbsp;|&nbsp;&nbsp;
-                <span><span class="orange_words"><s:property value="studentNum"/>&nbsp;</span><s:property value="%{getText('user.info.identity.finish.reg')}"/></span>&nbsp;&nbsp;|&nbsp;&nbsp;
+                <span><span class="orange_words"><s:property value="studentNum"/>&nbsp;</span><s:text name="user.info.identity.finish.reg"/></span>&nbsp;&nbsp;|&nbsp;&nbsp;
                     <%--<span><span class="orange_words"> 247&nbsp;</span>推荐</span> &nbsp;&nbsp;|&nbsp;&nbsp;--%>
-                <span><span class="orange_words"><s:property value="classesNum"/>&nbsp;</span><s:property value="%{getText('course.total.class.num')}"/></span>
+                <span><span class="orange_words"><s:property value="classesNum"/>&nbsp;</span><s:text name="course.total.class.num"/></span>
             </p>
 
             <p><s:property value="description"/></p>

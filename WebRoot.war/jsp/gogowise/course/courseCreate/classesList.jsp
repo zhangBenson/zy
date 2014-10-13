@@ -10,11 +10,11 @@
         <td id="course_duration<s:property value="id"/>"><s:property value="duration"/></td>
         <td>
             <a class="class_btn edit_class_btn" id="course_edit<s:property value="id"/>"
-               onclick="editSpecifiedClass(<s:property value="id"/>);"><s:property value="%{getText('course.class.edit')}"/></a>
+               onclick="editSpecifiedClass(<s:property value="id"/>);"><s:text name="course.class.edit"/></a>
         </td>
         <td>
             <a class="class_btn"
-               onclick="deleteAddedClass('classes<s:property value="id"/>',<s:property value="id"/>);"><s:property value="%{getText('course.class.delete')}"/></a>
+               onclick="deleteAddedClass('classes<s:property value="id"/>',<s:property value="id"/>);"><s:text name="course.class.delete"/></a>
         </td>
     </tr>
 </s:iterator>

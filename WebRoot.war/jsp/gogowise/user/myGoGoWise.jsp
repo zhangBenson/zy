@@ -25,7 +25,7 @@
 <div>
     <%--<a class="submit_btn_large" href="openUserChannelResult.html"><s:text name="contentLeft.param1"/></a>--%>
     <s:if test="#session.user_own_org != null">
-        <a class="submit_btn_large" href="createCourseAllInOne.html"><s:property value="%{getText('course.create')}"/></a>
+        <a class="submit_btn_large" href="createCourseAllInOne.html"><s:text name="course.create"/></a>
     </s:if>
 </div>
 <s:if test="existLatestCourse">
@@ -66,9 +66,9 @@
                 <div class="handle fr">
                     <a class="a_1" href="javascript:;"><s:property value="%{getText('class.count',{classOneTheCornerSequence})}"/></a>
                     <a class="a_2"
-                       href="javascript:getVideoUrl('<s:property value="classOnTheCorner.id"/>','<s:property value="teachingNum"/>');"><s:property value="%{getText('button.start.class')}"/></a>
-                    <a class="a_2" href="makeCourseVideo.html?course.id=<s:property value="id"/>"><s:property value="%{getText('course.makeVideos')}"/></a>
-                    <a class="a_2" href="/designGame.html?course.id=<s:property value="id"/>"><s:property value="%{getText('course.designGame')}"/></a>
+                       href="javascript:getVideoUrl('<s:property value="classOnTheCorner.id"/>','<s:property value="teachingNum"/>');"><s:text name="button.start.class"/></a>
+                    <a class="a_2" href="makeCourseVideo.html?course.id=<s:property value="id"/>"><s:text name="course.makeVideos"/></a>
+                    <a class="a_2" href="/designGame.html?course.id=<s:property value="id"/>"><s:text name="course.designGame"/></a>
 
                 </div>
                 <div style="height:45px;clear: both"></div>
@@ -117,7 +117,7 @@
                 <div class="handle fr">
                     <a class="a_1" href="javascript:;"><s:property value="%{getText('shows.count',{firstFutureTermSquence})}"/></a>
                     <a class="a_2"
-                       href="startShow.html?showTerms.id=<s:property value="firstFutureTerm.id"/>"><s:property value="%{getText('myfirst.page.start.show')}"/></a>
+                       href="startShow.html?showTerms.id=<s:property value="firstFutureTerm.id"/>"><s:text name="myfirst.page.start.show"/></a>
                 </div>
                 <div class="desc fl">
                     <p><s:property value="description"/></p>
@@ -163,7 +163,7 @@
                 </div>
                 <div class="handle fr">
                     <a class="a_1" href="javascript:;"><s:text name="link.check.interview"/></a>
-                    <a class="a_2" href="interviewVideo.html?interview.id=<s:property value="id"/>"><s:property value="%{getText('button.start.interview')}"/></a>
+                    <a class="a_2" href="interviewVideo.html?interview.id=<s:property value="id"/>"><s:text name="button.start.interview"/></a>
 
                     <div class="candidate">
                         <table class="interviewees_list" cellpadding="0" cellspacing="0">
@@ -228,12 +228,12 @@
                 </div>
                 <div class="handle fr">
                     <a class="a_1" href="javascript:;"><s:text name="org.meeting.member"/></a>
-                    <a class="a_2" href="startMeeting.html?orgMeeting.id=<s:property value="id"/>"><s:property value="%{getText('org.meeting.startTime')}"/></a>
+                    <a class="a_2" href="startMeeting.html?orgMeeting.id=<s:property value="id"/>"><s:text name="org.meeting.startTime"/></a>
 
                     <div class="candidate">
                         <table class="interviewees_list" cellpadding="0" cellspacing="0">
                             <tr>
-                                <td colspan="3" width="370px;"><s:property value="%{getText('label.orgMeeting.attendee')}"/>：<span
+                                <td colspan="3" width="370px;"><s:text name="label.orgMeeting.attendee"/>：<span
                                         class="orangeWords"><s:property value="memberNum"/></span><s:property value="%{getText('label.person')}"/>，<s:property value="%{getText('label.is.confirm')}"/>：<span class="orangeWords"><s:property value="memberConfirmedNum"/></span><s:property value="%{getText('label.person')}"/></td>
                             </tr>
                             <tr>
@@ -374,7 +374,7 @@
             <h3 class="h3_title"><s:text name="my.firstpage.users.i.followed"/></h3>
                 <%--<s:property value="userFansNum"/>--%>
                 <%--<s:if test="currentPageSize >= 6">--%>
-            <span class="more"><a href="followedUserList.html"><s:property value="%{getText('others.more')}"/></a></span>
+            <span class="more"><a href="followedUserList.html"><s:text name="others.more"/></a></span>
                 <%--</s:if>--%>
             <ul class="courseul">
                 <s:iterator value="userFanses">
@@ -387,7 +387,7 @@
                         <s:if test="userLiving">
                             <a class="live_tip"
                                href="watchPersonalOnlive.html?personalOnlive.id=<s:property value="personalOnliveID"/>"
-                               title="<s:text name="click.to.watch"/>"><s:property value="%{getText('video.is.living')}"/></a>
+                               title="<s:text name="click.to.watch"/>"><s:text name="video.is.living"/></a>
                         </s:if>
                     </li>
                 </s:iterator>

@@ -17,10 +17,10 @@
                 </div>
 
                 <%--<div class="footersLink">|  Home |  COURSES  |  SCHOOLS  |</div> --%>
-                <div class="footersLink">| <a href="index.html" style="color: #fff;"><s:property value="%{getText('menu.item.index')}"/></a> | <a href="courseCenter.html"
-                                                                                                                                                  style="color: #fff;"><s:property value="%{getText('frame.course.center')}"/></a> | <a href="schoolCenter.html"
-                                                                                                                                                                                                                                        style="color: #fff;"><s:property value="%{getText('frame.schools.center')}"/></a> | <a href="aboutUs.html"
-                                                                                                                                                                                                                                                                                                                               style="color: #fff;"><s:property value="%{getText('link.about.us')}"/></a> |
+                <div class="footersLink">| <a href="index.html" style="color: #fff;"><s:text name="menu.item.index"/></a> | <a href="courseCenter.html"
+                                                                                                                               style="color: #fff;"><s:text name="frame.course.center"/></a> | <a href="schoolCenter.html"
+                                                                                                                                                                                                  style="color: #fff;"><s:text name="frame.schools.center"/></a> | <a href="aboutUs.html"
+                                                                                                                                                                                                                                                                      style="color: #fff;"><s:text name="link.about.us"/></a> |
                 </div>
             </div>
         </div>

@@ -48,10 +48,10 @@
 
 <s:if test="commentsNum != 0">
     <s:if test="!commentsNumOverflow">
-        <a class="more_or_close" onclick="getMoreComments();" href="javascript:;"><s:property value="%{getText('blog.comments.more.result')}"/>&gt;&gt;</a>
+        <a class="more_or_close" onclick="getMoreComments();" href="javascript:;"><s:text name="blog.comments.more.result"/>&gt;&gt;</a>
     </s:if>
     <s:else>
-        <a class="more_or_close" onclick="rollBack();" href="javascript:;">&lt;&lt;<s:property value="%{getText('blog.comments.rollBack')}"/></a>
+        <a class="more_or_close" onclick="rollBack();" href="javascript:;">&lt;&lt;<s:text name="blog.comments.rollBack"/></a>
     </s:else>
 </s:if>
 

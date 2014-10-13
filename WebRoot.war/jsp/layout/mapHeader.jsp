@@ -29,9 +29,9 @@
             &nbsp;&nbsp;
             <a href="myfirstPage.html" target="_blank"><s:text name="usermenu.item.myhomepage"/></a>
             &nbsp;<strong>|</strong>&nbsp;
-            <a href="initUpdate.html" target="_blank"><s:property value="%{getText('account.item.accountsettings')}"/></a>
+            <a href="initUpdate.html" target="_blank"><s:text name="account.item.accountsettings"/></a>
             &nbsp;<strong>|</strong>&nbsp;
-            <a href="myGGWAccount.html" target="_blank"><s:property value="%{getText('usermenu.item.zhibi.myAccount')}"/></a>
+            <a href="myGGWAccount.html" target="_blank"><s:text name="usermenu.item.zhibi.myAccount"/></a>
             &nbsp;<strong>|</strong>&nbsp;
             <a href="exitSystem.html"><s:text name="href.logout"/></a>
         </p>

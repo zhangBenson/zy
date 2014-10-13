@@ -163,17 +163,17 @@
 
         <p class="time">
                 <%--<a class="manage_course" href="initCourseInfoModify.html?course.id=<s:property value="id"/>"><s:text name="my.forcast.course.info.manage"/></a>--%>
-            <a class="manage_course" href="maintenanceCourse.html?course.id=<s:property value="id"/>"><s:property value="%{getText('my.forcast.course.info.manage')}"/></a>
+            <a class="manage_course" href="maintenanceCourse.html?course.id=<s:property value="id"/>"><s:text name="my.forcast.course.info.manage"/></a>
                 <%--<a class="manage_course" id="courseRecommend<s:property value="#idx.index"/>" href="#recommdatepanel<s:property value="#idx.index"/>"><s:text name="recommend.course"/></a>--%>
                 <%--<a class="manage_course" id="courseNewEvents<s:property value="#idx.index"/>" href="newEventsManage.html?course.id=<s:property value="id"/>"><s:text name="course.new.events.management"/></a>--%>
                 <%--<a class="makeVideos" id="makeVideos<s:property value="#idx.index"/>"  href="javascript:;"><s:text name="course.makeVideos"/></a>--%>
-            <a class="makeVideos" href="/makeCourseVideo.html?course.id=<s:property value="id"/>"><s:property value="%{getText('course.makeVideos')}"/></a>
+            <a class="makeVideos" href="/makeCourseVideo.html?course.id=<s:property value="id"/>"><s:text name="course.makeVideos"/></a>
 
-            <a class="makeVideos" href="/designGame.html?course.id=<s:property value="id"/>"><s:property value="%{getText('course.designGame')}"/></a>
+            <a class="makeVideos" href="/designGame.html?course.id=<s:property value="id"/>"><s:text name="course.designGame"/></a>
             <a class="manage_course" id=""
-               href="uploadCourseMaterial.html?course.id=<s:property value="id"/>"><s:property value="%{getText('course.resource.upload')}"/></a>
+               href="uploadCourseMaterial.html?course.id=<s:property value="id"/>"><s:text name="course.resource.upload"/></a>
                 <%--<a class="manage_course" id="" href="uploadCourseMaterial.html?course.id=<s:property value="id"/>">Upload Questions</a>--%>
-            <a href="questionResultForTeacher.html?course.id=<s:property value="id"/>"><s:property value="%{getText('course.courseQuestionResultTeacher')}"/></a>
+            <a href="questionResultForTeacher.html?course.id=<s:property value="id"/>"><s:text name="course.courseQuestionResultTeacher"/></a>
             <s:if test="organization!= null && organization.responsiblePerson.id ==  #session.userID">
                 <a href="#" onclick="confirmRemoveCourse('<s:property value="id"/>', '<s:property value="name"/>')"><s:text name="title.delete"/></a>
             </s:if>
@@ -216,7 +216,7 @@
                                 <s:text name="button.add.email.friend"/></td>
                         </tr>
                         <tr>
-                            <td width="80px" align="right" valign="top"><s:property value="%{getText('label.email.friend')}"/>&nbsp;</td>
+                            <td width="80px" align="right" valign="top"><s:text name="label.email.friend"/>&nbsp;</td>
                             <td><input class="recommdate_email" value="" type="text" name="emails"
                                        onblur="checkEmail(this,<s:property value="#idx.index"/>);"/>
                         </tr>
@@ -232,7 +232,7 @@
                             <td><input class="recommdate_submit" type="button"
                                        onclick="checkCourseRecommend(<s:property value="#idx.index"/>);"
                                        value="<s:text name="button.submit"/>"/>&nbsp;&nbsp;<span
-                                    class="recommdate_close recommdatebtn" onclick="$.fancybox.close();"><s:property value="%{getText('button.close')}"/></span>&nbsp;&nbsp;
+                                    class="recommdate_close recommdatebtn" onclick="$.fancybox.close();"><s:text name="button.close"/></span>&nbsp;&nbsp;
                                 <div id="recommend_message<s:property value="#idx.index"/>"></div>
                             </td>
                         </tr>

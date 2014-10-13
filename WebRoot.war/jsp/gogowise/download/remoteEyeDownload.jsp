@@ -10,7 +10,7 @@
     </div>
 
     <div class="desc">
-        <p><s:text name="download.version"/>1.0 &nbsp;&nbsp;&nbsp;<s:property value="%{getText('download.size')}"/>9.2MB</p>
+        <p><s:text name="download.version"/>1.0 &nbsp;&nbsp;&nbsp;<s:text name="download.size"/>9.2MB</p>
 
         <p><s:text name="download.publish.time"/>11/2/2012</p>
 

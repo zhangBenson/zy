@@ -125,7 +125,7 @@
             <div id="links">
                 <s:text name="user.info.identity.confirm.first"/><a class="linksClick" href="####"
                                                                     onclick="addRepswAndnickName();">
-                <s:property value="%{getText('here')}"/></a>
+                <s:text name="here"/></a>
                 <s:text name="user.info.identity.finish.reg"/>
             </div>
         </div>
@@ -159,7 +159,7 @@
                     </p>
 
                     <p class="inputTips"><input name="checkbox" type="checkbox" value="checked" id="checkbox"/>
-                        <a href="<%=request.getContextPath()%>/jsp/gogowise/Clause.htm" class="boxy"><s:property value="%{getText('read')}"/></a></p>
+                        <a href="<%=request.getContextPath()%>/jsp/gogowise/Clause.htm" class="boxy"><s:text name="read"/></a></p>
                 </div>
 
                 <p class="nextButton"><input type="submit" name="button" id="btn1" onclick="return checkForm();"
