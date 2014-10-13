@@ -221,10 +221,8 @@
                     <p>制作人：<b><a href="#"><s:property value="course.cameraMan.userName"/></a></b></p>
                 </div>
                 <div class="courseinfo">
-                    <p>课程预订价格：<b><s:if test="%{course.personalTeacher == null}"><s:property
-                            value="%{4 * course.classes.size}"/>
-                        <s:if test="course.consumptionType">知币 </s:if><s:else>知券</s:else></s:if><s:else><s:property
-                            value="course.charges"/><s:if
+                    <p>课程预订价格：<b><s:if test="%{course.personalTeacher == null}"><s:property value="%{4 * course.classes.size}"/>
+                        <s:if test="course.consumptionType">知币 </s:if><s:else>知券</s:else></s:if><s:else><s:property value="course.charges"/><s:if
                             test="course.consumptionType">知币 </s:if><s:else>知券</s:else></s:else></b></p>
 
                     <p>总课时：<b><s:property value="course.totalHours"/>&nbsp;学时</b></p>

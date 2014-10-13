@@ -30,12 +30,10 @@
                     </div>
                     <div class="Info3 fr">
                         <s:if test="!userFocused">
-                            <a class="a_focus" href="javascript:;" onclick="becomeFans(this,<s:property value="id"/>);"><s:property
-                                    value="%{getText('user.add.focus')}"/></a>
+                            <a class="a_focus" href="javascript:;" onclick="becomeFans(this,<s:property value="id"/>);"><s:property value="%{getText('user.add.focus')}"/></a>
                         </s:if>
                         <s:else>
-                            <a class="a_focus" href="javascript:;" onclick="becomeFans(this,<s:property value="id"/>);"><s:property
-                                    value="%{getText('user.add.focused')}"/></a>
+                            <a class="a_focus" href="javascript:;" onclick="becomeFans(this,<s:property value="id"/>);"><s:property value="%{getText('user.add.focused')}"/></a>
                         </s:else>
                     </div>
                 </div>

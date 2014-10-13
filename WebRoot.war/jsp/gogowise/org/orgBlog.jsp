@@ -44,8 +44,7 @@
                              class="courseImg"/>
                     </s:a>
                     <span title="<s:property value="name"/>"><s:a action="voaCourseBlog"><s:param name="course.id"
-                                                                                                  value="id"/><s:property
-                            value="name"/></s:a></span>
+                                                                                                  value="id"/><s:property value="name"/></s:a></span>
                 </li>
             </s:iterator>
         </ul>
@@ -101,8 +100,7 @@
                                                                                              value="owner.id"/><img
                                     src="<s:property value="commenter.pic"/>" class="portraitImg"/></s:a></li>
                             <li class="li_2"><s:a action="userBlog" target="_blank"><s:param name="user.id"
-                                                                                             value="owner.id"/><s:property
-                                    value="commenter.nickName"/></s:a></li>
+                                                                                             value="owner.id"/><s:property value="commenter.nickName"/></s:a></li>
                             <li class="li_3">
                                 <span class="span_1"><s:property value="description"/></span>
                                 <span class="span_2"><s:date name="createDate"
@@ -130,12 +128,10 @@
                 <li class="li_out">
                     <s:if test="commentsNum != 0">
                         <s:if test="!commentsNumOverflow">
-                            <a class="more_or_close" onclick="getMoreComments();" href="javascript:;"><s:property
-                                    value="%{getText('blog.comments.more.result')}"/>&gt;&gt;</a>
+                            <a class="more_or_close" onclick="getMoreComments();" href="javascript:;"><s:property value="%{getText('blog.comments.more.result')}"/>&gt;&gt;</a>
                         </s:if>
                         <s:elseif test="commentsNumOverflow && commentsNum>=10">
-                            <a class="more_or_close" onclick="rollBack();" href="javascript:;">&lt;&lt;<s:property
-                                    value="%{getText('blog.comments.rollBack')}"/></a>
+                            <a class="more_or_close" onclick="rollBack();" href="javascript:;">&lt;&lt;<s:property value="%{getText('blog.comments.rollBack')}"/></a>
                         </s:elseif>
                     </s:if>
                 </li>

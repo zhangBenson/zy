@@ -124,17 +124,16 @@
             <div id="regtitle2"><s:text name="identity.confirm"/></div>
             <div id="links">
                 <s:text name="user.info.identity.confirm.first"/><a class="linksClick" href="####"
-                                                                                       onclick="addRepswAndnickName();"><s:property
-                    value="%{getText('here')}"/></a><s:property value="%{getText('user.info.identity.finish.reg')}"/>
+                                                                    onclick="addRepswAndnickName();"><s:property value="%{getText('here')}"/></a><s:property value="%{getText('user.info.identity.finish.reg')}"/>
             </div>
         </div>
         <div id="regright">
             <div id="regrightCont">
                 <p class="inputTips"><s:text name="msg.email"/><span class="errorinfo"
-                                                                                        id="yzemail">*</span>
+                                                                     id="yzemail">*</span>
           <span id="emailNotExist" style="display: none;">
               <s:text name="identity.is.not.exist"/><a href="####" onclick="addRepswAndnickName();"
-                                                                          style="color:#ff0000;">
+                                                       style="color:#ff0000;">
               <s:text name="link.here"/></a>
               <s:text name="message.to.complete"/>
           </span>
@@ -142,8 +141,7 @@
                 </p>
 
                 <p id="addnext" class="inputTips"><s:text name="msg.pwd"/><span class="errorinfo"
-                                                                                                   id="yzpwd">*<s:property
-                        value="identityConfirmMsg"/></span><br/>
+                                                                                id="yzpwd">*<s:property value="identityConfirmMsg"/></span><br/>
                     <s:password name="user.password" id="pwd" cssClass="text"/>
                 </p>
 
@@ -154,19 +152,17 @@
                     </p>
 
                     <p class="inputTips"><s:text name="menber.reg.nickName"/><span class="errorinfo"
-                                                                                                      id="yznickName">*</span><br/>
+                                                                                   id="yznickName">*</span><br/>
                         <s:textfield name="user.nickName" id="nickName" cssClass="text"/>
                     </p>
 
                     <p class="inputTips"><input name="checkbox" type="checkbox" value="checked" id="checkbox"/>
-                        <a href="<%=request.getContextPath()%>/jsp/gogowise/Clause.htm" class="boxy"><s:property
-                                value="%{getText('read')}"/></a></p>
+                        <a href="<%=request.getContextPath()%>/jsp/gogowise/Clause.htm" class="boxy"><s:property value="%{getText('read')}"/></a></p>
                 </div>
 
                 <p class="nextButton"><input type="submit" name="button" id="btn1" onclick="return checkForm();"
                                              value="<s:text name="button.log.in"/>"/> <a
-                        href="initRepassword.html"><span id="forgotPwd" style="display:inline;"><s:property
-                        value="%{getText('link.forget.pwd')}"/>？</span></a>
+                        href="initRepassword.html"><span id="forgotPwd" style="display:inline;"><s:property value="%{getText('link.forget.pwd')}"/>？</span></a>
                 </p>
             </div>
         </div>

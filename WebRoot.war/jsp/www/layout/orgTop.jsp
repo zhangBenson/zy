@@ -65,12 +65,10 @@
                                 <li><a href="myfirstPage.html"><s:text name="label.orgcenter"/> </a>
                                 </li>
                             </s:if>
-                            <li><a href="personalCenter.html"><s:property
-                                    value="%{getText('label.personalcenter')}"/> </a></li>
-                                <%--<a href="#">Profile Settings</a>--%>
-                            <li><a href="initUpdate.html"><span></span><s:property
-                                    value="%{getText('account.item.accountsettings')}"/></a></li>
-                                <%--</s:if>--%>
+                            <li><a href="personalCenter.html"><s:property value="%{getText('label.personalcenter')}"/> </a></li>
+                        <%--<a href="#">Profile Settings</a>--%>
+                            <li><a href="initUpdate.html"><span></span><s:property value="%{getText('account.item.accountsettings')}"/></a></li>
+                        <%--</s:if>--%>
                                 <%--<s:else>--%>
 
                                 <%--<li><a href="setting.html"><span></span><s:text name="account.item.accountsettings"/></a></li>--%>
@@ -79,8 +77,7 @@
                             <li class="divider"></li>
 
                                 <%--<a href="#">Log out</a>--%>
-                            <li><a href="exitSystem.html"><span></span><s:property
-                                    value="%{getText('href.logout')}"/></a></li>
+                            <li><a href="exitSystem.html"><span></span><s:property value="%{getText('href.logout')}"/></a></li>
 
                         </ul>
                     </div>
@@ -91,8 +88,7 @@
 
                         </li>
                         <li>
-                            <a href="initReg.html" target="_blank"><s:property
-                                    value="%{getText('user.info.identity.finish.reg')}"/></a>
+                            <a href="initReg.html" target="_blank"><s:property value="%{getText('user.info.identity.finish.reg')}"/></a>
                         </li>
                         <li>
                             <a href="#" id="btnLogin"><s:text name="Login"/></a>
@@ -144,8 +140,7 @@
                                 <input type="checkbox">Remember me</label>
                             <%--<a href="#" style="float: right;">Forget password</a>--%>
                             <a href="javascript:;" style="float: right;"
-                               onclick="parent.window.location.href='initRepassword.html';"><s:property
-                                    value="%{getText('link.forget.pwd')}"/>？</a>
+                               onclick="parent.window.location.href='initRepassword.html';"><s:property value="%{getText('link.forget.pwd')}"/>？</a>
                         </div>
 
                     </div>

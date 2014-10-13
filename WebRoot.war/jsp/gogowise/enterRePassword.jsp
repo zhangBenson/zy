@@ -100,8 +100,7 @@
         <div id="center">
             <table width="400" cellpadding="0" cellspacing="0">
                 <tr>
-                    <td class="tdleft"><h1><img src="images/safe.gif" width="17" height="19"/><s:property
-                            value="%{getText('label.safety.valid')}"/></h1></td>
+                    <td class="tdleft"><h1><img src="images/safe.gif" width="17" height="19"/><s:property value="%{getText('label.safety.valid')}"/></h1></td>
                     <td><span id="question"><a href="#"><s:text name="link.feed.back"/></a></span>
                     </td>
                 </tr>
@@ -117,8 +116,7 @@
                 </tr>
                 <tr>
                     <td colspan="2" class="btn"><a href="#" class="repassword_submit_btn"
-                                                   onclick="sendEmail();"><s:property
-                            value="%{getText('button.send.valid.code')}"/></a></td>
+                                                   onclick="sendEmail();"><s:property value="%{getText('button.send.valid.code')}"/></a></td>
                 </tr>
                 <tr class="con">
                     <td class="tdleft"><s:text name="label.valid.code"/>：</td>

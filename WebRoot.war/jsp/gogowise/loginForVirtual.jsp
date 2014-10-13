@@ -40,13 +40,11 @@
             <label for="user_pwd"><s:text name="msg.pwd"/></label><span id="pws_tip"></span>
             <input type="password" id="user_pwd" class="text_field" name="user.password"/>
             <input type="button" class="log_btn" value="<s:text name="Login"/>"/>
-            <a href="javascript:;" onclick="parent.window.location.href='initRepassword.html';"><s:property
-                    value="%{getText('link.forget.pwd')}"/>？</a>
+            <a href="javascript:;" onclick="parent.window.location.href='initRepassword.html';"><s:property value="%{getText('link.forget.pwd')}"/>？</a>
         </div>
     </form>
     <div class="log_tip"><s:text name="user.do.not.have.gogowise.account"/><a href="javascript:;"
-                                                                                                 onclick="parent.window.location.href='initReg.html';"><s:property
-            value="%{getText('createButton')}"/>！</a></div>
+                                                                              onclick="parent.window.location.href='initReg.html';"><s:property value="%{getText('createButton')}"/>！</a></div>
 </div>
 <script type="text/javascript">
     $(".log_btn").click(function () {

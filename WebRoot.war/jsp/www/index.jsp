@@ -32,7 +32,7 @@
     }
 </script>
 
-<div class="container" >
+<div class="container">
 
     <ul class="bxslider">
         <li><a href="<s:property value="posterLink1" />"><img src="../../images/index/pic1.jpg" class="bannerImg"/></a>
@@ -93,9 +93,7 @@
                             <div class="coursePanelInfoRight">
                                 <p class="textOverSinglerow"><s:property value="name"/></p>
 
-                                <p class="textOverSinglerow"><s:property
-                                        value="%{getText('course.school')}"/>:&nbsp;<s:property
-                                        value="organization.schoolName"/></p>
+                                <p class="textOverSinglerow"><s:property value="%{getText('course.school')}"/>:&nbsp;<s:property value="organization.schoolName"/></p>
 
                                 <p class="textOverSinglerow">
                                     <s:text name="courses.info.lecturer"/>:&nbsp;

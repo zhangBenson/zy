@@ -111,14 +111,13 @@
         <div id="regright">
             <div id="regrightCont">
                 <p class="inputTips"><s:text name="email"/><span class="errorinfo"
-                                                                                    id="yzemail">*</span><br/><br/>
+                                                                 id="yzemail">*</span><br/><br/>
                     <input type="text" name="user.email" value="<s:property value="email"/>" id="email" class="text"
                            readonly="true"/>
                 </p>
 
                 <p id="addnext" class="inputTips"><s:text name="password"/><span class="errorinfo"
-                                                                                                    id="yzpwd">*<s:property
-                        value="identityConfirmMsg"/></span><br/>
+                                                                                 id="yzpwd">*<s:property value="identityConfirmMsg"/></span><br/>
                     <s:password name="user.password" id="pwd" cssClass="text"/>
                 </p>
 

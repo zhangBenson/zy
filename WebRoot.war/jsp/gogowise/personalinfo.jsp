@@ -66,8 +66,7 @@
         <td class="item1">&nbsp;<s:property value="competitionPhase.competition.subject.owner.userType"/></td>
         <td rowspan="2" class="item">相片</td>
         <td rowspan="2" class="item1"><input type="image" name="imageField" id="imageField"
-                                             src="file:///G|/www.gogowise.com/Images/"<s:property
-                value="competitionPhase.competition.subject.owner.pic"/> width="60px" height="65px;"/></td>
+                                             src="file:///G|/www.gogowise.com/Images/"<s:property value="competitionPhase.competition.subject.owner.pic"/> width="60px" height="65px;"/></td>
     </tr>
     <tr>
         <td class="item">是否激活</td>

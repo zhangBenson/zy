@@ -15,8 +15,7 @@
                     <s:param name="pagination.pageNow" value="pagination.pageNow-1"></s:param>
                 </s:url>
                 <s:a href="#" cssClass="page_pre" onclick="postFormPrePag(this)"
-                     title="%{getText('pagination.last.page')}"><s:text name="pagination.last.page"/><s:property
-                        value="actionName"/></s:a>
+                     title="%{getText('pagination.last.page')}"><s:text name="pagination.last.page"/><s:property value="actionName"/></s:a>
             </s:if>
 
             <s:bean name="org.apache.struts2.util.Counter" id="counter">

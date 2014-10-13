@@ -25,8 +25,8 @@
             </div>
 
             <div class="thickline"></div>
-            <h3 class="courseSubhead"><s:property
-                    value="%{getText('user.responsible.course')}"/><%--Responsible Course--%></h3>
+            <h3 class="courseSubhead"><s:property value="%{getText('user.responsible.course')}"/><%--Responsible Course--%></h3>
+
             <div id="schoolcurriculum">
 
                 <s:iterator value="coursesAsTeacher" status="status">
@@ -118,8 +118,7 @@
                         <img class="schoolPortrait" src="<s:property value="userOrganization.logoUrl"/>"/></a>
 
                     <div class="clearfix"></div>
-                    <h4 style="white-space: pre-wrap;word-wrap: break-word"><s:property
-                            value="userOrganization.schoolName"/></h4>
+                    <h4 style="white-space: pre-wrap;word-wrap: break-word"><s:property value="userOrganization.schoolName"/></h4>
                     <h4 class="courseBody">
                         <s:property escapeHtml="false" value="userOrganization.description"/>
                     </h4>

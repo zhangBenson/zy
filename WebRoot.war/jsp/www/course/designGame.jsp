@@ -46,20 +46,16 @@
             <div class="thickline"></div>
             <h3 style="color: #6ab600"><s:text name="design.game.tips"/></h3>
             <h4 class="courseBody">
-                <span style="color: red; font-weight:bold"><s:property
-                        value="%{getText('makeVideo.redHead')}"/></span><s:property
-                    value="%{getText('design.game.redContent')}"/>
+                <span style="color: red; font-weight:bold"><s:property value="%{getText('makeVideo.redHead')}"/></span><s:property value="%{getText('design.game.redContent')}"/>
                 <br/>
-                <span style="color: green; font-weight:bold;"><s:property
-                        value="%{getText('makeVideo.greenHead')}"/></span><s:property
-                    value="%{getText('design.game.greenContent')}"/>
+                <span style="color: green; font-weight:bold;"><s:property value="%{getText('makeVideo.greenHead')}"/></span><s:property value="%{getText('design.game.greenContent')}"/>
             </h4>
 
             <div class="thickline"></div>
 
             <h3 class="courseSubhead"><s:text name="design.game.title"/></h3>
 
-        <%-- Course Videos--%>
+            <%-- Course Videos--%>
             <div id="videoList">
                 <s:iterator value="course.classes" id="class" status="status">
                 <s:if test="#status.index<6">

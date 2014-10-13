@@ -35,14 +35,12 @@
     <div class="titleWrapper">
         <h2>
             <s:text name="org.matters.video.meeting"/>(<a
-                href="orgBlog.html?org.id=<s:property value="orgMeeting.organization.id"/>" target="_blank"><s:property
-                value="orgMeeting.organization.schoolName"/></a>)
+                href="orgBlog.html?org.id=<s:property value="orgMeeting.organization.id"/>" target="_blank"><s:property value="orgMeeting.organization.schoolName"/></a>)
         </h2>
 
         <h3>
             <s:text name="org.meeting.virtual.host"/>:&nbsp;
-            <a href="userBlog.html?user.id=<s:property value="orgMeeting.hostMan.id"/>" target="_blank"><s:property
-                    value="orgMeeting.hostMan.nickName"/></a>
+            <a href="userBlog.html?user.id=<s:property value="orgMeeting.hostMan.id"/>" target="_blank"><s:property value="orgMeeting.hostMan.nickName"/></a>
         </h3>
     </div>
 

@@ -31,8 +31,7 @@
                             <a class="title" href="voaCourseBlog.html?course.id=<s:property value="id"/>"
                                title="<s:property value="name"/>"><s:property value="name"/></a>
                             <a class="watch orange_words"
-                               href="voaCourseBlog.html?course.id=<s:property value="id"/>"><s:property
-                                    value="%{getText('gogowise.things.details')}"/></a>
+                               href="voaCourseBlog.html?course.id=<s:property value="id"/>"><s:property value="%{getText('gogowise.things.details')}"/></a>
                         </p>
 
                         <p class="info">
@@ -40,23 +39,15 @@
                                                                      format="%{getText('dateformat')}"/></span></span>&nbsp;&nbsp;|&nbsp;&nbsp;
                         <span>
                             <s:if test="charges == 0">
-                                <span class="orange_words"> <s:property
-                                        value="%{getText('course.without.charges')}"/></span>
+                                <span class="orange_words"> <s:property value="%{getText('course.without.charges')}"/></span>
                             </s:if>
                             <s:else>
-                                <span class="orange_words"><s:property value="course.charges"/> &nbsp;&nbsp;<s:property
-                                        value="%{getText('course.consumptionType.true')}"/></span>
+                                <span class="orange_words"><s:property value="course.charges"/> &nbsp;&nbsp;<s:property value="%{getText('course.consumptionType.true')}"/></span>
                             </s:else>
                         </span>&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span><span class="orange_words"> <s:property
-                                    value="courseStudentsNum"/>&nbsp;</span><s:property
-                                    value="%{getText('course.blog.purchase.num')}"/></span>&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span><span class="orange_words"> <s:property
-                                    value="courseRecommendNum"/>&nbsp;</span><s:property
-                                    value="%{getText('course.blog.recommend.num')}"/></span> &nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span><s:text name="course.blog.total.terms"/><span class="orange_words"> <s:property
-                                    value="courseTermsNum"/>&nbsp;</span><s:property
-                                    value="%{getText('course.blog.total.terms.tail')}"/></span>
+                            <span><span class="orange_words"> <s:property value="courseStudentsNum"/>&nbsp;</span><s:property value="%{getText('course.blog.purchase.num')}"/></span>&nbsp;&nbsp;|&nbsp;&nbsp;
+                            <span><span class="orange_words"> <s:property value="courseRecommendNum"/>&nbsp;</span><s:property value="%{getText('course.blog.recommend.num')}"/></span> &nbsp;&nbsp;|&nbsp;&nbsp;
+                            <span><s:text name="course.blog.total.terms"/><span class="orange_words"> <s:property value="courseTermsNum"/>&nbsp;</span><s:property value="%{getText('course.blog.total.terms.tail')}"/></span>
                         </p>
 
                         <p><s:property value="description"/></p>

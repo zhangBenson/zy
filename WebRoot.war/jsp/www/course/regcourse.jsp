@@ -12,18 +12,15 @@
     <ul class="list-inline">
         <li class="searchItemState"><s:text name="course.school"/>:<a
                 href="orgBlog.html?org.id=<s:property value="course.organization.id"/>"
-                title="<s:property value="course.organization.nickName"/>"><s:property
-                value="course.organization.schoolName"/></a></li>
+                title="<s:property value="course.organization.nickName"/>"><s:property value="course.organization.schoolName"/></a></li>
         <li class="searchItemState"><s:text name="courses.info.lecturer"/>:<a
                 href="userBlog.html?user.id=<s:property value="course.teacher.id"/>"
                 title="<s:property value="course.teacher.nickName"/>"><s:property value="course.teacher.nickName"/></a>
         </li>
-        <li class="searchItemState"><s:text name="label.forcast.enrollment"/>:<s:property
-                value="course.observationNum"/></li>
+        <li class="searchItemState"><s:text name="label.forcast.enrollment"/>:<s:property value="course.observationNum"/></li>
         <li class="searchItemState"><s:text name="lable.course.date"/>:<s:date
                 name="course.startDate" format="%{getText('dateformat')}"/></li>
-        <li class="searchItemState"><s:text name="label.online.class.totalperods"/>:<s:property
-                value="course.totalHours"/>&nbsp;<s:text name="label.online.class.perods"/></li>
+        <li class="searchItemState"><s:text name="label.online.class.totalperods"/>:<s:property value="course.totalHours"/>&nbsp;<s:text name="label.online.class.perods"/></li>
         <li class="searchItemState"><s:text name="label.course.fee"/>:
             <s:property value="course.charges"/>
             <s:if test="course.consumptionType">
@@ -97,11 +94,11 @@
     </div>
     <div style="text-align: center;">
         <div class="row">
-            
+
             <s:if test="course.charges!=0">
 
                 <s:if test="errorMessagePaypalStatu">
-                    <s:form action="purchaseCourse" method="POST" theme="css_xhtml" id="purchaseCourse_Form" >
+                    <s:form action="purchaseCourse" method="POST" theme="css_xhtml" id="purchaseCourse_Form">
                         <s:hidden name="course.id"/>
 
                         <div class="col-sm-6">
@@ -155,7 +152,7 @@
 
 
             <s:else>
-                <s:form action="purchaseCourse" method="POST" theme="css_xhtml" id="purchaseCourse_Form" >
+                <s:form action="purchaseCourse" method="POST" theme="css_xhtml" id="purchaseCourse_Form">
                     <s:hidden name="course.id"/>
 
                     <div class="col-sm-6">
@@ -224,10 +221,7 @@
     function validatePaypal() {
 
 
-
-
-        var value=$("#purchaseCourse_Form_course_charges").val();
-
+        var value = $("#purchaseCourse_Form_course_charges").val();
 
 
         $("#paypalAmount").val(value);

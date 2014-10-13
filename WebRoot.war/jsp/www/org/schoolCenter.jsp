@@ -58,15 +58,9 @@
                         <div class="pull-right">
                             <p class="text-left">
                             <ul class="list-inline">
-                                <li class="searchItemState"><s:property
-                                        value="%{getText('label.student')}"/>:<s:property
-                                        value="getStudentsNumByOrgId(id)"/></li>
-                                <li class="searchItemState"><s:property
-                                        value="%{getText('search.header.course')}"/>:<s:property
-                                        value="courseDao.findByOrg(id,null).size()"/></li>
-                                <li class="searchItemState"><s:property
-                                        value="%{getText('course.lecturer')}"/>:<s:property
-                                        value="organizationTeachers.size()"/></li>
+                                <li class="searchItemState"><s:property value="%{getText('label.student')}"/>:<s:property value="getStudentsNumByOrgId(id)"/></li>
+                                <li class="searchItemState"><s:property value="%{getText('search.header.course')}"/>:<s:property value="courseDao.findByOrg(id,null).size()"/></li>
+                                <li class="searchItemState"><s:property value="%{getText('course.lecturer')}"/>:<s:property value="organizationTeachers.size()"/></li>
                             </ul>
                             </p>
                         </div>
@@ -96,8 +90,7 @@
                     </div>
                     <p class="text-right"><a href="orgBlog.html?org.id=<s:property value="id"/>"
                                              title="<s:property value="nickName"/>">
-                        <s:text name="label.school.comments"/>(<s:property
-                            value="organizationCommentDao.findOrgCommentByOrgId(id, null).size()"/>)
+                        <s:text name="label.school.comments"/>(<s:property value="organizationCommentDao.findOrgCommentByOrgId(id, null).size()"/>)
                     </a></p>
                 </div>
             </div>

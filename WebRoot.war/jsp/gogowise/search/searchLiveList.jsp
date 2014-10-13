@@ -30,19 +30,15 @@
                             <a class="title" href="liveChannelBlog.html?liveChannel.id=<s:property value="id"/>"
                                title="<s:property value="name"/>"><s:property value="name"/></a>
                             <a class="watch orange_words"
-                               href="liveChannelBlog.html?liveChannel.id=<s:property value="id"/>"><s:property
-                                    value="%{getText('gogowise.things.details')}"/></a>
+                               href="liveChannelBlog.html?liveChannel.id=<s:property value="id"/>"><s:property value="%{getText('gogowise.things.details')}"/></a>
                         </p>
 
                         <p class="info">
                             <span><span class="orange_words"><s:date name="createTime"
                                                                      format="%{getText('dateformat')}"/></span></span>&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span><span class="orange_words"> <s:property value="fansNum"/>&nbsp;</span><s:property
-                                    value="%{getText('course.blog.purchase.num')}"/></span>&nbsp;&nbsp;|&nbsp;&nbsp;
+                            <span><span class="orange_words"> <s:property value="fansNum"/>&nbsp;</span><s:property value="%{getText('course.blog.purchase.num')}"/></span>&nbsp;&nbsp;|&nbsp;&nbsp;
                                 <%--<span><span class="orange_words"> 247&nbsp;</span>推荐</span> &nbsp;&nbsp;|&nbsp;&nbsp;--%>
-                            <span><s:text name="course.blog.total.terms"/><span class="orange_words"> <s:property
-                                    value="totalTermsNum"/>&nbsp;</span><s:property
-                                    value="%{getText('course.blog.total.terms.tail')}"/></span>
+                            <span><s:text name="course.blog.total.terms"/><span class="orange_words"> <s:property value="totalTermsNum"/>&nbsp;</span><s:property value="%{getText('course.blog.total.terms.tail')}"/></span>
                         </p>
 
                         <p><s:property value="description"/></p>

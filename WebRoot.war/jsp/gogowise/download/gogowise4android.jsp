@@ -4,8 +4,7 @@
 <link type="text/css" href="css/download/<s:text name="download.css.file"/>" rel="stylesheet"/>
 
 <div class="banner">
-    <p><s:text name="download.version"/>1.0 &nbsp;&nbsp;&nbsp;<s:property
-            value="%{getText('download.size')}"/>9.31MB</p>
+    <p><s:text name="download.version"/>1.0 &nbsp;&nbsp;&nbsp;<s:property value="%{getText('download.size')}"/>9.31MB</p>
 
     <p><s:text name="download.publish.time"/>08/30/2012</p>
 

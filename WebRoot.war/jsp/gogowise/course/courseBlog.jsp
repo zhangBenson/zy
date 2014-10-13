@@ -23,36 +23,26 @@
         <ul>
             <li><s:text name="show.bid.price"/>：<s:if test="course.charges == 0"><span
                     class="orWord"><s:text name="course.without.charges"/></span></s:if><s:else><span
-                    class="orWord"><s:property value="course.charges"/></span><s:property
-                    value="%{getText('course.consumptionType.true')}"/></s:else> &nbsp;&nbsp;
+                    class="orWord"><s:property value="course.charges"/></span><s:property value="%{getText('course.consumptionType.true')}"/></s:else> &nbsp;&nbsp;
                 <%--|&nbsp;&nbsp;优惠价格：<span class="orWord_large">20</span>&nbsp;知币&nbsp;&nbsp;--%>
                 |&nbsp;&nbsp;<s:text name="course.blog.total.terms"/>&nbsp;&nbsp;<span
-                        class="orWord"><s:property value="courseTermsNum"/></span>&nbsp;&nbsp;<s:property
-                        value="%{getText('course.blog.total.terms.tail')}"/></li>
+                        class="orWord"><s:property value="courseTermsNum"/></span>&nbsp;&nbsp;<s:property value="%{getText('course.blog.total.terms.tail')}"/></li>
             <li><s:text name="course.blog.zonghe.evaluation"/>：<span class="type2????"></span><span
-                    id="rate_00"><span class="orWord"><s:property value="course.synthetical"/></span></span><s:property
-                    value="%{getText('user.evaluate.grade')}"/>&nbsp;&nbsp;|&nbsp;&nbsp;<span class="orWord"><s:property
-                    value="courseCommentsNum"/></span>&nbsp;&nbsp;<s:property
-                    value="%{getText('course.blog.zonghe.evaluation.num')}"/></li>
+                    id="rate_00"><span class="orWord"><s:property value="course.synthetical"/></span></span><s:property value="%{getText('user.evaluate.grade')}"/>&nbsp;&nbsp;|&nbsp;&nbsp;<span class="orWord"><s:property value="courseCommentsNum"/></span>&nbsp;&nbsp;<s:property value="%{getText('course.blog.zonghe.evaluation.num')}"/></li>
             <li>
-                <span class="orWord"><s:property value="course.courseStudentsNum"/></span>&nbsp;&nbsp;<s:property
-                    value="%{getText('course.blog.purchase.num')}"/>&nbsp;&nbsp;|&nbsp;&nbsp;<span
-                    class="orWord"><s:property value="course.courseRecommendNum"/></span>&nbsp;&nbsp;<s:property
-                    value="%{getText('course.blog.recommend.num')}"/>&nbsp;&nbsp;
+                <span class="orWord"><s:property value="course.courseStudentsNum"/></span>&nbsp;&nbsp;<s:property value="%{getText('course.blog.purchase.num')}"/>&nbsp;&nbsp;|&nbsp;&nbsp;<span
+                    class="orWord"><s:property value="course.courseRecommendNum"/></span>&nbsp;&nbsp;<s:property value="%{getText('course.blog.recommend.num')}"/>&nbsp;&nbsp;
                 <%--|&nbsp;&nbsp;<span class="orWord">50</span>次浏览--%>
             </li>
             <li>
                 <%-- 如果课程已结束就没有注册课程 --%>
                 <s:if test="!course.courseFinished">
-                    <a href="javascript:;" id="register_btn" class="act_btn register_btn"><s:property
-                            value="%{getText('label.course.register')}"/></a>
+                    <a href="javascript:;" id="register_btn" class="act_btn register_btn"><s:property value="%{getText('label.course.register')}"/></a>
                 </s:if>
                 <a href="#reservepanel" id="reserve_btn" class="act_btn reserve_btn"
-                   title="<s:text name="button.booking.our.course"/>"><s:property
-                        value="%{getText('label.course.purchase.new.course')}"/></a>
+                   title="<s:text name="button.booking.our.course"/>"><s:property value="%{getText('label.course.purchase.new.course')}"/></a>
                 <a href="#recommdatepanel" id="recommend_btn" class="act_btn recommend_btn"
-                   title="<s:text name="button.recommend.our.course"/>"><s:property
-                        value="%{getText('label.course.recommend.to.friend')}"/></a>
+                   title="<s:text name="button.recommend.our.course"/>"><s:property value="%{getText('label.course.recommend.to.friend')}"/></a>
             </li>
             <div class="save_pop">
                 <div class="save save_done"><s:text name="message.change.pwd.success"/></div>
@@ -63,8 +53,7 @@
     <div style="display: none" id="share_desc"><s:property value="course.description"/></div>
     <div class="lcu_4">
         <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare" data="">
-            <span style="float:left;line-height: 30px;margin-left: 10px;"><s:property
-                    value="%{getText('label.shared.with')}"/>：</span><br/><br/>
+            <span style="float:left;line-height: 30px;margin-left: 10px;"><s:property value="%{getText('label.shared.with')}"/>：</span><br/><br/>
             <a class="bds_qzone">QQ空间</a>
             <a class="bds_tsina">新浪微博</a>
             <a class="bds_tqq">腾讯微博</a><br/>
@@ -122,13 +111,11 @@
                 <div class="reserveRight">
                     <table>
                         <tr>
-                            <td align="right"><s:property
-                                    value="%{getText('label.anticipated.earliest.time')}"/>&nbsp;</td>
+                            <td align="right"><s:property value="%{getText('label.anticipated.earliest.time')}"/>&nbsp;</td>
                             <td><s:textfield id="courseReservationInitial" name="courseReservation.initial"
                                              readonly="true" cssClass="Wdatepicker"
                                              onfocus="WdatePicker({lang:'%{getText('language')}',startDate:'%y-%M-01 00:00:00',dateFmt:'%{getText('dateformat.forclass')}',alwaysUseStartDate:true})"/></td>
-                            <td align="right"><s:property
-                                    value="%{getText('label.anticipated.lastest.time')}"/>&nbsp;</td>
+                            <td align="right"><s:property value="%{getText('label.anticipated.lastest.time')}"/>&nbsp;</td>
                             <td><s:textfield id="courseReservationAtLatest" name="courseReservation.atLatest"
                                              readonly="true" cssClass="Wdatepicker"
                                              onfocus="WdatePicker({lang:'%{getText('language')}',startDate:'%y-%M-01 00:00:00',dateFmt:'%{getText('dateformat.forclass')}',alwaysUseStartDate:true})"/></td>
@@ -170,8 +157,7 @@
                         <td class="add_friend_email"><s:text name="button.add.email.friend"/></td>
                     </tr>
                     <tr>
-                        <td width="80px" align="right" valign="top"><s:property
-                                value="%{getText('label.email.friend')}"/>&nbsp;</td>
+                        <td width="80px" align="right" valign="top"><s:property value="%{getText('label.email.friend')}"/>&nbsp;</td>
                         <td>
                         <s:textfield cssClass="recommdate_email" value="" type="text" name="emails"
                                      onblur="checkEmail(this);"/></tr>
@@ -186,8 +172,7 @@
                         <td></td>
                         <td><input class="recommdate_submit" type="button" onclick="checkCourseRecommend();"
                                    value="<s:text name="button.submit"/>"/>&nbsp;&nbsp;<span
-                                class="recommdate_close recommdatebtn"><s:property
-                                value="%{getText('button.close')}"/></span>&nbsp;&nbsp;<span
+                                class="recommdate_close recommdatebtn"><s:property value="%{getText('button.close')}"/></span>&nbsp;&nbsp;<span
                                 id="recommend_message"></span></td>
                     </tr>
                 </table>
@@ -292,8 +277,7 @@
         <p id="message_area_tip"></p>
         <s:form theme="css_xhtml" name="commentsForm" method="post" id="commentForm">
             <textarea id="message_textarea"></textarea>
-            <a href="javascript:;" class="submit_btn" id="message_submit_btn"><s:property
-                    value="%{getText('blog.comments.submit')}"/></a>
+            <a href="javascript:;" class="submit_btn" id="message_submit_btn"><s:property value="%{getText('blog.comments.submit')}"/></a>
         </s:form>
         <div id="message_list_ul">
             <s:iterator value="courseComments" status="idx">
@@ -301,35 +285,26 @@
                     <s:a action="userBlog" cssClass="nick_name"><s:param name="user.id" value="commenter.id"/><img
                             src="<s:property value="commenter.pic"/>"/></s:a>
                     <s:a action="userBlog" cssClass="nick_name"><s:param name="user.id"
-                                                                         value="commenter.id"/><s:property
-                            value="commenter.nickName"/></s:a>
+                                                                         value="commenter.id"/><s:property value="commenter.nickName"/></s:a>
                     <span class="span_out">
                         <span class="span1"><s:property value="content"/></span>
                         <s:if test="course.teacher.id == #session.userID && commenter.id != #session.userID">
                             <a class="span2" href="####"
-                               onclick="replyToComment('<s:property value="commenter.nickName"/>',<s:property
-                                       value="commenter.id"/>)"><s:property
-                                    value="%{getText('blog.comments.reply')}"/></a>
+                               onclick="replyToComment('<s:property value="commenter.nickName"/>',<s:property value="commenter.id"/>)"><s:property value="%{getText('blog.comments.reply')}"/></a>
                             <a class="span2" href="####"
-                               onclick="deleteThisComment(this,<s:property value="id"/>)"><s:property
-                                    value="%{getText('blog.comments.delete')}"/></a>
+                               onclick="deleteThisComment(this,<s:property value="id"/>)"><s:property value="%{getText('blog.comments.delete')}"/></a>
                         </s:if>
                         <s:elseif test="course.teacher.id != #session.userID && commenter.id != #session.userID">
                             <a class="span2" href="####"
-                               onclick="replyToComment('<s:property value="commenter.nickName"/>',<s:property
-                                       value="commenter.id"/>)"><s:property
-                                    value="%{getText('blog.comments.reply')}"/></a>
+                               onclick="replyToComment('<s:property value="commenter.nickName"/>',<s:property value="commenter.id"/>)"><s:property value="%{getText('blog.comments.reply')}"/></a>
                         </s:elseif>
                         <s:elseif test=" #session.userID == null">
                             <a class="span2" href="####"
-                               onclick="replyToComment('<s:property value="commenter.nickName"/>',<s:property
-                                       value="commenter.id"/>)"><s:property
-                                    value="%{getText('blog.comments.reply')}"/></a>
+                               onclick="replyToComment('<s:property value="commenter.nickName"/>',<s:property value="commenter.id"/>)"><s:property value="%{getText('blog.comments.reply')}"/></a>
                         </s:elseif>
                         <s:else>
                             <a class="span2" href="####"
-                               onclick="deleteThisComment(this,<s:property value="id"/>)"><s:property
-                                    value="%{getText('blog.comments.delete')}"/></a>
+                               onclick="deleteThisComment(this,<s:property value="id"/>)"><s:property value="%{getText('blog.comments.delete')}"/></a>
                         </s:else>
                         <span class="span3"><s:date name="commentTime"
                                                     format="%{getText('global.display.datetime')}"/></span>
@@ -338,12 +313,10 @@
             </s:iterator>
             <s:if test="commentsNum != 0">
                 <s:if test="!commentsNumOverflow">
-                    <a href="javascript:;" class="more_or_close" onclick="getMoreComments();"><s:property
-                            value="%{getText('blog.comments.more.result')}"/>&gt;&gt;</a>
+                    <a href="javascript:;" class="more_or_close" onclick="getMoreComments();"><s:property value="%{getText('blog.comments.more.result')}"/>&gt;&gt;</a>
                 </s:if>
                 <s:elseif test="commentsNumOverflow && commentsNum>=10">
-                    <a href="javascript:;" class="more_or_close" onclick="rollBack();">&lt;&lt;<s:property
-                            value="%{getText('blog.comments.rollBack')}"/></a>
+                    <a href="javascript:;" class="more_or_close" onclick="rollBack();">&lt;&lt;<s:property value="%{getText('blog.comments.rollBack')}"/></a>
                 </s:elseif>
             </s:if>
             <script type="text/javascript">
@@ -374,18 +347,13 @@
                    title="<s:property value="course.teacher.nickName"/>"><img
                         src="<s:property value="course.teacher.pic"/>"/></a>
                 <a href="userBlog.html?user.id=<s:property value="course.teacher.id"/>" class="nick_name"
-                   title="<s:property value="course.teacher.nickName"/>"><s:property
-                        value="course.teacher.nickName"/></a>
+                   title="<s:property value="course.teacher.nickName"/>"><s:property value="course.teacher.nickName"/></a>
             <span class="under">
                 <%--<span class="orWord">5</span>学生&nbsp;|&nbsp;--%>
-                <span class="orWord"><s:property value="course.teacher.fansNum"/></span>&nbsp;&nbsp;<s:property
-                    value="%{getText('onlive.fensi')}"/>&nbsp;|&nbsp;<span class="orWord"><s:property
-                    value="teacherCourseNum"/></span>&nbsp;&nbsp;<s:property
-                    value="%{getText('course.invite.student.email.content.course')}"/></span>
+                <span class="orWord"><s:property value="course.teacher.fansNum"/></span>&nbsp;&nbsp;<s:property value="%{getText('onlive.fensi')}"/>&nbsp;|&nbsp;<span class="orWord"><s:property value="teacherCourseNum"/></span>&nbsp;&nbsp;<s:property value="%{getText('course.invite.student.email.content.course')}"/></span>
                 <s:if test="!focusedCourseTeacher">
                     <a href="javascript:;" id="focus_center" class="focus"
-                       onclick="addFocus(<s:property value="user.id"/>);"><s:property
-                            value="%{getText('user.add.focus')}"/></a>
+                       onclick="addFocus(<s:property value="user.id"/>);"><s:property value="%{getText('user.add.focus')}"/></a>
                 </s:if>
             </p>
 
@@ -405,13 +373,11 @@
                    title="<s:property value="course.organization.nickName"/>"><img
                         src="<s:property value="course.organization.logoUrl"/>"/></a>
                 <a href="orgBlog.html?org.id=<s:property value="course.organization.id"/>" class="nick_name"
-                   title="<s:property value="course.organization.nickName"/>"><s:property
-                        value="course.organization.nickName"/></a>
+                   title="<s:property value="course.organization.nickName"/>"><s:property value="course.organization.nickName"/></a>
                     <span class="under">
                         <%--<span class="orWord">5</span>学生&nbsp;|&nbsp;--%>
                         <span class="orWord">5</span><s:text name="label.teacher"/>&nbsp;|&nbsp;<span
-                            class="orWord"><s:property value="orgCourseNum"/></span><s:property
-                            value="%{getText('course.invite.student.email.content.course')}"/></span>
+                            class="orWord"><s:property value="orgCourseNum"/></span><s:property value="%{getText('course.invite.student.email.content.course')}"/></span>
                     <%--<a href="javascript:;" class="focus">关注</a>--%>
             </p>
 
@@ -475,20 +441,15 @@
         <table>
             <tr>
                 <td colspan="2"><s:text name="course.total.evalations.grade.average"/>：<span
-                        class="orWord">4.1</span> <s:property
-                        value="%{getText('user.evaluate.grade')}"/>&nbsp;&nbsp;<s:property
-                        value="%{getText('course.total.evalations.grade.highest')}"/>：<span
-                        class="orWord">5.0</span><s:property
-                        value="%{getText('user.evaluate.grade')}"/>&nbsp;&nbsp;<s:property
-                        value="%{getText('course.total.evalations.grade.lowest')}"/>：<span
+                        class="orWord">4.1</span> <s:property value="%{getText('user.evaluate.grade')}"/>&nbsp;&nbsp;<s:property value="%{getText('course.total.evalations.grade.highest')}"/>：<span
+                        class="orWord">5.0</span><s:property value="%{getText('user.evaluate.grade')}"/>&nbsp;&nbsp;<s:property value="%{getText('course.total.evalations.grade.lowest')}"/>：<span
                         class="orWord">3.0</span><s:text name="user.evaluate.grade"/>&nbsp;&nbsp;
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
                     <div id="rate_t_1" class="type2"></div>
-                    <span class="grade" id="grade_1"><s:property value="course.interest"/></span>&nbsp;<s:property
-                        value="%{getText('user.evaluate.grade')}"/></td>
+                    <span class="grade" id="grade_1"><s:property value="course.interest"/></span>&nbsp;<s:property value="%{getText('user.evaluate.grade')}"/></td>
             </tr>
         </table>
         <div class="save_pop">

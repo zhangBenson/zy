@@ -25,8 +25,7 @@
     </div>
     <div class="udb_1_4" id="focus_center">
         <%--<s:if test="!focused">--%>
-        <a href="javascript:;" id="focus_btn" onclick="addFocus(<s:property value="user.id"/>);"><s:property
-                value="%{getText('onlive.focus.on')}"/></a>
+        <a href="javascript:;" id="focus_btn" onclick="addFocus(<s:property value="user.id"/>);"><s:property value="%{getText('onlive.focus.on')}"/></a>
         <%--</s:if>--%>
     </div>
 </div>
@@ -96,16 +95,14 @@
 
 <div class="ubd_2_1">
     <h4><s:property value="%{getText('user.created.courses',{user.nickName})}"/></h4>
-    <a class="a_all" href="#">(<s:text name="search.header.all"/><s:property
-            value="coursesAsTeacherNum"/>)</a>
+    <a class="a_all" href="#">(<s:text name="search.header.all"/><s:property value="coursesAsTeacherNum"/>)</a>
     <ul>
         <s:iterator value="coursesAsTeacher" status="idx">
             <li class="li_out">
                 <ul>
                     <li class="li_1"><s:a action="voaCourseBlog"><s:param name="course.id" value="id"/><img
                             src="<s:property value="logoUrl"/>"/></s:a></li>
-                    <li class="li_2"><s:a action="voaCourseBlog"><s:param name="course.id" value="id"/><s:property
-                            value="name"/></s:a></li>
+                    <li class="li_2"><s:a action="voaCourseBlog"><s:param name="course.id" value="id"/><s:property value="name"/></s:a></li>
                     <li class="li_3 introduction<s:property value='#idx.index'/>"><s:property value="description"/></li>
                     <li class="li_4"><s:text name="blog.time.left"/>&nbsp;&nbsp;<strong
                             id="timeLeftForBook<s:property value="#idx.index"/>"></strong></li>
@@ -133,8 +130,7 @@
 </div>
 <div class="ubd_2_2">
     <h4><s:property value="%{getText('user.reged.courses',{user.nickName})}"/></h4>
-    <a class="a_all" href="#">(<s:text name="search.header.all"/><s:property
-            value="coursesAsStudentNum"/>)</a>
+    <a class="a_all" href="#">(<s:text name="search.header.all"/><s:property value="coursesAsStudentNum"/>)</a>
     <ul class="ul_out">
         <s:iterator value="coursesAsStudent">
             <li class="course">
@@ -142,8 +138,7 @@
                     <img src="<s:property value="logoUrl"/> " title="<s:property value="name"/>"/>
                 </s:a>
                 <span title="<s:property value="name"/>"><s:a action="voaCourseBlog"><s:param name="course.id"
-                                                                                              value="id"/><s:property
-                        value="name"/></s:a></span>
+                                                                                              value="id"/><s:property value="name"/></s:a></span>
             </li>
         </s:iterator>
     </ul>
@@ -160,8 +155,7 @@
                         <img src="<s:property value="logoUrl"/> " title="<s:property value="name"/>" class="courseImg"/>
                     </s:a>
                     <span title="<s:property value="name"/>"><s:a action="showBlog"><s:param name="myShow.id"
-                                                                                             value="id"/><s:property
-                            value="name"/></s:a></span>
+                                                                                             value="id"/><s:property value="name"/></s:a></span>
                 </li>
             </s:iterator>
         </ul>
@@ -170,8 +164,7 @@
 
 <div class="ubd_2_2">
     <h4><s:property value="%{getText('user.course.browsed',{user.nickName})}"/></h4>
-    <a class="a_all" href="#">(<s:text name="search.header.all"/><s:property
-            value="browsedCoursesNum"/>)</a>
+    <a class="a_all" href="#">(<s:text name="search.header.all"/><s:property value="browsedCoursesNum"/>)</a>
     <ul>
         <s:iterator value="browsedCourses">
             <li class="course">
@@ -180,8 +173,7 @@
                          class="courseImg"/>
                 </s:a>
                 <span title="<s:property value="course.name"/>"><s:a action="voaCourseBlog"><s:param name="course.id"
-                                                                                                     value="course.id"/><s:property
-                        value="course.name"/></s:a></span>
+                                                                                                     value="course.id"/><s:property value="course.name"/></s:a></span>
             </li>
         </s:iterator>
     </ul>
@@ -241,29 +233,24 @@
                                                                                          value="owner.id"/><img
                                 src="<s:property value="owner.pic"/>" class="portraitImg"/></s:a></li>
                         <li class="li_2"><s:a action="userBlog" target="_blank"><s:param name="user.id"
-                                                                                         value="owner.id"/><s:property
-                                value="owner.nickName"/></s:a></li>
+                                                                                         value="owner.id"/><s:property value="owner.nickName"/></s:a></li>
                         <li class="li_3">
                             <span class="span_1"><s:property value="description"/></span>
                             <span class="span_2"><s:date name="createDate"
                                                          format="%{getText('global.display.datetime')}"/></span>
                             <s:if test="user.id == #session.userID && owner.id != #session.userID">
                                 <span class="span_3"><a onclick="replyToComment('<s:property value="owner.nickName"/>')"
-                                                        href="#message_area_tip"><s:property
-                                        value="%{getText('blog.comments.reply')}"/></a></span>
+                                                        href="#message_area_tip"><s:property value="%{getText('blog.comments.reply')}"/></a></span>
                                 <span class="span_3"><a onclick="deleteThisComment(this,<s:property value="id"/>)"
-                                                        href="#message_area_tip"><s:property
-                                        value="%{getText('blog.comments.delete')}"/></a></span>
+                                                        href="#message_area_tip"><s:property value="%{getText('blog.comments.delete')}"/></a></span>
                             </s:if>
                             <s:elseif test="user.id != #session.userID && owner.id != #session.userID">
                                 <span class="span_3"><a onclick="replyToComment('<s:property value="owner.nickName"/>')"
-                                                        href="#message_area_tip"><s:property
-                                        value="%{getText('blog.comments.reply')}"/></a></span>
+                                                        href="#message_area_tip"><s:property value="%{getText('blog.comments.reply')}"/></a></span>
                             </s:elseif>
                             <s:else>
                                 <span class="span_3"><a onclick="deleteThisComment(this,<s:property value="id"/>)"
-                                                        href="#message_area_tip"><s:property
-                                        value="%{getText('blog.comments.delete')}"/></a></span>
+                                                        href="#message_area_tip"><s:property value="%{getText('blog.comments.delete')}"/></a></span>
                             </s:else>
                         </li>
                     </ul>
@@ -272,12 +259,10 @@
             <li class="li_out">
                 <s:if test="commentsNum != 0">
                     <s:if test="!commentsNumOverflow">
-                        <a class="more_or_close" onclick="getMoreComments();" href="#message_area_tip"><s:property
-                                value="%{getText('blog.comments.more.result')}"/>&gt;&gt;</a>
+                        <a class="more_or_close" onclick="getMoreComments();" href="#message_area_tip"><s:property value="%{getText('blog.comments.more.result')}"/>&gt;&gt;</a>
                     </s:if>
                     <s:else>
-                        <a class="more_or_close" onclick="rollBack();" href="#message_area_tip">&lt;&lt;<s:property
-                                value="%{getText('blog.comments.rollBack')}"/></a>
+                        <a class="more_or_close" onclick="rollBack();" href="#message_area_tip">&lt;&lt;<s:property value="%{getText('blog.comments.rollBack')}"/></a>
                     </s:else>
                 </s:if>
             </li>

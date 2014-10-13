@@ -23,18 +23,15 @@
                     <div class="Info2 fl">
                         <a class="a_title" href="userBlog.html?user.id=<s:property value="id"/>"
                            title="<s:property value="nickName"/>"><s:property value="nickName"/></a> <br/>
-                        <span><%--7课程&nbsp;&nbsp;5个人秀&nbsp;&nbsp;4直播&nbsp;&nbsp;--%><s:property
-                                value="fansNum"/>关注</span> <br/>
+                        <span><%--7课程&nbsp;&nbsp;5个人秀&nbsp;&nbsp;4直播&nbsp;&nbsp;--%><s:property value="fansNum"/>关注</span> <br/>
                         <span><s:property value="selfDescription"/></span>
                     </div>
                     <div class="Info3 fr">
                         <s:if test="!userFocused">
-                            <a class="a_focus" href="javascript:;" onclick="becomeFans(this,<s:property value="id"/>);"><s:property
-                                    value="%{getText('user.add.focus')}"/></a>
+                            <a class="a_focus" href="javascript:;" onclick="becomeFans(this,<s:property value="id"/>);"><s:property value="%{getText('user.add.focus')}"/></a>
                         </s:if>
                         <s:else>
-                            <a class="a_focus" href="javascript:;" onclick="becomeFans(this,<s:property value="id"/>);"><s:property
-                                    value="%{getText('user.add.focused')}"/></a>
+                            <a class="a_focus" href="javascript:;" onclick="becomeFans(this,<s:property value="id"/>);"><s:property value="%{getText('user.add.focused')}"/></a>
                         </s:else>
                     </div>
                 </div>

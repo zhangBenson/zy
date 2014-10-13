@@ -2,20 +2,16 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <ul class="left">
     <s:iterator value="coursesInTypesLeft">
-        <li><a href="voaCourseBlog.html?course.id=<s:property value="id"/>" class="courseInTypes_name_size"><s:property
-                value="name"/></a><span class="price"><s:property value="charges"/><s:property
-                value="%{getText('label.zhibi.true')}"/></span><span class="date"><s:date name="startDate"
-                                                                                          format="%{getText('dateformat')}"/></span>
+        <li><a href="voaCourseBlog.html?course.id=<s:property value="id"/>" class="courseInTypes_name_size"><s:property value="name"/></a><span class="price"><s:property value="charges"/><s:property value="%{getText('label.zhibi.true')}"/></span><span class="date"><s:date name="startDate"
+                                                                                                                                                                                                                                                                                 format="%{getText('dateformat')}"/></span>
         </li>
     </s:iterator>
 </ul>
 <div class="split"></div>
 <ul class="right">
     <s:iterator value="coursesInTypesRight">
-        <li><a href="voaCourseBlog.html?course.id=<s:property value="id"/>" class="courseInTypes_name_size"><s:property
-                value="name"/></a><span class="price"><s:property value="charges"/><s:property
-                value="%{getText('label.zhibi.true')}"/></span><span class="date"><s:date name="startDate"
-                                                                                          format="%{getText('dateformat')}"/></span>
+        <li><a href="voaCourseBlog.html?course.id=<s:property value="id"/>" class="courseInTypes_name_size"><s:property value="name"/></a><span class="price"><s:property value="charges"/><s:property value="%{getText('label.zhibi.true')}"/></span><span class="date"><s:date name="startDate"
+                                                                                                                                                                                                                                                                                 format="%{getText('dateformat')}"/></span>
         </li>
     </s:iterator>
 </ul>

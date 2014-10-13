@@ -68,22 +68,16 @@
                 <td height="110">
                     <table width="798" height="110" border="0" align="center">
                         <tr>
-                            <td colspan="3"><span class="bigcn">主题 Topic: <span class="STYLE6"><s:property
-                                    value="competition.subject.name"/> <s:property
-                                    value="competition.name"/> </span></span>
+                            <td colspan="3"><span class="bigcn">主题 Topic: <span class="STYLE6"><s:property value="competition.subject.name"/> <s:property value="competition.name"/> </span></span>
                             </td>
                         </tr>
                         <tr>
-                            <td width="213"><span class="bigcn">开始日期: </span><span class="STYLE6"><s:property
-                                    value="%{getText('global.date',{competition.startDate})}"/></span></td>
-                            <td width="213"><span class="bigcn">报名结束日期: </span><span class="STYLE6"><s:property
-                                    value="%{getText('global.date',{competition.singUpEndDate})}"/></span></td>
+                            <td width="213"><span class="bigcn">开始日期: </span><span class="STYLE6"><s:property value="%{getText('global.date',{competition.startDate})}"/></span></td>
+                            <td width="213"><span class="bigcn">报名结束日期: </span><span class="STYLE6"><s:property value="%{getText('global.date',{competition.singUpEndDate})}"/></span></td>
                         </tr>
                         <tr>
-                            <td width="213"><span class="bigcn">EMAIL: </span><span class="STYLE6"><s:property
-                                    value="competition.subject.owner.email"/></span></td>
-                            <td width="198"><span class="bigcn">电话 Tel:<span class="STYLE6"> <s:property
-                                    value="competition.phone"/></span></span>
+                            <td width="213"><span class="bigcn">EMAIL: </span><span class="STYLE6"><s:property value="competition.subject.owner.email"/></span></td>
+                            <td width="198"><span class="bigcn">电话 Tel:<span class="STYLE6"> <s:property value="competition.phone"/></span></span>
                             </td>
                         </tr>
                     </table>

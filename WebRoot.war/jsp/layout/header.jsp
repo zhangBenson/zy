@@ -36,8 +36,7 @@
         <a href="aboutUs.html"><s:text name="link.contact.us"/></a>
     </p>
 
-    <p class="tel"><s:text name="system.contact.tel"/><span>4000-211-123</span> <s:property
-            value="#session.HIG_SEC_USER_EMAIL"/></p>
+    <p class="tel"><s:text name="system.contact.tel"/><span>4000-211-123</span> <s:property value="#session.HIG_SEC_USER_EMAIL"/></p>
 
 </div>
 

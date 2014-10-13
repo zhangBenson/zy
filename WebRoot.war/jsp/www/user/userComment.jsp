@@ -34,12 +34,10 @@
 </div>
 <s:if test="commentsNum != 0">
     <s:if test="!commentsNumOverflow">
-        <a class="more_or_close" onclick="getMoreComments();" href="#message_area_tip"><s:property
-                value="%{getText('blog.comments.more.result')}"/>&gt;&gt;</a>
+        <a class="more_or_close" onclick="getMoreComments();" href="#message_area_tip"><s:property value="%{getText('blog.comments.more.result')}"/>&gt;&gt;</a>
     </s:if>
     <s:else>
-        <a class="more_or_close" onclick="rollBack();" href="#message_area_tip">&lt;&lt;<s:property
-                value="%{getText('blog.comments.rollBack')}"/></a>
+        <a class="more_or_close" onclick="rollBack();" href="#message_area_tip">&lt;&lt;<s:property value="%{getText('blog.comments.rollBack')}"/></a>
     </s:else>
 </s:if>
 

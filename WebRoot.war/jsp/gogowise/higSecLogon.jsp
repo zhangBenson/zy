@@ -97,13 +97,12 @@
         </div>
         <div id="regright">
             <p><s:text name="email"/>&nbsp;&nbsp;<span class="errorinfo"
-                                                                          id="yzemail">*</span><br/><br/>
+                                                       id="yzemail">*</span><br/><br/>
                 <input type="text" name="user.email" id="email" class="text"/>
             </p>
             <br/>
 
-            <p id="addnext"><s:text name="password"/>&nbsp;&nbsp;<span class="errorinfo" id="yzpwd">*<s:property
-                    value="identityConfirmMsg"/></span><br/><br/>
+            <p id="addnext"><s:text name="password"/>&nbsp;&nbsp;<span class="errorinfo" id="yzpwd">*<s:property value="identityConfirmMsg"/></span><br/><br/>
                 <s:password name="user.password" id="pwd" cssClass="text"/>
             </p>
             <br/>

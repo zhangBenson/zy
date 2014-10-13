@@ -11,33 +11,27 @@
         <div class="orgm_options">
             <ul>
                 <li>
-                    <s:a action="orgInterview"><h3><img src="images/org/arrow.png"/><span><s:property
-                            value="%{getText('online.interview')}"/></span></h3></s:a>
+                    <s:a action="orgInterview"><h3><img src="images/org/arrow.png"/><span><s:property value="%{getText('online.interview')}"/></span></h3></s:a>
                     <p><s:text name="online.remote.interview"/></p>
                 </li>
                 <li>
-                    <s:a action="initOrgCourseCreation"><h3><img src="images/org/arrow.png"/><span><s:property
-                            value="%{getText('org.create.course')}"/></span></h3></s:a>
+                    <s:a action="initOrgCourseCreation"><h3><img src="images/org/arrow.png"/><span><s:property value="%{getText('org.create.course')}"/></span></h3></s:a>
                     <p><s:text name="create.organization.courses"/></p>
                 </li>
                 <li>
-                    <s:a action="initOrgAuthorization"><h3><img src="images/org/arrow.png"/><span><s:property
-                            value="%{getText('human.resourse.management')}"/></span></h3></s:a>
+                    <s:a action="initOrgAuthorization"><h3><img src="images/org/arrow.png"/><span><s:property value="%{getText('human.resourse.management')}"/></span></h3></s:a>
                     <p><s:text name="manage.all.the.teachers"/></p>
                 </li>
                 <li>
-                    <s:a action="maintenanceSearchResult"><h3><img src="images/org/arrow.png"/><span><s:property
-                            value="%{getText('usermenu.item.coursemaintenance')}"/></span></h3></s:a>
+                    <s:a action="maintenanceSearchResult"><h3><img src="images/org/arrow.png"/><span><s:property value="%{getText('usermenu.item.coursemaintenance')}"/></span></h3></s:a>
                     <p><s:text name="adjust.your.organization.courses"/></p>
                 </li>
                 <li>
-                    <s:a action="courseSupervise"><h3><img src="images/org/arrow.png"/><span><s:property
-                            value="%{getText('org.matters.course.supervisions')}"/></span></h3></s:a>
+                    <s:a action="courseSupervise"><h3><img src="images/org/arrow.png"/><span><s:property value="%{getText('org.matters.course.supervisions')}"/></span></h3></s:a>
                     <p><s:text name="org.matters.course.supervisions.description"/></p>
                 </li>
                 <li>
-                    <s:a action="initOrgMeeting"><h3><img src="images/org/arrow.png"/><span><s:property
-                            value="%{getText('org.matters.video.meeting')}"/></span></h3></s:a>
+                    <s:a action="initOrgMeeting"><h3><img src="images/org/arrow.png"/><span><s:property value="%{getText('org.matters.video.meeting')}"/></span></h3></s:a>
                     <p><s:text name="org.matters.video.meeting.description"/></p>
                 </li>
                 <%--<li>--%>
@@ -45,8 +39,7 @@
                 <%--<p><s:text name="join.us"/></p>--%>
                 <%--</li>--%>
                 <li>
-                    <s:a action="orgInfoUpdate"><h3><img src="images/org/arrow.png"/><span><s:property
-                            value="%{getText('org.information.setting')}"/></span></h3></s:a>
+                    <s:a action="orgInfoUpdate"><h3><img src="images/org/arrow.png"/><span><s:property value="%{getText('org.information.setting')}"/></span></h3></s:a>
                     <p><s:text name="org.information.setting.content"/></p>
                 </li>
             </ul>

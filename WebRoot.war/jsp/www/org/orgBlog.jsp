@@ -31,7 +31,7 @@
                         <a href="voaCourseBlog.html?course.id=<s:property value="id"/>"
                            title="<s:property value="name"/>">
                             <div class="recommended">
-                                <img src="<s:property value="logoUrl"/>"alt=""/><br/>
+                                <img src="<s:property value="logoUrl"/>" alt=""/><br/>
                                 <span><s:property value="name"/></span>
                             </div>
                         </a>
@@ -44,7 +44,7 @@
         <br/>
 
         <%--<p class="text-right"><a href="orgMoreCourse.html?org.id=<s:property value="org.id"/>"><s:property--%>
-                <%--value="%{getText('others.more')}"/></a></p>--%>
+        <%--value="%{getText('others.more')}"/></a></p>--%>
     </div>
     <br/>
 
@@ -69,8 +69,7 @@
 
             <p class="text-right">
                 <s:if test="moocs.size()>5">
-                    <a href="orgMoreMooc.html?org.id=<s:property value="org.id"/>"><s:property
-                            value="%{getText('others.more')}"/></a>
+                    <a href="orgMoreMooc.html?org.id=<s:property value="org.id"/>"><s:property value="%{getText('others.more')}"/></a>
                 </s:if>
             </p>
         </div>
@@ -95,8 +94,7 @@
                                         src="<s:property value="commenter.pic"/>" alt=""
                                         class="forumportrait"/></s:a></span>
                                 <br/>
-                                <span><s:a action="userBlog"><s:param name="user.id" value="commenter.id"/><s:property
-                                        value="commenter.nickName"/></s:a></span>
+                                <span><s:a action="userBlog"><s:param name="user.id" value="commenter.id"/><s:property value="commenter.nickName"/></s:a></span>
                             </div>
                         </div>
                         <div class="col-md-10">
@@ -120,8 +118,7 @@
             <s:form theme="css_xhtml" name="commentsForm" method="post" validate="true">
                 <textarea id="message_textarea" class="form-control" rows="3"></textarea>
                 <br/>
-                <a href="javascript:;" class="btn btn-primary btn-lg btn-block" id="message_submit_btn"><s:property
-                        value="%{getText('blog.comments.submit')}"/></a>
+                <a href="javascript:;" class="btn btn-primary btn-lg btn-block" id="message_submit_btn"><s:property value="%{getText('blog.comments.submit')}"/></a>
             </s:form>
         </div>
     </div>
@@ -243,11 +240,10 @@
                 <p></p>
 
                 <div><s:text name="lable.course.starttime"/>:<s:date name="date"
-                                                                                        format="%{getText('dateformat.forclass')}"/></div>
+                                                                     format="%{getText('dateformat.forclass')}"/></div>
                 <p></p>
 
-                <div><s:text name="courses.info.lecturer"/>: <s:property
-                        value="course.teacher.nickName"/></div>
+                <div><s:text name="courses.info.lecturer"/>: <s:property value="course.teacher.nickName"/></div>
                 <p></p>
 
                 <div><s:text name="word.audience"/>:</div>
@@ -260,17 +256,15 @@
                 <p></p>
 
                 <div><s:text name="lable.course.no"/>:
-                    <s:text name="lable.class.no1"/><s:property
-                            value="course.ClassesNum"/><s:text name="lable.class.no2"/>
+                    <s:text name="lable.class.no1"/><s:property value="course.ClassesNum"/><s:text name="lable.class.no2"/>
                 </div>
                 <p></p>
 
                 <div><s:text name="lable.course.starttime"/>:<s:date name="date"
-                                                                                        format="%{getText('dateformat.forclass')}"/></div>
+                                                                     format="%{getText('dateformat.forclass')}"/></div>
                 <p></p>
 
-                <div><s:text name="courses.info.lecturer"/>: <s:property
-                        value="course.teacher.nickName"/></div>
+                <div><s:text name="courses.info.lecturer"/>: <s:property value="course.teacher.nickName"/></div>
                 <p></p>
 
                 <div><s:text name="word.audience"/>:</div>
@@ -278,8 +272,7 @@
             </s:iterator>
         </s:else>
 
-        <button type="button" class="btn btn-primary btn-block"><s:property
-                value="%{getText('button.enter')}"/></button>
+        <button type="button" class="btn btn-primary btn-block"><s:property value="%{getText('button.enter')}"/></button>
     </div>
 </div>
 
@@ -428,19 +421,19 @@
             <div class="col-sm-4">
                 <button type="button" class="btn btn-primary btn-lg btn-block">Confirm Buy</button>
             </div>
-                <form name="palypaForm" action="https://www.paypal.com/cgi-bin/webscr" target="_top" method="post" onsubmit="return validatePaypal();">       <%-- xiaoyl  add--   xiaoyl     --%>
-                    <input type="hidden" name="cmd" value="_xclick">
-                    <input type="hidden" name="business" value="zeng_zeng@gogowise.com">
-                    <input type="hidden" name="item_name" value="Course">
-                    <input type="hidden" name="amount" value="1.00" id="paypalAmount">
-                    <input type="hidden" name="currency_code" value="USD">
-                    <input type="hidden" name="on0" value="customerId">
-                    <input type="hidden" name="os0" value="stephen">
-                    <input type="hidden" name="on1" value="address">
-                    <input type="hidden" name="os1" value="shanghai china">
-                    <input type="hidden" name="notify_url"
-                           value="http://54.191.219.119/ipn.html?userID=<s:property value="%{#session.userID}"/>&orgID=<s:property value="org.id"/>">
-                    <input type="hidden" name="return" value="http://54.191.219.119/courseCenter.html">
+            <form name="palypaForm" action="https://www.paypal.com/cgi-bin/webscr" target="_top" method="post" onsubmit="return validatePaypal();">       <%-- xiaoyl  add--   xiaoyl     --%>
+                <input type="hidden" name="cmd" value="_xclick">
+                <input type="hidden" name="business" value="zeng_zeng@gogowise.com">
+                <input type="hidden" name="item_name" value="Course">
+                <input type="hidden" name="amount" value="1.00" id="paypalAmount">
+                <input type="hidden" name="currency_code" value="USD">
+                <input type="hidden" name="on0" value="customerId">
+                <input type="hidden" name="os0" value="stephen">
+                <input type="hidden" name="on1" value="address">
+                <input type="hidden" name="os1" value="shanghai china">
+                <input type="hidden" name="notify_url"
+                       value="http://54.191.219.119/ipn.html?userID=<s:property value="%{#session.userID}"/>&orgID=<s:property value="org.id"/>">
+                <input type="hidden" name="return" value="http://54.191.219.119/courseCenter.html">
 
                 <input type="image" src="https://www.paypalobjects.com/en_GB/SG/i/btn/btn_buynowCC_LG.gif" name="submit"
                        alt="Make payments with payPal - it's fast,">
@@ -491,7 +484,7 @@
     }
 
     function validatePaypal() {
-        var value=$("input[name='sale']:checked").val();
+        var value = $("input[name='sale']:checked").val();
         if (value == null || value == undefined || value == '') {
             alert("请选择课程");
             return false;

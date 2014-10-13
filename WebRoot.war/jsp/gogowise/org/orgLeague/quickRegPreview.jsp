@@ -76,11 +76,9 @@
                     <li class="leftAndRightHead">组织负责人姓名：<s:property value="org.responsiblePerson.userName"/></li>
                     <li>&nbsp;&nbsp;</li>
                     <li class="leftAndRightHead">
-                        <s:text name="orgleague.info.orgName"/><s:property
-                            value="org.schoolName"/></li>
+                        <s:text name="orgleague.info.orgName"/><s:property value="org.schoolName"/></li>
                     <li>&nbsp;&nbsp;</li>
-                    <li class="leftAndRightHead"><s:text name="orgleague.info.contact"/><s:property
-                            value="org.responsiblePerson.telphone"/></li>
+                    <li class="leftAndRightHead"><s:text name="orgleague.info.contact"/><s:property value="org.responsiblePerson.telphone"/></li>
                 </ul>
             </div>
             <div class="fourthMid">
@@ -100,8 +98,7 @@
             <div class="backAndNext">
                     <%--<form action="" method="post">--%>
         <span class="beforeBN"><input name="" id="clauseCheck" type="checkbox" value=""/>
-        <a href="<%=request.getContextPath()%>/jsp/gogowise/org/orgLeague/orgLeagueClause.html" class="boxy"><s:property
-                value="%{getText('orgleague.info.accept')}"/></a><br/>
+        <a href="<%=request.getContextPath()%>/jsp/gogowise/org/orgLeague/orgLeagueClause.html" class="boxy"><s:property value="%{getText('orgleague.info.accept')}"/></a><br/>
         <span class="clauseCheckTip"><s:text name="orgleague.info.acceptClause"/></span></span>
 
 

@@ -127,14 +127,12 @@
                         <div class="col-sm-offset-2 col-sm-10">
                             <br/>
                                 <%--<button type="submit" class="btn btn-danger  btn-sm btn-block">Send the validation code</button>--%>
-                            <a href="#" class="btn btn-danger  btn-sm btn-block" onclick="sendEmail();"><s:property
-                                    value="%{getText('button.send.valid.code')}"/></a>
+                            <a href="#" class="btn btn-danger  btn-sm btn-block" onclick="sendEmail();"><s:property value="%{getText('button.send.valid.code')}"/></a>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="textfield2" class="col-sm-2 control-label"><s:property
-                                value="%{getText('label.valid.code')}"/>：</label>
+                        <label for="textfield2" class="col-sm-2 control-label"><s:property value="%{getText('label.valid.code')}"/>：</label>
 
                         <div class="col-sm-10">
                                 <%--<input type="password" class="form-control" id="inputPassword3" placeholder="Please Input Validation Code">--%>

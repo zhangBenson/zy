@@ -7,22 +7,19 @@
             <li class="li_1"><s:a action="userBlog" target="_blank"><s:param name="user.id" value="owner.id"/><img
                     src="<s:property value="commenter.pic"/>" class="portraitImg"/></s:a></li>
             <li class="li_2"><s:a action="userBlog" target="_blank"><s:param name="user.id"
-                                                                             value="owner.id"/><s:property
-                    value="commenter.nickName"/></s:a></li>
+                                                                             value="owner.id"/><s:property value="commenter.nickName"/></s:a></li>
             <li class="li_3">
                 <span class="span_1"><s:property value="description"/></span>
                 <span class="span_2"><s:date name="createDate" format="%{getText('global.display.datetime')}"/></span>
                 <s:if test="org.responsiblePerson.id == #session.userID && commenter.id != #session.userID">
                     <span class="span_3"><a
-                            onclick="replyToComment('<s:property value="commenter.nickName"/>',<s:property
-                                    value="commenter.id"/>)" href="javascript:;">回复</a></span>
+                            onclick="replyToComment('<s:property value="commenter.nickName"/>',<s:property value="commenter.id"/>)" href="javascript:;">回复</a></span>
                     <span class="span_3"><a onclick="deleteThisComment(this,<s:property value="id"/>)"
                                             href="javascript:;">删除</a></span>
                 </s:if>
                 <s:elseif test="org.responsiblePerson.id != #session.userID && commenter.id != #session.userID">
                     <span class="span_3"><a
-                            onclick="replyToComment('<s:property value="commenter.nickName"/>',<s:property
-                                    value="commenter.id"/>)" href="javascript:;">回复</a></span>
+                            onclick="replyToComment('<s:property value="commenter.nickName"/>',<s:property value="commenter.id"/>)" href="javascript:;">回复</a></span>
                 </s:elseif>
                 <s:else>
                     <span class="span_3"><a onclick="deleteThisComment(this,<s:property value="id"/>)"

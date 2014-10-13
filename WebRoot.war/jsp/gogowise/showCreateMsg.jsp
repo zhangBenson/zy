@@ -102,13 +102,9 @@
 
             <p> 3、甲方所属教师（此教师）在知元网进行网上教学所产生的收益，包括此老师的网络实时教学、教学录像、教学课件等（以下简称为甲方此教师版权收益），乙方将支付此教师此收益的30%作为此教师的版权收益； </p>
 
-            <p> 4、甲方指定甲方教师: 姓名:<span class="highlight"><s:property
-                    value="organization.responsiblePerson.userName"/></span>，身份证号码:<span class="highlight"><span
-                    class="highlight"><s:property
-                    value="organization.responsiblePerson.cardId"/></span>，知元网注册email:<span
-                    class="highlight"><s:property
-                    value="organization.responsiblePerson.email"/></span>, 联系电话号码:<s:property
-                    value="organization.responsiblePerson.telphone"/>,
+            <p> 4、甲方指定甲方教师: 姓名:<span class="highlight"><s:property value="organization.responsiblePerson.userName"/></span>，身份证号码:<span class="highlight"><span
+                    class="highlight"><s:property value="organization.responsiblePerson.cardId"/></span>，知元网注册email:<span
+                    class="highlight"><s:property value="organization.responsiblePerson.email"/></span>, 联系电话号码:<s:property value="organization.responsiblePerson.telphone"/>,
                 为甲方在知元网上甲方注册组织唯一指定负责人，全权负责课程的开设、教师身份的确认、课堂内容的监管等实体学校相同的工作，并承担相关的责任，保证教学内容健康、合法。乙方将支付此负责人在负责期间内甲方新教学课件所产生的版权收益（以下简称负责人负责期内甲方版权收益）的8%作为此负责人的劳动报酬；
             </span></p>
 

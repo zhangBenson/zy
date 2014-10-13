@@ -26,8 +26,7 @@
 
         <div class="viewLeft fl">
             <p class="title">
-                <a class="title" href="userBlog.html?user.id=<s:property value="user.id"/>"><s:property
-                        value="user.nickName"/></a>
+                <a class="title" href="userBlog.html?user.id=<s:property value="user.id"/>"><s:property value="user.nickName"/></a>
                     <%--<a class="watch orange_words" href="javascript:;"><s:text name="user.add.focus"/></a>--%>
             </p>
 

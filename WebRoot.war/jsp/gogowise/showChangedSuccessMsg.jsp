@@ -89,31 +89,21 @@
         <div id="cons">
             <p>
 
-            <h2><s:property value="changeResponserHistory.organization.schoolName"/> 组织机构变更知元网<s:property
-                    value="changeResponserHistory.organization.schoolName"/> 组织注册组织负责人协议 </h2>
+            <h2><s:property value="changeResponserHistory.organization.schoolName"/> 组织机构变更知元网<s:property value="changeResponserHistory.organization.schoolName"/> 组织注册组织负责人协议 </h2>
 
             <p id="bianma"> 协议编码：<span class="highlight"><s:property value="changeResponserHistory.id"/></span>  </p>
             </p>
-            <p>因为工作的需要，<span class="highlight"><s:property value="changeResponserHistory.newResponser.userName"/></span>申请变更<s:property
-                    value="changeResponserHistory.organization.schoolName"/>组织变在知元网<span class="highlight"><s:property
-                    value="changeResponserHistory.organization.schoolName"/></span>组织负责人。
+            <p>因为工作的需要，<span class="highlight"><s:property value="changeResponserHistory.newResponser.userName"/></span>申请变更<s:property value="changeResponserHistory.organization.schoolName"/>组织变在知元网<span class="highlight"><s:property value="changeResponserHistory.organization.schoolName"/></span>组织负责人。
             </p>
 
-            <p>原负责人信息：姓名：<span class="highlight"><s:property
-                    value="changeResponserHistory.currentResponser.userName"/></span>，注册email: <span
-                    class="highlight"><s:property
-                    value="changeResponserHistory.currentResponser.email"/></span>，联系电话：<span
-                    class="highlight"><s:property value="changeResponserHistory.currentResponser.telphone"/></span>。将停止负责知元网<s:property
-                    value="changeResponserHistory.organization.schoolName"/>注册组织的所有工作。 </p>
+            <p>原负责人信息：姓名：<span class="highlight"><s:property value="changeResponserHistory.currentResponser.userName"/></span>，注册email: <span
+                    class="highlight"><s:property value="changeResponserHistory.currentResponser.email"/></span>，联系电话：<span
+                    class="highlight"><s:property value="changeResponserHistory.currentResponser.telphone"/></span>。将停止负责知元网<s:property value="changeResponserHistory.organization.schoolName"/>注册组织的所有工作。 </p>
 
-            <p>申请人信息：姓名：<span class="highlight"><s:property
-                    value="changeResponserHistory.newResponser.userName"/></span>, 注册email:<span
+            <p>申请人信息：姓名：<span class="highlight"><s:property value="changeResponserHistory.newResponser.userName"/></span>, 注册email:<span
                     class="highlight"><s:property value="changeResponserHistory.newResponser.email"/></span>，联系电话：<span
-                    class="highlight"><s:property
-                    value="changeResponserHistory.newResponser.telphone"/></span>，身份证号码：<span
-                    class="highlight"><s:property
-                    value="changeResponserHistory.newResponser.cardId"/></span>，将成为知元网<s:property
-                    value="changeResponserHistory.organization.schoolName"/>注册组织新负责人，至变更生效日期起，将享有负责人的所有责任和权益。
+                    class="highlight"><s:property value="changeResponserHistory.newResponser.telphone"/></span>，身份证号码：<span
+                    class="highlight"><s:property value="changeResponserHistory.newResponser.cardId"/></span>，将成为知元网<s:property value="changeResponserHistory.organization.schoolName"/>注册组织新负责人，至变更生效日期起，将享有负责人的所有责任和权益。
 
             <p>
                 此协议一式四份，申请人一份，原负责人一份，学校一份，长沙知金电子科技有限公司（知元网所属公司）一份。申请人签字，原负责人签字，学校签字、盖章后生效。知元网审核确认真实以后，协议生效。正式生效日期为知元网收到协议当日算起，以邮戳日期为准。</p>

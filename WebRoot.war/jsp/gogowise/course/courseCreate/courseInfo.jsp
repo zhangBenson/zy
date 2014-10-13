@@ -6,9 +6,9 @@
 
         var sampleTags = [];
 
-        $.getJSON("listTags.html",function(data){
-            $.each(data.existTags,function(key,info){
-                sampleTags.push( info["name"].toString() );
+        $.getJSON("listTags.html", function (data) {
+            $.each(data.existTags, function (key, info) {
+                sampleTags.push(info["name"].toString());
             });
         });
 
@@ -16,29 +16,32 @@
             availableTags: sampleTags
         });
 
-        $("#btnTest").click(function(){
+        $("#btnTest").click(function () {
             alert(getTag());
         })
 
 
         <s:iterator value="tags">
-        $(".grayPanel").tagit("createTag", "<s:property value="name"/>" );
+        $(".grayPanel").tagit("createTag", "<s:property value="name"/>");
         </s:iterator>
     });
 
-//    window.onload=setTags;
+    //    window.onload=setTags;
 </script>
 
 <style type="text/css">
-    .grayPanel
-    {
-        border-style:solid;border-color: #eee;border-width: 1px;
-        min-height: 80px;margin-top: 10px;
-        font-family: Verdana,'微软雅黑', Geneva, sans-serif;
-        font-size:12px;
+    .grayPanel {
+        border-style: solid;
+        border-color: #eee;
+        border-width: 1px;
+        min-height: 80px;
+        margin-top: 10px;
+        font-family: Verdana, '微软雅黑', Geneva, sans-serif;
+        font-size: 12px;
         width: 500px;
     }
-    .grayPanel li{
+
+    .grayPanel li {
         border-bottom: none;
         width: 50px;
     }
@@ -56,7 +59,7 @@
         <li>
             <s:text name="course.access"/>：
             <s:radio name="course.isPublic" list="#{true:getText('course.public'),false:getText('course.private')}"
-                    value="course.isPublic" cssStyle="margin-left: 10px;margin-right: 10px;"/>
+                     value="course.isPublic" cssStyle="margin-left: 10px;margin-right: 10px;"/>
         </li>
 
         <li>
@@ -108,8 +111,7 @@
             <span class="item"><s:text name="label.online.class.tutor.price"/></span>
             <s:hidden name="course.consumptionType" value="true"/>
             <s:textfield cssClass="short_text_field" id="course_charges" name="course.charges"
-                         type="text" readonly="false"/>&nbsp;<s:property
-                value="%{getText('label.zhibi.true')}"/>
+                         type="text" readonly="false"/>&nbsp;<s:property value="%{getText('label.zhibi.true')}"/>
             <span class="course_charges_msg tip_words">*</span>
         </li>
         <li>
@@ -171,24 +173,19 @@
             <span class="orange_words" id="store_description"><s:property value="course.description"/></span>
         </li>
         <li><s:text name="course.info.of.student.type"/>：<span class="orange_words"
-                                                                                  id="store_studentType"><s:property
-                value="course.studentType"/></span></li>
+                                                               id="store_studentType"><s:property value="course.studentType"/></span></li>
         <li><s:text name="course.info.of.teaching.book"/>：<span class="orange_words"
-                                                                                   id="store_courseTeachingBook"><s:property
-                value="course.courseTeachingBook"/></span></li>
+                                                                id="store_courseTeachingBook"><s:property value="course.courseTeachingBook"/></span></li>
         <li><s:text name="course.info.of.course.type"/>：<span class="orange_words"
-                                                                                 id="store_courseType"><s:property
-                value="course.courseType"/></span></li>
+                                                              id="store_courseType"><s:property value="course.courseType"/></span></li>
         <li><s:text name="label.online.class.startdate"/>：<span class="orange_words"
-                                                                                   id="store_startDate"><s:date
+                                                                id="store_startDate"><s:date
                 name="course.startDate" format="%{getText('dateformat')}"/></span></li>
         <li><s:text name="label.online.class.tutor.price"/>：<span class="orange_words"
-                                                                                     id="store_charges"><s:property
-                value="course.charges"/>&nbsp;<s:text name="label.zhibi.true"/></span>
+                                                                  id="store_charges"><s:property value="course.charges"/>&nbsp;<s:text name="label.zhibi.true"/></span>
         </li>
         <li><s:text name="label.forcast.lecturer"/>：<span class="orange_words"
-                                                                             id="store_teacherEmail"><s:property
-                value="course.teacher.nickName"/></span></li>
+                                                          id="store_teacherEmail"><s:property value="course.teacher.nickName"/></span></li>
         <li><s:text name="course.student.appointed"/>：
         </li>
         <li>

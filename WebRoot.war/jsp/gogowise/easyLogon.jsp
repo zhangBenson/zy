@@ -139,10 +139,8 @@
 
             <div id="links">
                 <br/>
-                <span class="no_account"><s:property
-                        value="%{getText('user.info.identity.confirm.no.account')}"/></span>
-                <span id="links1" class="linksClick" onclick="goToReg();"><s:property
-                        value="%{getText('user.info.identity.confirm.register.now')}"/></span>
+                <span class="no_account"><s:property value="%{getText('user.info.identity.confirm.no.account')}"/></span>
+                <span id="links1" class="linksClick" onclick="goToReg();"><s:property value="%{getText('user.info.identity.confirm.register.now')}"/></span>
             </div>
         </div>
         <div id="regright">
@@ -153,8 +151,7 @@
             <br/>
 
             <p class="addnext">
-                <s:text name="password"/>&nbsp;&nbsp;<span class="errorinfo" id="yzpwd">*<s:property
-                    value="identityConfirmMsg"/></span>
+                <s:text name="password"/>&nbsp;&nbsp;<span class="errorinfo" id="yzpwd">*<s:property value="identityConfirmMsg"/></span>
                 <s:password name="user.password" id="pwd" cssClass="text"/>
             </p>
 

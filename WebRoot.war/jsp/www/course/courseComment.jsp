@@ -23,11 +23,9 @@
 <s:if test="commentsNum != 0">
     <p class="text-right">
         <s:if test="commentsNumOverflow">
-            <a href="javascript:;" class="more_or_close" onclick="getMoreComments();"><s:property
-                    value="%{getText('blog.comments.more.result')}"/>&gt;&gt;</a>
+            <a href="javascript:;" class="more_or_close" onclick="getMoreComments();"><s:property value="%{getText('blog.comments.more.result')}"/>&gt;&gt;</a>
             <s:if test="commentsNum>5">
-                &nbsp;|&nbsp;<a href="javascript:;" class="more_or_close" onclick="rollBack();">&lt;&lt;<s:property
-                    value="%{getText('blog.comments.rollBack')}"/></a>
+                &nbsp;|&nbsp;<a href="javascript:;" class="more_or_close" onclick="rollBack();">&lt;&lt;<s:property value="%{getText('blog.comments.rollBack')}"/></a>
             </s:if>
         </s:if>
     </p>

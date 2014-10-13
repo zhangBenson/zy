@@ -80,8 +80,7 @@ programming.
                                 src="<s:property value="commenter.pic"/>"/></s:a>
 					                    	<span>
 					                    		<s:a action="userBlog"><s:param name="user.id"
-                                                                                value="commenter.id"/><s:property
-                                                        value="commenter.nickName"/></s:a>
+                                                                                value="commenter.id"/><s:property value="commenter.nickName"/></s:a>
 					                    	</span>
                     </div>
                 </div>

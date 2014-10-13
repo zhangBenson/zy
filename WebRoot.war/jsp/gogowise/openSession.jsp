@@ -56,21 +56,15 @@
     <div class="course_msg">
         <div class="course_title">
             <s:a action="voaCourseBlog" target="_blank"><s:param name="course.id"
-                                                                 value="courseClass.course.id"/><s:property
-                    value="courseClass.course.name"/></s:a>
+                                                                 value="courseClass.course.id"/><s:property value="courseClass.course.name"/></s:a>
             <span>(<s:if test="courseClass.course.personalTeacher!=null">
-                <s:if test="courseClass.course.teachingNum==1"><s:property
-                        value="%{getText('label.tutor.1to1')}"/></s:if>
-                <s:if test="courseClass.course.teachingNum==2"><s:property
-                        value="%{getText('label.tutor.1to2')}"/></s:if>
-                <s:if test="courseClass.course.teachingNum==3"><s:property
-                        value="%{getText('label.tutor.1to3')}"/></s:if>
-                <s:if test="courseClass.course.teachingNum==4"><s:property
-                        value="%{getText('label.tutor.1to4')}"/></s:if>
+                <s:if test="courseClass.course.teachingNum==1"><s:property value="%{getText('label.tutor.1to1')}"/></s:if>
+                <s:if test="courseClass.course.teachingNum==2"><s:property value="%{getText('label.tutor.1to2')}"/></s:if>
+                <s:if test="courseClass.course.teachingNum==3"><s:property value="%{getText('label.tutor.1to3')}"/></s:if>
+                <s:if test="courseClass.course.teachingNum==4"><s:property value="%{getText('label.tutor.1to4')}"/></s:if>
             </s:if>
             <s:else>
-                <s:if test="courseClass.course.opened"><s:property
-                        value="%{getText('label.online.class.public')}"/></s:if>
+                <s:if test="courseClass.course.opened"><s:property value="%{getText('label.online.class.public')}"/></s:if>
                 <s:else>
                     <s:if test="courseClass.course.teachingNum==1"><s:text name="label.tutor.1to1"/></s:if>
                     <s:if test="courseClass.course.teachingNum==2"><s:text name="label.tutor.1to2"/></s:if>
@@ -81,13 +75,11 @@
         <div class="teacher_name">
             <s:text name="label.forcast.lecturer"/>：
             <s:a action="userBlog" target="_blank"><s:param name="user.id"
-                                                            value="courseClass.course.teacher.id"/><s:property
-                    value="courseClass.course.teacher.nickName"/></s:a>
+                                                            value="courseClass.course.teacher.id"/><s:property value="courseClass.course.teacher.nickName"/></s:a>
         </div>
         <div class="operate">
             <a id="invite_students" class="submit_btn" href="#invite_student_container"
-               title="<s:text name="course.invite.tip.words"/>"><s:property
-                    value="%{getText('course.invite.friend')}"/></a>
+               title="<s:text name="course.invite.tip.words"/>"><s:property value="%{getText('course.invite.friend')}"/></a>
         </div>
     </div>
 
@@ -117,8 +109,7 @@
 
                 <p class="link_para"><span id="inviteFriendHref"><s:property value="inviteFriendHref"/></span></p>
 
-                <p><span class="clip_link_btn" onclick="copyToClipboard();"><s:property
-                        value="%{getText('course.invite.link.copy')}"/></span></p>
+                <p><span class="clip_link_btn" onclick="copyToClipboard();"><s:property value="%{getText('course.invite.link.copy')}"/></span></p>
 
                 <p class="or_pragraph"><s:text name="course.selection.or"/></p>
 
@@ -126,14 +117,12 @@
                         id="invite_comments" name="inviteMessage"></textarea></p>
 
                 <p class="email_list" id="invite_email_list">
-                    <span><s:text name="label.email.friend"/><label id="invite_add_email"><s:property
-                            value="%{getText('interview.add')}"/></label>&nbsp;&nbsp;<label
+                    <span><s:text name="label.email.friend"/><label id="invite_add_email"><s:property value="%{getText('interview.add')}"/></label>&nbsp;&nbsp;<label
                             id="invite_email_msg"></label><br/>
                         <input type="text" class="emails" onblur="checkInviteEmail(this);" name="emails"></span>
                 </p>
 
-                <p class="begin_invite"><label onclick="startInvite();"><s:property
-                        value="%{getText('course.invite.begin')}"/></label></p>
+                <p class="begin_invite"><label onclick="startInvite();"><s:property value="%{getText('course.invite.begin')}"/></label></p>
             </div>
         </s:form>
     </div>

@@ -298,8 +298,7 @@
 
 
 <h1><a>GoGoWise</a></h1>
-<h4 align="center"><s:text name="label.online.class.coursename"/><s:property
-        value="course.name"/></h4>
+<h4 align="center"><s:text name="label.online.class.coursename"/><s:property value="course.name"/></h4>
 
 <h2><s:text name="label.created.course"/></h2>
 <table class="list1">
@@ -357,8 +356,7 @@
             </div>
             <ul>
                 <li id="li_1">
-                    <label class="description" for="element_1"><s:property
-                            value="%{getText('lable.course.name')}"/> </label>
+                    <label class="description" for="element_1"><s:property value="%{getText('lable.course.name')}"/> </label>
 
                     <div>
                         <s:textfield name="courseClass.name" id="courseClassName" class="element text medium"
@@ -367,8 +365,7 @@
                     </div>
                 </li>
                 <li>
-                    <label class="description" for="element_1"><s:property
-                            value="%{getText('lable.course.nickname')}"/></label>
+                    <label class="description" for="element_1"><s:property value="%{getText('lable.course.nickname')}"/></label>
 
                     <div>
                         <s:textfield name="courseClass.nickName" id="nickName" class="element text medium" type="text"
@@ -376,8 +373,7 @@
                     </div>
                 </li>
                 <li id="li_2">
-                    <label class="description" for="element_2"><s:property
-                            value="%{getText('lable.course.date')}"/> </label>
+                    <label class="description" for="element_2"><s:property value="%{getText('lable.course.date')}"/> </label>
 		<span>
 
 			<!--s:textfield name="courseClass.date" id="date" value="" cssClass="date" readonly="true" /-->
@@ -519,8 +515,7 @@
         </div>
     </s:form>
     <div id="footer">
-        <s:text name="text.backto"/><a href="coursePart.html"><s:property
-            value="%{getText('menu.item.studyonline')}"/></a>
+        <s:text name="text.backto"/><a href="coursePart.html"><s:property value="%{getText('menu.item.studyonline')}"/></a>
     </div>
 </div>
 

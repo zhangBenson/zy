@@ -43,9 +43,7 @@
 
     <table width="841" border="1px" cellspacing="0" cellpadding="0" bordercolor="#CCCCCC">
         <tr>
-            <td colspan="3" id="header">&nbsp<s:property value="competitionPhase.competition.subject.name"/><s:property
-                    value="competitionPhase.competition.name"/><s:property value="competitionPhase.name"/><s:property
-                    value="displayName"/>;</td>
+            <td colspan="3" id="header">&nbsp<s:property value="competitionPhase.competition.subject.name"/><s:property value="competitionPhase.competition.name"/><s:property value="competitionPhase.name"/><s:property value="displayName"/>;</td>
         </tr>
         <tr>
             <td width="103" height="131"><img src="Blog.jpg" width="140" height="111"/></td>

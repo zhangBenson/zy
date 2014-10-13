@@ -66,8 +66,7 @@
 
             <p><strong>您好！</strong></p>
 
-            <p>您的推荐已在处理中，如果您推荐的负责人<s:property value="organization.responsiblePerson.userName"/> 正是成为<s:property
-                    value="organization.schoolName"/>学校在知元网上的<s:property value="organization.schoolName"/>组织负责人，我们将会给您发送一份正式的协议。</p>
+            <p>您的推荐已在处理中，如果您推荐的负责人<s:property value="organization.responsiblePerson.userName"/> 正是成为<s:property value="organization.schoolName"/>学校在知元网上的<s:property value="organization.schoolName"/>组织负责人，我们将会给您发送一份正式的协议。</p>
 
             <p>谢谢您的推荐！ </p>
 

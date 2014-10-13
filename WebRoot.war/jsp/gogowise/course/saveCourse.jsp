@@ -75,8 +75,7 @@
                             <s:if test="identity == 1">
                                 <h3><s:text name="label.online.class.lecturer.info"/></h3>
                                 <li id="li_1">
-                                    <label class="description" for="element_1"><s:property
-                                            value="%{getText('label.online.class.org.name')}"/><span
+                                    <label class="description" for="element_1"><s:property value="%{getText('label.online.class.org.name')}"/><span
                                             class="errorinfo">*</span></label>
 
                                     <div>
@@ -84,8 +83,7 @@
                                     </div>
                                 </li>
                                 <li id="li_1">
-                                    <label class="description" for="element_1"><s:property
-                                            value="%{getText('label.online.class.teacheremail')}"/> <span
+                                    <label class="description" for="element_1"><s:property value="%{getText('label.online.class.teacheremail')}"/> <span
                                             class="errorinfo">*</span></label>
 
                                     <div>
@@ -94,8 +92,7 @@
                                     </div>
                                 </li>
                                 <li id="li_2">
-                                    <label class="description" for="element_2"><s:property
-                                            value="%{getText('label.online.class.cameramanemail')}"/> <span
+                                    <label class="description" for="element_2"><s:property value="%{getText('label.online.class.cameramanemail')}"/> <span
                                             class="errorinfo">*</span></label>
 
                                     <div>
@@ -108,8 +105,7 @@
                             <s:if test="identity == 2">
                                 <h3><s:text name="label.online.class.lecturer.info"/></h3>
                                 <li id="li_3">
-                                    <label class="description" for="element_3"><s:property
-                                            value="%{getText('label.online.class.org.name')}"/><span
+                                    <label class="description" for="element_3"><s:property value="%{getText('label.online.class.org.name')}"/><span
                                             class="errorinfo">*</span></label>
 
                                     <div>
@@ -117,8 +113,7 @@
                                     </div>
                                 </li>
                                 <li id="li_2">
-                                    <label class="description" for="element_2"><s:property
-                                            value="%{getText('label.online.class.cameramanemail')}"/> <span
+                                    <label class="description" for="element_2"><s:property value="%{getText('label.online.class.cameramanemail')}"/> <span
                                             class="errorinfo">*</span></label>
 
                                     <div>
@@ -130,8 +125,7 @@
                             <s:if test="identity == 3">
                                 <h3><s:text name="label.online.class.lecturer.info"/></h3>
                                 <li id="li_3">
-                                    <label class="description" for="element_3"><s:property
-                                            value="%{getText('label.online.class.org.name')}"/><span
+                                    <label class="description" for="element_3"><s:property value="%{getText('label.online.class.org.name')}"/><span
                                             class="errorinfo">*</span></label>
 
                                     <div>
@@ -139,8 +133,7 @@
                                     </div>
                                 </li>
                                 <li id="li_1">
-                                    <label class="description" for="element_1"><s:property
-                                            value="%{getText('label.online.class.teacheremail')}"/> <span
+                                    <label class="description" for="element_1"><s:property value="%{getText('label.online.class.teacheremail')}"/> <span
                                             class="errorinfo">*</span></label>
 
                                     <div>
@@ -157,29 +150,22 @@
                                 <li id="li_44">
 
                                     <label><input name="course.opened" type="radio" value="true" id="opened"
-                                                  checked="checked"/><s:property
-                                            value="%{getText('label.online.class.public')}"/></label>
+                                                  checked="checked"/><s:property value="%{getText('label.online.class.public')}"/></label>
                                     <label><input name="course.opened" type="radio" value="false"
-                                                  id="notOpened"/><s:property
-                                            value="%{getText('label.online.class.nopublic')}"/></label>
+                                                  id="notOpened"/><s:property value="%{getText('label.online.class.nopublic')}"/></label>
                                 </li>
 
                             </s:if>
                             <s:if test="identity == 4">
                                 <li>
                                     <label><input type="radio" name="course.teachingNum" value="1"
-                                                  checked="checked"/><s:property
-                                            value="%{getText('label.online.class.tutor.1to1')}"/></label>
-                                    <label><input type="radio" name="course.teachingNum" value="2"/><s:property
-                                            value="%{getText('label.online.class.tutor.1to2')}"/></label>
-                                    <label><input type="radio" name="course.teachingNum" value="3"/><s:property
-                                            value="%{getText('label.online.class.tutor.1to3')}"/></label>
-                                    <label><input type="radio" name="course.teachingNum" value="4"/><s:property
-                                            value="%{getText('label.online.class.tutor.1tomany')}"/></label>
+                                                  checked="checked"/><s:property value="%{getText('label.online.class.tutor.1to1')}"/></label>
+                                    <label><input type="radio" name="course.teachingNum" value="2"/><s:property value="%{getText('label.online.class.tutor.1to2')}"/></label>
+                                    <label><input type="radio" name="course.teachingNum" value="3"/><s:property value="%{getText('label.online.class.tutor.1to3')}"/></label>
+                                    <label><input type="radio" name="course.teachingNum" value="4"/><s:property value="%{getText('label.online.class.tutor.1tomany')}"/></label>
                                 </li>
                                 <li>
-                                    <label class="description" for="element_4"><s:property
-                                            value="%{getText('label.online.class.tutor.price')}"/></label>
+                                    <label class="description" for="element_4"><s:property value="%{getText('label.online.class.tutor.price')}"/></label>
 
                                     <div>
                                         <input name="course.charges" class="element text medium" type="text"
@@ -187,14 +173,12 @@
                                         <label><input type="radio" name="course.consumptionType" value="true"
                                                       checked="checked"/><s:text name="label.zhibi"/></label>
                                         <label><input type="radio" name="course.consumptionType"
-                                                      value="false"/><s:property
-                                                value="%{getText('label.course.zhiquan')}"/></label>
+                                                      value="false"/><s:property value="%{getText('label.course.zhiquan')}"/></label>
                                     </div>
                                 </li>
                             </s:if>
                             <li id="li_4">
-                                <label class="description" for="element_4"><s:property
-                                        value="%{getText('label.online.class.coursename')}"/> </label>
+                                <label class="description" for="element_4"><s:property value="%{getText('label.online.class.coursename')}"/> </label>
 
                                 <div>
                                     <input id="element_4" name="course.name" class="element text medium" type="text"
@@ -202,8 +186,7 @@
                                 </div>
                             </li>
                             <li id="li_5">
-                                <label class="description" for="element_5"><s:property
-                                        value="%{getText('label.online.class.introduction')}"/> </label>
+                                <label class="description" for="element_5"><s:property value="%{getText('label.online.class.introduction')}"/> </label>
 
                                 <div>
                                     <s:textarea cols="30" name="course.description" required="true"
@@ -211,8 +194,7 @@
                                 </div>
                             </li>
                             <li id="li_6">
-                                <label class="description" for="element_6"><s:property
-                                        value="%{getText('label.online.class.totalperods')}"/> </label>
+                                <label class="description" for="element_6"><s:property value="%{getText('label.online.class.totalperods')}"/> </label>
 
                                 <div>
                                     <s:textfield name="course.totalHours" required="true" cssClass="element text"
@@ -221,8 +203,7 @@
                             </li>
                             <li id="li_7">
 
-                                <label class="description" for="element_7"><s:property
-                                        value="%{getText('label.online.class.startdate')}"/> </label>
+                                <label class="description" for="element_7"><s:property value="%{getText('label.online.class.startdate')}"/> </label>
 		<span>
             <!--s:textfield  name="course.startDate" value="%{getText('global.date',{courseClass.date})}"
                          cssClass="date" readonly="true" required="true"/-->
@@ -234,8 +215,7 @@
 		</span>
                             </li>
                             <li id="li_8">
-                                <label class="description" for="element_8"><s:property
-                                        value="%{getText('label.online.class.enddate')}"/> </label>
+                                <label class="description" for="element_8"><s:property value="%{getText('label.online.class.enddate')}"/> </label>
 		<span>
 			<!--s:textfield name="course.finishDate" value="%{getText('global.date',{courseClass.date})}"
             class"Wdate" readonly="true" id="date"/-->
@@ -245,8 +225,7 @@
 
                             </li>
                             <li id="li_9">
-                                <label class="description" for="element_9"><s:property
-                                        value="%{getText('label.online.class.logo')}"/> </label>
+                                <label class="description" for="element_9"><s:property value="%{getText('label.online.class.logo')}"/> </label>
                                 <img src="images/courseImages/50.png" width="50" height="50" id="reImg"/>
 
                                 <div>
@@ -263,8 +242,7 @@
 
                     </div>
                     <div id="footer">
-                        <s:text name="text.backto"/> <a href="http://www.gogowise.com"><s:property
-                            value="%{getText('menu.item.index')}"/></a>
+                        <s:text name="text.backto"/> <a href="http://www.gogowise.com"><s:property value="%{getText('menu.item.index')}"/></a>
                     </div>
                 </div>
                 <img id="bottom" src="images/form/bottom.png" alt="">

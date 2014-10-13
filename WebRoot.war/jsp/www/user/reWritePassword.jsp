@@ -124,8 +124,7 @@
                         <%--<td colspan="2"><h1><img src="images/change.gif" width="25" height="25" />修改密码</h1></td>--%>
                         <%--</tr>--%>
                     <tr>
-                        <td colspan="2" id="info"><img src="images/change.gif" width="25" height="25"/><s:property
-                                value="%{getText('label.setting.new.password')}"/><br/>
+                        <td colspan="2" id="info"><img src="images/change.gif" width="25" height="25"/><s:property value="%{getText('label.setting.new.password')}"/><br/>
                             <s:text name="message.insert.new.password"/>
                         </td>
                     </tr>

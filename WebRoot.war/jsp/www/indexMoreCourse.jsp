@@ -14,8 +14,7 @@
                     <div class="coursePanelInfoRight">
                         <p class="textOverSinglerow"><s:property value="name"/></p>
 
-                        <p class="textOverSinglerow"><s:text name="course.school"/>:&nbsp;<s:property
-                                value="organization.schoolName"/></p>
+                        <p class="textOverSinglerow"><s:text name="course.school"/>:&nbsp;<s:property value="organization.schoolName"/></p>
 
                         <p class="textOverSinglerow">
                             <s:text name="courses.info.lecturer"/>:&nbsp;

@@ -71,22 +71,14 @@
 
             <div class="fourthLeft">
                 <ul>
-                    <li class="leftAndRightHead headTittle"><s:property
-                            value="%{getText('orgleague.info.orgInfo')}"/></li>
+                    <li class="leftAndRightHead headTittle"><s:property value="%{getText('orgleague.info.orgInfo')}"/></li>
                     <li class="leftAndRightHead">
-                        <s:text name="orgleague.info.orgName"/>：<br/><s:property
-                            value="org.schoolName"/></li>
-                    <li class="leftAndRightHead"><s:property
-                            value="%{getText('orgleague.info.orgIntro')}"/>：<br/><s:property value="org.description"/>
+                        <s:text name="orgleague.info.orgName"/>：<br/><s:property value="org.schoolName"/></li>
+                    <li class="leftAndRightHead"><s:property value="%{getText('orgleague.info.orgIntro')}"/>：<br/><s:property value="org.description"/>
                     </li>
-                    <li class="leftAndRightHead"><s:property
-                            value="%{getText('orgleague.info.accountName')}"/>：<br/><s:property
-                            value="org.depositName"/></li>
-                    <li class="leftAndRightHead"><s:property
-                            value="%{getText('orgleague.info.accountNo')}"/>：<br/><s:property
-                            value="org.depositBankAccount"/></li>
-                    <li class="leftAndRightHead"><s:text name="orgleague.info.orgSize"/>：<s:property
-                            value="%{getText('org.label.membersize.'+org.memberSize)}"/></li>
+                    <li class="leftAndRightHead"><s:property value="%{getText('orgleague.info.accountName')}"/>：<br/><s:property value="org.depositName"/></li>
+                    <li class="leftAndRightHead"><s:property value="%{getText('orgleague.info.accountNo')}"/>：<br/><s:property value="org.depositBankAccount"/></li>
+                    <li class="leftAndRightHead"><s:text name="orgleague.info.orgSize"/>：<s:property value="%{getText('org.label.membersize.'+org.memberSize)}"/></li>
                     <li class="leftAndRightHead">
                         <div class="imgWords"><s:text name="orgleague.info.orgLogo"/>：<br/><img
                                 src="<s:property value="org.logoUrl"/> " width="111" height="89"
@@ -98,16 +90,10 @@
             </div>
             <div class="fourthMid">
                 <ul>
-                    <li class="leftAndRightHead headTittle"><s:property
-                            value="%{getText('orgleague.info.contactMethod')}"/></li>
-                    <li class="leftAndRightHead"><s:property
-                            value="%{getText('orgleague.info.officerName')}"/>：<br/><s:property
-                            value="org.contactName"/></li>
-                    <li class="leftAndRightHead"><s:property
-                            value="%{getText('orgleague.info.mobile')}"/>：<br/><s:property value="org.cellPhone"/></li>
-                    <li class="leftAndRightHead"><s:property
-                            value="%{getText('orgleague.info.address')}"/>:<br/><s:property
-                            value="org.businessAddress"/></li>
+                    <li class="leftAndRightHead headTittle"><s:property value="%{getText('orgleague.info.contactMethod')}"/></li>
+                    <li class="leftAndRightHead"><s:property value="%{getText('orgleague.info.officerName')}"/>：<br/><s:property value="org.contactName"/></li>
+                    <li class="leftAndRightHead"><s:property value="%{getText('orgleague.info.mobile')}"/>：<br/><s:property value="org.cellPhone"/></li>
+                    <li class="leftAndRightHead"><s:property value="%{getText('orgleague.info.address')}"/>:<br/><s:property value="org.businessAddress"/></li>
                     <li class="leftAndRightHead">
                         <div class="imgWords"><s:text name="orgleague.info.cetification"/>：<br/><img
                                 src="<s:property value="org.businessLicenseUrl"/> " width="111" height="89"
@@ -118,15 +104,12 @@
             </div>
             <div class="fourthRight">
                 <ul>
-                    <li class="leftAndRightHead headTittle"><s:property
-                            value="%{getText('orgleague.info.personInCharge')}"/></li>
-                    <li class="leftAndRightHead"><s:text name="orgleague.info.name"/>：<s:property
-                            value="org.responsiblePerson.userName"/></li>
+                    <li class="leftAndRightHead headTittle"><s:property value="%{getText('orgleague.info.personInCharge')}"/></li>
+                    <li class="leftAndRightHead"><s:text name="orgleague.info.name"/>：<s:property value="org.responsiblePerson.userName"/></li>
                     <li class="leftAndRightHead"><s:text name="orgleague.info.birth"/>：<s:date
                             name="org.responsiblePerson.birthDay"
                             format="%{getText('global.display.date')}"/></li>
-                    <li class="leftAndRightHead"><s:text name="orgleague.info.id"/>：<s:property
-                            value="org.responsiblePerson.cardId"/></li>
+                    <li class="leftAndRightHead"><s:text name="orgleague.info.id"/>：<s:property value="org.responsiblePerson.cardId"/></li>
                     <li class="leftAndRightHead">
                         <div class="imgWords"><s:text name="orgleague.info.id.card"/>：<br/><img
                                 src="<s:property value="org.responsiblePerson.idCardUrl"/> " width="162" height="108"
@@ -138,8 +121,7 @@
             <div class="backAndNext">
                     <%--<form action="" method="post">--%>
         <span class="beforeBN"><input name="" id="clauseCheck" type="checkbox" value=""/>
-        <a href="<%=request.getContextPath()%>/jsp/gogowise/org/orgLeague/orgLeagueClause.html" class="boxy"><s:property
-                value="%{getText('orgleague.info.accept')}"/></a><br/>
+        <a href="<%=request.getContextPath()%>/jsp/gogowise/org/orgLeague/orgLeagueClause.html" class="boxy"><s:property value="%{getText('orgleague.info.accept')}"/></a><br/>
         <span class="clauseCheckTip"><s:text name="orgleague.info.acceptClause"/></span></span>
 
 
@@ -155,11 +137,8 @@
                     </s:if>
                     <s:if test="confirmCode != null">
                         <div style="height: 37px;width: 420px;float: right;display: block;margin-left: 400px;">
-                            <s:text name="orgleague.info.userMail"/>： <font color="red"><s:property
-                                value="org.responsiblePerson.email"/></font><s:property
-                                value="%{getText('orgleague.info.isConfirmed')}"/> :
-                            <font color="red"><s:property
-                                    value="%{getText('lable.yesno.'+org.confirmed)}"/></font>
+                            <s:text name="orgleague.info.userMail"/>： <font color="red"><s:property value="org.responsiblePerson.email"/></font><s:property value="%{getText('orgleague.info.isConfirmed')}"/> :
+                            <font color="red"><s:property value="%{getText('lable.yesno.'+org.confirmed)}"/></font>
                             <s:if test="#session.HIG_SEC_USER_EMAIL != null">
                                 <s:hidden name="confirmCode"/>
                                 <s:submit action="higSecConfirmOrg" key="orgleague.info.confirm"></s:submit>

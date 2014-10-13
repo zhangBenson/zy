@@ -62,12 +62,10 @@
 
 <div id="tabtag_1con">
     <s:form action="orgSaveResPerson" method="POST">
-        <div class="tip_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property
-                value="%{getText('orgInfoUpdate.param1')}"/></div>
+        <div class="tip_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param1')}"/></div>
         <ul class="principalMsg">
             <li>
-                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property
-                        value="%{getText('orgInfoUpdate.param2')}"/></p>
+                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param2')}"/></p>
 
                 <p id="secondStepNameWarn" class="input_msg"></p>
 
@@ -102,8 +100,7 @@
                 </div>
             </li>
             <li>
-                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property
-                        value="%{getText('orgInfoUpdate.param7')}"/></p>
+                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param7')}"/></p>
 
                 <p id="secondStepContactWarn" class="input_msg"></p>
 
@@ -112,8 +109,7 @@
                 </div>
             </li>
             <li>
-                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property
-                        value="%{getText('orgInfoUpdate.param8')}"/></p>
+                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param8')}"/></p>
 
                 <p id="secondStepIDWarn" class="input_msg"></p>
 
@@ -142,12 +138,10 @@
 
 <div id="tabtag_2con">
     <s:form action="orgSaveOrgInfo" method="POST">
-        <div class="tip_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property
-                value="%{getText('orgInfoUpdate.param1')}"/></div>
+        <div class="tip_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param1')}"/></div>
         <ul>
             <li>
-                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property
-                        value="%{getText('orgInfoUpdate.param11')}"/></p>
+                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param11')}"/></p>
 
                 <p id="orgNameWarn" class="input_msg"></p>
 
@@ -157,14 +151,12 @@
             </li>
             <li class="long_li" style="height:200px;">
                     <%--<p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:text name="orgInfoUpdate.param12"/></p>--%>
-                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property
-                        value="%{getText('orgInfoUpdate.param12')}"/></p>
+                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param12')}"/></p>
                 <s:textarea name="org.description" cols="80" id="thirdStepOrgShuoming" cssClass="descArea" rows="15"/>
                 <ckeditor:replace replace="thirdStepOrgShuoming" basePath="js/ckeditor/" config="<%=settings %>"/>
             </li>
             <li>
-                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property
-                        value="%{getText('orgInfoUpdate.param13')}"/></p>
+                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param13')}"/></p>
 
                 <p id="bankNameWarn" class="input_msg"></p>
 
@@ -173,8 +165,7 @@
                 </div>
             </li>
             <li>
-                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property
-                        value="%{getText('orgInfoUpdate.param14')}"/></p>
+                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param14')}"/></p>
 
                 <p id="accountNameWarn" class="input_msg"></p>
 
@@ -183,8 +174,7 @@
                 </div>
             </li>
             <li>
-                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property
-                        value="%{getText('orgInfoUpdate.param15')}"/></p>
+                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param15')}"/></p>
 
                 <p id="accountNoWarn" class="input_msg"></p>
 
@@ -216,8 +206,7 @@
                 </div>
             </li>
             <li class="fileUploadDiv">
-                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property
-                        value="%{getText('orgInfoUpdate.param18')}"/></p>
+                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param18')}"/></p>
 
                 <p id="fileupload2_FileWarn" class="input_msg"></p><br/>
 
@@ -237,8 +226,7 @@
                 </div>
             </li>
             <li class="fileUploadDiv">
-                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property
-                        value="%{getText('orgInfoUpdate.param19')}"/></p>
+                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param19')}"/></p>
 
                 <p id="fileupload3_FileWarn" class="input_msg"></p><br/>
 
@@ -263,12 +251,10 @@
 
 <div id="tabtag_3con">
     <s:form action="orgSaveContactInfo" method="POST">
-        <div class="tip_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property
-                value="%{getText('orgInfoUpdate.param1')}"/></div>
+        <div class="tip_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param1')}"/></div>
         <ul>
             <li>
-                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property
-                        value="%{getText('orgInfoUpdate.param20')}"/></p>
+                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param20')}"/></p>
 
                 <p id="thirdStepOfficerNameWarn" class="input_msg"></p>
 
@@ -277,8 +263,7 @@
                 </div>
             </li>
             <li>
-                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property
-                        value="%{getText('orgInfoUpdate.param21')}"/></p>
+                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param21')}"/></p>
 
                 <p id="thirdStepfixedTelWarn" class="input_msg"></p>
 
@@ -287,8 +272,7 @@
                 </div>
             </li>
             <li>
-                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property
-                        value="%{getText('orgInfoUpdate.param22')}"/></p>
+                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param22')}"/></p>
 
                 <p id="thirdStepMobileWarn" class="input_msg"></p>
 
@@ -297,8 +281,7 @@
                 </div>
             </li>
             <li>
-                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property
-                        value="%{getText('orgInfoUpdate.param23')}"/></p>
+                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param23')}"/></p>
 
                 <p id="thirdStepAddressWarn" class="input_msg"></p>
 
@@ -307,8 +290,7 @@
                 </div>
             </li>
             <li>
-                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property
-                        value="%{getText('orgInfoUpdate.param24')}"/></p>
+                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:property value="%{getText('orgInfoUpdate.param24')}"/></p>
 
                 <p id="thirdStepPostCodeWarn" class="input_msg"></p>
 
@@ -353,8 +335,7 @@
                 <td><s:date name="provideTime" format="%{getText('dateformat.forclass')}"/></td>
                 <td>20M</td>
                 <td><s:property value="description"/></td>
-                <td><a href="orgMaterialDownload.html?orgMaterial.id=<s:property value="id"/>"><s:property
-                        value="%{getText('orgInfoUpdate.param34')}"/></a></td>
+                <td><a href="orgMaterialDownload.html?orgMaterial.id=<s:property value="id"/>"><s:property value="%{getText('orgInfoUpdate.param34')}"/></a></td>
             </tr>
         </s:iterator>
     </table>

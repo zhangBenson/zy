@@ -67,14 +67,11 @@
                         <ul class="list-inline">
                             <li class="searchItemState"><s:text name="course.school"/>:<a
                                     href="orgBlog.html?org.id=<s:property value="organization.id"/>"
-                                    title="<s:property value="organization.nickName"/>"><s:property
-                                    value="organization.schoolName"/></a></li>
+                                    title="<s:property value="organization.nickName"/>"><s:property value="organization.schoolName"/></a></li>
                             <li class="searchItemState"><s:text name="courses.info.lecturer"/>:<a
                                     href="userBlog.html?user.id=<s:property value="teacher.id"/>"
-                                    title="<s:property value="teacher.nickName"/>"><s:property
-                                    value="teacher.nickName"/></a></li>
-                            <li class="searchItemState"><s:text name="label.student"/>:<s:property
-                                    value="studentNum"/></li>
+                                    title="<s:property value="teacher.nickName"/>"><s:property value="teacher.nickName"/></a></li>
+                            <li class="searchItemState"><s:text name="label.student"/>:<s:property value="studentNum"/></li>
                             <li class="searchItemState">
                                 <s:text name="course.info.courseTag"/>:
                                 <s:if test="getTagsAsStr().length()!=0"><s:property value="getTagsAsStr()"/></s:if>

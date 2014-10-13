@@ -10,15 +10,13 @@
     </div>
 
     <div class="desc">
-        <p><s:text name="download.version"/>1.0 &nbsp;&nbsp;&nbsp;<s:property
-                value="%{getText('download.size')}"/>9.2MB</p>
+        <p><s:text name="download.version"/>1.0 &nbsp;&nbsp;&nbsp;<s:property value="%{getText('download.size')}"/>9.2MB</p>
 
         <p><s:text name="download.publish.time"/>11/2/2012</p>
 
         <p><s:text name="download.sys.require"/>Android2.2+</p>
 
-        <p><s:text name="android.download.time"/>：<s:property
-                value="downloadTime.downloadTimes"/></p>
+        <p><s:text name="android.download.time"/>：<s:property value="downloadTime.downloadTimes"/></p>
     </div>
     <div class="android"></div>
 

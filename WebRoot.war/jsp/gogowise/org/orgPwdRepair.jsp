@@ -133,13 +133,12 @@
                 </p>
 
                 <p class="inputTips"><s:text name="msg.email"/><span class="errorinfo"
-                                                                                        id="yzemail">*</span>
+                                                                     id="yzemail">*</span>
                     <s:textfield name="user.email" cssClass="text" readonly="true"/>
                 </p>
 
                 <p id="addnext" class="inputTips"><s:text name="msg.pwd"/><span class="errorinfo"
-                                                                                                   id="yzpwd">*<s:property
-                        value="identityConfirmMsg"/></span><br/>
+                                                                                id="yzpwd">*<s:property value="identityConfirmMsg"/></span><br/>
                     <s:password name="user.password" id="pwd" value="" cssClass="text"/>
                 </p>
 
@@ -150,8 +149,7 @@
 
                 <p class="inputTips"><input name="checkbox" type="checkbox" value="checked" id="checkbox"
                                             checked="checked"/>
-                    <a href="<%=request.getContextPath()%>/jsp/gogowise/Clause.htm" class="boxy"><s:property
-                            value="%{getText('read')}"/></a></p>
+                    <a href="<%=request.getContextPath()%>/jsp/gogowise/Clause.htm" class="boxy"><s:property value="%{getText('read')}"/></a></p>
             </div>
             <p class="nextButton">
                 <input type="submit" name="button" id="btn1" onclick="return checkForm();"

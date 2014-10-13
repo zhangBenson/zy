@@ -393,8 +393,7 @@ img.frame1bottom{ position:absolute; left:0; bottom:0;}
                     <table border="0" cellspacing="0" cellpadding="0" class="infolist">
                         <tr>
                             <td rowspan="2" class="infotitle"><a
-                                    href="download.html?courseResource.id=<s:property value="id"/>"><s:property
-                                    value="sourceTitle"/></a></td>
+                                    href="download.html?courseResource.id=<s:property value="id"/>"><s:property value="sourceTitle"/></a></td>
                             <td class="infopeople">上传者：<s:property value="provider.userName"/></td>
                             <td class="uploadtime">上传时间：<s:date name="provideTime"
                                                                 format="%{getText('global.display.datetime')}"/></td>

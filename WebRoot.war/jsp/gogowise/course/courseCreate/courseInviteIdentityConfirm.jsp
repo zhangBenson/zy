@@ -111,30 +111,28 @@
         <div id="regright">
             <div id="regrightCont">
                 <p class="inputTips"><s:text name="email"/><span class="errorinfo"
-                                                                                    id="yzemail">*</span><br/>
+                                                                 id="yzemail">*</span><br/>
                     <input type="text" name="user.email" value="<s:property value="email"/>" id="email" class="text"
                            readonly="true"/>
                 </p>
 
                 <p id="addnext" class="inputTips"><s:text name="password"/><span class="errorinfo"
-                                                                                                    id="yzpwd">*<s:property
-                        value="identityConfirmMsg"/></span><br/>
+                                                                                 id="yzpwd">*<s:property value="identityConfirmMsg"/></span><br/>
                     <s:password name="user.password" id="pwd" cssClass="text"/>
                 </p>
 
                 <p class="inputTips"><s:text name="psdagain"/><span class="errorinfo"
-                                                                                       id="yzrepwd">*</span><br/>
+                                                                    id="yzrepwd">*</span><br/>
                     <s:password name="duplicate" id="repwd" cssClass="text"/>
                 </p>
 
                 <p class="inputTips"><s:text name="menber.reg.nickName"/><span class="errorinfo"
-                                                                                                  id="yznickName">*</span><br/>
+                                                                               id="yznickName">*</span><br/>
                     <s:textfield name="user.nickName" id="nickName" cssClass="text"/>
                 </p>
 
                 <p class="inputTips"><input name="checkbox" type="checkbox" value="checked" id="checkbox"/>
-                    <a href="<%=request.getContextPath()%>/jsp/gogowise/Clause.htm" class="boxy"><s:property
-                            value="%{getText('course.creation.document.rule')}"/></a>
+                    <a href="<%=request.getContextPath()%>/jsp/gogowise/Clause.htm" class="boxy"><s:property value="%{getText('course.creation.document.rule')}"/></a>
                 </p>
                     <%--</div>--%>
 

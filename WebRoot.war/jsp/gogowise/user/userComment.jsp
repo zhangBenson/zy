@@ -7,8 +7,7 @@
             <li class="li_1"><s:a action="userBlog" target="_blank"><s:param name="user.id" value="owner.id"/><img
                     src="<s:property value="owner.pic"/>" class="portraitImg"/></s:a></li>
             <li class="li_2"><s:a action="userBlog" target="_blank"><s:param name="user.id"
-                                                                             value="owner.id"/><s:property
-                    value="owner.nickName"/></s:a></li>
+                                                                             value="owner.id"/><s:property value="owner.nickName"/></s:a></li>
             <li class="li_3">
                 <span class="span_1"><s:property value="description"/></span>
                 <span class="span_2"><s:date name="createDate" format="%{getText('global.display.datetime')}"/></span>
