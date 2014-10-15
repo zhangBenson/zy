@@ -62,8 +62,11 @@ public class UserBlogAction extends BasicAction {
             results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".userBlog")}
     )
     public String userBlog() {
+        if (user == null) return NONE;
         Integer userId = user.getId();
         user = this.baseUserDao.findById(userId);
+        if (user == null) return NONE;
+
         coursesAsTeacher = courseDao.findCourses2Teacher(userId, new Pagination(3));
         coursesAsStudent = courseDao.findCourses2Student(userId, new Pagination(4));
 

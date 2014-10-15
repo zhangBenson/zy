@@ -1,4 +1,0 @@
-/playerClass.html?courseClass.id=392
-/playerDemo.html
-/orgBlog.html?org.id=4
-/classDemo.html

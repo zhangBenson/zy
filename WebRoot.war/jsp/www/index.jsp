@@ -35,9 +35,9 @@
 <div class="container">
 
     <ul class="bxslider">
-        <li><a href="<s:property value="posterLink1" />"><img src="../../images/index/pic1.jpg" class="bannerImg"/></a>
+        <li><a href="/playerClass.html?courseClass.id=392"><img src="../../images/index/pic1.jpg" class="bannerImg"/></a>
         </li>
-        <li><a href="<s:property value="posterLink2" />"><img src="../../images/index/pic2.jpg" class="bannerImg"/></a>
+        <li><a href="/playerDemo.html"><img src="../../images/index/pic2.jpg" class="bannerImg"/></a>
         </li>
         <%--<li><a href="<s:property value="posterLink3" />"><img src="../../images/index/pic3.jpg" class="bannerImg" /></a></li>--%>
         <%--<li><a href="<s:property value="posterLink4" />"><img src="../../images/index/pic4.jpg" class="bannerImg" /></a></li>--%>

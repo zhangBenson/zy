@@ -36,7 +36,7 @@
                     <a href="aboutUs.html" class="navlink">About Us</a>
                 </li>
                 <li>
-                    <s:a action="courseCenter" cssClass="navlink"><s:text name="frame.course.center"/></s:a>
+                    <a href="courseCenter.html" class="navlink"><s:text name="frame.course.center"/></a>
 
                 </li>
                 <li>
