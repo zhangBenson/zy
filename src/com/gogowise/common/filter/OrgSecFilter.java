@@ -71,7 +71,7 @@ public class OrgSecFilter implements Filter {
                     courseID = Integer.valueOf(request.getParameter("course.id"));
                 }
 
-                if (courseID != null && courseService.isDenyByPrivateCourse(userID, courseID)) {
+                if (courseID == null || courseService.isDenyByPrivateCourse(userID, courseID)) {
                     response.sendRedirect("noPermission.html");
                 }
 
