@@ -107,14 +107,16 @@ public class SaveCourseAction extends BasicAction {
         course.setMasterConfirmed(true);
 
         //TODO 设置course的标签Tag
-        for (String tagName : tags) {
-            Tag temp = tagDao.findByName(tagName);
-            if (temp == null) {
-                Tag newTag = new Tag(tagName);
-                tagDao.persistAbstract(newTag);
-                course.getTags().add(newTag);
-            } else {
-                if (!course.getTags().contains(temp)) course.getTags().add(temp);
+        if (tags != null && tags.size() > 0) {
+            for (String tagName : tags) {
+                Tag temp = tagDao.findByName(tagName);
+                if (temp == null) {
+                    Tag newTag = new Tag(tagName);
+                    tagDao.persistAbstract(newTag);
+                    course.getTags().add(newTag);
+                } else {
+                    if (!course.getTags().contains(temp)) course.getTags().add(temp);
+                }
             }
         }
         courseDao.persist(course);
