@@ -244,7 +244,7 @@ public class Utils {
         if (!dst.exists()) {
             mkDir(dst);
         }
-        if(dst.setReadable(true)&&dst.setWritable(true)) {
+        if (!dst.setReadable(true) || dst.setWritable(true)) {
             logger.error("pptConvert : set read write failed");
         }
 
