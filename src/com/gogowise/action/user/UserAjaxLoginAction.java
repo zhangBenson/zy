@@ -76,7 +76,7 @@ public class UserAjaxLoginAction extends BasicAction{
         if (user == null) {
             this.setLoginMessage(this.getText("message.logon.account.not.exist"));
             return false;
-        } else if (!user.getPassword().equals(MD5.endCode(this.user.getPassword()))) {
+        } else if (user.getPassword() == null || !user.getPassword().equals(MD5.endCode(this.user.getPassword()))) {
             this.setLoginMessage(this.getText("message.logon.password.error"));
             return false;
         }
