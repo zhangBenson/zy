@@ -127,7 +127,7 @@
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
         <!--<property name="driverClassName" value="com.p6spy.engine.spy.P6SpyDriver"/>-->
         <property name="jdbcUrl"
-                  value="jdbc:mysql://127.0.0.1:3306/gogowise?useUnicode=true&amp;characterEncoding=utf8"/>
+                  value="${db.url}"/>
         <property name="user" value="${db.user}"/>
         <property name="password" value="${db.password}"/>
         <property name="maxPoolSize" value="30"/>
