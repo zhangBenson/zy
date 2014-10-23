@@ -4,7 +4,6 @@ import com.gogowise.action.BasicAction;
 import com.gogowise.action.valueobject.ResultData;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.EmailUtil;
-import com.gogowise.common.utils.MD5;
 import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.ServiceException;
@@ -292,7 +291,7 @@ public class CourseAction extends BasicAction {
             if (!temp.exists())
                 temp.mkdirs();
 
-            Utils.notReplaceFileFromTmpModified(temp.getAbsolutePath(), course.getLogoUrl());
+            Utils.replaceFileFromTemp(temp.getAbsolutePath(), course.getLogoUrl());
 
             //Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
             //existCourse.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId()+"/"+course.getLogoUrl());

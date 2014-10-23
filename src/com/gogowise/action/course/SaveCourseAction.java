@@ -145,7 +145,7 @@ public class SaveCourseAction extends BasicAction {
             File temp = new File(courseDir);
             if (!temp.exists()) temp.mkdirs();
 
-            Utils.notReplaceFileFromTmpModified(temp.getAbsolutePath(), changedLogUrl);
+            Utils.replaceFileFromTemp(temp.getAbsolutePath(), changedLogUrl);
             course.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + course.getId() + "/" + changedLogUrl);
         }
 
@@ -243,7 +243,7 @@ public class SaveCourseAction extends BasicAction {
             File temp = new File(courseDir);
             if (!temp.exists()) temp.mkdirs();
 
-            Utils.notReplaceFileFromTmpModified(temp.getAbsolutePath(), course.getLogoUrl());
+            Utils.replaceFileFromTemp(temp.getAbsolutePath(), course.getLogoUrl());
             _course.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + course.getId() + "/" + course.getLogoUrl());
 
             //Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());

@@ -3,10 +3,10 @@ package com.gogowise.common.filter;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.EmailUtil;
 import com.gogowise.common.utils.Utils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -114,27 +114,13 @@ public class MainFilter implements Filter {
         String requestUrl = request.getServletPath();
         try {
 
-
-            if (org.apache.commons.lang.StringUtils.contains(requestUrl, "/video/") && session.getAttribute(Constants.SESSION_USER_ID) != null) {
-                String fileName = requestUrl.substring(requestUrl.lastIndexOf("/"));
-                int beginIndex = fileName.indexOf('_');
-                int endIndex = fileName.lastIndexOf('_');
-                String perOnliveID = fileName.substring(beginIndex + 1, endIndex);
-
-                Utils.notReplaceFileFromfms((Integer) session.getAttribute(Constants.SESSION_USER_ID), Integer.parseInt(perOnliveID));
-
-            }
             for (String url : NEED_LOGIN) {
                 if (StringUtils.startsWithIgnoreCase(requestUrl, url) && session.getAttribute(Constants.SESSION_USER_ID) == null) {
                     response.sendRedirect("easyLogon.html?reDirectUrl=" + request.getServletPath() + "?" + java.net.URLEncoder.encode(Utils.getEmptyString(request.getQueryString()), "utf-8"));
                     return;
                 }
             }
-//        if ( StringUtils.startsWithIgnoreCase(requestUrl, "/higSec")
-//                && (session.getAttribute(Constants.HIG_SEC_USER_EMAIL) ==null ||!"zlhades@hotmail.com".equalsIgnoreCase((String) session.getAttribute(Constants.HIG_SEC_USER_EMAIL)) )) {
-//            response.sendRedirect("easyLogon.html");
-//            return;
-//        }
+
             arg2.doFilter(arg0, arg1);
 
 

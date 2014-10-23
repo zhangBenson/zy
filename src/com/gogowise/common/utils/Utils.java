@@ -112,22 +112,9 @@ public class Utils {
     }
 
 
-    public static void replaceFileFromTempModified(String toDir, String fileName) {
+    public static void replaceFileFromTemp(String toDir, String fileName) {
         String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + fileName);
         replaceFile(srcPath, toDir + File.separator + fileName);
-    }
-
-
-    public static void notReplaceFileFromTmpModified(String toDir, String fileName) {
-        String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + fileName);
-        String toPath = toDir + File.separatorChar + fileName;
-        notReplaceFileAndCopy(srcPath, toPath);
-    }
-
-    public static void notReplaceFileFromfms(Integer userID, Integer personalOnliveID) {
-        String srcPath = "C:/Program Files/Adobe/Flash Media Server 4.5/applications/4f73962b107e4a9d6a14c42a-8f6a3b5b111b/streams/" + userID + "/Onlive/0/" + userID + "_" + personalOnliveID + "_Onlive.flv";
-        String toPath = ServletActionContext.getServletContext().getRealPath("");
-        notReplaceFileAndCopy(srcPath, toPath);
     }
 
     private static void copyByChannel(File f1, File f2) {
@@ -158,18 +145,6 @@ public class Utils {
 
     public static void replaceFile(String srcPath, String dstPath) {
 
-        File src = new File(srcPath);
-        File dst = new File(dstPath);
-
-        if (!dst.getParentFile().exists()) {
-            if (!dst.getParentFile().mkdirs()) {
-                logger.error("replaceFile : mkdir failed");
-            }
-        }
-        copyByChannel(src, dst);
-    }
-
-    private static void notReplaceFileAndCopy(String srcPath, String dstPath) {
         File src = new File(srcPath);
         File dst = new File(dstPath);
 

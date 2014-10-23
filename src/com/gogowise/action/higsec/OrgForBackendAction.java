@@ -208,7 +208,6 @@ public class OrgForBackendAction extends BasicAction {
         }
 
         //保存组织或者新建组织
-        boolean isOrgNew = false;
         Organization orgTmp = null;
         if (this.getOrg() != null && this.getOrg().getId() != null)
             orgTmp = organizationDao.findById(this.getOrg().getId());
@@ -223,7 +222,6 @@ public class OrgForBackendAction extends BasicAction {
             orgSaved.setSecDomain(org.getSecDomain());
         } else {
             orgSaved = this.org;
-            isOrgNew = true;
         }
 
 
@@ -233,7 +231,7 @@ public class OrgForBackendAction extends BasicAction {
             String logoDir = userDir + File.separatorChar + getSessionUserId() + Constants.ORG_LOGO_PATH;
             File temp = new File(logoDir);
             if (!temp.exists()) temp.mkdirs();
-            Utils.replaceFileFromTempModified(temp.getAbsolutePath(), this.getLogoUrl());
+            Utils.replaceFileFromTemp(temp.getAbsolutePath(), this.getLogoUrl());
             orgSaved.setLogoUrl(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + Constants.ORG_LOGO_PATH + this.getLogoUrl());
         }
         //保存ADV LOGO
@@ -241,7 +239,7 @@ public class OrgForBackendAction extends BasicAction {
             String advDir = userDir + File.separatorChar + getSessionUserId() + Constants.ORG_ADV_PATH;
             File advFile = new File(advDir);
             if (!advFile.exists()) advFile.mkdirs();
-            Utils.replaceFileFromTempModified(advFile.getAbsolutePath(), this.getAdvUrl());
+            Utils.replaceFileFromTemp(advFile.getAbsolutePath(), this.getAdvUrl());
             orgSaved.setAdvUrl(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + Constants.ORG_ADV_PATH + this.getAdvUrl());
         }
 
