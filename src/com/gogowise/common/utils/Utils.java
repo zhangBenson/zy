@@ -270,7 +270,7 @@ public class Utils {
             logger.error("pptConvert : set read write failed");
         }
         String BASE_PATCH = ServletActionContext.getServletContext().getRealPath(".");
-        String cmd = BASE_PATCH + Constants.QUESTION_EXT_PATH + " " + srcPpt + " " + desDir + Constants.QUESTION_FILE_NAME + " " + desDir + "/img";      // Change to synce
+        String cmd = BASE_PATCH + Constants.QUESTION_EXT_PATH + " " + srcPpt + " " + desDir + "/" + Constants.QUESTION_FILE_NAME + " " + desDir + "/img";      // Change to synce
         exe(cmd);
     }
 

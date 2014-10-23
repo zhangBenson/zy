@@ -276,8 +276,6 @@ public class CourseAction extends BasicAction {
     }
 
 
-
-
     @Action(value = "modifyCourseStep2", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".modifyCourseStep3")})
     public String modifyCourseStep2() {
 
@@ -567,23 +565,6 @@ public class CourseAction extends BasicAction {
         }
         out.print(data);
         out.close();
-    }
-
-    @Action(value = "recommendCourse")
-    public void recommendCourse() {
-
-        course = courseDao.findById(this.getCourse().getId());
-        for (String email : emails) {
-            CourseRecommend courseRecommend = new CourseRecommend();
-            courseRecommend.setCourse(course);
-            courseRecommend.setEmail(email);
-            courseRecommend.setComments(comments);
-            courseRecommend.setCreateTime(Calendar.getInstance());
-            courseRecommendDao.persistAbstract(courseRecommend);
-
-            String href = getBasePath() + "/initInterviewIdentityConfirm.html?courseRecommend.id=" + courseRecommend.getId() + "&email=" + email + "&code=" + MD5.endCode(email);
-            EmailUtil.sendMail(email, this.getText("course.recommend.email.title", new String[]{this.getSessionNickName(), course.getName()}), Constants.BIG_COURSE_ADVERTISE_EMAIL_CSS + this.getText("course.recommend.email.content", new String[]{email, this.getSessionUserEmail(), course.getName(), comments, href, href, email}), "text/html;charset=utf-8");
-        }
     }
 
     @Action(value = "courseSupervise", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseSupervise")})

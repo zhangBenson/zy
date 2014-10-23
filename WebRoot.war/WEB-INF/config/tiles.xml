@@ -65,7 +65,6 @@
     </definition>
 
 
-
     <definition name=".initReg" extends=".bodyCenter">
         <put-attribute name="title" value="title.reg"/>
         <put-attribute name="contentBody" value="/jsp/gogowise/MemberReg.jsp"/>
@@ -115,7 +114,6 @@
     <definition name=".singUp" extends=".simple">
         <put-attribute name="right" value="/jsp/gogowise/signup.jsp"/>
     </definition>
-
 
 
     <definition name=".competition" extends=".basic">
@@ -525,25 +523,21 @@
     <definition name=".voaCourseBlog" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.course.blog"/>
         <put-attribute name="contentBody" value="/jsp/www/course/courseBlog.jsp"/>
-        <!--<put-attribute name="contentBody" value="/jsp/gogowise/course/courseBlog.jsp"/>-->
     </definition>
 
     <definition name=".makeCourseVideo" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.course.blog"/>
         <put-attribute name="contentBody" value="/jsp/www/course/makeCourseVideo.jsp"/>
-        <!--<put-attribute name="contentBody" value="/jsp/gogowise/course/courseBlog.jsp"/>-->
     </definition>
 
     <definition name=".myCourseQuestionResult" extends=".wwwBodyCenter">
         <put-attribute name="title" value="Question Result"/>
         <put-attribute name="contentBody" value="/jsp/www/user/myCourseResult.jsp"/>
-        <!--<put-attribute name="contentBody" value="/jsp/gogowise/course/courseBlog.jsp"/>-->
     </definition>
 
     <definition name=".purchaseError" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.course.confirm1"/>
         <put-attribute name="contentBody" value="/jsp/www/course/purchaseError.jsp"/>
-        <!--<put-attribute name="contentBody" value="/jsp/gogowise/course/courseBlog.jsp"/>-->
     </definition>
 
 
@@ -883,12 +877,6 @@
 
 
     <!-- download related tiles end -->
-
-    <!--<definition name=".openVirtualClassRoom" extends=".wwwBodyCenter">-->
-    <!--<put-attribute name="title" value="download.virtual.room"/>-->
-    <!--<put-attribute name="contentBody" value="/jsp/www/course/openVirtualClassRoom.jsp"/>-->
-    <!--&lt;!&ndash;<put-attribute name="contentBody" value="/jsp/gogowise/course/courseBlog.jsp"/>&ndash;&gt;-->
-    <!--</definition>-->
 
     <definition name=".courseAdminManage" extends=".wwwBodyCenter">
         <put-attribute name="title" value="Course Manage"/>

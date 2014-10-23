@@ -144,7 +144,7 @@ public class SaveMaterialAction extends BasicAction {
     private void convertQuestion(String nowTimeStr, String dstPath) throws IOException, JAXBException {
         String dstDir = this.getRealPathForBaseDir() + Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/question/" + nowTimeStr;
         Utils.questionConvert(this.getRealPathForBaseDir() + dstPath, dstDir);
-        String xmlPath = dstDir + Constants.QUESTION_FILE_NAME;
+        String xmlPath = dstDir + "/" + Constants.QUESTION_FILE_NAME;
         List<Question> questions = convertQuestionService.convert(xmlPath);
         courseService.saveQuestion(courseMaterial, questions);
     }

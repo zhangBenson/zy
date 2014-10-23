@@ -30,6 +30,10 @@ import java.util.Calendar;
 @Namespace(BasicAction.BASE_NAME_SPACE)
 public class RegAction extends BasicAction {
 
+    public static final String REG_CSS = "<style type=\"text/css\">\n#rvmDiv #logoDiv {background-image: url(http://www.gogowise.com/images/logo.jpg);background-repeat: no-repeat;height: 65px;margin-left: 45px;}\n#rvmDiv #rvmcontentDiv ul .welcomeTittle {margin-left: 30px;}\n#rvmDiv {float: left;width: 100%;font-family: \"微软雅黑\", \"宋体\", \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif;}\n#logoDiv {float: left;width: 100%;}\n#rvmcontentDiv {float: left;width: 100%;}\n#rvmDiv #rvmcontentDiv ul li {list-style-type: none;}\n#rvmDiv #rvmcontentDiv .orangeWords {color: rgb(255,155,55);}\n#rvmDiv #rvmcontentDiv ul .lastWords {margin-top: 50px;}\n</style>";
+
+
+
     @Autowired
     private BaseUserDao baseUserDao;
     @Autowired
@@ -134,7 +138,7 @@ public class RegAction extends BasicAction {
     public void sendEmail(BaseUser user) {
 
         String activeUrl = getBasePath() + "/active.html?email=" + user.getEmail() + "&activeCode=" + user.getActiveCode();
-        EmailUtil.sendMail(user.getEmail(), this.getText("member.email.validation"), Constants.REG_CSS + this.getText("member.reg.email", new String[]{user.getEmail(), activeUrl, activeUrl, user.getEmail()}), "text/html;charset=utf-8");
+        EmailUtil.sendMail(user.getEmail(), this.getText("member.email.validation"), REG_CSS + this.getText("member.reg.email", new String[]{user.getEmail(), activeUrl, activeUrl, user.getEmail()}), "text/html;charset=utf-8");
     }
 
     public String getEmailBoxUrl() {

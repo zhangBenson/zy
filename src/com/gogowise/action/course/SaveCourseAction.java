@@ -44,6 +44,21 @@ import java.util.List;
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 @Results({@Result(name = "json", type = "json")})
 public class SaveCourseAction extends BasicAction {
+    public static final String INVITATION_EMAIL_CSS = "<style type=\"text/css\">\n" + "#rvmDiv #logoDiv {background-image: url(http://www.gogowise.com/images/logo.jpg);background-repeat: no-repeat;height: 65px;margin-left: 45px;}\n" + "#rvmDiv #rvmcontentDiv ul .welcomeTittle {margin-left: 30px;}\n" + "#rvmDiv {float: left;width: 100%;font-family: \"微软雅黑\", \"宋体\", \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif;}\n" + "#logoDiv {float: left;width: 100%;}\n" + "#rvmcontentDiv {float: left;width: 100%;}\n" + "#rvmDiv #rvmcontentDiv ul li {list-style-type: none;}\n" + "#rvmDiv #rvmcontentDiv .orangeWords {color: rgb(255,155,55);}\n" + "#rvmDiv #rvmcontentDiv ul .lastWords {margin-top: 50px;}\n" + "table,tr,td{border-collapse:collapse;border-top-width: 1px;border-right-width: 1px;border-bottom-width: 1px;border-left-width: 1px;\n" + "border-right-color:#09F;border-bottom-color: #09F;border-left-color: #09F;}\n" + "tr.odd{background-color:#CEFFFF;}\n" + "</style>";
+    public static final String CSS = "<style type=\"text/css\">\n" +
+            "*{padding:0;margin:0;}\n" +
+            "#receiptContainer {float: left;width: 100%;font-family: \"微软雅黑\", \"宋体\", \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif;font-size: 16px;}\n" +
+            "#receiptContainer .orangeWords {color: #F90;}\n" +
+            "#logoDiv {float: left;height: 60px;width: 100%;text-align: left;}\n" +
+            "#receiptContent {float: left;width: 100%;}\n" +
+            "#receiptContainer #receiptContent ul li {height: 30px;}\n" +
+            "#receiptContainer #receiptContent ul li a {margin-left: 20px;margin-top: 15px;margin-bottom: 15px;}\n" +
+            "#receiptContainer #receiptContent ul .sayhello {margin-top: 30px;}\n" +
+            "#receiptContainer #receiptContent ul .tittle {margin-bottom: 15px;}\n" +
+            "#receiptContainer #receiptContent ul .courseName {margin-top: 20px;}\n" +
+            "#receiptContainer #receiptContent ul .startTime {margin-bottom: 20px;}\n" +
+            "</style>";
+
     private DateFormat dateFormat = new SimpleDateFormat(this.getText("dateformat.forclass"));
 
     private Course course;
@@ -323,7 +338,7 @@ public class SaveCourseAction extends BasicAction {
 
         //=============================给老师的邮件反馈===========================================
         DateFormat dateFormat = new SimpleDateFormat(this.getText("dateformat.email"));
-        EmailUtil.sendMail(course.getTeacher().getEmail(), this.getText("course.invite.student.email.content.you.friend") + user.getNickName() + this.getText("course.invite.student.and.accept"), Constants.CSS + this.getText("course.invite.student.to.teacher.feedback", new String[]{user.getNickName(), course.getName(), dateFormat.format(course.getStartDate().getTime()), course.getTeacher().getEmail(), course.getTeacher().getEmail()}), "text/html;charset=utf-8");
+        EmailUtil.sendMail(course.getTeacher().getEmail(), this.getText("course.invite.student.email.content.you.friend") + user.getNickName() + this.getText("course.invite.student.and.accept"), CSS + this.getText("course.invite.student.to.teacher.feedback", new String[]{user.getNickName(), course.getName(), dateFormat.format(course.getStartDate().getTime()), course.getTeacher().getEmail(), course.getTeacher().getEmail()}), "text/html;charset=utf-8");
         return SUCCESS;
     }
 
@@ -402,7 +417,7 @@ public class SaveCourseAction extends BasicAction {
             String acceptArrange = getBasePath() + "/emailHandleForCourseCreation.html?course.id=" + course.getId() + "&accept=true&teacher=true&user.email=" + course.getTeacherEmail();
             String rejectArrange = getBasePath() + "/emailHandleForCourseCreation.html?course.id=" + course.getId() + "&accept=false&teacher=true&user.email=" + course.getTeacherEmail();
             String[] args = {course.getTeacherEmail(), course.getOrganization().getSchoolName(), course.getName(), course.getDescription(), dateFormat.format(Utils.changeBaseOnTimeZone4Action(courseStartTime).getTime()), course.getTotalHours().toString(), classesInfo, acceptArrange, rejectArrange, acceptArrange, rejectArrange, this.getCourse().getTeacherEmail()};
-            EmailUtil.sendMail(course.getTeacherEmail(), tile, Constants.INVITATION_EMAIL_CSS + this.getText("org.invite.teacher.email.content", args), "text/html;charset=utf-8");
+            EmailUtil.sendMail(course.getTeacherEmail(), tile, INVITATION_EMAIL_CSS + this.getText("org.invite.teacher.email.content", args), "text/html;charset=utf-8");
 
             //=====================================  课程发布时，组织发送邮件给学生   =====================
             for (CourseInviteStudent courseInviteStudent : courseInviteStudents) {
@@ -444,7 +459,7 @@ public class SaveCourseAction extends BasicAction {
         String acceptArrange2student = getBasePath() + "/emailHandleForCourseCreation.html?course.id=" + courseInfo.getId() + "&accept=true&teacher=false&user.email=" + courseInviteStudent.getInvitedStudentEmail();
         String rejectArrange2student = getBasePath() + "/emailHandleForCourseCreation.html?course.id=" + courseInfo.getId() + "&accept=false&teacher=false&user.email=" + courseInviteStudent.getInvitedStudentEmail();
         String[] args2student = {courseInviteStudent.getInvitedStudentEmail(), courseInfo.getOrganization().getSchoolName(), courseInfo.getName(), courseInfo.getDescription(), dateFormat.format(courseInfo.getStartDate().getTime()), courseInfo.getTotalHours().toString(), getClassInfoString(courseInfo), acceptArrange2student, rejectArrange2student, acceptArrange2student, rejectArrange2student, courseInviteStudent.getInvitedStudentEmail()};
-        EmailUtil.sendMail(courseInviteStudent.getInvitedStudentEmail(), tile2, Constants.INVITATION_EMAIL_CSS + this.getText("org.invite.student.email.content", args2student), "text/html;charset=utf-8");
+        EmailUtil.sendMail(courseInviteStudent.getInvitedStudentEmail(), tile2, INVITATION_EMAIL_CSS + this.getText("org.invite.student.email.content", args2student), "text/html;charset=utf-8");
         Matter matter = new Matter(Calendar.getInstance(), serialNo, Matter.MATTER_COURSE_STUDENT, baseUserDao.findByEmail(this.getSessionUserEmail()), null, courseInviteStudent.getInvitedStudentEmail(), courseInfo, false);
         matterDao.persistAbstract(matter);
     }
