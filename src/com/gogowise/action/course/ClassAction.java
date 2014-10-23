@@ -2,13 +2,12 @@ package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.action.valueobject.ClassSession;
-import com.gogowise.action.valueobject.OpenClassSession;
+import com.gogowise.common.utils.Constants;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.dao.*;
-import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.course.enity.*;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.common.utils.Constants;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.CompactWriter;
 import org.apache.struts2.convention.annotation.Action;
@@ -41,7 +40,6 @@ public class ClassAction extends BasicAction {
      *
      */
     private static final long serialVersionUID = 2466562905933168403L;
-    public static final Integer TEACHING_NUM_1 = 1;
     private ClassRoomDao classRoomDao;
     private BaseUserDao baseUserDao;
     private ClassDao classDao;
@@ -55,13 +53,13 @@ public class ClassAction extends BasicAction {
     private Course course;
     private Integer classCount;
     private Pagination page;
-    private List<CourseClass> classes = new ArrayList<CourseClass>();
-    private List<ClassRoom> classRooms = new ArrayList<ClassRoom>();
+    private List<CourseClass> classes = new ArrayList<>();
+    private List<ClassRoom> classRooms = new ArrayList<>();
 
-    private List<Calendar> startTimes = new ArrayList<Calendar>();
+    private List<Calendar> startTimes = new ArrayList<>();
     private String inviteFriendHref;
-    private List<Integer> durations = new ArrayList<Integer>();    //持续时间
-    private List<Integer> classDate = new ArrayList<Integer>();     //周几
+    private List<Integer> durations = new ArrayList<>();    //持续时间
+    private List<Integer> classDate = new ArrayList<>();     //周几
     private Integer repeatTimes;                                   //重复次数
     private Integer operaType;
     private Integer roleType;                  //进入虚拟教室的人的身份，1为老师，2为学生
@@ -94,7 +92,6 @@ public class ClassAction extends BasicAction {
             classDao.persistAbstract(classes.get(i));
         }
         course.setClasses(classes);
-        course.setTotalHours(course.getTotalHours() + 1);
         courseDao.persistAbstract(course);
         classCount = classes.size() + 1;
         this.setOperaType(Constants.OPERA_TYPE_FOR_COURSE_CREATION);
@@ -121,7 +118,6 @@ public class ClassAction extends BasicAction {
             classDao.persistAbstract(classes.get(i));
         }
         course.setClasses(classes);
-        course.setTotalHours(course.getTotalHours() + startTimes.size() * classDate.size() * repeatTimes);
         courseDao.persistAbstract(course);
         classCount = course.getClasses().size() + 1;
         this.setOperaType(Constants.OPERA_TYPE_FOR_COURSE_CREATION);
@@ -141,7 +137,6 @@ public class ClassAction extends BasicAction {
             classDao.persistAbstract(classes.get(i));
         }
         course.setClasses(classes);
-        course.setTotalHours(course.getTotalHours() + 1);
         courseDao.persistAbstract(course);
         classCount = classes.size() + 1;
         this.setOperaType(Constants.OPERA_TYPE_FOR_COURSE_MODIFY);
@@ -231,18 +226,6 @@ public class ClassAction extends BasicAction {
     }
 
 
-    private Boolean isTimeConflict(Calendar cal1, Integer duration1, Calendar cal2, Integer duration2) {
-        if ((cal1.get(Calendar.HOUR_OF_DAY) * 24 + cal1.get(Calendar.MINUTE)) <= (cal2.get(Calendar.HOUR_OF_DAY) * 24 + cal2.get(Calendar.MINUTE)) &&
-                (cal2.get(Calendar.HOUR_OF_DAY) * 24 + cal2.get(Calendar.MINUTE)) < (cal1.get(Calendar.HOUR_OF_DAY) * 24 + cal1.get(Calendar.MINUTE) + duration1)) {
-            return true;
-        }
-        if ((cal2.get(Calendar.HOUR_OF_DAY) * 24 + cal2.get(Calendar.MINUTE)) <= (cal1.get(Calendar.HOUR_OF_DAY) * 24 + cal1.get(Calendar.MINUTE)) &&
-                (cal1.get(Calendar.HOUR_OF_DAY) * 24 + cal1.get(Calendar.MINUTE)) < (cal2.get(Calendar.HOUR_OF_DAY) * 24 + cal2.get(Calendar.MINUTE) + duration2)) {
-            return true;
-        }
-        return false;
-    }
-
     @Action(value = "openClassSession", results = {@Result(name = SUCCESS, type = "tiles", location = ".openClassSession")})
     public String openClassSession() {
         if (this.getCourseClass().getId() != null) {
@@ -289,14 +272,6 @@ public class ClassAction extends BasicAction {
         return SUCCESS;
     }
 
-    private void initSession(OpenClassSession openClassSession) {
-        openClassSession.initWithSession(this.getCourseClass());
-        BaseUser user = baseUserDao.findById(this.getSessionUserId());
-        openClassSession.setUserID(user.getId());
-        openClassSession.setUserName(user.getNickName());
-        openClassSession.setType(getType());
-
-    }
 
     private void initPersonalSession(ClassSession classSession) {
         classSession.initWithSession(this.getCourseClass());
@@ -321,12 +296,6 @@ public class ClassAction extends BasicAction {
         } else {
             return Constants.ANONYMOUS_TYPE;
         }
-    }
-
-    private void initFlashPath(Integer type) {
-        if (type.equals(Constants.MASTER_TYPE)) this.flashPatch = "flash/Teacher_Openclass.swf";
-        else if (type.equals(Constants.ANONYMOUS_TYPE)) this.flashPatch = "flash/Student_Openclass.swf";
-        else this.flashPatch = "flash/Student_Openclass.swf";
     }
 
     private void initPersonalFlashPath(Integer type) {
@@ -366,7 +335,6 @@ public class ClassAction extends BasicAction {
             classDao.persistAbstract(classes.get(i));
         }
         course.setClasses(classes);
-        course.setTotalHours(course.getTotalHours() - 1);
         courseDao.persistAbstract(course);
         classCount = classes.size() + 1;
         if (classType.equals(Constants.CLASS_TYPE_OF_REPEAT)) {

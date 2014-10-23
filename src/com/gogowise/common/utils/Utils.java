@@ -114,7 +114,8 @@ public class Utils {
 
     public static void replaceFileFromTemp(String toDir, String fileName) {
         String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + fileName);
-        replaceFile(srcPath, toDir + File.separator + fileName);
+        String desPath = ServletActionContext.getServletContext().getRealPath(toDir + fileName);
+        replaceFile(srcPath, desPath);
     }
 
     private static void copyByChannel(File f1, File f2) {

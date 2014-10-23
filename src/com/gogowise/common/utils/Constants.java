@@ -13,9 +13,7 @@ public class Constants {
     public static final String UPLOAD_FILE_PATH_TMP = "/upload/file/tmp";
     public static final String UPLOAD_FILE_PATH_PPT = "/upload/file/ppt";
     public static final String UPLOAD_USER_PATH = "/upload/user";
-    public static final String UPLOAD_COURSE_PATH = "/upload/course";
-
-
+    public static final String UPLOAD_PATH = "/upload/";
 
     public static final String ORG_LOGO_PATH = "/orgLogo/";
     public static final String ORG_ADV_PATH = "/orgAdv/";
@@ -25,7 +23,6 @@ public class Constants {
     public static final String DOWNLOAD_COURSE_RESOURCE_PAHT = "/download/courseResource";
 
     public static final String DOWNLOAD_CONTRACT = "/download/contract";
-
 
 
     public static final int BUFFER_SIZE = 4 * 1024 * 1024;
@@ -63,7 +60,6 @@ public class Constants {
     public static final String SESSION_USER_LOGO_URL = "userLogoUrl";
     public static final String HIG_SEC_USER_EMAIL = "HIG_SEC_USER_EMAIL";
     public static final String SESSION_USER_FANSNUM = "userFansNum";
-    public static final String SESSION_USER_ROLE_TYPE = "roleType";
     public static final String SESSION_USER_IS_TEACHER = "isTeacher";
     public static final String SESSION_USER_OWN_ORG = "user_own_org";
 
@@ -92,15 +88,12 @@ public class Constants {
     public static final Integer TRANSFER_TYPE_OF_CHARGE_FOR_MCHANNEL = 2;
 
 
-
     /* -------------------------- Question patch ----------------------------------------- */
     public static String QUESTION_EXT_PATH = "/exe/question/batch.sh";
     public static String QUESTION_FILE_NAME = "question.xml";
 
     public static String PPT_PDF_EXT_PATH = "/exe/ppt/PPT2PDF.sh";
     public static String PPT_EXT_PATH = "/exe/ppt/PDF2PNG.sh";
-
-    public static String MEETING_TYPE = "meeting";
 
 
     public static Integer Class_User_Status_Default = 0;

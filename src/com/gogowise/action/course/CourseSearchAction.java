@@ -29,8 +29,8 @@ public class CourseSearchAction extends BasicAction {
     private List<BaseUser> hotTeacher;
     private String courseName;
     private String searchTyp;
-    
-    private List<SearchCondition> searchConditions = new ArrayList<SearchCondition>();
+
+    private List<SearchCondition> searchConditions = new ArrayList<>();
 
     {
         if (searchConditions.size() == 0) {
@@ -50,7 +50,7 @@ public class CourseSearchAction extends BasicAction {
             results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseSelection")})
     public String courseSelection() {
 //        Object[] parameter = new Object[5];
-        List<Object> parameter = new ArrayList<Object>();
+        List<Object> parameter = new ArrayList<>();
         String whereCourse = "";
         if ("adv".equalsIgnoreCase(this.searchTyp)) {
             for (SearchCondition sc : this.searchConditions) {
@@ -65,7 +65,7 @@ public class CourseSearchAction extends BasicAction {
 
         }
 
-        String hql = "select distinct c from Course c where  c.masterConfirmed=true and c.teacherConfirmed=true and c.cameraManConfirmed=true  " + whereCourse + " order by c.id desc";
+        String hql = "select distinct c from Course c where  c.cameraManConfirmed=true  " + whereCourse + " order by c.id desc";
         courses = courseDao.find(hql, pagination, parameter.toArray());
 
         hotCourse = courseDao.findHotCourses(new Pagination(4));

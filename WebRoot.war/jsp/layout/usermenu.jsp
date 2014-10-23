@@ -66,7 +66,7 @@
         <div class="list">
             <h3 class="h3_title"><s:text name="usermenu.item.user.info.setting"/></h3>
             <ul>
-                <li><a href="setting.html"><s:text name="table.base.info"/></a></li>
+                <li><a href="initUpdate.html"><s:text name="table.base.info"/></a></li>
                 <li><a href="myGGWAccount.html"><s:text name="usermenu.item.user.account"/></a></li>
             </ul>
         </div>

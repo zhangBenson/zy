@@ -4,7 +4,6 @@ import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.AbstractPersistence;
 import com.gogowise.rep.org.enity.Organization;
-import com.gogowise.rep.tag.dao.TagDao;
 import com.gogowise.rep.tag.enity.Tag;
 import com.gogowise.rep.user.enity.BaseUser;
 
@@ -31,20 +30,11 @@ public class Course extends AbstractPersistence {
     private List<BaseUser> teachers = new ArrayList<>();
     private String teacherEmail;
     @ManyToOne
-    private BaseUser cameraMan;
-    @ManyToOne
     private BaseUser personalTeacher;
     private String logoUrl;
     @Column(columnDefinition = "longtext")
     private String description;
     private Calendar startDate;
-    private Integer totalHours = Constants.DEFAULT_INT_VALUE;
-    private Boolean masterConfirmed;
-    private Boolean teacherConfirmed;
-    private Boolean cameraManConfirmed;
-    private String masterComments;
-    private String teacherComments;
-    private String cameraManComments;
     private String languageType;//课程语种
     private String studentType;     //招生对象
     private String courseTeachingBook;  //推荐教材
@@ -136,13 +126,6 @@ public class Course extends AbstractPersistence {
         }
     }
 
-    public BaseUser getCameraMan() {
-        return cameraMan;
-    }
-
-    public void setCameraMan(BaseUser cameraMan) {
-        this.cameraMan = cameraMan;
-    }
 
     public String getLogoUrl() {
         return logoUrl;
@@ -170,58 +153,6 @@ public class Course extends AbstractPersistence {
 
     public Integer getTotalHours() {
         return this.getClasses().size();
-    }
-
-    public void setTotalHours(Integer totalHours) {
-        this.totalHours = totalHours;
-    }
-
-    public Boolean getMasterConfirmed() {
-        return masterConfirmed;
-    }
-
-    public void setMasterConfirmed(Boolean masterConfirmed) {
-        this.masterConfirmed = masterConfirmed;
-    }
-
-    public Boolean getTeacherConfirmed() {
-        return teacherConfirmed;
-    }
-
-    public void setTeacherConfirmed(Boolean teacherConfirmed) {
-        this.teacherConfirmed = teacherConfirmed;
-    }
-
-    public Boolean getCameraManConfirmed() {
-        return cameraManConfirmed;
-    }
-
-    public void setCameraManConfirmed(Boolean cameraManConfirmed) {
-        this.cameraManConfirmed = cameraManConfirmed;
-    }
-
-    public String getMasterComments() {
-        return masterComments;
-    }
-
-    public void setMasterComments(String masterComments) {
-        this.masterComments = masterComments;
-    }
-
-    public String getTeacherComments() {
-        return teacherComments;
-    }
-
-    public void setTeacherComments(String teacherComments) {
-        this.teacherComments = teacherComments;
-    }
-
-    public String getCameraManComments() {
-        return cameraManComments;
-    }
-
-    public void setCameraManComments(String cameraManComments) {
-        this.cameraManComments = cameraManComments;
     }
 
     public List<CourseClass> getClasses() {
@@ -596,21 +527,21 @@ public class Course extends AbstractPersistence {
     }
 
     public List<Tag> getTags() {
-        if(this.tags == null ) {
+        if (this.tags == null) {
             tags = new ArrayList<>();
         }
         return tags;
     }
 
     public String getTagsAsStr() {
-        if(this.tags == null ) {
+        if (this.tags == null) {
             return null;
         }
         String temp = "";
-        for(Tag tag:tags){
-            temp = temp+tag.getName()+",";
+        for (Tag tag : tags) {
+            temp = temp + tag.getName() + ",";
         }
-        if(temp.length() > 0  ) temp = temp.substring(0, temp.length()-1);
+        if (temp.length() > 0) temp = temp.substring(0, temp.length() - 1);
         return temp;
     }
 

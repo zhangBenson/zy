@@ -41,7 +41,6 @@ public class UserBlogAction extends BasicAction {
     private BrowsedCourseDao browsedCourseDao;
     private BaseUser user;
     private List<Course> coursesAsTeacher;
-    private List<Course> coursesAsStudent;
     private List<CourseEvaluation> courseEvaluations;
     private List<BrowsedCourse> browsedCourses = new ArrayList<>();
     private List<Comments> comments;
@@ -68,8 +67,6 @@ public class UserBlogAction extends BasicAction {
         if (user == null) return NONE;
 
         coursesAsTeacher = courseDao.findCourses2Teacher(userId, new Pagination(3));
-        coursesAsStudent = courseDao.findCourses2Student(userId, new Pagination(4));
-
 
         userOrganization = organizationDao.findByResId(userId);
 
@@ -151,14 +148,6 @@ public class UserBlogAction extends BasicAction {
 
     public void setCoursesAsTeacher(List<Course> coursesAsTeacher) {
         this.coursesAsTeacher = coursesAsTeacher;
-    }
-
-    public List<Course> getCoursesAsStudent() {
-        return coursesAsStudent;
-    }
-
-    public void setCoursesAsStudent(List<Course> coursesAsStudent) {
-        this.coursesAsStudent = coursesAsStudent;
     }
 
     public CourseDao getCourseDao() {
@@ -244,10 +233,6 @@ public class UserBlogAction extends BasicAction {
 
     public Integer getCoursesAsTeacherNum() {
         return this.getCoursesAsTeacher() == null ? 0 : this.getCoursesAsTeacher().size();
-    }
-
-    public Integer getCoursesAsStudentNum() {
-        return this.getCoursesAsStudent() == null ? 0 : this.getCoursesAsStudent().size();
     }
 
     public Integer getBrowsedCoursesNum() {

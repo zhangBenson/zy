@@ -5,7 +5,6 @@ import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.user.enity.BaseUser;
 
-import java.util.Calendar;
 import java.util.List;
 
 public interface CourseDao extends ModelDao<Course> {
@@ -14,9 +13,6 @@ public interface CourseDao extends ModelDao<Course> {
     public List<Course> findUserCreatedCourses(Integer userID, Pagination pagination);
 
     public List<Course> findUserRegCourses(Integer userID, Pagination pagination);
-
-    public List<Course> findMyCourseOFAgePart(Pagination pagination, Integer sid);
-
 
     public List<Course> findHotCourses(Pagination pagination);
 
@@ -27,10 +23,6 @@ public interface CourseDao extends ModelDao<Course> {
     public List<Course> findMoocCourses(Pagination pagination);
 
     public List<Course> findCourses2Teacher(Integer tid, Pagination pagination);
-
-    public List<Course> findCourses2Student(Integer tid, Pagination pagination);
-
-    public List<Course> findCourseRelateCourses(String courseName, Pagination pagination);
 
     public Course findTodayCourse(Integer userId);
 
@@ -44,13 +36,10 @@ public interface CourseDao extends ModelDao<Course> {
 
     public List<Course> findMoocsByOrg(Integer orgId, Pagination pagination);
 
-    public List<Course> findCoursesByOrgWithAccess(Integer orgId, boolean isPublic,Pagination page);
+    public List<Course> findCoursesByOrgWithAccess(Integer orgId, boolean isPublic, Pagination page);
 
-    public Course saveRepeatCourse(Calendar startTime, Course course, String teacherEmail);
 
     public List<Course> findMyOrgCourseForSupervision(Integer Rid, Pagination pagination);
-
-    public List<Course> findCourseOnline(Pagination pagination);
 
     public List<BaseUser> findRegUser(Integer courseId, Pagination pagination);
 
@@ -70,10 +59,4 @@ public interface CourseDao extends ModelDao<Course> {
 
     public List<Course> findMyCourseOfForcastClassForUserCenter(Pagination page, Integer sid, int type);
 
-
-    public List<Course> findMeeting(Integer orgId, Pagination page);
-
-    public List<Course> findMeetingForStudent(Integer userID, Pagination pagination);
-
-    public List<Course> findCoursesByTag(Integer tagId, Pagination pagination);
 }

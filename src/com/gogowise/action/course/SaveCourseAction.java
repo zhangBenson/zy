@@ -21,7 +21,6 @@ import com.gogowise.rep.tag.enity.Tag;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import org.apache.commons.lang.StringUtils;
-import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -32,7 +31,6 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -108,7 +106,7 @@ public class SaveCourseAction extends BasicAction {
 
 
         // Save course
-        String changedLogUrl =course.getLogoUrl() ;
+        String changedLogUrl = course.getLogoUrl();
         CourseSpecification specification = CourseSpecification.create(course, this.getSessionUserId(), this.getCourseType(), this.getTeacherIds());
         courseService.saveCourse(specification);
 
@@ -116,10 +114,7 @@ public class SaveCourseAction extends BasicAction {
 
         course.setStudentAgeType(this.getCourse().getStudentAgeType());
         course.setIsPublic(this.getCourse().getIsPublic());
-        //courseDao.persist(course);
-        course.setCameraManConfirmed(true);
-        course.setTeacherConfirmed(true);
-        course.setMasterConfirmed(true);
+
 
         //TODO 设置course的标签Tag
         if (tags != null && tags.size() > 0) {
@@ -137,16 +132,10 @@ public class SaveCourseAction extends BasicAction {
         courseDao.persist(course);
 
         // copy jpg
-        if (StringUtils.isNotBlank(changedLogUrl) && !StringUtils.contains(changedLogUrl, "upload/course")) {
-            //Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
-            String courseDir = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_COURSE_PATH);
-            courseDir = courseDir + File.separator + course.getId();
-
-            File temp = new File(courseDir);
-            if (!temp.exists()) temp.mkdirs();
-
-            Utils.replaceFileFromTemp(temp.getAbsolutePath(), changedLogUrl);
-            course.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + course.getId() + "/" + changedLogUrl);
+        if (StringUtils.isNotBlank(changedLogUrl) && !StringUtils.contains(changedLogUrl, "upload/")) {
+            String toDir = Constants.UPLOAD_PATH + this.getSessionUserId() + "/";
+            Utils.replaceFileFromTemp(toDir, changedLogUrl);
+            course.setLogoUrl(toDir + changedLogUrl);
         }
 
         //change teacher
@@ -190,21 +179,6 @@ public class SaveCourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "autoSaveClasses", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".classesList")})
-    public String autoSaveClasses() {
-        course = courseDao.findById(this.getCourse().getId());
-        classDao.autoClassSystemSave(startTimes, durations, classDate, repeatTimes, course);
-        classes = classDao.findByCourseId(course.getId());
-        for (int i = 0; i < classes.size(); i++) {
-            int j = i + 1;
-            classes.get(i).setName(this.getText("lable.class.no1") + j + this.getText("lable.class.no2"));
-            classDao.persistAbstract(classes.get(i));
-        }
-
-        course.setTotalHours(course.getTotalHours() + startTimes.size() * classDate.size() * repeatTimes);
-        courseDao.persistAbstract(course);
-        return SUCCESS;
-    }
 
     @Action(value = "updateCourseTeachingNum")
     public void updateCourseTeachingNum() {
@@ -236,18 +210,12 @@ public class SaveCourseAction extends BasicAction {
             }
         }
 
-        if (StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(), "/upload/course")) {
-            String courseDir = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_COURSE_PATH);
-            courseDir = courseDir + File.separator + course.getId();
+        if (StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(), "upload/")) {
 
-            File temp = new File(courseDir);
-            if (!temp.exists()) temp.mkdirs();
 
-            Utils.replaceFileFromTemp(temp.getAbsolutePath(), course.getLogoUrl());
-            _course.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + course.getId() + "/" + course.getLogoUrl());
-
-            //Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
-            //_course.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId()+"/"+course.getLogoUrl());
+            String toDir = Constants.UPLOAD_PATH + this.getSessionUserId() + "/";
+            Utils.replaceFileFromTemp(toDir, course.getLogoUrl());
+            _course.setLogoUrl(toDir + course.getLogoUrl());
         }
         if (StringUtils.isBlank(course.getLogoUrl())) _course.setLogoUrl(Constants.DEFAULT_COURSE_IMAGE);
 
@@ -392,10 +360,6 @@ public class SaveCourseAction extends BasicAction {
     public String go2public() {
 
         course = courseDao.findById(this.getCourse().getId());
-        this.getCourse().setMasterConfirmed(true);
-        this.getCourse().setTeacherConfirmed(true);
-        this.getCourse().setCameraManConfirmed(true);
-        this.getCourse().setTotalHours(this.getCourse().getClasses().size());
         this.getCourse().setPublicationTime(Utils.getCurrentCalender());
         courseDao.persistAbstract(course);
 

@@ -74,7 +74,6 @@ public class CourseAction extends BasicAction {
     private List<Course> courses2teacher = new ArrayList<>();//老师还教过的课程
     private List<Course> hotCourses = new ArrayList<>(); //热门课程
     private List<Course> userConcernCourses = new ArrayList<>(); //用户还关心的课程
-    private List<Course> courseRelateCourses = new ArrayList<>(); //与该课程相关的课程
     private List<Course> coursesInTypes = new ArrayList<>();
     private List<Course> coursesForAds = new ArrayList<>();
     private List<SeniorClassRoom> seniorClassRooms = new ArrayList<>();
@@ -215,22 +214,6 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "courseRepeat", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseRepeat")})
-    public String courseRepeat() {
-
-        courses = courseDao.findMyCourseOFAgePart(pagination, this.getSessionUserId());
-        if (courses.size() > 0) {
-            for (Course c : courses) {
-                orgs.put(c.getId(), c.getName());
-            }
-        }
-        if (this.getCourse() != null && this.getCourse().getId() != null) {
-            course = courseDao.findById(this.getCourse().getId());
-        } else {
-            course = courses.get(0);
-        }
-        return SUCCESS;
-    }
 
     @Action(value = "initSaveCourse", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initStep2")})
     public String initSaveCourse() {
@@ -257,52 +240,6 @@ public class CourseAction extends BasicAction {
         } else {
             this.setCourseType(0);
         }
-        return SUCCESS;
-    }
-
-    @Action(value = "initRepeatCourseInfo", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".repeatCourseInfo")})
-    public String initRepeatCourseInfo() {
-
-        course = courseDao.findById(this.getCourse().getId());
-        courseInviteStudents = courseInviteStudentDao.findByCourseId(this.getCourse().getId());
-        courses = courseDao.findMyCourseOFAgePart(pagination, this.getSessionUserId());
-        if (courses.size() > 0) {
-            for (Course c : courses) {
-                orgs.put(c.getId(), c.getName());
-            }
-        }
-        return SUCCESS;
-    }
-
-
-    @Action(value = "modifyCourseStep2", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".modifyCourseStep3")})
-    public String modifyCourseStep2() {
-
-        Course existCourse = courseDao.findById(this.getCourse().getId());
-        if (StringUtils.isNotBlank(course.getName()))
-            existCourse.setName(course.getName());
-        if (StringUtils.isNotBlank(course.getDescription()))
-            existCourse.setDescription(course.getDescription());
-        if (StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(), "upload/") && !StringUtils.equals(course.getLogoUrl(), Constants.DEFAULT_COURSE_IMAGE)) {
-            String courseDir = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_COURSE_PATH);
-            courseDir = courseDir + File.separator + course.getId();
-
-            File temp = new File(courseDir);
-            if (!temp.exists())
-                temp.mkdirs();
-
-            Utils.replaceFileFromTemp(temp.getAbsolutePath(), course.getLogoUrl());
-
-            //Utils.notReplaceFileFromTmp(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId(), course.getLogoUrl());
-            //existCourse.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId()+"/"+course.getLogoUrl());
-            existCourse.setLogoUrl(Constants.UPLOAD_COURSE_PATH + "/" + course.getId() + "/" + course.getLogoUrl());
-        }
-        if (existCourse.getOrganization() != null && this.getTeacherEmail() != null && !existCourse.getTeacherEmail().endsWith(this.getTeacherEmail())) {
-            this.setTeacherChange(true);
-            existCourse.setTeacherEmail(this.getTeacherEmail());
-        }
-        courseDao.persistAbstract(existCourse);
-        this.setCourse(existCourse);
         return SUCCESS;
     }
 
@@ -431,7 +368,6 @@ public class CourseAction extends BasicAction {
         if (course.getTeacher() != null) {
             courses2teacher = courseDao.findCourses2Teacher(course.getTeacher().getId(), new Pagination(4));
         }
-        courseRelateCourses = courseDao.findCourseRelateCourses("%" + course.getName() + "%", new Pagination(4));
         courseNewEvents = courseNewEventDao.findLatestTenEvents(new Pagination(10));
 
         classes = classDao.findByCourseId(course.getId());
@@ -483,7 +419,6 @@ public class CourseAction extends BasicAction {
         if (course.getTeacher() != null) {
             courses2teacher = courseDao.findCourses2Teacher(course.getTeacher().getId(), new Pagination(4));
         }
-        courseRelateCourses = courseDao.findCourseRelateCourses("%" + course.getName() + "%", new Pagination(4));
         courseNewEvents = courseNewEventDao.findLatestTenEvents(new Pagination(10));
 
         classes = classDao.findByCourseId(course.getId());
@@ -500,57 +435,6 @@ public class CourseAction extends BasicAction {
         } else {
             return "tips";
         }
-    }
-
-    @Action(value = "repeatCourseInfo", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".repeatCourseInfo")})
-    public String repeatCourseInfo() {
-
-        course = courseDao.findById(this.getCourse().getId());
-        return SUCCESS;
-    }
-
-    @Action(value = "repeatCourse", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".repeatClassInfo"), @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".repeatCourseInfo")})
-    public String repeatCourse() {
-
-        Course _course = courseDao.findById(this.getCourse().getFromCourse().getId());
-
-        if (this.getCourse() != null && this.getCourse().getId() != null) { //if the user select to getBack from step3 to step2,than delete the new course which has been created just now.
-            List<CourseInviteStudent> courseInviteStudents = courseInviteStudentDao.findByCourseId(this.getCourse().getId());
-            for (CourseInviteStudent courseInviteStudent : courseInviteStudents) {
-                courseInviteStudentDao.delete(courseInviteStudent);
-            }
-            Course _newCourse = courseDao.findById(this.getCourse().getId());
-            for (CourseClass courseClass : _newCourse.getClasses()) {
-                classDao.delete(courseClass);
-            }
-            courseDao.delete(_newCourse);
-        }
-
-        this.setCourse(courseDao.saveRepeatCourse(startTime, _course, Utils.getEmptyString(this.getTeacherEmail())));
-        course.setTeachingNum(emails.size());
-        courseDao.persistAbstract(course);
-
-        for (String email : emails) {
-            if (email != null && !email.equals("")) {
-                CourseInviteStudent curr = courseInviteStudentDao.findByCourseAndEmail(this.getCourse().getId(), email);
-                if (curr == null) {
-                    CourseInviteStudent courseInviteStudent = new CourseInviteStudent();
-                    courseInviteStudent.setCourse(this.getCourse());
-                    courseInviteStudent.setInvitedStudentEmail(email);
-                    courseInviteStudentDao.persistAbstract(courseInviteStudent);
-                }
-            }
-        }
-        return SUCCESS;
-    }
-
-    @Action(value = "orgInterview", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgInterview")})
-    public String orgInterview() {
-
-        Organization orgTmp = orgService.findMyOrg(super.getSessionUserId());
-        if (orgTmp != null)
-            orgs.put(orgTmp.getId(), orgTmp.getSchoolName());
-        return SUCCESS;
     }
 
     @Action(value = "courseTypeJudge")
@@ -1039,16 +923,6 @@ public class CourseAction extends BasicAction {
     public void setCoursesInTypes(List<Course> coursesInTypes) {
 
         this.coursesInTypes = coursesInTypes;
-    }
-
-    public List<Course> getCourseRelateCourses() {
-
-        return courseRelateCourses;
-    }
-
-    public void setCourseRelateCourses(List<Course> courseRelateCourses) {
-
-        this.courseRelateCourses = courseRelateCourses;
     }
 
     public Integer getOperaType() {
