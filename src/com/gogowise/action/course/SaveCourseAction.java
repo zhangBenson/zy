@@ -131,12 +131,7 @@ public class SaveCourseAction extends BasicAction {
         }
         courseDao.persist(course);
 
-        // copy jpg
-        if (StringUtils.isNotBlank(changedLogUrl) && !StringUtils.contains(changedLogUrl, "upload/")) {
-            String toDir = Constants.UPLOAD_PATH + this.getSessionUserId() + "/";
-            Utils.replaceFileFromTemp(toDir, changedLogUrl);
-            course.setLogoUrl(toDir + changedLogUrl);
-        }
+        course.setLogoUrl(Utils.copyTmpFileByUser(changedLogUrl, this.getSessionUserId()));
 
         //change teacher
         if (teacherIds != null && teacherIds.size() > 0) {
@@ -210,13 +205,7 @@ public class SaveCourseAction extends BasicAction {
             }
         }
 
-        if (StringUtils.isNotBlank(course.getLogoUrl()) && !StringUtils.startsWithIgnoreCase(course.getLogoUrl(), "upload/")) {
-
-
-            String toDir = Constants.UPLOAD_PATH + this.getSessionUserId() + "/";
-            Utils.replaceFileFromTemp(toDir, course.getLogoUrl());
-            _course.setLogoUrl(toDir + course.getLogoUrl());
-        }
+        _course.setLogoUrl(Utils.copyTmpFileByUser(course.getLogoUrl(), this.getSessionUserId()));
         if (StringUtils.isBlank(course.getLogoUrl())) _course.setLogoUrl(Constants.DEFAULT_COURSE_IMAGE);
 
         //change teachers

@@ -225,23 +225,9 @@ public class OrgForBackendAction extends BasicAction {
         }
 
 
-        String userDir = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_USER_PATH);
-        //保存LOGO
-        if (StringUtils.isNotBlank(this.getLogoUrl())) {
-            String logoDir = userDir + File.separatorChar + getSessionUserId() + Constants.ORG_LOGO_PATH;
-            File temp = new File(logoDir);
-            if (!temp.exists()) temp.mkdirs();
-            Utils.replaceFileFromTemp(temp.getAbsolutePath(), this.getLogoUrl());
-            orgSaved.setLogoUrl(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + Constants.ORG_LOGO_PATH + this.getLogoUrl());
-        }
-        //保存ADV LOGO
-        if (StringUtils.isNotBlank(this.getAdvUrl())) {
-            String advDir = userDir + File.separatorChar + getSessionUserId() + Constants.ORG_ADV_PATH;
-            File advFile = new File(advDir);
-            if (!advFile.exists()) advFile.mkdirs();
-            Utils.replaceFileFromTemp(advFile.getAbsolutePath(), this.getAdvUrl());
-            orgSaved.setAdvUrl(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + Constants.ORG_ADV_PATH + this.getAdvUrl());
-        }
+        orgSaved.setLogoUrl(Utils.copyTmpFileByUser(this.getLogoUrl(), this.getSessionUserId()));
+        orgSaved.setAdvUrl(Utils.copyTmpFileByUser(this.getAdvUrl(), this.getSessionUserId()));
+
 
         orgSaved.setResponsiblePerson(baseUser);
         orgSaved.setCreator(baseUserDao.findByEmail((String) ActionContext.getContext().getSession().get(Constants.HIG_SEC_USER_EMAIL)));

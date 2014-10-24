@@ -112,6 +112,17 @@ public class Utils {
     }
 
 
+    public static String copyTmpFileByUser(String fileName, Integer userId) {
+        if (StringUtils.isNotBlank(fileName) && !StringUtils.contains(fileName, Constants.UPLOAD_PATH)) {
+            String toDir = Constants.UPLOAD_PATH + userId + "/";
+            Utils.replaceFileFromTemp(toDir, fileName);
+            return toDir + fileName;
+        } else {
+            return fileName;
+        }
+    }
+
+
     public static void replaceFileFromTemp(String toDir, String fileName) {
         String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + fileName);
         String desPath = ServletActionContext.getServletContext().getRealPath(toDir + fileName);

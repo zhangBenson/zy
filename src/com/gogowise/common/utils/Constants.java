@@ -15,11 +15,7 @@ public class Constants {
     public static final String UPLOAD_USER_PATH = "/upload/user";
     public static final String UPLOAD_PATH = "/upload/";
 
-    public static final String ORG_LOGO_PATH = "/orgLogo/";
-    public static final String ORG_ADV_PATH = "/orgAdv/";
-
     public static final String DOWNLOAD_RESOURCE_PAHT = "/download/resource";
-    public static final String DOWNLOAD_ORG_RESOURCE_PAHT = "/download/orgResource";
     public static final String DOWNLOAD_COURSE_RESOURCE_PAHT = "/download/courseResource";
 
     public static final String DOWNLOAD_CONTRACT = "/download/contract";

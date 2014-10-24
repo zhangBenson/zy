@@ -1,6 +1,7 @@
 package com.gogowise.action.utils;
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.course.enity.Course;
@@ -52,30 +53,16 @@ public class ImageProcessAction extends BasicAction{
     @Action(value = "cropUserPortrait")
     public void cropUserPortrait() throws IOException {
         if (StringUtils.isNotBlank(this.getUserPortraitName())) {
-            String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + this.getUserPortraitName());
-            String toPath = ServletActionContext.getServletContext().getRealPath("")+Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + "/userPortrait/" + this.getUserPortraitName();
-
-             //获取拓展名
-            String extName="";
-            if (userPortraitName.lastIndexOf(".") >= 0) {
-                extName = userPortraitName.substring(userPortraitName.lastIndexOf(".")+1);
-            }
-
-            BufferedImage tag = getBufferImage(srcPath);
-
-            createFiles(toPath);
-
-            ImageIO.write(tag,extName,new FileOutputStream(toPath));
 
             //持久化
             BaseUser _user = baseUserDao.findById(getSessionUserId());
-            _user.setPic(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + "/userPortrait/" + this.getUserPortraitName());
+            _user.setPic(Utils.copyTmpFileByUser(this.getUserPortraitName(), this.getSessionUserId()));
             baseUserDao.persistAbstract(_user);
             this.setUser(_user);
             this.setUserToSession(_user);
 
             PrintWriter out = ServletActionContext.getResponse().getWriter();
-            out.print(Constants.UPLOAD_USER_PATH + "/" + getSessionUserId() + "/userPortrait");
+            out.print(user.getPic());
             out.close();
         }
     }
