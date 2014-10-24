@@ -192,13 +192,13 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
 
     public List<BaseUser> findRegUser(Integer courseId, Pagination pagination) {
 
-        String sql = "select distinct sr.student From SeniorClassRoom  sr  where sr.course.fromCourse.id = ? order by sr.id desc ";
+        String sql = "select distinct sr.student From SeniorClassRoom  sr  where sr.course.id = ? order by sr.id desc ";
         return this.find(sql, pagination, courseId);
     }
 
     public List<Course> findByOrg(Integer orgID, Pagination pagination) {
 
-        String hql = "From Course c where " + PUBLIC_CONFIRMED + " and c.organization.id=? and c.fromCourse.id = c.id";
+        String hql = "From Course c where " + PUBLIC_CONFIRMED + " and c.organization.id=? and c.id = c.id";
         return this.find(hql, pagination, orgID);
     }
 

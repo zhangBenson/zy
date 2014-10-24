@@ -89,6 +89,9 @@ public class Course extends AbstractPersistence {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Tag> tags;
 
+
+
+
     public Boolean getOpened() {
         return opened;
     }

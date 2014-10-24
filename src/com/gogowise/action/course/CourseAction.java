@@ -1235,14 +1235,6 @@ public class CourseAction extends BasicAction {
         this.organizations = organizations;
     }
 
-    public Integer getCourseTermsNum() {
-
-        if (this.getCourse() != null && this.getCourse().getFromCourse() != null) {
-            return courseDao.findByFromCourse(this.getCourse().getFromCourse().getId(), null).size();
-        }
-        return 0;
-    }
-
     public Integer getCourseCommentsNum() {
 
         return this.getCourseComments().size();

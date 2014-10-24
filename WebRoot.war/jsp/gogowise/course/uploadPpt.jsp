@@ -97,7 +97,6 @@
             /*注意前面需要书写path的代码*/
             'uploader': 'js/uploadify/uploadify.swf',
             'script': 'uploadMaterialWithJson.html',
-//            'script':'http://beta.gogowise.com/uploadCourseMaterialToBeta.html',
             'cancelImg': 'js/uploadify/cancel.png',
             'queueID': 'cm_upload', //和存放队列的DIV的id一致
             'fileDataName': 'fileupload', //和以下input的name属性一致
