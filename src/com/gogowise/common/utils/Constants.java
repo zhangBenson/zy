@@ -13,9 +13,7 @@ public class Constants {
     public static final String UPLOAD_FILE_PATH_TMP = "/upload/tmp";
     public static final String UPLOAD_PATH = "/upload/";
 
-    public static final String DOWNLOAD_RESOURCE_PAHT = "/download/resource";
     public static final String DOWNLOAD_COURSE_RESOURCE_PAHT = "/download/courseResource";
-
     public static final String DOWNLOAD_CONTRACT = "/download/contract";
 
 

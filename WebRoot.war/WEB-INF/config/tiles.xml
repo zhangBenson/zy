@@ -554,10 +554,6 @@
     <definition name=".courseComment" template="/jsp/www/course/courseComment.jsp">
     </definition>
 
-    <definition name=".courseResource" extends=".simple">
-        <put-attribute name="right" value="/jsp/gogowise/course/courseResource.jsp"/>
-    </definition>
-
     <definition name=".errorActive" extends=".basic">
         <put-attribute name="right" value="/jsp/gogowise/activeError.jsp"/>
     </definition>
@@ -766,7 +762,6 @@
         <put-attribute name="title" value="title.gogowise.course.material"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/course/uploadPpt.jsp"/>
     </definition>
-
 
 
     <definition name=".addCourseEvent" extends=".userCenter">

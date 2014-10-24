@@ -33,7 +33,6 @@ public class MainFilter implements Filter {
         NEED_LOGIN.add("/one2threeSession.html");
         NEED_LOGIN.add("/one2manySession.html");
         NEED_LOGIN.add("/saveComment.html");
-        NEED_LOGIN.add("/saveCourseResource.html");
         NEED_LOGIN.add("/courseconfirm.html");
         NEED_LOGIN.add("/saveCourse.html");
         NEED_LOGIN.add("/courseRefund.html");
