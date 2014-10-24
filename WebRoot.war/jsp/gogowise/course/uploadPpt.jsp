@@ -109,7 +109,7 @@
             'simUploadLimit': 1, //一次同步上传的文件数目
             'sizeLimit': 1000000000, //设置单个文件大小限制
             'queueSizeLimit': 1, //队列中同时存在的文件个数限制
-            'folder': 'upload/file/tmp',
+            'folder': 'upload/tmp',
             onComplete: function (event, queueID, fileObj, response, data) {
                 var jsonRep = $.parseJSON(response);
                 $("#cm_path").val(jsonRep.genFileName);

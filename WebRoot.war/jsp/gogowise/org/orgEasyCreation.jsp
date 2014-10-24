@@ -181,7 +181,7 @@
                 var jsonRep = $.parseJSON(response)
                 document.getElementById('advUrl').value = jsonRep.genFileName;
                 $('<li></li>').appendTo('.files').text(jsonRep.genFileName);
-                $("#show_adv_preview").attr("src", "/upload/file/tmp/" + jsonRep.genFileName);
+                $("#show_adv_preview").attr("src", "/upload/tmp/" + jsonRep.genFileName);
             },
             onError: function (event, queueID, fileObj) {
                 alert("file:" + fileObj.name + "upload failed");

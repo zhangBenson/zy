@@ -64,7 +64,7 @@
                         'simUploadLimit':1, //一次同步上传的文件数目
                         'sizeLimit':2000000, //设置单个文件大小限制
                         'queueSizeLimit':1, //队列中同时存在的文件个数限制
-                        'folder':'upload/file/tmp',
+                        'folder':'upload/tmp',
                         'fileDesc':'jpg/gif/jpeg/png/bmp.', //如果配置了以下的'fileExt'属性，那么这个属性是必须的
                         'fileExt':'*.jpg;*.gif;*.jpeg;*.png;*.bmp;*.png', //允许的格式
 

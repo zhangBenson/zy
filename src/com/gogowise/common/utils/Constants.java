@@ -10,7 +10,7 @@ package com.gogowise.common.utils;
 public class Constants {
 
     public static final int PAGE_SIZE = 9;
-    public static final String UPLOAD_FILE_PATH_TMP = "/upload/file/tmp";
+    public static final String UPLOAD_FILE_PATH_TMP = "/upload/tmp";
     public static final String UPLOAD_FILE_PATH_PPT = "/upload/file/ppt";
     public static final String UPLOAD_USER_PATH = "/upload/user";
     public static final String UPLOAD_PATH = "/upload/";

@@ -46,7 +46,7 @@
             'queueSizeLimit': 1, //队列中同时存在的文件个数限制
             //'scriptData'     : $("#userInfoForm").serialize(),
 //            'fileDataName' : 'uploads',
-            'folder': 'upload/file/tmp',
+            'folder': 'upload/tmp',
             'fileDesc': 'jpg/gif/jpeg/png/bmp.', //如果配置了以下的'fileExt'属性，那么这个属性是必须的
             'fileExt': '*.jpg;*.gif;*.jpeg;*.png;*.bmp;*.png', //允许的格式
             onComplete: function (event, queueID, fileObj, response, data) {
