@@ -37,7 +37,6 @@ public class Course extends AbstractPersistence {
     private Calendar startDate;
     private String languageType;//课程语种
     private String studentType;     //招生对象
-    private String courseTeachingBook;  //推荐教材
     private Integer courseType;
 
     private Boolean isDeleted = false;
@@ -88,8 +87,6 @@ public class Course extends AbstractPersistence {
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Tag> tags;
-
-
 
 
     public Boolean getOpened() {
@@ -467,14 +464,6 @@ public class Course extends AbstractPersistence {
 
     public void setStudentType(String studentType) {
         this.studentType = studentType;
-    }
-
-    public String getCourseTeachingBook() {
-        return courseTeachingBook;
-    }
-
-    public void setCourseTeachingBook(String courseTeachingBook) {
-        this.courseTeachingBook = courseTeachingBook;
     }
 
     public Integer getCourseType() {

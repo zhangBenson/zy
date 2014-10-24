@@ -10,10 +10,10 @@
         $("#invitedStudents").append("<input class='long_text_field_for_student' onblur='checkStudentMail(this);' name='emails' type='text' /><span class='del_student_btn' onclick='remove_student(this);'>" + deleteEmail + "</span><br/>");
     });
 
-    function covertStatus(statusValue){
-        if(statusValue == true) {
+    function covertStatus(statusValue) {
+        if (statusValue == true) {
             return text_confirmed;
-        } else if (statusValue == false ){
+        } else if (statusValue == false) {
             return text_refused;
         } else {
             return text_unconfirmed;
@@ -28,14 +28,14 @@
             var htmlStringModify = "";
             for (var i = 0; i < dataInfo.invitationVOs.length; i++) {
                 var dataVo = dataInfo.invitationVOs[i];
-                htmlString +=  "<tr class='invite" +  dataVo.id + "'> <td width='150px' name='emails' value='" + dataVo.invitedStudentEmail
-                        + "'>" + dataVo.invitedStudentEmail + "</td><td width='80px' class='inviteStatus" + dataVo.id + "'>"+covertStatus(dataVo.acceptInvite)+"</td><td width='200px'></td></tr>";
+                htmlString += "<tr class='invite" + dataVo.id + "'> <td width='150px' name='emails' value='" + dataVo.invitedStudentEmail
+                        + "'>" + dataVo.invitedStudentEmail + "</td><td width='80px' class='inviteStatus" + dataVo.id + "'>" + covertStatus(dataVo.acceptInvite) + "</td><td width='200px'></td></tr>";
                 var optString = "";
                 if (dataVo.acceptInvite != true)
-                    optString =  "<a href='javascript:;' onclick='reInvite("+dataVo.id+");'>"+text_resend+"</a>&nbsp;<a href='javascript:;' onclick='deleteInvite( "+dataVo.id+");'>"+text_delete+"</a>";
-                htmlStringModify +=  "<tr class='invite" +  dataVo.id + "'> <td width='150px' name='emails' value='" + dataVo.invitedStudentEmail
-                        + "'>" + dataVo.invitedStudentEmail + "</td><td width='80px' class='inviteStatus" + dataVo.id + "'>"+covertStatus(dataVo.acceptInvite)+"</td><td width='200px'>" +
-                       optString+"</td></tr>" ;
+                    optString = "<a href='javascript:;' onclick='reInvite(" + dataVo.id + ");'>" + text_resend + "</a>&nbsp;<a href='javascript:;' onclick='deleteInvite( " + dataVo.id + ");'>" + text_delete + "</a>";
+                htmlStringModify += "<tr class='invite" + dataVo.id + "'> <td width='150px' name='emails' value='" + dataVo.invitedStudentEmail
+                        + "'>" + dataVo.invitedStudentEmail + "</td><td width='80px' class='inviteStatus" + dataVo.id + "'>" + covertStatus(dataVo.acceptInvite) + "</td><td width='200px'>" +
+                        optString + "</td></tr>";
             }
             $("#invitationList").html(htmlString);
             $("#invitationListModify").html(htmlStringModify);
@@ -60,7 +60,6 @@
         var description = $("textarea[name='course.description']").val();
         //var studentAgeTypeVal = $("select[name='course.studentAgeType']").val();
         var studentAgeType = $("#step2_studentAge_type").find("option:selected").text();
-//            var courseTeachingBook = $("input[type='text'][name='course.courseTeachingBook']").val();
         var courseTypeVal = $("select[name='course.courseType']").val();
         var courseType = $("option[value='" + courseTypeVal + "']").text();
         var startDate = $("input[type='text'][name='course.startDate']").val();
@@ -74,7 +73,6 @@
         $("#store_courseTag").html(courseTags);
         $("#store_description").html(description);
         $("#store_studentType").html(studentAgeType);
-//            $("#store_courseTeachingBook").html(courseTeachingBook);
         $("#store_courseType").html(courseType);
         $("#store_startDate").html(startDate);
         $("#store_charges").html(charges + "&nbsp;<s:text name="label.zhibi.true"/>");
@@ -102,7 +100,7 @@
     function reInvite(id) {
         $.post("resendInvitation.html", {'id': id}, changeToPending);
         function changeToPending() {
-            $(".inviteStatus" + id).html( '<s:text name='title.user.invite.status.unconfirmed'/>');
+            $(".inviteStatus" + id).html('<s:text name='title.user.invite.status.unconfirmed'/>');
         }
     }
 

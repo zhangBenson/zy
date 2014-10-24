@@ -33,9 +33,7 @@ import org.springframework.stereotype.Controller;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 
 @Controller
 @Namespace(BasicAction.BASE_NAME_SPACE)
@@ -104,55 +102,10 @@ public class SaveCourseAction extends BasicAction {
     @Action(value = "ajaxSaveCourse")
     public String ajaxSaveCourse() {
 
-
-        // Save course
-        String changedLogUrl = course.getLogoUrl();
-        CourseSpecification specification = CourseSpecification.create(course, this.getSessionUserId(), this.getCourseType(), this.getTeacherIds());
+        CourseSpecification specification = CourseSpecification.create(course, this.getSessionUserId(), this.getCourseType(), this.getTeacherIds(), this.getTags(), this.getEmails());
         courseService.saveCourse(specification);
-
         course = courseService.findById(course.getId());
-
-        course.setStudentAgeType(this.getCourse().getStudentAgeType());
-        course.setIsPublic(this.getCourse().getIsPublic());
-
-
-        //TODO 设置course的标签Tag
-        if (tags != null && tags.size() > 0) {
-            for (String tagName : tags) {
-                Tag temp = tagDao.findByName(tagName);
-                if (temp == null) {
-                    Tag newTag = new Tag(tagName);
-                    tagDao.persistAbstract(newTag);
-                    course.getTags().add(newTag);
-                } else {
-                    if (!course.getTags().contains(temp)) course.getTags().add(temp);
-                }
-            }
-        }
-        courseDao.persist(course);
-
-        course.setLogoUrl(Utils.copyTmpFileByUser(changedLogUrl, this.getSessionUserId()));
-
-        //change teacher
-        if (teacherIds != null && teacherIds.size() > 0) {
-            if (course.getTeachers() != null) {
-                course.getTeachers().clear();
-            }
-            for (String tId : teacherIds) {
-                BaseUser teacher = baseUserDao.findByEmail(tId);
-                if (teacher != null) {
-                    course.addTeacher(teacher);
-                }
-            }
-        }
-
-        for (String email : emails) {
-            if (StringUtils.isNotBlank(email)) {
-                courseService.saveInvitation(email, this.getCourse().getId());
-            }
-        }
         this.setCourse_id(course.getId());
-        courseDao.persist(course);
         return "json";
     }
 
@@ -184,52 +137,22 @@ public class SaveCourseAction extends BasicAction {
 
     @Action(value = "ajaxUpdateCourse")
     public void ajaxUpdateCourse() {
-        Course _course = courseDao.findById(this.getCourse().getId());
-        _course.setName(Utils.getEmptyString(course.getName()));
-        _course.setDescription(Utils.getEmptyString(course.getDescription()));
-        _course.setStudentType(Utils.getEmptyString(course.getStudentType()));
-        _course.setCourseTeachingBook(Utils.getEmptyString(course.getCourseTeachingBook()));
-        _course.setCourseType(course.getCourseType());
-        _course.setCharges(course.getCharges());
-        _course.setStudentAgeType(this.getCourse().getStudentAgeType());
+        Course exist = courseDao.findById(this.getCourse().getId());
+        Set<String> existEmails = new HashSet<>();
+        for (CourseInviteStudent courseInviteStudent : exist.getCourseInviteStudents()) {
+            existEmails.add(courseInviteStudent.getInvitedStudentEmail());
 
-        _course.getTags().clear();
-        for (String tagName : tags) {
-            Tag temp = tagDao.findByName(tagName);
-            if (temp == null) {
-                Tag newTag = new Tag(tagName);
-                tagDao.persistAbstract(newTag);
-                _course.getTags().add(newTag);
-            } else {
-                if (!_course.getTags().contains(temp)) _course.getTags().add(temp);
-            }
         }
 
-        _course.setLogoUrl(Utils.copyTmpFileByUser(course.getLogoUrl(), this.getSessionUserId()));
-        if (StringUtils.isBlank(course.getLogoUrl())) _course.setLogoUrl(Constants.DEFAULT_COURSE_IMAGE);
-
-        //change teachers
-        if (teacherIds != null && teacherIds.size() > 0) {
-
-            if (_course.getTeachers() != null) {
-                _course.getTeachers().clear();
-            }
-
-            for (String teacherId : teacherIds) {
-                BaseUser teacher = baseUserDao.findByEmail(teacherId);
-                if (teacher != null) {
-                    _course.addTeacher(teacher);
-                }
-            }
-        }
+        CourseSpecification specification = CourseSpecification.create(course, this.getSessionUserId(), this.getCourseType(), this.getTeacherIds(), this.getTags(), this.getEmails());
+        courseService.saveCourse(specification);
+        course = courseService.findById(course.getId());
 
         for (String email : emails) {
-            if (StringUtils.isNotBlank(email)) {
-                courseService.saveInvitation(email, this.getCourse().getId());
+            if (StringUtils.isNotBlank(email) && !existEmails.contains(email)) {
                 this.sendNoticeToStudent(courseInviteStudentDao.findByCourseAndEmail(this.getCourse().getId(), email));
             }
         }
-        courseDao.persistAbstract(_course);
 
     }
 

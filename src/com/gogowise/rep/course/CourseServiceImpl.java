@@ -1,6 +1,7 @@
 package com.gogowise.rep.course;
 
 import com.gogowise.common.utils.Constants;
+import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.ModelServiceImpl;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.ServiceException;
@@ -12,6 +13,8 @@ import com.gogowise.rep.course.enity.*;
 import com.gogowise.rep.course.vo.CourseSpecification;
 import com.gogowise.rep.org.OrgService;
 import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.tag.dao.TagDao;
+import com.gogowise.rep.tag.enity.Tag;
 import com.gogowise.rep.user.UserService;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
@@ -42,6 +45,8 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
     private SeniorClassRoomDao seniorClassRoomDao;
     @Autowired
     private UserService userService;
+    @Autowired
+    private TagDao tagDao;
 
     public void saveQuestion(CourseMaterial courseMaterial, List<Question> questions) {
         for (Question question : questions) {
@@ -55,22 +60,23 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
 
         BaseUser operator = baseUserDao.findById(specification.getOperatorId());
         Course course = specification.getCourse();
+        Course modifiedCourse = specification.getCourse();
         if (course.getId() == null) {     //if the course.id == null than deal with the org and course's teacher
             if (Constants.COURSE_TYPE_ORG.equals(specification.getCourseType())) {
                 course.setOrganization(organizationDao.findByResId(specification.getOperatorId()));
             }
         } else {
             course = courseDao.findById(course.getId());
-            Course modifiedCourse = specification.getCourse();
             if (specification.getCourse().getTeachingNum() != null)
                 course.setTeachingNum(modifiedCourse.getTeachingNum());
             course.setName(modifiedCourse.getName());
             course.setDescription(modifiedCourse.getDescription());
             course.setStudentType(modifiedCourse.getStudentType());
-            course.setCourseTeachingBook(modifiedCourse.getCourseTeachingBook());
             course.setCourseType(modifiedCourse.getCourseType());
             course.setStartDate(modifiedCourse.getStartDate());
             course.setCharges(modifiedCourse.getCharges());
+            course.setStudentAgeType(modifiedCourse.getStudentAgeType());
+            course.setIsPublic(modifiedCourse.getIsPublic());
         }
 
         // Teacher
@@ -91,6 +97,25 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
 
         if (course.getFromCourse() == null)
             course.setFromCourse(course);   // mark the course where from. Default is current.
+
+        course.getTags().clear();
+        for (String tagName : specification.getTags()) {
+            Tag tag = tagDao.findByName(tagName);
+            if (tag == null) {
+                tag = new Tag(tagName);
+                tagDao.persistAbstract(tag);
+            }
+            course.getTags().add(tag);
+        }
+
+
+        course.setLogoUrl(Utils.copyTmpFileByUser(modifiedCourse.getLogoUrl(), specification.getOperatorId()));
+        courseDao.persistAbstract(course);
+        for (String email : specification.getEmails()) {
+            if (StringUtils.isNotBlank(email)) {
+                this.saveInvitation(email, course.getId());
+            }
+        }
         courseDao.persistAbstract(course);
     }
 

@@ -1,13 +1,14 @@
 package com.gogowise.common.utils;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.LineNumberReader;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import com.opensymphony.xwork2.ActionContext;
+import org.apache.commons.beanutils.PropertyUtils;
+import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.apache.struts2.ServletActionContext;
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.channels.FileChannel;
 import java.util.Calendar;
@@ -15,25 +16,15 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
-import org.apache.struts2.ServletActionContext;
-
-import com.opensymphony.xwork2.ActionContext;
-
 public class Utils {
     private static final Logger logger = LogManager.getLogger(Utils.class.getName());
 
-    private static final Map<String,Integer> TIME_ZONE_MAP = new HashMap<>();
+    private static final Map<String, Integer> TIME_ZONE_MAP = new HashMap<>();
 
     static {
-        TIME_ZONE_MAP.put("SG",+8) ;
-        TIME_ZONE_MAP.put("US",-5) ;
-        TIME_ZONE_MAP.put("JP",+9) ;
+        TIME_ZONE_MAP.put("SG", +8);
+        TIME_ZONE_MAP.put("US", -5);
+        TIME_ZONE_MAP.put("JP", +9);
     }
 
     public static void doCopy(Object dest, Object orig) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
@@ -77,7 +68,7 @@ public class Utils {
     private static void changeCalByCountryForOut(Calendar cal, String country) {
         if (TIME_ZONE_MAP.containsKey(country)) {
             cal.add(Calendar.HOUR, TIME_ZONE_MAP.get(country));
-        }  else {
+        } else {
             cal.add(Calendar.HOUR, +8);
         }
     }
@@ -124,9 +115,13 @@ public class Utils {
 
 
     public static void replaceFileFromTemp(String toDir, String fileName) {
-        String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + fileName);
-        String desPath = ServletActionContext.getServletContext().getRealPath(toDir + fileName);
+        String srcPath = convertToRealPatch(Constants.UPLOAD_FILE_PATH_TMP + "/" + fileName);
+        String desPath = convertToRealPatch(toDir + fileName);
         replaceFile(srcPath, desPath);
+    }
+
+    public static String convertToRealPatch(String path) {
+        return ServletActionContext.getServletContext().getRealPath(path);
     }
 
     private static void copyByChannel(File f1, File f2) {
@@ -176,6 +171,7 @@ public class Utils {
         c.add(Calendar.DAY_OF_YEAR, diff);
         return c;
     }
+
     public static void changeTimeZoneForIn(Calendar cal) {
         Float timezone = null;
         String country = null;
@@ -204,8 +200,6 @@ public class Utils {
         }
         return cal;
     }
-
-
 
 
     public static String getOrderId() {
@@ -253,7 +247,7 @@ public class Utils {
         if (!dst.exists()) {
             mkDir(dst);
         }
-        if(dst.setReadable(true)&&dst.setWritable(true)) {
+        if (dst.setReadable(true) && dst.setWritable(true)) {
             logger.error("pptConvert : set read write failed");
         }
         String BASE_PATCH = ServletActionContext.getServletContext().getRealPath(".");

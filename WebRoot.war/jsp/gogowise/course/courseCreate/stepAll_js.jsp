@@ -9,7 +9,6 @@ $(function () {
 
         var stepNum = $(this).attr("alt");
         if (stepNum == 2 && !step1Stored) {
-            $("#step1_store_msg").html(plsSelectType);
             $(".stepWrap h3[alt='1']").trigger("click");
             return;
         }
@@ -28,28 +27,6 @@ $(function () {
         }
         $(".stepWrap h3").next("div").hide();
         $(this).next("div").slideDown();
-    });
-
-
-    $("#step1_store").click(function () {
-        $(this).parent().parent().hide();
-        var radioObj = $("input[name='course.identity']:checked");
-        var courseType = radioObj.val();
-        $("#course_identity").attr('value', courseType);
-        maxStudentCount = courseType;
-        var courseTypeLabel = radioObj.next("label").html();
-        $("#step1_store_cont .store_course_type").html(courseTypeLabel);
-        $(this).parent().parent().next().show();
-        step1Stored = true;
-
-        //判断第二步邀请的人数是否与此冲突
-        if (count > maxStudentCount) {
-            $("#step2_store_msg").html(messageOver + maxStudentCount + plsDeleteOther);
-            $(".stepWrap h3[alt='2']").trigger("click");
-            if (step2Stored) {
-                $("#step2_modify").trigger("click");
-            }
-        }
     });
 
 
@@ -331,7 +308,6 @@ $(function () {
 function changeWordNumInHTML(obj) {
     changeWordNumber(obj, $("#class_nickname_msg"), 40);
 }
-
 
 
 function dateComparator(Obj) {     //the current time  bigger than startTime which without H:m:s  return true

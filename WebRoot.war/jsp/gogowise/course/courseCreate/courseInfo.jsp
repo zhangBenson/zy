@@ -87,12 +87,7 @@
                     cssClass="long_text_field" id="step2_studentAge_type" name="course.studentAgeType"/>
             <span class="course_student_type_input_msg tip_words">*</span>
         </li>
-        <%--<li>
-            <span class="item"><s:text name="course.info.of.teaching.book"/></span>
-            <s:textfield cssClass="long_text_field" id="step2_course_teaching_book"
-                         name="course.courseTeachingBook" type="text"/>
-            <span class="course_teaching_book_input_msg tip_words"></span>
-         </li>--%>
+
         <li>
             <span class="item"><s:text name="course.info.of.course.type"/></span>
             <s:select
@@ -174,8 +169,6 @@
         </li>
         <li><s:text name="course.info.of.student.type"/>：<span class="orange_words"
                                                                id="store_studentType"><s:property value="course.studentType"/></span></li>
-        <li><s:text name="course.info.of.teaching.book"/>：<span class="orange_words"
-                                                                id="store_courseTeachingBook"><s:property value="course.courseTeachingBook"/></span></li>
         <li><s:text name="course.info.of.course.type"/>：<span class="orange_words"
                                                               id="store_courseType"><s:property value="course.courseType"/></span></li>
         <li><s:text name="label.online.class.startdate"/>：<span class="orange_words"

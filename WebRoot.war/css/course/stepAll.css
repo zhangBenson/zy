@@ -100,10 +100,6 @@ ul{
     display: block;
 }
 
-#step1_store_cont p{
-    float: left;
-    display: inline;
-}
 .stepCont .pic_3 {
     float:left;
     height: 4px;
