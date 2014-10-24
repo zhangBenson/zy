@@ -168,7 +168,7 @@
             <span class="orange_words" id="store_description"><s:property value="course.description"/></span>
         </li>
         <li><s:text name="course.info.of.student.type"/>：<span class="orange_words"
-                                                               id="store_studentType"><s:property value="course.studentType"/></span></li>
+                                                               id="store_studentType"><s:property value="course.studentAgeType"/></span></li>
         <li><s:text name="course.info.of.course.type"/>：<span class="orange_words"
                                                               id="store_courseType"><s:property value="course.courseType"/></span></li>
         <li><s:text name="label.online.class.startdate"/>：<span class="orange_words"

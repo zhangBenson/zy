@@ -36,7 +36,6 @@ public class Course extends AbstractPersistence {
     private String description;
     private Calendar startDate;
     private String languageType;//课程语种
-    private String studentType;     //招生对象
     private Integer courseType;
 
     private Boolean isDeleted = false;
@@ -456,14 +455,6 @@ public class Course extends AbstractPersistence {
 
     public Integer getCourseStudentsNum() {
         return this.getSeniorClassRooms().size();
-    }
-
-    public String getStudentType() {
-        return studentType;
-    }
-
-    public void setStudentType(String studentType) {
-        this.studentType = studentType;
     }
 
     public Integer getCourseType() {

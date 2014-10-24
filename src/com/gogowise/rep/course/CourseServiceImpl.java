@@ -67,12 +67,8 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
             }
         } else {
             course = courseDao.findById(course.getId());
-            if (specification.getCourse().getTeachingNum() != null)
-                course.setTeachingNum(modifiedCourse.getTeachingNum());
             course.setName(modifiedCourse.getName());
             course.setDescription(modifiedCourse.getDescription());
-            course.setStudentType(modifiedCourse.getStudentType());
-            course.setCourseType(modifiedCourse.getCourseType());
             course.setStartDate(modifiedCourse.getStartDate());
             course.setCharges(modifiedCourse.getCharges());
             course.setStudentAgeType(modifiedCourse.getStudentAgeType());
@@ -130,7 +126,6 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
 
 
     public void validateBeforePurchase(Course course, BaseUser user) throws ServiceException {
-
 
 
         if (existInStudentInvitation(course, user.getEmail())) {
