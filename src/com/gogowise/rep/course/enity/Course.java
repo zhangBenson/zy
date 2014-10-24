@@ -54,19 +54,9 @@ public class Course extends AbstractPersistence {
     private Integer buyAgesNum = Constants.DEFAULT_INT_VALUE;  //订阅录像人数
     private Integer inviteStudentNum = Constants.DEFAULT_INT_VALUE;   //邀请的学生人数
 
-    private Double interest = Constants.DEFAULT_DOUBLE_VALUE;            //    趣味性
-    private Double available = Constants.DEFAULT_DOUBLE_VALUE;           //    实用性
-    private Double interaction = Constants.DEFAULT_DOUBLE_VALUE;         //    互动性
-    private Double costPerformance = Constants.DEFAULT_DOUBLE_VALUE;    //    性价比
-    private Double synthetical = Constants.DEFAULT_DOUBLE_VALUE;         //     综合评分
-    private Integer evaluatorNums = Constants.DEFAULT_INT_VALUE;         //评分人数
-
     private Integer teachingNum = Constants.DEFAULT_INT_VALUE;           //几对几
     private Double charges;                                                 //课堂的收费
     private Boolean consumptionType = false;      //知券
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Course fromCourse;
 
     @OneToMany(mappedBy = "course")
     private List<CourseInviteStudent> courseInviteStudents = new ArrayList<>();
@@ -195,54 +185,6 @@ public class Course extends AbstractPersistence {
         this.buyAgesNum = buyAgesNum;
     }
 
-    public Double getInterest() {
-        return interest;
-    }
-
-    public void setInterest(Double interest) {
-        this.interest = interest;
-    }
-
-    public Double getAvailable() {
-        return available;
-    }
-
-    public void setAvailable(Double available) {
-        this.available = available;
-    }
-
-    public Double getInteraction() {
-        return interaction;
-    }
-
-    public void setInteraction(Double interaction) {
-        this.interaction = interaction;
-    }
-
-    public Double getCostPerformance() {
-        return costPerformance;
-    }
-
-    public void setCostPerformance(Double costPerformance) {
-        this.costPerformance = costPerformance;
-    }
-
-    public Double getSynthetical() {
-        return synthetical;
-    }
-
-    public void setSynthetical() {
-        this.synthetical = Math.round((this.available + this.interest + this.interaction + this.costPerformance) * 10 / 4) / 10.0;
-    }
-
-    public Integer getEvaluatorNums() {
-        return evaluatorNums;
-    }
-
-    public void setEvaluatorNums(Integer evaluatorNums) {
-        this.evaluatorNums = evaluatorNums;
-    }
-
     public Boolean getConsumptionType() {
         return consumptionType;
     }
@@ -353,14 +295,6 @@ public class Course extends AbstractPersistence {
 
     public void setCourseRecommends(List<CourseRecommend> courseRecommends) {
         this.courseRecommends = courseRecommends;
-    }
-
-    public Course getFromCourse() {
-        return fromCourse;
-    }
-
-    public void setFromCourse(Course fromCourse) {
-        this.fromCourse = fromCourse;
     }
 
     public Calendar getFinishDate() {

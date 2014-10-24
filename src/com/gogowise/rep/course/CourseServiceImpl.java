@@ -91,9 +91,6 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
 
         if (StringUtils.isBlank(course.getLogoUrl())) course.setLogoUrl(Constants.DEFAULT_COURSE_IMAGE);
 
-        if (course.getFromCourse() == null)
-            course.setFromCourse(course);   // mark the course where from. Default is current.
-
         course.getTags().clear();
         for (String tagName : specification.getTags()) {
             Tag tag = tagDao.findByName(tagName);
@@ -196,7 +193,7 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
         courseInviteStudentDao.persistAbstract(courseInviteStudent);
     }
 
-    public void saveClassRoom(Integer courseId, Integer userId) {
+    private void saveClassRoom(Integer courseId, Integer userId) {
         SeniorClassRoom sc = seniorClassRoomDao.findClassRoomByCourseAndStudent(courseId, userId);
         if (sc != null) {
             return;

@@ -27,7 +27,5 @@ public interface CourseService extends ModelService {
 
     public void saveInvitation(String email, Integer courseId);
 
-    public void saveClassRoom(Integer courseId, Integer userId);
-
     public void delete(Integer id, Integer userId) throws ServiceException;
 }
