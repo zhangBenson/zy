@@ -277,16 +277,6 @@
     </filter-mapping>
 
 
-    <!--<servlet-mapping>-->
-    <!--<servlet-name>struts2</servlet-name>-->
-    <!--<url-pattern>*.html</url-pattern>-->
-    <!--</servlet-mapping>-->
-    <listener>
-        <listener-class>
-            org.springframework.web.util.Log4jConfigListener
-        </listener-class>
-    </listener>
-
     <listener>
         <listener-class>
             org.springframework.web.context.ContextLoaderListener

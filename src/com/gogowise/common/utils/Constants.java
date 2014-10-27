@@ -12,6 +12,7 @@ public class Constants {
     public static final int PAGE_SIZE = 9;
     public static final String UPLOAD_FILE_PATH_TMP = "/upload/tmp";
     public static final String UPLOAD_PATH = "/upload/";
+    public static String REAL_PATH_FOR_BASE_DIR;
 
     public static final String DOWNLOAD_COURSE_RESOURCE_PAHT = "/download/courseResource";
     public static final String DOWNLOAD_CONTRACT = "/download/contract";
@@ -26,7 +27,6 @@ public class Constants {
     public static final String DEFAULT_BLANK_VALUE = "";
     public static final String DEFAULT_USER_LOGO = "images/defaultImgs/portrait.png";
     public static final Integer DEFAULT_INT_VALUE = 0;
-    public static final Double DEFAULT_DOUBLE_VALUE = 3.0;
 
 
     public static final String ORG_CONFIRM_EMAIL = "zlhades@hotmail.com";
@@ -73,8 +73,8 @@ public class Constants {
     public static final Integer DEFAULT_PAGE_OF_COMMENTS_INCREASED_SIZE = 5;
     public static final String DEFAULT_COURSE_IMAGE = "images/defaultImgs/course.gif";              //course
     public static final String DEFAULT_PERSON_IMAGE = "images/defaultImgs/portrait.png";           //person
-    public static final String DEFAULT_OTHER_IMAGE = "images/defaultImgs/other.jpg";               //others
-    public static final String DEFAULT_ORGANIZATION_IMAGE = "images/defaultImgs/org.jpg";       //org
+//    public static final String DEFAULT_OTHER_IMAGE = "images/defaultImgs/other.jpg";               //others
+//    public static final String DEFAULT_ORGANIZATION_IMAGE = "images/defaultImgs/org.jpg";       //org
 
     public static final Integer TRANSFER_TYPE_OF_DEFAULT = 1;
     public static final Integer TRANSFER_TYPE_OF_CHARGE_FOR_MCHANNEL = 2;

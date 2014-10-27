@@ -303,4 +303,12 @@ public class Utils {
         }
     }
 
+    public static String getRealPathForBaseDir() {
+
+        if (Constants.REAL_PATH_FOR_BASE_DIR == null) {
+            return Constants.REAL_PATH_FOR_BASE_DIR = ServletActionContext.getServletContext().getRealPath("/");
+        } else {
+            return Constants.REAL_PATH_FOR_BASE_DIR;
+        }
+    }
 }

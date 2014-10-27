@@ -70,7 +70,7 @@ public class SaveMaterialAction extends BasicAction {
         String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + File.separator + courseMaterial.getFullPath());
         String dstPath = Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/" + newName;
 
-        Utils.copy(new File(srcPath), new File(this.getRealPathForBaseDir() + dstPath));
+        Utils.copy(new File(srcPath), new File(Utils.getRealPathForBaseDir() + dstPath));
 
         //文件相关属性设置
         courseMaterial.setUploadTime(Calendar.getInstance());
@@ -95,7 +95,7 @@ public class SaveMaterialAction extends BasicAction {
         String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + courseMaterial.getFullPath());
         String dstPath = Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/" + newName;
 
-        Utils.copy(new File(srcPath), new File(this.getRealPathForBaseDir() + dstPath));
+        Utils.copy(new File(srcPath), new File(Utils.getRealPathForBaseDir() + dstPath));
 
         //文件相关属性设置
         courseMaterial.setUploadTime(Calendar.getInstance());
@@ -142,8 +142,8 @@ public class SaveMaterialAction extends BasicAction {
     }
 
     private void convertQuestion(String nowTimeStr, String dstPath) throws IOException, JAXBException {
-        String dstDir = this.getRealPathForBaseDir() + Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/question/" + nowTimeStr;
-        Utils.questionConvert(this.getRealPathForBaseDir() + dstPath, dstDir);
+        String dstDir = Utils.getRealPathForBaseDir() + Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/question/" + nowTimeStr;
+        Utils.questionConvert(Utils.getRealPathForBaseDir() + dstPath, dstDir);
         String xmlPath = dstDir + "/" + Constants.QUESTION_FILE_NAME;
         List<Question> questions = convertQuestionService.convert(xmlPath);
         courseService.saveQuestion(courseMaterial, questions);
@@ -152,11 +152,11 @@ public class SaveMaterialAction extends BasicAction {
     private void convertPpt(String nowTimeStr, String dstPath) throws IOException {
         String dstPdfDir = ServletActionContext.getServletContext().getRealPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/");
         String destPptParentDir = Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/ppt/" + nowTimeStr;
-        String dstDir = this.getRealPathForBaseDir() + destPptParentDir;
+        String dstDir = Utils.getRealPathForBaseDir() + destPptParentDir;
         String pdfName = courseMaterial.getTypeString() + "_" + nowTimeStr + ".pdf";
         courseMaterial.setConvertPath(destPptParentDir);
 
-        Utils.pptConvert(this.getRealPathForBaseDir() + dstPath, dstPdfDir, pdfName, dstDir);
+        Utils.pptConvert(Utils.getRealPathForBaseDir() + dstPath, dstPdfDir, pdfName, dstDir);
         File desDirInfo = new File(dstDir);
         courseMaterial.setTotalPages(desDirInfo.listFiles().length - 1);
         LOGGER.info("==================PPT files==============" + desDirInfo.listFiles().length);

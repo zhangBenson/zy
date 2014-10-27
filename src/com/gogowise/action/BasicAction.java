@@ -21,7 +21,7 @@ public class BasicAction extends ActionSupport {
     public static final String BASE_NAME_SPACE = "/";
     public static final String RESULT_JSON = "json";
     public static String HOST_URL_APP;
-    public static String REAL_PATH_FOR_BASE_DIR;
+
 
     public static final String MY_FIRST_PAGE = "myfirstPage";
     public static final String PERSONAL_CENTER = "personalCenter";
@@ -33,14 +33,7 @@ public class BasicAction extends ActionSupport {
 
     protected static Logger LOGGER = LogManager.getLogger(BasicAction.class);
 
-    public String getRealPathForBaseDir() {
 
-        if (REAL_PATH_FOR_BASE_DIR == null) {
-            return REAL_PATH_FOR_BASE_DIR = ServletActionContext.getServletContext().getRealPath("/");
-        } else {
-            return REAL_PATH_FOR_BASE_DIR;
-        }
-    }
 
     public void redirectToLogin() {
 

@@ -95,13 +95,13 @@
     <package name="basic-package" extends="tiles-default,json-default" namespace="/">
 
 
-    <interceptors>
+        <interceptors>
             <interceptor name="validator" class="com.opensymphony.xwork2.validator.ValidationInterceptor"/>
-        <interceptor name="errorInterceptor" class="com.gogowise.common.utils.ErrorInterceptor"></interceptor>
-        <interceptor-stack name="myStack">
+            <interceptor name="errorInterceptor" class="com.gogowise.common.utils.ErrorInterceptor"></interceptor>
+            <interceptor-stack name="myStack">
                 <interceptor-ref name="defaultStack"></interceptor-ref>
-            <interceptor-ref name="errorInterceptor"></interceptor-ref>
-        </interceptor-stack>
+                <interceptor-ref name="errorInterceptor"></interceptor-ref>
+            </interceptor-stack>
         </interceptors>
         <default-interceptor-ref name="myStack"></default-interceptor-ref>
 
@@ -118,14 +118,6 @@
                 <param name="actionName">index</param>
             </result>
         </global-results>
-
-
-        <!--<action name="download" class="courseResourceAction" method="downloadFile">-->
-        <!--<result name="success" type="stream">-->
-        <!--<param name="inputName">fstream</param>-->
-        <!--<param name="contentDisposition">attachment;filename=${fname}</param>-->
-        <!--</result>-->
-        <!--</action>-->
 
 
         <action name="uploadCourseMaterialToTemp" class="com.gogowise.action.course.CourseMaterialUploadAction"
