@@ -73,7 +73,7 @@ public class SaveMaterialAction extends BasicAction {
             updatedFileNameOnly = fileuploadFileName.replace(extName, "");
             String newFileName = UploadUtils.getNameByTime() + extName;
 
-            fileupload.renameTo(new File(savePath + newFileName));
+            UploadUtils.copy(fileupload, new File(savePath + newFileName));
             courseMaterial.setFullPath(UploadUtils.copyTmpFileByUser(newFileName, this.getSessionUserId()));
             this.setGenFileName(newFileName);
         }

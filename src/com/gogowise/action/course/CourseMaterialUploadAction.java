@@ -69,7 +69,7 @@ public class CourseMaterialUploadAction extends BasicAction {
 
         String savePath = UploadUtils.getRealPathForBaseDir() + Constants.UPLOAD_FILE_PATH_TMP;
 
-        fileupload.renameTo(new File(savePath + newFileName)); //保存文件
+        UploadUtils.copy(fileupload, new File(savePath + newFileName));
 
         HttpServletResponse response = ServletActionContext.getResponse();
         response.setCharacterEncoding("utf-8");

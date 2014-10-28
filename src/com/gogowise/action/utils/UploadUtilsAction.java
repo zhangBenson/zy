@@ -99,7 +99,7 @@ public class UploadUtilsAction extends BasicAction {
         if (!newPatchToCreate.exists()) {
             newPatchToCreate.mkdirs();
         }
-        fileupload.renameTo(newFileToCreate); //保存文件
+        UploadUtils.copy(fileupload, newFileToCreate);
 
         HttpServletResponse response = ServletActionContext.getResponse();
         response.setCharacterEncoding("utf-8");
