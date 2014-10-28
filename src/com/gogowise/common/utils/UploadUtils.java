@@ -8,7 +8,6 @@ import org.apache.struts2.ServletActionContext;
 import java.io.*;
 import java.nio.channels.FileChannel;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 
@@ -175,5 +174,9 @@ public class UploadUtils {
     public static String getNameByTime() {
         SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
         return sDateFormat.format(new Date());
+    }
+
+    public static String getContractFilePath(Integer userId) {
+        return getRealPathForBaseDir() + Constants.UPLOAD_PATH + userId + "/" + UploadUtils.getNameByTime() + "contract.pdf";
     }
 }

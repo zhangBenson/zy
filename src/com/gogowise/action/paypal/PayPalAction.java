@@ -4,6 +4,7 @@ import com.gogowise.action.BasicAction;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.EmailUtil;
 import com.gogowise.common.utils.PdfUtil;
+import com.gogowise.common.utils.UploadUtils;
 import com.gogowise.rep.course.ShoppingCartService;
 import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.dao.SeniorClassRoomDao;
@@ -329,8 +330,7 @@ public class PayPalAction extends BasicAction
 
     private void sendPurchaseEmail(Course course, BaseUser user) {
 
-        String filePath = ServletActionContext.getServletContext().getRealPath("/");
-        filePath += Constants.DOWNLOAD_CONTRACT + File.separator + course.getId() + File.separator + course.getName() + ".pdf";
+        String filePath = UploadUtils.getContractFilePath(this.getSessionUserId());
 
         //send email to student
         String tile = this.getText("course.pdf.title", new String[] { user.getNickName(), course.getName() });

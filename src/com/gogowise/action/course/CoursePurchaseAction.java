@@ -1,6 +1,7 @@
 package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.common.utils.UploadUtils;
 import com.gogowise.rep.ServiceException;
 import com.gogowise.rep.course.CourseService;
 import com.gogowise.rep.course.dao.CourseDao;
@@ -115,8 +116,7 @@ public class CoursePurchaseAction extends BasicAction {
 
     private void sendPurchaseEmail() {
 
-        String filePath = ServletActionContext.getServletContext().getRealPath("/");
-        filePath += Constants.DOWNLOAD_CONTRACT + File.separator + course.getId() + File.separator + course.getName() + ".pdf";
+        String filePath = UploadUtils.getContractFilePath(this.getSessionUserId());
 
         //send email to student
         String tile = this.getText("course.pdf.title", new String[] { user.getNickName(), course.getName() });
@@ -168,9 +168,9 @@ public class CoursePurchaseAction extends BasicAction {
         seniorClassRoomDao.saveSeniorClassRoom(this.course.getId(), this.getSessionUserId());
 
         consumptionOrderDao.purchaseCourse(user, course);
-        String filePath = Constants.DOWNLOAD_CONTRACT + getSessionUserId() + "/" + course.getName() + ".pdf";
+        String filePath = UploadUtils.getContractFilePath(this.getSessionUserId());
         String tile = this.getText("course.pdf.title", new String[] { user.getNickName(), course.getName() });
-        String content = this.getText("course.pdf.content");
+        String content = this.getText("course.pdf.content", new String[]{user.getNickName()});
         PdfUtil.createCourseContract(filePath, course, baseUserDao.findById(getSessionUserId()));
         EmailUtil.sendMail(user.getEmail(), tile, content, new String[] { "contract.pdf" }, new String[] { filePath });
         if (course.getOrganization() != null) {

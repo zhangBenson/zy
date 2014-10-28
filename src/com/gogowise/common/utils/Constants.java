@@ -1,19 +1,11 @@
 package com.gogowise.common.utils;
 
-/**
- * Created by IntelliJ IDEA.
- * User: zhangb
- * Date: Jun 4, 2009
- * Time: 3:32:44 PM
- * To change this template use File | Settings | File Templates.
- */
+
 public class Constants {
 
     public static final int PAGE_SIZE = 9;
     public static final String UPLOAD_FILE_PATH_TMP = "/upload/tmp/";
     public static final String UPLOAD_PATH = "/upload/";
-
-    public static final String DOWNLOAD_CONTRACT = "/download/contract";
 
 
     public static final int BUFFER_SIZE = 4 * 1024 * 1024;

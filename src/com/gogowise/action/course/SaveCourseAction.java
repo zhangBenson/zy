@@ -228,10 +228,9 @@ public class SaveCourseAction extends BasicAction {
     }
 
     private void sendEmailAfterConfirm() throws Exception {
-//        String filePath = "d:/contract/" + course.getName() + ".pdf";
-        String filePath = Constants.DOWNLOAD_CONTRACT + course.getId() + "/" + course.getName() + ".pdf";
+        String filePath = UploadUtils.getContractFilePath(user.getId());
         String tile = this.getText("course.pdf.title", new String[]{user.getNickName(), course.getName()});
-        String content = this.getText("course.pdf.content");
+        String content = this.getText("course.pdf.content", new String[]{user.getNickName()});
         PdfUtil.createCourseContract(filePath, courseDao.findById(course.getId()), user);
         EmailUtil.sendMail(user.getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
         if (course.getOrganization() != null) {
