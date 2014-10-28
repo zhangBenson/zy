@@ -1,7 +1,7 @@
 package com.gogowise.rep.course;
 
 import com.gogowise.common.utils.Constants;
-import com.gogowise.common.utils.Utils;
+import com.gogowise.common.utils.UploadUtils;
 import com.gogowise.rep.ModelServiceImpl;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.ServiceException;
@@ -102,7 +102,7 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
         }
 
 
-        course.setLogoUrl(Utils.copyTmpFileByUser(modifiedCourse.getLogoUrl(), specification.getOperatorId()));
+        course.setLogoUrl(UploadUtils.copyTmpFileByUser(modifiedCourse.getLogoUrl(), specification.getOperatorId()));
         courseDao.persistAbstract(course);
         for (String email : specification.getEmails()) {
             if (StringUtils.isNotBlank(email)) {

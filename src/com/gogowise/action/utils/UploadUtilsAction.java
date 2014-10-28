@@ -2,6 +2,7 @@ package com.gogowise.action.utils;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.common.utils.Constants;
+import com.gogowise.common.utils.UploadUtils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
@@ -17,9 +18,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Random;
 
 
 @Controller
@@ -64,26 +62,13 @@ public class UploadUtilsAction extends BasicAction {
 
     @Action(value = "uploadFile",interceptorRefs = {})
     public String uploadFile() throws IOException {
-        String extName = "";
-        String newFileName = "";
-        String nowTimeStr = "";
-        SimpleDateFormat sDateFormat;
-        Random r = new Random();
+        String extName = UploadUtils.getExtension(fileuploadFileName);
+        String newFileName = UploadUtils.getNameByTime() + extName;
 
-        String savePath = ServletActionContext.getServletContext().getRealPath("");
+        String savePath = UploadUtils.getRealPathForBaseDir();
 
-        savePath = savePath + Constants.UPLOAD_FILE_PATH_TMP+"/";
+        savePath = savePath + Constants.UPLOAD_FILE_PATH_TMP;
 
-
-        //生成随机文件名：当前年月日时分秒+五位随机数（为了在实际项目中防止文件同名而进行的处理）
-        int rannum = (int) (r.nextDouble() * (99999 - 10000 + 1)) + 10000; //获取随机数
-        sDateFormat = new SimpleDateFormat("yyyyMMddHHmmss"); //时间格式化的格式
-        nowTimeStr = sDateFormat.format(new Date()); //当前时间
-
-        //获取拓展名
-        if (fileuploadFileName.lastIndexOf(".") >= 0) {
-            extName = fileuploadFileName.substring(fileuploadFileName.lastIndexOf("."));
-        }
 
         //缩放处理，长宽不过200
         BufferedImage bufferedImage = ImageIO.read(fileupload);
@@ -109,9 +94,6 @@ public class UploadUtilsAction extends BasicAction {
         String extNameWithoutDot = extName.substring(extName.indexOf(".")+1);
         ImageIO.write(tag,extNameWithoutDot,fileupload);
 
-
-        newFileName = nowTimeStr + rannum + extName; //文件重命名后的名字
-
         File newFileToCreate = new File(savePath + newFileName);
         File newPatchToCreate = new File(savePath );
         if (!newPatchToCreate.exists()) {
@@ -121,70 +103,9 @@ public class UploadUtilsAction extends BasicAction {
 
         HttpServletResponse response = ServletActionContext.getResponse();
         response.setCharacterEncoding("utf-8");
-//        response.getWriter().print(newFileName);
         this.setGenFileName(newFileName);
         return "json";
     }
-
-    @Action(value = "uploadFileWithOutZoom",interceptorRefs = {})
-    public String uploadFileWithOutZoom() throws IOException {
-        String extName = "";
-        String newFileName = "";
-        String nowTimeStr = "";
-        SimpleDateFormat sDateFormat;
-        Random r = new Random();
-
-        String savePath = ServletActionContext.getServletContext().getRealPath("");
-
-        savePath = savePath + Constants.UPLOAD_FILE_PATH_TMP+"/";
-
-
-        //生成随机文件名：当前年月日时分秒+五位随机数（为了在实际项目中防止文件同名而进行的处理）
-        int rannum = (int) (r.nextDouble() * (99999 - 10000 + 1)) + 10000; //获取随机数
-        sDateFormat = new SimpleDateFormat("yyyyMMddHHmmss"); //时间格式化的格式
-        nowTimeStr = sDateFormat.format(new Date()); //当前时间
-
-        //获取拓展名
-        if (fileuploadFileName.lastIndexOf(".") >= 0) {
-            extName = fileuploadFileName.substring(fileuploadFileName.lastIndexOf("."));
-        }
-
-        newFileName = nowTimeStr + rannum + extName; //文件重命名后的名字
-
-        File newFileToCreate = new File(savePath + newFileName);
-        File newPatchToCreate = new File(savePath );
-        if (!newPatchToCreate.exists()) {
-            newPatchToCreate.mkdirs();
-        }
-        fileupload.renameTo(newFileToCreate); //保存文件
-
-        HttpServletResponse response = ServletActionContext.getResponse();
-        response.setCharacterEncoding("utf-8");
-//        response.getWriter().print(newFileName);
-        this.setGenFileName(newFileName);
-        return "json";
-    }
-
-//    public String updateUserInfo() {
-//        int i = 0;
-//        for (File myFile : this.getUploads()) {
-//            String path = "/" + getSessionUserId() + "/" + i + this.getExtention(this.getUploadsFileName().get(i));
-//            File imageFile = new File(ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_USER_PATH) + path);
-//            if (!imageFile.getParentFile().exists()) {
-//                imageFile.getParentFile().mkdirs();
-//            } else {
-//                File files[] = imageFile.getParentFile().listFiles();
-//                for (File file : files) {
-//                    file.delete();
-//                }
-//            }
-//            copy(myFile, imageFile);
-////            this.getUser().setPic(Constants.UPLOAD_USER_PATH + path);
-//            i++;
-//        }
-//
-//        return SUCCESS;
-//    }
 
 
 }

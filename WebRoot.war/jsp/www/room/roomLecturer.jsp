@@ -476,22 +476,7 @@ function changeQuestionFile(){
     var fackIndex = fileObj.value.lastIndexOf("\\");
 
     questionTitle = fackIndex==-1?fileObj.value:fileObj.value.substring(fileObj.value.lastIndexOf("\\")+1);
-//    $.ajaxFileUpload({
-//        url: 'course/uploadCourseMaterialToTemp.html',
-//        type: 'post',
-//        secureuri: false,
-//        fileElementId: 'fileQuestion',
-//        dataType: 'json',
-//        success: function (data, status)
-//        {
-//            questionFullPath = data.genFileName;
-//            $("#fileQuestionTip").html("File "+questionTitle+" selected");
-//        },
-//        error: function (data, status, e)
-//        {
-//            //alert(e);
-//        }
-//    });
+
 }
 
 function setVideoInfo(videolink,videoname)

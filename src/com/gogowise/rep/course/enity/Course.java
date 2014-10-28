@@ -77,6 +77,9 @@ public class Course extends AbstractPersistence {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Tag> tags;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private BaseUser owner;
+
 
     public Boolean getOpened() {
         return opened;
@@ -464,5 +467,13 @@ public class Course extends AbstractPersistence {
 
     public void setTags(List<Tag> tags) {
         this.tags = tags;
+    }
+
+    public BaseUser getOwner() {
+        return owner;
+    }
+
+    public void setOwner(BaseUser owner) {
+        this.owner = owner;
     }
 }

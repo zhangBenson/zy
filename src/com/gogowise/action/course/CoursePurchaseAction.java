@@ -168,7 +168,7 @@ public class CoursePurchaseAction extends BasicAction {
         seniorClassRoomDao.saveSeniorClassRoom(this.course.getId(), this.getSessionUserId());
 
         consumptionOrderDao.purchaseCourse(user, course);
-        String filePath = Constants.DOWNLOAD_CONTRACT + course.getId() + "/" + course.getName() + ".pdf";
+        String filePath = Constants.DOWNLOAD_CONTRACT + getSessionUserId() + "/" + course.getName() + ".pdf";
         String tile = this.getText("course.pdf.title", new String[] { user.getNickName(), course.getName() });
         String content = this.getText("course.pdf.content");
         PdfUtil.createCourseContract(filePath, course, baseUserDao.findById(getSessionUserId()));

@@ -1,7 +1,7 @@
 package com.gogowise.action.utils;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.common.utils.Utils;
+import com.gogowise.common.utils.UploadUtils;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.course.enity.Course;
@@ -56,7 +56,7 @@ public class ImageProcessAction extends BasicAction{
 
             //持久化
             BaseUser _user = baseUserDao.findById(getSessionUserId());
-            _user.setPic(Utils.copyTmpFileByUser(this.getUserPortraitName(), this.getSessionUserId()));
+            _user.setPic(UploadUtils.copyTmpFileByUser(this.getUserPortraitName(), this.getSessionUserId()));
             baseUserDao.persistAbstract(_user);
             this.setUser(_user);
             this.setUserToSession(_user);
@@ -69,12 +69,10 @@ public class ImageProcessAction extends BasicAction{
     @Action(value = "cropCourseLogo")
     public void cropCourseLogo() throws IOException {
         if (StringUtils.isNotBlank(this.getCourseLogoName())) {
-            String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + this.getCourseLogoName());
-//            String toPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId()+"/"+this.getCourseLogoName());
-//            String toPath = srcPath;
+            String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + this.getCourseLogoName());
 
              //获取拓展名
-            String extName="";
+            String extName = UploadUtils.getExtension(courseLogoName);
             if (courseLogoName.lastIndexOf(".") >= 0) {
                 extName = courseLogoName.substring(courseLogoName.lastIndexOf(".")+1);
             }
@@ -85,16 +83,14 @@ public class ImageProcessAction extends BasicAction{
 
             ImageIO.write(tag,extName,new FileOutputStream(srcPath));
 
-//            PrintWriter out = ServletActionContext.getResponse().getWriter();
-//            out.print(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId());
-//            out.close();
+
         }
     }
 
     @Action(value = "cropOrgLogo")
     public void cropOrgLogo() throws IOException{
         if (StringUtils.isNotBlank(this.getOrgLogoName())) {
-            String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + this.getOrgLogoName());
+            String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + this.getOrgLogoName());
 //            String toPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId()+"/"+this.getCourseLogoName());
 //            String toPath = srcPath;
 

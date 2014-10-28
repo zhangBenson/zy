@@ -1,10 +1,7 @@
 package com.gogowise.action.higsec;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.common.utils.Constants;
-import com.gogowise.common.utils.EmailUtil;
-import com.gogowise.common.utils.MD5;
-import com.gogowise.common.utils.Utils;
+import com.gogowise.common.utils.*;
 import com.gogowise.rep.org.dao.OrganizationBaseUserDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
@@ -17,8 +14,6 @@ import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.user.enity.BaseUserRoleType;
 import com.gogowise.rep.user.enity.RoleType;
 import com.opensymphony.xwork2.ActionContext;
-import org.apache.commons.lang.StringUtils;
-import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -27,7 +22,6 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import java.io.File;
 import java.util.Calendar;
 import java.util.List;
 
@@ -225,8 +219,8 @@ public class OrgForBackendAction extends BasicAction {
         }
 
 
-        orgSaved.setLogoUrl(Utils.copyTmpFileByUser(this.getLogoUrl(), this.getSessionUserId()));
-        orgSaved.setAdvUrl(Utils.copyTmpFileByUser(this.getAdvUrl(), this.getSessionUserId()));
+        orgSaved.setLogoUrl(UploadUtils.copyTmpFileByUser(this.getLogoUrl(), this.getSessionUserId()));
+        orgSaved.setAdvUrl(UploadUtils.copyTmpFileByUser(this.getAdvUrl(), this.getSessionUserId()));
 
 
         orgSaved.setResponsiblePerson(baseUser);

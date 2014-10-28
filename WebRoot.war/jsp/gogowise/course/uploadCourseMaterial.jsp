@@ -166,7 +166,7 @@
             'uploader': 'js/uploadify/uploadify.swf',
 //            'fileDesc':'select files ',
 //            'fileExt':'*.doc;*.docx;*.pdf;*.ppt;*.pptx',
-            'script': 'course/uploadCourseMaterialToTemp.html',
+            'script': 'uploadCourseMaterialToTemp.html',
             'cancelImg': 'js/uploadify/cancel.png',
             'queueID': 'cm_upload', //和存放队列的DIV的id一致
             'fileDataName': 'fileupload', //和以下input的name属性一致

@@ -3,21 +3,19 @@ package com.gogowise.common.utils;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
-import org.apache.struts2.ServletActionContext;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.*;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
-import java.nio.channels.FileChannel;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Utils {
-    private static final Logger logger = LogManager.getLogger(Utils.class.getName());
+
 
     private static final Map<String, Integer> TIME_ZONE_MAP = new HashMap<>();
 
@@ -103,64 +101,6 @@ public class Utils {
     }
 
 
-    public static String copyTmpFileByUser(String fileName, Integer userId) {
-        if (StringUtils.isNotBlank(fileName) && !StringUtils.contains(fileName, Constants.UPLOAD_PATH)) {
-            String toDir = Constants.UPLOAD_PATH + userId + "/";
-            Utils.replaceFileFromTemp(toDir, fileName);
-            return toDir + fileName;
-        } else {
-            return fileName;
-        }
-    }
-
-
-    public static void replaceFileFromTemp(String toDir, String fileName) {
-        String srcPath = convertToRealPatch(Constants.UPLOAD_FILE_PATH_TMP + "/" + fileName);
-        String desPath = convertToRealPatch(toDir + fileName);
-        replaceFile(srcPath, desPath);
-    }
-
-    public static String convertToRealPatch(String path) {
-        return ServletActionContext.getServletContext().getRealPath(path);
-    }
-
-    private static void copyByChannel(File f1, File f2) {
-        try {
-            int length;
-            FileInputStream in = new FileInputStream(f1);
-            FileOutputStream out = new FileOutputStream(f2);
-            FileChannel inC = in.getChannel();
-            FileChannel outC = out.getChannel();
-            while (true) {
-                if (inC.position() == inC.size()) {
-                    inC.close();
-                    outC.close();
-                    return;
-                }
-                if ((inC.size() - inC.position()) < Constants.BUFFER_SIZE)
-                    length = (int) (inC.size() - inC.position());
-                else
-                    length = Constants.BUFFER_SIZE;
-                inC.transferTo(inC.position(), length, outC);
-                inC.position(inC.position() + length);
-            }
-
-        } catch (IOException e) {
-            logger.error("copy file failed ", e);
-        }
-    }
-
-    public static void replaceFile(String srcPath, String dstPath) {
-
-        File src = new File(srcPath);
-        File dst = new File(dstPath);
-
-        if (!dst.getParentFile().exists()) {
-            mkDir(dst.getParentFile());
-        }
-        copyByChannel(src, dst);
-    }
-
     public static Calendar getCalendarByDayOfWeekAndCalendar(Calendar calendar, int dayOfWeek, int offset) {
         int startDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
         int diff = dayOfWeek - startDayOfWeek;
@@ -214,66 +154,6 @@ public class Utils {
         return s == null ? 0 : s;
     }
 
-    public static String getExtention(String fileName) {
-        int pos = fileName.lastIndexOf(".");
-        return fileName.substring(pos);
-    }
-
-
-    public static void pptConvert(String srcPpt, String pdfPath, String pdfName, String desDir) throws IOException {
-        File dst = new File(desDir);
-        if (!dst.exists()) {
-            mkDir(dst);
-        }
-        if (!dst.setReadable(true) || dst.setWritable(true)) {
-            logger.error("pptConvert : set read write failed");
-        }
-
-        String BASE_PATCH = ServletActionContext.getServletContext().getRealPath(".");
-        String cmdPdf = BASE_PATCH + Constants.PPT_PDF_EXT_PATH + " " + srcPpt + " " + pdfPath;
-        String cmdPpt = BASE_PATCH + Constants.PPT_EXT_PATH + " " + pdfPath + "/" + pdfName + " " + desDir + "/brif";
-        logger.info("==================start convert==============");
-        if (!StringUtils.endsWithIgnoreCase(srcPpt, "pdf")) {
-            logger.info("==================start PDF==============");
-            exe(cmdPdf);
-        }
-        logger.info("==================end pdf==============");
-        exe(cmdPpt);
-        logger.info("==================end ppt==============");
-    }
-
-    public static void questionConvert(String srcPpt, String desDir) throws IOException {
-        File dst = new File(desDir);
-        if (!dst.exists()) {
-            mkDir(dst);
-        }
-        if (dst.setReadable(true) && dst.setWritable(true)) {
-            logger.error("pptConvert : set read write failed");
-        }
-        String BASE_PATCH = ServletActionContext.getServletContext().getRealPath(".");
-        String cmd = BASE_PATCH + Constants.QUESTION_EXT_PATH + " " + srcPpt + " " + desDir + "/" + Constants.QUESTION_FILE_NAME + " " + desDir + "/img";      // Change to synce
-        exe(cmd);
-    }
-
-    private static void exe(String cmd) throws IOException {
-        String[] cmdA = {"/bin/sh", "-c", cmd};
-        Process process = Runtime.getRuntime().exec(cmdA);
-        logger.info(cmd + "=============cmd========================");
-        LineNumberReader br = new LineNumberReader(new InputStreamReader(process.getInputStream()));
-        String line;
-        while ((line = br.readLine()) != null) {
-            logger.info(line);
-        }
-    }
-
-
-    public static void copy(File src, File dst) {
-        if (!dst.getParentFile().exists()) {
-            mkDir(dst.getParentFile());
-        }
-        copyByChannel(src, dst);
-
-    }
 
     public static String getExceptionDetails(Throwable ex) {
         try {
@@ -296,19 +176,4 @@ public class Utils {
                 + "?" + (httpRequest.getQueryString() == null ? "" : httpRequest.getQueryString());
     }
 
-    private static void mkDir(File file) {
-
-        if (!file.mkdir()) {
-            logger.error("mkdir failed" + file.getAbsolutePath());
-        }
-    }
-
-    public static String getRealPathForBaseDir() {
-
-        if (Constants.REAL_PATH_FOR_BASE_DIR == null) {
-            return Constants.REAL_PATH_FOR_BASE_DIR = ServletActionContext.getServletContext().getRealPath("/");
-        } else {
-            return Constants.REAL_PATH_FOR_BASE_DIR;
-        }
-    }
 }

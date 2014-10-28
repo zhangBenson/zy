@@ -1,6 +1,6 @@
 package com.gogowise.action.course.vclass;
 
-import com.gogowise.common.utils.Utils;
+import com.gogowise.common.utils.UploadUtils;
 
 /**
  * Created by benson on 14-1-16.
@@ -73,7 +73,7 @@ public class MaterialVo {
 
     public String getFileExt() {
         if (this.fullPath == null) return null;
-        return Utils.getExtention(this.fullPath).replace(".", "");
+        return UploadUtils.getExtension(this.fullPath).replace(".", "");
     }
 
     public void setFileExt(String fileExt) {

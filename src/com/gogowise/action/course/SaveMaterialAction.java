@@ -2,7 +2,7 @@ package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.common.utils.Constants;
-import com.gogowise.common.utils.Utils;
+import com.gogowise.common.utils.UploadUtils;
 import com.gogowise.rep.course.ConvertQuestionService;
 import com.gogowise.rep.course.CourseService;
 import com.gogowise.rep.course.dao.ClassDao;
@@ -12,7 +12,6 @@ import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.course.enity.CourseClass;
 import com.gogowise.rep.course.enity.CourseMaterial;
 import com.gogowise.rep.course.enity.Question;
-import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -28,7 +27,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Random;
 
 @Controller
 @Namespace(BasicAction.BASE_NAME_SPACE)
@@ -61,56 +59,57 @@ public class SaveMaterialAction extends BasicAction {
     private String convertPath;
 
 
-    @Action(value = "saveCourseMaterial", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "uploadCourseMaterial", "course.id", "${course.id}"})})
-    public String saveCourseMaterial() {
-        String nowTimeStr = Calendar.getInstance().getTimeInMillis() + "";
-        String extName = Utils.getExtention(courseMaterial.getFullPath());
-        String newName = courseMaterial.getTypeString() + "_" + nowTimeStr + extName;
+    @Action(value = "uploadMaterialWithJson")
+    public String uploadMaterialWithJson() {
+        String savePath = ServletActionContext.getServletContext().getRealPath("") + Constants.UPLOAD_FILE_PATH_TMP;
+        if (courseMaterial == null) courseMaterial = new CourseMaterial();
 
-        String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + File.separator + courseMaterial.getFullPath());
-        String dstPath = Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/" + newName;
 
-        Utils.copy(new File(srcPath), new File(Utils.getRealPathForBaseDir() + dstPath));
+        String extName;
+        String updatedFileNameOnly = "";
+        setCourseOrClassInMaterial();
+        if (fileuploadFileName != null && fileuploadFileName.lastIndexOf(".") >= 0) {
+            extName = fileuploadFileName.substring(fileuploadFileName.lastIndexOf("."));
+            updatedFileNameOnly = fileuploadFileName.replace(extName, "");
+            String newFileName = UploadUtils.getNameByTime() + extName;
+
+            fileupload.renameTo(new File(savePath + newFileName));
+            courseMaterial.setFullPath(UploadUtils.copyTmpFileByUser(newFileName, this.getSessionUserId()));
+            this.setGenFileName(newFileName);
+        }
+        if (courseMaterial.getSourceTitle() == null) {
+            courseMaterial.setSourceTitle(updatedFileNameOnly);
+        }
+
 
         //文件相关属性设置
         courseMaterial.setUploadTime(Calendar.getInstance());
 
-        setCourseOrClassInMaterial();
 
-        courseMaterial.setFullPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/" + newName);
         courseMaterial.setIsDisplay(true);
         courseMaterialDao.persistAbstract(courseMaterial);
 
-        doConvert(nowTimeStr, dstPath);
+        doConvert(this.getGenFileName());
         courseMaterialDao.persistAbstract(courseMaterial);
-        return SUCCESS;
+
+        HttpServletResponse response = ServletActionContext.getResponse();
+        response.setCharacterEncoding("utf-8");
+
+        return RESULT_JSON;
     }
 
-    @Action(value = "saveCourseMaterialHide", results = {@Result(name = SUCCESS, type = "json")})
-    public String saveCourseMaterialHide() {
-        String nowTimeStr = Calendar.getInstance().getTimeInMillis() + "";
-        String extName = Utils.getExtention(courseMaterial.getFullPath());
-        String newName = courseMaterial.getTypeString() + "_" + nowTimeStr + extName;
+    @Action(value = "saveCourseMaterial", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "uploadCourseMaterial", "course.id", "${course.id}"})})
+    public String saveCourseMaterial() {
 
-        String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + courseMaterial.getFullPath());
-        String dstPath = Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/" + newName;
-
-        Utils.copy(new File(srcPath), new File(Utils.getRealPathForBaseDir() + dstPath));
-
+        String fileName = courseMaterial.getFullPath();
         //文件相关属性设置
         courseMaterial.setUploadTime(Calendar.getInstance());
-        courseMaterial.setDescription(courseMaterial.getSourceTitle());
-
         setCourseOrClassInMaterial();
 
-        courseMaterial.setFullPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/" + newName);
+        courseMaterial.setFullPath(UploadUtils.copyTmpFileByUser(fileName, this.getSessionUserId()));
         courseMaterial.setIsDisplay(true);
+        doConvert(fileName);
         courseMaterialDao.persistAbstract(courseMaterial);
-
-        doConvert(nowTimeStr, dstPath);
-        courseMaterialDao.persistAbstract(courseMaterial);
-
-        ActionContext.getContext().getValueStack().push(courseMaterial);
         return SUCCESS;
     }
 
@@ -128,89 +127,38 @@ public class SaveMaterialAction extends BasicAction {
     }
 
 
-    private void doConvert(String nowTimeStr, String dstPath) {
+    private void doConvert(String fileName) {
         try {
 
             if (CourseMaterial.PPT == courseMaterial.getType()) {
-                convertPpt(nowTimeStr, dstPath);
+                convertDoc(fileName);
             } else if (CourseMaterial.QUESTION == courseMaterial.getType()) {
-                convertQuestion(nowTimeStr, dstPath);
+                convertQuestion(fileName);
             }
         } catch (Throwable e) {
             LOGGER.error("Cannot covert ", e);
         }
     }
 
-    private void convertQuestion(String nowTimeStr, String dstPath) throws IOException, JAXBException {
-        String dstDir = Utils.getRealPathForBaseDir() + Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/question/" + nowTimeStr;
-        Utils.questionConvert(Utils.getRealPathForBaseDir() + dstPath, dstDir);
-        String xmlPath = dstDir + "/" + Constants.QUESTION_FILE_NAME;
+    private void convertQuestion(String fileName) throws IOException, JAXBException {
+        String xmlPath = UploadUtils.convertQuestion(fileName, this.getSessionUserId());
         List<Question> questions = convertQuestionService.convert(xmlPath);
         courseService.saveQuestion(courseMaterial, questions);
     }
 
-    private void convertPpt(String nowTimeStr, String dstPath) throws IOException {
-        String dstPdfDir = ServletActionContext.getServletContext().getRealPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/");
-        String destPptParentDir = Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/ppt/" + nowTimeStr;
-        String dstDir = Utils.getRealPathForBaseDir() + destPptParentDir;
-        String pdfName = courseMaterial.getTypeString() + "_" + nowTimeStr + ".pdf";
-        courseMaterial.setConvertPath(destPptParentDir);
+    private void convertDoc(String fileName) throws IOException {
+        courseMaterial.setConvertPath(UploadUtils.pptConvert(fileName, this.getSessionUserId()));
 
-        Utils.pptConvert(Utils.getRealPathForBaseDir() + dstPath, dstPdfDir, pdfName, dstDir);
-        File desDirInfo = new File(dstDir);
-        courseMaterial.setTotalPages(desDirInfo.listFiles().length - 1);
-        LOGGER.info("==================PPT files==============" + desDirInfo.listFiles().length);
+        File desDirInfo = new File(courseMaterial.getConvertPath());
+        if (desDirInfo != null && desDirInfo.listFiles().length > 0) {
+            courseMaterial.setTotalPages(desDirInfo.listFiles().length - 1);
+        } else {
+            LOGGER.error("error convert size 0");
+        }
+        LOGGER.info("==================PPT files==============" + courseMaterial.getTotalPages());
     }
 
-    @Action(value = "uploadMaterialWithJson")
-    public String uploadMaterialWithJson() {
-        String savePath = ServletActionContext.getServletContext().getRealPath("") + Constants.UPLOAD_FILE_PATH_TMP + "/";
-        if (courseMaterial == null) courseMaterial = new CourseMaterial();
-        Random r = new Random();
-        int rannum = (int) (r.nextDouble() * (99999 - 10000 + 1)) + 10000;
-        String nowTimeStr = Calendar.getInstance().getTimeInMillis() + "";
 
-
-        String extName;
-        String updatedFileNameOnly = "";
-        String dstPath = "";
-        setCourseOrClassInMaterial();
-        if (fileuploadFileName != null && fileuploadFileName.lastIndexOf(".") >= 0) {
-            extName = fileuploadFileName.substring(fileuploadFileName.lastIndexOf("."));
-            updatedFileNameOnly = fileuploadFileName.replace(extName, "");
-            String newFileName = rannum + nowTimeStr + extName;
-
-            fileupload.renameTo(new File(savePath + newFileName));
-
-            String newName = courseMaterial.getTypeString() + "_" + nowTimeStr + extName;
-
-            String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + "/" + newFileName);
-            dstPath = Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/" + newName;
-
-            Utils.copy(new File(srcPath), new File(ServletActionContext.getServletContext().getRealPath(dstPath)));
-            courseMaterial.setFullPath(Constants.DOWNLOAD_COURSE_RESOURCE_PAHT + "/" + this.course.getId() + "/" + newName);
-            this.setGenFileName(newFileName);
-        }
-        if (courseMaterial.getSourceTitle() == null) {
-            courseMaterial.setSourceTitle(updatedFileNameOnly);
-        }
-
-
-        //文件相关属性设置
-        courseMaterial.setUploadTime(Calendar.getInstance());
-
-
-        courseMaterial.setIsDisplay(true);
-        courseMaterialDao.persistAbstract(courseMaterial);
-
-        doConvert(nowTimeStr, dstPath);
-        courseMaterialDao.persistAbstract(courseMaterial);
-
-        HttpServletResponse response = ServletActionContext.getResponse();
-        response.setCharacterEncoding("utf-8");
-
-        return RESULT_JSON;
-    }
 
 
     // getters and setters
