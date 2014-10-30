@@ -2,6 +2,7 @@ package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.common.utils.Constants;
+import com.gogowise.common.utils.PPTConvertor;
 import com.gogowise.common.utils.UploadUtils;
 import com.gogowise.rep.course.ConvertQuestionService;
 import com.gogowise.rep.course.CourseService;
@@ -146,8 +147,8 @@ public class SaveMaterialAction extends BasicAction {
         courseService.saveQuestion(courseMaterial, questions);
     }
 
-    private void convertDoc(String fileName) throws IOException {
-        courseMaterial.setConvertPath(UploadUtils.pptConvert(fileName, this.getSessionUserId()));
+    private void convertDoc(String fileName) throws Exception {
+        courseMaterial.setConvertPath(new PPTConvertor().convert(fileName, this.getSessionUserId()));
 
         File desDirInfo = new File(courseMaterial.getConvertPath());
         if (desDirInfo != null && desDirInfo.listFiles().length > 0) {

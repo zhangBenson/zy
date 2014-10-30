@@ -15,12 +15,14 @@ public class UploadUtils {
     public static String REAL_PATH_FOR_BASE_DIR;
     private static final Logger logger = LogManager.getLogger(Utils.class.getName());
 
-    private static void mkDir(File file) {
-
+    public static void mkDir(File file) {
+        if (file.exists()) {
+            return;
+        }
         if (!file.mkdir()) {
             logger.error("mkdir failed" + file.getAbsolutePath());
         }
-        if (!file.setReadable(true) || !file.setWritable(true)) {
+        if (!file.setReadable(true) || file.setWritable(true)) {
             logger.error("pptConvert : set read write failed");
         }
     }
@@ -41,32 +43,6 @@ public class UploadUtils {
         copyByChannel(src, dst);
 
     }
-
-    public static String pptConvert(String pptName, Integer userId) throws IOException {
-        String BASE_PATCH = getRealPathForBaseDir();
-        String fileName = getFileName(pptName);
-        String desVPath = Constants.UPLOAD_PATH + userId + "/" + fileName;
-        String desDir = BASE_PATCH + desVPath;
-        String srcPpt = BASE_PATCH + Constants.UPLOAD_PATH + userId + "/" + pptName;
-        String pdfName = fileName + ".pdf";
-        File dst = new File(desDir);
-        if (!dst.exists()) {
-            mkDir(dst);
-        }
-
-        String cmdPdf = BASE_PATCH + Constants.PPT_PDF_EXT_PATH + " " + srcPpt + " " + desDir;
-        String cmdPpt = BASE_PATCH + Constants.PPT_EXT_PATH + " " + desDir + "/" + pdfName + " " + desDir + "/brif";
-        logger.info("==================start convert==============");
-        if (!StringUtils.endsWithIgnoreCase(srcPpt, ".pdf")) {
-            logger.info("==================start PDF==============");
-            exe(cmdPdf);
-        }
-        logger.info("==================end pdf==============");
-        exe(cmdPpt);
-        logger.info("==================end ppt==============");
-        return desVPath;
-    }
-
 
     public static String convertQuestion(String docName, Integer userId) throws IOException {
         String BASE_PATCH = getRealPathForBaseDir();
