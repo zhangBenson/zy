@@ -43,8 +43,8 @@ public class PPTConverter {
 
     public void convert(String pptName, Integer userId) throws Exception {
 
-//        String BASE_PATCH = UploadUtils.getRealPathForBaseDir();
-        String BASE_PATCH = "D:\\dev\\WorkSpace\\zy\\WebRoot.war\\";
+        String BASE_PATCH = UploadUtils.getRealPathForBaseDir();
+//        String BASE_PATCH = "D:\\dev\\WorkSpace\\zy\\WebRoot.war\\";
         String fileName = UploadUtils.getFileName(pptName);
         desVPath = Constants.UPLOAD_PATH + userId + "/" + fileName;
         desPath = BASE_PATCH + desVPath;
