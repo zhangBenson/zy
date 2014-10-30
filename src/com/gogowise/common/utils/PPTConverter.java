@@ -15,7 +15,7 @@ import java.io.*;
 import java.util.List;
 
 
-public class PPTConvertor {
+public class PPTConverter {
 
 
     public static final int DEAFULT_WIDTH = 600;
@@ -25,14 +25,15 @@ public class PPTConvertor {
     private int index;
     private Dimension pgsize;
     private BufferedImage img;
+    private String desVPath;
 
 
-    public String convert(String pptName, Integer userId) throws Exception {
+    public void convert(String pptName, Integer userId) throws Exception {
 
         String BASE_PATCH = UploadUtils.getRealPathForBaseDir();
 //        String BASE_PATCH = "D:\\dev\\WorkSpace\\zy\\WebRoot.war\\";
         String fileName = UploadUtils.getFileName(pptName);
-        String desVPath = Constants.UPLOAD_PATH + userId + "/" + fileName;
+        desVPath = Constants.UPLOAD_PATH + userId + "/" + fileName;
         desPath = BASE_PATCH + desVPath;
         srcPath = BASE_PATCH + Constants.UPLOAD_PATH + userId + "/" + pptName;
         UploadUtils.mkDir(new File(desPath));
@@ -44,9 +45,6 @@ public class PPTConvertor {
         } else {
             convertPdf();
         }
-        System.out.println(this.getIndex());
-        return desVPath;
-
     }
 
 
@@ -146,7 +144,10 @@ public class PPTConvertor {
         return index;
     }
 
-//    public static void main(String[] args) throws Exception {
+    public String getDesVPath() {
+        return desVPath;
+    }
+    //    public static void main(String[] args) throws Exception {
 //        new PPTConvertor().convert("20141030005413873.pptx", 11);
 //        new PPTConvertor().convert("3.ppt", 11);
 //        new PPTConvertor().convert("4.pdf", 11);

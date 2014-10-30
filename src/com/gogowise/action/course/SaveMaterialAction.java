@@ -2,7 +2,7 @@ package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.common.utils.Constants;
-import com.gogowise.common.utils.PPTConvertor;
+import com.gogowise.common.utils.PPTConverter;
 import com.gogowise.common.utils.UploadUtils;
 import com.gogowise.rep.course.ConvertQuestionService;
 import com.gogowise.rep.course.CourseService;
@@ -61,7 +61,7 @@ public class SaveMaterialAction extends BasicAction {
 
 
     @Action(value = "uploadMaterialWithJson")
-    public String uploadMaterialWithJson() {
+    public String uploadMaterialWithJson() throws Exception {
         String savePath = ServletActionContext.getServletContext().getRealPath("") + Constants.UPLOAD_FILE_PATH_TMP;
         if (courseMaterial == null) courseMaterial = new CourseMaterial();
 
@@ -100,7 +100,7 @@ public class SaveMaterialAction extends BasicAction {
     }
 
     @Action(value = "saveCourseMaterial", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "uploadCourseMaterial", "course.id", "${course.id}"})})
-    public String saveCourseMaterial() {
+    public String saveCourseMaterial() throws Exception {
 
         String fileName = courseMaterial.getFullPath();
         //文件相关属性设置
@@ -128,16 +128,11 @@ public class SaveMaterialAction extends BasicAction {
     }
 
 
-    private void doConvert(String fileName) {
-        try {
-
-            if (CourseMaterial.PPT == courseMaterial.getType()) {
-                convertDoc(fileName);
-            } else if (CourseMaterial.QUESTION == courseMaterial.getType()) {
-                convertQuestion(fileName);
-            }
-        } catch (Throwable e) {
-            LOGGER.error("Cannot covert ", e);
+    private void doConvert(String fileName) throws Exception {
+        if (CourseMaterial.PPT == courseMaterial.getType()) {
+            convertDoc(fileName);
+        } else if (CourseMaterial.QUESTION == courseMaterial.getType()) {
+            convertQuestion(fileName);
         }
     }
 
@@ -148,14 +143,11 @@ public class SaveMaterialAction extends BasicAction {
     }
 
     private void convertDoc(String fileName) throws Exception {
-        courseMaterial.setConvertPath(new PPTConvertor().convert(fileName, this.getSessionUserId()));
+        PPTConverter converter = new PPTConverter();
+        converter.convert(fileName, this.getSessionUserId());
+        courseMaterial.setConvertPath(converter.getDesVPath());
 
-        File desDirInfo = new File(courseMaterial.getConvertPath());
-        if (desDirInfo != null && desDirInfo.listFiles().length > 0) {
-            courseMaterial.setTotalPages(desDirInfo.listFiles().length - 1);
-        } else {
-            LOGGER.error("error convert size 0");
-        }
+        courseMaterial.setTotalPages(converter.getIndex());
         LOGGER.info("==================PPT files==============" + courseMaterial.getTotalPages());
     }
 
