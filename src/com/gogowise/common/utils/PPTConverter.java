@@ -15,23 +15,13 @@ import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 
 
 public class PPTConverter {
     private static final Logger logger = LogManager.getLogger(PPTConverter.class);
-    private static final List<String> fontNames = new ArrayList<>();
 
-    static {
-        GraphicsEnvironment e = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        String[] fontName = e.getAvailableFontFamilyNames();
-        fontNames.addAll(fontNames);
-        for (String aFontName : fontName) {
-            logger.info(aFontName + "==========spportedFont====");
-        }
-    }
-    public static final int DEAFULT_WIDTH = 600;
+    public static final int DEFAULT_WIDTH = 600;
     public static final int DEFAULT_HEIGHT = 800;
     private String desPath;
     private String srcPath;
@@ -86,7 +76,7 @@ public class PPTConverter {
         for (TextRun trun : truns) {
             RichTextRun[] rtruns = trun.getRichTextRuns();
             for (RichTextRun rtrun : rtruns) {
-                if (!fontNames.contains(rtrun.getFontName())) {
+                if (!FontMap.isSupport(rtrun.getFontName())) {
                     logger.info("=========unspportFornt==========" + rtrun.getFontName());
                     rtrun.setFontIndex(1);
                     rtrun.setFontName("宋体");
@@ -105,8 +95,8 @@ public class PPTConverter {
     }
 
     private void saveImage(String pngPatch) throws IOException {
-        Image smallImg = img.getScaledInstance(DEAFULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH);
-        img = new BufferedImage(DEAFULT_WIDTH, DEFAULT_HEIGHT, BufferedImage.TYPE_INT_RGB);
+        Image smallImg = img.getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH);
+        img = new BufferedImage(DEFAULT_WIDTH, DEFAULT_HEIGHT, BufferedImage.TYPE_INT_RGB);
         Graphics2D g = img.createGraphics();
         g.drawImage(smallImg, 0, 0, null);
         g.dispose();
@@ -164,7 +154,7 @@ public class PPTConverter {
                 for (XSLFTextParagraph paragraph : ((XSLFTextShape) shape)) {
                     List<XSLFTextRun> truns = paragraph.getTextRuns();
                     for (XSLFTextRun trun : truns) {
-                        if (!fontNames.contains(trun.getFontFamily())) {
+                        if (!FontMap.isSupport(trun.getFontFamily())) {
                             logger.info("=========unspportFornt==========" + trun.getFontFamily());
                             trun.setFontFamily("宋体");
                         }
