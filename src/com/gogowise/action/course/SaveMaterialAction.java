@@ -148,7 +148,7 @@ public class SaveMaterialAction extends BasicAction {
         courseMaterial.setConvertPath(converter.getDesVPath());
 
         courseMaterial.setTotalPages(converter.getIndex());
-        LOGGER.info("==================PPT files==============" + courseMaterial.getTotalPages());
+        LOGGER.info("=====ppt=====" + courseMaterial.getConvertPath() + "==" + courseMaterial.getTotalPages());
     }
 
 

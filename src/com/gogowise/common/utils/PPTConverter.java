@@ -21,8 +21,8 @@ import java.util.List;
 public class PPTConverter {
     private static final Logger logger = LogManager.getLogger(PPTConverter.class);
 
-    public static final int DEFAULT_WIDTH = 600;
-    public static final int DEFAULT_HEIGHT = 800;
+    public static final int DEFAULT_WIDTH = 800;
+    public static final int DEFAULT_HEIGHT = 600;
     private String desPath;
     private String srcPath;
     private int index;
@@ -187,7 +187,7 @@ public class PPTConverter {
     public static void main(String[] args) throws Exception {
 
         new PPTConverter().convert("5.pptx", 11);
-        new PPTConverter().convert("3.ppt", 11);
+//        new PPTConverter().convert("3.ppt", 11);
 //        new PPTConvertor().convert("4.pdf", 11);
     }
 
