@@ -128,24 +128,6 @@
                     <ckeditor:replace replace="editor1" basePath="js/ckeditor/" config="<%=settings %>"/>
                 </li>
 
-                    <%--<li class="short_li">--%>
-                    <%--<div class="option_tittle">组织合同签署日期</div>--%>
-                    <%--<p id="secondStepBirthdayWarn" class="input_msg"></p>--%>
-                    <%--<input type="hidden" value="<s:date name="org.contractSignDate" format="%{getText('global.display.date')}"/> " id="hidValueBrd">--%>
-                    <%--<script type="text/javascript">--%>
-                    <%--$(document).ready(function () {--%>
-                    <%--document.getElementById('birday').value = document.getElementById('hidValueBrd').value;--%>
-                    <%--});--%>
-                    <%--</script>--%>
-                    <%--<div class="input_content"><s:textfield id="birday" readonly="true" cssClass="Wdatepicker inputName" name="org.contractSignDate" value="%{getText('global.datetime',{org.contractSignDate})}"/></div>--%>
-                    <%--</li>--%>
-                    <%--<li class="long_li">--%>
-                    <%--<div class="option_tittle">组织合同</div>--%>
-                    <%--<div class="file_upload"><input type="file" name="fileupload" id="fileupload2" /></div>--%>
-                    <%--<s:hidden name="idCardUrl" id="idCardUrl"/>--%>
-                    <%--<div id="fileQueue"></div>--%>
-                    <%--</li>--%>
-
 
                 <li class="long_li">
 

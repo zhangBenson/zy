@@ -97,25 +97,6 @@
                 </li>
 
 
-                    <%--<li class="short_li">--%>
-                    <%--<div class="option_tittle">组织合同签署日期</div>--%>
-                    <%--<p id="secondStepBirthdayWarn" class="input_msg"></p>--%>
-                    <%--<div class="input_content"><s:date name="org.contractSignDate" format="%{getText('global.display.date')}"/></div>--%>
-                    <%--</li>--%>
-                    <%--<li class="long_li">--%>
-                    <%--<div class="option_tittle">组织合同</div>--%>
-                    <%--<div class="file_upload"><input type="file" name="fileupload" id="fileupload2" /></div>--%>
-                    <%--<s:hidden name="idCardUrl" id="idCardUrl"/>--%>
-                    <%--<div id="fileQueue"></div>--%>
-                    <%--</li>--%>
-
-
-                    <%--<li class="short_li">--%>
-                    <%--<div class="option_tittle">语言</div>--%>
-                    <%--<div class="input_content"><s:radio name="language" list="#{false:'中文',true:'英文'}"/></div>--%>
-                    <%--</li>--%>
-
-
             </ul>
 
         </s:form>
