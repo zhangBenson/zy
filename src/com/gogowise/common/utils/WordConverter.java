@@ -32,7 +32,7 @@ public class WordConverter {
 
 
     public void convert(String fullName, Integer userId) throws Exception {
-
+//        String BASE_PATCH = "D:\\dev\\WorkSpace\\zy\\WebRoot.war\\";
         String BASE_PATCH = UploadUtils.getRealPathForBaseDir();
         srcPath = BASE_PATCH + Constants.UPLOAD_PATH + userId + "/" + fullName;
         String ext = UploadUtils.getExtension(fullName);
@@ -40,7 +40,7 @@ public class WordConverter {
         try {
             is = new FileInputStream(srcPath);
             String text;
-            if (".doc".contentEquals(ext)) {
+            if (".doc".equalsIgnoreCase(ext)) {
                 text = getTextFromDoc(is);
             } else {
                 text = getTextFromDocx(is);
@@ -128,7 +128,10 @@ public class WordConverter {
 
         }
     }
-
+//    public static void main(String[] args) throws Exception {
+//        WordConverter wordConverter = new WordConverter();
+//        wordConverter.convert("7.DOC",11);
+//    }
 
     public List<Question> getQuestions() {
         return questions;
