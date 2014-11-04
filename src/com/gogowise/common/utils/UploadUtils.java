@@ -44,34 +44,6 @@ public class UploadUtils {
 
     }
 
-    public static String convertQuestion(String docName, Integer userId) throws IOException {
-        String BASE_PATCH = getRealPathForBaseDir();
-        String fileName = getFileName(docName);
-        String desVPath = Constants.UPLOAD_PATH + userId + "/" + fileName;
-        String desDir = BASE_PATCH + desVPath;
-        String src = BASE_PATCH + Constants.UPLOAD_PATH + userId + "/" + docName;
-        File dst = new File(desDir);
-        if (!dst.exists()) {
-            mkDir(dst);
-        }
-
-        String questionXml = desDir + "/" + Constants.QUESTION_FILE_NAME;
-        String cmd = BASE_PATCH + Constants.QUESTION_EXT_PATH + " " + src + " " + questionXml + " " + desDir + "/img";
-        exe(cmd);
-        return questionXml;
-    }
-
-    private static void exe(String cmd) throws IOException {
-        logger.info(cmd + "   =============cmd========================");
-        String[] cmdA = {"/bin/sh", "-c", cmd};
-        Process process = Runtime.getRuntime().exec(cmdA);
-        LineNumberReader br = new LineNumberReader(new InputStreamReader(process.getInputStream()));
-        String line;
-        while ((line = br.readLine()) != null) {
-            logger.info(line);
-        }
-    }
-
     public static String copyTmpFileByUser(String fileName, Integer userId) {
         if (StringUtils.isNotBlank(fileName) && !StringUtils.contains(fileName, Constants.UPLOAD_PATH)) {
             String toDir = Constants.UPLOAD_PATH + userId + "/";

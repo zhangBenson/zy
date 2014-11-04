@@ -4,7 +4,7 @@ import com.gogowise.action.BasicAction;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.PPTConverter;
 import com.gogowise.common.utils.UploadUtils;
-import com.gogowise.rep.course.ConvertQuestionService;
+import com.gogowise.common.utils.WordConverter;
 import com.gogowise.rep.course.CourseService;
 import com.gogowise.rep.course.dao.ClassDao;
 import com.gogowise.rep.course.dao.CourseDao;
@@ -23,9 +23,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.bind.JAXBException;
 import java.io.File;
-import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
 
@@ -39,7 +37,6 @@ public class SaveMaterialAction extends BasicAction {
     private static final long serialVersionUID = 2466562905933168403L;
 
 
-    private ConvertQuestionService convertQuestionService;
     private CourseService courseService;
 
     private Course course;
@@ -109,6 +106,7 @@ public class SaveMaterialAction extends BasicAction {
 
         courseMaterial.setFullPath(UploadUtils.copyTmpFileByUser(fileName, this.getSessionUserId()));
         courseMaterial.setIsDisplay(true);
+        courseMaterialDao.persistAbstract(courseMaterial);
         doConvert(fileName);
         courseMaterialDao.persistAbstract(courseMaterial);
         return SUCCESS;
@@ -136,9 +134,10 @@ public class SaveMaterialAction extends BasicAction {
         }
     }
 
-    private void convertQuestion(String fileName) throws IOException, JAXBException {
-        String xmlPath = UploadUtils.convertQuestion(fileName, this.getSessionUserId());
-        List<Question> questions = convertQuestionService.convert(xmlPath);
+    private void convertQuestion(String fileName) throws Exception {
+        WordConverter wordConverter = new WordConverter();
+        wordConverter.convert(fileName, this.getSessionUserId());
+        List<Question> questions = wordConverter.getQuestions();
         courseService.saveQuestion(courseMaterial, questions);
     }
 
@@ -150,8 +149,6 @@ public class SaveMaterialAction extends BasicAction {
         courseMaterial.setTotalPages(converter.getIndex());
         LOGGER.info("=====ppt=====" + courseMaterial.getConvertPath() + "==" + courseMaterial.getTotalPages());
     }
-
-
 
 
     // getters and setters
@@ -195,10 +192,6 @@ public class SaveMaterialAction extends BasicAction {
 
     public void setClassDao(ClassDao classDao) {
         this.classDao = classDao;
-    }
-
-    public void setConvertQuestionService(ConvertQuestionService convertQuestionService) {
-        this.convertQuestionService = convertQuestionService;
     }
 
     public void setCourseService(CourseService courseService) {

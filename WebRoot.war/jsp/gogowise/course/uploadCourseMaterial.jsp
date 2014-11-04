@@ -184,7 +184,7 @@
                 $("#cm_upload").html("<s:text name="course.resource.upload.success"/>");
             },
             onError: function (event, queueID, fileObj) {
-                $("#cm_upload").html("<s:text name="course.resource.size.limit"/>");
+                $("#cm_upload").html("<s:text name="error.upload.failed"/>");
             },
             onCancel: function (event, queueID, fileObj) {
                 $("#cm_upload").html("<s:text name="course.resource.reselect"/>");

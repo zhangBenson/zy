@@ -124,7 +124,6 @@
                     <br/>
 
                     <p id="secondDescWarn" class="input_msg"></P>
-                        <%-- <div class="input_content"><s:textarea cssClass="long_text_area" id="step2_course_intro" name="org.description"/></div> --%>
                     <s:textarea cols="80" id="editor1" name="org.description" rows="5"></s:textarea>
                     <ckeditor:replace replace="editor1" basePath="js/ckeditor/" config="<%=settings %>"/>
                 </li>

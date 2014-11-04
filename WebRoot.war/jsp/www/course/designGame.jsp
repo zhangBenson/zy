@@ -46,9 +46,9 @@
             <div class="thickline"></div>
             <h3 style="color: #6ab600"><s:text name="design.game.tips"/></h3>
             <h4 class="courseBody">
-                <span style="color: red; font-weight:bold"><s:property value="%{getText('makeVideo.redHead')}"/></span><s:property value="%{getText('design.game.redContent')}"/>
+                <span style="color: red; font-weight:bold"><s:text name="makeVideo.redHead"/></span><s:text name="design.game.redContent"/>
                 <br/>
-                <span style="color: green; font-weight:bold;"><s:property value="%{getText('makeVideo.greenHead')}"/></span><s:property value="%{getText('design.game.greenContent')}"/>
+                <span style="color: green; font-weight:bold;"><s:text name="makeVideo.greenHead"/></span><s:text name="design.game.greenContent"/>
             </h4>
 
             <div class="thickline"></div>
@@ -211,11 +211,11 @@
 
         if (target.style.display == "block") {
             target.style.display = "none";
-            document.getElementById('moreClass').innerHTML = "<s:text name="%{getText('blog.comments.more.result')}"/>";
+            document.getElementById('moreClass').innerHTML = "<s:text name="blog.comments.more.result"/>";
 
         } else {
             target.style.display = "block";
-            document.getElementById('moreClass').innerHTML = "<s:text name="%{getText('blog.comments.rollBack')}"/>";
+            document.getElementById('moreClass').innerHTML = "<s:text name="blog.comments.rollBack"/>";
         }
     }
 
@@ -226,3 +226,4 @@
     }
 
 </script>
+</div>
