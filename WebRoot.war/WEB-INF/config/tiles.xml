@@ -190,11 +190,7 @@
         <put-attribute name="title" value="title.myfirstpage"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/user/myGoGoWise.jsp"/>
     </definition>
-    <definition name=".followedUserList" extends=".listCenter">
-        <put-attribute name="title" value="title.gogowise.my.followed.users"/>
-        <put-attribute name="contentLeft" value="/jsp/gogowise/user/followedUserList.jsp"/>
-        <put-attribute name="contentRight" value="/jsp/gogowise/user/followedUserListRight.jsp"/>
-    </definition>
+
 
     <definition name=".personalInfoPhase" extends=".userCenter">
         <put-attribute name="contentRight" value="/jsp/gogowise/personalinfo.jsp"/>
@@ -214,10 +210,6 @@
     <!--</definition>-->
 
 
-    <!-- =====================User related action start=========================== -->
-    <definition name=".initFollowUps" extends=".userCenter">
-        <put-attribute name="contentRight" value="/jsp/gogowise/user/followUps.jsp"/>
-    </definition>
 
     <definition name=".myfriends" extends=".userCenter">
         <put-attribute name="contentRight" value="/jsp/gogowise/myFriends.jsp"/>
@@ -448,8 +440,7 @@
     <!--</definition>-->
     <definition name=".orgComments" template="/jsp/www/org/orgComments.jsp">
     </definition>
-    <!-- <definition name=".userComment"  template="/jsp/gogowise/user/userComment.jsp" >
-    </definition>-->
+
     <definition name=".userComment" template="/jsp/www/user/userComment.jsp">
     </definition>
     <definition name=".coursesInTypes" template="/jsp/gogowise/course/courseInTypes.jsp">

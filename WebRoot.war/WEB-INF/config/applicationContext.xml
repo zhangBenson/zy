@@ -60,9 +60,7 @@
                 <value>com.gogowise.rep.course.enity.CourseClass</value>
                 <value>com.gogowise.rep.org.enity.Organization</value>
                 <value>com.gogowise.rep.course.enity.SeniorClassRoom</value>
-                <value>com.gogowise.rep.finance.enity.UserAccountInfo</value>
-                <value>com.gogowise.rep.finance.enity.ConsumptionRecord</value>
-                <value>com.gogowise.rep.finance.enity.ConsumptionOrder</value>
+
                 <value>com.gogowise.rep.course.enity.CourseComment</value>
                 <value>com.gogowise.rep.course.enity.CourseResource</value>
                 <value>com.gogowise.rep.course.enity.CourseQuestion</value>
@@ -84,17 +82,16 @@
                 <value>com.gogowise.rep.course.enity.ClassMembership</value>
 
                 <value>com.gogowise.rep.finance.enity.PaypalDetails</value>
-
+                <value>com.gogowise.rep.finance.enity.UserAccountInfo</value>
+                <value>com.gogowise.rep.finance.enity.ConsumptionRecord</value>
+                <value>com.gogowise.rep.finance.enity.ConsumptionOrder</value>
 
                 <value>com.gogowise.urlfetch.sk.ClassType</value>
-
                 <value>com.gogowise.urlfetch.sk.ClassInfoSk</value>
                 <value>com.gogowise.urlfetch.sk.XiaoQu</value>
                 <value>com.gogowise.urlfetch.sk.ClassXiaoQu</value>
                 <value>com.gogowise.urlfetch.sk.School</value>
                 <value>com.gogowise.urlfetch.hotel.Hotel</value>
-
-
                 <value>com.gogowise.urlfetch.sk.domain.SkClass</value>
                 <value>com.gogowise.urlfetch.sk.domain.SkRegion</value>
                 <value>com.gogowise.urlfetch.sk.domain.SkClassType</value>
@@ -153,9 +150,9 @@
     </bean>
 
     <!--============================webservice================================-->
-    <bean id="webTest" class="com.gogowise.common.ws.WebServiceSampleImpl">
-        <property name="baseUserDao" ref="baseUserDao"/>
-    </bean>
+    <!--<bean id="webTest" class="com.gogowise.common.ws.WebServiceSampleImpl">-->
+    <!--<property name="baseUserDao" ref="baseUserDao"/>-->
+    <!--</bean>-->
     <!--<jaxws:endpoint id="webServiceSample"-->
     <!--address="/WebServiceSample" implementorClass="com.gogowise.common.ws.WebServiceSampleImpl">-->
     <!--<jaxws:implementor ref="webTest">-->

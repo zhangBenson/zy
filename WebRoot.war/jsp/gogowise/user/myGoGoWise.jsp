@@ -355,39 +355,6 @@
         </ul>
     </div>
 
-
-    <s:if test="existUserFanses">
-        <li class="rtItem3 fl" id="userFans_data">
-            <h3 class="h3_title"><s:text name="my.firstpage.users.i.followed"/></h3>
-                <%--<s:property value="userFansNum"/>--%>
-                <%--<s:if test="currentPageSize >= 6">--%>
-            <span class="more"><a href="followedUserList.html"><s:text name="others.more"/></a></span>
-                <%--</s:if>--%>
-            <ul class="courseul">
-                <s:iterator value="userFanses">
-                    <li class="host">
-                        <a class="host_img" href="userBlog.html?user.id=<s:property value="user.id"/>"
-                           title="<s:property value="user.nickName"/>"><img src="<s:property value="user.pic"/>"/></a>
-                        <a class="host_name" href="userBlog.html?user.id=<s:property value="user.id"/>"
-                           title="<s:property value="user.nickName"/>"><s:property value="user.nickName"/></a>
-
-                        <s:if test="userLiving">
-                            <a class="live_tip"
-                               href="watchPersonalOnlive.html?personalOnlive.id=<s:property value="personalOnliveID"/>"
-                               title="<s:text name="click.to.watch"/>"><s:text name="video.is.living"/></a>
-                        </s:if>
-                    </li>
-                </s:iterator>
-                <script type="text/javascript">
-                    function getMoreConcernUserFans() {
-                        $.post("getMoreConcernUserFans.html", {'currentPageSize':<s:property value="currentPageSize"/>}, function (data) {
-                            $("#userFans_data").html(data);
-                        })
-                    }
-                </script>
-            </ul>
-        </li>
-    </s:if>
 </div>
 </div>
 

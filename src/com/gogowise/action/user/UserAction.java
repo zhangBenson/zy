@@ -342,14 +342,6 @@ public class UserAction extends BasicAction {
         }
     }
 
-    @Action(value = "initFollowUps",
-            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initFollowUps")}
-    )
-    public String initFollowUps() {
-//        this.myFriends = baseUserDao.findById(this.getSessionUserId()).getFollows();
-        return SUCCESS;
-    }
-
     @Action(value = "exitSystem", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "index"})})
     public String exitSystem() {
         ActionContext.getContext().getSession().clear();
