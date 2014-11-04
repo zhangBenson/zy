@@ -26,29 +26,27 @@ var stundioWrapper;
 var chatWrapper;
 var currentMIC = null;
 var currentPencil = null;
-function ShowPanel()
-{
-    if($("#studentpanle").is(":hidden"))
+function ShowPanel() {
+    if ($("#studentpanle").is(":hidden"))
         $("#studentpanle").show(200);
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
 
 
-    $("#btncontrolmenu").click(function(){
+    $("#btncontrolmenu").click(function () {
         $("#panelcontent").slideToggle(400);
     });
 
-    setTimeout(function(){
-        if($('#detailfooters').length > 0)
-        {
+    setTimeout(function () {
+        if ($('#detailfooters').length > 0) {
 
             $("#studentpanle").insertAfter("#detailfooters");
             //$("#studentpanle").show(200);
         }
-    },900);
+    }, 900);
 
-    $("#studentpanle").draggable({cancel:".dragcancel"});
+    $("#studentpanle").draggable({cancel: ".dragcancel"});
 
     stundioWrapper = new iScroll('stundioWrapper');
     chatWrapper = new iScroll('chatWrapper');
@@ -59,17 +57,17 @@ $(document).ready(function() {
         increaseArea: '20%' // optional
     });
 
-    $("body").keydown(function(e){
+    $("body").keydown(function (e) {
         var curKey = e.which;
-        if(curKey == 13){
+        if (curKey == 13) {
             $('#btnSendMsg').click();
         }
     });
 
     //绑定单击
-    $("#studionList li a").bind("click",function(event){
+    $("#studionList li a").bind("click", function (event) {
         var id = $(this).parent().find("span").text();
-        showControlBar(id,300,-5);
+        showControlBar(id, 300, -5);
     });
 
     // $(".fileList li a").bind("click",function(event){
@@ -89,11 +87,11 @@ $(document).ready(function() {
     //$("#top").load("top.html");
     //$("#detailfooters").load("footers.html");
 
-    $("#btnaddUser").click(function() {
-        addOneStudent("Scan","gogowisestyle/image/portrait5.jpg","c1",0,1);
+    $("#btnaddUser").click(function () {
+        addOneStudent("Scan", "gogowisestyle/image/portrait5.jpg", "c1", 0, 1);
     });
 
-    $("#btndeleteOneStudent").click(function() {
+    $("#btndeleteOneStudent").click(function () {
         deleteOneStudent("u2");
     });
 
@@ -101,33 +99,33 @@ $(document).ready(function() {
      * 取回画笔
      * @return {[type]}
      */
-    $("#btnGetPencil").click(function() {
+    $("#btnGetPencil").click(function () {
         takePencil();
     });
 
     //设置画笔
-    $("#btnSetPencil").click(function() {
+    $("#btnSetPencil").click(function () {
         givePencil();
     });
 
     //获取麦克风
-    $("#btnGetMic").click(function() {
+    $("#btnGetMic").click(function () {
         takeMIC();
     });
 
     //设置麦克风
-    $("#btnSetMic").click(function() {
+    $("#btnSetMic").click(function () {
         giveMIC();
     });
 
 
     //踢出用户
-    $("#btnKickuser").click(function() {
+    $("#btnKickuser").click(function () {
         kickUser();
     });
 
     //发送
-    $("#btnSendMsg").click(function(){
+    $("#btnSendMsg").click(function () {
         //ShowMessage($("#currentName").text(),$("#currentimgPath").text(),$("#txtContent").val(),0);
         var str = $("#txtContent").val();
         $("#txtContent").val("");
@@ -135,69 +133,68 @@ $(document).ready(function() {
 
     });
 
-    $("#btnreceivemessage").click(function(){
-        ShowMessage("Scan","gogowisestyle/image/portrait5.jpg","^_^ test message.........^_^ test message.........^_^ test message.........",1);
+    $("#btnreceivemessage").click(function () {
+        ShowMessage("Scan", "gogowisestyle/image/portrait5.jpg", "^_^ test message.........^_^ test message.........^_^ test message.........", 1);
     });
 
-    $("#btnsendmessage").click(function(){
-        ShowMessage("Scan","gogowisestyle/image/portrait5.jpg","^_^ test message.........^_^ test message.........^_^ test message.........",0);
+    $("#btnsendmessage").click(function () {
+        ShowMessage("Scan", "gogowisestyle/image/portrait5.jpg", "^_^ test message.........^_^ test message.........^_^ test message.........", 0);
     });
 
-    $("#btnask").click(function(event){
+    $("#btnask").click(function (event) {
         studentAskSpeak("u2");
     });
 
-    $("#btncancelask").click(function(event){
+    $("#btncancelask").click(function (event) {
         cancelStudentSpeak("u2");
     });
 
-    $("#btnCloseBar").click(function(event){
-        $("#btnControlBar").hide('200', function() {
+    $("#btnCloseBar").click(function (event) {
+        $("#btnControlBar").hide('200', function () {
             $("#btnControlBar").find('.userId').text("");
         });
     });
 
-    $("#btnEvent").click(function(event){
+    $("#btnEvent").click(function (event) {
         //getGirlOjbect().playVideo("xxxx");
         alert("123");
     });
 
-    $("#btnEvent2").click(function(event){
-        $("#studionList li a").bind("click",function(event){
+    $("#btnEvent2").click(function (event) {
+        $("#studionList li a").bind("click", function (event) {
             var id = $(this).parent().find("span").text();
-            showControlBar(id,event.pageX,event.pageY);
+            showControlBar(id, event.pageX, event.pageY);
         });
     });
 
-    $("#btnEvent3").click(function(event){
+    $("#btnEvent3").click(function (event) {
         getGirlOjbect().seletedQuestions(2);
     });
 
-    $("#btnOpenFile").click(function(){
+    $("#btnOpenFile").click(function () {
         showFile(2);
     });
 
-    $("#btnOpenQuestions").click(function(){
+    $("#btnOpenQuestions").click(function () {
         showQuestions();
     });
 
-    $("#btnQuestionsStudio").click(function(){
+    $("#btnQuestionsStudio").click(function () {
         showQuestionsStudio();
     });
 
     //查看问题结果
 
-    $("#btnQuestionResult").click(function(){
+    $("#btnQuestionResult").click(function () {
         getQuestionResult($('input[name="selectQuestion"]:checked').val());
     });
 
-    $("#btnSelectFile").click(function(){
+    $("#btnSelectFile").click(function () {
 
-        switch($("#currentfile").find(".selectCategory").text())
-        {
+        switch ($("#currentfile").find(".selectCategory").text()) {
             case "speech":
                 $('#fileModal').modal('hide');
-                seletedFile($("#currentfile").find(".selectfileid").text(),$("#currentfile").find(".selectfileNum").text());
+                seletedFile($("#currentfile").find(".selectfileid").text(), $("#currentfile").find(".selectfileNum").text());
                 break;
             case "video":
                 $('#fileModal').modal('hide');
@@ -214,79 +211,78 @@ $(document).ready(function() {
     });
 
     ////////////// 获取文件列表
-    $('#myTabFile a[href="#filesysDocument"]').click(function(){
+    $('#myTabFile a[href="#filesysDocument"]').click(function () {
         getSpeechList();
     });
 
-    $('#myTabFile a[href="#filesysVideo"]').click(function(){
+    $('#myTabFile a[href="#filesysVideo"]').click(function () {
         getVideoList();
     });
 
-    $('#myTabFile a[href="#filesysQuestionbank"]').click(function(){
+    $('#myTabFile a[href="#filesysQuestionbank"]').click(function () {
         getQuestionList();
     });
     //////////////
 
-    $("#btnUploadquestion").click(function(){
-        $("#btnUploadquestion").attr("disabled","disabled");
-        if(questionFullPath){
+    $("#btnUploadquestion").click(function () {
+        $("#btnUploadquestion").attr("disabled", "disabled");
+        if (questionFullPath) {
             UploadCourseResource({
                 courseId:<s:property value="courseClass.course.id"/>,
-                materialType:3,
-                fullPath:questionFullPath,
-                fullSize:questionFullSize,
-                title:questionTitle,
-                success:function(){
+                materialType: 3,
+                fullPath: questionFullPath,
+                fullSize: questionFullSize,
+                title: questionTitle,
+                success: function () {
                     $('#myTabFile a[href="#filesysQuestionbank"]').trigger("click");
                     questionFullPath = "";
                     $("#fileQuestion").val("");
                     $("#fileQuestionTip").html("");
                 }
             });
-        }else{
+        } else {
             $("#fileQuestionTip").html("Please select file first");
         }
     });
 
-    $("#btnUploadspeech").click(function(){
-        $("#btnUploadspeech").attr("disabled","disabled");
-        if(speechFullPath){
+    $("#btnUploadspeech").click(function () {
+        $("#btnUploadspeech").attr("disabled", "disabled");
+        if (speechFullPath) {
             UploadCourseResource({
                 courseId:<s:property value="courseClass.course.id"/>,
-                materialType:4,
-                fullPath:speechFullPath,
-                fullSize:speechFullSize,
-                title:speechTitle,
-                success:function(){
+                materialType: 4,
+                fullPath: speechFullPath,
+                fullSize: speechFullSize,
+                title: speechTitle,
+                success: function () {
                     $('#myTabFile a[href="#filesysDocument"]').trigger("click");
                     speechFullPath = "";
                     $("#fileSpeech").val("");
                     $("#fileSpeechTip").html("");
                 }
             });
-        }else{
+        } else {
             $("#fileSpeechTip").html("Please select file first");
         }
     });
 
-    $("#btnSubmitQuestions").click(function(){
+    $("#btnSubmitQuestions").click(function () {
         $("#QuestionItem").show();
         $("#questionsList").hide();
-        $("#btnSubmitQuestions").attr("disabled","disabled");
+        $("#btnSubmitQuestions").attr("disabled", "disabled");
         seletedQuestions();
         getQuestionItemInfo($('input[name="selectQuestion"]:checked').val());
 
         $('#fileModal').modal('hide');
     });
 
-    $("#btnAddVideo").click(function(){
-        if($("#txtVideoLink").val() == "" && $("#txtVideoName").val() =="")
-        {
+    $("#btnAddVideo").click(function () {
+        if ($("#txtVideoLink").val() == "" && $("#txtVideoName").val() == "") {
             alert("Cannot be a null value");
             return;
         }
 
-        setVideoInfo($("#txtVideoLink").val(),$("#txtVideoName").val());
+        setVideoInfo($("#txtVideoLink").val(), $("#txtVideoName").val());
         $("#txtVideoName").val("");
         $("#txtVideoLink").val("");
     });
@@ -303,45 +299,40 @@ function getGirlOjbect() {
     }
 }
 
-function getQuestionResult(questionId)
-{
+function getQuestionResult(questionId) {
     var studentNum = $("#studionList li").length;
 
     $.ajax({
-        type:"GET",
-        url:"displayQuestionResult.html",
-        data:{"questionId":questionId,"courseClassId":<s:property value="courseClass.id"/>},
-        dataType:"json",
-        success:function(data)
-        {
+        type: "GET",
+        url: "displayQuestionResult.html",
+        data: {"questionId": questionId, "courseClassId":<s:property value="courseClass.id"/>},
+        dataType: "json",
+        success: function (data) {
             $("#resultView").show();
             $("#questionsList").hide();
             var noresponseNum = studentNum - data.correctNumber - data.inCorrectNumber;
-            showQuestionResult(data.correctNumber,data.inCorrectNumber,noresponseNum);
-            $("#txtRight").text("Right:"+data.correctNumber);
-            $("#txtWrong").text("Wrong:"+data.inCorrectNumber);
-            $("#txtNoResponse").text("NoResponse:"+studentNum);
+            showQuestionResult(data.correctNumber, data.inCorrectNumber, noresponseNum);
+            $("#txtRight").text("Right:" + data.correctNumber);
+            $("#txtWrong").text("Wrong:" + data.inCorrectNumber);
+            $("#txtNoResponse").text("NoResponse:" + studentNum);
             getGirlOjbect().checkResult();
         },
-        error:function(){
+        error: function () {
             //alert("no data...");
         }
     });
 }
 
-function getSpeechList()
-{
+function getSpeechList() {
     $("#speechDraftPanle li").remove();
     //Speech
 //    $.getJSON("fileList2.html",function(data){
-    $.getJSON("listMaterial.html?typeId=4",{"courseId":<s:property value="courseClass.course.id"/>},function(data){
-        $.each(data.vos,function(key,info)
-        {
+    $.getJSON("listMaterial.html?typeId=4", {"courseId":<s:property value="courseClass.course.id"/>}, function (data) {
+        $.each(data.vos, function (key, info) {
             var icon_path = "";
-            var filecategory ="speech";
+            var filecategory = "speech";
 
-            switch(info["fileExt"])
-            {
+            switch (info["fileExt"]) {
                 case "doc":
                     icon_path = "gogowisestyle/image/icon_docx.png"
                     break;
@@ -366,14 +357,13 @@ function getSpeechList()
             }
 
 
-
-            $("#speechDraftPanle").append("<li><a href='#'>"+
-                    "<div class='fileItem'>"+
-                    "<img class='fileicon' src='"+icon_path+"' />"+
-                    "<p class='fileName'>"+info["sourceTitle"]+"</p>"+
-                    "<span class='fileDirectory'>"+info["convertPath"]+"</span>"+
-                    "<span class='category'>"+filecategory+"</span>"+
-                    "<span class='pageNum'>"+info["totalPages"]+"</span>"+
+            $("#speechDraftPanle").append("<li><a href='#'>" +
+                    "<div class='fileItem'>" +
+                    "<img class='fileicon' src='" + icon_path + "' />" +
+                    "<p class='fileName'>" + info["sourceTitle"] + "</p>" +
+                    "<span class='fileDirectory'>" + info["convertPath"] + "</span>" +
+                    "<span class='category'>" + filecategory + "</span>" +
+                    "<span class='pageNum'>" + info["totalPages"] + "</span>" +
                     "</div></a></li>");
         });
 
@@ -381,22 +371,20 @@ function getSpeechList()
     });
 }
 
-function getVideoList()
-{
+function getVideoList() {
     $("#videoPanle li").remove();
-    $.getJSON("listMaterial.html?typeId=1",{"courseId":<s:property value="courseClass.course.id"/>},function(data){
+    $.getJSON("listMaterial.html?typeId=1", {"courseId":<s:property value="courseClass.course.id"/>}, function (data) {
 
-        $.each(data.vos,function(key,info)
-        {
+        $.each(data.vos, function (key, info) {
             var icon_path = "gogowisestyle/image/icon_mov.png";
             var filecategory = "video";
 
-            $("#videoPanle").append("<li><a href='#'>"+
-                    "<div class='fileItem'>"+
-                    "<img class='fileicon' src='"+icon_path+"' />"+
-                    "<p class='fileName'>"+info["sourceTitle"]+"</p>"+
-                    "<span class='videolink'>"+info["convertPath"]+"</span>"+
-                    "<span class='category'>"+filecategory+"</span>"+
+            $("#videoPanle").append("<li><a href='#'>" +
+                    "<div class='fileItem'>" +
+                    "<img class='fileicon' src='" + icon_path + "' />" +
+                    "<p class='fileName'>" + info["sourceTitle"] + "</p>" +
+                    "<span class='videolink'>" + info["convertPath"] + "</span>" +
+                    "<span class='category'>" + filecategory + "</span>" +
                     "</div></a></li>");
         });
 
@@ -404,23 +392,21 @@ function getVideoList()
     });
 }
 
-function getQuestionList()
-{
+function getQuestionList() {
     $("#questionbankPanle li").remove();
 
 //    $.getJSON("questionList2.html",function(data){
-    $.getJSON("listMaterial.html?typeId=3",{"courseId":<s:property value="courseClass.course.id"/>},function(data){
+    $.getJSON("listMaterial.html?typeId=3", {"courseId":<s:property value="courseClass.course.id"/>}, function (data) {
 
-        $.each(data.vos,function(key,info)
-        {
+        $.each(data.vos, function (key, info) {
             var icon_path = "gogowisestyle/image/icon_text.png";
             var filecategory = "question";
-            $("#questionbankPanle").append("<li><a href='#'>"+
-                    "<div class='fileItem'>"+
-                    "<img class='fileicon' src='"+icon_path+"' />"+
-                    "<p class='fileName'>"+info["sourceTitle"]+"</p>"+
-                    "<span class='question'>"+info["id"]+"</span>"+
-                    "<span class='category'>"+filecategory+"</span>"+
+            $("#questionbankPanle").append("<li><a href='#'>" +
+                    "<div class='fileItem'>" +
+                    "<img class='fileicon' src='" + icon_path + "' />" +
+                    "<p class='fileName'>" + info["sourceTitle"] + "</p>" +
+                    "<span class='question'>" + info["id"] + "</span>" +
+                    "<span class='category'>" + filecategory + "</span>" +
                     "</div></a></li>");
         });
 
@@ -428,21 +414,21 @@ function getQuestionList()
     });
 }
 
-var speechFullSize,speechFullPath,speechTitle;
-function changeSpeechFile(){
-    var fileObj  = document.getElementById("fileSpeech");
+var speechFullSize, speechFullPath, speechTitle;
+function changeSpeechFile() {
+    var fileObj = document.getElementById("fileSpeech");
     var allowExtension = "doc, docx, pdf, xls, xlsx, ppt, pptx";
-    var extension = fileObj.value.substring(fileObj.value.lastIndexOf(".")+1).toLowerCase();
+    var extension = fileObj.value.substring(fileObj.value.lastIndexOf(".") + 1).toLowerCase();
 
-    if(allowExtension.indexOf(extension)==-1){
-        alert("Only File of "+allowExtension+" is allowed.");
+    if (allowExtension.indexOf(extension) == -1) {
+        alert("Only File of " + allowExtension + " is allowed.");
         return;
     }
 
     speechFullSize = fileObj.size;
     var fackIndex = fileObj.value.lastIndexOf("\\");
 
-    speechTitle = fackIndex==-1?fileObj.value:fileObj.value.substring(fileObj.value.lastIndexOf("\\")+1);
+    speechTitle = fackIndex == -1 ? fileObj.value : fileObj.value.substring(fileObj.value.lastIndexOf("\\") + 1);
     <%--$.ajaxFileUpload({--%>
     <%--url: 'course/uploadCourseMaterialToTemp.html',--%>
     <%--type: 'post',--%>
@@ -461,59 +447,57 @@ function changeSpeechFile(){
     <%--});--%>
 }
 
-var questionFullSize,questionFullPath,questionTitle;
-function changeQuestionFile(){
-    var fileObj  = document.getElementById("fileQuestion");
+var questionFullSize, questionFullPath, questionTitle;
+function changeQuestionFile() {
+    var fileObj = document.getElementById("fileQuestion");
     var allowExtension = "doc, docx, pdf";
-    var extension = fileObj.value.substring(fileObj.value.lastIndexOf(".")+1).toLowerCase();
+    var extension = fileObj.value.substring(fileObj.value.lastIndexOf(".") + 1).toLowerCase();
 
-    if(allowExtension.indexOf(extension)==-1){
-        alert("Only File of "+allowExtension+" is allowed.");
+    if (allowExtension.indexOf(extension) == -1) {
+        alert("Only File of " + allowExtension + " is allowed.");
         return;
     }
 
     questionFullSize = fileObj.size;
     var fackIndex = fileObj.value.lastIndexOf("\\");
 
-    questionTitle = fackIndex==-1?fileObj.value:fileObj.value.substring(fileObj.value.lastIndexOf("\\")+1);
+    questionTitle = fackIndex == -1 ? fileObj.value : fileObj.value.substring(fileObj.value.lastIndexOf("\\") + 1);
 
 }
 
-function setVideoInfo(videolink,videoname)
-{
+function setVideoInfo(videolink, videoname) {
     $.ajax({
         type: 'POST',
         url: "uploadMaterialWithJson.html",
         data: {"courseMaterial.sourceTitle": videoname, "courseMaterial.convertPath": videolink, "course.id":<s:property value="courseClass.course.id"/>, "courseMaterial.type": "1"},
-        dataType:"json",
-        success: function(data)
-        {
+        dataType: "json",
+        success: function (data) {
             //alert("success");
             getVideoList();
         },
-        error:function(){
+        error: function () {
             //alert("error....");
         }
     });
 }
 
-function UploadCourseResource(options){
-    $.post("saveCourseMaterialHide.html",{
-        "course.id":options.courseId,
-        "courseMaterial.type":options.materialType,
-        "courseMaterial.fullPath":options.fullPath,
-        "courseMaterial.fullSize":options.fullSize,
-        "courseMaterial.sourceTitle":options.title
-    },function(data){
-        if(data){
-            if(!options.success){
+function UploadCourseResource(options) {
+    $.post("saveCourseMaterialHide.html", {
+        "course.id": options.courseId,
+        "courseMaterial.type": options.materialType,
+        "courseMaterial.fullPath": options.fullPath,
+        "courseMaterial.fullSize": options.fullSize,
+        "courseMaterial.sourceTitle": options.title
+    }, function (data) {
+        if (data) {
+            if (!options.success) {
                 //alert("Upload success!");
                 return;
             }
             options.success();
             return;
         }
-        if(!options.error){
+        if (!options.error) {
             //alert("Upload failure!");
             return;
         }
@@ -523,30 +507,29 @@ function UploadCourseResource(options){
     return false;
 }
 
-function getQuestionItemInfo(id)
-{
+function getQuestionItemInfo(id) {
 
     $("#QuestionItem div").remove();
 
     $.ajax({
-        type:"GET",
-        url:"question.html",
-        data:{"questionId":id},
-        dataType:"json",
-        success:function(data){
+        type: "GET",
+        url: "question.html",
+        data: {"questionId": id},
+        dataType: "json",
+        success: function (data) {
 
-            $("#QuestionItem").append("<div>"+
-                    "<div class='questionsItemText'>"+data.vo["description"]+"</div>"+
-                    "<span class='questionid'>"+data.vo["id"]+"</span>"+
+            $("#QuestionItem").append("<div>" +
+                    "<div class='questionsItemText'>" + data.vo["description"] + "</div>" +
+                    "<span class='questionid'>" + data.vo["id"] + "</span>" +
                     "<div class='listanswer' style='text-align:left;margin-left:20px;'></div>");
-            var index =1;
-            $.each(data.vo.items,function(key,info){
-                $("#QuestionItem").find(".listanswer").append("<div style='margin-top:10px;'>"+
-                        "<label>"+
+            var index = 1;
+            $.each(data.vo.items, function (key, info) {
+                $("#QuestionItem").find(".listanswer").append("<div style='margin-top:10px;'>" +
+                        "<label>" +
 
-                        "<span style='display:none;'>"+index+"</span>"+
-                        "<div><span style='color:#6ab600;'>"+index+":</span>&nbsp;&nbsp;<span style='color:#6ab600;'>"+info+"</span></div>"+
-                        "</label>"+
+                        "<span style='display:none;'>" + index + "</span>" +
+                        "<div><span style='color:#6ab600;'>" + index + ":</span>&nbsp;&nbsp;<span style='color:#6ab600;'>" + info + "</span></div>" +
+                        "</label>" +
                         "</div>");
                 index++;
             });
@@ -558,31 +541,29 @@ function getQuestionItemInfo(id)
                 increaseArea: '20%' // optional
             });
         },
-        error:function(){
+        error: function () {
             //alert("no data....");
         }
     });
 }
 
-function getQuestionInfo()
-{
+function getQuestionInfo() {
     $("#questionsList div").remove();
 
     $.ajax({
-        type:"GET",
-        url:"listQuestion.html",
-        data:{"materialId":$("#currentfile").find(".selectQuestion").text()},
-        dataType:"json",
-        success:function(data){
+        type: "GET",
+        url: "listQuestion.html",
+        data: {"materialId": $("#currentfile").find(".selectQuestion").text()},
+        dataType: "json",
+        success: function (data) {
 
-            $.each(data.vos,function(key,info)
-            {
-                $("#questionsList").append("<div class='questionsItem'>"+
-                        "<label>"+
-                        "<input type='radio' name='selectQuestion' value='"+info["id"]+"'>"+
-                        "<span class='questionsItemText'>"+info["description"]+"</span>"+
-                        "<span class='questionid'>"+info["id"]+"</span>"+
-                        "</label>"+
+            $.each(data.vos, function (key, info) {
+                $("#questionsList").append("<div class='questionsItem'>" +
+                        "<label>" +
+                        "<input type='radio' name='selectQuestion' value='" + info["id"] + "'>" +
+                        "<span class='questionsItemText'>" + info["description"] + "</span>" +
+                        "<span class='questionid'>" + info["id"] + "</span>" +
+                        "</label>" +
                         "</div>");
             });
 
@@ -592,39 +573,36 @@ function getQuestionInfo()
                 increaseArea: '20%' // optional
             });
         },
-        error:function(){
+        error: function () {
             //alert("no data....");
         }
     });
 }
 
-function DirectOpenQuestionsWindow()
-{
+function DirectOpenQuestionsWindow() {
     $("#QuestionItem").empty();
     $("#btnSubmitQuestions").removeAttr("disabled");
     DirectGetQuestionInfo();
     showQuestions();
 }
 
-function DirectGetQuestionInfo()
-{
+function DirectGetQuestionInfo() {
     $("#questionsList div").remove();
 
     $.ajax({
-        type:"GET",
-        url:"listQuestion.html",
-        data:{"materialId":$("#currentfile").find(".selectQuestion").text()},
-        dataType:"json",
-        success:function(data){
+        type: "GET",
+        url: "listQuestion.html",
+        data: {"materialId": $("#currentfile").find(".selectQuestion").text()},
+        dataType: "json",
+        success: function (data) {
 
-            $.each(data.vos,function(key,info)
-            {
-                $("#questionsList").append("<div class='questionsItem'>"+
-                        "<label>"+
-                        "<input type='radio' name='selectQuestion' value='"+info["id"]+"'>"+
-                        "<span class='questionsItemText'>"+info["description"]+"</span>"+
-                        "<span class='questionid'>"+info["id"]+"</span>"+
-                        "</label>"+
+            $.each(data.vos, function (key, info) {
+                $("#questionsList").append("<div class='questionsItem'>" +
+                        "<label>" +
+                        "<input type='radio' name='selectQuestion' value='" + info["id"] + "'>" +
+                        "<span class='questionsItemText'>" + info["description"] + "</span>" +
+                        "<span class='questionid'>" + info["id"] + "</span>" +
+                        "</label>" +
                         "</div>");
             });
 
@@ -634,15 +612,14 @@ function DirectGetQuestionInfo()
                 increaseArea: '20%' // optional
             });
         },
-        error:function(){
+        error: function () {
             //alert("no data....");
         }
     });
 }
 
-function bindFileClick()
-{
-    $(".fileList li a").bind("click",function(event){
+function bindFileClick() {
+    $(".fileList li a").bind("click", function (event) {
         $("#currentfile").find("img").remove();
         $("#currentfile").find("span").remove();
         $("#currentfile").find(".selectfileid").remove();
@@ -650,13 +627,13 @@ function bindFileClick()
         $("#currentfile").find(".selectVideoLink").remove();
         $("#currentfile").find(".selectQuestion").remove();
         $("#currentfile").find(".selectCategory").remove();
-        $("#currentfile").append("<img src="+$(this).find('img').attr('src')+"></img>");
-        $("#currentfile").append("<span>"+$(this).find('.fileName').text()+"</span>");
-        $("#currentfile").append("<span style='display:none;' class='selectfileid'>"+$(this).find('.fileDirectory').text()+"</span>");
-        $("#currentfile").append("<span style='display:none;' class='selectfileNum'>"+$(this).find('.pageNum').text()+"</span>");
-        $("#currentfile").append("<span style='display:none;' class='selectVideoLink'>"+$(this).find('.videolink').text()+"</span>");
-        $("#currentfile").append("<span style='display:none;' class='selectQuestion'>"+$(this).find('.question').text()+"</span>");
-        $("#currentfile").append("<span style='display:none;' class='selectCategory'>"+$(this).find('.category').text()+"</span>");
+        $("#currentfile").append("<img src=" + $(this).find('img').attr('src') + "></img>");
+        $("#currentfile").append("<span>" + $(this).find('.fileName').text() + "</span>");
+        $("#currentfile").append("<span style='display:none;' class='selectfileid'>" + $(this).find('.fileDirectory').text() + "</span>");
+        $("#currentfile").append("<span style='display:none;' class='selectfileNum'>" + $(this).find('.pageNum').text() + "</span>");
+        $("#currentfile").append("<span style='display:none;' class='selectVideoLink'>" + $(this).find('.videolink').text() + "</span>");
+        $("#currentfile").append("<span style='display:none;' class='selectQuestion'>" + $(this).find('.question').text() + "</span>");
+        $("#currentfile").append("<span style='display:none;' class='selectCategory'>" + $(this).find('.category').text() + "</span>");
     });
 }
 
@@ -667,20 +644,19 @@ function bindFileClick()
  * @param wrong 答错人数
  * @param noresponse 没有应答
  */
-function showQuestionResult(right,wrong,noresponse)
-{
+function showQuestionResult(right, wrong, noresponse) {
     var pieData = [
         {
             value: right,
-            color:"#F38630"
+            color: "#F38630"
         },
         {
-            value : wrong,
-            color : "#E0E4CC"
+            value: wrong,
+            color: "#E0E4CC"
         },
         {
-            value : noresponse,
-            color : "#69D2E7"
+            value: noresponse,
+            color: "#69D2E7"
         }
 
     ];
@@ -688,60 +664,54 @@ function showQuestionResult(right,wrong,noresponse)
     var myPie = new Chart(document.getElementById("canvas").getContext("2d")).Pie(pieData);
 }
 
-function giveMIC()
-{
-    if(currentMIC != null)
-    {
+function giveMIC() {
+    if (currentMIC != null) {
         removestate(currentMIC);
-        if(currentMIC == currentPencil)
-            tabstate(currentMIC,3,false);
+        if (currentMIC == currentPencil)
+            tabstate(currentMIC, 3, false);
         currentMIC = null;
     }
 
     var id = $("#btnControlBar").find('.userId').text();
     currentMIC = id;
 
-    if(id == currentPencil)
-        tabstate(id,4,false);
+    if (id == currentPencil)
+        tabstate(id, 4, false);
     else
-        tabstate(id,2,false);
+        tabstate(id, 2, false);
 
     getGirlOjbect().giveMIC(id);
 
-    $("#btnControlBar").hide('200', function(){
+    $("#btnControlBar").hide('200', function () {
         $("#btnControlBar").find('.userId').text("");
     });
 
 
 }
 
-function takeMIC()
-{
-    if(currentMIC == $("#btnControlBar").find('.userId').text())
-    {
+function takeMIC() {
+    if (currentMIC == $("#btnControlBar").find('.userId').text()) {
         var id = $("#btnControlBar").find('.userId').text();
         currentMIC = null;
         removestate(id);
 
-        if(id == currentPencil)
-            tabstate(id,3,false);
+        if (id == currentPencil)
+            tabstate(id, 3, false);
 
         getGirlOjbect().takeMIC(id);
 
-        $("#btnControlBar").hide('200', function(){
+        $("#btnControlBar").hide('200', function () {
             $("#btnControlBar").find('.userId').text("");
         });
     }
 }
 
-function givePencil()
-{
-    if(currentPencil != null)
-    {
+function givePencil() {
+    if (currentPencil != null) {
         removestate(currentPencil);
 
-        if(currentPencil == currentMIC)
-            tabstate(currentPencil,2,false);
+        if (currentPencil == currentMIC)
+            tabstate(currentPencil, 2, false);
 
         currentPencil = null;
     }
@@ -749,51 +719,45 @@ function givePencil()
     var id = $("#btnControlBar").find('.userId').text();
     currentPencil = id;
 
-    if(id == currentMIC)
-        tabstate(id,4,false);
+    if (id == currentMIC)
+        tabstate(id, 4, false);
     else
-        tabstate(id,3,false);
+        tabstate(id, 3, false);
 
     getGirlOjbect().givePencil(id);
 
-    $("#btnControlBar").hide('200', function(){
+    $("#btnControlBar").hide('200', function () {
         $("#btnControlBar").find('.userId').text("");
     });
 }
 
-function takePencil()
-{
-    if(currentPencil == $("#btnControlBar").find('.userId').text())
-    {
+function takePencil() {
+    if (currentPencil == $("#btnControlBar").find('.userId').text()) {
         var id = $("#btnControlBar").find('.userId').text();
 
         currentPencil = null;
         removestate(id);
 
-        if(id == currentMIC)
-            tabstate(id,2,false);
+        if (id == currentMIC)
+            tabstate(id, 2, false);
 
         getGirlOjbect().takePencil(id);
-        $("#btnControlBar").hide('200', function(){
+        $("#btnControlBar").hide('200', function () {
             $("#btnControlBar").find('.userId').text("");
         });
     }
 }
 
 
-
-function kickUser()
-{
+function kickUser() {
     var id = $("#btnControlBar").find('.userId').text();
 
-    if(currentMIC != null)
-    {
+    if (currentMIC != null) {
         removestate(currentMIC);
         currentMIC = null;
     }
 
-    if(currentPencil != null)
-    {
+    if (currentPencil != null) {
         removestate(currentPencil);
         currentPencil = null;
     }
@@ -801,52 +765,47 @@ function kickUser()
     getGirlOjbect().kickAway(id);
 
     deleteOneStudent(id);
-    $("#btnControlBar").hide('400', function(){
+    $("#btnControlBar").hide('400', function () {
         $("#btnControlBar").find('.userId').text("");
     });
 
 }
 
 //学生发言
-function studentAskSpeak(id)
-{
-    tabstate(id,1,true);
+function studentAskSpeak(id) {
+    tabstate(id, 1, true);
     studioSortUp(id);
 }
 
 //学生取消发言
-function cancelStudentSpeak(id)
-{
+function cancelStudentSpeak(id) {
     removestate(id);
 }
 
 //根据id显示用户控制面板,x,y为显示位置
-function showControlBar(id,x,y)
-{
-    if($("#btnControlBar").css("display") != "none")
-        $("#btnControlBar").css("display","none");
+function showControlBar(id, x, y) {
+    if ($("#btnControlBar").css("display") != "none")
+        $("#btnControlBar").css("display", "none");
 
-    $("#btnControlBar").css("position","absolute");
-    $("#btnControlBar").css("left",x-500+"px");
-    $("#btnControlBar").css("top",y + 30 + "px");
+    $("#btnControlBar").css("position", "absolute");
+    $("#btnControlBar").css("left", x - 500 + "px");
+    $("#btnControlBar").css("top", y + 30 + "px");
     $("#btnControlBar").show(200);
     $("#btnControlBar").find(".userId").text(id);
 }
 
 //控制面板动作 1.给与mic 2.取回mic 3.给与画笔 4.取回画笔 5.踢出教室
-function controlAction(actioncode)
-{
+function controlAction(actioncode) {
     var id = $("#btnControlBar").find('.userId').text();
-    switch(actioncode)
-    {
+    switch (actioncode) {
         case 1:
-            tabstate(id,3,false);
+            tabstate(id, 3, false);
             break;
         case 2:
             removestate(id);
             break;
         case 3:
-            tabstate(id,4,false);
+            tabstate(id, 4, false);
             break;
         case 4:
             removestate(id);
@@ -856,14 +815,13 @@ function controlAction(actioncode)
             break;
     }
 
-    $("#btnControlBar").hide('600', function(){
+    $("#btnControlBar").hide('600', function () {
         $("#btnControlBar").find('.userId').text("");
     });
 }
 
 //重写提示消息
-function alert(content,type)
-{
+function alert(content, type) {
     $.globalMessenger().post({
         message: content,
         type: type,
@@ -872,52 +830,47 @@ function alert(content,type)
 }
 
 //添加一个学生到学生列表
-function addOneStudent(name,imgpath,id,ismsg,isMic)
-{
-    $("#studionList").prepend("<li class='ui-state-default' style='display:none;'>"+
-            "<a href='#'><div class='studioPortraitPanel'>"+
-            "<img src='"+imgpath+"'>"+
-            "<p>"+name+"</p>"+
-            "</div></a>"+
-            "<span class='userId'>"+id+"</span></li>");
+function addOneStudent(name, imgpath, id, ismsg, isMic) {
+    $("#studionList").prepend("<li class='ui-state-default' style='display:none;'>" +
+            "<a href='#'><div class='studioPortraitPanel'>" +
+            "<img src='" + imgpath + "'>" +
+            "<p>" + name + "</p>" +
+            "</div></a>" +
+            "<span class='userId'>" + id + "</span></li>");
 
-    $("#studionList li:contains('"+id+"')").fadeIn(800,function(){
+    $("#studionList li:contains('" + id + "')").fadeIn(800, function () {
         stundioWrapper.refresh();
     });
 
-    $("#studionList li:contains('"+id+"')").bind("click",function(event){
-        showControlBar(id,event.pageX,event.pageY);
+    $("#studionList li:contains('" + id + "')").bind("click", function (event) {
+        showControlBar(id, event.pageX, event.pageY);
     });
 
     //if(ismsg)
-        //alert("进入学生:"+name,"success");
+    //alert("进入学生:"+name,"success");
 }
 
 //根据ID退出一个学生
-function deleteOneStudent(id)
-{
-    $("#studionList li:contains('"+id+"')").fadeOut(800,function(){
-        $("#studionList li:contains('"+id+"')").remove();
+function deleteOneStudent(id) {
+    $("#studionList li:contains('" + id + "')").fadeOut(800, function () {
+        $("#studionList li:contains('" + id + "')").remove();
     });
     stundioWrapper.refresh();
 }
 
 //根据ID取消一个状态
-function removestate(id)
-{
-    $("#studionList li:contains('"+id+"') img").removeClass();
+function removestate(id) {
+    $("#studionList li:contains('" + id + "') img").removeClass();
 }
 
-function showQuestions()
-{
+function showQuestions() {
     $("#questionsModal").modal('show');
     $("#questionsList").show();
     $("#resultView").hide();
     $("#QuestionItem").hide();
 }
 
-function showFile(index)
-{
+function showFile(index) {
     $("#btnUploadspeech").removeAttr("disabled");
     $("#btnUploadquestion").removeAttr("disabled");
     $("#currentfile").find("img").remove();
@@ -925,8 +878,7 @@ function showFile(index)
     $("#currentfile").find(".selectfileid").remove();
     $('#fileModal').modal('show');
 
-    switch(index)
-    {
+    switch (index) {
         case 1:
             $('#myTabFile a[href="#filesysDocument"]').tab('show');
             getSpeechList();
@@ -945,22 +897,18 @@ function showFile(index)
 
 }
 
-function showQuestionsStudio()
-{
+function showQuestionsStudio() {
     $("#questionsStudioModal").modal('show');
 }
 
-function playVideo(link)
-{
+function playVideo(link) {
     getGirlOjbect().playYoutubeVideo(link);
 }
 
 //根据ID，State状态值（1，2，3）设置状态，bit是否需要排序到最上.
-function tabstate(id,state,bit)
-{
+function tabstate(id, state, bit) {
     var _state;
-    switch(state)
-    {
+    switch (state) {
         case 1:
             _state = "userState1";
             break;
@@ -978,32 +926,28 @@ function tabstate(id,state,bit)
             break;
     }
 
-    if(bit)
+    if (bit)
         studioSortUp(id);
 
-    $("#studionList li:contains('"+id+"') img").addClass(_state).animate({borderWidth:"0"}).animate({borderWidth:"6"}).animate({borderWidth:"0"}).animate({borderWidth:"6"}).animate({borderWidth:"0"}).animate({borderWidth:"6"}).animate({borderWidth:"0"}).animate({borderWidth:"6"}).animate({borderWidth:"0"}).animate({borderWidth:"6"}).animate({borderWidth:"0"}).animate({borderWidth:"6"});
+    $("#studionList li:contains('" + id + "') img").addClass(_state).animate({borderWidth: "0"}).animate({borderWidth: "6"}).animate({borderWidth: "0"}).animate({borderWidth: "6"}).animate({borderWidth: "0"}).animate({borderWidth: "6"}).animate({borderWidth: "0"}).animate({borderWidth: "6"}).animate({borderWidth: "0"}).animate({borderWidth: "6"}).animate({borderWidth: "0"}).animate({borderWidth: "6"});
 }
 
 //提交选择的题
-function seletedQuestions()
-{
-    if($('input[name="selectQuestion"]:checked').val() != undefined)
+function seletedQuestions() {
+    if ($('input[name="selectQuestion"]:checked').val() != undefined)
         getGirlOjbect().seletedQuestions($('input[name="selectQuestion"]:checked').val());
 }
 
-function seletedFile(fileID, pageNum)
-{
+function seletedFile(fileID, pageNum) {
     getGirlOjbect().seletedFile(fileID, pageNum);
 }
 
 //根据ID排序到最上面
-function studioSortUp(id)
-{
-    $("#studionList").prepend($("#studionList li:contains('"+id+"')"));
+function studioSortUp(id) {
+    $("#studionList").prepend($("#studionList li:contains('" + id + "')"));
 }
 
-function sendMessageTeacher(content)
-{
+function sendMessageTeacher(content) {
     getGirlOjbect().sendMessage(content);
 }
 
@@ -1015,33 +959,32 @@ function sendMessageTeacher(content)
 // }
 
 //显示学生信息 name 学生名字,imgpath头像路径,content内容,bit 1左边 0右边
-function ShowMessage(name,imgpath,content,bit)
-{
-    if(content == "")
+function ShowMessage(name, imgpath, content, bit) {
+    if (content == "")
         return;
 
     var inithight = $("#charList").height();
     var isleft;
-    if(bit)
+    if (bit)
         isleft = "pull-left";
     else
         isleft = "pull-right";
 
-    var chatMessage = "<div class='chatMessage'>"+
-            "<div class='"+isleft+"' style='width:70px;'>"+
-            "<img class='chatPortraitImg' src='"+imgpath+"'  />"+
-            "<div class='chatPortraitTitle'>"+name+"</div>"+
-            "</div>"+
-            "<div style='width: 290px;' class='"+isleft+"'>"+
-            "<div class='chatContent'>"+content+"</div>"+
-            "</div>"+
+    var chatMessage = "<div class='chatMessage'>" +
+            "<div class='" + isleft + "' style='width:70px;'>" +
+            "<img class='chatPortraitImg' src='" + imgpath + "'  />" +
+            "<div class='chatPortraitTitle'>" + name + "</div>" +
+            "</div>" +
+            "<div style='width: 290px;' class='" + isleft + "'>" +
+            "<div class='chatContent'>" + content + "</div>" +
+            "</div>" +
             "</div><div class='clearfix'></div>"
 
     $("#charList").append(chatMessage);
 
     chatWrapper.refresh();
 
-    if(inithight<200)
+    if (inithight < 200)
         chatWrapper.scrollTo(0, $("#charList").height() - $("#chatWrapper").height(), 200, true);
     else
         chatWrapper.scrollTo(0, $("#charList").height() - inithight, 200, true);
@@ -1051,97 +994,129 @@ function ShowMessage(name,imgpath,content,bit)
 </script>
 
 <style type="text/css" media="all">
-    .uploadifyQueueItem
-    {
-         margin-left: 120px;
-    }
-    .userId
-    {
-        display:none;
+    .uploadifyQueueItem {
+        margin-left: 120px;
     }
 
-    .fileid
-    {
-        display:none;
+    .userId {
+        display: none;
     }
 
-    .videolink
-    {
-        display:none;
+    .fileid {
+        display: none;
     }
 
-    .question
-    {
-        display:none;
+    .videolink {
+        display: none;
     }
 
-    .pageNum
-    {
-        display:none;
+    .question {
+        display: none;
     }
 
-    .fileDirectory
-    {
-        display:none;
+    .pageNum {
+        display: none;
     }
 
-    .category
-    {
-        display:none;
+    .fileDirectory {
+        display: none;
     }
 
+    .category {
+        display: none;
+    }
 
-
-    .questionid
-    {
-        display:none;
+    .questionid {
+        display: none;
     }
 
     #stundioWrapper {
-        position:  relative;
-        left:0;
-        width:100%;
-        overflow:auto;
+        position: relative;
+        left: 0;
+        width: 100%;
+        overflow: auto;
         z-index: 0;
     }
 
-    #stundioWrapper ul
-    {
-        list-style:none;
-        padding:0;
-        margin:0;
-        width:100%;
+    #stundioWrapper ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
     }
 
     #chatWrapper {
-        position:  relative;
-        left:0;
-        width:100%;
-        overflow:auto;
+        position: relative;
+        left: 0;
+        width: 100%;
+        overflow: auto;
     }
 
-    #chatWrapper ul
-    {
-        list-style:none;
-        padding:0;
-        margin:0;
-        width:100%;
+    #chatWrapper ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
     }
 
-    #currentfile img
-    {
+    #currentfile img {
         width: 46px;
         height: 46px;
     }
 
-    #studionList { list-style-type: none; margin: 0; padding: 0; width: 385px; }
-    #studionList li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 88px; height: 90px;  text-align: center; background-color: transparent;border-width: 0px;}
+    #studionList {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 385px;
+    }
 
-    .fileList { list-style-type: none; margin: 0; padding: 0; width: 550px; }
-    .fileList li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 105px;height: 180px; text-align: center; background-color: transparent;border-width: 0px;}
+    #studionList li {
+        margin: 3px 3px 3px 0;
+        padding: 1px;
+        float: left;
+        width: 88px;
+        height: 90px;
+        text-align: center;
+        background-color: transparent;
+        border-width: 0px;
+    }
 
-    .listanswer { list-style-type: none; margin: 0; padding: 0; width: 550px; margin-top: 5px;}
-    .listanswer li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 95px;   text-align: center; background-color: transparent;border-width: 0px;}
+    .fileList {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 550px;
+    }
+
+    .fileList li {
+        margin: 3px 3px 3px 0;
+        padding: 1px;
+        float: left;
+        width: 105px;
+        height: 180px;
+        text-align: center;
+        background-color: transparent;
+        border-width: 0px;
+    }
+
+    .listanswer {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 550px;
+        margin-top: 5px;
+    }
+
+    .listanswer li {
+        margin: 3px 3px 3px 0;
+        padding: 1px;
+        float: left;
+        width: 95px;
+        text-align: center;
+        background-color: transparent;
+        border-width: 0px;
+    }
 
 </style>
 
@@ -1154,16 +1129,16 @@ function ShowMessage(name,imgpath,content,bit)
         url = urlarr.join("/");
         getGirlOjbect().CreateRoomComplete("<s:property value='initSeesionString' escape='false' />", "");
     }
-    function CloseBrowser(){
+    function CloseBrowser() {
         getGirlOjbect().closeBrowser();
-        window.location.href="myfirstPage.html";
+        window.location.href = "myfirstPage.html";
     }
-    function InRoom(){
+    function InRoom() {
         getGirlOjbect().InRoomComplete("<s:property value='initSeesionString' escape='false' />", "");
     }
     function startclass(vid) {
         $.post("setClassRecord.html", {"courseClass.id": "<s:property value="courseClass.id"/>", "videoVersionId": vid }, function (rd) {
-            if(rd.result==200){
+            if (rd.result == 200) {
                 return;
             }
             //alert("Set class record failure");
@@ -1173,53 +1148,54 @@ function ShowMessage(name,imgpath,content,bit)
 
 
 <%--<div class="btn-group" style="margin:5px;">--%>
-    <%--<button type="button" class="btn btn-success" id="btnaddUser">进入用户</button>--%>
-    <%--<button type="button" class="btn btn-success" id="btndeleteOneStudent">退出用户</button>--%>
-    <%--<button type="button" class="btn btn-success" id="btnreceivemessage">接收消息</button>--%>
-    <%--<button type="button" class="btn btn-success" id="btnsendmessage">发送消息</button>--%>
-    <%--<button type="button" class="btn btn-success" id="btnQuestionsStudio">收到试题</button>--%>
-    <%--<button type="button" class="btn btn-success" id="btnask">学生提问</button>--%>
-    <%--<button type="button" class="btn btn-success" id="btncancelask">取消提问</button>--%>
-    <%--<button type="button" class="btn btn-success" id="btnEvent">事件测试1</button>--%>
-    <%--<button type="button" class="btn btn-success" id="btnEvent2">事件测试2</button>--%>
-    <%--<button type="button" class="btn btn-success" id="btnEvent3">事件测试3</button>--%>
+<%--<button type="button" class="btn btn-success" id="btnaddUser">进入用户</button>--%>
+<%--<button type="button" class="btn btn-success" id="btndeleteOneStudent">退出用户</button>--%>
+<%--<button type="button" class="btn btn-success" id="btnreceivemessage">接收消息</button>--%>
+<%--<button type="button" class="btn btn-success" id="btnsendmessage">发送消息</button>--%>
+<%--<button type="button" class="btn btn-success" id="btnQuestionsStudio">收到试题</button>--%>
+<%--<button type="button" class="btn btn-success" id="btnask">学生提问</button>--%>
+<%--<button type="button" class="btn btn-success" id="btncancelask">取消提问</button>--%>
+<%--<button type="button" class="btn btn-success" id="btnEvent">事件测试1</button>--%>
+<%--<button type="button" class="btn btn-success" id="btnEvent2">事件测试2</button>--%>
+<%--<button type="button" class="btn btn-success" id="btnEvent3">事件测试3</button>--%>
 <%--</div>--%>
 
-<span id="currentUserId" style="display: none"><s:property value="#session.userID" /></span>
-<span id="currentName" style="display: none"><s:property value="#session.email" /></span>
-<span id="currentUserName" style="display: none"><s:property value="#session.nickName" /></span>
-<span id="currentimgPath" style="display: none"><s:property value="#session.userLogoUrl" /></span>
+<span id="currentUserId" style="display: none"><s:property value="#session.userID"/></span>
+<span id="currentName" style="display: none"><s:property value="#session.email"/></span>
+<span id="currentUserName" style="display: none"><s:property value="#session.nickName"/></span>
+<span id="currentimgPath" style="display: none"><s:property value="#session.userLogoUrl"/></span>
 
 <%--<div id="top"></div>--%>
 
 <div class="container">
-<div class="thinline"></div>
-<div class="classSchoolinfo" style="text-align: center;">
-    <ul class="list-inline">
-        <li  class="classstatusbar">School Name:<s:property value="courseClass.course.organization.schoolName" /></li>
-        <li  class="classstatusbar">Lecturers Name:<s:property value="courseClass.course.teacher.nickName"/></li>
-        <li class="classstatusbar">Course Name: <a class="img"
-                                                   href="voaCourseBlog.html?course.id=<s:property value="courseClass.course.id"/>">
-            <s:property value="courseClass.course.name"/> </a></li>
-        <li class="classstatusbar">Class Name:<s:property value="courseClass.name"/><s:property value="courseClass.nickName"/></li>
-    </ul>
-</div>
-<div >
-    <div class="classVedioPanel" style="background-color: #000;">
-        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="1130" height="560" name="Girl" id="Girl" wmode="transparent">
-            <param name="movie" value="flash/Teacher_1.swf"/>
-            <param name="quality" value="high" />
-            <param name="wmode" value="transparent" />
-            <param name="allowFullScreen" value="true" />
-            <embed src="flash/Teacher_1.swf" allowFullScreen="true" width="1130" height="560" quality="high"
-                   pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"
-                   wmode="transparent" name="Girl" id="GirlEmbed"></embed>
-        </object>
+    <div class="thinline"></div>
+    <div class="classSchoolinfo" style="text-align: center;">
+        <ul class="list-inline">
+            <li class="classstatusbar">School Name:<s:property value="courseClass.course.organization.schoolName"/></li>
+            <li class="classstatusbar">Lecturers Name:<s:property value="courseClass.course.teacher.nickName"/></li>
+            <li class="classstatusbar">Course Name: <a class="img"
+                                                       href="voaCourseBlog.html?course.id=<s:property value="courseClass.course.id"/>">
+                <s:property value="courseClass.course.name"/> </a></li>
+            <li class="classstatusbar">Class Name:<s:property value="courseClass.name"/><s:property value="courseClass.nickName"/></li>
+        </ul>
     </div>
-</div>
+    <div>
+        <div class="classVedioPanel" style="background-color: #000;">
+            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="1130" height="560" name="Girl" id="Girl" wmode="transparent">
+                <param name="movie" value="flash/Teacher_1.swf"/>
+                <param name="quality" value="high"/>
+                <param name="wmode" value="transparent"/>
+                <param name="allowFullScreen" value="true"/>
+                <embed src="flash/Teacher_1.swf" allowFullScreen="true" width="1130" height="560" quality="high"
+                       pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"
+                       wmode="transparent" name="Girl" id="GirlEmbed"></embed>
+            </object>
+        </div>
+    </div>
 
     <div id="studentpanle" style="float: left;display: none;position:relative;top: -744px;left:865px;">
-        <div style="cursor: move;width: 280px;float: left;height: 30px;"></div><button class="btn btn-warning btn-xs" id="btncontrolmenu" style="width: 100px;">Panel</button>
+        <div style="cursor: move;width: 280px;float: left;height: 30px;"></div>
+        <button class="btn btn-warning btn-xs" id="btncontrolmenu" style="width: 100px;">Panel</button>
         <div class="classBasePanel" id="panelcontent">
             <div id="studiowindow">
                 <div class="classPanleHead">
@@ -1273,6 +1249,7 @@ function ShowMessage(name,imgpath,content,bit)
                 </div>
             </div>
             <br/>
+
             <div id="chatWindow">
 
                 <div class="classPanleHead">
@@ -1314,7 +1291,7 @@ function ShowMessage(name,imgpath,content,bit)
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">
-                    <h1 class = "Subject24">Open File</h1>
+                    <h1 class="Subject24">Open File</h1>
                 </h4>
 
             </div>
@@ -1367,14 +1344,15 @@ function ShowMessage(name,imgpath,content,bit)
                     </div>
                     <div style="text-align: center;">
                         <%--<input type="file" name="fileupload2" id="fileSpeech" onchange="changeSpeechFile()"--%>
-                               <%--style="position:absolute; z-index:100; margin-left:-180px; font-size:35px;opacity:0;filter:alpha(opacity=0); margin-top:-5px;">--%>
+                            <%--style="position:absolute; z-index:100; margin-left:-180px; font-size:35px;opacity:0;filter:alpha(opacity=0); margin-top:-5px;">--%>
                         <%--<span style="padding-right: 10px;color: red;">Or</span><button type="button" class="btn btn-success">Select a Local File</button>--%>
-                            <div ><input type="file" name="fileupload"  value="浏览" id="cm_upload_input"/>
+                            <div><input type="file" name="fileupload" value="浏览" id="cm_upload_input"/>
                             </div>
                             <span class="errorMessage" style="" id="cm_upload"></span>
 
-                        <p id="fileSpeechTip" style="color:green;"></p>
-                        <p class="help-block">doc,docx,pdf,xls,xlsx,ppt,pptx</p>
+                            <p id="fileSpeechTip" style="color:green;"></p>
+
+                            <p class="help-block">doc,docx,pdf,xls,xlsx,ppt,pptx</p>
                         <%--<button type="submit" class="btn btn-default" id="btnUploadspeech">Upload</button>--%>
                     </div>
                 </div>
@@ -1396,6 +1374,7 @@ function ShowMessage(name,imgpath,content,bit)
 
                     <div class="container">
                         <p style="padding-right: 10px;color: red;" class="text-left">Or</p>
+
                         <div class="input-group input-group-sm">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-link" style="color: #999;"></span></span>
                             <input type="text" class="form-control" placeholder="Input A Link of Youtube File" id="txtVideoLink">
@@ -1404,7 +1383,7 @@ function ShowMessage(name,imgpath,content,bit)
                             <span class="input-group-addon"><span class="glyphicon glyphicon-file" style="color: #999;"></span></span>
                             <input type="text" class="form-control" placeholder="Input A Name for the Link" id="txtVideoName">
                         </div>
-                        <button type="button" class="btn btn-success btn-sm btn-block"  id="btnAddVideo">Add Video</button>
+                        <button type="button" class="btn btn-success btn-sm btn-block" id="btnAddVideo">Add Video</button>
                     </div>
                 </div>
                 <div class="tab-pane" id="filesysQuestionbank">
@@ -1425,14 +1404,15 @@ function ShowMessage(name,imgpath,content,bit)
                     </div>
                     <div style="text-align: center;">
                         <%--<input type="file" name="fileupload" id="fileQuestion" onchange="changeQuestionFile()"--%>
-                               <%--style="position:absolute; z-index:100; margin-left:-180px; font-size:35px;opacity:0;filter:alpha(opacity=0); margin-top:-5px;">--%>
+                            <%--style="position:absolute; z-index:100; margin-left:-180px; font-size:35px;opacity:0;filter:alpha(opacity=0); margin-top:-5px;">--%>
                         <%--<span style="padding-right: 10px;color: red;">Or</span><button type="button" class="btn btn-success">Select a Local File</button>--%>
-                        <div><input type="file" name="fileupload"  value="浏览" id="cm_upload_input_question"/>
-                        </div>
+                            <div><input type="file" name="fileupload" value="浏览" id="cm_upload_input_question"/>
+                            </div>
                         <span class="errorMessage" style="" id="cm_upload"></span>
 
                         <p id="fileQuestionTip" style="color:green;"></p>
-                        <p class="help-block">doc,docx,pdf</p>
+
+                            <p class="help-block">doc,docx,pdf</p>
                         <%--<button type="submit" class="btn btn-default" id="btnUploadquestion">Upload</button>--%>
                     </div>
 
@@ -1460,7 +1440,7 @@ function ShowMessage(name,imgpath,content,bit)
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">
-                    <h1 class = "Subject24">Questions</h1>
+                    <h1 class="Subject24">Questions</h1>
                 </h4>
 
             </div>
@@ -1471,6 +1451,7 @@ function ShowMessage(name,imgpath,content,bit)
                         1.Which of these network devices primarily functions at the OSI Network layer (layer 3)?
                     </div>
                     <span class="questionid"></span>
+
                     <div class="listanswer">
                         <li>
                             <label class="answerItem">
@@ -1496,6 +1477,7 @@ function ShowMessage(name,imgpath,content,bit)
                         2.Which of these network devices primarily functions at the OSI Network layer (layer 3)?
                     </div>
                     <span class="questionid"></span>
+
                     <div class="listanswer">
                         <li>
                             <label class="answerItem">
@@ -1533,7 +1515,7 @@ function ShowMessage(name,imgpath,content,bit)
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">
-                    <h1 class = "Subject24">Questions</h1>
+                    <h1 class="Subject24">Questions</h1>
                 </h4>
 
             </div>
@@ -1599,7 +1581,6 @@ function ShowMessage(name,imgpath,content,bit)
     </div>
     <!-- /.modal-dialog -->
 </div>
-
 
 
 <script type="text/javascript">
