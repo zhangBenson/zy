@@ -322,7 +322,7 @@
                 <s:if test="todayCourse">
                     <p class="rt_detail fl">
                         <a class="img"
-                           href="openClassSession.html?courseClass.id=<s:property value='todayCourse.classOnTheCorner.id' />"
+                           href="lecturerClass.html?courseClass.id=<s:property value='todayCourse.classOnTheCorner.id' />"
                            title="<s:text name="button.start.class"/>"><img
                                 src="<s:property value='todayCourse.logoUrl' />"/></a>
                         <a class="title" href="voaCourseBlog.html?course.id=<s:property value='todayCours.id' />"
@@ -355,19 +355,6 @@
         </ul>
     </div>
 
-    <div class="rtItem2 fl">
-        <h3 class="h3_title"><s:text name="title.courses.browsed"/></h3>
-        <ul>
-            <s:iterator value="browsedCourses">
-                <li>
-                    <a class="img" href="voaCourseBlog.html?course.id=<s:property value="course.id"/>"
-                       title="<s:property value="course.name"/>"><img src="<s:property value="course.logoUrl"/>"/></a>
-                    <a class="title" href="voaCourseBlog.html?course.id=<s:property value="course.id"/>"
-                       title="<s:property value="course.name"/>"><s:property value="course.name"/></a>
-                </li>
-            </s:iterator>
-        </ul>
-    </div>
 
     <s:if test="existUserFanses">
         <li class="rtItem3 fl" id="userFans_data">
@@ -451,17 +438,7 @@
     };
 
     function getVideoUrl(cid, type) {
-        if (type == 1) {
-            window.location.href = "openClassSession.html?courseClass.id=" + cid;
-        }
-        if (type == 2) {
-            window.location.href = "one2twoSession.html?courseClass.id=" + cid;
-        }
-        if (type == 3) {
-            window.location.href = "one2threeSession.html?courseClass.id=" + cid;
-        }
         if (type == 4) {
-//           window.location.href = "one2manySession.html?courseClass.id="+cid;
             window.location.href = "lecturerClass.html?courseClass.id=" + cid;
         }
     }

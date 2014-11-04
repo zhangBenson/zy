@@ -428,18 +428,6 @@
     };
 
     function getVideoUrl(cid, type) {
-        if (type == 1) {
-            window.location.href = "openClassSession.html?courseClass.id=" + cid;
-        }
-        if (type == 2) {
-            window.location.href = "one2twoSession.html?courseClass.id=" + cid;
-        }
-        if (type == 3) {
-            window.location.href = "one2threeSession.html?courseClass.id=" + cid;
-        }
-        if (type == 4) {
-//	       window.location.href = "one2manySession.html?courseClass.id="+cid;
-            window.location.href = "studentClass.html?courseClass.id=" + cid;
-        }
+        window.location.href = "studentClass.html?courseClass.id=" + cid;
     }
 </script>

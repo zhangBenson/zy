@@ -154,20 +154,7 @@
     }
 
     function getVideoUrl(cid) {
-        var type = <s:property value="course.teachingNum"/>;
-        if (type == 1) {
-            window.location.href = "openClassSession.html?courseClass.id=" + cid;
-        }
-        if (type == 2) {
-            window.location.href = "one2twoSession.html?courseClass.id=" + cid;
-        }
-        if (type == 3) {
-            window.location.href = "one2threeSession.html?courseClass.id=" + cid;
-        }
-        if (type == 4) {
-//           window.location.href = "one2manySession.html?courseClass.id="+cid;
-            window.location.href = "lecturerClass.html?courseClass.id=" + cid;
-        }
+        window.location.href = "lecturerClass.html?courseClass.id=" + cid;
     }
 
     $("#message_submit_btn").bind('click', function () {

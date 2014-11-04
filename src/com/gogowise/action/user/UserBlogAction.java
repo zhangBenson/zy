@@ -14,10 +14,8 @@ import com.gogowise.action.BasicAction;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.Pagination;
-import com.gogowise.rep.course.dao.BrowsedCourseDao;
 import com.gogowise.rep.course.dao.CommentsDao;
 import com.gogowise.rep.course.dao.CourseDao;
-import com.gogowise.rep.course.enity.BrowsedCourse;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.course.enity.CourseEvaluation;
 import com.gogowise.rep.course.enity.SeniorClassRoom;
@@ -38,11 +36,9 @@ public class UserBlogAction extends BasicAction {
     private BaseUserDao baseUserDao;
     private CourseDao courseDao;
     private CommentsDao commentsDao;
-    private BrowsedCourseDao browsedCourseDao;
     private BaseUser user;
     private List<Course> coursesAsTeacher;
     private List<CourseEvaluation> courseEvaluations;
-    private List<BrowsedCourse> browsedCourses = new ArrayList<>();
     private List<Comments> comments;
     private Comments comment;
     private Integer commentsNum;
@@ -81,7 +77,6 @@ public class UserBlogAction extends BasicAction {
 
         comments = commentsDao.findByCommentTo(userId, new Pagination(10));
         this.setCommentsNum(comments.size());
-        this.browsedCourses = browsedCourseDao.findByUserId(userId);
         return SUCCESS;
     }
 
@@ -190,21 +185,6 @@ public class UserBlogAction extends BasicAction {
         this.comment = comment;
     }
 
-    public BrowsedCourseDao getBrowsedCourseDao() {
-        return browsedCourseDao;
-    }
-
-    public void setBrowsedCourseDao(BrowsedCourseDao browsedCourseDao) {
-        this.browsedCourseDao = browsedCourseDao;
-    }
-
-    public List<BrowsedCourse> getBrowsedCourses() {
-        return browsedCourses;
-    }
-
-    public void setBrowsedCourses(List<BrowsedCourse> browsedCourses) {
-        this.browsedCourses = browsedCourses;
-    }
 
     public Integer getUserCoursesNum() {
         return this.getCoursesAsTeacher().size();
@@ -235,9 +215,6 @@ public class UserBlogAction extends BasicAction {
         return this.getCoursesAsTeacher() == null ? 0 : this.getCoursesAsTeacher().size();
     }
 
-    public Integer getBrowsedCoursesNum() {
-        return this.getBrowsedCourses() == null ? 0 : this.getBrowsedCourses().size();
-    }
 
     public Integer getCommentsNum() {
         return commentsNum;

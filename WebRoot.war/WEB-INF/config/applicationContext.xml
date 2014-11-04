@@ -70,7 +70,6 @@
                 <value>com.gogowise.rep.course.enity.CourseComment</value>
                 <value>com.gogowise.rep.course.enity.CourseResource</value>
                 <value>com.gogowise.rep.course.enity.CourseQuestion</value>
-                <value>com.gogowise.rep.course.enity.BrowsedCourse</value>
                 <value>com.gogowise.rep.org.enity.OrganizationComment</value>
                 <value>com.gogowise.rep.org.enity.OrganizationBaseUser</value>
                 <value>com.gogowise.rep.course.enity.CourseInviteStudent</value>

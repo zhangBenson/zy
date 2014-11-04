@@ -350,19 +350,6 @@ public class Course extends AbstractPersistence {
         return total;
     }
 
-    public String getStartCourseUrl() {
-        if (ONE_TO_ONE.equals(teachingNum)) {
-            return "openClassSession";
-        } else if (ONE_TO_TWO.equals(teachingNum)) {
-            return "one2twoSession";
-        } else if (ONE_TO_THR.equals(teachingNum)) {
-            return "one2threeSession";
-        } else if (ONE_TO_MANY.equals(teachingNum)) {
-            return "one2manySession";
-        }
-        return null;
-    }
-
     public BaseUser getPayee() {
         if (this.getOrganization() != null) {
             return this.getOrganization().getResponsiblePerson();

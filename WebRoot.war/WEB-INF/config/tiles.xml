@@ -102,7 +102,6 @@
     </definition>
 
 
-
     <definition name=".partyMessage" template="/jsp/gogowise/partyMessage.jsp">
     </definition>
 
@@ -372,22 +371,8 @@
         <put-attribute name="title" value="title.classroom"/>
         <put-attribute name="roomBody" value="/jsp/gogowise/openClass.jsp"/>
     </definition>
-    <definition name=".one2oneAnonySession" extends=".roomCenter">
-        <put-attribute name="title" value="title.classroom.one2one"/>
-        <put-attribute name="roomBody" value="/jsp/gogowise/one2oneAnony.jsp"/>
-    </definition>
-    <definition name=".one2twoSession" extends=".roomCenter">
-        <put-attribute name="title" value="title.classroom.one2two"/>
-        <put-attribute name="roomBody" value="/jsp/gogowise/one2twoSession.jsp"/>
-    </definition>
-    <definition name=".one2threeSession" extends=".roomCenter">
-        <put-attribute name="title" value="title.classroom.one2three"/>
-        <put-attribute name="roomBody" value="/jsp/gogowise/one2threeSession.jsp"/>
-    </definition>
-    <definition name=".one2manySession" extends=".roomCenter">
-        <put-attribute name="title" value="title.classroom.one2many"/>
-        <put-attribute name="roomBody" value="/jsp/gogowise/one2manySession.jsp"/>
-    </definition>
+
+
     <definition name=".roomStudent" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.classroom.one2many"/>
         <put-attribute name="contentBody" value="/jsp/www/room/roomStudent.jsp"/>

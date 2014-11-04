@@ -18,19 +18,7 @@
     };
 
     function getVideoUrl(cid, type) {
-        if (type == 1) {
-            window.location.href = "openClassSession.html?courseClass.id=" + cid;
-        }
-        if (type == 2) {
-            window.location.href = "one2twoSession.html?courseClass.id=" + cid;
-        }
-        if (type == 3) {
-            window.location.href = "one2threeSession.html?courseClass.id=" + cid;
-        }
-        if (type == 4) {
-//	       window.location.href = "one2manySession.html?courseClass.id="+cid;
-            window.location.href = "studentClass.html?courseClass.id=" + cid;
-        }
+        window.location.href = "studentClass.html?courseClass.id=" + cid;
     }
 </script>
 
@@ -193,270 +181,204 @@
 </div>
 
 <div class="col-sm-8">
-<div class="row">
-<div class="col-sm-8">
-    <div class="basePanelTextLeftAbsolute">
-        <h3 class="courseSubhead"><s:text name="usermenu.item.mycourses"/></h3>
-
-        <s:if test="existLatestCourse">
-            <s:iterator value="latestCourse" status="idx">
-                <s:if test="#idx.getIndex() == 0">
-                    <ul class="list-inline" style="background-color: #6ab600;color: #fff;border-radius: 4px;
-									                               padding-top: 3px;padding-bottom: 3px;">
-                        <li><a href="javascript:;">
-                            <s:property value="%{getText('class.count',{classOneTheCornerSequence})}"/>
-                        </a></li>
-
-                        <li><s:text name="courses.info.lecturer"/>:<s:a action="userBlog">
-                            <s:param name="user.id" value="teacher.id"/>
-                            <s:property value="teacher.nickName"/>
-                        </s:a></li>
-
-
-                        <li>
-
-                                <%-- <div id="remainSeconds" style="display:none">100000</div>
-                                <div id="remainTime" style="width: 134px;">Start:</div> --%>
-                            <div style="width: 260px;"><s:text name="courses.time.left"/>
-                                &nbsp;<b id="timeLeft<s:property value="#idx.index"/>"></b>
-                            </div>
-                            <script type="text/javascript">
-                                $("#timeLeft<s:property value="#idx.index"/>").countdown({
-                                    date: '<s:date name="classOnTheCorner.date" format="%{getText('date.formate.firstpage.course.startdate')}"/>',
-                                    onChange: function (event, timer) {
-                                    },
-                                    onComplete: function (event) {
-                                        $(this).html("<s:text name='course.in.progress'/>");
-                                    },
-                                    htmlTemplate: "<span><b>%{d}</b><s:text name="course.time.day"/><b> %{h}</b><s:text name="course.time.hour"/><b>%{m}</b><s:text name="course.time.minute"/><b>%{s}</b><s:text name="course.tine.second"/></span>",
-                                    leadingZero: true,
-                                    direction: "down"
-                                });
-                            </script>
-                        </li>
-                        <li style="margin-left: 25px;">
-                            <button type="button" class="btn btn-default btn-xs" data-toggle="modal"
-                                    data-target="#myModal"><s:text name="others.more"/></button>
-                        </li>
-                    </ul>
-
-                    <div class="media">
-                        <a class="pull-left" href="voaCourseBlog.html?course.id=<s:property value="id" />"
-                           title="<s:property value="name"/>">
-                            <div class="mycourseImg ">
-                                <img src="<s:property value="logoUrl" />"/>
-                            </div>
-                        </a>
-
-                        <div class="media-body">
-                            <h4 class="media-heading" style="color: #6ab600;"><s:property value="name"/></h4>
-                            <s:if test="description.length() > 50">
-                                <p></p><s:property value="description.substring(0,50)+'...'"/></p>
-                            </s:if>
-                            <s:else>
-                                <p><s:property value="description"/></p>
-                            </s:else>
-
-                        </div>
-                    </div>
-                    <p class="text-right"><s:date name="classOnTheCorner.date"
-                                                  format="%{getText('dateformat.forclass')}"/></p>
-
-                    <div class="progress progress-striped active">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0"
-                             aria-valuemax="100"
-                             style="width: <s:property value="100*(classOneTheCornerSequence/(classesNum*1.0))"/>%">
-                            <span class="sr-only"><s:property value="100*(classOneTheCornerSequence/(classesNum*1.0))"/>% Complete</span>
-                        </div>
-                    </div>
-                    <a class="btn btn-success btn-lg btn-block"
-                       href="javascript:getVideoUrl('<s:property value="classOnTheCorner.id"/>','<s:property value="teachingNum"/>');"><s:text name="button.start.class"/></a>
-                </s:if>
-            </s:iterator>
-        </s:if>
-        <s:else>
-            <ul class="list-inline"
-                style="background-color: #6ab600;color: #fff;border-radius: 4px; padding-top: 3px;padding-bottom: 3px;">
-                <div>
-                    <s:text name="personalcenter.no.course.message.head"/><a
-                        href="courseCenter.html"><strong> <s:property value="%{getText('frame.course.center')}"/> </strong></a><s:property value="%{getText('personalcenter.no.course.message.tail')}"/>
-                        <%--You have no course registered. Please choose your courses in <a href="courseSquare.html">Course Centre</a>.--%>
-                </div>
-            </ul>
-        </s:else>
-    </div>
-</div>
-<div class="col-sm-4">
-
-    <div class="basePanelTextLeftAbsolute">
-        <div style="float: right;padding-top: 25px;">
-            <%-- <button type="button" class="btn btn-success btn-xs">more</button>--%>
-            <s:if test="matterCount != 0">
-                <div id="matters_more"
-                     title="<s:property value="matterCount"/><s:text name="my.firstpage.new.matter.num"/>">
-                    <button type="button" class="btn btn-success btn-xs" data-toggle="modal"
-                            data-target="#myModal1"><s:text name="others.more"/></button>
-                </div>
-            </s:if>
-        </div>
-        <h3 class="courseSubhead"><s:text name="title.newest.notifications"/></h3>
-
-        <div class="thickline"></div>
-        <div>
-            <img src="images/user/icon_mail.png" class="centerIcon">
-
-            <div class="messageGreen1"><s:text name="label.course.message"/></div>
-        </div>
-        <div>
-            <img src="images/user/icon_mail.png" class="centerIcon">
-
-            <div class="messageGreen2"><s:text name="label.comment.message"/></div>
-        </div>
-        <div>
-            <img src="images/user/icon_mail.png" class="centerIcon">
-
-            <div class="messageGreen3"><s:text name="label.invitation.message"/></div>
-        </div>
-        <div>
-            <img src="images/user/icon_mail.png" class="centerIcon">
-
-            <div class="messageGreen4">Message 4</div>
-        </div>
-        <div>
-            <img src="images/user/icon_mail.png" class="centerIcon">
-
-            <div class="messageGreen5">Message 5</div>
-        </div>
-    </div>
-
-    <%--
-    <div class="basePanelTextLeftAbsolute">
-        <div  style="float: right;padding-top: 25px;">
-
-            <s:if test="matterCount != 0">
-                <div id="matters_more" title="<s:property value="matterCount"/><s:text name="my.firstpage.new.matter.num"/>">
-                    <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal1"><s:property value="matterCount"/></button>
-                </div>
-            </s:if>
-
-
-        </div>
-        <h3 class="courseSubhead"><s:text name="title.newest.matters"/></h3>
-
-
-        <div class="thickline"></div>
-
-        <div>
-            <div class="messageGreen1">
-                <s:text name="course.yesterday"/>
-                <div class="thickline"></div>
-                <s:if test="yesterdayCourse">
-                    <a class="img" href="voaCourseBlog.html?course.id=<s:property value='yesterdayCourse.id' />" title="<s:property value='yesterdayCourse.name' />"><img class="centerIcon" style="width:56px;height:56px;" src="<s:property value='yesterdayCourse.logoUrl' />"/></a>
-                    <a class="title" href="voaCourseBlog.html?course.id=<s:property value='yesterdayCourse.id' />" title="<s:property value='yesterdayCourse.name' />"><s:property value='yesterdayCourse.name' /></a>
-                    <br/>
-                    <span><s:date name="yesterdayCourse.classOnTheCorner.date" format="%{getText('dateformat.forclass')}"/></span>
-                </s:if>
-                <s:else>
-                    <p class="no_course"><s:text name="msg.nocourse"/></p>
-                </s:else>
-             </div>
-        </div>
-        <div>
-            <div class="messageGreen2">
-                <s:text name="course.today"/>
-                <div class="thickline"></div>
-                <s:if test="todayCourse">
-                    <a href="openClassSession.html?courseClass.id=<s:property value='todayCourse.classOnTheCorner.id' />" title="<s:text name="button.start.class"/>"><img class="centerIcon" style="width:56px;height:56px;" src="<s:property value='todayCourse.logoUrl' />"/></a>
-                    <a class="title" href="voaCourseBlog.html?course.id=<s:property value='todayCours.id' />" title="<s:property value='todayCourse.name' />"><s:property value='todayCourse.name' /></a>
-                    <br/>
-                    <span><s:date name="todayCourse.classOnTheCorner.date" format="%{getText('dateformat.forclass')}"/></span>
-
-                </s:if>
-                <s:else>
-                    <p class="no_course"><s:text name="msg.nocourse"/></p>
-                </s:else>
-            </div>
-
-        </div>
-        <div>
-            <div class="messageGreen3">
-                <s:text name="course.tomorrow"/>
-                <div class="thickline"></div>
-                <s:if test="tomorrowCourse">
-                    <a href="voaCourseBlog.html?course.id=<s:property value='tomorrowCourse.id' />" title="<s:property value='tomorrowCourse.name' />"><img class="centerIcon" style="width:56px;height:56px;" src="<s:property value='tomorrowCourse.logoUrl' />"/></a>
-                    <a class="title" href="voaCourseBlog.html?course.id=<s:property value='tomorrowCourse.id' />" title="<s:property value='tomorrowCourse.name' />"><s:property value='tomorrowCourse.name' /></a>
-                    <br/>
-                    <span><s:date name="tomorrowCourse.classOnTheCorner.date" format="%{getText('dateformat.forclass')}"/></span>
-                </s:if>
-                <s:else>
-                    <p class="no_course"><s:text name="msg.nocourse"/></p>
-                </s:else>
-            </div>
-        </div>
-    </div>
-    --%>
-
-</div>
-</div>
-
-<br/>
-
-<div class="basePanelTextLeft">
-    <h3 class="courseSubhead"><s:text name="recommend.school"/></h3>
-
-    <div class="thickline"></div>
-
     <div class="row">
-        <s:iterator value="latestOrgs" status="idx">
-            <s:if test="#idx.getIndex() < 3">
-                <div class="col-sm-4">
-                    <div class="recommendedSchool">
+        <div class="col-sm-8">
+            <div class="basePanelTextLeftAbsolute">
+                <h3 class="courseSubhead"><s:text name="usermenu.item.mycourses"/></h3>
+
+                <s:if test="existLatestCourse">
+                    <s:iterator value="latestCourse" status="idx">
+                        <s:if test="#idx.getIndex() == 0">
+                            <ul class="list-inline" style="background-color: #6ab600;color: #fff;border-radius: 4px;
+									                               padding-top: 3px;padding-bottom: 3px;">
+                                <li><a href="javascript:;">
+                                    <s:property value="%{getText('class.count',{classOneTheCornerSequence})}"/>
+                                </a></li>
+
+                                <li><s:text name="courses.info.lecturer"/>:<s:a action="userBlog">
+                                    <s:param name="user.id" value="teacher.id"/>
+                                    <s:property value="teacher.nickName"/>
+                                </s:a></li>
+
+
+                                <li>
+
+                                        <%-- <div id="remainSeconds" style="display:none">100000</div>
+                                        <div id="remainTime" style="width: 134px;">Start:</div> --%>
+                                    <div style="width: 260px;"><s:text name="courses.time.left"/>
+                                        &nbsp;<b id="timeLeft<s:property value="#idx.index"/>"></b>
+                                    </div>
+                                    <script type="text/javascript">
+                                        $("#timeLeft<s:property value="#idx.index"/>").countdown({
+                                            date: '<s:date name="classOnTheCorner.date" format="%{getText('date.formate.firstpage.course.startdate')}"/>',
+                                            onChange: function (event, timer) {
+                                            },
+                                            onComplete: function (event) {
+                                                $(this).html("<s:text name='course.in.progress'/>");
+                                            },
+                                            htmlTemplate: "<span><b>%{d}</b><s:text name="course.time.day"/><b> %{h}</b><s:text name="course.time.hour"/><b>%{m}</b><s:text name="course.time.minute"/><b>%{s}</b><s:text name="course.tine.second"/></span>",
+                                            leadingZero: true,
+                                            direction: "down"
+                                        });
+                                    </script>
+                                </li>
+                                <li style="margin-left: 25px;">
+                                    <button type="button" class="btn btn-default btn-xs" data-toggle="modal"
+                                            data-target="#myModal"><s:text name="others.more"/></button>
+                                </li>
+                            </ul>
+
+                            <div class="media">
+                                <a class="pull-left" href="voaCourseBlog.html?course.id=<s:property value="id" />"
+                                   title="<s:property value="name"/>">
+                                    <div class="mycourseImg ">
+                                        <img src="<s:property value="logoUrl" />"/>
+                                    </div>
+                                </a>
+
+                                <div class="media-body">
+                                    <h4 class="media-heading" style="color: #6ab600;"><s:property value="name"/></h4>
+                                    <s:if test="description.length() > 50">
+                                        <p></p><s:property value="description.substring(0,50)+'...'"/></p>
+                                    </s:if>
+                                    <s:else>
+                                        <p><s:property value="description"/></p>
+                                    </s:else>
+
+                                </div>
+                            </div>
+                            <p class="text-right"><s:date name="classOnTheCorner.date"
+                                                          format="%{getText('dateformat.forclass')}"/></p>
+
+                            <div class="progress progress-striped active">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0"
+                                     aria-valuemax="100"
+                                     style="width: <s:property value="100*(classOneTheCornerSequence/(classesNum*1.0))"/>%">
+                                    <span class="sr-only"><s:property value="100*(classOneTheCornerSequence/(classesNum*1.0))"/>% Complete</span>
+                                </div>
+                            </div>
+                            <a class="btn btn-success btn-lg btn-block"
+                               href="javascript:getVideoUrl('<s:property value="classOnTheCorner.id"/>','<s:property value="teachingNum"/>');"><s:text name="button.start.class"/></a>
+                        </s:if>
+                    </s:iterator>
+                </s:if>
+                <s:else>
+                    <ul class="list-inline"
+                        style="background-color: #6ab600;color: #fff;border-radius: 4px; padding-top: 3px;padding-bottom: 3px;">
                         <div>
-                            <a href="orgBlog.html?org.id=<s:property value="id"/>"
-                               title="<s:property value="schoolName"/>"><img src="<s:property value="logoUrl"/>"/></a>
+                            <s:text name="personalcenter.no.course.message.head"/><a
+                                href="courseCenter.html"><strong> <s:property value="%{getText('frame.course.center')}"/> </strong></a><s:property value="%{getText('personalcenter.no.course.message.tail')}"/>
+                                <%--You have no course registered. Please choose your courses in <a href="courseSquare.html">Course Centre</a>.--%>
                         </div>
-                        <br/>
+                    </ul>
+                </s:else>
+            </div>
+        </div>
+        <div class="col-sm-4">
+
+            <div class="basePanelTextLeftAbsolute">
+                <div style="float: right;padding-top: 25px;">
+                    <%-- <button type="button" class="btn btn-success btn-xs">more</button>--%>
+                    <s:if test="matterCount != 0">
+                        <div id="matters_more"
+                             title="<s:property value="matterCount"/><s:text name="my.firstpage.new.matter.num"/>">
+                            <button type="button" class="btn btn-success btn-xs" data-toggle="modal"
+                                    data-target="#myModal1"><s:text name="others.more"/></button>
+                        </div>
+                    </s:if>
+                </div>
+                <h3 class="courseSubhead"><s:text name="title.newest.notifications"/></h3>
+
+                <div class="thickline"></div>
+                <div>
+                    <img src="images/user/icon_mail.png" class="centerIcon">
+
+                    <div class="messageGreen1"><s:text name="label.course.message"/></div>
+                </div>
+                <div>
+                    <img src="images/user/icon_mail.png" class="centerIcon">
+
+                    <div class="messageGreen2"><s:text name="label.comment.message"/></div>
+                </div>
+                <div>
+                    <img src="images/user/icon_mail.png" class="centerIcon">
+
+                    <div class="messageGreen3"><s:text name="label.invitation.message"/></div>
+                </div>
+                <div>
+                    <img src="images/user/icon_mail.png" class="centerIcon">
+
+                    <div class="messageGreen4">Message 4</div>
+                </div>
+                <div>
+                    <img src="images/user/icon_mail.png" class="centerIcon">
+
+                    <div class="messageGreen5">Message 5</div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="basePanelTextLeft">
+        <h3 class="courseSubhead"><s:text name="recommend.school"/></h3>
+
+        <div class="thickline"></div>
+
+        <div class="row">
+            <s:iterator value="latestOrgs" status="idx">
+                <s:if test="#idx.getIndex() < 3">
+                    <div class="col-sm-4">
+                        <div class="recommendedSchool">
+                            <div>
+                                <a href="orgBlog.html?org.id=<s:property value="id"/>"
+                                   title="<s:property value="schoolName"/>"><img src="<s:property value="logoUrl"/>"/></a>
+                            </div>
+                            <br/>
                         <span><a href="orgBlog.html?org.id=<s:property value="id"/>"
                                  title="<s:property value="schoolName"/>"><s:property value="schoolName"/></a></span>
-                    </div>
-                </div>
-            </s:if>
-        </s:iterator>
-    </div>
-    <a href="schoolCenter.html">
-        <p class="text-right"><s:text name="others.more"/></p>
-    </a>
-</div>
-<br/>
-
-<div class="basePanelTextLeft">
-    <h3 class="courseSubhead"><s:text name="course.interested"/></h3>
-
-    <div class="thickline"></div>
-    <div class="row">
-        <s:iterator value="userLikeCourse" status="idx">
-            <s:if test="#idx.getIndex() < 6">
-                <div class="col-sm-4">
-                    <div class="recommended">
-                        <div>
-                            <a href="voaCourseBlog.html?course.id=<s:property value="id"/>"
-                               title="<s:property value="name"/>"><img src="<s:property value="logoUrl"/>"/></a>
                         </div>
-                        <br/>
-                        <a href="voaCourseBlog.html?course.id=<s:property value="id"/>"
-                           title="<s:property value="name"/>"><s:property value="name"/></a>
                     </div>
-                </div>
-                <s:if test="#idx.getCount() % 3 == 0">
-                    <br/>
                 </s:if>
-            </s:if>
-        </s:iterator>
+            </s:iterator>
+        </div>
+        <a href="schoolCenter.html">
+            <p class="text-right"><s:text name="others.more"/></p>
+        </a>
     </div>
-    <a href="#">
-        <p class="text-right"><s:text name="others.more"/></p>
-    </a>
-</div>
+    <br/>
+
+    <div class="basePanelTextLeft">
+        <h3 class="courseSubhead"><s:text name="course.interested"/></h3>
+
+        <div class="thickline"></div>
+        <div class="row">
+            <s:iterator value="userLikeCourse" status="idx">
+                <s:if test="#idx.getIndex() < 6">
+                    <div class="col-sm-4">
+                        <div class="recommended">
+                            <div>
+                                <a href="voaCourseBlog.html?course.id=<s:property value="id"/>"
+                                   title="<s:property value="name"/>"><img src="<s:property value="logoUrl"/>"/></a>
+                            </div>
+                            <br/>
+                            <a href="voaCourseBlog.html?course.id=<s:property value="id"/>"
+                               title="<s:property value="name"/>"><s:property value="name"/></a>
+                        </div>
+                    </div>
+                    <s:if test="#idx.getCount() % 3 == 0">
+                        <br/>
+                    </s:if>
+                </s:if>
+            </s:iterator>
+        </div>
+        <a href="#">
+            <p class="text-right"><s:text name="others.more"/></p>
+        </a>
+    </div>
 </div>
 </div>
 </div>

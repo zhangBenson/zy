@@ -226,33 +226,6 @@ public class ClassAction extends BasicAction {
     }
 
 
-    @Action(value = "openClassSession", results = {@Result(name = SUCCESS, type = "tiles", location = ".openClassSession")})
-    public String openClassSession() {
-        if (this.getCourseClass().getId() != null) {
-            courseClass = classDao.findById(this.getCourseClass().getId());
-            inviteFriendHref = getBasePath() + "/courseOnlineAudit.html?courseClass.id=" + courseClass.getId() + "&courseOnline=true";
-        }
-
-        ClassSession classSession = new ClassSession();
-        initPersonalSession(classSession);
-        XStream xstream = new XStream();
-        xstream.alias("Session", ClassSession.class);
-        OutputStream output = new ByteArrayOutputStream();
-        xstream.marshal(classSession, new CompactWriter(new OutputStreamWriter(output)));
-        this.setInitSeesionString(output.toString());
-        Integer type = getType();
-        initPersonalFlashPath(type);
-        if (this.flashPatch.equals("flash/Teacher_1_to_1.swf")) {
-            courseClass.setTeacherEntered(true);
-            this.setRoleType(1);
-        } else {
-            this.setRoleType(2);
-        }
-        classDao.persistAbstract(courseClass);
-        return SUCCESS;
-
-    }
-
     @Action(value = "updateRecord")
     public String updateRecord() {
         if (this.getCourseClass() != null) {

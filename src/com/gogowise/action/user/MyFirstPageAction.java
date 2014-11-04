@@ -18,9 +18,7 @@ import org.springframework.stereotype.Controller;
 import com.gogowise.action.BasicAction;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.rep.Pagination;
-import com.gogowise.rep.course.dao.BrowsedCourseDao;
 import com.gogowise.rep.course.dao.CourseDao;
-import com.gogowise.rep.course.enity.BrowsedCourse;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.system.MatterDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
@@ -40,13 +38,11 @@ public class MyFirstPageAction extends BasicAction {
     private Organization userOrganization;
     private CourseDao courseDao;
     private BaseUserDao baseUserDao;
-    private BrowsedCourseDao browsedCourseDao;
     private Course todayCourse;
     private Course tomorrowCourse;
     private Course yesterdayCourse;
     private List<Course> hotCourse;
     private List<Course> userLikeCourse;
-    private List<BrowsedCourse> browsedCourses = new ArrayList<BrowsedCourse>();
     private BaseUser baseUser;
     private Integer operaType;
     private Integer moreRequire = 0;
@@ -111,7 +107,6 @@ public class MyFirstPageAction extends BasicAction {
         userLikeCourse = courseDao.findlatestCourses(new Pagination(4));
 
         this.baseUser = baseUserDao.findById(this.getSessionUserId());
-        this.browsedCourses = browsedCourseDao.findByUserId(this.getSessionUserId());
 
         matterCount = matterDao.getMatterCount(this.getSessionUserEmail());
         return SUCCESS;
@@ -208,23 +203,6 @@ public class MyFirstPageAction extends BasicAction {
             return false;
         }
         return true;
-    }
-
-
-    public BrowsedCourseDao getBrowsedCourseDao() {
-        return browsedCourseDao;
-    }
-
-    public void setBrowsedCourseDao(BrowsedCourseDao browsedCourseDao) {
-        this.browsedCourseDao = browsedCourseDao;
-    }
-
-    public List<BrowsedCourse> getBrowsedCourses() {
-        return browsedCourses;
-    }
-
-    public void setBrowsedCourses(List<BrowsedCourse> browsedCourses) {
-        this.browsedCourses = browsedCourses;
     }
 
     public Integer getMoreRequire() {

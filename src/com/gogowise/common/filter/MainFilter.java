@@ -28,10 +28,6 @@ public class MainFilter implements Filter {
         NEED_LOGIN.add("/myfirstPage.html");
         NEED_LOGIN.add("/openPrivateChannel.html");
         NEED_LOGIN.add("/myForcastClass.html");
-        NEED_LOGIN.add("/openClassSession.html");
-        NEED_LOGIN.add("/one2twoSession.html");
-        NEED_LOGIN.add("/one2threeSession.html");
-        NEED_LOGIN.add("/one2manySession.html");
         NEED_LOGIN.add("/saveComment.html");
         NEED_LOGIN.add("/courseconfirm.html");
         NEED_LOGIN.add("/saveCourse.html");
