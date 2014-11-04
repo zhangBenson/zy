@@ -63,7 +63,6 @@
                 <value>com.gogowise.rep.org.enity.OrganizationHistory</value>
                 <value>com.gogowise.rep.course.enity.ClassRoom</value>
                 <value>com.gogowise.rep.course.enity.SeniorClassRoom</value>
-                <value>com.gogowise.rep.org.enity.ChangeResponserHistory</value>
                 <value>com.gogowise.rep.finance.enity.UserAccountInfo</value>
                 <value>com.gogowise.rep.finance.enity.ConsumptionRecord</value>
                 <value>com.gogowise.rep.finance.enity.ConsumptionOrder</value>

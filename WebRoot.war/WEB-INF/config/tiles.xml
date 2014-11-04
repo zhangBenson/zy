@@ -103,10 +103,6 @@
 
 
 
-    <definition name=".listAllContent" extends=".basic">
-        <put-attribute name="right" value="/jsp/gogowise/listAllContent.jsp"/>
-    </definition>
-
     <definition name=".partyMessage" template="/jsp/gogowise/partyMessage.jsp">
     </definition>
 
@@ -145,10 +141,6 @@
         <put-attribute name="contentBody" value="/jsp/gogowise/news/announceReader.jsp"/>
     </definition>
 
-    <definition name=".liveTrailerRead" extends=".bodyCenter">
-        <put-attribute name="title" value="title.of.news.center"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/news/liveTrailerReader.jsp"/>
-    </definition>
 
     <definition name=".courseEventRead" extends=".bodyCenter">
         <put-attribute name="title" value="title.of.news.center"/>
@@ -158,11 +150,6 @@
         <put-attribute name="title" value="title.of.news.center"/>
         <put-attribute name="contentBody" value="/jsp/gogowise/news/showEventsReader.jsp"/>
     </definition>
-    <definition name=".liveChannelEventRead" extends=".bodyCenter">
-        <put-attribute name="title" value="title.of.news.center"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/news/liveChannelEventsReader.jsp"/>
-    </definition>
-
 
     <definition name=".higSecOrgCreateView" extends=".basic">
         <put-attribute name="title" value="title.admin.system"/>
@@ -196,9 +183,7 @@
     <definition name=".groupCompetition" extends=".userCenter">
         <put-attribute name="contentRight" value="/jsp/gogowise/orgernize.jsp"/>
     </definition>
-    <definition name=".live" extends=".userCenter">
-        <put-attribute name="contentRight" value="/jsp/gogowise/living.jsp"/>
-    </definition>
+
     <definition name=".forcastComptitionSession" extends=".userCenter">
         <put-attribute name="contentRight" value="/jsp/gogowise/forcast.jsp"/>
     </definition>
@@ -282,22 +267,6 @@
         <put-attribute name="title" value="title.modify.password"/>
         <put-attribute name="contentBody" value="/jsp/www/user/rePwdSuccess.jsp"/>
     </definition>
-    <!--<definition name=".findEmailUser" extends=".bodyCenter">-->
-    <!--<put-attribute name="title" value="title.modify.password"></put-attribute>-->
-    <!--<put-attribute name="contentBody" value="/jsp/gogowise/enterRePassword.jsp"/>-->
-    <!--</definition>-->
-    <!--<definition name=".yzRePasswordCode" extends=".bodyCenter">-->
-    <!--<put-attribute name="title" value="title.modify.password"></put-attribute>-->
-    <!--<put-attribute name="contentBody" value="/jsp/gogowise/reWritePassword.jsp"/>-->
-    <!--</definition>-->
-    <!--<definition name=".reWritePassword" extends=".bodyCenter">-->
-    <!--<put-attribute name="title" value="title.modify.password"></put-attribute>-->
-    <!--<put-attribute name="contentBody" value="/jsp/gogowise/rePwdSuccess.jsp"/>-->
-    <!--</definition>-->
-    <definition name=".initRecomond" extends=".userCenter">
-        <put-attribute name="title" value="title.invite.friend"/>
-        <put-attribute name="contentRight" value="/jsp/gogowise/recomondFriend.jsp"/>
-    </definition>
 
     <definition name=".initUpdate_teacher" extends=".userCenter">
         <put-attribute name="title" value="title.account.setting"/>
@@ -318,22 +287,12 @@
         <put-attribute name="title" value="title.org.creation"/>
         <put-attribute name="right" value="/jsp/gogowise/showCreateMsg.jsp"/>
     </definition>
-    <definition name=".initRecomendResponser" extends=".basic">
-        <put-attribute name="title" value="title.org.creation"/>
-        <put-attribute name="right" value="/jsp/gogowise/recomendResponser.jsp"/>
-    </definition>
 
     <definition name=".orgLogoProcess" template="/jsp/www/org/orgLogoProcess.jsp">
         <put-attribute name="title" value="title.logo.upload"/>
     </definition>
 
     <!-- =====================User related action end=========================== -->
-
-
-    <definition name=".recomendResponser" extends=".basic">
-        <put-attribute name="title" value="title.org.creation"/>
-        <put-attribute name="right" value="/jsp/gogowise/recomendResponser.jsp"/>
-    </definition>
 
     <definition name=".identityConfirmation" extends=".bodyCenter">
         <put-attribute name="title" value="title.course.search"/>
@@ -378,12 +337,6 @@
         <put-attribute name="right" value="/jsp/gogowise/showResSuccessMsg.jsp"/>
     </definition>
 
-    <definition name=".changeResponser" extends=".basic">
-        <put-attribute name="right" value="/jsp/gogowise/changeResponser.jsp"/>
-    </definition>
-    <definition name=".changeResponserSuccess" extends=".basic">
-        <put-attribute name="right" value="/jsp/gogowise/showChangedSuccessMsg.jsp"/>
-    </definition>
 
     <definition name=".ageClass" extends=".userCenter">
         <put-attribute name="title" value="title.age.course"/>
@@ -452,18 +405,6 @@
         <put-attribute name="title" value="title.interview.video.session"/>
         <put-attribute name="contentBody" value="/jsp/gogowise/InterviewVideoSession.jsp"/>
     </definition>
-    <definition name=".orgMeetingOne2one" extends=".roomCenter">
-        <put-attribute name="title" value="org.virtual.teaching.room.title"/>
-        <put-attribute name="roomBody" value="/jsp/gogowise/org/meetingOne2one.jsp"/>
-    </definition>
-    <definition name=".orgMeetingOne2two" extends=".roomCenter">
-        <put-attribute name="title" value="org.virtual.teaching.room.title"/>
-        <put-attribute name="roomBody" value="/jsp/gogowise/org/meetingOne2two.jsp"/>
-    </definition>
-    <definition name=".orgMeetingOne2three" extends=".roomCenter">
-        <put-attribute name="title" value="org.virtual.teaching.room.title"/>
-        <put-attribute name="roomBody" value="/jsp/gogowise/org/meetingOne2three.jsp"/>
-    </definition>
 
     <definition name=".voaCourseBlog" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.course.blog"/>
@@ -528,8 +469,6 @@
     </definition>
     <definition name=".coursesInTypes" template="/jsp/gogowise/course/courseInTypes.jsp">
     </definition>
-    <definition name=".moreUserFans" template="/jsp/gogowise/myFirstPage/moreUserFans.jsp">
-    </definition>
     <definition name=".classesList" template="/jsp/gogowise/course/courseCreate/classesList.jsp">
     </definition>
 
@@ -546,19 +485,7 @@
 
     <!--  ===================== org  location ==============================================  -->
 
-    <definition name=".orgIdentityConfirm" extends=".bodyCenter">
-        <put-attribute name="title" value="title.organization.league"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/org/orgLeague/orgIdentityConfirmation.jsp"/>
-    </definition>
 
-    <definition name=".go2FirstStep" extends=".bodyCenter">
-        <put-attribute name="title" value="title.organization.league"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/org/orgLeague/firstStep.jsp"/>
-    </definition>
-    <definition name=".go2SecondStep" extends=".bodyCenter">
-        <put-attribute name="title" value="title.organization.league"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/org/orgLeague/secondStep.jsp"/>
-    </definition>
     <definition name=".quickReg" extends=".bodyCenter">
         <put-attribute name="title" value="title.organization.league"/>
         <put-attribute name="contentBody" value="/jsp/gogowise/org/orgLeague/quickReg.jsp"/>
@@ -566,14 +493,6 @@
     <definition name=".quickRegPreview" extends=".bodyCenter">
         <put-attribute name="title" value="title.organization.league"/>
         <put-attribute name="contentBody" value="/jsp/gogowise/org/orgLeague/quickRegPreview.jsp"/>
-    </definition>
-    <definition name=".go2ThirdStep" extends=".bodyCenter">
-        <put-attribute name="title" value="title.organization.league"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/org/orgLeague/thirdStep.jsp"/>
-    </definition>
-    <definition name=".go2ForthStep" extends=".bodyCenter">
-        <put-attribute name="title" value="title.organization.league"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/org/orgLeague/fourthStep.jsp"/>
     </definition>
 
 
@@ -700,9 +619,6 @@
     </definition>
 
 
-    <!-- 直播 Onlive -->
-
-
     <!-- 图像处理的页面 -->
     <definition name=".userPortraitCrop" template="/jsp/gogowise/user/userPortraitCrop.jsp">
         <put-attribute name="title" value="title.image.upload"/>
@@ -764,18 +680,6 @@
 
 
     <!-- search related tiles end -->
-
-
-    <!-- download related tiles begin -->
-
-    <definition name=".gogowise4android" extends=".bodyCenter">
-        <put-attribute name="title" value="download.center.title"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/download/gogowise4android.jsp"/>
-    </definition>
-    <definition name=".remoteEyeDownload" extends=".bodyCenter">
-        <put-attribute name="title" value="download.center.title"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/download/remoteEyeDownload.jsp"/>
-    </definition>
 
 
     <!-- download related tiles end -->

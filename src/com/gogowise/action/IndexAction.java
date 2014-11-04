@@ -49,13 +49,7 @@ public class IndexAction extends BasicAction {
      */
     private static final long serialVersionUID = -2512666132359957051L;
 
-    @Action(value = "listAllContent", results = { @Result(name = SUCCESS, type = "tiles", location = ".listAllContent") })
-    public String listAllContent() throws Exception {
-
-        return SUCCESS;
-    }
-
-    @Action(value = "deployBeta", results = { @Result(name = SUCCESS, type = "tiles", location = ".listAllContent") })
+    @Action(value = "deployBeta", results = {@Result(name = SUCCESS, type = "tiles", location = ".listAllContent")})
     public String deployBeta() throws Exception {
 
         String filePath = "deploy.bat";
@@ -65,7 +59,7 @@ public class IndexAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "viewLog", results = { @Result(name = SUCCESS, type = "tiles", location = ".listAllContent") })
+    @Action(value = "viewLog", results = {@Result(name = SUCCESS, type = "tiles", location = ".listAllContent")})
     public String viewLog() throws Exception {
 
         logInfo = loadLog("D:\\dev\\WorkSpace\\gogowise\\log\\buildLog.txt");
@@ -109,7 +103,7 @@ public class IndexAction extends BasicAction {
         this.logInfo = logInfo;
     }
 
-    @Action(value = "index", results = { @Result(name = SUCCESS, type = "tiles", location = ".index") })
+    @Action(value = "index", results = {@Result(name = SUCCESS, type = "tiles", location = ".index")})
     public String index() {
 
         //        if("en_US".equals(language)){
@@ -123,7 +117,7 @@ public class IndexAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "getMoreCourse", results = { @Result(name = SUCCESS, type = "tiles", location = ".indexMoreCourse") })
+    @Action(value = "getMoreCourse", results = {@Result(name = SUCCESS, type = "tiles", location = ".indexMoreCourse")})
     public String getMoreCourse() {
 
         pagination.setPageSize(10);
@@ -134,13 +128,11 @@ public class IndexAction extends BasicAction {
     }
 
 
-
-    @Action(value = "FAQ", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".FAQ") })
+    @Action(value = "FAQ", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".FAQ")})
     public String FAQ() {
 
         return SUCCESS;
     }
-
 
 
     public Integer getCoursesNum() {

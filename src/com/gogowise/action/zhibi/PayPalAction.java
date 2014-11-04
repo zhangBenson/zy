@@ -1,4 +1,4 @@
-package com.gogowise.action.paypal;
+package com.gogowise.action.zhibi;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.common.utils.Constants;
@@ -35,7 +35,6 @@ import org.springframework.util.StringUtils;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.URL;
@@ -46,6 +45,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Enumeration;
 import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Ji JianHui
@@ -56,8 +56,7 @@ import java.util.List;
 @Controller
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 @Namespace(BasicAction.BASE_NAME_SPACE)
-public class PayPalAction extends BasicAction
-{
+public class PayPalAction extends BasicAction {
     protected static Logger logger = LogManager.getLogger(PayPalAction.class.getName());
 
     private String payStatus;
@@ -91,7 +90,7 @@ public class PayPalAction extends BasicAction
     private BaseUserDao baseUserDao;
 
     @Resource
-    private  MatterDao matterDao;
+    private MatterDao matterDao;
 
     @Resource
     private ConsumptionOrderDao consumptionOrderDao;
@@ -112,7 +111,6 @@ public class PayPalAction extends BasicAction
     private Course course;
 
 
-
     @Resource
     private ShoppingCartService shoppingCartService;
 
@@ -122,20 +120,18 @@ public class PayPalAction extends BasicAction
 
     private BaseUser user;*/
 
-    private static final  String  COMPLETED ="completed";
+    private static final String COMPLETED = "completed";
 
 
-    @Action(value = "SetExpressCheckout", results={@Result(name=SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params={} )} )
-    public String SetExpressCheckout()
-    {
+    @Action(value = "SetExpressCheckout", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {})})
+    public String SetExpressCheckout() {
 
-        return  SUCCESS;
+        return SUCCESS;
     }
 
-    @Action(value = "payFinish", results = {@Result(name = SUCCESS,type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "schoolCenter"} ),
-            @Result(name = "Cancel", type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "orgBlog","org.id", ""})})
-    public String payFinish()
-    {
+    @Action(value = "payFinish", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "schoolCenter"}),
+            @Result(name = "Cancel", type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "orgBlog", "org.id", ""})})
+    public String payFinish() {
         System.err.println("Begin");
         System.err.println(tx);
         System.err.println("End");
@@ -143,26 +139,19 @@ public class PayPalAction extends BasicAction
     }
 
     @Action(value = "ipn")
-    public void ipn()
-    {
-        try
-        {
+    public void ipn() {
+        try {
 
 
             //从 PayPal 出读取 POST 信息同时添加变量„cmd‟来验证ipn信息是否是正确的ipn
             HttpServletRequest request = ServletActionContext.getRequest();
 
 
-
             Enumeration en = request.getParameterNames();
             String str = "cmd=_notify-validate";
-            while(en.hasMoreElements())
-            {
-                String paramName = (String)en.nextElement();
+            while (en.hasMoreElements()) {
+                String paramName = (String) en.nextElement();
                 String paramValue = request.getParameter(paramName);
-
-
-
 
 
                 str = str + "&" + paramName + "=" + URLEncoder.encode(paramValue, "iso-8859-1");
@@ -177,7 +166,7 @@ public class PayPalAction extends BasicAction
 
             URLConnection uc = u.openConnection();
             uc.setDoOutput(true);
-            uc.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
+            uc.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 
             uc.connect();
 
@@ -186,7 +175,7 @@ public class PayPalAction extends BasicAction
             pw.close();
 
             //接受 PayPal 对 IPN 回发的回复信息
-            BufferedReader in= new BufferedReader(new InputStreamReader(uc.getInputStream()));
+            BufferedReader in = new BufferedReader(new InputStreamReader(uc.getInputStream()));
             String res = in.readLine();
 
             in.close();
@@ -209,9 +198,8 @@ public class PayPalAction extends BasicAction
 
             String courseID = request.getParameter("courseID");
 
-            BaseUser user =null;
-            if( res.equals("VERIFIED") )
-            {
+            BaseUser user = null;
+            if (res.equals("VERIFIED")) {
                 //检查付款状态
                 //检查 txn_id 是否已经处理过
                 //检查 receiver_email 是否是您的 PayPal 账户中的 EMAIL 地址
@@ -219,21 +207,18 @@ public class PayPalAction extends BasicAction
                 //处理其他数据，包括写数据库
 
 
-                boolean statu =COMPLETED.equals(paymentStatus.toLowerCase());
+                boolean statu = COMPLETED.equals(paymentStatus.toLowerCase());
 
-                PaypalDetails paypalDetails =null;
+                PaypalDetails paypalDetails = null;
 
-                if(StringUtils.hasText(txnId)){
+                if (StringUtils.hasText(txnId)) {
 
                     paypalDetails = paypalService.findByTxnId(txnId);
 
                 }
 
 
-
-
-
-                if(statu&&null==paypalDetails){
+                if (statu && null == paypalDetails) {
 
                     PaypalDetailsSpecification paypalDetailsSpecification = new PaypalDetailsSpecification();
 
@@ -254,11 +239,9 @@ public class PayPalAction extends BasicAction
                     paypalDetailsSpecification.setReceiverEmail(receiverEmail);
 
 
-
-
                     user = baseUserDao.findById(new Integer(userID));
                     paypalDetailsSpecification.setUserId(userID);
-                    if(null!=user){
+                    if (null != user) {
 
                         paypalDetailsSpecification.setNickName(user.getNickName());
                     }
@@ -266,21 +249,14 @@ public class PayPalAction extends BasicAction
                     paypalDetailsSpecification.setCourseId(courseID);
 
 
-
-
-
-
-
-
-
                     paypalService.savePaypalDetails(paypalDetailsSpecification);
 
                     // *********************************************添加课程**********************************************
 
 
-                    Course course=null;
+                    Course course = null;
 
-                    if(StringUtils.hasText(courseID)){
+                    if (StringUtils.hasText(courseID)) {
                         course = courseDao.findById(new Integer(courseID));
                     }
 
@@ -290,11 +266,10 @@ public class PayPalAction extends BasicAction
 
                     consumptionOrderDao.purchaseCourse(user, course);
 
-                    sendPurchaseEmail(course,user);
+                    sendPurchaseEmail(course, user);
 
                     Matter matter = new Matter(Calendar.getInstance(), this.getSessionNickName() + (new SimpleDateFormat("yyyyddMMHHmmssms").format(Calendar.getInstance().getTime())), Matter.MATTER_COURSE_REGISTER, baseUserDao.findByEmail(this.getSessionUserEmail()), null, course.getTeacherEmail() == (null) ? course.getTeacher().getEmail() : course.getTeacherEmail(), course, false);
                     matterDao.persistAbstract(matter);
-
 
 
                     logger.info("paypal & course is Success!!!!!!!!!!!!!!!!!!!!!!!!!! ");
@@ -302,23 +277,16 @@ public class PayPalAction extends BasicAction
                 }
 
 
-
-            }
-            else if( res.equals("INVALID") )
-            {
+            } else if (res.equals("INVALID")) {
                 //非法信息，可以将此记录到您的日志文件中以备调查
 
                 logger.error("paypal information save recond is INVALID.....");
-            }
-            else
-            {
+            } else {
                 //处理其他错误
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
-            logger.error("paypal information save recond is INVALID....."+  e.getMessage());
+            logger.error("paypal information save recond is INVALID....." + e.getMessage());
         }
         // return "failed";
 
@@ -327,14 +295,13 @@ public class PayPalAction extends BasicAction
     }
 
 
-
     private void sendPurchaseEmail(Course course, BaseUser user) {
 
         String filePath = UploadUtils.getContractFilePath(this.getSessionUserId());
 
         //send email to student
-        String tile = this.getText("course.pdf.title", new String[] { user.getNickName(), course.getName() });
-        String content = this.getText("course.pdf.content", new String[] { user.getNickName(), course.getName() });
+        String tile = this.getText("course.pdf.title", new String[]{user.getNickName(), course.getName()});
+        String content = this.getText("course.pdf.content", new String[]{user.getNickName(), course.getName()});
 
         try {
             //PdfUtil.createCourseContract(filePath, course, baseUserDao.findById(getSessionUserId()));
@@ -342,30 +309,29 @@ public class PayPalAction extends BasicAction
             EmailUtil.sendMail(user.getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
 
             //send email to teacher
-            tile = this.getText("course.pdf.title", new String[] { user.getNickName(), course.getName() });
+            tile = this.getText("course.pdf.title", new String[]{user.getNickName(), course.getName()});
             if (course.getOrganization() != null) {
-                EmailUtil.sendMail(course.getOrganization().getResponsiblePerson().getEmail(), tile, content, new String[] { "contract.pdf" }, new String[] { filePath });
+                EmailUtil.sendMail(course.getOrganization().getResponsiblePerson().getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
             } else {
-                content = this.getText("course.pdf.content", new String[] { course.getTeacher().getNickName() });
-                EmailUtil.sendMail(course.getTeacher().getEmail(), tile, content, new String[] { "contract.pdf" }, new String[] { filePath });
+                content = this.getText("course.pdf.content", new String[]{course.getTeacher().getNickName()});
+                EmailUtil.sendMail(course.getTeacher().getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
             }
-            EmailUtil.sendMail(Constants.COURSE_CONFIRM_EMAIL, tile, content, new String[] { "contract.pdf" }, new String[] { filePath });
+            EmailUtil.sendMail(Constants.COURSE_CONFIRM_EMAIL, tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
 
-    @Action(value = "addShoppingCart", results={@Result(name=SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params={} )} )
-    public String addShoppingCart()
-    {
+    @Action(value = "addShoppingCart", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {})})
+    public String addShoppingCart() {
 
 
         if (this.getSessionUserId() == null) {
             return LOGIN;
         }
 
-        Integer id =course.getId();
+        Integer id = course.getId();
 
 
         shoppingCart = new ShoppingCart();
@@ -374,7 +340,7 @@ public class PayPalAction extends BasicAction
         shoppingCart.setUser(user);
 
 
-        List<CartItem> list =new ArrayList<CartItem>();
+        List<CartItem> list = new ArrayList<CartItem>();
 
         CartItem cartItem = new CartItem();
 
@@ -392,9 +358,8 @@ public class PayPalAction extends BasicAction
 
         shoppingCartService.saveShoppingCar(shoppingCart);
 
-        return  SUCCESS;
+        return SUCCESS;
     }
-
 
 
     public String getPayStatus() {
