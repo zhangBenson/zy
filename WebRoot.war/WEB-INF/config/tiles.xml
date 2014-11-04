@@ -102,40 +102,9 @@
     </definition>
 
 
-    <definition name=".competitionHome" extends=".simple">
-        <put-attribute name="right" value="/jsp/gogowise/competitionindex.jsp"/>
-    </definition>
-    <definition name=".singUp" extends=".simple">
-        <put-attribute name="right" value="/jsp/gogowise/signup.jsp"/>
-    </definition>
-
-
-    <definition name=".competition" extends=".basic">
-        <put-attribute name="right" value="/jsp/gogowise/createCompition.jsp"/>
-    </definition>
-
-    <definition name=".subject" extends=".basic">
-        <put-attribute name="right" value="/jsp/gogowise/createSubject.jsp"/>
-    </definition>
-
-    <definition name=".competitionPhase" extends=".basic">
-        <put-attribute name="right" value="/jsp/gogowise/competitionPhase.jsp"/>
-    </definition>
-
-    <definition name=".listCompetitionPhase" extends=".basic">
-        <put-attribute name="right" value="/jsp/gogowise/listCompetition.jsp"/>
-    </definition>
-
-    <definition name=".competitionSession" extends=".basic">
-        <put-attribute name="right" value="/jsp/gogowise/competitionSession.jsp"/>
-    </definition>
 
     <definition name=".listAllContent" extends=".basic">
         <put-attribute name="right" value="/jsp/gogowise/listAllContent.jsp"/>
-    </definition>
-
-    <definition name=".openSession" extends=".simple">
-        <put-attribute name="right" value="/jsp/gogowise/openSession.jsp"/>
     </definition>
 
     <definition name=".partyMessage" template="/jsp/gogowise/partyMessage.jsp">
@@ -223,11 +192,6 @@
     <definition name=".error" template="/jsp/gogowise/error.jsp">
         <put-attribute name="title" value="error.title"/>
     </definition>
-
-    <definition name=".competitionAge" extends=".userCenter">
-        <put-attribute name="contentRight" value="/jsp/gogowise/competitionAge.jsp"/>
-    </definition>
-
 
     <definition name=".groupCompetition" extends=".userCenter">
         <put-attribute name="contentRight" value="/jsp/gogowise/orgernize.jsp"/>
@@ -450,10 +414,7 @@
 
 
     <!-- =====================the video tiles=========================== -->
-    <definition name=".openClassSession" extends=".roomCenter">
-        <put-attribute name="title" value="title.classroom"/>
-        <put-attribute name="roomBody" value="/jsp/gogowise/openSession.jsp"/>
-    </definition>
+
     <definition name=".openClass" extends=".roomCenter">
         <put-attribute name="title" value="title.classroom"/>
         <put-attribute name="roomBody" value="/jsp/gogowise/openClass.jsp"/>
