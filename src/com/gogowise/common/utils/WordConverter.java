@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 
 public class WordConverter {
     private static final Logger logger = LogManager.getLogger(WordConverter.class);
-    public static final String TITLE_REGEX = "([0-9]*)\\.(.)*";
+    public static final String TITLE_REGEX = "([0-9]*)\\.(.*)";
     public static final String ITEM_REG = "\\(([0-9]*)\\)";
 
 
@@ -108,20 +108,20 @@ public class WordConverter {
             this.currentQuestion = new Question();
             this.questionMap.put(titleMatcher.group(1), currentQuestion);
             this.questions.add(currentQuestion);
-            this.currentQuestion.setDescription(titleMatcher.group(2));
+            this.currentQuestion.setDescription(StringUtils.trim(titleMatcher.group(2)));
         } else {
             Matcher itemMatcher = Pattern.compile(ITEM_REG).matcher(line);
             List<String> indexes = new ArrayList<>();
             while (itemMatcher.find()) {
-                indexes.add(itemMatcher.group(1));
+                indexes.add(StringUtils.trim(itemMatcher.group(1)));
             }
             for (int i = 0; i < indexes.size(); i++) {
                 QuestionItem item = new QuestionItem();
                 item.setIndexValue(indexes.get(i));
                 if (i + 1 == indexes.size()) {
-                    item.setDescription(StringUtils.substring(line, StringUtils.indexOf(line, "(" + indexes.get(i) + ")") + 3).replaceAll("\\(\\s+\\)", ""));
+                    item.setDescription(StringUtils.trim(StringUtils.substring(line, StringUtils.indexOf(line, "(" + indexes.get(i) + ")") + 3).replaceAll("\\(\\s+\\)", "")));
                 } else {
-                    item.setDescription(StringUtils.substring(line, StringUtils.indexOf(line, "(" + indexes.get(i) + ")") + 3, StringUtils.indexOf(line, "(" + indexes.get(i + 1) + ")")));
+                    item.setDescription(StringUtils.trim(StringUtils.substring(line, StringUtils.indexOf(line, "(" + indexes.get(i) + ")") + 3, StringUtils.indexOf(line, "(" + indexes.get(i + 1) + ")"))));
                 }
                 currentQuestion.addQuestionItems(item);
             }
