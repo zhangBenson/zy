@@ -1,4 +1,4 @@
-package com.gogowise.rep.system;
+package com.gogowise.rep.system.dao;
 
 import com.gogowise.rep.ModelDao;
 import com.gogowise.rep.system.enity.Matter;
@@ -14,6 +14,8 @@ import java.util.List;
  */
 public interface MatterDao extends ModelDao<Matter> {
     public List<Matter> findByToEmail(String toEmail);
+
     public Integer getMatterCount(String toEmail);
+
     public Matter findBySerialNo(String serialNo);
 }

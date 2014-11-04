@@ -56,24 +56,19 @@
             <list>
                 <value>com.gogowise.rep.user.enity.BaseUser</value>
                 <value>com.gogowise.rep.user.enity.Comments</value>
-                <value>com.gogowise.rep.user.enity.UserRelationship</value>
                 <value>com.gogowise.rep.course.enity.Course</value>
                 <value>com.gogowise.rep.course.enity.CourseClass</value>
                 <value>com.gogowise.rep.org.enity.Organization</value>
-                <value>com.gogowise.rep.org.enity.OrganizationHistory</value>
-                <value>com.gogowise.rep.course.enity.ClassRoom</value>
                 <value>com.gogowise.rep.course.enity.SeniorClassRoom</value>
                 <value>com.gogowise.rep.finance.enity.UserAccountInfo</value>
                 <value>com.gogowise.rep.finance.enity.ConsumptionRecord</value>
                 <value>com.gogowise.rep.finance.enity.ConsumptionOrder</value>
-                <value>com.gogowise.rep.course.enity.CourseEvaluation</value>
                 <value>com.gogowise.rep.course.enity.CourseComment</value>
                 <value>com.gogowise.rep.course.enity.CourseResource</value>
                 <value>com.gogowise.rep.course.enity.CourseQuestion</value>
                 <value>com.gogowise.rep.org.enity.OrganizationComment</value>
                 <value>com.gogowise.rep.org.enity.OrganizationBaseUser</value>
                 <value>com.gogowise.rep.course.enity.CourseInviteStudent</value>
-                <value>com.gogowise.rep.course.enity.CourseReservation</value>
                 <value>com.gogowise.rep.course.enity.CourseRecommend</value>
                 <value>com.gogowise.rep.user.enity.BaseUserRoleType</value>
                 <value>com.gogowise.rep.user.enity.RoleType</value>
@@ -81,7 +76,6 @@
                 <value>com.gogowise.rep.system.enity.Matter</value>
                 <value>com.gogowise.rep.user.enity.UserMatters</value>
                 <value>com.gogowise.rep.course.enity.CourseNewEvent</value>
-                <value>com.gogowise.rep.system.enity.FeedBackInfo</value>
                 <value>com.gogowise.rep.course.enity.CourseMaterial</value>
                 <value>com.gogowise.rep.course.enity.Question</value>
                 <value>com.gogowise.rep.course.enity.QuestionItem</value>

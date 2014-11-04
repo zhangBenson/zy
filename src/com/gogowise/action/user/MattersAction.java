@@ -1,11 +1,10 @@
 package com.gogowise.action.user;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.rep.system.MatterDao;
+import com.gogowise.rep.system.dao.MatterDao;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.course.enity.CourseClass;
-import com.gogowise.rep.course.enity.CourseReservation;
 import com.gogowise.rep.system.enity.Matter;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.common.utils.Constants;
@@ -33,7 +32,6 @@ public class MattersAction extends BasicAction{
     private List<Matter> courseMessageMatters=new ArrayList<Matter>();
     private List<Matter> orgMeetingMatters=new ArrayList<Matter>();
     private List<Matter> courseRegisterMatters=new ArrayList<Matter>();
-    private List<Matter> courseReservationMatters=new ArrayList<Matter>();
     private List<Matter> courseTeacherMatters=new ArrayList<Matter>();
     private List<Matter> courseInviteMatters=new ArrayList<Matter>();
     private List<Matter> interviewerMatters=new ArrayList<Matter>();
@@ -50,7 +48,6 @@ public class MattersAction extends BasicAction{
     private BaseUserDao baseUserDao;
     private BaseUser user;
     private Matter matter;
-    private CourseReservation courseReservation;
     private boolean accept;
     private CourseClass courseClass;
     private Integer identityType;
@@ -68,8 +65,6 @@ public class MattersAction extends BasicAction{
                 orgMeetingMatters.add(m);
             }else if(m.getType()==Matter.MATTER_COURSE_REGISTER){
                 courseRegisterMatters.add(m);
-            }else if(m.getType()==Matter.MATTER_COURSE_RESERVATION){
-                courseReservationMatters.add(m);
             }else if(m.getType()==Matter.MATTER_COURSE_TEACHER){
                 courseTeacherMatters.add(m);
             }else if(m.getType()==Matter.MATTER_COURSE_INVITE){
@@ -97,7 +92,6 @@ public class MattersAction extends BasicAction{
             results = {
                     @Result(name ="MATTER_COURSE_MESSAGE", type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName", "voaCourseBlog", "course.id", "${course.id}"}),
                     @Result(name="6",type=Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName","orgMeetingEmailConfirm","orgMeeting.id","${orgMeeting.id}","email","${matter.email}","user.email","${user.email}"}),
-                    @Result(name="8",type=Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName","initInterviewIdentityConfirm","courseReservation.id","${courseReservation.id}","email","${matter.toEmail}","code","${matter.email}"}),
                     @Result(name="3",type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName","courseOnlineAudit","courseClass.id","${courseClass.id}","courseOnline","${accept}"}),
                     @Result(name="5",type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName","interviewEmailHandle","interview.id","${interview.id}","identityType","${identityType}","user.email","${user.email}"}),
                     @Result(name="4",type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName","showBlog","myShow.id","${myShow.id}"}),
@@ -224,28 +218,12 @@ public class MattersAction extends BasicAction{
         this.courseRegisterMatters = courseRegisterMatters;
     }
 
-    public List<Matter> getCourseReservationMatters() {
-        return courseReservationMatters;
-    }
-
-    public void setCourseReservationMatters(List<Matter> courseReservationMatters) {
-        this.courseReservationMatters = courseReservationMatters;
-    }
-
     public Matter getMatter() {
         return matter;
     }
 
     public void setMatter(Matter matter) {
         this.matter = matter;
-    }
-
-    public CourseReservation getCourseReservation() {
-        return courseReservation;
-    }
-
-    public void setCourseReservation(CourseReservation courseReservation) {
-        this.courseReservation = courseReservation;
     }
 
     public List<Matter> getCourseTeacherMatters() {

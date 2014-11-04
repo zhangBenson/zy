@@ -1,23 +1,29 @@
 package com.gogowise.action.user;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.imageio.ImageIO;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
-
+import com.gogowise.action.BasicAction;
+import com.gogowise.common.utils.Constants;
+import com.gogowise.common.utils.EmailUtil;
+import com.gogowise.common.utils.MD5;
+import com.gogowise.common.utils.TextCode;
+import com.gogowise.rep.course.dao.CourseDao;
+import com.gogowise.rep.course.dao.CourseInviteStudentDao;
+import com.gogowise.rep.course.dao.CourseRecommendDao;
+import com.gogowise.rep.course.dao.SeniorClassRoomDao;
+import com.gogowise.rep.course.enity.Course;
+import com.gogowise.rep.course.enity.CourseInviteStudent;
+import com.gogowise.rep.course.enity.CourseRecommend;
+import com.gogowise.rep.course.enity.SeniorClassRoom;
+import com.gogowise.rep.finance.dao.UserAccountInfoDao;
+import com.gogowise.rep.finance.enity.UserAccountInfo;
+import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.user.UserService;
+import com.gogowise.rep.user.dao.BaseUserDao;
+import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
+import com.gogowise.rep.user.enity.BaseUser;
+import com.gogowise.rep.user.enity.BaseUserRoleType;
+import com.gogowise.rep.user.enity.RoleType;
+import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
@@ -28,33 +34,17 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import com.gogowise.action.BasicAction;
-import com.gogowise.common.utils.Constants;
-import com.gogowise.common.utils.EmailUtil;
-import com.gogowise.common.utils.MD5;
-import com.gogowise.common.utils.TextCode;
-import com.gogowise.rep.course.dao.CourseDao;
-import com.gogowise.rep.course.dao.CourseInviteStudentDao;
-import com.gogowise.rep.course.dao.CourseRecommendDao;
-import com.gogowise.rep.course.dao.CourseReservationDao;
-import com.gogowise.rep.course.dao.SeniorClassRoomDao;
-import com.gogowise.rep.course.enity.Course;
-import com.gogowise.rep.course.enity.CourseInviteStudent;
-import com.gogowise.rep.course.enity.CourseRecommend;
-import com.gogowise.rep.course.enity.CourseReservation;
-import com.gogowise.rep.course.enity.SeniorClassRoom;
-import com.gogowise.rep.finance.dao.UserAccountInfoDao;
-import com.gogowise.rep.finance.enity.UserAccountInfo;
-import com.gogowise.rep.org.dao.OrganizationDao;
-import com.gogowise.rep.org.enity.Organization;
-import com.gogowise.rep.user.UserService;
-import com.gogowise.rep.user.dao.BaseUserDao;
-import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
-import com.gogowise.rep.user.dao.UserRelationshipDao;
-import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.rep.user.enity.BaseUserRoleType;
-import com.gogowise.rep.user.enity.RoleType;
-import com.opensymphony.xwork2.ActionContext;
+import javax.imageio.ImageIO;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @SuppressWarnings("UnusedDeclaration")
 @Controller
@@ -64,7 +54,6 @@ public class UserAction extends BasicAction {
 
 
     private BaseUserDao baseUserDao;
-    private UserRelationshipDao userRelationshipDao;
     private List<BaseUser> myFriends = new ArrayList<>();
     private Map<Integer, String> competitionSessions = new HashMap<>();
     private List<BaseUser> invitedFriends = new ArrayList<>();
@@ -102,8 +91,6 @@ public class UserAction extends BasicAction {
     private CourseInviteStudentDao courseInviteStudentDao;
     private SeniorClassRoomDao seniorClassRoomDao;
     private UserAccountInfoDao userAccountInfoDao;
-    private CourseReservationDao courseReservationDao;
-    private CourseReservation courseReservation;
     private Integer identityType = 0;
     private UserAccountInfo userAccountInfo;
     private Integer operaType;
@@ -348,20 +335,6 @@ public class UserAction extends BasicAction {
                 courseRecommend.setUser(user);
                 courseRecommendDao.persistAbstract(courseRecommend);
                 return "courseBlog";
-            }
-            return NONE;
-        } else if (this.getCourseReservation().getId() != null) {
-            if (MD5.endCode(this.getUser().getEmail()).equals(this.getCode())) {
-                courseReservation = courseReservationDao.findById(this.getCourseReservation().getId());
-                courseReservation.setUnActive(true);
-                courseReservationDao.persistAbstract(courseReservation);
-                course = courseReservation.getCourse();
-                this.setOperaType(Constants.OPERA_TYPE_FOR_COURSE_CREATION);
-                if (course.getOrganization() != null) {
-                    this.setCourseType(Constants.COURSE_TYPE_ORG);
-                }
-                orgs.put(course.getId(), course.getName());
-                return "CourseCreation";
             }
             return NONE;
         } else {
@@ -1041,14 +1014,6 @@ public class UserAction extends BasicAction {
         return SUCCESS;
     }
 
-    public UserRelationshipDao getUserRelationshipDao() {
-        return userRelationshipDao;
-    }
-
-    public void setUserRelationshipDao(UserRelationshipDao userRelationshipDao) {
-        this.userRelationshipDao = userRelationshipDao;
-    }
-
     public BaseUserDao getUserDao() {
         return baseUserDao;
     }
@@ -1226,22 +1191,6 @@ public class UserAction extends BasicAction {
         this.userAccountInfo = userAccountInfo;
     }
 
-
-    public CourseReservationDao getCourseReservationDao() {
-        return courseReservationDao;
-    }
-
-    public void setCourseReservationDao(CourseReservationDao courseReservationDao) {
-        this.courseReservationDao = courseReservationDao;
-    }
-
-    public CourseReservation getCourseReservation() {
-        return courseReservation;
-    }
-
-    public void setCourseReservation(CourseReservation courseReservation) {
-        this.courseReservation = courseReservation;
-    }
 
     public Integer getOperaType() {
         return operaType;

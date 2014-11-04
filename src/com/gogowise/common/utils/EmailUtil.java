@@ -1,7 +1,6 @@
 package com.gogowise.common.utils;
 
 
-import com.gogowise.rep.system.MatterDao;
 import com.gogowise.common.schedule.EmailJob;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 

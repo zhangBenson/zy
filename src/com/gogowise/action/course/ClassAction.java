@@ -40,7 +40,6 @@ public class ClassAction extends BasicAction {
      *
      */
     private static final long serialVersionUID = 2466562905933168403L;
-    private ClassRoomDao classRoomDao;
     private BaseUserDao baseUserDao;
     private ClassDao classDao;
     private CourseDao courseDao;
@@ -54,7 +53,6 @@ public class ClassAction extends BasicAction {
     private Integer classCount;
     private Pagination page;
     private List<CourseClass> classes = new ArrayList<>();
-    private List<ClassRoom> classRooms = new ArrayList<>();
 
     private List<Calendar> startTimes = new ArrayList<>();
     private String inviteFriendHref;
@@ -419,21 +417,6 @@ public class ClassAction extends BasicAction {
         this.classes = classes;
     }
 
-    public ClassRoomDao getClassRoomDao() {
-        return classRoomDao;
-    }
-
-    public void setClassRoomDao(ClassRoomDao classRoomDao) {
-        this.classRoomDao = classRoomDao;
-    }
-
-    public List<ClassRoom> getClassRooms() {
-        return classRooms;
-    }
-
-    public void setClassRooms(List<ClassRoom> classRooms) {
-        this.classRooms = classRooms;
-    }
 
     public List<Calendar> getStartTimes() {
         return startTimes;

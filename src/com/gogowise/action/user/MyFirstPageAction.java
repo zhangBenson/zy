@@ -20,7 +20,7 @@ import com.gogowise.common.utils.Constants;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.enity.Course;
-import com.gogowise.rep.system.MatterDao;
+import com.gogowise.rep.system.dao.MatterDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.user.dao.BaseUserDao;

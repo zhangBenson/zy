@@ -65,9 +65,6 @@ public class Course extends AbstractPersistence {
     private List<SeniorClassRoom> seniorClassRooms = new ArrayList<>();
 
     @OneToMany(mappedBy = "course")
-    private List<CourseReservation> courseReservations;
-
-    @OneToMany(mappedBy = "course")
     private List<CourseRecommend> courseRecommends;
 
     @OneToMany(mappedBy = "course")
@@ -284,13 +281,6 @@ public class Course extends AbstractPersistence {
         this.inviteStudentNum = inviteStudentNum;
     }
 
-    public List<CourseReservation> getCourseReservations() {
-        return courseReservations;
-    }
-
-    public void setCourseReservations(List<CourseReservation> courseReservations) {
-        this.courseReservations = courseReservations;
-    }
 
     public List<CourseRecommend> getCourseRecommends() {
         return courseRecommends;

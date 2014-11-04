@@ -5,13 +5,10 @@ import com.gogowise.common.utils.UploadUtils;
 import com.gogowise.rep.ServiceException;
 import com.gogowise.rep.course.CourseService;
 import com.gogowise.rep.course.dao.CourseDao;
-import com.gogowise.rep.course.dao.CourseInviteStudentDao;
 import com.gogowise.rep.course.dao.SeniorClassRoomDao;
-import com.gogowise.rep.course.enity.CourseInviteStudent;
-import com.gogowise.rep.course.enity.SeniorClassRoom;
 import com.gogowise.rep.finance.dao.ConsumptionOrderDao;
 import com.gogowise.rep.finance.dao.UserAccountInfoDao;
-import com.gogowise.rep.system.MatterDao;
+import com.gogowise.rep.system.dao.MatterDao;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.course.enity.Course;
@@ -20,7 +17,6 @@ import com.gogowise.rep.finance.enity.UserAccountInfo;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.EmailUtil;
 import com.gogowise.common.utils.PdfUtil;
-import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -30,7 +26,6 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -65,10 +60,10 @@ public class CoursePurchaseAction extends BasicAction {
     private boolean errorMessagePaypalStatu;
 
 
-    @Action(value = "initCourseconfirm", results = { @Result(name = SUCCESS, type = "tiles", location = ".courseconfirm"), @Result(name = LOGIN, type = Constants.RESULT_NAME_TILES, location = ".identityConfirmation")
-    //                    ,
-    //                       @Result(name = "myCourseCenter",type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName", "myForcastClass", "course.id", "${course.id}"}),
-    //                       @Result(name = "voa",type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName", "voaCourseBlog","course.id","${course.id}","purchaseConfirmMsg","${purchaseConfirmMsg}"})
+    @Action(value = "initCourseconfirm", results = {@Result(name = SUCCESS, type = "tiles", location = ".courseconfirm"), @Result(name = LOGIN, type = Constants.RESULT_NAME_TILES, location = ".identityConfirmation")
+            //                    ,
+            //                       @Result(name = "myCourseCenter",type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName", "myForcastClass", "course.id", "${course.id}"}),
+            //                       @Result(name = "voa",type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName", "voaCourseBlog","course.id","${course.id}","purchaseConfirmMsg","${purchaseConfirmMsg}"})
     })
     public String initCourseconfirm() throws Exception {
 
@@ -78,7 +73,7 @@ public class CoursePurchaseAction extends BasicAction {
         }
 
         /****************add by xiaoyl*****************/
-        if(course.getCharges()!=0) {
+        if (course.getCharges() != 0) {
             try {
                 courseService.validateBeforePurchase(courseDao.findById(this.course.getId()), baseUserDao.findById(getSessionUserId()));
             } catch (ServiceException e) {
@@ -89,14 +84,13 @@ public class CoursePurchaseAction extends BasicAction {
         /****************add by xiaoyl*****************/
 
 
-
         user = baseUserDao.findById(this.getSessionUserId());
         userAccountInfo = userAccountInfoDao.findByUserId(this.getSessionUserId());
         this.setOperaType(Constants.OPERA_TYPE_FOR_COURSE_CREATION);
         return SUCCESS;
     }
 
-    @Action(value = "purchaseCourse", results = { @Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = { "actionName", "personalCenter" }), @Result(name = ERROR, type = Constants.RESULT_NAME_TILES, location = ".courseconfirm"), @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".courseconfirm") })
+    @Action(value = "purchaseCourse", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "personalCenter"}), @Result(name = ERROR, type = Constants.RESULT_NAME_TILES, location = ".courseconfirm"), @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".courseconfirm")})
     public String purchaseCourse() throws Exception {
 
         course = courseDao.findById(this.course.getId());
@@ -119,20 +113,20 @@ public class CoursePurchaseAction extends BasicAction {
         String filePath = UploadUtils.getContractFilePath(this.getSessionUserId());
 
         //send email to student
-        String tile = this.getText("course.pdf.title", new String[] { user.getNickName(), course.getName() });
-        String content = this.getText("course.pdf.content", new String[] { user.getNickName(), course.getName() });
+        String tile = this.getText("course.pdf.title", new String[]{user.getNickName(), course.getName()});
+        String content = this.getText("course.pdf.content", new String[]{user.getNickName(), course.getName()});
 
         try {
             PdfUtil.createCourseContract(filePath, course, baseUserDao.findById(getSessionUserId()));
-            EmailUtil.sendMail(user.getEmail(), tile, content, new String[] { "contract.pdf" }, new String[] { filePath });
+            EmailUtil.sendMail(user.getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
 
             //send email to teacher
-            tile = this.getText("course.pdf.title", new String[] { user.getNickName(), course.getName() });
+            tile = this.getText("course.pdf.title", new String[]{user.getNickName(), course.getName()});
             if (course.getOrganization() != null) {
-                EmailUtil.sendMail(course.getOrganization().getResponsiblePerson().getEmail(), tile, content, new String[] { "contract.pdf" }, new String[] { filePath });
+                EmailUtil.sendMail(course.getOrganization().getResponsiblePerson().getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
             } else {
-                content = this.getText("course.pdf.content", new String[] { course.getTeacher().getNickName() });
-                EmailUtil.sendMail(course.getTeacher().getEmail(), tile, content, new String[] { "contract.pdf" }, new String[] { filePath });
+                content = this.getText("course.pdf.content", new String[]{course.getTeacher().getNickName()});
+                EmailUtil.sendMail(course.getTeacher().getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
             }
             EmailUtil.sendMail(Constants.COURSE_CONFIRM_EMAIL, tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
         } catch (Exception e) {
@@ -148,8 +142,7 @@ public class CoursePurchaseAction extends BasicAction {
             this.addActionErrorInfoWithKey(e.getMessage());
             errorMessagePaypalStatu = true;
         }
-   }
-
+    }
 
 
     @Action(value = "courseconfirm")
@@ -162,23 +155,23 @@ public class CoursePurchaseAction extends BasicAction {
             courseService.validateBeforePurchase(this.course, this.user);
         } catch (ServiceException e) {
             this.setMessage(this.getText(e.getMessage()));
-          return RESULT_JSON;
+            return RESULT_JSON;
         }
 
         seniorClassRoomDao.saveSeniorClassRoom(this.course.getId(), this.getSessionUserId());
 
         consumptionOrderDao.purchaseCourse(user, course);
         String filePath = UploadUtils.getContractFilePath(this.getSessionUserId());
-        String tile = this.getText("course.pdf.title", new String[] { user.getNickName(), course.getName() });
+        String tile = this.getText("course.pdf.title", new String[]{user.getNickName(), course.getName()});
         String content = this.getText("course.pdf.content", new String[]{user.getNickName()});
         PdfUtil.createCourseContract(filePath, course, baseUserDao.findById(getSessionUserId()));
-        EmailUtil.sendMail(user.getEmail(), tile, content, new String[] { "contract.pdf" }, new String[] { filePath });
+        EmailUtil.sendMail(user.getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
         if (course.getOrganization() != null) {
-            EmailUtil.sendMail(course.getOrganization().getResponsiblePerson().getEmail(), tile, content, new String[] { "contract.pdf" }, new String[] { filePath });
+            EmailUtil.sendMail(course.getOrganization().getResponsiblePerson().getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
         } else {
-            EmailUtil.sendMail(course.getTeacher().getEmail(), tile, content, new String[] { "contract.pdf" }, new String[] { filePath });
+            EmailUtil.sendMail(course.getTeacher().getEmail(), tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
         }
-        EmailUtil.sendMail(Constants.COURSE_CONFIRM_EMAIL, tile, content, new String[] { "contract.pdf" }, new String[] { filePath });
+        EmailUtil.sendMail(Constants.COURSE_CONFIRM_EMAIL, tile, content, new String[]{"contract.pdf"}, new String[]{filePath});
         this.state = true;
         this.message = this.getText("course.first.observation");
 
@@ -192,7 +185,7 @@ public class CoursePurchaseAction extends BasicAction {
         return "json";
     }
 
-    @Action(value = "initCourseRefund", results = { @Result(name = SUCCESS, type = "tiles", location = ".refund") })
+    @Action(value = "initCourseRefund", results = {@Result(name = SUCCESS, type = "tiles", location = ".refund")})
     public String initCourseRefund() {
 
         //        course = courseDao.findById(course.getId());

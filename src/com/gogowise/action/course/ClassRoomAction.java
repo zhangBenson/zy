@@ -3,7 +3,9 @@ package com.gogowise.action.course;
 import com.gogowise.action.BasicAction;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.rep.course.dao.*;
-import com.gogowise.rep.course.enity.*;
+import com.gogowise.rep.course.enity.ClassMembership;
+import com.gogowise.rep.course.enity.CourseClass;
+import com.gogowise.rep.course.enity.QuestionResult;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import org.apache.struts2.ServletActionContext;
@@ -36,9 +38,7 @@ public class ClassRoomAction extends BasicAction {
     private static final long serialVersionUID = 4643718717641950564L;
     private CourseDao courseDao;
     private BaseUserDao baseUserDao;
-    private ClassRoomDao classRoomDao;
     private SeniorClassRoomDao seniorClassRoomDao;
-    private ClassRoom classRoom;
 
     private Integer status;
     private BaseUser user;
@@ -52,42 +52,25 @@ public class ClassRoomAction extends BasicAction {
     @Autowired
     private QuestionResultDao questionResultDao;
 
-    @Action(value = "saveClassRoom")
-    public void saveClassRoom() throws IOException {
-        Course curr = courseDao.findById(classRoom.getCourse().getId());
-        classRoom.setCourse(curr);
-        classRoom.setStudent(baseUserDao.findById(this.getSessionUserId()));
-        ClassRoom cr = classRoomDao.findClassRoomByCourseAndStudent(classRoom.getCourse().getId(), this.getSessionUserId());
-        SeniorClassRoom scr = seniorClassRoomDao.findClassRoomByCourseAndStudent(classRoom.getCourse().getId(), this.getSessionUserId());
-
-
-        PrintWriter out = ServletActionContext.getResponse().getWriter();
-        if (cr != null) {
-            out.println(this.getText("course.already.observation"));
-        } else {
-            classRoomDao.saveStudentforClassRoom(classRoom);
-            out.println(this.getText("course.first.observation"));
-        }
-    }
 
     @Action(value = "ajaxChangeUserStatusInClass")
     public void ajaxChangeUserStatusInClass() throws IOException {
-        if(this.getSessionUserId() == null){
+        if (this.getSessionUserId() == null) {
             resultMessage = "error";
-        }else{
+        } else {
             user = baseUserDao.findById(this.getSessionUserId());
             courseClass = classDao.findById(this.getCourseClass().getId());
 
             ClassMembership record = classMembershipDao.findByUserAndClassId(user.getId(), courseClass.getId());
 
-            if( record == null ){
+            if (record == null) {
                 record = new ClassMembership();
                 record.setUser(user);
                 record.setCourseClass(courseClass);
                 record.setStatus(status);
                 classMembershipDao.persistAbstract(record);
-            }else{
-                if(record.getStatus() < status){
+            } else {
+                if (record.getStatus() < status) {
                     record.setStatus(status);
                     classMembershipDao.persist(record);
                 }
@@ -102,25 +85,25 @@ public class ClassRoomAction extends BasicAction {
 
     /**
      * 按照记录来初始化学生完成课程classes的情况
+     *
      * @return
      */
     @Action(value = "initClassMembershipInfoWithOld")
-    public void initClassMembershipInfoWithOld()
-    {
+    public void initClassMembershipInfoWithOld() {
         List<QuestionResult> questionResults = questionResultDao.findAll();
-        for(QuestionResult questionResult: questionResults){
+        for (QuestionResult questionResult : questionResults) {
             BaseUser user = questionResult.getOwner();
             CourseClass classTemp = questionResult.getCourseClass();
 
-            ClassMembership cm = classMembershipDao.findByUserAndClassId(user.getId(),classTemp.getId());
+            ClassMembership cm = classMembershipDao.findByUserAndClassId(user.getId(), classTemp.getId());
 
-            if(cm == null){
+            if (cm == null) {
                 cm = new ClassMembership();
                 cm.setStatus(Constants.Class_User_Status_Finish);
                 cm.setUser(user);
                 cm.setCourseClass(classTemp);
                 classMembershipDao.persistAbstract(cm);
-            }else{
+            } else {
                 cm.setStatus(Constants.Class_User_Status_Finish);
                 classMembershipDao.persist(cm);
             }
@@ -134,22 +117,6 @@ public class ClassRoomAction extends BasicAction {
 
     public void setBaseUserDao(BaseUserDao baseUserDao) {
         this.baseUserDao = baseUserDao;
-    }
-
-    public ClassRoomDao getClassRoomDao() {
-        return classRoomDao;
-    }
-
-    public void setClassRoomDao(ClassRoomDao classRoomDao) {
-        this.classRoomDao = classRoomDao;
-    }
-
-    public ClassRoom getClassRoom() {
-        return classRoom;
-    }
-
-    public void setClassRoom(ClassRoom classRoom) {
-        this.classRoom = classRoom;
     }
 
     public CourseDao getCourseDao() {

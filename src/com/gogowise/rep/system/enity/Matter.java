@@ -23,7 +23,6 @@ public class Matter extends AbstractPersistence {
     private BaseUser fromUser;
 
 
-
     private String toEmail;
     @OneToOne
     private Course course;
@@ -34,30 +33,29 @@ public class Matter extends AbstractPersistence {
     private String serialNo;
     private String email;
 
-    public static final Integer MATTER_COURSE_MESSAGE=1;
-    public static final Integer MATTER_COURSE_RESOURCE=2;
-    public static final Integer MATTER_COURSE_INVITE=3;
-    public static final Integer MATTER_MYSHOW_MESSAGE=4;
-    public static final Integer MATTER_INTERVIEW_INTERVIEWEE=5;
-    public static final Integer MATTER_ORGMEETING=6;
-    public static final Integer MATTER_COURSE_REGISTER=7;
-    public static final Integer MATTER_COURSE_RESERVATION=8;
-    public static final Integer MATTER_COURSE_TEACHER=9;
-    public static final Integer MATTER_INTERVIEW_INTERVIEWER=10;
-    public static final Integer MATTER_ORGMEETING_HOSTMAN=11;
-    public static final Integer MATTER_COURSE_STUDENT=12;
-    public static final Integer MATTER_COURSE_STUDENT_NO_ORG=13;
+    public static final Integer MATTER_COURSE_MESSAGE = 1;
+    public static final Integer MATTER_COURSE_RESOURCE = 2;
+    public static final Integer MATTER_COURSE_INVITE = 3;
+    public static final Integer MATTER_MYSHOW_MESSAGE = 4;
+    public static final Integer MATTER_INTERVIEW_INTERVIEWEE = 5;
+    public static final Integer MATTER_ORGMEETING = 6;
+    public static final Integer MATTER_COURSE_REGISTER = 7;
+    public static final Integer MATTER_COURSE_TEACHER = 9;
+    public static final Integer MATTER_INTERVIEW_INTERVIEWER = 10;
+    public static final Integer MATTER_ORGMEETING_HOSTMAN = 11;
+    public static final Integer MATTER_COURSE_STUDENT = 12;
+    public static final Integer MATTER_COURSE_STUDENT_NO_ORG = 13;
 
 
-    public Matter(Calendar createDate,String serialNo, Integer type, BaseUser fromUser,String email, String toEmail, Course course, Boolean done) {
+    public Matter(Calendar createDate, String serialNo, Integer type, BaseUser fromUser, String email, String toEmail, Course course, Boolean done) {
         this.createDate = createDate;
         this.type = type;
         this.fromUser = fromUser;
         this.toEmail = toEmail;
         this.course = course;
         this.done = done;
-        this.serialNo=serialNo;
-        this.email=email;
+        this.serialNo = serialNo;
+        this.email = email;
     }
 
     public Matter() {
@@ -126,7 +124,6 @@ public class Matter extends AbstractPersistence {
     public void setEmail(String email) {
         this.email = email;
     }
-
 
 
 }

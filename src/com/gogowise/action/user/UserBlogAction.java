@@ -17,7 +17,6 @@ import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.dao.CommentsDao;
 import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.enity.Course;
-import com.gogowise.rep.course.enity.CourseEvaluation;
 import com.gogowise.rep.course.enity.SeniorClassRoom;
 import com.gogowise.rep.org.dao.OrganizationBaseUserDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
@@ -38,7 +37,6 @@ public class UserBlogAction extends BasicAction {
     private CommentsDao commentsDao;
     private BaseUser user;
     private List<Course> coursesAsTeacher;
-    private List<CourseEvaluation> courseEvaluations;
     private List<Comments> comments;
     private Comments comment;
     private Integer commentsNum;
@@ -151,14 +149,6 @@ public class UserBlogAction extends BasicAction {
 
     public void setCourseDao(CourseDao courseDao) {
         this.courseDao = courseDao;
-    }
-
-    public List<CourseEvaluation> getCourseEvaluations() {
-        return courseEvaluations;
-    }
-
-    public void setCourseEvaluations(List<CourseEvaluation> courseEvaluations) {
-        this.courseEvaluations = courseEvaluations;
     }
 
     public CommentsDao getCommentsDao() {

@@ -13,7 +13,7 @@ import com.gogowise.rep.course.enity.*;
 import com.gogowise.rep.org.OrgService;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
-import com.gogowise.rep.system.MatterDao;
+import com.gogowise.rep.system.dao.MatterDao;
 import com.gogowise.rep.system.enity.Matter;
 import com.gogowise.rep.user.UserService;
 import com.gogowise.rep.user.dao.BaseUserDao;
@@ -45,7 +45,6 @@ public class CourseAction extends BasicAction {
     private static final long serialVersionUID = 8355282912239794888L;
 
     private SeniorClassRoomDao seniorClassRoomDao;
-    private ClassRoomDao classRoomDao;
     private BaseUserDao baseUserDao;
     private CourseDao courseDao;
     private OrganizationDao organizationDao;
@@ -53,10 +52,8 @@ public class CourseAction extends BasicAction {
     private CourseResourceDao courseResourceDao;
     private CourseQuestionDao courseQuestionDao;
     private CourseInviteStudentDao courseInviteStudentDao;
-    private CourseReservationDao courseReservationDao;
     private ClassDao classDao;
     private CourseClass courseClass;
-    private CourseReservation courseReservation;
     private List<CourseInviteStudent> courseInviteStudents = new ArrayList<>();
     private List<String> emails = new ArrayList<>();
     private String email;
@@ -627,16 +624,6 @@ public class CourseAction extends BasicAction {
         this.courseDao = courseDao;
     }
 
-    public ClassRoomDao getClassRoomDao() {
-
-        return classRoomDao;
-    }
-
-    public void setClassRoomDao(ClassRoomDao classRoomDao) {
-
-        this.classRoomDao = classRoomDao;
-    }
-
     public Course getCourse() {
 
         return course;
@@ -1019,26 +1006,6 @@ public class CourseAction extends BasicAction {
     public void setStartTime(Calendar startTime) {
 
         this.startTime = startTime;
-    }
-
-    public CourseReservationDao getCourseReservationDao() {
-
-        return courseReservationDao;
-    }
-
-    public void setCourseReservationDao(CourseReservationDao courseReservationDao) {
-
-        this.courseReservationDao = courseReservationDao;
-    }
-
-    public CourseReservation getCourseReservation() {
-
-        return courseReservation;
-    }
-
-    public void setCourseReservation(CourseReservation courseReservation) {
-
-        this.courseReservation = courseReservation;
     }
 
     public CourseRecommendDao getCourseRecommendDao() {

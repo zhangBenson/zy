@@ -17,7 +17,7 @@ import com.gogowise.rep.finance.enity.PaypalDetails;
 import com.gogowise.rep.finance.vo.PaypalDetailsSpecification;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
-import com.gogowise.rep.system.MatterDao;
+import com.gogowise.rep.system.dao.MatterDao;
 import com.gogowise.rep.system.enity.Matter;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;

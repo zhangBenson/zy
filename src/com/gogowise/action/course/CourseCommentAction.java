@@ -9,7 +9,7 @@ import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.course.enity.CourseComment;
 import com.gogowise.rep.course.enity.SeniorClassRoom;
-import com.gogowise.rep.system.MatterDao;
+import com.gogowise.rep.system.dao.MatterDao;
 import com.gogowise.rep.system.enity.Matter;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
@@ -55,84 +55,84 @@ public class CourseCommentAction extends BasicAction {
     private MatterDao matterDao;
 
 
-    @Action(value = "saveComment", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES,location =".courseComment")})
+    @Action(value = "saveComment", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseComment")})
     public String saveComment() {
-        String serialNo=  this.getSessionNickName()+(new SimpleDateFormat("yyyyddMMHHmmssms").format(Calendar.getInstance().getTime()));
+        String serialNo = this.getSessionNickName() + (new SimpleDateFormat("yyyyddMMHHmmssms").format(Calendar.getInstance().getTime()));
         BaseUser commenter = baseUserDao.findById(this.getSessionUserId());
         course = courseDao.findById(this.getCourse().getId());
         courseComment.setCourse(course);
         courseComment.setCommenter(commenter);
         courseComment.setCommentTime(Calendar.getInstance());
         Integer toFriendID = (Integer) ActionContext.getContext().getSession().get("toReplyerUserID");
-        if( toFriendID != null){
+        if (toFriendID != null) {
             BaseUser toFriend = baseUserDao.findById(toFriendID);
             courseComment.setFriend(toFriend);
             ActionContext.getContext().getSession().remove("toReplyerUserID");
         }
         courseCommentDao.persistAbstract(courseComment);
-        Pagination page = new Pagination(commentsNum+1);
-        courseComments = courseCommentDao.findByCourseId(page,course.getId());
+        Pagination page = new Pagination(commentsNum + 1);
+        courseComments = courseCommentDao.findByCourseId(page, course.getId());
         this.setCommentsNum(courseComments.size());
-        if(page.getTotalSize() <= commentsNum){
+        if (page.getTotalSize() <= commentsNum) {
             this.setCommentsNumOverflow(true);
         }
-        if(this.getSessionUserId().equals(course.getTeacher() != null?course.getTeacher().getId():0)){
-            for(SeniorClassRoom seniorClassRoom: course.getSeniorClassRooms()){      // teacher left a message for a course then send the message to all students
+        if (this.getSessionUserId().equals(course.getTeacher() != null ? course.getTeacher().getId() : 0)) {
+            for (SeniorClassRoom seniorClassRoom : course.getSeniorClassRooms()) {      // teacher left a message for a course then send the message to all students
 
-                Matter matter =new Matter(Calendar.getInstance(),serialNo,Matter.MATTER_COURSE_MESSAGE,baseUserDao.findByEmail(this.getSessionUserEmail()),null,seniorClassRoom.getStudent().getEmail(),course, false);
-                 String href = getBasePath() + "/voaCourseBlog.html?course.id="+course.getId();
-                 String title = this.getText("course.blog.teacher.comment.to.st.title",new String[]{course.getTeacher().getNickName(),course.getName()});
-                 String content = this.getText("course.blog.teacher.comment.to.st.content",new String[]{
-                         seniorClassRoom.getStudent().getNickName(),
-                         course.getTeacher().getNickName(),
-                         course.getName(),
-                         courseComment.getContent(),
-                         href,href
-                 });
-                EmailUtil.sendMail(seniorClassRoom.getStudent().getEmail(),title,content);
+                Matter matter = new Matter(Calendar.getInstance(), serialNo, Matter.MATTER_COURSE_MESSAGE, baseUserDao.findByEmail(this.getSessionUserEmail()), null, seniorClassRoom.getStudent().getEmail(), course, false);
+                String href = getBasePath() + "/voaCourseBlog.html?course.id=" + course.getId();
+                String title = this.getText("course.blog.teacher.comment.to.st.title", new String[]{course.getTeacher().getNickName(), course.getName()});
+                String content = this.getText("course.blog.teacher.comment.to.st.content", new String[]{
+                        seniorClassRoom.getStudent().getNickName(),
+                        course.getTeacher().getNickName(),
+                        course.getName(),
+                        courseComment.getContent(),
+                        href, href
+                });
+                EmailUtil.sendMail(seniorClassRoom.getStudent().getEmail(), title, content);
                 matterDao.persistAbstract(matter);
             }
-        }else {          // student or other user left a message for a course then send the email to teacher
-            if(course.getTeacher() != null && course.getTeacher().getEmail()!=null){
-                 String href = getBasePath() + "/voaCourseBlog.html?course.id="+course.getId();
-                 String title = this.getText("course.blog.student.comment.to.tea.title",new String[]{this.getSessionNickName(),course.getName()});
-                 String content = this.getText("course.blog.student.comment.to.tea.content",new String[]{
-                         course.getTeacher().getNickName(),
-                         this.getSessionNickName(),
-                         course.getName(),
-                         courseComment.getContent(),
-                         href,href
-                 });
-                 EmailUtil.sendMail(course.getTeacher().getEmail(),title,content);
-                 Matter matter =new Matter(Calendar.getInstance(),serialNo,Matter.MATTER_COURSE_MESSAGE,baseUserDao.findByEmail(this.getSessionUserEmail()),null,course.getTeacher().getEmail(),course, false);
-                 matterDao.persistAbstract(matter);
-             }
+        } else {          // student or other user left a message for a course then send the email to teacher
+            if (course.getTeacher() != null && course.getTeacher().getEmail() != null) {
+                String href = getBasePath() + "/voaCourseBlog.html?course.id=" + course.getId();
+                String title = this.getText("course.blog.student.comment.to.tea.title", new String[]{this.getSessionNickName(), course.getName()});
+                String content = this.getText("course.blog.student.comment.to.tea.content", new String[]{
+                        course.getTeacher().getNickName(),
+                        this.getSessionNickName(),
+                        course.getName(),
+                        courseComment.getContent(),
+                        href, href
+                });
+                EmailUtil.sendMail(course.getTeacher().getEmail(), title, content);
+                Matter matter = new Matter(Calendar.getInstance(), serialNo, Matter.MATTER_COURSE_MESSAGE, baseUserDao.findByEmail(this.getSessionUserEmail()), null, course.getTeacher().getEmail(), course, false);
+                matterDao.persistAbstract(matter);
+            }
 
         }
         return SUCCESS;
     }
 
-    @Action(value = "moreCourseComments",results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES,location =".courseComment")})
-    public String moreComments(){
-        Pagination page = new Pagination(this.getCommentsNum()+Constants.DEFAULT_PAGE_OF_COMMENTS_INCREASED_SIZE);
-        courseComments = courseCommentDao.findByCourseId(page,this.getCourse().getId());
+    @Action(value = "moreCourseComments", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseComment")})
+    public String moreComments() {
+        Pagination page = new Pagination(this.getCommentsNum() + Constants.DEFAULT_PAGE_OF_COMMENTS_INCREASED_SIZE);
+        courseComments = courseCommentDao.findByCourseId(page, this.getCourse().getId());
         this.setCommentsNum(courseComments.size());
-        if( commentsNum < page.getTotalSize()){
+        if (commentsNum < page.getTotalSize()) {
             this.setCommentsNumOverflow(true);
-        }else{
+        } else {
             this.setCommentsNumOverflow(false);
         }
         return SUCCESS;
     }
 
     @Action(value = "deleteCourseComment")
-    public void deleteCourseComment(){
+    public void deleteCourseComment() {
         courseComment = courseCommentDao.findById(this.getCourseComment().getId());
         courseCommentDao.delete(courseComment);
     }
 
     @Action(value = "saveChatRecord")
-    public void saveChatRecord(){
+    public void saveChatRecord() {
         BaseUser commenter = baseUserDao.findById(this.getUser().getId());
         course = courseDao.findById(this.getCourse().getId());
         courseComment.setCourse(course);
@@ -141,7 +141,7 @@ public class CourseCommentAction extends BasicAction {
         courseCommentDao.persistAbstract(courseComment);
     }
 
-    @Action(value = "initCourseComment", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location =".courseComment")})
+    @Action(value = "initCourseComment", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseComment")})
     public String initCourseComment() {
         course = courseDao.findById(this.getCourse().getId());
         courseComments = courseCommentDao.findByCourseId(page, course.getId());
@@ -200,7 +200,7 @@ public class CourseCommentAction extends BasicAction {
         this.courseComments = courseComments;
     }
 
-        public Pagination getPage() {
+    public Pagination getPage() {
         return page;
     }
 

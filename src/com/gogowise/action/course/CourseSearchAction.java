@@ -46,34 +46,6 @@ public class CourseSearchAction extends BasicAction {
     private Pagination pagination = new Pagination(9);
 
 
-    @Action(value = "courseSelection",
-            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseSelection")})
-    public String courseSelection() {
-//        Object[] parameter = new Object[5];
-        List<Object> parameter = new ArrayList<>();
-        String whereCourse = "";
-        if ("adv".equalsIgnoreCase(this.searchTyp)) {
-            for (SearchCondition sc : this.searchConditions) {
-                if (sc.getRealValue() != null) {
-                    whereCourse += sc.buildCourseSql();
-                    parameter.add(sc.getRealValue());
-                }
-            }
-        } else if (StringUtils.isNotBlank(courseName)) {
-            whereCourse += " and c.name like ? ";
-            parameter.add("%" + courseName + "%");
-
-        }
-
-        String hql = "select distinct c from Course c where  c.cameraManConfirmed=true  " + whereCourse + " order by c.id desc";
-        courses = courseDao.find(hql, pagination, parameter.toArray());
-
-        hotCourse = courseDao.findHotCourses(new Pagination(4));
-        hotTeacher = baseUserDao.findHotTeacher(new Pagination(4));
-
-        return SUCCESS;
-    }
-
     public List<Course> getCourses() {
         return courses;
     }

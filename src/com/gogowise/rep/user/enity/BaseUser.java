@@ -47,13 +47,6 @@ public class BaseUser extends AbstractPersistence {
     private double latitude;
     private double longitude;
 
-//    @ManyToMany
-//    @JoinTable(name = "userrelationship",
-//            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
-//            inverseJoinColumns = {@JoinColumn(name = "userFriend_id", referencedColumnName = "id")})
-//    private List<BaseUser> follows = new ArrayList<BaseUser>();
-
-
     public double getLongitude() {
         return longitude;
     }

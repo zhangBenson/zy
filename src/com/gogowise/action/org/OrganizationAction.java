@@ -8,7 +8,6 @@ import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.enity.Course;
-import com.gogowise.rep.course.enity.CourseEvaluation;
 import com.gogowise.rep.course.enity.SeniorClassRoom;
 import com.gogowise.rep.org.OrgService;
 import com.gogowise.rep.org.dao.OrgMaterialDao;
@@ -25,7 +24,6 @@ import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.user.enity.RoleType;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.lang.StringUtils;
-import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -78,7 +76,6 @@ public class OrganizationAction extends BasicAction {
     private List<Course> privateCourses;
     private Course course;
     private List<Course> hotCourses;
-    private List<CourseEvaluation> courseEvaluations;
     private List<OrganizationComment> comments;
     private OrganizationComment comment;
 
@@ -241,8 +238,6 @@ public class OrganizationAction extends BasicAction {
     }
 
 
-
-
     @Action(value = "orgAdminManage",
             results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgAdminManage"),
                     @Result(name = ERROR, type = Constants.RESULT_NAME_TILES, location = ".noPermission")})
@@ -364,14 +359,6 @@ public class OrganizationAction extends BasicAction {
 
     public void setHotCourses(List<Course> hotCourses) {
         this.hotCourses = hotCourses;
-    }
-
-    public List<CourseEvaluation> getCourseEvaluations() {
-        return courseEvaluations;
-    }
-
-    public void setCourseEvaluations(List<CourseEvaluation> courseEvaluations) {
-        this.courseEvaluations = courseEvaluations;
     }
 
     public List<OrganizationComment> getComments() {
