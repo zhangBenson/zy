@@ -24,6 +24,7 @@ import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.user.enity.RoleType;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.lang.StringUtils;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -35,6 +36,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -306,6 +309,71 @@ public class OrganizationAction extends BasicAction {
         return SUCCESS;
     }
 
+    @Action(value = "saveThirdStepTest")
+    public void saveThirdStepInfoTest() throws IOException {
+        Organization saveOrg;
+        saveOrg = orgService.findMyOrg(this.getSessionUserId());
+        saveOrg.setSchoolName(this.getOrg().getSchoolName());
+        saveOrg.setDescription(this.getOrg().getDescription());
+        saveOrg.setDepositName(this.getOrg().getDepositName());
+        saveOrg.setDepositBankName(this.getOrg().getDepositBankName());
+        saveOrg.setDepositBankAccount(this.getOrg().getDepositBankAccount());
+        saveOrg.setMemberSize(this.getOrg().getMemberSize());
+        saveOrg.setMultipleOrg(this.getOrg().getMultipleOrg());
+
+        BaseUser rer = baseUserDao.findById(this.getSessionUserId());
+
+        saveOrg.setResponsiblePerson(rer);
+
+
+        saveOrg.setLogoUrl(UploadUtils.copyTmpFileByUser(saveOrg.getLogoUrl(), this.getSessionUserId()));
+        saveOrg.setAdvUrl(UploadUtils.copyTmpFileByUser(saveOrg.getAdvUrl(), this.getSessionUserId()));
+
+        organizationDao.persistAbstract(saveOrg);
+        org = saveOrg;
+        PrintWriter out = ServletActionContext.getResponse().getWriter();
+        out.print("success");
+        out.close();
+    }
+
+    @Action(value = "saveSecStepTest")
+    public void saveSecStepTest() throws Exception {
+
+        BaseUser saveUser = baseUserDao.findByEmail(this.getSessionUserEmail());
+        saveUser.setUserName(responser.getUserName());
+        saveUser.setSexy(responser.getSexy());
+        saveUser.setTelphone(responser.getTelphone());
+        saveUser.setCardId(responser.getCardId());
+        saveUser.setBirthDay(responser.getBirthDay());
+
+        baseUserDao.persistAbstract(saveUser);
+        this.responser = saveUser;
+        PrintWriter out = ServletActionContext.getResponse().getWriter();
+        out.print("success");
+        out.close();
+    }
+
+    @Action(value = "saveOrgInfo")
+    public void saveOrgInfo() throws IOException {
+        Organization saveOrg;
+//        if (this.getOrg().getId() != null) {
+        saveOrg = orgService.findMyOrg(this.getSessionUserId());
+        saveOrg.setContactName(this.getOrg().getContactName());
+        saveOrg.setTelPhone(this.getOrg().getTelPhone());
+        saveOrg.setCellPhone(this.getOrg().getCellPhone());
+        saveOrg.setBusinessAddress(this.getOrg().getBusinessAddress());
+        saveOrg.setZipCode(this.getOrg().getZipCode());
+//        } else {
+//            saveOrg = this.getOrg();
+//        }
+        organizationDao.persistAbstract(saveOrg);
+        org = saveOrg;
+        PrintWriter out = ServletActionContext.getResponse().getWriter();
+        out.print("success");
+        out.close();
+    }
+
+
 
     @Action(value = "orgMoreTeacher",
             results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgMoreTeacher"),
@@ -317,6 +385,19 @@ public class OrganizationAction extends BasicAction {
         hotTeachers = organizationBaseUserDao.findUsersByOrgIdAndRoleType(this.getOrg().getId(), RoleType.ROLE_TYPE_TEACHER, pagination);
         return SUCCESS;
     }
+
+
+    @Action(value = "orgSaveContactInfo", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgInfoUpdate")})
+    public String orgSaveContactInfo() {
+        Organization oldOrg = organizationDao.findByResId(this.getSessionUserId());
+        organizationDao.updateOrgContactInfo(oldOrg, org);
+        responser = baseUserDao.findById(this.getSessionUserId());
+        org = oldOrg;
+        orgMaterials = orgMaterialDao.findByOrgId(null, org.getId());
+        return SUCCESS;
+    }
+
+
 
 
     public CourseDao getCourseDao() {

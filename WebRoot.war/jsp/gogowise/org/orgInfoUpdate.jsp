@@ -54,14 +54,14 @@
         <li id="tabtag_1" class="cur"><s:text name="org.info.update.orgResInfo"/></li>
         <li id="tabtag_2"><s:text name="org.info.update.orgInfo"/></li>
         <li id="tabtag_3"><s:text name="org.info.update.orgContact"/></li>
-        <li id="tabtag_4"><s:text name="org.info.update.material"/></li>
+        <%--<li id="tabtag_4"><s:text name="org.info.update.material"/></li>--%>
         <div class="right_bottom"></div>
     </ul>
 </div>
 <div id="tabcon2" class="tabcon">
 
 <div id="tabtag_1con">
-    <s:form action="orgSaveResPerson" method="POST">
+    <s:form action="saveSecStepTest" method="POST">
         <div class="tip_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:text name="orgInfoUpdate.param1"/></div>
         <ul class="principalMsg">
             <li>
@@ -117,16 +117,7 @@
                     <s:textfield name="responser.cardId" id="secondStepID" cssClass="input_text_field"/>
                 </div>
             </li>
-                <%--<li>
-                    <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:text name="orgInfoUpdate.param9"/></p><p id="fileupload1_FileWarn" class="input_msg"></p><br/>
-                    <div class="input_content">
-                        <p class="img_div"><img  id="file1_preview_img" src="<s:property value="responser.idCardUrl"/>" width="120px" height="90px" onerror="javascript:this.src='images/nopic.jpg'"/></p>
-                        <p class="file_upload">
-                            <input type="file" name="upload" id="fileupload1" />
-                        </p>
-                        <input type="hidden" id="idCardUrl" name="responser.idCardUrl"/>
-                    </div>
-                </li>--%>
+
             <li class="commit_modfication1">
                 <span id="submit_msg1" class="_submit_msg"></span>
                 <span><input type="button" class="submit_btn"
@@ -137,7 +128,7 @@
 </div>
 
 <div id="tabtag_2con">
-    <s:form action="orgSaveOrgInfo" method="POST">
+    <s:form action="saveThirdStepTest" method="POST">
         <div class="tip_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:text name="orgInfoUpdate.param1"/></div>
         <ul>
             <li>
