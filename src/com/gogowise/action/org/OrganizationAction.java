@@ -2,8 +2,8 @@ package com.gogowise.action.org;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.common.utils.Constants;
-import com.gogowise.common.utils.EmailUtil;
 import com.gogowise.common.utils.MD5;
+import com.gogowise.common.utils.UploadUtils;
 import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.dao.CourseDao;
@@ -35,10 +35,10 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 
 @Controller
@@ -290,11 +290,34 @@ public class OrganizationAction extends BasicAction {
         return SUCCESS;
     }
 
+    @Action(value = "saveOrgAdvertiseFile", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgInfoUpdate"),
+            @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".orgInfoUpdate")})
+    public String saveOrgAdvertiseFile() {
+        org = organizationDao.findByResId(this.getSessionUserId());
+        responser = baseUserDao.findById(this.getSessionUserId());
+
+        orgMaterial.setSourceTitle(this.getUploadFileName());
+        orgMaterial.setProvideTime(Calendar.getInstance());
+        orgMaterial.setProvider(baseUserDao.findById(this.getSessionUserId()));
+        orgMaterial.setFullPath(UploadUtils.copyTmpFileByUser(this.getUploadFileName(), this.getSessionUserId()));
+        orgMaterial.setOrganization(org);
+        orgMaterialDao.persistAbstract(orgMaterial);
+        orgMaterials = orgMaterialDao.findByOrgId(null, org.getId());
+        return SUCCESS;
+    }
+
+
     @Action(value = "orgMoreTeacher",
             results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgMoreTeacher"),
                     @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".notExist")
             }
     )
+    public String orgMoreTeacher() {
+        this.org = organizationDao.findById(this.getOrg().getId());
+        hotTeachers = organizationBaseUserDao.findUsersByOrgIdAndRoleType(this.getOrg().getId(), RoleType.ROLE_TYPE_TEACHER, pagination);
+        return SUCCESS;
+    }
+
 
     public CourseDao getCourseDao() {
         return courseDao;
