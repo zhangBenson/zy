@@ -306,12 +306,7 @@ programming.
             <%--<s:if test="!course.courseFinished">--%>
             <%-- <a href="javascript:;" id="register_btn" class="act_btn register_btn"><s:text name="label.course.register"/></a> --%>
             <button type="button" class="btn btn-primary btn-block" id="register_btn"><s:text name="user.info.identity.finish.reg"/> <s:property value="course.name"/></button>
-            <%--</s:if>--%>
-            <%--<s:else>--%>
-            <%--<button type="button" value="disable" disabled="disabled" class="btn btn-primary btn-block" id = "register_btn">--%>
-            <%--<s:text name="button.course.regist"/>--%>
-            <%--</button>--%>
-            <%--</s:else>--%>
+
 
         </div>
 

@@ -49,9 +49,7 @@
         <put-attribute name="top" value="/jsp/www/layout/top.jsp"/>
         <put-attribute name="footer" value="/jsp/www/layout/footer.jsp"/>
     </definition>
-    <definition name=".mapCenter" template="/jsp/layout/layoutOfMap.jsp">
-        <put-attribute name="mapHeader" value="/jsp/layout/mapHeader.jsp"/>
-    </definition>
+
 
     <definition name=".multiVideoSolution" extends=".bodyCenter">
         <put-attribute name="title" value="title.multi.video.solution"/>

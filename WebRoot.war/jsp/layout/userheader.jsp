@@ -23,12 +23,6 @@
                     </div>
                 </li>
 
-                <%--<li class="hp_item">--%>
-                <%--<div class="menu_base menu_base_map">--%>
-                <%--<a href="liveBMap2.html"><s:text name="live.map"/></a>--%>
-                <%--</div>--%>
-                <%--</li>--%>
-
 
                 <%--<li class="hp_item">
                     <div class="menu_base menu_base_about"><a href="aboutUs.html"><s:text name="link.about.us"/></a></div>
