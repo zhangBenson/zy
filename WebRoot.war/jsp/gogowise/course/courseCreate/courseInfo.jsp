@@ -114,10 +114,10 @@
                 class="tip_words" id="course_logo_input_msg">*</span><br/>
             <img src="<s:property value="course.logoUrl"/>" id="show_log_preview"
                  onerror="this.onerror=null;this.src='images/defaultImgs/course.gif'"/>
-            <s:hidden id="course_logo" cssClass="long_text_field" name="course.logoUrl"/>
-            <input type="button" class="submit_btn" id="change_portrait"
+            <s:hidden id="crop_logo" cssClass="long_text_field" name="course.logoUrl"/>
+            <input type="button" class="submit_btn change_portrait" id="change_portrait"
                    value="<s:text name="onlive.message.update"/>"
-                   href="courseLogoProcess.html"/>
+                   href="imgProcess.html?key=crop_logo"/>
         </li>
         <s:if test="courseType == 1 || courseType == 2">
             <li>

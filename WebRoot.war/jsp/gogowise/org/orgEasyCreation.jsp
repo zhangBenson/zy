@@ -95,9 +95,9 @@
                          onerror="javascript:this.src='images/nopic.jpg'"/>
 
                     <div class="file_upload">
-                        <input type="button" class="submit_btn" id="change_portrait"
+                        <input type="button" class="submit_btn change_portrait" id="change_portrait"
                                value="<s:text name="onlive.message.update"/>"
-                               href="orgLogoProcess.html"/>
+                               href="imgProcess.html"/>
                     </div>
                     <p id="secondStepFileWarn" class="input_msg"></p>
 
@@ -174,11 +174,6 @@
             }
         });
 
-        $("#change_portrait").fancybox({
-            type: 'iframe',
-            width: 720,
-            height: 490
-        });
     });
 
     function checkEvent() {

@@ -1,14 +1,8 @@
 package com.gogowise.action.utils;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.common.utils.UploadUtils;
-import com.gogowise.rep.user.dao.BaseUserDao;
-import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.rep.course.enity.Course;
-import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.common.utils.Constants;
-import org.apache.commons.lang.StringUtils;
-import org.apache.struts2.ServletActionContext;
+import com.gogowise.common.utils.UploadUtils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -21,7 +15,10 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.CropImageFilter;
 import java.awt.image.FilteredImageSource;
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * Created by GoGoWise
@@ -34,132 +31,78 @@ import java.io.*;
 @Controller
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 @Namespace(BasicAction.BASE_NAME_SPACE)
-public class ImageProcessAction extends BasicAction{
-    private BaseUserDao baseUserDao;
-    private BaseUser user;
-    private Course course;
-    private Organization org;
+public class ImageProcessAction extends BasicAction {
+
     private int imgX;
     private int imgY;
     private int imgWidth;
     private int imgHeight;
-    private String userPortraitName;
-    private String courseLogoName;
-    private String courseLogoUrl;
+    private String upLoadImgName;
+    private String upLoadImgUrl;
 
-    private String orgLogoName;
-    private String orgLogoUrl;
-
-    @Action(value = "cropUserPortrait")
-    public void cropUserPortrait() throws IOException {
-        if (StringUtils.isNotBlank(this.getUserPortraitName())) {
-
-            //持久化
-            BaseUser _user = baseUserDao.findById(getSessionUserId());
-            _user.setPic(UploadUtils.copyTmpFileByUser(this.getUserPortraitName(), this.getSessionUserId()));
-            baseUserDao.persistAbstract(_user);
-            this.setUser(_user);
-            this.setUserToSession(_user);
-
-            PrintWriter out = ServletActionContext.getResponse().getWriter();
-            out.print(user.getPic());
-            out.close();
-        }
-    }
-    @Action(value = "cropCourseLogo")
-    public void cropCourseLogo() throws IOException {
-        if (StringUtils.isNotBlank(this.getCourseLogoName())) {
-            String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + this.getCourseLogoName());
-
-             //获取拓展名
-            String extName = UploadUtils.getExtension(courseLogoName);
-            if (courseLogoName.lastIndexOf(".") >= 0) {
-                extName = courseLogoName.substring(courseLogoName.lastIndexOf(".")+1);
-            }
-
-            BufferedImage tag = getBufferImage(srcPath);
-
-            createFiles(srcPath);
-
-            ImageIO.write(tag,extName,new FileOutputStream(srcPath));
+    private String key;
 
 
-        }
-    }
-
-    @Action(value = "cropOrgLogo")
-    public void cropOrgLogo() throws IOException{
-        if (StringUtils.isNotBlank(this.getOrgLogoName())) {
-            String srcPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_FILE_PATH_TMP + this.getOrgLogoName());
-//            String toPath = ServletActionContext.getServletContext().getRealPath(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId()+"/"+this.getCourseLogoName());
-//            String toPath = srcPath;
-
-            //获取拓展名
-            String extName="";
-            if (orgLogoName.lastIndexOf(".") >= 0) {
-                extName = orgLogoName.substring(orgLogoName.lastIndexOf(".")+1);
-            }
-
-            BufferedImage tag = getBufferImage(srcPath);
-
-            createFiles(srcPath);
-
-            ImageIO.write(tag,extName,new FileOutputStream(srcPath));
-
-//            PrintWriter out = ServletActionContext.getResponse().getWriter();
-//            out.print(Constants.UPLOAD_COURSE_PATH + "/" + getSessionUserId());
-//            out.close();
-        }
-    }
-
-
-    @Action(value = "userPortraitCrop", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".userPortraitCrop") })
-    public String userPortraitCrop() {
-        return SUCCESS;
-    }
-    @Action(value = "courseLogoProcess", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseLogoProcess") })
-    public String courseLogoProcess() {
-        return SUCCESS;
-    }
-    @Action(value = "orgLogoProcess", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgLogoProcess") })
-    public String orgLogoProcess() {
+    @Action(value = "imgProcess", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".imgProcess")})
+    public String imgProcess() {
         return SUCCESS;
     }
 
-    private void createFiles(String toPath){
-        File toFile = new File(toPath);
-        if(!toFile.getParentFile().exists()){
-            toFile.getParentFile().mkdirs();
-        }else{
-            File[] files = toFile.getParentFile().listFiles();
-            for(File file:files){
-                if(file.getName() == courseLogoName)
-                    file.delete();
+
+    @Action(value = "cropLogo")
+    public void cropLogo() throws IOException {
+
+        FileOutputStream fileOutputStream = null;
+        try {
+
+            String srcPath = UploadUtils.getRealPathForBaseDir() + Constants.UPLOAD_FILE_PATH_TMP + upLoadImgName;
+            String extName = UploadUtils.getExtension(upLoadImgName);
+            if (upLoadImgName.lastIndexOf(".") >= 0) {
+                extName = upLoadImgName.substring(upLoadImgName.lastIndexOf(".") + 1);
+            }
+
+            BufferedImage target = getBufferedImage(srcPath);
+            new File(srcPath).delete();
+            fileOutputStream = new FileOutputStream(srcPath);
+            ImageIO.write(target, extName, fileOutputStream);
+
+        } finally {
+
+            if (fileOutputStream != null) {
+                fileOutputStream.close();
             }
         }
+
     }
 
-    /**
-     * 从指定路径中取出图片并对其裁剪
-     * @param srcPath  指定图片的路径
-     * @return  处理之后的BufferedImage对象
-     */
-    private BufferedImage getBufferImage(String srcPath) throws IOException{
-        //对图片的处理
-        BufferedImage bImg = ImageIO.read(new FileInputStream(srcPath));
-        Image image = bImg.getScaledInstance(bImg.getWidth(),bImg.getHeight(),Image.SCALE_DEFAULT);
+    private BufferedImage getBufferedImage(String srcPath) throws IOException {
+        FileInputStream fileInputStream = null;
+        BufferedImage target = null;
+        try {
 
-        CropImageFilter cif = new CropImageFilter(imgX,imgY,imgWidth,imgHeight);
-         Image img = Toolkit.getDefaultToolkit().createImage(new FilteredImageSource(image.getSource(),cif));
 
-        BufferedImage tag = new BufferedImage(imgWidth,imgHeight,BufferedImage.TYPE_INT_RGB);
-        Graphics2D g = (Graphics2D)tag.getGraphics();
-        g.drawImage(img, 0, 0, null);
-        g.dispose();
+            fileInputStream = new FileInputStream(srcPath);
+            BufferedImage bImg = ImageIO.read(fileInputStream);
+            Image image = bImg.getScaledInstance(bImg.getWidth(), bImg.getHeight(), Image.SCALE_DEFAULT);
 
-        return tag;
+            CropImageFilter cif = new CropImageFilter(imgX, imgY, imgWidth, imgHeight);
+            Image img = Toolkit.getDefaultToolkit().createImage(new FilteredImageSource(image.getSource(), cif));
+
+            target = new BufferedImage(imgWidth, imgHeight, BufferedImage.TYPE_INT_RGB);
+            Graphics2D g = (Graphics2D) target.getGraphics();
+            g.drawImage(img, 0, 0, null);
+            g.dispose();
+            if (fileInputStream != null) {
+                fileInputStream.close();
+            }
+        } finally {
+
+            if (fileInputStream != null) {
+                fileInputStream.close();
+            }
+        }
+        return target;
     }
-
 
     public int getImgX() {
         return imgX;
@@ -193,68 +136,27 @@ public class ImageProcessAction extends BasicAction{
         this.imgHeight = imgHeight;
     }
 
-    public String getUserPortraitName() {
-        return userPortraitName;
+    public String getUpLoadImgName() {
+        return upLoadImgName;
     }
 
-    public void setUserPortraitName(String userPortraitName) {
-        this.userPortraitName = userPortraitName;
+    public void setUpLoadImgName(String upLoadImgName) {
+        this.upLoadImgName = upLoadImgName;
     }
 
-    public BaseUserDao getBaseUserDao() {
-        return baseUserDao;
+    public String getUpLoadImgUrl() {
+        return upLoadImgUrl;
     }
 
-    public void setBaseUserDao(BaseUserDao baseUserDao) {
-        this.baseUserDao = baseUserDao;
+    public void setUpLoadImgUrl(String upLoadImgUrl) {
+        this.upLoadImgUrl = upLoadImgUrl;
     }
 
-    public BaseUser getUser() {
-        return user;
+    public String getKey() {
+        return key;
     }
 
-    public void setUser(BaseUser user) {
-        this.user = user;
-    }
-
-    public Organization getOrg() {
-        return org;
-    }
-
-    public void setOrg(Organization org) {
-        this.org = org;
-    }
-
-    public Course getCourse() {
-        return course;
-    }
-
-    public void setCourse(Course course) {
-        this.course = course;
-    }
-
-    public String getCourseLogoName() {
-        return courseLogoName;
-    }
-
-    public void setCourseLogoName(String courseLogoName) {
-        this.courseLogoName = courseLogoName;
-    }
-
-
-    public String getOrgLogoName() {
-        return orgLogoName;
-    }
-
-    public void setOrgLogoName(String orgLogoName) {
-        this.orgLogoName = orgLogoName;
-    }
-
-    public String getOrgLogoUrl() {
-        return orgLogoUrl;
-    }
-
-    public void setOrgLogoUrl(String orgLogoUrl) {
-        this.orgLogoUrl = orgLogoUrl;
+    public void setKey(String key) {
+        this.key = key;
     }
 }

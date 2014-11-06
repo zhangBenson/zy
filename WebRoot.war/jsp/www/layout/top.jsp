@@ -24,7 +24,7 @@
 <div class="container">
     <div>
         <div class="col-md-3" style="width:250px;">
-            <a href="index.html">
+            <a href="/index.html">
                 <div class="topLogo"></div>
             </a>
 

@@ -275,28 +275,6 @@
     </s:iterator>
 
     function checkCourseRecommend(index) {
-//        alert( $("input[name=emails]",document.forms['recommendCourseForm'+index]).size());
-        <%--for(var i=0;i<$(document.getElementsByName("emails")).size();i++){--%>
-
-        <%--var content = $($(document.getElementsByName("emails"))[i]).attr('value');--%>
-        <%--var reMail = /^(?:[a-z\d]+[_\-\+\.]?)*[a-z\d]+@(?:([a-z\d]+\-?)*[a-z\d]+\.)+([a-z]{2,})+$/i;--%>
-        <%--var emailContent = content.replace(/(^\s*)|(\s*$)/g, "");--%>
-        <%--$("#recommendMsg").text("");--%>
-        <%--if(emailContent!=""){--%>
-        <%--if (!reMail.test(emailContent)) {--%>
-        <%--$("#recommendMsg").text("<s:text name='course.email.input.error'/>");--%>
-        <%--return false;--%>
-        <%--}--%>
-        <%--var mySession = "<s:property value="#session.email"/>";--%>
-        <%--if (emailContent == mySession) {--%>
-        <%--$("#recommendMsg").text("<s:text name='course.email.input.myself'/>");--%>
-        <%--return false;--%>
-        <%--}--%>
-        <%--}else{--%>
-        <%--$("#recommendMsg").text("<s:text name='emailEmpty'/>");--%>
-        <%--return false;--%>
-        <%--}--%>
-        <%--}--%>
         var vas = $("#recommendCourseForm" + index).serialize();
         $.post("recommendCourse.html", vas);
         $("#recommend_message" + index).html(right_div + "<s:text name='course.recommend.success'/>");

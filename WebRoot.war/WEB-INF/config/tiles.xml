@@ -125,10 +125,7 @@
         <put-attribute name="title" value="title.admin.system"/>
         <put-attribute name="right" value="/jsp/gogowise/org/orgEasyCreation.jsp"/>
     </definition>
-    <definition name=".higSecAddAnnounceInit" extends=".basic">
-        <put-attribute name="title" value="title.admin.system"/>
-        <put-attribute name="right" value="/jsp/gogowise/ggwAnnounceCreate.jsp"/>
-    </definition>
+
     <definition name=".ggwAnnounceList" extends=".basic">
         <put-attribute name="title" value="title.admin.system"/>
         <put-attribute name="right" value="/jsp/gogowise/higSec/ggwAnnounceList.jsp"/>
@@ -257,17 +254,6 @@
         <put-attribute name="contentBody" value="/jsp/www/user/rePwdSuccess.jsp"/>
     </definition>
 
-    <definition name=".initUpdate_teacher" extends=".userCenter">
-        <put-attribute name="title" value="title.account.setting"/>
-        <put-attribute name="contentRight" value="/jsp/gogowise/updateUserInfo_teacher.jsp"/>
-    </definition>
-
-    <!--<definition name=".initUpdate" extends=".initUserCenter">
-        <put-attribute name="title" value="title.account.setting"/>
-        <put-attribute name="contentRight" value="/jsp/gogowise/updateUserInfo.jsp"/>
-    </definition>-->
-
-
     <definition name=".initOrganization" extends=".basic">
         <put-attribute name="title" value="title.org.creation"/>
         <put-attribute name="right" value="/jsp/gogowise/createOrganization.jsp"/>
@@ -277,9 +263,6 @@
         <put-attribute name="right" value="/jsp/gogowise/showCreateMsg.jsp"/>
     </definition>
 
-    <definition name=".orgLogoProcess" template="/jsp/www/org/orgLogoProcess.jsp">
-        <put-attribute name="title" value="title.logo.upload"/>
-    </definition>
 
     <!-- =====================User related action end=========================== -->
 
@@ -593,11 +576,7 @@
     </definition>
 
 
-    <!-- 图像处理的页面 -->
-    <definition name=".userPortraitCrop" template="/jsp/gogowise/user/userPortraitCrop.jsp">
-        <put-attribute name="title" value="title.image.upload"/>
-    </definition>
-    <definition name=".courseLogoProcess" template="/jsp/gogowise/course/courseLogoProcess.jsp">
+    <definition name=".imgProcess" template="/jsp/gogowise/course/imgProcess.jsp">
         <put-attribute name="title" value="title.logo.upload"/>
     </definition>
 

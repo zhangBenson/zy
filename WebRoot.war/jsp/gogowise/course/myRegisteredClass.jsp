@@ -69,11 +69,8 @@
 
                 <p class="time">
                     <a class="manage_course" href="javascript:;"><s:text name="course.cancel.reg"/></a>
-                    <a class="manage_course" id="courseRecommend<s:property value="#idx.index"/>"
-                       href="#recommdatepanel<s:property value="#idx.index"/>"><s:text name="label.recommend.course"/></a>
-                        <%--<a class="manage_course" id="courseNewEvents<s:property value="#idx.index"/>"  href="#course_newEvent<s:property value="#idx.index"/>"><s:text name="add.course.new.event.in"/></a>--%>
-                    <a class="manage_course" <%--id="courseNewEvents<s:property value="#idx.index"/>" --%>
-                       href="initAddCourseEvent.html?course.id=5"><s:text name="add.course.new.event.in"/></a>
+
+
                     <a href="myCourseQuestionResult.html?course.id=<s:property value="id"/>"><s:text name="course.courseQuestionResult"/></a>
                 </p>
             </div>

@@ -1,10 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
-<html style="overflow: hidden;">
+<html>
 <head>
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <link rel="stylesheet" href="css/user/userPortraitCrop.css" type="text/css"/>
+    <link rel="stylesheet" href="css/course/courseLogoProcess.css" type="text/css"/>
     <script src="js/jcrop/js/jquery.Jcrop.js"></script>
     <link rel="stylesheet" href="js/jcrop/css/jquery.Jcrop.css" type="text/css"/>
     <script type='text/javascript' src='js/uploadify/jquery.uploadify.v2.1.4.js'></script>
@@ -22,6 +23,8 @@
         var largeImgDivHTML = "<div class=\"large_image_inner\" ><img id=\"target\" src=\"\"/></div>";
         var dynamicImgHTML = "<div class=\"dynamic_image_inner\"><img id=\"preview\" src=\"\"/></div>";
         var real_path;
+        var upLoadImgName;
+
         /* 头像图片上传预览，剪裁Div的js */
         //头像的上传
         $(document).ready(function () {
@@ -64,10 +67,11 @@
                 'simUploadLimit': 1, //一次同步上传的文件数目
                 'sizeLimit': 2000000, //设置单个文件大小限制
                 'queueSizeLimit': 1, //队列中同时存在的文件个数限制
+                //'scriptData'     : $("#userInfoForm").serialize(),
+                //            'fileDataName' : 'uploads',
                 'folder': 'upload/tmp',
                 'fileDesc': 'jpg/gif/jpeg/png/bmp.', //如果配置了以下的'fileExt'属性，那么这个属性是必须的
                 'fileExt': '*.jpg;*.gif;*.jpeg;*.png;*.bmp;*.png', //允许的格式
-
                 onComplete: function (event, queueID, fileObj, response, data) {
                     $(".large_image").html(largeImgDivHTML);
                     $(".dynamic_image").html(dynamicImgHTML);
@@ -75,7 +79,7 @@
                     $(".dynamic_image_inner").show();
                     var jsonRep = $.parseJSON(response);
                     real_path = fileObj.filePath.replace(fileObj.name, jsonRep.genFileName);
-                    userPortraitName = jsonRep.genFileName;
+                    upLoadImgName = jsonRep.genFileName;
                     //隐藏提示语句，显示图像Div
                     $('#target').loadthumb({src: real_path});
                     $('#preview').loadthumb({src: real_path});
@@ -84,11 +88,11 @@
                         originalWidth = OriginalImage.width;
                         originalHeight = OriginalImage.height;
                         var ratio = originalWidth / originalHeight;
-                        if (ratio >= 4 / 3) {
+                        if (ratio >= 200 / 110) {
                             $("#target").attr("width", "400px");
                             imageLong = true;
                         } else {
-                            $("#target").attr("height", "300px");
+                            $("#target").attr("height", "220px");
                             imageLong = false;
                         }
 
@@ -104,9 +108,9 @@
                     //                alert("cancel");
                     //            $("#secondStepFileWarn").html("cancel " + fileObj.name);
                 },
-                onUploadStart: function (file) {
-                    //ToDo:显示等待gif动画图片
-                    //测试该方法始终不被调用，遂暂时搁置
+                onUploadStart: function (event, queueID, fileObj) {
+                    //            uploading = true;
+                    //            $("#secondStepFileWarn").html(warnDiv+uploading__msg);
                 }
             });
 
@@ -116,15 +120,15 @@
                 $('#target').Jcrop({
                     onChange: updatePreview,
                     onSelect: updatePreview,
-                    setSelect: [0, 0, 30, 30],
-                    aspectRatio: 1 / 1
+                    setSelect: [0, 0, 200, 110],
+                    aspectRatio: 200 / 110
                 }, function () {
                     // Use the API to get the real image size
                     var bounds = this.getBounds();
                     boundx = bounds[0];
                     boundy = bounds[1];
-                    if (imageLong) this.setSelect([2, 2, boundx - 2, boundx * 1 - 2]);
-                    else this.setSelect([2, 2, boundy * 1 - 2, boundy - 2]);
+                    if (imageLong) this.setSelect([0, 0, boundy * 200 / 110, boundy]);
+                    else this.setSelect([0, 0, boundx, boundy * 110 / 200]);
                     // Store the API in the jcrop_api variable
                     jcrop_api = this;
                 });
@@ -140,8 +144,8 @@
                         imgWidth = Math.round(ratioX * c.w);
                         imgHeight = Math.round(ratioY * c.h);
 
-                        var rx = 150 / c.w;
-                        var ry = 150 / c.h;
+                        var rx = 180 / c.w;
+                        var ry = 135 / c.h;
 
                         $('#preview').css({
                             width: Math.round(rx * boundx) + 'px',
@@ -160,15 +164,16 @@
                 }
                 //获取剪裁后图片的数据,X坐标，Y坐标，长宽，以及，已上传图片在服务器的路径
                 //将这些数据用Ajax方式送到后台，并对已上传的图片进行处理后保存，传回图片的路径
-                var postStr = {"imgX": imgX, "imgY": imgY, "imgWidth": imgWidth, "imgHeight": imgHeight, "userPortraitName": userPortraitName};
-                $.post("cropUserPortrait.html", postStr, function (data) {
+                var postStr = {"imgX": imgX, "imgY": imgY, "imgWidth": imgWidth, "imgHeight": imgHeight, "upLoadImgName": upLoadImgName};
+                $.post("cropLogo.html", postStr, function () {
                     //取得图片在服务器上的路径
                     //关闭窗口，并将图片显示在头像Div中
-                    real_path = data;
-                    window.parent.window.document.getElementById("reImg").src = real_path;
-                    window.parent.window.document.getElementById("usermenu_user_img").src = real_path;
-//                               window.parent.window.document.getElementById("userheader_user_img").src = real_path;
-                    window.parent.window.document.getElementById("picHidden").value = real_path;
+                    if (!real_path) {
+                        $(".upload_warn").html("请先上传图片");
+                        return;
+                    }
+
+                    window.parent.window.afterCropLogo(real_path, upLoadImgName, "<s:property value='key'/>");
                     parent.$.fancybox.close();
                 }, "text");
             });
@@ -184,13 +189,16 @@
     </script>
 </head>
 <body>
+
 <div class="image_manipulate_container" id="image_manipulate_container">
     <div class="image_manipulate_inner_div">
-        <div class="tittle"><s:text name="title.head.setting"/></div>
+        <div class="tittle">Logo设置</div>
         <div class="fileload">
             <input type="file" name="fileupload" id="userPortrait_fileField"/>&nbsp;&nbsp;&nbsp;&nbsp;<span
                 class="upload_warn"></span>
         </div>
+
+        <%-- 大图片裁切 --%>
         <div class="large_image">
             <div class="large_image_tip_words">
                 <span class="words_1"><s:text name="message.select.pic"/></span><br/><br/>
@@ -198,17 +206,24 @@
             </div>
             <div class="large_image_inner"><img id="target" src=""/></div>
         </div>
+
         <div class="image_split"></div>
-        <div class="dynamic_image_tittle"><s:text name="label.head.preview"/></div>
+
+        <%-- 小图片预览 --%>
+        <div class="dynamic_image_tittle">Logo预览</div>
         <div class="dynamic_image">
             <div class="dynamic_image_inner"><img id="preview" src=""/></div>
         </div>
+
+
+        <%-- 提交及取消 --%>
         <div class="portrait_submit">
             <input class="submit_btn" type="submit" value="<s:text name="button.submit"/>"/>
             <input class="cancel_btn" type="button" value="<s:text name="button.cancel"/>"/>
         </div>
     </div>
 </div>
+
 </body>
 </html>
 

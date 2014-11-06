@@ -91,7 +91,7 @@
 
             <br/>
             <br/>
-            <a class="btn btn-success" id="change_portrait" href="userPortraitCrop.html"><s:text name="button.change.head"/></a>
+                <a class="btn btn-success change_portrait" id="change_portrait" href="imgProcess.html"><s:text name="button.change.head"/></a>
         </div>
         <br/>
 
@@ -153,16 +153,6 @@
             $(".old_password").val("");
             $(".new_password").val("");
             $(".new_password_repeat").val("");
-        });
-
-        //更换头像
-        $("#change_portrait").fancybox({
-            type:'iframe',
-            width:730,
-            height:490,
-            padding:10,
-            scrolling:"no",
-            modal:true
         });
     });
 

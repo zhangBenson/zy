@@ -514,6 +514,15 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
+    @Action(value = "courseEventRead", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseEventRead")})
+    public String courseEventRead() {
+
+        courseNewEvent = courseNewEventDao.findById(courseNewEvent.getId());
+        return SUCCESS;
+    }
+
+
+
     @Action(value = "deleteCourseNewEvent")
     public void deleteCourseNewEvent() {
 

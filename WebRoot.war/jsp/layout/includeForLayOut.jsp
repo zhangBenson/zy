@@ -84,15 +84,6 @@
         }
 
         calculate_time_zone("<s:property value='#session.timeZone'/>");
-//        testIEVersion();
-
-        <%--<s:if test="#session.email !=null">--%>
-            <%--userNickname="<s:property value="#session.nickName"/>";--%>
-            <%--Keeper.addListener(userNickname+"notify",notify);--%>
-        <%--</s:if>--%>
-        <%--<s:else>--%>
-            <%--userNickname = "annoy";--%>
-        <%--</s:else>--%>
 
         $("#tip_msg_inner").hover(function(){
             if(tipInterval) window.clearInterval(tipInterval);
@@ -102,6 +93,12 @@
         });
         $("#close_btn").click(function(){
             $("#pop_live_message_tip").slideUp("slow");
+        });
+
+        $(".change_portrait").fancybox({
+            type: 'iframe',
+            width: 720,
+            height: 490
         });
     });
 
@@ -128,52 +125,6 @@
         $(input_msg).html(exist_words_number + "/" + TOTAL_WORDS_NUMBER);
     }
 
-    function checkInteger(textFieldId,tipMsgId){
-        var number = document.getElementById(textFieldId).value;
-        var numberPattern = /[1-9]\d*/;
-        if(!numberPattern.test(number)){
-            document.getElementById(tipMsgId).innerHTML = INTEGER_FORMAT_WRONG;
-            return false;
-        }
-        return true;
-    }
-
-    function getStrLength(str) {
-            var len = 0;
-            for (var i = 0; i < str.length; i++) {
-                var c = str.charCodeAt(i);
-                if ((c >= 0x0001 && c <= 0x007e) || (0xff60 <= c && c <= 0xff9f)) {
-                    len++;
-                } else {
-                    len += 2;
-                }
-            }
-            return len;
-        }
-
-    function getSubString(str,sLength){
-        var len = 0;
-        for (var i = 0; i < str.length; i++) {
-            var c = str.charCodeAt(i);
-            if ((c >= 0x0001 && c <= 0x007e) || (0xff60 <= c && c <= 0xff9f)) {
-                len++;
-            }else {
-                len += 2;
-            }
-             if(len > sLength){
-                 return str.substring(0,i);
-             }else if(len == sLength){
-                 return str.substring(0,i+1);
-             }
-        }
-        return str;
-    }
-    function becomeFans(obj,userID){
-        if(validateLogo()){
-           $.post("addUserFocus.html",{'user.id':userID},function(){});
-           $(obj).html("<s:text name='user.add.focused'/>");
-        }
-    }
     function validateLogo(){
        if(document.getElementById('hidSessionId').value > 0) {
            return true;
@@ -187,6 +138,13 @@
            return false;
        }
     }
+
+    function afterCropLogo(real_path, imgName) {
+        document.getElementById("show_log_preview").src = real_path;
+        document.getElementById("crop_logo").value = imgName;
+    }
+
+
 </script>
 
 

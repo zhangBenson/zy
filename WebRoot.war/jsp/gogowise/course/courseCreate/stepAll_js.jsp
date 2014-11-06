@@ -193,11 +193,7 @@ $(function () {
             $(".self_system_wrap").hide();
         }
     });
-    $("#change_portrait").fancybox({
-        type: 'iframe',
-        width: 720,
-        height: 490
-    });
+
     $("#course_creation_clause").fancybox({
         type: 'iframe',
         width: 720,
