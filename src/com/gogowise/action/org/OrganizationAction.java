@@ -326,8 +326,8 @@ public class OrganizationAction extends BasicAction {
         saveOrg.setResponsiblePerson(rer);
 
 
-        saveOrg.setLogoUrl(UploadUtils.copyTmpFileByUser(saveOrg.getLogoUrl(), this.getSessionUserId()));
-        saveOrg.setAdvUrl(UploadUtils.copyTmpFileByUser(saveOrg.getAdvUrl(), this.getSessionUserId()));
+        saveOrg.setLogoUrl(UploadUtils.copyTmpFileByUser(org.getLogoUrl(), this.getSessionUserId()));
+        saveOrg.setAdvUrl(UploadUtils.copyTmpFileByUser(org.getAdvUrl(), this.getSessionUserId()));
 
         organizationDao.persistAbstract(saveOrg);
         org = saveOrg;

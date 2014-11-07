@@ -53,25 +53,5 @@
 
 
 
-        <div id="pop_live_message_tip" style='width:100%;position: fixed;left:0;bottom:10px;display: none;'>
-            <div style="width:970px;margin:0 auto;">
-                <div style="float:right;width:280px;border:1px solid #dadada;background:#fff;padding-bottom: 10px;" id="tip_msg_inner">
-                    <div style="float:left;padding:0 10px;background:#ebebeb;width:260px;height:26px;line-height: 26px;">
-                        <span  style="float:left;font-size: 12px;font-weight: lighter;"><s:text name="live.new.message"/></span>
-                        <a id="close_btn" style="float:right;font-size: 16px;font-weight: bold;cursor: pointer;background:#add8e6;">&nbsp;X&nbsp;</a>
-                    </div>
-                    <div style="float:left;width:260px;padding:10px;font-size:12px;font-weight: lighter;word-wrap: break-word;">
-                        <img id="user_pic" style="float:left;width:30px;height:30px;border:none;margin-right: 7px;" src="">
-                        <div style="float:left;">
-                            <span style="color:#008b8b;" id="userName_perHost"></span>&nbsp;<s:text name="live.ongoing.live"/> &nbsp;&nbsp;&nbsp;<br/>
-                            <a href="javaScript:;" style="color:#f60;line-height: 18px;" id="linkAddress_perHost">&lt;&lt;<s:text name="click.to.watch"/></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-
     </body>
 </html>

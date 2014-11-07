@@ -23,6 +23,7 @@
             <h1 class="courseSubject"><s:text name="table.base.info"/></h1>
 
             <form class="form-horizontal" action="updateUserInfo.html" method="post">
+                <s:hidden name="user.pic" id="crop_logo"/>
                 <div class="form-group">
                     <label><s:text name="menber.reg.nickName"/></label>
                     <span class="input_msg" id="nick_name_msg"></span>
@@ -87,7 +88,7 @@
             <img src="" style="display: none;" id="usermenu_user_img"/>
             <input type="hidden" id="picHidden"/>
 
-            <img src="<s:property value='#session.userLogoUrl'/>" style="width: 100px;height: 100px;border-radius: 12px;" id="reImg"/>
+                <img src="<s:property value='#session.userLogoUrl'/>" style="width: 100px;height: 100px;border-radius: 12px;" id="show_log_preview"/>
 
             <br/>
             <br/>

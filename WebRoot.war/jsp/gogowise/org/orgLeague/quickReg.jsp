@@ -4,7 +4,6 @@
 <link href="js/uploadify/uploadify.css" type="text/css" rel="stylesheet"/>
 <script type="text/javascript" src="js/uploadify/jquery.uploadify.v2.1.4.js"></script>
 <script type="text/javascript" src="js/uploadify/swfobject.js"></script>
-<%--<script type="text/javascript" src="js/orgLeague.js"></script>--%>
 <link href="css/orgLeague/<s:text name='orgleague.css.filename'/>" rel="stylesheet" type="text/css"/>
 <style type="text/css">
     .wwgrp br {

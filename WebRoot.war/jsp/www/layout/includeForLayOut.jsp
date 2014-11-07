@@ -4,7 +4,7 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 
 
-
+<script type="text/javascript" src="js/common.js"></script>
 <script>
     $(document).ready(function () {
         if ($("#gogowiseTitle").val()) {

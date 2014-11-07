@@ -74,11 +74,7 @@ function InitAjax() {
 //second step checking
 $(document).ready(function () {
 
-    $("#fileupload2").fancybox({
-        type: 'iframe',
-        width: 720,
-        height: 490
-    });
+
     $("#fileupload3").uploadify({
         /*注意前面需要书写path的代码*/
         'uploader': 'js/uploadify/uploadify.swf',
@@ -494,10 +490,10 @@ $(document).ready(function () {
         var thirdStepAccountNo = document.getElementById('thirdStepAccountNo').value;
         var memberSize = getSeletedItem('org.memberSize');
         var multipleOrg = getSeletedItem('org.multipleOrg');
-        var hidFile1 = document.getElementById('logoUrl').value;
+        var hidFile1 = document.getElementById('crop_logo').value;
         var hidFile2 = document.getElementById('hidFile2').value;
 
-        var params = {"org.schoolName": thirdStepName, "org.description": thirdStepOrgShuoming, "org.depositBankName": bankName, "org.depositName": thirdStepAccount, "org.depositBankAccount": thirdStepAccountNo, "org.memberSize": memberSize, "org.multipleOrg": multipleOrg, "hidFile1": hidFile1, "hidFile2": hidFile2};
+        var params = {"org.schoolName": thirdStepName, "org.description": thirdStepOrgShuoming, "org.depositBankName": bankName, "org.depositName": thirdStepAccount, "org.depositBankAccount": thirdStepAccountNo, "org.memberSize": memberSize, "org.multipleOrg": multipleOrg, "org.logoUrl": hidFile1, "org.advUrl": hidFile2};
         $.post(url, params, function (data) {
             if (data == 'success') {
                 $("#submit_msg2").html(saveSuccess);

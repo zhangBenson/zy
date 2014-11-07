@@ -101,7 +101,7 @@
                     </div>
                     <p id="secondStepFileWarn" class="input_msg"></p>
 
-                    <input type="hidden" name="logoUrl" id="logoUrl"/>
+                    <input type="hidden" name="logoUrl" id="crop_logo"/>
 
                     <div id="fileQueue"></div>
                 </li>

@@ -233,3 +233,32 @@ function moveTo(destId) {
 function moveToExact(topPixes) {
     $("html,body").animate({scrollTop: topPixes}, 500);
 }
+
+function validateLogo() {
+    if (document.getElementById('hidSessionId').value > 0) {
+        return true;
+    } else {
+        $.fancybox({
+            "type": "iframe",
+            "href": "login.html",
+            "width": 350,
+            "height": 270
+        });
+        return false;
+    }
+}
+
+
+function afterCropLogo(real_path, imgName) {
+    document.getElementById("show_log_preview").src = real_path;
+    document.getElementById("crop_logo").value = imgName;
+}
+
+
+$(function () {
+    $(".change_portrait").fancybox({
+        type: 'iframe',
+        width: 720,
+        height: 490
+    });
+});

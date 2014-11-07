@@ -1,10 +1,7 @@
 package com.gogowise.action.user;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.common.utils.Constants;
-import com.gogowise.common.utils.EmailUtil;
-import com.gogowise.common.utils.MD5;
-import com.gogowise.common.utils.TextCode;
+import com.gogowise.common.utils.*;
 import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.dao.CourseInviteStudentDao;
 import com.gogowise.rep.course.dao.CourseRecommendDao;
@@ -410,7 +407,7 @@ public class UserAction extends BasicAction {
         _user.setSexy(user.getSexy());
         _user.setBirthDay(user.getBirthDay());
 
-        //持久化
+        _user.setPic(UploadUtils.copyTmpFileByUser(user.getPic(), getSessionUserId()));
         baseUserDao.persistAbstract(_user);
         this.setUser(_user);
 

@@ -18,11 +18,6 @@
 <script src="js/global.js" type="text/javascript"></script>
 <!--[if lte IE 6]> <script type="text/javascript" src="js/iepngfix/iepngfix_tilebg.js"></script> <![endif]-->
 <script type="text/javascript">
-    var INTEGER_FORMAT_WRONG = "请输入有效的正整数";
-
-    // ======================================create date pick
-    var userNickname;
-    var tipInterval = 0;
 
     function createDatePicker(ctlname) {
         var id = "#" + ctlname;
@@ -54,15 +49,6 @@
                 alwaysUseStartDate:true});
         });
     }
-    function testIEVersion(){
-        var browser = navigator.appName;
-        if (browser == "Microsoft Internet Explorer"){
-            var b_version = navigator.appVersion.split(";")[1].replace(/ /g,"");
-            if(b_version == "MSIE6.0") {
-                Boxy.confirm("<s:text name='frame.browser.version.low'/>", null, {title: ''});
-             }
-        }
-    }
 
     $(function(){
         if ($("input.Wdatepicker") != null && $("input.Wdatepicker") != undefined) {
@@ -85,64 +71,8 @@
 
         calculate_time_zone("<s:property value='#session.timeZone'/>");
 
-        $("#tip_msg_inner").hover(function(){
-            if(tipInterval) window.clearInterval(tipInterval);
-            $("#pop_live_message_tip").show();
-        },function(){
-            tipInterval = window.setTimeout(function(){$("#pop_live_message_tip").slideUp("slow");},5000);
-        });
-        $("#close_btn").click(function(){
-            $("#pop_live_message_tip").slideUp("slow");
-        });
 
-        $(".change_portrait").fancybox({
-            type: 'iframe',
-            width: 720,
-            height: 490
-        });
     });
-
-    function showOnliveMsg(hostNickName,hostPic,personalOnliveID,userMattersID){
-        $("#userName_perHost").html(hostNickName);
-        $("#user_pic").attr("src",hostPic);
-        $("#linkAddress_perHost").attr('href','fansWatchPerOnliveControl.html?personalOnlive.id='+personalOnliveID+'&amp;userMatters.id='+userMattersID);
-        $("#pop_live_message_tip").slideDown("slow");
-    }
-
-    function notify(obj){
-        var str = obj.responseText;
-        var strs = str.split("$");
-        showOnliveMsg(strs[1],strs[2],strs[3],strs[4]);
-    }
-
-    function changeWordNumber(input_area, input_msg, TOTAL_WORDS_NUMBER) {
-        var exist_words_number = getStrLength($(input_area).val());
-        if (exist_words_number >= TOTAL_WORDS_NUMBER) {
-            var partStr = getSubString($(input_area).val(), TOTAL_WORDS_NUMBER);
-            $(input_area).val(partStr);
-            exist_words_number = TOTAL_WORDS_NUMBER;
-        }
-        $(input_msg).html(exist_words_number + "/" + TOTAL_WORDS_NUMBER);
-    }
-
-    function validateLogo(){
-       if(document.getElementById('hidSessionId').value > 0) {
-           return true;
-       } else {
-           $.fancybox({
-                "type":"iframe",
-                "href":"login.html",
-                "width":350,
-                "height":270
-           });
-           return false;
-       }
-    }
-
-    function afterCropLogo(real_path, imgName) {
-        document.getElementById("show_log_preview").src = real_path;
-        document.getElementById("crop_logo").value = imgName;
-    }
 
 
 </script>

@@ -24,12 +24,6 @@
         <put-attribute name="contentLeft" value="/jsp/layout/usermenu.jsp"/>
     </definition>
 
-    <definition name=".listCenter" template="/jsp/layout/layoutOfList.jsp">
-        <put-attribute name="header" value="/jsp/layout/header.jsp"/>
-        <put-attribute name="bottom" value="/jsp/layout/footer.jsp"/>
-        <put-attribute name="contentHeader" value="/jsp/layout/userheader.jsp"/>
-        <put-attribute name="contentRight" value="/jsp/layout/listRight.jsp"/>
-    </definition>
 
     <definition name=".about" template="/jsp/layout/layoutOfAbout.jsp">
         <put-attribute name="header" value="/jsp/layout/header.jsp"/>
@@ -86,10 +80,6 @@
         <put-attribute name="contentBody" value="/jsp/www/log_reg/studentLogin.jsp"/>
     </definition>
 
-    <!--<definition name=".index" extends=".bodyCenter">-->
-    <!--<put-attribute name="title" value="title.index"/>-->
-    <!--<put-attribute name="contentBody" value="/jsp/gogowise/index.jsp"/>-->
-    <!--</definition>-->
 
     <definition name=".index" extends=".wwwBodyCenter">
         <put-attribute name="title" type="string" value="title.index"/>
@@ -541,10 +531,7 @@
         <put-attribute name="title" value="button.help.center"/>
         <put-attribute name="contentBody" value="/jsp/gogowise/helpCenter.jsp"/>
     </definition>
-    <!-- <definition name=".aboutUs" extends=".about">
-        <put-attribute name="title" value="title.about.company"/>
-        <put-attribute name="contentRight" value="/jsp/gogowise/about/company.jsp"/>
-    </definition> -->
+
     <definition name=".aboutUs" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.about.company"/>
         <put-attribute name="contentBody" value="/jsp/www/about/aboutus.jsp"/>

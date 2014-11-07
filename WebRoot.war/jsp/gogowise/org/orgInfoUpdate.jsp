@@ -208,26 +208,26 @@
                     </p>
 
                     <div class="file_upload">
-                        <input type="button" class="submit_btn" id="fileupload2"
+                        <input type="button" class="submit_btn change_portrait" id="fileupload2"
                                value="<s:text name="onlive.message.update"/>"
-                               href="orgLogoProcess.html"/>
+                               href="imgProcess.html"/>
                     </div>
                     <p id="secondStepFileWarn" class="input_msg"></p>
-                    <s:hidden name="org.logoUrl" id="logoUrl"/>
+                    <s:hidden name="org.logoUrl" id="crop_logo"/>
                 </div>
             </li>
             <li class="fileUploadDiv">
-                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:text name="orgInfoUpdate.param19"/></p>
+                <p class="option_tittle"><span style="color:red;">&nbsp;*&nbsp;</span><s:text name="title.org.banner"/></p>
 
                 <p id="fileupload3_FileWarn" class="input_msg"></p><br/>
 
                 <div class="input_content">
-                    <p class="img_div"><img id="file3_preview_img" src="<s:property value="org.businessLicenseUrl"/>"
+                    <p class="img_div"><img id="file3_preview_img" src="<s:property value="org.advUrl"/>"
                                             width="120px" height="90px"
                                             onerror="javascript:this.src='images/nopic.jpg'"/></p>
 
                     <p class="file_upload"><input type="file" name="upload" id="fileupload3"/></p>
-                    <input type="hidden" name="org.businessLicenseUrl" id="hidFile2"/>
+                    <input type="hidden" name="org.advUrl" id="hidFile2"/>
                 </div>
             </li>
             <li class="commit_modfication2">
