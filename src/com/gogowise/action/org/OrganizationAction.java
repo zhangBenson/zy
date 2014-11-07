@@ -212,16 +212,6 @@ public class OrganizationAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "quickReg", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".quickReg")})
-    public String quickReg() {
-        return SUCCESS;
-    }
-
-    @Action(value = "quickRegPreview", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".quickRegPreview")})
-    public String quickRegPreview() {
-        return SUCCESS;
-    }
-
 
     @Action(value = "initConfirmOrg", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".quickRegPreview")})
     public String initConfirmOrg() {

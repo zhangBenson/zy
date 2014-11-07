@@ -433,16 +433,6 @@
     <!--  ===================== org  location ==============================================  -->
 
 
-    <definition name=".quickReg" extends=".bodyCenter">
-        <put-attribute name="title" value="title.organization.league"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/org/orgLeague/quickReg.jsp"/>
-    </definition>
-    <definition name=".quickRegPreview" extends=".bodyCenter">
-        <put-attribute name="title" value="title.organization.league"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/org/orgLeague/quickRegPreview.jsp"/>
-    </definition>
-
-
     <definition name=".orgInitCourseCreation" extends=".bodyCenter">
         <put-attribute name="title" value="title.org.course.creation"/>
         <put-attribute name="contentBody" value="/jsp/gogowise/org/orgCourseCreation/orgCourseCreation.jsp"/>

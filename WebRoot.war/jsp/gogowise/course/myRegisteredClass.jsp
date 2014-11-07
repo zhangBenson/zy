@@ -191,46 +191,6 @@
 <script type="text/javascript">
 
 
-    <s:iterator value="courses" status="idx">
-    $("#courseNewEvents<s:property value="#idx.index"/>").fancybox({});
-    $("#courseRecommend<s:property value="#idx.index"/>").fancybox({});
-    $("#courseNewEvent_logo<s:property value="#idx.index"/>").uploadify({
-        /*注意前面需要书写path的代码*/
-        'uploader': 'js/uploadify/uploadify.swf',
-        'script': 'utils/uploadFile.html',
-        'cancelImg': 'js/uploadify/cancel.png',
-        'queueID': 'fileQueue1', //和存放队列的DIV的id一致
-        'fileDataName': 'fileupload', //和以下input的name属性一致
-        'auto': true, //是否自动开始
-        'multi': false, //是否支持多文件上传
-        'buttonText': "Upload", //按钮上的文字
-        'simUploadLimit': 1, //一次同步上传的文件数目
-        'sizeLimit': 2000000, //设置单个文件大小限制
-        'queueSizeLimit': 1, //队列中同时存在的文件个数限制
-        //'scriptData'     : $("#userInfoForm").serialize(),
-//            'fileDataName' : 'uploads',
-        'folder': 'upload/tmp',
-        'fileDesc': 'jpg/gif/jpeg/png/bmp.', //如果配置了以下的'fileExt'属性，那么这个属性是必须的
-        'fileExt': '*.jpg;*.gif;*.jpeg;*.png;*.bmp;*.png', //允许的格式
-        onComplete: function (event, queueID, fileObj, response, data) {
-            var jsonRep = $.parseJSON(response);
-            var real_path = fileObj.filePath.replace(fileObj.name, jsonRep.genFileName);
-            document.getElementById('courseNewEvent_logoUrl<s:property value="#idx.index"/>').value = jsonRep.genFileName;
-            $("#logo_preview<s:property value="#idx.index"/>").attr("src", real_path);
-            $("#logo_tip<s:property value="#idx.index"/>").html("<s:text name='image.logo.upload.success'/>");
-        },
-        onError: function (event, queueID, fileObj) {
-            $("#logo_tip").html("file:" + fileObj.name + "upload failed");
-        },
-        onCancel: function (event, queueID, fileObj) {
-            $("#logo_tip").html("cancel " + fileObj.name);
-        },
-        onUploadStart: function (event, queueID, fileObj) {
-            $("#logo_tip").html("<s:text name='image.logo.start.upload'/>");
-        }
-    });
-    </s:iterator>
-
     function checkFormData(id) {
         var title = $("#courseNewEvent_title" + id).val().replace(/(^\s*)|(\s*$)/g, "");
         var content = $("#courseNewEvent_content" + id).val().replace(/(^\s*)|(\s*$)/g, "");
@@ -257,28 +217,7 @@
     });
 
     function checkCourseRecommend(index) {
-//        alert( $("input[name=emails]",document.forms['recommendCourseForm'+index]).size());
-        <%--for(var i=0;i<$(document.getElementsByName("emails")).size();i++){--%>
 
-        <%--var content = $($(document.getElementsByName("emails"))[i]).attr('value');--%>
-        <%--var reMail = /^(?:[a-z\d]+[_\-\+\.]?)*[a-z\d]+@(?:([a-z\d]+\-?)*[a-z\d]+\.)+([a-z]{2,})+$/i;--%>
-        <%--var emailContent = content.replace(/(^\s*)|(\s*$)/g, "");--%>
-        <%--$("#recommendMsg").text("");--%>
-        <%--if(emailContent!=""){--%>
-        <%--if (!reMail.test(emailContent)) {--%>
-        <%--$("#recommendMsg").text("<s:text name='course.email.input.error'/>");--%>
-        <%--return false;--%>
-        <%--}--%>
-        <%--var mySession = "<s:property value="#session.email"/>";--%>
-        <%--if (emailContent == mySession) {--%>
-        <%--$("#recommendMsg").text("<s:text name='course.email.input.myself'/>");--%>
-        <%--return false;--%>
-        <%--}--%>
-        <%--}else{--%>
-        <%--$("#recommendMsg").text("<s:text name='emailEmpty'/>");--%>
-        <%--return false;--%>
-        <%--}--%>
-        <%--}--%>
         var vas = $("#recommendCourseForm" + index).serialize();
         $.post("recommendCourse.html", vas);
         $("#recommend_message" + index).html(right_div + "<s:text name='course.recommend.success'/>");
