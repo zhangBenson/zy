@@ -219,8 +219,8 @@ public class OrgForBackendAction extends BasicAction {
         }
 
 
-        orgSaved.setLogoUrl(UploadUtils.copyTmpFileByUser(this.getLogoUrl(), this.getSessionUserId()));
-        orgSaved.setAdvUrl(UploadUtils.copyTmpFileByUser(this.getAdvUrl(), this.getSessionUserId()));
+        orgSaved.setLogoUrl(UploadUtils.copyTmpFileByUser(org.getLogoUrl(), this.getSessionUserId()));
+        orgSaved.setAdvUrl(UploadUtils.copyTmpFileByUser(org.getAdvUrl(), this.getSessionUserId()));
 
 
         orgSaved.setResponsiblePerson(baseUser);

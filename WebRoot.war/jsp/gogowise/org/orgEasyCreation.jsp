@@ -98,10 +98,9 @@
                         <input type="button" class="submit_btn change_portrait" id="change_portrait"
                                value="<s:text name="onlive.message.update"/>"
                                href="imgProcess.html"/>
+                        <s:hidden name="org.logoUrl" id="crop_logo"/>
                     </div>
                     <p id="secondStepFileWarn" class="input_msg"></p>
-
-                    <input type="hidden" name="logoUrl" id="crop_logo"/>
 
                     <div id="fileQueue"></div>
                 </li>
@@ -110,10 +109,13 @@
                     <img id="show_adv_preview" src="<s:property value="org.advUrl" />" width="140" height="60"
                          onerror="javascript:this.src='images/nopic.jpg'"/>
 
-                    <div class="file_upload"><input type="file" name="fileupload2" id="fileupload2"/></div>
+                    <div class="file_upload">
+                        <input type="file" name="fileupload2" class="imgUpload" id="fileupload2"/>
+                        <s:hidden name="org.advUrl" id="advUrl"/>
+                    </div>
                     <p id="secondStepFileWarn2" class="input_msg"></P>
 
-                    <input type="hidden" name="advUrl" id="advUrl">
+
 
                     <div id="fileQueue2"></div>
                 </li>
@@ -140,10 +142,8 @@
     </div>
 </div>
 <script type="text/javascript">
-    var uploading = false;
-    var words_on_uploadButton = "Browse";
     $(document).ready(function () {
-        $("#fileupload2").uploadify({
+        $(".imgUpload").uploadify({
             'uploader': 'js/uploadify/uploadify.swf',
             'script': 'utils/uploadFile.html',
             'cancelImg': 'js/uploadify/cancel.png',
@@ -151,14 +151,13 @@
             'fileDataName': 'fileupload', //和以下input的name属性一致
             'auto': true, //是否自动开始
             'multi': false, //是否支持多文件上传
-            'buttonText': words_on_uploadButton, //按钮上的文字
+            'buttonText': "Browse", //按钮上的文字
             'simUploadLimit': 1, //一次同步上传的文件数目
             'sizeLimit': 2000000, //设置单个文件大小限制
             'queueSizeLimit': 1, //队列中同时存在的文件个数限制
             'fileDesc': 'jpg/gif/jpeg/png/bmp.', //如果配置了以下的'fileExt'属性，那么这个属性是必须的
             'fileExt': '*.jpg;*.gif;*.jpeg;*.png;*.bmp;*.png', //允许的格式
             onComplete: function (event, queueID, fileObj, response, data) {
-                uploading = false;
                 var jsonRep = $.parseJSON(response)
                 document.getElementById('advUrl').value = jsonRep.genFileName;
                 $('<li></li>').appendTo('.files').text(jsonRep.genFileName);
@@ -170,7 +169,6 @@
             onCancel: function (event, queueID, fileObj) {
             },
             onUploadStart: function (event, queueID, fileObj) {
-                uploading = true;
             }
         });
 
