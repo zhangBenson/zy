@@ -136,10 +136,6 @@ function yzSaveCourseForm() {
     //}
     else b4 = true;
 
-    /*if($("#course_logo").val().length==0){
-     $("#course_logo_input_msg").html(warn_upload);
-     b5 = false;
-     }else b5 = true;*/
 
     if ($("#step2_studentAge_type").val() == -1) {
         $(".course_student_type_input_msg").html(warn_student_age_type);

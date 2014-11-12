@@ -112,7 +112,7 @@ function yzSaveCourseForm() {
         b4 = false;
     } else b4 = true;
 
-    if ($("#course_logo").val().length == 0) {
+    if ($("#crop_logo").val().length == 0) {
         $("#course_logo_input_msg").html(warn_upload);
         b5 = false;
     } else b5 = true;

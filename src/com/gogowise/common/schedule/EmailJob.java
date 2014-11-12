@@ -49,7 +49,7 @@ public class EmailJob implements Runnable {
 //                    return new PasswordAuthentication(SMTPUserName, SMTPPassword);
 //                }
 //            });
-            session.setDebug(false);
+            session.setDebug(true);
             // Define message
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(SenderEmailAddr, "GoGoWise Service"));
