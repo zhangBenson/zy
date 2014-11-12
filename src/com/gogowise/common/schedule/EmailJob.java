@@ -20,8 +20,8 @@ public class EmailJob implements Runnable {
     // Email password.
     private static final String SMTPPassword = "gogowise";
     // SMTP Server
-    private static final String SMTPServerName = "mail.gogowise.com";
-    //private static final String SMTPServerName = "137.132.153.218";
+//    private static final String SMTPServerName = "mail.gogowise.com";
+    private static final String SMTPServerName = "172.31.46.7";
 
     //  EMAIL Related attribute.
     private static Properties props;
@@ -29,8 +29,8 @@ public class EmailJob implements Runnable {
         props = new Properties();
         props.put("mail.smtp.host", SMTPServerName);
         //        props.put("mail.smtp.localhost","gogowise.com");
-        props.put("mail.smtp.auth", "true");
-        //        props.put("mail.smtp.auth", "false");
+//        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.auth", "false");
         //        props.put("mail.smtp.socketFactory.port", "465");
     }
     private String emailAddr;
@@ -42,12 +42,13 @@ public class EmailJob implements Runnable {
     public void run() {
 
         try {
-            Session session = Session.getDefaultInstance(props, new Authenticator() {
-                protected PasswordAuthentication getPasswordAuthentication() {
-
-                    return new PasswordAuthentication(SMTPUserName, SMTPPassword);
-                }
-            });
+            Session session = Session.getDefaultInstance(props);
+//            Session session = Session.getDefaultInstance(props, new Authenticator() {
+//                protected PasswordAuthentication getPasswordAuthentication() {
+//
+//                    return new PasswordAuthentication(SMTPUserName, SMTPPassword);
+//                }
+//            });
             session.setDebug(false);
             // Define message
             MimeMessage message = new MimeMessage(session);
