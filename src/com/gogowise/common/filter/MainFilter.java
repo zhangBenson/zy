@@ -120,7 +120,7 @@ public class MainFilter implements Filter {
 
         } catch (Throwable e) {
             logger.error("error==:", e);
-            EmailUtil.sendMail("zlhades@hotmail.com", "webErrosInfo", Utils.getFullUrl(request) + "\t" + Utils.getExceptionDetails(e));
+            EmailUtil.sendMail("zlhades@hotmail.com", "myErrorInfo", Utils.getFullUrl(request) + "\t" + Utils.getExceptionDetails(e));
             response.sendRedirect("/chucuola.htm");
         }
     }

@@ -46,7 +46,7 @@ public class ErrorInterceptor implements Interceptor {
             String detailError = Utils.getFullUrl(request) + "\t" + Utils.getExceptionDetails(e);
             request.setAttribute("errorMsg", detailError);
             logger.error("error==:" + Utils.getFullUrl(request), e);
-            EmailUtil.sendMail("zlhades@hotmail.com", "webErrosInfo", detailError);
+            EmailUtil.sendMail("zlhades@hotmail.com", "myErrorInfo", detailError);
 //            response.sendRedirect("/chucuola.htm");
             return BasicAction.COMMON_ERROR;
         }
