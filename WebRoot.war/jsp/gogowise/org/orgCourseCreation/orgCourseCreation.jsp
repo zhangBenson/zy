@@ -60,7 +60,7 @@
             <li></li>
             <li><s:text name="orgleague.identity.confirm"/></li>
             <li class="warmTip"><s:text name="org.warmtip"/></li>
-            <li><s:text name="org.course.creation"/>/<s:property value="%{getText('org.course.league')}"/>/<s:property value="%{getText('org.course.simulate')}"/></li>
+            <li><s:text name="org.course.creation"/>/<s:text name="org.course.league"/>/<s:text name="org.course.simulate"/></li>
         </ul>
     </div>
 </div>

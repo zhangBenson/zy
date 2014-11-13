@@ -158,26 +158,9 @@
 <div class="basePanelTextLeft">
     <button type="button" class="btn btn-primary btn-block" id="btnBuy">BUY COURSES</button>
 </div>
-<!-- excellent Lecturers -->
 
-<%-- <div class="gogopanelWhole">
-    <div class="gogopanelBodyText">
-        <s:iterator value="hotTeachers" status="idx">
-            <p class="teacherTitle"><s:property value="nickName"/></p>
-            <a href="userBlog.html?user.id=<s:property value="id"/>" title="<s:property value="nickName"/>"><img class="teacherPortrait" src="<s:property value="pic"/>"/></a>
-            <div>
-                <p class="teacherTitle"><s:property value="nickName"/></p>
-                <br/>
-                <p><s:property value="selfDescription"/></p>
-            </div>
-            <s:if test="!#idx.last">
-                <div class="thicklineExtra"></div>
-            </s:if>
-        </s:iterator>
-    </div>
-</div>
---%>
-<br/>
+
+    <br/>
 <br/>
 <!-- Lecturers -->
 <div class="gogopanelHead">
@@ -222,153 +205,9 @@
 
 <br/>
 
-<div class="gogopanelHead">
-    <div class="gogopanelTitle"><s:text name="label.course.class.room"/></div>
-</div>
-<div class="gogopanelBody">
-    <div class="gogopanelBodyText">
-        <s:if test="course.FinshedClassNum < course.ClassesNum">
-            <s:iterator value="course.ForcastClasses" begin="0" end="0" status="idx">
-                <div><s:text name="lable.course.nickname"/>: <s:property value="nickName"/></div>
-                <p></p>
 
-                <div><s:text name="lable.course.no"/>:
-                    <s:text name="lable.class.no1"/>
-                    <s:property value="course.FinshedClassNum+1"/>
-                    <s:text name="lable.class.no2"/>
-                </div>
-                <p></p>
 
-                <div><s:text name="lable.course.starttime"/>:<s:date name="date"
-                                                                     format="%{getText('dateformat.forclass')}"/></div>
-                <p></p>
 
-                <div><s:text name="courses.info.lecturer"/>: <s:property value="course.teacher.nickName"/></div>
-                <p></p>
-
-                <div><s:text name="word.audience"/>:</div>
-                <br/>
-            </s:iterator>
-        </s:if>
-        <s:else>
-            <s:iterator value="course.classes" begin="course.ClassesNum-1" end="course.ClassesNum -1" status="idx">
-                <div><s:text name="lable.course.nickname"/>: <s:property value="nickName"/></div>
-                <p></p>
-
-                <div><s:text name="lable.course.no"/>:
-                    <s:text name="lable.class.no1"/><s:property value="course.ClassesNum"/><s:text name="lable.class.no2"/>
-                </div>
-                <p></p>
-
-                <div><s:text name="lable.course.starttime"/>:<s:date name="date"
-                                                                     format="%{getText('dateformat.forclass')}"/></div>
-                <p></p>
-
-                <div><s:text name="courses.info.lecturer"/>: <s:property value="course.teacher.nickName"/></div>
-                <p></p>
-
-                <div><s:text name="word.audience"/>:</div>
-                <br/>
-            </s:iterator>
-        </s:else>
-
-        <button type="button" class="btn btn-primary btn-block"><s:text name="button.enter"/></button>
-    </div>
-</div>
-
-<br/>
-<!--Panel 3-->
-<%--<div class="gogopanelHead">
-    <div class="gogopanelTitle"><s:text name="label.course.discussion.room"/></div>
-</div>
-<div class="gogopanelBody">
-    <div class="gogopanelBodyText">
-        <div><s:text name="label.discussion.room.start.time"/>:</div>
-        <p></p>
-        <div><s:text name="label.discussion.room.duration"/>:</div>
-        <p></p>
-
-        <div id="DisUserArea" style="text-align: center;">
-            <s:if test="allTeachersNum != null">
-                <div class="row">
-                    <s:iterator value="allTeachersForOrg" status="idx">
-                        <s:if test="#idx.index < 5">
-                            <div class="col-md-4">
-                                <a href="userBlog.html?user.id=<s:property value="id"/>" title="<s:property value="nickName"/>">
-                                    <img  class="normalPortrait" src="<s:property value="pic" />"/>
-                                </a>
-                                <p class="textOverSinglerow"><s:property value="nickName"/></p>
-                            </div>
-                        </s:if>
-                    </s:iterator>
-                    <s:if test="allTeachersForOrg.size() < 5">
-                        <s:iterator var="counter" begin="allTeachersForOrg.size() + 1" end = "5">
-                            <div class="col-md-4">
-                                <img src="/images/course/noportrait.jpg" class="normalPortrait"/>
-                                <p class="textOverSinglerow">Available</p>
-                            </div>
-                        </s:iterator>
-                    </s:if>
-                </div>
-            </s:if>
-            <s:else>
-                <div class="row">
-                    <s:iterator var="counter" begin="1" end = "5">
-                        <div class="col-md-4">
-                            <img src="/images/course/noportrait.jpg" class="normalPortrait"/>
-                            <p class="textOverSinglerow">Available</p>
-                        </div>
-                    </s:iterator>
-                </div>
-            </s:else>
-        </div>
-        --%>
-<%-- <div id="DisUserArea" style="text-align: center;">
-    <div class="row">
-        <div class="col-md-4">
-            <img src="images/course/portrait2.jpg" class="normalPortrait"/>
-            <p class="textOverSinglerow">Name</p>
-        </div>
-        <div class="col-md-4">
-            <img src="images/course/portrait4.jpg" class="normalPortrait"/>
-            <p class="textOverSinglerow">Name</p>
-        </div>
-        <div class="col-md-4">
-            <img src="images/course/portrait5.jpg" class="normalPortrait"/>
-            <p class="textOverSinglerow">Name</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <img src="images/course/portrait2.jpg" class="normalPortrait"/>
-            <p class="textOverSinglerow">Name</p>
-        </div>
-        <s:if test="allTeachersNum>0">
-            <div class="row">
-                <s:iterator value="allTeachersForOrg" status="idx" begin="0" end="0">
-                    <div class="col-md-4">
-                        <a href="userBlog.html?user.id=<s:property value="id"/>" title="<s:property value="nickName"/>">
-                            <img  class="normalPortrait" src="<s:property value="pic" />"/>
-                        </a>
-                        <p class="textOverSinglerow"><s:property value="nickName"/></p>
-                    </div>
-                </s:iterator>
-            </div>
-        </s:if>
-        <s:else>
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="/images/course/noportrait.jpg" class="normalPortrait"/>
-                    <p class="textOverSinglerow">Available</p>
-                </div>
-            </div>
-        </s:else>
-    </div>
-</div>--%>
-<%--<br/>
-<button type="button" class="btn btn-primary btn-block"><s:text name="button.classroom.enter"/></button>
-</div>
-</div>    --%>
 <br/>
 </div>
 </div>

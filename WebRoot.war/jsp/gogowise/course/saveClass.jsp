@@ -321,9 +321,6 @@
             <td id="nickName<s:property value="id"/>"><s:property value="nickName"/></td>
             <td id="startDate<s:property value="id"/>"><s:date name="date"
                                                                format="%{getText('global.display.hour.minute')}"/></td>
-                <%--<td id="startDate<s:property value="id"/>"><s:date name="date" format="%{getText('global.display.hour.minute1')}"/></td>--%>
-                <%--<td id="startDate<s:property value="id"/>"><s:text name="date" ><s:param name="date" value="" ></s:param></s:text></td>--%>
-                <%--<td id="finishDate<s:property value="id"/>"><s:text name="finishDate" ><s:param name="finishDate" value="" ></s:param></s:text></td>--%>
             <td id="finishDate<s:property value="id"/>"><s:date name="finishDate"
                                                                 format="%{getText('global.display.hour.minute1')}"/></td>
             <td><input type="button" name="edit" value="" id="button<s:property value="id"/>"

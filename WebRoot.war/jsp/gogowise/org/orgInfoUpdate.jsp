@@ -54,7 +54,6 @@
         <li id="tabtag_1" class="cur"><s:text name="org.info.update.orgResInfo"/></li>
         <li id="tabtag_2"><s:text name="org.info.update.orgInfo"/></li>
         <li id="tabtag_3"><s:text name="org.info.update.orgContact"/></li>
-        <%--<li id="tabtag_4"><s:text name="org.info.update.material"/></li>--%>
         <div class="right_bottom"></div>
     </ul>
 </div>

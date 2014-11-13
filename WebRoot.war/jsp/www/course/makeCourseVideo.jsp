@@ -43,9 +43,11 @@
             <div class="thickline"></div>
             <h3 style="color: #6ab600"><s:text name="makeVideo.tips"/></h3>
             <h4 class="courseBody">
-                <span style="color: red; font-weight:bold"><s:property value="%{getText('makeVideo.redHead')}"/></span><s:property value="%{getText('makeVideo.redContent')}"/>
+                <span style="color: red; font-weight:bold"><s:text name="makeVideo.redHead"/>
+                </span><s:text name="makeVideo.redContent"/>
                 <br/>
-                <span style="color: green; font-weight:bold;"><s:property value="%{getText('makeVideo.greenHead')}"/></span><s:property value="%{getText('makeVideo.greenContent')}"/>
+                <span style="color: green; font-weight:bold;"><s:text name="makeVideo.greenHead"/></span>
+                <s:text name="makeVideo.greenContent"/>
             </h4>
 
             <div class="thickline"></div>
