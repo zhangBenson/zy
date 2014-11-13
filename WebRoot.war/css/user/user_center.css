@@ -106,32 +106,9 @@
     z-index: 2;
     background: #add8e6;
 }
-.handle .candidate .interviewees_list{
-    display: block;
-    width:380px;
-    padding: 5px;
-    background: #FFF;
-    border: 1px solid #ededed;
-    box-shadow: 0px 0px 10px 10px rgba(0,0,0,0.5);
-    border-radius: 4px;
-}
+
 .orangeWords{
     color: #f7931e;
-}
-.handle .candidate .interviewees_list tr{
-    display: block;
-    width:100%;
-    text-align: left;
-}
-.handle .candidate .interviewees_list tr td{
-    display: block;
-    float:left;
-    padding: 2px;
-    height:16px;
-    line-height: 16px;
-    text-align: left;
-    vertical-align: top;
-    border-bottom: 1px dashed #BBB;
 }
 
 .usItem2_wrap{

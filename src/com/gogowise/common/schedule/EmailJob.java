@@ -13,15 +13,15 @@ import java.util.Properties;
 public class EmailJob implements Runnable {
     // Email sender
     //    private static final String SenderEmailAddr = "service@gogowise.com";
-    private static final String SenderEmailAddr = "support@gogowise.com";
+    private static final String SenderEmailAddr = "zlhades@163.com";
 
     // Email sender's name
-    private static final String SMTPUserName = "support@gogowise.com";
+    private static final String SMTPUserName = "zlhades@163.com";
     // Email password.
-    private static final String SMTPPassword = "gogowise";
+    private static final String SMTPPassword = "942148Zz";
     // SMTP Server
-//    private static final String SMTPServerName = "mail.gogowise.com";
-    private static final String SMTPServerName = "172.31.46.7";
+    private static final String SMTPServerName = "smtp.163.com";
+    //private static final String SMTPServerName = "137.132.153.218";
 
     //  EMAIL Related attribute.
     private static Properties props;
@@ -29,8 +29,8 @@ public class EmailJob implements Runnable {
         props = new Properties();
         props.put("mail.smtp.host", SMTPServerName);
         //        props.put("mail.smtp.localhost","gogowise.com");
-//        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.auth", "false");
+        props.put("mail.smtp.auth", "true");
+        //        props.put("mail.smtp.auth", "false");
         //        props.put("mail.smtp.socketFactory.port", "465");
     }
     private String emailAddr;
@@ -42,13 +42,12 @@ public class EmailJob implements Runnable {
     public void run() {
 
         try {
-            Session session = Session.getDefaultInstance(props);
-//            Session session = Session.getDefaultInstance(props, new Authenticator() {
-//                protected PasswordAuthentication getPasswordAuthentication() {
-//
-//                    return new PasswordAuthentication(SMTPUserName, SMTPPassword);
-//                }
-//            });
+            Session session = Session.getDefaultInstance(props, new Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+
+                    return new PasswordAuthentication(SMTPUserName, SMTPPassword);
+                }
+            });
             session.setDebug(true);
             // Define message
             MimeMessage message = new MimeMessage(session);
@@ -138,7 +137,7 @@ public class EmailJob implements Runnable {
     public static void main(String args[]) {
 
         EmailJob job = new EmailJob();
-        job.setEmailAddr("jijianhui@gogowise.com");
+        job.setEmailAddr("zlhades@hotmail.com");
         //        job.setEmailAddr("vic@gogowise.com");
 
         job.setMailTitle("111111111");

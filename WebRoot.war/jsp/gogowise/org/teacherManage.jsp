@@ -78,8 +78,8 @@
             <div class="auth_left_2">
                 <div class="addlist">
                     <div>
-                        <span class="_add_btn" id="add_one_btn"><s:text name="interview.add"/></span>&nbsp;<span><s:text name="org.teacher.one"/></span>
-                        <span class="_add_btn" id="add_more_btn"><s:text name="interview.add"/>&nbsp;</span>
+                        <span class="_add_btn" id="add_one_btn"><s:text name="common.add"/></span>&nbsp;<span><s:text name="org.teacher.one"/></span>
+                        <span class="_add_btn" id="add_more_btn"><s:text name="common.add"/>&nbsp;</span>
                         <input type="text" id="more_user_input"
                                style="width:50px;height:26px;margin-left:5px;"/>&nbsp;<s:text name="org.teacher.unit"/>&nbsp;
                         <span id="more_user_input_msg" style="color:red;"></span>
@@ -118,9 +118,9 @@
     var errorDiv = "<div class='tip_error'></div>";
     var warnDiv = "<div class='tip_warn'></div>";
     var rightDiv = "<div class='tip_right'></div>";
-    var emailEmpty = "<s:text name='interview.email.invalid'/>";
+    var emailEmpty = "<s:text name='common.email.not.empty'/>";
     var realNameEmpty = "<s:text name='messege.realname.empty'/>";
-    var emailError = "<s:text name='interview.time.invalid1'/>";
+    var emailError = "<s:text name='common.email.invalid'/>";
     var officerAuthorizationSameError = "<s:text name='org.user.tip.not.responser'/>";
     var label_not_empty = "<s:text name='label.not.empty'/>";
     var label_pls_valid_number = "<s:text name='label.pls.valid.number'/>";

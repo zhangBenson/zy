@@ -107,7 +107,7 @@
                                     <option value=35>35<s:text name="label.minute"/></option>
                                     <option value=30>30<s:text name="label.minute"/></option>
                                 </select></td>
-                                <td class="add_class_btn class_btn"><s:text name="interview.add"/></td>
+                                <td class="add_class_btn class_btn"><s:text name="common.add"/></td>
                             </tr>
                         </table>
                     </li>

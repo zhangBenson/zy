@@ -467,7 +467,7 @@
 
     <!-- org info update -->
     <definition name=".orgInfoUpdate" extends=".userCenter">
-        <put-attribute name="title" value="title.online.interview"/>
+        <put-attribute name="title" value="title.organization.league"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/org/orgInfoUpdate.jsp"/>
     </definition>
 
