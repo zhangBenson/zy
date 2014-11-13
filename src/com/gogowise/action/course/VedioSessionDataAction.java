@@ -95,6 +95,9 @@ public class VedioSessionDataAction extends BasicAction {
     public String toRoomPlayer() {
         if (this.getCourseClass().getId() != null) {
             courseClass = classDao.findById(this.getCourseClass().getId());
+            if (courseClass == null) {
+                return ERROR;
+            }
             inviteFriendHref = getBasePath() + "/courseOnlineAudit.html?courseClass.id=" + courseClass.getId() + "&courseOnline=true";
             Course course = courseClass.getCourse();
             One2ManyPlayerSession one2ManyPlayerSession = new One2ManyPlayerSession();

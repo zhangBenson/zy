@@ -117,11 +117,17 @@ public class OrganizationAction extends BasicAction {
     )
     public String orgBlog() {
         Integer orgId;
+        if (org == null) {
+            return COMMON_ERROR;
+        }
         if (StringUtils.isNotBlank(org.getSecDomain())) {
             this.org = this.organizationDao.findBySecDomain(org.getSecDomain());
         } else {
             orgId = org.getId() == null ? 1 : org.getId();
             this.org = organizationDao.findById(orgId);
+        }
+        if (org == null) {
+            return COMMON_ERROR;
         }
         orgId = org.getId();
 
@@ -277,7 +283,13 @@ public class OrganizationAction extends BasicAction {
             }
     )
     public String orgMoreMooc() {
+        if (org == null) {
+            return INPUT;
+        }
         this.org = organizationDao.findById(this.getOrg().getId());
+        if (org == null) {
+            return INPUT;
+        }
         pagination.setPageSize(8);
         this.moocs = courseDao.findMoocsByOrg(this.getOrg().getId(), pagination);
         return SUCCESS;
@@ -372,6 +384,9 @@ public class OrganizationAction extends BasicAction {
     )
     public String orgMoreTeacher() {
         this.org = organizationDao.findById(this.getOrg().getId());
+        if (org == null) {
+            return INPUT;
+        }
         hotTeachers = organizationBaseUserDao.findUsersByOrgIdAndRoleType(this.getOrg().getId(), RoleType.ROLE_TYPE_TEACHER, pagination);
         return SUCCESS;
     }

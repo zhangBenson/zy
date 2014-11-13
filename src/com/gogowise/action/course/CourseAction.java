@@ -386,15 +386,10 @@ public class CourseAction extends BasicAction {
     @Action(value = "voaCourseBlog", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".voaCourseBlog")})
     public String voa() {
 
-        /*if (course == null) {
-            course = courseDao.findById((Integer) ActionContext.getContext().getSession().get("SessionCourseId"));
-            ActionContext.getContext().getSession().remove("SessionCourseId");
-            courseComments = courseCommentDao.findByCourseId(new Pagination(10), course.getId());
-            this.setCommentsNum(courseComments.size());
-            courseQuestions = courseQuestionDao.findNewByCourseId(pagination, course.getId());
-            courseResources = courseResourceDao.findByCourseId(pagination, course.getId());
-            return SUCCESS;
-        }*/
+        if (this.getCourse() == null) {
+            this.setErrorMsg("course not exist");
+            return COMMON_ERROR;
+        }
         course = courseDao.findById(this.getCourse().getId());
         if (course == null) {
             this.setErrorMsg("course not exist");
