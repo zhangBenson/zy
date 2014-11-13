@@ -151,7 +151,6 @@
         $("#message_textarea").keyup(function () {
             changeWordNumber($(this), $("#message_area_tip"), 250);
         });
-        timedCount();
 
     });
 
@@ -177,12 +176,7 @@
         $.post("deleteUserComment.html", {'comment.id': commentId}, function (data) {
         });
     }
-    function timedCount() {
-        setTimeout("timedCount()", 200 * 1000)
-        $.post("findPersonalOnlive.html", {'user.id': '<s:property value="user.id"/>'}, function (data) {
-            $("#personalOnliveMessage").html(data);
-        });
-    }
+
     function addFocus(userID) {
         if (validateLogo()) {
             $.post("addUserFocus.html", {'user.id': userID}, function (data) {
@@ -202,14 +196,6 @@
         }
     }
 
-    function LoadVideo(onliveID) {
-
-        if (!$("#video").isVisible())  $("#video").slideDown();
-        $.post("loadPerOnLiveRecord.html", {'personalOnlive.id': onliveID}, function (data) {
-            getGirlOjbect().LoadVideoURL(data.initSeesionString);
-        });
-
-    }
     function validateLogo() {
         if (document.getElementById('hidSessionId').value > 0) {
             return true;

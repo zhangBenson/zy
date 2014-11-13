@@ -138,11 +138,11 @@
         var email = $(obj).val().replace(/(^\s*)|(\s*$)/g, "");
         var pattern = /^(?:[a-z\d]+[_\-\+\.]?)*[a-z\d]+@(?:([a-z\d]+\-?)*[a-z\d]+\.)+([a-z]{2,})+$/i;
         if (email == "") {
-            $("#" + tipSpanId).html("<s:text name='onlive.term.email.empty'/>");
+            $("#" + tipSpanId).html("<s:text name='common.email.not.empty'/>");
             return false;
         }
         else if (!pattern.test(email)) {
-            $("#" + tipSpanId).html("<s:text name='onlive.term.email.error'/>");
+            $("#" + tipSpanId).html("<s:text name='common.email.invalid'/>");
             return false;
         }
         return true;
@@ -151,7 +151,7 @@
         var email = $(obj).val().replace(/(^\s*)|(\s*$)/g, "");
         var pattern = /^(?:[a-z\d]+[_\-\+\.]?)*[a-z\d]+@(?:([a-z\d]+\-?)*[a-z\d]+\.)+([a-z]{2,})+$/i;
         if (email != "" && !pattern.test(email)) {
-            $("#" + tipSpanId).html("<s:text name='onlive.term.email.error'/>");
+            $("#" + tipSpanId).html("<s:text name='common.email.invalid'/>");
         }
     }
     function checkTransferPrice() {

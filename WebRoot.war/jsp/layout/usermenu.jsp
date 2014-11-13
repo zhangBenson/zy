@@ -13,7 +13,6 @@
     <div class="sidebar">
 
         <div class="start_monitor">
-            <%--<a class="submit_btn_large" href="openUserChannelResult.html"><s:text name="contentLeft.param1"/></a>--%>
             <a class="submit_btn_large" href="myfirstPage.html"><s:text name="contentLeft.param1"/></a>
         </div>
 

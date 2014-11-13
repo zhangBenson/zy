@@ -107,24 +107,6 @@
         }
     }
 
-    function inviteFriends() {
-        if (validateLogo()) {
-            var emails = $("input.emails");
-            var emailRightful = true;
-            for (var i = 0; i < emails.size(); i++) {
-                var email = emails[i];
-                emailRightful = emailRightful && checkEmail(email.value, "invite_email_msg");
-            }
-            if (!emailRightful) return;
-            var postStr = $("#emailForm_personalOnlive").serialize();
-            //   alert(postStr);
-            $.post("personalVirtualRoomEmailInviteFriends.html", postStr, function (data) {
-
-                $("#inviteMessage").html("<s:text name="personal.term.invite.friend.success"/>");
-                window.setTimeout("closeFancybox()", "1000");
-            });
-        }
-    }
 
     function closeFancybox() {
         $.fancybox.close();

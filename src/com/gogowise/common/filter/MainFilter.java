@@ -26,7 +26,6 @@ public class MainFilter implements Filter {
 
     static {
         NEED_LOGIN.add("/myfirstPage.html");
-        NEED_LOGIN.add("/openPrivateChannel.html");
         NEED_LOGIN.add("/myForcastClass.html");
         NEED_LOGIN.add("/saveComment.html");
         NEED_LOGIN.add("/courseconfirm.html");
@@ -56,23 +55,11 @@ public class MainFilter implements Filter {
         NEED_LOGIN.add("/startShow.html");
         NEED_LOGIN.add("/showManageResult.html");
         NEED_LOGIN.add("/showMatters.html");
-        NEED_LOGIN.add("/startOnLive.html");
-        NEED_LOGIN.add("/createOnlive.html");
-        NEED_LOGIN.add("/emailHandleForLiveChannelInvitation.html");
-        NEED_LOGIN.add("/maintenanceOnlive.html");
-        NEED_LOGIN.add("/manageLiveChannelAds.html");
-        NEED_LOGIN.add("/saveAdvertiseForLive.html");
-        NEED_LOGIN.add("/createLiveChannelAdBid.html");
-        NEED_LOGIN.add("/startPersonalOnlive.html");
         NEED_LOGIN.add("/initShowCreate.html");
         NEED_LOGIN.add("/myGGWAccount.html");
         NEED_LOGIN.add("/initTransfer.html");
         NEED_LOGIN.add("/initConsumption.html");
-        NEED_LOGIN.add("/addLiveGoingAnnouncement.html");
         NEED_LOGIN.add("/createCourseAllInOne.html");
-        NEED_LOGIN.add("/openPrivateChannel.html");
-        NEED_LOGIN.add("/createPrivateChannel.html");
-        NEED_LOGIN.add("/openUserChannelResult.html");
         NEED_LOGIN.add("/personalCenter.html");
         NEED_LOGIN.add("/openVirtualClassRoom.html");
         NEED_LOGIN.add("/uploadMaterialWithJson.html");

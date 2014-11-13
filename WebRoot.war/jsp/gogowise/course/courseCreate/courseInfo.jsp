@@ -116,7 +116,7 @@
                  onerror="this.onerror=null;this.src='images/defaultImgs/course.gif'"/>
             <s:hidden id="crop_logo" cssClass="long_text_field" name="course.logoUrl"/>
             <input type="button" class="submit_btn change_portrait" id="change_portrait"
-                   value="<s:text name="onlive.message.update"/>"
+                   value="<s:text name="common.modify"/>"
                    href="imgProcess.html?key=crop_logo"/>
         </li>
         <s:if test="courseType == 1 || courseType == 2">
@@ -190,7 +190,7 @@
             id="obv_course_logo" src="<s:property value="course.logoUrl"/>"/></div>
 
     <input type="button" class="store_btn" id="step2_modify"
-           value="<s:text name="onlive.message.update"/>"
+           value="<s:text name="common.modify"/>"
            onclick="modifyStepMsg(this,2);"/>
 </div>
 <%@ include file="/jsp/gogowise/course/courseCreate/courseInfo_js.jsp" %>

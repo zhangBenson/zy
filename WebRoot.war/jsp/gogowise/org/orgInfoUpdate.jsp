@@ -209,7 +209,7 @@
 
                     <div class="file_upload">
                         <input type="button" class="submit_btn change_portrait" id="fileupload2"
-                               value="<s:text name="onlive.message.update"/>"
+                               value="<s:text name="common.modify"/>"
                                href="imgProcess.html"/>
                     </div>
                     <p id="secondStepFileWarn" class="input_msg"></p>

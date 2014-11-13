@@ -36,10 +36,6 @@
             $($(".show_newEvents")[i]).html(getSubstringForNewsName(str));
         }
 
-        for (var i = 0; i < $(".liveChannel_newEvents").size(); i++) {
-            var str = $($(".liveChannel_newEvents")[i]).html();
-            $($(".liveChannel_newEvents")[i]).html(getSubstringForNewsName(str));
-        }
 
     });
 </script>

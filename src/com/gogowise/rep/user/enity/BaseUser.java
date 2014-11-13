@@ -38,10 +38,8 @@ public class BaseUser extends AbstractPersistence {
     private String selfDescription;
     private String language;
     private Integer fansNum = 0;  //被关注的人数
-    private Long onliveTimes; //即时直播的次数
     private Boolean userFocused = false; //用于直播中心判断用户是否被当前用户关注 ,临时变量
 
-    private Boolean openPrivateChannel = false;//是否开通了私人频道
 
     private String address;
     private double latitude;
@@ -301,14 +299,6 @@ public class BaseUser extends AbstractPersistence {
         this.fansNum = fansNum;
     }
 
-    public Long getOnliveTimes() {
-        return onliveTimes;
-    }
-
-    public void setOnliveTimes(Long onliveTimes) {
-        this.onliveTimes = onliveTimes;
-    }
-
     public Boolean getUserFocused() {
         return userFocused;
     }
@@ -317,11 +307,5 @@ public class BaseUser extends AbstractPersistence {
         this.userFocused = userFocused;
     }
 
-    public Boolean getOpenPrivateChannel() {
-        return openPrivateChannel;
-    }
 
-    public void setOpenPrivateChannel(Boolean openPrivateChannel) {
-        this.openPrivateChannel = openPrivateChannel;
-    }
 }

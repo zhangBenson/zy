@@ -104,23 +104,7 @@
     </ul>
 </div>
 <div class="mf_2">
-<%--<div class="overview cf">--%>
-<%--<div class="sub_info fl">--%>
-<%--<p class="number">102<span>学生</span></p>--%>
 
-<%--<p class="describe">上过我的课程</p>--%>
-<%--</div>--%>
-<%--<div class="sub_info sub_info_center fl">--%>
-<%--<p class="number"><s:property value="totalNumOfViewVideo"/>172<span><s:text name="the.static.times"/></span></p>--%>
-
-<%--<p class="describe"><s:text name="the.num.of.onlive.record.open.times"/></p>--%>
-<%--</div>--%>
-<%--<div class="sub_info fl">--%>
-<%--<p class="number"><s:property value="totalNumOfLiveChannels"/>34<span><s:text name="the.static.terms"/></span></p>--%>
-
-<%--<p class="describe">课程总数</p>--%>
-<%--</div>--%>
-<%--</div>--%>
 <s:iterator value="courses" status="idx">
 <div class="course_item">
     <p class="course_logo"><a href="voaCourseBlog.html?course.id=<s:property value="id"/>"

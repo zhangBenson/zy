@@ -88,7 +88,3 @@ function sinkMessageArea() {
 function backCourseblog(id){
       window.location.href = "voaCourseBlog.html?course.id="+id;
 }
-
-function setCurrentID(userID,onLiveID){
-    $.post("resetOnLiveCurrentID.html",{'channelTerms.id':onLiveID,'channelTerms.currentID':userID},function(data){});
-}

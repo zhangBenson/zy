@@ -23,7 +23,6 @@
 
 <div class="mfp_left fl">
 <div>
-    <%--<a class="submit_btn_large" href="openUserChannelResult.html"><s:text name="contentLeft.param1"/></a>--%>
     <s:if test="#session.user_own_org != null">
         <a class="submit_btn_large" href="createCourseAllInOne.html"><s:text name="course.create"/></a>
     </s:if>

@@ -96,7 +96,7 @@
 
                     <div class="file_upload">
                         <input type="button" class="submit_btn change_portrait" id="change_portrait"
-                               value="<s:text name="onlive.message.update"/>"
+                               value="<s:text name="common.modify"/>"
                                href="imgProcess.html"/>
                         <s:hidden name="org.logoUrl" id="crop_logo"/>
                     </div>

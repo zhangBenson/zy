@@ -45,12 +45,6 @@
     </definition>
 
 
-    <definition name=".multiVideoSolution" extends=".bodyCenter">
-        <put-attribute name="title" value="title.multi.video.solution"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/solution/multiVideoSolution.jsp"/>
-    </definition>
-
-
     <definition name=".initReg" extends=".bodyCenter">
         <put-attribute name="title" value="title.reg"/>
         <put-attribute name="contentBody" value="/jsp/gogowise/MemberReg.jsp"/>
