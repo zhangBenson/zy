@@ -52,10 +52,8 @@
                     <li><a href="manageOrgUsers.html?roleType=6"><s:text name="label.org.studentManagement"/></a></li>
                     <li><a href="manageOrgUsers.html?roleType=5"><s:text name="label.org.teacherManagement"/></a></li>
                     <li><a href="createCourseAllInOne.html"><s:text name="usermenu.item.createcourse"/></a></li>
-                    <%--<li><a href="courseSupervise.html"><s:text name="org.matters.course.supervisions"/></a></li>
-                    <li><a href="orgInterview.html"><s:text name="online.interview"/></a></li>
-                    <li><a href="initOrgMeeting.html"><s:text name="org.matters.video.meeting"/></a></li>--%>
-                    <li><a href="orgInfoUpdate.html"><s:text name="org.information.setting"/></a></li>
+
+                        <li><a href="orgInfoUpdate.html"><s:text name="org.information.setting"/></a></li>
                 </ul>
             </div>
         </s:if>

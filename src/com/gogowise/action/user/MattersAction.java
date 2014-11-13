@@ -34,8 +34,6 @@ public class MattersAction extends BasicAction{
     private List<Matter> courseRegisterMatters=new ArrayList<Matter>();
     private List<Matter> courseTeacherMatters=new ArrayList<Matter>();
     private List<Matter> courseInviteMatters=new ArrayList<Matter>();
-    private List<Matter> interviewerMatters=new ArrayList<Matter>();
-    private List<Matter> intervieweeMatters=new ArrayList<Matter>();
     private List<Matter> myShowMessageMatters=new ArrayList<Matter>();
     private List<Matter> orgMeetingHostManMatters=new ArrayList<Matter>();
     private List<Matter> courseStudentMatters=new ArrayList<Matter>();
@@ -69,10 +67,6 @@ public class MattersAction extends BasicAction{
                 courseTeacherMatters.add(m);
             }else if(m.getType()==Matter.MATTER_COURSE_INVITE){
                 courseInviteMatters.add(m);
-            }else if(m.getType()==Matter.MATTER_INTERVIEW_INTERVIEWER){
-                interviewerMatters.add(m);
-            }else if(m.getType()==Matter.MATTER_INTERVIEW_INTERVIEWEE){
-                intervieweeMatters.add(m);
             }else if(m.getType()==Matter.MATTER_MYSHOW_MESSAGE){
                 myShowMessageMatters.add(m);
             }else if(m.getType()==Matter.MATTER_ORGMEETING_HOSTMAN){
@@ -93,7 +87,6 @@ public class MattersAction extends BasicAction{
                     @Result(name ="MATTER_COURSE_MESSAGE", type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName", "voaCourseBlog", "course.id", "${course.id}"}),
                     @Result(name="6",type=Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName","orgMeetingEmailConfirm","orgMeeting.id","${orgMeeting.id}","email","${matter.email}","user.email","${user.email}"}),
                     @Result(name="3",type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName","courseOnlineAudit","courseClass.id","${courseClass.id}","courseOnline","${accept}"}),
-                    @Result(name="5",type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName","interviewEmailHandle","interview.id","${interview.id}","identityType","${identityType}","user.email","${user.email}"}),
                     @Result(name="4",type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName","showBlog","myShow.id","${myShow.id}"}),
                     @Result(name="MATTER_ORGMEETING_HOSTMAN",type=Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName","orgMeetingEmailConfirm","orgMeeting.id","${orgMeeting.id}","orgMeeting.hostManEmail","${matter.email}","user.email","${user.email}"})
 
@@ -256,22 +249,6 @@ public class MattersAction extends BasicAction{
 
     public void setCourseClass(CourseClass courseClass) {
         this.courseClass = courseClass;
-    }
-
-    public List<Matter> getIntervieweeMatters() {
-        return intervieweeMatters;
-    }
-
-    public void setIntervieweeMatters(List<Matter> intervieweeMatters) {
-        this.intervieweeMatters = intervieweeMatters;
-    }
-
-    public List<Matter> getInterviewerMatters() {
-        return interviewerMatters;
-    }
-
-    public void setInterviewerMatters(List<Matter> interviewerMatters) {
-        this.interviewerMatters = interviewerMatters;
     }
 
     public Integer getIdentityType() {

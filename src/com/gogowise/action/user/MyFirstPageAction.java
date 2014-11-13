@@ -65,7 +65,7 @@ public class MyFirstPageAction extends BasicAction {
     public String studentCenter() {
         latestOrgs = organizationDao.findLatestOrgs(new Pagination(3));
         userOrganization = orgService.findMyOrg(this.getSessionUserId());
-        showUserCenter();
+        myfirstPage();
 
         latestCourse = courseDao.findMyCourseOfForcastClassForUserCenter(new Pagination(3), this.getSessionUserId(), RoleType.ROLE_TYPE_STUDENT);
 
@@ -78,7 +78,7 @@ public class MyFirstPageAction extends BasicAction {
     public String studentCenterFinished() {
         latestOrgs = organizationDao.findLatestOrgs(new Pagination(3));
         userOrganization = orgService.findMyOrg(this.getSessionUserId());
-        showUserCenter();
+        myfirstPage();
 
         finishedCourse = courseDao.findFinishedCourseForUserCenter(new Pagination(3), this.getSessionUserId(), RoleType.ROLE_TYPE_STUDENT);
         return SUCCESS;
@@ -89,7 +89,7 @@ public class MyFirstPageAction extends BasicAction {
             results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".myGoGoWise"),
                     @Result(name = "studentCenter", type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "personalCenter"})}
     )
-    public String showUserCenter() {
+    public String myfirstPage() {
 //        ActionContext.getContext().getSession().put("WW_TRANS_I18N_LOCALE", Locale.US);
         if (!userService.havePermission(this.getSessionUserId(), RoleType.TEACHER)) {
             return "studentCenter";

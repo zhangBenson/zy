@@ -39,7 +39,6 @@ public class MainFilter implements Filter {
         NEED_LOGIN.add("/initOrgCourseCreation.html");
         NEED_LOGIN.add("/createCourse.html");
         NEED_LOGIN.add("/orgMeetingEmailConfirm.html");
-        NEED_LOGIN.add("/interviewEmailHandle.html");
         NEED_LOGIN.add("/emailHandleForCourseCreation.html");
         NEED_LOGIN.add("/startSupervision.html");
         NEED_LOGIN.add("/myAgeCourses.html");

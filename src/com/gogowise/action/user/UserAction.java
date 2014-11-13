@@ -143,14 +143,6 @@ public class UserAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "initInterviewIdentityConfirm", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgInterviewIdentityConfirm")})
-    public String initOrgInterviewIdentityConfirm() {
-        BaseUser curr = new BaseUser();
-        curr.setEmail(this.getEmail());
-        this.setUser(curr);
-        return SUCCESS;
-    }
-
     @Action(value = "identityConfirm", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".CourseSession"),
             @Result(name = "failed", type = Constants.RESULT_NAME_TILES, location = ".identityConfirmation"),
             @Result(name = "courseconfirm", type = Constants.RESULT_NAME_TILES, location = ".courseconfirm")})
@@ -294,50 +286,6 @@ public class UserAction extends BasicAction {
         }
     }
 
-    @Action(value = "orgInterviewIdentityConfirm", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}),
-            @Result(name = "failed", type = Constants.RESULT_NAME_TILES, location = ".orgInterviewIdentityConfirm"),
-            @Result(name = "CourseCreation", type = Constants.RESULT_NAME_TILES, location = ".repeatCourseInfo"),
-            @Result(name = "courseBlog", type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "voaCourseBlog", "course.id", "${courseRecommend.course.id}"}),
-            @Result(name = NONE, type = Constants.RESULT_NAME_TILES, location = ".notExist"),
-            @Result(name = "inviteReject", type = Constants.RESULT_NAME_TILES, location = ".emailHandleReject")})
-    public String orgInterviewIdentityConfirm() throws Exception {
-        BaseUser curr = baseUserDao.findByEmail(this.getUser().getEmail());
-        if (curr != null) {
-            if (!MD5.endCode(this.getUser().getPassword()).equals(curr.getPassword())) {
-                this.setIdentityConfirmMsg("您输入的密码有误");
-                return "failed";
-            }
-            setUserToSession(curr);
-            setUserOrg(curr);
-        } else if (!user.getNickName().equals("")) {
-            user.setLockedOut(true);
-            user.setPassword(MD5.endCode(user.getPassword()));
-            user.setRegDate(Calendar.getInstance());
-            String md5 = MD5.endCode(String.valueOf(System.currentTimeMillis()));
-            user.setActiveCode(md5);
-            baseUserDao.persistAbstract(user);
-            sendEmail(user);
-            this.emailBoxUrl = EmailUtil.getEmailBoxUrl(user.getEmail());
-            setUserToSession(user);
-            setUserOrg(user);
-        } else {
-            identityConfirmMsg = this.getText("identity.confirm.account.not.exist");
-            return "failed";
-        }
-        //===============================  邮件处理部分 ================================
-        if (this.getCourseRecommend().getId() != null) {
-            courseRecommend = courseRecommendDao.findById(this.getCourseRecommend().getId());
-            if (MD5.endCode(courseRecommend.getEmail()).equals(this.getCode())) {
-                BaseUser user = baseUserDao.findByEmail(courseRecommend.getEmail());
-                courseRecommend.setUser(user);
-                courseRecommendDao.persistAbstract(courseRecommend);
-                return "courseBlog";
-            }
-            return NONE;
-        } else {
-            return SUCCESS;
-        }
-    }
 
     @Action(value = "exitSystem", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "index"})})
     public String exitSystem() {

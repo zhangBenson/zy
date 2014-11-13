@@ -95,27 +95,7 @@
     </tr>
     </s:iterator>
 
-    <%--<s:iterator value="courseInviteMatters" status="idx">
-    <tr>
-        <td class="td_1"><s:property value="fromUser.nickName"/>邀请您参加<a href="voaCourseBlog.html?course.id=<s:property value="course.id"/>" target="_blank"><s:property value="course.name"/></a>实时在线课程</td>
-        <td class="td_2"><a href="#" onclick="deleteThisRow(this);"><a href="matterHandler.html?matter.email=<s:property value="email"/>&matter.type=<s:property value="type"/>&matter.id=<s:property value="id"/>" target="_blank" onclick="deleteThisRow(this);">去看看</a></a></td>
-        <td class="td_2"><a href="#" onclick="deleteThatRow(this,'<s:property value="id"/>');"><s:text name="title.matters.ignore"/></a></td>
-    </tr>
-    </s:iterator>
-    <s:iterator value="interviewerMatters" status="idx">
-    <tr>
-        <td class="td_1"><s:property value="fromUser.nickName"/>&nbsp;指定您为&nbsp;<s:property value="interview.organization.schoolName"/>&nbsp;面试的面试官</td>
-        <td class="td_2"><a href="matterHandler.html?matter.id=<s:property value="id"/>&matter.type=<s:property value="type"/>&interview.id=<s:property value="interview.id"/>&identityType=0&user.email=<s:property value="toEmail"/>" onclick="deleteThisRow(this);">出席</a></td>
-        <td class="td_2"><a href="#" onclick="deleteThatRow(this,'<s:property value="id"/>');"><s:text name="title.matters.ignore"/></a></td>
-    </tr>
-    </s:iterator>
-    <s:iterator value="intervieweeMatters" status="idx">
-    <tr>
-        <td class="td_1"><s:property value="fromUser.nickName"/>&nbsp;邀请您出席&nbsp;<s:property value="interview.organization.schoolName"/>&nbsp;面试</td>
-        <td class="td_2"><a href="matterHandler.html?matter.id=<s:property value="id"/>&matter.type=<s:property value="type"/>&interview.id=<s:property value="interview.id"/>&identityType=1&user.email=<s:property value="toEmail"/>" onclick="deleteThisRow(this);">出席</a></td>
-        <td class="td_2"><a href="#" onclick="deleteThatRow(this,'<s:property value="id"/>');"><s:text name="title.matters.ignore"/></a></td>
-    </tr>
-    </s:iterator>--%>
+
 </table>
 
 <script type="text/javascript">

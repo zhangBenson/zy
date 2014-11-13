@@ -37,11 +37,9 @@ public class Matter extends AbstractPersistence {
     public static final Integer MATTER_COURSE_RESOURCE = 2;
     public static final Integer MATTER_COURSE_INVITE = 3;
     public static final Integer MATTER_MYSHOW_MESSAGE = 4;
-    public static final Integer MATTER_INTERVIEW_INTERVIEWEE = 5;
     public static final Integer MATTER_ORGMEETING = 6;
     public static final Integer MATTER_COURSE_REGISTER = 7;
     public static final Integer MATTER_COURSE_TEACHER = 9;
-    public static final Integer MATTER_INTERVIEW_INTERVIEWER = 10;
     public static final Integer MATTER_ORGMEETING_HOSTMAN = 11;
     public static final Integer MATTER_COURSE_STUDENT = 12;
     public static final Integer MATTER_COURSE_STUDENT_NO_ORG = 13;

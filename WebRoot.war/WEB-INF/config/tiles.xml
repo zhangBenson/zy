@@ -349,11 +349,6 @@
         <put-attribute name="contentBody" value="/jsp/www/room/roomPlayer.jsp"/>
     </definition>
 
-    <definition name=".interviewVideo" extends=".bodyCenter">
-        <put-attribute name="title" value="title.interview.video.session"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/InterviewVideoSession.jsp"/>
-    </definition>
-
     <definition name=".voaCourseBlog" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.course.blog"/>
         <put-attribute name="contentBody" value="/jsp/www/course/courseBlog.jsp"/>
@@ -442,10 +437,6 @@
         <put-attribute name="contentBody"
                        value="/jsp/gogowise/org/orgCourseCreation/orgCourseCreationIdentityConfirmation.jsp"/>
     </definition>
-    <definition name=".orgInterviewIdentityConfirm" extends=".bodyCenter">
-        <put-attribute name="title" value="title.interview.identification"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/org/orgInterviewIdentityConfirmation.jsp"/>
-    </definition>
 
 
     <definition name=".courseCenter" extends=".wwwBodyCenter">
@@ -474,29 +465,17 @@
         <put-attribute name="contentRight" value="/jsp/gogowise/org/orgMatters.jsp"/>
     </definition>
 
-    <!-- org interview -->
-    <definition name=".orgInterview" extends=".userCenter">
-        <put-attribute name="title" value="title.online.interview"/>
-        <put-attribute name="contentRight" value="/jsp/gogowise/org/orgInterview.jsp"/>
-    </definition>
-
     <!-- org info update -->
     <definition name=".orgInfoUpdate" extends=".userCenter">
         <put-attribute name="title" value="title.online.interview"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/org/orgInfoUpdate.jsp"/>
     </definition>
-    <definition name=".initOrgMeeting" extends=".userCenter">
-        <put-attribute name="title" value="org.meeting.page.title"/>
-        <put-attribute name="contentRight" value="/jsp/gogowise/org/orgMeeting.jsp"/>
-    </definition>
+
     <definition name=".noRight" extends=".userCenter">
         <put-attribute name="title" value="org.meeting.page.title"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/org/noRignt.jsp"/>
     </definition>
-    <definition name=".orgAuthorization" extends=".userCenter">
-        <put-attribute name="title" value="title.of.org.authorization"/>
-        <put-attribute name="contentRight" value="/jsp/gogowise/org/orgAuthorization.jsp"/>
-    </definition>
+
     <definition name=".studentManage" extends=".userCenter">
         <put-attribute name="title" value="Student Management"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/org/studentManage.jsp"/>
