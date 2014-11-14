@@ -7,9 +7,7 @@ import com.gogowise.rep.course.dao.CourseInviteStudentDao;
 import com.gogowise.rep.course.dao.CourseRecommendDao;
 import com.gogowise.rep.course.dao.SeniorClassRoomDao;
 import com.gogowise.rep.course.enity.Course;
-import com.gogowise.rep.course.enity.CourseInviteStudent;
 import com.gogowise.rep.course.enity.CourseRecommend;
-import com.gogowise.rep.course.enity.SeniorClassRoom;
 import com.gogowise.rep.finance.dao.UserAccountInfoDao;
 import com.gogowise.rep.finance.enity.UserAccountInfo;
 import com.gogowise.rep.org.dao.OrganizationDao;
@@ -92,7 +90,7 @@ public class UserAction extends BasicAction {
     private UserAccountInfo userAccountInfo;
     private Integer operaType;
     private Integer courseType = 0;
-    private Map<Integer, String> orgs = new HashMap<Integer, String>();
+    private Map<Integer, String> orgs = new HashMap<>();
     private DateFormat dateFormat = new SimpleDateFormat(this.getText("dateformat.email"));
     private String css = "<style type=\"text/css\">\n" +
             "*{padding:0;margin:0;}\n" +
@@ -117,7 +115,7 @@ public class UserAction extends BasicAction {
     private boolean passwordChanged;
     private BaseUserRoleTypeDao baseUserRoleTypeDao;
 
-    private List<Course> courses = new ArrayList<Course>();
+    private List<Course> courses = new ArrayList<>();
 
     private String userRoleType;
     private BaseUserRoleType baseUserRoleType;
@@ -135,13 +133,6 @@ public class UserAction extends BasicAction {
         out.close();
     }
 
-    @Action(value = "initOrgInviteIdentityConfirm", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgCourseCreationIdentityConfirm")})
-    public String orgInviteIdentityConfirm() {
-        BaseUser curr = new BaseUser();
-        curr.setEmail(this.getEmail());
-        this.setUser(curr);
-        return SUCCESS;
-    }
 
     @Action(value = "identityConfirm", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".CourseSession"),
             @Result(name = "failed", type = Constants.RESULT_NAME_TILES, location = ".identityConfirmation"),
@@ -206,86 +197,6 @@ public class UserAction extends BasicAction {
         }
         return SUCCESS;
     }
-
-    @Action(value = "orgCourseCreationIdentityConfirm", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "createCourse", "courseType", "1"}),
-            @Result(name = "failed", type = Constants.RESULT_NAME_TILES, location = ".orgCourseCreationIdentityConfirm"),
-            @Result(name = "tips", type = Constants.RESULT_NAME_TILES, location = ".orgInitCourseCreation"),
-            @Result(name = "emailSuccess", type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}),
-            @Result(name = "adjust", type = Constants.RESULT_NAME_TILES, location = ".adjustCenter"),
-            @Result(name = NONE, type = Constants.RESULT_NAME_TILES, location = ".notExist")})
-    public String orgCourseCreationIdentityConfirmation() {
-        BaseUser curr = baseUserDao.findByEmail(this.getUser().getEmail());
-        if (curr != null) {
-            if (!MD5.endCode(this.getUser().getPassword()).equals(curr.getPassword())) {
-                this.setIdentityConfirmMsg("您输入的密码有误");
-                return "failed";
-            }
-            setUserToSession(curr);
-            setUserOrg(curr);
-        } else if (!user.getNickName().equals("")) {
-            user.setLockedOut(true);
-            user.setPassword(MD5.endCode(user.getPassword()));
-            user.setRegDate(Calendar.getInstance());
-            String md5 = MD5.endCode(String.valueOf(System.currentTimeMillis()));
-            user.setActiveCode(md5);
-            baseUserDao.persistAbstract(user);
-            sendEmail(user);
-            this.emailBoxUrl = EmailUtil.getEmailBoxUrl(user.getEmail());
-            setUserToSession(user);
-            setUserOrg(user);
-
-        } else {
-            identityConfirmMsg = this.getText("identity.confirm.account.not.exist");
-            return "failed";
-        }
-
-        //===============================  邮件处理部分 ================================
-        //  1.如果是老师，course.id ，email,code 不为空，accept为true则解释，false则不接受
-        //  2.如果是学生，则没有code
-        if (this.getCourse().getId() != null && this.getEmail() != null && !this.getCode().equals("")) {
-            course = courseDao.findById(this.getCourse().getId());
-            //if(MD5.endCode(course.getId().toString()+this.getEmail()+course.getPublicationTime().getTimeInMillis()).equals(this.getCode()))
-            // 只有在code比对正确的情况下才能正确接收和提出课程调整
-            BaseUser std = baseUserDao.findByEmail(this.getUser().getEmail());
-            course.setTeacher(std);
-            courseDao.persistAbstract(course);
-            if (accept == true) return "emailSuccess";
-            else {
-                return "adjust";
-            }
-        }
-        if (this.getCourse().getId() != null && this.getEmail() != null && this.getCode().equals("")) {
-            course = courseDao.findById(this.getCourse().getId());
-            BaseUser std = baseUserDao.findByEmail(this.getUser().getEmail());
-            CourseInviteStudent courseInviteStudent = courseInviteStudentDao.findByCourseAndEmail(this.getCourse().getId(), this.getEmail());
-            if (courseInviteStudent != null) {
-                courseInviteStudent.setAcceptInvite(true);
-                courseInviteStudent.setStudent(std);
-                courseInviteStudentDao.persistAbstract(courseInviteStudent);
-                SeniorClassRoom seniorClassRoom = new SeniorClassRoom();
-                seniorClassRoom.setCourse(courseDao.findById(this.getCourse().getId()));
-                seniorClassRoom.setStudent(std);
-                SeniorClassRoom sc = seniorClassRoomDao.findClassRoomByCourseAndStudent(this.getCourse().getId(), std.getId());
-                if (sc != null) {
-                    return "emailSuccess";
-                } else {
-                    seniorClassRoomDao.persistAbstract(seniorClassRoom);
-                    if (accept) {
-                        return "emailSuccess";
-                    } else {
-                        return "adjust";
-                    }
-                }
-            }
-        }
-
-        if (organizationDao.findByResId(this.getSessionUserId()) != null) {
-            return SUCCESS;
-        } else {
-            return "tips";
-        }
-    }
-
 
     @Action(value = "exitSystem", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "index"})})
     public String exitSystem() {
@@ -751,7 +662,7 @@ public class UserAction extends BasicAction {
 
     public void validateIdentityConfirmLogin() {
         BaseUser user = baseUserDao.findByEmail(this.getUser().getEmail());
-        this.setEmail(user.getEmail());
+        this.setEmail(this.getUser().getEmail());
         if (user == null) {
             addFieldError("user.email", this.getText("message.logon.account.not.exist"));
         } else if (!user.getPassword().equals(MD5.endCode(this.user.getPassword()))) {

@@ -19,8 +19,6 @@
                 <li><a href="myForcastClass.html"><s:text name="usermenu.item.my.created.courses"/></a></li>
                 <li><a href="myRegistration.html"><s:text name="usermenu.item.my.reged.courses"/></a></li>
 
-            <%--<li><a href="createCourse.html"><s:text name="usermenu.item.createcourse"/></a></li>--%>
-                <%--<li><a href="createCourseAllInOne.html"><s:text name="usermenu.item.createcourse"/></a></li>--%>
             </ul>
         </div>
 
@@ -33,8 +31,6 @@
                     <li>
                         <a href="http://games.gogowise.com/VerificationUser.aspx?userid=<s:property value="secUid"/>"
                            target="_blank"><s:text name="title.game.management"/></a></li>
-                <%--<li><a href="createCourse.html"><s:text name="usermenu.item.createcourse"/></a></li>--%>
-                <%--<li><a href="createCourseAllInOne.html"><s:text name="usermenu.item.createcourse"/></a></li>--%>
             </ul>
         </div>
 

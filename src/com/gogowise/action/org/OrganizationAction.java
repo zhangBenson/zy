@@ -2,7 +2,6 @@ package com.gogowise.action.org;
 
 import com.gogowise.action.BasicAction;
 import com.gogowise.common.utils.Constants;
-import com.gogowise.common.utils.MD5;
 import com.gogowise.common.utils.UploadUtils;
 import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.Pagination;
@@ -17,7 +16,6 @@ import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.OrgMaterial;
 import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.org.enity.OrganizationComment;
-import com.gogowise.rep.user.UserService;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import com.gogowise.rep.user.enity.BaseUser;
@@ -102,8 +100,6 @@ public class OrganizationAction extends BasicAction {
     private Pagination pagination = new Pagination();
 
     private OrganizationBaseUserDao organizationBaseUserDao;
-    @Autowired
-    private UserService userService;
 
     @Action(value = "schoolCenter", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".schoolCenter")})
     public String schoolCenter() {
@@ -206,28 +202,6 @@ public class OrganizationAction extends BasicAction {
     }
 
 
-    @Action(value = "initOrgLeague", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".go2FirstStep")})
-    public String initOrgLeague() {
-        this.org = orgService.findMyOrg(this.getSessionUserId());
-        return SUCCESS;
-    }
-
-    @Action(value = "initOrgSecSteps", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".go2SecondStep")})
-    public String initOrgSecSteps() {
-        this.responser = baseUserDao.findById(super.getSessionUserId());
-        return SUCCESS;
-    }
-
-
-    @Action(value = "initConfirmOrg", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".quickRegPreview")})
-    public String initConfirmOrg() {
-        this.org = this.organizationDao.findById(this.getOrg().getId());
-        if (StringUtils.isNotBlank(this.getConfirmCode()) && this.getConfirmCode().equals(MD5.endCode(this.getOrg().getId() + "" + org.getCreateDate().getTimeInMillis()))) {
-            return SUCCESS;
-        }
-        return "index";
-    }
-
     @Action(value = "orgInfoUpdate", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgInfoUpdate")})
     public String orgInfoUpdate() {
         responser = baseUserDao.findById(this.getSessionUserId());
@@ -236,34 +210,6 @@ public class OrganizationAction extends BasicAction {
         return SUCCESS;
     }
 
-
-    @Action(value = "orgAdminManage",
-            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgAdminManage"),
-                    @Result(name = ERROR, type = Constants.RESULT_NAME_TILES, location = ".noPermission")})
-    public String orgAdminManage() {
-        Integer userID = (Integer) ActionContext.getContext().getSession().get(Constants.SESSION_USER_ID);
-        boolean havePermission = userService.havePermission(userID, "admin");
-
-        if (!havePermission) return ERROR;
-
-        organizations = this.organizationDao.findLatestOrgs(null);
-        return SUCCESS;
-    }
-
-    @Action(value = "removeOrgConfirm",
-            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "orgAdminManage"})})
-    public String removeOrgConfirm() {
-        if (this.getOrg().getId() != null) {
-            Organization org = organizationDao.findById(this.getOrg().getId());
-
-            if (org != null) {
-                org.setIsDeleted(true);
-                organizationDao.persistAbstract(org);
-            }
-        }
-
-        return SUCCESS;
-    }
 
     @Action(value = "orgMoreCourse",
             results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".orgMoreCourse"),

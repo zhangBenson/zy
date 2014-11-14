@@ -4,7 +4,6 @@ import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.ModelDaoImpl;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.org.enity.Organization;
-import com.gogowise.rep.user.enity.BaseUser;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -13,11 +12,6 @@ import java.util.List;
 
 @Repository("organizationDao")
 public class OrganizationDaoImpl extends ModelDaoImpl<Organization> implements OrganizationDao {
-
-
-    public void createOrganization(Organization organization) {
-        this.persistAbstract(organization);
-    }
 
 
     public Organization findOngoingOrg(Integer userId) {
@@ -29,8 +23,7 @@ public class OrganizationDaoImpl extends ModelDaoImpl<Organization> implements O
         String hql = "select o from Organization o order by o.id desc ";
         //return this.find(hql);
         List<Organization> orgs = this.find(hql);
-        List<Organization> removeDeletedOrgs = this.removeDeletedOrgs(orgs);
-        return removeDeletedOrgs;
+        return this.removeDeletedOrgs(orgs);
     }
 
     public Organization findByResId(Integer userId) {
@@ -46,40 +39,18 @@ public class OrganizationDaoImpl extends ModelDaoImpl<Organization> implements O
     public List<Organization> findLatestOrgs(Pagination pagination) {
         String hql = "From Organization org where org.confirmed = true order by org.createDate desc";
         //return this.find(hql,pagination);
-        List<Organization> orgs = this.find(hql,pagination);
-        List<Organization> removeDeletedOrgs = this.removeDeletedOrgs(orgs);
-        return removeDeletedOrgs;
+        List orgs = this.find(hql, pagination);
+        return this.removeDeletedOrgs(orgs);
     }
 
     public List<Organization> searchOrgs(String searchStr, Pagination pagination) {
         if(searchStr == null || searchStr.equals("")) return this.findLatestOrgs(pagination);
         String hql = "From Organization org where org.confirmed = true and org.schoolName like ? order by org.id desc";
         //return this.find(hql,pagination,"%"+searchStr+"%");
-        List<Organization> orgs = this.find(hql,pagination,"%"+searchStr+"%");
-        List<Organization> removeDeletedOrgs = this.removeDeletedOrgs(orgs);
-        return removeDeletedOrgs;
+        List orgs = this.find(hql, pagination, "%" + searchStr + "%");
+        return this.removeDeletedOrgs(orgs);
     }
 
-    public void updateResposerInfo(BaseUser existUser, BaseUser newUser) {
-        existUser.setUserName(Utils.getEmptyString(newUser.getUserName()));
-        existUser.setSexy(newUser.getSexy());
-        existUser.setBirthDay(newUser.getBirthDay());
-        existUser.setTelphone(Utils.getEmptyString(newUser.getTelphone()));
-        existUser.setCardId(Utils.getEmptyString(newUser.getCardId()));
-//        existUser.setIdCardUrl(Utils.getEmptyString(newUser.getIdCardUrl()));
-        this.persistAbstract(existUser);
-    }
-
-    public void updateOrgInfo(Organization oldOrg, Organization newOrg) {
-        oldOrg.setSchoolName(Utils.getEmptyString(newOrg.getSchoolName()));
-        oldOrg.setDescription(Utils.getEmptyString(newOrg.getDescription()));
-        oldOrg.setDepositBankName(Utils.getEmptyString(newOrg.getDepositBankName()));
-        oldOrg.setDepositBankAccount(Utils.getEmptyString(newOrg.getDepositBankAccount()));
-        oldOrg.setDepositName(Utils.getEmptyString(newOrg.getDepositName()));
-        oldOrg.setMemberSize(Utils.getEmptyInteger(newOrg.getMemberSize()));
-        oldOrg.setMultipleOrg(newOrg.getMultipleOrg());
-        this.persistAbstract(oldOrg);
-    }
 
     public void updateOrgContactInfo(Organization oldOrg, Organization newOrg) {
         oldOrg.setContactName(Utils.getEmptyString(newOrg.getContactName()));
@@ -98,13 +69,13 @@ public class OrganizationDaoImpl extends ModelDaoImpl<Organization> implements O
     {
         if(orgs == null) return null;
 
-        List<Organization> result = new ArrayList<Organization>();
+        List<Organization> result = new ArrayList<>();
 
         for(Organization org:orgs)
         {
             if( org.getIsDeleted()!= null)
             {
-                if(org.getIsDeleted().booleanValue() == true)
+                if (org.getIsDeleted())
                 {
                     continue;
                 }

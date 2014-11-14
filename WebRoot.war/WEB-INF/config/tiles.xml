@@ -227,15 +227,6 @@
         <put-attribute name="contentBody" value="/jsp/www/user/rePwdSuccess.jsp"/>
     </definition>
 
-    <definition name=".initOrganization" extends=".basic">
-        <put-attribute name="title" value="title.org.creation"/>
-        <put-attribute name="right" value="/jsp/gogowise/createOrganization.jsp"/>
-    </definition>
-    <definition name=".createOrganization" extends=".basic">
-        <put-attribute name="title" value="title.org.creation"/>
-        <put-attribute name="right" value="/jsp/gogowise/showCreateMsg.jsp"/>
-    </definition>
-
 
     <!-- =====================User related action end=========================== -->
 
@@ -274,12 +265,6 @@
     <definition name=".emailHandleReject" extends=".simple">
         <put-attribute name="title" value="title.gogowise.thank"/>
         <put-attribute name="right" value="/jsp/gogowise/course/thanks.jsp"/>
-    </definition>
-    <!--<definition name=".emailHandleReject" extends=".simple">-->
-    <!--<put-attribute name="right" value="/jsp/gogowise/course/rejectorComments.jsp"/>-->
-    <!--</definition>-->
-    <definition name=".showResSuccessMsg" extends=".basic">
-        <put-attribute name="right" value="/jsp/gogowise/showResSuccessMsg.jsp"/>
     </definition>
 
 
@@ -411,17 +396,6 @@
     <!--  ===================== org  location ==============================================  -->
 
 
-    <definition name=".orgInitCourseCreation" extends=".bodyCenter">
-        <put-attribute name="title" value="title.org.course.creation"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/org/orgCourseCreation/orgCourseCreation.jsp"/>
-    </definition>
-    <definition name=".orgCourseCreationIdentityConfirm" extends=".bodyCenter">
-        <put-attribute name="title" value="title.org.course.creation"/>
-        <put-attribute name="contentBody"
-                       value="/jsp/gogowise/org/orgCourseCreation/orgCourseCreationIdentityConfirmation.jsp"/>
-    </definition>
-
-
     <definition name=".courseCenter" extends=".wwwBodyCenter">
         <put-attribute name="title" value="title.course.center"/>
         <put-attribute name="contentBody" value="/jsp/www/course/courseCenter.jsp"/>
@@ -435,12 +409,6 @@
 
 
     <!--  ===================== org  course creation ==============================================  -->
-
-    <definition name=".adjustCenter" extends=".bodyCenter">
-        <put-attribute name="title" value="title.course.maintenance"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/org/orgCourseCreation/adjustCenter.jsp"/>
-    </definition>
-
 
     <!-- org matters  -->
     <definition name=".organizationMatter" extends=".userCenter">
@@ -577,10 +545,6 @@
         <put-attribute name="contentBody" value="/jsp/www/course/courseAdminManage.jsp"/>
     </definition>
 
-    <definition name=".orgAdminManage" extends=".wwwBodyCenter">
-        <put-attribute name="title" value="Organization Manage"/>
-        <put-attribute name="contentBody" value="/jsp/www/org/orgAdminManage.jsp"/>
-    </definition>
 
     <definition name=".noPermission" extends=".wwwBodyCenter">
         <put-attribute name="title" value="No Permission"/>

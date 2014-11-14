@@ -34,7 +34,6 @@ public class MainFilter implements Filter {
         NEED_LOGIN.add("/regCourseSystem.html");
         NEED_LOGIN.add("/maintenanceSearchResult.html");
         NEED_LOGIN.add("/initUpdate.html");
-        NEED_LOGIN.add("/initOrgLeague.html");
         NEED_LOGIN.add("/initOrgCourseCreation.html");
         NEED_LOGIN.add("/createCourse.html");
         NEED_LOGIN.add("/emailHandleForCourseCreation.html");
@@ -63,7 +62,6 @@ public class MainFilter implements Filter {
         NEED_LOGIN.add("/courseAdminManage.html");
         NEED_LOGIN.add("/changePoster.html");
         NEED_LOGIN.add("/lecturerClass.html");
-        NEED_LOGIN.add("/orgAdminManage.html");
         NEED_LOGIN.add("/studentClass.html");
         NEED_LOGIN.add("/manageTeachers.html");
         NEED_LOGIN.add("/manageStudents.html");

@@ -140,30 +140,6 @@ public class CourseAction extends BasicAction {
     }
 
 
-    @Action(value = "step1", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".step1")})
-    public String step1() {
-
-        return SUCCESS;
-    }
-
-    @Action(value = "step2", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".step2")})
-    public String step2() {
-
-        return SUCCESS;
-    }
-
-    @Action(value = "step3", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".step3")})
-    public String step3() {
-
-        return SUCCESS;
-    }
-
-    @Action(value = "step4", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".step4")})
-    public String step4() {
-
-        return SUCCESS;
-    }
-
     @Action(value = "createCourse", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initStep1"), @Result(name = "failed", type = Constants.RESULT_NAME_TILES, location = ".identityConfirmation")})
     public String initCourse() {
 
@@ -284,14 +260,6 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "goback2firstStep", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initStep1")})
-    public String goBack2firstStep() {
-
-        if (this.getCourse().getId() != null) {
-            course = courseDao.findById(this.getCourse().getId());
-        }
-        return SUCCESS;
-    }
 
     @Action(value = "teacherIdentityLogin", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseInviteLogin")})
     public String teacherIdentityLogin() {
@@ -404,18 +372,6 @@ public class CourseAction extends BasicAction {
 
         classes = classDao.findByCourseId(course.getId());
         return SUCCESS;
-    }
-
-    @Action(value = "initOrgCourseCreation", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "createCourse", "courseType", "1"}), @Result(name = "tips", type = Constants.RESULT_NAME_TILES, location = ".orgInitCourseCreation")})
-    public String initOrgCourseCreation() {
-
-        Organization org = orgService.findMyOrg(this.getSessionUserId());
-        if (org != null) {
-            this.setCourseType(Constants.COURSE_TYPE_ORG);
-            return SUCCESS;
-        } else {
-            return "tips";
-        }
     }
 
     @Action(value = "courseTypeJudge")
