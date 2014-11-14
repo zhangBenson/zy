@@ -8,26 +8,9 @@ $(document).ready(function () {
 
 $(function () {
     $(".stepWrap h3").click(function () {
+
         if ($(this).next("div").is(":visible")) return;
 
-        var stepNum = $(this).attr("alt");
-        if (stepNum == 2 && !step1Stored) {
-            $(".stepWrap h3[alt='1']").trigger("click");
-            return;
-        }
-        if (stepNum == 3) {
-            if (!step1Stored) {
-                $("#step1_store_msg").html(plsSelectType);
-                $(".stepWrap h3[alt='1']").trigger("click");
-                return;
-            }
-            if (!step2Stored) {
-                $("#step2_store_msg").html(plsFillCourseInfo);
-                $(".stepWrap h3[alt='2']").trigger("click");
-                window.location.href = "#step2_store_msg";
-                return;
-            }
-        }
         $(".stepWrap h3").next("div").hide();
         $(this).next("div").slideDown();
     });
@@ -108,7 +91,7 @@ function yzSaveCourseClassForm() {
 }
 
 function yzSaveCourseForm() {
-    var b1 = true, b2 = true, b3 = true, b4 = true, b5 = true, b6 = true, b7 = true, b8 = true, b9 = true, b10 = true;
+    var b1 = true, b2 = true, b3 = true, b4 = true, b5 = true, b6 = true, b7 = true, b8 = true, b10 = true;
     if ($("#step2_course_name").val().replace(/(^\s*)|(\s*$)/g, "").length == 0) {
         $(".course_name_input_msg").html(warn_course_name_empty);
         b1 = false;
@@ -349,7 +332,7 @@ function editSpecifiedClass(lineId) {
         course_dateObj.html("<input type='text' id='course_date_input" + lineId + "' value='" + course_dateObj.html() + "'/>");
         var durationString = course_durationObj.html();
         course_durationObj.html(timeStr);
-        $("#course_duration" + lineId).find("option[value=" + durationString + "]").attr("selected", "true")
+        $("#course_duration" + lineId).find("option[value=" + durationString + "]").attr("selected", "true");
         createDateTimePicker('course_date_input' + lineId);
     } else if ($("#course_edit" + lineId).html() == saveClass) {
         $.post("editClassInfo.html", {'courseClass.id': lineId, 'courseClass.nickName': course_nickNameObj.children("input").val(), 'courseClass.date': course_dateObj.children("input").val(), 'courseClass.duration': course_durationObj.children("select").val()}, function (data) {

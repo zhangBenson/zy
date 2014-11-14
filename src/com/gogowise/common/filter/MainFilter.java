@@ -49,9 +49,6 @@ public class MainFilter implements Filter {
         NEED_LOGIN.add("/saveOrgAdvertiseFile.html");
         NEED_LOGIN.add("/orgMaterialDownload.html");
         NEED_LOGIN.add("/livingClass.html");
-        NEED_LOGIN.add("/saveShow.html");
-        NEED_LOGIN.add("/recommendShow.html");
-        NEED_LOGIN.add("/startShow.html");
         NEED_LOGIN.add("/showManageResult.html");
         NEED_LOGIN.add("/showMatters.html");
         NEED_LOGIN.add("/initShowCreate.html");

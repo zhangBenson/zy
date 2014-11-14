@@ -32,13 +32,10 @@ public class BaseUser extends AbstractPersistence {
     private String activeCode;
     private Boolean ableToLogon = true;       //是否有效
     private String telphone;
-    private Boolean isCompletedAlInfo = false;
     private Calendar birthDay;
     private String idCardUrl;   //身份证扫描件url
     private String selfDescription;
     private String language;
-    private Integer fansNum = 0;  //被关注的人数
-    private Boolean userFocused = false; //用于直播中心判断用户是否被当前用户关注 ,临时变量
 
 
     private String address;
@@ -247,14 +244,6 @@ public class BaseUser extends AbstractPersistence {
         this.telphone = telphone;
     }
 
-    public Boolean getCompletedAlInfo() {
-        return isCompletedAlInfo;
-    }
-
-    public void setCompletedAlInfo(Boolean completedAlInfo) {
-        isCompletedAlInfo = completedAlInfo;
-    }
-
     public Calendar getBirthDay() {
         return birthDay;
     }
@@ -288,23 +277,6 @@ public class BaseUser extends AbstractPersistence {
 
     public void setLanguage(String language) {
         this.language = language;
-    }
-
-    public Integer getFansNum() {
-        if (this.fansNum == null) return 0;
-        return fansNum;
-    }
-
-    public void setFansNum(Integer fansNum) {
-        this.fansNum = fansNum;
-    }
-
-    public Boolean getUserFocused() {
-        return userFocused;
-    }
-
-    public void setUserFocused(Boolean userFocused) {
-        this.userFocused = userFocused;
     }
 
 

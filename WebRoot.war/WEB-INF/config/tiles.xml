@@ -110,23 +110,12 @@
         <put-attribute name="right" value="/jsp/gogowise/org/orgEasyCreation.jsp"/>
     </definition>
 
-    <definition name=".ggwAnnounceList" extends=".basic">
-        <put-attribute name="title" value="title.admin.system"/>
-        <put-attribute name="right" value="/jsp/gogowise/higSec/ggwAnnounceList.jsp"/>
-    </definition>
-    <definition name=".announceRead" extends=".bodyCenter">
-        <put-attribute name="title" value="title.of.news.center"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/news/announceReader.jsp"/>
-    </definition>
+
 
 
     <definition name=".courseEventRead" extends=".bodyCenter">
         <put-attribute name="title" value="title.of.news.center"/>
         <put-attribute name="contentBody" value="/jsp/gogowise/news/courseEventsReader.jsp"/>
-    </definition>
-    <definition name=".showEventRead" extends=".bodyCenter">
-        <put-attribute name="title" value="title.of.news.center"/>
-        <put-attribute name="contentBody" value="/jsp/gogowise/news/showEventsReader.jsp"/>
     </definition>
 
     <definition name=".higSecOrgCreateView" extends=".basic">
@@ -537,7 +526,7 @@
 
 
     <definition name=".addCourseEvent" extends=".userCenter">
-        <put-attribute name="title" value="title.gogowise.add.show.events"/>
+        <put-attribute name="title" value="title.course.events"/>
         <put-attribute name="contentRight" value="/jsp/gogowise/course/addCourseEvent.jsp"/>
     </definition>
     <definition name=".courseNewEventsEdit" extends=".userCenter">

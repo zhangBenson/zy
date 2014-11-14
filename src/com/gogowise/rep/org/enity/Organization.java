@@ -48,7 +48,6 @@ public class Organization extends AbstractPersistence {
     private String contractUrl;
 
     private Boolean userFocused = false;  // a temp variable,used to
-    private Integer fansNum = 0;
     private String secDomain;
 
     private Boolean isDeleted;
@@ -234,15 +233,6 @@ public class Organization extends AbstractPersistence {
 
     public void setReviewer(BaseUser reviewer) {
         this.reviewer = reviewer;
-    }
-
-    public Integer getFansNum() {
-        if(fansNum == null) return 0;
-        return fansNum;
-    }
-
-    public void setFansNum(Integer fansNum) {
-        this.fansNum = fansNum;
     }
 
     public String getAdvUrl() {

@@ -35,15 +35,6 @@
     </s:iterator>
 
 
-   <%-- <s:iterator value="myShowMessageMatters" status="idx">
-    <tr>
-        <td class="td_1"><s:property value="fromUser.nickName"/>&nbsp;给您的<a href="matterHandler.html?matter.id=<s:property value="id"/>&myShow.id=<s:property value="myShow.id"/>&matter.type=<s:property value="type"/>" target="_blank" onclick="deleteThisRow(this);"><s:property value="myShow.name"/></a>个人秀留言了</td>
-        <td class="td_2"><a href="matterHandler.html?matter.id=<s:property value="id"/>&myShow.id=<s:property value="myShow.id"/>&matter.type=<s:property value="type"/>" target="_blank" onclick="deleteThisRow(this);">回复</a></td>
-        <td class="td_2"><a href="#" onclick="deleteThatRow(this,'<s:property value="id"/>');"><s:text name="title.matters.ignore"/></a></td>
-    </tr>
-    </s:iterator>--%>
-
-
     <tr class="tr_x"><td colspan="3" class="td_0"><s:text name="title.matters.invitations"/></td></tr>
 
     <s:iterator value="courseTeacherMatters" status="idx">

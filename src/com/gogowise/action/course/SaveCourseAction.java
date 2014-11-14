@@ -317,6 +317,21 @@ public class SaveCourseAction extends BasicAction {
         return SUCCESS;
     }
 
+    @Action(value = "autoSaveClasses", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".classesList")})
+    public String autoSaveClasses() {
+        course = courseDao.findById(this.getCourse().getId());
+        classDao.autoClassSystemSave(startTimes, durations, classDate, repeatTimes, course);
+        classes = classDao.findByCourseId(course.getId());
+        for (int i = 0; i < classes.size(); i++) {
+            int j = i + 1;
+            classes.get(i).setName(this.getText("lable.class.no1") + j + this.getText("lable.class.no2"));
+            classDao.persistAbstract(classes.get(i));
+        }
+
+        courseDao.persistAbstract(course);
+        return SUCCESS;
+    }
+
     private String getClassInfoString(Course courseInfo) {
         StringBuilder classesInfo = new StringBuilder();
         for (CourseClass cc : courseInfo.getClasses()) {

@@ -1,15 +1,16 @@
 package com.gogowise.action.course;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.action.valueobject.ClassSession;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.rep.Pagination;
-import com.gogowise.rep.course.dao.*;
-import com.gogowise.rep.course.enity.*;
+import com.gogowise.rep.course.dao.ClassDao;
+import com.gogowise.rep.course.dao.CourseDao;
+import com.gogowise.rep.course.dao.CourseInviteStudentDao;
+import com.gogowise.rep.course.dao.SeniorClassRoomDao;
+import com.gogowise.rep.course.enity.Course;
+import com.gogowise.rep.course.enity.CourseClass;
+import com.gogowise.rep.course.enity.CourseInviteStudent;
 import com.gogowise.rep.user.dao.BaseUserDao;
-import com.gogowise.rep.user.enity.BaseUser;
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.CompactWriter;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -17,9 +18,6 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -122,117 +120,12 @@ public class ClassAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "classesInfoModify", results = {@Result(name = SUCCESS, type = "tiles", location = ".courseInfoModified"),
-            @Result(name = INPUT, type = "tiles", location = ".courseInfoModified")})
-    public String classesInfoModify() {
-        course = courseDao.findById(this.getCourse().getId());
-        classDao.saveClass(courseClass, course, durations.get(0));
-        course = courseDao.findById(this.getCourse().getId());
-        classes = classDao.findByCourseId(course.getId());
-        for (int i = 0; i < classes.size(); i++) {
-            int j = i + 1;
-            classes.get(i).setName(this.getText("lable.class.no1") + j + this.getText("lable.class.no2"));
-            classDao.persistAbstract(classes.get(i));
-        }
-        course.setClasses(classes);
-        courseDao.persistAbstract(course);
-        classCount = classes.size() + 1;
-        this.setOperaType(Constants.OPERA_TYPE_FOR_COURSE_MODIFY);
-        return SUCCESS;
-    }
-
-    @Action(value = "goback2saveClass", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initStep3"),
-            @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".initStep3")})
-    public String goBack2SaveClass() {
-        course = courseDao.findById(this.getCourse().getId());
-        for (int i = 0; i < course.getClasses().size(); i++) {
-            int j = i + 1;
-            course.getClasses().get(i).setName(this.getText("lable.class.no1") + j + this.getText("lable.class.no2"));
-            classDao.persistAbstract(course.getClasses().get(i));
-        }
-        classCount = course.getClasses().size() + 1;
-        this.setOperaType(Constants.OPERA_TYPE_FOR_COURSE_CREATION);
-        return SUCCESS;
-    }
-
-    @Action(value = "goback2repeatClass", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".repeatClassInfo")})
-    public String goback2repeatClass() {
-        course = courseDao.findById(this.getCourse().getId());
-        this.setClassCount(course.getClasses().size() + 1);
-        return SUCCESS;
-    }
-
-    @Action(value = "goback2classesModify", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".modifyCourseStep3"),
-            @Result(name = "repeat", type = Constants.RESULT_NAME_TILES, location = ".repeatClassInfo"),
-            @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".courseInfoModified")})
-    public String goback2classesModify() {
-        course = courseDao.findById(this.getCourse().getId());
-        classCount = course.getClasses().size() + 1;
-        this.setOperaType(Constants.OPERA_TYPE_FOR_COURSE_MODIFY);
-        if (classType.equals(Constants.CLASS_TYPE_OF_REPEAT)) {
-            return "repeat";
-        }
-        return SUCCESS;
-    }
-
-    @Action(value = "presentation", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".presentation"),
-            @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".presentation")})
-    public String resultPresent() {
-        course = courseDao.findById(this.getCourse().getId());
-        classes = classDao.findByCourseId(course.getId());
-        for (int i = 0; i < classes.size(); i++) {
-            int j = i + 1;
-            classes.get(i).setName(this.getText("lable.class.no1") + j + this.getText("lable.class.no2"));
-            classDao.persistAbstract(classes.get(i));
-        }
-        course.setClasses(classes);
-        courseDao.persistAbstract(course);
-        courseInviteStudents = courseInviteStudentDao.findByCourseId(this.getCourse().getId());
-        return SUCCESS;
-    }
-
-    @Action(value = "presentation4Modify", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".modifyCourseStep4"),
-            @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".modifyCourseStep4")})
-    public String resultPresent4Modify() {
-        course = courseDao.findById(this.getCourse().getId());
-        classes = classDao.findByCourseId(course.getId());
-        for (int i = 0; i < classes.size(); i++) {
-            int j = i + 1;
-            classes.get(i).setName(this.getText("lable.class.no1") + j + this.getText("lable.class.no2"));
-            classDao.persistAbstract(classes.get(i));
-        }
-        course.setClasses(classes);
-        courseDao.persistAbstract(course);
-        courseInviteStudents = courseInviteStudentDao.findByCourseId(this.getCourse().getId());
-        return SUCCESS;
-    }
 
 
-    @Action(value = "modifyPresentation", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".personalModiPre"),
-            @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".personalModiPre")})
-    public String modifyPresentation() {
-        course = courseDao.findById(this.getCourse().getId());
-        courseInviteStudents = courseInviteStudentDao.findByCourseId(this.getCourse().getId());
-        return SUCCESS;
-    }
-
-    @Action(value = "repeatPresentation", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".repeatPresentation")})
-    public String repeatPresentation() {
-        course = courseDao.findById(this.getCourse().getId());
-        courseInviteStudents = courseInviteStudentDao.findByCourseId(this.getCourse().getId());
-        return SUCCESS;
-    }
 
 
-    @Action(value = "updateRecord")
-    public String updateRecord() {
-        if (this.getCourseClass() != null) {
-            courseClass = classDao.findById(this.getCourseClass().getId());
-            courseClass.setRecord(true);
-            classDao.persistAbstract(courseClass);
-        }
-        return NONE;
-    }
+
+
 
     @Action(value = "closeBrowser", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}),
             @Result(name = "supervision", type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "courseSupervise"})})
@@ -243,36 +136,6 @@ public class ClassAction extends BasicAction {
         return SUCCESS;
     }
 
-
-    private void initPersonalSession(ClassSession classSession) {
-        classSession.initWithSession(this.getCourseClass());
-        BaseUser user = baseUserDao.findById(this.getSessionUserId());
-        classSession.setUserID(user.getId());
-        classSession.setUserName(user.getNickName());
-        if (seniorClassRoomDao.findClassRoomByCourseId(courseClass.getCourse().getId()).size() != 0) {
-            classSession.setStudentID(seniorClassRoomDao.findClassRoomByCourseId(courseClass.getCourse().getId()).get(0).getStudent().getId());
-            classSession.setStudentName(seniorClassRoomDao.findClassRoomByCourseId(courseClass.getCourse().getId()).get(0).getStudent().getNickName());
-        }
-        classSession.setType(4);
-    }
-
-    private Integer getType() {
-        Integer masterId = this.getCourseClass().getCourse().getTeacher() == null ? 0 : this.getCourseClass().getCourse().getTeacher().getId();
-        if (this.getSessionUserId().equals(masterId)) {
-            return Constants.MASTER_TYPE;
-        }
-        SeniorClassRoom seniorClassRoom = seniorClassRoomDao.findClassRoomByCourseAndStudent(this.getCourseClass().getCourse().getId(), this.getSessionUserId());
-        if (seniorClassRoom != null) {
-            return Constants.STUDENT_TYPE;
-        } else {
-            return Constants.ANONYMOUS_TYPE;
-        }
-    }
-
-    private void initPersonalFlashPath(Integer type) {
-        if (type.equals(Constants.MASTER_TYPE)) this.flashPatch = "flash/Teacher_1_to_1.swf";
-        else this.flashPatch = "flash/Student_1_to_1.swf";
-    }
 
 
     @Action(value = "deleteClasses")
@@ -292,29 +155,6 @@ public class ClassAction extends BasicAction {
     }
 
 
-    @Action(value = "deleteClass", results = {@Result(name = SUCCESS, type = "tiles", location = ".saveClass"),
-            @Result(name = "repeat", type = Constants.RESULT_NAME_TILES, location = ".repeatClasses"),
-            @Result(name = "maintenance", type = Constants.RESULT_NAME_TILES, location = ".courseInfoModified")})
-    public String deleteClass() {
-        courseClass = classDao.findById(this.getCourseClass().getId());
-        course = courseClass.getCourse();
-        classDao.delete(courseClass);
-        classes = classDao.findByCourseId(course.getId());
-        for (int i = 0; i < classes.size(); i++) {
-            int j = i + 1;
-            classes.get(i).setName(this.getText("lable.class.no1") + j + this.getText("lable.class.no2"));
-            classDao.persistAbstract(classes.get(i));
-        }
-        course.setClasses(classes);
-        courseDao.persistAbstract(course);
-        classCount = classes.size() + 1;
-        if (classType.equals(Constants.CLASS_TYPE_OF_REPEAT)) {
-            return "repeat";
-        } else if (classType.equals(Constants.CLASS_TYPE_OF_MAINTENANCE)) {
-            return "maintenance";
-        }
-        return SUCCESS;
-    }
 
 
     @Action(value = "saveGroupingGame")

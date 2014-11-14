@@ -20,9 +20,6 @@ public class Constants {
 
 
     public static final String ORG_CONFIRM_EMAIL = "zlhades@hotmail.com";
-    public static final Integer MASTER_TYPE = 0;
-    public static final Integer STUDENT_TYPE = 1;
-    public static final Integer ANONYMOUS_TYPE = 2;
     public static final String COURSE_CONFIRM_EMAIL = "zlhades@hotmail.com";
 
 
@@ -41,7 +38,6 @@ public class Constants {
     public static final String SESSION_USER_EMAIL = "email";
     public static final String SESSION_USER_LOGO_URL = "userLogoUrl";
     public static final String HIG_SEC_USER_EMAIL = "HIG_SEC_USER_EMAIL";
-    public static final String SESSION_USER_FANSNUM = "userFansNum";
     public static final String SESSION_USER_IS_TEACHER = "isTeacher";
     public static final String SESSION_USER_OWN_ORG = "user_own_org";
 
@@ -71,12 +67,6 @@ public class Constants {
 
 
     /* -------------------------- Question patch ----------------------------------------- */
-    public static String QUESTION_EXT_PATH = "/exe/question/batch.sh";
-    public static String QUESTION_FILE_NAME = "question.xml";
-
-    public static String PPT_PDF_EXT_PATH = "/exe/ppt/PPT2PDF.sh";
-    public static String PPT_EXT_PATH = "/exe/ppt/PDF2PNG.sh";
-
 
     public static Integer Class_User_Status_Default = 0;
     public static Integer Class_User_Status_In = 1;

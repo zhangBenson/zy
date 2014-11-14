@@ -95,7 +95,6 @@ public class BasicAction extends ActionSupport {
         ActionContext.getContext().getSession().put(Constants.SESSION_USER_NICKNANE, user.getNickName());
         ActionContext.getContext().getSession().put(Constants.SESSION_USER_EMAIL, user.getEmail());
         ActionContext.getContext().getSession().put(Constants.SESSION_USER_LOGO_URL, user.getPic());
-        ActionContext.getContext().getSession().put(Constants.SESSION_USER_FANSNUM, user.getFansNum() != null ? user.getFansNum() : 0);
     }
 
     protected String redirectToMyCenter(boolean isTeacher) {

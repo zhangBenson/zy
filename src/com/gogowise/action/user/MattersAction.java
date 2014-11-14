@@ -77,7 +77,6 @@ public class MattersAction extends BasicAction{
             results = {
                     @Result(name ="MATTER_COURSE_MESSAGE", type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName", "voaCourseBlog", "course.id", "${course.id}"}),
                     @Result(name="3",type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName","courseOnlineAudit","courseClass.id","${courseClass.id}","courseOnline","${accept}"}),
-                    @Result(name="4",type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName","showBlog","myShow.id","${myShow.id}"}),
 
             }
     )

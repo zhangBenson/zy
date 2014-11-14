@@ -79,25 +79,7 @@
     <div class="side fr">
 
 
-        <div class="sdiv sdivt3">
-            <h3 class="stit"><strong><a target="_blank" href="javascript:;"><s:text name="gogowise.announce"/></a></strong></h3>
-            <ul class="everyday-list">
-                <s:iterator value="goGoWiseAnnounces">
-                    <li><a href="announceRead.html?goGoWiseAnnounce.id=<s:property value="id"/>"
-                           class="goGoWiseAnnounce_newEvents"><s:property value="title"/></a></li>
-                </s:iterator>
-            </ul>
-        </div>
 
-        <div class="sdiv sdivt3">
-            <h3 class="stit"><strong><a target="_blank" href="javascript:;"><s:text name="gogowise.live.trailer"/></a></strong></h3>
-            <ul class="everyday-list">
-                <s:iterator value="liveTrailers">
-                    <li><a href="liveTrailerRead.html?liveTrailer.id=<s:property value="id"/>"
-                           class="goGoWiseAnnounce_newEvents"><s:property value="title"/></a></li>
-                </s:iterator>
-            </ul>
-        </div>
 
         <div class="sdiv sdivt3">
             <h3 class="stit"><strong><a target="_blank" href="javascript:;"><s:text name="course.square.of.new.events"/></a></strong></h3>
@@ -105,16 +87,6 @@
                 <s:iterator value="courseNewEvents">
                     <li><a href="courseEventRead.html?courseNewEvent.id=<s:property value="id"/>"
                            class="course_newEvents"><s:property value="title"/></a></li>
-                </s:iterator>
-            </ul>
-        </div>
-
-        <div class="sdiv sdivt3">
-            <h3 class="stit"><strong><a target="_blank" href="javascript:;"><s:text name="show.square.new.events"/></a></strong></h3>
-            <ul class="everyday-list">
-                <s:iterator value="showNewEvents">
-                    <li><a href="showEventRead.html?showNewEvent.id=<s:property value="id"/>"
-                           class="show_newEvents"><s:property value="title"/></a></li>
                 </s:iterator>
             </ul>
         </div>

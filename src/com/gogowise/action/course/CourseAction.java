@@ -139,16 +139,6 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "loadCoursesDivideByType", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".coursesInTypes")})
-    public String loadCoursesDivideByType() {
-
-        if (this.getCourse().getCourseType() != 0) {
-            coursesInTypes = courseDao.findCoursesInTypes(this.getCourse().getCourseType(), new Pagination(20));
-        } else {
-            coursesInTypes = courseDao.findLatest4Course(new Pagination(20));
-        }
-        return SUCCESS;
-    }
 
     @Action(value = "step1", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".step1")})
     public String step1() {
@@ -338,7 +328,6 @@ public class CourseAction extends BasicAction {
 
 
     @Action(value = "myForcastClass", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".myForcastClass")})
-    //     @Action(value = "myForcastClass", results = {@Result(name = SUCCESS, location = "/jsp/gogowise/course/myForcastClass.css")})
     public String myForcast() {
         courses = courseDao.findUserCreatedCourses(this.getSessionUserId(), pagination);
         return SUCCESS;
