@@ -21,7 +21,7 @@ public class MainFilter implements Filter {
 
     private static Logger logger = LogManager.getLogger(MainFilter.class.getName());
     //    private static Logger logger = LogManager.getLogger(MainFilter.class);
-    private static List<String> NEED_LOGIN = new ArrayList<String>();
+    private static List<String> NEED_LOGIN = new ArrayList<>();
 
 
     static {
@@ -37,7 +37,6 @@ public class MainFilter implements Filter {
         NEED_LOGIN.add("/initOrgLeague.html");
         NEED_LOGIN.add("/initOrgCourseCreation.html");
         NEED_LOGIN.add("/createCourse.html");
-        NEED_LOGIN.add("/orgMeetingEmailConfirm.html");
         NEED_LOGIN.add("/emailHandleForCourseCreation.html");
         NEED_LOGIN.add("/startSupervision.html");
         NEED_LOGIN.add("/myAgeCourses.html");

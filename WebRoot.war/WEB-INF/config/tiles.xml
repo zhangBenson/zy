@@ -465,10 +465,6 @@
         <put-attribute name="contentRight" value="/jsp/gogowise/org/orgInfoUpdate.jsp"/>
     </definition>
 
-    <definition name=".noRight" extends=".userCenter">
-        <put-attribute name="title" value="org.meeting.page.title"/>
-        <put-attribute name="contentRight" value="/jsp/gogowise/org/noRignt.jsp"/>
-    </definition>
 
     <definition name=".studentManage" extends=".userCenter">
         <put-attribute name="title" value="Student Management"/>

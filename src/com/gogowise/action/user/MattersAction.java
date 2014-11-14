@@ -29,15 +29,12 @@ import java.util.List;
 @Namespace(BasicAction.BASE_NAME_SPACE)
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 public class MattersAction extends BasicAction{
-    private List<Matter> courseMessageMatters=new ArrayList<Matter>();
-    private List<Matter> orgMeetingMatters=new ArrayList<Matter>();
-    private List<Matter> courseRegisterMatters=new ArrayList<Matter>();
-    private List<Matter> courseTeacherMatters=new ArrayList<Matter>();
-    private List<Matter> courseInviteMatters=new ArrayList<Matter>();
-    private List<Matter> myShowMessageMatters=new ArrayList<Matter>();
-    private List<Matter> orgMeetingHostManMatters=new ArrayList<Matter>();
-    private List<Matter> courseStudentMatters=new ArrayList<Matter>();
-    private List<Matter> courseResourceMatters=new ArrayList<Matter>();
+    private List<Matter> courseMessageMatters = new ArrayList<>();
+    private List<Matter> courseRegisterMatters = new ArrayList<>();
+    private List<Matter> courseTeacherMatters = new ArrayList<>();
+    private List<Matter> courseInviteMatters = new ArrayList<>();
+    private List<Matter> courseStudentMatters = new ArrayList<>();
+    private List<Matter> courseResourceMatters = new ArrayList<>();
 
     private List<Matter> courseStudentNoOrgMatters=new ArrayList<Matter>();
     private MatterDao matterDao;
@@ -59,18 +56,12 @@ public class MattersAction extends BasicAction{
         for(Matter m:allMatters){
             if(m.getType()==Matter.MATTER_COURSE_MESSAGE){
                 courseMessageMatters.add(m);
-            } else if(m.getType()==Matter.MATTER_ORGMEETING){
-                orgMeetingMatters.add(m);
-            }else if(m.getType()==Matter.MATTER_COURSE_REGISTER){
+            } else if (m.getType() == Matter.MATTER_COURSE_REGISTER) {
                 courseRegisterMatters.add(m);
             }else if(m.getType()==Matter.MATTER_COURSE_TEACHER){
                 courseTeacherMatters.add(m);
             }else if(m.getType()==Matter.MATTER_COURSE_INVITE){
                 courseInviteMatters.add(m);
-            }else if(m.getType()==Matter.MATTER_MYSHOW_MESSAGE){
-                myShowMessageMatters.add(m);
-            }else if(m.getType()==Matter.MATTER_ORGMEETING_HOSTMAN){
-                orgMeetingHostManMatters.add(m);
             }else if(m.getType()==Matter.MATTER_COURSE_STUDENT){
                 courseStudentMatters.add(m);
             }else if(m.getType()==Matter.MATTER_COURSE_STUDENT_NO_ORG){
@@ -85,10 +76,8 @@ public class MattersAction extends BasicAction{
     @Action(value = "matterHandler",
             results = {
                     @Result(name ="MATTER_COURSE_MESSAGE", type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName", "voaCourseBlog", "course.id", "${course.id}"}),
-                    @Result(name="6",type=Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName","orgMeetingEmailConfirm","orgMeeting.id","${orgMeeting.id}","email","${matter.email}","user.email","${user.email}"}),
                     @Result(name="3",type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName","courseOnlineAudit","courseClass.id","${courseClass.id}","courseOnline","${accept}"}),
                     @Result(name="4",type = Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName","showBlog","myShow.id","${myShow.id}"}),
-                    @Result(name="MATTER_ORGMEETING_HOSTMAN",type=Constants.RESULT_NAME_REDIRECT_ACTION,params = {"actionName","orgMeetingEmailConfirm","orgMeeting.id","${orgMeeting.id}","orgMeeting.hostManEmail","${matter.email}","user.email","${user.email}"})
 
             }
     )
@@ -113,8 +102,6 @@ public class MattersAction extends BasicAction{
             return "5";
         }else if(this.getMatter().getType()==4){
             return "4";
-        }else if(this.getMatter().getType()==11){
-            return "MATTER_ORGMEETING_HOSTMAN";
         }
         return "";
 
@@ -176,15 +163,6 @@ public class MattersAction extends BasicAction{
     public void setCourse(Course course) {
         this.course = course;
     }
-
-    public List<Matter> getOrgMeetingMatters() {
-        return orgMeetingMatters;
-    }
-
-    public void setOrgMeetingMatters(List<Matter> orgMeetingMatters) {
-        this.orgMeetingMatters = orgMeetingMatters;
-    }
-
 
 
     public BaseUser getUser() {
@@ -257,23 +235,6 @@ public class MattersAction extends BasicAction{
 
     public void setIdentityType(Integer identityType) {
         this.identityType = identityType;
-    }
-
-    public List<Matter> getMyShowMessageMatters() {
-        return myShowMessageMatters;
-    }
-
-    public void setMyShowMessageMatters(List<Matter> myShowMessageMatters) {
-        this.myShowMessageMatters = myShowMessageMatters;
-    }
-
-
-    public List<Matter> getOrgMeetingHostManMatters() {
-        return orgMeetingHostManMatters;
-    }
-
-    public void setOrgMeetingHostManMatters(List<Matter> orgMeetingHostManMatters) {
-        this.orgMeetingHostManMatters = orgMeetingHostManMatters;
     }
 
     public List<Matter> getCourseStudentMatters() {

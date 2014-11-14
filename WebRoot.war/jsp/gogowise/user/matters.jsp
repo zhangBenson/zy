@@ -1,4 +1,3 @@
-<%@ page import="com.gogowise.common.utils.MD5" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
@@ -46,25 +45,9 @@
 
 
     <tr class="tr_x"><td colspan="3" class="td_0"><s:text name="title.matters.invitations"/></td></tr>
-      <%--<s:iterator value="orgMeetingHostManMatters" status="idx">
-     <tr>
-        <td class="td_1"><s:property value="fromUser.nickName"/>&nbsp;邀请您主持<a href="matterHandler.html?matter.id=<s:property value="id"/>&orgMeeting.id=<s:property value="orgMeeting.id"/>&matter.type=<s:property value="type"/>&matter.email=<s:property value="email"/>&user.email=<s:property value="toEmail"/>" target="_blank" onclick="deleteThisRow(this);"><s:property value="orgMeeting.organization.schoolName"/></a>会议</td>
-        <td class="td_2"><a href="matterHandler.html?matter.id=<s:property value="id"/>&orgMeeting.id=<s:property value="orgMeeting.id"/>&matter.type=<s:property value="type"/>&matter.email=<s:property value="email"/>&user.email=<s:property value="toEmail"/>" target="_blank" onclick="deleteThisRow(this);">接受</a></td>
-        <td class="td_2"><a href="#" onclick="deleteThatRow(this,'<s:property value="id"/>');"><s:text name="title.matters.ignore"/></a></td>
-    </tr>
-    </s:iterator>
 
-
-     <s:iterator value="orgMeetingMatters" status="idx">
-     <tr>
-        <td class="td_1"><s:property value="fromUser.nickName"/>&nbsp;邀请您参加<a href="matterHandler.html?matter.id=<s:property value="id"/>&orgMeeting.id=<s:property value="orgMeeting.id"/>&matter.type=<s:property value="type"/>&matter.email=<s:property value="email"/>&user.email=<s:property value="toEmail"/>" target="_blank" onclick="deleteThisRow(this);"><s:property value="orgMeeting.organization.schoolName"/></a>会议</td>
-        <td class="td_2"><a href="matterHandler.html?matter.id=<s:property value="id"/>&orgMeeting.id=<s:property value="orgMeeting.id"/>&matter.type=<s:property value="type"/>&matter.email=<s:property value="email"/>&user.email=<s:property value="toEmail"/>" target="_blank" onclick="deleteThisRow(this);">接受</a></td>
-        <td class="td_2"><a href="#" onclick="deleteThatRow(this,'<s:property value="id"/>');"><s:text name="title.matters.ignore"/></a></td>
-    </tr>
-    </s:iterator>--%>
     <s:iterator value="courseTeacherMatters" status="idx">
     <tr>
-        <%--<td class="td_1"><s:property value="course.organization.schoolName"/>指定您为<s:property value="course.name"/>课程的老师，具体信息请查看邮件</td>--%>
         <td class="td_1"><s:text name="title.matters.appointTeacher"/>&nbsp;
             <s:property value="course.name"/>
             <s:text name="title.matters.appointTeacherBy"/>
