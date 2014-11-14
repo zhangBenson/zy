@@ -1,7 +1,10 @@
 package com.gogowise.action.higsec;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.common.utils.*;
+import com.gogowise.common.utils.Constants;
+import com.gogowise.common.utils.EmailUtil;
+import com.gogowise.common.utils.MD5;
+import com.gogowise.common.utils.UploadUtils;
 import com.gogowise.rep.org.dao.OrganizationBaseUserDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
@@ -72,18 +75,6 @@ public class OrgForBackendAction extends BasicAction {
         }
     }
 
-    @Action(value = "higSecConfirmOrg", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".go2ForthStep")})
-    public String higSecConfirmOrg() {
-        if (this.getOrg().getId() != null) {
-            org = organizationDao.findById(this.getOrg().getId());
-            org.setConfirmed(true);
-            organizationDao.persistAbstract(org);
-            EmailUtil.sendMail(org.getResponsiblePerson().getEmail(), "组织机构已经通过审核", "您好，你申请的" + org.getSchoolName() + "已经通过审核。");
-            this.userService.grantPermission(this.getOrg().getCreator(), RoleType.TEACHER);
-        }
-
-        return SUCCESS;
-    }
 
     @Action(value = "higSecRemoveConfirm", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "higSecOrgListView"}),
             @Result(name = INPUT, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "higSecOrgListView"})})

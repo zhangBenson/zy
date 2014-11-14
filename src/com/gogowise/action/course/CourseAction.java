@@ -10,7 +10,6 @@ import com.gogowise.rep.ServiceException;
 import com.gogowise.rep.course.CourseService;
 import com.gogowise.rep.course.dao.*;
 import com.gogowise.rep.course.enity.*;
-import com.gogowise.rep.org.OrgService;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.system.dao.MatterDao;
@@ -113,8 +112,6 @@ public class CourseAction extends BasicAction {
     private List<CourseClass> classes = new ArrayList<>();
 
     private String redirectURL;
-    @Autowired
-    private OrgService orgService;
 
     private Integer videoVersionId;
 
@@ -140,15 +137,6 @@ public class CourseAction extends BasicAction {
     }
 
 
-    @Action(value = "createCourse", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initStep1"), @Result(name = "failed", type = Constants.RESULT_NAME_TILES, location = ".identityConfirmation")})
-    public String initCourse() {
-
-        if (getSessionUserId() == null) {
-            return "failed";
-        }
-        this.setOperaType(Constants.OPERA_TYPE_FOR_COURSE_CREATION);
-        return SUCCESS;
-    }
 
     @Action(value = "setClassRecord", results = {@Result(name = SUCCESS, type = "json")})
     public String setRecordStatus() {
@@ -178,20 +166,6 @@ public class CourseAction extends BasicAction {
     }
 
 
-    @Action(value = "initSaveCourse", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initStep2")})
-    public String initSaveCourse() {
-
-        if (this.getCourse().getId() != null) {
-            course = courseDao.findById(this.getCourse().getId());
-            courseInviteStudents = courseInviteStudentDao.findByCourseId(this.getCourse().getId());
-        }
-        if (Constants.COURSE_TYPE_ORG.equals(this.getCourseType())) {
-            Organization orgTmp = orgService.findMyOrg(this.getSessionUserId());
-            if (orgTmp != null)
-                orgs.put(orgTmp.getId(), orgTmp.getSchoolName());
-        }
-        return SUCCESS;
-    }
 
     @Action(value = "initCourseInfoModify", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initMaintenanceInfo")})
     public String initCourseInfoModify() {
@@ -243,20 +217,6 @@ public class CourseAction extends BasicAction {
             EmailUtil.sendMail(bu.getEmail(), tile, css + this.getText("org.modify.teacher.email.content", args), "text/html;charset=utf-8");
         }
 
-        return SUCCESS;
-    }
-
-    @Action(value = "goback2saveCourse", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initStep2")})
-    public String goBack2SaveCourse() {
-
-        course = courseDao.findById(this.getCourse().getId());
-        courseInviteStudents = courseInviteStudentDao.findByCourseId(this.getCourse().getId());
-        if (Constants.COURSE_TYPE_ORG.equals(this.getCourseType())) {
-            Organization orgTmp = orgService.findMyOrg(super.getSessionUserId());
-            if (orgTmp != null)
-                orgs.put(orgTmp.getId(), orgTmp.getSchoolName());
-
-        }
         return SUCCESS;
     }
 

@@ -169,35 +169,6 @@ public class UserAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "orgIdentityConfirm", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".go2FirstStep"),
-            @Result(name = "failed", type = Constants.RESULT_NAME_TILES, location = ".orgIdentityConfirm")})
-    public String orgIdentityConfirmation() {
-        BaseUser curr = baseUserDao.findByEmail(this.getUser().getEmail());
-        if (curr != null) {
-            if (!MD5.endCode(this.getUser().getPassword()).equals(curr.getPassword())) {
-                this.setIdentityConfirmMsg("您输入的密码有误");
-                return "failed";
-            }
-            setUserToSession(curr);
-            setUserOrg(curr);
-        } else if (!user.getNickName().equals("")) {
-            user.setLockedOut(true);
-            user.setPassword(MD5.endCode(user.getPassword()));
-            user.setRegDate(Calendar.getInstance());
-            String md5 = MD5.endCode(String.valueOf(System.currentTimeMillis()));
-            user.setActiveCode(md5);
-            baseUserDao.persistAbstract(user);
-            sendEmail(user);
-            this.emailBoxUrl = EmailUtil.getEmailBoxUrl(user.getEmail());
-            setUserToSession(user);
-            setUserToSession(user);
-        } else {
-            identityConfirmMsg = this.getText("identity.confirm.account.not.exist");
-            return "failed";
-        }
-        return SUCCESS;
-    }
-
     @Action(value = "exitSystem", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "index"})})
     public String exitSystem() {
         ActionContext.getContext().getSession().clear();

@@ -73,35 +73,8 @@ public class ClassAction extends BasicAction {
         classDao.editClass(this.getCourseClass());
     }
 
-    @Action(value = "saveClass", results = {@Result(name = SUCCESS, type = "tiles", location = ".initStep3"),
-            @Result(name = "repeat", type = Constants.RESULT_NAME_TILES, location = ".repeatClassInfo"),
-            @Result(name = "maintenance", type = Constants.RESULT_NAME_TILES, location = ".courseInfoModified"),
-            @Result(name = INPUT, type = "tiles", location = ".saveClass")})
-    public String saveClass() {
-        course = courseDao.findById(this.getCourse().getId());
-        classDao.saveClass(courseClass, course, durations.get(0));
-        course = courseDao.findById(this.getCourse().getId());
-        classes = classDao.findByCourseId(course.getId());
-        for (int i = 0; i < classes.size(); i++) {
-            int j = i + 1;
-            classes.get(i).setName(this.getText("lable.class.no1") + j + this.getText("lable.class.no2"));
-            classDao.persistAbstract(classes.get(i));
-        }
-        course.setClasses(classes);
-        courseDao.persistAbstract(course);
-        classCount = classes.size() + 1;
-        this.setOperaType(Constants.OPERA_TYPE_FOR_COURSE_CREATION);
-        if (classType.equals(Constants.CLASS_TYPE_OF_REPEAT)) {
-            return "repeat";
-        } else if (classType.equals(Constants.CLASS_TYPE_OF_MAINTENANCE)) {
-            return "maintenance";
-        }
-        return SUCCESS;
-    }
 
-
-    @Action(value = "autoSaveClass", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initStep3"),
-            @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".initStep3")})
+    @Action(value = "autoSaveClass", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".initStep3")})
     public String autoSaveClass() {
         course = courseDao.findById(this.getCourse().getId());
 
