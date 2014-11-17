@@ -94,18 +94,8 @@ public class ClassAction extends BasicAction {
     }
 
 
-
-
-
-
-
-
-    @Action(value = "closeBrowser", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}),
-            @Result(name = "supervision", type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "courseSupervise"})})
+    @Action(value = "closeBrowser", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"})})
     public String closeBrowser() {
-        if (this.getRoleType() != null && this.getRoleType().equals(3)) {
-            return "supervision";
-        }
         return SUCCESS;
     }
 

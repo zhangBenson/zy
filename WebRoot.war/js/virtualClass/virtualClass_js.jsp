@@ -82,31 +82,6 @@
         }
         return ajax;
     }
-    function startInvite() {
-        var comments = $("#invite_comments").val();
-        var friendsEmails = "";
-        var emails = $("input.emails");
-        var emailRightful = true;
-        for (var i = 0; i < emails.size(); i++) {
-            var email = emails[i];
-            emailRightful = emailRightful && checkEmail(email.value, "invite_email_msg");
-            friendsEmails = friendsEmails + "&emails=" + $(email).attr('value');
-        }
-        if (!emailRightful) return;
-        var url = "virtualRoomEmailInviteFriends.html";
-        var postStr = "courseClass.id=<s:property value='courseClass.id'/>&user.id=<s:property value="#session.userID"/>&inviteMessage=" + comments + friendsEmails;
-        var ajax = InitAjax();
-        ajax.open("POST", url, true);
-        ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        ajax.send(postStr);
-        ajax.onreadystatechange = function () {
-            if (ajax.readyState == 4) {
-                Boxy.alert(inviting_sent);
-                box.hide();
-            }
-        }
-    }
-
 
     function closeFancybox() {
         $.fancybox.close();

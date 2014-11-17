@@ -13,7 +13,6 @@ import com.gogowise.rep.course.enity.*;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.system.dao.MatterDao;
-import com.gogowise.rep.system.enity.Matter;
 import com.gogowise.rep.user.UserService;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
@@ -21,7 +20,6 @@ import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.user.enity.RoleType;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.lang.StringUtils;
-import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -31,7 +29,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import java.io.File;
-import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -334,60 +331,6 @@ public class CourseAction extends BasicAction {
         return SUCCESS;
     }
 
-    @Action(value = "courseTypeJudge")
-    public void courseTypeJudge() throws Exception {
-
-        String data = "";
-        PrintWriter out = ServletActionContext.getResponse().getWriter();
-        course = courseDao.findById(this.getCourse().getId());
-        if (course.getOrganization() != null) {
-            data = "isOrganization";
-        }
-        out.print(data);
-        out.close();
-    }
-
-    @Action(value = "courseSupervise", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".courseSupervise")})
-    public String courseSupervise() {
-
-        this.getPagination().setPageSize(9);
-        courses = courseDao.findMyOrgCourseForSupervision(this.getSessionUserId(), pagination);
-        return SUCCESS;
-    }
-
-    @Action(value = "virtualRoomEmailInviteFriends")
-    public void virtualRoomEmailInviteFriends() {
-
-        courseClass = classDao.findById(this.getCourseClass().getId());
-        BaseUser friend;
-        if (this.getUser().getId() != null) {
-
-            friend = baseUserDao.findById(this.getUser().getId());
-        } else {
-            if (baseUserDao.findByNickName("匿名用户") == null) {
-                friend = new BaseUser();
-                friend.setNickName("匿名用户");
-                baseUserDao.persistAbstract(friend);
-            }
-            friend = baseUserDao.findByNickName("匿名用户");
-        }
-
-        DateFormat dateFormat = new SimpleDateFormat(this.getText("dateformat.forclass"));
-        String href = getBasePath() + "/courseOnlineAudit.html?courseClass.id=" + this.getCourseClass().getId() + "&courseOnline=true";
-        String title = this.getText("virtual.room.invite.friend.email.title", new String[]{friend.getNickName(), courseClass.getCourse().getName()});
-        Calendar startTime = Calendar.getInstance();
-        startTime.setTime(courseClass.getDate().getTime());
-        Calendar endTime = Calendar.getInstance();
-        startTime.setTime(courseClass.getFinishDate().getTime());
-
-        for (String email : emails) {
-            String serialNo = this.getSessionNickName() + (new SimpleDateFormat("yyyyddMMHHmmssms").format(Calendar.getInstance().getTime()));
-            Matter matter = new Matter(Calendar.getInstance(), serialNo, Matter.MATTER_COURSE_INVITE, friend, courseClass.getId() + "", email, courseClass.getCourse(), false);
-            matterDao.persistAbstract(matter);
-            String content = this.getText("virtual.room.invite.friend.email.content", new String[]{email, friend.getNickName(), courseClass.getCourse().getName(), courseClass.getCourse().getClassOneTheCornerSequence().toString(), dateFormat.format(Utils.changeBaseOnTimeZone4Action(startTime).getTime()), dateFormat.format(Utils.changeBaseOnTimeZone4Action(endTime).getTime()), this.getInviteMessage().equals("") ? this.getText("virtual.room.invite.friend.message.default") : this.getInviteMessage(), href, href,});
-            EmailUtil.sendMail(email, title, content, "text/html;charset=utf-8");
-        }
-    }
 
     @Action(value = "newEventsManage", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".newEventsManage")})
     public String newEventsManage() {

@@ -21,10 +21,6 @@
                     <p><s:text name="adjust.your.organization.courses"/></p>
                 </li>
                 <li>
-                    <s:a action="courseSupervise"><h3><img src="images/org/arrow.png"/><span><s:text name="org.matters.course.supervisions"/></span></h3></s:a>
-                    <p><s:text name="org.matters.course.supervisions.description"/></p>
-                </li>
-                <li>
                     <s:a action="orgInfoUpdate"><h3><img src="images/org/arrow.png"/><span><s:text name="org.information.setting"/></span></h3></s:a>
                     <p><s:text name="org.information.setting.content"/></p>
                 </li>
