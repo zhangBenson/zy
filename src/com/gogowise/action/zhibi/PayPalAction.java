@@ -248,18 +248,18 @@ public class PayPalAction extends BasicAction {
 
                     paypalDetailsSpecification.setCourseId(courseID);
 
-
-                    paypalService.savePaypalDetails(paypalDetailsSpecification);
-
-                    // *********************************************添加课程**********************************************
-
-
                     Course course = null;
 
                     if (StringUtils.hasText(courseID)) {
                         course = courseDao.findById(new Integer(courseID));
                     }
 
+                    if (user == null || course == null) {
+                        return;
+                    }
+
+
+                    paypalService.savePaypalDetails(paypalDetailsSpecification);
                     //user = baseUserDao.findById(userID);
 
                     seniorClassRoomDao.saveSeniorClassRoom(new Integer(courseID), new Integer(userID));

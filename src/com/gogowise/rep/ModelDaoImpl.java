@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.Collections;
 import java.util.List;
 
 @Transactional
@@ -66,12 +67,13 @@ public class ModelDaoImpl<T extends Persistable>
         return criteria.getExecutableCriteria(this.getSession()).list();
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<T> findByExample(T object) {
-        Criteria executableCriteria = (object != null ?
-                this.getSession().createCriteria(object.getClass()) : this.getSession().createCriteria(object.getClass()));
+    @SuppressWarnings("unchecked")
+    public List<T> findByExample(T object) {
+        if (object == null)
+            return Collections.emptyList();
+        Criteria executableCriteria = this.getSession().createCriteria(object.getClass());
         return executableCriteria.add(Example.create(object)).list();
-	}
+    }
 
 	public void saveAbstract(AbstractPersistence entity) {
 		this.getSession().saveOrUpdate(entity);

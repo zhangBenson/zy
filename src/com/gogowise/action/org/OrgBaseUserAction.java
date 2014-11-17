@@ -1,6 +1,7 @@
 package com.gogowise.action.org;
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.action.valueobject.ResultData;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.EmailUtil;
 import com.gogowise.rep.org.OrgService;
@@ -12,7 +13,6 @@ import com.gogowise.rep.user.UserService;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.user.enity.RoleType;
-import com.gogowise.action.valueobject.ResultData;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.convention.annotation.Action;
@@ -117,7 +117,7 @@ public class OrgBaseUserAction extends BasicAction {
         }
 
         OrganizationBaseUser exist = organizationBaseUserDao.findByOrgIdAndEmailAndRoleType(orgUser.getOrg().getId(), this.getSessionUserEmail(), roleType);
-        if (exist == null && isT) {
+        if (exist == null) {
             return COMMON_ERROR;
         }
 
