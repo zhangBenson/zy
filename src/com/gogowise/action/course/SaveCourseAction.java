@@ -82,8 +82,8 @@ public class SaveCourseAction extends BasicAction {
 
     @Autowired
     private TagDao tagDao;
-    private List<String> tags;  //用户输入的tag
-    private List<Tag> existTags; //数据库中已有的tag
+    private List<String> tags = new ArrayList<>();  //用户输入的tag
+    private List<Tag> existTags = new ArrayList<>(); //数据库中已有的tag
     @Autowired
     private CourseInviteStudentDao courseInviteStudentDao;
     @Autowired
