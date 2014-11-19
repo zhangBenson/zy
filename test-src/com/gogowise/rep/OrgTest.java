@@ -1,10 +1,13 @@
 package com.gogowise.rep;
 
+import com.gogowise.common.utils.Constants;
+import com.gogowise.rep.course.dao.CourseMaterialDao;
+import com.gogowise.rep.course.enity.CourseMaterial;
 import com.gogowise.rep.org.dao.OrganizationDao;
+import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.rep.org.enity.Organization;
-import com.gogowise.common.utils.Constants;
+import org.apache.commons.lang.StringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,6 +23,8 @@ public class OrgTest {
     private OrganizationDao organizationDao;
     private BaseUserDao baseUserDao;
 
+    private CourseMaterialDao courseMaterialDao;
+
 
     @Before
     public void setUp() throws Exception {
@@ -29,6 +34,8 @@ public class OrgTest {
         ApplicationContext ctx = new ClassPathXmlApplicationContext(config);
         organizationDao = (OrganizationDao) ctx.getBean("organizationDao");
         baseUserDao = (BaseUserDao) ctx.getBean("baseUserDao");
+        courseMaterialDao = (CourseMaterialDao) ctx.getBean("courseMaterialDao");
+
     }
 
     @After
@@ -36,6 +43,19 @@ public class OrgTest {
 
     }
 
+
+    @Test
+    public void changeCourseMatrix() {
+        for (CourseMaterial courseMaterial : courseMaterialDao.find("from CourseMaterial")) {
+            if (StringUtils.startsWith(courseMaterial.getConvertPath(), "/download")) {
+                courseMaterial.setConvertPath("/upload" + courseMaterial.getConvertPath());
+            }
+            if (StringUtils.startsWith(courseMaterial.getFullPath(), "/download")) {
+                courseMaterial.setFullPath("/upload" + courseMaterial.getFullPath());
+            }
+            courseMaterialDao.persistAbstract(courseMaterial);
+        }
+    }
 
     @Test
     public void save() {
