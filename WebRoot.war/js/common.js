@@ -254,11 +254,3 @@ function afterCropLogo(real_path, imgName) {
     document.getElementById("crop_logo").value = imgName;
 }
 
-
-$(function () {
-    $(".change_portrait").fancybox({
-        type: 'iframe',
-        width: 720,
-        height: 490
-    });
-});

@@ -71,7 +71,11 @@
 
         calculate_time_zone("<s:property value='#session.timeZone'/>");
 
-
+        $(".change_portrait").fancybox({
+            type: 'iframe',
+            width: 720,
+            height: 490
+        });
     });
 
 
