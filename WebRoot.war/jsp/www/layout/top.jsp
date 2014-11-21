@@ -65,7 +65,7 @@
                         <ul class="dropdown-menu" role="menu">
 
                             <s:if test="#session.isTeacher">
-                                <li><a href="myfirstPage.html"><s:text name="label.orgcenter"/> </a>
+                                <li><a href="myfirstPage.html" id="myFirstPageLink"><s:text name="label.orgcenter"/> </a>
                                 </li>
                             </s:if>
                             <li><a href="personalCenter.html"><s:text name="label.personalcenter"/> </a></li>
