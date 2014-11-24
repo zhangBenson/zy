@@ -20,23 +20,25 @@ public class TestLogin {
     @Before
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
-        baseUrl = "http://localhost:8080/";
+        baseUrl = "http://beta.gogowise.com/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
     @Test
     public void testLogin() throws Exception {
-        driver.get(baseUrl + "/");
+        driver.get(baseUrl);
         driver.findElement(By.id("btnLogin")).click();
         Thread.sleep(3000L);
         driver.findElement(By.id("inputEmail3")).clear();
-        driver.findElement(By.id("inputEmail3")).sendKeys("zlhades@hotmail.com");
+        driver.findElement(By.id("inputEmail3")).sendKeys("mindstretcher@gogowise.com");
         Thread.sleep(1000L);
         driver.findElement(By.id("inputPassword3")).clear();
-        driver.findElement(By.id("inputPassword3")).sendKeys("123");
+        driver.findElement(By.id("inputPassword3")).sendKeys("mindstretcher");
         driver.findElement(By.id("log_btn")).click();
         Thread.sleep(1000L);
-        assertTrue(isElementPresent(By.linkText("Benson")));
+        assertTrue(isElementPresent(By.linkText("Mind Stretcher")));
+        Thread.sleep(1000L);
+        driver.get(baseUrl + "myfirstPage.html");
     }
 
     @After

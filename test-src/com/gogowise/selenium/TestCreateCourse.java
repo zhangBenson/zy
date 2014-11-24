@@ -4,7 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.concurrent.TimeUnit;
@@ -18,24 +18,30 @@ public class TestCreateCourse {
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
 
+    //    C:\Program Files (x86)\Google\Chrome\Application
     @Before
     public void setUp() throws Exception {
-        driver = new FirefoxDriver();
-        baseUrl = "http://localhost:8080/";
+//        driver = new FirefoxDriver();
+        driver = new ChromeDriver();
+        baseUrl = "http://beta.gogowise.com/";
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
     }
 
     @Test
     public void testCreateCourse() throws Exception {
-        driver.get(baseUrl + "/");
-        driver.findElement(By.xpath("//button[@type='button']")).click();
-        driver.findElement(By.linkText("Logout")).click();
+        driver.get(baseUrl);
         driver.findElement(By.id("btnLogin")).click();
-        driver.findElement(By.id("inputEmail3")).clear();
         driver.findElement(By.id("inputEmail3")).sendKeys("mindstretcher@gogowise.com");
-        driver.findElement(By.id("inputPassword3")).clear();
+
         driver.findElement(By.id("inputPassword3")).sendKeys("mindstretcher");
         driver.findElement(By.id("log_btn")).click();
+
+        Thread.sleep(1000L);
+        assertTrue(isElementPresent(By.linkText("Mind Stretcher")));
+
+        driver.get(baseUrl + "myfirstPage.html");
+
+        Thread.sleep(10000L);
         driver.findElement(By.linkText("Create a course now!")).click();
         driver.findElement(By.id("step2_course_name")).clear();
         driver.findElement(By.id("step2_course_name")).sendKeys("forTest");
@@ -45,10 +51,10 @@ public class TestCreateCourse {
         driver.findElement(By.id("step2_course_intro")).sendKeys("1321");
         new Select(driver.findElement(By.id("step2_studentAge_type"))).selectByVisibleText("Age 3 ~ 4");
         new Select(driver.findElement(By.id("step2_course_type"))).selectByVisibleText("Cartoons and Stories");
-        driver.findElement(By.id("courseStartDate")).click();
-        driver.findElement(By.cssSelector("div.navImg.NavImgr > a")).click();
-        driver.findElement(By.cssSelector("div.navImg.NavImgrr > a")).click();
-        driver.findElement(By.cssSelector("td.WdayOn")).click();
+
+
+        driver.findElement(By.id("courseStartDate")).sendKeys("09/17/2015");
+
         driver.findElement(By.id("change_portrait")).click();
         // ERROR: Caught exception [ERROR: Unsupported command [selectFrame | fancybox-frame1416498942488 | ]]
         driver.findElement(By.cssSelector("input.submit_btn")).click();
