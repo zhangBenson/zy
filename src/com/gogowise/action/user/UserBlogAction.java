@@ -1,15 +1,5 @@
 package com.gogowise.action.user;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.struts2.convention.annotation.Action;
-import org.apache.struts2.convention.annotation.Namespace;
-import org.apache.struts2.convention.annotation.Result;
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Controller;
-
 import com.gogowise.action.BasicAction;
 import com.gogowise.common.utils.Constants;
 import com.gogowise.common.utils.Utils;
@@ -26,6 +16,15 @@ import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.user.enity.Comments;
 import com.gogowise.rep.user.enity.RoleType;
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.Result;
+import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings("UnusedDeclaration")
 @Controller
@@ -55,7 +54,7 @@ public class UserBlogAction extends BasicAction {
             results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".userBlog")}
     )
     public String userBlog() {
-        if (user == null) return NONE;
+        if (user == null || user.getId() == null) return NONE;
         Integer userId = user.getId();
         user = this.baseUserDao.findById(userId);
         if (user == null) return NONE;

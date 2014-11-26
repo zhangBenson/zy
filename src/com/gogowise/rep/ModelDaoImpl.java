@@ -1,7 +1,6 @@
 package com.gogowise.rep;
 
 import com.gogowise.common.utils.Utils;
-import org.apache.commons.beanutils.BeanUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
@@ -9,12 +8,11 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Example;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.lang.reflect.ParameterizedType;
-import java.util.Collections;
 import java.util.List;
 
 @Transactional
@@ -25,6 +23,7 @@ public class ModelDaoImpl<T extends Persistable>
 	private Class<T> persistentClass = null;
     protected static Logger logger = LogManager.getLogger(ModelDaoImpl.class.getName());
 
+    @Autowired
     private SessionFactory sessionFactory;
 
     public Session getSession() {
@@ -58,26 +57,15 @@ public class ModelDaoImpl<T extends Persistable>
 		this.getSession().flush();
 	}
 
-	public T findById(int id) {
-		return (T) this.getSession().get(this.getPersistentClass(), id);
-	}
+    public T findById(Integer id) {
+        return (T) this.getSession().get(this.getPersistentClass(), id);
+    }
 
 	@SuppressWarnings("unchecked")
 	public List<T> find(DetachedCriteria criteria) {
         return criteria.getExecutableCriteria(this.getSession()).list();
 	}
 
-    @SuppressWarnings("unchecked")
-    public List<T> findByExample(T object) {
-        if (object == null)
-            return Collections.emptyList();
-        Criteria executableCriteria = this.getSession().createCriteria(object.getClass());
-        return executableCriteria.add(Example.create(object)).list();
-    }
-
-	public void saveAbstract(AbstractPersistence entity) {
-		this.getSession().saveOrUpdate(entity);
-	}
 
 	public Criteria createCriteria(Class<T> clazz) {
 		return this.getSession().createCriteria(clazz);
@@ -141,37 +129,12 @@ public class ModelDaoImpl<T extends Persistable>
             if (countList.size() == 1) {
                 pagination.setTotalSize((Long) countList.get(0));
             } else if (countList.size() >1  ) {
-                pagination.setTotalSize(Long.valueOf(countList.size()));
+                pagination.setTotalSize((long) countList.size());
             }else {
-                 pagination.setTotalSize(new Long(0));
+                pagination.setTotalSize((long) 0);
             }
         }
         return list;
     }
 
-    public SessionFactory getSessionFactory() {
-        return sessionFactory;
-    }
-
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-
-
-    static boolean updateOldRecord = true;
-    public void persistWithSwitch(Persistable exist, Persistable newObj){
-        if (exist == null ) this.persistAbstract( newObj);
-        else if (!updateOldRecord) return;
-        else {
-            try {
-                Integer id = exist.getId();
-                BeanUtils.copyProperties(exist,newObj );
-                exist.setId(id);
-            } catch (Exception e) {
-                logger.error(exist.getId()+"=================exception==================================="+e.getMessage());
-                return;
-            }
-            this.persistAbstract(exist);
-        }
-    }
 }

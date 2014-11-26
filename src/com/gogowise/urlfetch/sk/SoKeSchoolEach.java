@@ -1,9 +1,10 @@
 package com.gogowise.urlfetch.sk;
 
-import com.gogowise.rep.Persistable;
+import com.gogowise.rep.AbstractPersistence;
 import com.gogowise.urlfetch.sk.domain.SkClassType;
 import com.gogowise.urlfetch.sk.domain.SkSchool;
 import com.gogowise.urlfetch.sk.domain.SkXiaoQu;
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang.StringUtils;
 import org.jsoup.HttpStatusException;
 import org.jsoup.nodes.Document;
@@ -126,8 +127,8 @@ public class SoKeSchoolEach extends BaseJunitTest implements Runnable {
             stageSet.setName(StringUtils.trim(traffic.child(0).text()));
             stageSet.setSchoolId(sInfo.getSchoolId());
             if (stageSet.getLng() != null)this.setXiaoQuRegId(stageSet)  ;
-            Persistable st = super.getModelDao().findFist("From SkXiaoQu st where st.schoolId = ? and st.name = ? ", sInfo.getSchoolId(), stageSet.getName());
-            super.getModelDao().persistWithSwitch(st, stageSet);
+            AbstractPersistence st = (AbstractPersistence) super.getModelDao().findFist("From SkXiaoQu st where st.schoolId = ? and st.name = ? ", sInfo.getSchoolId(), stageSet.getName());
+            this.persistWithSwitch(st, stageSet);
             super.getModelDao().flush();
         }
     }
@@ -149,9 +150,6 @@ public class SoKeSchoolEach extends BaseJunitTest implements Runnable {
         this.sInfo = sInfo;
     }
 
-    public Integer getsInfoId() {
-        return sInfoId;
-    }
 
     public void setsInfoId(Integer sInfoId) {
         this.sInfoId = sInfoId;
@@ -182,7 +180,7 @@ public class SoKeSchoolEach extends BaseJunitTest implements Runnable {
             return false;
         }
 
-        Object skRegion = super.getModelDao().findFist("From SkRegion where regid = ? ", regId);
+//        Object skRegion = super.getModelDao().findFist("From SkRegion where regid = ? ", regId);
 //            if (skRegion == null) {
 //                logger.error(regId+"======================notexist==============");
 //            }
@@ -190,4 +188,20 @@ public class SoKeSchoolEach extends BaseJunitTest implements Runnable {
         return true;
     }
 
+    static boolean updateOldRecord = true;
+
+    public void persistWithSwitch(AbstractPersistence exist, AbstractPersistence newObj) {
+        if (exist == null) this.getModelDao().persistAbstract(newObj);
+        else if (updateOldRecord) {
+            try {
+                Integer id = exist.getId();
+                BeanUtils.copyProperties(exist, newObj);
+                exist.setId(id);
+            } catch (Exception e) {
+                logger.error(exist.getId() + "=================exception===================================" + e.getMessage());
+                return;
+            }
+            this.getModelDao().persistAbstract(exist);
+        }
+    }
 }

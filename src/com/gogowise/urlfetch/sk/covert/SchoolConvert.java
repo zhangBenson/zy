@@ -1,7 +1,12 @@
 package com.gogowise.urlfetch.sk.covert;
 
+import com.gogowise.rep.AbstractPersistence;
 import com.gogowise.urlfetch.sk.*;
-import com.gogowise.urlfetch.sk.domain.*;
+import com.gogowise.urlfetch.sk.domain.SkClass;
+import com.gogowise.urlfetch.sk.domain.SkSchool;
+import com.gogowise.urlfetch.sk.domain.SkTypeRule;
+import com.gogowise.urlfetch.sk.domain.SkXiaoQu;
+import org.apache.commons.beanutils.BeanUtils;
 import org.jsoup.nodes.Document;
 import org.junit.Test;
 
@@ -47,7 +52,7 @@ public class SchoolConvert extends BaseJunitTest implements Runnable {
         if (schools.size() > 0)
             school = schools.get(0);
         school.setUid(uid);
-        super.getModelDao().persistWithSwitch(school, skSchool);
+        this.persistWithSwitch(school, skSchool);
         super.getModelDao().flush();
 
         List<SkXiaoQu> xiaoQus = super.getModelDao().find("From SkXiaoQu where schoolId =  ?", skSchool.getSchoolId());
@@ -57,7 +62,7 @@ public class SchoolConvert extends BaseJunitTest implements Runnable {
             List<XiaoQu> st = super.getModelDao().find("From XiaoQu st where st.school.id = ? and st.name = ? ", school.getId(), skXiaoQu.getName());
             if (st.size() > 0)
                 xiaoQu = st.get(0);
-            super.getModelDao().persistWithSwitch(xiaoQu, skXiaoQu);
+            this.persistWithSwitch(xiaoQu, skXiaoQu);
             xiaoQu.setSchool(school);
             if (xiaoQu.getLat() == null && xiaoQu.getAddress() != null) {
                 this.setLatandLng(xiaoQu);
@@ -76,7 +81,7 @@ public class SchoolConvert extends BaseJunitTest implements Runnable {
             if (slassInfos.size() > 0)
                 classInfoSk = slassInfos.get(0);
             classInfoSk.setUid(skUid);
-            super.getModelDao().persistWithSwitch(classInfoSk, skClass);
+            this.persistWithSwitch(classInfoSk, skClass);
             classInfoSk.setSchool(school);
             classInfoSk.setClassType(this.getClassType(skClass.getTypeId()));
             if (classInfoSk.getClassType() == null)
@@ -143,6 +148,23 @@ public class SchoolConvert extends BaseJunitTest implements Runnable {
 
         return (ClassType) super.getModelDao().findFist("From ClassType where name = ? ", rules.get(0).getRealType2());
 
+    }
+
+    static boolean updateOldRecord = true;
+
+    public void persistWithSwitch(AbstractPersistence exist, AbstractPersistence newObj) {
+        if (exist == null) this.getModelDao().persistAbstract(newObj);
+        else if (updateOldRecord) {
+            try {
+                Integer id = exist.getId();
+                BeanUtils.copyProperties(exist, newObj);
+                exist.setId(id);
+            } catch (Exception e) {
+                logger.error(exist.getId() + "=================exception===================================" + e.getMessage());
+                return;
+            }
+            this.getModelDao().persistAbstract(exist);
+        }
     }
 
     public void run() {

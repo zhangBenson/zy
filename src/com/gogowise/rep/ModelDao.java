@@ -9,13 +9,11 @@ public interface ModelDao<T extends Persistable> {
 
     public List<T> findByHql(String hql);
 
-    public T findById(int id);
+    public T findById(Integer id);
 
     public void delete(T entity);
 
     public List<T> find(DetachedCriteria criteria);
-
-    public List<T> findByExample(T object);
 
     public Criteria createCriteria(Class<T> clazz);
 
@@ -32,7 +30,5 @@ public interface ModelDao<T extends Persistable> {
     public void flush();
 
     public void refresh(Object object);
-
-    public void persistWithSwitch(Persistable exist, Persistable newObj);
 
 }
