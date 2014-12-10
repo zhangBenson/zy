@@ -12,7 +12,7 @@
     <!--++++++++++++++++++++++++++++++++++++++++++++++++开发状态 -->
     <constant name="struts.devMode" value="false"/>
     <!-- 国际化资源重新加载  -->
-    <constant name="struts.i18n.reload" value="true"/>
+    <constant name="struts.i18n.reload" value="false"/>
     <!-- 配置文件重新加载 -->
     <constant name="struts.configuration.xml.reload" value="false"/>
     <!-- convention类从新加载 -->
@@ -87,9 +87,9 @@
     <!-- 30M -->
 
 
-    <bean type="org.apache.struts2.convention.ActionConfigBuilder" name="myActionConfigBuilder"
-          class="com.gogowise.common.utils.MyActionConfigBuilder"/>
-    <constant name="struts.convention.actionConfigBuilder" value="myActionConfigBuilder"/>
+    <!--<bean type="org.apache.struts2.convention.ActionConfigBuilder" name="myActionConfigBuilder"-->
+    <!--class="com.gogowise.common.utils.MyActionConfigBuilder"/>-->
+    <!--<constant name="struts.convention.actionConfigBuilder" value="myActionConfigBuilder"/>-->
 
 
     <package name="basic-package" extends="tiles-default,json-default" namespace="/">
