@@ -24,7 +24,7 @@ public class EmailJob implements Runnable {
     private static final String SMTPPassword = "gogowise";
     // SMTP Server
 //    private static final String SMTPServerName = "mail.gogowise.com";
-    private static final String SMTPServerName = "172.31.46.7";
+    private static final String SMTPServerName = "172.31.42.85";
 
     //  EMAIL Related attribute.
     private static Properties props;
