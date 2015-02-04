@@ -1,20 +1,6 @@
 package com.gogowise.action;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
-import org.apache.struts2.ServletActionContext;
-import org.apache.struts2.convention.annotation.Action;
-import org.apache.struts2.convention.annotation.Result;
-import org.apache.struts2.convention.annotation.Results;
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Controller;
-
 import com.gogowise.common.utils.Constants;
-import com.gogowise.common.utils.Utils;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.enity.Course;
@@ -23,7 +9,20 @@ import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
 import com.gogowise.rep.user.enity.BaseUser;
-import com.opensymphony.xwork2.ActionContext;
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.convention.annotation.Results;
+import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
@@ -107,7 +106,7 @@ public class IndexAction extends BasicAction {
     public String index() {
 
         //        if("en_US".equals(language)){
-        setToEn();
+//        setToEn();
         //        }
         pagination.setPageSize(10);
         //courses = courseDao.findNonMoocCourses(pagination);
