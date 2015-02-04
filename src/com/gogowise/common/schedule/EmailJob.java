@@ -24,7 +24,7 @@ public class EmailJob implements Runnable {
     private static final String SMTPPassword = "gogowise";
     // SMTP Server
 //    private static final String SMTPServerName = "mail.gogowise.com";
-    private static final String SMTPServerName = "172.31.42.85";
+    private static final String SMTPServerName = "54.149.68.39";
 
     //  EMAIL Related attribute.
     private static Properties props;
@@ -141,7 +141,7 @@ public class EmailJob implements Runnable {
     public static void main(String args[]) {
 
         EmailJob job = new EmailJob();
-        job.setEmailAddr("jijianhui@gogowise.com");
+        job.setEmailAddr("zlhades@outlook.com");
         //        job.setEmailAddr("vic@gogowise.com");
 
         job.setMailTitle("111111111");
