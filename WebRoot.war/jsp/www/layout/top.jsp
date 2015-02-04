@@ -43,7 +43,7 @@
                     <a href="schoolCenter.html" class="navlink"><s:text name="frame.schools.center"/></a>
                 </li>
                 <li>
-                    <a href="FAQ.html" class="navlink"><s:text name="frame.schools.center"/></a>
+                    <a href="FAQ.html" class="navlink"><s:text name="frame.schools.faq"/></a>
                 </li>
             </ul>
         </div>
