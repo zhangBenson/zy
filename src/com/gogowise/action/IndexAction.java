@@ -106,7 +106,7 @@ public class IndexAction extends BasicAction {
     public String index() {
 
         //        if("en_US".equals(language)){
-        setToEn();
+//        setToEn();
         //        }
         pagination.setPageSize(10);
         //courses = courseDao.findNonMoocCourses(pagination);
