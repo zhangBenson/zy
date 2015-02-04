@@ -33,7 +33,7 @@
             <ul class="nav nav-pills">
                 <li>
                     <%--<a href="index.html" class="navlink"><s:text name="menu.item.index"/></a>--%>
-                    <a href="aboutUs.html" class="navlink">About Us</a>
+                    <%--<a href="aboutUs.html" class="navlink">About Us</a>--%>
                 </li>
                 <li>
                     <a href="courseCenter.html" class="navlink"><s:text name="frame.course.center"/></a>
