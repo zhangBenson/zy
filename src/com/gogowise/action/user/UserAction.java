@@ -482,7 +482,7 @@ public class UserAction extends BasicAction {
 //            ActionContext.getContext().getSession().remove("validationCode");
 //            ActionContext.getContext().getSession().remove("logonTimes");
         ActionContext.getContext().getSession().clear();
-//        setToEn();
+        setToEn();
         setUserToSession(user);
         setUserOrg(user);
 //            if (invitedCode != null && !invitedCode.equals("")) {
