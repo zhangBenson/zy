@@ -35,7 +35,10 @@
 <div class="container">
 
     <ul class="bxslider">
-        <li><a href="/playerClass.html?courseClass.id=392"><img src="../../images/index/pic1.jpg" class="bannerImg"/></a>
+        <li>
+            <%--<a href="/playerClass.html?courseClass.id=392">--%>
+                <img src="../../images/index/pic1.jpg" class="bannerImg"/>
+            <%--</a>--%>
         </li>
         <li><a href="/playerDemo.html"><img src="../../images/index/pic2.jpg" class="bannerImg"/></a>
         </li>
