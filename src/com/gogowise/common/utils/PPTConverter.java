@@ -26,7 +26,7 @@ public class PPTConverter {
     private static final Logger logger = LogManager.getLogger(PPTConverter.class);
 
     //    private static final String OFFICE_HOME = "C:\\Program Files (x86)\\OpenOffice 4\\";
-    private static final String OFFICE_HOME = "/usr/lib/libreoffice/program/";
+    private static final String OFFICE_HOME = "/opt/openoffice4/program/";
 
     public static final int DEFAULT_WIDTH = 800;
     public static final int DEFAULT_HEIGHT = 600;
