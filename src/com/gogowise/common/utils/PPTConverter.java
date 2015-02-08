@@ -190,6 +190,7 @@ public class PPTConverter {
             OfficeDocumentConverter converter = new OfficeDocumentConverter(officeManager);
             converter.convert(new File(srcPath), new File(desPdfPath));
         } catch (Throwable t) {
+            logger.error(t);
         } finally {
             if (officeManager != null)
                 officeManager.stop();
@@ -220,8 +221,8 @@ public class PPTConverter {
 
     private String replaceToPdf(String filePatch) {
         String[] splitArray = StringUtils.split(filePatch, ".");
-        splitArray[splitArray.length - 1] = ".pdf";
-        return StringUtils.join(splitArray, ",");
+        splitArray[splitArray.length - 1] = "pdf";
+        return StringUtils.join(splitArray, ".");
     }
 
 //    public static void main(String[] args) {
