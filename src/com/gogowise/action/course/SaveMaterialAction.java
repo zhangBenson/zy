@@ -74,6 +74,12 @@ public class SaveMaterialAction extends BasicAction {
             UploadUtils.copy(fileupload, new File(savePath + newFileName));
             courseMaterial.setFullPath(UploadUtils.copyTmpFileByUser(newFileName, this.getSessionUserId()));
             this.setGenFileName(newFileName);
+
+            int tmpType = CourseMaterial.getTypeByString(extName);
+            if( tmpType != CourseMaterial.OTHER ){
+                courseMaterial.setType(tmpType);
+            }
+
         }
         if (courseMaterial.getSourceTitle() == null) {
             courseMaterial.setSourceTitle(updatedFileNameOnly);
@@ -128,9 +134,11 @@ public class SaveMaterialAction extends BasicAction {
 
     private void doConvert(String fileName) throws Exception {
         if (CourseMaterial.PPT == courseMaterial.getType()) {
-            convertDoc(fileName);
+            convertPPT(fileName);
         } else if (CourseMaterial.QUESTION == courseMaterial.getType()) {
             convertQuestion(fileName);
+        } else if( CourseMaterial.DOC == courseMaterial.getType() ){
+            convertDOC(fileName);
         }
     }
 
@@ -141,7 +149,7 @@ public class SaveMaterialAction extends BasicAction {
         courseService.saveQuestion(courseMaterial, questions);
     }
 
-    private void convertDoc(String fileName) throws Exception {
+    private void convertPPT(String fileName) throws Exception {
         PPTConverter converter = new PPTConverter();
         converter.convert(fileName, this.getSessionUserId());
         courseMaterial.setConvertPath(converter.getDesVPath());
@@ -150,6 +158,9 @@ public class SaveMaterialAction extends BasicAction {
         LOGGER.info("=====ppt=====" + courseMaterial.getConvertPath() + "==" + courseMaterial.getTotalPages());
     }
 
+    private void convertDOC(String fileName) throws Exception{
+        //TODO:need Zhang wei add the process
+    }
 
     // getters and setters
 

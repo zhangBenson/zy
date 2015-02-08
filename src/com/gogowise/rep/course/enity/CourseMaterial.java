@@ -136,4 +136,24 @@ public class CourseMaterial extends AbstractPersistence {
     public void setIsDisplay(Boolean isDisplay) {
         this.isDisplay = isDisplay;
     }
+
+    public static Integer getTypeByString(String extName) {
+        if( extName.startsWith(".") ){
+            extName = extName.substring(1);
+        }
+        if( extName.equalsIgnoreCase("docx") || extName.equalsIgnoreCase("pptx")
+         || extName.equalsIgnoreCase("xlsx"))
+        {
+            extName = extName.substring(0, extName.length() -1);
+        }
+
+        for( Integer type:TYPE_MAP.keySet() ){
+            String value = TYPE_MAP.get(type);
+            if( value.equalsIgnoreCase(extName) ) {
+                return type;
+            }
+        }
+
+        return OTHER;
+    }
 }
