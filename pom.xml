@@ -654,11 +654,11 @@
             <artifactId>pdfbox</artifactId>
             <version>1.8.7</version>
         </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>2.44.0</version>
-        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>org.seleniumhq.selenium</groupId>-->
+        <!--<artifactId>selenium-java</artifactId>-->
+        <!--<version>2.44.0</version>-->
+        <!--</dependency>-->
 
 
         <dependency>
