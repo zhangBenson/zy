@@ -20,6 +20,7 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.List;
+import java.util.regex.Pattern;
 
 
 public class PPTConverter {
@@ -182,21 +183,68 @@ public class PPTConverter {
 
     private synchronized void convertWordToPdf() {
         String desPdfPath = this.replaceToPdf(srcPath);
+//        OfficeManager officeManager = null;
+//        try {
+//            officeManager = new DefaultOfficeManagerConfiguration().setOfficeHome(OFFICE_HOME).buildOfficeManager();
+//            officeManager.start();
+//
+//            OfficeDocumentConverter converter = new OfficeDocumentConverter(officeManager);
+//            converter.convert(new File(srcPath), new File(desPdfPath));
+//        } catch (Throwable t) {
+//            t.printStackTrace();
+//            logger.error(t);
+//        } finally {
+//            if (officeManager != null)
+//                officeManager.stop();
+//        }
+
+
+        word2pdf(srcPath);
+        srcPath = desPdfPath;
+    }
+
+    public void word2pdf(String inputFilePath) {
+        DefaultOfficeManagerConfiguration config = new DefaultOfficeManagerConfiguration();
+
+        String officeHome = getOfficeHome();
+        logger.info("===========" + officeHome);
+        config.setOfficeHome(officeHome);
         OfficeManager officeManager = null;
         try {
-            officeManager = new DefaultOfficeManagerConfiguration().setOfficeHome(OFFICE_HOME).buildOfficeManager();
+            officeManager = config.buildOfficeManager();
             officeManager.start();
 
             OfficeDocumentConverter converter = new OfficeDocumentConverter(officeManager);
-            converter.convert(new File(srcPath), new File(desPdfPath));
-        } catch (Throwable t) {
-            t.printStackTrace();
-            logger.error(t);
+            String outputFilePath = replaceToPdf(inputFilePath);
+            File inputFile = new File(inputFilePath);
+            if (inputFile.exists()) {// 找不到源文件, 则返回
+                File outputFile = new File(outputFilePath);
+                if (!outputFile.getParentFile().exists()) { // 假如目标路径不存在, 则新建该路径
+                    outputFile.getParentFile().mkdirs();
+                }
+                converter.convert(inputFile, outputFile);
+            }
         } finally {
             if (officeManager != null)
                 officeManager.stop();
         }
-        srcPath = desPdfPath;
+
+
+    }
+
+
+    public static String getOfficeHome() {
+
+        String osName = System.getProperty("os.name");
+
+        if (Pattern.matches("Linux.*", osName)) {
+            return "/opt/openoffice4";
+        } else if (Pattern.matches("Windows.*", osName)) {
+            return "C:/Program Files (x86)/OpenOffice 4/";
+        } else if (Pattern.matches("Mac.*", osName)) {
+            return "/Application/OpenOffice.org.app/Contents";
+        }
+        return "/opt/openoffice4";
     }
 
 
