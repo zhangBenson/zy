@@ -15,7 +15,8 @@ public interface UserService extends ModelService {
 
     public void regUser(BaseUser user, String roleType);
 
+
     public void changeUser(int groupId, List<Integer> userIds);
 
-    public void changeCourse(int groupId, List<Integer> courseIds);
+
 }

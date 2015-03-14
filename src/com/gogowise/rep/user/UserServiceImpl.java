@@ -1,11 +1,5 @@
 package com.gogowise.rep.user;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.gogowise.rep.ModelServiceImpl;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.dao.BaseUserRoleTypeDao;
@@ -15,6 +9,11 @@ import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.user.enity.BaseUserRoleType;
 import com.gogowise.rep.user.enity.Group;
 import com.gogowise.rep.user.enity.RoleType;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service("userService")
 public class UserServiceImpl extends ModelServiceImpl implements UserService {
@@ -80,16 +79,6 @@ public class UserServiceImpl extends ModelServiceImpl implements UserService {
 
     }
 
-    public void changeCourse(int groupId, List<Integer> courseIds) {
 
-        Group group = groupDao.findById(groupId);
-        List<Integer> removeIds = group.getCourseIds();
-        removeIds.removeAll(courseIds);
-
-        List<Integer> addIds = new ArrayList<>();
-        addIds.addAll(courseIds);
-        addIds.removeAll(group.getCourseIds());
-
-    }
 
 }
