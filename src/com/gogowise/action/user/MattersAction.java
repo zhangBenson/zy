@@ -1,13 +1,13 @@
 package com.gogowise.action.user;
 
 import com.gogowise.action.BasicAction;
-import com.gogowise.rep.system.dao.MatterDao;
-import com.gogowise.rep.user.dao.BaseUserDao;
+import com.gogowise.common.utils.Constants;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.course.enity.CourseClass;
+import com.gogowise.rep.system.dao.MatterDao;
 import com.gogowise.rep.system.enity.Matter;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.common.utils.Constants;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -109,7 +109,7 @@ public class MattersAction extends BasicAction{
     @Action(value = "ignoreMatter")
     public String ignoreMatter(){
         this.setMatterDone(matterDao.findById(this.getMatter().getId()));
-        return SUCCESS;
+        return NONE;
     }
 
     @Action(value = "ignoreAllMatter")
@@ -119,7 +119,7 @@ public class MattersAction extends BasicAction{
             m.setDone(true);
             matterDao.persistAbstract(m);
         }
-        return SUCCESS;
+        return NONE;
     }
 
 
