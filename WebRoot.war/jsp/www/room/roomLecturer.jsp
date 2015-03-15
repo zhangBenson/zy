@@ -1166,7 +1166,36 @@ function ShowMessage(name, imgpath, content, bit) {
 <span id="currentimgPath" style="display: none"><s:property value="#session.userLogoUrl"/></span>
 
 <%--<div id="top"></div>--%>
+<div id="btnControlBar" style="display: none;z-index: 1">
+    <div class="btn-group btn-group-sm" role="toolbar">
+        <button type="button" class="btn btn-success" id="btnSetMic">
+            <span class="glyphicon glyphicon-headphones" style="margin-right: 10px;"></span>
+            GIVEMIC
+        </button>
+        <button type="button" class="btn btn-success" id="btnGetMic">
 
+            <span class="glyphicon glyphicon-ban-circle" style="margin-right: 10px;"></span>
+            TAKEMIC
+        </button>
+        <button type="button" class="btn btn-success" id="btnSetPencil">
+            <span class="glyphicon glyphicon-pencil" style="margin-right: 10px;"></span>
+            GIVEPENCIL
+        </button>
+        <button type="button" class="btn btn-success" id="btnGetPencil">
+            <span class="glyphicon glyphicon-ban-circle" style="margin-right: 10px;"></span>
+            TAKEPENCIL
+        </button>
+        <button type="button" class="btn btn-success" id="btnKickuser">
+            <span class="glyphicon glyphicon-exclamation-sign" style="margin-right: 10px;"></span>
+            KICKAWAY
+        </button>
+        <button type="button" class="btn btn-success" id="btnCloseBar">
+            <span class="glyphicon glyphicon-remove"></span>
+        </button>
+    </div>
+
+    <span class="userId"></span>
+</div>
 <div class="container">
     <div class="thinline"></div>
     <div class="classSchoolinfo" style="text-align: center;">
@@ -1203,38 +1232,8 @@ function ShowMessage(name, imgpath, content, bit) {
                 </div>
                 <div class="classPanleBody dragcancel">
 
-                    <div id="btnControlBar" style="display: none;z-index: 1">
-                        <div class="btn-group btn-group-sm" role="toolbar">
-                            <button type="button" class="btn btn-success" id="btnSetMic">
-                                <span class="glyphicon glyphicon-headphones" style="margin-right: 10px;"></span>
-                                GIVEMIC
-                            </button>
-                            <button type="button" class="btn btn-success" id="btnGetMic">
 
-                                <span class="glyphicon glyphicon-ban-circle" style="margin-right: 10px;"></span>
-                                TAKEMIC
-                            </button>
-                            <button type="button" class="btn btn-success" id="btnSetPencil">
-                                <span class="glyphicon glyphicon-pencil" style="margin-right: 10px;"></span>
-                                GIVEPENCIL
-                            </button>
-                            <button type="button" class="btn btn-success" id="btnGetPencil">
-                                <span class="glyphicon glyphicon-ban-circle" style="margin-right: 10px;"></span>
-                                TAKEPENCIL
-                            </button>
-                            <button type="button" class="btn btn-success" id="btnKickuser">
-                                <span class="glyphicon glyphicon-exclamation-sign" style="margin-right: 10px;"></span>
-                                KICKAWAY
-                            </button>
-                            <button type="button" class="btn btn-success" id="btnCloseBar">
-                                <span class="glyphicon glyphicon-remove"></span>
-                            </button>
-                        </div>
-
-                        <span class="userId"></span>
-                    </div>
-
-                    <div id="stundioWrapper" style="width: 100%; height: 195px; overflow: auto;">
+                <div id="stundioWrapper" style="width: 100%; height: 195px; overflow: auto;">
                         <ul>
                             <li>
                                 <ul id="studionList">
