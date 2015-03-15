@@ -140,13 +140,13 @@
         function createStudent(student_data) {
             $("#studentList").empty();
             for (var i in student_data.Student) {
-                $("#studentList").append("<label><input type='checkbox'> " + student_data.Student[i].Name + "</label>");
+                $("#studentList").append("<label><input type='checkbox' checked='checked'> " + student_data.Student[i].Name + "</label>");
             }
         }
 
 
     });
-
+	
 </script>
 <body>
 <select multiple="multiple" style="width:370px">
