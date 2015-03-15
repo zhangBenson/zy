@@ -136,7 +136,7 @@
             <%--placeholder="<s:text name="org.course.student.email"/>"--%>
             <%--id="studentEmail1" onblur="checkStudentMail(this);" name="emails" type="text"/> <br/>--%>
             <%--</div>--%>
-            <iframe src="plugin/using.htm" width="400" height="300"></iframe>
+            <iframe src="plugin/using.htm" width="400" height="250" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes"></iframe>
             <%--<iframe src="plugin/using.htm"  width="200" height="500"  />--%>
             <%--<iframe src="index.html"  width="200" height="500"  />--%>
 
