@@ -129,13 +129,17 @@
         <li>
             <s:text name="course.student.appointed"/>
             <a class="add_student_btn"><s:text name="course.add.student"/></a> &nbsp;&nbsp;&nbsp;
-            <span class="invite_student_input_msg tip_words"></span>
-            <table id="invitationListModify"></table>
-            <div class="option_content" id="invitedStudents">
-                <input class="long_text_field_for_student"
-                       placeholder="<s:text name="org.course.student.email"/>"
-                       id="studentEmail1" onblur="checkStudentMail(this);" name="emails" type="text"/> <br/>
-            </div>
+            <span class="invite_student_input_msg tip_words"></span><br/>
+            <%--<table id="invitationListModify"></table>--%>
+            <%--<div class="option_content" id="invitedStudents">--%>
+            <%--<input class="long_text_field_for_student"--%>
+            <%--placeholder="<s:text name="org.course.student.email"/>"--%>
+            <%--id="studentEmail1" onblur="checkStudentMail(this);" name="emails" type="text"/> <br/>--%>
+            <%--</div>--%>
+            <iframe src="plugin/using.htm" width="400" height="300"></iframe>
+            <%--<iframe src="plugin/using.htm"  width="200" height="500"  />--%>
+            <%--<iframe src="index.html"  width="200" height="500"  />--%>
+
         </li>
     </ul>
     <div class="storeWrap">
@@ -181,8 +185,14 @@
                                                           id="store_teacherEmail"><s:property value="course.teacher.nickName"/></span></li>
         <li><s:text name="course.student.appointed"/>：
         </li>
-        <li>
-            <table id="invitationList"></table>
+        <li style="width: 370px;font-family: '宋体';font-size: 12px;color: #008AB8;font-weight: bold;">
+            <%--<table id="invitationList"></table>--%>
+            <%--<div style="width: 370px;font-family: '宋体';font-size: 12px;display: none;color: #008AB8;font-weight: bold;" id="selectList">--%>
+            <div style="padding: 5px;font-size: 14px;color: #2EB800;">一师二附小</div>
+            <div style="color: #2EB800;">----------------</div>
+            <div style="padding: 5px;">一年级1班(2人)</div>
+            <div style="padding: 5px;">一年级1班(1人)</div>
+            <%--</div>--%>
         </li>
 
     </ul>

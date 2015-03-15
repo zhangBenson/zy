@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" type="text/css" href="jquery.multiselect.css" />
+    <link rel="stylesheet" type="text/css" href="jquery.multiselect.filter.css" />
+    <link rel="stylesheet" type="text/css" href="assets/style.css" />
+    <link rel="stylesheet" type="text/css" href="assets/prettify.css" /> -->
+
+    <!-- <link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/jqueryui/1.11.2/jquery-ui.css" />
+
+    <script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.11.2/jquery.js"></script>
+    <script type="text/javascript" src="http://cdn.bootcss.com/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="src/jquery.multiselect.js"></script>
+    <script type="text/javascript" src="src/jquery.multiselect.filter.js"></script>
+    <script type="text/javascript" src="assets/prettify.js"></script> -->
+    <!-- <script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
+</head>
+<script type="text/javascript">
+    $(document).ready(function () {
+        selectdata = {"Student": []};
+        deleteStudent = [];
+        data = {
+            "Student": [
+                {
+                    "ID": "1",
+                    "SchoolID": "01",
+                    "SchoolName": "一师二附小",
+                    "ClassID": "01",
+                    "ClassName": "一年级1班",
+                    "Name": "舒璨"
+                },
+                {
+                    "ID": "4",
+                    "SchoolID": "01",
+                    "SchoolName": "一师二附小",
+                    "ClassID": "01",
+                    "ClassName": "一年级1班",
+                    "Name": "孙佳莹"
+                },
+                {
+                    "ID": "2",
+                    "SchoolID": "01",
+                    "SchoolName": "一师二附小",
+                    "ClassID": "01",
+                    "ClassName": "一年级1班",
+                    "Name": "何小玉"
+                },
+                {
+                    "ID": "3",
+                    "SchoolID": "02",
+                    "SchoolName": "一师二附小",
+                    "ClassID": "02",
+                    "ClassName": "一年级2班",
+                    "Name": "黄雅清"
+                },
+                {
+                    "ID": "5",
+                    "SchoolID": "02",
+                    "SchoolName": "一师二附小",
+                    "ClassID": "02",
+                    "ClassName": "一年级2班",
+                    "Name": "蔡小阳"
+                }]
+        };
+
+        $("input[type=submit], a, button")
+                .button()
+                .click(function (event) {
+                    event.preventDefault();
+                    $("#selectList").show();
+                    $("#studentList").hide();
+                });
+
+        //createStudent(data);
+        // for(var i in data.Student){//遍历json对象的每个key/value对,p为key
+        //    	alert(data.Student[i].ID);
+        // }
+
+        //alert(data.Student);
+
+        $("select").multiselect({
+            click: function (event, ui) {
+                $("#studentList").show();
+                $("#selectList").hide();
+                if (ui.checked) {
+                    for (var i in data.Student) {
+                        if (data.Student[i].ClassID == ui.value) {
+                            selectdata.Student.push(data.Student[i]);
+                        }
+                    }
+
+                    //alert(selectdata);
+                    //alert(selectdata.indexOf());
+                    createStudent(selectdata);
+                }
+                else {
+                    //清除待删除数组中的学生ID号
+                    deleteStudent = [];
+
+                    for (var i in selectdata.Student) {
+                        if (selectdata.Student[i].ClassID == ui.value) {
+                            deleteStudent.push(selectdata.Student[i].ID);
+                        }
+                    }
+
+                    for (var i in deleteStudent) {
+                        selectdata.remove(deleteStudent[i]);
+
+                    }
+
+                    createStudent(selectdata);
+
+                }
+
+            }
+        }).multiselectfilter({
+            label: "查询",
+            placeholder: '关键字'
+        });
+
+        selectdata.getindex = function (val) {
+            for (var i in val) {
+                if (selectdata.Student[i].ID == val) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        selectdata.remove = function (val) {
+            var index = this.getindex(val);
+            if (index > -1) {
+                this.Student.splice(index, 1);
+            }
+        }
+
+        function createStudent(student_data) {
+            $("#studentList").empty();
+            for (var i in student_data.Student) {
+                $("#studentList").append("<label><input type='checkbox'> " + student_data.Student[i].Name + "</label>");
+            }
+        }
+
+
+    });
+
+</script>
+<body>
+<select multiple="multiple" style="width:370px">
+    <optgroup label="一师二附小">
+        <option value="01">一年级1班</option>
+        <option value="02">一年级2班</option>
+        <option value="03">一年级3班</option>
+    </optgroup>
+    <optgroup label="实验小学">
+        <option value="04">一年级1班</option>
+        <option value="05">一年级2班</option>
+        <option value="06">二年级1班</option>
+    </optgroup>
+</select>
+<br/>
+<br/>
+
+<div id="studentList" style="width: 370px;">
+    <!-- <div class="checkbox">
+        <label>
+          <input type="checkbox"> Check me out
+        </label>
+     </div> -->
+</div>
+<br/>
+
+<div style="width: 370px;font-family: '宋体';font-size: 12px;display: none;color: #008AB8;font-weight: bold;" id="selectList">
+    <div style="padding: 5px;font-size: 14px;color: #2EB800;">一师二附小</div>
+    <div style="color: #2EB800;">----------------</div>
+    <div style="padding: 5px;">一年级1班(2人)</div>
+    <div style="padding: 5px;">一年级1班(1人)</div>
+</div>
+<br/>
+<input type="submit" value="确定">
+</body>
+</html>
