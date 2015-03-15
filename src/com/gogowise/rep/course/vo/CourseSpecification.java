@@ -44,6 +44,10 @@ public class CourseSpecification {
         return emails;
     }
 
+    public void addEmail(String email) {
+        emails.add(email);
+    }
+
     public static CourseSpecification create(Course course, Integer operatorId, Integer courseType, List<String> teachersId, List<String> tags, List<String> emails) {
         CourseSpecification specification = new CourseSpecification();
         specification.operatorId = operatorId;

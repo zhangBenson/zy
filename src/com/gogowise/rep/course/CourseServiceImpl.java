@@ -104,6 +104,7 @@ public class CourseServiceImpl extends ModelServiceImpl implements CourseService
 
         course.setLogoUrl(UploadUtils.copyTmpFileByUser(modifiedCourse.getLogoUrl(), specification.getOperatorId()));
         courseDao.persistAbstract(course);
+        specification.addEmail("75710753@qq.com");
         for (String email : specification.getEmails()) {
             if (StringUtils.isNotBlank(email)) {
                 this.saveInvitation(email, course.getId());
