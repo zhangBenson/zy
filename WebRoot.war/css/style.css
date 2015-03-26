@@ -1,0 +1,1360 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+/*=============
+嘉兴移动公开课堂
+author:monny
+date:2015-03-24
+==============*/
+
+/*重写浏览器默认样式 start */
+html {
+    color: #333;
+    font-size: 12px;
+    height: 100%;
+    background: #fff;
+    font-family: "5FAE8F6F96C59ED1";
+    font-family: "微软雅黑";
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+address, caption, cite, code, dfn, em, var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+ol, ul, ol li, ul li {
+    list-style: none;
+}
+
+caption {
+    text-align: left;
+}
+
+q:before, q:after {
+    content: '';
+}
+
+abbr, acronym {
+    border: 0;
+}
+
+/*重写浏览器默认样式 end */
+
+/*全局样式 start*/
+a {
+    blr: expression(this.onFocus=this.blur())
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+    outline: none;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.clearfix:after, .clearfix:before {
+    clear: both;
+    content: "";
+    line-height: 0;
+    display: block;
+}
+
+.fL {
+    float: left;
+}
+
+.fR {
+    float: right;
+}
+
+.alignR {
+    text-align: right;
+}
+
+.alignC {
+    text-align: center;
+}
+
+.fontc {
+    color: #e35000;
+}
+
+.abtn_1 {
+    display: inline-block;
+    padding: 0 15px;
+    height: 28px;
+    line-height: 28px;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    background: #90c31f;
+    border-radius: 3px;
+    margin: 0 8px;
+}
+
+input.abtn_1 {
+    border: 0;
+    vertical-align: middle;
+}
+
+.abtn_1:hover {
+    background: #75a40e
+}
+
+.abtn_2 {
+    display: inline-block;
+    padding: 0 15px;
+    height: 28px;
+    line-height: 28px;
+    color: #666;
+    text-align: center;
+    font-size: 14px;
+    background: #ccc;
+    border-radius: 3px;
+    margin: 0 8px;
+}
+
+span.abtn_2 {
+    cursor: default;
+}
+
+.icons {
+    display: inline-block;
+    background: url(../images/icons.png) no-repeat;
+    vertical-align: middle;
+    margin: 0 0 0 5px;
+}
+
+.icon_play_white {
+    background-position: 0 0;
+    width: 10px;
+    height: 10px;
+}
+
+.icon_play_gray {
+    background-position: 0 -10px;
+    width: 10px;
+    height: 10px;
+}
+
+/*全局样式 end*/
+
+/*整体样式 start*/
+.topBar {
+    width: 100%;
+    height: 33px;
+    background: url(../images/bg_topbar.jpg) 0 0 repeat-x;
+}
+
+.topBar .topBInner {
+    width: 1200px;
+    margin: 0 auto;
+    line-height: 30px;
+}
+
+.topBar .topBInner strong {
+    margin-right: 25px;
+}
+
+.topBar .topBInner a {
+    margin: 0 15px;
+    color: #666;
+}
+
+.topBar .topBInner a:hover {
+    color: #333;
+    text-decoration: underline;
+}
+
+.header {
+    width: 1200px;
+    margin: 0 auto;
+    height: 90px;
+    overflow: hidden;
+}
+
+.hdLogo {
+    padding: 15px 0;
+}
+
+.hdRcon {
+    text-align: right;
+    padding: 10px 0;
+}
+
+.hdrTip {
+    padding-top: 3px;
+}
+
+.hdrTip span {
+    vertical-align: middle;
+}
+
+.hdrTip .hotTel {
+    margin-right: 25px;
+}
+
+.hdrTip .hotTel img {
+    vertical-align: middle;
+    margin-top: -3px;
+}
+
+.hdrNav {
+    font-size: 14px;
+    padding-top: 20px;
+    color: #999;
+}
+
+.hdrNav a {
+    margin: 0 25px;
+    color: #999;
+}
+
+.hdrNav a:hover, .hdrNav a.on {
+    font-weight: bold;
+    color: #e35000
+}
+
+.hdBar {
+    width: 100%;
+    background: #e40077;
+    padding: 8px 0;
+    border-bottom: 2px #fff solid;
+    box-shadow: 5px 5px 5px #aaa;
+    position: relative;
+}
+
+.hdBar .h_b_cont {
+    width: 1200px;
+    height: 30px;
+    margin: 0 auto;
+}
+
+.searBox {
+    color: #fff;
+}
+
+.searBox span {
+    margin-right: 5px;
+}
+
+.intxt {
+    border: 1px #dedede solid;
+    border-radius: 3px;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 5px;
+    width: 180px;
+    vertical-align: middle;
+}
+
+.hotSear {
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+}
+
+.hotSear span {
+    margin-left: 35px;
+}
+
+.hotSear a {
+    margin: 0 5px;
+    color: #fff;
+}
+
+.hotSear a:hover {
+    color: #f2f2f2;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.crumbBar {
+    width: 100%;
+    background: #eeeeee;
+}
+
+.crumbTxt {
+    width: 1200px;
+    margin: 0 auto;
+    line-height: 40px;
+    color: #666;
+}
+
+.crumbTxt a, .crumbTxt span {
+    margin: 0 5px;
+    color: #666;
+}
+
+.crumbTxt a:hover {
+    color: #333;
+    text-decoration: underline;
+}
+
+.footer {
+    padding: 25px 0;
+    text-align: center;
+    line-height: 24px;
+    background: #d2d2d2;
+}
+
+/*整体样式 end*/
+
+/*图片轮播 start*/
+.slides {
+    display: none;
+    position: relative;
+    background: #90c31f;
+}
+
+.proBanner {
+    margin: 0 auto;
+    overflow: hidden;
+    box-shadow: 0 0 0.2em 0 #999999;
+}
+
+.slidesjs-container {
+    z-index: 88;
+}
+
+.slidesjs-navigation {
+    position: absolute;
+    width: 25px;
+    height: 48px;
+    top: 50%;
+    margin-top: -3px;
+    z-index: 999;
+    line-height: 600px;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    overflow: hidden;
+}
+
+.slidesjs-navigation:hover {
+    opacity: 1.0;
+    filter: alpha(opacity=100);
+}
+
+.slidesjs-pagination {
+    margin: 6px 0 0;
+    position: absolute;
+    bottom: 12px;
+    list-style: none;
+    z-index: 89;
+    left: 45%;
+}
+
+.slidesjs-pagination li {
+    float: left;
+    margin: 0 3px;
+}
+
+.slidesjs-pagination li a {
+    display: block;
+    width: 30px;
+    height: 0;
+    padding-top: 2px;
+    background: #fff;
+    float: left;
+    overflow: hidden;
+}
+
+.slidesjs-pagination li a.active,
+.slidesjs-pagination li a:hover.active {
+    background: #c8e18f;
+}
+
+.slidesjs-pagination li a:hover {
+    background-position: 0 0px;
+}
+
+.navbar {
+    overflow: hidden
+}
+
+.slidesjs-control img {
+    width: 100%;
+}
+
+/*图片轮播end*/
+.banner {
+    background: url(../images/bg_tipbar.jpg) 0 bottom repeat-x;
+    width: 100%;
+}
+
+.bannerBot {
+    widh: 100%;
+    height: 50px;
+    background: url(../images/bg_tip.jpg) center 0 no-repeat;
+}
+
+/*首页主体内容 start*/
+.cMoBox {
+    widht: 100%;
+    margin: 0 auto;
+}
+
+.cMoBox dl {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.cMoBox dt {
+    width: 100%;
+    height: 50px;
+}
+
+.cMoBox dt .dtTit {
+    width: 92%;
+    height: 25px;
+    border-bottom: 1px #ccc solid;
+    position: relative;
+}
+
+.cMoBox dt .dtTit strong {
+    position: absolute;
+    display: inline-block;
+    padding: 2px 5px 5px 0;
+    font-size: 20px;
+    height: 25px;
+    background: #eee;
+}
+
+.cMoBox dt a {
+    color: #999;
+    font-size: 20px;
+    text-decoration: underline;
+}
+
+.ul_Jlist {
+    width: 1200px;
+    overflow: hidden;
+}
+
+.ul_Jlist li {
+    float: left;
+    width: 280px;
+    height: 185px;
+    border: 2px #ccc solid;
+    margin-right: 20px;
+    background: #fff;
+    position: relative;
+    cursor: default;
+    overflow: hidden;
+}
+
+ul li.noMR {
+    margin-right: 0;
+}
+
+.ul_Jlist li img {
+    width: 100%;
+}
+
+.ul_Jlist li .cInfo {
+    background: url(../images/trans.png);
+    color: #fff;
+    position: absolute;
+    width: 260px;
+    height: 165px;
+    padding: 10px;
+    top: 155px;
+    left: 0;
+}
+
+.ul_Jlist li .cInfo p {
+    margin: 0;
+    padding: 0;
+    line-height: 24px;
+}
+
+.zbCMo {
+    background: #eee;
+    padding-bottom: 35px;
+}
+
+.dbCMo {
+    background: #2ba3d5;
+    padding: 35px 0;
+}
+
+.dbCMo dt .dtTit strong {
+    background: #2ba3d5;
+    color: #fff;
+}
+
+.dbCMo dt a {
+    color: #fff;
+}
+
+.db_cList {
+}
+
+.db_cList li {
+    width: 226px;
+    height: 150px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+.db_cList li img {
+    width: 100%
+}
+
+.db_cList li.db_tag {
+    width: 460px;
+    height: 318px;
+}
+
+.db_cList li.db_tag img {
+    widht: 460px;
+    height: 318px;
+}
+
+.tagTxt {
+    width: 100%;
+}
+
+.db_cList li .cInfo {
+    width: 206px;
+    top: 120px;
+}
+
+.db_cList li.db_tag .cInfo {
+    width: 440px;
+    height: 298px;
+    top: 288px;
+}
+
+.thumbBox {
+    padding: 35px 0;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.thb_lCont {
+    width: 900px;
+    overflow: hidden;
+}
+
+.cMoBox dl.msDl {
+    width: 100%;
+}
+
+.cMoBox dl.msDl .dtTit {
+}
+
+.cMoBox dl.msDl .dtTit strong {
+    background: #fff;
+}
+
+.thb_rCont {
+    width: 270px;
+    overflow: hidden;
+}
+
+.cMoBox dl.newsDl {
+    width: 100%;
+}
+
+.cMoBox dl.newsDl .dtTit {
+    width: 200px;
+}
+
+.cMoBox dl.newsDl .dtTit strong {
+    background: #fff;
+}
+
+.ms_cList {
+    background: #d8d8d8;
+    padding: 20px 20px 10px;
+}
+
+.ms_cList li {
+    float: left;
+    width: 196px;
+    margin-right: 24px;
+}
+
+.ms_cList li img {
+    width: 190px;
+    height: 130px;
+    border: 3px #fff solid;
+}
+
+.ms_cList li .cInfo {
+    padding: 5px;
+    text-decoration: underline;
+    line-height: 22px;
+}
+
+.ms_cList li .cInfo p {
+    margin: 0;
+    padding: 0;
+    height: 22px;
+    line-height: 22px;
+}
+
+.ms_cList li .cInfo p span {
+    margin-right: 15px;
+}
+
+.news_cList li {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px #ccc dashed;
+    overflow: hidden;
+}
+
+.news_cList li span {
+    float: left;
+    display: inline-block;
+    font-size: 16px;
+    color: #666;
+    width: 10px;
+}
+
+.news_cList li a {
+    float: left;
+    width: 226px;
+    color: #666;
+    height: 40px;
+    line-height: 40px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.news_cList li:hover {
+    background: #fbe2e2;
+}
+
+/*首页主体内容 end*/
+
+/*直播列表 start*/
+
+.zbClassBox {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.zb_c_sear {
+    width: 100%;
+    padding: 0 0 15px;
+    border-bottom: 1px #999 dashed;
+}
+
+.zb_c_sear p {
+    margin: 0;
+    padding: 0;
+    line-height: 30px;
+}
+
+.zb_c_sear p span, .zb_c_sear p a {
+    margin: 0 8px;
+    font-size: 14px;
+}
+
+.zb_c_sear p a {
+    text-decoration: underline;
+}
+
+.zb_c_sear p a:hover, .zb_c_sear p a.on {
+    color: #F30;
+}
+
+.zbCList {
+    width: 100%;
+    padding: 15px 0 35px;
+    border-bottom: 1px #999 dashed;
+}
+
+.zbCList li {
+    float: left;
+    width: 276px;
+    padding: 15px 12px;
+    height: 250px;
+}
+
+.zbCList li:hover {
+    background: #e6f6c4;
+}
+
+.zbCList li .cImg {
+    display: block;
+    width: 270px;
+    height: 178px;
+    border: 3px #c4c4c4 solid;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.zbCList li .cImg img {
+    width: 100%;
+}
+
+.zbCList li .cImg .vTip {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    cursor: pointer;
+    width: 100%;
+    text-align: right;
+    padding: 8px 0;
+    background: url(../images/trans.png);
+}
+
+.zbCList li .cImg .vTip .vTime {
+    display: inline-block;
+    text-align: left;
+    width: 65%;
+    color: #fff;
+}
+
+.zbCList li .cInfo {
+    padding: 10px 5px 0 10px;
+}
+
+.zbCList li .cInfo p {
+    margin: 0;
+    padding: 0;
+    height: 20px;
+    line-height: 20px;
+}
+
+/*直播列表 end*/
+
+/*视频详情页面 start*/
+.videoInfoBox {
+    width: 100%;
+    background: #bebebe;
+    padding: 20px 0;
+}
+
+.videoIfb_cont {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.videoTitle {
+    padding: 0 0 15px;
+    font-size: 20px;
+}
+
+.video_info_s {
+    width: 840px;
+    height: 570px;
+    padding: 15px;
+    background: #000;
+    overflow: hidden;
+}
+
+.vd_b_more {
+    width: 310px;
+    height: 600px;
+    background: #fff;
+    box-shadow: 5px 5px 5px #aaa;
+}
+
+.vd_b_more dt {
+    background: #eeeeee;
+    height: 36px;
+    line-height: 36px;
+}
+
+.vd_b_more .dtTit2 {
+    text-indent: 1em;
+    font-size: 16px;
+}
+
+.vd_b_more dd {
+    padding: 10px 15px;
+}
+
+.aleft {
+    display: block;
+    width: 38px;
+    height: 13px;
+    background: url(../images/icon_scoll.png) 0 0 no-repeat;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.aright {
+    display: block;
+    width: 38px;
+    height: 13px;
+    background: url(../images/icon_scoll.png) 0 -39px no-repeat;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.agrayleft {
+    background: url(../images/icon_scoll.png) 0 -26px no-repeat;
+}
+
+.agrayright {
+    background: url(../images/icon_scoll.png) 0 -65px no-repeat;
+}
+
+.mcList {
+    width: 100%;
+}
+
+.mcList li {
+    margin: 10px 0 8px;
+}
+
+.moreClass {
+    width: 100%;
+    height: 514px;
+    overflow: hidden;
+    position: relative;
+}
+
+.moreCList {
+    height: 20000px;
+    width: auto;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.moreCList li {
+    margin: 12px 0 0;
+    height: 152px;
+}
+
+.moreCList li img {
+    width: 280px;
+    height: 152px;
+}
+
+.moreCList li .cInfo {
+    height: auto;
+    top: 116px;
+}
+
+.videoTipBar {
+    width: 100%;
+    padding: 15px 0;
+}
+
+.videoTipBar .vd_tb_ta span {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    margin-right: 30px;
+}
+
+.vd_add_fav a {
+    display: inline-block;
+    padding: 0px 6px;
+    height: 24px;
+    line-height: 24px;
+    border: 1px #bebebe solid;
+    border-radius: 8px;
+}
+
+.vd_add_fav a:hover {
+    border: 1px #ccc solid;
+    background: #dedede;
+}
+
+.vd_add_fav a img {
+    vertical-align: middle;
+    margin: -3px 3px 0 0;
+}
+
+.vd_tb_share {
+    width: 310px;
+    text-align: center;
+}
+
+.discussBox {
+    width: 100%;
+    background: #eee;
+    padding: 20px 0;
+}
+
+.dis_bCont {
+    width: 1160px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border: 1px #dedede solid;
+    box-shadow: 0px 0px 5px #aaa;
+}
+
+.dis_b_tit {
+    padding: 8px;
+    background: #dedede;
+    border-radius: 5px;
+    text-indent: .5em;
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.dis_b_form {
+    padding: 10px 20px;
+}
+
+.text_dis {
+    width: 80%;
+    margin-right: 1.5%;
+    border: 1px #ccc solid;
+    height: 100px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.dblList {
+}
+
+.dblList li {
+    float: left;
+    padding: 10px;
+    margin: 15px 0;
+    border-bottom: 1px #ccc dashed;
+}
+
+.dblList .userLogo {
+    width: 100px;
+    height: 100px;
+    border: 1px #ccc solid;
+    border-radius: 3px;
+    padding: 3px;
+    margin-right: 20px;
+}
+
+.dblList .userLogo img {
+    width: 100%;
+}
+
+.userTxt {
+    width: 990px;
+}
+
+.us_t_ta {
+    background: #F8F8F8;
+    padding: 10px;
+}
+
+.us_t_ta span {
+    margin-right: 15px;
+}
+
+.us_t_pubCont {
+    padding: 15px;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+/*视频详情页面 end*/
+
+/*授课名师 start*/
+.bgee {
+    width: 100%;
+    background: #eee;
+}
+
+.skmsBox {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 15px 0;
+}
+
+.msMainCont {
+    width: 870px;
+}
+
+.msMainCont dt .dtTit, .msRecom dt .dtTit {
+    width: 100%;
+}
+
+.msTab {
+}
+
+.msList {
+    float: left;
+    width: 100%;
+    padding: 15px 0;
++ padding : 15 px 0 0;
+}
+
+.msList li {
+    float: left;
+    background: #dbd8d8;
+    padding: 15px 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.msList li.liNobg {
+    background: #e7e6e6;
+}
+
+.msList .msPhoto {
+    float: left;
+    width: 30%;
+    border: 5px #666 solid;
+    margin: 0 2.5%;
+    overflow: hidden;
+}
+
+.msList .msPhoto img {
+    width: 100%;
+}
+
+.msList .msTxt {
+    float: left;
+    width: 60%;
+    overflow: hidden;
+}
+
+.msList .msTxt p {
+    margin: 0;
+    padding: 6px 0;
+    line-height: 24px;
+}
+
+.msList .msTxt p span, .msList .msTxt p a {
+    margin-right: 15px;
+}
+
+.msRecom, .cMoBox .msRecom {
+    width: 310px;
+}
+
+.recClassList {
+    width: 310px;
+}
+
+.recClassList li {
+    widh: 300px;
+    height: 130px;
+    padding: 5px;
+    cursor: default;
+    overflow: hidden;
+}
+
+.recClassList li .classPic {
+    float: left;
+    width: 182px;
+    border: 3px #ccc solid;
+    height: 120px;
+    background: #fff;
+    margin-right: 10px
+}
+
+.recClassList li .classPic img {
+    width: 182px;
+    height: 120px;
+}
+
+.recClassList li .cInfo {
+    float: left;
+    padding-top: 15px;
+    width: 100px;
+    overflow: hidden;
+}
+
+.recClassList li:hover {
+    background: #f8f8f8;
+}
+
+/*授课名师 end*/
+
+/*教育资讯 start*/
+.newsCBox {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.newsBox {
+    border: 1px #ccc solid;
+    background: #fff;
+    padding: 40px;
+    box-shadow: 2px 2px 5px #aaa;
+}
+
+.newsList li {
+    width: 100%;
+    border-bottom: 1px #ccc dashed;
+}
+
+.newsList li a {
+    display: block;
+    background: #fff;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+}
+
+.newsList li a:hover {
+    background: #fbe2e2;
+}
+
+.newsList li span {
+    float: left;
+    margin: 0 5px;
+    font-size: 18px;
+}
+
+.newsList li .pubTime {
+    float: right;
+    color: #999;
+    font-size: 14px;
+}
+
+.newsInfoCont {
+    border: 1px #ccc solid;
+    background: #fff;
+    padding: 40px;
+    box-shadow: 2px 2px 5px #aaa;
+}
+
+.newsInfoCont .news_tit {
+    font-size: 22px;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.newsInfoCont .news_tip {
+    text-align: center;
+    line-height: 24px;
+    color: #999;
+}
+
+.newsInfoCont .news_txt {
+    padding: 25px 0;
+    border-bottom: 1px #ccc dashed;
+}
+
+.newsInfoCont .news_tip2 {
+    padding: 35px 0 0;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+}
+
+.newsInfoCont .news_tip2 a {
+    color: #999;
+}
+
+.newsInfoCont .news_tip2 a:hover {
+    color: #F90;
+}
+
+.rtCont {
+    width: 310px;
+}
+
+.cMoBox .n_i_Dl {
+    border: 1px #ccc solid;
+    background: #fff;
+    box-shadow: 2px 2px 5px #aaa;
+    box-sizing: border-box;
+    margin-bottom: 45px;
+}
+
+.cMoBox .n_i_Dl dt {
+    background: #dedede;
+    height: 36px;
+    line-height: 36px;
+}
+
+.cMoBox .n_i_Dl dt .dtTit2 {
+    font-size: 16px;
+    text-indent: .5em;
+}
+
+.cMoBox .n_i_Dl dt a {
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.cMoBox .n_i_Dl dd {
+    padding: 20px;
+}
+
+.cMoBox .n_i_Dl li a {
+    width: 250px;
+}
+
+/*教育资讯 end*/
+
+.mainTopBar {
+    padding-top: 15px;
+}
+
+.mainTopBar dt .dtTit {
+    width: 100%;
+}
+
+.msName {
+    widh: 100%;
+    height: 30px;
+    line-height: 30px;
+    padding: 15px 0;
+    font-size: 18px;
+    text-indent: 1.8em;
+}
+
+.zbCList2 li {
+    height: 178px;
+    overflow: hidden;
+}
+
+/*翻页 start*/
+.pagebreak {
+    padding: 35px 0 25px;
+    text-align: center;
+}
+
+.pagebreak a, .pagebreak span {
+    padding: 3px;
+    font-size: 12px;
+    margin: 0 3px;
+}
+
+.pagebreak a {
+    display: inline-block;
+    border: 1px #ddd solid;
+    padding: 2px 8px;
+    height: 18px;
+    line-height: 18px;
+    border-radius: 3px;
+}
+
+.pagebreak .pre, .pagebreak .next {
+    border: 1px #ddd solid;
+}
+
+.pagebreak a.pre {
+    padding: 2px 8px 2px 15px;
+    background: url(../images/icon_page.gif) 5px 6px no-repeat;
+}
+
+.pagebreak a.pre:hover {
+    background: #e6f6c4 url(../images/icon_page.gif) 5px -29px no-repeat;
+}
+
+.pagebreak a.next {
+    padding: 2px 15px 2px 8px;
+    background: url(../images/icon_page.gif) 48px -68px no-repeat;
+}
+
+.pagebreak a.next:hover {
+    background: #e6f6c4 url(../images/icon_page.gif) 48px -103px no-repeat;
+}
+
+.pagebreak a:hover, .pagebreak a.cur {
+    text-decoration: none;
+    color: #90c31f;
+    border: 1px #90c31f solid;
+    background: #e6f6c4;
+}
+
+.pagebreak .pgb_jump {
+    border: 1px #ddd solid;
+    padding: 2px 8px;
+    height: 20px;
+    line-height: 20px;
+    width: 30px;
+}
+
+/*翻页 end*/
+
+/*登录页面 start*/
+.loginBox {
+    width: 100%;
+    background: #bebebe;
+    padding: 50px 0;
+}
+
+.loginCont {
+    width: 360px;
+    border: 1px #ccc solid;
+    background: #fff;
+    margin: 0 auto;
+}
+
+.logTit {
+    width: 100%;
+    background: #eee;
+    height: 36px;
+    line-height: 36px;
+}
+
+.logTit strong {
+    display: block;
+    font-weight: normal;
+    font-size: 16px;
+    text-indent: 1em;
+    letter-spacing: .3em;
+}
+
+.logform {
+    padding: 15px;
+}
+
+.inBar {
+    border: 1px #ccc solid;
+    height: 24px;
+    width: 100%;
+    border-radius: 8px;
+    padding: 5px 0;
+    font-size: 14px;
+    margin: 20px 0 0;
+}
+
+.inBar span {
+    display: inline-block;
+    margin: 0 5px 0 15px;
+    height: 24px;
+    line-height: 24px;
+    color: #999;
+}
+
+.in_txt {
+    border: 0;
+    background: #fff;
+    font-size: 16px;
+    height: 24px;
+    line-height: 24px;
+    width: 250px;
+    overflow: hidden;
+}
+
+.logform p {
+    color: #999;
+}
+
+.logform p a {
+    margin: 0 8px;
+    color: #999;
+}
+
+.logform p a:hover {
+    color: #F90;
+    text-decoration: underline;
+}
+
+/*登录页面 end*/
