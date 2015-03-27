@@ -609,4 +609,15 @@
     </definition>
 
 
+    <!-- new tiles -->
+    <definition name="jiaxingTemplate" template="/jsp/jiaxing/layout/layout.jsp">
+        <put-attribute name="top" value="/jsp/jiaxing/layout/header.jsp"/>
+        <put-attribute name="footer" value="/jsp/jiaxing/layout/footer.jsp"/>
+    </definition>
+    <definition name="WILDCARD:jiaxing.*" extends="jiaxingTemplate">
+        <put-attribute name="title" value="title.gogowise"/>
+        <put-attribute name="contentBody" value="/jsp/jiaxing/{1}.jsp"/>
+    </definition>
+
+
 </tiles-definitions>

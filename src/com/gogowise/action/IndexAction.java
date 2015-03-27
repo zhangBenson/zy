@@ -102,7 +102,7 @@ public class IndexAction extends BasicAction {
         this.logInfo = logInfo;
     }
 
-    @Action(value = "index", results = {@Result(name = SUCCESS, type = "tiles", location = ".index")})
+    @Action(value = "index", results = {@Result(name = SUCCESS, type = "tiles", location = "jiaxing.index")})
     public String index() {
 
         //        if("en_US".equals(language)){
@@ -115,6 +115,21 @@ public class IndexAction extends BasicAction {
         organizations = organizationDao.findLatestOrgs(new Pagination(8));
         return SUCCESS;
     }
+
+
+//    @Action(value = "index", results = {@Result(name = SUCCESS, type = "tiles", location = ".index")})
+//    public String index() {
+//
+//        //        if("en_US".equals(language)){
+////        setToEn();
+//        //        }
+//        pagination.setPageSize(10);
+//        //courses = courseDao.findNonMoocCourses(pagination);
+//        courses = courseDao.findlatestCourses(pagination);
+//        //moocCourses = courseDao.findMoocCourses(pagination);
+//        organizations = organizationDao.findLatestOrgs(new Pagination(8));
+//        return SUCCESS;
+//    }
 
     @Action(value = "getMoreCourse", results = {@Result(name = SUCCESS, type = "tiles", location = ".indexMoreCourse")})
     public String getMoreCourse() {
