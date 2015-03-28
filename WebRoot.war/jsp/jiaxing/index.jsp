@@ -1,3 +1,6 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+
 <script type="text/javascript">
     $(function () {
         //banner slides
@@ -36,58 +39,33 @@
             <a href="zbClass.html" class="fR">更多&raquo;</a></dt>
             <dd>
                 <ul class="ul_Jlist zb_cList clearfix">
-                    <li>
-                        <img src="images/photo/pic_class1.jpg"/>
+
+
+                    <s:iterator value="courses" status="status">
+                        <s:if test="#status.index%4==3">
+                            <li class="noMR">
+                        </s:if>
+                        <s:else>
+                            <li>
+                        </s:else>
+
+
+                        <img src="<s:property value="logoUrl"/>"/>
 
                         <div class="cInfo">
-                            <strong>初一英语第18课</strong>
+                            <strong><s:property value="name"/><s:property value="classOnTheCorner.name"/></strong>
 
-                            <p>老师：程纽 </p>
+                            <p>老师：<s:property value="teacher.nickName"/></p>
 
-                            <p>学校：XXX中学</p>
-
-                            <p class="alignR"><a href="videoInfo.html" class="abtn_1">直播<em class="icons icon_play_white"></em></a></p>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="images/photo/pic_class1.jpg"/>
-
-                        <div class="cInfo">
-                            <strong>初一英语第18课</strong>
-
-                            <p>老师：程纽 </p>
-
-                            <p>学校：XXX中学</p>
+                            <p>学校：<s:property value="organization.schoolName"/></p>
 
                             <p class="alignR"><a href="videoInfo.html" class="abtn_1">直播<em class="icons icon_play_white"></em></a></p>
+
                         </div>
-                    </li>
-                    <li>
-                        <img src="images/photo/pic_class1.jpg"/>
+                        </li>
+                    </s:iterator>
 
-                        <div class="cInfo">
-                            <strong>初一英语第18课</strong>
 
-                            <p>老师：程纽 </p>
-
-                            <p>学校：XXX中学</p>
-
-                            <p class="alignR"><a href="videoInfo.html" class="abtn_1">直播<em class="icons icon_play_white"></em></a></p>
-                        </div>
-                    </li>
-                    <li class="noMR">
-                        <img src="images/photo/pic_class1.jpg"/>
-
-                        <div class="cInfo">
-                            <strong>初一英语第18课</strong>
-
-                            <p>老师：程纽 </p>
-
-                            <p>学校：XXX中学</p>
-
-                            <p class="alignR"><a href="videoInfo.html" class="abtn_1">直播<em class="icons icon_play_white"></em></a></p>
-                        </div>
-                    </li>
                 </ul>
             </dd>
         </dl>
@@ -99,6 +77,12 @@
             <a href="dbClass.html" class="fR">更多&raquo;</a></dt>
             <dd>
                 <ul class="ul_Jlist db_cList clearfix">
+
+
+                    <s:iterator value="records" status="status">
+                        <s:if test="#status.index==0">
+
+
                     <li class="db_tag">
                         <img src="images/photo/pic_class1.jpg"/>
 
@@ -122,7 +106,14 @@
                             <p class="alignR"><a href="videoInfo2.html" class="abtn_1">播放<em class="icons icon_play_white"></em></a></p>
                         </div>
                     </li>
-                    <li>
+                        </s:if>
+                        <s:else>
+                            <s:if test="#status.index==3 ||#status.index==6">
+                                <li class="noMR">
+                            </s:if>
+                            <s:else>
+                                <li>
+                            </s:else>
                         <img src="images/photo/pic_class1.jpg"/>
 
                         <div class="cInfo">
@@ -135,71 +126,10 @@
                             <p class="alignR"><a href="videoInfo2.html" class="abtn_1">播放<em class="icons icon_play_white"></em></a></p>
                         </div>
                     </li>
-                    <li>
-                        <img src="images/photo/pic_class1.jpg"/>
+                        </s:else>
 
-                        <div class="cInfo">
-                            <strong>初一英语第18课</strong>
+                    </s:iterator>
 
-                            <p>老师：程纽 </p>
-
-                            <p>学校：XXX中学</p>
-
-                            <p class="alignR"><a href="videoInfo2.html" class="abtn_1">播放<em class="icons icon_play_white"></em></a></p>
-                        </div>
-                    </li>
-                    <li class="noMR">
-                        <img src="images/photo/pic_class1.jpg"/>
-
-                        <div class="cInfo">
-                            <strong>初一英语第18课</strong>
-
-                            <p>老师：程纽 </p>
-
-                            <p>学校：XXX中学</p>
-
-                            <p class="alignR"><a href="videoInfo2.html" class="abtn_1">播放<em class="icons icon_play_white"></em></a></p>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="images/photo/pic_class1.jpg"/>
-
-                        <div class="cInfo">
-                            <strong>初一英语第18课</strong>
-
-                            <p>老师：程纽 </p>
-
-                            <p>学校：XXX中学</p>
-
-                            <p class="alignR"><a href="videoInfo2.html" class="abtn_1">播放<em class="icons icon_play_white"></em></a></p>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="images/photo/pic_class1.jpg"/>
-
-                        <div class="cInfo">
-                            <strong>初一英语第18课</strong>
-
-                            <p>老师：程纽 </p>
-
-                            <p>学校：XXX中学</p>
-
-                            <p class="alignR"><a href="videoInfo2.html" class="abtn_1">播放<em class="icons icon_play_white"></em></a></p>
-                        </div>
-                    </li>
-                    <li class="noMR">
-                        <img src="images/photo/pic_class1.jpg"/>
-
-                        <div class="cInfo">
-                            <strong>初一英语第18课</strong>
-
-                            <p>老师：程纽 </p>
-
-                            <p>学校：XXX中学</p>
-
-                            <p class="alignR"><a href="videoInfo2.html" class="abtn_1">播放<em class="icons icon_play_white"></em></a></p>
-                        </div>
-                    </li>
                 </ul>
             </dd>
         </dl>

@@ -7,16 +7,6 @@
 <script type="text/javascript" src="js/common.js"></script>
 <script>
 
-    $(document).ready(function () {
-        if ($("#gogowiseTitle").val()) {
-            document.title = $("#gogowiseTitle").val();
-        }
-        $(".change_portrait").fancybox({
-            type: 'iframe',
-            width: 720,
-            height: 490
-        });
-    });
 
     (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;

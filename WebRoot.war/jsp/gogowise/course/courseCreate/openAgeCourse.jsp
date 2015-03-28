@@ -405,8 +405,7 @@ h6 .seeallclass {
                                 <td><s:text name="lable.course.starttime"/>：<b><s:date name="date"
                                                                                        format="%{getText('dateformat.forclass')}"/></b>
                                 </td>
-                                <td><s:text name="lable.course.endtime"/>：<b><s:date
-                                        name="finishDate" format="%{getText('dateformat.forclass')}"/></b></td>
+                                <td><s:text name="lable.course.endtime"/>：<b><s:date name="finishDate" format="%{getText('dateformat.forclass')}"/></b></td>
                             </tr>
                         </s:iterator>
                     </table>

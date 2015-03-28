@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -80,10 +79,12 @@ public class Utils {
         }
     }
 
-    public static Calendar getCurrentCalender() {
-        return Calendar.getInstance();
-    }
 
+    public static Calendar getCurrentCalender() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.MINUTE, -15);
+        return calendar;
+    }
 
     public static String getCountHQLString(String hql) {
         String regex = " (?i)from ";

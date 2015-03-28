@@ -61,4 +61,6 @@ public interface CourseDao extends ModelDao<Course> {
 
     public List<Course> findForecastCourse(Pagination page);
 
+    public List<Course> findRecordCourse(Pagination page);
+
 }

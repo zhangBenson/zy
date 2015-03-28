@@ -19,7 +19,7 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
 
     private static final String DELETED_FALSE = " c.isDeleted = false ";
     private static String QUERY_RELATED_COURSE = "select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc  left join c.organization org left join c.teachers teacher where  cc.course.id = c.id and  (teacher.id=?  or org.responsiblePerson.id=? or sc.student.id=?) ";
-    private static String QUERY_FORECAST_CLASS = "select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc  left join c.organization org  left join c.teachers teacher where  cc.course.id = c.id　";
+    private static String QUERY_CLASS = "select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc  left join c.organization org  left join c.teachers teacher where  cc.course.id = c.id ";
     private static String QUERY_MY_FORECAST_CLASS = "select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc  left join c.organization org  left join c.teachers teacher where  cc.course.id = c.id and  (teacher.id=? or sc.student.id=?) ";
     private static String QUERY_MY_FORECAST_CLASS_Teacher = "select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc  left join c.organization org  left join c.teachers teacher where  cc.course.id = c.id and teacher.id=? ";
     private static String QUERY_MY_FORECAST_CLASS_Student = "select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc  left join c.organization org  left join c.teachers teacher where  cc.course.id = c.id and sc.student.id=? ";
@@ -61,9 +61,7 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
             hql = QUERY_MY_FORECAST_CLASS_Teacher + " and " + getFinisDateLessThanNow() + "   group by c  order by MIN(cc.date) asc ";
         }
 
-        Calendar now = Calendar.getInstance();
-        now.add(Calendar.MINUTE, -15);
-        return this.find(hql, page, sid, now);
+        return this.find(hql, page, sid, Utils.getCurrentCalender());
     }
 
     public List<Course> findMyCourseOfForcastClassForUserCenter(Pagination page, Integer sid, int type) {
@@ -77,17 +75,20 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
             hql = QUERY_MY_FORECAST_CLASS_Student + " and " + getFinisDateBiggerThanNow() + "   group by c  order by MIN(cc.date) asc ";
         }
 
-        Calendar now = Calendar.getInstance();
-        now.add(Calendar.MINUTE, -15);
-        return this.find(hql, page, sid, now);
+        return this.find(hql, page, sid, Utils.getCurrentCalender());
     }
 
     public List<Course> findForecastCourse(Pagination page) {
 
-        String hql = QUERY_FORECAST_CLASS + " and " + getFinisDateBiggerThanNow() + "   group by c  order by MIN(cc.date) asc ";
-        Calendar now = Calendar.getInstance();
-        now.add(Calendar.MINUTE, -15);
-        return this.find(hql, page, now);
+        String hql = QUERY_CLASS + " and " + getFinisDateBiggerThanNow() + "   group by c  order by MIN(cc.date) asc ";
+        return this.find(hql, page, Utils.getCurrentCalender());
+    }
+
+
+    public List<Course> findRecordCourse(Pagination page) {
+
+        String hql = QUERY_CLASS + " and  cc.isRecord = true  group by c  order by MAX(cc.date) asc ";
+        return this.find(hql, page);
     }
 
 

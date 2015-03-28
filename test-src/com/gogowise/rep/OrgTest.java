@@ -1,13 +1,13 @@
 package com.gogowise.rep;
 
 import com.gogowise.common.utils.Constants;
+import com.gogowise.rep.course.dao.ClassDao;
+import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.dao.CourseMaterialDao;
-import com.gogowise.rep.course.enity.CourseMaterial;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
 import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
-import org.apache.commons.lang.StringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +24,8 @@ public class OrgTest {
     private BaseUserDao baseUserDao;
 
     private CourseMaterialDao courseMaterialDao;
-
+    private CourseDao courseDao;
+    private ClassDao classDao;
 
     @Before
     public void setUp() throws Exception {
@@ -36,26 +37,22 @@ public class OrgTest {
         baseUserDao = (BaseUserDao) ctx.getBean("baseUserDao");
         courseMaterialDao = (CourseMaterialDao) ctx.getBean("courseMaterialDao");
 
+        courseDao = (CourseDao) ctx.getBean("courseDao");
+        classDao = (ClassDao) ctx.getBean("classDao");
+
     }
 
     @After
     public void tearDown() throws Exception {
-
+//        for (CourseClass c: classDao.find("From CourseClass c")){
+//            Calendar calendar = Calendar.getInstance();
+//            calendar.add(Calendar.MINUTE, c.getId());
+//            c.setDate(calendar);
+//            courseDao.persistAbstract(c);
+//            System.out.println(c.getDate());
+//        }
     }
 
-
-    @Test
-    public void changeCourseMatrix() {
-        for (CourseMaterial courseMaterial : courseMaterialDao.find("from CourseMaterial")) {
-            if (StringUtils.startsWith(courseMaterial.getConvertPath(), "/download")) {
-                courseMaterial.setConvertPath("/upload" + courseMaterial.getConvertPath());
-            }
-            if (StringUtils.startsWith(courseMaterial.getFullPath(), "/download")) {
-                courseMaterial.setFullPath("/upload" + courseMaterial.getFullPath());
-            }
-            courseMaterialDao.persistAbstract(courseMaterial);
-        }
-    }
 
     @Test
     public void save() {
