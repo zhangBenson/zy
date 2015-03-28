@@ -1,0 +1,191 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+/*=============
+嘉兴移动公开课堂
+author:monny
+date:2015-03-24
+==============*/
+
+.container {
+    padding-top: 0px;
+}
+
+body{
+    color: #333;
+    font-size: 12px;
+    height: 100%;
+    background: #fff;
+    font-family: "5FAE8F6F96C59ED1";
+    font-family: "微软雅黑";
+}
+.fL {
+    float: left;
+}
+
+.fR {
+    float: right;
+}
+
+.fontc {
+    color: #e35000;
+}
+.abtn_1 {
+    display: inline-block;
+    padding: 0 15px;
+    height: 28px;
+    line-height: 28px;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    background: #90c31f;
+    border-radius: 3px;
+    margin: 0 8px;
+}
+
+input.abtn_1 {
+    border: 0;
+    vertical-align: middle;
+}
+
+/*整体样式 start*/
+.topBar {
+    /*width: 100%;*/
+    width: 1200px;
+    height: 33px;
+    background: url(../../images/bg_topbar.jpg) 0 0 repeat-x;
+}
+
+.topBar .topBInner {
+    width: 1200px;
+    margin: 0 auto;
+    line-height: 30px;
+}
+
+.topBar .topBInner strong {
+    margin-right: 25px;
+}
+
+.topBar .topBInner a {
+    margin: 0 15px;
+    color: #666;
+}
+
+.topBar .topBInner a:hover {
+    color: #333;
+    text-decoration: underline;
+}
+
+.header {
+    width: 1200px;
+    margin: 0 auto;
+    height: 90px;
+    overflow: hidden;
+}
+
+.hdLogo {
+    padding: 15px 0;
+}
+
+.hdRcon {
+    text-align: right;
+    padding: 10px 0;
+}
+
+.hdrTip {
+    padding-top: 3px;
+}
+
+.hdrTip span {
+    vertical-align: middle;
+}
+
+.hdrTip .hotTel {
+    margin-right: 25px;
+}
+
+.hdrTip .hotTel img {
+    vertical-align: middle;
+    margin-top: -3px;
+}
+
+.hdrNav {
+    font-size: 14px;
+    padding-top: 20px;
+    color: #999;
+    display: block;
+}
+
+.hdrNav a {
+    margin: 0 25px;
+    color: #999;
+}
+
+.hdrNav a:hover, .hdrNav a.on {
+    font-weight: bold;
+    color: #e35000
+}
+
+.hdBar {
+    /*width: 100%;*/
+    width:1200px;
+    background: #e40077;
+    padding: 8px 0;
+    border-bottom: 2px #fff solid;
+    box-shadow: 5px 5px 5px #aaa;
+    position: relative;
+}
+
+.hdBar .h_b_cont {
+    width: 1200px;
+    height: 30px;
+    margin: 0 auto;
+}
+
+
+.searBox {
+    color: #fff;
+}
+
+.searBox span {
+    margin-right: 5px;
+}
+
+.intxt {
+    border: 1px #dedede solid;
+    border-radius: 3px;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 5px;
+    width: 180px;
+    vertical-align: middle;
+}
+
+.hotSear {
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+}
+
+.hotSear span {
+    margin-left: 35px;
+}
+
+.hotSear a {
+    margin: 0 5px;
+    color: #fff;
+}
+
+.hotSear a:hover {
+    color: #f2f2f2;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+
+.footer {
+    padding: 25px 0;
+    text-align: center;
+    line-height: 24px;
+    background: #d2d2d2;
+}

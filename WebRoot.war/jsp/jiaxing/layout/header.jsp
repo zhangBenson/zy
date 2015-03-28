@@ -2,7 +2,7 @@
     <div class="topBInner"><strong class="fontc">欢迎来到嘉兴移动公开课堂！</strong><a href="login2.html">学生登录</a>|<a href="login.html">教师登录</a></div>
 </div>
 <div class="header">
-    <div class="hdLogo fL"><img src="images/logo.png"/></div>
+    <div class="hdLogo fL"><a href="index.html"><img src="images/logo.png"/></a></div>
     <div class="hdRcon fR">
         <div class="hdrTip"><span class="hotTel"><strong>咨询热线：</strong><img src="images/pic_hotTel.png"/></span><span class="bshare-custom"><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到腾讯微博" class="bshare-qqmb" href="javascript:void(0);"></a><a title="分享到QQ空间" class="bshare-qzone" href="javascript:void(0);"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a></span></div>
         <div class="hdrNav">

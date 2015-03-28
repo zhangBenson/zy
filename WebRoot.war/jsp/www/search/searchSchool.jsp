@@ -4,7 +4,7 @@
 
 
 <div class="container">
-    <div class="thinline"></div>
+    <%--<div class="thinline"></div>--%>
     <br/>
 
     <div class="container">

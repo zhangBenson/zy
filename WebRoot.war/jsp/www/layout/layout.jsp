@@ -17,6 +17,8 @@
         <link rel="stylesheet" type="text/css" href="/css/course/gogowise.css">
         <link rel="stylesheet" type="text/css" href="/js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
 
+        <link rel="stylesheet" href="/css/jiaxing/jiaxingBase.css">
+
         <script src="/js/common.js"></script>
         <script src="/js/jquery-1.7.2.min.js"></script>
         <script src="/js/course/bootstrap.min.js"></script>

@@ -20,90 +20,37 @@
 
 </script>
 <%--<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>--%>
-<div class="thickline"></div>
+<%--<div class="thickline"></div>--%>
 <div class="container">
-    <div>
-        <div class="col-md-3" style="width:250px;">
-            <a href="/index.html">
-                <div class="topLogo"></div>
-            </a>
 
-        </div>
-        <div class="col-md-7" style="width:670px;">
-            <ul class="nav nav-pills">
-                <li>
-                    <%--<a href="index.html" class="navlink"><s:text name="menu.item.index"/></a>--%>
-                    <%--<a href="aboutUs.html" class="navlink">About Us</a>--%>
-                </li>
-                <li>
-                    <a href="courseCenter.html" class="navlink"><s:text name="frame.course.center"/></a>
-
-                </li>
-                <li>
-                    <a href="schoolCenter.html" class="navlink"><s:text name="frame.schools.center"/></a>
-                </li>
-                <li>
-                    <a href="FAQ.html" class="navlink"><s:text name="frame.schools.faq"/></a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="col-md-2">
-            <div class="pull-right">
-                <s:if test="#session.email !=null">
-                    <div class="btn-group">
-
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            <span class="glyphicon glyphicon-user"></span>
-                            <a href="userBlog.html?user.id=<s:property value="#session.userID"/>"
-                               title="<s:property value="#session.nickName"/>">
-                                <s:property value="#session.nickName"/>
-                            </a>
-                            <span class="caret"></span>
-                        </button>
-
-                        <ul class="dropdown-menu" role="menu">
-
-                            <s:if test="#session.isTeacher">
-                                <li><a href="myfirstPage.html" id="myFirstPageLink"><s:text name="label.orgcenter"/> </a>
-                                </li>
-                            </s:if>
-                            <li><a href="personalCenter.html"><s:text name="label.personalcenter"/> </a></li>
-                        <%--<a href="#">Profile Settings</a>--%>
-                            <li><a href="initUpdate.html"><span></span><s:text name="account.item.accountsettings"/></a></li>
-                        <%--</s:if>--%>
-                                <%--<s:else>--%>
-
-                                <%--<li><a href="setting.html"><span></span><s:text name="account.item.accountsettings"/></a></li>--%>
-                                <%--</s:else>--%>
-
-                            <li class="divider"></li>
-
-                                <%--<a href="#">Log out</a>--%>
-                            <li><a href="exitSystem.html"><span></span><s:text name="href.logout"/></a></li>
-
-                        </ul>
-                    </div>
-                </s:if>
-                <s:else>
-                    <ul class="list-inline">
-                        <li>
-
-                        </li>
-                        <li>
-                            <a href="initReg.html" target="_blank"><s:text name="user.info.identity.finish.reg"/></a>
-                        </li>
-                        <li>
-                            <a href="#" id="btnLogin"><s:text name="Login"/></a>
-                        </li>
-                    </ul>
-                </s:else>
-
-            </div>
-
-        </div>
-
+    <div class="topBar">
+        <div class="topBInner"><strong class="fontc">欢迎来到嘉兴移动公开课堂！</strong><a href="login2.html">学生登录</a>|<a href="login.html">教师登录</a></div>
     </div>
+
+    <div class="header">
+        <div class="hdLogo fL"><a href="index.html"><img src="images/logo.png"/></a></div>
+        <div class="hdRcon fR">
+            <div class="hdrTip"><span class="hotTel"><strong>咨询热线：</strong><img src="images/pic_hotTel.png"/></span>
+                <span class="bshare-custom"><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到腾讯微博" class="bshare-qqmb" href="javascript:void(0);"></a><a title="分享到QQ空间" class="bshare-qzone" href="javascript:void(0);"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>
+                </span></div>
+            <div class="hdrNav">
+                |<a href="index.html" class="on">首页</a>|<a href="zbClass.html">直播课堂</a>|<a href="dbClass.html">点播课堂</a>|<a href="msList.html">授课名师</a>|
+            </div>
+        </div>
+    </div>
+
+    <div class="hdBar">
+        <div class="h_b_cont">
+            <div class="searBox fL">
+                <form name="searForm" action="#" method="post"><span>公开课：</span><input type="text" class="intxt" placeholder="课程名称、主讲老师"/><input type="submit" class="abtn_1" value="搜索"/></form>
+            </div>
+            <div class="hotSear fR">
+                <span>热门课程：<a href="#">初二英语</a><a href="#">高一数学</a><a href="#">高三化学</a></span>
+                <span>推荐老师：<a href="#">李勤</a><a href="#">彭荣荣</a><a href="#">傅琴</a><a href="#">李刚</a></span>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 
