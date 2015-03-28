@@ -59,4 +59,6 @@ public interface CourseDao extends ModelDao<Course> {
 
     public List<Course> findMyCourseOfForcastClassForUserCenter(Pagination page, Integer sid, int type);
 
+    public List<Course> findForecastCourse(Pagination page);
+
 }

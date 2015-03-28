@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 @Controller
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 @Namespace(BasicAction.BASE_NAME_SPACE)
-public class IndexAction extends BasicAction {
+public class IndexPageAction extends BasicAction {
 
 
     @Action(value = "index", results = {@Result(name = SUCCESS, type = "tiles", location = "jiaxing.index")})

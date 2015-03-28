@@ -19,9 +19,10 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
 
     private static final String DELETED_FALSE = " c.isDeleted = false ";
     private static String QUERY_RELATED_COURSE = "select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc  left join c.organization org left join c.teachers teacher where  cc.course.id = c.id and  (teacher.id=?  or org.responsiblePerson.id=? or sc.student.id=?) ";
-    private static String QUERY_MY_FORCAST_CLASS = "select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc  left join c.organization org  left join c.teachers teacher where  cc.course.id = c.id and  (teacher.id=? or sc.student.id=?) ";
-    private static String QUERY_MY_FORCAST_CLASS_Teacher = "select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc  left join c.organization org  left join c.teachers teacher where  cc.course.id = c.id and teacher.id=? ";
-    private static String QUERY_MY_FORCAST_CLASS_Student = "select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc  left join c.organization org  left join c.teachers teacher where  cc.course.id = c.id and sc.student.id=? ";
+    private static String QUERY_FORECAST_CLASS = "select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc  left join c.organization org  left join c.teachers teacher where  cc.course.id = c.id　";
+    private static String QUERY_MY_FORECAST_CLASS = "select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc  left join c.organization org  left join c.teachers teacher where  cc.course.id = c.id and  (teacher.id=? or sc.student.id=?) ";
+    private static String QUERY_MY_FORECAST_CLASS_Teacher = "select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc  left join c.organization org  left join c.teachers teacher where  cc.course.id = c.id and teacher.id=? ";
+    private static String QUERY_MY_FORECAST_CLASS_Student = "select distinct c from Course c   join c.classes cc left join c.seniorClassRooms sc  left join c.organization org  left join c.teachers teacher where  cc.course.id = c.id and sc.student.id=? ";
     private static String PUBLIC_CONFIRMED = " c.isDeleted = false and  c.isPublic=true ";
     private static String PRIVATE_CONFIRMED = " c.isDeleted = false and c.isPublic=false ";
 
@@ -52,12 +53,12 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
 
     public List<Course> findFinishedCourseForUserCenter(Pagination page, Integer sid, int type) {
 
-        String hql = QUERY_MY_FORCAST_CLASS_Student + " and " + getFinisDateLessThanNow() + "   group by c  order by MIN(cc.date) asc ";
+        String hql = QUERY_MY_FORECAST_CLASS_Student + " and " + getFinisDateLessThanNow() + "   group by c  order by MIN(cc.date) asc ";
         if (type == RoleType.ROLE_TYPE_STUDENT) {
-            hql = QUERY_MY_FORCAST_CLASS_Student + " and " + getFinisDateLessThanNow() + "   group by c  order by MIN(cc.date) asc ";
+            hql = QUERY_MY_FORECAST_CLASS_Student + " and " + getFinisDateLessThanNow() + "   group by c  order by MIN(cc.date) asc ";
         }
         if (type == RoleType.ROLE_TYPE_TEACHER) {
-            hql = QUERY_MY_FORCAST_CLASS_Teacher + " and " + getFinisDateLessThanNow() + "   group by c  order by MIN(cc.date) asc ";
+            hql = QUERY_MY_FORECAST_CLASS_Teacher + " and " + getFinisDateLessThanNow() + "   group by c  order by MIN(cc.date) asc ";
         }
 
         Calendar now = Calendar.getInstance();
@@ -67,18 +68,26 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
 
     public List<Course> findMyCourseOfForcastClassForUserCenter(Pagination page, Integer sid, int type) {
 
-        String hql = QUERY_MY_FORCAST_CLASS + " and " + getFinisDateBiggerThanNow() + "   group by c  order by MIN(cc.date) asc ";
+        String hql = QUERY_MY_FORECAST_CLASS + " and " + getFinisDateBiggerThanNow() + "   group by c  order by MIN(cc.date) asc ";
 
         if (type == RoleType.ROLE_TYPE_TEACHER) {
-            hql = QUERY_MY_FORCAST_CLASS_Teacher + " and " + getFinisDateBiggerThanNow() + "   group by c  order by MIN(cc.date) asc ";
+            hql = QUERY_MY_FORECAST_CLASS_Teacher + " and " + getFinisDateBiggerThanNow() + "   group by c  order by MIN(cc.date) asc ";
         }
         if (type == RoleType.ROLE_TYPE_STUDENT) {
-            hql = QUERY_MY_FORCAST_CLASS_Student + " and " + getFinisDateBiggerThanNow() + "   group by c  order by MIN(cc.date) asc ";
+            hql = QUERY_MY_FORECAST_CLASS_Student + " and " + getFinisDateBiggerThanNow() + "   group by c  order by MIN(cc.date) asc ";
         }
 
         Calendar now = Calendar.getInstance();
         now.add(Calendar.MINUTE, -15);
         return this.find(hql, page, sid, now);
+    }
+
+    public List<Course> findForecastCourse(Pagination page) {
+
+        String hql = QUERY_FORECAST_CLASS + " and " + getFinisDateBiggerThanNow() + "   group by c  order by MIN(cc.date) asc ";
+        Calendar now = Calendar.getInstance();
+        now.add(Calendar.MINUTE, -15);
+        return this.find(hql, page, now);
     }
 
 

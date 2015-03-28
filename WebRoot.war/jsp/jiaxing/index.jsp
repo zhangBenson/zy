@@ -270,12 +270,12 @@
                     <a href="news.html" class="fR">更多&raquo;</a></dt>
                     <dd>
                         <ul class="news_cList clearfix">
-                            <li><span>?</span><a href="newsInfo.html">江苏太仓：做学生喜欢的智慧教育</a></li>
-                            <li><span>?</span><a href="newsInfo.html">江苏太仓：做学生喜欢的智慧教育</a></li>
-                            <li><span>?</span><a href="newsInfo.html">江苏太仓：做学生喜欢的智慧教育</a></li>
-                            <li><span>?</span><a href="newsInfo.html">江苏太仓：做学生喜欢的智慧教育</a></li>
-                            <li><span>?</span><a href="newsInfo.html">江苏太仓：做学生喜欢的智慧教育</a></li>
-                            <li><span>?</span><a href="newsInfo.html">江苏太仓：做学生喜欢的智慧教育做学生喜欢的智慧教育做学生喜欢的智慧教育</a></li>
+                            <li><span>•</span><a href="newsInfo.html">江苏太仓：做学生喜欢的智慧教育</a></li>
+                            <li><span>•</span><a href="newsInfo.html">江苏太仓：做学生喜欢的智慧教育</a></li>
+                            <li><span>•</span><a href="newsInfo.html">江苏太仓：做学生喜欢的智慧教育</a></li>
+                            <li><span>•</span><a href="newsInfo.html">江苏太仓：做学生喜欢的智慧教育</a></li>
+                            <li><span>•</span><a href="newsInfo.html">江苏太仓：做学生喜欢的智慧教育</a></li>
+                            <li><span>•</span><a href="newsInfo.html">江苏太仓：做学生喜欢的智慧教育做学生喜欢的智慧教育做学生喜欢的智慧教育</a></li>
                         </ul>
                     </dd>
                 </dl>
