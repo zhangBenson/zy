@@ -67,5 +67,8 @@ public class OrganizationBaseUserDaoImpl extends ModelDaoImpl<OrganizationBaseUs
         return this.find(hql, userID, orgId);
     }
 
-
+    @Override
+    public List<BaseUser> findLatestUsersByRoleType(Integer roleType, Pagination pagination) {
+        return find("select distinct ot.user From OrganizationBaseUser ot where ot.roleType=?  order by ot.createDate desc", pagination, roleType);
+    }
 }

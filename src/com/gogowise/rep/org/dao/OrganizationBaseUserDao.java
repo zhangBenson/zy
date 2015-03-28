@@ -30,4 +30,6 @@ public interface OrganizationBaseUserDao extends ModelDao<OrganizationBaseUser> 
     OrganizationBaseUser findMyOrgByUserIdAndRole(Integer userID, Integer roleType);
 
     List<OrganizationBaseUser> findByUserAndOrg(Integer userID, Integer orgId);
+
+    List<BaseUser> findLatestUsersByRoleType(Integer roleType, Pagination pagination);
 }

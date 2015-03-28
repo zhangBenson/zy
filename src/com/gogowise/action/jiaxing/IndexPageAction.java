@@ -4,6 +4,9 @@ import com.gogowise.action.BasicAction;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.enity.Course;
+import com.gogowise.rep.org.dao.OrganizationBaseUserDao;
+import com.gogowise.rep.user.enity.BaseUser;
+import com.gogowise.rep.user.enity.RoleType;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -21,18 +24,37 @@ import java.util.List;
 public class IndexPageAction extends BasicAction {
 
 
-    List<Course> courses = new ArrayList<>();
-    List<Course> records = new ArrayList<>();
+    private List<Course> courses = new ArrayList<>();
+    private List<Course> records = new ArrayList<>();
+    private List<BaseUser> teachers = new ArrayList<>();
+    private Pagination pagination = new Pagination(8);
+
 
     @Autowired
     private CourseDao courseDao;
+    @Autowired
+    private OrganizationBaseUserDao organizationBaseUserDao;
+
     @Action(value = "index", results = {@Result(name = SUCCESS, type = "tiles", location = "jiaxing.index")})
     public String index() {
 
         courses = courseDao.findForecastCourse(new Pagination(4));
         records = courseDao.findRecordCourse(new Pagination(7));
+        teachers = organizationBaseUserDao.findLatestUsersByRoleType(RoleType.ROLE_TYPE_TEACHER, new Pagination(4));
+
         return SUCCESS;
     }
+
+
+    @Action(value = "zbClass", results = {@Result(name = SUCCESS, type = "tiles", location = "jiaxing.zb")})
+    public String zbClass() {
+        pagination.setPageSize(8);
+        courses = courseDao.findForecastCourse(pagination);
+        return SUCCESS;
+    }
+
+
+
 
     public List<Course> getCourses() {
         return courses;
@@ -40,5 +62,19 @@ public class IndexPageAction extends BasicAction {
 
     public List<Course> getRecords() {
         return records;
+    }
+
+    public List<BaseUser> getTeachers() {
+        return teachers;
+    }
+
+    @Override
+    public Pagination getPagination() {
+        return pagination;
+    }
+
+    @Override
+    public void setPagination(Pagination pagination) {
+        this.pagination = pagination;
     }
 }
