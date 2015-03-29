@@ -53,8 +53,20 @@ public class IndexPageAction extends BasicAction {
         return SUCCESS;
     }
 
+    @Action(value = "dbClass", results = {@Result(name = SUCCESS, type = "tiles", location = "jiaxing.db")})
+    public String dbClass() {
+        pagination.setPageSize(8);
+        courses = courseDao.findRecordCourse(pagination);
+        return SUCCESS;
+    }
 
-
+    @Action(value = "msList", results = {@Result(name = SUCCESS, type = "tiles", location = "jiaxing.msList")})
+    public String msList() {
+        pagination.setPageSize(4);
+        teachers = organizationBaseUserDao.findLatestUsersByRoleType(RoleType.ROLE_TYPE_TEACHER, pagination);
+        records = courseDao.findRecordCourse(new Pagination(6));
+        return SUCCESS;
+    }
 
     public List<Course> getCourses() {
         return courses;

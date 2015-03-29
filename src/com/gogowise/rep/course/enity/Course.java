@@ -217,6 +217,16 @@ public class Course extends AbstractPersistence {
         this.seniorClassRooms = seniorClassRooms;
     }
 
+    public CourseClass getLastRecordClass() {
+        CourseClass courseClass = this.getClasses().get(0);
+        for (CourseClass cc : this.getClasses()) {
+            if (cc.getRecord() && cc.getDate().after(courseClass.getDate())) {
+                courseClass = cc;
+            }
+        }
+        return courseClass;
+    }
+
     public CourseClass getClassOnTheCorner() {
         if (this.getForcastClasses().size() == 0) return null;
         return this.getForcastClasses().get(0);

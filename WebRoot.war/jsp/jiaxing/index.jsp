@@ -87,9 +87,9 @@
                         <img src="<s:property value="logoUrl"/>"/>
 
                         <div class="cInfo">
-                            <div class="tagTxt clearfix"><strong class="fL"><s:property value="name"/><s:property value="classOnTheCorner.name"/></strong>
+                            <div class="tagTxt clearfix"><strong class="fL"><s:property value="name"/><s:property value="lastRecordClass.name"/></strong>
 
-                                <div class="fR">时长：<s:property value="classOnTheCorner.duration"/>分钟</div>
+                                <div class="fR">时长：<s:property value="lastRecordClass.duration"/>分钟</div>
                             </div>
                             <p>老师：<s:property value="teacher.nickName"/></p>
 
@@ -103,7 +103,7 @@
 
                             <p>&nbsp;</p>
 
-                            <p class="alignR"><a href="playerClass.html?courseClass.id=<s:property value="classOnTheCorner.id"/>" class="abtn_1">播放<em class="icons icon_play_white"></em></a></p>
+                            <p class="alignR"><a href="playerClass.html?courseClass.id=<s:property value="lastRecordClass.id"/>" class="abtn_1">播放<em class="icons icon_play_white"></em></a></p>
                         </div>
                     </li>
                         </s:if>
@@ -117,13 +117,13 @@
                             <img src="<s:property value="logoUrl"/>"/>
 
                         <div class="cInfo">
-                            <strong><s:property value="name"/><s:property value="classOnTheCorner.name"/></strong>
+                            <strong><s:property value="name"/><s:property value="lastRecordClass.name"/></strong>
 
                             <p>老师：<s:property value="teacher.nickName"/></p>
 
                             <p>学校：<s:property value="organization.schoolName"/></p>
 
-                            <p class="alignR"><a href="playerClass.html?courseClass.id=<s:property value="classOnTheCorner.id"/>" class="abtn_1">播放<em class="icons icon_play_white"></em></a></p>
+                            <p class="alignR"><a href="playerClass.html?courseClass.id=<s:property value="lastRecordClass.id"/>" class="abtn_1">播放<em class="icons icon_play_white"></em></a></p>
                         </div>
                     </li>
                         </s:else>
