@@ -65,12 +65,12 @@
     </definition>
 
     <definition name=".teacherLogin" extends=".wwwBodyCenter">
-        <put-attribute name="title" value="Teacher Login"/>
+        <put-attribute name="title" value="教师登录"/>
         <put-attribute name="contentBody" value="/jsp/www/log_reg/teacherLogin.jsp"/>
     </definition>
 
     <definition name=".studentLogin" extends=".wwwBodyCenter">
-        <put-attribute name="title" value="Student Login"/>
+        <put-attribute name="title" value="学生登录"/>
         <put-attribute name="contentBody" value="/jsp/www/log_reg/studentLogin.jsp"/>
     </definition>
 
@@ -611,8 +611,8 @@
 
     <!-- new tiles -->
     <definition name="jiaxingTemplate" template="/jsp/jiaxing/layout/layout.jsp">
-        <put-attribute name="top" value="/jsp/jiaxing/layout/header.jsp"/>
-        <put-attribute name="footer" value="/jsp/jiaxing/layout/footer.jsp"/>
+        <put-attribute name="top" value="/jsp/www/layout/top.jsp"/>
+        <put-attribute name="footer" value="/jsp/www/layout/footer.jsp"/>
     </definition>
     <definition name="WILDCARD:jiaxing.*" extends="jiaxingTemplate">
         <put-attribute name="title" value="title.gogowise"/>

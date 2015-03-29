@@ -387,7 +387,7 @@ public class UserAction extends BasicAction {
     }
 
     @Action(value = "studentLoginProcess",
-            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}),
+            results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "personalCenter"}),
                     @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".studentLogin")}
     )
     public String studentLoginProcess() {
@@ -396,13 +396,15 @@ public class UserAction extends BasicAction {
             addFieldError("user.email", this.getText("message.logon.account.not.exist"));
             return INPUT;
         }
-
         if (!user.getPassword().equals(MD5.endCode(this.user.getPassword()))) {
             addFieldError("user.password", this.getText("message.logon.password.error"));
             return INPUT;
         }
 
         if (userService.havePermission(user.getId(), RoleType.STUDENT)) {
+            setUserToSession(user);
+            user.setLastLoginDate(Calendar.getInstance());
+            baseUserDao.persistAbstract(user);
             return SUCCESS;
         }
 
@@ -434,10 +436,8 @@ public class UserAction extends BasicAction {
         if ((organizationDao.findByResId(user.getId()) != null) || (userService.havePermission(user.getId(), RoleType.TEACHER))) {
             user.setLastLoginDate(Calendar.getInstance());
             baseUserDao.persistAbstract(user);
-
             setUserToSession(user);
             setUserOrg(user);
-
             return SUCCESS;
         }
 

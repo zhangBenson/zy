@@ -24,7 +24,35 @@
 <div class="container">
 
     <div class="topBar">
-        <div class="topBInner"><strong class="fontc">欢迎来到嘉兴移动公开课堂！</strong><a href="login2.html">学生登录</a>|<a href="login.html">教师登录</a></div>
+        <div class="topBInner"><strong class="fontc">欢迎来到嘉兴移动公开课堂！</strong>
+        <s:if test="#session.email !=null">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-user"></span>
+                <a href="userBlog.html?user.id=<s:property value="#session.userID"/>" title="<s:property value="#session.nickName"/>"><s:property value="#session.nickName"/></a>
+                <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu" role="menu">
+
+                <s:if test="#session.isTeacher">
+                    <li><a href="myfirstPage.html" id="myFirstPageLink"><s:text name="label.orgcenter"/> </a>
+                    </li>
+                </s:if>
+                <li><a href="personalCenter.html"><s:text name="label.personalcenter"/> </a></li>
+                <li><a href="initUpdate.html"><span></span><s:text name="account.item.accountsettings"/></a></li>
+                <li class="divider"></li>
+
+                <li><a href="exitSystem.html"><span></span><s:text name="href.logout"/></a></li>
+
+            </ul>
+        </div>
+        </s:if>
+        <s:else>
+            <a href="studentLogin.html">学生登录</a>|<a href="teacherLogin.html">教师登录</a>|<a href="initReg.html">注册</a>
+         </s:else>
+
+        </div>
     </div>
 
     <div class="header">
@@ -48,12 +76,13 @@
                 <span>热门课程：<a href="#">初二英语</a><a href="#">高一数学</a><a href="#">高三化学</a></span>
                 <span>推荐老师：<a href="#">李勤</a><a href="#">彭荣荣</a><a href="#">傅琴</a><a href="#">李刚</a></span>
             </div>
+            <%--Test--%>
         </div>
     </div>
 
 </div>
 
-
+<!--
 <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
      style="overflow:hidden;">
 
@@ -68,7 +97,7 @@
             <h1 class="courseSynopsis">Please log in to continue.</h1>
 
             <form class="form-horizontal" role="form" id="user_login_form" method="post">
-                <s:hidden name="isIndex" id="isIndex"/>
+                <%--<s:hidden name="isIndex" id="isIndex"/>--%>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
 
@@ -90,7 +119,7 @@
                                 <input type="checkbox">Remember me</label>
                             <%--<a href="#" style="float: right;">Forget password</a>--%>
                             <a href="javascript:;" style="float: right;"
-                               onclick="parent.window.location.href='initRepassword.html';"><s:text name="link.forget.pwd"/>？</a>
+                               <%--onclick="parent.window.location.href='initRepassword.html';"><s:text name="link.forget.pwd"/>？</a>--%>
                         </div>
 
                     </div>
@@ -104,7 +133,7 @@
         </div>
     </div>
 </div>
-
+-->
 <script type="text/javascript">
     $("#log_btn").click(function () {
         if (checkForm()) {

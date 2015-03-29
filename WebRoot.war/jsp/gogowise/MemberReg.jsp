@@ -166,7 +166,7 @@
             <div id="links"><s:text name="Registed"/><a href="#" onclick="goToLogon()"><s:text name="Login"/></a></div>
         </div>
         <div id="regright">
-            <div id="regrightCont">
+             <div id="regrightCont">
 
                 <p class="inputTips">
 

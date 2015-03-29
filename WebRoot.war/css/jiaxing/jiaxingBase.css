@@ -189,3 +189,7 @@ input.abtn_1 {
     line-height: 24px;
     background: #d2d2d2;
 }
+
+.btn{
+    font-size: 12px;
+}
