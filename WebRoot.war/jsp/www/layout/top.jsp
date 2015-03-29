@@ -1,24 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#btnLogin").click(function (event) {
-            $("#login_tip").html(" ");
-            $('#modalLogin').modal("show");
-        });
 
-        var currHref = window.location.href;
-        if (currHref.indexOf("index.html") > -1) {
-            document.getElementById("isIndex").value = 1;
-        }
-        else {
-            document.getElementById("isIndex").value = 0;
-        }
-
-    })
-
-</script>
 <%--<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>--%>
 <%--<div class="thickline"></div>--%>
 <div class="container">
@@ -134,72 +117,4 @@
     </div>
 </div>
 -->
-<script type="text/javascript">
-    $("#log_btn").click(function () {
-        if (checkForm()) {
 
-            var userData = $("#user_login_form").serialize();
-            $.post("ajaxLogin.html", userData, function (data) {
-                handlePostResult(data);
-            });
-        }
-    });
-    $("#inputPassword3").keydown(function (event) {
-        if (event.keyCode == 13) {
-            if (checkForm()) {
-                var userData = $("#user_login_form").serialize();
-                $.post("ajaxLogin.html", userData, function (data) {
-                    handlePostResult(data);
-                });
-            }
-        }
-    });
-    function handlePostResult(data) {
-        if (data == "success" || data == "Teacher") {
-            var currHref = window.location.href;
-            if (currHref.substring(currHref.lastIndexOf('/')) == '/exitSystem.html') {
-                currHref = currHref.substring(0, currHref.lastIndexOf('/') + 1);
-            }
-            if (currHref.indexOf("index.html") > -1) {
-                if (data == "success") {
-                    window.location.href = "personalCenter.html";
-                }
-                else {
-                    window.location.href = "myfirstPage.html";
-                }
-                return;
-            }
-            window.location.reload();
-        } else {
-            $("#login_tip").text(data);
-        }
-    }
-    function checkForm() {
-
-        return checkEmail() && checkPwd();
-    }
-    function checkEmail() {
-        $("#login_tip").text("");
-        if ($("#inputEmail3").attr('value') != "") {
-            var pattern = /^(?:[a-z\d]+[_\-\+\.]?)*[a-z\d]+@(?:([a-z\d]+\-?)*[a-z\d]+\.)+([a-z]{2,})+$/i;
-            var email = $("#inputEmail3").val();
-            if (!pattern.test(email)) {
-                $("#login_tip").text("<s:text name="emailerror"/>");
-                return false;
-            }
-        } else {
-            $("#login_tip").text("<s:text name="emailEmpty"/>");
-            return false;
-        }
-
-        return true;
-    }
-
-    function checkPwd() {
-        if ($("#inputPassword3").val() == "") {
-            $("#login_tip").text("<s:text name="psdEmpty"/>");
-            return false;
-        }
-        return true;
-    }
-</script>
