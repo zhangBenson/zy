@@ -82,7 +82,7 @@
 
 </div>
 
-
+<!--
 <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
      style="overflow:hidden;">
 
@@ -97,7 +97,7 @@
             <h1 class="courseSynopsis">Please log in to continue.</h1>
 
             <form class="form-horizontal" role="form" id="user_login_form" method="post">
-                <s:hidden name="isIndex" id="isIndex"/>
+                <%--<s:hidden name="isIndex" id="isIndex"/>--%>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
 
@@ -119,7 +119,7 @@
                                 <input type="checkbox">Remember me</label>
                             <%--<a href="#" style="float: right;">Forget password</a>--%>
                             <a href="javascript:;" style="float: right;"
-                               onclick="parent.window.location.href='initRepassword.html';"><s:text name="link.forget.pwd"/>？</a>
+                               <%--onclick="parent.window.location.href='initRepassword.html';"><s:text name="link.forget.pwd"/>？</a>--%>
                         </div>
 
                     </div>
@@ -133,7 +133,7 @@
         </div>
     </div>
 </div>
-
+-->
 <script type="text/javascript">
     $("#log_btn").click(function () {
         if (checkForm()) {
