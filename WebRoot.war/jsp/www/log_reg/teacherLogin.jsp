@@ -5,7 +5,7 @@
 
 <div style="clear: both;"></div>
 
-<div style="text-align: center; width: 30%; margin-left: 30%; margin-bottom: 5%; margin-top: 1%;">
+<div style="text-align: center; width: 30%; margin-left: 30%; margin-bottom: 5%; margin-top: 3%;">
     <div class="basePanelTextLeft">
         <h1 class = "courseSubject"><s:text name="button.log.in.teacher"/></h1>
         <h1 class = "courseSynopsis"><s:text name="label.log.in.info"/></h1>

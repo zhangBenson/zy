@@ -24,7 +24,35 @@
 <div class="container">
 
     <div class="topBar">
-        <div class="topBInner"><strong class="fontc">欢迎来到嘉兴移动公开课堂！</strong><a href="login2.html">学生登录</a>|<a href="login.html">教师登录</a></div>
+        <div class="topBInner"><strong class="fontc">欢迎来到嘉兴移动公开课堂！</strong>
+        <s:if test="#session.email !=null">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-user"></span>
+                <a href="userBlog.html?user.id=<s:property value="#session.userID"/>" title="<s:property value="#session.nickName"/>"><s:property value="#session.nickName"/></a>
+                <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu" role="menu">
+
+                <s:if test="#session.isTeacher">
+                    <li><a href="myfirstPage.html" id="myFirstPageLink"><s:text name="label.orgcenter"/> </a>
+                    </li>
+                </s:if>
+                <li><a href="personalCenter.html"><s:text name="label.personalcenter"/> </a></li>
+                <li><a href="initUpdate.html"><span></span><s:text name="account.item.accountsettings"/></a></li>
+                <li class="divider"></li>
+
+                <li><a href="exitSystem.html"><span></span><s:text name="href.logout"/></a></li>
+
+            </ul>
+        </div>
+        </s:if>
+        <s:else>
+            <a href="studentLogin.html">学生登录</a>|<a href="teacherLogin.html">教师登录</a>|<a href="initReg.html">注册</a>
+         </s:else>
+
+        </div>
     </div>
 
     <div class="header">

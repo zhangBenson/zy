@@ -1,5 +1,5 @@
 <div class="topBar">
-    <div class="topBInner"><strong class="fontc">欢迎来到嘉兴移动公开课堂！</strong><a href="login2.html">学生登录</a>|<a href="login.html">教师登录</a></div>
+    <div class="topBInner"><strong class="fontc">欢迎来到嘉兴移动公开课堂！</strong><a href="studentLogin.html">学生登录</a>|<a href="teacherLogin.html">教师登录</a>|<a href="initReg.html">注册</a></div>
 </div>
 <div class="header">
     <div class="hdLogo fL"><a href="index.html"><img src="images/logo.png"/></a></div>
