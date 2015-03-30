@@ -14,11 +14,12 @@
 
     <link rel="stylesheet" href="/css/course/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" href="/css/jiaxing/jiaxingBase.css">
 
     <script language="javascript" type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="js/jquery.slides.min.js"></script>
     <script src="/js/course/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/css/jiaxing/jiaxingBase.css">
+
     <meta name='viewport' content='width=1270'>
 
 </head>

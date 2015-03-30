@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
-<link rel="stylesheet" href="css/course/bootstrap.min.css"/>
+<%--<link rel="stylesheet" href="css/course/bootstrap.min.css"/>--%>
 <script type="text/javascript">
     $(function () {
         //banner slides
