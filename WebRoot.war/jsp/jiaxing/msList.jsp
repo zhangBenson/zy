@@ -79,7 +79,7 @@
                             <s:iterator value="records" status="status">
                                 <li>
                                     <div class="classPic"><a href="playerClass.html?courseClass.id=<s:property value="lastRecordClass.id"/>">
-                                        <img src="images/photo/pic_class1.jpg"/>
+                                        <img src="<s:property value="logoUrl"/>"/>
                                     </a>
                                     </div>
                                     <div class="cInfo">
