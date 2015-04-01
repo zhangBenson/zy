@@ -3,6 +3,8 @@
 <%@ taglib uri="/WEB-INF/tld/tiles-jsp.tld" prefix="tiles" %>
 <link type="text/css" href="css/header.css" rel="stylesheet"/>
 
+<link rel="stylesheet" href="css/course/bootstrap.min.css">
+
 <div id="header">
     <s:a action="index" cssClass="logoImg"></s:a>
     <p class="words"><s:text name="share.happy.share.knowlege"/></p>
