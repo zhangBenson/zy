@@ -5,6 +5,8 @@ import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.enity.Course;
 import com.gogowise.rep.org.dao.OrganizationBaseUserDao;
+import com.gogowise.rep.org.enity.OrganizationBaseUser;
+import com.gogowise.rep.user.dao.BaseUserDao;
 import com.gogowise.rep.user.enity.BaseUser;
 import com.gogowise.rep.user.enity.RoleType;
 import org.apache.struts2.convention.annotation.Action;
@@ -28,10 +30,14 @@ public class IndexPageAction extends BasicAction {
     private List<Course> records = new ArrayList<>();
     private List<BaseUser> teachers = new ArrayList<>();
     private Pagination pagination = new Pagination(8);
+    private BaseUser teacher = new BaseUser();
+    private OrganizationBaseUser orgTeacher = new OrganizationBaseUser();
 
 
     @Autowired
     private CourseDao courseDao;
+    @Autowired
+    private BaseUserDao baseUserDao;
     @Autowired
     private OrganizationBaseUserDao organizationBaseUserDao;
 
@@ -68,6 +74,26 @@ public class IndexPageAction extends BasicAction {
         return SUCCESS;
     }
 
+    @Action(value = "msVideo", results = {@Result(name = SUCCESS, type = "tiles", location = "jiaxing.msVideo")})
+    public String msVideo() {
+        teacher = baseUserDao.findById(teacher.getId());
+        pagination.setPageSize(8);
+        records = courseDao.findRecordCourseByTeacher(pagination, teacher.getId());
+        return SUCCESS;
+    }
+
+    @Action(value = "msInfo", results = {@Result(name = SUCCESS, type = "tiles", location = "jiaxing.msInfo")})
+    public String msInfo() {
+        teacher = baseUserDao.findById(teacher.getId());
+        OrganizationBaseUser organizationBaseUser = organizationBaseUserDao.findMyOrgByUserIdAndRole(teacher.getId(), RoleType.ROLE_TYPE_TEACHER);
+        if (organizationBaseUser != null) {
+            orgTeacher = organizationBaseUser;
+        }
+        records = courseDao.findRecordCourseByTeacher(new Pagination(8), teacher.getId());
+        return SUCCESS;
+    }
+
+
     public List<Course> getCourses() {
         return courses;
     }
@@ -88,5 +114,29 @@ public class IndexPageAction extends BasicAction {
     @Override
     public void setPagination(Pagination pagination) {
         this.pagination = pagination;
+    }
+
+    public BaseUser getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(BaseUser teacher) {
+        this.teacher = teacher;
+    }
+
+    public OrganizationBaseUserDao getOrganizationBaseUserDao() {
+        return organizationBaseUserDao;
+    }
+
+    public void setOrganizationBaseUserDao(OrganizationBaseUserDao organizationBaseUserDao) {
+        this.organizationBaseUserDao = organizationBaseUserDao;
+    }
+
+    public OrganizationBaseUser getOrgTeacher() {
+        return orgTeacher;
+    }
+
+    public void setOrgTeacher(OrganizationBaseUser orgTeacher) {
+        this.orgTeacher = orgTeacher;
     }
 }

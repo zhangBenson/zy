@@ -7,7 +7,8 @@
 }
 .words{
     position: absolute;
-    left:145px;
+    /*left:145px;*/
+    left:350px;
     top:55px;
     font-size: 14px;
     font-weight: 600;
@@ -54,7 +55,8 @@
 	background: url(../images/gogowise_logo_big_darkblue.png) no-repeat;
 	float: left;
 	height: 62px;
-	width: 134px;
+	/*width: 134px;*/
+    width:325px;
     padding-left:5px;
     cursor: pointer;
 }

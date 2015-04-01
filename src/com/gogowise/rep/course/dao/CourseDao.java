@@ -63,4 +63,6 @@ public interface CourseDao extends ModelDao<Course> {
 
     public List<Course> findRecordCourse(Pagination page);
 
+    public List<Course> findRecordCourseByTeacher(Pagination page, Integer userId);
+
 }

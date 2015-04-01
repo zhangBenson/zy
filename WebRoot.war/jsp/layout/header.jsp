@@ -7,7 +7,7 @@
 
 <div id="header">
     <s:a action="index" cssClass="logoImg"></s:a>
-    <p class="words"><s:text name="share.happy.share.knowlege"/></p>
+    <%--<p class="words"><s:text name="share.happy.share.knowlege"/></p>--%>
     <%-- 海林注意，如果是中文版，中文版三个字有下划线style="text-decoration:underline;"，如果是英文版给对English加上相应的CSS设置 --%>
     <!--p class="lan_select">
         <a href="javascript:;" style="text-decoration:underline;">中文版</a> / <a href="javascript:;">English</a>
@@ -38,8 +38,8 @@
         <a href="aboutUs.html"><s:text name="link.contact.us"/></a>
     </p>
 
-    <p class="tel"><s:text name="system.contact.tel"/><span>4000-211-123</span> <s:property value="#session.HIG_SEC_USER_EMAIL"/></p>
-
+    <%--<p class="tel"><s:text name="system.contact.tel"/><span>4000-211-123</span> <s:property value="#session.HIG_SEC_USER_EMAIL"/></p>--%>
+    <p class="tel"><s:text name="system.contact.tel"/><span>400-6171997</span> <s:property value="#session.HIG_SEC_USER_EMAIL"/></p>
 </div>
 
 <script type="text/javascript">
