@@ -92,6 +92,13 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
     }
 
 
+    public List<Course> findRecordCourseByTeacher(Pagination page, Integer userId) {
+
+        String hql = QUERY_CLASS + " and  cc.isRecord = true and teacher.id= ? group by c  order by MAX(cc.date) asc ";
+        return this.find(hql, page, userId);
+    }
+
+
     private String getFinisDateBiggerThanNow() {
 
         return " cc.duration > timestampdiff(minute,cc.date ,? ) ";

@@ -151,7 +151,7 @@
                                 <s:else>
                                     <li>
                                 </s:else>
-                                <a href="msInfo.html"><img src="<s:property value="pic"/>"/></a>
+                                <a href="msInfo.html?teacher.id=<s:property value="id"/>"><img src="<s:property value="pic"/>"/></a>
 
                                 <div class="cInfo">
                                     <strong><s:property value="nickName"/></strong>

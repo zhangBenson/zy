@@ -3,6 +3,8 @@ package com.gogowise.rep;
 import com.gogowise.common.utils.Constants;
 import com.opensymphony.xwork2.ActionContext;
 
+import java.util.Map;
+
 /**
  * Created by IntelliJ IDEA.
  * User: zhangb
@@ -48,10 +50,24 @@ public class Pagination {
     }
 
     public String getActionName() {
+
         if (actionName != null)
             return actionName;
-        else
-            return ActionContext.getContext().getName();
+        else {
+            Map request = (Map) ActionContext.getContext().get("request");
+            Map<String, Object> parameters = ActionContext.getContext().getParameters();
+            String pString = "";
+            if (parameters.size() > 0) {
+                pString = "?";
+                for (String key : parameters.keySet()) {
+                    if ("pagination.pageNow".equalsIgnoreCase(key)) {
+                        continue;
+                    }
+                    pString += key + "=" + request.get(key) + "&";
+                }
+            }
+            return ActionContext.getContext().getName() + pString;
+        }
     }
 
     public void setActionName(String actionName) {

@@ -42,7 +42,7 @@
                             <s:else>
                                 <li>
                             </s:else>
-                            <div class="msPhoto"><a href="userBlog.html?user.id=<s:property value="id"/>"><img src="<s:property value="pic"/>"/></a></div>
+                            <div class="msPhoto"><a href="msVideo.html?teacher.id=<s:property value="id"/>"><img src="<s:property value="pic"/>"/></a></div>
                             <div class="msTxt">
                                 <strong><s:property value="nickName"/></strong>
 
@@ -50,9 +50,9 @@
 
                                 <p>职称：中学高级教师、高中英语评价小组成员</p>
 
-                                <p>简介： <s:property value="user.selfDescription"/> <a href="userBlog.html?user.id=<s:property value="id"/>">[详细]</a></p>
+                                <p>简介： <s:property value="user.selfDescription"/> <a href="msInfo.html?teacher.id=<s:property value="id"/>">[详细]</a></p>
 
-                                <p>视频：<span class="abtn_2">直播<em class="icons icon_play_gray"></em></span><a href="userBlog.html?user.id=<s:property value="id"/>" class="abtn_1">点播<em class="icons icon_play_white"></em></a></p>
+                                <p>视频：<span class="abtn_2">直播<em class="icons icon_play_gray"></em></span><a href="msVideo.html?teacher.id=<s:property value="id"/>" class="abtn_1">点播<em class="icons icon_play_white"></em></a></p>
                             </div>
                             </li>
                         </s:iterator>
