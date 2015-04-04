@@ -42,11 +42,11 @@
                         </a>
 
                         <div class="cInfo">
-                            <strong><s:property value="name"/><s:property value="classOnTheCorner.name"/></strong>
+                            <strong><a href="voaCourseBlog.html?course.id=<s:property value="id"/>"><s:property value="name"/></a>----<s:property value="classOnTheCorner.name"/></strong>
 
                             <p>老师：<s:property value="teacher.nickName"/></p>
 
-                            <p>学校：<s:property value="organization.schoolName"/></p>
+                            <p>学校：<a href="orgBlog.html?org.id=<s:property value="organization.id"/>"><s:property value="organization.schoolName"/></a></p>
                         </div>
                     </li>
                 </s:iterator>
