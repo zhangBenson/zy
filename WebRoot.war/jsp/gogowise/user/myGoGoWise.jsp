@@ -23,9 +23,9 @@
 
 <div class="mfp_left fl">
 <div>
-    <s:if test="#session.user_own_org != null">
+    <%--<s:if test="#session.user_own_org != null">--%>
         <a class="submit_btn_large" href="createCourseAllInOne.html"><s:text name="course.create"/></a>
-    </s:if>
+    <%--</s:if>--%>
 </div>
 <s:if test="existLatestCourse">
     <div class="usItem_wrap fl">

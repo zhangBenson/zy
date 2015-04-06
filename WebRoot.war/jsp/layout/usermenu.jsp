@@ -16,9 +16,9 @@
         <div class="list">
             <h3 class="h3_title"><s:text name="usermenu.item.mycourses"/></h3>
             <ul>
+                <li><a href="createCourseAllInOne.html"><s:text name="usermenu.item.createcourse"/></a></li>
                 <li><a href="myForcastClass.html"><s:text name="usermenu.item.my.created.courses"/></a></li>
                 <li><a href="myRegistration.html"><s:text name="usermenu.item.my.reged.courses"/></a></li>
-
             </ul>
         </div>
 
@@ -43,7 +43,7 @@
                     <%--<li><a href="manageStudents.html">Student Management</a></li>--%>
                     <li><a href="manageOrgUsers.html?roleType=6"><s:text name="label.org.studentManagement"/></a></li>
                     <li><a href="manageOrgUsers.html?roleType=5"><s:text name="label.org.teacherManagement"/></a></li>
-                    <li><a href="createCourseAllInOne.html"><s:text name="usermenu.item.createcourse"/></a></li>
+
 
                         <li><a href="orgInfoUpdate.html"><s:text name="org.information.setting"/></a></li>
                 </ul>

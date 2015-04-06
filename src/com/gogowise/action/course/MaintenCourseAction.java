@@ -11,6 +11,7 @@ import com.gogowise.rep.org.OrgService;
 import com.gogowise.rep.org.dao.OrganizationBaseUserDao;
 import com.gogowise.rep.org.dao.OrganizationDao;
 import com.gogowise.rep.org.enity.Organization;
+import com.gogowise.rep.org.enity.OrganizationBaseUser;
 import com.gogowise.rep.tag.dao.TagDao;
 import com.gogowise.rep.tag.enity.Tag;
 import com.gogowise.rep.user.dao.BaseUserDao;
@@ -70,10 +71,22 @@ public class MaintenCourseAction extends BasicAction {
             @Result(name = "failed", type = Constants.RESULT_NAME_TILES, location = ".identityConfirmation")})
     public String createCourseAllInOne() {
         Organization org = organizationDao.findByResId(this.getSessionUserId());
-        teachers = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(), RoleType.ROLE_TYPE_TEACHER, null);
-        students = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(), RoleType.ROLE_TYPE_STUDENT, null);
-        if (course == null) course = new Course();
-        course.setCharges(0D);
+
+        if( org != null ){
+            teachers = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(), RoleType.ROLE_TYPE_TEACHER, null);
+            students = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(), RoleType.ROLE_TYPE_STUDENT, null);
+            if (course == null) course = new Course();
+            course.setCharges(0D);
+        }else{
+            OrganizationBaseUser temp = organizationBaseUserDao.findMyOrgByUserIdAndRole(this.getSessionUserId(), RoleType.ROLE_TYPE_TEACHER);
+            teachers.add(baseUserDao.findById(this.getSessionUserId()));
+            if(temp != null){
+                org = temp.getOrg();
+                students = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(), RoleType.ROLE_TYPE_STUDENT, null);
+                if (course == null) course = new Course();
+                course.setCharges(0D);
+            }
+        }
         //tags = tagDao.findAll();
         return SUCCESS;
     }
