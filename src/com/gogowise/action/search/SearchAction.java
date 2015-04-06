@@ -73,6 +73,14 @@ public class SearchAction extends BasicAction {
     }
 
 
+    @Action(value = "searchCourseByTag", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".searchAnswer")})
+    public String searchCourseByTag() throws Exception {
+        pagination.setPageSize(5);
+        courses = courseDao.searchCourses(searchStr, pagination);
+        return SUCCESS;
+    }
+
+
     public Integer getSearchType() {
         return searchType;
     }

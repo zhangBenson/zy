@@ -245,6 +245,13 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
         return this.find(hql, pagination, "%" + searchStr + "%", "%" + searchStr + "%", "%" + searchStr + "%");
     }
 
+    public List<Course> searchCoursesByTag(String searchStr, Pagination pagination) {
+        if (searchStr == null || searchStr.equals(""))
+            return this.findHotCourses(pagination);
+
+        String hql = "select distinct c  From Course c left join  c.teachers teacher left join c.tags tag where  " + PUBLIC_CONFIRMED + " and tag.name like ? order by c.id desc";
+        return this.find(hql, pagination, "%" + searchStr + "%");
+    }
 
     //================getter and setter==========
 
