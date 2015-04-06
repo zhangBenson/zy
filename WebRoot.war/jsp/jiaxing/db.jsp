@@ -37,18 +37,18 @@
             <ul class="zbCList dbCList clearfix">
                 <s:iterator value="courses" status="status">
                     <li>
-                        <a href="playerClass.html?courseClass.id=<s:property value="classOnTheCorner.id"/>" class="cImg">
+                        <a href="playerClass.html?courseClass.id=<s:property value="lastRecordClass.id"/>" class="cImg">
                             <img src="<s:property value="logoUrl"/>"/>
 
-                            <div class="vTip"><span class="vTime">时长：<s:property value="classOnTheCorner.duration"/>分钟</span><span class="abtn_1">播放<em class="icons icon_play_white"></em></span></div>
+                            <div class="vTip"><span class="vTime">时长：<s:property value="lastRecordClass.duration"/>分钟</span><span class="abtn_1">播放<em class="icons icon_play_white"></em></span></div>
                         </a>
 
                         <div class="cInfo">
-                            <strong><s:property value="name"/><s:property value="classOnTheCorner.name"/></strong>
+                            <strong>课程：<a href="voaCourseBlog.html?course.id=<s:property value="id"/>"><s:property value="name"/></a>----<s:property value="lastRecordClass.name"/></strong>
 
                             <p>老师：<s:property value="teacher.nickName"/></p>
 
-                            <p>学校：<s:property value="organization.schoolName"/></p>
+                            <p>学校：<a href="orgBlog.html?org.id=<s:property value="organization.id"/>"><s:property value="organization.schoolName"/></a></p>
                         </div>
                     </li>
                 </s:iterator>
