@@ -283,7 +283,7 @@ span.abtn_2 {
 
 .crumbBar {
     width: 100%;
-    background: #eeeeee;
+    /*background: #eeeeee;*/
 }
 
 .crumbTxt {
@@ -483,11 +483,13 @@ ul li.noMR {
 .zbCMo {
     background: #eee;
     padding-bottom: 35px;
+    width: 1200px;
 }
 
 .dbCMo {
     background: #2ba3d5;
     padding: 35px 0;
+    width: 1200px;
 }
 
 .dbCMo dt .dtTit strong {
@@ -528,13 +530,13 @@ ul li.noMR {
 }
 
 .db_cList li .cInfo {
-    width: 206px;
+    width: 222px;
     top: 120px;
 }
 
 .db_cList li.db_tag .cInfo {
-    width: 440px;
-    height: 298px;
+    width: 455px;
+    height: 318px;
     top: 288px;
 }
 
@@ -970,6 +972,7 @@ ul li.noMR {
 .bgee {
     width: 100%;
     background: #eee;
+    width: 1200px;
 }
 
 .skmsBox {

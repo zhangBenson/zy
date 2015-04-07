@@ -18,10 +18,11 @@
     });
 </script>
 
-<div class="crumbBar">
-    <div class="crumbTxt"><a href="index.html">首页</a>&gt;<a href="msList.html">授课名师</a></div>
-</div>
+
 <div class="container">
+    <div class="crumbBar">
+        <div class="crumbTxt"><a href="index.html">首页</a>&gt;<a href="msList.html">授课名师</a></div>
+    </div>
     <div class="bgee">
         <div class="zbClassBox">
             <ul class="msList clearfix">
