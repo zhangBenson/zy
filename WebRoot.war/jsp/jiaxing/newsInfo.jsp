@@ -114,58 +114,23 @@
                     <dd>
                         <div class="recClass">
                             <ul class="recClassList">
-                                <li>
-                                    <div class="classPic"><a href="videoInfo.html">
-                                        <img src="images/photo/pic_class1.jpg"/>
-                                    </a>
-                                    </div>
-                                    <div class="cInfo">
-                                        <strong>初一英语第18课</strong>
+                                <s:iterator value="records" status="status">
+                                    <li>
+                                        <div class="classPic"><a
+                                                href="playerClass.html?courseClass.id=<s:property value="lastRecordClass.id"/>">
+                                            <img src="<s:property value="logoUrl"/>"/>
+                                        </a>
+                                        </div>
+                                        <div class="cInfo">
+                                            <strong><s:property value="name"/><s:property
+                                                    value="classOnTheCorner.name"/></strong>
 
-                                        <p>主讲老师：程纽</p>
+                                            <p>主讲老师：<s:property value="teacher.nickName"/></p>
 
-                                        <p>学校：XXX中学</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="classPic"><a href="videoInfo.html">
-                                        <img src="images/photo/pic_class1.jpg"/>
-                                    </a>
-                                    </div>
-                                    <div class="cInfo">
-                                        <strong>初一英语第18课</strong>
-
-                                        <p>主讲老师：程纽</p>
-
-                                        <p>学校：XXX中学</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="classPic"><a href="videoInfo.html">
-                                        <img src="images/photo/pic_class1.jpg"/>
-                                    </a>
-                                    </div>
-                                    <div class="cInfo">
-                                        <strong>初一英语第18课</strong>
-
-                                        <p>主讲老师：程纽</p>
-
-                                        <p>学校：XXX中学</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="classPic"><a href="videoInfo.html">
-                                        <img src="images/photo/pic_class1.jpg"/>
-                                    </a>
-                                    </div>
-                                    <div class="cInfo">
-                                        <strong>初一英语第18课</strong>
-
-                                        <p>主讲老师：程纽</p>
-
-                                        <p>学校：XXX中学</p>
-                                    </div>
-                                </li>
+                                            <p>学校：<s:property value="organization.schoolName"/></p>
+                                        </div>
+                                    </li>
+                                </s:iterator>
                             </ul>
                         </div>
                     </dd>
