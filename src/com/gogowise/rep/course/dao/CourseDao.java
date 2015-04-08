@@ -50,6 +50,7 @@ public interface CourseDao extends ModelDao<Course> {
     public List<Course> findLatest4Course(Pagination pagination);
 
     public List<Course> findCoursesInTypes(Integer type, Pagination pagination);
+    public List<Course> findCoursesInStudentAgeTypes(Integer type, Pagination pagination);
 
     public List<Course> searchCourses(String searchStr, Pagination pagination);
 
@@ -60,8 +61,13 @@ public interface CourseDao extends ModelDao<Course> {
     public List<Course> findMyCourseOfForcastClassForUserCenter(Pagination page, Integer sid, int type);
 
     public List<Course> findForecastCourse(Pagination page);
+    public List<Course> findForecastCourseByStudentAgeType(Integer type, Pagination page);
+    public List<Course> findForecastCourseByCourseType(Integer type, Pagination page);
 
     public List<Course> findRecordCourse(Pagination page);
+
+    public List<Course> findRecordCourseByStudentAgeType(Pagination page, Integer type);
+    public List<Course> findRecordCourseByCourseType(Pagination page, Integer type);
 
     public List<Course> findRecordCourseByTeacher(Pagination page, Integer userId);
 

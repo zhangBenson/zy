@@ -41,6 +41,9 @@ public class IndexPageAction extends BasicAction {
     @Autowired
     private OrganizationBaseUserDao organizationBaseUserDao;
 
+    private Integer courseType     = -1;
+    private Integer studentAgeType = -1;
+
     @Action(value = "index", results = {@Result(name = SUCCESS, type = "tiles", location = "jiaxing.index")})
     public String index() {
 
@@ -56,6 +59,14 @@ public class IndexPageAction extends BasicAction {
     public String zbClass() {
         pagination.setPageSize(8);
         courses = courseDao.findForecastCourse(pagination);
+
+        if( -1 != courseType ){
+            courses = courseDao.findForecastCourseByCourseType(courseType,pagination);
+        }
+        if( -1 != studentAgeType){
+            courses = courseDao.findForecastCourseByStudentAgeType(studentAgeType,pagination);
+        }
+
         return SUCCESS;
     }
 
@@ -63,6 +74,14 @@ public class IndexPageAction extends BasicAction {
     public String dbClass() {
         pagination.setPageSize(8);
         courses = courseDao.findRecordCourse(pagination);
+
+        if( -1 != courseType ){
+            courses = courseDao.findRecordCourseByCourseType(pagination,courseType);
+        }
+        if( -1 != studentAgeType){
+            courses = courseDao.findRecordCourseByStudentAgeType(pagination,studentAgeType);
+        }
+
         return SUCCESS;
     }
 
@@ -71,6 +90,14 @@ public class IndexPageAction extends BasicAction {
         pagination.setPageSize(4);
         teachers = organizationBaseUserDao.findLatestUsersByRoleType(RoleType.ROLE_TYPE_TEACHER, pagination);
         records = courseDao.findRecordCourse(new Pagination(6));
+
+        if( -1 != courseType ){
+            courses = courseDao.findRecordCourseByCourseType(pagination, courseType);
+        }
+        if( -1 != studentAgeType){
+            courses = courseDao.findRecordCourseByStudentAgeType(pagination, studentAgeType);
+        }
+
         return SUCCESS;
     }
 
@@ -149,5 +176,21 @@ public class IndexPageAction extends BasicAction {
 
     public void setOrgTeacher(OrganizationBaseUser orgTeacher) {
         this.orgTeacher = orgTeacher;
+    }
+
+    public Integer getCourseType() {
+        return courseType;
+    }
+
+    public void setCourseType(Integer courseType) {
+        this.courseType = courseType;
+    }
+
+    public Integer getStudentAgeType() {
+        return studentAgeType;
+    }
+
+    public void setStudentAgeType(Integer studentAgeType) {
+        this.studentAgeType = studentAgeType;
     }
 }
