@@ -1200,12 +1200,12 @@ function ShowMessage(name, imgpath, content, bit) {
     <div class="thinline"></div>
     <div class="classSchoolinfo" style="text-align: center;">
         <ul class="list-inline">
-            <li class="classstatusbar">School Name:<s:property value="courseClass.course.organization.schoolName"/></li>
-            <li class="classstatusbar">Lecturers Name:<s:property value="courseClass.course.teacher.nickName"/></li>
-            <li class="classstatusbar">Course Name: <a class="img"
+            <li class="classstatusbar">学校:<s:property value="courseClass.course.organization.schoolName"/></li>
+            <li class="classstatusbar">教师:<s:property value="courseClass.course.teacher.nickName"/></li>
+            <li class="classstatusbar">课程: <a class="img"
                                                        href="voaCourseBlog.html?course.id=<s:property value="courseClass.course.id"/>">
                 <s:property value="courseClass.course.name"/> </a></li>
-            <li class="classstatusbar">Class Name:<s:property value="courseClass.name"/><s:property value="courseClass.nickName"/></li>
+            <li class="classstatusbar">课堂:<s:property value="courseClass.name"/><s:property value="courseClass.nickName"/></li>
         </ul>
     </div>
     <div>
@@ -1228,7 +1228,7 @@ function ShowMessage(name, imgpath, content, bit) {
         <div class="classBasePanel" id="panelcontent">
             <div id="studiowindow">
                 <div class="classPanleHead">
-                    <div class="classPanleTitle">Student List</div>
+                    <div class="classPanleTitle">学生列表</div>
                 </div>
                 <div class="classPanleBody dragcancel">
 
@@ -1252,7 +1252,7 @@ function ShowMessage(name, imgpath, content, bit) {
             <div id="chatWindow">
 
                 <div class="classPanleHead">
-                    <div class="classPanleTitle">Chat</div>
+                    <div class="classPanleTitle">聊天室</div>
                 </div>
 
                 <div class="classPanleBody dragcancel">
@@ -1272,7 +1272,7 @@ function ShowMessage(name, imgpath, content, bit) {
                     <div class="input-group" style="padding: 7px;">
                         <input type="text" class="form-control" id="txtContent">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" id="btnSendMsg">Send</button>
+                        <button class="btn btn-default" type="button" id="btnSendMsg">发送</button>
                     </span>
                     </div>
                 </div>
@@ -1290,7 +1290,7 @@ function ShowMessage(name, imgpath, content, bit) {
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">
-                    <h1 class="Subject24">Open File</h1>
+                    <h1 class="Subject24">打开文件</h1>
                 </h4>
 
             </div>
@@ -1300,19 +1300,19 @@ function ShowMessage(name, imgpath, content, bit) {
                     <li class="active">
                         <a href="#filesysDocument" data-toggle="tab">
                             <span class="glyphicon glyphicon-list-alt" style="margin-right: 5px;"></span>
-                            Speech Draft
+                            文档列表
                         </a>
                     </li>
                     <li>
                         <a href="#filesysVideo" data-toggle="tab">
                             <span class="glyphicon glyphicon-film" style="margin-right: 5px;"></span>
-                            Video
+                            视频
                         </a>
                     </li>
                     <li>
                         <a href="#filesysQuestionbank" data-toggle="tab">
                             <span class="glyphicon glyphicon-list" style="margin-right: 5px;"></span>
-                            QuestionBank
+                            问题库
                         </a>
                     </li>
                     <!-- <li>
@@ -1436,7 +1436,7 @@ function ShowMessage(name, imgpath, content, bit) {
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">
-                    <h1 class="Subject24">Questions</h1>
+                    <h1 class="Subject24">问题库</h1>
                 </h4>
 
             </div>
@@ -1511,7 +1511,7 @@ function ShowMessage(name, imgpath, content, bit) {
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">
-                    <h1 class="Subject24">Questions</h1>
+                    <h1 class="Subject24">问题库</h1>
                 </h4>
 
             </div>
@@ -1569,7 +1569,7 @@ function ShowMessage(name, imgpath, content, bit) {
 
             <div class="modal-footer">
 
-                <button type="button" class="btn btn-primary" id="btnQuestionResult">Result View</button>
+                <button type="button" class="btn btn-primary" id="btnQuestionResult">答题情况</button>
                 <button type="button" class="btn btn-primary" id="btnSubmitQuestions">Ok</button>
             </div>
         </div>

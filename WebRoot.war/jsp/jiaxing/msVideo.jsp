@@ -31,7 +31,7 @@
                     </dt>
                 </dl>
             </div>
-            <ul class="zbCList clearfix">
+            <ul class="zbCList clea   rfix">
 
                 <s:iterator value="records" status="status">
                     <li>

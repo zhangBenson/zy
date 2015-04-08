@@ -93,6 +93,17 @@ public class IndexPageAction extends BasicAction {
         return SUCCESS;
     }
 
+    @Action(value = "newsInfo", results = {@Result(name = SUCCESS, type = "tiles", location = "jiaxing.newsInfo")})
+    public String newsInfo() {
+
+        return SUCCESS;
+    }
+
+    @Action(value = "news", results = {@Result(name = SUCCESS, type = "tiles", location = "jiaxing.news")})
+    public String news() {
+        records = courseDao.findRecordCourse(new Pagination(4));
+        return SUCCESS;
+    }
 
     public List<Course> getCourses() {
         return courses;
