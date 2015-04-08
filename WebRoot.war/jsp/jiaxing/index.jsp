@@ -23,15 +23,16 @@
 
     });
 </script>
-<div class="banner">
-    <div id="slides" class="slides">
-        <img src="images/photo/pic_banner1.jpg"/>
-        <img src="images/photo/pic_banner2.jpg"/>
-        <img src="images/photo/pic_banner3.jpg"/>
-    </div>
-    <div class="bannerBot"></div>
-</div>
+
 <div class="container">
+    <div class="banner" style="width: 1200px;">
+        <div id="slides" class="slides" style="width: 1200px;">
+            <img src="images/photo/pic_banner1.jpg"/>
+            <img src="images/photo/pic_banner2.jpg"/>
+            <img src="images/photo/pic_banner3.jpg"/>
+        </div>
+        <div class="bannerBot" style="width: 1200px;"></div>
+    </div>
     <div class="cMoBox zbCMo">
         <dl class="zbDl">
             <dt>
