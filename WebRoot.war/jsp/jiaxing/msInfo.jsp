@@ -28,7 +28,7 @@
             <ul class="msList clearfix">
                 <li>
                     <div class="msName"><strong><s:property value="teacher.nickName"/></strong></div>
-                    <div class="msPhoto"><img src="<s:property value="pic"/>"/></div>
+                    <div class="msPhoto"><img src="<s:property value="teacher.pic"/>"/></div>
                     <div class="msTxt">
                         <p>学校：<s:property value="orgTeacher.org.schoolName"/></p>
 
