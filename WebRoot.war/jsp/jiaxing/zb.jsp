@@ -56,7 +56,8 @@
                         </a>
 
                         <div class="cInfo">
-                            <strong><a href="voaCourseBlog.html?course.id=<s:property value="id"/>"><s:property value="name"/></a>----<s:property value="classOnTheCorner.name"/></strong>
+                            <strong><a href="voaCourseBlog.html?course.id=<s:property value="id"/>"><s:property
+                                    value="name"/></a><s:property value="classOnTheCorner.name"/></strong>
 
                             <p>老师：<s:property value="teacher.nickName"/></p>
 

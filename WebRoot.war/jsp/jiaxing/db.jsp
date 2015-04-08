@@ -58,7 +58,8 @@
                         </a>
 
                         <div class="cInfo">
-                            <strong>课程：<a href="voaCourseBlog.html?course.id=<s:property value="id"/>"><s:property value="name"/></a>----<s:property value="lastRecordClass.name"/></strong>
+                            <strong>课程：<a href="voaCourseBlog.html?course.id=<s:property value="id"/>"><s:property
+                                    value="name"/></a><s:property value="lastRecordClass.name"/></strong>
 
                             <p>老师：<s:property value="teacher.nickName"/></p>
 
