@@ -687,12 +687,12 @@ function ShowMessage(name,imgpath,content,bit)
 <div class="thinline"></div>
 <div class="classSchoolinfo" style="text-align: center;">
     <ul class="list-inline">
-        <li  class="classstatusbar">School Name:<s:property value="courseClass.course.organization.schoolName" /></li>
-        <li  class="classstatusbar">Lecturers Name:<s:property value="courseClass.course.teacher.nickName"/></li>
-        <li class="classstatusbar">Course Name: <a class="img"
+        <li  class="classstatusbar">学校:<s:property value="courseClass.course.organization.schoolName" /></li>
+        <li  class="classstatusbar">教师:<s:property value="courseClass.course.teacher.nickName"/></li>
+        <li class="classstatusbar">课程: <a class="img"
                                                    href="voaCourseBlog.html?course.id=<s:property value="courseClass.course.id"/>">
             <s:property value="courseClass.course.name"/> </a></li>
-        <li class="classstatusbar">Class Name:<s:property value="courseClass.name"/><s:property value="courseClass.nickName"/></li>
+        <li class="classstatusbar">课堂:<s:property value="courseClass.name"/><s:property value="courseClass.nickName"/></li>
     </ul>
 </div>
 
@@ -737,7 +737,7 @@ function ShowMessage(name,imgpath,content,bit)
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">
-                    <h1 class = "Subject24">Questions</h1>
+                    <h1 class = "Subject24">问题库</h1>
                 </h4>
 
             </div>
