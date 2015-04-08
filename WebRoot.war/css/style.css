@@ -291,6 +291,7 @@ span.abtn_2 {
     margin: 0 auto;
     line-height: 40px;
     color: #666;
+    padding-left:25px;
 }
 
 .crumbTxt a, .crumbTxt span {
@@ -467,8 +468,8 @@ ul li.noMR {
     background: url(../images/trans.png);
     color: #fff;
     position: absolute;
-    width: 260px;
-    height: 165px;
+    width: 280px;
+    height: 185px;
     padding: 10px;
     top: 155px;
     left: 0;
@@ -686,9 +687,9 @@ ul li.noMR {
 
 .zbCList li {
     float: left;
-    width: 276px;
+    /*width: 276px;*/
     padding: 15px 12px;
-    height: 250px;
+    /*height: 250px;*/
 }
 
 .zbCList li:hover {
