@@ -22,6 +22,7 @@
     padding: 15px 10px;
     background: #fff;
     margin-top: 15px;
+    height: 200px;
 }
 .usItem_cont .logo_wrap img{
     width:80px;
@@ -73,7 +74,7 @@
 }
 .usItem_cont .handle{
     margin-right: 5px;
-    width: 125px;
+    /*width: 125px;*/
     height: 60px;
     position: relative;
 }
