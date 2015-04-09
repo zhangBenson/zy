@@ -71,7 +71,7 @@
     <div class="hdBar">
         <div class="h_b_cont">
             <div class="searBox fL">
-                <form name="searForm" action="#" method="post"><span>公开课：</span><input type="text" class="intxt" placeholder="课程名称、主讲老师"/><input type="submit" class="abtn_1" value="搜索"/></form>
+                <form name="searForm" action="searchCourse.html" method="post"><span>公开课：</span><input type="text" class="intxt" placeholder="课程名称、主讲老师" name="searchStr"/><input type="submit" class="abtn_1" value="搜索"/></form>
             </div>
             <div class="hotSear fR">
                 <span>热门课程：<a href="voaCourseBlog.html?course.id=200005">初二英语</a>
