@@ -47,6 +47,7 @@ public class IndexPageAction extends BasicAction {
     @Action(value = "index", results = {@Result(name = SUCCESS, type = "tiles", location = "jiaxing.index")})
     public String index() {
 
+        setLocale();
         courses = courseDao.findForecastCourse(new Pagination(4));
         records = courseDao.findRecordCourse(new Pagination(7));
         teachers = organizationBaseUserDao.findLatestUsersByRoleType(RoleType.ROLE_TYPE_TEACHER, new Pagination(4));
