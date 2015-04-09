@@ -77,22 +77,21 @@
             <s:textarea cssClass="long_text_area" id="step2_course_intro" name="course.description"/>
         </li>
         <li>
-            <span class="item"><s:text name="course.info.of.student.type"/> </span>
+            <span class="item">学段 </span>
             <%--<s:textarea cssClass="long_text_area" id="step2_course_student_type" name="course.studentType"--%>
             <%--type="text"/>--%>
             <s:select
-                    list="#{'1':getText('course.student.type.1'),'2':getText('course.student.type.2'),'3':getText('course.student.type.3'),
-                                '4':getText('course.student.type.4'),'5':getText('course.student.type.5'),'6':getText('course.student.type.6')}"
-                    headerKey="-1" headerValue="%{getText('course.student.default')}"
+                    list="#{'1':'高三','2':'高二','3':'高一','4':'初三','5':'初二','6':'初一','7':'小学','8':'其他'}"
+                    headerKey="-1" headerValue="请选择学段"
                     cssClass="long_text_field" id="step2_studentAge_type" name="course.studentAgeType"/>
             <span class="course_student_type_input_msg tip_words">*</span>
         </li>
 
         <li>
-            <span class="item"><s:text name="course.info.of.course.type"/></span>
+            <span class="item">学科</span>
             <s:select
-                    list="#{'7':getText('course.type.7'),'1':getText('course.type.1'),'2':getText('course.type.2'),'3':getText('course.type.3'),'4':getText('course.type.4'),'5':getText('course.type.5'),'5':getText('course.type.5')}"
-                    headerKey="-1" headerValue="%{getText('please.choose.course.type')}"
+                    list="#{'1':'语文','2':'数学','3':'英语','4':'物理','5':'化学','6':'生物','7':'地理','8':'历史','9':'其他'}"
+                    headerKey="-1" headerValue=" 请选择学科"
                     cssClass="long_text_field" id="step2_course_type" name="course.courseType"/>
             <span class="course_type_input_msg tip_words">*</span>
         </li>

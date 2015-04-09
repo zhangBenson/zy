@@ -70,6 +70,8 @@ public class MaintenCourseAction extends BasicAction {
     @Action(value = "createCourseAllInOne", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = ".createCourseAllInOne"),
             @Result(name = "failed", type = Constants.RESULT_NAME_TILES, location = ".identityConfirmation")})
     public String createCourseAllInOne() {
+
+        BaseUser curUser = baseUserDao.findById(this.getSessionUserId());
         Organization org = organizationDao.findByResId(this.getSessionUserId());
 
         if( org != null ){
@@ -77,13 +79,18 @@ public class MaintenCourseAction extends BasicAction {
             students = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(), RoleType.ROLE_TYPE_STUDENT, null);
         }else{
             OrganizationBaseUser temp = organizationBaseUserDao.findMyOrgByUserIdAndRole(this.getSessionUserId(), RoleType.ROLE_TYPE_TEACHER);
-            teachers.add(baseUserDao.findById(this.getSessionUserId()));
             if(temp != null){
                 org = temp.getOrg();
                 students = organizationBaseUserDao.findUsersByOrgIdAndRoleType(org.getId(), RoleType.ROLE_TYPE_STUDENT, null);
             }
         }
-        if (course == null) course = new Course();
+
+        if( teachers.isEmpty() ) teachers.add(curUser);
+
+        if (course == null){
+            course = new Course();
+            course.setTeacher(baseUserDao.findById(this.getSessionUserId()));
+        }
         course.setCharges(0D);
         //tags = tagDao.findAll();
         return SUCCESS;

@@ -20,6 +20,8 @@ public class BasicAction extends ActionSupport {
     //    public static final String BASIC_PACKAGE = "basic-package";
     public static final String BASE_NAME_SPACE = "/";
     public static final String RESULT_JSON = "json";
+    public static final Locale LOCALE_EN = new Locale("en", "US");
+    public static final Locale LOCALE_ZH = new Locale("zh", "CN");
     public static String HOST_URL_APP;
 
 
@@ -126,11 +128,11 @@ public class BasicAction extends ActionSupport {
      * TODO　remove when done I18N
      */
     @Deprecated
-    public void setToEn() {
-        ActionContext.getContext().getSession().put("WW_TRANS_I18N_LOCALE", new Locale("en", "US"));
-        ActionContext.getContext().getSession().put("request_locale", new Locale("en", "US"));
-        ActionContext.getContext().getSession().put("request_only_locale", new Locale("en", "US"));
-        ActionContext.getContext().setLocale(new Locale("en", "US"));
+    public void setLocale() {
+        ActionContext.getContext().getSession().put("WW_TRANS_I18N_LOCALE", LOCALE_ZH);
+        ActionContext.getContext().getSession().put("request_locale", LOCALE_ZH);
+        ActionContext.getContext().getSession().put("request_only_locale", LOCALE_ZH);
+        ActionContext.getContext().setLocale(LOCALE_ZH);
     }
 
     public String getErrorMsg() {

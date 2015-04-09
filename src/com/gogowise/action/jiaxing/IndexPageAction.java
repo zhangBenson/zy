@@ -1,6 +1,7 @@
 package com.gogowise.action.jiaxing;
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.common.utils.Constants;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.enity.Course;
@@ -41,9 +42,15 @@ public class IndexPageAction extends BasicAction {
     @Autowired
     private OrganizationBaseUserDao organizationBaseUserDao;
 
+    private Integer courseType     = -1;
+    private Integer studentAgeType = -1;
+
+    private String searchStr;
+
     @Action(value = "index", results = {@Result(name = SUCCESS, type = "tiles", location = "jiaxing.index")})
     public String index() {
 
+        setLocale();
         courses = courseDao.findForecastCourse(new Pagination(4));
         records = courseDao.findRecordCourse(new Pagination(7));
         teachers = organizationBaseUserDao.findLatestUsersByRoleType(RoleType.ROLE_TYPE_TEACHER, new Pagination(4));
@@ -51,11 +58,25 @@ public class IndexPageAction extends BasicAction {
         return SUCCESS;
     }
 
+    @Action(value = "searchCourse", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = "jiaxing.db")})
+    public String searchAnswer() throws Exception {
+        pagination.setPageSize(8);
+        courses = courseDao.searchCourses(searchStr, pagination);
+        return SUCCESS;
+    }
 
     @Action(value = "zbClass", results = {@Result(name = SUCCESS, type = "tiles", location = "jiaxing.zb")})
     public String zbClass() {
         pagination.setPageSize(8);
         courses = courseDao.findForecastCourse(pagination);
+
+        if( -1 != courseType ){
+            courses = courseDao.findForecastCourseByCourseType(courseType,pagination);
+        }
+        if( -1 != studentAgeType){
+            courses = courseDao.findForecastCourseByStudentAgeType(studentAgeType,pagination);
+        }
+
         return SUCCESS;
     }
 
@@ -63,6 +84,14 @@ public class IndexPageAction extends BasicAction {
     public String dbClass() {
         pagination.setPageSize(8);
         courses = courseDao.findRecordCourse(pagination);
+
+        if( -1 != courseType ){
+            courses = courseDao.findRecordCourseByCourseType(pagination,courseType);
+        }
+        if( -1 != studentAgeType){
+            courses = courseDao.findRecordCourseByStudentAgeType(pagination,studentAgeType);
+        }
+
         return SUCCESS;
     }
 
@@ -71,6 +100,14 @@ public class IndexPageAction extends BasicAction {
         pagination.setPageSize(4);
         teachers = organizationBaseUserDao.findLatestUsersByRoleType(RoleType.ROLE_TYPE_TEACHER, pagination);
         records = courseDao.findRecordCourse(new Pagination(6));
+
+        if( -1 != courseType ){
+            courses = courseDao.findRecordCourseByCourseType(pagination, courseType);
+        }
+        if( -1 != studentAgeType){
+            courses = courseDao.findRecordCourseByStudentAgeType(pagination, studentAgeType);
+        }
+
         return SUCCESS;
     }
 
@@ -149,5 +186,29 @@ public class IndexPageAction extends BasicAction {
 
     public void setOrgTeacher(OrganizationBaseUser orgTeacher) {
         this.orgTeacher = orgTeacher;
+    }
+
+    public Integer getCourseType() {
+        return courseType;
+    }
+
+    public void setCourseType(Integer courseType) {
+        this.courseType = courseType;
+    }
+
+    public Integer getStudentAgeType() {
+        return studentAgeType;
+    }
+
+    public void setStudentAgeType(Integer studentAgeType) {
+        this.studentAgeType = studentAgeType;
+    }
+
+    public String getSearchStr() {
+        return searchStr;
+    }
+
+    public void setSearchStr(String searchStr) {
+        this.searchStr = searchStr;
     }
 }

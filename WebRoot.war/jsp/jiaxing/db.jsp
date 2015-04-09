@@ -30,9 +30,23 @@
                 </dl>
             </div>
             <div class="zb_c_sear">
-                <p><span>学段：</span><a href="#" class="on">全部</a><a href="#">高三</a><a href="#">高二</a><a href="#">高一</a><a href="#">初三</a><a href="#">初二</a><a href="#">初一</a><a href="#">小学</a><a href="#">其它</a></p>
+                <p><span>学段：</span>
+                    <a href="dbClass.html" class="on">全部</a><a href="dbClass.html?studentAgeType=1">高三</a>
+                    <a href="dbClass.html?studentAgeType=2">高二</a><a href="dbClass.html?studentAgeType=3">高一</a>
+                    <a href="dbClass.html?studentAgeType=4">初三</a><a href="dbClass.html?studentAgeType=5">初二</a>
+                    <a href="dbClass.html?studentAgeType=6">初一</a><a href="dbClass.html?studentAgeType=7">小学</a>
+                    <a href="dbClass.html?studentAgeType=8">其它</a>
+                </p>
 
-                <p><span>学科：</span><a href="#" class="on">全部</a><a href="#">语文</a><a href="#">数学</a><a href="#">英语</a><a href="#">物理</a><a href="#">化学</a><a href="#">生物</a><a href="#">地理</a><a href="#">历史</a><a href="#">其它</a></p>
+                <p>
+                    <span>学科：</span>
+                    <a href="dbClass.html" class="on">全部</a>
+                    <a href="dbClass.html?courseType=1">语文</a><a href="dbClass.html?courseType=2">数学</a>
+                    <a href="dbClass.html?courseType=3">英语</a><a href="dbClass.html?courseType=4">物理</a>
+                    <a href="dbClass.html?courseType=5">化学</a><a href="dbClass.html?courseType=6">生物</a>
+                    <a href="dbClass.html?courseType=7">地理</a>
+                    <a href="dbClass.html?courseType=8">历史</a><a href="dbClass.html?courseType=9">其它</a>
+                </p>
             </div>
             <ul class="zbCList dbCList clearfix">
                 <s:iterator value="courses" status="status">
@@ -44,7 +58,8 @@
                         </a>
 
                         <div class="cInfo">
-                            <strong>课程：<a href="voaCourseBlog.html?course.id=<s:property value="id"/>"><s:property value="name"/></a>----<s:property value="lastRecordClass.name"/></strong>
+                            <strong>课程：<a href="voaCourseBlog.html?course.id=<s:property value="id"/>"><s:property
+                                    value="name"/></a><s:property value="lastRecordClass.name"/></strong>
 
                             <p>老师：<s:property value="teacher.nickName"/></p>
 

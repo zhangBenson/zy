@@ -84,6 +84,17 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
         return this.find(hql, page, Utils.getCurrentCalender());
     }
 
+    public List<Course> findForecastCourseByCourseType(Integer type, Pagination page) {
+
+        String hql = QUERY_CLASS + " and " + getFinisDateBiggerThanNow() + " and c.courseType=?   group by c  order by MIN(cc.date) asc ";
+        return this.find(hql, page, Utils.getCurrentCalender(),type);
+    }
+
+    public List<Course> findForecastCourseByStudentAgeType(Integer type, Pagination page) {
+
+        String hql = QUERY_CLASS + " and " + getFinisDateBiggerThanNow() + " and c.studentAgeType=?   group by c  order by MIN(cc.date) asc ";
+        return this.find(hql, page, Utils.getCurrentCalender(),type);
+    }
 
     public List<Course> findRecordCourse(Pagination page) {
 
@@ -96,6 +107,18 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
 
         String hql = QUERY_CLASS + " and  cc.isRecord = true and teacher.id= ? group by c  order by MAX(cc.date) asc ";
         return this.find(hql, page, userId);
+    }
+
+    public List<Course> findRecordCourseByCourseType(Pagination page, Integer type) {
+
+        String hql = QUERY_CLASS + " and  cc.isRecord = true and c.courseType=? group by c  order by MAX(cc.date) asc ";
+        return this.find(hql, page, type);
+    }
+
+    public List<Course> findRecordCourseByStudentAgeType(Pagination page, Integer type) {
+
+        String hql = QUERY_CLASS + " and  cc.isRecord = true and c.studentAgeType=? group by c  order by MAX(cc.date) asc ";
+        return this.find(hql, page, type);
     }
 
 
@@ -234,6 +257,11 @@ public class CourseDaoImpl extends ModelDaoImpl<Course> implements CourseDao {
     public List<Course> findCoursesInTypes(Integer type, Pagination pagination) {
 
         String hql = "From Course c where " + PUBLIC_CONFIRMED + " and c.courseType=? order by c.publicationTime desc";
+        return this.find(hql, pagination, type);
+    }
+
+    public List<Course> findCoursesInStudentAgeTypes(Integer type, Pagination pagination){
+        String hql = "From Course c where " + PUBLIC_CONFIRMED + " and c.studentAgeType=? order by c.publicationTime desc";
         return this.find(hql, pagination, type);
     }
 

@@ -70,11 +70,11 @@
                     <input type="email" class="form-control" placeholder="Email" disabled value="<s:property value="user.email"/>"></div>
 
                 <div class="form-group">
-                    <label>Registration Time：</label>
+                    <label>注册时间：</label>
                     <input type="email" class="form-control" placeholder="Registration Time" disabled value="<s:date name="user.regDate" format="yyyy-MM-dd HH:mm"/>">
                 </div>
                 <div class="form-group">
-                    <label>Last Logging in Time：</label>
+                    <label>上次登录时间：</label>
                     <input type="email" class="form-control" placeholder="Last Logging in Time" disabled value="<s:date name="user.lastLoginDate" format="yyyy-MM-dd HH:mm"/>">
                 </div>
                 <button type="submit" class="btn btn-primary btn-block" onclick="return checkInfoForm();"><s:text name="button.account.submit"/></button>
