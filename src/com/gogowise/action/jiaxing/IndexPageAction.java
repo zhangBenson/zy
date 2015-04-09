@@ -1,6 +1,7 @@
 package com.gogowise.action.jiaxing;
 
 import com.gogowise.action.BasicAction;
+import com.gogowise.common.utils.Constants;
 import com.gogowise.rep.Pagination;
 import com.gogowise.rep.course.dao.CourseDao;
 import com.gogowise.rep.course.enity.Course;
@@ -44,6 +45,8 @@ public class IndexPageAction extends BasicAction {
     private Integer courseType     = -1;
     private Integer studentAgeType = -1;
 
+    private String searchStr;
+
     @Action(value = "index", results = {@Result(name = SUCCESS, type = "tiles", location = "jiaxing.index")})
     public String index() {
 
@@ -54,6 +57,12 @@ public class IndexPageAction extends BasicAction {
         return SUCCESS;
     }
 
+    @Action(value = "searchCourse", results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_TILES, location = "jiaxing.db")})
+    public String searchAnswer() throws Exception {
+        pagination.setPageSize(8);
+        courses = courseDao.searchCourses(searchStr, pagination);
+        return SUCCESS;
+    }
 
     @Action(value = "zbClass", results = {@Result(name = SUCCESS, type = "tiles", location = "jiaxing.zb")})
     public String zbClass() {
@@ -192,5 +201,13 @@ public class IndexPageAction extends BasicAction {
 
     public void setStudentAgeType(Integer studentAgeType) {
         this.studentAgeType = studentAgeType;
+    }
+
+    public String getSearchStr() {
+        return searchStr;
+    }
+
+    public void setSearchStr(String searchStr) {
+        this.searchStr = searchStr;
     }
 }

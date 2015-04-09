@@ -31,7 +31,7 @@
                         <td>费用：<span class="orangeWords">20知币</span></td>
                     </tr>
                     <tr>
-                        <td colspan=2>课程简介：<span class="orangeWords">知元网是全国首家致力于云教育的网络平台网络平台网络平台。</span></td>
+                        <td colspan=2>课程简介：<span class="orangeWords">嘉兴移动公开课是全国首家致力于云教育的网络平台网络平台网络平台。</span></td>
                     </tr>
                 </table>
             </div>
