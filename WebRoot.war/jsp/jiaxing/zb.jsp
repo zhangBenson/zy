@@ -52,7 +52,9 @@
                         <a href="lecturerClass.html?courseClass.id=<s:property value="classOnTheCorner.id"/>" class="cImg">
                             <img src="<s:property value="logoUrl"/>"/>
 
-                            <div class="vTip"><span class="abtn_1">直播<em class="icons icon_play_white"></em></span></div>
+                            <div class="vTip">
+                                <%--<span style="color: white;padding-top: 15px;">时间：<s:date name="classOnTheCorner.date" format="%{getText('dateformat.forclass')}"/></span>--%>
+                                <span class="abtn_1">直播<em class="icons icon_play_white"></em></span></div>
                         </a>
 
                         <div class="cInfo">
@@ -60,8 +62,8 @@
                                     value="name"/></a><s:property value="classOnTheCorner.name"/></strong>
 
                             <p>老师：<s:property value="teacher.nickName"/></p>
-
                             <p>学校：<a href="orgBlog.html?org.id=<s:property value="organization.id"/>"><s:property value="organization.schoolName"/></a></p>
+                            <p>时间：<s:date name="classOnTheCorner.date" format="%{getText('dateformat.forclass')}"/></p>
                         </div>
                     </li>
                 </s:iterator>

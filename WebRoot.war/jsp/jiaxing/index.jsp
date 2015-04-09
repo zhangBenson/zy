@@ -41,7 +41,6 @@
             <dd>
                 <ul class="ul_Jlist zb_cList clearfix">
 
-
                     <s:iterator value="courses" status="status">
                         <s:if test="#status.index%4==3">
                             <li class="noMR">
@@ -50,17 +49,19 @@
                             <li>
                         </s:else>
 
-
                         <img src="<s:property value="logoUrl"/>"/>
 
                         <div class="cInfo">
-                            <strong><s:property value="name"/><s:property value="classOnTheCorner.name"/></strong>
+                            <strong>课程：<a href="voaCourseBlog.html?course.id=<s:property value="id"/>" style="color: white;"><s:property value="name"/></a>:
+                                <s:property value="classOnTheCorner.name"/></strong>
+                            <p>老师：<a href="userBlog.html?user.id=<s:property value="teacher.id"/>" style="color: white;"><s:property value="teacher.nickName"/></a></p>
+                            <p>学校：<a href="orgBlog.html?org.id=<s:property value="organization.id"/>" style="color:white;"><s:property value="organization.schoolName"/></a></p>
+                            <p>时间：<s:date name="classOnTheCorner.date" format="%{getText('dateformat.forclass')}"/></p>
 
-                            <p>老师：<s:property value="teacher.nickName"/></p>
-
-                            <p>学校：<s:property value="organization.schoolName"/></p>
-
-                            <p class="alignR" id="livep<s:property value='#status.index'/>" name="livep" date="<s:date  name="classOnTheCorner.finishDate" format="%{getText('dateformat.forclass')}"/>"><a href="lecturerClass.html?courseClass.id=<s:property value="classOnTheCorner.id"/>" class="abtn_1">直播<em class="icons icon_play_white"></em></a></p>
+                            <p class="alignR" id="livep<s:property value='#status.index'/>" name="livep"
+                               date="<s:date name="classOnTheCorner.finishDate" format="%{getText('dateformat.forclass')}"/>">
+                                <a href="lecturerClass.html?courseClass.id=<s:property value="classOnTheCorner.id"/>" class="abtn_1">直播
+                                    <em class="icons icon_play_white"></em></a></p>
 
                         </div>
                         </li>
@@ -88,13 +89,15 @@
                         <img src="<s:property value="logoUrl"/>"/>
 
                         <div class="cInfo">
-                            <div class="tagTxt clearfix"><strong class="fL"><s:property value="name"/><s:property value="lastRecordClass.name"/></strong>
+                            <div class="tagTxt clearfix">
+                                <strong class="fL"><a href="voaCourseBlog.html?course.id=<s:property value="id"/>" style="color: white;"><s:property value="name"/></a>
+                                <s:property value="lastRecordClass.name"/></strong>
 
                                 <div class="fR">时长：<s:property value="lastRecordClass.duration"/>分钟</div>
                             </div>
-                            <p>老师：<s:property value="teacher.nickName"/></p>
-
-                            <p>学校：<s:property value="organization.schoolName"/></p>
+                            <p>老师：<a href="userBlog.html?user.id=<s:property value="teacher.id"/>" style="color: white;"><s:property value="teacher.nickName"/></a></p>
+                            <p>学校：<a href="orgBlog.html?org.id=<s:property value="organization.id"/>" style="color:white;"><s:property value="organization.schoolName"/></a></p>
+                            <p>时间：<s:date name="lastRecordClass.date" format="%{getText('dateformat.forclass')}"/></p>
 
                             <p>&nbsp;</p>
 
@@ -118,12 +121,11 @@
                             <img src="<s:property value="logoUrl"/>"/>
 
                         <div class="cInfo">
-                            <strong><s:property value="name"/><s:property value="lastRecordClass.name"/></strong>
+                            <strong><a href="voaCourseBlog.html?course.id=<s:property value="id"/>" style="color: white;"><s:property value="name"/></a>:<s:property value="lastRecordClass.name"/></strong>
 
-                            <p>老师：<s:property value="teacher.nickName"/></p>
-
-                            <p>学校：<s:property value="organization.schoolName"/></p>
-
+                            <p>老师：<a href="userBlog.html?user.id=<s:property value="teacher.id"/>" style="color: white;"><s:property value="teacher.nickName"/></a></p>
+                            <p>学校：<a href="orgBlog.html?org.id=<s:property value="organization.id"/>" style="color:white;"><s:property value="organization.schoolName"/></a></p>
+                            <%--<p>时间：<s:date name="lastRecordClass.date" format="%{getText('dateformat.forclass')}"/></p>--%>
                             <p class="alignR"><a href="playerClass.html?courseClass.id=<s:property value="lastRecordClass.id"/>" class="abtn_1">播放<em class="icons icon_play_white"></em></a></p>
                         </div>
                     </li>
