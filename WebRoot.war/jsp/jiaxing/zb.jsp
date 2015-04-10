@@ -29,21 +29,21 @@
             </div>
             <div class="zb_c_sear">
                 <p><span>学段：</span>
-                    <a href="dbClass.html" class="on" id="xueduan">全部</a><a href="dbClass.html?studentAgeType=1" id="xueduan1">高三</a>
-                    <a href="dbClass.html?studentAgeType=2" id="xueduan2">高二</a><a href="dbClass.html?studentAgeType=3" id="xueduan3">高一</a>
-                    <a href="dbClass.html?studentAgeType=4" id="xueduan4">初三</a><a href="dbClass.html?studentAgeType=5" id="xueduan5">初二</a>
-                    <a href="dbClass.html?studentAgeType=6" id="xueduan6">初一</a><a href="dbClass.html?studentAgeType=7" id="xueduan7">小学</a>
-                    <a href="dbClass.html?studentAgeType=8" id="xueduan8">其它</a>
+                    <a href="zbClass.html" class="on" id="xueduan">全部</a><a href="zbClass.html?studentAgeType=1" id="xueduan1">高三</a>
+                    <a href="zbClass.html?studentAgeType=2" id="xueduan2">高二</a><a href="zbClass.html?studentAgeType=3" id="xueduan3">高一</a>
+                    <a href="zbClass.html?studentAgeType=4" id="xueduan4">初三</a><a href="zbClass.html?studentAgeType=5" id="xueduan5">初二</a>
+                    <a href="zbClass.html?studentAgeType=6" id="xueduan6">初一</a><a href="zbClass.html?studentAgeType=7" id="xueduan7">小学</a>
+                    <a href="zbClass.html?studentAgeType=8" id="xueduan8">其它</a>
                 </p>
 
                 <p>
                     <span>学科：</span>
-                    <a href="dbClass.html" class="on" id="xueke">全部</a>
-                    <a href="dbClass.html?courseType=1" id="xueke1">语文</a><a href="dbClass.html?courseType=2" id="xueke2">数学</a>
-                    <a href="dbClass.html?courseType=3" id="xueke3">英语</a><a href="dbClass.html?courseType=4" id="xueke4">物理</a>
-                    <a href="dbClass.html?courseType=5" id="xueke5">化学</a><a href="dbClass.html?courseType=6" id="xueke6">生物</a>
-                    <a href="dbClass.html?courseType=7" id="xueke7">地理</a>
-                    <a href="dbClass.html?courseType=8" id="xueke8">历史</a><a href="dbClass.html?courseType=9" id="xueke9">其它</a>
+                    <a href="zbClass.html" class="on" id="xueke">全部</a>
+                    <a href="zbClass.html?courseType=1" id="xueke1">语文</a><a href="zbClass.html?courseType=2" id="xueke2">数学</a>
+                    <a href="zbClass.html?courseType=3" id="xueke3">英语</a><a href="zbClass.html?courseType=4" id="xueke4">物理</a>
+                    <a href="zbClass.html?courseType=5" id="xueke5">化学</a><a href="zbClass.html?courseType=6" id="xueke6">生物</a>
+                    <a href="zbClass.html?courseType=7" id="xueke7">地理</a>
+                    <a href="zbClass.html?courseType=8" id="xueke8">历史</a><a href="zbClass.html?courseType=9" id="xueke9">其它</a>
                 </p>
             </div>
             <ul class="zbCList clearfix">
