@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 
 
 @Controller
@@ -60,57 +61,49 @@ public class UploadUtilsAction extends BasicAction {
     }
 
     @Action(value = "uploadFile",interceptorRefs = {})
-    public String uploadFile() {
-        try {
-            System.out.println("=1111===========");
-            System.out.println(fileupload.getAbsolutePath() + "==========getAbsolutePath==");
-            String extName = UploadUtils.getExtension(fileuploadFileName);
-            String newFileName = UploadUtils.getNameByTime() + extName;
+    public String uploadFile() throws IOException {
+        String extName = UploadUtils.getExtension(fileuploadFileName);
+        String newFileName = UploadUtils.getNameByTime() + extName;
 
-            String savePath = UploadUtils.getRealPathForBaseDir();
+        String savePath = UploadUtils.getRealPathForBaseDir();
 
-            savePath = savePath + Constants.UPLOAD_FILE_PATH_TMP;
+        savePath = savePath + Constants.UPLOAD_FILE_PATH_TMP;
 
 
-            //缩放处理，长宽不过200
-            BufferedImage bufferedImage = ImageIO.read(fileupload);
-            int imgWidth = bufferedImage.getWidth();
-            int imgHeight = bufferedImage.getHeight();
-            int newWidth = imgWidth, newHeight = imgHeight;
-            Image image;
-            if (imgWidth > imgHeight) {
-                if (imgWidth > 300) {
-                    newWidth = 300;
-                    newHeight = 300 * imgHeight / imgWidth;
-                }
-            } else {
-                if (imgHeight > 300) {
-                    newWidth = 300 * imgWidth / imgHeight;
-                    newHeight = 300;
-                }
+        //缩放处理，长宽不过200
+        BufferedImage bufferedImage = ImageIO.read(fileupload);
+        int imgWidth = bufferedImage.getWidth();
+        int imgHeight = bufferedImage.getHeight();
+        int newWidth = imgWidth, newHeight = imgHeight;
+        Image image;
+        if (imgWidth > imgHeight) {
+            if (imgWidth > 300) {
+                newWidth = 300;
+                newHeight = 300 * imgHeight / imgWidth;
             }
-            image = bufferedImage.getScaledInstance(newWidth, newHeight, Image.SCALE_DEFAULT);
-            BufferedImage tag = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_BGR);
-            Graphics2D g = (Graphics2D) tag.getGraphics();
-            g.drawImage(image, 0, 0, null);
-            String extNameWithoutDot = extName.substring(extName.indexOf(".") + 1);
-            ImageIO.write(tag, extNameWithoutDot, fileupload);
-
-            File newFileToCreate = new File(savePath + newFileName);
-            File newPatchToCreate = new File(savePath);
-            if (!newPatchToCreate.exists()) {
-                newPatchToCreate.mkdirs();
+        } else {
+            if (imgHeight > 300) {
+                newWidth = 300 * imgWidth / imgHeight;
+                newHeight = 300;
             }
-            System.out.println(newFileName + "==========bbbb==");
-            UploadUtils.copy(fileupload, newFileToCreate);
-            System.out.println(newFileName + "==========aaa==");
-            HttpServletResponse response = ServletActionContext.getResponse();
-            response.setCharacterEncoding("utf-8");
-            this.setGenFileName(newFileName);
-            System.out.println(newFileName + "==========newFileName==");
-        } catch (Throwable t) {
-            t.printStackTrace();
         }
+        image = bufferedImage.getScaledInstance(newWidth, newHeight, Image.SCALE_DEFAULT);
+        BufferedImage tag = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_BGR);
+        Graphics2D g = (Graphics2D) tag.getGraphics();
+        g.drawImage(image, 0, 0, null);
+        String extNameWithoutDot = extName.substring(extName.indexOf(".") + 1);
+        ImageIO.write(tag, extNameWithoutDot, fileupload);
+
+        File newFileToCreate = new File(savePath + newFileName);
+        File newPatchToCreate = new File(savePath);
+        if (!newPatchToCreate.exists()) {
+            newPatchToCreate.mkdirs();
+        }
+        UploadUtils.copy(fileupload, newFileToCreate);
+
+        HttpServletResponse response = ServletActionContext.getResponse();
+        response.setCharacterEncoding("utf-8");
+        this.setGenFileName(newFileName);
         return "json";
     }
 
