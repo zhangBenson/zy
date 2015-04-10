@@ -62,6 +62,8 @@ public class UploadUtilsAction extends BasicAction {
 
     @Action(value = "uploadFile",interceptorRefs = {})
     public String uploadFile() throws IOException {
+        System.out.println("=1111===========");
+        System.out.println(fileupload.getAbsolutePath() + "==========getAbsolutePath==");
         String extName = UploadUtils.getExtension(fileuploadFileName);
         String newFileName = UploadUtils.getNameByTime() + extName;
 
@@ -104,6 +106,7 @@ public class UploadUtilsAction extends BasicAction {
         HttpServletResponse response = ServletActionContext.getResponse();
         response.setCharacterEncoding("utf-8");
         this.setGenFileName(newFileName);
+        System.out.println(newFileName + "==========newFileName==");
         return "json";
     }
 
