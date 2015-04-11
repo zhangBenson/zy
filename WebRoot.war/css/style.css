@@ -583,6 +583,7 @@ ul li.noMR {
 .ms_cList {
     background: #d8d8d8;
     padding: 20px 20px 10px;
+    min-height: 220;
 }
 
 .ms_cList li {

@@ -20,13 +20,21 @@
     <script type="text/javascript" src="js/jquery.slides.min.js"></script>
     <script src="/js/course/bootstrap.min.js"></script>
 
-    <meta name='viewport' content='width=1270'>
-
+        <style type="text/css">
+            .container {
+                padding-right: 0px;
+                padding-right: 0px;
+                width: 1200px !important;
+            }
+        </style>
 </head>
 
     <body>
-        <div id="top"><tiles:insertAttribute name="top"/></div>
+
+        <div class="container" style="background-color: #fff;width: 1200px;margin-left:auto;margin-right:auto;">
+        <div id="top" style="margin-left: 15px;"><tiles:insertAttribute name="top"/></div>
         <div id="detailInfo"><tiles:insertAttribute name="contentBody"/></div>
         <div id="detailfooters"><tiles:insertAttribute name="footer"/></div>
+        </div>
     </body>
 </html> 

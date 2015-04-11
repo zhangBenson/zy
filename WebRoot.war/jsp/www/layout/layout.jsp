@@ -32,10 +32,9 @@
         <%@ include file="includeForLayOut.jsp" %>
     </head>
 
-    <meta name='viewport' content='width=1270'>
     <body>
-        <div id="top"><tiles:insertAttribute name="top"/></div>
-        <div id="detailInfo"><tiles:insertAttribute name="contentBody"/></div>
-        <div id="detailfooters"><tiles:insertAttribute name="footer"/></div>
+        <div id="top" style="width: 1200px;"><tiles:insertAttribute name="top"/></div>
+        <div id="detailInfo" style="width: 1200px;"><tiles:insertAttribute name="contentBody"/></div>
+        <div id="detailfooters" style="width: 1200px;"><tiles:insertAttribute name="footer"/></div>
     </body>
 </html>

@@ -22,7 +22,7 @@
 </script>
 <%--<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>--%>
 <%--<div class="thickline"></div>--%>
-<div class="container">
+<div class="container2">
 
     <div class="topBar">
         <div class="topBInner"><strong class="fontc">欢迎来到嘉兴移动公开课堂！</strong>
