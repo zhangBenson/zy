@@ -27,7 +27,7 @@
         <div class="zbClassBox">
             <ul class="msList clearfix">
                 <li>
-                    <div class="msName"><strong><s:property value="teacher.nickName"/></strong></div>
+                    <div class="msName" style="margin-bottom: 10px;"><strong><s:property value="teacher.nickName"/></strong></div>
                     <div class="msPhoto"><img src="<s:property value="teacher.pic"/>"/></div>
                     <div class="msTxt">
                         <p>学校：<s:property value="orgTeacher.org.schoolName"/></p>
@@ -67,7 +67,7 @@
                                     <a href="playerClass.html?courseClass.id=<s:property value="lastRecordClass.id"/>" class="cImg">
                                         <img src="<s:property value="logoUrl"/>"/>
 
-                                        <div class="vTip"><span class="vTime">时长：<s:property value="classOnTheCorner.duration"/>分钟</span><span class="abtn_1">播放<em class="icons icon_play_white"></em></span></div>
+                                        <div class="vTip"><span class="vTime">时长：<s:property value="lastRecordClass.duration"/>分钟</span><span class="abtn_1">播放<em class="icons icon_play_white"></em></span></div>
                                     </a>
                                 </li>
                             </s:iterator>

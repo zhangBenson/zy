@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public class Pagination {
     private int pageNow = 1;
-    private Long totalSize;
+    private Long totalSize = 0L;
     private String actionName = null;
     private int pageSize = Constants.PAGE_SIZE;
 

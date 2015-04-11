@@ -26,7 +26,7 @@
                         <s:textfield cssClass="form-control input-lg" name="searchStr"
                                      placeholder="search"></s:textfield>
                         <div class="input-group-btn">
-                            <button type="submit" class="btn btn-default btn-lg">
+                            <button type="submit" class="btn btn-default btn-lg" style="font-size: 18px;">
                                 <span class="glyphicon glyphicon-search"></span>
                                 <s:text name="menu.item.search"/>
                             </button>

@@ -76,26 +76,26 @@ public class UploadUtilsAction extends BasicAction {
         int imgHeight = bufferedImage.getHeight();
         int newWidth = imgWidth, newHeight = imgHeight;
         Image image;
-        if(imgWidth>imgHeight){
-            if(imgWidth>300){
+        if (imgWidth > imgHeight) {
+            if (imgWidth > 300) {
                 newWidth = 300;
-                newHeight = 300*imgHeight/imgWidth;
+                newHeight = 300 * imgHeight / imgWidth;
             }
-        }else{
-            if(imgHeight>300){
-                newWidth = 300*imgWidth/imgHeight;
+        } else {
+            if (imgHeight > 300) {
+                newWidth = 300 * imgWidth / imgHeight;
                 newHeight = 300;
             }
         }
-        image = bufferedImage.getScaledInstance(newWidth,newHeight,Image.SCALE_DEFAULT);
-        BufferedImage tag = new BufferedImage(newWidth,newHeight,BufferedImage.TYPE_INT_BGR);
-        Graphics2D g = (Graphics2D)tag.getGraphics();
-        g.drawImage(image,0,0,null);
-        String extNameWithoutDot = extName.substring(extName.indexOf(".")+1);
-        ImageIO.write(tag,extNameWithoutDot,fileupload);
+        image = bufferedImage.getScaledInstance(newWidth, newHeight, Image.SCALE_DEFAULT);
+        BufferedImage tag = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_BGR);
+        Graphics2D g = (Graphics2D) tag.getGraphics();
+        g.drawImage(image, 0, 0, null);
+        String extNameWithoutDot = extName.substring(extName.indexOf(".") + 1);
+        ImageIO.write(tag, extNameWithoutDot, fileupload);
 
         File newFileToCreate = new File(savePath + newFileName);
-        File newPatchToCreate = new File(savePath );
+        File newPatchToCreate = new File(savePath);
         if (!newPatchToCreate.exists()) {
             newPatchToCreate.mkdirs();
         }

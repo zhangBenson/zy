@@ -2,7 +2,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <link type="text/css" href="css/footer.css" rel="stylesheet"/>
 
-<div id="footer">
+<div id="footer" style="text-align: center;width: 100%;padding-left:20%">
     <p class="p_0">
         <a href="index.html"></a>
         <span><s:text name="share.happy.share.knowlege"/></span>

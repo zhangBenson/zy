@@ -26,12 +26,12 @@
     <div class="basePanelTextLeft" style="text-align: center;">
         <button type="button" class="btn btn-info btn-block">
             <a href="personalCenter.html" style="display: block; text-decoration: none">
-                <span class="glyphicon glyphicon-tag" style="margin-right: 10px;"></span>Courses Underway
+                <span class="glyphicon glyphicon-tag" style="margin-right: 10px;"></span>未完成课程
             </a>
         </button>
         <button type="button" class="btn btn-warning btn-block">
             <a href="personalCenterFinished.html" style="display: block; text-decoration: none">
-                <span class="glyphicon glyphicon-tags" style="margin-right: 10px;"></span>Courses Finished
+                <span class="glyphicon glyphicon-tags" style="margin-right: 10px;"></span>已完成课程
             </a>
         </button>
     </div>
@@ -87,7 +87,7 @@
             <a href="#">
                 <img src="images/user/icon_mail.png" class="centerIcon"/>
 
-                <div class="messageGreen4">Message 4</div>
+                <div class="messageGreen4">消息 4</div>
             </a>
         </div>
 
@@ -95,7 +95,7 @@
             <a href="#">
                 <img src="images/user/icon_mail.png" class="centerIcon"/>
 
-                <div class="messageGreen5">Message 5</div>
+                <div class="messageGreen5">消息 5</div>
             </a>
         </div>
 
@@ -105,7 +105,7 @@
 
 <div class="col-sm-9">
 
-    <h3 class="courseSubject"><p class="text-center" style="font-size: 18px;">Courses Underway</p></h3>
+    <h3 class="courseSubject"><p class="text-center" style="font-size: 18px;">未完成课程</p></h3>
 
     <div class="basePanelTextLeft">
 
