@@ -29,9 +29,25 @@
                 </dt>
                 <dd>
                     <div class="zb_c_sear">
-                        <p><span>学段：</span><a href="#" class="on">全部</a><a href="#">高三</a><a href="#">高二</a><a href="#">高一</a><a href="#">初三</a><a href="#">初二</a><a href="#">初一</a><a href="#">小学</a><a href="#">其它</a></p>
 
-                        <p><span>学科：</span><a href="#" class="on">全部</a><a href="#">语文</a><a href="#">数学</a><a href="#">英语</a><a href="#">物理</a><a href="#">化学</a><a href="#">生物</a><a href="#">地理</a><a href="#">历史</a><a href="#">其它</a></p>
+                        <p><span>学段：</span>
+                            <a href="msList.html" class="on" id="xueduan">全部</a><a href="msList.html?studentAgeType=1" id="xueduan1">高三</a>
+                            <a href="msList.html?studentAgeType=2" id="xueduan2">高二</a><a href="msList.html?studentAgeType=3" id="xueduan3">高一</a>
+                            <a href="msList.html?studentAgeType=4" id="xueduan4">初三</a><a href="msList.html?studentAgeType=5" id="xueduan5">初二</a>
+                            <a href="msList.html?studentAgeType=6" id="xueduan6">初一</a><a href="msList.html?studentAgeType=7" id="xueduan7">小学</a>
+                            <a href="msList.html?studentAgeType=8" id="xueduan8">其它</a>
+                        </p>
+
+                        <p>
+                            <span>学科：</span>
+                            <a href="msList.html" class="on" id="xueke">全部</a>
+                            <a href="msList.html?courseType=1" id="xueke1">语文</a><a href="msList.html?courseType=2" id="xueke2">数学</a>
+                            <a href="msList.html?courseType=3" id="xueke3">英语</a><a href="msList.html?courseType=4" id="xueke4">物理</a>
+                            <a href="msList.html?courseType=5" id="xueke5">化学</a><a href="msList.html?courseType=6" id="xueke6">生物</a>
+                            <a href="msList.html?courseType=7" id="xueke7">地理</a>
+                            <a href="msList.html?courseType=8" id="xueke8">历史</a><a href="msList.html?courseType=9" id="xueke9">其它</a>
+                        </p>
+
                     </div>
                     <ul class="msList clearfix">
 
@@ -100,4 +116,16 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+
+    <s:if test="studentAgeType >0 ">
+    document.getElementById("xueduan").className = 'temp';
+    document.getElementById("xueduan<s:property value="studentAgeType"/>").className = 'on';
+    </s:if>
+
+    <s:if test="courseType >0">
+    document.getElementById("xueke").className = 'temp';
+    document.getElementById("xueke<s:property value="courseType"/>").className = 'on';
+    </s:if>
+</script>
 

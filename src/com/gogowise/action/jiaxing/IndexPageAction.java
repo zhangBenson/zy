@@ -97,15 +97,13 @@ public class IndexPageAction extends BasicAction {
 
     @Action(value = "msList", results = {@Result(name = SUCCESS, type = "tiles", location = "jiaxing.msList")})
     public String msList() {
-        pagination.setPageSize(4);
-        teachers = organizationBaseUserDao.findLatestUsersByRoleType(RoleType.ROLE_TYPE_TEACHER, pagination);
+
+
         records = courseDao.findRecordCourse(new Pagination(6));
 
-        if( -1 != courseType ){
-            courses = courseDao.findRecordCourseByCourseType(pagination, courseType);
-        }
-        if( -1 != studentAgeType){
-            courses = courseDao.findRecordCourseByStudentAgeType(pagination, studentAgeType);
+        if ((-1 == studentAgeType && -1 == courseType) || (1 == studentAgeType || 2 == studentAgeType || 3 == studentAgeType || 2 == courseType)) {
+            pagination.setPageSize(4);
+            teachers = organizationBaseUserDao.findLatestUsersByRoleType(RoleType.ROLE_TYPE_TEACHER, pagination);
         }
 
         return SUCCESS;
