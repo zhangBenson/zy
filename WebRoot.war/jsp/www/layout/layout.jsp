@@ -36,7 +36,7 @@
         <div class="container" style="background-color: #fff;width: 1200px;margin-left:auto;margin-right:auto;">
         <div id="top" style="width: 1200px;"><tiles:insertAttribute name="top"/></div>
         <div id="detailInfo" style="width: 1200px;"><tiles:insertAttribute name="contentBody"/></div>
-        <div id="detailfooters" style="width: 1200px;"><tiles:insertAttribute name="footer"/></div>
+        <div id="detailfooters" ><tiles:insertAttribute name="footer"/></div>
         </div>
     </body>
 </html>
