@@ -95,7 +95,7 @@ public class MainFilter implements Filter {
 
             String key = request.getParameter("jxKey");
             if ("CEF345E562FD5AE30E9C6D82FB90F184".equalsIgnoreCase(key)) {
-                this.setSession(request, baseUserDao.findByEmail("75750753@qq.com"));
+                this.setSession(request, baseUserDao.findByEmail("75710753@qq.com"));
             } else if ("AE15496DD876B282489AF320958DC5B5".equalsIgnoreCase(key)) {
                 this.setSession(request, baseUserDao.findByEmail("jhji@ir.hit.edu.cn"));
             }
