@@ -195,12 +195,12 @@
     function checkEmail() {
         $("#yzemail").text("*");
         if ($("#email").attr('value') != "") {
-            var pattern = /^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/;
-            var email = $("#email").val();
-            if (!pattern.test(email)) {
-                $("#yzemail").text("<s:text name="emailerror"/>");
-                return false;
-            }
+            <%--var pattern = /^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/;--%>
+            <%--var email = $("#email").val();--%>
+            <%--if (!pattern.test(email)) {--%>
+            <%--$("#yzemail").text("<s:text name="emailerror"/>");--%>
+            <%--return false;--%>
+            <%--}--%>
         } else {
             $("#yzemail").text("<s:text name="emailEmpty"/>");
             return false;

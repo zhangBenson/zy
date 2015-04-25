@@ -32,11 +32,12 @@
                 <s:form validate="true" theme="css_xhtml" cssClass="form-horizontal" method="POST" action="logon">
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label"> <s:text name="email"/></label>
+                        <label class="col-sm-2 control-label"> <s:text name="login.username"/></label>
 
                         <div class="col-sm-10">
                             <span class="errorinfo" id="yzemail"></span>
-                            <s:textfield name="user.email" id="logonemail" cssClass="form-control" placeholder="Email"/>
+                            <s:textfield name="user.email" id="logonemail" cssClass="form-control"
+                                         placeholder="Phone #"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -79,11 +80,11 @@
                     <s:hidden name="confirmForOrg"/>
 
                     <div class="form-group">
-                        <label><s:text name="email"/></label>
+                        <label><s:text name="login.username"/></label>
                         <span id="log_email_tip" class="errorinfo">*</span>
 
                         <s:textfield cssClass="form-control" name="user.email" id="registeremail"
-                                     placeholder="Enter Email"/>
+                                     placeholder="Phone #"/>
                     </div>
                     <div class="form-group">
                         <label><s:text name="password"/></label>
@@ -149,7 +150,7 @@
     var pwdFormatWrong = "<s:text name='psdFormatWrong'/>";
     var repwdAgain = "<s:text name='psdagain'/>";
     var repwdNotEqual = "<s:text name='psdNOsame'/>";
-    var emailEmpty = "<s:text name='emailEmpty'/>";
+    var emailEmpty = "<s:text name='messege.phone.empty'/>";
     var emailFormatWrong = "<s:text name='emailerror'/>";
     var acceptClauseMsg = "<s:text name='message.accept.rule'/>";
     function checkCheckBox() {
@@ -191,13 +192,13 @@
                 return true;
             }
         } else {
-            var emailPattern = /^(?:[a-z\d]+[_\-\+\.]?)*[a-z\d]+@(?:([a-z\d]+\-?)*[a-z\d]+\.)+([a-z]{2,})+$/i;
-            if (emailPattern.test(email)) {
+//            var emailPattern = /^(?:[a-z\d]+[_\-\+\.]?)*[a-z\d]+@(?:([a-z\d]+\-?)*[a-z\d]+\.)+([a-z]{2,})+$/i;
+//            if (emailPattern.test(email)) {
                 return true;
-            } else {
-                document.getElementById(tipId).innerHTML = emailFormatWrong;
-                return false;
-            }
+//            } else {
+//                document.getElementById(tipId).innerHTML = emailFormatWrong;
+//                return false;
+//            }
         }
     }
 
@@ -307,14 +308,14 @@
     function checkEmail() {
         $("#yzemail").text("*");
         if ($("#logonemail").attr('value') != "") {
-            var pattern = /^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/;
-            var email = $("#logonemail").val();
-            if (!pattern.test(email)) {
-                $("#yzemail").text("<s:text name="emailerror"/>");
-                return false;
-            }
+            <%--var pattern = /^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/;--%>
+            <%--var email = $("#logonemail").val();--%>
+            <%--if (!pattern.test(email)) {--%>
+            <%--$("#yzemail").text("<s:text name="emailerror"/>");--%>
+            <%--return false;--%>
+            <%--}--%>
         } else {
-            $("#yzemail").text("<s:text name="emailEmpty"/>");
+            $("#yzemail").text("<s:text name="messege.phone.empty"/>");
             return false;
         }
 

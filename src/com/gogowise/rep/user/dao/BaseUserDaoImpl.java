@@ -1,7 +1,6 @@
 package com.gogowise.rep.user.dao;
 
 import com.gogowise.rep.ModelDaoImpl;
-import com.gogowise.rep.Pagination;
 import com.gogowise.rep.user.enity.BaseUser;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -31,6 +30,9 @@ public class BaseUserDaoImpl extends ModelDaoImpl<BaseUser> implements BaseUserD
         return findFist("From BaseUser u where u.email=?", email);
     }
 
+    public BaseUser findByEmailOrTelPhone(String email, String telPhone) {
+        return findFist("From BaseUser u where u.email=? or u.telphone = ?", email, telPhone);
+    }
 
     public BaseUser findByNickName(String nickName) {
         return findFist("From BaseUser u where u.nickName=?", nickName);

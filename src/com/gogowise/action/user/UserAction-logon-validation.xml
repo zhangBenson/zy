@@ -7,9 +7,9 @@
             <param name="trim" >true</param>
             <message key="emailEmpty"></message>
         </field-validator>
-        <field-validator type="email">
-            <message key="emailerror"></message>
-        </field-validator>
+        <!--<field-validator type="email">-->
+        <!--<message key="emailerror"></message>-->
+        <!--</field-validator>-->
     </field>
     <field name="user.password">
         <field-validator type="requiredstring">

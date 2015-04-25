@@ -236,6 +236,7 @@ public class UserAction extends BasicAction {
         _user.setSelfDescription(user.getSelfDescription());
         _user.setSexy(user.getSexy());
         _user.setBirthDay(user.getBirthDay());
+        _user.setTelphone(user.getTelphone());
 
         _user.setPic(UploadUtils.copyTmpFileByUser(user.getPic(), getSessionUserId()));
         baseUserDao.persistAbstract(_user);
@@ -391,7 +392,7 @@ public class UserAction extends BasicAction {
                     @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".studentLogin")}
     )
     public String studentLoginProcess() {
-        BaseUser user = baseUserDao.findByEmail(this.getUser().getEmail());
+        BaseUser user = baseUserDao.findByEmailOrTelPhone(this.getUser().getEmail(), this.getUser().getEmail());
         if (user == null) {
             addFieldError("user.email", this.getText("message.logon.account.not.exist"));
             return INPUT;
@@ -416,7 +417,7 @@ public class UserAction extends BasicAction {
             results = {@Result(name = SUCCESS, type = Constants.RESULT_NAME_REDIRECT_ACTION, params = {"actionName", "myfirstPage"}),
                     @Result(name = INPUT, type = Constants.RESULT_NAME_TILES, location = ".teacherLogin")})
     public String teacherLoginProcess() {
-        BaseUser user = baseUserDao.findByEmail(this.getUser().getEmail());
+        BaseUser user = baseUserDao.findByEmailOrTelPhone(this.getUser().getEmail(), this.getUser().getEmail());
 
         if (user == null) {
             addFieldError("user.email", this.getText("message.logon.account.not.exist"));
@@ -459,7 +460,7 @@ public class UserAction extends BasicAction {
             }
     )
     public String logon() {
-        BaseUser user = baseUserDao.findByEmail(this.getUser().getEmail());
+        BaseUser user = baseUserDao.findByEmailOrTelPhone(this.getUser().getEmail(), this.getUser().getEmail());
 
         if (user == null) {
             addFieldError("user.email", this.getText("message.logon.account.not.exist"));
@@ -588,7 +589,7 @@ public class UserAction extends BasicAction {
 
     //验证验证码
     public void validateLogon() {
-        BaseUser user = baseUserDao.findByEmail(this.getUser().getEmail());
+        BaseUser user = baseUserDao.findByEmailOrTelPhone(this.getUser().getEmail(), this.getUser().getEmail());
         if (user != null) {
             ActionContext.getContext().getSession().put("logonTimes", 1);
         }

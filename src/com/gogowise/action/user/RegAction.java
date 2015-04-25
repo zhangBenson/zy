@@ -70,7 +70,7 @@ public class RegAction extends BasicAction {
     )
     public String easyRegCheck() {
 
-        BaseUser localUser = baseUserDao.findByEmail(this.getUser().getEmail());
+        BaseUser localUser = baseUserDao.findByEmailOrTelPhone(this.getUser().getEmail(), this.getUser().getEmail());
         if (localUser != null) {
             addFieldError("user.email", this.getText("reEmail"));
             return INPUT;
@@ -154,8 +154,13 @@ public class RegAction extends BasicAction {
     public String reg() {
 
         BaseUser localUser = baseUserDao.findByEmail(this.getUser().getEmail());
-
-        user.setEmail(StringUtils.trim(user.getEmail()));
+        String emailString = StringUtils.trim(user.getEmail());
+        if (StringUtils.contains(emailString, "@")) {
+            user.setEmail(emailString);
+        } else {
+            user.setEmail(emailString + "@139.com");
+            user.setTelphone(emailString);
+        }
         user.setNickName(StringUtils.trim(user.getNickName()));
         user.setLockedOut(true);
         user.setPassword(MD5.endCode(user.getPassword()));

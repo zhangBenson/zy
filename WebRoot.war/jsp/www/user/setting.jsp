@@ -39,6 +39,14 @@
                            name="user.userName" value="<s:property value="user.userName"/>" />
                 </div>
                 <div class="form-group">
+                    <label><s:text name="login.username"/></label>
+                    <span class="input_msg" id="phone_msg"></span>
+                    <input type="text" class="form-control" id="phone_input"
+                           placeholder="<s:text name="login.username"/>"
+                           onblur="checkEmpty('real_name_input','real_name_msg','<s:text name='messege.phone.empty'/>')"
+                           name="user.telphone" value="<s:property value="user.telphone"/>"/>
+                </div>
+                <div class="form-group">
                     <label><s:text name="orgleague.info.birth"/></label>
                     <input type="text" class="form-control" placeholder="<s:text name="orgleague.info.birth"/>"
                            name="user.birthDay" value="<s:date name="user.birthDay" format="MM/dd/yyyy"/>" readonly

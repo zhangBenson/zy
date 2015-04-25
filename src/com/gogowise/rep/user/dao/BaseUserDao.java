@@ -2,9 +2,6 @@ package com.gogowise.rep.user.dao;
 
 import com.gogowise.rep.ModelDao;
 import com.gogowise.rep.user.enity.BaseUser;
-import com.gogowise.rep.Pagination;
-
-import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -15,12 +12,12 @@ import java.util.List;
  */
 public interface BaseUserDao extends ModelDao<BaseUser> {
 
-    //    public void persistAbstract(BaseUser user);
-    public BaseUser findByEmail(String email);
+    BaseUser findByEmail(String email);
 
-    public BaseUser findByNickName(String nickName);
+    BaseUser findByEmailOrTelPhone(String email, String telPhone);
 
+    BaseUser findByNickName(String nickName);
 
-    public BaseUser logon(String email, String password);
+    BaseUser logon(String email, String password);
 
 }

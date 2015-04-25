@@ -5,17 +5,17 @@
 
 <div style="clear: both;"></div>
 
-<div style="text-align: center; width: 30%; margin-left: 30%; margin-bottom: 5%; margin-top: 3%;">
+<div style="text-align: center; width: 40%; margin-left: 30%; margin-bottom: 5%; margin-top: 3%;">
     <div class="basePanelTextLeft">
         <h1 class = "courseSubject"><s:text name="button.log.in.student"/></h1>
         <h1 class = "courseSynopsis"><s:text name="label.log.in.info"/></h1>
         <span class="errorinfo"><s:property value="actionErrors[0]"/></span>
         <s:form validate="true" theme="css_xhtml" cssClass="form-horizontal"  method="POST" action="studentLoginProcess">
             <div class="form-group">
-                <label class="col-sm-2 control-label"> <s:text name="email"/></label>
+                <label class="col-sm-2 control-label"> <s:text name="login.username"/></label>
                 <div class="col-sm-10">
                     <span class="errorinfo" id="yzemail"></span>
-                    <s:textfield name="user.email" id="logonemail" cssClass="form-control" placeholder="Email"/>
+                    <s:textfield name="user.email" id="logonemail" cssClass="form-control" placeholder="Phone #"/>
                 </div>
             </div>
             <div class="form-group">
@@ -51,7 +51,7 @@
     var pwdFormatWrong = "<s:text name='psdFormatWrong'/>";
     var repwdAgain = "<s:text name='psdagain'/>";
     var repwdNotEqual = "<s:text name='psdNOsame'/>";
-    var emailEmpty = "<s:text name='emailEmpty'/>";
+    var emailEmpty = "<s:text name='messege.phone.empty'/>";
     var emailFormatWrong = "<s:text name='emailerror'/>";
     var acceptClauseMsg = "<s:text name='message.accept.rule'/>";
     function checkCheckBox(){
@@ -208,14 +208,14 @@
     function checkEmail(){
         $("#yzemail").text("*");
         if($("#logonemail").attr('value')!="" ){
-            var pattern = /^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/;
-            var email = $("#logonemail").val();
-            if(!pattern.test(email)){
-                $("#yzemail").text("<s:text name="emailerror"/>");
-                return false;
-            }
+            <%--var pattern = /^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/;--%>
+            <%--var email = $("#logonemail").val();--%>
+            <%--if(!pattern.test(email)){--%>
+            <%--$("#yzemail").text("<s:text name="emailerror"/>");--%>
+            <%--return false;--%>
+            <%--}--%>
         }else{
-            $("#yzemail").text("<s:text name="emailEmpty"/>");
+            $("#yzemail").text("<s:text name="messege.phone.empty"/>");
             return false;
         }
 
