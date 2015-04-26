@@ -29,8 +29,8 @@
                 <%--<li><a href="myRegistration.html"><s:text name="usermenu.item.my.reged.courses"/></a></li>--%>
 
                     <li>
-                        <a href="http://games.gogowise.com/VerificationUser.aspx?userid=<s:property value="secUid"/>"
-                           target="_blank"><s:text name="title.game.management"/></a></li>
+                        <%--<a href="http://games.gogowise.com/VerificationUser.aspx?userid=<s:property value="secUid"/>"--%>
+                           <%--target="_blank"><s:text name="title.game.management"/></a></li>--%>
             </ul>
         </div>
 
