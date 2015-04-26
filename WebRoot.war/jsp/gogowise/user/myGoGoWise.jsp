@@ -67,7 +67,7 @@
                     <a class="a_2"
                        href="javascript:getVideoUrl('<s:property value="classOnTheCorner.id"/>','<s:property value="teachingNum"/>');"><s:text name="button.start.class"/></a>
                     <a class="a_2" href="makeCourseVideo.html?course.id=<s:property value="id"/>"><s:text name="course.makeVideos"/></a>
-                    <a class="a_2" href="/designGame.html?course.id=<s:property value="id"/>"><s:text name="course.designGame"/></a>
+                    <%--<a class="a_2" href="/designGame.html?course.id=<s:property value="id"/>"><s:text name="course.designGame"/></a>--%>
 
                 </div>
                 <div style="height:45px;clear: both"></div>

@@ -153,7 +153,7 @@
                 <%--<a class="makeVideos" id="makeVideos<s:property value="#idx.index"/>"  href="javascript:;"><s:text name="course.makeVideos"/></a>--%>
             <a class="makeVideos" href="/makeCourseVideo.html?course.id=<s:property value="id"/>"><s:text name="course.makeVideos"/></a>
 
-            <a class="makeVideos" href="/designGame.html?course.id=<s:property value="id"/>"><s:text name="course.designGame"/></a>
+            <%--<a class="makeVideos" href="/designGame.html?course.id=<s:property value="id"/>"><s:text name="course.designGame"/></a>--%>
             <a class="manage_course" id=""
                href="uploadCourseMaterial.html?course.id=<s:property value="id"/>"><s:text name="course.resource.upload"/></a>
                 <%--<a class="manage_course" id="" href="uploadCourseMaterial.html?course.id=<s:property value="id"/>">Upload Questions</a>--%>
