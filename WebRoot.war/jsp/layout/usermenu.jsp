@@ -22,17 +22,17 @@
             </ul>
         </div>
 
-        <div class="list">
-            <h3 class="h3_title"><s:text name="title.game"/></h3>
-            <ul>
+        <%--<div class="list">--%>
+            <%--<h3 class="h3_title"><s:text name="title.game"/></h3>--%>
+            <%--<ul>--%>
                 <%--<li><a href="myForcastClass.html"><s:text name="usermenu.item.my.created.courses"/></a></li>--%>
                 <%--<li><a href="myRegistration.html"><s:text name="usermenu.item.my.reged.courses"/></a></li>--%>
 
-                    <li>
+                    <%--<li>--%>
                         <%--<a href="http://games.gogowise.com/VerificationUser.aspx?userid=<s:property value="secUid"/>"--%>
                            <%--target="_blank"><s:text name="title.game.management"/></a></li>--%>
-            </ul>
-        </div>
+            <%--</ul>--%>
+        <%--</div>--%>
 
 
         <s:if test="#session.user_own_org != null">
