@@ -27,7 +27,7 @@
             <div class="cMoBox mainTopBar">
                 <dl class="zbDl">
                     <dt>
-                    <div class="fL dtTit"><strong>|&nbsp;"<span class="fontc"><s:property value="teacher.nickName"/></span>"的公开课</strong></div>
+                    <div class="fL dtTit" style="margin-left: 10px;"><strong>|&nbsp;"<span class="fontc"><s:property value="teacher.nickName"/></span>"的公开课</strong></div>
                     </dt>
                 </dl>
             </div>

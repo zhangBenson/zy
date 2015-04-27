@@ -25,7 +25,7 @@
 <div class="container2">
 
     <div class="topBar">
-        <div class="topBInner"><strong class="fontc">欢迎来到嘉兴移动公开课堂！</strong>
+        <div class="topBInner" style="margin-left: 10px;"><strong class="fontc">欢迎来到嘉兴移动公开课堂！</strong>
         <s:if test="#session.email !=null">
         <div class="btn-group">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -70,7 +70,7 @@
 
     <div class="hdBar">
         <div class="h_b_cont">
-            <div class="searBox fL">
+            <div class="searBox fL" style="margin-left: 10px;">
                 <form name="searForm" action="searchCourse.html" method="post"><span>公开课：</span><input type="text" class="intxt" placeholder="课程名称、主讲老师" name="searchStr" value="<s:property value="searchStr"/>"/><input type="submit" class="abtn_1" value="搜索"/></form>
             </div>
             <div class="hotSear fR">

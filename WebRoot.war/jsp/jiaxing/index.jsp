@@ -36,8 +36,8 @@
     <div class="cMoBox zbCMo">
         <dl class="zbDl">
             <dt>
-            <div class="fL dtTit"><strong>|&nbsp;直播课堂</strong></div>
-            <a href="zbClass.html" class="fR">更多&raquo;</a></dt>
+            <div class="fL dtTit" style="margin-left: 10px;"><strong>|&nbsp;直播课堂</strong></div>
+            <a href="zbClass.html" class="fR" style="margin-right: 10px;">更多&raquo;</a></dt>
             <dd>
                 <ul class="ul_Jlist zb_cList clearfix">
 
@@ -75,8 +75,8 @@
     <div class="cMoBox dbCMo">
         <dl class="zbDl">
             <dt>
-            <div class="fL dtTit"><strong>|&nbsp;点播课堂</strong></div>
-            <a href="dbClass.html" class="fR">更多&raquo;</a></dt>
+            <div class="fL dtTit" style="margin-left: 10px;"><strong>|&nbsp;点播课堂</strong></div>
+            <a href="dbClass.html" class="fR" style="margin-right: 10px;">更多&raquo;</a></dt>
             <dd>
                 <ul class="ul_Jlist db_cList clearfix">
 
@@ -142,8 +142,8 @@
             <div class="cMoBox msCMo">
                 <dl class="msDl">
                     <dt>
-                    <div class="fL dtTit"><strong>|&nbsp;授课名师</strong></div>
-                    <a href="msList.html" class="fR">更多&raquo;</a></dt>
+                    <div class="fL dtTit" style="margin-left: 10px;"><strong>|&nbsp;授课名师</strong></div>
+                    <a href="msList.html" class="fR" style="margin-right: 10px;">更多&raquo;</a></dt>
                     <dd>
                         <ul class="ms_cList clearfix">
 
@@ -176,7 +176,7 @@
                 <dl class="newsDl">
                     <dt>
                     <div class="fL dtTit"><strong>|&nbsp;教育资讯</strong></div>
-                    <a href="news.html" class="fR">更多&raquo;</a></dt>
+                    <a href="news.html" class="fR" style="margin-right: 10px;">更多&raquo;</a></dt>
                     <dd>
                         <ul class="news_cList clearfix">
                             <li><span>•</span><a href="newsInfo.html">江苏太仓：做学生喜欢的智慧教育</a></li>

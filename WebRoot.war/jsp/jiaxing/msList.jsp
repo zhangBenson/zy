@@ -25,7 +25,7 @@
         <div class="skmsBox clearfix">
             <dl class="cMoBox fL msMainCont">
                 <dt>
-                <div class="fL dtTit"><strong>|&nbsp;授课名师</strong></div>
+                <div class="fL dtTit" style="margin-left: 10px;"><strong>|&nbsp;授课名师</strong></div>
                 </dt>
                 <dd>
                     <div class="zb_c_sear">

@@ -23,7 +23,7 @@
         <div class="skmsBox clearfix">
             <dl class="cMoBox fL msMainCont">
                 <dt>
-                <div class="fL dtTit"><strong>|&nbsp;教育资讯</strong></div>
+                <div class="fL dtTit" style="margin-left: 10px;"><strong>|&nbsp;教育资讯</strong></div>
                 </dt>
                 <dd>
                     <div class="newsBox">
